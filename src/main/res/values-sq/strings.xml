@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -42,7 +44,9 @@
     <string name="forward">Përpara</string>
     <string name="create">Krijoje</string>
     <string name="later">Më vonë</string>
-    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used
+        in a menu and should be as short as possible. Resending may be needed after failures or to repost old
+        messages to new members. -->
     <string name="resend">Ridërgoje</string>
     <string name="edited">Të përpunuar</string>
     <string name="edit_message">Përpunoni Mesazh</string>
@@ -50,12 +54,16 @@
     <string name="archive">Arkivoje</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Çarkivoje</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
+        notifications -->
     <string name="mute">Heshtoje</string>
-    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make
+        noise or cause notifications -->
     <string name="muted">Heshtuar</string>
     <string name="ephemeral_messages">Mesazhe Që Zhduken</string>
-    <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
+    <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in.
+        Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të
+        tjerë email-i.</string>
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
@@ -66,10 +74,12 @@
     <string name="main_menu">Menuja Kryesore</string>
     <string name="start_chat">Nisni Fjalosje</string>
     <string name="show_full_message">Shfaq Mesazhin e Plotë…</string>
-    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that
+        hint can make translations easier :) -->
     <string name="mark_all_as_read">Vëru Shenjë të Tërave Si të Lexuar</string>
     <string name="mark_as_read">Vëri Shenjë Si të Lexuar</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to
+        read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Të lexuar</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Po ngarkohet…</string>
@@ -77,7 +87,10 @@
     <string name="activate">Aktivizoje</string>
     <string name="load_remote_content">Ngarko Figura të Largëta</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Figurat e largëta mund të përdoren për t’ju ndjekur.\n\nKy rregullim lejon gjithashtu të ngarkohen shkronja dhe lëndë tjetër. Edhe nëse është e çaktivizuar, prapë mund të shihni figura të trupëzuara ose të ruajtura në fshehtinë.\n\nTë ngarkohen figura të largëta?</string>
+    <string name="load_remote_content_ask">Figurat e largëta mund të përdoren për t’ju ndjekur.\n\nKy rregullim lejon
+        gjithashtu të ngarkohen shkronja dhe lëndë tjetër. Edhe nëse është e çaktivizuar, prapë mund
+        të shihni figura të trupëzuara ose të ruajtura në fshehtinë.\n\nTë ngarkohen figura të
+        largëta?</string>
     <string name="always">Përherë</string>
     <string name="always_load_remote_images">Ngarko Përherë Figura të Largëta</string>
     <string name="once">Vetëm një herë</string>
@@ -112,17 +125,23 @@
     <string name="this_month">Këtë muaj</string>
     <string name="last_week">Javën e shkuar</string>
     <string name="last_month">Muajin e shkuar</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
+        will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Parë së fundi më %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
+        will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples
+        and languages) -->
     <string name="last_seen_relative">Parë së fundi %1$s</string>
     <string name="last_seen_unknown">Parë së fundi më: S’dihet</string>
-    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time,
+        so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute
+        length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">Kohëzgjatja %d minutë</item>
         <item quantity="other">Kohëzgjatja %d minuta</item>
     </plurals>
-    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the
+        context is not clear enough, one may want to add the word "Duration". -->
     <string name="call_duration_less_than_a_minute">Më pak se 1 minutë</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
@@ -168,13 +187,15 @@
     <string name="self">Unë</string>
     <string name="draft">Skicë</string>
     <string name="image">Figurë</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
+        (not: "to reply") -->
     <string name="reply_noun">Përgjigje</string>
     <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Ngjitës</string>
     <string name="add_to_sticker_collection">Shtoje te Koleksion Ngjitësish</string>
-    <string name="add_stickers_instructions">Që të shtoni ngjitës, prekni “Hap Dosje Ngjitësish”, krijoni një nëndosje për paketën e ngjitësit tuaj dhe tërhiqni në të figurë dhe kartela ngjitësi</string>
+    <string name="add_stickers_instructions">Që të shtoni ngjitës, prekni “Hap Dosje Ngjitësish”, krijoni një nëndosje
+        për paketën e ngjitësit tuaj dhe tërhiqni në të figurë dhe kartela ngjitësi</string>
     <string name="open_sticker_folder">Hap Dosje Ngjitësish</string>
     <string name="ask_add_sticker_to_collection">Të shtohet ky ngjitës te koleksioni juaj?</string>
     <string name="ask_delete_sticker">Të fshihet ky ngjitës?</string>
@@ -204,12 +225,15 @@
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
     <string name="choose_from_files">Zgjidhni prej Kartelash</string>
     <string name="choose_from_gallery">Zgjidhni prej Galerie</string>
-    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay
+        close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Aplikacion</string>
-    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please
+        stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Aplikacione</string>
     <string name="webxdc_store_url">URL Marrësi Aplikacioni</string>
-    <string name="webxdc_store_url_explain">Në u ujdistë, URL-ja do të përdoret si Marrës Aplikacioni, në vend të atij parazgjedhje</string>
+    <string name="webxdc_store_url_explain">Në u ujdistë, URL-ja do të përdoret si Marrës Aplikacioni, në vend të atij
+        parazgjedhje</string>
     <string name="webxdc_draft_hint">Për ta ndarë me të tjerë, prekni “Dërgoje”</string>
     <string name="home">Kreu</string>
     <string name="games">Lojëra</string>
@@ -218,7 +242,8 @@
     <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Botuar më</string>
     <string name="add_to_chat">Shtoje te Fjalosje</string>
-    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover"
+        or "Search" -->
     <string name="browse">Shfletoni</string>
     <string name="unknown">E panjohur</string>
 
@@ -244,10 +269,12 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Kontakt i Ri</string>
     <string name="menu_new_classic_contact">Shtoni Kontakt Dorazi</string>
-    <string name="new_classic_contact_explain">Kontaktet e shtuar dorazi mund të përdoren për të dërguar tekst te email klasik dhe për ta s’garantohet fshehtëzim skaj-më-skaj.</string>
+    <string name="new_classic_contact_explain">Kontaktet e shtuar dorazi mund të përdoren për të dërguar tekst te email
+        klasik dhe për ta s’garantohet fshehtëzim skaj-më-skaj.</string>
     <string name="menu_new_chat">Fjalosje e Re</string>
     <string name="menu_new_group">Grup i Ri</string>
-    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat"
+        screen above the contact list -->
     <string name="chat_with">Bisedoni me… </string>
     <string name="clone_chat">Klononi Fjalosjen</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -258,7 +285,9 @@
     <string name="new_channel">Kanal i Ri</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Emër Kanali</string>
-    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here,
+        smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound
+        too formal and may be more marketing slang. -->
     <plurals name="n_views">
         <item quantity="one">%d parje</item>
         <item quantity="other">%d parje</item>
@@ -280,14 +309,17 @@
     <string name="menu_leave_channel">Braktise Kanalin</string>
     <string name="menu_leave_and_delete">Dil &amp; Fshiji për Mua</string>
     <string name="menu_delete_chat">Fshije Fjalosjen</string>
-    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty
+        afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat"
+        would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Spastroje Fjalosjen</string>
     <string name="delete_contact">Fshije Kontaktin</string>
     <string name="menu_delete_location">Të fshihet kjo Vendndodhje?</string>
     <string name="menu_message_details">Hollësi Mesazhi</string>
     <string name="menu_copy_to_clipboard">Kopjoje në të Papastër</string>
     <string name="share_invite_link">Jepuni Lidhje Ftese</string>
-    <string name="share_invite_link_explain">Cilido me këtë lidhje mund të shohë profilin tuaj dhe të nisë një fjalosje me ju. Jepuani vetëm personave që u zini besë.</string>
+    <string name="share_invite_link_explain">Cilido me këtë lidhje mund të shohë profilin tuaj dhe të nisë një fjalosje
+        me ju. Jepuani vetëm personave që u zini besë.</string>
     <string name="invite_friends">Ftoni Shokë</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Lidhuni me mua në Delta Chat:\n%1$s</string>
@@ -297,7 +329,8 @@
     <string name="menu_copy_image_to_clipboard">Kopjo Figurën</string>
     <string name="menu_copy_email_to_clipboard">Kopjo Email-in</string>
     <string name="paste_from_clipboard">Ngjite prej të Papastre</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">Lidhja “%1$d” s’mund të hapet te shfletuesi. Doni, në vend të kësaj, të kopjohet lidhja në të papastër?</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Lidhja “%1$d” s’mund të hapet te shfletuesi. Doni, në vend të kësaj, të
+        kopjohet lidhja në të papastër?</string>
     <string name="menu_forward">Përcille Mesazhin</string>
     <string name="menu_reply">Përgjigjuni Mesazhit</string>
     <string name="menu_mute">Heshto Njoftimet</string>
@@ -328,7 +361,8 @@
     <string name="select_more">Përzgjidhni më tepër</string>
     <string name="menu_edit_name">Përpunoni Emrin</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
-    <string name="edit_name_explain">Caktoni një nofkë që do t’ju shfaqet në vend të “%1$s”. Që të përdoret emri i zgjedhur nga kontakti, lëreni të zbrazët.</string>
+    <string name="edit_name_explain">Caktoni një nofkë që do t’ju shfaqet në vend të “%1$s”. Që të përdoret emri
+        i zgjedhur nga kontakti, lëreni të zbrazët.</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Nofkë për “%1$s”</string>
     <string name="menu_settings">Rregullime</string>
@@ -346,8 +380,15 @@
     <string name="title_share_location">Tregojua vendndodhjen krejt anëtarëve të grupit</string>
     <string name="device_talk">Mesazhe Pajisjeje</string>
     <string name="device_talk_subtitle">Mesazhe të prodhuar lokalisht</string>
-    <string name="device_talk_explain">Mesazhet në këtë fjalosje prodhohen në pajisjen tuaj për t’ju bërë të ditur përditësime aplikacioni dhe probleme gjatë përdorimit.</string>
-    <string name="device_talk_welcome_message2">Lidhuni!\n\n🙌 Prekni “Kod QR” te skena kryesore në të dyja pajisjet. Zgjidhni “Skano Kod QR” në një pajisje dhe drejtojani tjetrës\n\n🌍 Nëse s’gjenden në të njëjtën dhomë, skanojeni përmes një thirrjeje video, ose ndani një lidhje ftese që nga “Skanoni kod QR”\n\nMandej: Shijoni punimin e shkëmbyesit të mesazheve përmes rrjetit më të madh të decentralizuar që ka ekzistuar ndonjëherë: email-it. Dhe, në kontrast me aplikacione të tjera popullore, pa kontroll të centralizuar, apo gjurmim, apo shitje të dhënash tuajat, të shokëve, kolegëve apo familjes te ente të mëdha.</string>
+    <string name="device_talk_explain">Mesazhet në këtë fjalosje prodhohen në pajisjen tuaj për t’ju bërë të ditur
+        përditësime aplikacioni dhe probleme gjatë përdorimit.</string>
+    <string name="device_talk_welcome_message2">Lidhuni!\n\n🙌 Prekni “Kod QR” te skena kryesore në të dyja pajisjet.
+        Zgjidhni “Skano Kod QR” në një pajisje dhe drejtojani tjetrës\n\n🌍 Nëse s’gjenden në të
+        njëjtën dhomë, skanojeni përmes një thirrjeje video, ose ndani një lidhje ftese që nga
+        “Skanoni kod QR”\n\nMandej: Shijoni punimin e shkëmbyesit të mesazheve përmes rrjetit më të
+        madh të decentralizuar që ka ekzistuar ndonjëherë: email-it. Dhe, në kontrast me aplikacione
+        të tjera popullore, pa kontroll të centralizuar, apo gjurmim, apo shitje të dhënash tuajat,
+        të shokëve, kolegëve apo familjes te ente të mëdha.</string>
     <string name="edit_contact">Përpunoni Kontaktin</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fiksojeni Bisedën</string>
@@ -360,10 +401,15 @@
     <string name="ConversationFragment_quoted_message_not_found">S’u gjet mesazhi origjinal</string>
     <string name="reply_privately">Përgjigjuni Privatisht</string>
     <string name="source_code">Kod Burim</string>
-    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps
+        that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Shtoje te Skena e Kreut</string>
     <string name="donate">Dhuroni</string>
-    <string name="donate_device_msg">❤️ Duket se po ju shijon Delta Chat-i!\n\nJu lutemi, shihni mundësinë e dhurimit, si ndihmë në garantimin se Delta Chat mbetet e lirë për këdo.\n\nTeksa Delta Chat-i është falas për përdorim dhe me burim të hapët, zhvillimi kushton para. Ndihmonani ta mbajmë Delta Chat-in të pavarur dhe për ta bërë edhe më të shkëlqyer në të ardhëm.\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ Duket se po ju shijon Delta Chat-i!\n\nJu lutemi, shihni mundësinë e
+        dhurimit, si ndihmë në garantimin se Delta Chat mbetet e lirë për këdo.\n\nTeksa Delta
+        Chat-i është falas për përdorim dhe me burim të hapët, zhvillimi kushton para. Ndihmonani ta
+        mbajmë Delta Chat-in të pavarur dhe për ta bërë edhe më të shkëlqyer në të
+        ardhëm.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Heshtoji për 1 orë</string>
     <string name="mute_for_eight_hours">Heshtoje për 8 orë</string>
@@ -410,7 +456,8 @@
     <string name="missed_call">Thirrje e humbur</string>
 
     <!-- get confirmations -->
-    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want
+        to leave the chat?" would work as well -->
     <string name="ask_leave_group">Jeni i sigurt se doni të largoheni?</string>
     <plurals name="ask_delete_chat">
         <item quantity="one">Të fshihet %d fjalosje në krejt pajisjet tuaja?</item>
@@ -424,11 +471,16 @@
     </plurals>
     <string name="ask_forward">Të përcillen mesazhet te %1$s?</string>
     <string name="ask_forward_multiple">Të përcillen mesazhet te %1$d fjalosje?</string>
-    <string name="ask_export_attachment">Eksportimi i bashkëngjitjeve do t\’u lejojë aplikacioneve të tjerë në pajisjen tuaj t\’i përdorin ato.\n\nTë vazhdohet?</string>
-    <string name="ask_block_contact">Të bllokohet ky kontakt?\n\nMesazhet e drejtpërdrejta, ose grupet e krijuar nga kontakte të bllokuar, s’do të shfaqen.\n\nGrupe të tjerë me kontakte të bllokuar do t’i shfaqin ende mesazhet e tyre.</string>
+    <string name="ask_export_attachment">Eksportimi i bashkëngjitjeve do t\’u lejojë aplikacioneve të tjerë në
+        pajisjen tuaj t\’i përdorin ato.\n\nTë vazhdohet?</string>
+    <string name="ask_block_contact">Të bllokohet ky kontakt?\n\nMesazhet e drejtpërdrejta, ose grupet e krijuar
+        nga kontakte të bllokuar, s’do të shfaqen.\n\nGrupe të tjerë me kontakte të bllokuar do t’i
+        shfaqin ende mesazhet e tyre.</string>
     <string name="ask_unblock_contact">Të zhbllokohet ky kontakt?</string>
-    <string name="ask_delete_contacts">Të fshihen kontaktet?\n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
-    <string name="ask_delete_contact">Të fshihet kontakti %1$s? \n\nKontaktet me fjalosje në zhvillim e sipër dhe kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
+    <string name="ask_delete_contacts">Të fshihen kontaktet?\n\nKontaktet me fjalosje në zhvillim e sipër dhe
+        kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
+    <string name="ask_delete_contact">Të fshihet kontakti %1$s? \n\nKontaktet me fjalosje në zhvillim e sipër dhe
+        kontaktet prej libri adresash të sistemit s\’mund të fshihen përgjithmonë.</string>
     <string name="ask_start_chat_with">Të bisedohet me %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Të hiqet %1$s nga grupi?</string>
@@ -465,9 +517,11 @@
     <string name="chat_new_channel_hint">Kanalet janë një nga mjete e shumta për transmetim të mesazheve tuaj.</string>
     <string name="chat_new_group_hint">Të tjerët do ta shohin këtë grup pasi të keni dërguar një mesazh të parë.</string>
     <string name="chat_record_slide_to_cancel">Rrëshqiteni që të anulohet</string>
-    <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që të dërgohet</string>
+    <string name="chat_record_explain">Prekeni dhe mbajeni të prekur që të incizoni një mesazh zanor; lëshojeni, që
+        të dërgohet</string>
     <string name="chat_no_chats_yet_title">S’ka Fjalosje.\nShtypni “+” që të nisni një fjalosje të re.</string>
-    <string name="chat_all_archived">Krejt fjalosjet janë të arkivuara.\nShtypni “+” që të nisni një bisedë të re.</string>
+    <string name="chat_all_archived">Krejt fjalosjet janë të arkivuara.\nShtypni “+” që të nisni një bisedë të
+        re.</string>
     <string name="chat_share_with_title">Ndajeni me </string>
     <string name="chat_input_placeholder">Mesazh</string>
     <string name="chat_archived_label">Arkivuar</string>
@@ -476,17 +530,20 @@
     <string name="chat_no_messages">S\’ka mesazhe.</string>
     <string name="chat_self_talk_subtitle">Mesazhe Vetes</string>
     <string name="archive_empty_hint">Fjalosjet e arkivuara do të shfaqen këtu.</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
+        esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Ruaje Mesazhin</string>
     <string name="saved_messages">Mesazhe të Ruajtur</string>
-    <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
+    <string name="saved_messages_explain">• Përcillini mesazhet këtu për përdorim të lehtë\n\n• Mbani shënime ose
+        kujtesa zanore\n\n• Bashkëngjitni media për t’i ruajtur</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Të ruajtur</string>
     <string name="save_as">Ruaje Si</string>
     <string name="retry_send">Riprovo të dërgosh mesazhin</string>
     <string name="cannot_display_unsuported_file_type">S’mund të shfaqet ky lloj kartelash: %s</string>
     <string name="attachment_failed_to_load">S’u arrit të ngarkohet bashkëngjitje</string>
-    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from
+        the record button while recording continues -->
     <string name="lock_recording">Kyçe Incizimin</string>
 
     <!-- mailing lists -->
@@ -497,11 +554,15 @@
     <string name="start_app">Niseni…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Ju lutemi, së pari pranoni kërkesën për fjalosje.</string>
-    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from
+        a webxdc). the placeholder will be replaced by a file name -->
     <string name="send_file_to">Dërgoni “%1$s” për …</string>
-    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to
+        send a message to a chat) -->
     <string name="send_message_to">Dërgoni Mesazh për…</string>
-    <string name="enable_realtime_explain">Aktivizoni lidhje aty për aty për aplikacione të përbashkët në fjalosje. Në u aktivizoftë, partnerë fjalosjeje mund të jenë në gjendje të zbulojnë adresën tuaj IP, kur nisni një aplikacion.</string>
+    <string name="enable_realtime_explain">Aktivizoni lidhje aty për aty për aplikacione të përbashkët në fjalosje. Në
+        u aktivizoftë, partnerë fjalosjeje mund të jenë në gjendje të zbulojnë adresën tuaj IP, kur
+        nisni një aplikacion.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
@@ -515,8 +576,12 @@
     <string name="puny_code_warning_header">U pikas lidhje e dyshimtë</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Jeni i sigurt se doni të vizitohet %1$s?</string>
-    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Kjo lidhje mund të jetë duke shfaqur keq shenja, duke përdorur të ngjashme prej alfabetesh të tjerë. Ndjekja e lidhjes së  quajtur %1$s do të shpjerë te %2$s, çka është normale për shenja alfabetesh jo latinë. Nëse s’prisnit shenja të tilla, kjo lidhje mund të jetë e dëmshme</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder
+        is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">Kjo lidhje mund të jetë duke shfaqur keq shenja, duke përdorur të ngjashme
+        prej alfabetesh të tjerë. Ndjekja e lidhjes së quajtur %1$s do të shpjerë te %2$s, çka është
+        normale për shenja alfabetesh jo latinë. Nëse s’prisnit shenja të tilla, kjo lidhje mund të
+        jetë e dëmshme</string>
 
 
     <!-- search -->
@@ -549,35 +614,49 @@
     <string name="tab_links">Lidhje</string>
     <string name="tab_map">Hartë</string>
     <string name="tab_gallery_empty_hint">Figurat dhe videot e dhëna në këtë fjalosje do të shfaqen këtu.</string>
-    <string name="tab_docs_empty_hint">Dokumentet dhe kartela të tjera të bashkëngjitura në këtë fjalosje do të shfaqen këtu.</string>
+    <string name="tab_docs_empty_hint">Dokumentet dhe kartela të tjera të bashkëngjitura në këtë fjalosje do të
+        shfaqen këtu.</string>
     <string name="tab_image_empty_hint">Figurat e bashkëngjitura në këtë fjalosje do të shfaqen këtu.</string>
     <string name="tab_video_empty_hint">Videot e bashkëngjitura në këtë fjalosje do të shfaqen këtu.</string>
-    <string name="tab_audio_empty_hint">Kartelat audio dhe mesazhet zanore të bashkëngjitura në këtë fjalosje do të shfaqen këtu.</string>
+    <string name="tab_audio_empty_hint">Kartelat audio dhe mesazhet zanore të bashkëngjitura në këtë fjalosje do të
+        shfaqen këtu.</string>
     <string name="tab_webxdc_empty_hint">Këtu do të shfaqen aplikacione bashkëngjitur në këtë fjalosje </string>
     <string name="tab_all_media_empty_hint">Këtu do të duke media e bashkëngjitur në çfarëdo fjalosjeje.</string>
-    <string name="all_files_empty_hint">Dokumentet dhe kartela të tjera të bashkëngjitura në çfarëdo fjalosje do të shfaqen këtu.</string>
+    <string name="all_files_empty_hint">Dokumentet dhe kartela të tjera të bashkëngjitura në çfarëdo fjalosje do të
+        shfaqen këtu.</string>
     <string name="all_apps_empty_hint">Këtu do të duken aplikacione bashkëngjitur në cilëndo fjalosje.</string>
     <string name="media_preview">Paraparje Mediash</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square);
+        other gallery apps may be a source of inspiration for translation :) -->
     <string name="aspect_ratio_grid">Mozaik Përpjesëtimor  </string>
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Mozaik Katror</string>
     <string name="send_message">Dërgo Mesazh</string>
 
     <!-- Multi Device -->
-    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination
+        language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Shtoni Pajisje të Dytë</string>
     <string name="multidevice_same_network_hint">Sigurohuni se të dy pajisjet janë në të njëjtin rrjet Wi-Fi ose klasik</string>
-    <string name="multidevice_this_creates_a_qr_code">Kjo krijon një kod QR që pajisja e dytë mund ta skanojë për të kopjuar llogarinë..\n\nSigurohuni se asnjë vëzhgues i padëshiruar apo kamera mund të shohë skenën vijuese.</string>
+    <string name="multidevice_this_creates_a_qr_code">Kjo krijon një kod QR që pajisja e dytë mund ta skanojë për të kopjuar
+        llogarinë..\n\nSigurohuni se asnjë vëzhgues i padëshiruar apo kamera mund të shohë skenën
+        vijuese.</string>
     <string name="multidevice_install_dc_on_other_device">Instaloni Delta Chat-in në pajisjen tuaj tjetër (https://get.delta.chat)</string>
-    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Nisni Delta Chat-in, prekni mbi “Kam Tashmë një Profil / Shtoje si Pajisje të Dytë” dhe skanoni kodin e treguar këtu</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the
+        keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Nisni Delta Chat-in, prekni mbi “Kam Tashmë një Profil / Shtoje si Pajisje
+        të Dytë” dhe skanoni kodin e treguar këtu</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as
+        possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device
+        for Alice" -->
     <string name="multidevice_qr_subtitle">Skanojeni, që të ujdisni pajise të dytë për %1$s</string>
     <string name="multidevice_receiver_title">Shtoni Pajisje të Dytë</string>
-    <string name="multidevice_open_settings_on_other_device">Te pajisja e parë, kaloni te “Rregullime / Shtoje si Pajisje të Dytë” dhe skanoni kodin e treguar këtu</string>
+    <string name="multidevice_open_settings_on_other_device">Te pajisja e parë, kaloni te “Rregullime / Shtoje si Pajisje të Dytë” dhe
+        skanoni kodin e treguar këtu</string>
     <string name="multidevice_receiver_scanning_ask">Të kopjohet profili nga pajisja tjetër te kjo pajisje?</string>
-    <string name="multidevice_receiver_needs_update">Profili që doni të importoni është prej një versioni më të ri të Delta Chat-it.\n\nQë të vazhdoni të ujdisni një pajisje të dytë, ju lutemi, përditësojeni këtë pajisje me versionin më të ri të Delta Chat-it.</string>
+    <string name="multidevice_receiver_needs_update">Profili që doni të importoni është prej një versioni më të ri të Delta
+        Chat-it.\n\nQë të vazhdoni të ujdisni një pajisje të dytë, ju lutemi, përditësojeni këtë
+        pajisje me versionin më të ri të Delta Chat-it.</string>
     <string name="multidevice_abort">Të ndërpritet ujdisja e pajisjes së dytë?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Kjo do të bëjë të pavlefshëm kodin QR të kopjuar në të papastër.</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profili u shpërngul te pajisja juaj e dytë.</string>
@@ -595,9 +674,11 @@
     <string name="connectivity">Aftësi lidhjeje</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">I palidhur</string>
-    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single
+        character (…), not three (...) -->
     <string name="connectivity_connecting">Po lidhet…</string>
-    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things);
+        prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Po përditësohet…</string>
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">I lidhur</string>
@@ -613,24 +694,28 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Krijoni Profil të Ri</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Kam Tashmë një Profil</string>
-    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords
+        and so on -->
     <string name="manual_account_setup_option">Hyrje Klasike Me Email</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profili Juaj</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">Rregulla Privatësie për %1$s</string>
-    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance
+        page -->
     <string name="instant_onboarding_agree_instance">Rreth profilesh në %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Pranojeni &amp; Krijoni Profil</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Përdor Shërbyes Tjetër</string>
     <string name="instant_onboarding_other_server">Paraqit Shërbyes Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced
+        by the group name -->
     <string name="instant_onboarding_group_info">Krijoni një profil, që të merrni pjesë te grupi “%1$s”.</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced
+        by contact name -->
     <string name="instant_onboarding_contact_info">Krijoni një profil, që të bisedoni me %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_contact">Doni të krijohet një profil i ri dhe të fillohet të bisedohet me %1$s?</string>
@@ -640,7 +725,9 @@
     <string name="welcome_chat_over_email">Fjalosje e Decentralizuar, e Parrezik</string>
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
-    <string name="login_advanced_hint">Kjo hyrje është për përdorues të përparuar:\n\n• Mos përdorni një llogari që po e përdorni me një aplikacion tjetër.\n\n• Shërbyesi klasik i email-eve lejon fjalosje pa fshehtëzim skaj-më-skaj, shënuar me një ikonë poste.</string>
+    <string name="login_advanced_hint">Kjo hyrje është për përdorues të përparuar:\n\n• Mos përdorni një llogari që
+        po e përdorni me një aplikacion tjetër.\n\n• Shërbyesi klasik i email-eve lejon fjalosje pa
+        fshehtëzim skaj-më-skaj, shënuar me një ikonë poste.</string>
     <string name="login_inbox">Të marrë</string>
     <string name="login_imap_login">Emër Hyrjeje në IMAP</string>
     <string name="login_imap_server">Shërbyes IMAP</string>
@@ -652,7 +739,8 @@
     <string name="login_smtp_server">Shërbyes SMTP</string>
     <string name="login_smtp_port">Portë SMTP</string>
     <string name="login_smtp_security">Siguri SMTP</string>
-    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known
+        term for a "Proxy Server", acting intermediary between the app and the server -->
     <string name="proxy_settings">Ndërmjetës</string>
     <string name="proxy_use_proxy">Përdor Ndërmjetës</string>
     <string name="proxy_add">Shtoni Ndërmjetës</string>
@@ -666,8 +754,10 @@
     <string name="proxy_share_explain">Shokët tuaj mund ta shtojnë këtë ndërmjetës përmes skanimit të kodit QR.</string>
     <string name="proxy_share_link">Jepeni Lidhjen</string>
     <string name="proxy_enabled">Ndërmjetësi u Aktivizua</string>
-    <string name="proxy_enabled_hint">Po përdorni një ndërmjetës. Nëse keni problemi për t’u lidhur, provoni një ndërmjetës tjetër.</string>
-    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="proxy_enabled_hint">Po përdorni një ndërmjetës. Nëse keni problemi për t’u lidhur, provoni një
+        ndërmjetës tjetër.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need
+        to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Rele</string>
     <string name="add_transport">Shtoni Rele</string>
     <string name="remove_transport">Hiqni Rele</string>
@@ -676,7 +766,9 @@
     <string name="confirm_add_transport">Të shtohet kjo rele?</string>
     <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Të hiqet releja “%1$s”?\n\nKontaktet tuaja munden t’ju kapin vetëm nëse jeni lidhur me ta më herët përmes një releje tjetër.\n\n\n\nNëse jeni në mëdyshje, hiqeni relenë më vonë.</string>
+    <string name="confirm_remove_transport">Të hiqet releja “%1$s”?\n\nKontaktet tuaja munden t’ju kapin vetëm nëse jeni
+        lidhur me ta më herët përmes një releje tjetër.\n\n\n\nNëse jeni në mëdyshje, hiqeni relenë
+        më vonë.</string>
 
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
@@ -684,23 +776,31 @@
     <string name="login_error_port">Ju lutemi, jepni një portë të vlefshme (1–65535)</string>
     <string name="login_error_required_fields">Ju lutemi, jepni një adresë email dhe fjalëkalim të vlefshëm</string>
     <string name="import_backup_title">Rikthe prej Kopjeruajtje</string>
-    <string name="import_backup_ask">U gjet kopjeruajtje te “%1$s”.\n\nDoni të importohen dhe përdoren krejt të dhënat dhe rregullimet prej atij?</string>
-    <string name="import_backup_no_backup_found">S\’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te “%1$s” dhe riprovoni.</string>
+    <string name="import_backup_ask">U gjet kopjeruajtje te “%1$s”.\n\nDoni të importohen dhe përdoren krejt të
+        dhënat dhe rregullimet prej atij?</string>
+    <string name="import_backup_no_backup_found">S\’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te “%1$s” dhe
+        riprovoni.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">S\’bëhet dot hyrja si “%1$s”. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
+    <string name="login_error_cannot_login">S\’bëhet dot hyrja si “%1$s”. Ju lutemi, shihni nëse adresa email dhe
+        fjalëkalimi janë të saktë.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>
     <string name="switch_account">Ndërroni Profil</string>
     <string name="add_account">Shtoni Profil</string>
-    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source
+        string -->
     <string name="profile_tag">Etiketë Profili</string>
     <string name="profile_tag_hint">p.sh., Pune, Familjeje</string>
-    <string name="profile_tag_explain">Caktoni një etiketë që është e dukshme vetëm për ju, për të ndihmuar veten të bëni dallimin mes profileve tuaja.</string>
-    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="profile_tag_explain">Caktoni një etiketë që është e dukshme vetëm për ju, për të ndihmuar veten
+        të bëni dallimin mes profileve tuaja.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some
+        translations, if that helps to stay shorter. -->
     <string name="move_to_top">Shpjere Në Krye</string>
     <string name="delete_account">Fshije Profilin</string>
     <string name="delete_account_ask">Jeni i sigurt se doni të fshihen të dhënat e profilit tuaj?</string>
-    <string name="delete_account_explain_with_name">Krejt të dhënat e profilit për “%s” në këtë pajisje do të fshihen, përfshi ato të ujdisjes tuaj për fshehtëzim skaj-më-skaj, kontakte, fjalosje, mesazhe dhe media. Ky veprim s’mund të zhbëhet.</string>
+    <string name="delete_account_explain_with_name">Krejt të dhënat e profilit për “%s” në këtë pajisje do të fshihen, përfshi
+        ato të ujdisjes tuaj për fshehtëzim skaj-më-skaj, kontakte, fjalosje, mesazhe dhe media. Ky
+        veprim s’mund të zhbëhet.</string>
     <string name="unconfigured_account">Profil i paformësuar</string>
     <string name="unconfigured_account_hint">Që ta formësoni, hapeni profilin.</string>
     <string name="try_connect_now">Provo të lidhesh tani</string>
@@ -711,10 +811,12 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Përcilljani…</string>
-    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder
+        is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Të dërgohen %1$d kartela te “%2$s”?</string>
     <string name="ask_send_files_to_selected_chats">Të dërgohet %1$d kartelë(a) te %2$d fjalosje?</string>
-    <string name="videos_sent_without_recoding">(Videot dërgohen si kartelat origjinale, të mëdha. Që të dërgoni video si kartela më të vogla, bashkëngjitini veç e veç)</string>
+    <string name="videos_sent_without_recoding">(Videot dërgohen si kartelat origjinale, të mëdha. Që të dërgoni video si
+        kartela më të vogla, bashkëngjitini veç e veç)</string>
     <string name="share_text_multiple_chats">Të dërgohet ky tekst te %1$d fjalosje?\n\n“%2$s”</string>
     <string name="share_abort">Ndarja me të tjerë dështoi ngaqë mungojnë leje.</string>
 
@@ -724,26 +826,31 @@
     <string name="pref_profile_photo">Foto Profili</string>
     <string name="pref_blocked_contacts">Kontakte të Bllokuar</string>
     <string name="blocked_empty_hint">Kontaktet e bllokuara do të shfaqen këtu.</string>
-    <string name="pref_who_can_see_profile_explain">Fotoja juaj e profilit, emri dhe jetëshkrimi do të dërgohen tok me mesazhet tuaj, kur komunikoni me përdorues të tjerë.</string>
+    <string name="pref_who_can_see_profile_explain">Fotoja juaj e profilit, emri dhe jetëshkrimi do të dërgohen tok me mesazhet
+        tuaj, kur komunikoni me përdorues të tjerë.</string>
     <string name="pref_your_name">Emri Juaj</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Jetëshkrim</string>
     <string name="chat_description">Përshkrim</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
+        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tasti Enter Dërgon</string>
     <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
     <string name="pref_outgoing_media_quality">Cilësi Mediash Në Dalje</string>
-    <string name="pref_outgoing_media_quality_hint">Që të dërgohet në cilësinë origjinale, bashkëngjiteni median si një “Kartelë”. Kjo përdor në mënyrë domethënëse më tepër të dhëna për ju dhe marrësit tuaj.</string>
+    <string name="pref_outgoing_media_quality_hint">Që të dërgohet në cilësinë origjinale, bashkëngjiteni median si një
+        “Kartelë”. Kjo përdor në mënyrë domethënëse më tepër të dhëna për ju dhe marrësit tuaj.</string>
     <string name="pref_outgoing_balanced">E baraspeshuar</string>
     <string name="pref_outgoing_worse">Cilësia më e ulët, madhësi e vogël</string>
     <string name="pref_vibrate">Dridhu</string>
     <string name="pref_screen_security">Siguri Ekrani</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Kërko të bllokohen foto ekrani në lista të freskëta dhe brenda aplikacionit</string>
-    <string name="pref_screen_security_please_restart_hint">Që të hyjnë në fuqi rregullimet mbi sigurinë e ekranit, ju lutemi, rinisni aplikacionin.</string>
+    <string name="pref_screen_security_please_restart_hint">Që të hyjnë në fuqi rregullimet mbi sigurinë e ekranit, ju lutemi, rinisni
+        aplikacionin.</string>
     <string name="pref_notifications">Njoftime</string>
     <string name="pref_mention_notifications">Përmendje</string>
-    <string name="pref_mention_notifications_explain">Në grupe të heshtuar, njofto për mesazhe drejtuar jush, si përgjigjet, apo reagimet</string>
+    <string name="pref_mention_notifications_explain">Në grupe të heshtuar, njofto për mesazhe drejtuar jush, si përgjigjet, apo
+        reagimet</string>
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
     <string name="pref_calls">Thirrje</string>
     <!-- Details about what the "Calls" notification setting does -->
@@ -769,7 +876,8 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
     <string name="pref_read_receipts">Dëftesa Leximi</string>
-    <string name="pref_read_receipts_explain">Nëse dëftesat e leximit janë të çaktivizuara, s\’do të jeni në gjendje të shihni dëftesa leximi prej të tjerësh.</string>
+    <string name="pref_read_receipts_explain">Nëse dëftesat e leximit janë të çaktivizuara, s\’do të jeni në gjendje të
+        shihni dëftesa leximi prej të tjerësh.</string>
     <string name="pref_server">Shërbyes</string>
     <string name="pref_encryption">Fshehtëzim</string>
     <string name="pref_manage_keys">Administroni Kyçe</string>
@@ -782,21 +890,32 @@
     <string name="pref_other">Të tjera</string>
     <string name="pref_backup">Kopjeruajtje</string>
     <string name="pref_backup_explain">Kopjeruaji Fjalosjet në Depozitim të Jashtëm</string>
-    <string name="pref_backup_export_explain">Një kopjeruajtje ju lejon të rregulloni një instalim të ri në këtë apo në një tjetër pajisje.\n\nKopjeruajtja do të përmbajë krejt mesazhet, kontaktet dhe fjalosjet, si dhe rregullimin tuaj për Autocrypt skaj-më-skaj. Mbajeni kartelën e kopjeruajtjes diku të parrezik, përndryshe fshijeni as më shpejt që të jetë e mundur.</string>
+    <string name="pref_backup_export_explain">Një kopjeruajtje ju lejon të rregulloni një instalim të ri në këtë apo në
+        një tjetër pajisje.\n\nKopjeruajtja do të përmbajë krejt mesazhet, kontaktet dhe fjalosjet,
+        si dhe rregullimin tuaj për Autocrypt skaj-më-skaj. Mbajeni kartelën e kopjeruajtjes diku të
+        parrezik, përndryshe fshijeni as më shpejt që të jetë e mundur.</string>
     <string name="pref_backup_export_this">Eksportojeni këtë profil</string>
-    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger
+        than 1 -->
     <string name="pref_backup_export_all">Eksporto krejt %1$d proflet</string>
     <string name="pref_backup_export_start_button">Nis Kopjeruajtjen</string>
     <string name="pref_backup_written_to_x">Kopjeruajtje e shkruar me sukses te “%1$s”</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
+        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Sfond</string>
     <string name="pref_background_btn_default">Përdor Figurën Parazgjedhje</string>
     <string name="pref_background_btn_gallery">Përzgjidhni Nga Galeri</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Nëse e ndryshoni këtë mundësi, garantoni që shërbyesi juaj dhe klientët tuaj të tjerët të jenë formësuar për këtë.\n\nPërndryshe gjërat mund të mos punojnë fare.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <string name="pref_imap_folder_warn_disable_defaults">Nëse e ndryshoni këtë mundësi, garantoni që shërbyesi juaj dhe klientët tuaj
+        të tjerët të jenë formësuar për këtë.\n\nPërndryshe gjërat mund të mos punojnë fare.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices"
+        or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mënyra Shumë-Pajisje</string>
-    <string name="pref_multidevice_explain">Njëkohësoni mesazhet tuaj në pajisje tuajat të tjera. E aktivizuar automatikisht gjatë shtimit të një pajisjeje të dytë</string>
-    <string name="pref_multidevice_change_warn">Mënyra Shumë-Pajisje duhet aktivizuar, kur përdoret i njëjti profil në disa pajisje. Çaktivizojeni këtë rregullim vetëm në se e keni hequr këtë profil nga krejt pajisjet tuaja të tjera.\n\nÇaktivizimi i Mënyrës Shumë-Pajisje, teksa përdoret profili në disa pajisje, do të sjellë mesazhe të humbura dhe probleme të tjera.</string>
+    <string name="pref_multidevice_explain">Njëkohësoni mesazhet tuaj në pajisje tuajat të tjera. E aktivizuar
+        automatikisht gjatë shtimit të një pajisjeje të dytë</string>
+    <string name="pref_multidevice_change_warn">Mënyra Shumë-Pajisje duhet aktivizuar, kur përdoret i njëjti profil në disa
+        pajisje. Çaktivizojeni këtë rregullim vetëm në se e keni hequr këtë profil nga krejt
+        pajisjet tuaja të tjera.\n\nÇaktivizimi i Mënyrës Shumë-Pajisje, teksa përdoret profili në
+        disa pajisje, do të sjellë mesazhe të humbura dhe probleme të tjera.</string>
     <string name="pref_auto_folder_moves">Kaloji vetvetiu te Dosja DeltaChat</string>
     <string name="pref_only_fetch_mvbox_title">Sill Vetëm nga Dosje DeltaChat</string>
     <string name="pref_show_emails">Shfaq Email-e Klasikë</string>
@@ -816,7 +935,8 @@
     <string name="up_to_x_most_worse_quality_images">Deri në %1$s, figura me cilësinë më të dobët</string>
     <string name="up_to_x_most_balanced_quality_images">Deri në %1$s, figurat me cilësinë më të baraspeshuar</string>
     <string name="download_failed">Shkarkimi dështoi</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string
+        eg. "1 MiB message" -->
     <string name="n_bytes_message">Mesazh %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Shkarko maksimumin e mundshëm deri më %1$s</string>
@@ -826,15 +946,21 @@
     <string name="pref_show_tray_icon">Shfaq Ikonë Paneli</string>
     <string name="pref_edit_profile">Përpunoni Profil</string>
     <string name="disable_imap_idle">Çaktivizo IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Mos e përdor zgjerimin IMAP IDLE, edhe kur shërbyesi e mbulon. Aktivizimi i kësaj mundësie do të vonojë marrjen e mesazheve, aktivizojeni vetëm për testime.</string>
+    <string name="disable_imap_idle_explain">Mos e përdor zgjerimin IMAP IDLE, edhe kur shërbyesi e mbulon. Aktivizimi i
+        kësaj mundësie do të vonojë marrjen e mesazheve, aktivizojeni vetëm për testime.</string>
     <string name="send_stats_to_devs">Dërgojuni zhvilluesve të Delta Chat-it statistika</string>
-    <string name="stats_device_message">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin duke dërguar statistika javore anonime përdorimi?\n\n👉 Prekni këtu… 👈</string>
-    <string name="stats_confirmation_dialog">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin duke dërguar statistika javore anonime përdorimi?</string>
-    <string name="stats_thanks">Faleminderit! Mundeni përherë të çaktivizoni dërgimin, që nga Rregullime -> Të mëtejshme.\n\nA keni dhe 5 minuta që të merrni pjesë në një studim shkencor rreth sigurisë së Delta Chat-it?</string>
+    <string name="stats_device_message">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin
+        duke dërguar statistika javore anonime përdorimi?\n\n👉 Prekni këtu… 👈</string>
+    <string name="stats_confirmation_dialog">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin
+        duke dërguar statistika javore anonime përdorimi?</string>
+    <string name="stats_thanks">Faleminderit! Mundeni përherë të çaktivizoni dërgimin, që nga Rregullime ->
+        Të mëtejshme.\n\nA keni dhe 5 minuta që të merrni pjesë në një studim shkencor rreth
+        sigurisë së Delta Chat-it?</string>
     <string name="stats_disable_dialog">Dërgimi i statistikave është tashmë i aktivizuar.\n\nDoni të çaktivizohet?</string>
     <string name="disable">Çaktivizoje</string>
     <string name="stats_keep_sending">Vazhdo t’i dërgosh</string>
-    <string name="stats_msg_body">Bashkëngjitja përmban statistika anonime përdorimi, që na ndihmojnë të përmirësojmë Delta Chat-in. Faleminderit!</string>
+    <string name="stats_msg_body">Bashkëngjitja përmban statistika anonime përdorimi, që na ndihmojnë të
+        përmirësojmë Delta Chat-in. Faleminderit!</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Përfundime Kërkimi</string>
@@ -851,25 +977,48 @@
 
     <!-- Reactions -->
     <string name="reactions">Reagime</string>
-    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to
+        "Reply" or "Forward" -->
     <string name="react">Reagoni</string>
-    <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
+    <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is
+        often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You
+        reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated
+        too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending
+        on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work
+        as well. -->
     <string name="reaction_by_you">Reaguat me %1$s ndaj “%2$s”</string>
-    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
+    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message
+        summary (the summary is often long and whole string gets truncated; words after %3$s will often not being
+        visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string
+        will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too
+        strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or
+        clearer work as well. -->
     <string name="reaction_by_other">%1$s reagoi me %2$s ndaj “%3$s”</string>
 
     <!-- automatically delete message -->
     <string name="delete_old_messages">Fshiji Mesazhet e Vjetër</string>
     <string name="autodel_device_title">Fshiji Mesazhet prej Pajisjes</string>
     <string name="autodel_server_title">Fshiji Mesazhe prej Shërbyesi</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi “%2$s” në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Mesazhi do të fshihet, qoftë kur është parë, qoftë kur s’është parë\n\n• “Mesazhe të ruajtur” do të anashkalohen nga fshirja vendore</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Doni të fshihen tani %1$d mesazhe dhe krejt mesazhet e prurë rishtas “%2$s” më vonë në të ardhmen?\n\n⚠️ Kjo përfshin email-et, media dhe “Mesazhe të ruajtur” në krejt dosjet e shërbyesit\n\n⚠️ Mos e përdorni këtë funksion, nëse doni të mbani të dhënat në shërbyes, apo nëse përdorni klientë klasikë email-i</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Kjo përfshin email-et, media dhe “Mesazhe të ruajtur” në krejt dosjet e shërbyesit. Mos e përdorni këtë funksion, nëse doni të mbani të dhënat te shërbyesi ose nëse përdorni klientë klasikë email-i</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
+        be replaced by a timespan option. -->
+    <string name="autodel_device_ask">Doni të fshihen %1$d mesazhe tani dhe krejt mesazhet e prurë rishtazi “%2$s”
+        në të ardhmen?\n\n• Kjo përfshin krejt mediat\n\n• Mesazhi do të fshihet, qoftë kur është
+        parë, qoftë kur s’është parë\n\n• “Mesazhe të ruajtur” do të anashkalohen nga fshirja
+        vendore</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
+        be replaced by a timespan option. -->
+    <string name="autodel_server_ask">Doni të fshihen tani %1$d mesazhe dhe krejt mesazhet e prurë rishtas “%2$s”
+        më vonë në të ardhmen?\n\n⚠️ Kjo përfshin email-et, media dhe “Mesazhe të ruajtur” në krejt
+        dosjet e shërbyesit\n\n⚠️ Mos e përdorni këtë funksion, nëse doni të mbani të dhënat në
+        shërbyes, apo nëse përdorni klientë klasikë email-i</string>
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind
+        about the impact -->
+    <string name="autodel_server_enabled_hint">Kjo përfshin email-et, media dhe “Mesazhe të ruajtur” në krejt dosjet e
+        shërbyesit. Mos e përdorni këtë funksion, nëse doni të mbani të dhënat te shërbyesi ose nëse
+        përdorni klientë klasikë email-i</string>
     <string name="autodel_server_warn_multi_device_title">Aktivizoni fshirje të menjëhershme</string>
-    <string name="autodel_server_warn_multi_device">Nëse aktivizoni fshirje të menjëhershme, s’mund të përdorni pajisje të shumta në këtë profil.</string>
+    <string name="autodel_server_warn_multi_device">Nëse aktivizoni fshirje të menjëhershme, s’mund të përdorni pajisje të
+        shumta në këtë profil.</string>
     <string name="autodel_confirm">E kuptoj, fshiji krejt këto mesazhe</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Menjëherë pas Shkarkimi</string>
@@ -885,7 +1034,8 @@
     <string name="systemmsg_failed_sending_to">S’u arrit të dërgohej mesazh te %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">E ndryshuat emrin e grupit nga “%1$s” në “%2$s”.</string>
-    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s
+        will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Emri i grupit u ndryshua nga “%1$s” në “%2$s” nga %3$s.</string>
     <string name="group_image_changed_by_you">Ndryshuat figurën e grupit</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
@@ -897,20 +1047,24 @@
     <string name="member_x_added">U shtua anëtar %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Shtuat anëtarin %1$s.</string>
-    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name
+        of the contact who did the action -->
     <string name="add_member_by_other">Anëtari %1$s u shtua nga %2$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Hoqët anëtarin %1$s.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by
+        name of the contact who did the action -->
     <string name="remove_member_by_other">Anëtari %1$s u hoq nga %2$s.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
+        it's unclear who did the action -->
     <string name="member_x_removed">U hoq anëtari %1$s.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Ikët nga grupi.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="channel_left_by_you">Ikët nga kanali.</string>
     <string name="you_joined_the_channel">Erdhët në kanal.</string>
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the
+        group -->
     <string name="group_left_by_other">Grupi u braktis nga %1$s.</string>
     <string name="group_image_deleted_by_you">Fshitë figurën e grupit.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -923,7 +1077,8 @@
     <string name="ephemeral_timer_disabled_by_other">Kohëmatësi i zhdukjes së mesazheve u çaktivizua nga %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s sekonda</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be
+        replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s sekonda nga %2$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në 1 orë.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -939,35 +1094,57 @@
     <string name="ephemeral_timer_1_year_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në 1 vit nga %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s minuta.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be
+        replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s minuta nga %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s orë.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced
+        by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s orë nga %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s ditë.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced
+        by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s ditë nga %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s javë.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced
+        by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s javë nga %2$s.</string>
-    <string name="chat_unencrypted_explanation">Mesazhet në këtë fjalosje përdorin email klasik dhe s’janë të fshehtëzuar skaj-më-skaj.</string>
+    <string name="chat_unencrypted_explanation">Mesazhet në këtë fjalosje përdorin email klasik dhe s’janë të fshehtëzuar
+        skaj-më-skaj.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Mesazhet fshehtëzohen skaj-më-skaj. Prekeni, që të mësoni më tepër.</string>
-    <string name="chat_protection_enabled_explanation">Krejt mesazhet në këtë fjalosje janë të fshehtëzuar skaj-më-skaj.\n\nFshehtëzimi skaj-më-skaj i mban private mesazhet mes jush dhe partnerëve tuaj të fjalosjes. Ato s’mund t’i lexojnë as shërbyesit, shërbime apo reletë.</string>
-    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s lyp fshehtëzim, i cili s’është ujdisur ende për këtë fjalosje. Që të mësoni më tepër, prekeni.</string>
-    <string name="invalid_unencrypted_explanation">Për të vendosur fshehtëzim skaj-më-skaj, mund të takoheni personalisht me kontaktet dhe të skanoni kodin e tyre QR, për t’i pranuar.</string>
+    <string name="chat_protection_enabled_explanation">Krejt mesazhet në këtë fjalosje janë të fshehtëzuar
+        skaj-më-skaj.\n\nFshehtëzimi skaj-më-skaj i mban private mesazhet mes jush dhe partnerëve
+        tuaj të fjalosjes. Ato s’mund t’i lexojnë as shërbyesit, shërbime apo reletë.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s lyp fshehtëzim, i cili s’është ujdisur ende për këtë fjalosje. Që të
+        mësoni më tepër, prekeni.</string>
+    <string name="invalid_unencrypted_explanation">Për të vendosur fshehtëzim skaj-më-skaj, mund të takoheni personalisht me
+        kontaktet dhe të skanoni kodin e tyre QR, për t’i pranuar.</string>
     <string name="learn_more">Mësoni Më Tepër</string>
 
-    <string name="devicemsg_self_deleted">Fshitë fjalosjen “Mesazhe të ruajtur”.\n\nℹ️ Që të përdorni sërish veçorinë “Mesazhe të ruajtur”, krijoni një fjalosje të re me veten tuaj.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Po mbaron depozita e shërbimit tuaj: përdoren tashmë %1$s%%.\n\nNëse depozita është plot, mund të mos jeni në gjendje të merrni mesazhe.\n\n👉 Ju lutemi, shihni se mos mund të fshini të dhëna të vjetra që nga ndërfaqja web e furnizuesit të shërbimit dhe shihni mundësinë të aktivizoni “Rregullime / Fjalosje dje Media / Fshi Mesazhe të Vjetër”. Se sa depozitë është aktualisht e përdorur mund ta kontrolloni kurdo, që nga \"Rregullime / Lidhje\".</string>
+    <string name="devicemsg_self_deleted">Fshitë fjalosjen “Mesazhe të ruajtur”.\n\nℹ️ Që të përdorni sërish veçorinë
+        “Mesazhe të ruajtur”, krijoni një fjalosje të re me veten tuaj.</string>
+    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to
+        use a percentage sign, type in two of them, eg. %1$s %% -->
+    <string name="devicemsg_storage_exceeding">⚠️ Po mbaron depozita e shërbimit tuaj: përdoren tashmë %1$s%%.\n\nNëse
+        depozita është plot, mund të mos jeni në gjendje të merrni mesazhe.\n\n👉 Ju lutemi, shihni
+        se mos mund të fshini të dhëna të vjetra që nga ndërfaqja web e furnizuesit të shërbimit dhe
+        shihni mundësinë të aktivizoni “Rregullime / Fjalosje dje Media / Fshi Mesazhe të Vjetër”.
+        Se sa depozitë është aktualisht e përdorur mund ta kontrolloni kurdo, që nga \"Rregullime /
+        Lidhje\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Data ose koha në pajisjen tuaj duket të jetë e pasaktë (%1$s).\n\nRregulloni sahatin tuaj ⏰🔧 që të garantohet se mesazhet tuaj merren saktë.</string>
-    <string name="devicemsg_update_reminder">⚠️ Versioni juaj i Delta Chat-it duket të jetë i vjetruar.\n\nKjo mund të shkaktojë probleme, ngaqë partnerët tuaj të fjalosjes përdorin versione të rinj - dhe ju mungojnë veçoritë më të reja 😳\nPër përditësime, ju lutemi, shihni te https://get.delta.chat ose te shitorja juaj e aplikacioneve.</string>
+    <string name="devicemsg_bad_time">⚠️ Data ose koha në pajisjen tuaj duket të jetë e pasaktë
+        (%1$s).\n\nRregulloni sahatin tuaj ⏰🔧 që të garantohet se mesazhet tuaj merren saktë.</string>
+    <string name="devicemsg_update_reminder">⚠️ Versioni juaj i Delta Chat-it duket të jetë i vjetruar.\n\nKjo mund të
+        shkaktojë probleme, ngaqë partnerët tuaj të fjalosjes përdorin versione të rinj - dhe ju
+        mungojnë veçoritë më të reja 😳\nPër përditësime, ju lutemi, shihni te
+        https://get.delta.chat ose te shitorja juaj e aplikacioneve.</string>
 
-    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc.
+        to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second
+        Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Që të vazhdohet, shkyçeni</string>
 
     <!-- qr code stuff -->
@@ -979,14 +1156,21 @@
     <string name="qrscan_failed">Kodi QR s’u shkodua dot</string>
     <string name="qrscan_ask_join_group">Doni të bëheni pjesë e grupit “%1$s”?</string>
     <string name="qrscan_ask_join_channel">Doni të hyni te kanali “%1$s”?</string>
-    <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar nuk përputhen me shenjat e gishtave parë së fundi për %1$s.</string>
-    <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë.\n\nPër një verifikim “out-of-band”, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
+    <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar nuk përputhen me shenjat e gishtave parë së
+        fundi për %1$s.</string>
+    <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë.\n\nPër një verifikim
+        “out-of-band”, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
     <string name="qrscan_contains_text">Tekst kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
-    <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
-    <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
-    <string name="withdraw_joinbroadcast_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e kanalit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
+    <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nMund ta
+        riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
+    <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit
+        “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të
+        funksionojnë më.</string>
+    <string name="withdraw_joinbroadcast_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e kanalit
+        “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të
+        funksionojnë më.</string>
     <string name="withdraw_qr_code">Riprodho Kodin QR</string>
     <string name="revive_verifycontact_explain">Ky kod QR është riprodhuar dhe s’është më i vlefshëm.</string>
     <string name="revive_qr_code">Aktivizoni Kod QR</string>
@@ -995,29 +1179,39 @@
     <string name="qrshow_x_verified">%1$s u prezantua.</string>
     <string name="qrshow_x_has_joined_group">%1$s u bë pjesë e grupit.</string>
     <string name="qrshow_join_group_title">Kod QR Ftese</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
+        as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join
+        group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Për t’u bërë pjesë e grupit “%1$s”, skanojeni</string>
     <string name="qrshow_join_channel_hint">Që të hyni në kanalin “%1$s”, skanojeni</string>
     <string name="qrshow_join_contact_title">Kod QR Ftese</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
+        as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat
+        with Alice" -->
     <string name="qrshow_join_contact_hint">Që të bisedoni me %1$s, skanojeni</string>
     <string name="qrshow_join_contact_no_connection_toast">S\’ka lidhje në internet, s\’bëhet dot ujdisja e kodit QR.</string>
     <string name="qraccount_ask_create_and_login">Të krijohet profil i ri te “%1$s” dhe të bëhet hyrja atje?</string>
-    <string name="set_name_and_avatar_explain">Caktoni një emër, që kontaktet tuaj do ta njohin. Mundeni edhe të caktoni një emër profili.</string>
+    <string name="set_name_and_avatar_explain">Caktoni një emër, që kontaktet tuaj do ta njohin. Mundeni edhe të caktoni
+        një emër profili.</string>
     <string name="please_enter_name">Ju lutemi, jepni një emër.</string>
     <string name="qraccount_qr_code_cannot_be_used">Kodi QR i skanuar s’mund të përdoret për të ujdisur një profil të ri.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Të hyhet si “%1$s”?</string>
-    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s ju ftoi të bëheni pjesë e këtij grupi.\n\nPo pritet për pajisjen e %2$s që të përgjigjet…</string>
-    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_channel_started">%1$s ju ftoi të vini në këtë kanal.\n\nPo pritet që të përgjigjet pajisja e %2$s…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced
+        by the name of the inviter. -->
+    <string name="secure_join_started">%1$s ju ftoi të bëheni pjesë e këtij grupi.\n\nPo pritet për pajisjen e %2$s
+        që të përgjigjet…</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced
+        by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s ju ftoi të vini në këtë kanal.\n\nPo pritet që të përgjigjet pajisja e
+        %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s u përgjigj, po pritet që të shtohet te grupi…</string>
     <string name="secure_join_wait">Po vendoset fshehtëzim skaj-më-skaj, ju lutemi, pritni…</string>
     <string name="contact_verified">%1$s u soll.</string>
     <string name="contact_blocked">E bllokuat kontaktin</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced
+        the contact. -->
     <string name="verified_by">Sjellë nga %1$s</string>
     <string name="verified_by_you">Sjellë nga unë</string>
     <string name="verified_by_unknown">Sjellë nga</string>
@@ -1026,7 +1220,7 @@
     <string name="confirm_replace_draft">%1$s përmban tashmë një skicë mesazhi, doni të zëvendësohet?</string>
     <string name="mailto_link_could_not_be_decoded">s’u shkodua dot lidhje mailto: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Përgjigjuni</string>
     <string name="notify_new_message">Mesazh i ri</string>
     <string name="notify_background_connection_enabled">U vendos lidhje në prapaskenë</string>
@@ -1038,7 +1232,8 @@
     <string name="notifications_disabled">Njoftimet të çaktivizuara</string>
     <string name="unreliable_bg_notifications">Për të mos humbur njoftime, aktivizoni “Detyro Lidhje Në Prapaskenë”</string>
     <string name="new_messages">Mesazhe të rinj</string>
-    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information
+        about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Keni mesazhe të rinj</string>
     <string name="n_messages_in_m_chats">%1$d mesazhe në %2$d fjalosje</string>
 
@@ -1046,12 +1241,19 @@
     <!-- permissions -->
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
-    <string name="perm_explain_access_to_camera_denied">Që të mund të bëhen foto apo video, kaloni te rregullimet e aplikacionit, përzgjidhni “Leje” dhe aktivizoni “Kamerën”.</string>
-    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Që të mund të dërgohen mesazhe audio, kaloni te rregullime aplikacioni, përzgjidhni “Leje”, ose “Privatësi &amp; Siguri” dhe aktivizoni “Mikrofonin”.</string>
-    <string name="perm_explain_access_to_storage_denied">Që të merren apo dërgohen kartela, kaloni te rregullime aplikacioni, përzgjidhni “Leje” dhe aktivizoni “Depozitimin”.</string>
-    <string name="perm_explain_access_to_location_denied">Që të mund të bashkëngjitet një vendndodhje, kaloni te rregullimet e aplikacionit, përzgjidhni “Leje” dhe aktivizoni “Vendndodhjen”.</string>
-    <string name="perm_explain_access_to_notifications_denied">Që të merrni njoftime, kaloni te “Rregullime Sistemi / Aplikacione / Delta Chat” dhe aktivizoni “Njoftime”.</string>
+    <string name="perm_explain_access_to_camera_denied">Që të mund të bëhen foto apo video, kaloni te rregullimet e aplikacionit,
+        përzgjidhni “Leje” dhe aktivizoni “Kamerën”.</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access
+        was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise:
+        things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">Që të mund të dërgohen mesazhe audio, kaloni te rregullime aplikacioni,
+        përzgjidhni “Leje”, ose “Privatësi &amp; Siguri” dhe aktivizoni “Mikrofonin”.</string>
+    <string name="perm_explain_access_to_storage_denied">Që të merren apo dërgohen kartela, kaloni te rregullime aplikacioni,
+        përzgjidhni “Leje” dhe aktivizoni “Depozitimin”.</string>
+    <string name="perm_explain_access_to_location_denied">Që të mund të bashkëngjitet një vendndodhje, kaloni te rregullimet e
+        aplikacionit, përzgjidhni “Leje” dhe aktivizoni “Vendndodhjen”.</string>
+    <string name="perm_explain_access_to_notifications_denied">Që të merrni njoftime, kaloni te “Rregullime Sistemi / Aplikacione / Delta
+        Chat” dhe aktivizoni “Njoftime”.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Që të turbullohet, vizatoni kudo qoftë</string>
@@ -1063,9 +1265,11 @@
     <string name="ImageEditorHud_flip">Ktheje në anë tjetër</string>
     <string name="ImageEditorHud_rotate">Rrotulloje</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do
+        not add generic strings here -->
     <string name="about_offical_app_desktop">Ky është aplikacioni zyrtar Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Ky program licencohet sipas GNU GPL version 3 dhe kodi burim mund të kihet që prej GitHub-i.</string>
+    <string name="about_licensed_under_desktop">Ky program licencohet sipas GNU GPL version 3 dhe kodi burim mund të kihet
+        që prej GitHub-i.</string>
     <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Gjuhë</string>
     <string name="global_menu_file_desktop">Kartelë</string>
@@ -1095,7 +1299,8 @@
     <string name="timestamp_format_m_desktop">D MMM</string>
     <string name="remove_desktop">Hiqe</string>
     <string name="save_desktop">Ruaje</string>
-    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded
+        as "Save no longer" or so. -->
     <string name="unsave">Hiqe nga i ruajtur</string>
     <string name="name_desktop">Emër</string>
     <string name="select_group_image_desktop">Përzgjidhni Figurë Grupi</string>
@@ -1104,11 +1309,15 @@
     <string name="message_detail_received_desktop">të marrë</string>
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë
+        --minimized.</string>
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
 
-    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal
+        command strings are used) -->
     <string name="keybindings">Kombinim tastesh</string>
     <string name="switch_between_chats">Kaloni nga një Fjalosje në tjetrën</string>
     <string name="scroll_messages">Rrëshqitni nëpër Mesazhe</string>
@@ -1119,7 +1328,8 @@
     <string name="force_refresh_network">Detyro Freskim Rrjeti</string>
     <string name="insert_newline">Futni Rresht të Ri</string>
 
-    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever
+        possible -->
     <string name="a11y_delivery_status_error">Gjendje dërgimi: Gabim</string>
     <string name="a11y_delivery_status_sending">Gjendje dërgimi: Po dërgohet</string>
     <string name="a11y_delivery_status_draft">Gjendje dërgimi: Skicë</string>
@@ -1132,57 +1342,87 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Ndale tregimin e vendndodhjes</string>
-    <string name="a11y_voice_message_hint_ios">Pas regjistrimit, prekeni dy herë që të dërgohet. Për ta hedhur regjistrimin tej, fërkojeni majtas-djathtas me dy gishta.</string>
+    <string name="a11y_voice_message_hint_ios">Pas regjistrimit, prekeni dy herë që të dërgohet. Për ta hedhur regjistrimin
+        tej, fërkojeni majtas-djathtas me dy gishta.</string>
     <string name="a11y_connectivity_hint">Prekeni dy herë që të shihni hollësi lidhjeje.</string>
     <string name="login_error_no_internet_connection">S’ka lidhje internet, hyrja dështoi.</string>
     <string name="share_account_not_configured">Profili s’është i formësuar.</string>
     <string name="cannot_play_audio_file">Kartela audio s’luhet dot.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Për të bërë foto, regjistruar video ose përdorur skanerin QR-Code, hapni rregullimet e sistemit dhe aktivizoni “Kamera”.</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Për të bërë foto, regjistruar video ose përdorur skanerin QR-Code, hapni
+        rregullimet e sistemit dhe aktivizoni “Kamera”.</string>
     <string name="open_settings">Hap Rregullimet</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Importo kontakte pajisjeje</string>
-    <string name="import_device_contacts_hint">Për t’u fjalosur me kontakte nga pajisja juaj, hapni Rregullime dhe aktivizoni “Kontaktet”.</string>
+    <string name="import_device_contacts_hint">Për t’u fjalosur me kontakte nga pajisja juaj, hapni Rregullime dhe
+        aktivizoni “Kontaktet”.</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Çaktivizuar në Delta Chat</string>
     <string name="disabled_in_system_settings">Çaktivizuar te rregullimet e sistemit</string>
-    <string name="bg_app_refresh_disabled">“Rifreskim Aplikacionesh Në Prapaskenë” çaktivizuar te rregullimet e sistemit</string>
+    <string name="bg_app_refresh_disabled">“Rifreskim Aplikacionesh Në Prapaskenë” çaktivizuar te rregullimet e
+        sistemit</string>
     <string name="notifications_avg_minutes">Mesatarisht çdo %1$d minuta</string>
     <string name="notifications_avg_hours">Mesatarisht %1$d orë</string>
     <string name="last_check_at">Kontrolluar më %1$s</string>
     <string name="system_settings">Rregullime Sistemi</string>
-    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what
+        can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen,
+        notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the
+        user an idea. -->
     <string name="system_settings_notify_explain_ios">Përpunoni lloje, stema, bëni paraparje, etj</string>
     <!-- iOS shortcut widget -->
-    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays
+        untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
     <string name="shortcuts_widget_title">Shkurtore</string>
-    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays
+        untranslated -->
     <string name="shortcuts_widget_description">Që të shtoni objekte, përdorni “Shtoje në Widget” të Delta Chat-it</string>
-    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays
+        untranslated -->
     <string name="remove_from_widget">Hiqe prej Widget-i</string>
-    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays
+        untranslated -->
     <string name="add_to_widget">Shtoje në Widget</string>
-    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat-i e përdor kamerën tuaj për të bërë dhe dërguar foto dhe video dhe për skanuar kode QR.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Që të mund t’u tregojë të tjerëve vendndodhjen tuaj, Delta Chat lyp leje, për aq kohë sa keni aktivizuar tregim vendndodhjeje.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Që të mund t’u tregojë të tjerëve vendndodhjen tuaj, Delta Chat lyp leje, për aq kohë sa keni aktivizuar tregim vendndodhjeje.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat-i përdor mikrofonin tuaj për të incizuar dhe dërguar mesazhe zanorë dhe video me zë.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat-i do t’ju lejojë të zgjidhni cilat foto të dërgohen nga fototeka juaj.</string>
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations
+        in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat-i e përdor kamerën tuaj për të bërë dhe dërguar foto dhe video
+        dhe për skanuar kode QR.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Që të mund t’u tregojë të tjerëve vendndodhjen tuaj, Delta Chat lyp leje,
+        për aq kohë sa keni aktivizuar tregim vendndodhjeje.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Që të mund t’u tregojë të tjerëve vendndodhjen tuaj, Delta Chat lyp leje,
+        për aq kohë sa keni aktivizuar tregim vendndodhjeje.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat-i përdor mikrofonin tuaj për të incizuar dhe dërguar mesazhe
+        zanorë dhe video me zë.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat-i do t’ju lejojë të zgjidhni cilat foto të dërgohen nga fototeka
+        juaj.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat dëshiron të ruajë figura në fototekën tuaj.</string>
-    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat mund të përdorë Face ID që të mbrojë profilin tuaj vendor, krijim kopjeruajtjesh dhe ujdisje pajisjeje të dytë.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat mund të përdorë Face ID që të mbrojë profilin tuaj vendor, krijim
+        kopjeruajtjesh dhe ujdisje pajisjeje të dytë.</string>
 
-    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <!-- android specific strings, developers: please take care to remove strings that are no longer
+        used! -->
     <string name="pref_instant_delivery">Dërgim i Menjëhershëm</string>
     <string name="pref_background_notifications">Përdor Lidhje Në Prapaskenë</string>
-    <string name="pref_background_notifications_explain">Lyp shpërfillje optimizimesh baterie, përdoreni nëse njoftimet s’vijnë në kohë</string>
+    <string name="pref_background_notifications_explain">Lyp shpërfillje optimizimesh baterie, përdoreni nëse njoftimet s’vijnë në
+        kohë</string>
     <string name="pref_reliable_service">Detyro Lidhje Në Prapaskenë</string>
     <string name="pref_reliable_service_explain">Shkakton një njoftim permanent</string>
 
-    <string name="pref_background_notifications_rationale">Që të ruhet lidhja me shërbyesin tuaj të email-eve dhe të merren mesazhe në prapaskenë, në hapin pasues shpërfillini optimizimet për baterinë.\n\nDelta Chat-i përdor pak burime dhe kujdeset të mos e shterojë baterinë tuaj.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="pref_background_notifications_rationale">Që të ruhet lidhja me shërbyesin tuaj të email-eve dhe të merren mesazhe në
+        prapaskenë, në hapin pasues shpërfillini optimizimet për baterinë.\n\nDelta Chat-i përdor
+        pak burime dhe kujdeset të mos e shterojë baterinë tuaj.</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the
+        drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
-    <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
+    <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse
+        mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e
+        sistemit tuaj.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Ç’ka të re?\n\n💯 Fshehtëzimi skaj-më-skaj është i qëndrueshëm dhe përgjithmonë tanimë. Drynat 🔒 na lanë shëndenë!\n\n✉️ Emaile-t klasikë pa fshehtëzim skaj-më-skajtregohen me një simbol shkronjë\n\n😻 Skenë e re e zgjeruar profili për krejt kontaktet tuaj\n\n🔲 Buton i ri për hyrje të shpejtë në aplikacionet e përdorur në një fjalosje\n\n❤️ Ju lutemi, dhuroni, që të na ndihmoni të mbesim të pavarur dhe të vazhdojmë të sjellim përmirësime: %1$s</string>
+    <string name="update_2_0">Ç’ka të re?\n\n💯 Fshehtëzimi skaj-më-skaj është i qëndrueshëm dhe
+        përgjithmonë tanimë. Drynat 🔒 na lanë shëndenë!\n\n✉️ Emaile-t klasikë pa fshehtëzim
+        skaj-më-skajtregohen me një simbol shkronjë\n\n😻 Skenë e re e zgjeruar profili për krejt
+        kontaktet tuaj\n\n🔲 Buton i ri për hyrje të shpejtë në aplikacionet e përdorur në një
+        fjalosje\n\n❤️ Ju lutemi, dhuroni, që të na ndihmoni të mbesim të pavarur dhe të vazhdojmë
+        të sjellim përmirësime: %1$s</string>
 </resources>
