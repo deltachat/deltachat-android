@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application' version '8.11.1'
     id 'com.google.gms.google-services' version '4.4.1'
+    id 'com.diffplug.spotless' version '8.3.0'
 }
 
 repositories {
@@ -149,6 +150,30 @@ android {
         aidl true
     }
 
+}
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+        targetExclude 'src/main/java/chat/delta/**' // ignore auto-generated code
+        googleJavaFormat()  // Google style = 2-space indent, matches Android Studio defaults
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    format 'xml', {
+        target 'src/*/res/**/*.xml', 'src/*/AndroidManifest.xml'
+        eclipseWtp('xml').configFile('spotless/eclipse-wtp-xml.prefs')
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    groovyGradle {
+        target '*.gradle'
+        greclipse()
+        leadingTabsToSpaces(4)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
 }
 
 dependencies {
