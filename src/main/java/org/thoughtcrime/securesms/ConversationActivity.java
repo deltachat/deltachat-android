@@ -1179,6 +1179,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     playbackViewModel.stopNonMessageAudioPlayback();
 
     DcContext dcContext = DcHelper.getContext(context);
+    final int currentChatId = dcChat.getId();
     Util.runOnAnyBackgroundThread(() -> {
       DcMsg msg = null;
       int recompress = 0;
@@ -1188,9 +1189,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         if (action == ACTION_SEND_OUT) {
           dcContext.sendEditRequest(msgId, body);
         } else {
-          dcContext.setDraft(chatId, null);
+          dcContext.setDraft(currentChatId, null);
         }
-        future.set(chatId);
+        future.set(currentChatId);
         return;
       }
 
@@ -1201,7 +1202,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
         try {
           if (slideDeck.getWebxdctDraftId() != 0) {
-            msg = dcContext.getDraft(chatId);
+            msg = dcContext.getDraft(currentChatId);
           } else {
             List<Attachment> attachments = slideDeck.asAttachments();
             for (Attachment attachment : attachments) {
@@ -1246,7 +1247,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         // for WEBXDC, drafts are just sent out as is.
         // for preparations and other cases, cleanup draft soon.
         if (msg == null || msg.getType() != DcMsg.DC_MSG_WEBXDC) {
-          dcContext.setDraft(dcChat.getId(), null);
+          dcContext.setDraft(currentChatId, null);
         }
 
         if(msg!=null) {
@@ -1262,7 +1263,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                                                    false
                                                    );
             });
-            doSend = VideoRecoder.prepareVideo(ConversationActivity.this, dcChat.getId(), msg);
+            doSend = VideoRecoder.prepareVideo(ConversationActivity.this, currentChatId, msg);
             Util.runOnMain(() -> {
               try {
                 if (progressDialog != null) progressDialog.dismiss();
@@ -1273,48 +1274,36 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           }
 
           if (doSend) {
-            if (dcContext.sendMsg(dcChat.getId(), msg) == 0) {
+            if (dcContext.sendMsg(currentChatId, msg) == 0) {
               String lastError = dcContext.getLastError();
               if (!"".equals(lastError)) {
                 Util.runOnMain(() -> Toast.makeText(ConversationActivity.this, lastError, Toast.LENGTH_LONG).show());
               }
-              future.set(chatId);
+              future.set(currentChatId);
               return;
             }
           }
 
-          Util.runOnMain(() -> sendComplete(dcChat.getId()));
+          if (currentChatId == this.chatId) {
+            Util.runOnMain(() -> sendComplete());
+          }
         }
       } else {
-        dcContext.setDraft(dcChat.getId(), msg);
+        dcContext.setDraft(currentChatId, msg);
       }
-      future.set(chatId);
+      future.set(currentChatId);
     });
 
     return future;
   }
 
 
-  protected void sendComplete(int chatId) {
-    boolean refreshFragment = (chatId != this.chatId);
-    this.chatId = chatId;
-
+  protected void sendComplete() {
     if (fragment == null || !fragment.isVisible() || isFinishing()) {
       return;
     }
 
     fragment.setLastSeen(-1);
-
-    if (refreshFragment) {
-      fragment.reload(recipient, chatId);
-      try {
-        int accId = rpc.getSelectedAccountId();
-        DcHelper.getNotificationCenter(this).updateVisibleChat(accId, chatId);
-      } catch (RpcException e) {
-        Log.e(TAG, "rpc.getSelectedAccountId() failed", e);
-      }
-    }
-
     fragment.scrollToBottom();
     attachmentManager.cleanup();
   }
@@ -1376,7 +1365,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     future.addListener(new ListenableFuture.Listener<Pair<Uri, Long>>() {
       @Override
       public void onSuccess(final @NonNull Pair<Uri, Long> result) {
-        AudioSlide audioSlide     = new AudioSlide(ConversationActivity.this, result.first, result.second, MediaUtil.AUDIO_AAC, true);
+        AudioSlide audioSlide     = new AudioSlide(ConversationActivity.this, result.first, result.second, MediaUtil.AUDIO_M4A, true);
         SlideDeck  slideDeck      = new SlideDeck();
         slideDeck.addSlide(audioSlide);
 

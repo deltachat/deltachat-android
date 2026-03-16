@@ -68,6 +68,71 @@ public class PersistentBlobProvider {
 
   public Uri create(
       @NonNull Context context,
+      @NonNull File inputFile,
+      @NonNull String mimeType,
+      @Nullable String fileName,
+      @Nullable Long fileSize)
+      throws IOException {
+
+    if (!inputFile.exists()) {
+      throw new IOException("Input file does not exist: " + inputFile.getAbsolutePath());
+    }
+
+    final long id = System.currentTimeMillis();
+
+    if (fileName == null) {
+      fileName = "file." + getExtensionFromMimeType(mimeType);
+    }
+
+    if (fileSize == null) {
+      fileSize = inputFile.length();
+    }
+
+    File destFile = getModernCacheFile(context, id);
+
+    // Try move first
+    boolean moved = inputFile.renameTo(destFile);
+
+    if (!moved) {
+      // Move failed, copy instead
+      InputStream input = null;
+      OutputStream output = null;
+      try {
+        input = new FileInputStream(inputFile);
+        output = new FileOutputStream(destFile);
+        Util.copy(input, output);
+      } finally {
+        if (output != null) {
+          try {
+            output.close();
+          } catch (IOException e) {
+            Log.w(TAG, e);
+          }
+        }
+        if (input != null) {
+          try {
+            input.close();
+          } catch (IOException e) {
+            Log.w(TAG, e);
+          }
+        }
+      }
+    }
+
+    final Uri uniqueUri =
+        CONTENT_URI
+            .buildUpon()
+            .appendPath(mimeType)
+            .appendPath(fileName)
+            .appendEncodedPath(String.valueOf(fileSize))
+            .appendEncodedPath(String.valueOf(System.currentTimeMillis()))
+            .build();
+
+    return ContentUris.withAppendedId(uniqueUri, id);
+  }
+
+  public Uri create(
+      @NonNull Context context,
       @NonNull byte[] blobBytes,
       @NonNull String mimeType,
       @Nullable String fileName) {
