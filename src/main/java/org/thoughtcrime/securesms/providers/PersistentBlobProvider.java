@@ -67,11 +67,12 @@ public class PersistentBlobProvider {
   private PersistentBlobProvider() {}
 
   public Uri create(
-    @NonNull Context context,
-    @NonNull File inputFile,
-    @NonNull String mimeType,
-    @Nullable String fileName,
-    @Nullable Long fileSize) throws IOException {
+      @NonNull Context context,
+      @NonNull File inputFile,
+      @NonNull String mimeType,
+      @Nullable String fileName,
+      @Nullable Long fileSize)
+      throws IOException {
 
     if (!inputFile.exists()) {
       throw new IOException("Input file does not exist: " + inputFile.getAbsolutePath());
@@ -102,22 +103,30 @@ public class PersistentBlobProvider {
         Util.copy(input, output);
       } finally {
         if (output != null) {
-          try { output.close(); } catch (IOException e) { Log.w(TAG, e); }
+          try {
+            output.close();
+          } catch (IOException e) {
+            Log.w(TAG, e);
+          }
         }
         if (input != null) {
-          try { input.close(); } catch (IOException e) { Log.w(TAG, e); }
+          try {
+            input.close();
+          } catch (IOException e) {
+            Log.w(TAG, e);
+          }
         }
       }
     }
 
     final Uri uniqueUri =
-      CONTENT_URI
-        .buildUpon()
-        .appendPath(mimeType)
-        .appendPath(fileName)
-        .appendEncodedPath(String.valueOf(fileSize))
-        .appendEncodedPath(String.valueOf(System.currentTimeMillis()))
-        .build();
+        CONTENT_URI
+            .buildUpon()
+            .appendPath(mimeType)
+            .appendPath(fileName)
+            .appendEncodedPath(String.valueOf(fileSize))
+            .appendEncodedPath(String.valueOf(System.currentTimeMillis()))
+            .build();
 
     return ContentUris.withAppendedId(uniqueUri, id);
   }

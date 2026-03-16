@@ -61,10 +61,20 @@ android {
     }
     packagingOptions {
         jniLibs {
-            keepDebugSymbols += ['*/mips/*.so', '*/mips64/*.so']
+            keepDebugSymbols += [
+                '*/mips/*.so',
+                '*/mips64/*.so'
+            ]
         }
         resources {
-            excludes += ['LICENSE.txt', 'LICENSE', 'NOTICE', 'asm-license.txt', 'META-INF/LICENSE', 'META-INF/NOTICE']
+            excludes += [
+                'LICENSE.txt',
+                'LICENSE',
+                'NOTICE',
+                'asm-license.txt',
+                'META-INF/LICENSE',
+                'META-INF/NOTICE'
+            ]
         }
     }
 
@@ -127,8 +137,8 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             outputFileName = outputFileName
-                .replace("deltachat-android", "deltachat")
-                .replace(".apk", "-${variant.versionName}.apk")
+                    .replace("deltachat-android", "deltachat")
+                    .replace(".apk", "-${variant.versionName}.apk")
         }
     }
 
@@ -149,7 +159,6 @@ android {
         renderScript true
         aidl true
     }
-
 }
 
 spotless {
@@ -217,7 +226,8 @@ dependencies {
     implementation 'com.github.amulyakhare:TextDrawable:558677ea31'  // number of unread messages,
     // the one-letter circle for the contacts (when there is not avatar) and a white background.
     implementation 'com.googlecode.mp4parser:isoparser:1.0.6' // MP4 recoding; upgrading eg. to 1.1.22 breaks recoding, however, i have not investigated further, just reset to 1.0.6
-    implementation ('com.davemorrissey.labs:subsampling-scale-image-view:3.10.0') { // for the zooming on photos / media
+    implementation ('com.davemorrissey.labs:subsampling-scale-image-view:3.10.0') {
+        // for the zooming on photos / media
         exclude group: 'com.android.support', module: 'support-annotations'
     }
 
@@ -226,7 +236,8 @@ dependencies {
     // <https://github.com/cketti/SafeContentResolver>
     implementation 'de.cketti.safecontentresolver:safe-content-resolver-v21:1.0.0'
 
-    gplayImplementation('com.google.firebase:firebase-messaging:24.1.2') { // for PUSH notifications, don't upgrade: v25.0.0 requires minSdk>=23
+    gplayImplementation('com.google.firebase:firebase-messaging:24.1.2') {
+        // for PUSH notifications, don't upgrade: v25.0.0 requires minSdk>=23
         exclude group: 'com.google.firebase', module: 'firebase-core'
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
