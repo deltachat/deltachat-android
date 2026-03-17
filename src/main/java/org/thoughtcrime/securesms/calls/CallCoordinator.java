@@ -42,6 +42,8 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlin.coroutines.CoroutineContext;
@@ -77,6 +79,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final Rpc rpc;
   private CoroutineScope audioFlowScope;
   private final Handler mainHandler = new Handler(Looper.getMainLooper());
+  private final ExecutorService eventExecutor = Executors.newSingleThreadExecutor();
 
   // LiveData for Observable State
   private final MutableLiveData<PeerConnection.PeerConnectionState> connectionState =
@@ -121,7 +124,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final Runnable outgoingRingtoneRunnable =
       () -> {
         synchronized (CallCoordinator.this) {
-          if (callService != null && activeCallId != null) {
+          if (callService != null && hasActiveCall()) {
             callService.startOutgoingRingtone();
           }
         }
@@ -823,43 +826,42 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     // It seems this observer can fire on either main or background thread
     // Always move to background
-    new Thread(
-            () -> {
-              boolean hasVideo;
+    eventExecutor.execute(
+        () -> {
+          boolean hasVideo;
 
-              switch (eventId) {
-                case DcContext.DC_EVENT_INCOMING_CALL:
-                  try {
-                    hasVideo = this.rpc.callInfo(accId, callId).hasVideo;
-                  } catch (RpcException e) {
-                    Log.e(TAG, "Rpc.callInfo() failed", e);
-                    hasVideo = false;
-                  }
-                  onIncomingCall(accId, callId, event.getData2Str(), hasVideo);
-                  break;
-                case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
-                  onIncomingCallAccepted(callId);
-                  break;
-                case DcContext.DC_EVENT_OUTGOING_CALL_ACCEPTED:
-                  String answerSDP = event.getData2Str();
-                  onOutgoingCallAccepted(callId, answerSDP);
-                  break;
-                case DcContext.DC_EVENT_CALL_ENDED:
-                  // This event is problematic because it can trigger in both directions,
-                  // in addition to multiple other scenarios which cannot easily be distinguished
-                  // May cause problems in edge cases
-                  onCallEnded(accId, callId);
-                  break;
+          switch (eventId) {
+            case DcContext.DC_EVENT_INCOMING_CALL:
+              try {
+                hasVideo = this.rpc.callInfo(accId, callId).hasVideo;
+              } catch (RpcException e) {
+                Log.e(TAG, "Rpc.callInfo() failed", e);
+                hasVideo = false;
               }
-            })
-        .start();
+              onIncomingCall(accId, callId, event.getData2Str(), hasVideo);
+              break;
+            case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
+              onIncomingCallAccepted(callId);
+              break;
+            case DcContext.DC_EVENT_OUTGOING_CALL_ACCEPTED:
+              String answerSDP = event.getData2Str();
+              onOutgoingCallAccepted(callId, answerSDP);
+              break;
+            case DcContext.DC_EVENT_CALL_ENDED:
+              // This event is problematic because it can trigger in both directions,
+              // in addition to multiple other scenarios which cannot easily be distinguished
+              // May cause problems in edge cases
+              onCallEnded(accId, callId);
+              break;
+          }
+        });
   }
 
   private synchronized void onIncomingCall(
       int accId, int callId, String offerSdp, boolean startsWithVideo) {
     Log.d(TAG, "onIncomingCall: accId=" + accId + ", callId=" + callId);
 
-    if (activeCallId != null) {
+    if (hasActiveCall()) {
       Log.w(TAG, "Already have an active call, ignoring incoming call");
       return;
     }
@@ -955,6 +957,27 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private synchronized void onCallEnded(int accId, int callId) {
     Log.d(TAG, "onCallEnded: accId=" + accId + ", callId=" + callId);
 
+    if (!hasActiveCall()) {
+      Log.w(TAG, "No active call, ignoring");
+      return;
+    }
+
+    if (!activeAccId.equals(accId) || !activeCallId.equals(callId)) {
+      Log.w(
+          TAG,
+          "Event IDs don't match active call "
+              + "(active: accId="
+              + activeAccId
+              + " callId="
+              + activeCallId
+              + ", event: accId="
+              + accId
+              + " callId="
+              + callId
+              + "), ignoring");
+      return;
+    }
+
     if (callService != null) {
       callService.stopRingtone();
     }
@@ -1002,7 +1025,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     notifyBackendCallEnded();
 
     // Cleanup
-    if (activeAccId != null && activeCallId != null) {
+    if (hasActiveCall()) {
       cleanupCall(activeAccId, activeCallId);
     }
   }
@@ -1011,10 +1034,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   public synchronized void cleanupCall(int accId, int callId) {
     Log.d(TAG, "cleanupCall: accId=" + accId + ", callId=" + callId);
 
-    if (activeCallId != null && !activeCallId.equals(callId)
-        || activeAccId != null && !activeAccId.equals(accId)) {
-      Log.w(TAG, "Cleanup accountId or callId doesn't match active call");
-      // Clean up anyway. Otherwise, no new calls can happen.
+    if (!hasActiveCall()) {
+      Log.d(TAG, "No active call to clean up");
+      return;
+    }
+
+    if (!activeAccId.equals(accId) || !activeCallId.equals(callId)) {
+      Log.w(TAG, "Cleanup IDs don't match active call, aborting");
+      return;
     }
 
     // Clear state
@@ -1112,7 +1139,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   public synchronized void initiateOutgoingCall(int accId, int chatId, boolean startsWithVideo) {
     Log.d(TAG, "Initiating outgoing call:accId=" + accId + ", chatId=" + chatId);
 
-    if (activeCallId != null) {
+    if (hasActiveCall()) {
       Log.w(TAG, "Already have an active call, cannot start new one");
       return;
     }
@@ -1230,10 +1257,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             Log.d(TAG, "CallControlScope initialized");
             activeCallControlScope = scope;
 
-            mainHandler.post(
-                () -> {
-                  setupAudioEndpointCollection(scope);
-                });
+            mainHandler.post(() -> setupAudioEndpointCollection(scope));
 
             return Unit.INSTANCE;
           },
@@ -1472,7 +1496,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   public synchronized boolean hasActiveCall() {
-    return activeCallId != null;
+    return activeAccId != null && activeCallId != null;
   }
 
   public synchronized boolean hasOngoingCall() {
