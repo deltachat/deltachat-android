@@ -291,9 +291,15 @@ public class LogViewFragment extends Fragment {
       } else {
         final String ackDistrib = UnifiedPush.getAckDistributor(context);
         final String upToken = UnifiedPushService.getToken();
-        builder.append("unifiedpush-disabled=").append(Prefs.unifiedPushDisabled(context)).append("\n");
+        builder
+            .append("unifiedpush-disabled=")
+            .append(Prefs.unifiedPushDisabled(context))
+            .append("\n");
         builder.append("unifiedpush-registered=").append(ackDistrib != null).append("\n");
-        builder.append("unifiedpush-distrib=").append(ackDistrib == null ? "null" : ackDistrib).append("\n");
+        builder
+            .append("unifiedpush-distrib=")
+            .append(ackDistrib == null ? "null" : ackDistrib)
+            .append("\n");
         builder.append("push-token=").append(upToken == null ? "<empty>" : upToken).append("\n");
       }
     } catch (Exception e) {

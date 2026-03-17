@@ -61,7 +61,8 @@ public class DozeReminder {
       Log.e(TAG, "Error calling getChatlist()", e);
     }
 
-    return !isPushAvailableAndSufficient(context); // yip, asking for disabling battery optimisations
+    return !isPushAvailableAndSufficient(
+        context); // yip, asking for disabling battery optimisations
     // makes sense
   }
 
