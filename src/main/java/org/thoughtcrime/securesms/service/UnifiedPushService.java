@@ -14,10 +14,10 @@ import android.os.Build;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import javax.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.work.WorkManager;
+import javax.annotation.Nullable;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.FetchWorker;
@@ -118,28 +118,34 @@ public class UnifiedPushService extends PushService {
 
   private void showNotificationToReconfigure() {
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      NotificationChannel channel = new NotificationChannel(NotificationCenter.CH_INFO,
-        "General information", NotificationManager.IMPORTANCE_HIGH);
-      channel.setDescription("Inform about the application state, e.g. when the app needs to be opened to reconfigure push notifications.");
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      NotificationChannel channel =
+          new NotificationChannel(
+              NotificationCenter.CH_INFO,
+              "General information",
+              NotificationManager.IMPORTANCE_HIGH);
+      channel.setDescription(
+          "Inform about the application state, e.g. when the app needs to be opened to reconfigure push notifications.");
       notificationManager.createNotificationChannel(channel);
     }
 
     // Launch the app with a new task flag to get the picker
     Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-    PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
-    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NotificationCenter.CH_INFO)
-      .setSmallIcon(R.drawable.icon_notification)
-      .setColor(getResources().getColor(R.color.delta_primary))
-      .setPriority(Notification.PRIORITY_HIGH)
-      .setContentText(getString(R.string.notification_reconfigure_notifications))
-      .setStyle(
-        new NotificationCompat.BigTextStyle()
-          .bigText(getString(R.string.notification_reconfigure_notifications))
-      )
-      .setAutoCancel(true)
-      .setContentIntent(pi);
+    PendingIntent pi =
+        PendingIntent.getActivity(
+            this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+    NotificationCompat.Builder builder =
+        new NotificationCompat.Builder(this, NotificationCenter.CH_INFO)
+            .setSmallIcon(R.drawable.icon_notification)
+            .setColor(getResources().getColor(R.color.delta_primary))
+            .setPriority(Notification.PRIORITY_HIGH)
+            .setContentText(getString(R.string.notification_reconfigure_notifications))
+            .setStyle(
+                new NotificationCompat.BigTextStyle()
+                    .bigText(getString(R.string.notification_reconfigure_notifications)))
+            .setAutoCancel(true)
+            .setContentIntent(pi);
     notificationManager.notify(NotificationCenter.ID_INFO, builder.build());
   }
 
@@ -163,6 +169,7 @@ public class UnifiedPushService extends PushService {
 
   /**
    * Only to log!
+   *
    * @return
    */
   @Nullable
