@@ -8,22 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.telecom.CallEndpointCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-
+import java.util.List;
 import org.thoughtcrime.securesms.R;
 
-import java.util.List;
-
-/**
- * Bottom sheet dialog for selecting audio output device
- */
+/** Bottom sheet dialog for selecting audio output device */
 @RequiresApi(Build.VERSION_CODES.O)
 public class AudioDevicePickerDialog extends BottomSheetDialog {
   private static final String TAG = AudioDevicePickerDialog.class.getSimpleName();
@@ -32,10 +26,11 @@ public class AudioDevicePickerDialog extends BottomSheetDialog {
     void onDeviceSelected(CallEndpointCompat endpoint);
   }
 
-  public AudioDevicePickerDialog(@NonNull Context context,
-                                 @NonNull List<CallEndpointCompat> endpoints,
-                                 CallEndpointCompat currentEndpoint,
-                                 @NonNull OnDeviceSelectedListener listener) {
+  public AudioDevicePickerDialog(
+      @NonNull Context context,
+      @NonNull List<CallEndpointCompat> endpoints,
+      CallEndpointCompat currentEndpoint,
+      @NonNull OnDeviceSelectedListener listener) {
     super(context);
 
     setContentView(R.layout.dialog_audio_device_picker);
@@ -48,30 +43,30 @@ public class AudioDevicePickerDialog extends BottomSheetDialog {
 
     recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-    AudioDeviceAdapter adapter = new AudioDeviceAdapter(
-      endpoints,
-      currentEndpoint,
-      endpoint -> {
-        listener.onDeviceSelected(endpoint);
-        dismiss();
-      }
-    );
+    AudioDeviceAdapter adapter =
+        new AudioDeviceAdapter(
+            endpoints,
+            currentEndpoint,
+            endpoint -> {
+              listener.onDeviceSelected(endpoint);
+              dismiss();
+            });
 
     recyclerView.setAdapter(adapter);
   }
 
-  /**
-   * RecyclerView adapter for audio devices
-   */
-  private static class AudioDeviceAdapter extends RecyclerView.Adapter<AudioDeviceAdapter.ViewHolder> {
+  /** RecyclerView adapter for audio devices */
+  private static class AudioDeviceAdapter
+      extends RecyclerView.Adapter<AudioDeviceAdapter.ViewHolder> {
 
     private final List<CallEndpointCompat> endpoints;
     private final CallEndpointCompat currentEndpoint;
     private final OnDeviceSelectedListener listener;
 
-    AudioDeviceAdapter(List<CallEndpointCompat> endpoints,
-                       CallEndpointCompat currentEndpoint,
-                       OnDeviceSelectedListener listener) {
+    AudioDeviceAdapter(
+        List<CallEndpointCompat> endpoints,
+        CallEndpointCompat currentEndpoint,
+        OnDeviceSelectedListener listener) {
       this.endpoints = endpoints;
       this.currentEndpoint = currentEndpoint;
       this.listener = listener;
@@ -80,19 +75,18 @@ public class AudioDevicePickerDialog extends BottomSheetDialog {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      View view = LayoutInflater.from(parent.getContext()).inflate(
-        R.layout.item_audio_device,
-        parent,
-        false
-      );
+      View view =
+          LayoutInflater.from(parent.getContext())
+              .inflate(R.layout.item_audio_device, parent, false);
       return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
       CallEndpointCompat endpoint = endpoints.get(position);
-      boolean isCurrent = currentEndpoint != null &&
-        endpoint.getIdentifier().equals(currentEndpoint.getIdentifier());
+      boolean isCurrent =
+          currentEndpoint != null
+              && endpoint.getIdentifier().equals(currentEndpoint.getIdentifier());
 
       holder.bind(endpoint, isCurrent, listener);
     }

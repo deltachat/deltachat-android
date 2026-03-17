@@ -1,9 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.os.Build;
-
 import androidx.annotation.RequiresApi;
-
 import org.webrtc.EglBase;
 
 @RequiresApi(Build.VERSION_CODES.M)
