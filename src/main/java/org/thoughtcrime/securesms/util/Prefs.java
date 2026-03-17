@@ -52,7 +52,7 @@ public class Prefs {
   public static final String NOTIFICATION_PRIVACY_PREF = "pref_notification_privacy";
   public static final String NOTIFICATION_PRIORITY_PREF = "pref_notification_priority";
 
-  public  static final String DISABLE_UNIFIEDPUSH = "pref_disable_unifiedpush";
+  public static final String DISABLE_UNIFIEDPUSH = "pref_disable_unifiedpush";
 
   private static final String PROFILE_AVATAR_ID_PREF = "pref_profile_avatar_id";
   public static final String INCOGNITO_KEYBORAD_PREF = "pref_incognito_keyboard";
@@ -273,8 +273,11 @@ public class Prefs {
 
   /**
    * Allow UnifiedPush to be used if a distributor is available
-   * <p>UnifiedPush is never used if the flavor uses the Play Services</p>
-   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear</p>
+   *
+   * <p>UnifiedPush is never used if the flavor uses the Play Services
+   *
+   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear
+   *
    * @param context
    */
   public static void enableUnifiedPush(Context context) {
@@ -283,7 +286,9 @@ public class Prefs {
 
   /**
    * Allow UnifiedPush to be used if a distributor is available
-   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear</p>
+   *
+   * <p>We use 2 functions enableUnifiedPush/disableUnifiedPush to make things more clear
+   *
    * @param context
    */
   public static void disableUnifiedPush(Context context) {
