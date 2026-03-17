@@ -5,7 +5,6 @@ import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.telecom.DisconnectCause;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.telecom.CallEndpointCompat;
@@ -13,11 +12,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
-
+import java.util.List;
 import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
-
-import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallViewModel extends AndroidViewModel {
@@ -103,20 +100,22 @@ public class CallViewModel extends AndroidViewModel {
   }
 
   private void setupConnectionStateObserver() {
-    callState.addSource(callCoordinator.getConnectionState(), state -> {
-      CallState newState = translateConnectionState(state);
+    callState.addSource(
+        callCoordinator.getConnectionState(),
+        state -> {
+          CallState newState = translateConnectionState(state);
 
-      if (callState.getValue() != newState) {
-        callState.setValue(newState);
-      }
+          if (callState.getValue() != newState) {
+            callState.setValue(newState);
+          }
 
-      if (state == PeerConnection.PeerConnectionState.FAILED ||
-        state == PeerConnection.PeerConnectionState.CLOSED) {
-        if (!hasCallEnded) {
-          hasCallEnded = true;
-        }
-      }
-    });
+          if (state == PeerConnection.PeerConnectionState.FAILED
+              || state == PeerConnection.PeerConnectionState.CLOSED) {
+            if (!hasCallEnded) {
+              hasCallEnded = true;
+            }
+          }
+        });
   }
 
   private CallState translateConnectionState(PeerConnection.PeerConnectionState state) {
@@ -132,7 +131,7 @@ public class CallViewModel extends AndroidViewModel {
         if (callCoordinator.isIncomingCall()) {
           return CallState.CONNECTING;
         } else {
-          return CallState.RINGING;  // Mirror TypeScript
+          return CallState.RINGING; // Mirror TypeScript
         }
 
       case CONNECTED:
@@ -168,10 +167,7 @@ public class CallViewModel extends AndroidViewModel {
     answerCallWhenReady();
   }
 
-  /**
-   * Answer incoming call (WebRTC only)
-   * Used when system answer already happened
-   */
+  /** Answer incoming call (WebRTC only) Used when system answer already happened */
   public void answerCallWhenReady() {
     Log.d(TAG, "answerCallWhenReady");
 
@@ -186,28 +182,26 @@ public class CallViewModel extends AndroidViewModel {
     // Create one-time observer
     LiveData<VideoTrack> localTrack = callCoordinator.getLocalVideoTrack();
 
-    answerCallObserver = new Observer<VideoTrack>() {
-      @Override
-      public void onChanged(VideoTrack videoTrack) {
-        if (videoTrack != null) {
-          // Media is ready, remove observer
-          localTrack.removeObserver(this);
-          answerCallObserver = null;
+    answerCallObserver =
+        new Observer<VideoTrack>() {
+          @Override
+          public void onChanged(VideoTrack videoTrack) {
+            if (videoTrack != null) {
+              // Media is ready, remove observer
+              localTrack.removeObserver(this);
+              answerCallObserver = null;
 
-          Log.d(TAG, "Local video ready, answering call (WebRTC)");
+              Log.d(TAG, "Local video ready, answering call (WebRTC)");
 
-          callCoordinator.answerWebRTC();
-        }
-      }
-    };
+              callCoordinator.answerWebRTC();
+            }
+          }
+        };
 
     localTrack.observeForever(answerCallObserver);
   }
 
-  /**
-   * Start outgoing call with media capture
-   * Called by Activity for outgoing calls
-   */
+  /** Start outgoing call with media capture Called by Activity for outgoing calls */
   public void startOutgoingCallWhenReady() {
     Log.d(TAG, "startOutgoingCallWhenReady");
 
@@ -226,20 +220,21 @@ public class CallViewModel extends AndroidViewModel {
       Log.d(TAG, "Media already ready, starting call immediately");
       callCoordinator.startOutgoingCall();
     } else {
-      startOutgoingCallObserver = new Observer<VideoTrack>() {
-        @Override
-        public void onChanged(VideoTrack videoTrack) {
-          if (videoTrack != null) {
-            // Media is ready, remove observer
-            localTrack.removeObserver(this);
-            startOutgoingCallObserver = null;
+      startOutgoingCallObserver =
+          new Observer<VideoTrack>() {
+            @Override
+            public void onChanged(VideoTrack videoTrack) {
+              if (videoTrack != null) {
+                // Media is ready, remove observer
+                localTrack.removeObserver(this);
+                startOutgoingCallObserver = null;
 
-            Log.d(TAG, "Local video ready, starting outgoing call");
+                Log.d(TAG, "Local video ready, starting outgoing call");
 
-            callCoordinator.startOutgoingCall();
-          }
-        }
-      };
+                callCoordinator.startOutgoingCall();
+              }
+            }
+          };
 
       localTrack.observeForever(startOutgoingCallObserver);
     }
@@ -404,7 +399,6 @@ public class CallViewModel extends AndroidViewModel {
   public LiveData<List<CallEndpointCompat>> getAvailableAudioEndpoints() {
     return availableAudioEndpoints;
   }
-
 
   // Notification Action Handlers
 

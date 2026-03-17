@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -37,10 +36,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.EglUtils;
 import org.thoughtcrime.securesms.R;
@@ -48,12 +47,7 @@ import org.webrtc.RendererCommon;
 import org.webrtc.SurfaceViewRenderer;
 import org.webrtc.VideoTrack;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Full-screen call activity for VoIP calls
- */
+/** Full-screen call activity for VoIP calls */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallActivity extends AppCompatActivity {
 
@@ -120,28 +114,29 @@ public class CallActivity extends AppCompatActivity {
     }
 
     // PiP listener
-    addOnPictureInPictureModeChangedListener(pipModeInfo -> {
-      boolean isInPipMode = pipModeInfo.isInPictureInPictureMode();
+    addOnPictureInPictureModeChangedListener(
+        pipModeInfo -> {
+          boolean isInPipMode = pipModeInfo.isInPictureInPictureMode();
 
-      if (isInPipMode) {
-        topBar.setVisibility(View.GONE);
-        bottomLayoutContainer.setVisibility(View.GONE);
-        localVideoContainer.setVisibility(View.GONE);
-        incomingCallPrompt.setVisibility(View.GONE);
-      } else {
-        topBar.setVisibility(View.VISIBLE);
-        bottomLayoutContainer.setVisibility(View.VISIBLE);
-        if (viewModel != null) {
-          CallViewModel.CallState state = viewModel.getCallState().getValue();
-          if (state != null) {
-            updateUIForState(state);
+          if (isInPipMode) {
+            topBar.setVisibility(View.GONE);
+            bottomLayoutContainer.setVisibility(View.GONE);
+            localVideoContainer.setVisibility(View.GONE);
+            incomingCallPrompt.setVisibility(View.GONE);
+          } else {
+            topBar.setVisibility(View.VISIBLE);
+            bottomLayoutContainer.setVisibility(View.VISIBLE);
+            if (viewModel != null) {
+              CallViewModel.CallState state = viewModel.getCallState().getValue();
+              if (state != null) {
+                updateUIForState(state);
+              }
+            }
+            layoutVideos();
           }
-        }
-        layoutVideos();
-      }
 
-      updateProximityWakeLock();
-    });
+          updateProximityWakeLock();
+        });
 
     initializeViewModel();
 
@@ -197,20 +192,15 @@ public class CallActivity extends AppCompatActivity {
   private void setupInsets() {
     View rootView = findViewById(R.id.call_root_view);
 
-    ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, windowInsets) -> {
-      Insets systemBars = windowInsets.getInsets(
-        WindowInsetsCompat.Type.systemBars()
-      );
+    ViewCompat.setOnApplyWindowInsetsListener(
+        rootView,
+        (v, windowInsets) -> {
+          Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
 
-      v.setPadding(
-        systemBars.left,
-        systemBars.top,
-        systemBars.right,
-        systemBars.bottom
-      );
+          v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 
-      return windowInsets;
-    });
+          return windowInsets;
+        });
   }
 
   private void setupWindowFlags() {
@@ -221,23 +211,24 @@ public class CallActivity extends AppCompatActivity {
       setShowWhenLocked(true);
       setTurnScreenOn(true);
 
-      KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
+      KeyguardManager keyguardManager =
+          (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
       if (keyguardManager != null) {
         keyguardManager.requestDismissKeyguard(this, null);
       }
     } else {
-      getWindow().addFlags(
-        WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
-          WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD |
-          WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-      );
+      getWindow()
+          .addFlags(
+              WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                  | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                  | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
 
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
     // Control status bar icon colors
     WindowInsetsControllerCompat controller =
-      WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
     controller.setAppearanceLightStatusBars(false);
     controller.setAppearanceLightNavigationBars(false);
   }
@@ -251,10 +242,9 @@ public class CallActivity extends AppCompatActivity {
     }
 
     if (powerManager.isWakeLockLevelSupported(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK)) {
-      proximityWakeLock = powerManager.newWakeLock(
-        PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK,
-        "DeltaChat:ProximityLock"
-      );
+      proximityWakeLock =
+          powerManager.newWakeLock(
+              PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "DeltaChat:ProximityLock");
       proximityWakeLock.setReferenceCounted(false);
       Log.d(TAG, "Proximity wake lock initialized");
     } else {
@@ -309,78 +299,88 @@ public class CallActivity extends AppCompatActivity {
   }
 
   private void setupButtonListeners() {
-    answerButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        viewModel.answerCall();
-      }
-    });
+    answerButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.answerCall();
+          }
+        });
 
-    declineButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        viewModel.declineCall();
-      }
-      finish();
-    });
-
-    endCallButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        viewModel.hangUp();
-      }
-      finish();
-    });
-
-    muteButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        viewModel.toggleAudio();
-      }
-    });
-
-    videoButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        viewModel.toggleVideo();
-      }
-    });
-
-    speakerButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        showAudioDevicePicker();
-      }
-    });
-
-    switchCameraButton.setOnClickListener(v -> {
-      if (viewModel != null) {
-        viewModel.switchCamera();
-      }
-    });
-
-    getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-      @Override
-      public void handleOnBackPressed() {
-        CallViewModel.CallState state = viewModel.getCallState().getValue();
-
-        if (isDeviceLocked() || state == null) {
+    declineButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.declineCall();
+          }
           finish();
-          return;
-        }
+        });
 
-        switch (state) {
-          case RINGING:
-          case CONNECTING:
-          case CONNECTED:
-          case RECONNECTING:
-            enterPictureInPictureMode(createPipParams());
-            break;
+    endCallButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.hangUp();
+          }
+          finish();
+        });
 
-          case INITIALIZING:
-          case PROMPTING_USER_ACCEPT:
-          case ENDED:
-          case ERROR:
-          default:
-            finish();
-            break;
-        }
-      }
-    });
+    muteButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.toggleAudio();
+          }
+        });
+
+    videoButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.toggleVideo();
+          }
+        });
+
+    speakerButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            showAudioDevicePicker();
+          }
+        });
+
+    switchCameraButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.switchCamera();
+          }
+        });
+
+    getOnBackPressedDispatcher()
+        .addCallback(
+            this,
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                CallViewModel.CallState state = viewModel.getCallState().getValue();
+
+                if (isDeviceLocked() || state == null) {
+                  finish();
+                  return;
+                }
+
+                switch (state) {
+                  case RINGING:
+                  case CONNECTING:
+                  case CONNECTED:
+                  case RECONNECTING:
+                    enterPictureInPictureMode(createPipParams());
+                    break;
+
+                  case INITIALIZING:
+                  case PROMPTING_USER_ACCEPT:
+                  case ENDED:
+                  case ERROR:
+                  default:
+                    finish();
+                    break;
+                }
+              }
+            });
   }
 
   private void initializeViewModel() {
@@ -398,79 +398,118 @@ public class CallActivity extends AppCompatActivity {
     viewModel.getCallState().observe(this, this::updateUIForState);
 
     // Display info
-    viewModel.getDisplayName().observe(this, name -> {
-      displayNameText.setText(name != null ? name : "Unknown");
-    });
+    viewModel
+        .getDisplayName()
+        .observe(
+            this,
+            name -> {
+              displayNameText.setText(name != null ? name : "Unknown");
+            });
 
-    viewModel.getDisplayIcon().observe(this, icon -> {
-      if (callerIconView != null) {
-        if (icon != null) {
-          callerIconView.setImageIcon(icon);
-        } else {
-          callerIconView.setImageResource(R.drawable.ic_person);
-        }
-      }
+    viewModel
+        .getDisplayIcon()
+        .observe(
+            this,
+            icon -> {
+              if (callerIconView != null) {
+                if (icon != null) {
+                  callerIconView.setImageIcon(icon);
+                } else {
+                  callerIconView.setImageResource(R.drawable.ic_person);
+                }
+              }
 
-      if (remoteAvatarView != null) {
-        if (icon != null) {
-          remoteAvatarView.setImageIcon(icon);
-        } else {
-          remoteAvatarView.setImageResource(R.drawable.ic_person);
-        }
-      }
-    });
+              if (remoteAvatarView != null) {
+                if (icon != null) {
+                  remoteAvatarView.setImageIcon(icon);
+                } else {
+                  remoteAvatarView.setImageResource(R.drawable.ic_person);
+                }
+              }
+            });
 
     // Audio/video state
-    viewModel.getAudioEnabled().observe(this, enabled -> {
-      muteButton.setSelected(!enabled);
-      muteButton.setImageResource(enabled ?
-        R.drawable.ic_mic_on : R.drawable.ic_mic_off);
-    });
+    viewModel
+        .getAudioEnabled()
+        .observe(
+            this,
+            enabled -> {
+              muteButton.setSelected(!enabled);
+              muteButton.setImageResource(enabled ? R.drawable.ic_mic_on : R.drawable.ic_mic_off);
+            });
 
-    viewModel.getVideoEnabled().observe(this, enabled -> {
-      videoButton.setSelected(!enabled);
-      videoButton.setImageResource(enabled ?
-        R.drawable.ic_videocam_on : R.drawable.ic_videocam_off);
-    });
+    viewModel
+        .getVideoEnabled()
+        .observe(
+            this,
+            enabled -> {
+              videoButton.setSelected(!enabled);
+              videoButton.setImageResource(
+                  enabled ? R.drawable.ic_videocam_on : R.drawable.ic_videocam_off);
+            });
 
-    viewModel.getCurrentAudioEndpoint().observe(this, endpoint -> {
-      updateSpeakerButton(endpoint);
-      updateProximityWakeLock();
-    });
+    viewModel
+        .getCurrentAudioEndpoint()
+        .observe(
+            this,
+            endpoint -> {
+              updateSpeakerButton(endpoint);
+              updateProximityWakeLock();
+            });
 
-    viewModel.getAvailableAudioEndpoints().observe(this, endpoints -> {
-      // Need observe to trigger flow emit
-      Log.d(TAG, "Available endpoints updated, count: " +
-        (endpoints != null ? endpoints.size() : 0));
-    });
+    viewModel
+        .getAvailableAudioEndpoints()
+        .observe(
+            this,
+            endpoints -> {
+              // Need observe to trigger flow emit
+              Log.d(
+                  TAG,
+                  "Available endpoints updated, count: "
+                      + (endpoints != null ? endpoints.size() : 0));
+            });
 
     // Errors
-    viewModel.getErrorMessage().observe(this, error -> {
-      if (error != null && !error.isEmpty()) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
-      }
-    });
+    viewModel
+        .getErrorMessage()
+        .observe(
+            this,
+            error -> {
+              if (error != null && !error.isEmpty()) {
+                Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+              }
+            });
 
     // Relay usage
-    viewModel.getIsRelayUsed().observe(this, isRelayUsed -> {
-      if (isRelayUsed != null) {
-        Log.d(TAG, "TURN relay is " + (isRelayUsed ? "being used" : "NOT being used"));
-      }
-    });
+    viewModel
+        .getIsRelayUsed()
+        .observe(
+            this,
+            isRelayUsed -> {
+              if (isRelayUsed != null) {
+                Log.d(TAG, "TURN relay is " + (isRelayUsed ? "being used" : "NOT being used"));
+              }
+            });
 
     // Set up LiveData sources
     videoConfigChanged.addSource(viewModel.getCallState(), v -> videoConfigChanged.setValue(true));
-    videoConfigChanged.addSource(viewModel.getLocalVideoTrack(), v -> videoConfigChanged.setValue(true));
-    videoConfigChanged.addSource(viewModel.getRemoteVideoTrack(), v -> videoConfigChanged.setValue(true));
-    videoConfigChanged.addSource(viewModel.getVideoEnabled(), v -> videoConfigChanged.setValue(true));
-    videoConfigChanged.addSource(viewModel.getRemoteVideoEnabled(), v -> videoConfigChanged.setValue(true));
+    videoConfigChanged.addSource(
+        viewModel.getLocalVideoTrack(), v -> videoConfigChanged.setValue(true));
+    videoConfigChanged.addSource(
+        viewModel.getRemoteVideoTrack(), v -> videoConfigChanged.setValue(true));
+    videoConfigChanged.addSource(
+        viewModel.getVideoEnabled(), v -> videoConfigChanged.setValue(true));
+    videoConfigChanged.addSource(
+        viewModel.getRemoteVideoEnabled(), v -> videoConfigChanged.setValue(true));
 
     // Video layout
-    videoConfigChanged.observe(this, changed -> {
-      if (!isFinishing() && !isDestroyed()) {
-        layoutVideos();
-      }
-    });
+    videoConfigChanged.observe(
+        this,
+        changed -> {
+          if (!isFinishing() && !isDestroyed()) {
+            layoutVideos();
+          }
+        });
   }
 
   @Override
@@ -485,9 +524,9 @@ public class CallActivity extends AppCompatActivity {
   private void updateUIForState(CallViewModel.CallState state) {
     Log.d(TAG, "Call state: " + state);
 
-    if (isInPictureInPictureMode() &&
-      state != CallViewModel.CallState.ENDED &&
-      state != CallViewModel.CallState.ERROR) {
+    if (isInPictureInPictureMode()
+        && state != CallViewModel.CallState.ENDED
+        && state != CallViewModel.CallState.ERROR) {
       return;
     }
 
@@ -556,11 +595,14 @@ public class CallActivity extends AppCompatActivity {
         answerModeSelector.setVisibility(View.GONE);
         remoteAvatarView.setVisibility(View.VISIBLE);
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-          if (!isFinishing()) {
-            finish();
-          }
-        }, 2500);
+        new Handler(Looper.getMainLooper())
+            .postDelayed(
+                () -> {
+                  if (!isFinishing()) {
+                    finish();
+                  }
+                },
+                2500);
         break;
     }
 
@@ -590,14 +632,14 @@ public class CallActivity extends AppCompatActivity {
     }
 
     // Create and show BottomSheetDialog
-    AudioDevicePickerDialog dialog = new AudioDevicePickerDialog(
-      this,
-      endpoints,
-      currentEndpoint,
-      selectedEndpoint -> {
-        viewModel.selectAudioDevice(selectedEndpoint);
-      }
-    );
+    AudioDevicePickerDialog dialog =
+        new AudioDevicePickerDialog(
+            this,
+            endpoints,
+            currentEndpoint,
+            selectedEndpoint -> {
+              viewModel.selectAudioDevice(selectedEndpoint);
+            });
 
     dialog.show();
   }
@@ -624,13 +666,13 @@ public class CallActivity extends AppCompatActivity {
     CallViewModel.CallState state = viewModel.getCallState().getValue();
     CallEndpointCompat endpoint = viewModel.getCurrentAudioEndpoint().getValue();
 
-    return (state == CallViewModel.CallState.CONNECTED ||
-      state == CallViewModel.CallState.RINGING ||
-      state == CallViewModel.CallState.CONNECTING ||
-      state == CallViewModel.CallState.RECONNECTING) &&
-      endpoint != null &&
-      endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE &&
-      !isInPictureInPictureMode();
+    return (state == CallViewModel.CallState.CONNECTED
+            || state == CallViewModel.CallState.RINGING
+            || state == CallViewModel.CallState.CONNECTING
+            || state == CallViewModel.CallState.RECONNECTING)
+        && endpoint != null
+        && endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE
+        && !isInPictureInPictureMode();
   }
 
   private void initializeAnswerModeSelector() {
@@ -638,18 +680,19 @@ public class CallActivity extends AppCompatActivity {
 
     // Set initial selection without triggering listener
     answerModeSelector.clearOnButtonCheckedListeners();
-    answerModeSelector.check(coordinator.isStartsWithVideo() ?
-      R.id.answer_video_button : R.id.answer_audio_only_button);
+    answerModeSelector.check(
+        coordinator.isStartsWithVideo() ? R.id.answer_video_button : R.id.answer_audio_only_button);
 
     // Set listener
-    answerModeSelector.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
-      if (isChecked && viewModel != null) {
-        boolean startsWithVideo = (checkedId == R.id.answer_video_button);
-        viewModel.setStartsWithVideo(startsWithVideo);
-        viewModel.switchToEarpiece(!startsWithVideo);
-        Log.d(TAG, "Answer mode changed to: " + (startsWithVideo ? "Video" : "Audio"));
-      }
-    });
+    answerModeSelector.addOnButtonCheckedListener(
+        (group, checkedId, isChecked) -> {
+          if (isChecked && viewModel != null) {
+            boolean startsWithVideo = (checkedId == R.id.answer_video_button);
+            viewModel.setStartsWithVideo(startsWithVideo);
+            viewModel.switchToEarpiece(!startsWithVideo);
+            Log.d(TAG, "Answer mode changed to: " + (startsWithVideo ? "Video" : "Audio"));
+          }
+        });
   }
 
   private void layoutVideos() {
@@ -657,8 +700,7 @@ public class CallActivity extends AppCompatActivity {
     if (viewModel == null) return;
 
     CallViewModel.CallState state = viewModel.getCallState().getValue();
-    if (state == CallViewModel.CallState.ENDED ||
-      state == CallViewModel.CallState.ERROR) return;
+    if (state == CallViewModel.CallState.ENDED || state == CallViewModel.CallState.ERROR) return;
 
     detachAllTracks();
 
@@ -687,19 +729,19 @@ public class CallActivity extends AppCompatActivity {
 
       Log.d(TAG, "Video layout: Connected (local corner, remote full-screen)");
 
-    } else if (!coordinator.isIncomingCall() &&
-      (state == CallViewModel.CallState.RINGING ||
-        state == CallViewModel.CallState.CONNECTING)) {
-        if (localTrack != null && Boolean.TRUE.equals(videoEnabled)) {
-          // Outgoing call before connected: local preview in center, hide corner
-          localTrack.addSink(remoteVideoView);
-          shouldShowRemoteVideoView = true;
-          localVideoContainer.setVisibility(View.GONE);
-          Log.d(TAG, "Video layout: Outgoing preview (local full-screen)");
-        } else {
-          localVideoContainer.setVisibility(View.GONE);
-          Log.d(TAG, "Video layout: Outgoing audio-only");
-        }
+    } else if (!coordinator.isIncomingCall()
+        && (state == CallViewModel.CallState.RINGING
+            || state == CallViewModel.CallState.CONNECTING)) {
+      if (localTrack != null && Boolean.TRUE.equals(videoEnabled)) {
+        // Outgoing call before connected: local preview in center, hide corner
+        localTrack.addSink(remoteVideoView);
+        shouldShowRemoteVideoView = true;
+        localVideoContainer.setVisibility(View.GONE);
+        Log.d(TAG, "Video layout: Outgoing preview (local full-screen)");
+      } else {
+        localVideoContainer.setVisibility(View.GONE);
+        Log.d(TAG, "Video layout: Outgoing audio-only");
+      }
 
     } else {
       // All other cases: just show avatar
@@ -728,25 +770,21 @@ public class CallActivity extends AppCompatActivity {
 
   private boolean hasRequiredPermissions() {
     return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-      == PackageManager.PERMISSION_GRANTED &&
-      ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-        == PackageManager.PERMISSION_GRANTED;
+            == PackageManager.PERMISSION_GRANTED
+        && ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
+            == PackageManager.PERMISSION_GRANTED;
   }
 
   private void requestRequiredPermissions() {
     ActivityCompat.requestPermissions(
-      this,
-      new String[] {
-        Manifest.permission.CAMERA,
-        Manifest.permission.RECORD_AUDIO
-      },
-      PERMISSION_REQUEST_CODE
-    );
+        this,
+        new String[] {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO},
+        PERMISSION_REQUEST_CODE);
   }
 
   @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                         @NonNull int[] grantResults) {
+  public void onRequestPermissionsResult(
+      int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
     if (requestCode == PERMISSION_REQUEST_CODE) {
@@ -762,9 +800,8 @@ public class CallActivity extends AppCompatActivity {
       }
 
       if (!microphoneGranted) {
-        Toast.makeText(this,
-          "Microphone permission is required for calls",
-          Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Microphone permission is required for calls", Toast.LENGTH_LONG)
+            .show();
         finish();
         return;
       }
@@ -773,9 +810,9 @@ public class CallActivity extends AppCompatActivity {
 
       if (!cameraGranted && coordinator.isStartsWithVideo()) {
         Log.w(TAG, "Camera permission denied, switching to audio-only");
-        Toast.makeText(this,
-          "Starting audio-only call (camera permission denied)",
-          Toast.LENGTH_SHORT).show();
+        Toast.makeText(
+                this, "Starting audio-only call (camera permission denied)", Toast.LENGTH_SHORT)
+            .show();
         coordinator.setStartsWithVideo(false);
       }
 
@@ -817,17 +854,18 @@ public class CallActivity extends AppCompatActivity {
     }
   }
 
-   private PictureInPictureParams createPipParams() {
-     Rational aspectRatio = new Rational(9, 16);
-     PictureInPictureParams.Builder builder = new PictureInPictureParams.Builder()
-       .setAspectRatio(aspectRatio)
-       .setActions(new ArrayList<>());
+  private PictureInPictureParams createPipParams() {
+    Rational aspectRatio = new Rational(9, 16);
+    PictureInPictureParams.Builder builder =
+        new PictureInPictureParams.Builder()
+            .setAspectRatio(aspectRatio)
+            .setActions(new ArrayList<>());
 
-     // FIXME: PiP currently shows media controls.
-     // Will fix later: to fix this, we may need changes to audio playback implementation.
+    // FIXME: PiP currently shows media controls.
+    // Will fix later: to fix this, we may need changes to audio playback implementation.
 
-     return builder.build();
-   }
+    return builder.build();
+  }
 
   // Helper
 
@@ -849,7 +887,6 @@ public class CallActivity extends AppCompatActivity {
       proximityWakeLock.release();
       Log.d(TAG, "Proximity wake lock released in onDestroy");
     }
-
   }
 
   @Override

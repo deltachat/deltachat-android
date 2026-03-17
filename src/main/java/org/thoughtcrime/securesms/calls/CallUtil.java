@@ -6,14 +6,11 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.telecom.CallEndpointCompat;
-
 import com.b44t.messenger.DcChat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
@@ -58,27 +55,37 @@ public class CallUtil {
       Recipient recipient = new Recipient(context, dcChat);
       ContactPhoto contactPhoto = recipient.getContactPhoto(context);
 
-      int wh = context.getResources()
-        .getDimensionPixelSize(R.dimen.contact_photo_target_size);
+      int wh = context.getResources().getDimensionPixelSize(R.dimen.contact_photo_target_size);
       Bitmap bitmap;
 
       if (contactPhoto != null) {
-        bitmap = GlideApp.with(context)
-          .asBitmap()
-          .load(contactPhoto)
-          .diskCacheStrategy(DiskCacheStrategy.ALL)
-          .circleCrop()
-          .submit(wh, wh)
-          .get();
+        bitmap =
+            GlideApp.with(context)
+                .asBitmap()
+                .load(contactPhoto)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .circleCrop()
+                .submit(wh, wh)
+                .get();
       } else {
-        Drawable drawable = recipient.getFallbackContactPhoto()
-          .asDrawable(context, recipient.getFallbackAvatarColor());
+        Drawable drawable =
+            recipient
+                .getFallbackContactPhoto()
+                .asDrawable(context, recipient.getFallbackAvatarColor());
         bitmap = BitmapUtil.createFromDrawable(drawable, wh, wh);
       }
 
       if (bitmap != null) {
-        Log.d(TAG, "Bitmap loaded: " + bitmap.getWidth() + "x" + bitmap.getHeight()
-                + ", config=" + bitmap.getConfig() + ", recycled=" + bitmap.isRecycled());
+        Log.d(
+            TAG,
+            "Bitmap loaded: "
+                + bitmap.getWidth()
+                + "x"
+                + bitmap.getHeight()
+                + ", config="
+                + bitmap.getConfig()
+                + ", recycled="
+                + bitmap.isRecycled());
         Icon icon = Icon.createWithBitmap(bitmap);
         Log.d(TAG, "Icon created successfully");
         return icon;
