@@ -5,10 +5,16 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,19 +39,7 @@ import org.webrtc.VideoDecoderFactory;
 import org.webrtc.VideoEncoderFactory;
 import org.webrtc.VideoTrack;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-
-/**
- * Manages WebRTC PeerConnection.
- * Mirrors TypeScript CallsManager.
- */
+/** Manages WebRTC PeerConnection. Mirrors TypeScript CallsManager. */
 @RequiresApi(Build.VERSION_CODES.M)
 public class WebRTCClient {
 
@@ -95,17 +89,22 @@ public class WebRTCClient {
   // Callbacks to ViewModel
   private final Callbacks callbacks;
 
-  /**
-   * Callbacks to ViewModel of connection events
-   */
+  /** Callbacks to ViewModel of connection events */
   public interface Callbacks {
     void onOfferReady(String offerSdp);
+
     void onAnswerReady(String answerSdp);
+
     void onRemoteVideoTrack(VideoTrack videoTrack);
+
     void onRemoteAudioTrack(AudioTrack audioTrack);
+
     void onConnectionStateChanged(PeerConnection.PeerConnectionState state);
+
     void onRemoteMutedStateChanged(boolean audioEnabled, boolean videoEnabled);
+
     void onRelayUsageChanged(Boolean isRelayUsed);
+
     void onError(String error);
   }
 
@@ -124,20 +123,21 @@ public class WebRTCClient {
 
   private void initializePeerConnectionFactory() {
     PeerConnectionFactory.InitializationOptions initOptions =
-      PeerConnectionFactory.InitializationOptions.builder(context)
-        .setEnableInternalTracer(false)
-        .setFieldTrials("")
-        .createInitializationOptions();
+        PeerConnectionFactory.InitializationOptions.builder(context)
+            .setEnableInternalTracer(false)
+            .setFieldTrials("")
+            .createInitializationOptions();
     PeerConnectionFactory.initialize(initOptions);
 
     EglBase.Context eglBaseContext = EglUtils.getEglBase().getEglBaseContext();
 
     // Create video encoder/decoder factories
-    VideoEncoderFactory encoderFactory = new DefaultVideoEncoderFactory(
-      eglBaseContext,
-      true,  // enableIntelVp8Encoder
-      true   // enableH264HighProfile
-    );
+    VideoEncoderFactory encoderFactory =
+        new DefaultVideoEncoderFactory(
+            eglBaseContext,
+            true, // enableIntelVp8Encoder
+            true // enableH264HighProfile
+            );
 
     VideoDecoderFactory decoderFactory = new DefaultVideoDecoderFactory(eglBaseContext);
 
@@ -145,21 +145,19 @@ public class WebRTCClient {
     options.disableEncryption = false;
     options.disableNetworkMonitor = false;
 
-    peerConnectionFactory = PeerConnectionFactory.builder()
-      .setOptions(options)
-      .setVideoEncoderFactory(encoderFactory)
-      .setVideoDecoderFactory(decoderFactory)
-      .createPeerConnectionFactory();
+    peerConnectionFactory =
+        PeerConnectionFactory.builder()
+            .setOptions(options)
+            .setVideoEncoderFactory(encoderFactory)
+            .setVideoDecoderFactory(decoderFactory)
+            .createPeerConnectionFactory();
 
     Log.d(TAG, "PeerConnectionFactory initialized");
   }
 
   /**
-   * Expected JSON format:
-   * [
-   *   {"urls": "stun:stun.example.com:3478"},
-   *   {"urls": "turn:turn.example.com", "username": "user", "credential": "pass"}
-   * ]
+   * Expected JSON format: [ {"urls": "stun:stun.example.com:3478"}, {"urls":
+   * "turn:turn.example.com", "username": "user", "credential": "pass"} ]
    */
   public void configure(String iceServersJson) {
     this.iceServers = parseIceServers(iceServersJson);
@@ -195,8 +193,7 @@ public class WebRTCClient {
           }
         }
 
-        PeerConnection.IceServer.Builder builder =
-          PeerConnection.IceServer.builder(urls);
+        PeerConnection.IceServer.Builder builder = PeerConnection.IceServer.builder(urls);
 
         if (serverObj.has("username")) {
           builder.setUsername(serverObj.getString("username"));
@@ -214,9 +211,7 @@ public class WebRTCClient {
     return servers;
   }
 
-  /**
-   * Set local media stream
-   */
+  /** Set local media stream */
   public void setLocalMediaStream(MediaStream stream) {
     this.localStream = stream;
 
@@ -227,8 +222,12 @@ public class WebRTCClient {
       this.localVideoTrack = stream.videoTracks.get(0);
     }
 
-    Log.d(TAG, "Local media stream set: audio: " + (localAudioTrack != null)
-      + ", video: " + (localVideoTrack != null));
+    Log.d(
+        TAG,
+        "Local media stream set: audio: "
+            + (localAudioTrack != null)
+            + ", video: "
+            + (localVideoTrack != null));
   }
 
   public boolean hasLocalMediaStream() {
@@ -236,18 +235,15 @@ public class WebRTCClient {
   }
 
   private void createPeerConnection() {
-    PeerConnection.RTCConfiguration rtcConfig =
-      new PeerConnection.RTCConfiguration(iceServers);
+    PeerConnection.RTCConfiguration rtcConfig = new PeerConnection.RTCConfiguration(iceServers);
     rtcConfig.iceTransportsType = PeerConnection.IceTransportsType.ALL;
     rtcConfig.bundlePolicy = PeerConnection.BundlePolicy.MAXBUNDLE;
     rtcConfig.rtcpMuxPolicy = PeerConnection.RtcpMuxPolicy.REQUIRE;
     rtcConfig.iceCandidatePoolSize = 1;
     rtcConfig.sdpSemantics = PeerConnection.SdpSemantics.UNIFIED_PLAN;
 
-    peerConnection = peerConnectionFactory.createPeerConnection(
-      rtcConfig,
-      new PeerConnectionObserver()
-    );
+    peerConnection =
+        peerConnectionFactory.createPeerConnection(rtcConfig, new PeerConnectionObserver());
 
     if (peerConnection == null) {
       callbacks.onError("Failed to create PeerConnection");
@@ -362,37 +358,38 @@ public class WebRTCClient {
 
     iceTricklingDataChannel = peerConnection.createDataChannel("iceTrickling", init);
 
-    iceTricklingDataChannel.registerObserver(new DataChannel.Observer() {
-      @Override
-      public void onBufferedAmountChange(long amount) {}
+    iceTricklingDataChannel.registerObserver(
+        new DataChannel.Observer() {
+          @Override
+          public void onBufferedAmountChange(long amount) {}
 
-      @Override
-      public void onStateChange() {
-        DataChannel.State state = iceTricklingDataChannel.state();
-        Log.d(TAG, "ICE Trickling channel state: " + state);
+          @Override
+          public void onStateChange() {
+            DataChannel.State state = iceTricklingDataChannel.state();
+            Log.d(TAG, "ICE Trickling channel state: " + state);
 
-        if (state == DataChannel.State.OPEN) {
-          iceTricklingChannelOpen = true;
-          flushIceCandidateBuffer();
-        } else if (state == DataChannel.State.CLOSED) {
-          iceTricklingChannelOpen = false;
-        }
-      }
+            if (state == DataChannel.State.OPEN) {
+              iceTricklingChannelOpen = true;
+              flushIceCandidateBuffer();
+            } else if (state == DataChannel.State.CLOSED) {
+              iceTricklingChannelOpen = false;
+            }
+          }
 
-      @Override
-      public void onMessage(DataChannel.Buffer buffer) {
-        String json = extractString(buffer);
-        Log.d(TAG, "Received ICE candidate: " + json);
+          @Override
+          public void onMessage(DataChannel.Buffer buffer) {
+            String json = extractString(buffer);
+            Log.d(TAG, "Received ICE candidate: " + json);
 
-        IceCandidate candidate = parseIceCandidate(json);
+            IceCandidate candidate = parseIceCandidate(json);
 
-        if (candidate != null) {
-          peerConnection.addIceCandidate(candidate);
-        } else {
-          Log.d(TAG, "Received end-of-candidates signal");
-        }
-      }
-    });
+            if (candidate != null) {
+              peerConnection.addIceCandidate(candidate);
+            } else {
+              Log.d(TAG, "Received end-of-candidates signal");
+            }
+          }
+        });
   }
 
   private void setupMutedStateDataChannel() {
@@ -402,44 +399,45 @@ public class WebRTCClient {
 
     mutedStateDataChannel = peerConnection.createDataChannel("mutedState", init);
 
-    mutedStateDataChannel.registerObserver(new DataChannel.Observer() {
-      @Override
-      public void onBufferedAmountChange(long amount) {}
+    mutedStateDataChannel.registerObserver(
+        new DataChannel.Observer() {
+          @Override
+          public void onBufferedAmountChange(long amount) {}
 
-      @Override
-      public void onStateChange() {
-        DataChannel.State state = mutedStateDataChannel.state();
-        Log.d(TAG, "mutedState channel state: " + state);
+          @Override
+          public void onStateChange() {
+            DataChannel.State state = mutedStateDataChannel.state();
+            Log.d(TAG, "mutedState channel state: " + state);
 
-        if (state == DataChannel.State.OPEN) {
-          mutedStateChannelOpen = true;
+            if (state == DataChannel.State.OPEN) {
+              mutedStateChannelOpen = true;
 
-          boolean audioEnabled = localAudioTrack != null && localAudioTrack.enabled();
-          boolean videoEnabled = localVideoTrack != null && localVideoTrack.enabled();
-          sendMutedState(audioEnabled, videoEnabled);
+              boolean audioEnabled = localAudioTrack != null && localAudioTrack.enabled();
+              boolean videoEnabled = localVideoTrack != null && localVideoTrack.enabled();
+              sendMutedState(audioEnabled, videoEnabled);
 
-        } else if (state == DataChannel.State.CLOSED) {
-          mutedStateChannelOpen = false;
-        }
-      }
+            } else if (state == DataChannel.State.CLOSED) {
+              mutedStateChannelOpen = false;
+            }
+          }
 
-      @Override
-      public void onMessage(DataChannel.Buffer buffer) {
-        String json = extractString(buffer);
-        Log.d(TAG, "Received muted state: " + json);
+          @Override
+          public void onMessage(DataChannel.Buffer buffer) {
+            String json = extractString(buffer);
+            Log.d(TAG, "Received muted state: " + json);
 
-        try {
-          JSONObject obj = new JSONObject(json);
-          boolean audioEnabled = obj.getBoolean("audioEnabled");
-          boolean videoEnabled = obj.getBoolean("videoEnabled");
+            try {
+              JSONObject obj = new JSONObject(json);
+              boolean audioEnabled = obj.getBoolean("audioEnabled");
+              boolean videoEnabled = obj.getBoolean("videoEnabled");
 
-          mainHandler.post(() ->
-            callbacks.onRemoteMutedStateChanged(audioEnabled, videoEnabled));
-        } catch (JSONException e) {
-          Log.e(TAG, "Failed to parse muted state JSON", e);
-        }
-      }
-    });
+              mainHandler.post(
+                  () -> callbacks.onRemoteMutedStateChanged(audioEnabled, videoEnabled));
+            } catch (JSONException e) {
+              Log.e(TAG, "Failed to parse muted state JSON", e);
+            }
+          }
+        });
   }
 
   // Flush buffered ICE candidates when data channel opens
@@ -465,9 +463,7 @@ public class WebRTCClient {
     Log.d(TAG, "Sent ICE candidate using data channel: " + candidate.sdpMid);
   }
 
-  /**
-   * Send current muted state to remote peer
-   */
+  /** Send current muted state to remote peer */
   public void sendMutedState(boolean audioEnabled, boolean videoEnabled) {
     if (!mutedStateChannelOpen) {
       Log.w(TAG, "Muted state channel not open");
@@ -479,8 +475,7 @@ public class WebRTCClient {
       json.put("audioEnabled", audioEnabled);
       json.put("videoEnabled", videoEnabled);
 
-      ByteBuffer buffer = ByteBuffer.wrap(
-        json.toString().getBytes(StandardCharsets.UTF_8));
+      ByteBuffer buffer = ByteBuffer.wrap(json.toString().getBytes(StandardCharsets.UTF_8));
       mutedStateDataChannel.send(new DataChannel.Buffer(buffer, false));
 
       Log.d(TAG, "Sent muted state: audio: " + audioEnabled + ", video: " + videoEnabled);
@@ -519,10 +514,7 @@ public class WebRTCClient {
     }
   }
 
-  /**
-   * Wait for enough ICE before sending offer/answer
-   * Mirrors TypeScript gatheredEnoughIce()
-   */
+  /** Wait for enough ICE before sending offer/answer Mirrors TypeScript gatheredEnoughIce() */
   private boolean waitForEnoughIce() {
     boolean hasTurnServer = false;
     boolean hasStunServer = false;
@@ -584,9 +576,7 @@ public class WebRTCClient {
 
   // Outgoing Call
 
-  /**
-   * Start outgoing call
-   */
+  /** Start outgoing call */
   public void startOutgoingCall() {
     if (localStream == null) {
       mainHandler.post(() -> callbacks.onError("Local media stream not set"));
@@ -594,126 +584,129 @@ public class WebRTCClient {
     }
 
     Log.d(TAG, "Starting outgoing call");
-    mainHandler.post(() ->
-      callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
+    mainHandler.post(
+        () -> callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
 
     createPeerConnection();
 
     for (AudioTrack track : localStream.audioTracks) {
-      RtpSender sender = peerConnection.addTrack(track, Collections.singletonList(localStream.getId()));
+      RtpSender sender =
+          peerConnection.addTrack(track, Collections.singletonList(localStream.getId()));
       Log.d(TAG, "Added audio track, sender: " + sender);
     }
     for (VideoTrack track : localStream.videoTracks) {
-      RtpSender sender = peerConnection.addTrack(track, Collections.singletonList(localStream.getId()));
+      RtpSender sender =
+          peerConnection.addTrack(track, Collections.singletonList(localStream.getId()));
       Log.d(TAG, "Added video track, sender: " + sender);
     }
     Log.d(TAG, "Total senders: " + peerConnection.getSenders().size());
 
     // Create offer
 
-    peerConnection.createOffer(new SdpObserver() {
-      @Override
-      public void onCreateSuccess(SessionDescription sdp) {
-        onOfferCreated(sdp);
-      }
+    peerConnection.createOffer(
+        new SdpObserver() {
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {
+            onOfferCreated(sdp);
+          }
 
-      @Override
-      public void onSetSuccess() {}
+          @Override
+          public void onSetSuccess() {}
 
-      @Override
-      public void onCreateFailure(String error) {
-        Log.e(TAG, "Failed to create offer: " + error);
-        mainHandler.post(() -> callbacks.onError("Failed to create offer: " + error));
-      }
+          @Override
+          public void onCreateFailure(String error) {
+            Log.e(TAG, "Failed to create offer: " + error);
+            mainHandler.post(() -> callbacks.onError("Failed to create offer: " + error));
+          }
 
-      @Override
-      public void onSetFailure(String error) {}
-    }, new MediaConstraints());
+          @Override
+          public void onSetFailure(String error) {}
+        },
+        new MediaConstraints());
   }
 
   private void onOfferCreated(SessionDescription offerSdp) {
-    peerConnection.setLocalDescription(new SdpObserver() {
-      @Override
-      public void onSetSuccess() {
-        Log.d(TAG, "Local description set, waiting for ICE...");
+    peerConnection.setLocalDescription(
+        new SdpObserver() {
+          @Override
+          public void onSetSuccess() {
+            Log.d(TAG, "Local description set, waiting for ICE...");
 
-        // Wait for ICE in background
-        new Thread(() -> {
-          boolean gotIce = waitForEnoughIce();
+            // Wait for ICE in background
+            new Thread(
+                    () -> {
+                      boolean gotIce = waitForEnoughIce();
 
-          if (!gotIce) {
-            Log.w(TAG, "Proceeding without optimal ICE candidates");
+                      if (!gotIce) {
+                        Log.w(TAG, "Proceeding without optimal ICE candidates");
+                      }
+
+                      // Get final SDP
+                      SessionDescription localDesc = peerConnection.getLocalDescription();
+                      if (localDesc != null) {
+                        String finalSdp = localDesc.description;
+
+                        // Enable trickling for additional candidates
+                        enableIceTrickling = true;
+
+                        // Notify ViewModel
+                        mainHandler.post(() -> callbacks.onOfferReady(finalSdp));
+                      } else {
+                        mainHandler.post(
+                            () ->
+                                callbacks.onError("Local description is null after ICE gathering"));
+                      }
+                    })
+                .start();
           }
 
-          // Get final SDP
-          SessionDescription localDesc = peerConnection.getLocalDescription();
-          if (localDesc != null) {
-            String finalSdp = localDesc.description;
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {}
 
-            // Enable trickling for additional candidates
-            enableIceTrickling = true;
+          @Override
+          public void onCreateFailure(String error) {}
 
-            // Notify ViewModel
-            mainHandler.post(() -> callbacks.onOfferReady(finalSdp));
-          } else {
-            mainHandler.post(() ->
-              callbacks.onError("Local description is null after ICE gathering"));
+          @Override
+          public void onSetFailure(String error) {
+            Log.e(TAG, "Failed to set local description: " + error);
+            mainHandler.post(() -> callbacks.onError("Failed to set local description: " + error));
           }
-        }).start();
-      }
-
-      @Override
-      public void onCreateSuccess(SessionDescription sdp) {}
-
-      @Override
-      public void onCreateFailure(String error) {}
-
-      @Override
-      public void onSetFailure(String error) {
-        Log.e(TAG, "Failed to set local description: " + error);
-        mainHandler.post(() ->
-          callbacks.onError("Failed to set local description: " + error));
-      }
-    }, offerSdp);
+        },
+        offerSdp);
   }
 
-  /**
-   * Handle answer SDP from remote peer for outgoing call
-   */
+  /** Handle answer SDP from remote peer for outgoing call */
   public void handleAnswerSdp(String answerSdp) {
     Log.d(TAG, "Handling answer SDP");
 
-    SessionDescription remoteSdp = new SessionDescription(
-      SessionDescription.Type.ANSWER,
-      answerSdp
-    );
+    SessionDescription remoteSdp =
+        new SessionDescription(SessionDescription.Type.ANSWER, answerSdp);
 
-    peerConnection.setRemoteDescription(new SdpObserver() {
-      @Override
-      public void onSetSuccess() {
-        Log.d(TAG, "Remote answer set, connection should establish");
-      }
+    peerConnection.setRemoteDescription(
+        new SdpObserver() {
+          @Override
+          public void onSetSuccess() {
+            Log.d(TAG, "Remote answer set, connection should establish");
+          }
 
-      @Override
-      public void onCreateSuccess(SessionDescription sdp) {}
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {}
 
-      @Override
-      public void onCreateFailure(String error) {}
+          @Override
+          public void onCreateFailure(String error) {}
 
-      @Override
-      public void onSetFailure(String error) {
-        Log.e(TAG, "Failed to set remote description: " + error);
-        mainHandler.post(() ->
-          callbacks.onError("Failed to set remote description: " + error));
-      }
-    }, remoteSdp);
+          @Override
+          public void onSetFailure(String error) {
+            Log.e(TAG, "Failed to set remote description: " + error);
+            mainHandler.post(() -> callbacks.onError("Failed to set remote description: " + error));
+          }
+        },
+        remoteSdp);
   }
 
   // Incoming Call
 
-  /**
-   * Accept incoming call
-   */
+  /** Accept incoming call */
   public void acceptIncomingCall(String offerSdp) {
     if (localStream == null) {
       mainHandler.post(() -> callbacks.onError("Local media stream not set"));
@@ -721,36 +714,34 @@ public class WebRTCClient {
     }
 
     Log.d(TAG, "Accepting incoming call");
-    mainHandler.post(() ->
-      callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
+    mainHandler.post(
+        () -> callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
 
     createPeerConnection();
 
-    SessionDescription remoteSdp = new SessionDescription(
-      SessionDescription.Type.OFFER,
-      offerSdp
-    );
+    SessionDescription remoteSdp = new SessionDescription(SessionDescription.Type.OFFER, offerSdp);
 
-    peerConnection.setRemoteDescription(new SdpObserver() {
-      @Override
-      public void onSetSuccess() {
-        Log.d(TAG, "Remote offer set, adding local tracks...");
-        addLocalTracksAndCreateAnswer();
-      }
+    peerConnection.setRemoteDescription(
+        new SdpObserver() {
+          @Override
+          public void onSetSuccess() {
+            Log.d(TAG, "Remote offer set, adding local tracks...");
+            addLocalTracksAndCreateAnswer();
+          }
 
-      @Override
-      public void onCreateSuccess(SessionDescription sdp) {}
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {}
 
-      @Override
-      public void onCreateFailure(String error) {}
+          @Override
+          public void onCreateFailure(String error) {}
 
-      @Override
-      public void onSetFailure(String error) {
-        Log.e(TAG, "Failed to set remote description: " + error);
-        mainHandler.post(() ->
-          callbacks.onError("Failed to set remote description: " + error));
-      }
-    }, remoteSdp);
+          @Override
+          public void onSetFailure(String error) {
+            Log.e(TAG, "Failed to set remote description: " + error);
+            mainHandler.post(() -> callbacks.onError("Failed to set remote description: " + error));
+          }
+        },
+        remoteSdp);
   }
 
   private void addLocalTracksAndCreateAnswer() {
@@ -763,70 +754,76 @@ public class WebRTCClient {
     }
 
     // Create answer
-    peerConnection.createAnswer(new SdpObserver() {
-      @Override
-      public void onCreateSuccess(SessionDescription sdp) {
-        onAnswerCreated(sdp);
-      }
+    peerConnection.createAnswer(
+        new SdpObserver() {
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {
+            onAnswerCreated(sdp);
+          }
 
-      @Override
-      public void onSetSuccess() {}
+          @Override
+          public void onSetSuccess() {}
 
-      @Override
-      public void onCreateFailure(String error) {
-        Log.e(TAG, "Failed to create answer: " + error);
-        mainHandler.post(() -> callbacks.onError("Failed to create answer: " + error));
-      }
+          @Override
+          public void onCreateFailure(String error) {
+            Log.e(TAG, "Failed to create answer: " + error);
+            mainHandler.post(() -> callbacks.onError("Failed to create answer: " + error));
+          }
 
-      @Override
-      public void onSetFailure(String error) {}
-    }, new MediaConstraints());
+          @Override
+          public void onSetFailure(String error) {}
+        },
+        new MediaConstraints());
   }
 
   private void onAnswerCreated(SessionDescription answerSdp) {
-    peerConnection.setLocalDescription(new SdpObserver() {
-      @Override
-      public void onSetSuccess() {
-        Log.d(TAG, "Local answer set, waiting for ICE...");
+    peerConnection.setLocalDescription(
+        new SdpObserver() {
+          @Override
+          public void onSetSuccess() {
+            Log.d(TAG, "Local answer set, waiting for ICE...");
 
-        // Wait for ICE on background thread
-        new Thread(() -> {
-          boolean gotIce = waitForEnoughIce();
+            // Wait for ICE on background thread
+            new Thread(
+                    () -> {
+                      boolean gotIce = waitForEnoughIce();
 
-          if (!gotIce) {
-            Log.w(TAG, "Proceeding without optimal ICE candidates");
+                      if (!gotIce) {
+                        Log.w(TAG, "Proceeding without optimal ICE candidates");
+                      }
+
+                      // Get final SDP
+                      SessionDescription localDesc = peerConnection.getLocalDescription();
+                      if (localDesc != null) {
+                        String finalSdp = localDesc.description;
+
+                        // Enable trickling for additional candidates
+                        enableIceTrickling = true;
+
+                        // Notify ViewModel
+                        mainHandler.post(() -> callbacks.onAnswerReady(finalSdp));
+                      } else {
+                        mainHandler.post(
+                            () ->
+                                callbacks.onError("Local description is null after ICE gathering"));
+                      }
+                    })
+                .start();
           }
 
-          // Get final SDP
-          SessionDescription localDesc = peerConnection.getLocalDescription();
-          if (localDesc != null) {
-            String finalSdp = localDesc.description;
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {}
 
-            // Enable trickling for additional candidates
-            enableIceTrickling = true;
+          @Override
+          public void onCreateFailure(String error) {}
 
-            // Notify ViewModel
-            mainHandler.post(() -> callbacks.onAnswerReady(finalSdp));
-          } else {
-            mainHandler.post(() ->
-              callbacks.onError("Local description is null after ICE gathering"));
+          @Override
+          public void onSetFailure(String error) {
+            Log.e(TAG, "Failed to set local description: " + error);
+            mainHandler.post(() -> callbacks.onError("Failed to set local description: " + error));
           }
-        }).start();
-      }
-
-      @Override
-      public void onCreateSuccess(SessionDescription sdp) {}
-
-      @Override
-      public void onCreateFailure(String error) {}
-
-      @Override
-      public void onSetFailure(String error) {
-        Log.e(TAG, "Failed to set local description: " + error);
-        mainHandler.post(() ->
-          callbacks.onError("Failed to set local description: " + error));
-      }
-    }, answerSdp);
+        },
+        answerSdp);
   }
 
   // Media Control
@@ -854,62 +851,67 @@ public class WebRTCClient {
 
   private void detectRelayUsage() {
     // Schedule detection after connection settles
-    mainHandler.postDelayed(() -> {
-      if (peerConnection == null) return;
+    mainHandler.postDelayed(
+        () -> {
+          if (peerConnection == null) return;
 
-      peerConnection.getStats(report -> {
-        boolean relayUsed = false;
+          peerConnection.getStats(
+              report -> {
+                boolean relayUsed = false;
 
-        Map<String, RTCStats> statsMap = report.getStatsMap();
+                Map<String, RTCStats> statsMap = report.getStatsMap();
 
-        // First, find the selected candidate pair
-        String selectedLocalCandidateId = null;
-        String selectedRemoteCandidateId = null;
+                // First, find the selected candidate pair
+                String selectedLocalCandidateId = null;
+                String selectedRemoteCandidateId = null;
 
-        for (Map.Entry<String, RTCStats> entry : statsMap.entrySet()) {
-          RTCStats stats = entry.getValue();
+                for (Map.Entry<String, RTCStats> entry : statsMap.entrySet()) {
+                  RTCStats stats = entry.getValue();
 
-          if ("candidate-pair".equals(stats.getType())) {
-            Map<String, Object> members = stats.getMembers();
+                  if ("candidate-pair".equals(stats.getType())) {
+                    Map<String, Object> members = stats.getMembers();
 
-            // Check if this pair is selected/nominated
-            Object state = members.get("state");
-            if ("succeeded".equals(state) || Boolean.TRUE.equals(members.get("nominated"))) {
-              selectedLocalCandidateId = (String) members.get("localCandidateId");
-              selectedRemoteCandidateId = (String) members.get("remoteCandidateId");
-              break;
-            }
-          }
-        }
-
-        // Now check if either candidate is relay type
-        if (selectedLocalCandidateId != null || selectedRemoteCandidateId != null) {
-          for (Map.Entry<String, RTCStats> entry : statsMap.entrySet()) {
-            RTCStats stats = entry.getValue();
-            String id = stats.getId();
-
-            if (id.equals(selectedLocalCandidateId) || id.equals(selectedRemoteCandidateId)) {
-              if ("local-candidate".equals(stats.getType()) ||
-                "remote-candidate".equals(stats.getType())) {
-
-                Map<String, Object> members = stats.getMembers();
-                String candidateType = (String) members.get("candidateType");
-
-                if ("relay".equals(candidateType)) {
-                  relayUsed = true;
-                  break;
+                    // Check if this pair is selected/nominated
+                    Object state = members.get("state");
+                    if ("succeeded".equals(state)
+                        || Boolean.TRUE.equals(members.get("nominated"))) {
+                      selectedLocalCandidateId = (String) members.get("localCandidateId");
+                      selectedRemoteCandidateId = (String) members.get("remoteCandidateId");
+                      break;
+                    }
+                  }
                 }
-              }
-            }
-          }
-        }
 
-        boolean finalRelayUsed = relayUsed;
-        mainHandler.post(() -> callbacks.onRelayUsageChanged(finalRelayUsed));
+                // Now check if either candidate is relay type
+                if (selectedLocalCandidateId != null || selectedRemoteCandidateId != null) {
+                  for (Map.Entry<String, RTCStats> entry : statsMap.entrySet()) {
+                    RTCStats stats = entry.getValue();
+                    String id = stats.getId();
 
-        Log.d(TAG, "Relay usage detected: " + finalRelayUsed);
-      });
-    }, 500);
+                    if (id.equals(selectedLocalCandidateId)
+                        || id.equals(selectedRemoteCandidateId)) {
+                      if ("local-candidate".equals(stats.getType())
+                          || "remote-candidate".equals(stats.getType())) {
+
+                        Map<String, Object> members = stats.getMembers();
+                        String candidateType = (String) members.get("candidateType");
+
+                        if ("relay".equals(candidateType)) {
+                          relayUsed = true;
+                          break;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                boolean finalRelayUsed = relayUsed;
+                mainHandler.post(() -> callbacks.onRelayUsageChanged(finalRelayUsed));
+
+                Log.d(TAG, "Relay usage detected: " + finalRelayUsed);
+              });
+        },
+        500);
   }
 
   // Cleanup

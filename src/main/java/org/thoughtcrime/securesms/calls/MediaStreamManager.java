@@ -2,10 +2,8 @@ package org.thoughtcrime.securesms.calls;
 
 import android.content.Context;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import org.thoughtcrime.securesms.EglUtils;
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
@@ -18,7 +16,6 @@ import org.webrtc.SurfaceTextureHelper;
 import org.webrtc.VideoCapturer;
 import org.webrtc.VideoSource;
 import org.webrtc.VideoTrack;
-
 
 public class MediaStreamManager {
 
@@ -37,6 +34,7 @@ public class MediaStreamManager {
 
   public interface Callback {
     void onMediaStreamReady(MediaStream stream);
+
     void onError(String error);
   }
 
@@ -46,9 +44,7 @@ public class MediaStreamManager {
     this.peerConnectionFactory = peerConnectionFactory;
   }
 
-  /**
-   * Create media stream with audio and optionally video
-   */
+  /** Create media stream with audio and optionally video */
   public void createMediaStream(Callback callback) {
     try {
       MediaStream mediaStream = peerConnectionFactory.createLocalMediaStream(STREAM_ID);
@@ -72,10 +68,8 @@ public class MediaStreamManager {
       mediaStream.addTrack(videoTrack);
 
       // Start capturing
-      surfaceTextureHelper = SurfaceTextureHelper.create(
-        "CaptureThread",
-        EglUtils.getEglBase().getEglBaseContext()
-      );
+      surfaceTextureHelper =
+          SurfaceTextureHelper.create("CaptureThread", EglUtils.getEglBase().getEglBaseContext());
       videoCapturer.initialize(surfaceTextureHelper, context, videoSource.getCapturerObserver());
       videoCapturer.startCapture(1280, 720, 30);
 
@@ -121,9 +115,7 @@ public class MediaStreamManager {
     }
   }
 
-  /**
-   * Cleanup resources
-   */
+  /** Cleanup resources */
   public void dispose() {
     if (videoCapturer != null) {
       try {

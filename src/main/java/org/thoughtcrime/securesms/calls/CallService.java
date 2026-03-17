@@ -15,22 +15,18 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-
+import chat.delta.rpc.RpcException;
 import org.thoughtcrime.securesms.webrtc.WebRTCClient;
 import org.webrtc.AudioTrack;
 import org.webrtc.MediaStream;
 import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
 
-import chat.delta.rpc.RpcException;
-
 /**
- * Foreground service for VoIP calls
- * Required to post CallStyle notifications on Android 12+
- * Owns WebRTC resources and keeps call alive
+ * Foreground service for VoIP calls Required to post CallStyle notifications on Android 12+ Owns
+ * WebRTC resources and keeps call alive
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallService extends Service implements WebRTCClient.Callbacks {
@@ -84,10 +80,7 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
   // Initialization
 
-  /**
-   * Initialize call infrastructure
-   * Does NOT start camera/microphone
-   */
+  /** Initialize call infrastructure Does NOT start camera/microphone */
   public void initializeCall() {
     Log.d(TAG, "initializeCall (Infrastructure only)");
 
@@ -98,35 +91,34 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     webRTCClient = new WebRTCClient(getApplicationContext(), this);
 
-    mediaStreamManager = new MediaStreamManager(
-      getApplicationContext(),
-      webRTCClient.getPeerConnectionFactory()
-    );
+    mediaStreamManager =
+        new MediaStreamManager(getApplicationContext(), webRTCClient.getPeerConnectionFactory());
 
     fetchIceServersAndSetup();
   }
 
   private void fetchIceServersAndSetup() {
-    new Thread(() -> {
-      try {
-        String iceServersJson = callCoordinator.fetchIceServers();
-        Log.d(TAG, "ICE servers fetched: " + iceServersJson);
+    new Thread(
+            () -> {
+              try {
+                String iceServersJson = callCoordinator.fetchIceServers();
+                Log.d(TAG, "ICE servers fetched: " + iceServersJson);
 
-        webRTCClient.configure(iceServersJson);
+                webRTCClient.configure(iceServersJson);
 
-        Log.d(TAG, "Infrastructure initialized, waiting for media capture");
+                Log.d(TAG, "Infrastructure initialized, waiting for media capture");
 
-      } catch (RpcException e) {
-        Log.e(TAG, "Failed to fetch ICE servers", e);
-        callCoordinator.reportError("Failed to connect: " + e.getMessage());
-      }
-    }).start();
+              } catch (RpcException e) {
+                Log.e(TAG, "Failed to fetch ICE servers", e);
+                callCoordinator.reportError("Failed to connect: " + e.getMessage());
+              }
+            })
+        .start();
   }
 
   /**
-   * Start camera/microphone capture
-   * Must be called when app is in foreground
-   * Called by coordinator when ViewModel/Activity is ready
+   * Start camera/microphone capture Must be called when app is in foreground Called by coordinator
+   * when ViewModel/Activity is ready
    */
   public void startMediaCapture() {
     Log.d(TAG, "startMediaCapture (Camera/Microphone)");
@@ -156,35 +148,35 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     Log.d(TAG, "Creating media stream with video: " + startsWithVideo);
 
-    mediaStreamManager.createMediaStream(new MediaStreamManager.Callback() {
-      @Override
-      public void onMediaStreamReady(MediaStream stream) {
-        Log.d(TAG, "Media stream ready");
+    mediaStreamManager.createMediaStream(
+        new MediaStreamManager.Callback() {
+          @Override
+          public void onMediaStreamReady(MediaStream stream) {
+            Log.d(TAG, "Media stream ready");
 
-        webRTCClient.setLocalMediaStream(stream);
+            webRTCClient.setLocalMediaStream(stream);
 
-        callCoordinator.setVideoEnabled(startsWithVideo);
+            callCoordinator.setVideoEnabled(startsWithVideo);
 
-        if (!stream.videoTracks.isEmpty()) {
-          VideoTrack localTrack = stream.videoTracks.get(0);
-          callCoordinator.updateLocalVideoTrack(localTrack);
-        } else {
-          Log.w(TAG, "Camera unavailable, call will be audio-only");
-          callCoordinator.reportError("Camera unavailable, using audio only");
-          callCoordinator.setVideoEnabled(false);
-        }
+            if (!stream.videoTracks.isEmpty()) {
+              VideoTrack localTrack = stream.videoTracks.get(0);
+              callCoordinator.updateLocalVideoTrack(localTrack);
+            } else {
+              Log.w(TAG, "Camera unavailable, call will be audio-only");
+              callCoordinator.reportError("Camera unavailable, using audio only");
+              callCoordinator.setVideoEnabled(false);
+            }
 
-        Log.d(TAG, "Media capture complete, ready for call");
+            Log.d(TAG, "Media capture complete, ready for call");
+          }
 
-      }
-
-      @Override
-      public void onError(String error) {
-        Log.e(TAG, "Failed to setup media: " + error);
-        callCoordinator.reportError("Camera/microphone error: " + error);
-        callCoordinator.setVideoEnabled(false);
-      }
-    });
+          @Override
+          public void onError(String error) {
+            Log.e(TAG, "Failed to setup media: " + error);
+            callCoordinator.reportError("Camera/microphone error: " + error);
+            callCoordinator.setVideoEnabled(false);
+          }
+        });
   }
 
   // Ringtone Management
@@ -213,21 +205,21 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
         return;
       }
 
-      AudioAttributes audioAttributes = new AudioAttributes.Builder()
-        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-        .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
-        .setLegacyStreamType(AudioManager.STREAM_RING)
-        .build();
+      AudioAttributes audioAttributes =
+          new AudioAttributes.Builder()
+              .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+              .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+              .setLegacyStreamType(AudioManager.STREAM_RING)
+              .build();
 
       ringtone.setAudioAttributes(audioAttributes);
 
       // Request audio focus
-      audioFocusRequest = new AudioFocusRequest.Builder(
-        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT
-      )
-        .setAudioAttributes(audioAttributes)
-        .setWillPauseWhenDucked(false)
-        .build();
+      audioFocusRequest =
+          new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+              .setAudioAttributes(audioAttributes)
+              .setWillPauseWhenDucked(false)
+              .build();
 
       int result = audioManager.requestAudioFocus(audioFocusRequest);
       if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
@@ -253,18 +245,18 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     }
 
     try {
-      AudioAttributes audioAttributes = new AudioAttributes.Builder()
-        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-        .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
-        .setLegacyStreamType(AudioManager.STREAM_VOICE_CALL)
-        .build();
+      AudioAttributes audioAttributes =
+          new AudioAttributes.Builder()
+              .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+              .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
+              .setLegacyStreamType(AudioManager.STREAM_VOICE_CALL)
+              .build();
 
-      audioFocusRequest = new AudioFocusRequest.Builder(
-        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK
-      )
-        .setAudioAttributes(audioAttributes)
-        .setWillPauseWhenDucked(false)
-        .build();
+      audioFocusRequest =
+          new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK)
+              .setAudioAttributes(audioAttributes)
+              .setWillPauseWhenDucked(false)
+              .build();
 
       int result = audioManager.requestAudioFocus(audioFocusRequest);
       if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
@@ -289,9 +281,7 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     }
   }
 
-  /**
-   * Stop playing ringtone
-   */
+  /** Stop playing ringtone */
   public void stopRingtone() {
     Log.d(TAG, "stopRingtone");
 
