@@ -745,14 +745,6 @@ public class NotificationCenter {
       return null;
     }
 
-//    public void removeCallNotification(int accountId, int callId) {
-//        try {
-//            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-//            String tag = "call-" + accountId;
-//            notificationManager.cancel(tag, callId);
-//        } catch (Exception e) { Log.w(TAG, e); }
-//    }
-
     public void removeNotification(int accountId, int chatId, int msgId) {
         boolean shouldCancelNotification = false;
         boolean removeSummary = false;
