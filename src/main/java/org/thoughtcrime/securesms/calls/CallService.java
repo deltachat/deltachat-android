@@ -25,8 +25,10 @@ import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
 
 /**
- * Foreground service for VoIP calls Required to post CallStyle notifications on Android 12+ Owns
- * WebRTC resources and keeps call alive
+ * Foreground service for VoIP calls
+ *
+ * <p>Required to post CallStyle notifications on Android 12+. Owns WebRTC resources and keeps call
+ * alive.
  */
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallService extends Service implements WebRTCClient.Callbacks {
@@ -100,6 +102,10 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   private void fetchIceServersAndSetup() {
     new Thread(
             () -> {
+              if (!callCoordinator.hasActiveCall()) {
+                Log.d(TAG, "Call ended before ICE fetch, aborting");
+                return;
+              }
               try {
                 String iceServersJson = callCoordinator.fetchIceServers();
                 Log.d(TAG, "ICE servers fetched: " + iceServersJson);
@@ -117,8 +123,10 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   }
 
   /**
-   * Start camera/microphone capture Must be called when app is in foreground Called by coordinator
-   * when ViewModel/Activity is ready
+   * Start camera/microphone capture
+   *
+   * <p>Must be called when app is in foreground. Called by coordinator when ViewModel/Activity is
+   * ready.
    */
   public void startMediaCapture() {
     Log.d(TAG, "startMediaCapture (Camera/Microphone)");
