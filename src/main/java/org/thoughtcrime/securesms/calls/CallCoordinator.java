@@ -825,9 +825,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   // Helper (CallService)
 
   public synchronized String fetchIceServers() throws RpcException {
-    if (activeAccId == null) {
-      throw new RpcException("No active account");
-    }
     return rpc.iceServers(activeAccId);
   }
 
