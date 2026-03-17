@@ -156,8 +156,14 @@ public class WebRTCClient {
   }
 
   /**
-   * Expected JSON format: [ {"urls": "stun:stun.example.com:3478"}, {"urls":
-   * "turn:turn.example.com", "username": "user", "credential": "pass"} ]
+   * Expected JSON format:
+   *
+   * <pre>{@code
+   * [
+   *   {"urls": "stun:stun.example.com:3478"},
+   *   {"urls": "turn:turn.example.com", "username": "user", "credential": "pass"}
+   * ]
+   * }</pre>
    */
   public void configure(String iceServersJson) {
     this.iceServers = parseIceServers(iceServersJson);
@@ -514,7 +520,7 @@ public class WebRTCClient {
     }
   }
 
-  /** Wait for enough ICE before sending offer/answer Mirrors TypeScript gatheredEnoughIce() */
+  /** Wait for enough ICE before sending offer/answer. Mirrors TypeScript gatheredEnoughIce() */
   private boolean waitForEnoughIce() {
     boolean hasTurnServer = false;
     boolean hasStunServer = false;
@@ -637,24 +643,32 @@ public class WebRTCClient {
                     () -> {
                       boolean gotIce = waitForEnoughIce();
 
-                      if (!gotIce) {
-                        Log.w(TAG, "Proceeding without optimal ICE candidates");
-                      }
+                      synchronized (WebRTCClient.this) {
+                        if (isEnded || peerConnection == null) {
+                          Log.d(TAG, "Call ended during ICE gathering, aborting");
+                          return;
+                        }
 
-                      // Get final SDP
-                      SessionDescription localDesc = peerConnection.getLocalDescription();
-                      if (localDesc != null) {
-                        String finalSdp = localDesc.description;
+                        if (!gotIce) {
+                          Log.w(TAG, "Proceeding without optimal ICE candidates");
+                        }
 
-                        // Enable trickling for additional candidates
-                        enableIceTrickling = true;
+                        // Get final SDP
+                        SessionDescription localDesc = peerConnection.getLocalDescription();
+                        if (localDesc != null) {
+                          String finalSdp = localDesc.description;
 
-                        // Notify ViewModel
-                        mainHandler.post(() -> callbacks.onOfferReady(finalSdp));
-                      } else {
-                        mainHandler.post(
-                            () ->
-                                callbacks.onError("Local description is null after ICE gathering"));
+                          // Enable trickling for additional candidates
+                          enableIceTrickling = true;
+
+                          // Notify ViewModel
+                          mainHandler.post(() -> callbacks.onOfferReady(finalSdp));
+                        } else {
+                          mainHandler.post(
+                              () ->
+                                  callbacks.onError(
+                                      "Local description is null after ICE gathering"));
+                        }
                       }
                     })
                 .start();
@@ -788,24 +802,32 @@ public class WebRTCClient {
                     () -> {
                       boolean gotIce = waitForEnoughIce();
 
-                      if (!gotIce) {
-                        Log.w(TAG, "Proceeding without optimal ICE candidates");
-                      }
+                      synchronized (WebRTCClient.this) {
+                        if (isEnded || peerConnection == null) {
+                          Log.d(TAG, "Call ended during ICE gathering, aborting");
+                          return;
+                        }
 
-                      // Get final SDP
-                      SessionDescription localDesc = peerConnection.getLocalDescription();
-                      if (localDesc != null) {
-                        String finalSdp = localDesc.description;
+                        if (!gotIce) {
+                          Log.w(TAG, "Proceeding without optimal ICE candidates");
+                        }
 
-                        // Enable trickling for additional candidates
-                        enableIceTrickling = true;
+                        // Get final SDP
+                        SessionDescription localDesc = peerConnection.getLocalDescription();
+                        if (localDesc != null) {
+                          String finalSdp = localDesc.description;
 
-                        // Notify ViewModel
-                        mainHandler.post(() -> callbacks.onAnswerReady(finalSdp));
-                      } else {
-                        mainHandler.post(
-                            () ->
-                                callbacks.onError("Local description is null after ICE gathering"));
+                          // Enable trickling for additional candidates
+                          enableIceTrickling = true;
+
+                          // Notify ViewModel
+                          mainHandler.post(() -> callbacks.onAnswerReady(finalSdp));
+                        } else {
+                          mainHandler.post(
+                              () ->
+                                  callbacks.onError(
+                                      "Local description is null after ICE gathering"));
+                        }
                       }
                     })
                 .start();
@@ -916,7 +938,7 @@ public class WebRTCClient {
 
   // Cleanup
 
-  public void endCall() {
+  public synchronized void endCall() {
     if (isEnded) {
       Log.d(TAG, "endCall() already called, skipping");
       return;
@@ -924,6 +946,11 @@ public class WebRTCClient {
 
     isEnded = true;
     Log.d(TAG, "Ending call");
+
+    // Unblock any thread waiting in waitForEnoughIce()
+    if (iceGatheringLatch != null) iceGatheringLatch.countDown();
+    if (relayCandidateLatch != null) relayCandidateLatch.countDown();
+    if (srflxCandidateLatch != null) srflxCandidateLatch.countDown();
 
     if (peerConnection != null) {
       peerConnection.close();
