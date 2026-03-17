@@ -417,7 +417,8 @@ public class ApplicationContext extends MultiDexApplication {
               .setConstraints(constraints)
               .build();
       WorkManager.getInstance(this)
-          .enqueueUniquePeriodicWork(FetchWorker.periodicWorkTag, ExistingPeriodicWorkPolicy.KEEP, fetchWorkRequest);
+          .enqueueUniquePeriodicWork(
+              FetchWorker.periodicWorkTag, ExistingPeriodicWorkPolicy.KEEP, fetchWorkRequest);
     }
   }
 
