@@ -52,7 +52,8 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
   public void onBindViewHolder(@NonNull RelayViewHolder holder, int position) {
     EnteredLoginParam relay = relays.get(position);
     boolean isMain = relay.addr != null && relay.addr.equals(mainRelayAddr);
-    holder.bind(relay, isMain, listener);
+    boolean isUnpublished = true; // TODO: get correct state from jsonrpc
+    holder.bind(relay, isMain, isUnpublished, listener);
   }
 
   @Override
@@ -72,7 +73,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       mainIndicator = itemView.findViewById(R.id.main_indicator);
     }
 
-    public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
+    public void bind(EnteredLoginParam relay, boolean isMain, boolean isUnpublished,  OnRelayClickListener listener) {
       Context context = itemView.getContext();
       String[] parts = relay.addr.split("@");
       titleText.setText(parts.length == 2 ? parts[1] : parts[0]);
@@ -80,6 +81,8 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       String subtitle = parts.length == 2 ? parts[0] : "";
       if (isMain) {
         subtitle += " · " + context.getString(R.string.used_for_sending);
+      } else if (isUnpublished) {
+        subtitle += " · " + context.getString(R.string.hidden_from_contacts);
       }
       subtitleText.setText(subtitle);
 
