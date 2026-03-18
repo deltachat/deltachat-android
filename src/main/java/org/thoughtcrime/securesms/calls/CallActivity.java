@@ -698,6 +698,7 @@ public class CallActivity extends AppCompatActivity {
   private void layoutVideos() {
     if (isFinishing() || isDestroyed()) return;
     if (viewModel == null) return;
+    if (isInPictureInPictureMode()) return;
 
     CallViewModel.CallState state = viewModel.getCallState().getValue();
     if (state == CallViewModel.CallState.ENDED || state == CallViewModel.CallState.ERROR) return;
