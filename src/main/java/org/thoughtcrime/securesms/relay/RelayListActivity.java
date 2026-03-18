@@ -242,19 +242,9 @@ public class RelayListActivity extends BaseActionBarActivity
   private void onRelayDelete(TransportListEntry relay) {
     AlertDialog.Builder builder = new AlertDialog.Builder(this)
         .setTitle(R.string.remove_transport)
-        .setMessage(getString(R.string.confirm_remove_transport, relay.param.addr))
-        .setPositiveButton(
-            relay.isUnpublished ? R.string.keep_transport_hidden : R.string.hide_transport_only,
-            (d, which) -> {
-              try {
-                rpc.setTransportUnpublished(accId, relay.param.addr, true);
-                loadRelays();
-              } catch (RpcException e) {
-                Log.e(TAG, "cannot unpublish relay: ", e);
-              }
-            })
+        .setMessage(getString(relay.isUnpublished ? R.string.confirm_remove_transport_x : R.string.confirm_remove_or_hide_transport_x, relay.param.addr))
         .setNegativeButton(
-            R.string.remove_transport_now,
+            R.string.remove_transport,
             (d, which) -> {
               try {
                 rpc.deleteTransport(accId, relay.param.addr);
@@ -262,9 +252,19 @@ public class RelayListActivity extends BaseActionBarActivity
               } catch (RpcException e) {
                 Log.e(TAG, "RPC.deleteTransport() failed", e);
               }
+            })
+      .setNeutralButton(R.string.cancel, null);
+    if (!relay.isUnpublished) {
+        builder.setPositiveButton(
+            R.string.hide_transport_only,
+            (d, which) -> {
+              try {
+                rpc.setTransportUnpublished(accId, relay.param.addr, true);
+                loadRelays();
+              } catch (RpcException e) {
+                Log.e(TAG, "cannot unpublish relay: ", e);
+              }
             });
-    if (!relay.isUnpublished) { // otherwise, "Keep Hidden" acts as a no-op
-      builder.setNeutralButton(R.string.cancel, null);
     }
     AlertDialog dialog = builder.show();
     Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
