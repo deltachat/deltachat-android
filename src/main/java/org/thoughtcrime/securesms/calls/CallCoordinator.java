@@ -94,6 +94,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
   private final MutableLiveData<String> displayName = new MutableLiveData<>();
   private final MutableLiveData<Icon> displayIcon = new MutableLiveData<>();
+  private final MutableLiveData<Boolean> outgoingCallPlaced = new MutableLiveData<>(false);
 
   // Audio Routing Support
   private final MediatorLiveData<CallEndpointCompat> currentAudioEndpoint =
@@ -310,6 +311,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   public LiveData<Icon> getDisplayIcon() {
     return displayIcon;
+  }
+
+  public LiveData<Boolean> getOutgoingCallPlaced() {
+    return outgoingCallPlaced;
   }
 
   public LiveData<CallEndpointCompat> getCurrentAudioEndpoint() {
@@ -1132,6 +1137,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     remoteVideoEnabled.postValue(true);
     isRelayUsed.postValue(false);
     errorMessage.postValue(null);
+    outgoingCallPlaced.postValue(false);
     currentAudioEndpoint.postValue(null);
     availableAudioEndpoints.postValue(null);
   }
@@ -1203,6 +1209,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     this.activeCallId = callId;
+    outgoingCallPlaced.postValue(true);
 
     // Get callee info
     String calleeName = displayName.getValue();
