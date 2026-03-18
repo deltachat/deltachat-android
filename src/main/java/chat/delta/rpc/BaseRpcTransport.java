@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 /* Basic RPC Transport implementation */ 
-public abstract class BaseTransport implements Rpc.Transport {
+public abstract class BaseRpcTransport implements Rpc.RpcTransport {
   private final Map<Integer, SettableFuture<JsonNode>> requestFutures = new ConcurrentHashMap<>();
   private int requestId = 0;
   private final ObjectMapper mapper = new ObjectMapper();
