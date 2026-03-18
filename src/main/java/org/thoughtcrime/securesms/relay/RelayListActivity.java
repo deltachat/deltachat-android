@@ -16,8 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.EnteredLoginParam;
-import chat.delta.rpc.types.Transport;
+import chat.delta.rpc.types.TransportListEntry;
 
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -55,7 +54,7 @@ public class RelayListActivity extends BaseActionBarActivity
   private ActivityResultLauncher<Intent> qrScannerLauncher;
 
   /** Relay selected for context menu via onRelayLongClick() */
-  private Transport contextMenuRelay = null;
+  private TransportListEntry contextMenuRelay = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +163,7 @@ public class RelayListActivity extends BaseActionBarActivity
           String finalMainRelayAddr = mainRelayAddr;
 
           try {
-            List<Transport> relays = rpc.listTransportsEx(accId);
+            List<TransportListEntry> relays = rpc.listTransportsEx(accId);
 
             Util.runOnMain(() -> adapter.setRelays(relays, finalMainRelayAddr));
           } catch (RpcException e) {
@@ -175,7 +174,7 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   @Override
-  public void onRelayClick(Transport relay) {
+  public void onRelayClick(TransportListEntry relay) {
     if (relay.param.addr != null && !relay.param.addr.equals(adapter.getMainRelay())) {
       Util.runOnAnyBackgroundThread(
           () -> {
@@ -191,7 +190,7 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   @Override
-  public void onRelayLongClick(View view, Transport relay) {
+  public void onRelayLongClick(View view, TransportListEntry relay) {
     contextMenuRelay = relay;
     registerForContextMenu(view);
     openContextMenu(view);
@@ -234,13 +233,13 @@ public class RelayListActivity extends BaseActionBarActivity
     return super.onContextItemSelected(item);
   }
 
-  private void onRelayEdit(Transport relay) {
+  private void onRelayEdit(TransportListEntry relay) {
     Intent intent = new Intent(this, EditRelayActivity.class);
     intent.putExtra(EditRelayActivity.EXTRA_ADDR, relay.param.addr);
     startActivity(intent);
   }
 
-  private void onRelayDelete(Transport relay) {
+  private void onRelayDelete(TransportListEntry relay) {
     AlertDialog.Builder builder = new AlertDialog.Builder(this)
         .setTitle(R.string.remove_transport)
         .setMessage(getString(R.string.confirm_remove_transport, relay.param.addr))

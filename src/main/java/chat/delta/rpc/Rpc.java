@@ -325,8 +325,8 @@ public class Rpc {
    * Use [Self::add_or_update_transport()] to add or change a transport
    * and [Self::delete_transport()] to delete a transport.
    */
-  public java.util.List<Transport> listTransportsEx(Integer accountId) throws RpcException {
-    return transport.callForResult(new TypeReference<java.util.List<Transport>>(){}, "list_transports_ex", mapper.valueToTree(accountId));
+  public java.util.List<TransportListEntry> listTransportsEx(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<TransportListEntry>>(){}, "list_transports_ex", mapper.valueToTree(accountId));
   }
 
   /**

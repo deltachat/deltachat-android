@@ -9,8 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import chat.delta.rpc.types.EnteredLoginParam;
-import chat.delta.rpc.types.Transport;
+import chat.delta.rpc.types.TransportListEntry;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +17,14 @@ import org.thoughtcrime.securesms.R;
 
 public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.RelayViewHolder> {
 
-  private List<Transport> relays = new ArrayList<>();
+  private List<TransportListEntry> relays = new ArrayList<>();
   private final OnRelayClickListener listener;
   private String mainRelayAddr;
 
   public interface OnRelayClickListener {
-    void onRelayClick(Transport relay);
+    void onRelayClick(TransportListEntry relay);
 
-    void onRelayLongClick(View view, Transport relay);
+    void onRelayLongClick(View view, TransportListEntry relay);
   }
 
   public RelayListAdapter(OnRelayClickListener listener) {
@@ -36,7 +35,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     return mainRelayAddr;
   }
 
-  public void setRelays(@Nullable List<Transport> relays, String mainRelayAddr) {
+  public void setRelays(@Nullable List<TransportListEntry> relays, String mainRelayAddr) {
     this.relays = relays != null ? relays : new ArrayList<>();
     this.mainRelayAddr = mainRelayAddr;
     notifyDataSetChanged();
@@ -52,7 +51,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
 
   @Override
   public void onBindViewHolder(@NonNull RelayViewHolder holder, int position) {
-    Transport relay = relays.get(position);
+    TransportListEntry relay = relays.get(position);
     boolean isMain = relay.param.addr != null && relay.param.addr.equals(mainRelayAddr);
     holder.bind(relay, isMain, listener);
   }
@@ -74,7 +73,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       mainIndicator = itemView.findViewById(R.id.main_indicator);
     }
 
-    public void bind(Transport relay, boolean isMain, OnRelayClickListener listener) {
+    public void bind(TransportListEntry relay, boolean isMain, OnRelayClickListener listener) {
       Context context = itemView.getContext();
       String[] parts = relay.param.addr.split("@");
       titleText.setText(parts.length == 2 ? parts[1] : parts[0]);
