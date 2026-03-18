@@ -946,18 +946,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcContext_getContactEncrInfo(JNIEnv *e
 }
 
 
-JNIEXPORT jstring Java_com_b44t_messenger_DcContext_initiateKeyTransfer(JNIEnv *env, jobject obj)
-{
-    jstring setup_code = NULL;
-    char* temp = dc_initiate_key_transfer(get_dc_context(env, obj));
-    if (temp) {
-        setup_code = JSTRING_NEW(temp);
-        dc_str_unref(temp);
-    }
-    return setup_code;
-}
-
-
 JNIEXPORT void Java_com_b44t_messenger_DcContext_imex(JNIEnv *env, jobject obj, jint what, jstring dir)
 {
     CHAR_REF(dir);
@@ -1628,15 +1616,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isInfo(JNIEnv *env, jobject obj
 JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_hasHtml(JNIEnv *env, jobject obj)
 {
     return dc_msg_has_html(get_dc_msg(env, obj))!=0;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcMsg_getSetupCodeBegin(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_msg_get_setupcodebegin(get_dc_msg(env, obj));
-        jstring ret =  JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
 }
 
 

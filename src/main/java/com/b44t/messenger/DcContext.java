@@ -171,8 +171,6 @@ public class DcContext {
 
   public native String getConnectivityHtml();
 
-  public native String initiateKeyTransfer();
-
   public native void imex(int what, String dir);
 
   public native String imexHasBackup(String dir);

@@ -387,6 +387,8 @@ public abstract class EventType {
   public static class IncomingCallAccepted extends EventType {
     /** ID of the chat which the message belongs to. */
     public Integer chat_id;
+    /** The call was accepted from this device (process). */
+    public Boolean from_this_device;
     /** ID of the info message referring to the call. */
     public Integer msg_id;
   }
