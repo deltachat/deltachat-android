@@ -35,6 +35,7 @@ public class CallViewModel extends AndroidViewModel {
   private final LiveData<String> errorMessage;
   private final LiveData<String> displayName;
   private final LiveData<Icon> displayIcon;
+  private final LiveData<Boolean> outgoingCallPlaced;
   private final LiveData<CallEndpointCompat> currentAudioEndpoint;
   private final LiveData<List<CallEndpointCompat>> availableAudioEndpoints;
 
@@ -75,6 +76,7 @@ public class CallViewModel extends AndroidViewModel {
     this.errorMessage = callCoordinator.getErrorMessage();
     this.displayName = callCoordinator.getDisplayName();
     this.displayIcon = callCoordinator.getDisplayIcon();
+    this.outgoingCallPlaced = callCoordinator.getOutgoingCallPlaced();
     this.currentAudioEndpoint = callCoordinator.getCurrentAudioEndpoint();
     this.availableAudioEndpoints = callCoordinator.getAvailableAudioEndpoints();
 
@@ -93,7 +95,7 @@ public class CallViewModel extends AndroidViewModel {
     if (callCoordinator.isIncomingCall()) {
       callState.setValue(CallState.PROMPTING_USER_ACCEPT);
     } else {
-      callState.setValue(CallState.RINGING);
+      callState.setValue(CallState.CONNECTING);
     }
 
     Log.d(TAG, "CallViewModel initialized");
@@ -116,6 +118,16 @@ public class CallViewModel extends AndroidViewModel {
             }
           }
         });
+
+    callState.addSource(
+        outgoingCallPlaced,
+        placed -> {
+          if (Boolean.TRUE.equals(placed) && !callCoordinator.isIncomingCall()) {
+            if (callState.getValue() == CallState.CONNECTING) {
+              callState.setValue(CallState.RINGING);
+            }
+          }
+        });
   }
 
   private CallState translateConnectionState(PeerConnection.PeerConnectionState state) {
@@ -131,7 +143,9 @@ public class CallViewModel extends AndroidViewModel {
         if (callCoordinator.isIncomingCall()) {
           return CallState.CONNECTING;
         } else {
-          return CallState.RINGING; // Mirror TypeScript
+          return Boolean.TRUE.equals(outgoingCallPlaced.getValue())
+              ? CallState.RINGING
+              : CallState.CONNECTING;
         }
 
       case CONNECTED:
