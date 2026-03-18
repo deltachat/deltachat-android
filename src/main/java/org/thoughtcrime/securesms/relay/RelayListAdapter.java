@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.relay;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,9 +73,16 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     }
 
     public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
+      Context context = itemView.getContext();
       String[] parts = relay.addr.split("@");
       titleText.setText(parts.length == 2 ? parts[1] : parts[0]);
-      subtitleText.setText(parts.length == 2 ? parts[0] : "");
+
+      String subtitle = parts.length == 2 ? parts[0] : "";
+      if (isMain) {
+        subtitle += " · " + context.getString(R.string.used_for_sending);
+      }
+      subtitleText.setText(subtitle);
+
       mainIndicator.setVisibility(isMain ? View.VISIBLE : View.INVISIBLE);
 
       itemView.setOnClickListener(
