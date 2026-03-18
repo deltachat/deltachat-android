@@ -26,7 +26,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          working-directory: jni/deltachat-core-rust
+          workspaces: jni/deltachat-core-rust
 
       - name: Get deltachat-core-rust submodule hash
         id: core-hash
