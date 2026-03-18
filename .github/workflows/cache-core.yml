@@ -1,0 +1,50 @@
+name: Core Cache
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'jni/deltachat-core-rust'
+      - 'jni/Android.mk'
+      - 'jni/Application.mk'
+      - 'jni/dc_wrapper.c'
+      - 'scripts/ndk-make.sh'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+
+      - uses: android-actions/setup-android@v3
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r27
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: jni/deltachat-core-rust
+
+      - name: Get deltachat-core-rust submodule hash
+        id: core-hash
+        run: echo "hash=$(git rev-parse HEAD:jni/deltachat-core-rust)" >> $GITHUB_OUTPUT
+
+      - name: Cache compiled core
+        id: cache-core
+        uses: actions/cache@v4
+        with:
+          path: |
+            jni/arm64-v8a
+            libs/arm64-v8a
+          key: core-arm64-v8a-${{ steps.core-hash.outputs.hash }}-${{ hashFiles('jni/Android.mk', 'jni/Application.mk', 'jni/dc_wrapper.c', 'scripts/ndk-make.sh') }}-ndk-r27
+
+      - name: Compile core
+        if: steps.cache-core.outputs.cache-hit != 'true'
+        env:
+          ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
+        run: |
+          export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/"
+          scripts/install-toolchains.sh && scripts/ndk-make.sh arm64-v8a

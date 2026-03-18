@@ -40,15 +40,15 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          working-directory: jni/deltachat-core-rust
+          workspaces: jni/deltachat-core-rust
 
       - name: Get deltachat-core-rust submodule hash
         id: core-hash
         run: echo "hash=$(git rev-parse HEAD:jni/deltachat-core-rust)" >> $GITHUB_OUTPUT
 
-      - name: Cache compiled core
-        id: cache-core
-        uses: actions/cache@v4
+      - name: Restore compiled core
+        id: core-cache
+        uses: actions/cache/restore@v4
         with:
           path: |
             jni/arm64-v8a
@@ -56,6 +56,7 @@ jobs:
           key: core-arm64-v8a-${{ steps.core-hash.outputs.hash }}-${{ hashFiles('jni/Android.mk', 'jni/Application.mk', 'jni/dc_wrapper.c', 'scripts/ndk-make.sh') }}-ndk-r27
 
       - name: Compile core
+        if: steps.core-cache.outputs.cache-hit != 'true'
         env:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
