@@ -9,16 +9,16 @@ import chat.delta.rpc.types.*;
 
 public class Rpc {
 
-  public interface Transport {
+  public interface RpcTransport {
     void call(String method, JsonNode... params) throws RpcException;
     <T> T callForResult(TypeReference<T> resultType, String method, JsonNode... params) throws RpcException;
     ObjectMapper getObjectMapper();
   }
 
-  public final Transport transport;
+  public final RpcTransport transport;
   private final ObjectMapper mapper;
 
-  public Rpc(Transport transport) {
+  public Rpc(RpcTransport transport) {
     this.transport = transport;
     this.mapper = transport.getObjectMapper();
   }

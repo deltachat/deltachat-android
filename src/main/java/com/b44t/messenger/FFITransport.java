@@ -1,9 +1,9 @@
 package com.b44t.messenger;
 
-import chat.delta.rpc.BaseTransport;
+import chat.delta.rpc.BaseRpcTransport;
 
 /* RPC transport over C FFI */
-public class FFITransport extends BaseTransport {
+public class FFITransport extends BaseRpcTransport {
   private final DcJsonrpcInstance dcJsonrpcInstance;
 
   public FFITransport(DcJsonrpcInstance dcJsonrpcInstance) {
