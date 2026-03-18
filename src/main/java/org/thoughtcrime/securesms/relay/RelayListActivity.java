@@ -247,7 +247,12 @@ public class RelayListActivity extends BaseActionBarActivity
         .setPositiveButton(
             R.string.hide_transport_only,
             (d, which) -> {
-              // TODO: set state to jsonrpc
+              try {
+                rpc.setTransportUnpublished(accId, relay.param.addr, true);
+                loadRelays();
+              } catch (RpcException e) {
+                Log.e(TAG, "cannot unpublish relay: ", e);
+              }
             })
         .setNegativeButton(
             R.string.remove_transport_now,
