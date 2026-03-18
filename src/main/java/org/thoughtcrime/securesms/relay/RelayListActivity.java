@@ -245,7 +245,7 @@ public class RelayListActivity extends BaseActionBarActivity
         .setTitle(R.string.remove_transport)
         .setMessage(getString(R.string.confirm_remove_transport, relay.param.addr))
         .setPositiveButton(
-            R.string.hide_transport_only,
+            relay.isUnpublished ? R.string.keep_transport_hidden : R.string.hide_transport_only,
             (d, which) -> {
               try {
                 rpc.setTransportUnpublished(accId, relay.param.addr, true);
