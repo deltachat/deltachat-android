@@ -9,3 +9,4 @@ cd "$ROOT_DIR"
 
 # generate code
 dcrpcgen java --schema schema.json -o ./src/main/java/
+rm schema.json
