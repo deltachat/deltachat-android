@@ -182,6 +182,7 @@
         <item quantity="other">%d Selected</item>
     </plurals>
     <string name="selected_colon">Selected:</string>
+    <string name="selected">Selected</string>
     <string name="self">Me</string>
     <string name="draft">Draft</string>
     <string name="image">Image</string>
@@ -441,6 +442,12 @@
     <string name="audio_call">Audio call</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Video call</string>
+    <string name="call_initializing">Initializing…</string>
+    <string name="call_incoming">Incoming call</string>
+    <string name="call_ringing">Ringing…</string>
+    <string name="call_reconnecting">Reconnecting…</string>
+    <string name="call_ended">Call ended</string>
+    <string name="call_failed">Call failed</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Outgoing audio call</string>
     <!-- deprecated, use "Video call" instead -->
