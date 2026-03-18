@@ -241,7 +241,7 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   private void onRelayDelete(Transport relay) {
-    AlertDialog dialog = new AlertDialog.Builder(this)
+    AlertDialog.Builder builder = new AlertDialog.Builder(this)
         .setTitle(R.string.remove_transport)
         .setMessage(getString(R.string.confirm_remove_transport, relay.param.addr))
         .setPositiveButton(
@@ -263,9 +263,11 @@ public class RelayListActivity extends BaseActionBarActivity
               } catch (RpcException e) {
                 Log.e(TAG, "RPC.deleteTransport() failed", e);
               }
-            })
-        .setNeutralButton(R.string.cancel, null)
-        .show();
+            });
+    if (!relay.isUnpublished) { // otherwise, "Keep Hidden" acts as a no-op
+      builder.setNeutralButton(R.string.cancel, null);
+    }
+    AlertDialog dialog = builder.show();
     Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
   }
 
