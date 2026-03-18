@@ -203,6 +203,8 @@ public class RelayListActivity extends BaseActionBarActivity
 
     boolean nonNullAddr = contextMenuRelay != null && contextMenuRelay.addr != null;
     boolean isMain = nonNullAddr && contextMenuRelay.addr.equals(adapter.getMainRelay());
+
+    Util.redMenuItem(menu, R.id.menu_delete_relay);
     menu.findItem(R.id.menu_delete_relay).setVisible(!isMain);
   }
 
@@ -237,12 +239,12 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   private void onRelayDelete(EnteredLoginParam relay) {
-    new AlertDialog.Builder(this)
+    AlertDialog dialog = new AlertDialog.Builder(this)
         .setTitle(R.string.remove_transport)
         .setMessage(getString(R.string.confirm_remove_transport, relay.addr))
         .setPositiveButton(
-            R.string.ok,
-            (dialog, which) -> {
+            R.string.remove_transport,
+            (d, which) -> {
               try {
                 rpc.deleteTransport(accId, relay.addr);
                 loadRelays();
@@ -252,6 +254,7 @@ public class RelayListActivity extends BaseActionBarActivity
             })
         .setNegativeButton(R.string.cancel, null)
         .show();
+    Util.redPositiveButton(dialog);
   }
 
   @Override
