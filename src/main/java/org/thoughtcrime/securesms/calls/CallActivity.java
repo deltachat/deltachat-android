@@ -403,7 +403,11 @@ public class CallActivity extends AppCompatActivity {
         .observe(
             this,
             name -> {
-              displayNameText.setText(name != null ? name : "Unknown");
+              if (name != null) {
+                displayNameText.setText(name);
+              } else {
+                displayNameText.setText(R.string.unknown);
+              }
             });
 
     viewModel
@@ -532,7 +536,7 @@ public class CallActivity extends AppCompatActivity {
 
     switch (state) {
       case INITIALIZING:
-        statusText.setText("Initializing...");
+        statusText.setText(R.string.call_initializing);
         incomingCallPrompt.setVisibility(View.GONE);
         bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.GONE);
@@ -541,7 +545,7 @@ public class CallActivity extends AppCompatActivity {
         break;
 
       case PROMPTING_USER_ACCEPT:
-        statusText.setText("Incoming call");
+        statusText.setText(R.string.call_incoming);
         incomingCallPrompt.setVisibility(View.VISIBLE);
         bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.VISIBLE);
@@ -551,7 +555,7 @@ public class CallActivity extends AppCompatActivity {
         break;
 
       case RINGING:
-        statusText.setText("Ringing...");
+        statusText.setText(R.string.call_ringing);
         incomingCallPrompt.setVisibility(View.GONE);
         bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
@@ -560,7 +564,7 @@ public class CallActivity extends AppCompatActivity {
         break;
 
       case CONNECTING:
-        statusText.setText("Connecting...");
+        statusText.setText(R.string.connectivity_connecting);
         incomingCallPrompt.setVisibility(View.GONE);
         bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
@@ -569,7 +573,7 @@ public class CallActivity extends AppCompatActivity {
         break;
 
       case CONNECTED:
-        statusText.setText("Connected");
+        statusText.setText(R.string.connectivity_connected);
         incomingCallPrompt.setVisibility(View.GONE);
         bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
@@ -578,17 +582,17 @@ public class CallActivity extends AppCompatActivity {
         break;
 
       case RECONNECTING:
-        statusText.setText("Reconnecting...");
+        statusText.setText(R.string.call_reconnecting);
         remoteAvatarView.setVisibility(View.VISIBLE);
         break;
 
       case ENDED:
-        statusText.setText("Call ended");
+        statusText.setText(R.string.call_ended);
         finish();
         break;
 
       case ERROR:
-        statusText.setText("Call failed");
+        statusText.setText(R.string.call_failed);
         incomingCallPrompt.setVisibility(View.GONE);
         bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.GONE);
@@ -627,7 +631,7 @@ public class CallActivity extends AppCompatActivity {
 
     if (endpoints == null || endpoints.isEmpty()) {
       Log.w(TAG, "No audio endpoints available");
-      Toast.makeText(this, "No audio devices available", Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, R.string.call_no_audio_output_available, Toast.LENGTH_SHORT).show();
       return;
     }
 
