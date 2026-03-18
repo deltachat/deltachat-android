@@ -631,7 +631,7 @@ public class CallActivity extends AppCompatActivity {
 
     if (endpoints == null || endpoints.isEmpty()) {
       Log.w(TAG, "No audio endpoints available");
-      Toast.makeText(this, R.string.call_no_audio_output_available, Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, "No audio devices available", Toast.LENGTH_SHORT).show();
       return;
     }
 
