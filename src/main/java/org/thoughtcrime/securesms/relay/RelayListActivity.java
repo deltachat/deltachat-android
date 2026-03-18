@@ -243,7 +243,12 @@ public class RelayListActivity extends BaseActionBarActivity
         .setTitle(R.string.remove_transport)
         .setMessage(getString(R.string.confirm_remove_transport, relay.addr))
         .setPositiveButton(
-            R.string.remove_transport,
+            R.string.hide_transport_only,
+            (d, which) -> {
+              // TODO: set state to jsonrpc
+            })
+        .setNegativeButton(
+            R.string.remove_transport_now,
             (d, which) -> {
               try {
                 rpc.deleteTransport(accId, relay.addr);
@@ -252,9 +257,9 @@ public class RelayListActivity extends BaseActionBarActivity
                 Log.e(TAG, "RPC.deleteTransport() failed", e);
               }
             })
-        .setNegativeButton(R.string.cancel, null)
+        .setNeutralButton(R.string.cancel, null)
         .show();
-    Util.redPositiveButton(dialog);
+    Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
   }
 
   @Override
