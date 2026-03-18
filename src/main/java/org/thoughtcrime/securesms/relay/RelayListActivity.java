@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.TransportListEntry;
-
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -240,31 +239,37 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   private void onRelayDelete(TransportListEntry relay) {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this)
-        .setTitle(R.string.remove_transport)
-        .setMessage(getString(relay.isUnpublished ? R.string.confirm_remove_transport_x : R.string.confirm_remove_or_hide_transport_x, relay.param.addr))
-        .setNegativeButton(
-            R.string.remove_transport,
-            (d, which) -> {
-              try {
-                rpc.deleteTransport(accId, relay.param.addr);
-                loadRelays();
-              } catch (RpcException e) {
-                Log.e(TAG, "RPC.deleteTransport() failed", e);
-              }
-            })
-      .setNeutralButton(R.string.cancel, null);
+    AlertDialog.Builder builder =
+        new AlertDialog.Builder(this)
+            .setTitle(R.string.remove_transport)
+            .setMessage(
+                getString(
+                    relay.isUnpublished
+                        ? R.string.confirm_remove_transport_x
+                        : R.string.confirm_remove_or_hide_transport_x,
+                    relay.param.addr))
+            .setNegativeButton(
+                R.string.remove_transport,
+                (d, which) -> {
+                  try {
+                    rpc.deleteTransport(accId, relay.param.addr);
+                    loadRelays();
+                  } catch (RpcException e) {
+                    Log.e(TAG, "RPC.deleteTransport() failed", e);
+                  }
+                })
+            .setNeutralButton(R.string.cancel, null);
     if (!relay.isUnpublished) {
-        builder.setPositiveButton(
-            R.string.hide_transport_only,
-            (d, which) -> {
-              try {
-                rpc.setTransportUnpublished(accId, relay.param.addr, true);
-                loadRelays();
-              } catch (RpcException e) {
-                Log.e(TAG, "cannot unpublish relay: ", e);
-              }
-            });
+      builder.setPositiveButton(
+          R.string.hide_transport_only,
+          (d, which) -> {
+            try {
+              rpc.setTransportUnpublished(accId, relay.param.addr, true);
+              loadRelays();
+            } catch (RpcException e) {
+              Log.e(TAG, "cannot unpublish relay: ", e);
+            }
+          });
     }
     AlertDialog dialog = builder.show();
     Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
