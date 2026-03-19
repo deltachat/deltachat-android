@@ -34,16 +34,13 @@
     <string name="close">Tutup</string>
     <string name="close_window">Tutup Jendela</string>
     <string name="forward">Teruskan</string>
-    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used
-        in a menu and should be as short as possible. Resending may be needed after failures or to repost old
-        messages to new members. -->
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Kirim ulang</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arsip</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Tidak diarsip</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Diam</string>
     <string name="ephemeral_messages">Pesan yang berhilangan</string>
     <string name="ephemeral_messages_hint">Pengaturan ini berlaku untuk semua peserta yang menggunakan Delta Chat.
@@ -56,11 +53,9 @@
     <string name="main_menu">Menu utama</string>
     <string name="start_chat">Mulai obrolan</string>
     <string name="show_full_message">Tampilkan semua pesan...</string>
-    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that
-        hint can make translations easier :) -->
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Tandai Semua sebagai Telah Dibaca</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to
-        read"), in german, this could be "Gelesen". -->
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Baca</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Memuat...</string>
@@ -98,12 +93,9 @@
     <string name="this_month">Bulan ini</string>
     <string name="last_week">Minggu lalu</string>
     <string name="last_month">Bulan lalu</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
-        will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Terakhir terlihat di %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
-        will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples
-        and languages) -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Terakhir terlihat %1$s</string>
     <string name="last_seen_unknown">Terakhir terlihat: Tidak diketahui</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -137,8 +129,7 @@
     <string name="self">Saya</string>
     <string name="draft">Draf</string>
     <string name="image">Gambar</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
-        (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Balas</string>
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
@@ -155,8 +146,7 @@
     <string name="documents">Dokumen</string>
     <string name="contact">Kontak</string>
     <string name="camera">Kamera</string>
-    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button"
-        in cameras -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Tangkap</string>
     <string name="switch_camera">Ganti kamera</string>
     <string name="toggle_fullscreen">Beralih ke Mode Layar Penuh</string>
@@ -166,11 +156,9 @@
     <string name="images_and_videos">Gambar dan video</string>
     <string name="file">Berkas</string>
     <string name="files">File</string>
-    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay
-        close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Aplikasi</string>
-    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please
-        stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Aplikasi</string>
     <string name="unknown">Tak dikenal</string>
 
@@ -207,9 +195,7 @@
     <string name="menu_add_attachment">Tambah lampiran</string>
     <string name="menu_leave_group">Tinggalkan grup</string>
     <string name="menu_delete_chat">Hapus obrolan</string>
-    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty
-        afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat"
-        would also be fine (eg. in German "Chat leeren") -->
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Hapus Obrolan</string>
     <string name="delete_contact">Hapus kontak</string>
     <string name="menu_delete_location">Hapus lokasi ini?</string>
@@ -339,8 +325,7 @@
     <string name="chat_archived_label">Diarsipkan</string>
     <string name="chat_no_messages">Tak ada pesan.</string>
     <string name="chat_self_talk_subtitle">Pesan yang saya kirimkan pada saya sendiri</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Simpan</string>
     <string name="saved_messages">Pesan yang disimpan</string>
     <string name="saved_messages_explain">• Teruskan pesan di sini untuk akses yang mudah\n\n• Buat catatan atau memo
@@ -433,8 +418,7 @@
     <string name="pref_your_name">Nama Anda</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signature text</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tombol Enter mengirim</string>
     <string name="pref_enter_sends_explain">Menekan tombol Enter akan mengirimkan teks pesan</string>
     <string name="pref_outgoing_media_quality">Kualitas media yang dikirim</string>
@@ -479,8 +463,7 @@
         secepatnya.</string>
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
@@ -522,24 +505,20 @@
     <string name="systemmsg_failed_sending_to">Gagal mengirim pesan ke %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Nama grup diganti dari \"%1$s\" ke \"%2$s\" oleh saya.</string>
-    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s
-        will be replaced by name and address of the contact who did the action. -->
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Nama grup diganti dari \"%1$s\" ke \"%2$s\" oleh %3$s.</string>
     <string name="group_image_changed_by_you">Gambar grup telah diubah oleh saya.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Gambar grup telah diubah oleh %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Member %1$s telah ditambahkan oleh saya.</string>
-    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name
-        of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Member %1$s telah ditambahkan oleh %2$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Member %1$s telah dikeluarkan oleh saya.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by
-        name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s telah dikeluarkan oleh %2$s.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
-        it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Member %1$s telah dikeluarkan.</string>
     <string name="group_image_deleted_by_you">Gambar grup telah dihapus oleh saya.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -558,14 +537,10 @@
     <string name="qrshow_x_verified">%1$sdiverifikasi.</string>
     <string name="qrshow_x_has_joined_group">%1$sbergabung dengan grup.</string>
     <string name="qrshow_join_group_title">Kode undangan QR</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join
-        group \"Testing group\"" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Pindai ini untuk bergabung dengan grup \"%1$s\".</string>
     <string name="qrshow_join_contact_title">Kode undangan QR</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat
-        with Alice" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
@@ -585,9 +560,7 @@
     <string name="perm_continue">Lanjutkan</string>
     <string name="perm_explain_access_to_camera_denied">Untuk mengambil foto atau merekam video, lihat pengaturan aplikasi, pilih
         \"Perizinan\", dan aktifkan \"Kamera\".</string>
-    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access
-        was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise:
-        things shift around often and there are too many system we support to track every detail and click path -->
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\",
         dan aktifkan \"Mikrofon\".</string>
     <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih
@@ -596,8 +569,7 @@
         dan aktifkan \"Lokasi\".</string>
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do
-        not add generic strings here -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Ini adalah aplikasi resmi Delta Chat Desktop.</string>
     <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber
         tersedia di GitHub.</string>
@@ -631,8 +603,7 @@
     <string name="message_detail_received_desktop">diterima</string>
     <string name="menu.view.developer.open.log.folder">Buka folder log</string>
     <string name="menu.view.developer.open.current.log.file">Buka log berkas saat ini</string>
-    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever
-        possible -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Status pengiriman: Kesalahan</string>
     <string name="a11y_delivery_status_sending">Status pengiriman: Mengirim</string>
     <string name="a11y_delivery_status_draft">Status pengiriman: Draft</string>
@@ -643,4 +614,4 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk
         dikirim.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat ingin menyimpan gambar ke kumpulan foto anda.</string>
-</resources>
+    </resources>

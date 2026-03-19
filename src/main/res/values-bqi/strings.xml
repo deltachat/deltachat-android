@@ -45,9 +45,7 @@
     <string name="create">وورکل</string>
     <string name="reset">وورنشۊوی</string>
     <string name="later">دیندا</string>
-    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used
-        in a menu and should be as short as possible. Resending may be needed after failures or to repost old
-        messages to new members. -->
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">ز نۊ بفشن</string>
     <string name="edited">آلشت وابیڌه</string>
     <string name="edit_message">آلشت پیوم</string>
@@ -55,11 +53,9 @@
     <string name="archive">بایگۊوی</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">و در زیڌن ز بایگۊوی</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">بؽ دونگ</string>
-    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make
-        noise or cause notifications -->
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">بؽ دونگ</string>
     <string name="ephemeral_messages">پیوما بؽڌارکۊنی</string>
     <string name="ephemeral_messages_hint">یو ری پوی منتورا ای گوفت وو لوفت، ٱر دلتا چت ن و کار بگرن ائمال ابۊ. ولی هنی
@@ -74,12 +70,10 @@
     <string name="main_menu">نومگه ٱسلی</string>
     <string name="start_chat">ناڌن پا گوفت وو لوفت</string>
     <string name="show_full_message">نشووݩ داڌن پیوم کامل...</string>
-    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that
-        hint can make translations easier :) -->
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">پوی ن خونده بیڌه بزݩ</string>
     <string name="mark_as_read">نشووه ناڌن و عونوان خونده وابیڌه</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to
-        read"), in german, this could be "Gelesen". -->
+    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">علامت و عونوان خونده بیڌه</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">هونی بار اونه...</string>
@@ -120,12 +114,9 @@
     <string name="this_month">ای ما</string>
     <string name="last_week">هفته زیتری</string>
     <string name="last_month">ما زیتری</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
-        will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">ریتور دیندایی من %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder
-        will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples
-        and languages) -->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">ریتور دیندایی %1$s</string>
     <string name="last_seen_unknown">ریتور دیندایی: دیار نؽ</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -168,8 +159,7 @@
     <string name="self">مو</string>
     <string name="draft">پؽش هؽل</string>
     <string name="image">شؽوات</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
-        (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">ولوم</string>
     <string name="gif">گیف</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
@@ -191,8 +181,7 @@
     <string name="contact">هومدنگ</string>
     <string name="bot">روبات</string>
     <string name="camera">شؽواتگر</string>
-    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button"
-        in cameras -->
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرؽڌن</string>
     <string name="switch_camera">آلشت شؽواتگر</string>
     <string name="toggle_fullscreen">آلشت وزیت پوی بلگه</string>
@@ -206,11 +195,9 @@
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
     <string name="choose_from_files">پسند ز من فایلا</string>
     <string name="choose_from_gallery">پسند ز شؽوات مال</string>
-    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay
-        close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">برنومه</string>
-    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please
-        stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">برنومه یل</string>
     <string name="webxdc_store_url">نشۊوی پسند کوݩ برنومه</string>
     <string name="webxdc_store_url_explain">ٱر سامووݩ بۊ، URL و جا URL پؽش فرز، و عونوان پسند کوݩ برنومه و کار اروه.</string>
@@ -222,8 +209,7 @@
     <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">تیجنیڌن</string>
     <string name="add_to_chat">ٱووردن و گوفت وو لوفت</string>
-    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover"
-        or "Search" -->
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">پیتینیڌن</string>
     <string name="unknown">ناشناس</string>
 
@@ -251,8 +237,7 @@
     <string name="menu_new_classic_contact">ٱووردن هومدنگ و هالت دستی</string>
     <string name="menu_new_chat">گوفت وو لوفت نۊ</string>
     <string name="menu_new_group">جرگه نۊ</string>
-    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat"
-        screen above the contact list -->
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
     <string name="chat_with">ناڌن پا گوفت وو لوفت وا...</string>
     <string name="clone_chat">وورکل گوفت وو لوفت نۊ ز ای گوفت وو لوفت</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -279,9 +264,7 @@
     <string name="menu_leave_group">رئڌن ز جرگه</string>
     <string name="menu_leave_channel">رئڌن ز تورگه</string>
     <string name="menu_delete_chat">پاک کردن گوفت وو لوفت</string>
-    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty
-        afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat"
-        would also be fine (eg. in German "Chat leeren") -->
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">روفتن ویرگار گوفت وو لوفت</string>
     <string name="delete_contact">پاک کردن هومدنگ</string>
     <string name="menu_delete_location">ای جاگه پاک بۊ؟</string>
@@ -366,8 +349,7 @@
     <string name="chat_request_label">درخاست</string>
     <string name="chat_no_messages">پیومؽ نؽ.</string>
     <string name="chat_self_talk_subtitle">پیومایی ک سی خوم فشنام.</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">زفت کردن پیوم</string>
     <string name="saved_messages">پیوما زفت بیڌه</string>
     <!-- Should match "Saved" from "Saved messages" -->
@@ -377,11 +359,9 @@
     <!-- mailing lists -->
     <string name="mailing_list">نومگه پوستی</string>
 
-    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from
-        a webxdc). the placeholder will be replaced by a file name -->
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
     <string name="send_file_to">فشناڌن \"%1$s\" و...</string>
-    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to
-        send a message to a chat) -->
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">فشناڌن پیوم و...</string>
     <string name="show_location_traces">نشووݩ داڌن جا پا</string>
     <!-- search -->
@@ -402,11 +382,9 @@
     <string name="media_preview">نشووݩ داڌن وارسگر</string>
     <string name="send_message">فشناڌن پیوم</string>
 
-    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single
-        character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">هونی منپیز ابۊ...</string>
-    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things);
-        prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">هونی ورۊ ابۊ...</string>
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">منپیز وابی</string>
@@ -427,8 +405,7 @@
     <string name="pref_show_emails_all">پوی</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">تا سقف %1$s</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string
-        eg. "1 MiB message" -->
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
     <string name="n_bytes_message">پیوم %1$s</string>
     <string name="profile_image_select">پسند شؽوات پوروفایل</string>
     <string name="profile_image_delete">پاک کردن شؽوات پوروفایل</string>
@@ -451,14 +428,12 @@
     <string name="after_5_weeks">دیندا 5 هفته</string>
     <string name="autodel_after_1_year">دیندا 1 سال</string>
 
-    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the
-        group -->
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s ز جرگه رئڌ.</string>
     <string name="qrshow_x_joining">%1$s ٱووڌ.</string>
     <string name="qrshow_x_verified">%1$s تاییڌ وابی.</string>
     <string name="contact_verified">%1$s تاییڌ وابی.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced
-        the contact. -->
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">تاییڌ وابیڌه و دس %1$s</string>
     <!-- notifications -->
     <string name="notify_reply_button">ولوم</string>
@@ -485,4 +460,4 @@
     <string name="show_window">نشووݩ داڌن نیمدری</string>
 
     <string name="open_settings">گۊشیڌن سامووا</string>
-</resources>
+    </resources>

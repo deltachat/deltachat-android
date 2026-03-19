@@ -37,8 +37,7 @@
     <string name="archive">Arkivér</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Fortryd arkivering</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Udsæt</string>
     <string name="ephemeral_messages">Beskeder med tidsudløb</string>
     <string name="ephemeral_messages_hint">Disse indstillinger gælder for alle deltagere der bruger Delta Chat. De kan
@@ -114,8 +113,7 @@
     <string name="self">Mig</string>
     <string name="draft">Kladde</string>
     <string name="image">Billede</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
-        (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Svar</string>
     <string name="gif">Gif</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
@@ -302,8 +300,7 @@
     <string name="chat_archived_label">Arkiveret</string>
     <string name="chat_no_messages">Ingen beskeder</string>
     <string name="chat_self_talk_subtitle">Beskeder sendt til mig selv</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Gem</string>
     <string name="saved_messages">Gemte beskeder</string>
     <string name="saved_messages_explain">Videresend beskeder her for at have nem adgang\n\n Tage notater eller
@@ -352,11 +349,9 @@
     <string name="outgoing_messages">Udgående beskeder</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Ikke forbundet</string>
-    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single
-        character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">Forbinder...</string>
-    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things);
-        prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_updating">Opdaterer...</string>
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Forbundet</string>
@@ -424,8 +419,7 @@
     <string name="pref_your_name">Dit navn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Underskrift tekst</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter tast sender</string>
     <string name="pref_enter_sends_explain">Tryk på enter tast vil sende tekst beskeden</string>
     <string name="pref_outgoing_media_quality">Udgående medie kvalitet</string>
@@ -475,8 +469,7 @@
         hurtigt som muligt.</string>
     <string name="pref_backup_export_start_button">Start sikkerhedskopiering</string>
     <string name="pref_backup_written_to_x">Sikkerhedskopi skrevet til %1$s</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Baggrund</string>
     <string name="pref_background_btn_default">Brug standardbillede</string>
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
@@ -514,19 +507,16 @@
     <string name="delete_old_messages">Slet gamle beskeder</string>
     <string name="autodel_device_title">Slet beskeder fra enhed</string>
     <string name="autodel_server_title">Slet beskeder fra server</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
-        be replaced by a timespan option. -->
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Vil du slette %1$d beskeder nu og alle nyligt hentede beskeder \"%2$s\" i
         fremtiden?\n\n• Dette inkluderer alle medier\n\n• Beskeder vil blive slettet uanset om de er
         set eller ej\n\n• \"Gemte beskeder\" vil ikke blive slettet lokalt</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
-        be replaced by a timespan option. -->
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_server_ask">Vil du slette %1$d beskeder nu og alle nyligt hentede beskeder \"%2$s\"
         fremover?\n\n⚠️ Dette inkluderer e-mails, medier og \"Gemte beskeder\" i alle mapper på
         serveren\n\n⚠️ Brug ikke denne funktion hvis du vil beholde data på serveren\n\n⚠️ Brug ikke
         denne funktion hvis du benytter andre e-mail klienter end Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind
-        about the impact -->
+    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Dette inkluderer email, medier og \"Gemte beskeder\" i alle server mapper.
         Brug ikke denne funktion hvis du vil beholde data på serveren eller hvis du bruger andre
         emailklienter end Delta Chat.</string>
@@ -545,24 +535,20 @@
     <string name="systemmsg_failed_sending_to">Mislykket forsøg på afsendelse af besked til %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Gruppenavn ændret fra \"%1$s\" til \"%2$s\" af mig.</string>
-    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s
-        will be replaced by name and address of the contact who did the action. -->
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Gruppenavn ændret fra \"%1$s\" til \"%2$s\" af %3$s.</string>
     <string name="group_image_changed_by_you">Gruppebillede ændret af mig.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Gruppebillede ændret af %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Medlem %1$s tilføjet af mig.</string>
-    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name
-        of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Medlem %1$s tilføjet af %2$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Medlem %1$s fjernet af mig.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by
-        name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Medlem %1$s fjernet af %2$s.</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
-        it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Medlem %1$s fjernet.</string>
     <string name="group_image_deleted_by_you">Gruppebillede slettet af mig.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -572,8 +558,7 @@
     <string name="ephemeral_timer_disabled_by_other">Tidsudløb for beskeder er deaktiveret af %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
     <string name="ephemeral_timer_seconds_by_you">Tidsudløb for beskeder sat til %1$s s af mig.</string>
-    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be
-        replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Tidsudløb for beskeder sat til %1$s s af %2$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Tidsudløb for beskeder sat til 1 time af mig.</string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -586,23 +571,19 @@
     <string name="ephemeral_timer_1_week_by_other">Tidsudløb for beskeder sat til 1 uge af %1$s.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Beskeder sat til at udløbe efter %1$s minutter af mig.</string>
-    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be
-        replaced by name of the contact -->
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Beskeder sat til at udløbe efter %1$s minutter af %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
     <string name="ephemeral_timer_hours_by_you">Beskeder sat til at udløbe efter %1$s timer af mig.</string>
-    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced
-        by name of the contact -->
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Beskeder sat til at udløbe efter %1$s timer af %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
     <string name="ephemeral_timer_days_by_you">Beskeder sat til at udløbe efter %1$s dage af mig.</string>
-    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced
-        by name of the contact -->
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Beskeder sat til at udløbe efter %1$s dage af %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
     <string name="ephemeral_timer_weeks_by_you">Beskeder sat til at udløbe efter %1$s uger af mig.</string>
-    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced
-        by name of the contact -->
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Beskeder sat til at udløbe efter %1$s uger af %2$s.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kode</string>
@@ -624,14 +605,10 @@
     <string name="qrshow_x_verified">%1$s bekræftet.</string>
     <string name="qrshow_x_has_joined_group">%1$s tilsluttet gruppen.</string>
     <string name="qrshow_join_group_title">QR-invitationskode</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join
-        group \"Testing group\"" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skan dette for at deltage i gruppen \"%1$s\".</string>
     <string name="qrshow_join_contact_title">QR-invitationskode</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat
-        with Alice" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skan dette for at indstille kontakt med %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internet forbindelse, kan ikke udføre QR kode opsætning.</string>
     <string name="qraccount_ask_create_and_login">Opret ny e-mail adresse på \"%1$s\" og log ind der?</string>
@@ -652,9 +629,7 @@
     <string name="perm_explain_access_to_camera_denied">Delta Chat kræver kamera tilladelse for at tage billeder eller video men det
         er blevet afvist permanent. Fortsæt til program opsætning menu og vælg \"Tilladelser\" og
         aktivere \"Kamera\".</string>
-    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access
-        was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise:
-        things shift around often and there are too many system we support to track every detail and click path -->
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Delta Chat kræver mikrofon tilladelse for at sende lydbeskeder, men den er
         blevet nægtet permanent. Fortsæt til program indstillinger, vælg \"Tilladelser\" og aktiver
         \"Mikrofon\".</string>
@@ -668,8 +643,7 @@
     <string name="ImageEditorHud_draw_anywhere_to_blur">Tegn hvor som helst for at sløre</string>
     <string name="ImageEditorHud_rotate">Roter</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do
-        not add generic strings here -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Dette er den officielle Delta Chat Desktop app.</string>
     <string name="about_licensed_under_desktop">Denne software er licenseret under GNU GPL version 3 og kildekoden er
         tilgængelig på GitHub</string>
@@ -706,8 +680,7 @@
     <string name="message_detail_received_desktop">modtaget</string>
     <string name="menu.view.developer.open.log.folder">Åbn log mappe</string>
     <string name="menu.view.developer.open.current.log.file">Åbn nuværende log fil</string>
-    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever
-        possible -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Leveringsstatus: Fejl</string>
     <string name="a11y_delivery_status_sending">Leveringsstatus: Sender</string>
     <string name="a11y_delivery_status_draft">Leveringsstatus: Kladde</string>
@@ -718,8 +691,7 @@
     <string name="a11y_background_preview_label">Baggrundsvisning</string>
     <string name="a11y_disappearing_messages_activated">Beskeder med tidsudløb aktiveret</string>
 
-    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations
-        in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat bruger dit kamera til at sende billeder, videoer og skanne
         QR-koder</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat bruger din mikrofon til at optage og sende talebeskeder og
@@ -730,10 +702,9 @@
     <string name="pref_background_notifications_rationale">Ignorer batterioptimeringer i næste skridt for at vedligeholde en
         forbindelse til din mail-server og modtage beskeder i baggrunden.\n\nDelta Chat bruger få
         ressourcer og passer på ikke at dræne dit batteri.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the
-        drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tryk her for at modtage beskeder når Delta Chat er i baggrunden.</string>
     <string name="perm_enable_bg_already_done">Du har allerede tilladt Delta Chat at modtage beskeder i baggrunden.\n\nHvis
         beskeder ikke ankommer i baggrunden, undersøg dine systemindstillinger.</string>
 
-</resources>
+    </resources>
