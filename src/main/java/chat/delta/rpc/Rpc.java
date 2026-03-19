@@ -289,6 +289,7 @@ public class Rpc {
    * from a server encoded in a QR code.
    * - [Self::list_transports()] to get a list of all configured transports.
    * - [Self::delete_transport()] to remove a transport.
+   * - [Self::set_transport_unpublished()] to set whether contacts see this transport.
    */
   public void addOrUpdateTransport(Integer accountId, EnteredLoginParam param) throws RpcException {
     transport.call("add_or_update_transport", mapper.valueToTree(accountId), mapper.valueToTree(param));
@@ -312,9 +313,20 @@ public class Rpc {
    * Returns the list of all email accounts that are used as a transport in the current profile.
    * Use [Self::add_or_update_transport()] to add or change a transport
    * and [Self::delete_transport()] to delete a transport.
+   * Use [Self::list_transports_ex()] to additionally query
+   * whether the transports are marked as 'unpublished'.
    */
   public java.util.List<EnteredLoginParam> listTransports(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<EnteredLoginParam>>(){}, "list_transports", mapper.valueToTree(accountId));
+  }
+
+  /**
+   * Returns the list of all email accounts that are used as a transport in the current profile.
+   * Use [Self::add_or_update_transport()] to add or change a transport
+   * and [Self::delete_transport()] to delete a transport.
+   */
+  public java.util.List<TransportListEntry> listTransportsEx(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<TransportListEntry>>(){}, "list_transports_ex", mapper.valueToTree(accountId));
   }
 
   /**
@@ -323,6 +335,22 @@ public class Rpc {
    */
   public void deleteTransport(Integer accountId, String addr) throws RpcException {
     transport.call("delete_transport", mapper.valueToTree(accountId), mapper.valueToTree(addr));
+  }
+
+  /**
+   * Change whether the transport is unpublished.
+   * <p>
+   * Unpublished transports are not advertised to contacts,
+   * and self-sent messages are not sent there,
+   * so that we don't cause extra messages to the corresponding inbox,
+   * but can still receive messages from contacts who don't know our new transport addresses yet.
+   * <p>
+   * The default is false, but when the user updates from a version that didn't have this flag,
+   * existing secondary transports are set to unpublished,
+   * so that an existing transport address doesn't suddenly get spammed with a lot of messages.
+   */
+  public void setTransportUnpublished(Integer accountId, String addr, Boolean unpublished) throws RpcException {
+    transport.call("set_transport_unpublished", mapper.valueToTree(accountId), mapper.valueToTree(addr), mapper.valueToTree(unpublished));
   }
 
   /** Signal an ongoing process to stop. */
@@ -408,14 +436,6 @@ public class Rpc {
    */
   public Integer estimateAutoDeletionCount(Integer accountId, Boolean fromServer, Integer seconds) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "estimate_auto_deletion_count", mapper.valueToTree(accountId), mapper.valueToTree(fromServer), mapper.valueToTree(seconds));
-  }
-
-  public String initiateAutocryptKeyTransfer(Integer accountId) throws RpcException {
-    return transport.callForResult(new TypeReference<String>(){}, "initiate_autocrypt_key_transfer", mapper.valueToTree(accountId));
-  }
-
-  public void continueAutocryptKeyTransfer(Integer accountId, Integer messageId, String setupCode) throws RpcException {
-    transport.call("continue_autocrypt_key_transfer", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(setupCode));
   }
 
   public java.util.List<Integer> getChatlistEntries(Integer accountId, Integer listFlags, String queryString, Integer queryContactId) throws RpcException {
