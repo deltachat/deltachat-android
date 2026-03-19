@@ -14,6 +14,7 @@
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender
 * Fix: avoid "reply privately" not quoting the selected message sometimes
+* Fix: properly hide the calls button
 * Some more bug fixes and updated translations
 * Update to core 2.45.0
 
