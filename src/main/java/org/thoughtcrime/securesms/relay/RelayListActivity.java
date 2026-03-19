@@ -239,15 +239,10 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   private void onRelayDelete(TransportListEntry relay) {
-    AlertDialog.Builder builder =
+    AlertDialog dialog =
         new AlertDialog.Builder(this)
             .setTitle(R.string.remove_transport)
-            .setMessage(
-                getString(
-                    relay.isUnpublished
-                        ? R.string.confirm_remove_transport_x
-                        : R.string.confirm_remove_or_hide_transport_x,
-                    relay.param.addr))
+            .setMessage(getString(R.string.confirm_remove_or_hide_transport_x, relay.param.addr))
             .setPositiveButton(
                 R.string.remove_transport,
                 (d, which) -> {
@@ -258,20 +253,18 @@ public class RelayListActivity extends BaseActionBarActivity
                     Log.e(TAG, "RPC.deleteTransport() failed", e);
                   }
                 })
-            .setNegativeButton(R.string.cancel, null);
-    if (!relay.isUnpublished) {
-      builder.setNeutralButton(
-          R.string.hide_transport_only,
-          (d, which) -> {
-            try {
-              rpc.setTransportUnpublished(accId, relay.param.addr, true);
-              loadRelays();
-            } catch (RpcException e) {
-              Log.e(TAG, "cannot unpublish relay: ", e);
-            }
-          });
-    }
-    AlertDialog dialog = builder.show();
+            .setNegativeButton(R.string.cancel, null)
+            .setNeutralButton(
+                R.string.hide_transport_only,
+                (d, which) -> {
+                  try {
+                    rpc.setTransportUnpublished(accId, relay.param.addr, true);
+                    loadRelays();
+                  } catch (RpcException e) {
+                    Log.e(TAG, "cannot unpublish relay: ", e);
+                  }
+                })
+            .show();
     Util.redPositiveButton(dialog);
   }
 
