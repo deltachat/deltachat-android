@@ -266,7 +266,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       accId = dcContext.getAccountId();
     }
     Intent composeIntent;
-    if (accId != -1 && chatId != -1) {
+    if (accId != -1 && chatId > 0) {
       composeIntent = getBaseShareIntent(ConversationActivity.class);
       composeIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
       composeIntent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
