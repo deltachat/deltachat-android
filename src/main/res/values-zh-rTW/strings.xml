@@ -158,6 +158,7 @@
         <item quantity="other">已選取 %d 個</item>
     </plurals>
     <string name="selected_colon">已選擇：</string>
+    <string name="selected">已选择</string>
     <string name="self">我</string>
     <string name="draft">草稿</string>
     <string name="image">圖片</string>
@@ -392,6 +393,12 @@
     <string name="audio_call">音訊通話</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">視訊通話</string>
+    <string name="call_initializing">正在初始化…</string>
+    <string name="call_incoming">来电</string>
+    <string name="call_ringing">正在响铃…</string>
+    <string name="call_reconnecting">正在重新连接…</string>
+    <string name="call_ended">通话结束</string>
+    <string name="call_failed">通话失败</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">撥出音訊通話</string>
     <!-- deprecated, use "Video call" instead -->
@@ -664,9 +671,16 @@
     <string name="add_transport">新增中繼伺服器</string>
     <string name="remove_transport">移除中繼伺服器</string>
     <string name="edit_transport">編輯中繼伺服器</string>
+    <string name="used_for_sending">用于发送</string>
+    <string name="hide_from_contacts">对联系人隐藏</string>
+    <string name="hidden_from_contacts">已对联系人隐藏</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">在所有中继上均已收到消息。</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">新增這個中繼伺服器？</string>
     <string name="invalid_transport_qr">掃描的 QR 碼不包含有效的中繼伺服器。</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">移除中继“%1$s”？\n\n仅知道此中继的联系人可能无法联系到您，直到您再次发送消息。\n\n如有疑问，请将其隐藏而非移除。</string>
     <string name="login_certificate_checks">憑證檢查</string>
     <string name="login_error_mail">請輸入有效的電子郵件位址</string>
     <string name="login_error_server">請輸入有效的伺服器／IP 位址</string>
