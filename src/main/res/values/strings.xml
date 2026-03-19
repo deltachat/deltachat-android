@@ -760,6 +760,7 @@
     <string name="remove_transport">Remove Relay</string>
     <string name="edit_transport">Edit Relay</string>
     <string name="used_for_sending">Used for sending</string>
+    <string name="hide_from_contacts">Hide From Contacts</string>
     <string name="hidden_from_contacts">Hidden from contacts</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Messages are received on all relays.</string>
@@ -769,7 +770,6 @@
     <!-- placeholder will be replaced by a relay server name -->
     <string name="confirm_remove_or_hide_transport_x">Remove relay \"%1$s\"?\n\nContacts who only know this relay may not reach
         you until you message them again.\n\nIf in doubt, hide it rather than removing it.</string>
-    <string name="hide_transport_only">Hide From Contacts</string>
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>

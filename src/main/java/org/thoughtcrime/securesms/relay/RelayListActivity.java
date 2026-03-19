@@ -255,7 +255,7 @@ public class RelayListActivity extends BaseActionBarActivity
                 })
             .setNegativeButton(R.string.cancel, null)
             .setNeutralButton(
-                R.string.hide_transport_only,
+                R.string.hide_from_contacts,
                 (d, which) -> {
                   try {
                     rpc.setTransportUnpublished(accId, relay.param.addr, true);
