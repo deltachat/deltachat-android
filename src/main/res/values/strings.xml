@@ -694,8 +694,7 @@
     <string name="confirm_add_transport">Add this relay?</string>
     <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Remove relay \"%1$s\"?\n\nYour contacts can only reach you if you\'ve previously contacted them via another relay.\n\nIf in doubt, remove the relay later.</string>
-
+    <string name="confirm_remove_or_hide_transport_x">Remove relay \"%1$s\"?\n\nContacts who only know this relay may not reach you until you message them again.\n\nIf in doubt, hide it rather than removing it.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
     <string name="login_error_server">Please enter a valid server / IP address</string>
