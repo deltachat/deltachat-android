@@ -194,13 +194,13 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
             public boolean onMenuItemActionExpand(final MenuItem item) {
               searchMenu = menu;
               WebViewActivity.this.lastQuery = "";
-              WebViewActivity.this.makeSearchMenuVisible(menu, searchItem, true);
+              WebViewActivity.this.makeSearchMenuVisible(menu, searchItem);
               return true;
             }
 
             @Override
             public boolean onMenuItemActionCollapse(final MenuItem item) {
-              WebViewActivity.this.makeSearchMenuVisible(menu, searchItem, false);
+              WebViewActivity.this.invalidateOptionsMenu();
               return true;
             }
           });
