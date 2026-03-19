@@ -248,7 +248,7 @@ public class RelayListActivity extends BaseActionBarActivity
                         ? R.string.confirm_remove_transport_x
                         : R.string.confirm_remove_or_hide_transport_x,
                     relay.param.addr))
-            .setNegativeButton(
+            .setPositiveButton(
                 R.string.remove_transport,
                 (d, which) -> {
                   try {
@@ -258,9 +258,9 @@ public class RelayListActivity extends BaseActionBarActivity
                     Log.e(TAG, "RPC.deleteTransport() failed", e);
                   }
                 })
-            .setNeutralButton(R.string.cancel, null);
+            .setNegativeButton(R.string.cancel, null);
     if (!relay.isUnpublished) {
-      builder.setPositiveButton(
+      builder.setNeutralButton(
           R.string.hide_transport_only,
           (d, which) -> {
             try {
@@ -272,7 +272,7 @@ public class RelayListActivity extends BaseActionBarActivity
           });
     }
     AlertDialog dialog = builder.show();
-    Util.redButton(dialog, AlertDialog.BUTTON_NEGATIVE);
+    Util.redPositiveButton(dialog);
   }
 
   @Override
