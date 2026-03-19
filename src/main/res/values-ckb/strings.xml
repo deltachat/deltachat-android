@@ -33,8 +33,7 @@
     <string name="archive">ئەرشیڤ کردن</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">دەرهێنان لە ئەرشیڤ</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">بێدەنگ کردن</string>
     <string name="ephemeral_messages">ئەو پەیامانەی بزر دەبن</string>
     <string name="ephemeral_messages_hint">ئەم ڕێکخستنانە بۆ هەموو بەکارهێنەرانی دێڵتا چات دەبن. ئەگەرچی ئەوان دەتوانن
@@ -106,8 +105,7 @@
     <string name="self">من</string>
     <string name="draft">ڕەشنووس</string>
     <string name="image">وێنە</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
-        (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">وەڵام دانەوە</string>
     <string name="gif">گیف</string>
     <string name="images">وێنەکان</string>
@@ -282,8 +280,7 @@
     <string name="chat_archived_label">ئەرشیڤ کرا</string>
     <string name="chat_no_messages">هیچ پەیامێک نییە</string>
     <string name="chat_self_talk_subtitle">ئەو پەیامانەی ناردوومن بۆ خۆم</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">پاشەکەوتی بکە</string>
     <string name="saved_messages">کانگای نامەکان</string>
     <string name="saved_messages_explain">• پەیامەکان بنێرە ئێرە تاکوو بەئاسانی لەبەردەست بن\n\n• ڕەشنووسی دەق یان
@@ -371,8 +368,7 @@
     <string name="pref_your_name">ناو</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">دەقی واژۆ</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">کلیلی \"ئینتەر\" بنێرێت</string>
     <string name="pref_enter_sends_explain">دەستنان بە کلیلی \"ئینتەر\"دا، پەیامەکان دەنێرێت.</string>
     <string name="pref_outgoing_media_quality">چۆنێتی ڕەنگاڵە هەناردنییەکان</string>
@@ -417,8 +413,7 @@
         کات بیسڕەوە.</string>
     <string name="pref_backup_export_start_button">دەستپێبکە</string>
     <string name="pref_backup_written_to_x">یەدەک بە سەرکەوتوویی لە \"%1$s\"دا پاشەکەوت کرا.</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
     <string name="pref_background_btn_gallery">هەڵبژاردن لە پیشانگا</string>
@@ -466,8 +461,7 @@
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">پەیام لەلایەن %1$s</string>
     <string name="systemmsg_failed_sending_to">هەناردنی پەیام بۆ %1$s سەرنەکەوت</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
-        it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">ئەندامی %1$s سڕدرایەوە.</string>
     <!-- qr code stuff -->
     <string name="qr_code">کۆدی QR</string>
@@ -484,14 +478,10 @@
     <string name="qrshow_x_verified">%1$s پشتڕاست کرایەوە</string>
     <string name="qrshow_x_has_joined_group">%1$s بەشداری کۆڕ بوو</string>
     <string name="qrshow_join_group_title">کۆدی QRی بانگهێشت کردن</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join
-        group \"Testing group\"" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">بۆ بەشداربوون لە کۆڕ ئەمە سکان بکە: \"%1$s\"</string>
     <string name="qrshow_join_contact_title">کۆدی QRی بانگهێشت کردن</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat
-        with Alice" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">بۆ ڕێکخستنی پێوەندی لەگەڵ %1$s، ئەم کۆدە سکان بکە. </string>
     <string name="qrshow_join_contact_no_connection_toast">هێڵی ئینتەرنێت بەردەست نییە، ڕێکخستنی کۆدی QR جێبەجێ ناکرێ.</string>
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە
@@ -512,17 +502,14 @@
     <string name="perm_continue">بەردەوامبوون</string>
     <string name="perm_explain_access_to_camera_denied">بۆ فلیم و وێنە گرتن، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی
         \"ڕێگەپێدان\"دا، \"کامێرا\" چالاک بکەوە.</string>
-    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access
-        was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise:
-        things shift around often and there are too many system we support to track every detail and click path -->
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">بۆ هەناردنی پەیامی دەنگی، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی
         \"ڕێگەپێدان\"دا، \"مایک\" چالاک بکەوە.</string>
     <string name="perm_explain_access_to_storage_denied">بۆ هەناردن و وەرگرتنی پەڕگەکان، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی
         \"ڕێگەپێدان\"دا، \"بیرگە\" چالاک بکەوە.</string>
     <string name="perm_explain_access_to_location_denied">بۆ لکاندنی شوێنێک، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی
         \"ڕێگەپێدان\"دا، \"شوێن\" چالاک بکەوە.</string>
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do
-        not add generic strings here -->
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">ئەمە نەرمامێری فەرمی دێڵتا چاتە بۆ کۆمپووتەری ڕوومێز.</string>
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>
     <string name="global_menu_preferences_language_desktop">زمان</string>
@@ -550,8 +537,7 @@
     <string name="export_backup_desktop">هەناردەکردنی یەدەک</string>
     <string name="message_detail_sent_desktop">هەنێردراو</string>
     <string name="message_detail_received_desktop">وەرگیراو</string>
-    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever
-        possible -->
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">دۆخی گەیشتن: هەڵە</string>
     <string name="a11y_delivery_status_sending">دۆخی گەیشتن: هەناردن</string>
     <string name="a11y_delivery_status_draft">دۆخی گەیشتن: ڕەشنووس</string>
@@ -561,19 +547,17 @@
     <string name="a11y_message_context_menu_btn_label">چالاکییەکانی پەیام</string>
     <string name="a11y_disappearing_messages_activated">پەیامە خۆشارەوەکان چالاک کرا</string>
 
-    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations
-        in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">دێڵتا چات بۆ گرتن و هەناردنی وێنە و فلیم و سکان کردنی کۆدی QR، کامێراکەت
         بەکاردەهێنێت.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">دێڵتا چات بۆ تۆمار کردن و هەناردنی دەنگ و هەروەها ڤیدیۆی دەنگدار، مایکەکەت
         بەکاردەهێنێت.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دێڵتا چات ڕێگە دەدات خۆت هەڵیبژێری کە کام وێنە لە پیشانگاکەتەوە بنێردرێت.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دێڵتا چات دەیەوێت وێنە پاشەکەوت بکاتە نێو پیشانگاکەت.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the
-        drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">بۆ وەرگرتنی پەیامەکان لەو کاتانەدا کە دێڵتا چات لە پشتخانەوەیە، لێرە کرتە
         بکە.</string>
     <string name="perm_enable_bg_already_done">تۆ ئێستا ڕێگەت بە دێڵتا چات دا کە لە پشتخانەوە پەیامەکان وەربگرێت.\n\n ئەگەر
         هێشتا لە پشخاندا پەیامەکان نایەن، سەرنجێکیش لە ڕێکخستنەکانی سیستەم بدەوە.</string>
 
-</resources>
+    </resources>

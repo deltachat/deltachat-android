@@ -33,8 +33,7 @@
     <string name="archive">Archìvia</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Riprìstina</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Boga su sonu</string>
     <string name="ephemeral_messages">Messàgios chi isparessent</string>
     <string name="ephemeral_messages_hint">Custas impostatziones s\'àplicant a totu sos partetzipantes chi impreant
@@ -104,8 +103,7 @@
     <string name="self">Deo</string>
     <string name="draft">Abbotzu</string>
     <string name="image">Immàgine</string>
-    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb
-        (not: "to reply") -->
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Risponde</string>
     <string name="gif">Gif</string>
     <string name="images">Immàgines</string>
@@ -263,8 +261,7 @@
     <string name="chat_archived_label">Archiviadu</string>
     <string name="chat_no_messages">Perunu messàgiu.</string>
     <string name="chat_self_talk_subtitle">Messàgios chi m\'apo imbiadu a sa sola</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Sarva</string>
     <string name="saved_messages">Messàgios sarvados</string>
     <string name="saved_messages_explain">• Inoltra sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n•
@@ -361,8 +358,7 @@
     <string name="pref_your_name">Su nùmene tuo</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Firma</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Imbia cun \"Imbiu\"</string>
     <string name="pref_enter_sends_explain">Incarchende sa tecla Imbiu as a imbiare sos messàgios</string>
     <string name="pref_outgoing_media_quality">Calidade de sos documentos multimediales in essida</string>
@@ -414,8 +410,7 @@
         podes.</string>
     <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
     <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Isfundu</string>
     <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
@@ -444,8 +439,7 @@
     <string name="delete_old_messages">Iscantzella sos messàgios betzos</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will
-        be replaced by a timespan option. -->
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados
         \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos
         multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere
@@ -462,4 +456,4 @@
     <string name="write_message_desktop">Iscrie unu messàgiu</string>
     <string name="encryption_info_title_desktop">Informatziones de tzifradura</string>
     <string name="more_info_desktop">Àteras informatziones</string>
-</resources>
+    </resources>

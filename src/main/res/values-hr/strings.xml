@@ -27,8 +27,7 @@
     <string name="archive">Arhiviraj</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Dearhiviraj</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Prigušiti</string>
     <string name="ephemeral_messages">Nestajuće poruke</string>
     <string name="save">Spremi</string>
@@ -152,8 +151,7 @@
     <string name="chat_input_placeholder">Poruka</string>
     <string name="chat_archived_label">Arhivirano</string>
     <string name="chat_no_messages">Nema poruka.</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Spremi</string>
     <string name="saved_messages">Sačuvane poruke</string>
     <!-- search -->
@@ -180,8 +178,7 @@
     <string name="pref_profile_photo">Profilna slika</string>
     <string name="pref_blocked_contacts">Blokirani kontakti</string>
     <string name="pref_your_name">Vaše ime</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter šalje poruku</string>
     <string name="pref_enter_sends_explain">Pritisak na Enter će poslati tekst poruku</string>
     <string name="pref_vibrate">Vibracija</string>
@@ -212,15 +209,13 @@
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
     <string name="pref_other">Ostalo</string>
     <string name="pref_backup">Sigurnosna kopija</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Pozadina</string>
     <string name="pref_background_btn_gallery">Odaberi iz galerije</string>
     <string name="pref_show_emails_all">Sve</string>
     <string name="pref_background_default">Zadana pozadina</string>
     <string name="pref_background_default_color">Zadana boja</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
-        it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Član %1$s uklonjen.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
@@ -255,4 +250,4 @@
     <string name="name_desktop">Ime</string>
     <string name="message_detail_sent_desktop">poslano</string>
     <string name="message_detail_received_desktop">primljeno</string>
-</resources>
+    </resources>
