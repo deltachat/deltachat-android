@@ -16,6 +16,7 @@
 * Fix: avoid "reply privately" not quoting the selected message sometimes
 * Some more bug fixes and updated translations
 * Update to core 2.45.0
+* Add support for UnifiedPush
 
 ## v2.43.0
 2026-02
