@@ -28,8 +28,7 @@
     <string name="archive">Arxivləşmə</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Arxivdən çıxarma</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Səssiz</string>
     <string name="ephemeral_messages">Yox olan mesajlar</string>
     <string name="save">Saxla</string>
@@ -220,8 +219,7 @@
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
     <string name="chat_self_talk_subtitle">Özümə göndərdiyim mesajlar</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Saxla</string>
     <string name="saved_messages">Saxlanılmış mesajlar</string>
     <string name="retry_send">Mesaji yenidən göndərməyə cəht et</string>
@@ -293,8 +291,7 @@
     <string name="pref_your_name">Adın</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Yazını mətni</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter açarı ilə göndərmək</string>
     <string name="pref_enter_sends_explain">Enter düyməsini basaraq mətn mesajları göndərəcək</string>
     <string name="pref_outgoing_media_quality">Göndərilən medianın keyfiyyatı</string>
@@ -340,8 +337,7 @@
         quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
@@ -358,21 +354,18 @@
     <string name="pref_background_custom_color">Rəng</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi məndən. </string>
-    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s
-        will be replaced by name and address of the contact who did the action. -->
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi ilə %3$s.</string>
     <string name="group_image_changed_by_you">Qrup şəkili dəyişildi məndən. </string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Qrup şəkili dəyişildi ilə %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Üzv %1$s əlavə olundu məndən. </string>
-    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name
-        of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Üzv %1$s əlavə olundu ilə %2$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">%1$s üzv silindi məndən. </string>
-    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by
-        name of the contact who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%1$s üzv silindi ilə %2$s.</string>
     <string name="group_image_deleted_by_you">Qrupun şəkili silindi məndən. </string>
     <!-- %1$s will be replaced by name of the contact -->
@@ -391,14 +384,10 @@
     <string name="qrshow_x_verified">%1$s yoxlanıldı.</string>
     <string name="qrshow_x_has_joined_group">%1$s qrupa qoşuldu.</string>
     <string name="qrshow_join_group_title">Dəvət QR-kodu</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join
-        group \"Testing group\"" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint"> \"%1$s\" qrupuna qoşulmaq üçün bunu skan edin. </string>
     <string name="qrshow_join_contact_title">Dəvət QR-kodu</string>
-    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text
-        as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat
-        with Alice" -->
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">%1$silə əlaqə qurmaq üçün bunu skan edin</string>
     <string name="qrshow_join_contact_no_connection_toast">İnternet bağlantısı yoxdur, QR kodunu qura bilmir.</string>
     <string name="contact_verified">%1$s yoxlanıldı.</string>
@@ -417,9 +406,7 @@
     <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin
         bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və
         \"kamera\" izni verin.</string>
-    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access
-        was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise:
-        things shift around often and there are too many system we support to track every detail and click path -->
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
     <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq
         rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin.
     </string>
@@ -460,7 +447,6 @@
     <string name="message_detail_received_desktop">qəbul olundu</string>
     <string name="menu.view.developer.open.log.folder">Loq mələfini açın</string>
     <string name="menu.view.developer.open.current.log.file">Loq-faylı açın</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the
-        drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
-</resources>
+    </resources>

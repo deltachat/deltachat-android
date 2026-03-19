@@ -23,8 +23,7 @@
     <string name="back">العودة</string>
     <string name="close">إغلاق</string>
     <string name="forward">إعادة توجيه</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">حجب المكرفون.</string>
     <string name="ephemeral_messages">الرسائل المُختفية</string>
     <string name="save">حفظ</string>
@@ -127,8 +126,7 @@
     <string name="chat_share_with_title">شارك مع</string>
     <string name="chat_input_placeholder">رسالة</string>
     <string name="chat_archived_label">محتفظة</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">حفظ</string>
     <!-- search -->
     <string name="search">بحث</string>
@@ -167,8 +165,7 @@
     <string name="pref_your_name">اسمك</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">التوقيع</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">مفتاح الدخول يقوم بالإرسا</string>
     <string name="pref_vibrate">إهتز</string>
     <string name="pref_screen_security">تأمين الشاشة</string>
@@ -187,8 +184,7 @@
     <string name="pref_chats">المحادثات</string>
     <string name="pref_in_chat_sounds">أصوات خلال الدردش</string>
     <string name="pref_other">أخرى</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">الخلفية</string>
     <string name="pref_show_emails_all">كلها</string>
     <string name="qrscan_fingerprint_label">البصمة</string>
@@ -217,4 +213,4 @@
     <string name="remove_desktop">أزِل</string>
     <string name="save_desktop">حفظ</string>
     <string name="name_desktop">الاسم</string>
-</resources>
+    </resources>

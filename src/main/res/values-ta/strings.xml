@@ -28,8 +28,7 @@
     <string name="archive">காப்பகத்தை</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">மீட்டெடுக்கலாம்</string>
-    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause
-        notifications -->
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">ஓசையற்ற</string>
     <string name="ephemeral_messages">காணாமல் போகும் செய்திகள்</string>
     <string name="save">சேமி</string>
@@ -163,8 +162,7 @@
     <string name="chat_archived_label">ஆவண காக்கப்படுத்தப்பட்டது</string>
     <string name="chat_no_messages">சேதிகள் இல்லை</string>
     <string name="chat_self_talk_subtitle">தங்களுக்கே அனுப்பி கொண்ட செய்திகள்</string>
-    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed
-        esp. on desktop to make clear this is not about saving a file to disk -->
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">சேமி</string>
     <!-- search -->
     <string name="search">தேடு</string>
@@ -185,8 +183,7 @@
     <string name="pref_profile_info_headline">உங்கள் சுயவிவரத் தகவல்</string>
     <string name="pref_blocked_contacts">தடுக்கபட்ட தொடர்புகள்</string>
     <string name="pref_your_name">எனது பெயர்</string>
-    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead
-        of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">\"enter\" மூலம் அனுப்பவும்</string>
     <string name="pref_vibrate">அதிர்வு உண்டாக்கு</string>
     <string name="pref_screen_security">திரை பாதுகாப்பு</string>
@@ -216,11 +213,9 @@
     <string name="pref_in_chat_sounds">௨ள்ளார்ந்த செயலி அறிவிப்புகள்</string>
     <string name="pref_other">மற்றவை</string>
     <string name="pref_backup">காப்பு நகல்</string>
-    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper"
-        or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">அரட்டை பின்புலம்</string>
-    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when
-        it's unclear who did the action -->
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
     <!-- notifications -->
@@ -245,4 +240,4 @@
     <string name="remove_desktop">நீக்கு</string>
     <string name="save_desktop">சேமி</string>
     <string name="name_desktop">பெயர்</string>
-</resources>
+    </resources>
