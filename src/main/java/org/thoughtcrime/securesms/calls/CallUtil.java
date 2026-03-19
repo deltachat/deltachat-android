@@ -1,11 +1,13 @@
 package org.thoughtcrime.securesms.calls;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.telecom.CallEndpointCompat;
@@ -41,8 +43,16 @@ public class CallUtil {
     }
 
     CallCoordinator coordinator = CallCoordinator.getInstance(context);
-    int accId = DcHelper.getContext(context).getAccountId();
 
+    if (coordinator.hasActiveCall()) {
+      Toast.makeText(context, R.string.already_in_call, Toast.LENGTH_SHORT).show();
+      Intent intent = new Intent(context, CallActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      context.startActivity(intent);
+      return;
+    }
+
+    int accId = DcHelper.getContext(context).getAccountId();
     coordinator.initiateOutgoingCall(accId, chatId, startsWithVideo);
   }
 
