@@ -760,7 +760,7 @@
     <string name="remove_transport">Remove Relay</string>
     <string name="edit_transport">Edit Relay</string>
     <string name="used_for_sending">Used for sending</string>
-    <string name="hide_from_contacts">Hide From Contacts</string>
+    <string name="hide_from_contacts">Hide from Contacts</string>
     <string name="hidden_from_contacts">Hidden from contacts</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Messages are received on all relays.</string>
