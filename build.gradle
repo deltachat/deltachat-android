@@ -172,6 +172,7 @@ spotless {
     }
     format 'xml', {
         target 'src/*/res/**/*.xml', 'src/*/AndroidManifest.xml'
+        targetExclude 'src/*/res/values*/strings.xml' // line-break changes invalidate translations
         eclipseWtp('xml').configFile('spotless/eclipse-wtp-xml.prefs')
         trimTrailingWhitespace()
         endWithNewline()
