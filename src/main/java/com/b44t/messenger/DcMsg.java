@@ -25,7 +25,6 @@ public class DcMsg {
   public static final int DC_INFO_GROUP_IMAGE_CHANGED = 3;
   public static final int DC_INFO_MEMBER_ADDED_TO_GROUP = 4;
   public static final int DC_INFO_MEMBER_REMOVED_FROM_GROUP = 5;
-  public static final int DC_INFO_AUTOCRYPT_SETUP_MESSAGE = 6;
   public static final int DC_INFO_SECURE_JOIN_MESSAGE = 7;
   public static final int DC_INFO_LOCATIONSTREAMING_ENABLED = 8;
   public static final int DC_INFO_LOCATION_ONLY = 9;
@@ -186,8 +185,6 @@ public class DcMsg {
   public native boolean isInfo();
 
   public native boolean hasHtml();
-
-  public native String getSetupCodeBegin();
 
   public native void setText(String text);
 

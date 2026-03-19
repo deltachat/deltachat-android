@@ -27,7 +27,7 @@ install Rust tooling (read sections below) and the [dcrpcgen tool](https://githu
 then generate the code running the script:
 
 ```
-./scripts/generate-rpc-bindings.sh
+./scripts/update-rpc-bindings.sh
 ```
 
 ## Build Using Nix
