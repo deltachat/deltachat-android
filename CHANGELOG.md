@@ -10,6 +10,7 @@
 * Further minimize metadata in messages and while getting in contact.
 * Increase resilience of multi-relay usage: if on relay goes down, messages are still received in the others.
 * Allow to hide a relay from contacts instead of removing, allowing smoother relay changes
+* HTML emails: allow to review and copy links before opening them
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender
