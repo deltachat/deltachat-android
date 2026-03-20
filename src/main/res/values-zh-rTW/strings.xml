@@ -342,8 +342,7 @@
     <string name="device_talk">裝置訊息</string>
     <string name="device_talk_subtitle">本機產生的訊息</string>
     <string name="device_talk_explain">這個聊天室內的訊息是由 Delta Chat 軟體在本地產生的。開發者會在這裡發送軟體更新和使用幫助。</string>
-    <string name="device_talk_welcome_message2">聯繫我們！\n\n🙌
-        點擊兩台裝置主螢幕上的「QR碼」。在一台裝置上選擇「掃描二維碼」，然後將其指向另一台裝置\n\n🌍如果不在同一個房間，通過視訊通話掃描或從「掃描QR碼」中分享邀請連結\n\n，然後通過有史以來最大的去中心化網络享受您的信使體驗：電子郵件。與其他流行的應用程式相比，它沒有中央控制或跟蹤，也沒有將您、朋友、同事或家人出售給大型組織。</string>
+    <string name="device_talk_welcome_message2">聯繫我們！\n\n🙌 點擊兩台裝置主螢幕上的「QR碼」。在一台裝置上選擇「掃描二維碼」，然後將其指向另一台裝置\n\n🌍如果不在同一個房間，通過視訊通話掃描或從「掃描QR碼」中分享邀請連結\n\n，然後通過有史以來最大的去中心化網络享受您的信使體驗：電子郵件。與其他流行的應用程式相比，它沒有中央控制或跟蹤，也沒有將您、朋友、同事或家人出售給大型組織。</string>
     <string name="edit_contact">編輯聯絡人</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">釘選對話</string>
@@ -359,8 +358,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">新增至主畫面</string>
     <string name="donate">捐贈</string>
-    <string name="donate_device_msg">❤️ 您似乎很喜歡 Delta Chat！\n\n請考慮捐款以幫助Delta Chat確保對每個人保持免費。/n/n雖然 Delta Chat
-        可以免費使用並且是開源的，但開發需要資金。幫助我們保持 Delta Chat 的獨立性，並在未來讓它更棒。\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ 您似乎很喜歡 Delta Chat！\n\n請考慮捐款以幫助Delta Chat確保對每個人保持免費。/n/n雖然 Delta Chat 可以免費使用並且是開源的，但開發需要資金。幫助我們保持 Delta Chat 的獨立性，並在未來讓它更棒。\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">靜音1小時</string>
     <string name="mute_for_eight_hours">靜音8小時</string>
@@ -514,8 +512,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">您確定要訪問%1$s嗎 ？</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">你將被轉到一個連結，該連結可能通過使用來自不同字母表的相似字元對自己進行了偽裝。 開啟標記為%1$s的連結將把你帶到以 ascii 碼編碼的%2$s。
-        如果這樣的字元出乎你的意料，那麼這個連結可能是有害的。</string>
+    <string name="puny_code_warning_description">你將被轉到一個連結，該連結可能通過使用來自不同字母表的相似字元對自己進行了偽裝。 開啟標記為%1$s的連結將把你帶到以 ascii 碼編碼的%2$s。 如果這樣的字元出乎你的意料，那麼這個連結可能是有害的。</string>
 
 
     <!-- search -->
@@ -838,8 +835,7 @@
     <string name="stats_disable_dialog">統計數據的傳送已啟用。\n\n你想要停用它嗎？</string>
     <string name="disable">禁用</string>
     <string name="stats_keep_sending">繼續傳送</string>
-    <string name="stats_msg_body">附件包含匿名使用統計數據，這有助於我們改進 Delta Chat。更多資訊請參見
-        https://delta.chat/help#statssending 。謝謝！</string>
+    <string name="stats_msg_body">附件包含匿名使用統計數據，這有助於我們改進 Delta Chat。更多資訊請參見 https://delta.chat/help#statssending 。謝謝！</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">搜尋結果</string>
@@ -868,15 +864,11 @@
     <string name="autodel_device_title">從裝置中刪除訊息</string>
     <string name="autodel_server_title">從伺服器中刪除訊息</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">您是否要立即刪除%1$d條消息，之後在收到消息「%2$s」后刪除它們？ \n\n⚠️ 這包括伺服器所有媒體\n\n•這包括所有媒體\n\n•
-        無論消息是否被看到都將被刪除\n\n• “已保存的郵件”將不會被本地刪除</string>
+    <string name="autodel_device_ask">您是否要立即刪除%1$d條消息，之後在收到消息「%2$s」后刪除它們？ \n\n⚠️ 這包括伺服器所有媒體\n\n•這包括所有媒體\n\n• 無論消息是否被看到都將被刪除\n\n• “已保存的郵件”將不會被本地刪除</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">您是否要立即刪除%1$d條訊息，之後在訊息收到「%2$s」后刪除它們？ \n\n⚠️
-        這包括伺服器所有資料夾中的電子郵件、媒體和“保存的消息”\n\n⚠️ 如果您想在伺服器上保留數據，請不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat
-        之外的電子郵件用戶端，請不要使用此功能</string>
+    <string name="autodel_server_ask">您是否要立即刪除%1$d條訊息，之後在訊息收到「%2$s」后刪除它們？ \n\n⚠️ 這包括伺服器所有資料夾中的電子郵件、媒體和“保存的消息”\n\n⚠️ 如果您想在伺服器上保留數據，請不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat 之外的電子郵件用戶端，請不要使用此功能</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">這包括所有伺服器資料夾中的電子郵件、媒體和「保存的訊息」。如果您想將數據保留在伺服器上，或者您正在使用 Delta Chat
-        以外的其他電子郵件用戶端，請不要使用此功能。</string>
+    <string name="autodel_server_enabled_hint">這包括所有伺服器資料夾中的電子郵件、媒體和「保存的訊息」。如果您想將數據保留在伺服器上，或者您正在使用 Delta Chat 以外的其他電子郵件用戶端，請不要使用此功能。</string>
     <string name="autodel_server_warn_multi_device_title">啟用一次性刪除</string>
     <string name="autodel_server_warn_multi_device">如果啟用一次性刪除，則您無法使用多個裝置登入該賬戶。</string>
     <string name="autodel_confirm">我已知曉，刪除所有這些消息</string>
@@ -971,13 +963,10 @@
 
     <string name="devicemsg_self_deleted">您刪除了「已保存的訊息」聊天。\n\nℹ️要再次使用「已保存的訊息」功能，請與自己創建新聊天。</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️
-        您的供應商的存儲空間即將用完：已使用%1$s%%。\n\n如果存儲空間已滿，您可能無法接收訊息。\n\n👉請檢查您是否可以在提供商的網頁介面中刪除舊數據，並考慮啟用「設定/聊天和媒體/刪除舊訊息」。您可以隨時在「設定/連接」
-        中檢查您目前的儲存使用方式。</string>
+    <string name="devicemsg_storage_exceeding">⚠️ 您的供應商的存儲空間即將用完：已使用%1$s%%。\n\n如果存儲空間已滿，您可能無法接收訊息。\n\n👉請檢查您是否可以在提供商的網頁介面中刪除舊數據，並考慮啟用「設定/聊天和媒體/刪除舊訊息」。您可以隨時在「設定/連接」 中檢查您目前的儲存使用方式。</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ 您裝置上的日期或時間似乎不準確 （%1$s）。\n\n調整您的時鐘⏰🔧以確保您的訊息被正確接收。</string>
-    <string name="devicemsg_update_reminder">⚠️ 您的 Delta Chat 版本可能已過時。\n\n這可能會導致問題，因為您的聊天夥伴使用的是較新的版本 - 而您缺少最新的功能😳\n請訪問
-        https://get.delta.chat 或您的應用商店以獲取更新。</string>
+    <string name="devicemsg_update_reminder">⚠️ 您的 Delta Chat 版本可能已過時。\n\n這可能會導致問題，因為您的聊天夥伴使用的是較新的版本 - 而您缺少最新的功能😳\n請訪問 https://get.delta.chat 或您的應用商店以獲取更新。</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">解鎖以繼續</string>
@@ -1198,8 +1187,5 @@
     <string name="perm_enable_bg_already_done">您已經允許 Delta Chat 在後台接收訊息。\n\n如果消息仍未在後台到達，請同時檢查您的系統設定。</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">新版變化？
-        💯 端對端加密現在可靠且永久有效。鎖頭圖標🔒已經消失！\n\n✉️ 沒有端對端加密的傳統電子郵件會以信件符號✉️標示\n\n😻
-        為你的所有聯絡人提供全新增強的個人資料頁面\n\n🔲
-        新按鈕可快速存取聊天中使用的應用程式\n\n❤️ 請捐款以幫助我們保持獨立並持續提供改進：%1$s</string>
+    <string name="update_2_0">新版變化？ 💯 端對端加密現在可靠且永久有效。鎖頭圖標🔒已經消失！\n\n✉️ 沒有端對端加密的傳統電子郵件會以信件符號✉️標示\n\n😻 為你的所有聯絡人提供全新增強的個人資料頁面\n\n🔲 新按鈕可快速存取聊天中使用的應用程式\n\n❤️ 請捐款以幫助我們保持獨立並持續提供改進：%1$s</string>
 </resources>

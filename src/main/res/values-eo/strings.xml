@@ -52,8 +52,7 @@
     <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Silentigita</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>
-    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ
-        povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
+    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
     <string name="media">Aŭdovidaĵoj</string>
@@ -75,10 +74,7 @@
     <string name="activate">Aktivigi</string>
     <string name="load_remote_content">Ŝargu forajn bildojn </string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn
-        kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu
-        forajn bildojn?
-    </string>
+    <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu forajn bildojn? </string>
     <string name="always">Ĉiam</string>
     <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
@@ -277,8 +273,7 @@
     <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
     <string name="device_talk">Aparataj mesaĝoj</string>
     <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>
-    <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj
-        kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
+    <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
     <string name="edit_contact">Redakti kontakton</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Alpingli babilon</string>
@@ -403,8 +398,7 @@
     <string name="pref_vibrate">Vibrado</string>
     <string name="pref_screen_security">Ekrana sekureco</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la
-        aplikaĵo mem</string>
+    <string name="pref_screen_security_explain">Neebligi ekrankopiojn en la listo de ĵus uzitaj aplikaĵoj kaj ene de la aplikaĵo mem</string>
     <string name="pref_notifications">Sciigoj</string>
     <string name="pref_notifications_show">Montri</string>
     <string name="pref_notifications_priority">Prioritato</string>

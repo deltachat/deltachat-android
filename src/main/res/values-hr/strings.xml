@@ -203,8 +203,7 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Zahtijevaj od tipkovnice da onemogući personalizirano učenje</string>
     <string name="pref_read_receipts">Potvrde čitanja</string>
-    <string name="pref_read_receipts_explain">Ukoliko ste onemogućili potvrdu čitanja kod sebe, nećete moći vidjeti
-        potvrde čitanja od drugih.</string>
+    <string name="pref_read_receipts_explain">Ukoliko ste onemogućili potvrdu čitanja kod sebe, nećete moći vidjeti potvrde čitanja od drugih.</string>
     <string name="pref_chats">Razgovori</string>
     <string name="pref_in_chat_sounds">Zvuk unutar razgovora</string>
     <string name="pref_other">Ostalo</string>

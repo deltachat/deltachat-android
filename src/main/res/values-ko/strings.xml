@@ -42,8 +42,7 @@
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">음소거</string>
     <string name="ephemeral_messages">사라지는 메시지</string>
-    <string name="ephemeral_messages_hint">Delta Chat을 사용하는 경우 이 대화의 모든 구성원에게 적용되며, 메시지를 복사, 저장 및 회송하거나 다른 전자우편 클라이언트를
-        사용할 수 있습니다.</string>
+    <string name="ephemeral_messages_hint">Delta Chat을 사용하는 경우 이 대화의 모든 구성원에게 적용되며, 메시지를 복사, 저장 및 회송하거나 다른 전자우편 클라이언트를 사용할 수 있습니다.</string>
     <string name="save">저장</string>
     <string name="chat">채팅</string>
     <string name="media">매체</string>
@@ -57,8 +56,7 @@
     <string name="activate">활성화</string>
     <string name="load_remote_content">원격 이미지 불러오기</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">원격 이미지는 당신을 추적하기 위해 사용될 수 있습니다.\n\n이 설정은 폰트와 다른 콘텐츠를 불러오는 것도 허용합니다. 만약
-        비활성화되어도, 내장 또는 캐시된 이미지를 볼 수 있습니다.\n\n원격 이미지를 불러올까요?</string>
+    <string name="load_remote_content_ask">원격 이미지는 당신을 추적하기 위해 사용될 수 있습니다.\n\n이 설정은 폰트와 다른 콘텐츠를 불러오는 것도 허용합니다. 만약 비활성화되어도, 내장 또는 캐시된 이미지를 볼 수 있습니다.\n\n원격 이미지를 불러올까요?</string>
     <string name="always">항상</string>
     <string name="once">한 번만</string>
     <string name="not_now">나중에</string>
@@ -236,8 +234,7 @@
     <string name="title_share_location">그룹 구성원과 위치 공유하기</string>
     <string name="device_talk">기기 메시지</string>
     <string name="device_talk_subtitle">로컬에서 생성된 메시지</string>
-    <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해
-        사용한다.</string>
+    <string name="device_talk_explain">이 채팅의 메시지는 델타 채팅 앱에서 로컬로 생성됩니다. 제작자는 이것을 앱 업데이트와 사용 중 발생하는 문제에 대해 알리기 위해 사용한다.</string>
     <string name="edit_contact">연락처 수정</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">채팅 고정</string>
@@ -349,8 +346,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">정말 %1$s에 방문하시겠습니까?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">이 링크는 서로 다른 알파벳의 유사하게 생긴 문자를 잘못 전달할 수 있습니다. %1$s 링크를 따라가면 라틴어가 아닌 문자의 경우
-        정상적인 %2$s로 이어집니다. 이러한 문자를 예상하지 못한 경우 이 링크는 안전하지 않을 수 있습니다.</string>
+    <string name="puny_code_warning_description">이 링크는 서로 다른 알파벳의 유사하게 생긴 문자를 잘못 전달할 수 있습니다. %1$s 링크를 따라가면 라틴어가 아닌 문자의 경우 정상적인 %2$s로 이어집니다. 이러한 문자를 예상하지 못한 경우 이 링크는 안전하지 않을 수 있습니다.</string>
 
 
     <!-- search -->
@@ -426,16 +422,14 @@
     <string name="login_error_required_fields">유효한 이메일 주소와 비밀번호를 입력하시오</string>
     <string name="import_backup_title">백업 불러오기</string>
     <string name="import_backup_ask">\"%1$s\"에서 백업을 찾았습니다.\n\n모든 데이터와 설정을 가져오시겠습니까?</string>
-    <string name="import_backup_no_backup_found">백업을 찾을 수 없습니다.\n\n\"%1$s\"에 백업을 복사하고 다시 시도하십시오. 또는 \"메시징 시작\"을 눌러 일반 설정을
-        계속하십시오.</string>
+    <string name="import_backup_no_backup_found">백업을 찾을 수 없습니다.\n\n\"%1$s\"에 백업을 복사하고 다시 시도하십시오. 또는 \"메시징 시작\"을 눌러 일반 설정을 계속하십시오.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">\"%1$s\"에 로그인 할 수 없음. 이메일 주소와 비밀번호가 맞는지 확인하시오.</string>
     <string name="switch_account">계정 전환</string>
     <string name="add_account">계정 추가</string>
     <string name="delete_account">계정 삭제</string>
     <string name="delete_account_ask">정말 계정을 삭제하시겠습니까?</string>
-    <string name="delete_account_explain_with_name">모든 암호화 설정, 연락처, 채팅, 메시지 및 미디어를 포함하여 이 장치에 있는 \"%s\"의 모든 계정 데이터가 삭제됩니다. 이 작업은
-        취소할 수 없습니다.</string>
+    <string name="delete_account_explain_with_name">모든 암호화 설정, 연락처, 채팅, 메시지 및 미디어를 포함하여 이 장치에 있는 \"%s\"의 모든 계정 데이터가 삭제됩니다. 이 작업은 취소할 수 없습니다.</string>
     <string name="unconfigured_account">존재하지 않는 계정</string>
     <string name="unconfigured_account_hint">설정을 위해 계정을 여시오</string>
     <string name="try_connect_now">연결을 하시오</string>
@@ -502,16 +496,14 @@
     <string name="pref_other">기타</string>
     <string name="pref_backup">백업</string>
     <string name="pref_backup_explain">외부 저장소에 채팅 백업</string>
-    <string name="pref_backup_export_explain">백업을 사용하면 이 장치 또는 다른 장치에 새 설치를 설정할 수 있습니다.\n\n백업에는 모든 메시지, 연락처 및 채팅과 모든 자동
-        암호화 설정이 포함됩니다. 백업 파일을 안전한 장소에 보관하거나 가능한 한 빨리 삭제하십시오.</string>
+    <string name="pref_backup_export_explain">백업을 사용하면 이 장치 또는 다른 장치에 새 설치를 설정할 수 있습니다.\n\n백업에는 모든 메시지, 연락처 및 채팅과 모든 자동 암호화 설정이 포함됩니다. 백업 파일을 안전한 장소에 보관하거나 가능한 한 빨리 삭제하십시오.</string>
     <string name="pref_backup_export_start_button">백업 시작</string>
     <string name="pref_backup_written_to_x">백업이 \"%1$s\"에 기록되었습니다.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">채팅방 배경화면</string>
     <string name="pref_background_btn_default">기본 이미지 사용</string>
     <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>
-    <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지
-        않을 수 있습니다.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지 않을 수 있습니다.</string>
     <string name="pref_auto_folder_moves">DeltaChat 폴더로 자동 이동</string>
     <string name="pref_only_fetch_mvbox_title">DeltaChat 폴더에서만 가져오기</string>
     <string name="pref_show_emails_no">아뇨, 오직 채팅만</string>
@@ -550,11 +542,9 @@
     <string name="autodel_device_title">기기에서 메시지 삭제</string>
     <string name="autodel_server_title">서버에서 메시지 삭제</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">%1$d 메시지와 새로 가져온 모든 메시지 \"%2$s\"를 나중에 삭제하시겠습니까?\n\n• 여기에는 모든 미디어가
-        포함됩니다.\n\n• 메시지가 표시되었는지 여부에 관계없이 삭제됩니다.\n\n• \"저장된 메시지\"는 로컬 삭제에서 건너뜁니다.</string>
+    <string name="autodel_device_ask">%1$d 메시지와 새로 가져온 모든 메시지 \"%2$s\"를 나중에 삭제하시겠습니까?\n\n• 여기에는 모든 미디어가 포함됩니다.\n\n• 메시지가 표시되었는지 여부에 관계없이 삭제됩니다.\n\n• \"저장된 메시지\"는 로컬 삭제에서 건너뜁니다.</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">여기에는 모든 서버 폴더에 있는 전자 메일, 미디어 및 \"저장된 메시지\"가 포함됩니다. 서버에 데이터를 보관하거나 Delta Chat
-        외에 다른 이메일 클라이언트를 사용하는 경우 이 기능을 사용하지 마십시오.</string>
+    <string name="autodel_server_enabled_hint">여기에는 모든 서버 폴더에 있는 전자 메일, 미디어 및 \"저장된 메시지\"가 포함됩니다. 서버에 데이터를 보관하거나 Delta Chat 외에 다른 이메일 클라이언트를 사용하는 경우 이 기능을 사용하지 마십시오.</string>
     <string name="autodel_confirm">알겠습니다. 모든 메시지를 삭제하세요.</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">한 번에</string>
@@ -623,13 +613,10 @@
     <string name="ephemeral_timer_weeks_by_other">%2$s가 사라지는 메시지 타이머를 %1$s주로 설정함.</string>
     <string name="devicemsg_self_deleted">저장된 메시지 대화를 삭제했습니다.\n\nℹ️\"저장된 메시지\" 기능을 다시 사용하려면 자신과의 대화를 새로 만드십시오.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ 공급자의 저장공간이 곧 고갈될 예정입니다. %1$s%%가 이미 사용 중입니다.\n\n저장공간이 가득 찬 경우 메시지를 수신하지 못할
-        수 있습니다.\n\n👉 공급자의 웹 인터페이스에서 이전 데이터를 삭제할 수 있는지 확인하고 \"설정 / 이전 메시지 삭제\"를 활성화하는 것을 고려하십시오.
-        \"설정/연결\"에서 언제든지 현재 저장공간 사용량을 확인할 수 있습니다.</string>
+    <string name="devicemsg_storage_exceeding">⚠️ 공급자의 저장공간이 곧 고갈될 예정입니다. %1$s%%가 이미 사용 중입니다.\n\n저장공간이 가득 찬 경우 메시지를 수신하지 못할 수 있습니다.\n\n👉 공급자의 웹 인터페이스에서 이전 데이터를 삭제할 수 있는지 확인하고 \"설정 / 이전 메시지 삭제\"를 활성화하는 것을 고려하십시오. \"설정/연결\"에서 언제든지 현재 저장공간 사용량을 확인할 수 있습니다.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ 장치의 날짜 또는 시간이 정확하지 않은 것 같습니다(%1$s).\n\n메시지가 올바르게 수신되도록 시계 ⏰🔧를 조정하세요.</string>
-    <string name="devicemsg_update_reminder">⚠️ 델타 채팅 버전이 오래되었을 수 있습니다.\n\n채팅 파트너가 최신 버전을 사용하기 때문에 문제가 발생할 수 있습니다. 당신은 최신
-        기능이 없습니다. 😳\n https://get.delta.chat 또는 앱 스토어에서 업데이트를 확인하십시오.</string>
+    <string name="devicemsg_update_reminder">⚠️ 델타 채팅 버전이 오래되었을 수 있습니다.\n\n채팅 파트너가 최신 버전을 사용하기 때문에 문제가 발생할 수 있습니다. 당신은 최신 기능이 없습니다. 😳\n https://get.delta.chat 또는 앱 스토어에서 업데이트를 확인하십시오.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">계속하려면 시스템 정의 암호를 입력하십시오.</string>
@@ -642,15 +629,12 @@
     <string name="qrscan_failed">QR 코드를 디코딩할 수 없습니다.</string>
     <string name="qrscan_ask_join_group">\"%1$s\" 그룹에 참여하시겠습니까?</string>
     <string name="qrscan_fingerprint_mismatch">스캔한 지문이 %1$s에 대해 마지막으로 표시된 지문과 일치하지 않습니다.</string>
-    <string name="qrscan_no_addr_found">이 QR 코드에는 지문이 포함되어 있지만 이메일 주소는 없습니다.\n\n대역 외 확인의 경우 먼저 수신자에 대한 암호화된 연결을
-        설정하십시오.</string>
+    <string name="qrscan_no_addr_found">이 QR 코드에는 지문이 포함되어 있지만 이메일 주소는 없습니다.\n\n대역 외 확인의 경우 먼저 수신자에 대한 암호화된 연결을 설정하십시오.</string>
     <string name="qrscan_contains_text">스캔한 QR 코드 텍스트:\n\n%1$s</string>
     <string name="qrscan_contains_url">스캔한 QR 코드 URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">지문</string>
-    <string name="withdraw_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할
-        수 있습니다.</string>
-    <string name="withdraw_verifygroup_explain">이 QR 코드는 다른 사용자가 스캔하여 \"%1$s\" 그룹에 가입할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여
-        다시 활성화할 수 있습니다.</string>
+    <string name="withdraw_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
+    <string name="withdraw_verifygroup_explain">이 QR 코드는 다른 사용자가 스캔하여 \"%1$s\" 그룹에 가입할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_qr_code">QR 코드 비활성화</string>
     <string name="revive_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\nQR 코드가 이 장치에서 활성화되지 않았습니다.</string>
     <string name="revive_qr_code">QR 코드 활성화</string>
@@ -789,11 +773,9 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 은 마이크를 사용하여 음성 메시지와 비디오를 소리와 함께 녹음하고 전송합니다.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 을 통해 라이브러리에서 보낼 사진을 선택할 수 있습니다.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 에서 사진 라이브러리에 이미지를 저장하려고 합니다.</string>
-    <string name="pref_background_notifications_rationale">이메일 서버에 대한 연결을 유지하고 백그라운드에서 메시지를 수신하려면 다음 단계에서 배터리 최적화를 무시하십시오.\n\nDelta
-        Chat은 리소스를 거의 사용하지 않으며 배터리가 소모되지 않도록 주의합니다.</string>
+    <string name="pref_background_notifications_rationale">이메일 서버에 대한 연결을 유지하고 백그라운드에서 메시지를 수신하려면 다음 단계에서 배터리 최적화를 무시하십시오.\n\nDelta Chat은 리소스를 거의 사용하지 않으며 배터리가 소모되지 않도록 주의합니다.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Delta Chat이 백그라운드에 있는 동안 메시지를 받으려면 여기를 누르십시오.</string>
-    <string name="perm_enable_bg_already_done">이미 Delta Chat 에서 백그라운드로 메시지를 수신하도록 허용했습니다.\n\n메시지가 여전히 백그라운드로 도착하지 않으면 시스템
-        설정도 확인하십시오.</string>
+    <string name="perm_enable_bg_already_done">이미 Delta Chat 에서 백그라운드로 메시지를 수신하도록 허용했습니다.\n\n메시지가 여전히 백그라운드로 도착하지 않으면 시스템 설정도 확인하십시오.</string>
 
     </resources>

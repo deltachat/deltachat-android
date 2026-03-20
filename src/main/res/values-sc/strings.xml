@@ -36,9 +36,7 @@
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Boga su sonu</string>
     <string name="ephemeral_messages">Messàgios chi isparessent</string>
-    <string name="ephemeral_messages_hint">Custas impostatziones s\'àplicant a totu sos partetzipantes chi impreant
-        Delta Chat. Nointames custu podent copiare, sarvare e torrare a imbiare messàgios o impreare
-        àteros clientes de posta eletrònica.</string>
+    <string name="ephemeral_messages_hint">Custas impostatziones s\'àplicant a totu sos partetzipantes chi impreant Delta Chat. Nointames custu podent copiare, sarvare e torrare a imbiare messàgios o impreare àteros clientes de posta eletrònica.</string>
     <string name="save">Sarva</string>
     <string name="chat">Tzarrada</string>
     <string name="media">Cuntenutu multimediale</string>
@@ -183,9 +181,7 @@
     <string name="title_share_location">Cumpartzi sa positzione cun totu sos membros de su grupu</string>
     <string name="device_talk">Messàgios de su dispositivu</string>
     <string name="device_talk_subtitle">Messàgios ingendrados localmente</string>
-    <string name="device_talk_explain">Sos messàgios in custa tzarrada benint ingendrados localmente dae
-        s\'aplicatzone Delta Chat tua. Sos isvilupadores los impreant pro informare a pitzu de sos
-        agiornamentos de s\'aplicatzione e de problemas durante s\'impreu.</string>
+    <string name="device_talk_explain">Sos messàgios in custa tzarrada benint ingendrados localmente dae s\'aplicatzone Delta Chat tua. Sos isvilupadores los impreant pro informare a pitzu de sos agiornamentos de s\'aplicatzione e de problemas durante s\'impreu.</string>
     <string name="edit_contact">Modìfica su cuntatu</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Apica sa tzarrada</string>
@@ -211,15 +207,11 @@
 
     <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
     <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
-    <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a
-        cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
+    <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
     <string name="ask_block_contact">Blocare custu cuntatu? No as a retzire prus messàgios dae custu cuntatu.</string>
-    <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu
-        cuntatu.</string>
-    <string name="ask_delete_contacts">Iscantzellare sos cuntatos?\n\nSos cuntatos cun tzarradas ativas e cussos de
-        sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
-    <string name="ask_delete_contact">Cheres iscantzellare a %1$s pro semper?\n\nSos cuntatos cun tzarradas ativas
-        e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
+    <string name="ask_unblock_contact">Isblocare custu cuntatu? As a torrare a pòdere retzire messàgios dae custu cuntatu.</string>
+    <string name="ask_delete_contacts">Iscantzellare sos cuntatos?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
+    <string name="ask_delete_contact">Cheres iscantzellare a %1$s pro semper?\n\nSos cuntatos cun tzarradas ativas e cussos de sa rubrica de su dispositivu non podent èssere iscantzellados definitivamente.</string>
     <string name="ask_start_chat_with">Cheres tzarrare cun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
@@ -248,12 +240,9 @@
         <item quantity="one">%d messàgiu nou</item>
         <item quantity="other">%dmessàgios noos</item>
     </plurals>
-    <string name="chat_new_group_hint">Imbia su primu messàgiu, permitende a sos àteros de ti rispòndere in intro
-        de custu grupu.\n\n•Lu podes fàghere fintzas si non totu sos membros impreant Delta Chat.Sa
-        cunsinna de su primu messàgiu diat pòdere pigare un\'agigu de tempus.</string>
+    <string name="chat_new_group_hint">Imbia su primu messàgiu, permitende a sos àteros de ti rispòndere in intro de custu grupu.\n\n•Lu podes fàghere fintzas si non totu sos membros impreant Delta Chat.Sa cunsinna de su primu messàgiu diat pòdere pigare un\'agigu de tempus.</string>
     <string name="chat_record_slide_to_cancel">Iscurre pro annulare</string>
-    <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro
-        imbiare</string>
+    <string name="chat_record_explain">Incarca e mantene incarcadu pro registrare unu messàgiu vocale, lassa pro imbiare</string>
     <string name="chat_no_chats_yet_title">Cartella de intrada bòida.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_all_archived">Tzarradas archiviadas.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_share_with_title">Cumpartzi cun</string>
@@ -264,8 +253,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Sarva</string>
     <string name="saved_messages">Messàgios sarvados</string>
-    <string name="saved_messages_explain">• Inoltra sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n•
-        Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
+    <string name="saved_messages_explain">• Inoltra sos messàgios inoghe pro bi pòdere atzèdere in manera lestra\n\n• Sarva notas iscritas o sonoras\n\n• Allega mèdios pro los sarvare</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sarvadu</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
@@ -297,10 +285,8 @@
     <string name="tab_docs">Documentos</string>
     <string name="tab_links">Ligàmenes</string>
     <string name="tab_map">Mapa</string>
-    <string name="tab_gallery_empty_hint">Sas immàgines e sos vìdeos cumpartzidos in custa tzarrada ant a èssere
-        ammustrados inoghe.</string>
-    <string name="tab_docs_empty_hint">Sos documentos editàbiles, cussos musicales e totu sas àteras castas de
-        documentos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
+    <string name="tab_gallery_empty_hint">Sas immàgines e sos vìdeos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
+    <string name="tab_docs_empty_hint">Sos documentos editàbiles, cussos musicales e totu sas àteras castas de documentos cumpartzidos in custa tzarrada ant a èssere ammustrados inoghe.</string>
     <string name="media_preview">Anteprima de su documentu multimediale</string>
     <string name="send_message">Imbia messàgiu</string>
 
@@ -322,13 +308,10 @@
     <string name="login_error_port">Inserta una ghenna bàlida (1–65535)</string>
     <string name="login_error_required_fields">Inserta un\'indiritzu de posta eletrònica e una crae de intrada bàlidos</string>
     <string name="import_backup_title">Importa una còpia de seguresa</string>
-    <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare
-        totu sos datos e sas impostatziones dae cue?</string>
-    <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\"
-        e torra a proare. Si nono, incarca.</string>
+    <string name="import_backup_ask">Còpia de seguresa agatada in \"%1$s\".\n\nCheres a l\'importare e a impreare totu sos datos e sas impostatziones dae cue?</string>
+    <string name="import_backup_no_backup_found">Peruna còpia de seguresa agatada.\n\nCòpia sa còpia de seguresa in \"%1$s\" e torra a proare. Si nono, incarca.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu
-        de posta eletrònica e sa crae de intrada sunt curretos.</string>
+    <string name="login_error_cannot_login">Impossìbile atzèdere comente \"%1$s\". pro paghere verìfica si s\'indiritzu de posta eletrònica e sa crae de intrada sunt curretos.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Atzetat tzertificados non vàlidos</string>
     <string name="switch_account">Càmbia contu</string>
@@ -352,9 +335,7 @@
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
     <string name="blocked_empty_hint">Si as a blocare cuntatos ant a èssere allistados inoghe.</string>
-    <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris
-        cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones
-        giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
+    <string name="pref_who_can_see_profile_explain">S\'immàgine de profilu tua e su nùmene tuo ant a èssere ammustrados in paris cun sos messàgios tuos cando ses comunichende cun àteros impreadores. Sas informatziones giai imbiadas non podent èssere iscantzelladas o bogadas.</string>
     <string name="pref_your_name">Su nùmene tuo</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Firma</string>
@@ -367,10 +348,8 @@
     <string name="pref_vibrate">Vibratzione</string>
     <string name="pref_screen_security">Seguresa de s\'ischermu</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Pedi de blocare sas ischermadas in sa lista de sos reghentes e in intro de
-        s\'aplicatzione</string>
-    <string name="pref_screen_security_please_restart_hint">Pro aplicare s\'impostatzione de seguresa de s\'ischermu torra a allùghere
-        s\'aplicatzione.</string>
+    <string name="pref_screen_security_explain">Pedi de blocare sas ischermadas in sa lista de sos reghentes e in intro de s\'aplicatzione</string>
+    <string name="pref_screen_security_please_restart_hint">Pro aplicare s\'impostatzione de seguresa de s\'ischermu torra a allùghere s\'aplicatzione.</string>
     <string name="pref_notifications">Notìficas</string>
     <string name="pref_notifications_show">Ammustra</string>
     <string name="pref_notifications_priority">Prioridade</string>
@@ -391,8 +370,7 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Pedi a sa tastiera de disabilitare s\'imparu personalizadu</string>
     <string name="pref_read_receipts">Retzidas de leghidura</string>
-    <string name="pref_read_receipts_explain">Si sas retzidas de leghidura sunt disabilitadas, no as a pòdere bìdere sas
-        retzidas de leghidura de àtere.</string>
+    <string name="pref_read_receipts_explain">Si sas retzidas de leghidura sunt disabilitadas, no as a pòdere bìdere sas retzidas de leghidura de àtere.</string>
     <string name="pref_manage_keys">Amministra sas craes</string>
     <string name="pref_chats">Tzarradas</string>
     <string name="pref_in_chat_sounds">Sonos in sa tzarrada</string>
@@ -403,20 +381,14 @@
     <string name="pref_other">Àteru</string>
     <string name="pref_backup">Còpia de seguresa</string>
     <string name="pref_backup_explain">Faghe una còpia de seguresa in sa memòria esterna</string>
-    <string name="pref_backup_export_explain">Una còpia de seguresa t\'agiudat a impostare un\'installatzione noa in custu
-        o in un\'àteru dispositivu.\n\nSa còpia de seguresa ant a cuntènnere totu sos messàgios, sos
-        cuntatos, sas tzarradas e s\'impostatzione de sa tzifradura a nodu terminale (end-to-end) de
-        Autocrypt. Mantene su documentu in unu logu seguru o iscantzellalu in su primu momentu chi
-        podes.</string>
+    <string name="pref_backup_export_explain">Una còpia de seguresa t\'agiudat a impostare un\'installatzione noa in custu o in un\'àteru dispositivu.\n\nSa còpia de seguresa ant a cuntènnere totu sos messàgios, sos cuntatos, sas tzarradas e s\'impostatzione de sa tzifradura a nodu terminale (end-to-end) de Autocrypt. Mantene su documentu in unu logu seguru o iscantzellalu in su primu momentu chi podes.</string>
     <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
     <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Isfundu</string>
     <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos
-        àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere
-        non funtzionare pro nudda.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
     <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>
     <string name="pref_show_emails">Ammustra sas lìteras traditzionales</string>
     <string name="pref_show_emails_no">Nono, tzarradas ebbia</string>
@@ -440,11 +412,7 @@
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados
-        \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos
-        multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere
-        istados lèghidos\n\n• Sos \"Messàgios sarvados\" ant a èssere esclùdidos dae
-        s\'iscantzellamentu locale</string>
+    <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere istados lèghidos\n\n• Sos \"Messàgios sarvados\" ant a èssere esclùdidos dae s\'iscantzellamentu locale</string>
     <string name="autodel_confirm">Apo cumpresu, iscantzella totu sos messàgios</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Una borta</string>

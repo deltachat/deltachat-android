@@ -40,8 +40,7 @@
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">ミュート</string>
     <string name="ephemeral_messages">消えるメッセージ</string>
-    <string name="ephemeral_messages_hint">この設定は、Delta
-        Chatの利用する参加者に適用されます。ただし、参加者はメッセージをコピーしたり、保存したり、転送したり、他のアプリを利用したりすることができます。</string>
+    <string name="ephemeral_messages_hint">この設定は、Delta Chatの利用する参加者に適用されます。ただし、参加者はメッセージをコピーしたり、保存したり、転送したり、他のアプリを利用したりすることができます。</string>
     <string name="save">保存</string>
     <string name="chat">チャット</string>
     <string name="media">メディア</string>
@@ -271,8 +270,7 @@
     <plurals name="chat_n_new_messages">
         <item quantity="other">新着メッセージが%d件です</item>
     </plurals>
-    <string name="chat_new_group_hint">最初のメッセージを送ってから他人が返信できるようになります。\n\n･Delta
-        Chatを使わなくても構いません\n\n･最初のメッセージの配信は時間がかかる場合もあります。</string>
+    <string name="chat_new_group_hint">最初のメッセージを送ってから他人が返信できるようになります。\n\n･Delta Chatを使わなくても構いません\n\n･最初のメッセージの配信は時間がかかる場合もあります。</string>
     <string name="chat_record_slide_to_cancel">スライドしてキャンセル</string>
     <string name="chat_record_explain">長押しして録音して、離すと送ります。</string>
     <string name="chat_no_chats_yet_title">受信箱が空です。\n＋でチャットを開始します。</string>
