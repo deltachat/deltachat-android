@@ -277,14 +277,7 @@
     <string name="device_talk_subtitle">Локално генерирани съобщения</string>
     <string name="device_talk_explain">Съобщенията в този чат се генерират на Вашето устройство, за да информират
         относно актуализации на приложението и проблеми по време на ползване.</string>
-    <string name="device_talk_welcome_message2">Свържете се!\n\n🙌 Натиснете \"QR код\" в главния екран и на двете
-        устройства. Изберете \"Сканиране на QR код\" на едно от устройствата и го насочете към
-        другото\n\n🌍 Ако двете устройства не се намират в една и съща стая, сканирайте посредством
-        видео обаждане или споделете връзка с покана от \"Сканиране на QR код\"\n\nСлед това:
-        Насладете се на изживяването да обменяте съобщения през най-голямата децентрализирана мрежа,
-        която някога е съществувала: електронната поща. And in contrast to other popular apps,
-        without central control or tracking or selling you, friends, colleagues or family out to
-        large organizations.</string>
+    <string name="device_talk_welcome_message2">Свържете се!\n\n🙌 Натиснете \"QR код\" в главния екран и на двете устройства. Изберете \"Сканиране на QR код\" на едно от устройствата и го насочете към другото\n\n🌍 Ако двете устройства не се намират в една и съща стая, сканирайте посредством видео обаждане или споделете връзка с покана от \"Сканиране на QR код\"\n\nСлед това: Насладете се на изживяването да обменяте съобщения през най-голямата децентрализирана мрежа, която някога е съществувала: електронната поща. And in contrast to other popular apps, without central control or tracking or selling you, friends, colleagues or family out to large organizations.</string>
     <string name="edit_contact">Редактиране на контакт</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Забождане на чата</string>
@@ -874,8 +867,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Няма връзка към Интернет, не може да бъде извършена настройка чрез QR код.</string>
     <string name="qraccount_ask_create_and_login">Да бъде ли създаден нов адрес за електронна поща на \"%1$s\" и да бъде ли
         осъществено влизане там?</string>
-    <string name="set_name_and_avatar_explain">Задайте име, което Вашите контакти ще разпознават. Можете също да установите
-        изображение за профил.</string>
+    <string name="set_name_and_avatar_explain">Задайте име, което Вашите контакти ще разпознават. Можете също да установите изображение за профил.</string>
     <string name="please_enter_name">Моля, въведете име.</string>
     <string name="qraccount_qr_code_cannot_be_used">Не може да бъде създаден нов акаунт със сканирания QR код.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
