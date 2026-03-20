@@ -10,13 +10,14 @@
 * Further minimize metadata in messages and while getting in contact.
 * Increase resilience of multi-relay usage: if on relay goes down, messages are still received in the others.
 * Allow to hide a relay from contacts instead of removing, allowing smoother relay changes
+* Mark call message as seen when accepting/declining a call
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender
 * Fix: avoid "reply privately" not quoting the selected message sometimes
 * Fix: properly hide the calls button
 * Some more bug fixes and updated translations
-* Update to core 2.45.0
+* Update to core 2.46.0
 
 ## v2.43.0
 2026-02
