@@ -264,6 +264,11 @@
     <string name="new_channel">Abadu amaynut</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Isen n ubadu</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d n tmeẓriwt</item>
+        <item quantity="other">%d n tmeẓriwin</item>
+    </plurals>
     <string name="email">Imayl</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Imayl amaynut</string>
@@ -392,6 +397,16 @@
     <string name="answer_call">Err</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Agi</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Asiwel ameslaw</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Asiwel s tvidyut</string>
+    <string name="call_initializing">Awennez...</string>
+    <string name="call_incoming">Asiwel ukcim</string>
+    <string name="call_ringing">Aṭenṭen...</string>
+    <string name="call_reconnecting">Tulsa n tuqqna...</string>
+    <string name="call_ended">Yekfa usiwel</string>
+    <string name="call_failed">Asiwel ur yeddi ara</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Asiwel n umeslaw uffiɣ</string>
     <!-- deprecated, use "Video call" instead -->
@@ -612,7 +627,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Ɣur-i yakan amaɣnu</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Seqdec imayl aklasiki am Umsiweḍ</string>
+    <string name="manual_account_setup_option">Seqdec imayl aklasiki am Umedwel </string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Amaɣnu-ik·im</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -664,13 +679,20 @@
     <string name="proxy_enabled">Apṛuksi yermed</string>
     <string name="proxy_enabled_hint">Aql-ik·im tesseqdaced apṛuksi. Ma tesɛiḍ ugur deg tuqqna, ɛreḍ apṛuksi-nniḍen.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
-    <string name="transports">Imsawaḍen</string>
-    <string name="add_transport">Rnu amsiweḍ</string>
-    <string name="remove_transport">Kkes amsiweḍ</string>
-    <string name="edit_transport">Ẓreg amsiweḍ</string>
+    <string name="transports">Imedwal</string>
+    <string name="add_transport">Rnu amedwel</string>
+    <string name="remove_transport">Kkes amedwel</string>
+    <string name="edit_transport">Ẓreg amedwel</string>
+    <string name="used_for_sending">Yettwaseqdec i tuzzna</string>
+    <string name="hide_from_contacts">Ffer-it ɣef inermisen</string>
+    <string name="hidden_from_contacts">Uffir ɣef inermisen</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Iznan ttwaremsen ɣef meṛṛa imedwal</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
-    <string name="confirm_add_transport">Rnu amsiweḍ-agi?</string>
-    <string name="invalid_transport_qr">Tangalt QR ittusemḍen ur tesɛi ara amsiweḍ ameɣtu</string>
+    <string name="confirm_add_transport">Rnu amedwel-agi?</string>
+    <string name="invalid_transport_qr">Tangalt QR ittusemḍen ur tesɛi ara amedwel ameɣtu</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Kkes amedwel \"%1$s\"?\n\nInermasen i yessnen kan amedwel-a, ahat ur d-ttawḍen ara ɣur-k·m alarma tuzneḍ-asen izen tikkelt nniḍen.\n\nMa yella ccek, ffer-it axir n tukksa-ines.</string>
     <string name="login_certificate_checks">Asenqed n uselkin</string>
     <string name="login_error_mail">Ma ulac aɣilif, sekcem tansa imayl tameɣtut</string>
     <string name="login_error_server">Ma ulac aɣilif, sekcem aqeddac ameɣtu / tansa IP.</string>
@@ -736,6 +758,10 @@
     <string name="pref_notifications">Ilɣa</string>
     <string name="pref_mention_notifications">Tibdarin</string>
     <string name="pref_mention_notifications_explain">Deg igrawen igugmen, iznan n telɣut rzuḍ ɣer-k·m, am tririyin neɣ tiririyin n tigawt</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Isawalen</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Sken agdil n usiwel ɣef yisawalen inekcamen</string>
     <string name="pref_notifications_show">Sken</string>
     <string name="pref_notifications_priority">Tazwart</string>
     <string name="pref_notifications_explain">Rmed ilɣa n unagraw i yiznan imaynuten</string>
