@@ -174,14 +174,10 @@
     <string name="share_location_for_six_hours">6 saat üçün</string>
 
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
-    <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə
-        daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
+    <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>
-    <string name="ask_unblock_contact">Bu kontaktı blokdan çıxarmaq istəyirsiniz? Nəticədə kontaktdan mesajlar ala
-        bilərsiniz.</string>
-    <string name="ask_delete_contacts">Kontaktları silmək? Bu əməliyyat seçilmiş kontaktları daimi olaraq
-        silməyəcək. \n\n Sistem kontakt kitabından davam edən söhbətlər və kontaktlar ilə əlaqə
-        saxlanıla bilməz.</string>
+    <string name="ask_unblock_contact">Bu kontaktı blokdan çıxarmaq istəyirsiniz? Nəticədə kontaktdan mesajlar ala bilərsiniz.</string>
+    <string name="ask_delete_contacts">Kontaktları silmək? Bu əməliyyat seçilmiş kontaktları daimi olaraq silməyəcək. \n\n Sistem kontakt kitabından davam edən söhbətlər və kontaktlar ilə əlaqə saxlanıla bilməz.</string>
     <string name="ask_start_chat_with">%1$s ilə çat? </string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">%1$s qrupdan silmək? </string>
@@ -207,9 +203,7 @@
         <item quantity="one">%d yeni messaj</item>
         <item quantity="other">%d yeni messaj</item>
     </plurals>
-    <string name="chat_new_group_hint">Başqalarının bu qrup daxilində cavab verməsinə imkan verən ilk mesajı
-        yaradın. \n\n• Bütün üzvlər Delta Chat istifadə etsələr daha yaxşıdır. \n\n• İlk mesajı
-        çatdırmaq bir müddət ala bilər.</string>
+    <string name="chat_new_group_hint">Başqalarının bu qrup daxilində cavab verməsinə imkan verən ilk mesajı yaradın. \n\n• Bütün üzvlər Delta Chat istifadə etsələr daha yaxşıdır. \n\n• İlk mesajı çatdırmaq bir müddət ala bilər.</string>
     <string name="chat_record_slide_to_cancel">Ləğv etmək üçün sürüşdürün</string>
     <string name="chat_record_explain">Bir səsli mesajı yazmaq üçün toxunun və saxlayın, göndərmək üçün buraxın</string>
     <string name="chat_no_chats_yet_title">Qutu boşdur.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
@@ -249,8 +243,7 @@
     <string name="tab_links">Linklər</string>
     <string name="tab_map">Xəritə</string>
     <string name="tab_gallery_empty_hint">Bu çatda paylaşılan şəkillər və videolar burada nümayiş olunacaq.</string>
-    <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada
-        göstəriləcək.</string>
+    <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
     <string name="login_title">Daxil ol</string>
     <string name="login_inbox">Gələn</string>
@@ -270,11 +263,9 @@
     <string name="login_error_port">Xahiş edirik, düzgün bir port (1-65535) daxil et</string>
     <string name="login_error_required_fields">Xahiş edirik düzgün bir e-poçt ünvanı və parol daxil et</string>
     <string name="import_backup_title">Nüsxənin importu</string>
-    <string name="import_backup_ask">\"%1$s\" - də ehtiyat nüsxəsi tapıldı.\n\nİndi bütün məlumatları və
-        parametrləri idxal etmək və istifadə etmək istəyirsiniz?</string>
+    <string name="import_backup_ask">\"%1$s\" - də ehtiyat nüsxəsi tapıldı.\n\nİndi bütün məlumatları və parametrləri idxal etmək və istifadə etmək istəyirsiniz?</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login"> \"%1$s\" kimi giriş alınmadı. E-poçt ünvanı və parolun düzgün olub
-        olmadığını yoxlayın.</string>
+    <string name="login_error_cannot_login"> \"%1$s\" kimi giriş alınmadı. E-poçt ünvanı və parolun düzgün olub olmadığını yoxlayın.</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İrəli ...</string>
@@ -285,9 +276,7 @@
     <string name="pref_profile_info_headline">Profil məlumatınız</string>
     <string name="pref_profile_photo">Profil şəkili</string>
     <string name="pref_blocked_contacts">Bloklanmış kontaktlar</string>
-    <string name="pref_who_can_see_profile_explain">Digər istifadəçilərlə ünsiyyət qurarkən profil şəkliniz və adınız
-        mesajlarınızla birlikdə göstərilir. Zatən göndərilən məlumat silinməyəcək.
-    </string>
+    <string name="pref_who_can_see_profile_explain">Digər istifadəçilərlə ünsiyyət qurarkən profil şəkliniz və adınız mesajlarınızla birlikdə göstərilir. Zatən göndərilən məlumat silinməyəcək. </string>
     <string name="pref_your_name">Adın</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Yazını mətni</string>
@@ -301,8 +290,7 @@
     <string name="pref_screen_security">Ekran təhlükəsizliyi</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_screen_security_explain">Son proqramlar siyahısında və proqramın daxilində ekran çəkməyi qadağan etmə</string>
-    <string name="pref_screen_security_please_restart_hint">Ekranın təhlükəsizlik tənzimləmələrini tətbiq etmək üçün proqramı yenidən
-        başladın.</string>
+    <string name="pref_screen_security_please_restart_hint">Ekranın təhlükəsizlik tənzimləmələrini tətbiq etmək üçün proqramı yenidən başladın.</string>
     <string name="pref_notifications">Bildirişlər</string>
     <string name="pref_notifications_show">Göstərmək</string>
     <string name="pref_notifications_priority">Öndəmdə olan</string>
@@ -320,8 +308,7 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Klaviaturanın personal öyrənməyini söndürmək</string>
     <string name="pref_read_receipts">Qəbul olunanları oxuyun</string>
-    <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə
-        bilməyəcəksiniz.</string>
+    <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə bilməyəcəksiniz.</string>
     <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
@@ -332,17 +319,14 @@
     <string name="pref_other">Başqa</string>
     <string name="pref_backup">Nüsxə</string>
     <string name="pref_backup_explain">Daxili yaddaşa mesaj nüsxəsi</string>
-    <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək
-        edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə
-        quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
+    <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq
-        olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
     <string name="pref_show_emails">Klassik e-poçtları göstər</string>
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
@@ -374,8 +358,7 @@
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>
     <string name="qrscan_ask_join_group">\"%1$s\" qrupa qoşulmaq istəyirsinizmi?</string>
     <string name="qrscan_fingerprint_mismatch">%1$süçün skan olunan barmaq izi son görüldüyü barmaq izinə uyğun deyil</string>
-    <string name="qrscan_no_addr_found">QR kodu iz ehtiva edir, lakin heç bir e-poçt ünvanı yoxdur.\n\nƏlaqə qurmaq
-        üçün əvvəlcə abonentlə şifrəli bir əlaqə qurun.</string>
+    <string name="qrscan_no_addr_found">QR kodu iz ehtiva edir, lakin heç bir e-poçt ünvanı yoxdur.\n\nƏlaqə qurmaq üçün əvvəlcə abonentlə şifrəli bir əlaqə qurun.</string>
     <string name="qrscan_contains_text">QR kod mətni skan olundu:\n\n%1$s</string>
     <string name="qrscan_contains_url">QR kod linki skan olundu:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">İz</string>
@@ -403,20 +386,11 @@
     <!-- permissions -->
     <string name="perm_required_title">İzin tələb olunur</string>
     <string name="perm_continue">Davam edin</string>
-    <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin
-        bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və
-        \"kamera\" izni verin.</string>
+    <string name="perm_explain_access_to_camera_denied">Delta Chat şəkillər və ya video çəkmək üçün kamera icazə tələb edir, lakin bu, əbədi imtina edilmişdir. Proqramın sistem ayarlarına gedib \"İcazələr\"-i seçin və \"kamera\" izni verin.</string>
     <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq
-        rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin.
-    </string>
-    <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoşəkilləri, videoları və ya səsləri əlavə etmək və ya ixrac
-        etmək üçün saxlama icazəsini tələb edir, lakin bu daimi olaraq rədd edildi. Xahiş edirik
-        tətbiq ayarları menyusuna davam edin, \"İzinlər\" seçin və \"Yaddaş\" funksiyasını
-        aktivləşdirin.</string>
-    <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq
-        rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin.
-    </string>
+    <string name="perm_explain_access_to_mic_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
+    <string name="perm_explain_access_to_storage_denied">Delta Chat, fotoşəkilləri, videoları və ya səsləri əlavə etmək və ya ixrac etmək üçün saxlama icazəsini tələb edir, lakin bu daimi olaraq rədd edildi. Xahiş edirik tətbiq ayarları menyusuna davam edin, \"İzinlər\" seçin və \"Yaddaş\" funksiyasını aktivləşdirin.</string>
+    <string name="perm_explain_access_to_location_denied">Delta Chat yer əlavə etmək üçün yer icazə tələb edir, lakin daimi olaraq rədd edilmişdir. \"İcazələr\"-i seçin və\"Yerləşmə\" izni verin. </string>
     <string name="global_menu_preferences_language_desktop">Dil səç</string>
     <string name="global_menu_file_desktop">Fayl</string>
     <string name="global_menu_file_quit_desktop">Çıxış</string>

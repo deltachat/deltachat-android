@@ -43,9 +43,7 @@
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Diam</string>
     <string name="ephemeral_messages">Pesan yang berhilangan</string>
-    <string name="ephemeral_messages_hint">Pengaturan ini berlaku untuk semua peserta yang menggunakan Delta Chat.
-        Namun, mereka dapat menyalin, menyimpan, dan meneruskan pesan atau menggunakan klien email
-        lainnya.</string>
+    <string name="ephemeral_messages_hint">Pengaturan ini berlaku untuk semua peserta yang menggunakan Delta Chat. Namun, mereka dapat menyalin, menyimpan, dan meneruskan pesan atau menggunakan klien email lainnya.</string>
     <string name="save">Simpan</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -244,9 +242,7 @@
     <string name="title_share_location">Bagikan lokasi kepada seluruh anggota grup</string>
     <string name="device_talk">Pesan perangkat</string>
     <string name="device_talk_subtitle">Pesan-pesan buatan lokal</string>
-    <string name="device_talk_explain">Pesan dalam obrolan ini dihasilkan dalam aplikasi Delta Chat anda secara
-        lokal. Para penciptanya memakai obrolan ini untuk memberi tahu aplikasi mutakhir dan
-        masalah-masalah selama digunakan.</string>
+    <string name="device_talk_explain">Pesan dalam obrolan ini dihasilkan dalam aplikasi Delta Chat anda secara lokal. Para penciptanya memakai obrolan ini untuk memberi tahu aplikasi mutakhir dan masalah-masalah selama digunakan.</string>
     <string name="edit_contact">Edit kontak</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Pin obrolan</string>
@@ -279,15 +275,11 @@
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>
     <string name="ask_forward">Teruskan pesan ke %1$s?</string>
-    <string name="ask_export_attachment">Ekspor lampiran? Mengekspor lampiran akan membuat aplikasi lain di perangkat
-        anda terakses.\n\nLanjut?</string>
+    <string name="ask_export_attachment">Ekspor lampiran? Mengekspor lampiran akan membuat aplikasi lain di perangkat anda terakses.\n\nLanjut?</string>
     <string name="ask_block_contact">Blokir kontak ini? Anda tak akan lagi menerima pesan dari kontak ini.</string>
-    <string name="ask_unblock_contact">Buka blokir kontak ini? Anda akan bisa kembali menerima pesan dari kontak
-        ini.</string>
-    <string name="ask_delete_contacts">Hapus kontak?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku
-        alamat pada sistem tak bisa dihapus secara permanen.</string>
-    <string name="ask_delete_contact">Hapus kontak %1$s?\n\nKontak dengan obrolan yang sedang berlangsung dan dari
-        buku alamat pada sistem tak bisa dihapus secara permanen.</string>
+    <string name="ask_unblock_contact">Buka blokir kontak ini? Anda akan bisa kembali menerima pesan dari kontak ini.</string>
+    <string name="ask_delete_contacts">Hapus kontak?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku alamat pada sistem tak bisa dihapus secara permanen.</string>
+    <string name="ask_delete_contact">Hapus kontak %1$s?\n\nKontak dengan obrolan yang sedang berlangsung dan dari buku alamat pada sistem tak bisa dihapus secara permanen.</string>
     <string name="ask_start_chat_with">Ngobrol dengan %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Hapus %1$s dari grup?</string>
@@ -313,9 +305,7 @@
     <plurals name="chat_n_new_messages">
         <item quantity="other">%dpesan baru</item>
     </plurals>
-    <string name="chat_new_group_hint">Buat pesan pertama, perbolehkan yang lain untuk membalas dalam grup
-        ini.\n\n• Tak masalah jika tidak semua anggota menggunakan Delta Chat.\n\n• Mengirim pesan
-        pertama membutuhkan waktu.</string>
+    <string name="chat_new_group_hint">Buat pesan pertama, perbolehkan yang lain untuk membalas dalam grup ini.\n\n• Tak masalah jika tidak semua anggota menggunakan Delta Chat.\n\n• Mengirim pesan pertama membutuhkan waktu.</string>
     <string name="chat_record_slide_to_cancel">Geser untuk batalkan</string>
     <string name="chat_record_explain">Ketuk dan tahan untuk merekam pesan suara, lepaskan untuk mengirim</string>
     <string name="chat_no_chats_yet_title">Kosongkan inbox.\nTekan \"+\" untuk memulai obrolan baru.</string>
@@ -328,8 +318,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Simpan</string>
     <string name="saved_messages">Pesan yang disimpan</string>
-    <string name="saved_messages_explain">• Teruskan pesan di sini untuk akses yang mudah\n\n• Buat catatan atau memo
-        suara\n\n• Lampirkan media untuk menyimpannya</string>
+    <string name="saved_messages_explain">• Teruskan pesan di sini untuk akses yang mudah\n\n• Buat catatan atau memo suara\n\n• Lampirkan media untuk menyimpannya</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sudah disimpan</string>
     <string name="retry_send">Coba lagi mengirim pesan</string>
@@ -363,8 +352,7 @@
     <string name="tab_links">Tautan</string>
     <string name="tab_map">Peta</string>
     <string name="tab_gallery_empty_hint">Gambar dan video yang dibagikan di obrolan ini akan ditampilkan disini.</string>
-    <string name="tab_docs_empty_hint">Dokumen, musik dan berkas yang dibagikan di obrolan ini akan ditampilkan
-        disini.</string>
+    <string name="tab_docs_empty_hint">Dokumen, musik dan berkas yang dibagikan di obrolan ini akan ditampilkan disini.</string>
     <string name="media_preview">Tampilan media</string>
     <string name="send_message">Kirim pesan</string>
 
@@ -386,12 +374,10 @@
     <string name="login_error_port">Silakan masukkan port yang sah (1–65535)</string>
     <string name="login_error_required_fields">Silakan masukkan alamat email dan kata sandi yang sah</string>
     <string name="import_backup_title">Impor cadangan</string>
-    <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan
-        menggunakan semua data dan pengaturan darinya?</string>
+    <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata
-        sandi benar.</string>
+    <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Terima sertifikat yang tidak sah</string>
     <string name="switch_account">Alihkan akun</string>
@@ -412,9 +398,7 @@
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
-    <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika
-        berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau
-        dipindah.</string>
+    <string name="pref_who_can_see_profile_explain">Foto dan nama profil Anda akan tampak bersama dengan pesan-pesan ketika berkomunikasi dengan pengguna lain. Informasi yang telah dikirimkan tidak dapat dihapus atau dipindah.</string>
     <string name="pref_your_name">Nama Anda</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signature text</string>
@@ -445,8 +429,7 @@
     <string name="pref_language">Bahasa</string>
     <string name="pref_incognito_keyboard">Keyboard penyamaran</string>
     <string name="pref_read_receipts">Baca tanda terima</string>
-    <string name="pref_read_receipts_explain">Jika tanda terima baca dinonaktifkan, Anda tidak akan dapat melihat tanda
-        terima baca dari orang lain.</string>
+    <string name="pref_read_receipts_explain">Jika tanda terima baca dinonaktifkan, Anda tidak akan dapat melihat tanda terima baca dari orang lain.</string>
     <string name="pref_manage_keys">Kelola kunci</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
@@ -457,10 +440,7 @@
     <string name="pref_other">Lain</string>
     <string name="pref_backup">Cadangkan</string>
     <string name="pref_backup_explain">Cadangkan obrolan di external storage</string>
-    <string name="pref_backup_export_explain">Cadangan membantu Anda untuk membuat instalasi baru di perangkat ini atau
-        perangkat lain.\n\nDalam cadangan terdapat semua pesan, kontak dan obrolan dan pengaturan
-        Autocrypt ujung ke ujung Anda. Simpan berkas cadangan di tempat yang aman atau hapus
-        secepatnya.</string>
+    <string name="pref_backup_export_explain">Cadangan membantu Anda untuk membuat instalasi baru di perangkat ini atau perangkat lain.\n\nDalam cadangan terdapat semua pesan, kontak dan obrolan dan pengaturan Autocrypt ujung ke ujung Anda. Simpan berkas cadangan di tempat yang aman atau hapus secepatnya.</string>
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
@@ -558,21 +538,16 @@
     <!-- permissions -->
     <string name="perm_required_title">Perlu izin</string>
     <string name="perm_continue">Lanjutkan</string>
-    <string name="perm_explain_access_to_camera_denied">Untuk mengambil foto atau merekam video, lihat pengaturan aplikasi, pilih
-        \"Perizinan\", dan aktifkan \"Kamera\".</string>
+    <string name="perm_explain_access_to_camera_denied">Untuk mengambil foto atau merekam video, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Kamera\".</string>
     <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\",
-        dan aktifkan \"Mikrofon\".</string>
-    <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih
-        \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
-    <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\",
-        dan aktifkan \"Lokasi\".</string>
+    <string name="perm_explain_access_to_mic_denied">Untuk mengirim pesan audio, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Mikrofon\".</string>
+    <string name="perm_explain_access_to_storage_denied">Untuk menerima atau mengirim berkas, pergi ke pengaturan aplikasi, pilih \"Perizinan\", dan fungsikan \"Penyimpanan\".</string>
+    <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Ini adalah aplikasi resmi Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber
-        tersedia di GitHub.</string>
+    <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber tersedia di GitHub.</string>
     <string name="welcome_desktop">Selamat Datang di Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Bahasa</string>
     <string name="global_menu_file_desktop">Berkas</string>
@@ -611,7 +586,6 @@
     <string name="a11y_delivery_status_read">Status pengiriman: Dibaca</string>
     <string name="a11y_delivery_status_invalid">Status pengiriman tidak valid</string>
     <string name="a11y_background_preview_label">Pratampil latar belakang</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk
-        dikirim.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat akan memungkinkan Anda memilih foto dari perpustakaan Anda untuk dikirim.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat ingin menyimpan gambar ke kumpulan foto anda.</string>
     </resources>

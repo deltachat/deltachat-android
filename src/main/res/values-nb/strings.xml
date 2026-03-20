@@ -58,8 +58,7 @@
     <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Dempet</string>
     <string name="ephemeral_messages">Forsvinnende meldinger</string>
-    <string name="ephemeral_messages_hint">Disse innstillingene gjelder alle deltakerne som bruker Delta Chat. Men de
-        kan kopiere, lagre og videresende meldinger eller bruke annen e-postklient.</string>
+    <string name="ephemeral_messages_hint">Disse innstillingene gjelder alle deltakerne som bruker Delta Chat. Men de kan kopiere, lagre og videresende meldinger eller bruke annen e-postklient.</string>
     <string name="save">Lagre</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -81,9 +80,7 @@
     <string name="activate">Aktiver</string>
     <string name="load_remote_content">Last eksternt innhold</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Eksterne bilder kan spore deg.\n\nDenne innstillingen kan også laste
-        skrifttyper og annet innhold. Hvis avslått vil innkapslede og mellomlagrede bilder kunne
-        vises.\n\nLast eksternt innhold?</string>
+    <string name="load_remote_content_ask">Eksterne bilder kan spore deg.\n\nDenne innstillingen kan også laste skrifttyper og annet innhold. Hvis avslått vil innkapslede og mellomlagrede bilder kunne vises.\n\nLast eksternt innhold?</string>
     <string name="always">Alltid</string>
     <string name="always_load_remote_images">Last alltid eksterne bilder</string>
     <string name="once">Én gang</string>
@@ -173,8 +170,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Merke</string>
     <string name="add_to_sticker_collection">Legg til merkesamling</string>
-    <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for
-        merkepakken, og dra bilder og merkefiler dit</string>
+    <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for merkepakken, og dra bilder og merkefiler dit</string>
     <string name="open_sticker_folder">Åpne merkemappe</string>
     <string name="images">Bilder</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -243,8 +239,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_classic_contact">Legg til kontakt manuelt</string>
-    <string name="new_classic_contact_explain">Manuelle kontakter kan brukes til å sende tekst til klassisk e-post og er
-        ikke garantert ende-til-ende-kryptert</string>
+    <string name="new_classic_contact_explain">Manuelle kontakter kan brukes til å sende tekst til klassisk e-post og er ikke garantert ende-til-ende-kryptert</string>
     <string name="menu_new_chat">Ny chat</string>
     <string name="menu_new_group">Ny gruppe</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
@@ -281,8 +276,7 @@
     <string name="menu_message_details">Meldingsdetaljer</string>
     <string name="menu_copy_to_clipboard">Kopier til utklippstavle</string>
     <string name="share_invite_link">Del invitasjonslenke</string>
-    <string name="share_invite_link_explain">Alle som har denne lenken kan se profilen din og starte en chat med deg. Den
-        bør bare deles med folk du stoler på.</string>
+    <string name="share_invite_link_explain">Alle som har denne lenken kan se profilen din og starte en chat med deg. Den bør bare deles med folk du stoler på.</string>
     <string name="invite_friends">Inviter venner</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Ta kontakt på Delta Chat:\n%1$s</string>
@@ -292,8 +286,7 @@
     <string name="menu_copy_image_to_clipboard">Kopier bilde</string>
     <string name="menu_copy_email_to_clipboard">Kopier e-post</string>
     <string name="paste_from_clipboard">Lim inn fra utklippstavle</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">Lenken "%1$d" kan ikke åpnes i nettleseren. Vil du heller kopiere den til
-        utklippstavlen?</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Lenken "%1$d" kan ikke åpnes i nettleseren. Vil du heller kopiere den til utklippstavlen?</string>
     <string name="menu_forward">Videresend melding</string>
     <string name="menu_reply">Svar på melding</string>
     <string name="menu_mute">Demp merknader</string>
@@ -324,8 +317,7 @@
     <string name="select_more">Velg mer</string>
     <string name="menu_edit_name">Rediger navn</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
-    <string name="edit_name_explain">Sett et kallenavn som vil bli brukt istedenfor \"%1$s\". La det være tomt
-        for å bruke kontaktens valgte navn.</string>
+    <string name="edit_name_explain">Sett et kallenavn som vil bli brukt istedenfor \"%1$s\". La det være tomt for å bruke kontaktens valgte navn.</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Kallenavn for \"%1$s\"</string>
     <string name="menu_settings">Innstillinger</string>
@@ -343,15 +335,8 @@
     <string name="title_share_location">Del posisjon med alle gruppemedlemmer</string>
     <string name="device_talk">Enhetsmeldinger</string>
     <string name="device_talk_subtitle">Lokalt genererte meldinger</string>
-    <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen.
-        Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
-    <string name="device_talk_welcome_message2">Ta kontakt!\n\n🙌 Trykk \"QR-kode\" begge enhetenes hovedskjerm. Velg
-        \"Skann QR-kode\" på den ene enheten, og pek med kameraet på den andre\n\n🌍 Hvis enhetene
-        ikke er i samme rom, skann i en videosamtale eller del en invitasjonslenke fra \"Skann
-        QR-kode\"\n\nSå kan du ta del i en meldingstjeneste som er bygget på det største
-        desentraliserte nettverket som noen gang er laget: e-post. Og, i motsetning til andre
-        populære apper, uten sentral kontroll, sporing, og salg av data om deg, dine venner, dine
-        kolleger, eller din familie til store selskaper.</string>
+    <string name="device_talk_explain">Meldinger i denne chatten blir generert lokalt av Delta Chat-appen. Produsentene bruker den for å informere om appoppdateringer og problemer under bruk.</string>
+    <string name="device_talk_welcome_message2">Ta kontakt!\n\n🙌 Trykk \"QR-kode\" begge enhetenes hovedskjerm. Velg \"Skann QR-kode\" på den ene enheten, og pek med kameraet på den andre\n\n🌍 Hvis enhetene ikke er i samme rom, skann i en videosamtale eller del en invitasjonslenke fra \"Skann QR-kode\"\n\nSå kan du ta del i en meldingstjeneste som er bygget på det største desentraliserte nettverket som noen gang er laget: e-post. Og, i motsetning til andre populære apper, uten sentral kontroll, sporing, og salg av data om deg, dine venner, dine kolleger, eller din familie til store selskaper.</string>
     <string name="edit_contact">Rediger kontakt</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fest chat</string>
@@ -367,10 +352,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Legg til på hjemmeskjermen</string>
     <string name="donate">Doner</string>
-    <string name="donate_device_msg">❤️ Det ser ut som du liker Delta Chat!\n\nVurder å donere for å holde Delta
-        Chat gratis for alle.\n\nSelv om Delta Chat er gratis å bruke og åpen kildekode, så koster
-        det penger å utvikle. Hjelp oss å holde Delta Chat uavhengig og gjøre det enda
-        bedre.\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ Det ser ut som du liker Delta Chat!\n\nVurder å donere for å holde Delta Chat gratis for alle.\n\nSelv om Delta Chat er gratis å bruke og åpen kildekode, så koster det penger å utvikle. Hjelp oss å holde Delta Chat uavhengig og gjøre det enda bedre.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Demp i 1 time</string>
     <string name="mute_for_eight_hours">Demp i 8 timer</string>
@@ -415,15 +397,11 @@
     </plurals>
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
-    <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet
-        tilgang til dem\n\nFortsett?</string>
+    <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
     <string name="ask_block_contact">Blokkere denne kontakten? Du vil ikke lenger motta meldinger fra kontakten.</string>
-    <string name="ask_unblock_contact">Fjern blokkering av denne kontakten? Du vil igjen kunne motta meldinger fra
-        kontakten.</string>
-    <string name="ask_delete_contacts">Slett kontakter?\n\nKontakter med pågående chatter og kontakter fra systemet
-        adressebok kan ikke bli slettet permanent.</string>
-    <string name="ask_delete_contact">Slett kontakter %1$s?\n\nKontakter med pågående chatter og kontakter fra
-        systemets adressebok, kan ikke slettes permanent.</string>
+    <string name="ask_unblock_contact">Fjern blokkering av denne kontakten? Du vil igjen kunne motta meldinger fra kontakten.</string>
+    <string name="ask_delete_contacts">Slett kontakter?\n\nKontakter med pågående chatter og kontakter fra systemet adressebok kan ikke bli slettet permanent.</string>
+    <string name="ask_delete_contact">Slett kontakter %1$s?\n\nKontakter med pågående chatter og kontakter fra systemets adressebok, kan ikke slettes permanent.</string>
     <string name="ask_start_chat_with">Begynn å chatte med %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Fjern %1$s fra gruppen?</string>
@@ -458,9 +436,7 @@
     <string name="chat_new_one_to_one_hint">Send en melding til %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanaler er et en-til-mange-verktøy for å publisere meldingene dine.</string>
-    <string name="chat_new_group_hint">Forfatt den første meldingen, noe som lar andre svare i gruppen.\n\n• Det er
-        greit at ikke alle medlemmer bruker Delta Chat.\n\n• Levering av den første meldingen kan ta
-        sin tid.</string>
+    <string name="chat_new_group_hint">Forfatt den første meldingen, noe som lar andre svare i gruppen.\n\n• Det er greit at ikke alle medlemmer bruker Delta Chat.\n\n• Levering av den første meldingen kan ta sin tid.</string>
     <string name="chat_record_slide_to_cancel">Dra for å avbryte</string>
     <string name="chat_record_explain">Trykk og hold for å ta opp en melding, slipp for å sende</string>
     <string name="chat_no_chats_yet_title">Tøm innboksen.\nTrykk \"+\" for å starte en ny chat.</string>
@@ -476,8 +452,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Lagre melding</string>
     <string name="saved_messages">Lagrede meldinger</string>
-    <string name="saved_messages_explain">• Videresend meldinger hit for enkel tilgang\n\n• Ta tekst- eller
-        tale-notater\n\n• Legg ved media for å lagre dem</string>
+    <string name="saved_messages_explain">• Videresend meldinger hit for enkel tilgang\n\n• Ta tekst- eller tale-notater\n\n• Legg ved media for å lagre dem</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Lagret</string>
     <string name="save_as">Lagre som</string>
@@ -500,8 +475,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Send melding til…</string>
     <string name="enable_realtime">Sanntidsapper</string>
-    <string name="enable_realtime_explain">Slå på sanntidstilkoblinger for apper tilknyttet chatter. Når det er slått
-        på kan chattepartnere se din IP-adresse når du starter en app.</string>
+    <string name="enable_realtime_explain">Slå på sanntidstilkoblinger for apper tilknyttet chatter. Når det er slått på kan chattepartnere se din IP-adresse når du starter en app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Vis plasseringer innenfor tidsramme</string>
@@ -536,8 +510,7 @@
     <string name="login_smtp_security">SMTP-sikkerhet</string>
     <string name="login_certificate_checks">Sertifikat sjekker</string>
     <string name="import_backup_title">Importer sikkerhetskopi</string>
-    <string name="import_backup_no_backup_found">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til %1$s og prøv
-        igjen.</string>
+    <string name="import_backup_no_backup_found">Fant ingen sikkerhetskopier.\n\nKopier sikkerhetskopien til %1$s og prøv igjen.</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Videresend til…</string>
@@ -572,8 +545,7 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Be tastatur om å slå av lærefunksjon</string>
     <string name="pref_read_receipts">Meldingskvitteringer</string>
-    <string name="pref_read_receipts_explain">Hvis du slår av lesebekreftelser, får du heller ikke se lesebekreftelser fra
-        andre.</string>
+    <string name="pref_read_receipts_explain">Hvis du slår av lesebekreftelser, får du heller ikke se lesebekreftelser fra andre.</string>
     <string name="pref_manage_keys">Behandle nøkler</string>
     <string name="pref_chats">Chatter</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
@@ -607,10 +579,8 @@
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>
     <string name="qrscan_hint">Beveg kameraet over QR-koden.</string>
-    <string name="qrscan_fingerprint_mismatch">Det skannede fingeravtrykket stemmer ikke overens med sist sette
-        fingeravtrukk for %1$s.</string>
-    <string name="qrscan_no_addr_found">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor
-        bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
+    <string name="qrscan_fingerprint_mismatch">Det skannede fingeravtrykket stemmer ikke overens med sist sette fingeravtrukk for %1$s.</string>
+    <string name="qrscan_no_addr_found">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
     <string name="qrscan_contains_text">Den skannede QR-koden inneholder følgende tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Den skannede QR-koden inneholder følgende lenke:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeravtrykk</string>
