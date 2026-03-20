@@ -42,9 +42,7 @@
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Silențios</string>
     <string name="ephemeral_messages">Mesaje dispărute</string>
-    <string name="ephemeral_messages_hint">Se aplică tuturor membrilor acestui chat dacă folosesc Delta Chat; aceștia
-        pot în continuare să copieze, să salveze și să redirecționeze mesajele sau să utilizeze alți
-        clienți de e-mail.</string>
+    <string name="ephemeral_messages_hint">Se aplică tuturor membrilor acestui chat dacă folosesc Delta Chat; aceștia pot în continuare să copieze, să salveze și să redirecționeze mesajele sau să utilizeze alți clienți de e-mail.</string>
     <string name="save">Salvați</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -62,9 +60,7 @@
     <string name="activate">Activați</string>
     <string name="load_remote_content">Încărcați imagini la distanță</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Imaginile de la distanță vă pot urmări.\n\nAceastă setare poate, de
-        asemenea, să încarce fonturi și alt conținut. Dacă este dezactivată, pot apărea imagini
-        încorporate sau în cache.\n\nÎncărcare imagini la distanță?</string>
+    <string name="load_remote_content_ask">Imaginile de la distanță vă pot urmări.\n\nAceastă setare poate, de asemenea, să încarce fonturi și alt conținut. Dacă este dezactivată, pot apărea imagini încorporate sau în cache.\n\nÎncărcare imagini la distanță?</string>
     <string name="always">Întotdeauna</string>
     <string name="always_load_remote_images">Încărcați întotdeauna imagini la distanță</string>
     <string name="once">Odată ce</string>
@@ -262,9 +258,7 @@
     <string name="title_share_location">Partajați locația cu toți membrii grupului</string>
     <string name="device_talk">Mesajele Dispozitivului</string>
     <string name="device_talk_subtitle">Mesaje generate la nivel local</string>
-    <string name="device_talk_explain">Mesajele din acest chat sunt generate pe dispozitivul dumneavoastră pentru a
-        vă informa cu privire la actualizările app-ului și la problemele apărute în timpul
-        utilizării.</string>
+    <string name="device_talk_explain">Mesajele din acest chat sunt generate pe dispozitivul dumneavoastră pentru a vă informa cu privire la actualizările app-ului și la problemele apărute în timpul utilizării.</string>
     <string name="edit_contact">Editați Contactul</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fixați Chat</string>
@@ -305,15 +299,11 @@
     </plurals>
     <string name="ask_forward">Transmiteți mesajele către %1$s?</string>
     <string name="ask_forward_multiple">Transmiteți mesajele către %1$d chat-uri?</string>
-    <string name="ask_export_attachment">Exportul atașamentelor va permite altor aplicații de pe dispozitivul
-        dumneavoastră să le acceseze them.\n\nContinue?</string>
+    <string name="ask_export_attachment">Exportul atașamentelor va permite altor aplicații de pe dispozitivul dumneavoastră să le acceseze them.\n\nContinue?</string>
     <string name="ask_block_contact">Să blochez acest contact? Nu veți mai primi mesaje de la această persoană.</string>
-    <string name="ask_unblock_contact">Deblocați acest contact? Astfel, veți putea primi mesaje de la această
-        persoană.</string>
-    <string name="ask_delete_contacts">Ștergerea contacts?\n\nContacts cu discuții în curs sau din agenda de adrese
-        a sistemului nu pot fi șterse definitiv.</string>
-    <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda
-        de adrese a sistemului nu pot fi șterse definitiv.</string>
+    <string name="ask_unblock_contact">Deblocați acest contact? Astfel, veți putea primi mesaje de la această persoană.</string>
+    <string name="ask_delete_contacts">Ștergerea contacts?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
+    <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Scoateți %1$s din grup?</string>
@@ -349,8 +339,7 @@
     <string name="chat_new_one_to_one_hint">Trimiteți un mesaj către %1$s.</string>
     <string name="chat_new_group_hint">Ceilalți vor vedea acest grup numai după ce ați trimis un prim mesaj.</string>
     <string name="chat_record_slide_to_cancel">Glisați pentru a anula</string>
-    <string name="chat_record_explain">Atingeți continuu pentru a înregistra un mesaj vocal, apoi eliberați-l
-        pentru a-l trimite</string>
+    <string name="chat_record_explain">Atingeți continuu pentru a înregistra un mesaj vocal, apoi eliberați-l pentru a-l trimite</string>
     <string name="chat_no_chats_yet_title">Goliți inbox.\nPress \"+\" pentru a începe un nou chat.</string>
     <string name="chat_all_archived">Toate chat-urile sunt archived.\nPress \"+\" pentru a începe un nou chat.</string>
     <string name="chat_share_with_title">Împărtășiți cu</string>
@@ -363,8 +352,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Salvați</string>
     <string name="saved_messages">Mesaje salvate</string>
-    <string name="saved_messages_explain">• Redirecționați mesajele aici pentru acces ușor\n\n• Luați notițe sau
-        notițe vocale\n\n\n• Atașați fișiere media pentru a le salva</string>
+    <string name="saved_messages_explain">• Redirecționați mesajele aici pentru acces ușor\n\n• Luați notițe sau notițe vocale\n\n\n• Atașați fișiere media pentru a le salva</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Salvat</string>
     <string name="save_as">Salvați ca</string>
@@ -395,10 +383,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ești sigur că vrei să vizitezi %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Acest link poate denatura caracterele cu caractere asemănătoare din diferite
-        alfabete. Urmând linkul etichetat %1$s va duce la %2$s ceea ce este normal pentru
-        caracterele non-latine. Dacă nu v-ați așteptat la astfel de caractere, acest link ar putea
-        fi dăunător.</string>
+    <string name="puny_code_warning_description">Acest link poate denatura caracterele cu caractere asemănătoare din diferite alfabete. Urmând linkul etichetat %1$s va duce la %2$s ceea ce este normal pentru caracterele non-latine. Dacă nu v-ați așteptat la astfel de caractere, acest link ar putea fi dăunător.</string>
 
 
     <!-- search -->
@@ -435,19 +420,15 @@
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Adăugați un al doilea dispozitiv</string>
-    <string name="multidevice_same_network_hint">Asigurați-vă că ambele dispozitive se află în aceeași rețea Wi-Fi sau în
-        aceeași rețea</string>
-    <string name="multidevice_this_creates_a_qr_code">Astfel se creează un cod QR pe care cel de-al doilea dispozitiv îl poate
-        scana pentru a copia contul.</string>
+    <string name="multidevice_same_network_hint">Asigurați-vă că ambele dispozitive se află în aceeași rețea Wi-Fi sau în aceeași rețea</string>
+    <string name="multidevice_this_creates_a_qr_code">Astfel se creează un cod QR pe care cel de-al doilea dispozitiv îl poate scana pentru a copia contul.</string>
     <string name="multidevice_install_dc_on_other_device">Instalați Delta Chat pe celălalt dispozitiv (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Porniți Delta Chat, atingeți \" Adăugați ca al doilea dispozitiv\" și
-        scanați codul afișat aici</string>
+    <string name="multidevice_tap_scan_on_other_device">Porniți Delta Chat, atingeți \" Adăugați ca al doilea dispozitiv\" și scanați codul afișat aici</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Scanare pentru a configura un al doilea dispozitiv pentru %1$s</string>
     <string name="multidevice_receiver_title">Adăugați ca Dispozitiv Secundar</string>
-    <string name="multidevice_open_settings_on_other_device">Pe primul dispozitiv, mergeți la \" Setări / Adaugă Dispozitivul Secundar \"
-        și scanați codul afișat acolo.</string>
+    <string name="multidevice_open_settings_on_other_device">Pe primul dispozitiv, mergeți la \" Setări / Adaugă Dispozitivul Secundar \" și scanați codul afișat acolo.</string>
     <string name="multidevice_receiver_scanning_ask">Copiați contul de pe celălalt dispozitiv pe acest dispozitiv?</string>
     <string name="multidevice_abort">Abandonați configurarea celui de-al doilea dispozitiv?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Acest lucru va invalida codul QR copiat în clipboard.</string>
@@ -500,22 +481,17 @@
     <string name="login_error_port">Vă rugăm să introduceți un port valid (1-65535)</string>
     <string name="login_error_required_fields">Vă rugăm să introduceți o adresă de e-mail validă și o parolă</string>
     <string name="import_backup_title">Restaurarea din copia de rezervă</string>
-    <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate
-        datele și setările din acesta?</string>
-    <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și
-        încercați din nou.</string>
+    <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
+    <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de
-        e-mail și parola sunt corecte.</string>
+    <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
     <string name="switch_account">Schimbați contul</string>
     <string name="add_account">Adăugați un cont</string>
     <string name="delete_account">Ștergeți Contul</string>
     <string name="delete_account_ask">Sunteți sigur că doriți să ștergeți datele contului dumneavoastră?</string>
-    <string name="delete_account_explain_with_name">Toate datele de cont ale \"%s\" de pe acest dispozitiv vor fi șterse,
-        inclusiv configurația de criptare end-to-end, contactele, chat-urile, mesajele și mediile.
-        Această acțiune nu poate fi anulată.</string>
+    <string name="delete_account_explain_with_name">Toate datele de cont ale \"%s\" de pe acest dispozitiv vor fi șterse, inclusiv configurația de criptare end-to-end, contactele, chat-urile, mesajele și mediile. Această acțiune nu poate fi anulată.</string>
     <string name="unconfigured_account">Cont neconfigurat</string>
     <string name="unconfigured_account_hint">Deschideți contul pentru a-l configura.</string>
     <string name="try_connect_now">Încercați să vă conectați acum</string>
@@ -536,8 +512,7 @@
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
     <string name="blocked_empty_hint">Contactele blocate vor apărea aici.</string>
-    <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise
-        împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
+    <string name="pref_who_can_see_profile_explain">Imaginea de profil, numele și semnătura dumneavoastră vor fi trimise împreună cu mesajele dumneavoastră atunci când comunicați cu alți utilizatori.</string>
     <string name="pref_your_name">Numele dumneavoastră</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Semnătură Text</string>
@@ -550,10 +525,8 @@
     <string name="pref_vibrate">Vibrație</string>
     <string name="pref_screen_security">Ecran Securitate</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Solicitarea de a bloca capturile de ecran în lista de amintiri și în
-        interiorul aplicației</string>
-    <string name="pref_screen_security_please_restart_hint">Pentru a aplica setările de securitate a ecranului, vă rugăm să reporniți
-        app-ul.</string>
+    <string name="pref_screen_security_explain">Solicitarea de a bloca capturile de ecran în lista de amintiri și în interiorul aplicației</string>
+    <string name="pref_screen_security_please_restart_hint">Pentru a aplica setările de securitate a ecranului, vă rugăm să reporniți app-ul.</string>
     <string name="pref_notifications">Notificări</string>
     <string name="pref_notifications_show">Afișați</string>
     <string name="pref_notifications_priority">Prioritate</string>
@@ -575,7 +548,6 @@
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Solicitați tastatura pentru a dezactiva învățarea personalizată</string>
     <string name="pref_read_receipts">Citiți Chitanțele</string>
-    <string name="pref_read_receipts_explain">Dacă sunt dezactivate chitanțele de citire, nu veți putea vedea chitanțele
-        de citire de la alte persoane.</string>
+    <string name="pref_read_receipts_explain">Dacă sunt dezactivate chitanțele de citire, nu veți putea vedea chitanțele de citire de la alte persoane.</string>
     <string name="pref_manage_keys">Gestionați Cheile</string>
     </resources>

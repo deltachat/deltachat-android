@@ -58,8 +58,7 @@
     <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">بؽ دونگ</string>
     <string name="ephemeral_messages">پیوما بؽڌارکۊنی</string>
-    <string name="ephemeral_messages_hint">یو ری پوی منتورا ای گوفت وو لوفت، ٱر دلتا چت ن و کار بگرن ائمال ابۊ. ولی هنی
-        ترن پیوما ن لف گیری، زفت وو فوروارد کونن.</string>
+    <string name="ephemeral_messages_hint">یو ری پوی منتورا ای گوفت وو لوفت، ٱر دلتا چت ن و کار بگرن ائمال ابۊ. ولی هنی ترن پیوما ن لف گیری، زفت وو فوروارد کونن.</string>
     <string name="save">زفت کردن</string>
     <string name="chat">گوفت وو لوفت</string>
     <string name="media">وارسگر</string>
@@ -165,8 +164,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
     <string name="add_to_sticker_collection">ٱووردن و مجمۊعه استیکر</string>
-    <string name="add_stickers_instructions">سی ٱووردن برچسب ری «گۊشیڌن دوبلگه برچسب» بزنین، ی لم دوبلگه ای سی کتن برچسب
-        خوتووݩ وورکل کۊنین وو برچسبا ن و اوچو بکشین</string>
+    <string name="add_stickers_instructions">سی ٱووردن برچسب ری «گۊشیڌن دوبلگه برچسب» بزنین، ی لم دوبلگه ای سی کتن برچسب خوتووݩ وورکل کۊنین وو برچسبا ن و اوچو بکشین</string>
     <string name="open_sticker_folder">گۊشیڌن دوبلگه استیکر</string>
     <string name="images">شؽواتا</string>
     <!-- a noun, used for "Music" and other "Audio" files -->

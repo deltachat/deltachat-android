@@ -58,8 +58,7 @@
     <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Tystad</string>
     <string name="ephemeral_messages">Försvinnande meddelanden</string>
-    <string name="ephemeral_messages_hint">Dessa inställningar tillämpas för alla deltagare som använder Delta Chat. De
-        kan dock kopiera, spara och vidarebefordra meddelanden eller använda andra e-postklienter.</string>
+    <string name="ephemeral_messages_hint">Dessa inställningar tillämpas för alla deltagare som använder Delta Chat. De kan dock kopiera, spara och vidarebefordra meddelanden eller använda andra e-postklienter.</string>
     <string name="save">Spara</string>
     <string name="chat">Chatt</string>
     <string name="media">Media</string>
@@ -81,9 +80,7 @@
     <string name="activate">Aktivera</string>
     <string name="load_remote_content">Läs in fjärrbilder</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Fjärrbilder kan användas för att spåra dig.\n\nInställningen att fonter och
-        annat innehåll laddas in. Även om inställningen är inaktiverad kan eventuellt inbäddade
-        eller cachade fjärrbilder visas.\n\nVill du läsa in fjärrbilder?</string>
+    <string name="load_remote_content_ask">Fjärrbilder kan användas för att spåra dig.\n\nInställningen att fonter och annat innehåll laddas in. Även om inställningen är inaktiverad kan eventuellt inbäddade eller cachade fjärrbilder visas.\n\nVill du läsa in fjärrbilder?</string>
     <string name="always">Alltid</string>
     <string name="always_load_remote_images">Läs alltid in fjärrbilder</string>
     <string name="once">en gång</string>
@@ -180,8 +177,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Dekal</string>
     <string name="add_to_sticker_collection">Lägg till i dekalsamling</string>
-    <string name="add_stickers_instructions">För att lägga till dekaler trycker du på \"Öppna dekalmapp\", skapar en
-        undermapp för ditt dekalpaket och drar bild- och dekalfiler dit.</string>
+    <string name="add_stickers_instructions">För att lägga till dekaler trycker du på \"Öppna dekalmapp\", skapar en undermapp för ditt dekalpaket och drar bild- och dekalfiler dit.</string>
     <string name="open_sticker_folder">Öppna dekalmapp</string>
     <string name="ask_add_sticker_to_collection">Vill du lägga till denna dekal till din samling?</string>
     <string name="ask_delete_sticker">Vill du ta bort denna dekal?</string>
@@ -218,8 +214,7 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Appar</string>
     <string name="webxdc_store_url">URL till appväljare</string>
-    <string name="webxdc_store_url_explain">Om angivet, kommer URL:en att användas som appväljare istället för
-        standardväljare</string>
+    <string name="webxdc_store_url_explain">Om angivet, kommer URL:en att användas som appväljare istället för standardväljare</string>
     <string name="webxdc_draft_hint">Tryck \"Skicka\" för att dela</string>
     <string name="home">Hem</string>
     <string name="games">Spel</string>
@@ -254,8 +249,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Ny kontakt</string>
     <string name="menu_new_classic_contact">Lägg till kontakt manuellt</string>
-    <string name="new_classic_contact_explain">Manuellt tillagda kontakter kan användas för att sms:a till klassisk e-post
-        och är inte garanterat totalsträckskrypterat.</string>
+    <string name="new_classic_contact_explain">Manuellt tillagda kontakter kan användas för att sms:a till klassisk e-post och är inte garanterat totalsträckskrypterat.</string>
     <string name="menu_new_chat">Ny chatt</string>
     <string name="menu_new_group">Ny grupp</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
@@ -298,8 +292,7 @@
     <string name="menu_message_details">Meddelandedetaljer</string>
     <string name="menu_copy_to_clipboard">Kopiera till urklipp</string>
     <string name="share_invite_link">Dela inbjudningslänk</string>
-    <string name="share_invite_link_explain">Vem som helst med den här länken kan se din profil och börja chatta med dig.
-        Dela den bara med personer som du litar på.</string>
+    <string name="share_invite_link_explain">Vem som helst med den här länken kan se din profil och börja chatta med dig. Dela den bara med personer som du litar på.</string>
     <string name="invite_friends">Bjud in vänner</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">Kontakta mig på Delta Chat:\n%1$s</string>
@@ -309,8 +302,7 @@
     <string name="menu_copy_image_to_clipboard">Kopiera bild</string>
     <string name="menu_copy_email_to_clipboard">Kopiera e-postadress</string>
     <string name="paste_from_clipboard">Klistra in från urklipp</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">Länken \"%1$d\" kan inte öppnas i webbläsaren. Vill du kopiera länken till
-        urklipp istället?</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Länken \"%1$d\" kan inte öppnas i webbläsaren. Vill du kopiera länken till urklipp istället?</string>
     <string name="menu_forward">Vidarebefordra meddelande</string>
     <string name="menu_reply">Svara på meddelandet</string>
     <string name="menu_mute">Stäng av avisering</string>
@@ -341,8 +333,7 @@
     <string name="select_more">Välj flera</string>
     <string name="menu_edit_name">Redigera namn</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
-    <string name="edit_name_explain">Ange ett chattnamn som kommer att visas för dig istället för \"%1$s\".
-        Lämnas tomt om du vill använda kontaktens valda namn.</string>
+    <string name="edit_name_explain">Ange ett chattnamn som kommer att visas för dig istället för \"%1$s\". Lämnas tomt om du vill använda kontaktens valda namn.</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Chattnamn för \"%1$s\"</string>
     <string name="menu_settings">Inställningar</string>
@@ -360,15 +351,8 @@
     <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
     <string name="device_talk">Enhetsmeddelanden</string>
     <string name="device_talk_subtitle">Lokalt genererade meddelanden</string>
-    <string name="device_talk_explain">Meddelanden i denna chatt är lokalt genererade av din Delta Chat-app. Dess
-        skapare använder den för att informera om app-uppdateringar och problem vid användning.</string>
-    <string name="device_talk_welcome_message2">Ta kontakt!\n\n🙌 Tryck på \"QR-kod\" på huvudskärmen på båda enheterna.
-        Välj \"Skanna QR-kod\" på en enhet och rikta den mot den andra\n\n🌍 Om du inte är i samma
-        rum kan du skanna via videosamtal eller dela en inbjudningslänk från \"Skanna
-        QR-kod\"\n\nEfter det: Njut av din meddelandeupplevelse via det största decentraliserade
-        nätverket som någonsin har funnits. E-post! Och i motsats till andra populära appar, utan
-        central kontroll eller spårning eller att sälja ut dig, vänner, kollegor eller familj till
-        stora organisationer.</string>
+    <string name="device_talk_explain">Meddelanden i denna chatt är lokalt genererade av din Delta Chat-app. Dess skapare använder den för att informera om app-uppdateringar och problem vid användning.</string>
+    <string name="device_talk_welcome_message2">Ta kontakt!\n\n🙌 Tryck på \"QR-kod\" på huvudskärmen på båda enheterna. Välj \"Skanna QR-kod\" på en enhet och rikta den mot den andra\n\n🌍 Om du inte är i samma rum kan du skanna via videosamtal eller dela en inbjudningslänk från \"Skanna QR-kod\"\n\nEfter det: Njut av din meddelandeupplevelse via det största decentraliserade nätverket som någonsin har funnits. E-post! Och i motsats till andra populära appar, utan central kontroll eller spårning eller att sälja ut dig, vänner, kollegor eller familj till stora organisationer.</string>
     <string name="edit_contact">Redigera kontakt</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fäst chatten</string>
@@ -384,11 +368,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Lägg till på hemskärmen</string>
     <string name="donate">Donera</string>
-    <string name="donate_device_msg">❤️ Det verkar som att du gillar Delta Chat!\n\nVänligen överväg att donera
-        för att hjälpa till att säkerställa att Delta Chat förblir gratis för alla.\n\nÄven om Delta
-        Chat är gratis att använda och öppen källkod, kostar utvecklingen pengar. Hjälp oss att
-        hålla Delta Chat oberoende och göra det ännu bättre i
-        framtiden.\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ Det verkar som att du gillar Delta Chat!\n\nVänligen överväg att donera för att hjälpa till att säkerställa att Delta Chat förblir gratis för alla.\n\nÄven om Delta Chat är gratis att använda och öppen källkod, kostar utvecklingen pengar. Hjälp oss att hålla Delta Chat oberoende och göra det ännu bättre i framtiden.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">Tysta 1 timma</string>
     <string name="mute_for_eight_hours">Tysta 8 timmar</string>
@@ -449,18 +429,11 @@
     </plurals>
     <string name="ask_forward">Vill du vidarebefordra meddelanden till %1$s?</string>
     <string name="ask_forward_multiple">Vill du vidarebefordra meddelanden till %1$d chattar?</string>
-    <string name="ask_export_attachment">Vill du exportera bilagor? Exporterade bilagor tillåter andra appar på din
-        enhet att komma åt dem.\n\nVill du fortsätta?</string>
-    <string name="ask_block_contact">Vill du blockera den här kontakten? Du kommer inte att få fler meddelanden
-        från den här kontakten.</string>
-    <string name="ask_unblock_contact">Vill du avblockera den här kontakten? Du kommer återigen att kunna ta emot
-        meddelanden från den här kontakten.</string>
-    <string name="ask_delete_contacts">Vill du ta bort kontakter? Detta kommer att ta bort de valda kontakterna
-        permanent.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte
-        tas bort permanent.</string>
-    <string name="ask_delete_contact">Vill du ta bort kontakten %1$s?\n\nKontakter med pågående chattar och
-        kontakter från systemets adressbok kan inte tas bort permanent.
-    </string>
+    <string name="ask_export_attachment">Vill du exportera bilagor? Exporterade bilagor tillåter andra appar på din enhet att komma åt dem.\n\nVill du fortsätta?</string>
+    <string name="ask_block_contact">Vill du blockera den här kontakten? Du kommer inte att få fler meddelanden från den här kontakten.</string>
+    <string name="ask_unblock_contact">Vill du avblockera den här kontakten? Du kommer återigen att kunna ta emot meddelanden från den här kontakten.</string>
+    <string name="ask_delete_contacts">Vill du ta bort kontakter? Detta kommer att ta bort de valda kontakterna permanent.\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent.</string>
+    <string name="ask_delete_contact">Vill du ta bort kontakten %1$s?\n\nKontakter med pågående chattar och kontakter från systemets adressbok kan inte tas bort permanent. </string>
     <string name="ask_start_chat_with">Vill du chatta med %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Vill du ta bort %1$s från gruppen?</string>
@@ -495,12 +468,9 @@
     <string name="chat_new_one_to_one_hint">Skicka ett meddelande till %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="chat_new_channel_hint">Kanaler är ett en-till-många-verktyg för att skicka ut dina meddelanden.</string>
-    <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna
-        grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund
-        innan det första meddelandet levereras.</string>
+    <string name="chat_new_group_hint">Komponera det första meddelandet, så att andra kan svara inom denna grupp.\n\n• Det är okej om inte alla medlemmar använder Delta Chat.\n\n• Det kan ta en stund innan det första meddelandet levereras.</string>
     <string name="chat_record_slide_to_cancel">Svep för att avbryta</string>
-    <string name="chat_record_explain">Tryck och håll ner för att spela in ett röstmeddelande, släpp för att
-        skicka.</string>
+    <string name="chat_record_explain">Tryck och håll ner för att spela in ett röstmeddelande, släpp för att skicka.</string>
     <string name="chat_no_chats_yet_title">Tom inkorg.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_all_archived">Alla chattar arkiverade.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_share_with_title">Dela med</string>
@@ -514,8 +484,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Spara</string>
     <string name="saved_messages">Sparade meddelanden</string>
-    <string name="saved_messages_explain">• Vidarebefordra meddelanden här för enkel åtkomst\n\n• Spara anteckningar
-        eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
+    <string name="saved_messages_explain">• Vidarebefordra meddelanden här för enkel åtkomst\n\n• Spara anteckningar eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sparad</string>
     <string name="save_as">Spara som</string>
@@ -538,8 +507,7 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Skicka meddelande till...</string>
     <string name="enable_realtime">Realtidsappar</string>
-    <string name="enable_realtime_explain">Aktivera realtidsanslutningar för appar som är kopplade till chattar. Om
-        detta är aktiverat kan chattpartners kanske få reda på din IP-adress när du startar en app.</string>
+    <string name="enable_realtime_explain">Aktivera realtidsanslutningar för appar som är kopplade till chattar. Om detta är aktiverat kan chattpartners kanske få reda på din IP-adress när du startar en app.</string>
 
     <!-- map -->
     <string name="filter_map_on_time">Visa platser inom tidsramen</string>
@@ -554,9 +522,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Är du säker på att du vill besöka %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Denna länk kan förvränga tecken med liknande utseende från olika alfabet. Om
-        du följer länken som är märkt %1$s kommer du till %2$s, vilket är normalt för icke-latinska
-        tecken. Om du inte förväntade dig sådana tecken kan den här länken vara skadlig.</string>
+    <string name="puny_code_warning_description">Denna länk kan förvränga tecken med liknande utseende från olika alfabet. Om du följer länken som är märkt %1$s kommer du till %2$s, vilket är normalt för icke-latinska tecken. Om du inte förväntade dig sådana tecken kan den här länken vara skadlig.</string>
 
 
     <!-- search -->
@@ -589,8 +555,7 @@
     <string name="tab_links">Länkar</string>
     <string name="tab_map">Karta</string>
     <string name="tab_gallery_empty_hint">Bilder och videor delade i denna chatt kommer att visas här.</string>
-    <string name="tab_docs_empty_hint">Dokument, musik och andra filer som delas i denna chatt kommer att visas
-        här.</string>
+    <string name="tab_docs_empty_hint">Dokument, musik och andra filer som delas i denna chatt kommer att visas här.</string>
     <string name="tab_image_empty_hint">Bilder delade i denna chatt kommer att visas här.</string>
     <string name="tab_video_empty_hint">Videor delade i denna chatt kommer att visas här.</string>
     <string name="tab_audio_empty_hint">Ljudfiler och röstmeddelanden delade i denna chatt kommer att visas här.</string>
@@ -609,21 +574,16 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Lägg till en andra enhet</string>
     <string name="multidevice_same_network_hint">Tillse att bägge enheterna är på samma WiFi eller nätverk</string>
-    <string name="multidevice_this_creates_a_qr_code">Detta skapar en QR-kod som den andra enheten kan skanna för att kopiera
-        profilen.</string>
+    <string name="multidevice_this_creates_a_qr_code">Detta skapar en QR-kod som den andra enheten kan skanna för att kopiera profilen.</string>
     <string name="multidevice_install_dc_on_other_device">Installera Delta Chat på din andra enhet (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Starta Delta Chat, tryck på \"Jag har redan en profil / Lägg till som andra
-        enhet\" och skanna koden som visas här.</string>
+    <string name="multidevice_tap_scan_on_other_device">Starta Delta Chat, tryck på \"Jag har redan en profil / Lägg till som andra enhet\" och skanna koden som visas här.</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Skanna för att ställa in en andra enhet för %1$s</string>
     <string name="multidevice_receiver_title">Lägg till som andra enhet</string>
-    <string name="multidevice_open_settings_on_other_device">På den första enheten går du till \"Inställningar / Lägg till en andra
-        enhet\" och skannar koden som visas där</string>
+    <string name="multidevice_open_settings_on_other_device">På den första enheten går du till \"Inställningar / Lägg till en andra enhet\" och skannar koden som visas där</string>
     <string name="multidevice_receiver_scanning_ask">Vill du kopiera profilen från den andra enheten till den här enheten?</string>
-    <string name="multidevice_receiver_needs_update">Profilen du vill importera är från en nyare version av Delta Chat. \n\nFör
-        att fortsätta konfigurera den andra enheten måste du uppdatera den här enheten till den
-        senaste versionen av Delta Chat.</string>
+    <string name="multidevice_receiver_needs_update">Profilen du vill importera är från en nyare version av Delta Chat. \n\nFör att fortsätta konfigurera den andra enheten måste du uppdatera den här enheten till den senaste versionen av Delta Chat.</string>
     <string name="multidevice_abort">Vill du avbryta konfigurationen av den andra enheten?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Detta kommer att ogiltigförklara QR-koden som kopierats till urklipp.</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilen överförd till din andra enhet.</string>
@@ -686,9 +646,7 @@
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
     <string name="login_title">Logga in</string>
-    <string name="login_advanced_hint">Denna inloggning är för avancerade användare:\n\n- Använd inte en adress som
-        du använder i en annan app.\n\n- Klassisk e-postserver tillåter chattar utan
-        totalsträckskryptering, markerad med en e-postikon.</string>
+    <string name="login_advanced_hint">Denna inloggning är för avancerade användare:\n\n- Använd inte en adress som du använder i en annan app.\n\n- Klassisk e-postserver tillåter chattar utan totalsträckskryptering, markerad med en e-postikon.</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -714,8 +672,7 @@
     <string name="proxy_share_explain">Dina vänner kan lägga till denna proxy genom att skanna QR-koden.</string>
     <string name="proxy_share_link">Dela länk</string>
     <string name="proxy_enabled">Proxy aktiverad</string>
-    <string name="proxy_enabled_hint">Du använder en proxy. Prova med en annan proxy om du har problem att
-        ansluta.</string>
+    <string name="proxy_enabled_hint">Du använder en proxy. Prova med en annan proxy om du har problem att ansluta.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Reläer</string>
     <string name="add_transport">Lägg till relä</string>
@@ -730,13 +687,10 @@
     <string name="login_error_port">Ange en giltig port (1–65535)</string>
     <string name="login_error_required_fields">Ange en giltig e-postadress och ett lösenord</string>
     <string name="import_backup_title">Importera säkerhetskopia</string>
-    <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data
-        och alla inställningar från den?</string>
-    <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och
-        försök igen.</string>
+    <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
+    <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen.</string>
     <!-- %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet
-        är korrekt.</string>
+    <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
     <string name="switch_account">Byt konto</string>
@@ -744,15 +698,12 @@
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Profiletikett</string>
     <string name="profile_tag_hint">T.ex. Arbete, Familj</string>
-    <string name="profile_tag_explain">Ange en etikett som bara är synlig för dig och som hjälper dig att skilja
-        mellan dina profiler.</string>
+    <string name="profile_tag_explain">Ange en etikett som bara är synlig för dig och som hjälper dig att skilja mellan dina profiler.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Flytta högst upp</string>
     <string name="delete_account">Ta bort konto</string>
     <string name="delete_account_ask">Är du säker på att du vill ta bort din kontodata?</string>
-    <string name="delete_account_explain_with_name">Alla profildata för \"%s\" på den här enheten kommer att raderas, inklusive
-        dina inställningar för totalsträckskryptering, kontakter, chattar, meddelanden och media.
-        Denna åtgärd kan inte ångras.</string>
+    <string name="delete_account_explain_with_name">Alla profildata för \"%s\" på den här enheten kommer att raderas, inklusive dina inställningar för totalsträckskryptering, kontakter, chattar, meddelanden och media. Denna åtgärd kan inte ångras.</string>
     <string name="unconfigured_account">Ej konfigurerad profil</string>
     <string name="unconfigured_account_hint">Öppna profilen för att konfigurera den.</string>
     <string name="try_connect_now">Försök ansluta nu</string>
@@ -766,9 +717,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Vill du skicka %1$d filer till \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Vill du skicka %1$d fil(er) till %2$d chattar?</string>
-    <string name="videos_sent_without_recoding">(Om du skickar flera videor skickas de i befintligt skick, vilket kan vara
-        stort. Om du vill göra dem mindre och spara data kan du skicka varje video i ett eget
-        meddelande)</string>
+    <string name="videos_sent_without_recoding">(Om du skickar flera videor skickas de i befintligt skick, vilket kan vara stort. Om du vill göra dem mindre och spara data kan du skicka varje video i ett eget meddelande)</string>
     <string name="share_text_multiple_chats">Vill du skicka denna text till %1$d chattar?\n\n\"%2$s\"</string>
     <string name="share_abort">Delningen avbröts på grund av saknad behörighet.</string>
 
@@ -778,9 +727,7 @@
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockerade kontakter</string>
     <string name="blocked_empty_hint">Blockerade kontakter kommer att visas här.</string>
-    <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du
-        kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller
-        flyttas.</string>
+    <string name="pref_who_can_see_profile_explain">Din profilbild och ditt namn visas tillsammans med dina meddelanden när du kommunicerar med andra användare. Information som redan skickats kan inte tas bort eller flyttas.</string>
     <string name="pref_your_name">Ditt namn</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Signaturtext</string>
@@ -789,8 +736,7 @@
     <string name="pref_enter_sends">Returtangenten skickar</string>
     <string name="pref_enter_sends_explain">Tryck på returtangenten för att skicka textmeddelanden</string>
     <string name="pref_outgoing_media_quality">Utgående ljudkvalitet</string>
-    <string name="pref_outgoing_media_quality_hint">För att skicka originalkvalitet skall du bifoga media som en \"fil\". Detta
-        använder betydligt mer data för dig och dina mottagare.</string>
+    <string name="pref_outgoing_media_quality_hint">För att skicka originalkvalitet skall du bifoga media som en \"fil\". Detta använder betydligt mer data för dig och dina mottagare.</string>
     <string name="pref_outgoing_balanced">Balanserad</string>
     <string name="pref_outgoing_worse">Sämre kvalitet, mindre storlek</string>
     <string name="pref_vibrate">Vibrera</string>
@@ -800,8 +746,7 @@
     <string name="pref_screen_security_please_restart_hint">Starta om programmet för att tillämpa skärmsäkerhetsinställningarna</string>
     <string name="pref_notifications">Avisering</string>
     <string name="pref_mention_notifications">Omnämnanden</string>
-    <string name="pref_mention_notifications_explain">Avisera meddelanden som riktas till dig, i tystade grupper, såsom svar eller
-        reaktioner</string>
+    <string name="pref_mention_notifications_explain">Avisera meddelanden som riktas till dig, i tystade grupper, såsom svar eller reaktioner</string>
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
     <string name="pref_calls">Samtal</string>
     <!-- Details about what the "Calls" notification setting does -->
@@ -840,10 +785,7 @@
     <string name="pref_other">Övrigt</string>
     <string name="pref_backup">Säkerhetskopiering</string>
     <string name="pref_backup_explain">Säkerhetskopiera chattar till extern lagring</string>
-    <string name="pref_backup_export_explain">En säkerhetskopia hjälper dig att ställa in en ny installation på denna
-        eller någon annan enhet.\n\nSäkerhetskopian innehåller alla meddelanden, kontakter och
-        chattar, liksom din autokrypterade slutpunkt-till-slutpunkt-inställning. Förvara
-        säkerhetskopian på ett säkert ställe eller ta bort den så fort som möjligt.</string>
+    <string name="pref_backup_export_explain">En säkerhetskopia hjälper dig att ställa in en ny installation på denna eller någon annan enhet.\n\nSäkerhetskopian innehåller alla meddelanden, kontakter och chattar, liksom din autokrypterade slutpunkt-till-slutpunkt-inställning. Förvara säkerhetskopian på ett säkert ställe eller ta bort den så fort som möjligt.</string>
     <string name="pref_backup_export_this">Exportera denna profil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
@@ -853,17 +795,11 @@
     <string name="pref_background">Bakgrund</string>
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
-    <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra
-        klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte
-        fungerar alls.</string>
+    <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Flerenhetsläge</string>
-    <string name="pref_multidevice_explain">Synkronisera dina meddelanden med dina andra enheter. Aktiveras automatiskt
-        när du lägger till en andra enhet</string>
-    <string name="pref_multidevice_change_warn">Flerenhetsläge måste vara aktiverat när du använder samma profil på flera
-        enheter. Inaktivera endast den här inställningen om du har tagit bort profilen från alla
-        andra enheter.\n\nInaktiverar du flerenhetsläget när du använder profilen på flera enheter
-        kommer du att missa meddelanden och få andra problem.</string>
+    <string name="pref_multidevice_explain">Synkronisera dina meddelanden med dina andra enheter. Aktiveras automatiskt när du lägger till en andra enhet</string>
+    <string name="pref_multidevice_change_warn">Flerenhetsläge måste vara aktiverat när du använder samma profil på flera enheter. Inaktivera endast den här inställningen om du har tagit bort profilen från alla andra enheter.\n\nInaktiverar du flerenhetsläget när du använder profilen på flera enheter kommer du att missa meddelanden och få andra problem.</string>
     <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
     <string name="pref_only_fetch_mvbox_title">Hämta endast från DeltaChat-mappen</string>
     <string name="pref_show_emails">Visa vanliga e-postmeddelanden</string>
@@ -894,22 +830,15 @@
     <string name="pref_show_tray_icon">Visa systemfältsikon</string>
     <string name="pref_edit_profile">Redigera profil</string>
     <string name="disable_imap_idle">Avaktivera IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Använd inte IMAP IDLE-tillägget även om servern stöder det. Om du aktiverar
-        det här alternativet kommer hämtningen av meddelanden att fördröjas, aktivera det endast för
-        testning.</string>
+    <string name="disable_imap_idle_explain">Använd inte IMAP IDLE-tillägget även om servern stöder det. Om du aktiverar det här alternativet kommer hämtningen av meddelanden att fördröjas, aktivera det endast för testning.</string>
     <string name="send_stats_to_devs">Skicka statistik till Delta Chats utvecklare</string>
-    <string name="stats_device_message">Vill du hjälpa till att förbättra Delta Chat och stödja efterforskning genom
-        att skicka anonym användningsstatistik varje vecka? \n\n👉 Tryck här ... 👈</string>
-    <string name="stats_confirmation_dialog">Vill du hjälpa till att förbättra Delta Chat och stödja efterforskning genom
-        att skicka anonym användningsstatistik varje vecka?</string>
-    <string name="stats_thanks">Tack så mycket! Du kan alltid inaktivera sändningen under "Inställningar ->
-        Avancerat".\n\nHar du dessutom 5 minuter på dig att delta i en vetenskaplig studie om
-        säkerheten i Delta Chat?</string>
+    <string name="stats_device_message">Vill du hjälpa till att förbättra Delta Chat och stödja efterforskning genom att skicka anonym användningsstatistik varje vecka? \n\n👉 Tryck här ... 👈</string>
+    <string name="stats_confirmation_dialog">Vill du hjälpa till att förbättra Delta Chat och stödja efterforskning genom att skicka anonym användningsstatistik varje vecka?</string>
+    <string name="stats_thanks">Tack så mycket! Du kan alltid inaktivera sändningen under "Inställningar -> Avancerat".\n\nHar du dessutom 5 minuter på dig att delta i en vetenskaplig studie om säkerheten i Delta Chat?</string>
     <string name="stats_disable_dialog">Skickande av statistik är redan aktiverat.\n\nVill du inaktivera det?</string>
     <string name="disable">Avaktivera</string>
     <string name="stats_keep_sending">Fortsätt skicka</string>
-    <string name="stats_msg_body">Bilagan innehåller anonym användningsstatistik, som hjälper oss att
-        förbättra Delta Chat. Se https://delta.chat/help#statssending för mer information. Tack!</string>
+    <string name="stats_msg_body">Bilagan innehåller anonym användningsstatistik, som hjälper oss att förbättra Delta Chat. Se https://delta.chat/help#statssending för mer information. Tack!</string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Sökresultat</string>
@@ -938,23 +867,13 @@
     <string name="autodel_device_title">Ta bort meddelanden från enheten</string>
     <string name="autodel_server_title">Ta bort meddelanden från servern</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i
-        framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Meddelanden kommer att tas bort
-        oavsett om de har lästs eller inte.\n\n• \"Sparade meddelanden\" undantas från lokal
-        borttagning.</string>
+    <string name="autodel_device_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Meddelanden kommer att tas bort oavsett om de har lästs eller inte.\n\n• \"Sparade meddelanden\" undantas från lokal borttagning.</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Vill du ta bort %1$d meddelanden nu och alla nyligen hämtade meddelanden
-        \"%2$s\" i framtiden?\n\n⚠️ Detta inkluderar e-post, media och \"Sparade meddelanden\" i
-        alla servermappar\n\n⚠️ Använd inte den här funktionen om du vill behålla data på
-        servern\n\n⚠️ Använd inte den här funktionen om du använder andra e-postklienter än Delta
-        Chat</string>
+    <string name="autodel_server_ask">Vill du ta bort %1$d meddelanden nu och alla nyligen hämtade meddelanden \"%2$s\" i framtiden?\n\n⚠️ Detta inkluderar e-post, media och \"Sparade meddelanden\" i alla servermappar\n\n⚠️ Använd inte den här funktionen om du vill behålla data på servern\n\n⚠️ Använd inte den här funktionen om du använder andra e-postklienter än Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Detta inkluderar e-post, media och \"Sparade meddelanden\" i alla
-        servermappar. Använd inte den här funktionen om du vill spara data på servern eller om du
-        använder andra e-postklienter än Delta Chat.</string>
+    <string name="autodel_server_enabled_hint">Detta inkluderar e-post, media och \"Sparade meddelanden\" i alla servermappar. Använd inte den här funktionen om du vill spara data på servern eller om du använder andra e-postklienter än Delta Chat.</string>
     <string name="autodel_server_warn_multi_device_title">Slå på direktborttagning</string>
-    <string name="autodel_server_warn_multi_device">Om du aktiverar direktborttagning kan du inte använda flera enheter på den
-        här profilen.</string>
+    <string name="autodel_server_warn_multi_device">Om du aktiverar direktborttagning kan du inte använda flera enheter på den här profilen.</string>
     <string name="autodel_confirm">Jag förstår! Ta bort alla dessa meddelanden.</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Nu genast</string>
@@ -1038,34 +957,19 @@
     <string name="ephemeral_timer_weeks_by_you">Du satte tiduret för meddelandeborttagning till %1$s veckor.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Tiduret för meddelandeborttagning är satt till %1$s veckor av %2$s.</string>
-    <string name="chat_unencrypted_explanation">Meddelanden i denna chatt använder klassisk e-post och är inte
-        totalsträckskrypterade.</string>
-    <string name="chat_protection_enabled_tap_to_learn_more">Meddelanden är garanterat totalsträckskrypterade från och med nu. Tryck för
-        att få veta mer.</string>
-    <string name="chat_protection_enabled_explanation">Det är nu garanterat att alla meddelanden i den här chatten är
-        totalsträckskrypterade.\n\nTotalsträckskryptering håller meddelanden privata mellan dig och
-        dina chattpartners. Inte ens din e-postleverantör kan läsa dem.</string>
-    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s kräver totalsträckskryptering som inte är kofigurerad för den här
-        chatten ännu. Tryck för att lära dig mer.</string>
-    <string name="invalid_unencrypted_explanation">För att skapa totalsträckskryptering kan du träffa kontakter personligen och
-        skanna deras QR-kod för att introducera dem.</string>
+    <string name="chat_unencrypted_explanation">Meddelanden i denna chatt använder klassisk e-post och är inte totalsträckskrypterade.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">Meddelanden är garanterat totalsträckskrypterade från och med nu. Tryck för att få veta mer.</string>
+    <string name="chat_protection_enabled_explanation">Det är nu garanterat att alla meddelanden i den här chatten är totalsträckskrypterade.\n\nTotalsträckskryptering håller meddelanden privata mellan dig och dina chattpartners. Inte ens din e-postleverantör kan läsa dem.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s kräver totalsträckskryptering som inte är kofigurerad för den här chatten ännu. Tryck för att lära dig mer.</string>
+    <string name="invalid_unencrypted_explanation">För att skapa totalsträckskryptering kan du träffa kontakter personligen och skanna deras QR-kod för att introducera dem.</string>
     <string name="learn_more">Lär dig mer</string>
 
-    <string name="devicemsg_self_deleted">Du har tagit bort chatten \"Sparade meddelanden\".\n\nℹ️ Om du vill använda
-        funktionen \"Sparade meddelanden\" igen skapar du en ny chatt med dig själv.</string>
+    <string name="devicemsg_self_deleted">Du har tagit bort chatten \"Sparade meddelanden\".\n\nℹ️ Om du vill använda funktionen \"Sparade meddelanden\" igen skapar du en ny chatt med dig själv.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Din leverantörs lagringsutrymme är snart slut: %1$s%% är redan
-        använt.\n\nDu kanske inte kan ta emot meddelanden om lagringsutrymmet är fullt.\n\n👉
-        Kontrollera om du kan radera gammal data i leverantörens webbgränssnitt och överväg att
-        aktivera \"Inställningar / Chattar och media / Ta bort gamla meddelanden\". Du kan
-        kontrollera din aktuella lagringsanvändning när som helst under \"Inställningar /
-        Anslutning\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Din leverantörs lagringsutrymme är snart slut: %1$s%% är redan använt.\n\nDu kanske inte kan ta emot meddelanden om lagringsutrymmet är fullt.\n\n👉 Kontrollera om du kan radera gammal data i leverantörens webbgränssnitt och överväg att aktivera \"Inställningar / Chattar och media / Ta bort gamla meddelanden\". Du kan kontrollera din aktuella lagringsanvändning när som helst under \"Inställningar / Anslutning\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Datum eller tid på din enhet verkar vara felaktigt (%1$s).\n\nJustera din
-        klocka ⏰🔧 för att säkerställa att dina meddelanden tas emot korrekt.</string>
-    <string name="devicemsg_update_reminder">⚠️ Din Delta Chat-version kan vara föråldrad.\n\nDetta kan orsaka problem
-        eftersom dina chattpartners använder nyare versioner - och du saknar de senaste funktionerna
-        😳\nSök efter uppdateringar på https://get.delta.chat eller i din appbutik.</string>
+    <string name="devicemsg_bad_time">⚠️ Datum eller tid på din enhet verkar vara felaktigt (%1$s).\n\nJustera din klocka ⏰🔧 för att säkerställa att dina meddelanden tas emot korrekt.</string>
+    <string name="devicemsg_update_reminder">⚠️ Din Delta Chat-version kan vara föråldrad.\n\nDetta kan orsaka problem eftersom dina chattpartners använder nyare versioner - och du saknar de senaste funktionerna 😳\nSök efter uppdateringar på https://get.delta.chat eller i din appbutik.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Lås upp för att fortsätta</string>
@@ -1080,21 +984,15 @@
     <string name="qrscan_ask_join_group">Vill du ansluta till gruppen \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Vill du ansluta till kanalen \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Det skannade fingeravtrycket stämmer inte med senast sedda för %1$s.</string>
-    <string name="qrscan_no_addr_found">QR-koden innehåller ett fingeravtryck men ingen e-postadress.\n\nUpprätta
-        först en krypterad anslutning till mottagaren, för en utanför-bandet-verifiering.</string>
+    <string name="qrscan_no_addr_found">QR-koden innehåller ett fingeravtryck men ingen e-postadress.\n\nUpprätta först en krypterad anslutning till mottagaren, för en utanför-bandet-verifiering.</string>
     <string name="qrscan_contains_text">Skannad QR-kod-text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannad QR-kod-URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Fingeravtryck</string>
-    <string name="withdraw_verifycontact_explain">Denna QR-kod kan skannas av andra för att kontakta dig.\n\nDu kan avaktivera
-        QR-koden här och återaktivera den genom att skanna den igen.</string>
-    <string name="withdraw_verifygroup_explain">Denna QR-kod kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nDu
-        kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
-    <string name="withdraw_joinbroadcast_explain">Denna QR-kod kan skannas av andra för att ansluta till kanalen
-        \"%1$s\".\n\nDu kan återställa den, så att den befintliga QR-koden eller inbjudningslänken
-        inte längre fungerar.</string>
+    <string name="withdraw_verifycontact_explain">Denna QR-kod kan skannas av andra för att kontakta dig.\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
+    <string name="withdraw_verifygroup_explain">Denna QR-kod kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
+    <string name="withdraw_joinbroadcast_explain">Denna QR-kod kan skannas av andra för att ansluta till kanalen \"%1$s\".\n\nDu kan återställa den, så att den befintliga QR-koden eller inbjudningslänken inte längre fungerar.</string>
     <string name="withdraw_qr_code">Avaktivera QR-kod</string>
-    <string name="revive_verifycontact_explain">Den här QR-koden kan skannas av andra för att kontakta dig.\n\nQR-koden är
-        inte aktiv på den här enheten.</string>
+    <string name="revive_verifycontact_explain">Den här QR-koden kan skannas av andra för att kontakta dig.\n\nQR-koden är inte aktiv på den här enheten.</string>
     <string name="revive_qr_code">Aktivera QR-kod</string>
     <string name="qrshow_title">QR-kod för inbjudan</string>
     <string name="qrshow_x_joining">%1$s anslutna.</string>
@@ -1109,18 +1007,15 @@
     <string name="qrshow_join_contact_hint">Skanna det här för att få kontakt med %1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internetanslutning, kan inte utföra QR-kod-inställning.</string>
     <string name="qraccount_ask_create_and_login">Vill du skapa ny profil på \"%1$s\" och logga in där?</string>
-    <string name="set_name_and_avatar_explain">Ange ett namn som dina kontakter kommer att känna igen. Du kan också ange en
-        profilbild.</string>
+    <string name="set_name_and_avatar_explain">Ange ett namn som dina kontakter kommer att känna igen. Du kan också ange en profilbild.</string>
     <string name="please_enter_name">Ange ett namn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Vill du logga in på \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s bjöd in dig att gå med i den här gruppen.\n\nVäntar på att enheten hos
-        %2$s ska svara...</string>
+    <string name="secure_join_started">%1$s bjöd in dig att gå med i den här gruppen.\n\nVäntar på att enheten hos %2$s ska svara...</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_channel_started">%1$s bjöd in dig att ansluta till den här kanalen.\n\nVäntar på att enheten
-        hos %2$s ska svara...</string>
+    <string name="secure_join_channel_started">%1$s bjöd in dig att ansluta till den här kanalen.\n\nVäntar på att enheten hos %2$s ska svara...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s svarade och väntar på att bli tillagd i gruppen...</string>
     <string name="secure_join_wait">Upprättar garanterad totalsträckskryptering, vänligen vänta...</string>
@@ -1155,17 +1050,12 @@
     <!-- permissions -->
     <string name="perm_required_title">Behörighet krävs</string>
     <string name="perm_continue">Fortsätt</string>
-    <string name="perm_explain_access_to_camera_denied">Gå till programinställningarna och aktivera \"Kamera\" under \"Behörighet\",
-        för att ta foton eller filma.</string>
+    <string name="perm_explain_access_to_camera_denied">Gå till programinställningarna och aktivera \"Kamera\" under \"Behörighet\", för att ta foton eller filma.</string>
     <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Gå till programinställningarna och aktivera \"Mikrofon\" under
-        \"Behörighet\", för att skicka röstmeddelanden.</string>
-    <string name="perm_explain_access_to_storage_denied">Gå till programinställningarna och aktivera \"Lagring\" under
-        \"Behörighet\", för att ta emot eller skicka filer.</string>
-    <string name="perm_explain_access_to_location_denied">Gå till programinställningarna och aktivera \"Plats\" under \"Behörighet\",
-        för att bifoga en plats.</string>
-    <string name="perm_explain_access_to_notifications_denied">För att få meddelanden, gå till \"Systeminställningar / Appar / Delta Chat\"
-        och aktivera \"Meddelanden\".</string>
+    <string name="perm_explain_access_to_mic_denied">Gå till programinställningarna och aktivera \"Mikrofon\" under \"Behörighet\", för att skicka röstmeddelanden.</string>
+    <string name="perm_explain_access_to_storage_denied">Gå till programinställningarna och aktivera \"Lagring\" under \"Behörighet\", för att ta emot eller skicka filer.</string>
+    <string name="perm_explain_access_to_location_denied">Gå till programinställningarna och aktivera \"Plats\" under \"Behörighet\", för att bifoga en plats.</string>
+    <string name="perm_explain_access_to_notifications_denied">För att få meddelanden, gå till \"Systeminställningar / Appar / Delta Chat\" och aktivera \"Meddelanden\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rita var som helst för att smeta ut</string>
@@ -1179,8 +1069,7 @@
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">Detta är den officiella Delta Chat skrivbordsappen.</string>
-    <string name="about_licensed_under_desktop">Denna programvara är licensierad enligt GNU GPL version 3 och källkoden
-        finns tillgänglig på GitHub.</string>
+    <string name="about_licensed_under_desktop">Denna programvara är licensierad enligt GNU GPL version 3 och källkoden finns tillgänglig på GitHub.</string>
     <string name="welcome_desktop">Välkommen till Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Språk</string>
     <string name="global_menu_file_desktop">Arkiv</string>
@@ -1221,8 +1110,7 @@
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
     <string
         name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med
-        alternativet --minimized.</string>
+        tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med alternativet --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Inga stavningsförslag hittades.</string>
     <string name="show_window">Visa fönster</string>
 
@@ -1250,20 +1138,17 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Sluta dela plats</string>
-    <string name="a11y_voice_message_hint_ios">Efter inspelningen dubbelklickar du för att skicka. För att förkasta
-        inspelningen, skrubba med två fingrar.</string>
+    <string name="a11y_voice_message_hint_ios">Efter inspelningen dubbelklickar du för att skicka. För att förkasta inspelningen, skrubba med två fingrar.</string>
     <string name="a11y_connectivity_hint">Dubbeltryck för att visa anslutningsdetaljer.</string>
     <string name="login_error_no_internet_connection">Ingen internetanslutning, inloggning misslyckades.</string>
     <string name="share_account_not_configured">Profilen är inte konfigurerad.</string>
     <string name="cannot_play_audio_file">Ljudfilen kan inte spelas upp.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">För att ta bilder, spela in videor eller använda QR-kodläsaren, öppna
-        systeminställningarna och aktivera \"Kamera\".</string>
+    <string name="perm_ios_explain_access_to_camera_denied">För att ta bilder, spela in videor eller använda QR-kodläsaren, öppna systeminställningarna och aktivera \"Kamera\".</string>
     <string name="open_settings">Öppna inställningar</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Importera enhetens kontakter</string>
-    <string name="import_device_contacts_hint">Om du vill chatta med kontakter från din enhet öppnar du Inställningar och
-        aktiverar \"Kontakter\".</string>
+    <string name="import_device_contacts_hint">Om du vill chatta med kontakter från din enhet öppnar du Inställningar och aktiverar \"Kontakter\".</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Inaktiverad i Delta Chat</string>
     <string name="disabled_in_system_settings">Inaktiverad i systeminställningarna</string>
@@ -1284,41 +1169,26 @@
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
     <string name="add_to_widget">Lägg till i widget</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och
-        för att skanna QR-koder.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat behöver tillstånd för att dela din plats under den tidsperiod som
-        du har aktiverat platsdelning.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat behöver tillstånd för att dela din plats under den tidsperiod som
-        du har aktiverat platsdelning.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat använder din mikrofon för att spela in och skicka
-        röstmeddelanden, och filmer med ljud.</string>
-    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat låter dig välja vilka bilder från ditt galleri som du vill
-        skicka.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat använder din kamera för att ta och skicka foton och filmer, och för att skanna QR-koder.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat behöver tillstånd för att dela din plats under den tidsperiod som du har aktiverat platsdelning.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat behöver tillstånd för att dela din plats under den tidsperiod som du har aktiverat platsdelning.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat använder din mikrofon för att spela in och skicka röstmeddelanden, och filmer med ljud.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat låter dig välja vilka bilder från ditt galleri som du vill skicka.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat vill spara bilder i ditt fotogalleri.</string>
-    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat kan använda Face ID för att skydda din lokala profil, skapa
-        säkerhetskopior och konfigurera en andra enhet.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat kan använda Face ID för att skydda din lokala profil, skapa säkerhetskopior och konfigurera en andra enhet.</string>
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Omedelbar leverans</string>
     <string name="pref_background_notifications">Använd bakgrundsanslutning</string>
-    <string name="pref_background_notifications_explain">Kräver ignorerade batterioptimeringar, använd om aviseringar inte kommer i
-        tid</string>
+    <string name="pref_background_notifications_explain">Kräver ignorerade batterioptimeringar, använd om aviseringar inte kommer i tid</string>
     <string name="pref_reliable_service">Tvinga fram bakgrundsanslutning</string>
     <string name="pref_reliable_service_explain">Orsakar en permanent avisering</string>
 
-    <string name="pref_background_notifications_rationale">För att behålla anslutningen till din e-postserver och fortsätta ta emot
-        meddelanden i bakgrunden, behöver du skippa batterioptimeringen i nästa steg.\n\nDelta Chat
-        använder små resurser och ser till att inte dra ur ditt batteri.</string>
+    <string name="pref_background_notifications_rationale">För att behålla anslutningen till din e-postserver och fortsätta ta emot meddelanden i bakgrunden, behöver du skippa batterioptimeringen i nästa steg.\n\nDelta Chat använder små resurser och ser till att inte dra ur ditt batteri.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
-    <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i
-        bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer
-        några meddelanden i bakgrunden.</string>
+    <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Vad är nytt?\n\n💯 Totalsträckskryptering är pålitlig och för alltid nu.
-        Hänglås 🔒 är borta!\n\n✉️ Klassisk e-post utan Totalsträckskryptering är markerad med en
-        bokstavssymbol\n\n😻 Ny förbättrad profilskärm för alla dina kontakter\n\n🔲 Ny knapp för
-        snabb åtkomst till appar som används i en chatt\n\n❤️ Vänligen donera för att hjälpa oss att
-        förbli oberoende och fortsätta att göra förbättringar: %1$s</string>
+    <string name="update_2_0">Vad är nytt?\n\n💯 Totalsträckskryptering är pålitlig och för alltid nu. Hänglås 🔒 är borta!\n\n✉️ Klassisk e-post utan Totalsträckskryptering är markerad med en bokstavssymbol\n\n😻 Ny förbättrad profilskärm för alla dina kontakter\n\n🔲 Ny knapp för snabb åtkomst till appar som används i en chatt\n\n❤️ Vänligen donera för att hjälpa oss att förbli oberoende och fortsätta att göra förbättringar: %1$s</string>
 </resources>
