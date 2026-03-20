@@ -1,7 +1,5 @@
 # ./tx-pull-translations.sh
 
-./convert.py src/main/res/values-es/strings.xml
-
 ./convert.py src/main/res/values-ar/strings.xml
 ./convert.py src/main/res/values-az/strings.xml
 ./convert.py src/main/res/values-bg/strings.xml
@@ -47,3 +45,7 @@
 ./convert.py src/main/res/values-vi/strings.xml
 ./convert.py src/main/res/values-zh-rCN/strings.xml
 ./convert.py src/main/res/values-zh-rTW/strings.xml
+
+./scripts/check-translations.sh
+
+# tx push -t
