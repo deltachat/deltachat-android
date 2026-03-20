@@ -1047,6 +1047,13 @@
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
+    <string name="perm_explain_access_to_camera_denied">要拍照或录像，请转到应用设置，选择“权限”，然后启用“相机”。</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">要发送音频消息，请转到系统或应用设置，选择“权限”或“隐私和安全”，然后启用“麦克风”。</string>
+    <string name="perm_explain_access_to_storage_denied">要发送或接收文件，请转到应用设置，选择“权限”，然后启用“存储”。</string>
+    <string name="perm_explain_access_to_location_denied">要附加位置，请转到应用设置，选择“权限”，然后启用“位置”。</string>
+    <string name="perm_explain_access_to_notifications_denied">要接收通知，请转到“系统设置/应用/Delta Chat\"并开启”通知“。</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方涂抹以进行模糊</string>
     <string name="ImageEditorHud_add_text">添加文字</string>
@@ -1059,6 +1066,7 @@
 
     <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
     <string name="about_offical_app_desktop">这是 Delta Chat 官方桌面应用。</string>
+    <string name="about_licensed_under_desktop">本软件在 GNU GPL 版本 3 下获得授权，其源代码可从 GitHub 获得。</string>
     <string name="welcome_desktop">欢迎使用 Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">语言</string>
     <string name="global_menu_file_desktop">文件</string>
@@ -1097,6 +1105,9 @@
     <string name="message_detail_received_desktop">接收于</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
 
@@ -1124,13 +1135,17 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">停止共享位置</string>
+    <string name="a11y_voice_message_hint_ios">录制后，点按两次即可发送。如需舍弃录制内容，请双指滑动。</string>
     <string name="a11y_connectivity_hint">双击即可查看连接详情。</string>
     <string name="login_error_no_internet_connection">无互联网连接，登录失败。</string>
     <string name="share_account_not_configured">账号未配置。</string>
     <string name="cannot_play_audio_file">无法播放音频文件。</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">要拍照、拍摄视频或扫描二维码，请打开系统设置并启用“相机”。</string>
     <string name="open_settings">打开设置</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">导入设备联系人</string>
+    <string name="import_device_contacts_hint">要与您设备中的联系人聊天，请打开设置并启用“联系人”。</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">在 Delta Chat 中被禁用</string>
     <string name="disabled_in_system_settings">在系统设置中被禁用</string>
@@ -1150,14 +1165,27 @@
     <string name="remove_from_widget">从微件中移除</string>
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
     <string name="add_to_widget">添加到微件</string>
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat 使用相机来拍摄、发送照片和视频以及扫描二维码。</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在您启用位置共享的时间范围内共享您的位置。</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在您启用位置共享的时间范围内共享您的位置。</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat 可以使用 Face ID 保护您的本地配置文件，备份创建和第二台设备设置。</string>
+
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">即时传送</string>
     <string name="pref_background_notifications">使用后台连接</string>
+    <string name="pref_background_notifications_explain">需要忽略电池优化，请在推送服务不可用时使用它</string>
     <string name="pref_reliable_service">强制后台连接</string>
     <string name="pref_reliable_service_explain">会形成永久通知</string>
 
+    <string name="pref_background_notifications_rationale">为了保持连接并在后台接收消息，请在下一步中忽略电池优化。\n\nDelta Chat 使用的资源很少，并且会注意不去耗尽电池电量。</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">点按此处即可在 Delta Chat 处于后台时接收消息。</string>
-    </resources>
+    <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>
+
+    <!-- device messages for updates -->
+    <string name="update_2_0">新版变化？\n\n💯 端到端加密现在可靠且永久。挂锁图标 🔒 没有了！\n\n✉️ 没有端到端加密的经典电子邮件用字母符号标记\n\n😻 所有联系人的新的增强的个人资料屏\n\n🔲 新增快速访问聊天中所用应用的按钮\n\n❤️ 请捐赠帮助我们保持独立并继续带来改进：%1$s</string>
+</resources>

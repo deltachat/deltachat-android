@@ -172,6 +172,7 @@
         <item quantity="other">%d seleccionats</item>
     </plurals>
     <string name="selected_colon">Seleccionat:</string>
+    <string name="selected">Seleccionat</string>
     <string name="self">Jo</string>
     <string name="draft">Esborrany</string>
     <string name="image">Imatge</string>
@@ -364,13 +365,7 @@
     <string name="device_talk_subtitle">Missatges generats localment</string>
     <string name="device_talk_explain">Els missatges d\'aquest xat són generats en el vostre dispositiu per a
         informar-vos sobre actualitzacions de l\'aplicació o de problemes durant el seu ús.</string>
-    <string name="device_talk_welcome_message2">Esteu en contacte!\n\n🙌 Toqueu «Codi QR» en la finestra principal d\'ambdós
-        dispositius. Trieu «Escaneja codi QR» en un dispositiu, i apunteu cap a l\'altre\n\n🌍 Si no
-        esteu en la mateixa sala, podeu escanejar o compartir un enllaç d\'invitació des de
-        «Escaneja codi QR»\n\nDesprés: gaudiu de l\'experiència de missatgeria sobre la xarxa
-        descentralitzada més gran que ha existit mai: el correu electrònic. I, en contrast amb
-        altres aplicacions populars, sense control central, seguiment ni comercialització de vós,
-        amics, col·legues o familiars amb grans organitzacions.</string>
+    <string name="device_talk_welcome_message2">Esteu en contacte!\n\n🙌 Prem «Codi QR» a la finestra principal d\'ambdós dispositius. Tria «Escaneja codi QR» en un dispositiu, i apunta cap a l\'altre\n\n🌍 Si no esteu a la mateixa sala, podeu escanejar o compartir un enllaç d\'invitació des de \"Escaneja codi QR\"\n\nLlavors: gaudiu de l\'experiència de missatgeria sobre la xarxa descentralitzada més gran que ha existit mai: el correu electrònic. I, en comparació amb altres aplicacions populars, sense control central, sense seguiment ni tampóc comercialització per part de grans companyies de tu i els teus amics, col·legues o familiars.</string>
     <string name="edit_contact">Edita el contacte</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Fixa el xat</string>
@@ -423,6 +418,12 @@
     <string name="audio_call">Trucada de veu</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Video trucada</string>
+    <string name="call_initializing">Inicialitzant...</string>
+    <string name="call_incoming">Et truquen</string>
+    <string name="call_ringing">Trucant...</string>
+    <string name="call_reconnecting">Reconnectant...</string>
+    <string name="call_ended">Trucada finalitzada</string>
+    <string name="call_failed">Trucada fallida</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Trucada de veu sortint</string>
     <!-- deprecated, use "Video call" instead -->
@@ -721,9 +722,16 @@
     <string name="add_transport">Afegir Relé</string>
     <string name="remove_transport">Elimina Relé</string>
     <string name="edit_transport">Edita Relé</string>
+    <string name="used_for_sending">Utilitzat per enviar</string>
+    <string name="hide_from_contacts">Amagar als contactes</string>
+    <string name="hidden_from_contacts">Amagat als contactes</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Missatges rebuts en tots els relés</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Afegeix aquest relé?</string>
     <string name="invalid_transport_qr">El codi QR escanejat no conté un relé vàlid.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Esborrar el relé \"%1$s\"?\n\nEls contactes que només coneixen aquest relé no et podran contactar fins que els escriguis de nou.\n\nSi no ho tens clar, amaga\'l enlloc d\'esborrar-lo.</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
     <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
@@ -787,6 +795,7 @@
     <string name="pref_enter_sends">La tecla «Retorn» envia</string>
     <string name="pref_enter_sends_explain">Els missatges s\'enviaran prement la tecla «Retorn»</string>
     <string name="pref_outgoing_media_quality">Qualitat del contingut multimèdia sortint</string>
+    <string name="pref_outgoing_media_quality_hint">Per enviar sense comprimir, adjunta-ho com a \"Fitxer\". Això consumeix més dades, tant les teves, com les dels destinataris.</string>
     <string name="pref_outgoing_balanced">Balancejat</string>
     <string name="pref_outgoing_worse">Pitjor qualitat, mida petita</string>
     <string name="pref_vibrate">Vibració</string>

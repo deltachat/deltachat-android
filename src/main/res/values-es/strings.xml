@@ -194,6 +194,9 @@
     <string name="add_stickers_instructions">Para añadir stickers, toca en \"Abrir carpeta de stickers\", crea una
         subcarpeta para tu colección de stickers y copia imágenes y stickers allí</string>
     <string name="open_sticker_folder">Abrir la carpeta de stickers</string>
+    <string name="ask_add_sticker_to_collection">¿Añadir este sticker a tu colección?</string>
+    <string name="ask_delete_sticker">¿Eliminar este sticker?</string>
+    <string name="sticker_picker_empty_hint">Toca un sticker para añadirlo aquí.</string>
     <string name="images">Imágenes</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
@@ -278,6 +281,12 @@
     <string name="new_channel">Nuevo canal</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nombre del canal</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d visualización</item>
+        <item quantity="many">%d visualizaciones</item>
+        <item quantity="other">%d visualizaciones</item>
+    </plurals>
     <string name="email">Correo electrónico</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuevo correo electrónico</string>
@@ -293,6 +302,7 @@
     <string name="menu_add_attachment">Añadir adjunto</string>
     <string name="menu_leave_group">Abandonar grupo</string>
     <string name="menu_leave_channel">Abandonar canal</string>
+    <string name="menu_leave_and_delete">Abandonar y eliminar</string>
     <string name="menu_delete_chat">Eliminar chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vaciar chat</string>
@@ -422,6 +432,16 @@
     <string name="answer_call">Contestar</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rechazar</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Llamada</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videollamada</string>
+    <string name="call_initializing">Inicializando…</string>
+    <string name="call_incoming">Llamada entrante</string>
+    <string name="call_ringing">Sonando…</string>
+    <string name="call_reconnecting">Reconectando…</string>
+    <string name="call_ended">Finalizó la llamada</string>
+    <string name="call_failed">La llamada falló</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Llamada saliente</string>
     <!-- deprecated, use "Video call" instead -->
@@ -726,9 +746,16 @@
     <string name="add_transport">Añadir transporte</string>
     <string name="remove_transport">Eliminar transporte</string>
     <string name="edit_transport">Editar transporte</string>
+    <string name="used_for_sending">Usado para enviar</string>
+    <string name="hide_from_contacts">Ocultar de los contactos</string>
+    <string name="hidden_from_contacts">Ocultado de los contactos</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Los mensajes se reciben en todos los relays.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">¿Añadir este transporte?</string>
     <string name="invalid_transport_qr">El código QR escaneado no contiene un transporte válido.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">¿Eliminar el relay \"%1$s\"?\n\nLos contactos que solo conocen este relay podrían no comunicarse contigo hasta que les envíes otro mensaje.\n\nEn caso de duda, es mejor ocultarlo que eliminarlo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
@@ -787,10 +814,12 @@
     <string name="pref_your_name">Tu nombre</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Texto de firma</string>
+    <string name="chat_description">Descripción</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
     <string name="pref_outgoing_media_quality">Calidad de multimedia saliente</string>
+    <string name="pref_outgoing_media_quality_hint">Para enviar imágenes con calidad original, adjúntalas como \"Archivo\". Esto consume muchos más datos tanto para ti como para los destinatarios.</string>
     <string name="pref_outgoing_balanced">Balanceada</string>
     <string name="pref_outgoing_worse">Peor calidad, tamaño pequeño</string>
     <string name="pref_vibrate">Vibrar</string>
@@ -804,6 +833,10 @@
     <string name="pref_mention_notifications">Menciones</string>
     <string name="pref_mention_notifications_explain">En los grupos silenciados, notifica los mensajes dirigidos a ti, como
         respuestas o reacciones</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Llamadas</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Mostrar la pantalla de llamada para las llamadas entrantes</string>
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridad</string>
     <string name="pref_notifications_explain">Habilitar las notificaciones del sistema para nuevos mensajes</string>
@@ -979,6 +1012,9 @@
     <string name="group_image_changed_by_you">Cambiaste la imagen del grupo.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Imagen del grupo cambiada por %1$s.</string>
+    <string name="chat_description_changed_by_you">Cambiaste la descripción del chat.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Descripción del chat modificada por %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Miembro %1$s añadido.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
