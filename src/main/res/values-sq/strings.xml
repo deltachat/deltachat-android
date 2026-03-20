@@ -421,6 +421,12 @@
     <string name="audio_call">Thirrje audio</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Thirrje video</string>
+    <string name="call_initializing">Po gatitet…</string>
+    <string name="call_incoming">Thirrje ardhëse</string>
+    <string name="call_ringing">Po bie zilja…</string>
+    <string name="call_reconnecting">Po rilidhet</string>
+    <string name="call_ended">Thirrja përfundoi</string>
+    <string name="call_failed">Thirrja dështoi</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Thirrje audio e dërguar</string>
     <!-- deprecated, use "Video call" instead -->
@@ -721,9 +727,16 @@
     <string name="add_transport">Shtoni Rele</string>
     <string name="remove_transport">Hiqni Rele</string>
     <string name="edit_transport">Përpunoni Rele</string>
+    <string name="used_for_sending">E përdorur për dërgim</string>
+    <string name="hide_from_contacts">Fshihe prej Kontaktesh</string>
+    <string name="hidden_from_contacts">Fshehur prej kontakteve</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Mesazhet merren në krejt reletë.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Të shtohet kjo rele?</string>
     <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Të hiqet releja “%1$s”?\n\nKontaktet që njohin vetëm këtë rele mund të mos ju\nkapin dot, deri sa t’u dërgoni sërish mesazh.\n\nNëse s’jeni të sigurt, fshiheni, në vend se ta hiqni.</string>
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
     <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
