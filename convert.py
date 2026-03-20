@@ -3,7 +3,7 @@
 
 Literal escape sequences like \n, \t etc. are preserved as-is.
 Real (hard) newlines inside string values are collapsed to a single space.
-Multiple spaces/tabs left over after collapsing are also reduced to one space.
+The XML declaration and <resources> tag are left completely untouched.
 """
 from __future__ import annotations
 
@@ -25,42 +25,40 @@ except ImportError:
     sys.exit(1)
 
 
-def fix_value(text: str) -> str:
-    """Replace hard line endings (and surrounding whitespace) with a single space."""
-    return re.sub(r"[ \t]*[\r\n]+[ \t]*", " ", text)
-
-
 def process_file(path: Path) -> None:
+    original_text = path.read_text(encoding="utf-8")
+
     parser = etree.XMLParser(remove_blank_text=False)
-    tree = etree.parse(path, parser)
-    root = tree.getroot()
+    root = etree.fromstring(original_text.encode("utf-8"), parser)
 
-    changed = 0
+    # collect (original_value, fixed_value) pairs for all affected elements
+    replacements: list[tuple[str, str]] = []
 
-    for tag in ("string", "item"):  # "item" covers plurals children
+    for tag in ("string", "item"):
         for elem in root.iter(tag):
             if elem.text and re.search(r"[\r\n]", elem.text):
-                original = elem.text
-                elem.text = fix_value(original)
+                original_value = elem.text
+                fixed_value = re.sub(r"[ \t]*[\r\n]+[ \t]*", " ", original_value)
+                replacements.append((original_value, fixed_value))
                 logging.warning(
                     "%s: hard line ending removed from %r. Before: %r  After: %r",
                     path,
                     elem.attrib.get("name", elem.tag),
-                    original,
-                    elem.text,
+                    original_value,
+                    fixed_value,
                 )
-                changed += 1
 
-    if changed:
-        tree.write(
-            path,
-            encoding="utf-8",
-            xml_declaration=True,
-            pretty_print=True,
-        )
-        logging.info("%s: %d value(s) fixed, file written.", path, changed)
-    else:
+    if not replacements:
         logging.info("%s: nothing to fix.", path)
+        return
+
+    # apply replacements as plain text substitutions on the original file content
+    fixed_text = original_text
+    for original_value, fixed_value in replacements:
+        fixed_text = fixed_text.replace(original_value, fixed_value, 1)
+
+    path.write_text(fixed_text, encoding="utf-8")
+    logging.info("%s: %d value(s) fixed, file written.", path, len(replacements))
 
 
 def main() -> None:
