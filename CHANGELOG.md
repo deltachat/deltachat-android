@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.46.0
+2026-03
 
 * Allow to set chat description
 * Unified date display in call bubbles
