@@ -234,6 +234,7 @@ public class DcHelper {
     dcContext.setStockTranslation(240, context.getString(R.string.chat_description_changed_by_you));
     dcContext.setStockTranslation(
         241, context.getString(R.string.chat_description_changed_by_other));
+    dcContext.setStockTranslation(242, context.getString(R.string.messages_are_e2ee));
   }
 
   public static File getImexDir() {
