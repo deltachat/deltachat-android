@@ -170,6 +170,17 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     return false;
   }
 
+  private boolean areSomeSelectedChatsNoticed() {
+    DcContext dcContext = DcHelper.getContext(requireActivity());
+    final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+    for (long chatId : selectedChats) {
+      if (dcContext.getFreshMsgCount((int) chatId) <= 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private void handlePinAllSelected() {
     final DcContext dcContext = DcHelper.getContext(requireActivity());
     final Set<Long> selectedConversations =
@@ -222,6 +233,19 @@ public abstract class BaseConversationListFragment extends Fragment implements A
         new HashSet<Long>(getListAdapter().getBatchSelections());
     for (long chatId : selectedConversations) {
       dcContext.marknoticedChat((int) chatId);
+    }
+    if (actionMode != null) {
+      actionMode.finish();
+      actionMode = null;
+    }
+  }
+
+  private void handleMarkfreshSelected() {
+    final DcContext dcContext = DcHelper.getContext(requireActivity());
+    final Set<Long> selectedConversations =
+      new HashSet<Long>(getListAdapter().getBatchSelections());
+    for (long chatId : selectedConversations) {
+      dcContext.markfreshChat((int) chatId);
     }
     if (actionMode != null) {
       actionMode.finish();
@@ -409,6 +433,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     if (!isRelayingMessageContent(requireActivity())) {
       final int selectedCount = getListAdapter().getBatchSelections().size();
       menu.findItem(R.id.menu_add_to_home_screen).setVisible(selectedCount == 1);
+
       MenuItem archiveItem = menu.findItem(R.id.menu_archive_selected);
       if (offerToArchive()) {
         archiveItem.setIcon(R.drawable.ic_archive_white_24dp);
@@ -417,6 +442,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
         archiveItem.setIcon(R.drawable.ic_unarchive_white_24dp);
         archiveItem.setTitle(R.string.menu_unarchive_chat);
       }
+
       MenuItem pinItem = menu.findItem(R.id.menu_pin_selected);
       if (areSomeSelectedChatsUnpinned()) {
         pinItem.setIcon(R.drawable.ic_pin_white);
@@ -425,12 +451,17 @@ public abstract class BaseConversationListFragment extends Fragment implements A
         pinItem.setIcon(R.drawable.ic_unpin_white);
         pinItem.setTitle(R.string.unpin_chat);
       }
+
       MenuItem muteItem = menu.findItem(R.id.menu_mute_selected);
       if (areSomeSelectedChatsUnmuted()) {
         muteItem.setTitle(R.string.menu_mute);
       } else {
         muteItem.setTitle(R.string.menu_unmute);
       }
+
+      final boolean someAreNoticed = areSomeSelectedChatsNoticed();
+      menu.findItem(R.id.menu_marknoticed_selected).setVisible(!someAreNoticed);
+      menu.findItem(R.id.menu_markfresh_selected).setVisible(someAreNoticed);
     }
   }
 
@@ -483,6 +514,9 @@ public abstract class BaseConversationListFragment extends Fragment implements A
       return true;
     } else if (itemId == R.id.menu_marknoticed_selected) {
       handleMarknoticedSelected();
+      return true;
+    } else if (itemId == R.id.menu_markfresh_selected) {
+      handleMarkfreshSelected();
       return true;
     } else if (itemId == R.id.menu_add_to_home_screen) {
       handleAddToHomeScreen();
