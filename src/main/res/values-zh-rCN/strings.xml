@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">确定</string>
@@ -18,7 +16,6 @@
     <string name="off">关</string>
     <string name="def">默认</string>
     <string name="default_value">默认值（%1$s）</string>
-    <string name="default_value_as_above">默认值（与上面相同）</string>
     <string name="custom">自定义</string>
     <string name="none">无</string>
     <string name="automatic">自动</string>
@@ -36,8 +33,6 @@
     <string name="update">更新</string>
     <string name="emoji">表情符号</string>
     <string name="attachment">附件</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">附加“%1$s”？</string>
     <string name="back">返回</string>
     <string name="close">关闭</string>
     <string name="close_window">关闭窗口</string>
@@ -335,8 +330,6 @@
     <string name="menu_more_options">更多选项</string>
     <string name="menu_learn_spelling">学习拼写</string>
     <string name="jump_to_message">跳转到消息</string>
-    <string name="jump_to_original_message">跳转到原始消息</string>
-    <string name="copy_json">复制 JSON</string>
     <string name="replace_draft">替换草稿</string>
     <string name="title_share_location">与所有群组成员共享位置</string>
     <string name="device_talk">设备消息</string>
@@ -408,7 +401,6 @@
     <string name="declined_call">已拒接来电</string>
     <string name="canceled_call">已取消通话</string>
     <string name="missed_call">未接来电</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">是否确定要离开？</string>
@@ -434,11 +426,9 @@
     <string name="ask_remove_from_channel">从频道中移除 %1$s？</string>
     <string name="open_url_confirmation">是否要打开此链接？</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">联系人</string>
     <string name="contacts_type_email_above">在上方输入电子邮件地址</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -496,24 +486,13 @@
     <string name="send_file_to">发送“%1$s\"到...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">发送消息到...</string>
-    <string name="enable_realtime">实时应用</string>
-    <string name="enable_realtime_explain">为聊天中附加的应用启用实时连接。如果启用，聊天对象可能会在您启动应用时发现您的 IP 地址。</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">显示时间范围内的位置</string>
-    <string name="show_location_traces">显示轨迹</string>
-    <string name="add_poi">发送兴趣点</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">不再询问 %1$s</string>
     <string name="puny_code_warning_header">检测到可疑链接</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">是否确定要访问 %1$s？</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">您将被转到一个链接，该链接可能通过使用来自不同字母表的相似字符对自己进行了伪装。打开标记为 %1$s 的链接将把你带到以 ascii 码编码的 %2$s。如果这样的字符出乎你的意料，那么这个链接可能是有害的。</string>
-
 
     <!-- search -->
     <string name="search">搜索</string>
@@ -523,7 +502,6 @@
     <string name="search_no_result_for_x">没有找到有关\"%s\"的结果</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">未读</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">群组名称</string>
@@ -604,7 +582,6 @@
     <string name="messages">消息</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">已使用 %1$s，共 %2$s</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -718,7 +695,6 @@
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">您的个人资料</string>
     <string name="pref_profile_photo">个人资料图片</string>
@@ -826,8 +802,6 @@
     <string name="profile_image_delete">删除个人资料图片</string>
     <string name="pref_show_tray_icon">显示托盘图标</string>
     <string name="pref_edit_profile">编辑个人资料</string>
-    <string name="disable_imap_idle">禁用 IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">即便服务器支持，也不要使用 IMAP IDLE 扩展。启用后会造成消息获取延迟，请仅出于测试目的启用该功能。</string>
     <string name="send_stats_to_devs">发送统计数据给 Delta Chat 开发者</string>
     <string name="stats_device_message">您是否愿意通过每周发送匿名使用统计数据来帮助改进 Delta Chat 并支持相关研究？\n\n👉 点击此处… 👈</string>
     <string name="stats_confirmation_dialog">您是否愿意通过每周发送匿名使用统计数据来帮助改进 Delta Chat 并支持相关研究？</string>
@@ -1043,7 +1017,6 @@
     <string name="new_messages_body">你有新消息</string>
     <string name="n_messages_in_m_chats">%1$d 条消息，位于 %2$d 个聊天内</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
     <string name="perm_continue">继续</string>
@@ -1064,9 +1037,6 @@
     <string name="ImageEditorHud_flip">翻转</string>
     <string name="ImageEditorHud_rotate">旋转</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">这是 Delta Chat 官方桌面应用。</string>
-    <string name="about_licensed_under_desktop">本软件在 GNU GPL 版本 3 下获得授权，其源代码可从 GitHub 获得。</string>
     <string name="welcome_desktop">欢迎使用 Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">语言</string>
     <string name="global_menu_file_desktop">文件</string>
@@ -1105,9 +1075,8 @@
     <string name="message_detail_received_desktop">接收于</string>
     <string name="menu.view.developer.open.log.folder">打开日志文件夹</string>
     <string name="menu.view.developer.open.current.log.file">打开当前日志文件</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">在 Delta Chat 带 --minimized 参数启动时，无法禁用托盘图标。</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
 

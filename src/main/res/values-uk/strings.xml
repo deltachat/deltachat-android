@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Гаразд</string>
@@ -18,7 +16,6 @@
     <string name="off">Вимкнено</string>
     <string name="def">За замовчуванням</string>
     <string name="default_value">За замовчуванням (%1$s)</string>
-    <string name="default_value_as_above">За замовчуванням (так, як вище зазначено)</string>
     <string name="custom">На користувацький вибір</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматично</string>
@@ -36,8 +33,6 @@
     <string name="update">Оновити</string>
     <string name="emoji">Емодзі</string>
     <string name="attachment">Вкладення</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Прикріпити \"%1$s\"?</string>
     <string name="back">Назад</string>
     <string name="close">Закрити</string>
     <string name="close_window">Закрити вікно</string>
@@ -347,8 +342,6 @@
     <string name="menu_more_options">Більше опцій</string>
     <string name="menu_learn_spelling">Вчити правопис</string>
     <string name="jump_to_message">Перейти до повідомлення</string>
-    <string name="jump_to_original_message">Перейти до оригінального повідомлення</string>
-    <string name="copy_json">Копіювати JSON</string>
     <string name="replace_draft">Замінити чернетку</string>
     <string name="title_share_location">Поділитися місцеперебуванням з усіма учасниками групи</string>
     <string name="device_talk">Повідомлення пристрою</string>
@@ -413,7 +406,6 @@
     <string name="declined_call">Відхилений дзвінок</string>
     <string name="canceled_call">Скасований дзвінок</string>
     <string name="missed_call">Пропущений дзвінок</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ви впевнені, що хочете піти?</string>
@@ -445,11 +437,9 @@
     <string name="ask_remove_from_channel">Видалити %1$s з каналу?</string>
     <string name="open_url_confirmation">Ви впевнені, що хочете відкрити це посилання?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Контактні особи</string>
     <string name="contacts_type_email_above">Введіть адресу електронної пошти вище</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -516,24 +506,13 @@
     <string name="send_file_to">Послати «%1$s» комусь…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Послати повідомлення комусь…</string>
-    <string name="enable_realtime">Додатки реального часу</string>
-    <string name="enable_realtime_explain">Увімкніть з\'єднання в режимі реального часу для додатків, прикріплених до чатів. Якщо увімкнено, учасники чату можуть дізнатися вашу IP-адресу, коли ви запускаєте додаток.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Показати місця у часовому проміжку</string>
-    <string name="show_location_traces">Показати треки</string>
-    <string name="add_poi">Послати географійні координати</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Не запитувати знову для %1$s</string>
     <string name="puny_code_warning_header">Виявлено підозріле посилання</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ви впевнені, що хочете відвідати %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Це посилання може спотворювати символи, використовуючи подібні до них символи з різних алфавітів. Перехід за посиланням %1$s приведе на %2$s, що є нормальним для нелатинських символів. Якщо Ви не очікували таких символів, це посилання може бути шкідливим</string>
-
 
     <!-- search -->
     <string name="search">Пошук</string>
@@ -543,7 +522,6 @@
     <string name="search_no_result_for_x">Запит \"%s\" не дав результатів</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Непрочитане</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Назва групи</string>
@@ -624,7 +602,6 @@
     <string name="messages">Повідомлення</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Використано %1$s з %2$s</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -731,7 +708,6 @@
     <string name="share_text_multiple_chats">Надіслати це́й текст у %1$d чат·и·ів?\n\n«%2$s»</string>
     <string name="share_abort">Надсилання обірване через відсутність дозволів.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Ваш профіль</string>
     <string name="pref_profile_photo">Зображення профілю</string>
@@ -834,8 +810,6 @@
     <string name="profile_image_delete">Видалити зображення профілю</string>
     <string name="pref_show_tray_icon">Показати іконку в треї</string>
     <string name="pref_edit_profile">Редагувати профіль</string>
-    <string name="disable_imap_idle">Вимкнути IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Не використовувати розширення IMAP IDLE навіть якщо сервер підтримує його. Увімкнення цієї опції затримає отримання повідомлень, вмикайте її лише для тестування.</string>
     <string name="send_stats_to_devs">Надсилати статистику розробникам Delta Chat</string>
     <string name="stats_device_message">Хочете допомогти покращити Delta Chat та підтримати дослідження, надсилаючи щотижневу анонімну статистику використання?\n\n 👉 Тисніть сюди… 👈</string>
     <string name="stats_confirmation_dialog">Хочете допомогти покращити Delta Chat та підтримати дослідження, надсилаючи щотижневу анонімну статистику використання?</string>
@@ -1051,7 +1025,6 @@
     <string name="new_messages_body">У вас нові повідомлення</string>
     <string name="n_messages_in_m_chats">%1$d повідомлень в %2$d чатах</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Потрібен дозвіл</string>
     <string name="perm_continue">Продовжити</string>
@@ -1072,9 +1045,6 @@
     <string name="ImageEditorHud_flip">Обернути</string>
     <string name="ImageEditorHud_rotate">Обертати</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Це офіційний додаток Delta Chat для ПК.</string>
-    <string name="about_licensed_under_desktop">Це програмне забезпечення ліцензується за GNU GPL версії 3, а початковий код доступний на GitHub.</string>
     <string name="welcome_desktop">Вітаємо у Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Мова</string>
     <string name="global_menu_file_desktop">Файл</string>
@@ -1113,9 +1083,8 @@
     <string name="message_detail_received_desktop">Отримано</string>
     <string name="menu.view.developer.open.log.folder">Відкрити папку журналів</string>
     <string name="menu.view.developer.open.current.log.file">Відкрити поточний файл журналу</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Іконку в треї не можна вимкнути, оскільки Delta Chat було запущено за допомогою параметра --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Іконку в треї не можна вимкнути, оскільки Delta Chat було запущено за допомогою параметра --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Пропозицій щодо написання не знайдено.</string>
     <string name="show_window">Показати вікно</string>
 

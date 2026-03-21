@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Off</string>
     <string name="def">Parazgjedhje</string>
     <string name="default_value">Parazgjedhje (%1$s)</string>
-    <string name="default_value_as_above">Parazgjedhje (njësoj me sa më sipër)</string>
     <string name="custom">Vetjake</string>
     <string name="none">Asnjë</string>
     <string name="automatic">Automatike</string>
@@ -36,8 +33,6 @@
     <string name="update">Përditësoje</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bashkëngjitje</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Të bashkëngjitet “%1$s”?</string>
     <string name="back">Mbrapsht</string>
     <string name="close">Mbylle</string>
     <string name="close_window">Mbylle Dritaren</string>
@@ -342,8 +337,6 @@
     <string name="menu_more_options">Më Tepër Mundësi</string>
     <string name="menu_learn_spelling">Mëso Drejtshkrim</string>
     <string name="jump_to_message">Hidhu te Mesazh</string>
-    <string name="jump_to_original_message">Hidhu te Mesazhi Origjinal</string>
-    <string name="copy_json">Kopjo JSON</string>
     <string name="replace_draft">Zëvendëso Skicë</string>
     <string name="title_share_location">Tregojua vendndodhjen krejt anëtarëve të grupit</string>
     <string name="device_talk">Mesazhe Pajisjeje</string>
@@ -416,7 +409,6 @@
     <string name="declined_call">Thirrje e hedhur poshtë</string>
     <string name="canceled_call">Thirrje e anuluar</string>
     <string name="missed_call">Thirrje e humbur</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Jeni i sigurt se doni të largoheni?</string>
@@ -444,11 +436,9 @@
     <string name="ask_remove_from_channel">Të hiqen %1$s nga kanali?</string>
     <string name="open_url_confirmation">Doni të hapet kjo lidhje?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontakte</string>
     <string name="contacts_type_email_above">Shtypni më sipër adresën email</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -509,23 +499,13 @@
     <string name="send_file_to">Dërgoni “%1$s” për …</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Dërgoni Mesazh për…</string>
-    <string name="enable_realtime_explain">Aktivizoni lidhje aty për aty për aplikacione të përbashkët në fjalosje. Në u aktivizoftë, partnerë fjalosjeje mund të jenë në gjendje të zbulojnë adresën tuaj IP, kur nisni një aplikacion.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Shfaq vendndodhje në rrjedhë kohore</string>
-    <string name="show_location_traces">Shfaq gjurmë</string>
-    <string name="add_poi">Dërgo pikë interesi</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Mos pyet sërish për %1$s</string>
     <string name="puny_code_warning_header">U pikas lidhje e dyshimtë</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Jeni i sigurt se doni të vizitohet %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Kjo lidhje mund të jetë duke shfaqur keq shenja, duke përdorur të ngjashme prej alfabetesh të tjerë. Ndjekja e lidhjes së quajtur %1$s do të shpjerë te %2$s, çka është normale për shenja alfabetesh jo latinë. Nëse s’prisnit shenja të tilla, kjo lidhje mund të jetë e dëmshme</string>
-
 
     <!-- search -->
     <string name="search">Kërko</string>
@@ -535,7 +515,6 @@
     <string name="search_no_result_for_x">S\’u gjetën përfundime për “%s”</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Të palexuar</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Emër Grupi</string>
@@ -616,7 +595,6 @@
     <string name="messages">Mesazhe</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s nga %2$s gjithsej</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -730,7 +708,6 @@
     <string name="share_text_multiple_chats">Të dërgohet ky tekst te %1$d fjalosje?\n\n“%2$s”</string>
     <string name="share_abort">Ndarja me të tjerë dështoi ngaqë mungojnë leje.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Profili Juaj</string>
     <string name="pref_profile_photo">Foto Profili</string>
@@ -837,8 +814,6 @@
     <string name="profile_image_delete">Fshini Figurën e Profilit</string>
     <string name="pref_show_tray_icon">Shfaq Ikonë Paneli</string>
     <string name="pref_edit_profile">Përpunoni Profil</string>
-    <string name="disable_imap_idle">Çaktivizo IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Mos e përdor zgjerimin IMAP IDLE, edhe kur shërbyesi e mbulon. Aktivizimi i kësaj mundësie do të vonojë marrjen e mesazheve, aktivizojeni vetëm për testime.</string>
     <string name="send_stats_to_devs">Dërgojuni zhvilluesve të Delta Chat-it statistika</string>
     <string name="stats_device_message">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin duke dërguar statistika javore anonime përdorimi?\n\n👉 Prekni këtu… 👈</string>
     <string name="stats_confirmation_dialog">Doni të ndihmoni të përmirësohet Delta Chat-i dhe të mbështetni kërkimin duke dërguar statistika javore anonime përdorimi?</string>
@@ -1054,7 +1029,6 @@
     <string name="new_messages_body">Keni mesazhe të rinj</string>
     <string name="n_messages_in_m_chats">%1$d mesazhe në %2$d fjalosje</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Lypset leje</string>
     <string name="perm_continue">Vazhdo</string>
@@ -1075,9 +1049,6 @@
     <string name="ImageEditorHud_flip">Ktheje në anë tjetër</string>
     <string name="ImageEditorHud_rotate">Rrotulloje</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Ky është aplikacioni zyrtar Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Ky program licencohet sipas GNU GPL version 3 dhe kodi burim mund të kihet që prej GitHub-i.</string>
     <string name="welcome_desktop">Mirë se vini në Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Gjuhë</string>
     <string name="global_menu_file_desktop">Kartelë</string>
@@ -1116,9 +1087,8 @@
     <string name="message_detail_received_desktop">të marrë</string>
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
 

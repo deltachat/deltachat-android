@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">IH</string>
@@ -18,7 +16,6 @@
     <string name="off">Sens</string>
     <string name="def">Amezwer</string>
     <string name="default_value">Amezwer (%1$s)</string>
-    <string name="default_value_as_above">Amezwer (Am wakken yella s ufella)</string>
     <string name="custom">Admawan</string>
     <string name="none">Ulac</string>
     <string name="automatic">Awurman</string>
@@ -36,8 +33,6 @@
     <string name="update">Leqqem</string>
     <string name="emoji">Imujit</string>
     <string name="attachment">Amedday</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Qqen \"%1$s\"?</string>
     <string name="back">Uɣal</string>
     <string name="close">Mdel</string>
     <string name="close_window">Mdel asfaylu</string>
@@ -345,8 +340,6 @@
     <string name="menu_more_options">Ugar n tnefrunin</string>
     <string name="menu_learn_spelling">Lmed taɣdirawt</string>
     <string name="jump_to_message">Neggez ɣer yizen</string>
-    <string name="jump_to_original_message">Neggez ɣer yizen aneṣli</string>
-    <string name="copy_json">Nɣel JSON</string>
     <string name="replace_draft">Semselsi arewway</string>
     <string name="title_share_location">Bḍu adeg akked iɛeggalen n ugraw meṛṛa</string>
     <string name="device_talk">Iznan n yibenk</string>
@@ -418,7 +411,6 @@
     <string name="declined_call">Tiɣri tettwagi</string>
     <string name="canceled_call">Tiɣri tettwasefsex</string>
     <string name="missed_call">Tiɣri ittwazeglen</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Tetḥeqqeḍ tebɣiḍ ad truḥeḍ? </string>
@@ -446,11 +438,9 @@
     <string name="ask_remove_from_channel">Kkes %1$s seg ubadu?</string>
     <string name="open_url_confirmation">Tebɣiḍ ad teldiḍ aseɣwen-a? </string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Inermisen</string>
     <string name="contacts_type_email_above">Aru tansa imayl s ufella</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -511,24 +501,13 @@
     <string name="send_file_to">Azen \"%1$s\" ɣer...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Azen izen i...</string>
-    <string name="enable_realtime">Isnasen n wakud ilaw</string>
-    <string name="enable_realtime_explain">Rmed tuqqna n walud tilawt i yisnasen icudden ɣer idiwenniyen. Ma yella yermed, imttekkiyen n udiwenni zemren ad d-afen tansa-ik·im IP ticki tebdiḍ asnas.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Sken-d imeḍqan deg ukatar n wakud</string>
-    <string name="show_location_traces">Ssken lǧeṛṛat</string>
-    <string name="add_poi">Azen tanqiḍt n lebɣi</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Ur steqsay ara tikkelt nniḍen ɣef %1$s</string>
     <string name="puny_code_warning_header">yettwaf-d useɣwen yettwacukken </string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Tebɣiḍ ad terzuḍ %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Aseɣwen-a yezmer ad d-yeglu s tuccḍa n yisekkilen yellan d wid yettemcabin ɣer ugemmay yemgaraden. Ḍfer aseɣwen yettwasemman %1$s Ad yawi ɣer %2$s Ayen yellan d amagnu i yisekkilen ur nelli d Ilatiniyen. Ma yella ur tebniḍ ara ɣef yisekkilen am wi, aseɣwen-a yezmer ad iḍurr.</string>
-
 
     <!-- search -->
     <string name="search">Nadi</string>
@@ -538,7 +517,6 @@
     <string name="search_no_result_for_x">Ulac igmaḍ yettwafen i \"%s\"\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Ur yettwaɣri ara</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Isem n ugraw</string>
@@ -619,7 +597,6 @@
     <string name="messages">Iznan</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s seg %2$s yettwaseqdac</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -733,7 +710,6 @@
     <string name="share_text_multiple_chats">Azen aḍris-a ɣer %1$d idwenniyin?\n\n\"%2$s\"</string>
     <string name="share_abort">Beṭṭu ur yedda ara ɣef sebba n tsirag ixuṣṣen.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Amaɣnu-inek·inem</string>
     <string name="pref_profile_photo">Tugna n umaɣnu</string>
@@ -840,8 +816,6 @@
     <string name="profile_image_delete">Kkes tugna n umaɣnu</string>
     <string name="pref_show_tray_icon">Sken Tignit n ufaggag n waddad</string>
     <string name="pref_edit_profile">Ẓreg amaɣnu</string>
-    <string name="disable_imap_idle">Sens IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Ur seqdac ara asiɣzef IMAP IDLE xas yella uqeddac isefrak-it. Asireg uɣewwaṛ-agi ad yerr izen iɛeṭṭel akken ad d-yuɣal, rmed-it kan i usekyed. </string>
     <string name="send_stats_to_devs">Azen tidaddanin i yineflayen n DeltaChat</string>
     <string name="stats_device_message">Tebɣiḍ ad tεawneḍ deg usnerni n Delta Chat u ad tεawneḍ anadi s tuzna n tesnaddadin n useqdec udrigen?\n\n👉 Tekki da... 👈</string>
     <string name="stats_confirmation_dialog">Tebɣiḍ ad tεawneḍ deg usnerni n Delta Chat u ad tεawneḍ anadi s tuzna n tesnaddadin n useqdec udrigen?</string>
@@ -1057,7 +1031,6 @@
     <string name="new_messages_body">Ɣur-k iznan imaynuten</string>
     <string name="n_messages_in_m_chats">%1$d n yiznan deg %2$d n idiwenniyin</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Tasiregt tettwasra</string>
     <string name="perm_continue">Kemmel</string>
@@ -1078,9 +1051,6 @@
     <string name="ImageEditorHud_flip">Bren</string>
     <string name="ImageEditorHud_rotate">Zzi</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">D wa ay d asnas unṣib n tnarit n Delta Chat.</string>
-    <string name="about_licensed_under_desktop">Aseɣẓan-a yettwasireg s lqem GNU GPL 3 akked tengalt n uɣbalu yellan di GitHub. </string>
     <string name="welcome_desktop">Ansuf yis-k-m ɣer Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Tutlayt</string>
     <string name="global_menu_file_desktop">Afaylu</string>
@@ -1119,9 +1089,8 @@
     <string name="message_detail_received_desktop">yettwarmes</string>
     <string name="menu.view.developer.open.log.folder">Ldi akaram n uɣmis</string>
     <string name="menu.view.developer.open.current.log.file">Ldi afaylu n uɣmis amiran</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Tignit n tfeggagt n tmahilin ur tezmir ara ad tsens mi ara d-yebdu Delta Chat s --Uɣewwaṛ adday.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tignit n tfeggagt n tmahilin ur tezmir ara ad tsens mi ara d-yebdu Delta Chat s --Uɣewwaṛ adday.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Ulac isumar n teɣdirawt yettwafen.</string>
     <string name="show_window">Sken asfaylu</string>
 

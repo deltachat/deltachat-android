@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Av</string>
     <string name="def">Forvalg</string>
     <string name="default_value">Standardverdi (%1$s)</string>
-    <string name="default_value_as_above">Standardverdi (som over)</string>
     <string name="custom">Egendefinert</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatisk</string>
@@ -36,8 +33,6 @@
     <string name="update">Oppdater</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Vedlegg</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Legg ved \"%1$s\"?</string>
     <string name="back">Forrige</string>
     <string name="close">Lukk</string>
     <string name="close_window">Lukk vindu</string>
@@ -329,8 +324,6 @@
     <string name="menu_more_options">Flere valg</string>
     <string name="menu_learn_spelling">Lær staving</string>
     <string name="jump_to_message">Gå til melding</string>
-    <string name="jump_to_original_message">Gå til opprinnelig melding</string>
-    <string name="copy_json">Kopien JSON</string>
     <string name="replace_draft">Erstatt kladd</string>
     <string name="title_share_location">Del posisjon med alle gruppemedlemmer</string>
     <string name="device_talk">Enhetsmeldinger</string>
@@ -381,7 +374,6 @@
     <string name="declined_call">Avvist anrop</string>
     <string name="canceled_call">Avbrutt anrop</string>
     <string name="missed_call">Ubesvart anrop</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate?</string>
@@ -409,11 +401,9 @@
     <string name="ask_remove_from_channel">Fjern %1$s fra kanalen?</string>
     <string name="open_url_confirmation">Vil du åpne denne lenken?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_type_email_above">Skriv e-postadresse over</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -474,14 +464,6 @@
     <string name="send_file_to">Send \"%1$s\" til…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Send melding til…</string>
-    <string name="enable_realtime">Sanntidsapper</string>
-    <string name="enable_realtime_explain">Slå på sanntidstilkoblinger for apper tilknyttet chatter. Når det er slått på kan chattepartnere se din IP-adresse når du starter en app.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Vis plasseringer innenfor tidsramme</string>
-    <string name="show_location_traces">Vis bevegelsesspor</string>
-    <string name="add_poi">Send interessepunkt</string>
-
 
     <!-- search -->
     <string name="search">Søk</string>

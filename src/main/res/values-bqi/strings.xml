@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">دلتا چت</string>
     <string name="ok">خا</string>
@@ -18,7 +16,6 @@
     <string name="off">کۊر</string>
     <string name="def">پؽش فرز</string>
     <string name="default_value">پؽش فرز (%1$s)</string>
-    <string name="default_value_as_above">پؽش فرز (جۊر روء)</string>
     <string name="custom">سفارشی</string>
     <string name="none">هیچکویکی</string>
     <string name="automatic">خوتکار</string>
@@ -36,8 +33,6 @@
     <string name="update">ورۊ کردن</string>
     <string name="emoji">ایموجی</string>
     <string name="attachment">پیوست</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">«%1$s» پیوست بۊ؟</string>
     <string name="back">وورگشتن</string>
     <string name="close">بستن</string>
     <string name="close_window">بستن نیمدری</string>
@@ -333,7 +328,6 @@
     <string name="ask_remove_members">پاک کردن %1$s ز جرگه؟</string>
     <string name="open_url_confirmation">اخۊی ای لینگن بۊگۊشی؟</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">هومدنگووݩ</string>
     <string name="chat_please_enter_message">ی پیوم بزݩ.</string>
@@ -361,7 +355,7 @@
     <string name="send_file_to">فشناڌن \"%1$s\" و...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">فشناڌن پیوم و...</string>
-    <string name="show_location_traces">نشووݩ داڌن جا پا</string>
+
     <!-- search -->
     <string name="search">پیتینیڌن</string>
     <!-- create/edit groups, contact/group profile -->

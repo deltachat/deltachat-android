@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Bone</string>
@@ -30,8 +28,6 @@
     <string name="update">Ĝisdatigi</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Ĉu alkroĉi \"%1$s\"?</string>
     <string name="back">Reen</string>
     <string name="close">Fermi</string>
     <string name="close_window">Fermi fenestron</string>
@@ -269,7 +265,6 @@
     <string name="menu_more_options">Pli da ebloj</string>
     <string name="menu_learn_spelling">Lernu la ortografion</string>
     <string name="jump_to_message">Iru al mesaĝo</string>
-    <string name="copy_json">Kopiu JSON</string>
     <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
     <string name="device_talk">Aparataj mesaĝoj</string>
     <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>
@@ -305,7 +300,6 @@
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_type_email_above">Enigu retadreson supren</string>
 
-
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d babilo enarĥivigita</item>
@@ -335,10 +329,6 @@
     <string name="save_message">Konservi</string>
     <string name="saved_messages">Konservitaj mesaĝoj</string>
     <string name="retry_send">Reprovi sendi mesaĝon</string>
-    <string name="show_location_traces">Montri spurojn</string>
-    <string name="add_poi">Sendi punkton de intereso</string>
-
-
     <!-- search -->
     <string name="search">Serĉi</string>
     <string name="search_explain">Serĉi babilojn, kontaktojn, kaj mesaĝojn</string>
@@ -387,7 +377,6 @@
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Plusendi al…</string>
     <string name="share_abort">Kunhavigado ĉesis pro manko de permesoj.</string>
-
 
     <string name="pref_profile_photo">Profilbildo</string>
     <string name="pref_blocked_contacts">Blokitaj kontaktoj</string>

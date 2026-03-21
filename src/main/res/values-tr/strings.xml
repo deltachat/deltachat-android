@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
@@ -18,7 +16,6 @@
     <string name="off">Kapalı</string>
     <string name="def">Varsayılan</string>
     <string name="default_value">Varsayılan (%1$s)</string>
-    <string name="default_value_as_above">Varsayılan (yukarıdakinin aynısı)</string>
     <string name="custom">Özel</string>
     <string name="none">Yok</string>
     <string name="automatic">Otomatik</string>
@@ -36,8 +33,6 @@
     <string name="update">Güncelleştir</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">“%1$s” iliştirilsin mi?</string>
     <string name="back">Geri</string>
     <string name="close">Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
@@ -345,8 +340,6 @@
     <string name="menu_more_options">Daha Fazla Seçenek</string>
     <string name="menu_learn_spelling">Yazımı Öğrenin</string>
     <string name="jump_to_message">İletiye Atla</string>
-    <string name="jump_to_original_message">Özgün İletiye Atla</string>
-    <string name="copy_json">JSON kopyala</string>
     <string name="replace_draft">Taslağı Değiştir</string>
     <string name="title_share_location">Tüm grup üyeleriyle konum paylaş</string>
     <string name="device_talk">Aygıt İletileri</string>
@@ -413,7 +406,6 @@
     <string name="declined_call">Reddedilen arama</string>
     <string name="canceled_call">İptal edilen arama</string>
     <string name="missed_call">Yanıtlanmayan arama</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
@@ -441,11 +433,9 @@
     <string name="ask_remove_from_channel">%1$s kanaldan kaldırılsın mı?</string>
     <string name="open_url_confirmation">Bu bağlantıyı açmak istiyor musunuz?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kişiler</string>
     <string name="contacts_type_email_above">Yukarıya e-posta adresi yazın</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -506,24 +496,13 @@
     <string name="send_file_to">“%1$s” dosyasını gönder…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">İletiyi gönder…</string>
-    <string name="enable_realtime">Gerçek Zamanlı Uygulamalar</string>
-    <string name="enable_realtime_explain">Sohbetlere iliştirilen uygulamalar için gerçek zamanlı bağlantıları etkinleştirin. Etkinleştirilirse, bir uygulamayı başlattığınızda sohbet ortakları IP adresinizi keşfedebilir.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Konumları zaman çerçevesinde göster</string>
-    <string name="show_location_traces">İzleri göster</string>
-    <string name="add_poi">İlgi çekici noktayı gönder</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">%1$s için yeniden sorma</string>
     <string name="puny_code_warning_header">Kuşkulu bağlantı algılandı</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">%1$s bağlantısını ziyaret etmek istediğinizden emin misiniz?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Farklı abecelerden benzer görünen karakterleri kullanarak karakterleri yanlış temsil edebilecek bir bağlantı izlediniz. Aşağıdaki %1$s etiketli bağlantıyı izlemek, Latin olmayan karakterler için normal olan %2$s dönüşümüyle sonuçlanacak. Böyle karakterleri beklemediyseniz, bu bağlantı zararlı olabilir.</string>
-
 
     <!-- search -->
     <string name="search">Ara</string>
@@ -533,7 +512,6 @@
     <string name="search_no_result_for_x">“%s” için sonuç bulunamadı</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Okunmayan</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grup Adı</string>
@@ -614,7 +592,6 @@
     <string name="messages">İletiler</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s / %2$s kullanıldı</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -720,7 +697,6 @@
     <string name="videos_sent_without_recoding">(Çoklu video göndermek, onları olduğu gibi gönderecektir ve bu da büyük boyutlara yol açabilir. Boyutlarını küçültmek ve veri tasarrufu sağlamak için her videoyu kendi iletisinde gönderebilirsiniz.)</string>
     <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n“%2$s”</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Profiliniz</string>
@@ -829,8 +805,6 @@
     <string name="profile_image_delete">Profil Görselini Sil</string>
     <string name="pref_show_tray_icon">Tepsi Simgesi Göster</string>
     <string name="pref_edit_profile">Profili Düzenle</string>
-    <string name="disable_imap_idle">IMAP IDLE\'ı Etkisizleştir</string>
-    <string name="disable_imap_idle_explain">Sunucu desteklese bile IMAP IDLE uzantısını kullanmayın. Bu seçeneği etkinleştirmek ileti getirmeyi geciktirecek; yalnızca sınama için etkinleştirin.</string>
     <string name="send_stats_to_devs">Delta Chat\'in geliştiricilerine istatistikleri gönder</string>
     <string name="stats_device_message">Haftalık belirsiz kullanım istatistiklerini göndererek Delta Chat\'i geliştirmeye yardımcı olmak ve araştırmaları desteklemek istiyor musunuz?\n\n👉 Buraya dokunun… 👈</string>
     <string name="stats_confirmation_dialog">Haftalık belirsiz kullanım istatistiklerini göndererek Delta Chat\'i geliştirmeye yardımcı olmak ve araştırmaları desteklemek istiyor musunuz?</string>
@@ -1046,7 +1020,6 @@
     <string name="new_messages_body">Yeni iletileriniz var</string>
     <string name="n_messages_in_m_chats">%2$d sohbette %1$d ileti</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">İzin gerekli</string>
     <string name="perm_continue">Sürdür</string>
@@ -1067,9 +1040,6 @@
     <string name="ImageEditorHud_flip">Çevir</string>
     <string name="ImageEditorHud_rotate">Döndür</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Bu, resmî Delta Chat Masaüstü uygulamasıdır.</string>
-    <string name="about_licensed_under_desktop">Bu yazılım, GNU GPL sürüm 3 altında lisanslıdır ve kaynak kodu GitHub\'da kullanılabilir.</string>
     <string name="welcome_desktop">Delta Chat\'e hoş geldiniz</string>
     <string name="global_menu_preferences_language_desktop">Dil</string>
     <string name="global_menu_file_desktop">Dosya</string>
@@ -1108,9 +1078,8 @@
     <string name="message_detail_received_desktop">Alınma</string>
     <string name="menu.view.developer.open.log.folder">Günlük Klasörünü Aç</string>
     <string name="menu.view.developer.open.current.log.file">Şu Anki Günlük Dosyasını Aç</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
     <string name="show_window">Pencereyi Göster</string>
 

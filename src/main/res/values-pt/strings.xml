@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Desligado</string>
     <string name="def">Padrão</string>
     <string name="default_value">Padrão (%1$s)</string>
-    <string name="default_value_as_above">Padrão (igual acima)</string>
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
     <string name="automatic">Automático</string>
@@ -35,8 +32,6 @@
     <string name="update">Actualizar</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Anexar \"%1$s\"?</string>
     <string name="close">Fechar</string>
     <string name="close_window">Fechar Janela</string>
     <string name="forward">Reencaminhar</string>
@@ -223,7 +218,6 @@
     <string name="menu_settings">Definições</string>
     <string name="menu_advanced">Avançado</string>
     <string name="menu_view_profile">Ver perfil</string>
-    <string name="copy_json">Copiar JSON</string>
     <string name="mute_for_one_hour">Calado por 1 hora</string>
     <string name="mute_for_eight_hours">Calado por 8 horas</string>
     <string name="mute_for_one_day">Calado por 1 dia</string>
@@ -261,7 +255,6 @@
     <string name="contacts_title">Contactos</string>
     <string name="contacts_type_email_above">Digite o endereço de e-mail acima</string>
 
-
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d conversas arquivadas</item>
@@ -296,6 +289,7 @@
     <string name="send_file_to">Enviar \"%1$s\" para…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Enviar mensagem para…</string>
+
     <!-- search -->
     <string name="search">Pesquisar</string>
     <string name="search_explain">Pesquisar chats, contactos, emensagens</string>

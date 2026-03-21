@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
@@ -17,7 +15,6 @@
     <string name="off">Išjungta</string>
     <string name="def">Pagal numatymą</string>
     <string name="default_value">Numatytasis (%1$s)</string>
-    <string name="default_value_as_above">Numatytasis (toks pats kaip aukščiau)</string>
     <string name="custom">Tinkintas</string>
     <string name="none">Nėra</string>
     <string name="automatic">Automatinis</string>
@@ -35,8 +32,6 @@
     <string name="update">Atnaujinti</string>
     <string name="emoji">Šypsniukas</string>
     <string name="attachment">Priedas</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Pridėti „%1$s“?</string>
     <string name="back">Atgal</string>
     <string name="close">Užverti</string>
     <string name="close_window">Užverti langą</string>
@@ -316,8 +311,6 @@
     <string name="menu_save_log">Įrašyti žurnalą</string>
     <string name="menu_more_options">Daugiau parinkčių</string>
     <string name="jump_to_message">Peršokti į žinutę</string>
-    <string name="jump_to_original_message">Peršokti į pradinę žinutę</string>
-    <string name="copy_json">Kopijuoti JSON</string>
     <string name="replace_draft">Pakeisti juodraštį</string>
     <string name="title_share_location">Bendrinti savo vietą su visais grupės dalyviais</string>
     <string name="device_talk">Įrenginio žinutės</string>
@@ -371,7 +364,6 @@
     <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Gaunamasis vaizdo skambutis</string>
     <string name="missed_call">Praleistas skambutis</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ar tikrai norite išeiti?</string>
@@ -400,11 +392,9 @@
     <string name="ask_remove_from_channel">Pašalinti %1$s iš kanalo?</string>
     <string name="open_url_confirmation">Ar norite atverti šią nuorodą?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Adresatai</string>
     <string name="contacts_type_email_above">Aukščiau įrašykite el. pašto adresą</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -459,13 +449,12 @@
     <!-- webxdc -->
     <!-- "Start..." button for an app -->
     <string name="start_app">Pradėti…</string>
-    <string name="enable_realtime">Tikralaikės programėlės</string>
+    <!-- punycode warning / labeled links -->
     <string name="puny_code_warning_header">Aptikta įtartina nuoroda</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ar tikrai norite apsilankyti %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Ši nuoroda gali iškreipti simbolius atvaizduodama juos kaip panašius simbolius iš kitų abėcėlių. Ši nuoroda, pavadinimu %1$s nukreips į %2$s kas savo ruožtu yra normalu ne lotynų simboliams. Jei tokių simbolių nesitikėjote, gali būti, jog ši nuoroda yra kenksminga.</string>
-
 
     <!-- search -->
     <string name="search">Ieškoti</string>
@@ -545,7 +534,6 @@
     <string name="messages">Žinutės</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Panaudota %1$s iš %2$s</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -643,7 +631,6 @@
     <string name="forward_to">Kam persiųsti …</string>
     <string name="share_abort">Bendrinimas nutrauktas dėl trūkstamų leidimų.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Jūsų profilis</string>
     <string name="pref_profile_photo">Profilio nuotrauka</string>
@@ -740,7 +727,6 @@
     <string name="profile_image_delete">Ištrinti profilio nuotrauką</string>
     <string name="pref_show_tray_icon">Rodyti dėklo piktogramą</string>
     <string name="pref_edit_profile">Taisyti profilį</string>
-    <string name="disable_imap_idle">Išjungti IMAP IDLE</string>
     <string name="send_stats_to_devs">Siųsti statistiką Delta Chat plėtotojams</string>
     <string name="stats_device_message">Ar norite padėti tobulinti Delta Chat ir pagelbėti tyrimams, kas savaitę siunčiant anoniminę statistiką apie naudojimąsi Delta Chat?\n\n👉 Bakstelėkite čia… 👈</string>
     <string name="stats_confirmation_dialog">Ar norite padėti tobulinti Delta Chat ir pagelbėti tyrimams, kas savaitę siunčiant anoniminę statistiką apie naudojimąsi Delta Chat?</string>
@@ -924,9 +910,6 @@
     <string name="ImageEditorHud_flip">Apversti</string>
     <string name="ImageEditorHud_rotate">Pasukti</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Tai yra oficiali Delta Chat programa, skirta darbalaukio aplinkai.</string>
-    <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
     <string name="global_menu_file_desktop">Failas</string>
@@ -961,9 +944,8 @@
     <string name="message_detail_received_desktop">Gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
 

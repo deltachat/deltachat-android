@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -14,7 +12,6 @@
     <string name="off">Изключено</string>
     <string name="def">По подразбиране</string>
     <string name="default_value">По подразбиране (%1$s)</string>
-    <string name="default_value_as_above">По подразбиране (същото като по-горе)</string>
     <string name="custom">Дефиниран от потребителя</string>
     <string name="none">Без</string>
     <string name="automatic">Автоматично</string>
@@ -262,7 +259,6 @@
     <string name="menu_more_options">Още опции</string>
     <string name="menu_learn_spelling">Запомняне на правописа</string>
     <string name="jump_to_message">Към съобщение</string>
-    <string name="copy_json">Копиране на JSON</string>
     <string name="replace_draft">Замяна на чернова</string>
     <string name="title_share_location">Местоположението да се споделя с всички членове на групата</string>
     <string name="device_talk">Съобщения в устройството</string>
@@ -314,11 +310,9 @@
     <string name="ask_remove_members">Премахване на %1$s от групата?</string>
     <string name="open_url_confirmation">Искате ли да отворите тази връзка?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
     <string name="contacts_type_email_above">Въведете адрес за електронна поща по-горе</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -376,21 +370,13 @@
     <string name="send_file_to">Изпращане на \"%1$s\" до</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Изпращане на съобщение до…</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Показване на местоположенията във времева рамка</string>
-    <string name="show_location_traces">Показване на съобщенията за проследяване</string>
-    <string name="add_poi">Изпращане на място, представляващо интерес</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Да не се пита повече за %1$s</string>
     <string name="puny_code_warning_header">Открита е подозрителна връзка</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Сигурни ли сте, че искате да посетите %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Има вероятност тази връзка лъжливо да представя някои знаци чрез подобно изглеждащи такива от различни от текущата азбуки. Следването на връзката с етикет %1$s ще доведе до %2$s, което е обичайно за знаци, които не са от Latin набора. Ако не сте очаквали такива знаци, тази връзка може да причини вреда</string>
-
 
     <!-- search -->
     <string name="search">Търсене</string>
@@ -474,7 +460,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Използвани са %1$s от %2$s</string>
 
-
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Създаване на нов профил</string>
@@ -546,7 +531,6 @@
     <string name="ask_send_files_to_selected_chats">Да бъдат ли изпратени %1$d файл(а) към %2$d чата?</string>
     <string name="share_text_multiple_chats">Да бъде ли изпратен този текст към %1$d чата?\n\n\"%2$s\"</string>
     <string name="share_abort">Споделянето е прекъснато поради липсващи позволения.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Информация от Вашия профил</string>
@@ -640,8 +624,6 @@
     <string name="profile_image_delete">Изтриване на изображението на профила</string>
     <string name="pref_show_tray_icon">Показване на иконата в System Tray</string>
     <string name="pref_edit_profile">Редактиране на профил</string>
-    <string name="disable_imap_idle">Деактивиране на IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Да не се използва разширението IMAP IDLE дори ако сървърът го поддържа. Ако тази опция бъде разрешена, извличането на съобщенията ще бъде забавено. Разрешете я само за тестване.</string>
     <string name="send_stats_to_devs">Да се изпраща статистика към разработчиците на Delta Chat</string>
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Резултати от търсенето</string>
@@ -825,7 +807,6 @@
     <string name="new_messages_body">Имате нови съобщения</string>
     <string name="n_messages_in_m_chats">%1$d съобщения в %2$d чата</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Изисква се позволение</string>
     <string name="perm_continue">Продължаване</string>
@@ -846,9 +827,6 @@
     <string name="ImageEditorHud_flip">Обръщане</string>
     <string name="ImageEditorHud_rotate">Завъртане</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Това е официалното настолно приложение Delta Chat.</string>
-    <string name="about_licensed_under_desktop">Този софтуер е лицензиран под GNU GPL версия 3. Изходният код е наличен в GitHub.</string>
     <string name="welcome_desktop">Добре дошли в Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Език</string>
     <string name="global_menu_file_desktop">Файл</string>
@@ -883,9 +861,8 @@
     <string name="message_detail_received_desktop">получено</string>
     <string name="menu.view.developer.open.log.folder">Отваряне на папката \"Дневник\"</string>
     <string name="menu.view.developer.open.current.log.file">Отваряне на текущия файл на дневника</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Показването на икона в системната лента не може да бъде забранено, тъй като Delta Chat е стартиран с опцията --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Показването на икона в системната лента не може да бъде забранено, тъй като Delta Chat е стартиран с опцията --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Няма открити предложения за правопис.</string>
     <string name="show_window">Показване на прозореца</string>
 

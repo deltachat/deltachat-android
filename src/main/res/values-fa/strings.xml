@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">دلتاچت</string>
     <string name="ok">تأیید</string>
@@ -18,7 +16,6 @@
     <string name="off">خاموش</string>
     <string name="def">پیش‌فرض</string>
     <string name="default_value">پیش‌فرض (%1$s)</string>
-    <string name="default_value_as_above">پیش‌فرض (مانند بالا)</string>
     <string name="custom">سفارشی</string>
     <string name="none">هیچ‌کدام</string>
     <string name="automatic">خودکار</string>
@@ -36,8 +33,6 @@
     <string name="update">به‌‌روزرسانی</string>
     <string name="emoji">شکلک</string>
     <string name="attachment">پیوست</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">پیوست کردن «%1$s»؟</string>
     <string name="back">بازگشت</string>
     <string name="close">بستن</string>
     <string name="close_window">بستن پنجره</string>
@@ -329,8 +324,6 @@
     <string name="menu_more_options">گزینه‌های بیشتر</string>
     <string name="menu_learn_spelling">یادگرفتن املا </string>
     <string name="jump_to_message">رفتن به پیام</string>
-    <string name="jump_to_original_message">پرش به پیام اصلی</string>
-    <string name="copy_json">JSON رونوشت برداری از </string>
     <string name="replace_draft">جایگزین کردن پیش‌نویس</string>
     <string name="title_share_location">اشتراک موقعیت مکانی با همه اعضای گروه</string>
     <string name="device_talk">پیام‌های دستگاه</string>
@@ -393,7 +386,6 @@
     <string name="declined_call">تماس رد شده</string>
     <string name="canceled_call">تماس لغو شده</string>
     <string name="missed_call">تماس از دست رفته</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">آیا مطمئنید می‌خواهید بروید؟</string>
@@ -421,11 +413,9 @@
     <string name="ask_remove_from_channel">حذف %1$s از کانال؟</string>
     <string name="open_url_confirmation">آیا می‌خواهید این لینک را باز کنید؟</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">مخاطبین</string>
     <string name="contacts_type_email_above">نشانی رایانامه را در بخش بالا وارد کنید</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -486,24 +476,13 @@
     <string name="send_file_to">ارسال \"%1$s\" به...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">ارسال پیام به...</string>
-    <string name="enable_realtime">برنامه‌های بلادرنگ</string>
-    <string name="enable_realtime_explain">فعال‌سازی اتصال‌های بلادرنگ برای برنامه‌های به اشتراک گذاشته‌شده در گپ‌ها. در صورت فعال‌سازی، زمانی که برنامه را باز می‌کنید، دیگر اعضای گپ ممکن است بتوانند نشانی اینترنتی شما را شناسایی کنند.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">نمایش موقعیت‌های مکانی در چارچوب زمان</string>
-    <string name="show_location_traces">نمایش ردپاها</string>
-    <string name="add_poi">ارسال نقطه توجه</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">دوباره درمورد %1$s سوال نشود</string>
     <string name="puny_code_warning_header">لینک مشکوک شناسایی شد</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">مطمئن هستید می‌خواهید به %1$s مراجعه کنید؟</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">شما لینکی را دنبال کرده‌اید که با نمایش حروفی که از نظر ظاهری شباهت دارند ممکن است شما را به جای دیگری ببرد. دنبال کردن لینک با برچسب %1$s شما را به %2$s خواهد برد که حالت عادی برای حروف انگلیسی است. اگر انتظار این حروف را نداشتید ممکن است لینک مورد نظر مضر باشد. </string>
-
 
     <!-- search -->
     <string name="search">جستجو</string>
@@ -513,7 +492,6 @@
     <string name="search_no_result_for_x">نتیجه‌ای برای \"%s\" پیدا نشد</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">خوانده نشده</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">نام گروه</string>
@@ -594,7 +572,6 @@
     <string name="messages">پیام‌ها</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">مقدار %1$s از %2$s استفاده شده است. </string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -701,7 +678,6 @@
     <string name="share_text_multiple_chats">ارسال این متن به %1$d گپ؟n/n/«%2$s»</string>
     <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">اطلاعات نمایهٔ شما</string>
     <string name="pref_profile_photo">تصویر نمایه</string>
@@ -803,8 +779,6 @@
     <string name="profile_image_delete">حذف تصویر نمایه</string>
     <string name="pref_show_tray_icon">نمایش نمادک در زیر صفحه</string>
     <string name="pref_edit_profile">ویرایش نمایه</string>
-    <string name="disable_imap_idle">غیر فعال‌سازی IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">استفاده نکردن از افزونهٔ IMAP IDLE حتی در صورتی که ارائه‌دهنده از آن پشتیبانی می‌کند. فعال‌سازی این گزینه باعث می‌شوند دریافت پیام‌ها به تاخیر بیوفتد. تنها برای آزمایش آن را فعال کنید.</string>
     <string name="send_stats_to_devs">ارسال آمار برای توسعه‌دهندگان دلتاچت</string>
     <string name="stats_device_message">آیا می‌خواهید با فرستادن آمار استفادهٔ هفتگی به بهبود دلتاچت کمک کنید؟ 👈این‌جا را بزنید...👉</string>
     <string name="stats_confirmation_dialog">می‌خواهید با فرستادن گزارش‌های ناشناس استفادهٔ هفتگی به بهبود دلتاچت کمک کنید؟</string>
@@ -1017,7 +991,6 @@
     <string name="new_messages_body">شما پیام‌های جدیدی دارید</string>
     <string name="n_messages_in_m_chats">%1$d پیام در %2$d گفتگو</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">مجوز لازم است</string>
     <string name="perm_continue">ادامه</string>
@@ -1038,9 +1011,6 @@
     <string name="ImageEditorHud_flip">برعکس کردن</string>
     <string name="ImageEditorHud_rotate">چرخاندن</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">این نرم‌افزار رسمی دلتاچت در محیط رایانه است.</string>
-    <string name="about_licensed_under_desktop">این نرم افزار تحت مجوز GNU GPL ورژن ۳ منتشر شده و کد منبع در GitHub در دسترس است.</string>
     <string name="welcome_desktop">به دلتاچت خوش‌آمدید</string>
     <string name="global_menu_preferences_language_desktop">زبان</string>
     <string name="global_menu_file_desktop">پرونده</string>
@@ -1079,9 +1049,8 @@
     <string name="message_detail_received_desktop">دریافت شد</string>
     <string name="menu.view.developer.open.log.folder">پوشه گزارش را باز کن</string>
     <string name="menu.view.developer.open.current.log.file">پوشه گزارش فعلی را باز کن</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">چون دلتاچت با تنظیم‌ها --زیرصفحه شروع به کار کرده است نمی‌توان نمادک زیر صفحه را غیر فعال کرد. </string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">چون دلتاچت با تنظیم‌ها --زیرصفحه شروع به کار کرده است نمی‌توان نمادک زیر صفحه را غیر فعال کرد. </string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">هیچ پیشنهادی برای املا پیدا نشد</string>
     <string name="show_window">نمایش پنجره</string>
 

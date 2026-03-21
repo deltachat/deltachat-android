@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Oké</string>
@@ -18,7 +16,6 @@
     <string name="off">Uit</string>
     <string name="def">Standaard</string>
     <string name="default_value">Standaard (%1$s)</string>
-    <string name="default_value_as_above">Standaard (zoals hierboven)</string>
     <string name="custom">Aangepast</string>
     <string name="none">Geen</string>
     <string name="automatic">Automatisch</string>
@@ -36,8 +33,6 @@
     <string name="update">Bijwerken</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Wil je ‘%1$s’ bijvoegen?</string>
     <string name="back">Terug</string>
     <string name="close">Sluiten</string>
     <string name="close_window">Venster sluiten</string>
@@ -74,6 +69,8 @@
     <string name="mark_as_read">Markeren als gelezen</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Gelezen</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Ongelezen</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Bezig met laden…</string>
     <string name="hide">Verbergen</string>
@@ -346,8 +343,6 @@
     <string name="menu_more_options">Meer opties</string>
     <string name="menu_learn_spelling">Spelling leren</string>
     <string name="jump_to_message">Ga naar bericht</string>
-    <string name="jump_to_original_message">Ga naar oorspronkelijk bericht</string>
-    <string name="copy_json">Json-gegevens kopiëren</string>
     <string name="replace_draft">Concept vervangen</string>
     <string name="title_share_location">Locatie delen met alle groepsleden</string>
     <string name="device_talk">Berichten op apparaat</string>
@@ -420,6 +415,7 @@
     <string name="declined_call">Geweigerde oproep</string>
     <string name="canceled_call">Afgebroken oproep</string>
     <string name="missed_call">Gemiste oproep</string>
+    <string name="already_in_call">Reeds in gesprek</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -448,11 +444,9 @@
     <string name="ask_remove_from_channel">Weet je zeker dat je %1$s van het kanaal wilt verwijderen?</string>
     <string name="open_url_confirmation">Weet je zeker dat je deze link wilt openen?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Contactpersonen</string>
     <string name="contacts_type_email_above">Typ hierboven het e-mailadres</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -513,24 +507,13 @@
     <string name="send_file_to">“%1$s” versturen naar…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Bericht versturen naar…</string>
-    <string name="enable_realtime">Real-timeapps</string>
-    <string name="enable_realtime_explain">Laat apps een real-timeverbinding gebruiken in gedeelde gesprekken. Let op: gesprekspartners kunnen hierdoor mogelijk je ip-adres zien.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Locaties tonen in tijdsbeeld</string>
-    <string name="show_location_traces">Sporen tonen</string>
-    <string name="add_poi">Afspraaklocatie versturen</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Niet meer vragen bij %1$s</string>
     <string name="puny_code_warning_header">Verdachte link aangetroffen</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Weet je zeker dat je %1$s wilt openen?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Je hebt op een link gedrukt welke niet-overeenkomende tekens bevat uit andere talen. Door %1$s te openen kom je op %2$s terecht, welke niet-Latijnse tekens bevat. Als je deze tekens niet verwachtte, dan is de site mogelijk niet te vertrouwen.</string>
-
 
     <!-- search -->
     <string name="search">Zoeken</string>
@@ -540,7 +523,6 @@
     <string name="search_no_result_for_x">Er zijn geen resultaten voor “%s”</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Ongelezen</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Groepsnaam</string>
@@ -621,7 +603,6 @@
     <string name="messages">Berichten</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s van %2$s in gebruik</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -735,7 +716,6 @@
     <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n“%2$s”</string>
     <string name="share_abort">Het delen is afgebroken wegens ontbrekende rechten.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Mijn profiel</string>
     <string name="pref_profile_photo">Profielfoto</string>
@@ -843,8 +823,6 @@
     <string name="profile_image_delete">Profielfoto verwijderen</string>
     <string name="pref_show_tray_icon">Systeemvakpictogram tonen</string>
     <string name="pref_edit_profile">Profiel bewerken</string>
-    <string name="disable_imap_idle">IMAP IDLE uitschakelen</string>
-    <string name="disable_imap_idle_explain">Maak geen gebruik van IMAP IDLE, zelfs niet als de server het ondersteunt. Schakel deze optie in om het ophalen van berichten te vertragen. Let op: gebruik deze optie alleen voor testdoeleinden.</string>
     <string name="send_stats_to_devs">Statistieken delen met Delta Chat-ontwikkelaars</string>
     <string name="stats_device_message">Wil je helpen Delta Chat te verbeteren en voor onderzoeksdoeleinden iedere week volledig anonieme, automatische gebruiksstatistieken in te sturen?\n\n👉 Druk dan hier… 👈</string>
     <string name="stats_confirmation_dialog">Wil je helpen Delta Chat te verbeteren en voor onderzoeksdoeleinden iedere week volledig anonieme, automatische gebruiksstatistieken in te sturen?</string>
@@ -1060,7 +1038,6 @@
     <string name="new_messages_body">Je hebt nieuwe berichten</string>
     <string name="n_messages_in_m_chats">%1$d berichten in %2$d gesprekken</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Recht vereist</string>
     <string name="perm_continue">Doorgaan</string>
@@ -1081,9 +1058,6 @@
     <string name="ImageEditorHud_flip">Spiegelen</string>
     <string name="ImageEditorHud_rotate">Draaien</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Dit is de officiële Delta Chat-computerapp.</string>
-    <string name="about_licensed_under_desktop">Deze software is vrijgegeven onder de GNU GPL versie 3 en de broncode is beschikbaar op GitHub.</string>
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Taal</string>
     <string name="global_menu_file_desktop">Bestand</string>
@@ -1122,9 +1096,8 @@
     <string name="message_detail_received_desktop">Ontvangen</string>
     <string name="menu.view.developer.open.log.folder">Map met logbestanden openen</string>
     <string name="menu.view.developer.open.current.log.file">Huidig logbestand openen</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Het systeemvakpictogram is uitgeschakeld omdat Delta Chat is gestart met de optie --minimized</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
 

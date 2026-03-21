@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -14,7 +12,6 @@
     <string name="off">Pois</string>
     <string name="def">Oletus</string>
     <string name="default_value">Oletus (%1$s)</string>
-    <string name="default_value_as_above">Oletus (sama kuin yllä)</string>
     <string name="custom">Mukautettu</string>
     <string name="none">Ei mitään</string>
     <string name="automatic">Automaattinen</string>
@@ -262,7 +259,6 @@
     <string name="menu_more_options">Lisää asetuksia</string>
     <string name="menu_learn_spelling">Opi tavaus</string>
     <string name="jump_to_message">Siirry viestiin</string>
-    <string name="copy_json">Kopioi JSON</string>
     <string name="replace_draft">Korvaa luonnos</string>
     <string name="title_share_location">Jaa sijainti kaikille ryhmän jäsenille</string>
     <string name="device_talk">Laitteen viestit</string>
@@ -318,11 +314,9 @@
     <string name="ask_remove_members">Poista %1$s ryhmästä?</string>
     <string name="open_url_confirmation">Haluatko avata tämän linkin?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Yhteystiedot</string>
     <string name="contacts_type_email_above">Kirjoita sähköpostiosoite ylle</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -380,21 +374,13 @@
     <string name="send_file_to">Lähetä \"%1$s\" kohteeseen...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Lähetä viesti kohteeseen...</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Näytä sijainnit aikajanalla</string>
-    <string name="show_location_traces">Näytä jäljet</string>
-    <string name="add_poi">Lähetä erikseen valittu piste</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Älä kysy enää osoitteelle %1$s</string>
     <string name="puny_code_warning_header">Epäilyttävä linkki havaittu</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Haluatko varmasti vierailla osoitteessa %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Seurasit linkkiä, joka saattaa näyttää toisten aakkostojen merkkejä huijaussivustolle johtamiseen. Linkin teksti %1$s johtaa osoitteeseen %2$s, mikä on tavallista ei-latinalaisille merkistöille. Jos et odottanut tätä, tämä linkki voi olla vahingollinen.</string>
-
 
     <!-- search -->
     <string name="search">Etsi</string>
@@ -478,7 +464,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s / %2$s käytössä</string>
 
-
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Luo uusi profiili</string>
@@ -550,7 +535,6 @@
     <string name="ask_send_files_to_selected_chats">Lähetä %1$d tiedosto(a) %2$d keskusteluun?</string>
     <string name="share_text_multiple_chats">Lähetä tämä teksti %1$d keskusteluun?\n\n\"%2$s\"</string>
     <string name="share_abort">Jakaminen keskeytetty puuttuvien käyttöoikeuksien vuoksi.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Profiilisi</string>
@@ -644,8 +628,6 @@
     <string name="profile_image_delete">Poista profiilikuva</string>
     <string name="pref_show_tray_icon">Näytä työkalupalkin kuvake</string>
     <string name="pref_edit_profile">Muokkaa profiilia</string>
-    <string name="disable_imap_idle">Poista IMAP IDLE käytöstä</string>
-    <string name="disable_imap_idle_explain">Älä käytä IMAP IDLE -laajennusta vaikka palvelin tukisi sitä. Toiminnon käyttöönotto hidastaa viestien hakua, käytä vain testaamiseen.</string>
     <string name="send_stats_to_devs">Lähetä tilastotietoja Delta Chatin kehittäjille</string>
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Hakutulokset</string>
@@ -831,7 +813,6 @@
     <string name="new_messages_body">Sinulle on uusia viestejä</string>
     <string name="n_messages_in_m_chats">%1$d viestiä %2$d:ssä keskustelussa</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Pääsylupa vaaditaan</string>
     <string name="perm_continue">Jatka</string>
@@ -852,9 +833,6 @@
     <string name="ImageEditorHud_flip">Käännä</string>
     <string name="ImageEditorHud_rotate">Pyöritä</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Tämä on virallinen Delta Chat -työpöytäsovellus.</string>
-    <string name="about_licensed_under_desktop">Tämä ohjelmisto on GNU GPL v3 -lisensoitu, ja lähdekoodi on saatavilla GitHubissa.</string>
     <string name="welcome_desktop">Tervetuloa Delta Chatiin</string>
     <string name="global_menu_preferences_language_desktop">Kieli</string>
     <string name="global_menu_file_desktop">Tiedosto</string>
@@ -889,9 +867,8 @@
     <string name="message_detail_received_desktop">vastaanotettu</string>
     <string name="menu.view.developer.open.log.folder">Avaa lokikansio</string>
     <string name="menu.view.developer.open.current.log.file">Avaa nykyinen lokitiedosto</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Työkalupalkin kuvaketta ei voida poistaa, koska Delta Chat käynnistettiin \"Käynnistä pienennettynä\" -valinnalla.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Työkalupalkin kuvaketta ei voida poistaa, koska Delta Chat käynnistettiin \"Käynnistä pienennettynä\" -valinnalla.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Oikeinkirjoitusehdotusta ei löydy.</string>
     <string name="show_window">Näytä ikkuna</string>
 

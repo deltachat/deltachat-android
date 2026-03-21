@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Sobib</string>
@@ -18,7 +16,6 @@
     <string name="off">Väljas</string>
     <string name="def">Vaikimisi</string>
     <string name="default_value">Vaikimisi (%1$s)</string>
-    <string name="default_value_as_above">Vaikimisi (sama, kui ülal)</string>
     <string name="custom">Kohandatud</string>
     <string name="none">Puudub</string>
     <string name="automatic">Automaatne</string>
@@ -36,8 +33,6 @@
     <string name="update">Uuenda</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Manus</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Kas lisame manusena: „%1$s“?</string>
     <string name="back">Tagasi</string>
     <string name="close">Sulge</string>
     <string name="close_window">Sulge aken</string>
@@ -345,8 +340,6 @@
     <string name="menu_more_options">Täiendavad valikud</string>
     <string name="menu_learn_spelling">Õpi õigekirja</string>
     <string name="jump_to_message">Mine sõnumi juurde</string>
-    <string name="jump_to_original_message">Mine algse sõnumi juurde</string>
-    <string name="copy_json">Kopeeri JSON-vormingus</string>
     <string name="replace_draft">Asenda kavand</string>
     <string name="title_share_location">Jaga asukohta kõikide grupi liikmetega</string>
     <string name="device_talk">Seadme sõnumid</string>
@@ -413,7 +406,6 @@
     <string name="declined_call">Keeldutud kõne</string>
     <string name="canceled_call">katkestatud kõne</string>
     <string name="missed_call">Märkamata kõne</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Kas oled kindel, et soovid lahkuda?</string>
@@ -441,11 +433,9 @@
     <string name="ask_remove_from_channel">Kas eemaldad järgnevad kasutajad kanalilt: %1$s?</string>
     <string name="open_url_confirmation">Kas sa soovid selle lingi avada?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktid</string>
     <string name="contacts_type_email_above">Palun sisesta ülale e-posti aadress</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -506,24 +496,13 @@
     <string name="send_file_to">Saada „%1$s“ fail kasutajale…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Saada sõnum…</string>
-    <string name="enable_realtime">Reaalajas toimivad rakendused</string>
-    <string name="enable_realtime_explain">Vestlustega seotud rakendused võivad kasutada reaalajas ühendusi. Kui valik on kasutusel, siis vestluste osapooltel on võimalik peale rakenduse käivitamist tuvastada sinu IP-aadress.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Näita asukohti ajavahemike kaupa</string>
-    <string name="show_location_traces">Näita asukohti kaardil</string>
-    <string name="add_poi">Saada huvipunkti teave</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Ära enam %1$s puhul küsi</string>
     <string name="puny_code_warning_header">Tuvastasin kahtlase lingi</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Kas oled kindel, et soovid avada „%1$s“?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Selles lingis võivad olla petlikult sarnased tähed teistest tähestikest. Kui klõpsad linki „%1$s“, siis tegelikult avaneb „%2$s“. Kui sa midagi sellist ei eeldanud, siis võib olla tegemist ohtliku lingiga.</string>
-
 
     <!-- search -->
     <string name="search">Otsi</string>
@@ -533,7 +512,6 @@
     <string name="search_no_result_for_x">„%s“ otsingul pole tulemusi</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Lugemata</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Grupi nimi</string>
@@ -614,7 +592,6 @@
     <string name="messages">Sõnumid</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Kasutusel %1$s / %2$s</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -720,7 +697,6 @@
     <string name="videos_sent_without_recoding">(Videod saadetakse algupäraste suurte failidena. Videote mahu vähendamiseks lisa nad manustena ükshaaval)</string>
     <string name="share_text_multiple_chats">Kas saadad selle teksti %1$d vestlusesse?\n\n„%2$s“</string>
     <string name="share_abort">Puuduvate õiguste tõttu on jagamine katkestatud.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Sinu profiil</string>
@@ -829,8 +805,6 @@
     <string name="profile_image_delete">Kustuta profiilipilt</string>
     <string name="pref_show_tray_icon">Näita süsteemisalve ikooni</string>
     <string name="pref_edit_profile">Muuda profiili</string>
-    <string name="disable_imap_idle">Lülita IMAP IDLE välja</string>
-    <string name="disable_imap_idle_explain">Ära kasuta IMAP IDLE meetodit, seda isegi siis, kui server seda toetab. Sisselülitamisel tekib sõnumite laadimisel viivitusi. Kasuta seda vaid testimiseks.</string>
     <string name="send_stats_to_devs">Saada statistikat Delta Chati kasutajatele</string>
     <string name="stats_device_message">Kas sa tahad aidata Delta Chati paremaks muuta? Siis luba rakendusel kord nädalas saata anonüümset statistikat kasutuse kohta.\n\n👉 Klõpsa siia… 👈</string>
     <string name="stats_confirmation_dialog">Kas sa tahad aidata Delta Chati paremaks muuta? Siis luba rakendusel kord nädalas saata anonüümset statistikat kasutuse kohta.</string>
@@ -1046,7 +1020,6 @@
     <string name="new_messages_body">Sulle on uusi sõnumeid</string>
     <string name="n_messages_in_m_chats">%1$d sõnumit %2$d-s vestluses</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Õigused on vajalikud</string>
     <string name="perm_continue">Jätka</string>
@@ -1067,9 +1040,6 @@
     <string name="ImageEditorHud_flip">Pööra teistpidi</string>
     <string name="ImageEditorHud_rotate">Pööra</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">See on Delta Chati ametlik töölauarakendus.</string>
-    <string name="about_licensed_under_desktop">See tarkvara on litsentseeritud GNU GPL versiooni 3 alusel ning rakenduse lähtekood on saadaval GitHubis.</string>
     <string name="welcome_desktop">Tere tulemast, see on Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Keel</string>
     <string name="global_menu_file_desktop">Fail</string>
@@ -1108,9 +1078,8 @@
     <string name="message_detail_received_desktop">vastuvõetud</string>
     <string name="menu.view.developer.open.log.folder">Ava logifailide kaust</string>
     <string name="menu.view.developer.open.current.log.file">Ava praegune logifail</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Kuna Delta Chat juba käivitati --minimized argumendiga, siis süsteemisalve ikooni ei saa välja lülitada.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Kuna Delta Chat juba käivitati --minimized argumendiga, siis süsteemisalve ikooni ei saa välja lülitada.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Õigekirjasoovitusi ei leidu.</string>
     <string name="show_window">Näita akent</string>
 

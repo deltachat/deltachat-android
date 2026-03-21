@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">D\'acord</string>
@@ -18,7 +16,6 @@
     <string name="off">Desactivat</string>
     <string name="def">Per defecte</string>
     <string name="default_value">Per defecte (%1$s)</string>
-    <string name="default_value_as_above">Per defecte (igual que a dalt)</string>
     <string name="custom">Personalitzat</string>
     <string name="none">Cap</string>
     <string name="automatic">Automàtic</string>
@@ -36,8 +33,6 @@
     <string name="update">Actualitza</string>
     <string name="emoji">Emojis</string>
     <string name="attachment">Adjunt</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Voleu adjuntar \"%1$s\"?</string>
     <string name="back">Enrere</string>
     <string name="close">Tanca</string>
     <string name="close_window">Tanca la finestra</string>
@@ -346,8 +341,6 @@
     <string name="menu_more_options">Més opcions</string>
     <string name="menu_learn_spelling">Aprèn l\'ortografia</string>
     <string name="jump_to_message">Ves al missatge</string>
-    <string name="jump_to_original_message">Vés al Missatge Original</string>
-    <string name="copy_json">Copia el JSON</string>
     <string name="replace_draft">Substitueix l\'esborrany</string>
     <string name="title_share_location">Comparteix la ubicació amb tots els membres del grup</string>
     <string name="device_talk">Missatges del dispositiu</string>
@@ -420,7 +413,6 @@
     <string name="declined_call">Trucada rebutjada</string>
     <string name="canceled_call">Trucada cancel·lada</string>
     <string name="missed_call">Trucada perduda</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Segur que vols sortir?</string>
@@ -448,11 +440,9 @@
     <string name="ask_remove_from_channel">Eliminar %1$s del canal?</string>
     <string name="open_url_confirmation">Voleu obrir aquest enllaç?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Llista de contactes</string>
     <string name="contacts_type_email_above">Escriviu l\'adreça d\'email superior</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -513,24 +503,13 @@
     <string name="send_file_to">Envia \"%1$s\" a…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Envia el missatge a...</string>
-    <string name="enable_realtime">Aplicacions en temps real</string>
-    <string name="enable_realtime_explain">Activa connexions en temps real per a aplicacions compartides als xats. Si està activada, els companys de xat poden descobrir la vostra IP en iniciar una aplicació.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Mostra les ubicacions al llarg del temps</string>
-    <string name="show_location_traces">Mostra el rastre</string>
-    <string name="add_poi">Envia el punt d\'interès</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">No em tornis a demanar per %1$s</string>
     <string name="puny_code_warning_header">S\'ha detectat un enllaç sospitós</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Esteu segur de voler visitar %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Aquest enllaç usa caràcters amb un aspecte similar però de diferents alfabets. Si seguiu l\'enllaç %1$sus enviarà a %2$s, que és normal per a caràcters no llatins. Si no espereu aquests caràcters, l\'enllaç podria ser maliciós. </string>
-
 
     <!-- search -->
     <string name="search">Busca</string>
@@ -540,7 +519,6 @@
     <string name="search_no_result_for_x">No s\'han trobat resultats per \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Sense llegir</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nom del grup</string>
@@ -621,7 +599,6 @@
     <string name="messages">Missatges</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s de %2$s usats</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -735,7 +712,6 @@
     <string name="share_text_multiple_chats">Voleu enviar aquest text a %1$d xats?\n\n«%2$s»</string>
     <string name="share_abort">S\'ha avortat la compartició per falta de permisos.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">El vostre perfil</string>
     <string name="pref_profile_photo">Fotografia de perfil</string>
@@ -843,8 +819,6 @@
     <string name="profile_image_delete">Esborra la imatge del perfil</string>
     <string name="pref_show_tray_icon">Mostra la icona de la safata</string>
     <string name="pref_edit_profile">Edita el perfil</string>
-    <string name="disable_imap_idle">Desactiva IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">No usis l\'extensió IMAP IDLE encara que el servidor la permeti. Activar aquesta opció endarreria l\'obtenció de missatges, activeu-ho només per a proves.</string>
     <string name="send_stats_to_devs">Envia estadístiques als desenvolupadors del Delta Chat</string>
     <string name="stats_device_message">Voleu ajudar a millorar Delta Chat i donar suport a la recerca enviant estadístiques d\'ús anònimes setmanalment?\n\n👉 Feu clic aquí… 👈</string>
     <string name="stats_confirmation_dialog">Voleu ajudar a millorar Delta Chat i donar suport a la recerca enviant estadístiques d\'ús anònimes setmanalment?</string>
@@ -1060,7 +1034,6 @@
     <string name="new_messages_body">Teniu missatges nous</string>
     <string name="n_messages_in_m_chats">%1$d missatges en %2$d xats</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Es requereix permís</string>
     <string name="perm_continue">Continua</string>
@@ -1081,9 +1054,6 @@
     <string name="ImageEditorHud_flip">Capgira</string>
     <string name="ImageEditorHud_rotate">Gira</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Aquesta és l\'aplicació d\'escriptori oficial de Delta Chat.</string>
-    <string name="about_licensed_under_desktop">Aquest programari és llicenciat amb la llicència GNU GPL versió 3 i el codi font és disponible a GitHub</string>
     <string name="welcome_desktop">Us donem la benvinguda al Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Trieu l\'idioma...</string>
     <string name="global_menu_file_desktop">Arxiva</string>
@@ -1122,9 +1092,8 @@
     <string name="message_detail_received_desktop">rebut</string>
     <string name="menu.view.developer.open.log.folder">Obre la carpeta de registre</string>
     <string name="menu.view.developer.open.current.log.file">Obre el fitxer de registre actual</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">La icona de la safata no es pot desactivar perquè Delta Chat s\'ha iniciat amb l\'opció --minimized</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">La icona de la safata no es pot desactivar perquè Delta Chat s\'ha iniciat amb l\'opció --minimized</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">No s\'ha trobat cap suggeriment ortogràfic.</string>
     <string name="show_window">Mostra la finestra</string>
 

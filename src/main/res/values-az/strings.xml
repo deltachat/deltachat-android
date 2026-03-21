@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -185,7 +183,6 @@
     <string name="contacts_title">Kontaktlar</string>
     <string name="contacts_type_email_above">E-poçt ünvanını yazın</string>
 
-
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d çat arxiv olundu</item>
@@ -217,12 +214,6 @@
     <string name="save_message">Saxla</string>
     <string name="saved_messages">Saxlanılmış mesajlar</string>
     <string name="retry_send">Mesaji yenidən göndərməyə cəht et</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Vaxt məhdudiyyəti ilə yerləşmə yerləri göstərin</string>
-    <string name="show_location_traces">İzləri göstərmək</string>
-    <string name="add_poi">Maraq nöqtəsini göndərin</string>
-
-
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -270,7 +261,6 @@
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İrəli ...</string>
     <string name="share_abort">İcazə olmadığına görə göndərmə kəsildi</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Profil məlumatınız</string>
