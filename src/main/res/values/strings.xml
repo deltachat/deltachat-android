@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Off</string>
     <string name="def">Default</string>
     <string name="default_value">Default (%1$s)</string>
-    <string name="default_value_as_above">Default (same as above)</string>
     <string name="custom">Custom</string>
     <string name="none">None</string>
     <string name="automatic">Automatic</string>
@@ -36,8 +33,6 @@
     <string name="update">Update</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Attachment</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Attach \"%1$s\"?</string>
     <string name="back">Back</string>
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
@@ -348,8 +343,6 @@
     <string name="menu_more_options">More Options</string>
     <string name="menu_learn_spelling">Learn Spelling</string>
     <string name="jump_to_message">Jump to Message</string>
-    <string name="jump_to_original_message">Jump to Original Message</string>
-    <string name="copy_json">Copy JSON</string>
     <string name="replace_draft">Replace Draft</string>
     <string name="title_share_location">Share location with all group members</string>
     <string name="device_talk">Device Messages</string>
@@ -451,11 +444,9 @@
     <string name="ask_remove_from_channel">Remove %1$s from channel?</string>
     <string name="open_url_confirmation">Do you want to open this link?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Contacts</string>
     <string name="contacts_type_email_above">Type email address above</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -516,24 +507,13 @@
     <string name="send_file_to">Send \"%1$s\" to…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Send Message to…</string>
-    <string name="enable_realtime">Real-Time Apps</string>
-    <string name="enable_realtime_explain">Enable real-time connections for apps attached to chats. If enabled, chat partners may be able to discover your IP address when you start an app.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Show locations in time frame</string>
-    <string name="show_location_traces">Show traces</string>
-    <string name="add_poi">Send point of interest</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Don\'t ask again for %1$s</string>
     <string name="puny_code_warning_header">Suspicious link detected</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Are you sure you want to visit %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">This link may misrepresent characters with similar looking ones from different alphabets. Following the link labelled %1$s will lead to %2$s which is normal for non-Latin characters. If you did not expect such characters this link could be harmful.</string>
-
 
     <!-- search -->
     <string name="search">Search</string>
@@ -543,7 +523,6 @@
     <string name="search_no_result_for_x">No results found for \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Unread</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Group Name</string>
@@ -624,7 +603,6 @@
     <string name="messages">Messages</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -738,7 +716,6 @@
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Your Profile</string>
     <string name="pref_profile_photo">Profile Image</string>
@@ -846,8 +823,6 @@
     <string name="profile_image_delete">Delete Profile Image</string>
     <string name="pref_show_tray_icon">Show Tray Icon</string>
     <string name="pref_edit_profile">Edit Profile</string>
-    <string name="disable_imap_idle">Disable IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Do not use IMAP IDLE extension even if the server supports it. Enabling this option will delay message retrieval, enable it only for testing.</string>
     <string name="send_stats_to_devs">Send statistics to Delta Chat\'s developers</string>
     <string name="stats_device_message">Do you want to help improve Delta Chat and support research by sending weekly anonymous usage statistics?\n\n👉 Tap here… 👈</string>
     <string name="stats_confirmation_dialog">Do you want to help improve Delta Chat and support research by sending weekly anonymous usage statistics?</string>
@@ -1063,7 +1038,6 @@
     <string name="new_messages_body">You have new messages</string>
     <string name="n_messages_in_m_chats">%1$d messages in %2$d chats</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
@@ -1084,9 +1058,6 @@
     <string name="ImageEditorHud_flip">Flip</string>
     <string name="ImageEditorHud_rotate">Rotate</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">This is the official Delta Chat Desktop app.</string>
-    <string name="about_licensed_under_desktop">This software is licensed under GNU GPL version 3 and the source code is available on GitHub.</string>
     <string name="welcome_desktop">Welcome to Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Language</string>
     <string name="global_menu_file_desktop">File</string>
@@ -1125,9 +1096,8 @@
     <string name="message_detail_received_desktop">Received</string>
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
 
