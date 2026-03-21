@@ -217,6 +217,8 @@ public class DcContext {
 
   public native void marknoticedChat(int chat_id);
 
+  public native void markfreshChat(int chat_id);
+
   public native void setChatVisibility(int chat_id, int visibility);
 
   public native int getChatIdByContactId(int contact_id);
