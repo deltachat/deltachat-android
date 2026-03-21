@@ -114,17 +114,13 @@ public class AudioCodec {
                         if (!muxerStarted) {
                           Log.w(TAG, "Muxer not started, dropping encoded data");
                         } else {
+                          // Adjust ByteBuffer to match BufferInfo
                           encodedData.position(bufferInfo.offset);
                           encodedData.limit(bufferInfo.offset + bufferInfo.size);
+
+                          // Write sample data to muxer
                           muxer.writeSampleData(audioTrackIndex, encodedData, bufferInfo);
                         }
-
-                        // Adjust ByteBuffer to match BufferInfo
-                        encodedData.position(bufferInfo.offset);
-                        encodedData.limit(bufferInfo.offset + bufferInfo.size);
-
-                        // Write sample data to muxer
-                        muxer.writeSampleData(audioTrackIndex, encodedData, bufferInfo);
                       }
 
                       mediaCodec.releaseOutputBuffer(codecOutputBufferIndex, false);
