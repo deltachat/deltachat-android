@@ -6,4 +6,4 @@
     android:propertyName="rotation"
     android:valueFrom="90"
     android:valueTo="0"
-    android:valueType="floatType"/>
+    android:valueType="floatType" />

@@ -21,5 +21,4 @@ public class StreamUtil {
 
     return total;
   }
-
 }

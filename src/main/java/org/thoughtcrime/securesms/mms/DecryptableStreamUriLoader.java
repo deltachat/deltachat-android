@@ -2,20 +2,16 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.bumptech.glide.load.Key;
 import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.model.ModelLoader;
 import com.bumptech.glide.load.model.ModelLoaderFactory;
 import com.bumptech.glide.load.model.MultiModelLoaderFactory;
-
-import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
-
 import java.io.InputStream;
 import java.security.MessageDigest;
+import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader.DecryptableUri;
 
 public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, InputStream> {
 
@@ -27,8 +23,10 @@ public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, I
 
   @Nullable
   @Override
-  public LoadData<InputStream> buildLoadData(@NonNull DecryptableUri decryptableUri, int width, int height, @NonNull Options options) {
-    return new LoadData<>(decryptableUri, new DecryptableStreamLocalUriFetcher(context, decryptableUri.uri));
+  public LoadData<InputStream> buildLoadData(
+      @NonNull DecryptableUri decryptableUri, int width, int height, @NonNull Options options) {
+    return new LoadData<>(
+        decryptableUri, new DecryptableStreamLocalUriFetcher(context, decryptableUri.uri));
   }
 
   @Override
@@ -45,7 +43,8 @@ public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, I
     }
 
     @Override
-    public @NonNull ModelLoader<DecryptableUri, InputStream> build(@NonNull MultiModelLoaderFactory multiFactory) {
+    public @NonNull ModelLoader<DecryptableUri, InputStream> build(
+        @NonNull MultiModelLoaderFactory multiFactory) {
       return new DecryptableStreamUriLoader(context);
     }
 
@@ -72,10 +71,9 @@ public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, I
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
 
-      DecryptableUri that = (DecryptableUri)o;
+      DecryptableUri that = (DecryptableUri) o;
 
       return uri.equals(that.uri);
-
     }
 
     @Override
@@ -84,4 +82,3 @@ public class DecryptableStreamUriLoader implements ModelLoader<DecryptableUri, I
     }
   }
 }
-

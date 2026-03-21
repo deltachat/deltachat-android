@@ -23,26 +23,21 @@ import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AlertDialog;
-
+import chat.delta.rpc.types.SecurejoinSource;
+import chat.delta.rpc.types.SecurejoinUiPath;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
-
-import chat.delta.rpc.types.SecurejoinSource;
-import chat.delta.rpc.types.SecurejoinUiPath;
 
 /**
  * Activity container for starting a new conversation.
  *
  * @author Moxie Marlinspike
- *
  */
 public class NewConversationActivity extends ContactSelectionActivity {
 
@@ -57,32 +52,34 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   @Override
   public void onContactSelected(int contactId) {
-    if(contactId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
+    if (contactId == DcContact.DC_CONTACT_ID_NEW_GROUP) {
       startActivity(new Intent(this, GroupCreateActivity.class));
-    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
+    } else if (contactId == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.UNENCRYPTED, true);
       startActivity(intent);
-    } else if(contactId == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
+    } else if (contactId == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
       Intent intent = new Intent(this, GroupCreateActivity.class);
       intent.putExtra(GroupCreateActivity.CREATE_BROADCAST, true);
       startActivity(intent);
     } else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       new IntentIntegrator(this).setCaptureActivity(QrActivity.class).initiateScan();
-    }
-    else {
+    } else {
       final DcContext dcContext = DcHelper.getContext(this);
-      if (dcContext.getChatIdByContactId(contactId)!=0) {
+      if (dcContext.getChatIdByContactId(contactId) != 0) {
         openConversation(dcContext.getChatIdByContactId(contactId));
       } else {
         String name = dcContext.getContact(contactId).getDisplayName();
         new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.ask_start_chat_with, name))
-                .setCancelable(true)
-                .setNegativeButton(android.R.string.cancel, null)
-                .setPositiveButton(android.R.string.ok, (dialog, which) -> {
+            .setMessage(getString(R.string.ask_start_chat_with, name))
+            .setCancelable(true)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(
+                android.R.string.ok,
+                (dialog, which) -> {
                   openConversation(dcContext.createChatByContactId(contactId));
-                }).show();
+                })
+            .show();
       }
     }
   }
@@ -96,7 +93,8 @@ public class NewConversationActivity extends ContactSelectionActivity {
       case IntentIntegrator.REQUEST_CODE:
         IntentResult scanResult = IntentIntegrator.parseActivityResult(resultCode, data);
         QrCodeHandler qrCodeHandler = new QrCodeHandler(this);
-        qrCodeHandler.handleOnlySecureJoinQr(scanResult.getContents(), SecurejoinSource.Scan, SecurejoinUiPath.NewContact);
+        qrCodeHandler.handleOnlySecureJoinQr(
+            scanResult.getContents(), SecurejoinSource.Scan, SecurejoinUiPath.NewContact);
         break;
       default:
         break;

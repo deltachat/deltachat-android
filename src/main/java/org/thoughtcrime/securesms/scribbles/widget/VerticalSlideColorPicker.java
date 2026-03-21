@@ -1,29 +1,23 @@
 /**
- * Copyright (c) 2016 Mark Charles
- * Copyright (c) 2016 Open Whisper Systems
+ * Copyright (c) 2016 Mark Charles Copyright (c) 2016 Open Whisper Systems
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
+ * <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * <p>The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package org.thoughtcrime.securesms.scribbles.widget;
 
-
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -34,40 +28,38 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
 import org.thoughtcrime.securesms.R;
 
 public class VerticalSlideColorPicker extends View {
 
   private static final float INDICATOR_TO_BAR_WIDTH_RATIO = 0.5f;
 
-  private Paint  paint;
-  private Paint  strokePaint;
-  private Paint  indicatorStrokePaint;
-  private Paint  indicatorFillPaint;
-  private Path   path;
+  private Paint paint;
+  private Paint strokePaint;
+  private Paint indicatorStrokePaint;
+  private Paint indicatorFillPaint;
+  private Path path;
   private Bitmap bitmap;
   private Canvas bitmapCanvas;
 
-  private int     viewWidth;
-  private int     viewHeight;
-  private int     centerX;
-  private float   colorPickerRadius;
-  private RectF   colorPickerBody;
+  private int viewWidth;
+  private int viewHeight;
+  private int centerX;
+  private float colorPickerRadius;
+  private RectF colorPickerBody;
 
   private OnColorChangeListener onColorChangeListener;
 
-  private int     borderColor;
-  private float   borderWidth;
-  private float   indicatorRadius;
-  private int[]   colors;
+  private int borderColor;
+  private float borderWidth;
+  private float indicatorRadius;
+  private int[] colors;
 
-  private int     touchY;
-  private int     activeColor;
+  private int touchY;
+  private int activeColor;
 
   public VerticalSlideColorPicker(Context context) {
     super(context);
@@ -77,14 +69,19 @@ public class VerticalSlideColorPicker extends View {
   public VerticalSlideColorPicker(Context context, AttributeSet attrs) {
     super(context, attrs);
 
-    TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.VerticalSlideColorPicker, 0, 0);
+    TypedArray a =
+        context
+            .getTheme()
+            .obtainStyledAttributes(attrs, R.styleable.VerticalSlideColorPicker, 0, 0);
 
     try {
-      int colorsResourceId = a.getResourceId(R.styleable.VerticalSlideColorPicker_pickerColors, R.array.scribble_colors);
+      int colorsResourceId =
+          a.getResourceId(
+              R.styleable.VerticalSlideColorPicker_pickerColors, R.array.scribble_colors);
 
-      colors          = a.getResources().getIntArray(colorsResourceId);
-      borderColor     = a.getColor(R.styleable.VerticalSlideColorPicker_pickerBorderColor, Color.WHITE);
-      borderWidth     = a.getDimension(R.styleable.VerticalSlideColorPicker_pickerBorderWidth, 10f);
+      colors = a.getResources().getIntArray(colorsResourceId);
+      borderColor = a.getColor(R.styleable.VerticalSlideColorPicker_pickerBorderColor, Color.WHITE);
+      borderWidth = a.getDimension(R.styleable.VerticalSlideColorPicker_pickerBorderWidth, 10f);
 
     } finally {
       a.recycle();
@@ -98,7 +95,8 @@ public class VerticalSlideColorPicker extends View {
     init();
   }
 
-  public VerticalSlideColorPicker(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+  public VerticalSlideColorPicker(
+      Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     init();
   }
@@ -130,9 +128,17 @@ public class VerticalSlideColorPicker extends View {
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
 
-    path.addCircle(centerX, borderWidth + colorPickerRadius + indicatorRadius, colorPickerRadius, Path.Direction.CW);
+    path.addCircle(
+        centerX,
+        borderWidth + colorPickerRadius + indicatorRadius,
+        colorPickerRadius,
+        Path.Direction.CW);
     path.addRect(colorPickerBody, Path.Direction.CW);
-    path.addCircle(centerX, viewHeight - (borderWidth + colorPickerRadius + indicatorRadius), colorPickerRadius, Path.Direction.CW);
+    path.addCircle(
+        centerX,
+        viewHeight - (borderWidth + colorPickerRadius + indicatorRadius),
+        colorPickerRadius,
+        Path.Direction.CW);
 
     bitmapCanvas.drawColor(Color.TRANSPARENT);
 
@@ -153,7 +159,7 @@ public class VerticalSlideColorPicker extends View {
     touchY = (int) Math.min(event.getY(), colorPickerBody.bottom);
     touchY = (int) Math.max(colorPickerBody.top, touchY);
 
-    activeColor = bitmap.getPixel(viewWidth/2, touchY);
+    activeColor = bitmap.getPixel(viewWidth / 2, touchY);
 
     if (onColorChangeListener != null) {
       onColorChangeListener.onColorChange(activeColor);
@@ -168,30 +174,34 @@ public class VerticalSlideColorPicker extends View {
   protected void onSizeChanged(int w, int h, int oldw, int oldh) {
     super.onSizeChanged(w, h, oldw, oldh);
 
-    viewWidth  = w;
+    viewWidth = w;
     viewHeight = h;
 
     if (viewWidth <= 0 || viewHeight <= 0) return;
 
     int barWidth = (int) (viewWidth * INDICATOR_TO_BAR_WIDTH_RATIO);
 
-    centerX           = viewWidth / 2;
-    indicatorRadius   = (viewWidth / 2) - borderWidth;
+    centerX = viewWidth / 2;
+    indicatorRadius = (viewWidth / 2) - borderWidth;
     colorPickerRadius = (barWidth / 2) - borderWidth;
 
-    colorPickerBody   = new RectF(centerX - colorPickerRadius,
-                                  borderWidth + colorPickerRadius + indicatorRadius,
-                                  centerX + colorPickerRadius,
-                                  viewHeight - (borderWidth + colorPickerRadius + indicatorRadius));
+    colorPickerBody =
+        new RectF(
+            centerX - colorPickerRadius,
+            borderWidth + colorPickerRadius + indicatorRadius,
+            centerX + colorPickerRadius,
+            viewHeight - (borderWidth + colorPickerRadius + indicatorRadius));
 
-    LinearGradient gradient = new LinearGradient(0, colorPickerBody.top, 0, colorPickerBody.bottom, colors, null, Shader.TileMode.CLAMP);
+    LinearGradient gradient =
+        new LinearGradient(
+            0, colorPickerBody.top, 0, colorPickerBody.bottom, colors, null, Shader.TileMode.CLAMP);
     paint.setShader(gradient);
 
     if (bitmap != null) {
       bitmap.recycle();
     }
 
-    bitmap       = Bitmap.createBitmap(viewWidth, viewHeight, Bitmap.Config.ARGB_8888);
+    bitmap = Bitmap.createBitmap(viewWidth, viewHeight, Bitmap.Config.ARGB_8888);
     bitmapCanvas = new Canvas(bitmap);
   }
 

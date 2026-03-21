@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="@string/qr_code"
-          android:id="@+id/menu_qr"
-          android:icon="@drawable/ic_qr_code_24"
-          app:showAsAction="ifRoom"/>
+    <item
+        android:title="@string/qr_code"
+        android:id="@+id/menu_qr"
+        android:icon="@drawable/ic_qr_code_24"
+        app:showAsAction="ifRoom" />
 
-    <item android:title="@string/invite_friends"
-          android:id="@+id/menu_invite_friends" />
+    <item
+        android:title="@string/invite_friends"
+        android:id="@+id/menu_invite_friends" />
 
-    <item android:title="@string/menu_new_chat"
-          android:id="@+id/menu_new_chat" />
+    <item
+        android:title="@string/menu_new_chat"
+        android:id="@+id/menu_new_chat" />
 
-    <item android:title="@string/menu_all_media"
+    <item
+        android:title="@string/menu_all_media"
         android:id="@+id/menu_all_media" />
 
-    <item android:title="@string/menu_show_global_map"
+    <item
+        android:title="@string/menu_show_global_map"
         android:id="@+id/menu_global_map"
-        android:visible="false"
-        />
+        android:visible="false" />
 
-    <item android:title="@string/proxy_settings"
+    <item
+        android:title="@string/proxy_settings"
         android:id="@+id/menu_proxy_settings"
         android:icon="@drawable/ic_proxy_disabled_24"
         app:showAsAction="always"
-        android:visible="false"
-        />
+        android:visible="false" />
 
-    <item android:title="@string/menu_settings"
-          android:id="@+id/menu_settings" />
+    <item
+        android:title="@string/menu_settings"
+        android:id="@+id/menu_settings" />
 
 </menu>

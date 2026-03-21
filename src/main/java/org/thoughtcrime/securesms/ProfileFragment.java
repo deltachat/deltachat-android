@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -21,13 +20,14 @@ import androidx.appcompat.view.ActionMode;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
@@ -35,12 +35,8 @@ import org.thoughtcrime.securesms.qr.QrShowActivity;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 public class ProfileFragment extends Fragment
-             implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
+    implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
   private static final String TAG = ProfileFragment.class.getSimpleName();
   public static final String CHAT_ID_EXTRA = "chat_id";
@@ -48,13 +44,12 @@ public class ProfileFragment extends Fragment
 
   private ActivityResultLauncher<Intent> pickContactLauncher;
   private ProfileAdapter adapter;
-  private ActionMode             actionMode;
+  private ActionMode actionMode;
   private final ActionModeCallback actionModeCallback = new ActionModeCallback();
 
-
-  private DcContext            dcContext;
-  protected int                chatId;
-  private int                  contactId;
+  private DcContext dcContext;
+  protected int chatId;
+  private int contactId;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -63,44 +58,54 @@ public class ProfileFragment extends Fragment
     chatId = getArguments() != null ? getArguments().getInt(CHAT_ID_EXTRA, -1) : -1;
     contactId = getArguments().getInt(CONTACT_ID_EXTRA, -1);
     dcContext = DcHelper.getContext(requireContext());
-    pickContactLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        Intent data = result.getData();
-        Log.i(TAG, "Received result from activity, resultCode=" + result.getResultCode() + ", data=" + data);
-        if (result.getResultCode() == Activity.RESULT_OK && data != null) {
-          List<Integer> selected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
-          List<Integer> deselected = data.getIntegerArrayListExtra(ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA);
-          Util.runOnAnyBackgroundThread(() -> {
-            if (deselected != null) { // Remove members that were deselected
-              Log.i(TAG, deselected.size() + " members removed");
-              int[] members = dcContext.getChatContacts(chatId);
-              for (int contactId : deselected) {
-                for (int memberId : members) {
-                  if (memberId == contactId) {
-                    dcContext.removeContactFromChat(chatId, memberId);
-                    break;
-                  }
-                }
-              }
-            }
+    pickContactLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              Intent data = result.getData();
+              Log.i(
+                  TAG,
+                  "Received result from activity, resultCode="
+                      + result.getResultCode()
+                      + ", data="
+                      + data);
+              if (result.getResultCode() == Activity.RESULT_OK && data != null) {
+                List<Integer> selected =
+                    data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA);
+                List<Integer> deselected =
+                    data.getIntegerArrayListExtra(
+                        ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA);
+                Util.runOnAnyBackgroundThread(
+                    () -> {
+                      if (deselected != null) { // Remove members that were deselected
+                        Log.i(TAG, deselected.size() + " members removed");
+                        int[] members = dcContext.getChatContacts(chatId);
+                        for (int contactId : deselected) {
+                          for (int memberId : members) {
+                            if (memberId == contactId) {
+                              dcContext.removeContactFromChat(chatId, memberId);
+                              break;
+                            }
+                          }
+                        }
+                      }
 
-            if (selected != null) { // Add new members
-              Log.i(TAG, selected.size() + " members added");
-              for (Integer contactId : selected) {
-                if (contactId != null) {
-                  dcContext.addContactToChat(chatId, contactId);
-                }
+                      if (selected != null) { // Add new members
+                        Log.i(TAG, selected.size() + " members added");
+                        for (Integer contactId : selected) {
+                          if (contactId != null) {
+                            dcContext.addContactToChat(chatId, contactId);
+                          }
+                        }
+                      }
+                    });
               }
-            }
-          });
-        }
-      }
-    );
+            });
   }
 
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.profile_fragment, container, false);
     adapter = new ProfileAdapter(this, GlideApp.with(this), this);
 
@@ -110,7 +115,8 @@ public class ProfileFragment extends Fragment
     ViewUtil.applyWindowInsets(list);
 
     list.setAdapter(adapter);
-    list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+    list.setLayoutManager(
+        new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
     update();
 
@@ -133,33 +139,34 @@ public class ProfileFragment extends Fragment
     update();
   }
 
-  private void update()
-  {
-    int[]      memberList = null;
+  private void update() {
+    int[] memberList = null;
     DcChatlist sharedChats = null;
 
     DcChat dcChat = null;
     DcContact dcContact = null;
-    if (contactId>0) { dcContact = dcContext.getContact(contactId); }
-    if (chatId>0)    { dcChat    = dcContext.getChat(chatId); }
-
-    if(dcChat!=null && dcChat.isMultiUser()) {
-      memberList = dcContext.getChatContacts(chatId);
+    if (contactId > 0) {
+      dcContact = dcContext.getContact(contactId);
     }
-    else if(contactId>0 && contactId!=DcContact.DC_CONTACT_ID_SELF) {
+    if (chatId > 0) {
+      dcChat = dcContext.getChat(chatId);
+    }
+
+    if (dcChat != null && dcChat.isMultiUser()) {
+      memberList = dcContext.getChatContacts(chatId);
+    } else if (contactId > 0 && contactId != DcContact.DC_CONTACT_ID_SELF) {
       sharedChats = dcContext.getChatlist(0, null, contactId);
     }
 
     adapter.changeData(memberList, dcContact, sharedChats, dcChat);
   }
 
-
   // handle events
   // =========================================================================
 
   @Override
   public void onSettingsClicked(int settingsId) {
-    switch(settingsId) {
+    switch (settingsId) {
       case ProfileAdapter.ITEM_ALL_MEDIA_BUTTON:
         if (chatId > 0) {
           Intent intent = new Intent(getActivity(), AllMediaActivity.class);
@@ -178,28 +185,31 @@ public class ProfileFragment extends Fragment
 
   @Override
   public void onStatusLongClicked(boolean isMultiUser) {
-      Context context = requireContext();
-      new AlertDialog.Builder(context)
-        .setTitle(isMultiUser? R.string.chat_description : R.string.pref_default_status_label)
-        .setItems(new CharSequence[]{
-            context.getString(R.string.menu_copy_to_clipboard)
-          },
-          (dialogInterface, i) -> {
-            Util.writeTextToClipboard(context, adapter.getStatusText());
-            Toast.makeText(context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show();
-          })
+    Context context = requireContext();
+    new AlertDialog.Builder(context)
+        .setTitle(isMultiUser ? R.string.chat_description : R.string.pref_default_status_label)
+        .setItems(
+            new CharSequence[] {context.getString(R.string.menu_copy_to_clipboard)},
+            (dialogInterface, i) -> {
+              Util.writeTextToClipboard(context, adapter.getStatusText());
+              Toast.makeText(
+                      context, context.getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT)
+                  .show();
+            })
         .setNegativeButton(R.string.cancel, null)
         .show();
   }
 
   @Override
   public void onMemberLongClicked(int contactId) {
-    if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
-      if (actionMode==null) {
+    if (contactId > DcContact.DC_CONTACT_ID_LAST_SPECIAL
+        || contactId == DcContact.DC_CONTACT_ID_SELF) {
+      if (actionMode == null) {
         DcChat dcChat = dcContext.getChat(chatId);
         if (dcChat.canSend() && dcChat.isEncrypted()) {
           adapter.toggleMemberSelection(contactId);
-          actionMode = ((AppCompatActivity) requireActivity()).startSupportActionMode(actionModeCallback);
+          actionMode =
+              ((AppCompatActivity) requireActivity()).startSupportActionMode(actionModeCallback);
         }
       } else {
         onMemberClicked(contactId);
@@ -209,8 +219,9 @@ public class ProfileFragment extends Fragment
 
   @Override
   public void onMemberClicked(int contactId) {
-    if (actionMode!=null) {
-      if (contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL || contactId==DcContact.DC_CONTACT_ID_SELF) {
+    if (actionMode != null) {
+      if (contactId > DcContact.DC_CONTACT_ID_LAST_SPECIAL
+          || contactId == DcContact.DC_CONTACT_ID_SELF) {
         adapter.toggleMemberSelection(contactId);
         if (adapter.getSelectedMembersCount() == 0) {
           actionMode.finish();
@@ -219,14 +230,11 @@ public class ProfileFragment extends Fragment
           actionMode.setTitle(String.valueOf(adapter.getSelectedMembersCount()));
         }
       }
-    }
-    else if(contactId==DcContact.DC_CONTACT_ID_ADD_MEMBER) {
+    } else if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
       onAddMember();
-    }
-    else if(contactId==DcContact.DC_CONTACT_ID_QR_INVITE) {
+    } else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       onQrInvite();
-    }
-    else if(contactId>DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
+    } else if (contactId > DcContact.DC_CONTACT_ID_LAST_SPECIAL) {
       Intent intent = new Intent(getContext(), ProfileActivity.class);
       intent.putExtra(ProfileActivity.CONTACT_ID_EXTRA, contactId);
       startActivity(intent);
@@ -235,7 +243,7 @@ public class ProfileFragment extends Fragment
 
   @Override
   public void onAvatarClicked() {
-    ProfileActivity activity = (ProfileActivity)getActivity();
+    ProfileActivity activity = (ProfileActivity) getActivity();
     activity.onEnlargeAvatar();
   }
 
@@ -319,16 +327,24 @@ public class ProfileFragment extends Fragment
           readableToDelList.append(dcContext.getContact(toDelId).getDisplayName());
         }
         DcChat dcChat = dcContext.getChat(chatId);
-        AlertDialog dialog = new AlertDialog.Builder(requireContext())
-          .setPositiveButton(R.string.remove_desktop, (d, which) -> {
-            for (Integer toDelId : toDelIds) {
-              dcContext.removeContactFromChat(chatId, toDelId);
-            }
-            mode.finish();
-          })
-          .setNegativeButton(android.R.string.cancel, null)
-          .setMessage(getString(dcChat.isOutBroadcast() ? R.string.ask_remove_from_channel : R.string.ask_remove_members, readableToDelList))
-          .show();
+        AlertDialog dialog =
+            new AlertDialog.Builder(requireContext())
+                .setPositiveButton(
+                    R.string.remove_desktop,
+                    (d, which) -> {
+                      for (Integer toDelId : toDelIds) {
+                        dcContext.removeContactFromChat(chatId, toDelId);
+                      }
+                      mode.finish();
+                    })
+                .setNegativeButton(android.R.string.cancel, null)
+                .setMessage(
+                    getString(
+                        dcChat.isOutBroadcast()
+                            ? R.string.ask_remove_from_channel
+                            : R.string.ask_remove_members,
+                        readableToDelList))
+                .show();
         Util.redPositiveButton(dialog);
         return true;
       }

@@ -1,18 +1,14 @@
 package org.thoughtcrime.securesms.preferences.widgets;
 
-
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
-
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.MyProfileContactPhoto;
@@ -23,8 +19,8 @@ import org.thoughtcrime.securesms.util.Prefs;
 public class ProfilePreference extends Preference {
 
   private ImageView avatarView;
-  private TextView  profileNameView;
-  private TextView  profileStatusView;
+  private TextView profileNameView;
+  private TextView profileStatusView;
 
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
@@ -53,9 +49,9 @@ public class ProfilePreference extends Preference {
   @Override
   public void onBindViewHolder(@NonNull PreferenceViewHolder viewHolder) {
     super.onBindViewHolder(viewHolder);
-    avatarView        = (ImageView)viewHolder.findViewById(R.id.avatar);
-    profileNameView   = (TextView)viewHolder.findViewById(R.id.profile_name);
-    profileStatusView = (TextView)viewHolder.findViewById(R.id.profile_status);
+    avatarView = (ImageView) viewHolder.findViewById(R.id.avatar);
+    profileNameView = (TextView) viewHolder.findViewById(R.id.profile_name);
+    profileStatusView = (TextView) viewHolder.findViewById(R.id.profile_status);
 
     refresh();
   }
@@ -64,16 +60,19 @@ public class ProfilePreference extends Preference {
     if (profileNameView == null) return;
 
     final String address = DcHelper.get(getContext(), DcHelper.CONFIG_CONFIGURED_ADDRESS);
-    final MyProfileContactPhoto profileImage = new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));
+    final MyProfileContactPhoto profileImage =
+        new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));
 
     GlideApp.with(getContext().getApplicationContext())
-            .load(profileImage)
-            .error(new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp).asDrawable(getContext(), getContext().getResources().getColor(R.color.grey_400)))
-            .circleCrop()
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .into(avatarView);
+        .load(profileImage)
+        .error(
+            new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
+                .asDrawable(getContext(), getContext().getResources().getColor(R.color.grey_400)))
+        .circleCrop()
+        .diskCacheStrategy(DiskCacheStrategy.NONE)
+        .into(avatarView);
 
-    final String profileName  = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
+    final String profileName = DcHelper.get(getContext(), DcHelper.CONFIG_DISPLAY_NAME);
     if (!TextUtils.isEmpty(profileName)) {
       profileNameView.setText(profileName);
     } else {

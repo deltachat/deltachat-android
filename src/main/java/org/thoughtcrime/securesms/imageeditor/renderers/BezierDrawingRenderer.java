@@ -5,41 +5,46 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Parcel;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import org.thoughtcrime.securesms.imageeditor.ColorableRenderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
 /**
- * Renders a {@link AutomaticControlPointBezierLine} with {@link #thickness}, {@link #color} and {@link #cap} end type.
+ * Renders a {@link AutomaticControlPointBezierLine} with {@link #thickness}, {@link #color} and
+ * {@link #cap} end type.
  */
-public final class BezierDrawingRenderer extends InvalidateableRenderer implements ColorableRenderer {
+public final class BezierDrawingRenderer extends InvalidateableRenderer
+    implements ColorableRenderer {
 
-  private final Paint      paint;
+  private final Paint paint;
   private final AutomaticControlPointBezierLine bezierLine;
-  private final Paint.Cap  cap;
+  private final Paint.Cap cap;
 
-  @Nullable
-  private final RectF      clipRect;
+  @Nullable private final RectF clipRect;
 
-  private       int        color;
-  private       float      thickness;
+  private int color;
+  private float thickness;
 
-  private BezierDrawingRenderer(int color, float thickness, @NonNull Paint.Cap cap, @Nullable AutomaticControlPointBezierLine bezierLine, @Nullable RectF clipRect) {
-    this.paint      = new Paint();
-    this.color      = color;
-    this.thickness  = thickness;
-    this.cap        = cap;
-    this.clipRect   = clipRect;
+  private BezierDrawingRenderer(
+      int color,
+      float thickness,
+      @NonNull Paint.Cap cap,
+      @Nullable AutomaticControlPointBezierLine bezierLine,
+      @Nullable RectF clipRect) {
+    this.paint = new Paint();
+    this.color = color;
+    this.thickness = thickness;
+    this.cap = cap;
+    this.clipRect = clipRect;
     this.bezierLine = bezierLine != null ? bezierLine : new AutomaticControlPointBezierLine();
 
     updatePaint();
   }
 
-  public BezierDrawingRenderer(int color, float thickness, @NonNull Paint.Cap cap, @Nullable RectF clipRect) {
-    this(color, thickness, cap,null, clipRect != null ? new RectF(clipRect) : null);
+  public BezierDrawingRenderer(
+      int color, float thickness, @NonNull Paint.Cap cap, @Nullable RectF clipRect) {
+    this(color, thickness, cap, null, clipRect != null ? new RectF(clipRect) : null);
   }
 
   @Override
@@ -99,7 +104,10 @@ public final class BezierDrawingRenderer extends InvalidateableRenderer implemen
     int alpha = paint.getAlpha();
     paint.setAlpha(rendererContext.getAlpha(alpha));
 
-    paint.setXfermode(rendererContext.getMaskPaint() != null ? rendererContext.getMaskPaint().getXfermode() : null);
+    paint.setXfermode(
+        rendererContext.getMaskPaint() != null
+            ? rendererContext.getMaskPaint().getXfermode()
+            : null);
 
     bezierLine.draw(canvas, paint);
 
@@ -112,23 +120,25 @@ public final class BezierDrawingRenderer extends InvalidateableRenderer implemen
     return false;
   }
 
-  public static final Creator<BezierDrawingRenderer> CREATOR = new Creator<BezierDrawingRenderer>() {
-    @Override
-    public BezierDrawingRenderer createFromParcel(Parcel in) {
-      int        color      = in.readInt();
-      float      thickness  = in.readFloat();
-      Paint.Cap  cap        = Paint.Cap.values()[in.readInt()];
-      AutomaticControlPointBezierLine bezierLine = in.readParcelable(AutomaticControlPointBezierLine.class.getClassLoader());
-      RectF      clipRect   = in.readParcelable(RectF.class.getClassLoader());
+  public static final Creator<BezierDrawingRenderer> CREATOR =
+      new Creator<BezierDrawingRenderer>() {
+        @Override
+        public BezierDrawingRenderer createFromParcel(Parcel in) {
+          int color = in.readInt();
+          float thickness = in.readFloat();
+          Paint.Cap cap = Paint.Cap.values()[in.readInt()];
+          AutomaticControlPointBezierLine bezierLine =
+              in.readParcelable(AutomaticControlPointBezierLine.class.getClassLoader());
+          RectF clipRect = in.readParcelable(RectF.class.getClassLoader());
 
-      return new BezierDrawingRenderer(color, thickness, cap, bezierLine, clipRect);
-    }
+          return new BezierDrawingRenderer(color, thickness, cap, bezierLine, clipRect);
+        }
 
-    @Override
-    public BezierDrawingRenderer[] newArray(int size) {
-      return new BezierDrawingRenderer[size];
-    }
-  };
+        @Override
+        public BezierDrawingRenderer[] newArray(int size) {
+          return new BezierDrawingRenderer[size];
+        }
+      };
 
   @Override
   public int describeContents() {
@@ -143,5 +153,4 @@ public final class BezierDrawingRenderer extends InvalidateableRenderer implemen
     dest.writeParcelable(bezierLine, flags);
     dest.writeParcelable(clipRect, flags);
   }
-
 }

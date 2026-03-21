@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Gerai</string>
@@ -103,23 +105,9 @@
     <string name="last_month">Praeitą mėnesį</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Adresatas paskutinį kartą matytas %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Adresatas paskutinį kartą matytas %1$s</string>
     <string name="last_seen_unknown">Adresatas paskutinį kartą matytas: Nežinoma</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d sekundė</item>
-        <item quantity="few">%d sekundės</item>
-        <item quantity="many">%d sekundžių</item>
-        <item quantity="other">%d sekundė</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minutė</item>
-        <item quantity="few">%d minutės</item>
-        <item quantity="many">%d minučių</item>
-        <item quantity="other">%d minutė</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
@@ -254,8 +242,6 @@
     <string name="channels">Kanalai</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Naujas kanalas</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Pridėti gavėjus</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanalo pavadinimas</string>
     <string name="email">El. paštas</string>
@@ -368,23 +354,23 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Skambinti</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Garso skambutis</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Vaizdo skambutis</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Atsiliepti</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Atmesti</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Išsiunčiamasis skambutis</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Išsiunčiamasis garso skambutis</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Išsiunčiamasis vaizdo skambutis</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Gaunamasis skambutis</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Gaunamasis garso skambutis</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Gaunamasis vaizdo skambutis</string>
     <string name="missed_call">Praleistas skambutis</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -543,8 +529,6 @@
     <string name="incoming_messages">Gaunamosios žinutės</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Išsiunčiamosios žinutės</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Saugykla ties %1$s</string>
     <string name="connectivity">Jungiamumas</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Neprisijungta</string>
@@ -566,7 +550,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Sukurti naują profilį</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Aš jau turiu profilį</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Naudoti klasikinį el. paštą kaip retransliavimą</string>
@@ -625,9 +609,6 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Pridėti šį retransliavimą?</string>
     <string name="invalid_transport_qr">Nuskenuotame QR kode nėra tinkamo retransliavimo.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Šalinti retransliavimą „%1$s“?\n\nJūsų adresatai galės su jumis susisiekti tik tuo atveju, jei anksčiau buvote su jais susisiekę per kitą retransliavimą.\n\nJei abejojate, pašalinkite retransliavimą vėliau.</string>
-
     <string name="login_certificate_checks">Liudijimų patikrinimai</string>
     <string name="login_error_mail">Įveskite teisingą el. pašto adresą.</string>
     <string name="login_error_server">Įveskite teisingą serverį / IP adresą</string>
@@ -663,6 +644,7 @@
     <string name="share_abort">Bendrinimas nutrauktas dėl trūkstamų leidimų.</string>
 
 
+    <!-- preferences -->
     <string name="pref_profile_info_headline">Jūsų profilis</string>
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
@@ -694,8 +676,6 @@
     <string name="pref_led_color">Šviesos diodo spalva</string>
     <string name="pref_sound">Garsas</string>
     <string name="pref_privacy">Privatumas</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Pokalbiai ir medija</string>
     <string name="pref_system_default">Sistemos numatytoji</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Šviesus</string>
@@ -732,7 +712,7 @@
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Kelių įrenginių veiksena</string>
     <string name="pref_multidevice_explain">Sinchronizuoti jūsų žinutes su kitais įrenginiais. Automatiškai įjungta, kai pridėtas antrasis įrenginys</string>
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
@@ -811,6 +791,9 @@
     <string name="group_image_changed_by_you">Jūs pakeitėte grupės paveikslą.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s pakeitė grupės paveikslą.</string>
+    <string name="chat_description_changed_by_you">Jūs pakeitėte pokalbio aprašą.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">%1$s pakeitė pokalbio aprašą.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Dalyvis %1$s pašalintas.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -830,10 +813,6 @@
     <string name="ephemeral_timer_seconds_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į %1$s sek.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s nustatė išnykstančių žinučių laikmatį į %1$s sek.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 minutę.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 minutę. </string>
     <string name="ephemeral_timer_1_hour_by_you">Jūs nustatėte išnykstančių žinučių laikmatį į 1 valandą.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s nustatė išnykstančių žinučių laikmatį į 1 valandą.</string>
@@ -921,7 +900,7 @@
     <string name="confirm_replace_draft">Pokalbyje „%1$s“ jau yra žinutės juodraštis. Ar norite jį pakeisti?</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Atsakyti</string>
     <string name="notify_new_message">Nauja žinutė</string>
     <string name="notify_background_connection_enabled">Foninis ryšys įjungtas</string>
@@ -945,6 +924,8 @@
     <string name="ImageEditorHud_flip">Apversti</string>
     <string name="ImageEditorHud_rotate">Pasukti</string>
 
+    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
+    <string name="about_offical_app_desktop">Tai yra oficiali Delta Chat programa, skirta darbalaukio aplinkai.</string>
     <string name="about_licensed_under_desktop">Ši programinė įranga yra licencijuota pagal GNU GPL versiją 3, o pirminis kodas yra prieinamas „GitHub“ internetinėje svetainėje.</string>
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
@@ -980,7 +961,9 @@
     <string name="message_detail_received_desktop">Gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
     <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">சரி</string>
@@ -177,6 +179,7 @@
     <string name="login_smtp_password">SMTP க்கான கடவுச்சொல்</string>
     <string name="login_smtp_server">SMTP க்கான சேவகன்</string>
     <string name="login_smtp_port">SMTP போர்ட்</string>
+    <!-- preferences -->
     <string name="pref_profile_info_headline">உங்கள் சுயவிவரத் தகவல்</string>
     <string name="pref_blocked_contacts">தடுக்கபட்ட தொடர்புகள்</string>
     <string name="pref_your_name">எனது பெயர்</string>
@@ -193,8 +196,6 @@
     <string name="pref_sound">ஓசை</string>
     <string name="pref_silent">அமைதி</string>
     <string name="pref_privacy">தனியுரிமை</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">அரட்டைகள் மற்றும் ஊடகங்கள்</string>
     <string name="pref_system_default">கருவி இயல்புநிலை</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">வெளிச்சமிக்க</string>
@@ -216,7 +217,7 @@
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">மறுமொழி</string>
     <string name="notify_new_message">புதிய செய்தி</string>
     <string name="notify_priority_high">உயர்</string>

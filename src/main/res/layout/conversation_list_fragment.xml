@@ -1,70 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <TextView android:id="@+id/empty_search"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="100dp"
-              android:gravity="center"
-              android:textSize="18sp"
-              android:padding="16dp"
-              android:visibility="invisible"
-              tools:text="No results found for 'foo'"/>
+    <TextView
+        android:id="@+id/empty_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:visibility="invisible"
+        tools:text="No results found for 'foo'" />
 
-    <LinearLayout android:id="@+id/empty_state"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center"
-                  android:orientation="vertical"
-                  android:visibility="gone"
-                  tools:visibility="visible">
+    <LinearLayout
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
 
-        <TextView android:id="@+id/empty_title"
-                  android:text="@string/chat_no_chats_yet_title"
-                  android:textSize="20sp"
-                  android:padding="16dp"
-                  android:gravity="center"
-                  android:lineSpacingMultiplier="1.3"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/empty_title"
+            android:text="@string/chat_no_chats_yet_title"
+            android:textSize="20sp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  tools:visibility="gone">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="88dp"
-                android:clipToPadding="false"
-                android:scrollbars="vertical"
-                android:nextFocusDown="@+id/fab"
-                android:nextFocusForward="@+id/fab"
-                tools:listitem="@layout/conversation_list_item_view" />
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="88dp"
+            android:clipToPadding="false"
+            android:scrollbars="vertical"
+            android:nextFocusDown="@+id/fab"
+            android:nextFocusForward="@+id/fab"
+            tools:listitem="@layout/conversation_list_item_view" />
 
     </LinearLayout>
 
 
     <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            app:backgroundTint="?attr/fab_color"
-            android:src="@drawable/ic_add_white_24dp"
-            android:focusable="true"
-            android:contentDescription="@string/menu_new_chat"/>
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:backgroundTint="?attr/fab_color"
+        android:src="@drawable/ic_add_white_24dp"
+        android:focusable="true"
+        android:contentDescription="@string/menu_new_chat" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

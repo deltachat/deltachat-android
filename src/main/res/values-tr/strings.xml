@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Tamam</string>
@@ -115,19 +117,16 @@
     <string name="last_month">Geçen ay</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Son görülme %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Son görülme %1$s</string>
     <string name="last_seen_unknown">Son görülme: Bilinmeyen</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d saniye</item>
-        <item quantity="other">%d saniye</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d dakika süre</item>
+        <item quantity="other">%d dakika süre</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d dakika</item>
-        <item quantity="other">%d dakika</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">1 dakikadan az</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d dk</item>
@@ -180,6 +179,9 @@
     <string name="add_to_sticker_collection">Çıkartma Toplamasına Ekle</string>
     <string name="add_stickers_instructions">Çıkartmalar eklemek için “Çıkartma Klasörünü Aç”a dokunun, çıkartma paketiniz için bir alt klasör oluşturun ve görseli ve çıkartma dosyalarını oraya sürükleyin</string>
     <string name="open_sticker_folder">Çıkartma Klasörünü Aç</string>
+    <string name="ask_add_sticker_to_collection">Bu çıkartma, koleksiyonunuza eklensin mi?</string>
+    <string name="ask_delete_sticker">Bu çıkartma silinsin mi?</string>
+    <string name="sticker_picker_empty_hint">Buraya eklemek için bir çıkartmaya dokunun.</string>
     <string name="images">Görseller</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Ses</string>
@@ -259,10 +261,13 @@
     <string name="channels">Kanallar</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Yeni Kanal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Aboneleri Ekle</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanal Adı</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d görüntülenme</item>
+        <item quantity="other">%d görüntülenme</item>
+    </plurals>
     <string name="email">E-Posta</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Yeni E-Posta</string>
@@ -278,6 +283,7 @@
     <string name="menu_add_attachment">İlişik Ekle</string>
     <string name="menu_leave_group">Gruptan Ayrıl</string>
     <string name="menu_leave_channel">Kanaldan Ayrıl</string>
+    <string name="menu_leave_and_delete">Ayrıl ve Benim için Sil</string>
     <string name="menu_delete_chat">Sohbeti Sil</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Sohbeti Temizle</string>
@@ -384,25 +390,29 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Ara</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Sesli Arama</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Görüntülü Arama</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Yanıtla</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Reddet</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Giden arama</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Sesli arama</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Görüntülü arama</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Giden sesli arama</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Giden görüntülü arama</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Gelen arama</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Gelen sesli arama</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Gelen görüntülü arama</string>
     <string name="declined_call">Reddedilen arama</string>
     <string name="canceled_call">İptal edilen arama</string>
     <string name="missed_call">Yanıtlanmayan arama</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -588,8 +598,6 @@
     <string name="incoming_messages">Gelen İletiler</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Giden İletiler</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">%1$s Üzerinde Depolama</string>
     <string name="connectivity">Bağlanabilirlik</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Bağlı değil</string>
@@ -611,7 +619,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Yeni Profil Oluştur</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Zaten Bir Profilim Var</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Aktarıcı Olarak Klasik E-Posta Kullan</string>
@@ -673,9 +681,6 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Bu aktarıcı eklensin mi?</string>
     <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir aktarıcı içermiyor.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">“%1$s” aktarıcısı kaldırılsın mı?\n\nKişileriniz yalnızca onlara önceden ulaştığınız başka bir aktarıcı üzerinden size ulaşabilir.\n\nKuşkuluysanız aktarıcıyı daha sonra kaldırın.</string>
-
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -712,14 +717,12 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">%1$d dosya “%2$s” sohbetine gönderilsin mi?</string>
     <string name="ask_send_files_to_selected_chats">%1$d dosya %2$d sohbete gönderilsin mi?</string>
-    <string name="videos_sent_without_recoding">(Videolar özgün, büyük dosyalar olarak gönderilir. Videoları daha küçük dosyalar olarak göndermek için onları ayrı ayrı iliştirin)</string>
+    <string name="videos_sent_without_recoding">(Çoklu video göndermek, onları olduğu gibi gönderecektir ve bu da büyük boyutlara yol açabilir. Boyutlarını küçültmek ve veri tasarrufu sağlamak için her videoyu kendi iletisinde gönderebilirsiniz.)</string>
     <string name="share_text_multiple_chats">Bu metin %1$d sohbete gönderilsin mi?\n\n“%2$s”</string>
     <string name="share_abort">Eksik izinlerden dolayı paylaşımdan vazgeçildi.</string>
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Özel kullanılıyor: %s</string>
-    <string name="pref_using_default">Varsayılan kullanılıyor: %s</string>
     <string name="pref_profile_info_headline">Profiliniz</string>
     <string name="pref_profile_photo">Profil Görseli</string>
     <string name="pref_blocked_contacts">Engellenen Kişiler</string>
@@ -728,10 +731,12 @@
     <string name="pref_your_name">Adınız</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Biyografi</string>
+    <string name="chat_description">Açıklama</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter Tuşu Göndersin</string>
     <string name="pref_enter_sends_explain">Enter tuşuna basma, metin iletileri gönderecek</string>
     <string name="pref_outgoing_media_quality">Giden Ortam Kalitesi</string>
+    <string name="pref_outgoing_media_quality_hint">Özgün kalitede göndermek için ortamı “Dosya” olarak iliştirin. Bu, siz ve alıcılarınız için önemli ölçüde daha fazla veri kullanır.</string>
     <string name="pref_outgoing_balanced">Dengeli</string>
     <string name="pref_outgoing_worse">Daha kötü kalite, küçük boyut</string>
     <string name="pref_vibrate">Titret</string>
@@ -742,6 +747,10 @@
     <string name="pref_notifications">Bildirimler</string>
     <string name="pref_mention_notifications">Anmalar</string>
     <string name="pref_mention_notifications_explain">Sessize alınan gruplarda, yanıtlar ya da tepkiler gibi size yönlendirilen iletileri bildirin</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Aramalar</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Gelen aramalarda arama ekranını göster</string>
     <string name="pref_notifications_show">Göster</string>
     <string name="pref_notifications_priority">Öncelik</string>
     <string name="pref_notifications_explain">Yeni iletiler için sistem bildirimlerini etkinleştir</string>
@@ -751,8 +760,6 @@
     <string name="pref_sound">Ses</string>
     <string name="pref_silent">Sessiz</string>
     <string name="pref_privacy">Gizlilik</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Sohbetler ve Ortamlar</string>
     <string name="pref_system_default">Sistem varsayılanı</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Açık</string>
@@ -789,7 +796,7 @@
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Çoklu Aygıt Modu</string>
     <string name="pref_multidevice_explain">İletilerinizi diğer aygıtlarınızla eşzamanlayın. İkinci bir aygıt eklendiğinde otomatik olarak etkinleştirilir</string>
     <string name="pref_multidevice_change_warn">Aynı profili birden fazla aygıtta kullanırken Çoklu Aygıt Modu etkinleştirilmelidir. Bu ayarı yalnızca bu profili diğer tüm aygıtlarınızdan kaldırdıysanız etkisizleştirin.\n\nProfili birden fazla aygıtta kullanırken Çoklu Aygıt Modu\'nu etkisizleştirmek, iletilerin kaçırılmasına ve diğer sorunlara neden olur.</string>
@@ -817,8 +824,6 @@
     <string name="n_bytes_message">%1$s ileti</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">İndirme en fazla %1$s zamanına kadar kullanılabilir</string>
-    <!-- deprecated -->
-    <string name="select_profile">Profil Seç</string>
     <string name="profile_image_select">Profil Görseli Seç</string>
     <string name="select_your_new_profile_image">Yeni profil görselinizi seçin</string>
     <string name="profile_image_delete">Profil Görselini Sil</string>
@@ -889,6 +894,9 @@
     <string name="group_image_changed_by_you">Grup görselini değiştirdiniz.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s tarafından grup görseli değiştirildi.</string>
+    <string name="chat_description_changed_by_you">Sohbet açıklamasını değiştirdiniz.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">%1$s tarafından sohbet açıklaması değiştirildi.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s üyesi eklendi.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -921,10 +929,6 @@
     <string name="ephemeral_timer_seconds_by_you">Kaybolan iletiler zamanlayıcısını %1$s saniye olarak ayarladınız.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s saniye olarak ayarlandı.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Kaybolan iletiler zamanlayıcısını 1 dakika olarak ayarladınız.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 dakika olarak ayarlandı.</string>
     <string name="ephemeral_timer_1_hour_by_you">Kaybolan iletiler zamanlayıcısını 1 saat olarak ayarladınız.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s tarafından kaybolan iletiler zamanlayıcısı 1 saat olarak ayarlandı.</string>
@@ -1021,14 +1025,12 @@
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>
     <string name="verified_by_unknown">Tanıtıldı</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Uçtan uca şifrelemeyi güvencelemek için bu gruba yalnızca yeşil bir onay imi olan kişileri ekleyebilirsiniz.\n\nDoğrulanmayan kişilerle kişisel olarak tanışabilir ve onları tanıtmak için onların QR kodunu tarayabilirsiniz.</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s zaten bir taslak ileti; onu değiştirmek istiyor musunuz?</string>
     <string name="mailto_link_could_not_be_decoded">mailto bağlantısının kodu çözülemedi: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Yanıtla</string>
     <string name="notify_new_message">Yeni ileti</string>
     <string name="notify_background_connection_enabled">Arka plan bağlantısı etkinleştirildi</string>
@@ -1106,7 +1108,9 @@
     <string name="message_detail_received_desktop">Alınma</string>
     <string name="menu.view.developer.open.log.folder">Günlük Klasörünü Aç</string>
     <string name="menu.view.developer.open.current.log.file">Şu Anki Günlük Dosyasını Aç</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Delta Chat --minimized seçeneğiyle başlatıldığından tepsi simgesi etkisizleştirilemez.</string>
     <string name="no_spellcheck_suggestions_found">Yazım önerileri bulunamadı.</string>
     <string name="show_window">Pencereyi Göster</string>
 

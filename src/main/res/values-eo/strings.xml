@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Bone</string>
@@ -109,19 +111,9 @@
     <string name="last_month">Pasint-monate</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Laste vidita je%1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Laste vidita %1$s</string>
     <string name="last_seen_unknown">Laste vidita: nedisponebla informo</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d sekundo</item>
-        <item quantity="other">%d sekundoj</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minuto</item>
-        <item quantity="other">%d minutoj</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -221,8 +213,6 @@
     <string name="menu_new_contact">Nova kontakto</string>
     <string name="menu_new_chat">Nova babilo</string>
     <string name="menu_new_group">Nova grupo</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Aldoni Ricevantojn</string>
     <string name="menu_send">Sendi</string>
     <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
     <string name="menu_edit_group">Redakti grupon</string>
@@ -416,8 +406,6 @@
     <string name="pref_sound">Sono</string>
     <string name="pref_silent">Silenta</string>
     <string name="pref_privacy">Privateco</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Interparoloj kaj aŭdvidaĵoj</string>
     <string name="pref_system_default">Sistema defaŭlto</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Hela</string>
@@ -447,7 +435,7 @@
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
     <string name="pref_show_emails_all">Ĉiuj</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>
     <string name="notify_priority_high">Alta</string>

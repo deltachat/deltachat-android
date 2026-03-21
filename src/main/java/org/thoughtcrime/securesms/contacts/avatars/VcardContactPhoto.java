@@ -2,19 +2,15 @@ package org.thoughtcrime.securesms.contacts.avatars;
 
 import android.content.Context;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import org.thoughtcrime.securesms.util.JsonUtils;
-
+import chat.delta.rpc.types.VcardContact;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
-
-import chat.delta.rpc.types.VcardContact;
+import org.thoughtcrime.securesms.util.JsonUtils;
 
 public class VcardContactPhoto implements ContactPhoto {
   private final VcardContact vContact;
@@ -26,7 +22,7 @@ public class VcardContactPhoto implements ContactPhoto {
   @Override
   public InputStream openInputStream(Context context) throws IOException {
     byte[] blob = JsonUtils.decodeBase64(vContact.profileImage);
-    return (blob == null)? null : new ByteArrayInputStream(blob);
+    return (blob == null) ? null : new ByteArrayInputStream(blob);
   }
 
   @Override

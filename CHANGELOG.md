@@ -7,10 +7,18 @@
 * Explain at "Settings / Chats / Outgoing Media Quality" how to send original quality
 * Add a basic sticker picker
 * Leave groups and channels before deletion
+* Further minimize metadata in messages and while getting in contact.
+* Increase resilience of multi-relay usage: if on relay goes down, messages are still received in the others.
+* Allow to hide a relay from contacts instead of removing, allowing smoother relay changes
+* HTML emails: allow to review and copy links before opening them
+* Mark call message as seen when accepting/declining a call
 * Fix: keep original sent timestamp for resent messages
 * Fix: make clicking on broadcast member-added messages work always
 * Fix: remove notification when a message is deleted by sender
-* Update to core 2.44.0
+* Fix: avoid "reply privately" not quoting the selected message sometimes
+* Fix: properly hide the calls button
+* Some more bug fixes and updated translations
+* Update to core 2.46.0
 
 ## v2.43.0
 2026-02

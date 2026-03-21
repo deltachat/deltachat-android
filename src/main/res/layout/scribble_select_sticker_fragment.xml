@@ -6,4 +6,4 @@
     android:layout_height="match_parent"
     android:paddingTop="4dp"
     android:clipToPadding="false"
-    android:clipChildren="false"/>
+    android:clipChildren="false" />

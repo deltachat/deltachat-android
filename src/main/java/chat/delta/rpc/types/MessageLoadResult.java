@@ -42,7 +42,6 @@ public abstract class MessageLoadResult {
     public Boolean isEdited;
     public Boolean isForwarded;
     public Boolean isInfo;
-    public Boolean isSetupmessage;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer originalMsgId;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
@@ -57,8 +56,6 @@ public abstract class MessageLoadResult {
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer savedMessageId;
     public Contact sender;
-    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
-    public String setupCodeBegin;
     /**
      * True if the message was correctly encrypted&signed, false otherwise. Historically, UIs showed a small padlock on the message then.
      * <p>

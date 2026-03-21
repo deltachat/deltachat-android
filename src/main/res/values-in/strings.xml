@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -91,7 +93,7 @@
     <string name="last_month">Bulan lalu</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Terakhir terlihat di %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Terakhir terlihat %1$s</string>
     <string name="last_seen_unknown">Terakhir terlihat: Tidak diketahui</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -181,8 +183,6 @@
     <string name="menu_new_contact">Kontak baru</string>
     <string name="menu_new_chat">Obrolan baru</string>
     <string name="menu_new_group">Grup baru</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Tambahkan Penerima</string>
     <string name="menu_send">Terkirim</string>
     <string name="menu_toggle_keyboard">Tekan tombol emoji keyboard</string>
     <string name="menu_edit_group">Edit grup</string>
@@ -395,8 +395,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Menggunakan custom: %s</string>
-    <string name="pref_using_default">Menggunakan default: %s</string>
     <string name="pref_profile_info_headline">Info profil Anda</string>
     <string name="pref_profile_photo">Gambar profil</string>
     <string name="pref_blocked_contacts">Kontak yang diblokir</string>
@@ -423,8 +421,6 @@
     <string name="pref_sound">Suara</string>
     <string name="pref_silent">Sunyi</string>
     <string name="pref_privacy">Privasi</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Obrolan dan media</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Cahaya</string>
     <string name="pref_dark_theme">Gelap</string>
@@ -513,7 +509,7 @@
     <string name="qrscan_title">Pindah kode QR</string>
     <string name="qrscan_hint">Pegang kamera Anda di atas kode QR.</string>
     <string name="qrscan_ask_join_group">Apakah anda ingin bergabung dengan grup \"%1$s\"?</string>
-    <string name="qrscan_contains_text">Kode QR yang dipindai  text:\n\n%1$s</string>
+    <string name="qrscan_contains_text">Kode QR yang dipindai text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Kode QR yang dipindai URL:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Sidik jari</string>
     <string name="qrshow_title">Kode undangan QR</string>
@@ -530,7 +526,7 @@
     <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Balasan</string>
     <string name="notify_new_message">Pesan baru</string>
     <string name="notify_background_connection_enabled">Koneksi latar diaktifkan</string>

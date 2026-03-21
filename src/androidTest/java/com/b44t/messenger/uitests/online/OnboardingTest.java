@@ -1,6 +1,5 @@
 package com.b44t.messenger.uitests.online;
 
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -11,13 +10,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import android.text.TextUtils;
-
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
-
 import com.b44t.messenger.TestUtils;
-
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,14 +26,16 @@ import org.thoughtcrime.securesms.WelcomeActivity;
 @LargeTest
 public class OnboardingTest {
   @Rule
-  public ActivityScenarioRule<WelcomeActivity> activityRule = TestUtils.getOnlineActivityRule(WelcomeActivity.class);
+  public ActivityScenarioRule<WelcomeActivity> activityRule =
+      TestUtils.getOnlineActivityRule(WelcomeActivity.class);
 
   @Test
   public void testAccountCreation() {
     if (TextUtils.isEmpty(BuildConfig.TEST_ADDR) || TextUtils.isEmpty(BuildConfig.TEST_MAIL_PW)) {
-      throw new RuntimeException("You need to set TEST_ADDR and TEST_MAIL_PW; " +
-              "either in gradle.properties or via an environment variable. " +
-              "See README.md for more details.");
+      throw new RuntimeException(
+          "You need to set TEST_ADDR and TEST_MAIL_PW; "
+              + "either in gradle.properties or via an environment variable. "
+              + "See README.md for more details.");
     }
     onView(withText(R.string.scan_invitation_code)).check(matches(isClickable()));
     onView(withText(R.string.import_backup_title)).check(matches(isClickable()));

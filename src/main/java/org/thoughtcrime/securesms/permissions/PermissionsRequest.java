@@ -1,10 +1,7 @@
 package org.thoughtcrime.securesms.permissions;
 
-
 import android.content.pm.PackageManager;
-
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,21 +17,21 @@ class PermissionsRequest {
   private final @Nullable Runnable anyPermanentlyDeniedListener;
   private final @Nullable Runnable anyResultListener;
 
-  PermissionsRequest(@Nullable Runnable allGrantedListener,
-                     @Nullable Runnable anyDeniedListener,
-                     @Nullable Runnable anyPermanentlyDeniedListener,
-                     @Nullable Runnable anyResultListener)
-  {
-    this.allGrantedListener            = allGrantedListener;
+  PermissionsRequest(
+      @Nullable Runnable allGrantedListener,
+      @Nullable Runnable anyDeniedListener,
+      @Nullable Runnable anyPermanentlyDeniedListener,
+      @Nullable Runnable anyResultListener) {
+    this.allGrantedListener = allGrantedListener;
 
-    this.anyDeniedListener             = anyDeniedListener;
-    this.anyPermanentlyDeniedListener  = anyPermanentlyDeniedListener;
-    this.anyResultListener             = anyResultListener;
+    this.anyDeniedListener = anyDeniedListener;
+    this.anyPermanentlyDeniedListener = anyPermanentlyDeniedListener;
+    this.anyResultListener = anyResultListener;
   }
 
   void onResult(String[] permissions, int[] grantResults, boolean[] shouldShowRationaleDialog) {
-    List<String> granted           = new ArrayList<>(permissions.length);
-    List<String> denied            = new ArrayList<>(permissions.length);
+    List<String> granted = new ArrayList<>(permissions.length);
+    List<String> denied = new ArrayList<>(permissions.length);
     List<String> permanentlyDenied = new ArrayList<>(permissions.length);
 
     for (int i = 0; i < permissions.length; i++) {
@@ -53,16 +50,18 @@ class PermissionsRequest {
       }
     }
 
-    if (allGrantedListener != null && !granted.isEmpty() && (denied.isEmpty() && permanentlyDenied.isEmpty())) {
+    if (allGrantedListener != null
+        && !granted.isEmpty()
+        && (denied.isEmpty() && permanentlyDenied.isEmpty())) {
       allGrantedListener.run();
     }
 
     if (!denied.isEmpty()) {
-      if (anyDeniedListener != null)  anyDeniedListener.run();
+      if (anyDeniedListener != null) anyDeniedListener.run();
     }
 
     if (!permanentlyDenied.isEmpty()) {
-      if (anyPermanentlyDeniedListener != null)  anyPermanentlyDeniedListener.run();
+      if (anyPermanentlyDeniedListener != null) anyPermanentlyDeniedListener.run();
     }
 
     if (anyResultListener != null) {

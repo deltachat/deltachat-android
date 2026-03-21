@@ -2,15 +2,18 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <size android:height="42dp" android:width="42dp"/>
-            <solid android:color="@color/universal_overlay"/>
+            <size
+                android:height="42dp"
+                android:width="42dp" />
+            <solid android:color="@color/universal_overlay" />
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_create_white_24dp"
-          android:left="7dp"
-          android:right="7dp"
-          android:top="7dp"
-          android:bottom="7dp"
-          android:scaleType="centerInside">
+    <item
+        android:drawable="@drawable/ic_create_white_24dp"
+        android:left="7dp"
+        android:right="7dp"
+        android:top="7dp"
+        android:bottom="7dp"
+        android:scaleType="centerInside">
     </item>
 </layer-list>

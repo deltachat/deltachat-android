@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">У реду</string>
@@ -103,7 +105,7 @@
     <string name="last_month">Прошлог месеца</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Последњи пут виђен %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Последњи пут виђен %1$s</string>
     <string name="last_seen_unknown">Последњи пут виђен: Непознато</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -217,8 +219,6 @@
     <string name="menu_new_contact">Нови контакт</string>
     <string name="menu_new_chat">Ново ћаскање</string>
     <string name="menu_new_group">Нова група</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Додај примаоце</string>
     <string name="menu_send">Пошаљи</string>
     <string name="menu_toggle_keyboard">Емоџи тастатура</string>
     <string name="menu_edit_group">Уреди групу</string>
@@ -385,7 +385,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Сачувај</string>
     <string name="saved_messages">Сачуване поруке</string>
-    <string name="saved_messages_explain">• Проследи поруке овде за лакши приступ\n\n• Направите текстуалне или звучне белешке\n\n• Приложите медиј  да би га снимили</string>
+    <string name="saved_messages_explain">• Проследи поруке овде за лакши приступ\n\n• Направите текстуалне или звучне белешке\n\n• Приложите медиј да би га снимили</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Снимљено</string>
     <string name="save_as">Сними као</string>
@@ -457,8 +457,6 @@
     <string name="incoming_messages">Долазеће поруке</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Одлазеће поруке</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Складиштење на %1$s</string>
     <string name="connectivity">Повезаност</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Нисте повезани</string>
@@ -506,7 +504,7 @@
     <string name="add_account">Додај налог</string>
     <string name="delete_account">Избриши налог</string>
     <string name="delete_account_ask">Да ли сте сигурни да желите да избришете све податке са вашег налога?</string>
-    <string name="delete_account_explain_with_name">Сви подаци о налогу за „%s“ на овом уређају ће бити избрисани, укључујући подешавања  с-краја-на-крај шифровања, контакте, ћаскања, поруке и медије. Ако се ова радња изврши, она се касније не може поништити.</string>
+    <string name="delete_account_explain_with_name">Сви подаци о налогу за „%s“ на овом уређају ће бити избрисани, укључујући подешавања с-краја-на-крај шифровања, контакте, ћаскања, поруке и медије. Ако се ова радња изврши, она се касније не може поништити.</string>
     <string name="unconfigured_account">Налог није конфигурисан</string>
     <string name="unconfigured_account_hint">Отворите налог да би сте га конфигурисали.</string>
     <string name="try_connect_now">Пробај да се повежеш сада</string>
@@ -523,8 +521,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Користи поручен: %s</string>
-    <string name="pref_using_default">Користи уобичајено: %s</string>
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
     <string name="pref_profile_photo">Слика профила</string>
     <string name="pref_blocked_contacts">Блокирани контакти</string>
@@ -554,8 +550,6 @@
     <string name="pref_sound">Звук</string>
     <string name="pref_silent">Без звука</string>
     <string name="pref_privacy">Приватност</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Ћаскања и медији</string>
     <string name="pref_system_default">Подразумеване поставке оперативног система</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Светла</string>
@@ -682,10 +676,6 @@
     <string name="ephemeral_timer_seconds_by_you">Ви сте подесили хронометар за нестајуће поруке на %1$s секунде</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s секунде.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 минут.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s је подесио хронометар за нестајуће поруке на 1 минут.</string>
     <string name="ephemeral_timer_1_hour_by_you">Ви сте подесили хронометар за нестајуће поруке на 1 сат.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$sје подесио хронометар за нестајуће поруке на 1 сат.</string>
@@ -765,7 +755,7 @@
     <string name="confirm_replace_draft">%1$s већ има нацрт поруке, да ли желите да је замените?</string>
     <string name="mailto_link_could_not_be_decoded">mailto веза не може бити декодирана: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Одговори</string>
     <string name="notify_new_message">Нова порука</string>
     <string name="notify_background_connection_enabled">Веза у позадини је омогућена</string>
@@ -829,7 +819,9 @@
     <string name="message_detail_received_desktop">примљено</string>
     <string name="menu.view.developer.open.log.folder">Отвори директоријум где се налазе дневници</string>
     <string name="menu.view.developer.open.current.log.file">Отвори тренутни дневник</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
     <string name="no_spellcheck_suggestions_found">Нема предлога за исправке правописа.</string>
     <string name="show_window">Прикажи прозор</string>
 

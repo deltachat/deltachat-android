@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">సరే</string>
@@ -146,6 +148,7 @@
     <string name="tab_group">సమూహము</string>
     <string name="tab_gallery">గ్యాలరీ</string>
     <string name="media_preview">మీడియా పూర్వప్రదర్శన</string>
+    <!-- preferences -->
     <string name="pref_profile_info_headline">మీ రూప సమాచారం</string>
     <string name="pref_profile_photo">రూపచిత్రం</string>
     <string name="pref_blocked_contacts">నిరోధించిన పరిచయాలు</string>
@@ -163,8 +166,6 @@
     <string name="pref_sound">శబ్ధం</string>
     <string name="pref_silent">మౌనం</string>
     <string name="pref_privacy">గోప్యత</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">ముచ్చట్లు మరియు ప్రసార మాధ్యమం</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">లైటు</string>
     <string name="pref_dark_theme">గుప్తమైన</string>
@@ -183,7 +184,7 @@
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">చాట్ నేపధ్యం</string>
     <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">జవాబు</string>
     <string name="notify_new_message">కొత్త సందేశం</string>
     <string name="notify_priority_high">అధికం</string>

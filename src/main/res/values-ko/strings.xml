@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">확인</string>
@@ -174,8 +176,6 @@
     <string name="menu_new_contact">대화상대 추가</string>
     <string name="menu_new_chat">채팅 시작</string>
     <string name="menu_new_group">새 그룹</string>
-    <!-- deprecated -->
-    <string name="add_recipients">수신자 추가</string>
     <string name="menu_send">보내기</string>
     <string name="menu_toggle_keyboard">이모티콘 키보드 전환</string>
     <string name="menu_edit_group">그룹 편집</string>
@@ -384,8 +384,6 @@
     <string name="incoming_messages">수신 메시지</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">발신 메시지</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">%1$s에 저장됨</string>
     <string name="connectivity">연결</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">연결되지 않음</string>
@@ -448,8 +446,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">사용자 정의 사용: %s</string>
-    <string name="pref_using_default">기본값 사용: %s</string>
     <string name="pref_profile_info_headline">내 프로필</string>
     <string name="pref_profile_photo">프로필 사진</string>
     <string name="pref_blocked_contacts">차단 목록</string>
@@ -478,8 +474,6 @@
     <string name="pref_sound">알림음</string>
     <string name="pref_silent">무음</string>
     <string name="pref_privacy">개인정보 보호</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">대화 및 미디어</string>
     <string name="pref_system_default">시스템 기본값</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">밝게</string>
@@ -592,10 +586,6 @@
     <string name="ephemeral_timer_seconds_by_you">사라지는 메시지 타이머를 %1$s초로 설정함.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s가 사라지는 메시지 타이머를 %1$s초로 설정함.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">사라지는 메시지 타이머를 1분으로 설정함.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s가 사라지는 메시지 타이머를 1분으로 설정함.</string>
     <string name="ephemeral_timer_1_hour_by_you">사라지는 메시지 타이머를 1시간으로 설정함.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s가 사라지는 메시지 타이머를 1시간으로 설정함.</string>
@@ -626,7 +616,7 @@
     <string name="devicemsg_storage_exceeding">⚠️ 공급자의 저장공간이 곧 고갈될 예정입니다. %1$s%%가 이미 사용 중입니다.\n\n저장공간이 가득 찬 경우 메시지를 수신하지 못할 수 있습니다.\n\n👉 공급자의 웹 인터페이스에서 이전 데이터를 삭제할 수 있는지 확인하고 \"설정 / 이전 메시지 삭제\"를 활성화하는 것을 고려하십시오. \"설정/연결\"에서 언제든지 현재 저장공간 사용량을 확인할 수 있습니다.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ 장치의 날짜 또는 시간이 정확하지 않은 것 같습니다(%1$s).\n\n메시지가 올바르게 수신되도록 시계 ⏰🔧를 조정하세요.</string>
-    <string name="devicemsg_update_reminder">⚠️ 델타 채팅 버전이 오래되었을 수 있습니다.\n\n채팅 파트너가 최신 버전을 사용하기 때문에 문제가 발생할 수 있습니다.  당신은 최신 기능이 없습니다. 😳\n https://get.delta.chat 또는 앱 스토어에서 업데이트를 확인하십시오.</string>
+    <string name="devicemsg_update_reminder">⚠️ 델타 채팅 버전이 오래되었을 수 있습니다.\n\n채팅 파트너가 최신 버전을 사용하기 때문에 문제가 발생할 수 있습니다. 당신은 최신 기능이 없습니다. 😳\n https://get.delta.chat 또는 앱 스토어에서 업데이트를 확인하십시오.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">계속하려면 시스템 정의 암호를 입력하십시오.</string>
@@ -673,7 +663,7 @@
     <string name="confirm_replace_draft">%1$s에 이미 임시 저장된 메시지가 있습니다. 바꾸시겠습니까?</string>
     <string name="mailto_link_could_not_be_decoded">링크로 보내는 메일을 디코딩할 수 없습니다: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">답장하기</string>
     <string name="notify_new_message">새 메시지</string>
     <string name="notify_background_connection_enabled">백그라운드 연결 사용</string>

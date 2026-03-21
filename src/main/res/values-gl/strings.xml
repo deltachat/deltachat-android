@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -115,7 +117,7 @@
     <string name="last_month">Último mes</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Última conexión: %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Último acceso %1$s</string>
     <string name="last_seen_unknown">Última conexión: Descoñecido</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -243,8 +245,6 @@
     <string name="channels">Canles</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nova Canle</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Engadir correspondentes</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nome da Canle</string>
     <string name="email">Email</string>
@@ -385,7 +385,7 @@
     <string name="ask_delete_contact">Eliminar contacto %1$s?\n\nOs contactos con conversas activas e os contactos da libreta de enderezos do sistema non se poden eliminar de xeito definitivo.</string>
     <string name="ask_start_chat_with">Conversa con %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
-    <string name="ask_remove_members">Eliminar  %1$s do grupo?</string>
+    <string name="ask_remove_members">Eliminar %1$s do grupo?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_from_channel">Eliminar %1$s da canle?</string>
     <string name="open_url_confirmation">Queres abrir esta ligazón?</string>
@@ -546,8 +546,6 @@
     <string name="incoming_messages">Mensaxes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensaxes saíntes</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Almacenar en %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Non conectado</string>
@@ -569,7 +567,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Crear novo perfil</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Xa teño un perfil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Acceso clásido con correo</string>
@@ -654,8 +652,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Utilizar personalizado: %s</string>
-    <string name="pref_using_default">Utilizando por omisión: %s</string>
     <string name="pref_profile_info_headline">Info do teu perfil</string>
     <string name="pref_profile_photo">Imaxe de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
@@ -687,8 +683,6 @@
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Mudo</string>
     <string name="pref_privacy">Intimidade</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Conversas e medios</string>
     <string name="pref_system_default">Por omsión no sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
@@ -746,8 +740,6 @@
     <string name="n_bytes_message">%1$s mensaxe</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Descarga o máximo dispoñible ata %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Seleccionar Perfil</string>
     <string name="profile_image_select">Elixe imaxe de perfil</string>
     <string name="select_your_new_profile_image">Elixe a túa nova imaxe de perfil</string>
     <string name="profile_image_delete">Elimina a imaxe de perfil</string>
@@ -825,13 +817,9 @@
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_disabled_by_other">Temporizador da eliminación de mensaxes descativado por %1$s.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
-    <string name="ephemeral_timer_seconds_by_you">Estableceches que as mensaxes desaparezan en  %1$s s</string>
+    <string name="ephemeral_timer_seconds_by_you">Estableceches que as mensaxes desaparezan en %1$s s</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">O temporizador de desaparición de mensaxes establecido en %1$s segundos por %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Puxeches en 1 minuto o temporizador de desaparición de mensaxes.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Temporizador de desaparición de mensaxes definido en 1 minuto por %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Definiches o temporizador de desaparición de mensaxes en 1 hora.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Temporizador de desaparición de mensaxes definido en 1 hora por %1$s.</string>
@@ -911,14 +899,12 @@
     <string name="verified_by">Introducido/a por %1$s</string>
     <string name="verified_by_you">Introducido/a por min</string>
     <string name="verified_by_unknown">Introducido/a</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Para garantir cifrado extremo-a-extremo, só podes adicionar contactos com un visto verde a este grupo.\n\nPodes encontrarche con contactos en persoa e escanear os seus códigos QR para os introducir.</string>
     <string name="mailto_dialog_header_select_chat">Elexir chat ao que enviar a mensaxe</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s xa ten un borrador, queres susbstituílo?</string>
     <string name="mailto_link_could_not_be_decoded">a ligazón mailto non se puido descodificar: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nova mensaxe</string>
     <string name="notify_background_connection_enabled">Conexión en segundo plano establecida</string>
@@ -993,7 +979,9 @@
     <string name="message_detail_received_desktop">recibido</string>
     <string name="menu.view.developer.open.log.folder">Abrir cartafol do rexistro</string>
     <string name="menu.view.developer.open.current.log.file">Abrir ficheiro actual do rexistro</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">A icona da bandexa do sistema non se pode desactivar porque Delta Chat iniciouse coa opción --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">A icona da bandexa do sistema non se pode desactivar porque Delta Chat iniciouse coa opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Non se atopan suxestións de escrita.</string>
     <string name="show_window">Mostrar xanela</string>
 

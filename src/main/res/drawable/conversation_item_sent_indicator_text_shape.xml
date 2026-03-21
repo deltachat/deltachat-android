@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-        <shape  android:shape="rectangle">
+        <shape android:shape="rectangle">
             <solid android:color="#0d000000" />
             <corners android:radius="@dimen/message_bubble_corner_radius" />
         </shape>
@@ -11,7 +11,9 @@
     <item android:bottom="@dimen/message_bubble_shadow_distance">
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
             <solid android:color="#fff3f3f3" />
-            <corners android:bottomLeftRadius="@dimen/message_bubble_corner_radius" android:bottomRightRadius="@dimen/message_bubble_corner_radius" />
+            <corners
+                android:bottomLeftRadius="@dimen/message_bubble_corner_radius"
+                android:bottomRightRadius="@dimen/message_bubble_corner_radius" />
         </shape>
     </item>
 

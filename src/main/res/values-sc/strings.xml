@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">AB</string>
@@ -329,8 +331,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Personalizatziones impreadas: %s</string>
-    <string name="pref_using_default">Predefinidos impreados: %s</string>
     <string name="pref_profile_info_headline">Sas informatziones de profilu tuas</string>
     <string name="pref_profile_photo">Fotografia de profilu</string>
     <string name="pref_blocked_contacts">Cuntatos blocados</string>
@@ -359,8 +359,6 @@
     <string name="pref_sound">Sonu</string>
     <string name="pref_silent">Istuda su sonu</string>
     <string name="pref_privacy">Riservadesa</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Tzarradas e mèdios</string>
     <string name="pref_system_default">Predefinidu de sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Craru</string>

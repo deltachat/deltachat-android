@@ -18,7 +18,7 @@
             app:contentInsetStart="14dp"
             app:contentInsetLeft="14dp"
             android:elevation="4dp"
-            android:theme="?attr/actionBarStyle"/>
+            android:theme="?attr/actionBarStyle" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -33,7 +33,7 @@
             app:tabBackground="?attr/colorPrimary"
             app:tabIndicatorColor="@color/white"
             app:tabTextColor="@color/gray10"
-            app:tabSelectedTextColor="@color/white"/>
+            app:tabSelectedTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,6 +41,6 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

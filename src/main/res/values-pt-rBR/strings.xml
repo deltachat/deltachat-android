@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -99,7 +101,7 @@
     <string name="last_month">Mês passado</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Visto pela última vez às %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Visto por último %1$s</string>
     <string name="last_seen_unknown">Visto pela última vez: desconhecido</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -205,8 +207,6 @@
     <string name="menu_new_contact">Novo contato</string>
     <string name="menu_new_chat">Nova conversa</string>
     <string name="menu_new_group">Novo grupo</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Adicionar Destinatários</string>
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
     <string name="menu_edit_group">Modificar grupo</string>
@@ -392,12 +392,12 @@
 
     <!-- punycode warning / labeled links -->
     <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Não perguntar de novo por  %1$s</string>
+    <string name="open_external_url_trust_domain">Não perguntar de novo por %1$s</string>
     <string name="puny_code_warning_header">Link suspeito detectado</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Tem certeza que deseja visitar %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Você clicou em um link que pode estar representando maliciosamente letras de aparência semelhante com o uso de alfabetos diferentes. Seguir o link rotulado como %1$s  levará a %2$s, o que é normal para caracteres não latinos. Se você não esperava esses caracteres, este link pode ser prejudicial</string>
+    <string name="puny_code_warning_description">Você clicou em um link que pode estar representando maliciosamente letras de aparência semelhante com o uso de alfabetos diferentes. Seguir o link rotulado como %1$s levará a %2$s, o que é normal para caracteres não latinos. Se você não esperava esses caracteres, este link pode ser prejudicial</string>
 
 
     <!-- search -->
@@ -459,8 +459,6 @@
     <string name="incoming_messages">Mensagens Recebidas</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensagens Enviadas</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Armazenamento em %1$s</string>
     <string name="connectivity">Conectividade</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Não conectado</string>
@@ -525,8 +523,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Usando personalização: %s</string>
-    <string name="pref_using_default">Usando padrão: %s</string>
     <string name="pref_profile_info_headline">Informações do seu perfil</string>
     <string name="pref_profile_photo">Foto do perfil</string>
     <string name="pref_blocked_contacts">Contatos bloqueados</string>
@@ -556,8 +552,6 @@
     <string name="pref_sound">Som</string>
     <string name="pref_silent">Silêncio</string>
     <string name="pref_privacy">Privacidade</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Conversas e mídia</string>
     <string name="pref_system_default">Padrão do sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
@@ -636,7 +630,7 @@
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Você quer apagar %1$d mensagens agora e todas as mensagens recém-obtidas \"%2$s\" no futuro?\n\n• Isso inclui todas as mídias\n\n• As mensagens serão excluídas independentemente de serem sido vistas ou não\n\n• \"Mensagens salvas\" serão ignoradas da exclusão local</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">Você quer apagar %1$d  mensagens agora e todas as mensagens recém-obtidas \"%2$s\" no futuro?\n\n⚠️ Isso inclui e-mails, mídia e \"Mensagens salvas\" em todas as pastas do servidor\n\n⚠️ Não use esta função se quiser manter os dados no servidor\n\n⚠️ Não use esta função se estiver usando outros clientes de e-mail além do Delta Chat</string>
+    <string name="autodel_server_ask">Você quer apagar %1$d mensagens agora e todas as mensagens recém-obtidas \"%2$s\" no futuro?\n\n⚠️ Isso inclui e-mails, mídia e \"Mensagens salvas\" em todas as pastas do servidor\n\n⚠️ Não use esta função se quiser manter os dados no servidor\n\n⚠️ Não use esta função se estiver usando outros clientes de e-mail além do Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
     <string name="autodel_server_enabled_hint">Isso inclui e-mails, mídia e \"Mensagens salvas\" em todas as pastas do servidor. Não use esta função se quiser manter os dados no servidor ou se estiver usando outros clientes de e-mail além do Delta Chat.</string>
     <string name="autodel_confirm">Eu entendo, apague todas essas mensagens</string>
@@ -684,16 +678,12 @@
     <string name="ephemeral_timer_seconds_by_you">Você definiu o temporizador de desaparecimento de mensagens para %1$s segundos</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Temporizador de desaparecimento de mensagens definido a %1$s s por %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 minuto.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Temporizador de desaparecimento de mensagens definido para 1 minuto por %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 hora.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Temporizador de desaparecimento de mensagens definido para 1 hora por %1$s.</string>
     <string name="ephemeral_timer_1_day_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 dia.</string>
     <!-- %1$s will be replaced by name of the contact -->
-    <string name="ephemeral_timer_1_day_by_other">Temporizador de desaparecimento de mensagens definido para 1 dia por  %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_other">Temporizador de desaparecimento de mensagens definido para 1 dia por %1$s.</string>
     <string name="ephemeral_timer_1_week_by_you">Você definiu o temporizador de desaparecimento de mensagens para 1 semana.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Temporizador de desaparecimento de mensagens definido para 1 semana por %1$s.</string>
@@ -702,7 +692,7 @@
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Temporizador de desaparecimento de mensagens definido para %1$s minutos por %2$s.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
-    <string name="ephemeral_timer_hours_by_you">Você definiu o temporizador de desaparecimento de mensagens para  %1$s horas.</string>
+    <string name="ephemeral_timer_hours_by_you">Você definiu o temporizador de desaparecimento de mensagens para %1$s horas.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_hours_by_other">Temporizador de desaparecimento de mensagens definido para %1$s horas por %2$s.</string>
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
@@ -710,7 +700,7 @@
     <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_days_by_other">Temporizador de desaparecimento de mensagens definido para %1$s dias por %2$s.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
-    <string name="ephemeral_timer_weeks_by_you">Você definiu o temporizador de desaparecimento de mensagens para  %1$s semanas.</string>
+    <string name="ephemeral_timer_weeks_by_you">Você definiu o temporizador de desaparecimento de mensagens para %1$s semanas.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Temporizador de desaparecimento de mensagens definido para %1$s semanas por %2$s.</string>
     <string name="devicemsg_self_deleted">Você excluiu o bate-papo \"Mensagens salvas\".\n\nℹ️ Para usar o recurso \"Mensagens salvas\" novamente, crie um novo bate-papo com você mesmo. </string>
@@ -767,7 +757,7 @@
     <string name="confirm_replace_draft">%1$s já tem um rascunho de mensagem, deseja substituí-lo?</string>
     <string name="mailto_link_could_not_be_decoded">link mailto não pôde ser decodificado: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nova mensagem</string>
     <string name="notify_background_connection_enabled">Conexão de fundo habilitada</string>
@@ -831,7 +821,9 @@
     <string name="message_detail_received_desktop">recebido</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de relatórios</string>
     <string name="menu.view.developer.open.current.log.file">Abrir relatório atual</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Nenhuma sugestão de ortografia encontrada.</string>
     <string name="show_window">Mostrar Janela</string>
 

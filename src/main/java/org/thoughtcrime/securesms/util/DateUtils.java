@@ -18,18 +18,13 @@ package org.thoughtcrime.securesms.util;
 
 import android.content.Context;
 import android.text.format.DateFormat;
-
 import androidx.annotation.NonNull;
-
-import org.thoughtcrime.securesms.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import org.thoughtcrime.securesms.R;
 
-/**
- * Utility methods to help display dates in a nice, easily readable way.
- */
+/** Utility methods to help display dates in a nice, easily readable way. */
 public class DateUtils extends android.text.format.DateUtils {
 
   private static boolean isWithin(final long millis, final long span, final TimeUnit unit) {
@@ -75,13 +70,13 @@ public class DateUtils extends android.text.format.DateUtils {
 
   public static String getExtendedTimeSpanString(final Context c, final long timestamp) {
     StringBuilder format = new StringBuilder();
-    if      (DateUtils.isToday(timestamp))                 {}
-    else if (isWithin(timestamp,   6, TimeUnit.DAYS)) format.append("EEE ");
+    if (DateUtils.isToday(timestamp)) {
+    } else if (isWithin(timestamp, 6, TimeUnit.DAYS)) format.append("EEE ");
     else if (isWithin(timestamp, 365, TimeUnit.DAYS)) format.append("MMM d, ");
-    else                                              format.append("MMM d, yyyy, ");
+    else format.append("MMM d, yyyy, ");
 
     if (DateFormat.is24HourFormat(c)) format.append("HH:mm");
-    else                              format.append("hh:mm a");
+    else format.append("hh:mm a");
 
     return getFormattedDateTime(timestamp, format.toString());
   }
@@ -90,16 +85,17 @@ public class DateUtils extends android.text.format.DateUtils {
     if (isWithin(timestamp, 1, TimeUnit.MINUTES)) {
       return c.getString(R.string.now);
     } else if (isWithin(timestamp, 1, TimeUnit.HOURS)) {
-      int mins = (int)TimeUnit.MINUTES.convert(System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
+      int mins =
+          (int)
+              TimeUnit.MINUTES.convert(
+                  System.currentTimeMillis() - timestamp, TimeUnit.MILLISECONDS);
       return c.getResources().getQuantityString(R.plurals.n_minutes, mins, mins);
     } else {
       return getExtendedTimeSpanString(c, timestamp);
     }
   }
 
-  public static String getRelativeDate(@NonNull Context context,
-                                       long timestamp)
-  {
+  public static String getRelativeDate(@NonNull Context context, long timestamp) {
     if (isToday(timestamp)) {
       return context.getString(R.string.today);
     } else if (isYesterday(timestamp)) {
@@ -114,9 +110,11 @@ public class DateUtils extends android.text.format.DateUtils {
   }
 
   public static String getFormatedDuration(long millis) {
-    return String.format("%02d:%02d",
-            TimeUnit.MILLISECONDS.toMinutes(millis),
-            TimeUnit.MILLISECONDS.toSeconds(millis-(TimeUnit.MILLISECONDS.toMinutes(millis)*60000)));
+    return String.format(
+        "%02d:%02d",
+        TimeUnit.MILLISECONDS.toMinutes(millis),
+        TimeUnit.MILLISECONDS.toSeconds(
+            millis - (TimeUnit.MILLISECONDS.toMinutes(millis) * 60000)));
   }
 
   public static String getFormattedCallDuration(Context c, int seconds) {

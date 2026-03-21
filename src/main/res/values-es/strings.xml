@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -115,21 +117,17 @@
     <string name="last_month">El mes pasado</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Visto por última vez: %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Visto por última vez: %1$s</string>
     <string name="last_seen_unknown">Visto por última vez: Desconocido</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d segundo</item>
-        <item quantity="many">%d segundos</item>
-        <item quantity="other">%d segundos</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
         <item quantity="one">%d minuto</item>
         <item quantity="many">%d minutos</item>
         <item quantity="other">%d minutos</item>
     </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Menos de 1 minuto</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -180,6 +178,7 @@
         <item quantity="other">%d seleccionados</item>
     </plurals>
     <string name="selected_colon">Seleccionado:</string>
+    <string name="selected">Seleccionado</string>
     <string name="self">Yo</string>
     <string name="draft">Borrador</string>
     <string name="image">Imagen</string>
@@ -191,6 +190,9 @@
     <string name="add_to_sticker_collection">Añadir a la colección de stickers</string>
     <string name="add_stickers_instructions">Para añadir stickers, toca en \"Abrir carpeta de stickers\", crea una subcarpeta para tu colección de stickers y copia imágenes y stickers allí</string>
     <string name="open_sticker_folder">Abrir la carpeta de stickers</string>
+    <string name="ask_add_sticker_to_collection">¿Añadir este sticker a tu colección?</string>
+    <string name="ask_delete_sticker">¿Eliminar este sticker?</string>
+    <string name="sticker_picker_empty_hint">Toca un sticker para añadirlo aquí.</string>
     <string name="images">Imágenes</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
@@ -258,7 +260,7 @@
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Nuevo contacto</string>
     <string name="menu_new_classic_contact">Añadir contacto manualmente</string>
-    <string name="new_classic_contact_explain">Los contactos añadidos manualmente se pueden utilizar para enviar mensajes  a contactos que usan clientes de correo electrónico clásico y no se garantiza que estén cifrados de extremo a extremo.</string>
+    <string name="new_classic_contact_explain">Los contactos añadidos manualmente se pueden utilizar para enviar mensajes a contactos que usan clientes de correo electrónico clásico y no se garantiza que estén cifrados de extremo a extremo.</string>
     <string name="menu_new_chat">Nuevo chat</string>
     <string name="menu_new_group">Nuevo grupo</string>
     <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
@@ -270,10 +272,14 @@
     <string name="channels">Canales</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nuevo canal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Agregar destinatarios</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nombre del canal</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d visualización</item>
+        <item quantity="many">%d visualizaciones</item>
+        <item quantity="other">%d visualizaciones</item>
+    </plurals>
     <string name="email">Correo electrónico</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nuevo correo electrónico</string>
@@ -289,6 +295,7 @@
     <string name="menu_add_attachment">Añadir adjunto</string>
     <string name="menu_leave_group">Abandonar grupo</string>
     <string name="menu_leave_channel">Abandonar canal</string>
+    <string name="menu_leave_and_delete">Abandonar y eliminar</string>
     <string name="menu_delete_chat">Eliminar chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vaciar chat</string>
@@ -388,7 +395,7 @@
     <string name="share_location_for_six_hours">Por 6 horas</string>
 
     <plurals name="ask_send_following_n_files_to">
-        <item quantity="one">¿Enviar el  archivo a %s?</item>
+        <item quantity="one">¿Enviar el archivo a %s?</item>
         <item quantity="many">¿Enviar los siguientes %d archivos a %s?</item>
         <item quantity="other">¿Enviar los siguientes %d archivos a %s?</item>
     </plurals>
@@ -396,25 +403,35 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Llamar</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Llamada</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Videollamada</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Contestar</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rechazar</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Llamada saliente</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Llamada</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videollamada</string>
+    <string name="call_initializing">Inicializando…</string>
+    <string name="call_incoming">Llamada entrante</string>
+    <string name="call_ringing">Sonando…</string>
+    <string name="call_reconnecting">Reconectando…</string>
+    <string name="call_ended">Finalizó la llamada</string>
+    <string name="call_failed">La llamada falló</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Llamada saliente</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Videollamada saliente</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Llamada entrante</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Llamada entrante</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Videollamada entrante</string>
     <string name="declined_call">Llamada rechazada</string>
     <string name="canceled_call">Llamada cancelada</string>
     <string name="missed_call">Llamada perdida</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -605,8 +622,6 @@
     <string name="incoming_messages">Mensajes entrantes</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mensajes salientes</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Almacenamiento en %1$s</string>
     <string name="connectivity">Conectividad</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Desconectado</string>
@@ -628,7 +643,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Crear perfil nuevo</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Ya tengo un perfil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Iniciar sesión con correo electrónico</string>
@@ -655,7 +670,7 @@
     <string name="welcome_chat_over_email">Chat seguro y descentralizado</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
-    <string name="login_advanced_hint">Este inicio de sesión es para usuarios avanzados:\n\n• No utilice una cuenta que esté usando en otra  app.\n\n• El servidor de correo electrónico clásico permite chats sin cifrado de extremo a extremo, los cuales están marcados por un icono de correo.</string>
+    <string name="login_advanced_hint">Este inicio de sesión es para usuarios avanzados:\n\n• No utilice una cuenta que esté usando en otra app.\n\n• El servidor de correo electrónico clásico permite chats sin cifrado de extremo a extremo, los cuales están marcados por un icono de correo.</string>
     <string name="login_inbox">Bandeja de entrada</string>
     <string name="login_imap_login">Nombre de usuario IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>
@@ -687,12 +702,16 @@
     <string name="add_transport">Añadir transporte</string>
     <string name="remove_transport">Eliminar transporte</string>
     <string name="edit_transport">Editar transporte</string>
+    <string name="used_for_sending">Usado para enviar</string>
+    <string name="hide_from_contacts">Ocultar de los contactos</string>
+    <string name="hidden_from_contacts">Ocultado de los contactos</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Los mensajes se reciben en todos los relays.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">¿Añadir este transporte?</string>
     <string name="invalid_transport_qr">El código QR escaneado no contiene un transporte válido.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">¿Eliminar el transporte \"%1$s\"?\nTus contactos solo podrán localizarte si previamente has contactado con ellos mediante otro transporte.\nEn caso de duda, quita el transporte más tarde.</string>
-
+    <string name="confirm_remove_or_hide_transport_x">¿Eliminar el relay \"%1$s\"?\n\nLos contactos que solo conocen este relay podrían no comunicarse contigo hasta que les envíes otro mensaje.\n\nEn caso de duda, es mejor ocultarlo que eliminarlo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
@@ -730,13 +749,11 @@
     <string name="ask_send_files_to_chat">¿Enviar %1$d archivos a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">¿Enviar %1$d archivo(s) a %2$d chats?</string>
     <string name="videos_sent_without_recoding">(Los videos se enviarán en su tamaño original. Para enviar videos como archivos más pequeños, adjúntelos por separado)</string>
-    <string name="share_text_multiple_chats">¿Enviar este texto  a %1$d chats?\n\n\"%2$s\"</string>
+    <string name="share_text_multiple_chats">¿Enviar este texto a %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Usando valor personalizado: %s</string>
-    <string name="pref_using_default">Usando valor por defecto: %s</string>
     <string name="pref_profile_info_headline">Información de perfil</string>
     <string name="pref_profile_photo">Foto de perfil</string>
     <string name="pref_blocked_contacts">Contactos bloqueados</string>
@@ -745,10 +762,12 @@
     <string name="pref_your_name">Tu nombre</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Texto de firma</string>
+    <string name="chat_description">Descripción</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Tecla Intro envía</string>
     <string name="pref_enter_sends_explain">La tecla Intro enviará tu mensaje</string>
     <string name="pref_outgoing_media_quality">Calidad de multimedia saliente</string>
+    <string name="pref_outgoing_media_quality_hint">Para enviar imágenes con calidad original, adjúntalas como \"Archivo\". Esto consume muchos más datos tanto para ti como para los destinatarios.</string>
     <string name="pref_outgoing_balanced">Balanceada</string>
     <string name="pref_outgoing_worse">Peor calidad, tamaño pequeño</string>
     <string name="pref_vibrate">Vibrar</string>
@@ -759,6 +778,10 @@
     <string name="pref_notifications">Notificaciones </string>
     <string name="pref_mention_notifications">Menciones</string>
     <string name="pref_mention_notifications_explain">En los grupos silenciados, notifica los mensajes dirigidos a ti, como respuestas o reacciones</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Llamadas</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Mostrar la pantalla de llamada para las llamadas entrantes</string>
     <string name="pref_notifications_show">Mostrar</string>
     <string name="pref_notifications_priority">Prioridad</string>
     <string name="pref_notifications_explain">Habilitar las notificaciones del sistema para nuevos mensajes</string>
@@ -768,8 +791,6 @@
     <string name="pref_sound">Sonido</string>
     <string name="pref_silent">Silencio</string>
     <string name="pref_privacy">Privacidad</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Chats y multimedia</string>
     <string name="pref_system_default">Predeterminado del sistema</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
@@ -806,11 +827,10 @@
     <string name="pref_background_btn_default">Usar imagen por defecto</string>
     <string name="pref_background_btn_gallery">Seleccionar de la galería</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si deshabilita esta opción, asegúrese de que su servidor y sus otros clientes estén configurados en consecuencia.\n\nDe lo contrario, las cosas pueden no funcionar en absoluto.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Modo multidispositivo</string>
     <string name="pref_multidevice_explain">Sincroniza tus mensajes con tus otros dispositivos. Se activa automáticamente al añadir un segundo dispositivo</string>
-    <string name="pref_multidevice_change_warn">El modo multidispositivo debe estar activado cuando usas el mismo perfil en varios dispositivos.
-Desactiva este ajuste solo si has eliminado este perfil de todos tus demás dispositivos.\n\nSi desactivas el modo multidispositivo mientras usas el perfil en varios dispositivos, se perderán mensajes y se producirán otros problemas.</string>
+    <string name="pref_multidevice_change_warn">El modo multidispositivo debe estar activado cuando usas el mismo perfil en varios dispositivos. Desactiva este ajuste solo si has eliminado este perfil de todos tus demás dispositivos.\n\nSi desactivas el modo multidispositivo mientras usas el perfil en varios dispositivos, se perderán mensajes y se producirán otros problemas.</string>
     <string name="pref_auto_folder_moves">Mover automáticamente a la carpeta DeltaChat</string>
     <string name="pref_only_fetch_mvbox_title">Solo obtener de la carpeta DeltaChat</string>
     <string name="pref_show_emails">Mostrar correos clásicos</string>
@@ -835,8 +855,6 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="n_bytes_message">Mensaje de %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Seleccionar perfil</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
@@ -844,7 +862,7 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="pref_edit_profile">Editar perfil</string>
     <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
     <string name="disable_imap_idle_explain">No utilizar la extensión IMAP IDLE aunque el servidor la admita. Habilitar esta opción retrasará el recibo de mensajes, actívala solo para pruebas.</string>
-    <string name="send_stats_to_devs">Enviar estadísticas a los desarrolladores  de Delta Chat</string>
+    <string name="send_stats_to_devs">Enviar estadísticas a los desarrolladores de Delta Chat</string>
     <string name="stats_device_message">¿Quieres ayudar a mejorar Delta Chat y apoyar la investigación enviando estadísticas de uso anónimas semanales?\n\n👉 Pulsa aquí… 👈</string>
     <string name="stats_confirmation_dialog">¿Quieres ayudar a mejorar Delta Chat y apoyar la investigación enviando estadísticas de uso anónimas semanales?</string>
     <string name="stats_thanks">¡Gracias! Siempre puedes desactivar el envío en \"Configuración -> Avanzado\".\n\n¿Tienes 5 minutos adicionales para participar en un estudio científico sobre la seguridad de Delta Chat?</string>
@@ -882,9 +900,9 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">¿Desea borrar %1$d mensajes ahora y todos los mensajes recientemente alcanzados \"%2$s\" en el futuro?\n\n• Esto incluye toda la multimedia\n\n• Los mensajes serán eliminados siendo vistos o no\n\n• \"Mensajes guardados\" serán saltados de este proceso local</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\"  al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de Delta Chat</string>
+    <string name="autodel_server_ask">¿Deseas borrar %1$d mensajes ahora y todos los mensajes recibidos en \"%2$s\" al futuro?\n\n⚠️ Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo más allá de Delta Chat\n\n⚠️ No uses esta función si deseas mantener tus datos en el servidor\n\n⚠️ No uses esta función si estás usando otros clientes de correo más allá de Delta Chat</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
-    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia  y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo además de Delta Chat</string>
+    <string name="autodel_server_enabled_hint">Esto incluye correos, multimedia y \"Mensajes guardados\" en todas las carpetas del servidor. No uses esta función si quieres mantener tus datos en el servidor o si estas usando otros clientes de correo además de Delta Chat</string>
     <string name="autodel_server_warn_multi_device_title">Activar la eliminación inmediata</string>
     <string name="autodel_server_warn_multi_device">Si habilita la eliminación inmediata, no podrá utilizar varios dispositivos en este perfil.</string>
     <string name="autodel_confirm">Comprendo, borrar todos estos mensajes</string>
@@ -907,6 +925,9 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="group_image_changed_by_you">Cambiaste la imagen del grupo.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Imagen del grupo cambiada por %1$s.</string>
+    <string name="chat_description_changed_by_you">Cambiaste la descripción del chat.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Descripción del chat modificada por %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Miembro %1$s añadido.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -939,10 +960,6 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="ephemeral_timer_seconds_by_you">Estableciste el temporizador de la desaparición de mensajes en %1$s segundos</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Temporizador de la desaparición de mensajes establecido en %1$s segundos por %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Estableciste el temporizador de la desaparición de mensajes en 1 minuto.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Temporizador de la desaparición de mensajes establecido en 1 minuto por %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Estableciste el temporizador de la desaparición de mensajes en 1 hora.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Temporizador de la desaparición de mensajes establecido en 1 hora por %1$s.</string>
@@ -1039,14 +1056,12 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="verified_by">Verificado por %1$s</string>
     <string name="verified_by_you">Verificado por ti</string>
     <string name="verified_by_unknown">Introducido</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Para garantizar el cifrado de extremo a extremo, solo puedes añadir contactos con una marca de verificación verde</string>
     <string name="mailto_dialog_header_select_chat">Seleccione el chat para enviar el mensaje</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ya tiene un mensaje borrador, ¿quieres reemplazarlo?</string>
     <string name="mailto_link_could_not_be_decoded">El enlace mailto no se pudo decodificar: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nuevo mensaje</string>
     <string name="notify_background_connection_enabled">Conexión en segundo plano habilitada</string>
@@ -1124,7 +1139,9 @@ Desactiva este ajuste solo si has eliminado este perfil de todos tus demás disp
     <string name="message_detail_received_desktop">recibido</string>
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
 

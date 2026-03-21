@@ -1,5 +1,7 @@
 package org.thoughtcrime.securesms.scribbles;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,11 +11,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.imageeditor.ColorableRenderer;
 import org.thoughtcrime.securesms.imageeditor.ImageEditorMediaConstraints;
@@ -30,15 +34,8 @@ import org.thoughtcrime.securesms.util.ParcelUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import static android.app.Activity.RESULT_OK;
-
-public final class ImageEditorFragment extends Fragment implements ImageEditorHud.EventListener,
-                                                                   VerticalSlideColorPicker.OnColorChangeListener{
+public final class ImageEditorFragment extends Fragment
+    implements ImageEditorHud.EventListener, VerticalSlideColorPicker.OnColorChangeListener {
 
   private static final String TAG = ImageEditorFragment.class.getSimpleName();
 
@@ -48,10 +45,9 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
   private EditorModel restoredModel;
 
-  @Nullable
-  private EditorElement currentSelection;
-  private int           imageMaxHeight;
-  private int           imageMaxWidth;
+  @Nullable private EditorElement currentSelection;
+  private int imageMaxHeight;
+  private int imageMaxWidth;
 
   public static class Data {
     private final Bundle bundle;
@@ -79,10 +75,10 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     }
   }
 
-  private Uri             imageUri;
-  private ImageEditorHud  imageEditorHud;
+  private Uri imageUri;
+  private ImageEditorHud imageEditorHud;
   private ImageEditorView imageEditorView;
-  private boolean         cropAvatar;
+  private boolean cropAvatar;
 
   public static ImageEditorFragment newInstance(@NonNull Uri imageUri, boolean cropAvatar) {
     Bundle args = new Bundle();
@@ -105,13 +101,16 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
     MediaConstraints mediaConstraints = new ImageEditorMediaConstraints();
 
-    imageMaxWidth  = mediaConstraints.getImageMaxWidth(requireContext());
+    imageMaxWidth = mediaConstraints.getImageMaxWidth(requireContext());
     imageMaxHeight = mediaConstraints.getImageMaxHeight(requireContext());
   }
 
   @Nullable
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater,
+      @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
     return inflater.inflate(R.layout.image_editor_fragment, container, false);
   }
 
@@ -119,7 +118,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
 
-    imageEditorHud  = view.findViewById(R.id.scribble_hud);
+    imageEditorHud = view.findViewById(R.id.scribble_hud);
     imageEditorView = view.findViewById(R.id.image_editor_view);
 
     imageEditorHud.setEventListener(this);
@@ -138,8 +137,9 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     }
 
     if (editorModel == null) {
-      editorModel = cropAvatar? EditorModel.createForCircleEditing() : new EditorModel();
-      EditorElement image = new EditorElement(new UriGlideRenderer(imageUri, true, imageMaxWidth, imageMaxHeight));
+      editorModel = cropAvatar ? EditorModel.createForCircleEditing() : new EditorModel();
+      EditorElement image =
+          new EditorElement(new UriGlideRenderer(imageUri, true, imageMaxWidth, imageMaxHeight));
       image.getFlags().setSelectable(false).persist();
       editorModel.addElement(image);
     }
@@ -178,14 +178,15 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
   }
 
   private void startTextEntityEditing(@NonNull EditorElement textElement, boolean selectAll) {
-    imageEditorView.startTextEditing(textElement, Prefs.isIncognitoKeyboardEnabled(getContext()), selectAll);
+    imageEditorView.startTextEditing(
+        textElement, Prefs.isIncognitoKeyboardEnabled(getContext()), selectAll);
   }
 
   protected void addText() {
-    String                initialText = "";
-    int                   color       = imageEditorHud.getActiveColor();
-    MultiLineTextRenderer renderer    = new MultiLineTextRenderer(initialText, color);
-    EditorElement         element     = new EditorElement(renderer);
+    String initialText = "";
+    int color = imageEditorHud.getActiveColor();
+    MultiLineTextRenderer renderer = new MultiLineTextRenderer(initialText, color);
+    EditorElement element = new EditorElement(renderer);
 
     imageEditorView.getModel().addElementCentered(element, 1);
     imageEditorView.invalidate();
@@ -201,8 +202,13 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     if (resultCode == RESULT_OK && requestCode == SELECT_STICKER_REQUEST_CODE && data != null) {
       final String stickerFile = data.getStringExtra(StickerSelectActivity.EXTRA_STICKER_FILE);
 
-      UriGlideRenderer renderer = new UriGlideRenderer(Uri.parse("file:///android_asset/" + stickerFile), false, imageMaxWidth, imageMaxHeight);
-      EditorElement element     = new EditorElement(renderer);
+      UriGlideRenderer renderer =
+          new UriGlideRenderer(
+              Uri.parse("file:///android_asset/" + stickerFile),
+              false,
+              imageMaxWidth,
+              imageMaxHeight);
+      EditorElement element = new EditorElement(renderer);
       imageEditorView.getModel().addElementCentered(element, 0.2f);
       currentSelection = element;
     } else {
@@ -218,7 +224,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     switch (mode) {
       case CROP:
         imageEditorView.getModel().startCrop();
-      break;
+        break;
 
       case DRAW:
         imageEditorView.startDrawing(0.01f, Paint.Cap.ROUND, false);
@@ -228,10 +234,11 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
         imageEditorView.startDrawing(0.03f, Paint.Cap.SQUARE, false);
         break;
 
-      case BLUR: {
-        imageEditorView.startDrawing(0.075f, Paint.Cap.ROUND, true);
-        break;
-      }
+      case BLUR:
+        {
+          imageEditorView.startDrawing(0.075f, Paint.Cap.ROUND, true);
+          break;
+        }
 
       case TEXT:
         addText();
@@ -251,42 +258,43 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
 
   @Override
   public void onSave() {
-    Util.runOnBackground(() -> {
-      Activity activity = ImageEditorFragment.this.getActivity();
-      if (activity == null) {
-        return;
-      }
-      Bitmap bitmap = imageEditorView.getModel().render(activity);
-      PersistentBlobProvider provider = PersistentBlobProvider.getInstance();
-      ByteArrayOutputStream baos     = new ByteArrayOutputStream();
-      bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
-
-      byte[] data = baos.toByteArray();
-      baos   = null;
-      bitmap = null;
-
-      Uri uri = null;
-      if (cropAvatar) {
-        File file = new File(activity.getCacheDir(), "cropped");
-        try {
-          FileOutputStream stream = new FileOutputStream(file);
-          stream.write(data);
-          stream.flush();
-          stream.close();
-          uri = Uri.fromFile(file);
-        } catch (IOException e) {
-            e.printStackTrace();
+    Util.runOnBackground(
+        () -> {
+          Activity activity = ImageEditorFragment.this.getActivity();
+          if (activity == null) {
             return;
-        }
-      } else {
-        uri = provider.create(activity, data, MediaUtil.IMAGE_JPEG, null);
-      }
+          }
+          Bitmap bitmap = imageEditorView.getModel().render(activity);
+          PersistentBlobProvider provider = PersistentBlobProvider.getInstance();
+          ByteArrayOutputStream baos = new ByteArrayOutputStream();
+          bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
 
-      Intent intent = new Intent();
-      intent.setData(uri);
-      activity.setResult(RESULT_OK, intent);
-      activity.finish();
-    });
+          byte[] data = baos.toByteArray();
+          baos = null;
+          bitmap = null;
+
+          Uri uri = null;
+          if (cropAvatar) {
+            File file = new File(activity.getCacheDir(), "cropped");
+            try {
+              FileOutputStream stream = new FileOutputStream(file);
+              stream.write(data);
+              stream.flush();
+              stream.close();
+              uri = Uri.fromFile(file);
+            } catch (IOException e) {
+              e.printStackTrace();
+              return;
+            }
+          } else {
+            uri = provider.create(activity, data, MediaUtil.IMAGE_JPEG, null);
+          }
+
+          Intent intent = new Intent();
+          intent.setData(uri);
+          activity.setResult(RESULT_OK, intent);
+          activity.finish();
+        });
   }
 
   @Override
@@ -318,9 +326,7 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
   }
 
   @Override
-  public void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard) {
-
-  }
+  public void onRequestFullScreen(boolean fullScreen, boolean hideKeyboard) {}
 
   private void refreshUniqueColors() {
     imageEditorHud.setColorPalette(imageEditorView.getModel().getUniqueColorsIgnoringAlpha());
@@ -330,47 +336,51 @@ public final class ImageEditorFragment extends Fragment implements ImageEditorHu
     imageEditorHud.setUndoAvailability(undoAvailable);
   }
 
-   private final ImageEditorView.TapListener selectionListener = new ImageEditorView.TapListener() {
+  private final ImageEditorView.TapListener selectionListener =
+      new ImageEditorView.TapListener() {
 
-     @Override
-     public void onEntityDown(@Nullable EditorElement editorElement) {
-       if (editorElement == null) {
-         currentSelection = null;
-         imageEditorHud.enterMode(ImageEditorHud.Mode.NONE);
-         imageEditorView.doneTextEditing();
-       }
-     }
-
-     @Override
-     public void onEntitySingleTap(@Nullable EditorElement editorElement) {
-       currentSelection = editorElement;
-       if (currentSelection != null) {
-         if (editorElement.getRenderer() instanceof MultiLineTextRenderer) {
-           setTextElement(editorElement, (ColorableRenderer) editorElement.getRenderer(), imageEditorView.isTextEditing());
-         } else {
-           imageEditorHud.enterMode(ImageEditorHud.Mode.MOVE_DELETE);
-         }
-       }
-     }
-
-     @Override
-      public void onEntityDoubleTap(@NonNull EditorElement editorElement) {
-        currentSelection = editorElement;
-        if (editorElement.getRenderer() instanceof MultiLineTextRenderer) {
-          setTextElement(editorElement, (ColorableRenderer) editorElement.getRenderer(), true);
+        @Override
+        public void onEntityDown(@Nullable EditorElement editorElement) {
+          if (editorElement == null) {
+            currentSelection = null;
+            imageEditorHud.enterMode(ImageEditorHud.Mode.NONE);
+            imageEditorView.doneTextEditing();
+          }
         }
-      }
 
-     private void setTextElement(@NonNull EditorElement editorElement,
-                                 @NonNull ColorableRenderer colorableRenderer,
-                                 boolean startEditing)
-     {
-       int color = colorableRenderer.getColor();
-       imageEditorHud.enterMode(ImageEditorHud.Mode.TEXT);
-       imageEditorHud.setActiveColor(color);
-       if (startEditing) {
-         startTextEntityEditing(editorElement, false);
-       }
-     }
-   };
+        @Override
+        public void onEntitySingleTap(@Nullable EditorElement editorElement) {
+          currentSelection = editorElement;
+          if (currentSelection != null) {
+            if (editorElement.getRenderer() instanceof MultiLineTextRenderer) {
+              setTextElement(
+                  editorElement,
+                  (ColorableRenderer) editorElement.getRenderer(),
+                  imageEditorView.isTextEditing());
+            } else {
+              imageEditorHud.enterMode(ImageEditorHud.Mode.MOVE_DELETE);
+            }
+          }
+        }
+
+        @Override
+        public void onEntityDoubleTap(@NonNull EditorElement editorElement) {
+          currentSelection = editorElement;
+          if (editorElement.getRenderer() instanceof MultiLineTextRenderer) {
+            setTextElement(editorElement, (ColorableRenderer) editorElement.getRenderer(), true);
+          }
+        }
+
+        private void setTextElement(
+            @NonNull EditorElement editorElement,
+            @NonNull ColorableRenderer colorableRenderer,
+            boolean startEditing) {
+          int color = colorableRenderer.getColor();
+          imageEditorHud.enterMode(ImageEditorHud.Mode.TEXT);
+          imageEditorHud.setActiveColor(color);
+          if (startEditing) {
+            startTextEntityEditing(editorElement, false);
+          }
+        }
+      };
 }

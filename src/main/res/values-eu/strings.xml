@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Ados</string>
@@ -115,19 +117,9 @@
     <string name="last_month">Azken hilabetea</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">%1$s-n ikusi da azken</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Azken aldiz begiratua %1$s</string>
     <string name="last_seen_unknown">Azken aldiz begiratzea: ezezaguna</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">segundo %d</item>
-        <item quantity="other">%d segundo</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">minutu %d</item>
-        <item quantity="other">%d minutu</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">min %d</item>
@@ -178,7 +170,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Stickerra</string>
     <string name="add_to_sticker_collection">Gehitu Sticker bildumara</string>
-    <string name="add_stickers_instructions">Stickerretara gehitzeko, klik egin \"Ireki sticker karpeta\"  aukeran, sortu azpikarpeta bat zure sticker multzoarentzat eta arrastatu irudi eta sticker fitxategiak bertara.</string>
+    <string name="add_stickers_instructions">Stickerretara gehitzeko, klik egin \"Ireki sticker karpeta\" aukeran, sortu azpikarpeta bat zure sticker multzoarentzat eta arrastatu irudi eta sticker fitxategiak bertara.</string>
     <string name="open_sticker_folder">Ireki sticker karpeta</string>
     <string name="images">Irudiak</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -259,8 +251,6 @@
     <string name="channels">Kanalak</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Kanal berria</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Gehitu harpidedunak</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanalaren izena</string>
     <string name="email">Posta elektronikoa</string>
@@ -384,25 +374,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Deitu</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Audio deia</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Bideo deia</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Erantzun</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Ukatu</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Irteerako deia</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Irteerako audio deia</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Irteerako bideo deia</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Sarrerako deia</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Sarrerako audio deia</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Sarrerako bideo deia</string>
     <string name="declined_call">Ukatutako deia</string>
     <string name="canceled_call">Bertan behera utzitako deia</string>
     <string name="missed_call">Galdutako deia</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -588,8 +578,6 @@
     <string name="incoming_messages">Sarrerako mezuak</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Irteerako mezuak</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">%1$s(e)ko biltegiratzea</string>
     <string name="connectivity">Konexioa</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Konektatu gabe</string>
@@ -611,7 +599,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Sortu kontu berria</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Badut kontu bat</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Erabili eposta klasikoa errele gisa</string>
@@ -673,16 +661,13 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Gehitu errelea?</string>
     <string name="invalid_transport_qr">Eskaneatutako QR kodeak ez dauka baliozko errelerik.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">\"%1$s\" errelea kendu?\n\nZure kontaktuak soilik jar daitezke zurekin harremanetan aurretik beste errele baten bidez haiekin harremanetan jarri bazara.\n\nZalantzarik baduzu, kendu errelea geroago.</string>
-
     <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
     <string name="login_error_mail">Sartu baliozko e-mail helbide bat</string>
     <string name="login_error_server">Sartu baliozko zerbitzari / IP helbide bat</string>
-    <string name="login_error_port">Sartu baliozko ataka bat  (1–65535)</string>
+    <string name="login_error_port">Sartu baliozko ataka bat (1–65535)</string>
     <string name="login_error_required_fields">Sartu baliozko e-mail helbidea eta pasahitza</string>
     <string name="import_backup_title">Inportatu babeskopia</string>
-    <string name="import_backup_ask">Babeskopia aurkitu da:  \"%1$s\".\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
+    <string name="import_backup_ask">Babeskopia aurkitu da: \"%1$s\".\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
     <string name="import_backup_no_backup_found">Ez da babeskopiarik aurkitu.\n\nKopiatu babeskopia \"%1$s\" karpetan eta saiatu berriro.</string>
     <!-- %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
@@ -718,8 +703,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Pertsonalizatua erabiltzen: %s</string>
-    <string name="pref_using_default">Lehenetsia erabiltzen: %s</string>
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
     <string name="pref_profile_photo">Profileko argazkia</string>
     <string name="pref_blocked_contacts">Blokeatutako kontaktuak</string>
@@ -752,8 +735,6 @@
     <string name="pref_sound">Soinua</string>
     <string name="pref_silent">Isila</string>
     <string name="pref_privacy">Pribatutasuna</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Txatak eta multimedia</string>
     <string name="pref_system_default">Sisteman lehenetsia</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Argia</string>
@@ -790,7 +771,7 @@
     <string name="pref_background_btn_default">Erabili irudi lehenetsia</string>
     <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Gailu anitzeko modua</string>
     <string name="pref_multidevice_explain">Sinkronizatu zure mezuak zure beste gailuekin. Automatikoki gaitzen da bigarren gailu bat gehitzean.</string>
     <string name="pref_multidevice_change_warn">Gailu anitzeko moduak gaituta egon behar du kontu bera hainbat gailutan erabiltzean. Desaktibatu ezarpen hau soilik kontu hau beste gailu guztietatik kendu baduzu.\n\nGailu anitzeko modua desaktibatzeak kontua hainbat gailutan erabiltzen ari den bitartean, mezuak galtzea eta bestelako arazoak eragingo ditu.</string>
@@ -818,8 +799,6 @@
     <string name="n_bytes_message">%1$s mezu</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Deskargatu eskuragarri dagoen gehienezkoa %1$s arte</string>
-    <!-- deprecated -->
-    <string name="select_profile">Aukeratu kontua</string>
     <string name="profile_image_select">Aukeratu abatarra</string>
     <string name="select_your_new_profile_image">Aukeratu zure abatar berria</string>
     <string name="profile_image_delete">Ezabatu abatarra</string>
@@ -925,10 +904,6 @@
     <string name="ephemeral_timer_seconds_by_you">Mezuen desagerpen-denbora %1$s segundotan ezarri duzu.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">%2$s(e)k mezuen desagerpen-denbora %1$s segundotan ezarri du.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Mezuen desagerpen-denbora 1 minutakoa dela ezarri duzu.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">%1$s(e)k mezuen desagerpen-denbora 1 minutukoa dela ezarri du.</string>
     <string name="ephemeral_timer_1_hour_by_you">Mezuen desagerpen-denbora 1 ordukoa dela ezarri duzu.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">%1$s(e)k mezuen desagerpen-denbora 1 ordukoa dela ezarri du.</string>
@@ -1025,14 +1000,12 @@
     <string name="verified_by">%1$s(e)k egiaztatuta</string>
     <string name="verified_by_you">Nik egiaztatuta</string>
     <string name="verified_by_unknown">Egiaztatuta</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Muturretik muturrera zifratzea bermatzeko, marka berdea duten kontaktuak soilik gehitu ditzakezu talde honetara.\n\nKontaktuekin aurrez aurre elkartu zaitezke eta haien QR kodea eskaneatu dezakezu elkar egiaztatzeko.</string>
     <string name="mailto_dialog_header_select_chat">Aukeratu txat bat mezua bidaltzeko</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s(e)k zirriborro bat du dagoeneko, ordezkatu nahi duzu?</string>
     <string name="mailto_link_could_not_be_decoded"> mailto esteka ezin izan da deszifratu: %1$s </string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Erantzun</string>
     <string name="notify_new_message">Mezu berria</string>
     <string name="notify_background_connection_enabled">Bigarren planoko konexioa gaituta</string>
@@ -1110,7 +1083,9 @@
     <string name="message_detail_received_desktop">jasota</string>
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Erretiluko ikonoa ezin da desgaitu, Delta Chat --minimized aukerarekin abiarazi baita.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Erretiluko ikonoa ezin da desgaitu, Delta Chat --minimized aukerarekin abiarazi baita.</string>
     <string name="no_spellcheck_suggestions_found">Ez dago ortografia-iradokizunik.</string>
     <string name="show_window">Erakutsi leihoa</string>
 
@@ -1172,7 +1147,7 @@
     <string name="InfoPlist_NSCameraUsageDescription">Kamera atzitzeko baimena emateak argazkiak eta bideoak ateratzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat-ek zure kokapena partekatzeko baimena behar du, kokapena partekatzea aktibatuta duzun denbora-tartean.</string>
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat-ek zure kokapena partekatzeko baimena behar du, kokapena partekatzea aktibatuta duzun denbora-tartean.</string>
-    <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofonoa  atzitzeko baimena emateak audioa grabatzea ahalbidetzen dizu.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Mikrofonoa atzitzeko baimena emateak audioa grabatzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Argazkien bilduma atzitzeko baimena emateak bertatik argazkiak igotzea ahalbidetzen dizu.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat-ek zure argazki galerian irudiak gorde nahi ditu.</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat-ek Face ID erabil dezake zure tokiko profila, babeskopien sorkuntza eta bigarren gailu baten konfigurazioa babesteko.</string>

@@ -22,6 +22,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
+import android.os.Build;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -31,16 +32,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-
+import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.CallInfo;
+import chat.delta.rpc.types.CallState;
+import chat.delta.rpc.types.Reactions;
+import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
-
+import java.util.List;
+import java.util.Set;
+import org.thoughtcrime.securesms.calls.CallCoordinator;
 import org.thoughtcrime.securesms.calls.CallUtil;
 import org.thoughtcrime.securesms.components.AvatarImageView;
 import org.thoughtcrime.securesms.components.BorderlessImageView;
@@ -72,58 +78,46 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.views.Stub;
 
-import java.util.List;
-import java.util.Set;
-
-import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.CallInfo;
-import chat.delta.rpc.types.CallState;
-import chat.delta.rpc.types.Reactions;
-import chat.delta.rpc.types.VcardContact;
-
 /**
- * A view that displays an individual conversation item within a conversation
- * thread.  Used by ComposeMessageActivity's ListActivity via a ConversationAdapter.
+ * A view that displays an individual conversation item within a conversation thread. Used by
+ * ComposeMessageActivity's ListActivity via a ConversationAdapter.
  *
  * @author Moxie Marlinspike
- *
  */
-
-public class ConversationItem extends BaseConversationItem
-{
+public class ConversationItem extends BaseConversationItem {
   private static final String TAG = ConversationItem.class.getSimpleName();
 
   private static final Rect SWIPE_RECT = new Rect();
 
   private static final int MAX_MEASURE_CALLS = 3;
 
-  private DcContact     dcContact;
+  private DcContact dcContact;
   // Whether the sender's avatar and name should be shown (usually the case in group threads):
-  private boolean       showSender;
+  private boolean showSender;
   private GlideRequests glideRequests;
 
-  protected ViewGroup              bodyBubble;
+  protected ViewGroup bodyBubble;
   protected ReactionsConversationView reactionsView;
-  protected View                   replyView;
-  protected View                   jumptoView;
-  @Nullable private QuoteView      quoteView;
-  private   ConversationItemFooter footer;
-  private   TextView               groupSender;
-  private   View                   groupSenderHolder;
-  private   AvatarImageView        contactPhoto;
-  protected ViewGroup              contactPhotoHolder;
-  private   ViewGroup              container;
-  private   Button                 msgActionButton;
-  private   Button                 showFullButton;
+  protected View replyView;
+  protected View jumptoView;
+  @Nullable private QuoteView quoteView;
+  private ConversationItemFooter footer;
+  private TextView groupSender;
+  private View groupSenderHolder;
+  private AvatarImageView contactPhoto;
+  protected ViewGroup contactPhotoHolder;
+  private ViewGroup container;
+  private Button msgActionButton;
+  private Button showFullButton;
 
-  private @NonNull  Stub<ConversationItemThumbnail> mediaThumbnailStub;
-  private @NonNull  Stub<AudioView>                 audioViewStub;
-  private @NonNull  Stub<DocumentView>              documentViewStub;
-  private @NonNull  Stub<WebxdcView>                webxdcViewStub;
-  private           Stub<BorderlessImageView>       stickerStub;
-  private           Stub<VcardView>                 vcardViewStub;
-  private           Stub<CallItemView>              callViewStub;
-  private @Nullable EventListener                   eventListener;
+  private @NonNull Stub<ConversationItemThumbnail> mediaThumbnailStub;
+  private @NonNull Stub<AudioView> audioViewStub;
+  private @NonNull Stub<DocumentView> documentViewStub;
+  private @NonNull Stub<WebxdcView> webxdcViewStub;
+  private Stub<BorderlessImageView> stickerStub;
+  private Stub<VcardView> vcardViewStub;
+  private Stub<CallItemView> callViewStub;
+  private @Nullable EventListener eventListener;
 
   private int measureCalls;
 
@@ -144,27 +138,27 @@ public class ConversationItem extends BaseConversationItem
 
     initializeAttributes();
 
-    this.bodyText                =            findViewById(R.id.conversation_item_body);
-    this.footer                  =            findViewById(R.id.conversation_item_footer);
-    this.reactionsView           =            findViewById(R.id.reactions_view);
-    this.groupSender             =            findViewById(R.id.group_message_sender);
-    this.contactPhoto            =            findViewById(R.id.contact_photo);
-    this.contactPhotoHolder      =            findViewById(R.id.contact_photo_container);
-    this.bodyBubble              =            findViewById(R.id.body_bubble);
-    this.mediaThumbnailStub      = new Stub<>(findViewById(R.id.image_view_stub));
-    this.audioViewStub           = new Stub<>(findViewById(R.id.audio_view_stub));
-    this.documentViewStub        = new Stub<>(findViewById(R.id.document_view_stub));
-    this.webxdcViewStub          = new Stub<>(findViewById(R.id.webxdc_view_stub));
-    this.stickerStub             = new Stub<>(findViewById(R.id.sticker_view_stub));
-    this.vcardViewStub           = new Stub<>(findViewById(R.id.vcard_view_stub));
-    this.callViewStub            = new Stub<>(findViewById(R.id.call_view_stub));
-    this.groupSenderHolder       =            findViewById(R.id.group_sender_holder);
-    this.quoteView               =            findViewById(R.id.quote_view);
-    this.container               =            findViewById(R.id.container);
-    this.replyView               =            findViewById(R.id.reply_icon);
-    this.jumptoView              =            findViewById(R.id.jumpto_icon);
-    this.msgActionButton         =            findViewById(R.id.msg_action_button);
-    this.showFullButton          =            findViewById(R.id.show_full_button);
+    this.bodyText = findViewById(R.id.conversation_item_body);
+    this.footer = findViewById(R.id.conversation_item_footer);
+    this.reactionsView = findViewById(R.id.reactions_view);
+    this.groupSender = findViewById(R.id.group_message_sender);
+    this.contactPhoto = findViewById(R.id.contact_photo);
+    this.contactPhotoHolder = findViewById(R.id.contact_photo_container);
+    this.bodyBubble = findViewById(R.id.body_bubble);
+    this.mediaThumbnailStub = new Stub<>(findViewById(R.id.image_view_stub));
+    this.audioViewStub = new Stub<>(findViewById(R.id.audio_view_stub));
+    this.documentViewStub = new Stub<>(findViewById(R.id.document_view_stub));
+    this.webxdcViewStub = new Stub<>(findViewById(R.id.webxdc_view_stub));
+    this.stickerStub = new Stub<>(findViewById(R.id.sticker_view_stub));
+    this.vcardViewStub = new Stub<>(findViewById(R.id.vcard_view_stub));
+    this.callViewStub = new Stub<>(findViewById(R.id.call_view_stub));
+    this.groupSenderHolder = findViewById(R.id.group_sender_holder);
+    this.quoteView = findViewById(R.id.quote_view);
+    this.container = findViewById(R.id.container);
+    this.replyView = findViewById(R.id.reply_icon);
+    this.jumptoView = findViewById(R.id.jumpto_icon);
+    this.msgActionButton = findViewById(R.id.msg_action_button);
+    this.showFullButton = findViewById(R.id.show_full_button);
 
     setOnClickListener(new ClickListener(null));
 
@@ -175,18 +169,20 @@ public class ConversationItem extends BaseConversationItem
   }
 
   @Override
-  public void bind(@NonNull DcMsg                   messageRecord,
-                   @NonNull DcChat                  dcChat,
-                   @NonNull GlideRequests           glideRequests,
-                   @NonNull Set<DcMsg>              batchSelected,
-                   @NonNull Recipient               recipients,
-                   boolean                          pulseHighlight,
-                   @Nullable AudioPlaybackViewModel playbackViewModel,
-                   AudioView.OnActionListener       audioPlayPauseListener)
-  {
+  public void bind(
+      @NonNull DcMsg messageRecord,
+      @NonNull DcChat dcChat,
+      @NonNull GlideRequests glideRequests,
+      @NonNull Set<DcMsg> batchSelected,
+      @NonNull Recipient recipients,
+      boolean pulseHighlight,
+      @Nullable AudioPlaybackViewModel playbackViewModel,
+      AudioView.OnActionListener audioPlayPauseListener) {
     bindPartial(messageRecord, dcChat, batchSelected, pulseHighlight, recipients);
-    this.glideRequests          = glideRequests;
-    this.showSender             = ((dcChat.isMultiUser() || dcChat.isSelfTalk()) && !messageRecord.isOutgoing()) || messageRecord.getOverrideSenderName() != null;
+    this.glideRequests = glideRequests;
+    this.showSender =
+        ((dcChat.isMultiUser() || dcChat.isSelfTalk()) && !messageRecord.isOutgoing())
+            || messageRecord.getOverrideSenderName() != null;
 
     if (showSender) {
       this.dcContact = dcContext.getContact(messageRecord.getFromId());
@@ -194,13 +190,14 @@ public class ConversationItem extends BaseConversationItem
 
     if (dcChat.isSelfTalk() && messageRecord.getOriginalMsgId() != 0) {
       jumptoView.setVisibility(View.VISIBLE);
-      jumptoView.setOnClickListener(view -> {
-        if (eventListener != null) {
-          eventListener.onJumpToOriginalClicked(messageRecord);
-        }
-      });
+      jumptoView.setOnClickListener(
+          view -> {
+            if (eventListener != null) {
+              eventListener.onJumpToOriginalClicked(messageRecord);
+            }
+          });
     } else {
-        jumptoView.setVisibility(View.GONE);
+      jumptoView.setVisibility(View.GONE);
     }
 
     setGutterSizes(messageRecord, showSender);
@@ -220,7 +217,6 @@ public class ConversationItem extends BaseConversationItem
     }
   }
 
-
   @Override
   public void setEventListener(@Nullable EventListener eventListener) {
     this.eventListener = eventListener;
@@ -229,7 +225,8 @@ public class ConversationItem extends BaseConversationItem
   public boolean disallowSwipe(float downX, float downY) {
     // If it is possible to reply to a message, it should also be possible to swipe it.
     // For this to be possible we need a non-null reply icon.
-    // This means that `replyView != null` must always be the same as ConversationFragment.canReplyToMsg(messageRecord).
+    // This means that `replyView != null` must always be the same as
+    // ConversationFragment.canReplyToMsg(messageRecord).
     if (replyView == null) return true;
     if (!dcChat.canSend()) return true;
 
@@ -252,7 +249,7 @@ public class ConversationItem extends BaseConversationItem
       if (quoteView == null) {
         throw new AssertionError();
       }
-      int quoteWidth     = quoteView.getMeasuredWidth();
+      int quoteWidth = quoteView.getMeasuredWidth();
       int availableWidth = getAvailableMessageBubbleWidth(quoteView);
 
       if (quoteWidth != availableWidth) {
@@ -274,10 +271,11 @@ public class ConversationItem extends BaseConversationItem
   }
 
   private void initializeAttributes() {
-    final int[]      attributes = new int[] {
-        R.attr.conversation_item_incoming_bubble_color,
-        R.attr.conversation_item_outgoing_bubble_color,
-    };
+    final int[] attributes =
+        new int[] {
+          R.attr.conversation_item_incoming_bubble_color,
+          R.attr.conversation_item_outgoing_bubble_color,
+        };
     try (TypedArray attrs = context.obtainStyledAttributes(attributes)) {
       incomingBubbleColor = attrs.getColor(0, Color.WHITE);
       outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
@@ -285,8 +283,7 @@ public class ConversationItem extends BaseConversationItem
   }
 
   @Override
-  public void unbind() {
-  }
+  public void unbind() {}
 
   public DcMsg getMessageRecord() {
     return messageRecord;
@@ -307,8 +304,12 @@ public class ConversationItem extends BaseConversationItem
     super.setInteractionState(messageRecord, pulseHighlight);
 
     if (mediaThumbnailStub.resolved()) {
-      mediaThumbnailStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
-      mediaThumbnailStub.get().setClickable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      mediaThumbnailStub
+          .get()
+          .setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      mediaThumbnailStub
+          .get()
+          .setClickable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       mediaThumbnailStub.get().setLongClickable(batchSelected.isEmpty());
     }
 
@@ -317,22 +318,30 @@ public class ConversationItem extends BaseConversationItem
     }
 
     if (documentViewStub.resolved()) {
-      documentViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      documentViewStub
+          .get()
+          .setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       documentViewStub.get().setClickable(batchSelected.isEmpty());
     }
 
     if (webxdcViewStub.resolved()) {
-      webxdcViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      webxdcViewStub
+          .get()
+          .setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       webxdcViewStub.get().setClickable(batchSelected.isEmpty());
     }
 
     if (vcardViewStub.resolved()) {
-      vcardViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      vcardViewStub
+          .get()
+          .setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       vcardViewStub.get().setClickable(batchSelected.isEmpty());
     }
 
     if (callViewStub.resolved()) {
-      callViewStub.get().setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
+      callViewStub
+          .get()
+          .setFocusable(!shouldInterceptClicks(messageRecord) && batchSelected.isEmpty());
       callViewStub.get().setClickable(batchSelected.isEmpty());
     }
   }
@@ -345,7 +354,8 @@ public class ConversationItem extends BaseConversationItem
 
     if (audioViewStub.resolved() && audioViewStub.get().getVisibility() == View.VISIBLE) {
       desc += audioViewStub.get().getDescription() + "\n";
-    } else if (documentViewStub.resolved() && documentViewStub.get().getVisibility() == View.VISIBLE) {
+    } else if (documentViewStub.resolved()
+        && documentViewStub.get().getVisibility() == View.VISIBLE) {
       desc += documentViewStub.get().getDescription() + "\n";
     } else if (webxdcViewStub.resolved() && webxdcViewStub.get().getVisibility() == View.VISIBLE) {
       desc += webxdcViewStub.get().getDescription() + "\n";
@@ -353,7 +363,8 @@ public class ConversationItem extends BaseConversationItem
       desc += vcardViewStub.get().getDescription() + "\n";
     } else if (callViewStub.resolved() && callViewStub.get().getVisibility() == View.VISIBLE) {
       desc += callViewStub.get().getDescription() + "\n";
-    } else if (mediaThumbnailStub.resolved() && mediaThumbnailStub.get().getVisibility() == View.VISIBLE) {
+    } else if (mediaThumbnailStub.resolved()
+        && mediaThumbnailStub.get().getVisibility() == View.VISIBLE) {
       desc += mediaThumbnailStub.get().getDescription() + "\n";
     } else if (stickerStub.resolved() && stickerStub.get().getVisibility() == View.VISIBLE) {
       desc += stickerStub.get().getDescription() + "\n";
@@ -372,7 +383,7 @@ public class ConversationItem extends BaseConversationItem
 
   private boolean hasAudio(DcMsg messageRecord) {
     int type = messageRecord.getType();
-    return type==DcMsg.DC_MSG_AUDIO || type==DcMsg.DC_MSG_VOICE;
+    return type == DcMsg.DC_MSG_AUDIO || type == DcMsg.DC_MSG_VOICE;
   }
 
   private boolean hasQuote(DcMsg messageRecord) {
@@ -381,31 +392,31 @@ public class ConversationItem extends BaseConversationItem
 
   private boolean hasThumbnail(DcMsg messageRecord) {
     int type = messageRecord.getType();
-    return type==DcMsg.DC_MSG_GIF || type==DcMsg.DC_MSG_IMAGE || type==DcMsg.DC_MSG_VIDEO;
+    return type == DcMsg.DC_MSG_GIF || type == DcMsg.DC_MSG_IMAGE || type == DcMsg.DC_MSG_VIDEO;
   }
 
   private boolean hasSticker(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_STICKER;
+    return dcMsg.getType() == DcMsg.DC_MSG_STICKER;
   }
 
   private boolean hasOnlyThumbnail(DcMsg messageRecord) {
-    return hasThumbnail(messageRecord) &&
-	   !hasAudio(messageRecord)    &&
-	   !hasDocument(messageRecord) &&
-	   !hasWebxdc(messageRecord) &&
-	   !hasSticker(messageRecord);
+    return hasThumbnail(messageRecord)
+        && !hasAudio(messageRecord)
+        && !hasDocument(messageRecord)
+        && !hasWebxdc(messageRecord)
+        && !hasSticker(messageRecord);
   }
 
   private boolean hasWebxdc(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_WEBXDC;
+    return dcMsg.getType() == DcMsg.DC_MSG_WEBXDC;
   }
 
   private boolean hasVcard(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_VCARD;
+    return dcMsg.getType() == DcMsg.DC_MSG_VCARD;
   }
 
   private boolean hasDocument(DcMsg dcMsg) {
-    return dcMsg.getType()==DcMsg.DC_MSG_FILE;
+    return dcMsg.getType() == DcMsg.DC_MSG_FILE;
   }
 
   private void setBodyText(DcMsg messageRecord) {
@@ -416,8 +427,7 @@ public class ConversationItem extends BaseConversationItem
 
     if (messageRecord.getType() == DcMsg.DC_MSG_CALL || text.isEmpty()) {
       bodyText.setVisibility(View.GONE);
-    }
-    else {
+    } else {
       SpannableString spannable = new SpannableString(text);
       if (batchSelected.isEmpty()) {
         spannable = Linkifier.linkify(spannable);
@@ -427,13 +437,15 @@ public class ConversationItem extends BaseConversationItem
     }
 
     int downloadState = messageRecord.getDownloadState();
-    if (downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE || downloadState == DcMsg.DC_DOWNLOAD_FAILURE || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+    if (downloadState == DcMsg.DC_DOWNLOAD_AVAILABLE
+        || downloadState == DcMsg.DC_DOWNLOAD_FAILURE
+        || downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
       showFullButton.setVisibility(View.GONE);
       msgActionButton.setVisibility(View.VISIBLE);
-      if (downloadState==DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
+      if (downloadState == DcMsg.DC_DOWNLOAD_IN_PROGRESS) {
         msgActionButton.setEnabled(false);
         msgActionButton.setText(R.string.downloading);
-      } else if (downloadState==DcMsg.DC_DOWNLOAD_FAILURE) {
+      } else if (downloadState == DcMsg.DC_DOWNLOAD_FAILURE) {
         msgActionButton.setEnabled(true);
         msgActionButton.setText(R.string.download_failed);
       } else {
@@ -441,194 +453,231 @@ public class ConversationItem extends BaseConversationItem
         msgActionButton.setText(R.string.download);
       }
 
-      msgActionButton.setOnClickListener(view -> {
-        if (eventListener != null && batchSelected.isEmpty()) {
-          eventListener.onDownloadClicked(messageRecord);
-        } else {
-          passthroughClickListener.onClick(view);
-        }
-      });
+      msgActionButton.setOnClickListener(
+          view -> {
+            if (eventListener != null && batchSelected.isEmpty()) {
+              eventListener.onDownloadClicked(messageRecord);
+            } else {
+              passthroughClickListener.onClick(view);
+            }
+          });
     } else if (messageRecord.getType() == DcMsg.DC_MSG_WEBXDC) {
       showFullButton.setVisibility(View.GONE);
       msgActionButton.setVisibility(View.VISIBLE);
       msgActionButton.setEnabled(true);
       msgActionButton.setText(R.string.start_app);
-      msgActionButton.setOnClickListener(view -> {
-        if (batchSelected.isEmpty()) {
-          WebxdcActivity.openWebxdcActivity(getContext(), messageRecord);
-        } else {
-          passthroughClickListener.onClick(view);
-        }
-      });
-    }
-    else if (messageRecord.hasHtml()) {
+      msgActionButton.setOnClickListener(
+          view -> {
+            if (batchSelected.isEmpty()) {
+              WebxdcActivity.openWebxdcActivity(getContext(), messageRecord);
+            } else {
+              passthroughClickListener.onClick(view);
+            }
+          });
+    } else if (messageRecord.hasHtml()) {
       msgActionButton.setVisibility(View.GONE);
       showFullButton.setVisibility(View.VISIBLE);
       showFullButton.setEnabled(true);
       showFullButton.setText(R.string.show_full_message);
-      showFullButton.setOnClickListener(view -> {
-        if (eventListener != null && batchSelected.isEmpty()) {
-          eventListener.onShowFullClicked(messageRecord);
-        } else {
-          passthroughClickListener.onClick(view);
-        }
-      });
+      showFullButton.setOnClickListener(
+          view -> {
+            if (eventListener != null && batchSelected.isEmpty()) {
+              eventListener.onShowFullClicked(messageRecord);
+            } else {
+              passthroughClickListener.onClick(view);
+            }
+          });
     } else {
       msgActionButton.setVisibility(View.GONE);
       showFullButton.setVisibility(View.GONE);
     }
   }
 
-  private void setMediaAttributes(@NonNull DcMsg           messageRecord,
-                                  boolean                  showSender,
-                                  AudioPlaybackViewModel   playbackViewModel,
-                                  AudioView.OnActionListener audioPlayPauseListener)
-  {
+  private void setMediaAttributes(
+      @NonNull DcMsg messageRecord,
+      boolean showSender,
+      AudioPlaybackViewModel playbackViewModel,
+      AudioView.OnActionListener audioPlayPauseListener) {
     if (hasAudio(messageRecord)) {
       audioViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
-      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved()) stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
       audioViewStub.get().setPlaybackViewModel(playbackViewModel);
       audioViewStub.get().setOnActionListener(audioPlayPauseListener);
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord));
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
-      audioViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      audioViewStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
-    }
-    else if (hasDocument(messageRecord)) {
+    } else if (hasDocument(messageRecord)) {
       documentViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
-      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved()) stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
       //noinspection ConstantConditions
       documentViewStub.get().setDocument(new DocumentSlide(context, messageRecord));
       documentViewStub.get().setDocumentClickListener(new ThumbnailClickListener());
       documentViewStub.get().setOnLongClickListener(passthroughClickListener);
-      documentViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      documentViewStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
-    }
-    else if (hasWebxdc(messageRecord)) {
+    } else if (hasWebxdc(messageRecord)) {
       webxdcViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved()) stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
       webxdcViewStub.get().setWebxdc(messageRecord, context.getString(R.string.webxdc_app));
       webxdcViewStub.get().setWebxdcClickListener(new ThumbnailClickListener());
       webxdcViewStub.get().setOnLongClickListener(passthroughClickListener);
-      webxdcViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      webxdcViewStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
-    }
-    else if (hasVcard(messageRecord)) {
+    } else if (hasVcard(messageRecord)) {
       vcardViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
-      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())       callViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved()) stickerStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
       vcardViewStub.get().setVcard(glideRequests, new VcardSlide(context, messageRecord), rpc);
       vcardViewStub.get().setVcardClickListener(new ThumbnailClickListener());
       vcardViewStub.get().setOnLongClickListener(passthroughClickListener);
 
-      vcardViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      vcardViewStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
-    }
-    else if (messageRecord.getType() == DcMsg.DC_MSG_CALL) {
+    } else if (messageRecord.getType() == DcMsg.DC_MSG_CALL) {
       callViewStub.get().setVisibility(View.VISIBLE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
-      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved()) stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
 
       try {
-        callViewStub.get().setCallItem(messageRecord.isOutgoing(), rpc.callInfo(dcContext.getAccountId(), messageRecord.getId()));
+        callViewStub
+            .get()
+            .setCallItem(
+                messageRecord.isOutgoing(),
+                rpc.callInfo(dcContext.getAccountId(), messageRecord.getId()));
       } catch (RpcException e) {
         Log.e(TAG, "Error in Rpc.callInfo", e);
       }
       callViewStub.get().setCallClickListener(new CallClickListener());
       callViewStub.get().setOnLongClickListener(passthroughClickListener);
 
-      callViewStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      callViewStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-    }
-    else if (hasThumbnail(messageRecord)) {
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
+    } else if (hasThumbnail(messageRecord)) {
       mediaThumbnailStub.get().setVisibility(View.VISIBLE);
-      if (audioViewStub.resolved())    audioViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
       if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())   webxdcViewStub.get().setVisibility(View.GONE);
-      if (stickerStub.resolved())        stickerStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
+      if (stickerStub.resolved()) stickerStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
       Slide slide = MediaUtil.getSlideForMsg(context, messageRecord);
 
-      MediaUtil.ThumbnailSize thumbnailSize = new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
-      if ((thumbnailSize.width<=0||thumbnailSize.height<=0)) {
-        if(messageRecord.getType()==DcMsg.DC_MSG_VIDEO) {
-          MediaUtil.createVideoThumbnailIfNeeded(context, slide.getUri(), slide.getThumbnailUri(), thumbnailSize);
+      MediaUtil.ThumbnailSize thumbnailSize =
+          new MediaUtil.ThumbnailSize(messageRecord.getWidth(0), messageRecord.getHeight(0));
+      if ((thumbnailSize.width <= 0 || thumbnailSize.height <= 0)) {
+        if (messageRecord.getType() == DcMsg.DC_MSG_VIDEO) {
+          MediaUtil.createVideoThumbnailIfNeeded(
+              context, slide.getUri(), slide.getThumbnailUri(), thumbnailSize);
         }
-        if (thumbnailSize.width<=0||thumbnailSize.height<=0) {
+        if (thumbnailSize.width <= 0 || thumbnailSize.height <= 0) {
           thumbnailSize.width = 180;
           thumbnailSize.height = 180;
         }
         messageRecord.lateFilingMediaSize(thumbnailSize.width, thumbnailSize.height, 0);
       }
 
-      mediaThumbnailStub.get().setImageResource(glideRequests,
-                                                slide,
-                                                thumbnailSize.width,
-                                                thumbnailSize.height);
+      mediaThumbnailStub
+          .get()
+          .setImageResource(glideRequests, slide, thumbnailSize.width, thumbnailSize.height);
       mediaThumbnailStub.get().setThumbnailClickListener(new ThumbnailClickListener());
       mediaThumbnailStub.get().setOnLongClickListener(passthroughClickListener);
       mediaThumbnailStub.get().setOnClickListener(passthroughClickListener);
       mediaThumbnailStub.get().showShade(TextUtils.isEmpty(messageRecord.getText()));
-      mediaThumbnailStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      mediaThumbnailStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
       setThumbnailOutlineCorners(messageRecord, showSender);
 
-      bodyBubble.getLayoutParams().width = ViewUtil.dpToPx(readDimen(R.dimen.media_bubble_max_width));
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      bodyBubble.getLayoutParams().width =
+          ViewUtil.dpToPx(readDimen(R.dimen.media_bubble_max_width));
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.MATCH_PARENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
-    }
-    else if (hasSticker(messageRecord)) {
+    } else if (hasSticker(messageRecord)) {
       stickerStub.get().setVisibility(View.VISIBLE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
       bodyBubble.setBackgroundColor(Color.TRANSPARENT);
 
@@ -636,54 +685,59 @@ public class ConversationItem extends BaseConversationItem
       stickerStub.get().setThumbnailClickListener(new StickerClickListener());
       stickerStub.get().setOnLongClickListener(passthroughClickListener);
       stickerStub.get().setOnClickListener(passthroughClickListener);
-      stickerStub.get().setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+      stickerStub
+          .get()
+          .setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
 
       footer.setVisibility(VISIBLE);
-    }
-    else {
+    } else {
       if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().setVisibility(View.GONE);
-      if (audioViewStub.resolved())      audioViewStub.get().setVisibility(View.GONE);
-      if (documentViewStub.resolved())   documentViewStub.get().setVisibility(View.GONE);
-      if (webxdcViewStub.resolved())     webxdcViewStub.get().setVisibility(View.GONE);
-      if (vcardViewStub.resolved())      vcardViewStub.get().setVisibility(View.GONE);
-      if (callViewStub.resolved())      callViewStub.get().setVisibility(View.GONE);
+      if (audioViewStub.resolved()) audioViewStub.get().setVisibility(View.GONE);
+      if (documentViewStub.resolved()) documentViewStub.get().setVisibility(View.GONE);
+      if (webxdcViewStub.resolved()) webxdcViewStub.get().setVisibility(View.GONE);
+      if (vcardViewStub.resolved()) vcardViewStub.get().setVisibility(View.GONE);
+      if (callViewStub.resolved()) callViewStub.get().setVisibility(View.GONE);
 
-      ViewUtil.updateLayoutParams(bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-      ViewUtil.updateLayoutParams(groupSenderHolder, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          bodyText, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+      ViewUtil.updateLayoutParams(
+          groupSenderHolder,
+          ViewGroup.LayoutParams.WRAP_CONTENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT);
       footer.setVisibility(VISIBLE);
     }
   }
 
-  private void setThumbnailOutlineCorners(@NonNull DcMsg           current,
-                                          boolean                  showSender)
-  {
-    int defaultRadius  = readDimen(R.dimen.message_corner_radius);
+  private void setThumbnailOutlineCorners(@NonNull DcMsg current, boolean showSender) {
+    int defaultRadius = readDimen(R.dimen.message_corner_radius);
 
-    int topLeft     = defaultRadius;
-    int topRight    = defaultRadius;
-    int bottomLeft  = defaultRadius;
+    int topLeft = defaultRadius;
+    int topRight = defaultRadius;
+    int bottomLeft = defaultRadius;
     int bottomRight = defaultRadius;
 
     if (!TextUtils.isEmpty(current.getText())) {
-      bottomLeft  = 0;
+      bottomLeft = 0;
       bottomRight = 0;
     }
 
-    if (showSender
-     || current.isForwarded()
-     || hasQuote(current)) {
-      topLeft  = 0;
+    if (showSender || current.isForwarded() || hasQuote(current)) {
+      topLeft = 0;
       topRight = 0;
     }
 
-    if(bottomLeft != 0 && bottomRight !=0) {
-      if((current.isOutgoing() && ViewUtil.isLtr(this)) || (!current.isOutgoing() && ViewUtil.isRtl(this))) {
+    if (bottomLeft != 0 && bottomRight != 0) {
+      if ((current.isOutgoing() && ViewUtil.isLtr(this))
+          || (!current.isOutgoing() && ViewUtil.isRtl(this))) {
         bottomRight = 0;
-      }
-      else {
+      } else {
         bottomLeft = 0;
       }
     }
@@ -694,7 +748,7 @@ public class ConversationItem extends BaseConversationItem
   private void setContactPhoto() {
     if (contactPhoto == null) return;
 
-    if (!showSender || dcContact ==null) {
+    if (!showSender || dcContact == null) {
       contactPhoto.setVisibility(View.GONE);
     } else {
       contactPhoto.setAvatar(glideRequests, new Recipient(context, dcContact), true);
@@ -718,7 +772,8 @@ public class ConversationItem extends BaseConversationItem
     }
     DcMsg msg = current.getQuotedMsg();
 
-    // If you modify these lines you may also want to modify ConversationActivity.handleReplyMessage():
+    // If you modify these lines you may also want to modify
+    // ConversationActivity.handleReplyMessage():
     Recipient author = null;
     SlideDeck slideDeck = new SlideDeck();
     if (msg != null) {
@@ -731,29 +786,32 @@ public class ConversationItem extends BaseConversationItem
       }
     }
 
-    quoteView.setQuote(GlideApp.with(this),
-            msg,
-            author,
-            quoteTxt,
-            slideDeck,
-            current.getType() == DcMsg.DC_MSG_STICKER,
-            false);
+    quoteView.setQuote(
+        GlideApp.with(this),
+        msg,
+        author,
+        quoteTxt,
+        slideDeck,
+        current.getType() == DcMsg.DC_MSG_STICKER,
+        false);
 
     quoteView.setVisibility(View.VISIBLE);
     quoteView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
 
-    quoteView.setOnClickListener(view -> {
-      if (eventListener != null && batchSelected.isEmpty()) {
-        eventListener.onQuoteClicked(current);
-      } else {
-        passthroughClickListener.onClick(view);
-      }
-    });
+    quoteView.setOnClickListener(
+        view -> {
+          if (eventListener != null && batchSelected.isEmpty()) {
+            eventListener.onQuoteClicked(current);
+          } else {
+            passthroughClickListener.onClick(view);
+          }
+        });
 
     quoteView.setOnLongClickListener(passthroughClickListener);
 
     if (mediaThumbnailStub.resolved()) {
-      ViewUtil.setTopMargin(mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
+      ViewUtil.setTopMargin(
+          mediaThumbnailStub.get(), readDimen(R.dimen.message_bubble_top_padding));
     } else if (stickerStub.resolved()) {
       ViewUtil.setTopMargin(stickerStub.get(), readDimen(R.dimen.message_bubble_top_padding));
     }
@@ -785,13 +843,14 @@ public class ConversationItem extends BaseConversationItem
         reactionsView.clear();
       } else {
         reactionsView.setReactions(reactions.reactions);
-        reactionsView.setOnClickListener(view -> {
-          if (eventListener != null && batchSelected.isEmpty()) {
-            eventListener.onReactionClicked(current);
-          } else {
-            passthroughClickListener.onClick(view);
-          }
-        });
+        reactionsView.setOnClickListener(
+            view -> {
+              if (eventListener != null && batchSelected.isEmpty()) {
+                eventListener.onReactionClicked(current);
+              } else {
+                passthroughClickListener.onClick(view);
+              }
+            });
       }
     } catch (RpcException e) {
       reactionsView.clear();
@@ -813,7 +872,7 @@ public class ConversationItem extends BaseConversationItem
   }
 
   private void setGroupMessageStatus() {
-    if (messageRecord.getType()==DcMsg.DC_MSG_STICKER) {
+    if (messageRecord.getType() == DcMsg.DC_MSG_STICKER) {
       this.groupSender.setVisibility(GONE);
       return;
     } else {
@@ -821,14 +880,14 @@ public class ConversationItem extends BaseConversationItem
     }
 
     if (messageRecord.isForwarded()) {
-      if (showSender && dcContact !=null) {
-        this.groupSender.setText(context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact)));
+      if (showSender && dcContact != null) {
+        this.groupSender.setText(
+            context.getString(R.string.forwarded_by, messageRecord.getSenderName(dcContact)));
       } else {
         this.groupSender.setText(context.getString(R.string.forwarded_message));
       }
       this.groupSender.setTextColor(context.getResources().getColor(R.color.unknown_sender));
-    }
-    else if (showSender && dcContact !=null) {
+    } else if (showSender && dcContact != null) {
       this.groupSender.setText(messageRecord.getSenderName(dcContact));
       this.groupSender.setTextColor(Util.rgbToArgbColor(dcContact.getColor()));
     }
@@ -848,25 +907,30 @@ public class ConversationItem extends BaseConversationItem
       }
     }
 
-    if(current.isForwarded()) {
+    if (current.isForwarded()) {
       groupSenderHolderVisibility = VISIBLE;
     }
 
     groupSenderHolder.setVisibility(groupSenderHolderVisibility);
 
     boolean collapse = false;
-    if(groupSenderHolderVisibility==VISIBLE && current.getType()==DcMsg.DC_MSG_TEXT) {
+    if (groupSenderHolderVisibility == VISIBLE && current.getType() == DcMsg.DC_MSG_TEXT) {
       collapse = true;
     }
 
-    int spacingTop = collapse? 0 /*2dp border come from the senderHolder*/ : readDimen(context, R.dimen.message_bubble_top_padding);
+    int spacingTop =
+        collapse
+            ? 0 /*2dp border come from the senderHolder*/
+            : readDimen(context, R.dimen.message_bubble_top_padding);
     ViewUtil.setPaddingTop(bodyText, spacingTop);
   }
 
   private void setMessageShape(@NonNull DcMsg current) {
     int background;
-    background = current.isOutgoing() ? R.drawable.message_bubble_background_sent_alone
-                                      : R.drawable.message_bubble_background_received_alone;
+    background =
+        current.isOutgoing()
+            ? R.drawable.message_bubble_background_sent_alone
+            : R.drawable.message_bubble_background_received_alone;
     bodyBubble.setBackgroundResource(background);
   }
 
@@ -885,11 +949,17 @@ public class ConversationItem extends BaseConversationItem
   private int getAvailableMessageBubbleWidth(@NonNull View forView) {
     int availableWidth;
     if (hasAudio(messageRecord)) {
-      availableWidth = audioViewStub.get().getMeasuredWidth() + ViewUtil.getLeftMargin(audioViewStub.get()) + ViewUtil.getRightMargin(audioViewStub.get());
+      availableWidth =
+          audioViewStub.get().getMeasuredWidth()
+              + ViewUtil.getLeftMargin(audioViewStub.get())
+              + ViewUtil.getRightMargin(audioViewStub.get());
     } else if (hasThumbnail(messageRecord)) {
       availableWidth = mediaThumbnailStub.get().getMeasuredWidth();
     } else {
-      availableWidth = bodyBubble.getMeasuredWidth() - bodyBubble.getPaddingLeft() - bodyBubble.getPaddingRight();
+      availableWidth =
+          bodyBubble.getMeasuredWidth()
+              - bodyBubble.getPaddingLeft()
+              - bodyBubble.getPaddingRight();
     }
 
     availableWidth -= ViewUtil.getLeftMargin(forView) + ViewUtil.getRightMargin(forView);
@@ -899,12 +969,12 @@ public class ConversationItem extends BaseConversationItem
 
   @Override
   public void onAccessibilityClick() {
-    if (mediaThumbnailStub.resolved())    mediaThumbnailStub.get().performClick();
-    else if (audioViewStub.resolved())    audioViewStub.get().togglePlay();
+    if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().performClick();
+    else if (audioViewStub.resolved()) audioViewStub.get().togglePlay();
     else if (documentViewStub.resolved()) documentViewStub.get().performClick();
-    else if (webxdcViewStub.resolved())   webxdcViewStub.get().performClick();
-    else if (vcardViewStub.resolved())    vcardViewStub.get().performClick();
-    else if (callViewStub.resolved())    callViewStub.get().performClick();
+    else if (webxdcViewStub.resolved()) webxdcViewStub.get().performClick();
+    else if (vcardViewStub.resolved()) vcardViewStub.get().performClick();
+    else if (callViewStub.resolved()) callViewStub.get().performClick();
   }
 
   /// Event handlers
@@ -920,29 +990,37 @@ public class ConversationItem extends BaseConversationItem
           String path = slide.asAttachment().getRealPath(context);
           VcardContact vcardContact = rpc.parseVcard(path).get(0);
           new AlertDialog.Builder(context)
-            .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.displayName))
-            .setPositiveButton(android.R.string.ok, (dialog, which) -> {
-                try {
-                  List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);
-                  if (!contactIds.isEmpty()) {
-                    int chatId = dcContext.createChatByContactId(contactIds.get(0));
-                    if (chatId != 0) {
-                      Intent intent = new Intent(context, ConversationActivity.class);
-                      intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-                      context.startActivity(intent);
-                      return;
+              .setMessage(context.getString(R.string.ask_start_chat_with, vcardContact.displayName))
+              .setPositiveButton(
+                  android.R.string.ok,
+                  (dialog, which) -> {
+                    try {
+                      List<Integer> contactIds = rpc.importVcard(dcContext.getAccountId(), path);
+                      if (!contactIds.isEmpty()) {
+                        int chatId = dcContext.createChatByContactId(contactIds.get(0));
+                        if (chatId != 0) {
+                          Intent intent = new Intent(context, ConversationActivity.class);
+                          intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                          context.startActivity(intent);
+                          return;
+                        }
+                      }
+                    } catch (RpcException e) {
+                      Log.e(TAG, "failed to import vCard", e);
                     }
-                  }
-                } catch (RpcException e) {
-                  Log.e(TAG, "failed to import vCard", e);
-                }
-                Toast.makeText(context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
-            })
-            .setNegativeButton(R.string.cancel, null)
-            .show();
+                    Toast.makeText(
+                            context,
+                            context.getResources().getString(R.string.error),
+                            Toast.LENGTH_SHORT)
+                        .show();
+                  })
+              .setNegativeButton(R.string.cancel, null)
+              .show();
         } catch (RpcException e) {
           Log.e(TAG, "failed to parse vCard", e);
-          Toast.makeText(context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
+          Toast.makeText(
+                  context, context.getResources().getString(R.string.error), Toast.LENGTH_SHORT)
+              .show();
         }
       } else if (MediaPreviewActivity.isTypeSupported(slide) && slide.getUri() != null) {
         Intent intent = new Intent(context, MediaPreviewActivity.class);
@@ -974,14 +1052,20 @@ public class ConversationItem extends BaseConversationItem
       if (shouldInterceptClicks(messageRecord) || !batchSelected.isEmpty()) {
         performClick();
       } else {
-          int accId = dcContext.getAccountId();
-          int chatId = messageRecord.getChatId();
+        int chatId = messageRecord.getChatId();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
-              int callId = messageRecord.getId();
-              CallUtil.openCall(getContext(), accId, chatId, callId, callInfo.sdpOffer, callInfo.hasVideo);
+            int callId = messageRecord.getId();
+            CallCoordinator coordinator = CallCoordinator.getInstance(context);
+            coordinator.showIncomingCallScreen(callId);
           } else {
-              CallUtil.startCall(getContext(), accId, chatId, callInfo.hasVideo);
+            if (callInfo.hasVideo) {
+              CallUtil.startVideoCall(getContext(), chatId);
+            } else {
+              CallUtil.startAudioCall(getContext(), chatId);
+            }
           }
+        }
       }
     }
   }

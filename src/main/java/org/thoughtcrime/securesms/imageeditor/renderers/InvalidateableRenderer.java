@@ -1,14 +1,13 @@
 package org.thoughtcrime.securesms.imageeditor.renderers;
 
 import androidx.annotation.NonNull;
-
+import java.lang.ref.WeakReference;
 import org.thoughtcrime.securesms.imageeditor.Renderer;
 import org.thoughtcrime.securesms.imageeditor.RendererContext;
 
-import java.lang.ref.WeakReference;
-
 /**
- * Maintains a weak reference to the an invalidate callback allowing future invalidation without memory leak risk.
+ * Maintains a weak reference to the an invalidate callback allowing future invalidation without
+ * memory leak risk.
  */
 abstract class InvalidateableRenderer implements Renderer {
 

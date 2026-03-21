@@ -4,8 +4,8 @@ import androidx.annotation.ColorInt;
 
 /**
  * A renderer that can have its color changed.
- * <p>
- * For example, Lines and Text can change color.
+ *
+ * <p>For example, Lines and Text can change color.
  */
 public interface ColorableRenderer extends Renderer {
 

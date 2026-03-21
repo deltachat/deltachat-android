@@ -1,19 +1,18 @@
 package org.thoughtcrime.securesms.components;
 
 import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import android.widget.ImageView;
-
-import com.bumptech.glide.request.target.DrawableImageViewTarget;
-
 import chat.delta.util.SettableFuture;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
 
 public class GlideDrawableListeningTarget extends DrawableImageViewTarget {
 
   private final SettableFuture<Boolean> loaded;
 
-  public GlideDrawableListeningTarget(@NonNull ImageView view, @NonNull SettableFuture<Boolean> loaded) {
+  public GlideDrawableListeningTarget(
+      @NonNull ImageView view, @NonNull SettableFuture<Boolean> loaded) {
     super(view);
     this.loaded = loaded;
   }

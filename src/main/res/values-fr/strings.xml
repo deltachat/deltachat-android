@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -115,21 +117,9 @@
     <string name="last_month">Le mois dernier</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Vu·e pour la dernière fois à %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Dernière activité %1$s</string>
     <string name="last_seen_unknown">Vu·e pour la dernière fois : inconnu</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d seconde</item>
-        <item quantity="many">%d secondes</item>
-        <item quantity="other">%d secondes</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minute</item>
-        <item quantity="many">%d minutes</item>
-        <item quantity="other">%d minutes</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -270,10 +260,14 @@
     <string name="channels">Canaux</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nouveau canal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Ajouter des abonné⋅es</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Nom du canal</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d vue</item>
+        <item quantity="many">%d vues</item>
+        <item quantity="other">%d vues</item>
+    </plurals>
     <string name="email">Courriel</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Nouveau courriel</string>
@@ -396,25 +390,25 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Appeler</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Appel audio</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Appel vidéo</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Décrocher</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Refuser</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Appel sortant</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Appel audio sortant</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Appel vidéo sortant</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Appel entrant</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Appel audio entrant</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Appel vidéo entrant</string>
     <string name="declined_call">Appel refusé</string>
     <string name="canceled_call">Appel annulé</string>
     <string name="missed_call">Appel manqué</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -459,15 +453,15 @@
     </plurals>
     <plurals name="chat_unarchived">
         <item quantity="one">%d discussion désarchivée</item>
-        <item quantity="many">%d  discussions désarchivées</item>
-        <item quantity="other">%d  discussions désarchivées</item>
+        <item quantity="many">%d discussions désarchivées</item>
+        <item quantity="other">%d discussions désarchivées</item>
     </plurals>
     <string name="chat_archived_chats_title">Discussions archivées</string>
     <string name="chat_please_enter_message">Veuillez saisir un message.</string>
     <string name="chat_camera_unavailable">Caméra indisponible.</string>
     <string name="chat_unable_to_record_audio">Impossible d\'enregistrer le son.</string>
     <plurals name="chat_n_new_messages">
-        <item quantity="one">%dnouveaux messages</item>
+        <item quantity="one">%d nouveau message</item>
         <item quantity="many">%d nouveaux messages</item>
         <item quantity="other">%d nouveaux messages</item>
     </plurals>
@@ -605,8 +599,6 @@
     <string name="incoming_messages">Messages entrants</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Messages sortants</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Espace de stockage sur %1$s</string>
     <string name="connectivity">Connectivité</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Non connecté</string>
@@ -628,7 +620,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Créer un nouveau profil</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">J\'ai déjà un profil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Utiliser le courriel classique comme relais</string>
@@ -690,9 +682,6 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Ajouter le relais ?</string>
     <string name="invalid_transport_qr">Le code QR scanné ne renvoie pas vers un relais valide.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Supprimer le relais « %1$s » ?\n\nVos contacts ne pourront vous contacter que si vous les avez déjà contactés via un autre relais.\n\nEn cas de doute, supprimez le relais plus tard.</string>
-
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse courriel valide</string>
     <string name="login_error_server">Entre un serveur / adresse IP valide</string>
@@ -735,8 +724,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Usage de la personnalisation : %s</string>
-    <string name="pref_using_default">Utilisation par défaut : %s</string>
     <string name="pref_profile_info_headline">Votre profil</string>
     <string name="pref_profile_photo">Photo de profil</string>
     <string name="pref_blocked_contacts">Contacts bloqués</string>
@@ -769,8 +756,6 @@
     <string name="pref_sound">Son</string>
     <string name="pref_silent">Silencieux</string>
     <string name="pref_privacy">Vie privée</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Discussions et fichiers multimédias</string>
     <string name="pref_system_default">Valeur par défaut du système</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Clair</string>
@@ -807,7 +792,7 @@
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mode appareils multiples</string>
     <string name="pref_multidevice_explain">Synchronise vos messages avec vos autres appareils. Activé automatiquement lorsque vous ajoutez un deuxième appareil</string>
     <string name="pref_multidevice_change_warn">Le mode appareils multiples doit être activé quand vous utilisez le même profil sur plusieurs appareils. Désactivez cette option seulement si vous avez supprimé ce profil de vos autres appareils.\n\nDésactiver le mode alors que vous utilisez un profil sur plusieurs appareils causera un certain nombre de problèmes, dont des messages perdus.</string>
@@ -835,8 +820,6 @@
     <string name="n_bytes_message">%1$s message</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Télécharger le plus possible jusqu\'à %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Sélectionner un profil</string>
     <string name="profile_image_select">Sélectionnez l\'image de profil</string>
     <string name="select_your_new_profile_image">Sélectionnez votre nouvelle image de profil</string>
     <string name="profile_image_delete">Supprimer l\'image de profil</string>
@@ -901,9 +884,9 @@
     <string name="systemmsg_subject_for_new_contact">Message de %1$s</string>
     <string name="systemmsg_failed_sending_to">Échec de l\'envoi du message à %1$s.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">Nom du groupe modifié de « %1$s »  en « %2$s »  par vous.</string>
+    <string name="group_name_changed_by_you">Nom du groupe modifié de « %1$s » en « %2$s » par vous.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">Nom de groupe modifié de « %1$s »  en « %2$s »  par %3$s.</string>
+    <string name="group_name_changed_by_other">Nom de groupe modifié de « %1$s » en « %2$s » par %3$s.</string>
     <string name="group_image_changed_by_you">Image du groupe modifié par vous.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Image de groupe modifiée par %1$s.</string>
@@ -942,10 +925,6 @@
     <string name="ephemeral_timer_seconds_by_you">Vous avez défini le délai avant disparition des messages éphémères à %1$s secondes.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Délai avant disparition des messages éphémères défini à %1$s secondes par %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Vous avez défini le délai avant disparition des messages éphémères à 1 minute.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Délai avant disparition des messages éphémères défini à 1 minute par %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Vous avez défini le délai avant disparition des messages éphémères à 1 heure.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Délai avant disparition des messages éphémères défini à 1 heure par %1$s.</string>
@@ -1000,7 +979,7 @@
     <string name="qrscan_failed">Le code QR n\'a pas pu être décodé</string>
     <string name="qrscan_ask_join_group">Voulez-vous rejoindre le groupe \"%1$s\" ?</string>
     <string name="qrscan_ask_join_channel">Voulez-vous rejoindre le canal \"%1$s\" ?</string>
-    <string name="qrscan_fingerprint_mismatch">L\'empreinte digitale numérisée ne correspond pas à la dernière empreinte digitale vue depuis  %1$s</string>
+    <string name="qrscan_fingerprint_mismatch">L\'empreinte digitale numérisée ne correspond pas à la dernière empreinte digitale vue depuis %1$s</string>
     <string name="qrscan_no_addr_found">Ce code QR contient une empreinte numérique mais pas d\'adresse de courriel.\n\nPour une vérification externe, veuillez d\'abord établir une connexion chiffrée avec le destinataire.</string>
     <string name="qrscan_contains_text">Texte du QR code numérisé:\n\n%1$s</string>
     <string name="qrscan_contains_url">Url du QR code numérisé :\n\n%1$s</string>
@@ -1042,14 +1021,12 @@
     <string name="verified_by">Connu de %1$s</string>
     <string name="verified_by_you">Connu de vous</string>
     <string name="verified_by_unknown">Connu</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Pour garantir le chiffrement de bout en bout, vous pouvez ajouter à ce groupe uniquement les contacts avec un badge vert.\n\nVous pouvez rencontrer ces contacts en personne pour scanner leur code QR et les ajouter à votre liste de contacts connus.</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion où envoyer le message</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$sa déjà un message en brouillon, voulez-vous le remplacer?</string>
     <string name="mailto_link_could_not_be_decoded">Le lien mailto n\'a pas pu être décodé: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Répondre</string>
     <string name="notify_new_message">Nouveau message</string>
     <string name="notify_background_connection_enabled">Connexion en arrière-plan activée</string>
@@ -1127,7 +1104,9 @@
     <string name="message_detail_received_desktop">Reçu</string>
     <string name="menu.view.developer.open.log.folder">Ouvrir le dossier Journal</string>
     <string name="menu.view.developer.open.current.log.file">Ouvrir le fichier Journal courant</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">L\'icône système ne peut pas être enlevé car Delta Chat a été démarré avec l\'option --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
 

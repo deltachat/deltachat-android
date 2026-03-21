@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -196,8 +198,6 @@
     <string name="menu_new_contact">Contact Nou</string>
     <string name="menu_new_chat">Chat Nou</string>
     <string name="menu_new_group">Grup Nou</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Adăugați Destinatari</string>
     <string name="menu_send">Trimiteți</string>
     <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
     <string name="menu_edit_group">Editați grupul</string>
@@ -306,7 +306,7 @@
     <string name="ask_delete_contact">Ștergerea contactului %1$s?\n\nContacts cu discuții în curs sau din agenda de adrese a sistemului nu pot fi șterse definitiv.</string>
     <string name="ask_start_chat_with">Chat cu %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
-    <string name="ask_remove_members">Scoateți  %1$s din grup?</string>
+    <string name="ask_remove_members">Scoateți %1$s din grup?</string>
     <string name="open_url_confirmation">Doriți să deschideți acest link?</string>
 
 
@@ -318,7 +318,7 @@
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
         <item quantity="one">%d chat arhivat</item>
-        <item quantity="few">%d  chat-uri arhivate</item>
+        <item quantity="few">%d chat-uri arhivate</item>
         <item quantity="other">%d de chat-uri arhivate</item>
     </plurals>
     <plurals name="chat_unarchived">
@@ -381,7 +381,7 @@
     <string name="open_external_url_trust_domain">Nu cereți din nou %1$s</string>
     <string name="puny_code_warning_header">Link suspect detectat</string>
     <!-- placeholder contains the hostname converted to ascii -->
-    <string name="puny_code_warning_question">Ești sigur că vrei să vizitezi  %1$s?</string>
+    <string name="puny_code_warning_question">Ești sigur că vrei să vizitezi %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Acest link poate denatura caracterele cu caractere asemănătoare din diferite alfabete. Urmând linkul etichetat %1$s va duce la %2$s ceea ce este normal pentru caracterele non-latine. Dacă nu v-ați așteptat la astfel de caractere, acest link ar putea fi dăunător.</string>
 
@@ -444,8 +444,6 @@
     <string name="incoming_messages">Mesaje primite</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesaje de ieșire</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Depozitarea pe %1$s</string>
     <string name="connectivity">Conectivitate</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Nu este conectat</string>
@@ -510,8 +508,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Folosind o comandă personalizată: %s</string>
-    <string name="pref_using_default">Utilizarea implicită: %s</string>
     <string name="pref_profile_info_headline">Informații despre profilul dumneavoastră</string>
     <string name="pref_profile_photo">Imagine de profil</string>
     <string name="pref_blocked_contacts">Contacte blocate</string>
@@ -541,8 +537,6 @@
     <string name="pref_sound">Sunet</string>
     <string name="pref_silent">Silențios</string>
     <string name="pref_privacy">Confidențialitate</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Discuții și mass-media</string>
     <string name="pref_system_default">Sistem implicit</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lumină</string>

@@ -1,17 +1,14 @@
 package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
-import android.util.AttributeSet;
-import android.view.MotionEvent;
-
 import org.thoughtcrime.securesms.components.viewpager.HackyViewPager;
 
-/**
- * An implementation of {@link ViewPager} that disables swiping when the view is disabled.
- */
+/** An implementation of {@link ViewPager} that disables swiping when the view is disabled. */
 public class ControllableViewPager extends HackyViewPager {
 
   public ControllableViewPager(@NonNull Context context) {

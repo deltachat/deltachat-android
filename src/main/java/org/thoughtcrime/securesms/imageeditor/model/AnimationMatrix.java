@@ -2,22 +2,19 @@ package org.thoughtcrime.securesms.imageeditor.model;
 
 import android.animation.ValueAnimator;
 import android.graphics.Matrix;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import org.thoughtcrime.securesms.imageeditor.CanvasMatrix;
 
-/**
- * Animation Matrix provides a matrix that animates over time down to the identity matrix.
- */
+/** Animation Matrix provides a matrix that animates over time down to the identity matrix. */
 final class AnimationMatrix {
 
-  private final static float[]      iValues           = new float[9];
-  private final static Interpolator interpolator      = new DecelerateInterpolator();
-  private final static Interpolator pulseInterpolator = inverse(new CycleInterpolator(0.5f));
+  private static final float[] iValues = new float[9];
+  private static final Interpolator interpolator = new DecelerateInterpolator();
+  private static final Interpolator pulseInterpolator = inverse(new CycleInterpolator(0.5f));
 
   static final AnimationMatrix NULL = new AnimationMatrix();
 
@@ -26,14 +23,14 @@ final class AnimationMatrix {
   }
 
   private final Runnable invalidate;
-  private final boolean  canAnimate;
-  private final float[]  undoValues = new float[9];
+  private final boolean canAnimate;
+  private final float[] undoValues = new float[9];
 
-  private final Matrix   temp       = new Matrix();
-  private final float[]  tempValues = new float[9];
+  private final Matrix temp = new Matrix();
+  private final float[] tempValues = new float[9];
 
   private ValueAnimator animator;
-  private float         animatedFraction;
+  private float animatedFraction;
 
   private AnimationMatrix(@NonNull Matrix undo, @NonNull Runnable invalidate) {
     this.invalidate = invalidate;
@@ -46,7 +43,8 @@ final class AnimationMatrix {
     invalidate = null;
   }
 
-  static @NonNull AnimationMatrix animate(@NonNull Matrix from, @NonNull Matrix to, @Nullable Runnable invalidate) {
+  static @NonNull AnimationMatrix animate(
+      @NonNull Matrix from, @NonNull Matrix to, @Nullable Runnable invalidate) {
     if (invalidate == null) {
       return NULL;
     }
@@ -65,10 +63,9 @@ final class AnimationMatrix {
     }
   }
 
-  /**
-   * Animate applying a matrix and then animate removing.
-   */
-  static @NonNull AnimationMatrix singlePulse(@NonNull Matrix pulse, @Nullable Runnable invalidate) {
+  /** Animate applying a matrix and then animate removing. */
+  static @NonNull AnimationMatrix singlePulse(
+      @NonNull Matrix pulse, @Nullable Runnable invalidate) {
     if (invalidate == null) {
       return NULL;
     }
@@ -84,10 +81,11 @@ final class AnimationMatrix {
       animator = ValueAnimator.ofFloat(1, 0);
       animator.setDuration(250);
       animator.setInterpolator(interpolator);
-      animator.addUpdateListener(animation -> {
-        animatedFraction = (float) animation.getAnimatedValue();
-        invalidate.run();
-      });
+      animator.addUpdateListener(
+          animation -> {
+            animatedFraction = (float) animation.getAnimatedValue();
+            invalidate.run();
+          });
       animator.start();
     }
   }
@@ -97,18 +95,14 @@ final class AnimationMatrix {
     if (animator != null) animator.cancel();
   }
 
-  /**
-   * Append the current animation value.
-   */
+  /** Append the current animation value. */
   void preConcatValueTo(@NonNull Matrix onTo) {
     if (!canAnimate) return;
 
     onTo.preConcat(buildTemp());
   }
 
-  /**
-   * Append the current animation value.
-   */
+  /** Append the current animation value. */
   void preConcatValueTo(@NonNull CanvasMatrix canvasMatrix) {
     if (!canAnimate) return;
 

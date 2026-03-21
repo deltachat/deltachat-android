@@ -15,7 +15,6 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -25,7 +24,6 @@ import androidx.core.content.ContextCompat;
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-
 import org.thoughtcrime.securesms.ApplicationPreferencesActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -33,7 +31,8 @@ import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.util.Prefs;
 
-public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment implements Preference.OnPreferenceChangeListener {
+public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment
+    implements Preference.OnPreferenceChangeListener {
 
   private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
 
@@ -47,22 +46,23 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   public void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
 
-    ringtonePickerLauncher = registerForActivityResult(
-      new ActivityResultContracts.StartActivityForResult(),
-      result -> {
-        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-          Uri uri = result.getData().getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+    ringtonePickerLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                Uri uri =
+                    result.getData().getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 
-          if (Settings.System.DEFAULT_NOTIFICATION_URI.equals(uri)) {
-            Prefs.removeNotificationRingtone(getContext());
-          } else {
-            Prefs.setNotificationRingtone(getContext(), uri != null ? uri : Uri.EMPTY);
-          }
+                if (Settings.System.DEFAULT_NOTIFICATION_URI.equals(uri)) {
+                  Prefs.removeNotificationRingtone(getContext());
+                } else {
+                  Prefs.setNotificationRingtone(getContext(), uri != null ? uri : Uri.EMPTY);
+                }
 
-          initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
-        }
-      }
-    );
+                initializeRingtoneSummary(findPreference(Prefs.RINGTONE_PREF));
+              }
+            });
 
     this.findPreference(Prefs.LED_COLOR_PREF)
         .setOnPreferenceChangeListener(new ListSummaryListener());
@@ -74,20 +74,24 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         .setOnPreferenceChangeListener(new ListSummaryListener());
 
     this.findPreference(Prefs.RINGTONE_PREF)
-        .setOnPreferenceClickListener(preference -> {
-          Uri current = Prefs.getNotificationRingtone(getContext());
-          if (current.toString().isEmpty()) current = null;  // silent
+        .setOnPreferenceClickListener(
+            preference -> {
+              Uri current = Prefs.getNotificationRingtone(getContext());
+              if (current.toString().isEmpty()) current = null; // silent
 
-          Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
-          intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
-          intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
-          intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
-          intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, Settings.System.DEFAULT_NOTIFICATION_URI);
-          intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
-          ringtonePickerLauncher.launch(intent);
+              Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+              intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true);
+              intent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, true);
+              intent.putExtra(
+                  RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
+              intent.putExtra(
+                  RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
+                  Settings.System.DEFAULT_NOTIFICATION_URI);
+              intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current);
+              ringtonePickerLauncher.launch(intent);
 
-          return true;
-        });
+              return true;
+            });
 
     initializeListSummary((ListPreference) findPreference(Prefs.LED_COLOR_PREF));
     initializeListSummary((ListPreference) findPreference(Prefs.NOTIFICATION_PRIVACY_PREF));
@@ -98,38 +102,40 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     ignoreBattery = this.findPreference("pref_ignore_battery_optimizations");
     if (ignoreBattery != null) {
       ignoreBattery.setVisible(needsIgnoreBatteryOptimizations());
-      ignoreBattery.setOnPreferenceChangeListener((preference, newValue) -> {
-        requestToggleIgnoreBatteryOptimizations();
-        return true;
-      });
+      ignoreBattery.setOnPreferenceChangeListener(
+          (preference, newValue) -> {
+            requestToggleIgnoreBatteryOptimizations();
+            return true;
+          });
     }
-
 
     // reliableService is just used for displaying the actual value
     // of the reliable service preference that is managed via
     // Prefs.setReliableService() and Prefs.reliableService()
-    reliableService =  this.findPreference("pref_reliable_service2");
+    reliableService = this.findPreference("pref_reliable_service2");
     if (reliableService != null) {
       reliableService.setOnPreferenceChangeListener(this);
     }
 
     notificationsEnabled = this.findPreference("pref_enable_notifications");
     if (notificationsEnabled != null) {
-      notificationsEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setMuted(!enabled);
-        notificationsEnabled.setSummary(getSummary(getContext(), false));
-        return true;
-      });
+      notificationsEnabled.setOnPreferenceChangeListener(
+          (preference, newValue) -> {
+            boolean enabled = (Boolean) newValue;
+            dcContext.setMuted(!enabled);
+            notificationsEnabled.setSummary(getSummary(getContext(), false));
+            return true;
+          });
     }
 
     mentionNotifEnabled = this.findPreference("pref_enable_mention_notifications");
     if (mentionNotifEnabled != null) {
-      mentionNotifEnabled.setOnPreferenceChangeListener((preference, newValue) -> {
-        boolean enabled = (Boolean) newValue;
-        dcContext.setMentionsEnabled(enabled);
-        return true;
-      });
+      mentionNotifEnabled.setOnPreferenceChangeListener(
+          (preference, newValue) -> {
+            boolean enabled = (Boolean) newValue;
+            dcContext.setMentionsEnabled(enabled);
+            return true;
+          });
     }
   }
 
@@ -141,7 +147,9 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   @Override
   public void onResume() {
     super.onResume();
-    ((ApplicationPreferencesActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_notifications);
+    ((ApplicationPreferencesActivity) getActivity())
+        .getSupportActionBar()
+        .setTitle(R.string.pref_notifications);
 
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
@@ -206,8 +214,8 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     if (!needsIgnoreBatteryOptimizations()) {
       return true;
     }
-    PowerManager pm = (PowerManager)getActivity().getSystemService(Context.POWER_SERVICE);
-    if(pm.isIgnoringBatteryOptimizations(getActivity().getPackageName())) {
+    PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+    if (pm.isIgnoringBatteryOptimizations(getActivity().getPackageName())) {
       return true;
     }
     return false;
@@ -219,9 +227,14 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     try {
       if (needsIgnoreBatteryOptimizations()
-              && !isIgnoringBatteryOptimizations()
-              && ContextCompat.checkSelfPermission(context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS) == PackageManager.PERMISSION_GRANTED) {
-        Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:" + context.getPackageName()));
+          && !isIgnoringBatteryOptimizations()
+          && ContextCompat.checkSelfPermission(
+                  context, Manifest.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+              == PackageManager.PERMISSION_GRANTED) {
+        Intent intent =
+            new Intent(
+                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                Uri.parse("package:" + context.getPackageName()));
         context.startActivity(intent);
         openManualSettings = false;
       }
@@ -230,16 +243,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     }
 
     if (openManualSettings && needsIgnoreBatteryOptimizations()) {
-      // fire ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS if ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS fails
-      // or if isIgnoringBatteryOptimizations() is already true (there is no intent to re-enable battery optimizations)
+      // fire ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS if
+      // ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS fails
+      // or if isIgnoringBatteryOptimizations() is already true (there is no intent to re-enable
+      // battery optimizations)
       Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
       context.startActivity(intent);
     }
   }
 
   private void initializeRingtoneSummary(Preference pref) {
-    RingtoneSummaryListener listener = (RingtoneSummaryListener) pref.getOnPreferenceChangeListener();
-    Uri                     uri      = Prefs.getNotificationRingtone(getContext());
+    RingtoneSummaryListener listener =
+        (RingtoneSummaryListener) pref.getOnPreferenceChangeListener();
+    Uri uri = Prefs.getNotificationRingtone(getContext());
 
     listener.onPreferenceChange(pref, uri);
   }
@@ -250,14 +266,15 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   public static CharSequence getSummary(Context context, boolean detailed) {
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU || notificationManager.areNotificationsEnabled()) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
+        || notificationManager.areNotificationsEnabled()) {
       if (DcHelper.getContext(context).isMuted()) {
-        return detailed? context.getString(R.string.off) : "";
+        return detailed ? context.getString(R.string.off) : "";
       }
       if (FcmReceiveService.getToken() == null && !Prefs.reliableService(context)) {
         return "⚠️ " + context.getString(R.string.unreliable_bg_notifications);
       }
-      return detailed? context.getString(R.string.on) : "";
+      return detailed ? context.getString(R.string.on) : "";
     } else {
       return "⚠️ " + context.getString(R.string.disabled_in_system_settings);
     }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -115,19 +117,16 @@
     <string name="last_month">Letzter Monat</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Zuletzt gesehen %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Zuletzt gesehen %1$s</string>
     <string name="last_seen_unknown">Zuletzt gesehen: Unbekannt</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d Sekunde</item>
-        <item quantity="other">%d Sekunden</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">Dauer: %d Minute</item>
+        <item quantity="other">Dauer: %d Minuten</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d Minute</item>
-        <item quantity="other">%d Minuten</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Weniger als 1 Minute</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d Min</item>
@@ -169,6 +168,7 @@
         <item quantity="other">%d ausgewählt</item>
     </plurals>
     <string name="selected_colon">Ausgewählt:</string>
+    <string name="selected">Ausgewählt</string>
     <string name="self">Ich</string>
     <string name="draft">Entwurf</string>
     <string name="image">Bild</string>
@@ -180,6 +180,9 @@
     <string name="add_to_sticker_collection">Zu Sticker-Sammlung hinzufügen</string>
     <string name="add_stickers_instructions">Um Sticker hinzuzufügen, tippe auf \"Sticker-Ordner öffnen\", erstelle einen Unterordner für dein Sticker-Paket und ziehe Bild- und Sticker-Dateien dorthin.</string>
     <string name="open_sticker_folder">Sticker-Ordner öffnen</string>
+    <string name="ask_add_sticker_to_collection">Sticker zur Sammlung hinzufügen?</string>
+    <string name="ask_delete_sticker">Sticker löschen?</string>
+    <string name="sticker_picker_empty_hint">Sticker zum Hinzufügen antippen</string>
     <string name="images">Bilder</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
@@ -213,7 +216,7 @@
     <string name="webxdc_apps">Apps</string>
     <string name="webxdc_store_url">App-Picker-URL</string>
     <string name="webxdc_store_url_explain">Wenn gesetzt, wird diese URL als App-Picker anstelle der Voreinstellung verwendet.</string>
-    <string name="webxdc_draft_hint">Zum Teilen auf \"Senden\" klicken</string>
+    <string name="webxdc_draft_hint">Zum Teilen auf \"Senden\" tippen</string>
     <string name="home">Start</string>
     <string name="games">Spiele</string>
     <string name="tools">Tools</string>
@@ -259,10 +262,13 @@
     <string name="channels">Kanäle</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Neuer Kanal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Empfänger hinzufügen</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Name des Kanals</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d Aufruf</item>
+        <item quantity="other">%d Aufrufe</item>
+    </plurals>
     <string name="email">E-Mail</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Neue E-Mail</string>
@@ -278,6 +284,7 @@
     <string name="menu_add_attachment">Dateien anhängen</string>
     <string name="menu_leave_group">Gruppe verlassen</string>
     <string name="menu_leave_channel">Kanal verlassen</string>
+    <string name="menu_leave_and_delete">Verlassen &amp; für mich löschen</string>
     <string name="menu_delete_chat">Chat löschen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Chat leeren</string>
@@ -384,25 +391,35 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Anrufen</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Sprachanruf</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Videoanruf</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Annehmen</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Ablehnen</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Ausgehender Anruf</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Sprachanruf</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videoanruf</string>
+    <string name="call_initializing">Initialisieren…</string>
+    <string name="call_incoming">Eingehender Anruf</string>
+    <string name="call_ringing">Klingeln…</string>
+    <string name="call_reconnecting">Wiederverbinden…</string>
+    <string name="call_ended">Anruf beendet</string>
+    <string name="call_failed">Anruf fehlgeschlagen</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Ausgehender Sprachanruf</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Ausgehender Videoanruf</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Eingehender Anruf</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Eingehender Sprachanruf</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Eingehender Videoanruf</string>
     <string name="declined_call">Abgelehnter Anruf</string>
     <string name="canceled_call">Abgebrochener Anruf</string>
     <string name="missed_call">Verpasster Anruf</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -588,8 +605,6 @@
     <string name="incoming_messages">Eingehende Nachrichten</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Ausgehende Nachrichten</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Speicher auf %1$s</string>
     <string name="connectivity">Verbindungsstatus</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Nicht verbunden</string>
@@ -611,7 +626,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Neues Profil erstellen</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Ich habe bereits ein Profil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Klassische E-Mail als Relay</string>
@@ -670,12 +685,16 @@
     <string name="add_transport">Relay hinzufügen</string>
     <string name="remove_transport">Relay entfernen</string>
     <string name="edit_transport">Relay bearbeiten</string>
+    <string name="used_for_sending">Zum Senden verwendet</string>
+    <string name="hide_from_contacts">Vor Kontakten verstecken</string>
+    <string name="hidden_from_contacts">Vor Kontakten versteckt</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Nachrichten werden auf allen Relays empfangen</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Relay hinzufügen?</string>
     <string name="invalid_transport_qr">Der gescannte QR-Code enthält keine gültiges Relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Relay \"%1$s\" entfernen?\n\nDeine Kontakte können dich nur erreichen, wenn du sie zuvor über einen anderes Relay erreicht hast.\n\nIm Zweifel, entferne den Relay später.</string>
-
+    <string name="confirm_remove_or_hide_transport_x">Relay \"%1$s\" entfernen?\n\nKontakte, die nur dieses Relay kennen, erreichen dich möglicherweise erst wieder, wenn du ihnen erneut eine Nachricht schickst.\n\nIm Zweifelsfall, verstecke das Relay anstelle es zu löschen.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>
     <string name="login_error_server">Bitte eine gültige Server/IP-Adresse eingeben</string>
@@ -718,8 +737,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Benutzerdefiniert verwenden: %s</string>
-    <string name="pref_using_default">Standard verwenden: %s</string>
     <string name="pref_profile_info_headline">Mein Profil</string>
     <string name="pref_profile_photo">Profilbild</string>
     <string name="pref_blocked_contacts">Blockierte Kontakte</string>
@@ -733,6 +750,7 @@
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
     <string name="pref_outgoing_media_quality">Medienqualität beim Senden</string>
+    <string name="pref_outgoing_media_quality_hint">Um Originalqualität zu senden, hänge Medien als „Datei“ an. Dies verbraucht deutlich mehr Datenvolumen für dich und die Empfänger.</string>
     <string name="pref_outgoing_balanced">Ausgewogen</string>
     <string name="pref_outgoing_worse">Schlechte Qualität, kleine Dateien</string>
     <string name="pref_vibrate">Vibrieren</string>
@@ -743,6 +761,10 @@
     <string name="pref_notifications">Benachrichtigungen</string>
     <string name="pref_mention_notifications">Erwähnungen</string>
     <string name="pref_mention_notifications_explain">In stummgeschalteten Gruppen, über an dich gerichtete Nachrichten, wie Antworten oder Reaktionen, benachrichtigen</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Anrufe</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Anrufbildschirm bei eingehenden Anrufen</string>
     <string name="pref_notifications_show">Anzeigen</string>
     <string name="pref_notifications_priority">Priorität</string>
     <string name="pref_notifications_explain">System-Benachrichtigungen bei neuen Nachrichten aktivieren</string>
@@ -752,8 +774,6 @@
     <string name="pref_sound">Ton</string>
     <string name="pref_silent">Leise</string>
     <string name="pref_privacy">Datenschutz</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Chats und Medien</string>
     <string name="pref_system_default">Systemstandard</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Hell</string>
@@ -790,7 +810,7 @@
     <string name="pref_background_btn_default">Standard-Bild verwenden</string>
     <string name="pref_background_btn_gallery">Aus Galerie auswählen</string>
     <string name="pref_imap_folder_warn_disable_defaults">Wenn du diese Option änderst, stelle sicher, dass der Server und die anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mehrgerätemodus</string>
     <string name="pref_multidevice_explain">Synchronisiere deine Nachrichten mit deinen anderen Geräten. Wird beim Hinzufügen eines zweiten Geräts automatisch aktiviert.</string>
     <string name="pref_multidevice_change_warn">Der Mehrgerätemodus muss aktiviert sein, wenn dasselbe Profil auf mehreren Geräten verwendet wird. Deaktiviere diese Einstellung nur, wenn du dieses Profil von allen anderen Geräten entfernt hast.\n\nDie Deaktivierung des Mehrgerätemodus bei Verwendung des Profils auf mehreren Geräten führt zu verlorenen Nachrichten und anderen Problemen.</string>
@@ -818,8 +838,6 @@
     <string name="n_bytes_message">%1$s Nachricht</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Download max. verfügbar bis %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Profil auswählen</string>
     <string name="profile_image_select">Profilbild auswählen</string>
     <string name="select_your_new_profile_image">Wählen dein Profilbild aus</string>
     <string name="profile_image_delete">Profilbild löschen</string>
@@ -834,7 +852,7 @@
     <string name="stats_disable_dialog">Das Senden von Statistiken ist bereits eingeschaltet.\n\nMöchtest du es ausschalten?</string>
     <string name="disable">Ausschalten</string>
     <string name="stats_keep_sending">Weiter senden</string>
-    <string name="stats_msg_body">Der Anhang enthält anonyme Statistiken, die uns helfen, Delta Chat zu verbessern. Vielen Dank!</string>
+    <string name="stats_msg_body">Der Anhang enthält anonyme Statistiken, die uns helfen, Delta Chat zu verbessern. Vielen Dank! Für weitere Infos, siehe https://delta.chat/help#statssending </string>
 
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Suchergebnisse</string>
@@ -925,10 +943,6 @@
     <string name="ephemeral_timer_seconds_by_you">Du hast die Ablaufzeit verschwindender Nachrichten auf %1$s Sekunden gesetzt.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Ablaufzeit verschwindender Nachrichten auf %1$s Sekunden gesetzt von %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Du hast die Ablaufzeit verschwindender Nachrichten auf 1 Minute gesetzt.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Ablaufzeit verschwindender Nachrichten auf 1 MInute gesetzt von %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">Du hast die Ablaufzeit verschwindender Nachrichten auf 1 Stunde gesetzt.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Ablaufzeit verschwindender Nachrichten auf 1 Stunde gesetzt von %1$s.</string>
@@ -1025,14 +1039,12 @@
     <string name="verified_by">Eingeführt von %1$s</string>
     <string name="verified_by_you">Durch mich eingeführt</string>
     <string name="verified_by_unknown">Eingeführt</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Um Ende-zu-Ende-Verschlüsselung zu gewährleisten, können nur Kontakte mit grünem Häkchen zu dieser Gruppe hinzugefügt werden.\n\nDu kannst Kontakte persönlich treffen und ihren QR-Code scannen, um sie einzuführen.</string>
     <string name="mailto_dialog_header_select_chat">Wähle den Chat, an den die Nachricht gesendet werden soll</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s hat bereits einen Entwurf. Möchtest du diesen ersetzen?</string>
     <string name="mailto_link_could_not_be_decoded">Mailto-Link konnte nicht dekodiert werden: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Antworten</string>
     <string name="notify_new_message">Neue Nachricht</string>
     <string name="notify_background_connection_enabled">Hintergrundverbindung aktiviert</string>
@@ -1110,7 +1122,9 @@
     <string name="message_detail_received_desktop">Empfangen</string>
     <string name="menu.view.developer.open.log.folder">Log-Ordner öffnen</string>
     <string name="menu.view.developer.open.current.log.file">Aktuelle Logdatei öffnen</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Benachrichtigungssymbol kann nicht deaktiviert werden, da Delta Chat mit der Option --minimized gestartet wurde.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Benachrichtigungssymbol kann nicht deaktiviert werden, da Delta Chat mit der Option --minimized gestartet wurde.</string>
     <string name="no_spellcheck_suggestions_found">Keine Rechtschreibvorschläge gefunden.</string>
     <string name="show_window">Fenster anzeigen</string>
 

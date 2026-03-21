@@ -1,16 +1,12 @@
 package org.thoughtcrime.securesms.crypto;
 
-
 import android.content.Context;
 import android.os.Build;
-
 import androidx.annotation.NonNull;
-
-import org.thoughtcrime.securesms.util.Prefs;
-
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.concurrent.ConcurrentHashMap;
+import org.thoughtcrime.securesms.util.Prefs;
 
 /**
  * It can be rather expensive to read from the keystore, so this class caches the key in memory
@@ -18,7 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class DatabaseSecretProvider {
 
-  private static final ConcurrentHashMap<Integer, DatabaseSecret> instances = new ConcurrentHashMap<>();
+  private static final ConcurrentHashMap<Integer, DatabaseSecret> instances =
+      new ConcurrentHashMap<>();
 
   public static DatabaseSecret getOrCreateDatabaseSecret(@NonNull Context context, int accountId) {
     if (instances.get(accountId) == null) {
@@ -32,20 +29,20 @@ public final class DatabaseSecretProvider {
     return instances.get(accountId);
   }
 
-  private DatabaseSecretProvider() {
-  }
+  private DatabaseSecretProvider() {}
 
   private static @NonNull DatabaseSecret getOrCreate(@NonNull Context context, int accountId) {
     String unencryptedSecret = Prefs.getDatabaseUnencryptedSecret(context, accountId);
-    String encryptedSecret   = Prefs.getDatabaseEncryptedSecret(context, accountId);
+    String encryptedSecret = Prefs.getDatabaseEncryptedSecret(context, accountId);
 
-    if      (unencryptedSecret != null) return getUnencryptedDatabaseSecret(context, unencryptedSecret, accountId);
-    else if (encryptedSecret != null)   return getEncryptedDatabaseSecret(encryptedSecret);
-    else                                return createAndStoreDatabaseSecret(context, accountId);
+    if (unencryptedSecret != null)
+      return getUnencryptedDatabaseSecret(context, unencryptedSecret, accountId);
+    else if (encryptedSecret != null) return getEncryptedDatabaseSecret(encryptedSecret);
+    else return createAndStoreDatabaseSecret(context, accountId);
   }
 
-  private static @NonNull DatabaseSecret getUnencryptedDatabaseSecret(@NonNull Context context, @NonNull String unencryptedSecret, int accountId)
-  {
+  private static @NonNull DatabaseSecret getUnencryptedDatabaseSecret(
+      @NonNull Context context, @NonNull String unencryptedSecret, int accountId) {
     try {
       DatabaseSecret databaseSecret = new DatabaseSecret(unencryptedSecret);
 
@@ -64,18 +61,22 @@ public final class DatabaseSecretProvider {
     }
   }
 
-  private static @NonNull DatabaseSecret getEncryptedDatabaseSecret(@NonNull String serializedEncryptedSecret) {
+  private static @NonNull DatabaseSecret getEncryptedDatabaseSecret(
+      @NonNull String serializedEncryptedSecret) {
     if (Build.VERSION.SDK_INT < 23) {
-      throw new AssertionError("OS downgrade not supported. KeyStore sealed data exists on platform < M!");
+      throw new AssertionError(
+          "OS downgrade not supported. KeyStore sealed data exists on platform < M!");
     } else {
-      KeyStoreHelper.SealedData encryptedSecret = KeyStoreHelper.SealedData.fromString(serializedEncryptedSecret);
+      KeyStoreHelper.SealedData encryptedSecret =
+          KeyStoreHelper.SealedData.fromString(serializedEncryptedSecret);
       return new DatabaseSecret(KeyStoreHelper.unseal(encryptedSecret));
     }
   }
 
-  private static @NonNull DatabaseSecret createAndStoreDatabaseSecret(@NonNull Context context, int accountId) {
+  private static @NonNull DatabaseSecret createAndStoreDatabaseSecret(
+      @NonNull Context context, int accountId) {
     SecureRandom random = new SecureRandom();
-    byte[]       secret = new byte[32];
+    byte[] secret = new byte[32];
     random.nextBytes(secret);
 
     DatabaseSecret databaseSecret = new DatabaseSecret(secret);

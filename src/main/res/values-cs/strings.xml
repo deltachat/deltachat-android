@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -115,23 +117,9 @@
     <string name="last_month">Minulý měsíc</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Naposledy viděni v %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Naposledy viděni %1$s</string>
     <string name="last_seen_unknown">Naposledy viděno: Neznámý</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d druhý</item>
-        <item quantity="few">%d sekundy</item>
-        <item quantity="many">%d sekundy</item>
-        <item quantity="other">%d vteřny</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minuta</item>
-        <item quantity="few">%d minuty</item>
-        <item quantity="many">%d minuty</item>
-        <item quantity="other">%d minuty</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
@@ -281,8 +269,6 @@
     <string name="channels">Kanály</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Nový kanál</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Přidat příjemce</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Název kanálu</string>
     <string name="email">E-mail</string>
@@ -412,15 +398,9 @@
     <string name="answer_call">Zvedni</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Pokles</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Odchozí hovor</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Příchozí hovor</string>
     <string name="declined_call">Odmítnutý hovor</string>
     <string name="canceled_call">Zrušený hovor</string>
     <string name="missed_call">Zmeškaný hovor</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -616,8 +596,6 @@
     <string name="incoming_messages">Příchozí zprávy</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Odchozí zprávy</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Úložiště na %1$s</string>
     <string name="connectivity">Připojení</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Nepřipojeno</string>
@@ -639,7 +617,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Vytvořit nový profil</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Již mám svůj profil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Přihlášení ke klasickému e-mailu</string>
@@ -701,9 +679,6 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Přidat toto vysílání?</string>
     <string name="invalid_transport_qr">Naskenovaný kód QR neobsahuje platné vysílání.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Odstranit vysílání \"%1$s\"? \n\n Vaše kontakty se s vámi spojí pouze tehdy, pokud jste je předtím kontaktovali prostřednictvím jiného vysílání. \n\n Pokud máte pochybnosti, odstraňte spojení později.</string>
-
     <string name="login_certificate_checks">Kontroly certifikátu</string>
     <string name="login_error_mail">Prosím, zadejte platnou e-mailovou adresu</string>
     <string name="login_error_server">Prosím, zadejte platný server / IP adresu</string>
@@ -746,8 +721,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Nastaven vlastní: %s</string>
-    <string name="pref_using_default">Nastaven výchozí: %s</string>
     <string name="pref_profile_info_headline">Přehled účtu</string>
     <string name="pref_profile_photo">Profilový obrázek</string>
     <string name="pref_blocked_contacts">Blokované kontakty</string>
@@ -779,8 +752,6 @@
     <string name="pref_sound">Zvuk</string>
     <string name="pref_silent">Ticho</string>
     <string name="pref_privacy">Soukromí</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Chaty a multimédia</string>
     <string name="pref_system_default">Podle systému</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Světlý</string>
@@ -817,7 +788,7 @@
     <string name="pref_background_btn_default">Použít výchozí obrázek</string>
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Režim pro více zařízení</string>
     <string name="pref_multidevice_explain">Synchronizujte zprávy s ostatními zařízeními. Automaticky povoleno při přidání druhého zařízení</string>
     <string name="pref_multidevice_change_warn">Při použití stejného profilu na více zařízeních musí být povolen \"režim více zařízení\". Toto nastavení zakažte pouze v případě, že jste tento profil odstranili ze všech ostatních zařízení. \n\n Zakázání režimu \"režim více zařízení\" při používání profilu na více zařízeních bude mít za následek zmeškané zprávy a další problémy.</string>
@@ -845,8 +816,6 @@
     <string name="n_bytes_message">%1$s zpráva</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Stahovat dostupné maximum do %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Vyberte profil</string>
     <string name="profile_image_select">Vybrat profilový obrázek</string>
     <string name="select_your_new_profile_image">Vyberte si svůj nový profilový obrázek</string>
     <string name="profile_image_delete">Smazat profilový obrázek</string>
@@ -943,10 +912,6 @@
     <string name="ephemeral_timer_seconds_by_you">Nastavili jste časovač mizejících zpráv na %1$s sekund.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Uživatel %2$s nastavil časovač mizejících zpráv na %1$s sekund.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Nastavili jste časovač mizejících zpráv na 1 minutu.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Uživatel %1$s změnil časovač mizejících zpráv na 1 minutu.</string>
     <string name="ephemeral_timer_1_hour_by_you">Nastavili jste časovač mizejících zpráv na 1 hodinu.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Uživatel %1$s změnil časovač mizejících zpráv na 1 hodinu.</string>
@@ -1042,14 +1007,12 @@
     <string name="verified_by">Ověřeni uživatelem %1$s.</string>
     <string name="verified_by_you">Ověřeni mnou</string>
     <string name="verified_by_unknown">Představeno</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Aby mohlo být garantováno koncové šifrování, můžete do této skupiny přidávat pouze uživatele se zeleným zaškrtávátkem.\n\nSe svými kontakty se můžete setkat osobně a naskenovat jejich QR kód, abyste je ověřili.</string>
     <string name="mailto_dialog_header_select_chat">Vyberte chat, do kterého chcete zprávu poslat</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s již obsahuje rozepsanou zprávu, přejete si ji přepsat?</string>
     <string name="mailto_link_could_not_be_decoded">Odkaz typu mailto nebyl rozpoznán: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Odpovědět</string>
     <string name="notify_new_message">Nová zpráva</string>
     <string name="notify_background_connection_enabled">Spojení na pozadí je zapnuto</string>
@@ -1127,7 +1090,9 @@
     <string name="message_detail_received_desktop">přijato</string>
     <string name="menu.view.developer.open.log.folder">Otevřít složku protokolu</string>
     <string name="menu.view.developer.open.current.log.file">Otevřít stávající soubor s protokolem</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s volbou --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s volbou --minimized.</string>
     <string name="no_spellcheck_suggestions_found">Žádné pravopisné návrhy.</string>
     <string name="show_window">Zobrazit okno</string>
 

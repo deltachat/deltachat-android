@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -114,19 +116,16 @@
     <string name="last_month">Muajin e shkuar</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Parë së fundi më %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Parë së fundi %1$s</string>
     <string name="last_seen_unknown">Parë së fundi më: S’dihet</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d sekondë</item>
-        <item quantity="other">%d sekonda</item>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">Kohëzgjatja %d minutë</item>
+        <item quantity="other">Kohëzgjatja %d minuta</item>
     </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minutë</item>
-        <item quantity="other">%d minuta</item>
-    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Më pak se 1 minutë</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -179,6 +178,9 @@
     <string name="add_to_sticker_collection">Shtoje te Koleksion Ngjitësish</string>
     <string name="add_stickers_instructions">Që të shtoni ngjitës, prekni “Hap Dosje Ngjitësish”, krijoni një nëndosje për paketën e ngjitësit tuaj dhe tërhiqni në të figurë dhe kartela ngjitësi</string>
     <string name="open_sticker_folder">Hap Dosje Ngjitësish</string>
+    <string name="ask_add_sticker_to_collection">Të shtohet ky ngjitës te koleksioni juaj?</string>
+    <string name="ask_delete_sticker">Të fshihet ky ngjitës?</string>
+    <string name="sticker_picker_empty_hint">Prekni një ngjitës që të shtohet këtu.</string>
     <string name="images">Figura</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
@@ -215,6 +217,8 @@
     <string name="games">Lojëra</string>
     <string name="tools">Mjete</string>
     <string name="app_size">Madhësi</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
+    <string name="app_date_published">Botuar më</string>
     <string name="add_to_chat">Shtoje te Fjalosje</string>
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Shfletoni</string>
@@ -254,10 +258,13 @@
     <string name="channels">Kanale</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Kanal i Ri</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Shtoni Marrës</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Emër Kanali</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d parje</item>
+        <item quantity="other">%d parje</item>
+    </plurals>
     <string name="email">Email</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Email i Ri</string>
@@ -273,6 +280,7 @@
     <string name="menu_add_attachment">Shtoni Bashkëngjitje</string>
     <string name="menu_leave_group">Braktiseni Grupin</string>
     <string name="menu_leave_channel">Braktise Kanalin</string>
+    <string name="menu_leave_and_delete">Dil &amp; Fshiji për Mua</string>
     <string name="menu_delete_chat">Fshije Fjalosjen</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Spastroje Fjalosjen</string>
@@ -379,25 +387,35 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Thirreni</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_audio_call">Thirrje Me Zë</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
     <string name="start_video_call">Thirrje Me Video</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Përgjigjuni</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Hidhe poshtë</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Thirrje e dërguar</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Thirrje audio</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Thirrje video</string>
+    <string name="call_initializing">Po gatitet…</string>
+    <string name="call_incoming">Thirrje ardhëse</string>
+    <string name="call_ringing">Po bie zilja…</string>
+    <string name="call_reconnecting">Po rilidhet</string>
+    <string name="call_ended">Thirrja përfundoi</string>
+    <string name="call_failed">Thirrja dështoi</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Thirrje audio e dërguar</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="outgoing_video_call">Thirrje video e dërguar</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Thirrje e marrë</string>
+    <!-- deprecated, use "Audio call" instead -->
     <string name="incoming_audio_call">Thirrje audio e marrë</string>
+    <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Thirrje video e marrë</string>
     <string name="declined_call">Thirrje e hedhur poshtë</string>
     <string name="canceled_call">Thirrje e anuluar</string>
     <string name="missed_call">Thirrje e humbur</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -506,7 +524,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Jeni i sigurt se doni të vizitohet %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Kjo lidhje mund të jetë duke shfaqur keq shenja, duke përdorur të ngjashme prej alfabetesh të tjerë. Ndjekja e lidhjes së  quajtur %1$s do të shpjerë te %2$s, çka është normale për shenja alfabetesh jo latinë. Nëse s’prisnit shenja të tilla, kjo lidhje mund të jetë e dëmshme</string>
+    <string name="puny_code_warning_description">Kjo lidhje mund të jetë duke shfaqur keq shenja, duke përdorur të ngjashme prej alfabetesh të tjerë. Ndjekja e lidhjes së quajtur %1$s do të shpjerë te %2$s, çka është normale për shenja alfabetesh jo latinë. Nëse s’prisnit shenja të tilla, kjo lidhje mund të jetë e dëmshme</string>
 
 
     <!-- search -->
@@ -582,8 +600,6 @@
     <string name="incoming_messages">Mesazhe të Marrë</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Mesazhe të Dërguar</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Depozitim në %1$s</string>
     <string name="connectivity">Aftësi lidhjeje</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">I palidhur</string>
@@ -605,7 +621,7 @@
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Krijoni Profil të Ri</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup"  -->
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Kam Tashmë një Profil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Hyrje Klasike Me Email</string>
@@ -664,12 +680,16 @@
     <string name="add_transport">Shtoni Rele</string>
     <string name="remove_transport">Hiqni Rele</string>
     <string name="edit_transport">Përpunoni Rele</string>
+    <string name="used_for_sending">E përdorur për dërgim</string>
+    <string name="hide_from_contacts">Fshihe prej Kontaktesh</string>
+    <string name="hidden_from_contacts">Fshehur prej kontakteve</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Mesazhet merren në krejt reletë.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Të shtohet kjo rele?</string>
     <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_transport">Të hiqet releja “%1$s”?\n\nKontaktet tuaja munden t’ju kapin vetëm nëse jeni lidhur me ta më herët përmes një releje tjetër.\n\n\n\nNëse jeni në mëdyshje, hiqeni relenë më vonë.</string>
-
+    <string name="confirm_remove_or_hide_transport_x">Të hiqet releja “%1$s”?\n\nKontaktet që njohin vetëm këtë rele mund të mos ju\nkapin dot, deri sa t’u dërgoni sërish mesazh.\n\nNëse s’jeni të sigurt, fshiheni, në vend se ta hiqni.</string>
     <string name="login_certificate_checks">Kontrolle Dëshmish</string>
     <string name="login_error_mail">Ju lutemi, jepni një adresë email të vlefshme</string>
     <string name="login_error_server">Ju lutemi, jepni një shërbyes / adresë IP të vlefshme</string>
@@ -712,8 +732,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Po përdoret vetjak: %s</string>
-    <string name="pref_using_default">Po përdoret parazgjedhje: %s</string>
     <string name="pref_profile_info_headline">Profili Juaj</string>
     <string name="pref_profile_photo">Foto Profili</string>
     <string name="pref_blocked_contacts">Kontakte të Bllokuar</string>
@@ -727,6 +745,7 @@
     <string name="pref_enter_sends">Tasti Enter Dërgon</string>
     <string name="pref_enter_sends_explain">Shtypja e tastit Enter do të dërgojë mesazhe tekst</string>
     <string name="pref_outgoing_media_quality">Cilësi Mediash Në Dalje</string>
+    <string name="pref_outgoing_media_quality_hint">Që të dërgohet në cilësinë origjinale, bashkëngjiteni median si një “Kartelë”. Kjo përdor në mënyrë domethënëse më tepër të dhëna për ju dhe marrësit tuaj.</string>
     <string name="pref_outgoing_balanced">E baraspeshuar</string>
     <string name="pref_outgoing_worse">Cilësia më e ulët, madhësi e vogël</string>
     <string name="pref_vibrate">Dridhu</string>
@@ -737,6 +756,10 @@
     <string name="pref_notifications">Njoftime</string>
     <string name="pref_mention_notifications">Përmendje</string>
     <string name="pref_mention_notifications_explain">Në grupe të heshtuar, njofto për mesazhe drejtuar jush, si përgjigjet, apo reagimet</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Thirrje</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Shfaq skenë thirrjeje për thirrje ardhëse</string>
     <string name="pref_notifications_show">Shfaqi</string>
     <string name="pref_notifications_priority">Përparësi</string>
     <string name="pref_notifications_explain">Aktivizoni njoftime sistemi për mesazhe të reja</string>
@@ -746,8 +769,6 @@
     <string name="pref_sound">Tingull</string>
     <string name="pref_silent">Heshtazi</string>
     <string name="pref_privacy">Privatësi</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Fjalosje dhe Media</string>
     <string name="pref_system_default">Parazgjedhje sistemi</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">E çelët</string>
@@ -784,7 +805,7 @@
     <string name="pref_background_btn_default">Përdor Figurën Parazgjedhje</string>
     <string name="pref_background_btn_gallery">Përzgjidhni Nga Galeri</string>
     <string name="pref_imap_folder_warn_disable_defaults">Nëse e ndryshoni këtë mundësi, garantoni që shërbyesi juaj dhe klientët tuaj të tjerët të jenë formësuar për këtë.\n\nPërndryshe gjërat mund të mos punojnë fare.</string>
-    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help  -->
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mënyra Shumë-Pajisje</string>
     <string name="pref_multidevice_explain">Njëkohësoni mesazhet tuaj në pajisje tuajat të tjera. E aktivizuar automatikisht gjatë shtimit të një pajisjeje të dytë</string>
     <string name="pref_multidevice_change_warn">Mënyra Shumë-Pajisje duhet aktivizuar, kur përdoret i njëjti profil në disa pajisje. Çaktivizojeni këtë rregullim vetëm në se e keni hequr këtë profil nga krejt pajisjet tuaja të tjera.\n\nÇaktivizimi i Mënyrës Shumë-Pajisje, teksa përdoret profili në disa pajisje, do të sjellë mesazhe të humbura dhe probleme të tjera.</string>
@@ -811,8 +832,6 @@
     <string name="n_bytes_message">Mesazh %1$s</string>
     <!-- %1$s will be replaced by human-readable date and time -->
     <string name="download_max_available_until">Shkarko maksimumin e mundshëm deri më %1$s</string>
-    <!-- deprecated -->
-    <string name="select_profile">Përzgjidhni Profil</string>
     <string name="profile_image_select">Përzgjidhni Figurë Profili</string>
     <string name="select_your_new_profile_image">Përzgjidhni figurën tuaj të re të profilit</string>
     <string name="profile_image_delete">Fshini Figurën e Profilit</string>
@@ -918,10 +937,6 @@
     <string name="ephemeral_timer_seconds_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në %1$s sekonda</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në %1$s sekonda nga %2$s.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në 1 minutë.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në 1 minutë nga %1$s.</string>
     <string name="ephemeral_timer_1_hour_by_you">E vutë kohëmatësin e zhdukjes së mesazheve në 1 orë.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Kohëmatësi i zhdukjes së mesazheve u vu në 1 orë nga %1$s.</string>
@@ -1018,14 +1033,12 @@
     <string name="verified_by">Sjellë nga %1$s</string>
     <string name="verified_by_you">Sjellë nga unë</string>
     <string name="verified_by_unknown">Sjellë nga</string>
-    <!-- deprecated -->
-    <string name="verified_contact_required_explain">Që të garantohet fshehtëzim skaj-më-skaj, mund të shtoni në këtë grup vetëm kontakte me shenjën e gjelbër të verifikimit.\n\nMund të takoheni drejtpërsëdrejti me kontakte të paverifikuar dhe të skanoni kodin e tyre QR për t’i verifikuar ata.</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s përmban tashmë një skicë mesazhi, doni të zëvendësohet?</string>
     <string name="mailto_link_could_not_be_decoded">s’u shkodua dot lidhje mailto: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Përgjigjuni</string>
     <string name="notify_new_message">Mesazh i ri</string>
     <string name="notify_background_connection_enabled">U vendos lidhje në prapaskenë</string>
@@ -1103,7 +1116,9 @@
     <string name="message_detail_received_desktop">të marrë</string>
     <string name="menu.view.developer.open.log.folder">Hap Dosje Regjistrash</string>
     <string name="menu.view.developer.open.current.log.file">Hap Kartelën Regjistër të Tanishme</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Ikona e panelit s’mund të çaktivizohet, ngaqë Delta Chat qe nisur me mundësinë --minimized.</string>
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
 

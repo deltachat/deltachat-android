@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">دلتا چت</string>
     <string name="ok">خا</string>
@@ -113,7 +115,7 @@
     <string name="last_month">ما زیتری</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">ریتور دیندایی من %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">ریتور دیندایی %1$s</string>
     <string name="last_seen_unknown">ریتور دیندایی: دیار نؽ</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
@@ -378,8 +380,6 @@
     <string name="media_preview">نشووݩ داڌن وارسگر</string>
     <string name="send_message">فشناڌن پیوم</string>
 
-    <!-- deprecated -->
-    <string name="storage_on_domain">زفت کردن من %1$s</string>
     <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
     <string name="connectivity_connecting">هونی منپیز ابۊ...</string>
     <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
@@ -433,7 +433,7 @@
     <string name="contact_verified">%1$s تاییڌ وابی.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <string name="verified_by">تاییڌ وابیڌه و دس %1$s</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">ولوم</string>
     <string name="notify_new_message">پیوم نۊ</string>
     <string name="notify_name_and_message">نوم وو پیوم</string>

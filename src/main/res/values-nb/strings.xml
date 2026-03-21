@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -115,19 +117,9 @@
     <string name="last_month">Forrige måneden</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
     <string name="last_seen_at">Sist sett %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages)-->
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Sist sett %1$s</string>
     <string name="last_seen_unknown">Sist sett: uvisst</string>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N seconds". -->
-    <plurals name="n_seconds_ext">
-        <item quantity="one">%d sekund</item>
-        <item quantity="other">%d sekunder</item>
-    </plurals>
-    <!-- Shown in call duration. Avoid abbreviations, prefer full words ex. "N minutes". -->
-    <plurals name="n_minutes_ext">
-        <item quantity="one">%d minutt</item>
-        <item quantity="other">%d minutter</item>
-    </plurals>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minutt</item>
@@ -259,8 +251,6 @@
     <string name="channels">Kanaler</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="new_channel">Ny kanal</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Legg til mottakere</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanalnavn</string>
     <string name="email">E-post</string>
@@ -388,15 +378,9 @@
     <string name="answer_call">Svar</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Avvis</string>
-    <!-- deprecated, use outgoing_audio_call or outgoing_video_call instead -->
-    <string name="outgoing_call">Utgående anrop</string>
-    <!-- deprecated, use incoming_audio_call or incoming_video_call instead -->
-    <string name="incoming_call">Innkommende anrop</string>
     <string name="declined_call">Avvist anrop</string>
     <string name="canceled_call">Avbrutt anrop</string>
     <string name="missed_call">Ubesvart anrop</string>
-    <!-- the first placeholder will be replaced by a date, the second placeholder by duration, example: "Thu, 08:12 pm, 2 minutes" -->
-    <string name="call_date_and_duration">%1$s, %2$s</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -530,6 +514,7 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Videresend til…</string>
+    <!-- preferences -->
     <string name="pref_profile_info_headline">Din profilinfo</string>
     <string name="pref_profile_photo">Profilbilde</string>
     <string name="pref_blocked_contacts">Blokkerte kontakter</string>
@@ -549,8 +534,6 @@
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
     <string name="pref_privacy">Personvern</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Chatter og medier</string>
     <string name="pref_system_default">System standard</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
@@ -611,7 +594,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skann dette for å bekrefte en kontakt med %1$s.</string>
     <string name="contact_verified">%1$s bekreftet.</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Svar</string>
     <string name="notify_new_message">Ny meldin</string>
     <string name="notify_priority_high">Høy</string>

@@ -3,32 +3,29 @@ package org.thoughtcrime.securesms.search;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
-
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.Util;
 
 class SearchViewModel extends ViewModel {
-  private static final String        TAG = SearchViewModel.class.getSimpleName();
-  private final ObservingLiveData    searchResult;
-  private String                     lastQuery;
-  private final DcContext            dcContext;
-  private boolean                    forwarding = false;
-  private boolean                    inBgSearch;
-  private boolean                    needsAnotherBgSearch;
+  private static final String TAG = SearchViewModel.class.getSimpleName();
+  private final ObservingLiveData searchResult;
+  private String lastQuery;
+  private final DcContext dcContext;
+  private boolean forwarding = false;
+  private boolean inBgSearch;
+  private boolean needsAnotherBgSearch;
 
   SearchViewModel(@NonNull Context context) {
-    this.dcContext        = DcHelper.getContext(context.getApplicationContext());
-    this.searchResult     = new ObservingLiveData();
+    this.dcContext = DcHelper.getContext(context.getApplicationContext());
+    this.searchResult = new ObservingLiveData();
   }
 
   LiveData<SearchResult> getSearchResult() {
@@ -38,7 +35,6 @@ class SearchViewModel extends ViewModel {
   public void setForwardingMode(boolean forwarding) {
     this.forwarding = forwarding;
   }
-
 
   void updateQuery(String query) {
     lastQuery = query;
@@ -51,21 +47,21 @@ class SearchViewModel extends ViewModel {
       Log.i(TAG, "... search call debounced");
     } else {
       inBgSearch = true;
-      Util.runOnBackground(() -> {
+      Util.runOnBackground(
+          () -> {
+            Util.sleep(100);
+            needsAnotherBgSearch = false;
+            queryAndCallback(lastQuery, searchResult::postValue);
 
-        Util.sleep(100);
-        needsAnotherBgSearch = false;
-        queryAndCallback(lastQuery, searchResult::postValue);
+            while (needsAnotherBgSearch) {
+              Util.sleep(100);
+              needsAnotherBgSearch = false;
+              Log.i(TAG, "... executing debounced search call");
+              queryAndCallback(lastQuery, searchResult::postValue);
+            }
 
-        while (needsAnotherBgSearch) {
-          Util.sleep(100);
-          needsAnotherBgSearch = false;
-          Log.i(TAG, "... executing debounced search call");
-          queryAndCallback(lastQuery, searchResult::postValue);
-        }
-
-        inBgSearch = false;
-      });
+            inBgSearch = false;
+          });
     }
   }
 
@@ -79,7 +75,8 @@ class SearchViewModel extends ViewModel {
 
     // #1 search for chats
     long startMs = System.currentTimeMillis();
-    DcChatlist conversations = dcContext.getChatlist(forwarding? DcContext.DC_GCL_FOR_FORWARDING : 0, query, 0);
+    DcChatlist conversations =
+        dcContext.getChatlist(forwarding ? DcContext.DC_GCL_FOR_FORWARDING : 0, query, 0);
     overallCnt += conversations.getCnt();
     Log.i(TAG, "⏰ getChatlist(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
@@ -127,11 +124,9 @@ class SearchViewModel extends ViewModel {
   }
 
   @Override
-  protected void onCleared() {
-  }
+  protected void onCleared() {}
 
-  private static class ObservingLiveData extends MutableLiveData<SearchResult> {
-  }
+  private static class ObservingLiveData extends MutableLiveData<SearchResult> {}
 
   public static class Factory extends ViewModelProvider.NewInstanceFactory {
 

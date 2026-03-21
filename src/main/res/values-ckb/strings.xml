@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">دێڵتا چات</string>
     <string name="ok">باشە</string>
@@ -339,8 +341,6 @@
     <string name="forward_to">هەناردن بۆ...</string>
     <string name="share_text_multiple_chats">ئەم دەقە دەنێریت بۆ %1$d وتووێژ؟n\n\"%2$s\"</string>
     <!-- preferences -->
-    <string name="pref_using_custom">بەکارهێنانی دڵخواز: %s</string>
-    <string name="pref_using_default">بەکارهێنانی بنەڕەتی: %s</string>
     <string name="pref_profile_info_headline">زانیارییەکانی پرۆفایلەکەت</string>
     <string name="pref_profile_photo">وێنەی لادیمەن</string>
     <string name="pref_blocked_contacts">هەژمارە ئاستەنگکراوەکان</string>
@@ -366,8 +366,6 @@
     <string name="pref_sound">دەنگ</string>
     <string name="pref_silent">بێدەنگ</string>
     <string name="pref_privacy">پاراستنی تاکەکەسی</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">وتووێژ و ڕەنگاڵەکان</string>
     <string name="pref_system_default">بنەڕەتی سیستەم</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">ڕووناک</string>
@@ -388,7 +386,7 @@
     <string name="pref_backup_explain">یەدەک گرتن لە وتووێژەکان و دانانی لەسەر بیرگەی دەرەکی</string>
     <string name="pref_backup_export_explain">یەدەک یارمەتیت دەدات تاکوو نەرمامێرەکە لەسەر ئەم ئامێرە یان ئامێرێکی دیکە دەبمەزرێنیتەوە.\n\n یەدەکەکە بریتی دەبێت لە هەموو پەیامەکان و بەردەنگەکان و وتووێژەکان و ڕێکخستنی ئۆتۆکریپتی ئەمسەر-ئەوسەر. پەڕگەی یەدەکەکە لە شوێنێکی قایمدا بپارێزە یان بە زووترین کات بیسڕەوە.</string>
     <string name="pref_backup_export_start_button">دەستپێبکە</string>
-    <string name="pref_backup_written_to_x">یەدەک بە سەرکەوتوویی لە \"%1$s\"دا  پاشەکەوت کرا.</string>
+    <string name="pref_backup_written_to_x">یەدەک بە سەرکەوتوویی لە \"%1$s\"دا پاشەکەوت کرا.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
@@ -463,7 +461,7 @@
     <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
     <string name="qraccount_qr_code_cannot_be_used">ناتوانی لە کۆدی QRە سکان کراوەکە کەڵک بگریت بۆ پێکهێنانی هەژمارێکی نوێ.</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">وەڵام دانەوە</string>
     <string name="notify_new_message">پەیامی نوێ</string>
     <string name="notify_background_connection_enabled">پەیوەندی پشتخان چالاک کرا</string>

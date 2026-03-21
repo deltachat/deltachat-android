@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Εντάξει</string>
@@ -40,7 +42,7 @@
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Σίγαση</string>
     <string name="ephemeral_messages">Μηνύματα που εξαφανίζονται</string>
-    <string name="ephemeral_messages_hint">Ισχύει για όλα τα μέλη της συνομιλίας αν χρησιμοποιούν Delta Chat: έχουν την δυνατότητα αντιγραφής, αποθήκευσης, και κοινοποίησης μηνυμάτων ή χρήση άλλων  e-mail πελατών.</string>
+    <string name="ephemeral_messages_hint">Ισχύει για όλα τα μέλη της συνομιλίας αν χρησιμοποιούν Delta Chat: έχουν την δυνατότητα αντιγραφής, αποθήκευσης, και κοινοποίησης μηνυμάτων ή χρήση άλλων e-mail πελατών.</string>
     <string name="save">Αποθήκευση</string>
     <string name="chat">Συνομιλία</string>
     <string name="media">Πολυμέσα</string>
@@ -182,8 +184,6 @@
     <string name="menu_new_contact">Νέα Επαφή</string>
     <string name="menu_new_chat">Νέα Συνομιλία</string>
     <string name="menu_new_group">Νέα ομάδα</string>
-    <!-- deprecated -->
-    <string name="add_recipients">Προσθήκη Παραλήπτη</string>
     <string name="menu_send">Αποστολή</string>
     <string name="menu_toggle_keyboard">Εναλλαγή πληκτρολογίου emoji</string>
     <string name="menu_edit_group">Επεξεργασία ομάδας</string>
@@ -401,8 +401,6 @@
     <string name="incoming_messages">Εισερχόμενα Μηνύματα</string>
     <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
     <string name="outgoing_messages">Εξερχόμενα Μηνύματα</string>
-    <!-- deprecated -->
-    <string name="storage_on_domain">Αποθήκευση στο %1$s</string>
     <string name="connectivity">Συνδεσιμότητα</string>
     <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
     <string name="connectivity_not_connected">Μη συνδεδεμένο</string>
@@ -467,8 +465,6 @@
 
 
     <!-- preferences -->
-    <string name="pref_using_custom">Χρήση προσαρμοσμένου: %s</string>
-    <string name="pref_using_default">Χρήση προεπιλογής: %s</string>
     <string name="pref_profile_info_headline">Πληροφορίες Προφίλ</string>
     <string name="pref_profile_photo">Εικόνα Προφίλ</string>
     <string name="pref_blocked_contacts">Αποκλεισμένες Επαφές</string>
@@ -498,8 +494,6 @@
     <string name="pref_sound">Ήχος</string>
     <string name="pref_silent">Σε σίγαση</string>
     <string name="pref_privacy">Ιδιωτικότητα</string>
-    <!-- deprecated, use pref_chats -->
-    <string name="pref_chats_and_media">Συνομιλίες και Πολυμέσα</string>
     <string name="pref_system_default">Προκαθορισμένο του συστήματος</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Φωτεινό</string>
@@ -624,10 +618,6 @@
     <string name="ephemeral_timer_seconds_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s δευτερόλεπτα.</string>
     <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_seconds_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s δευτερόλεπτα.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε 1 λεπτό.</string>
-    <!-- deprecated, usage needs to be removed in core -->
-    <string name="ephemeral_timer_1_minute_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 λεπτό.</string>
     <string name="ephemeral_timer_1_hour_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε 1 ώρα.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_hour_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 ώρα.</string>
@@ -638,7 +628,7 @@
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Ο/Η %1$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε 1 εβδομάδα.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
-    <string name="ephemeral_timer_minutes_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s  λεπτά.</string>
+    <string name="ephemeral_timer_minutes_by_you">Όρισες το χρόνο εξαφάνισης των μηνυμάτων σε %1$s λεπτά.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_minutes_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s λεπτά.</string>
     <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
@@ -705,7 +695,7 @@
     <string name="confirm_replace_draft">%1$s έχει ήδη ένα πρόχειρο μήνυμα, θέλετε να το αντικαταστήσετε;</string>
     <string name="mailto_link_could_not_be_decoded">Αδυναμία αποκωδικοποίησης του συνδέσμου mailto: %1$s</string>
 
-    <!-- notifications  -->
+    <!-- notifications -->
     <string name="notify_reply_button">Απάντηση</string>
     <string name="notify_new_message">Νέο μήνυμα</string>
     <string name="notify_background_connection_enabled">Η σύνδεση στο παρασκήνιο ενεργοποιήθηκε</string>
@@ -769,7 +759,9 @@
     <string name="message_detail_received_desktop">Παραλήφθηκε</string>
     <string name="menu.view.developer.open.log.folder">Άνοιγμα του φακέλου καταγραφής</string>
     <string name="menu.view.developer.open.current.log.file">Άνοιγμα του τρέχον αρχείου καταγραφής</string>
-    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
+    <string
+        name="explain_desktop_minimized_disabled_tray_pref"
+        tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
     <string name="no_spellcheck_suggestions_found">Δεν βρέθηκαν προτάσεις ορθογραφίας.</string>
     <string name="show_window">Εμφάνιση παραθύρου</string>
 

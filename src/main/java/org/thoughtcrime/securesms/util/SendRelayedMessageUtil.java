@@ -14,29 +14,24 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
-
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import org.thoughtcrime.securesms.ConversationListRelayingActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import chat.delta.rpc.Rpc;
-import chat.delta.rpc.RpcException;
-
 public class SendRelayedMessageUtil {
 
   public static void immediatelyRelay(Activity activity, int chatId) {
-    immediatelyRelay(activity, new Long[]{(long) chatId});
+    immediatelyRelay(activity, new Long[] {(long) chatId});
   }
 
   public static void immediatelyRelay(Activity activity, final Long[] chatIds) {
@@ -47,48 +42,49 @@ public class SendRelayedMessageUtil {
       resetRelayingMessageContent(activity);
       if (forwardedMessageIDs == null || forwardedMsgAccId <= 0) return;
 
-      Util.runOnAnyBackgroundThread(() -> {
-        DcContext dcContext = DcHelper.getContext(activity);
-        int accId = dcContext.getAccountId();
-        if (forwardedMsgAccId != accId) {
-          Rpc rpc = DcHelper.getRpc(activity);
-          List<Integer> list = Util.toList(forwardedMessageIDs);
-          for (long longChatId : chatIds) {
-            try {
-              rpc.forwardMessagesToAccount(forwardedMsgAccId, list, accId, (int)longChatId);
-            } catch (RpcException e) {
-              e.printStackTrace();
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            DcContext dcContext = DcHelper.getContext(activity);
+            int accId = dcContext.getAccountId();
+            if (forwardedMsgAccId != accId) {
+              Rpc rpc = DcHelper.getRpc(activity);
+              List<Integer> list = Util.toList(forwardedMessageIDs);
+              for (long longChatId : chatIds) {
+                try {
+                  rpc.forwardMessagesToAccount(forwardedMsgAccId, list, accId, (int) longChatId);
+                } catch (RpcException e) {
+                  e.printStackTrace();
+                }
+              }
+              return;
             }
-          }
-          return;
-        }
 
-        for (long longChatId : chatIds) {
-          int chatId = (int) longChatId;
-          if (dcContext.getChat(chatId).isSelfTalk()) {
-            for (int msgId : forwardedMessageIDs) {
-              DcMsg msg = dcContext.getMsg(msgId);
-              if (msg.canSave() && msg.getSavedMsgId() == 0 && msg.getChatId() != chatId) {
-                dcContext.saveMsgs(new int[]{msgId});
+            for (long longChatId : chatIds) {
+              int chatId = (int) longChatId;
+              if (dcContext.getChat(chatId).isSelfTalk()) {
+                for (int msgId : forwardedMessageIDs) {
+                  DcMsg msg = dcContext.getMsg(msgId);
+                  if (msg.canSave() && msg.getSavedMsgId() == 0 && msg.getChatId() != chatId) {
+                    dcContext.saveMsgs(new int[] {msgId});
+                  } else {
+                    handleForwarding(activity, chatId, new int[] {msgId});
+                  }
+                }
               } else {
-                handleForwarding(activity, chatId, new int[]{msgId});
+                handleForwarding(activity, chatId, forwardedMessageIDs);
               }
             }
-          } else {
-            handleForwarding(activity, chatId, forwardedMessageIDs);
-          }
-        }
-
-      });
+          });
     } else if (isSharing(activity)) {
       ArrayList<Uri> sharedUris = getSharedUris(activity);
       String sharedText = getSharedText(activity);
       resetRelayingMessageContent(activity);
-      Util.runOnAnyBackgroundThread(() -> {
-        for (long chatId : chatIds) {
-          sendMultipleMsgs(activity, (int) chatId, sharedUris, sharedText);
-        }
-      });
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            for (long chatId : chatIds) {
+              sendMultipleMsgs(activity, (int) chatId, sharedUris, sharedText);
+            }
+          });
     }
   }
 
@@ -97,7 +93,8 @@ public class SendRelayedMessageUtil {
     dcContext.forwardMsgs(forwardedMessageIDs, chatId);
   }
 
-  public static void sendMultipleMsgs(Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
+  public static void sendMultipleMsgs(
+      Context context, int chatId, ArrayList<Uri> sharedUris, String sharedText) {
     DcContext dcContext = DcHelper.getContext(context);
     ArrayList<Uri> uris = sharedUris;
     String text = sharedText;
@@ -124,7 +121,8 @@ public class SendRelayedMessageUtil {
     return false;
   }
 
-  public static DcMsg createMessage(Context context, Uri uri, String text) throws NullPointerException {
+  public static DcMsg createMessage(Context context, Uri uri, String text)
+      throws NullPointerException {
     DcContext dcContext = DcHelper.getContext(context);
     DcMsg message;
     String mimeType = MediaUtil.getMimeType(context, uri);
@@ -152,7 +150,9 @@ public class SendRelayedMessageUtil {
   private static void setFileFromUri(Context context, Uri uri, DcMsg message, String mimeType) {
     String path;
     DcContext dcContext = DcHelper.getContext(context);
-    String filename = "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS does weird things
+    String filename =
+        "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS
+    // does weird things
     try {
 
       if (PartAuthority.isLocalUri(uri)) {
@@ -186,5 +186,4 @@ public class SendRelayedMessageUtil {
     }
     message.setFileAndDeduplicate(path, filename, mimeType);
   }
-
 }

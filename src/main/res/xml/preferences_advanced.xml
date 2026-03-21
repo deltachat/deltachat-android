@@ -2,22 +2,25 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference android:key="pref_view_log"
-        android:title="@string/pref_view_log"/>
+    <Preference
+        android:key="pref_view_log"
+        android:title="@string/pref_view_log" />
 
     <PreferenceCategory android:title="@string/pref_server">
 
-        <Preference android:key="pref_relay_list_button"
-            android:title="@string/transports"/>
+        <Preference
+            android:key="pref_relay_list_button"
+            android:title="@string/transports" />
 
-        <Preference android:key="proxy_settings_button"
-            android:title="@string/proxy_settings"/>
+        <Preference
+            android:key="proxy_settings_button"
+            android:title="@string/proxy_settings" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_bcc_self"
             android:title="@string/pref_multidevice"
-            android:summary="@string/pref_multidevice_explain"/>
+            android:summary="@string/pref_multidevice_explain" />
 
     </PreferenceCategory>
 
@@ -30,21 +33,22 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_calls_enabled"
-            android:title="Debug Calls"/>
+            android:title="Debug Calls" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_new_broadcast_list"
-            android:title="@string/channels"/>
+            android:title="@string/channels" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="pref_location_streaming_enabled"
-            android:title="@string/pref_on_demand_location_streaming"/>
+            android:title="@string/pref_on_demand_location_streaming" />
 
-        <Preference android:key="pref_webxdc_store_url"
+        <Preference
+            android:key="pref_webxdc_store_url"
             android:title="@string/webxdc_store_url"
-            android:summary="@string/none"/>
+            android:summary="@string/none" />
 
     </PreferenceCategory>
 
@@ -68,7 +72,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="pref_category_legacy" android:title="Legacy">
+    <PreferenceCategory
+        android:key="pref_category_legacy"
+        android:title="Legacy">
 
         <ListPreference
             android:key="pref_show_emails"
@@ -79,7 +85,7 @@
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="true"
             android:key="pref_mvbox_move"
-            android:title="@string/pref_auto_folder_moves"/>
+            android:title="@string/pref_auto_folder_moves" />
 
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:defaultValue="false"

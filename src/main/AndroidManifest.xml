@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <uses-feature android:name="android.hardware.bluetooth" android:required="false" />
-    <uses-feature android:name="android.hardware.location" android:required="false"/>
-    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
-    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
-    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
-    <uses-feature android:name="android.hardware.wifi" android:required="false"/>
-    <uses-feature android:name="android.hardware.portrait" android:required="false"/>
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.portrait"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
     <!-- dangerous permissions - we need to as the user with a PermissionsRequest -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -35,465 +63,530 @@
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RAISED_THREAD_PRIORITY" />
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission
+        android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission
+        android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
 
-    <!-- force compiling emojipicker on sdk<21; runtime checks are required then -->
-    <uses-sdk tools:overrideLibrary="androidx.emoji2.emojipicker"/>
+    <!-- force compiling libs on older sdk than supported; runtime checks are required -->
+    <uses-sdk tools:overrideLibrary="androidx.core.telecom,im.conversations.webrtc" />
 
-    <application android:name=".ApplicationContext"
-                 android:icon="@mipmap/ic_launcher"
-                 android:label="@string/app_name"
-                 android:supportsRtl="true"
-                 tools:replace="android:allowBackup"
-                 android:allowBackup="false"
-                 android:theme="@style/TextSecure.LightTheme"
-                 android:largeHeap="true"
-                 tools:ignore="GoogleAppIndexingWarning"
-                 android:requestLegacyExternalStorage="true"
-                 tools:targetApi="TIRAMISU"
-                 android:hasFragileUserData="true"
-        >
-
-    <!-- android car support, see https://developer.android.com/training/auto/start/,
-         as this potentially blocks releases on gplay due to extra-checks,
-         we disable this during the first gplay releases -->
-    <!--
-    <meta-data android:name="com.google.android.gms.car.application"
-               android:resource="@xml/automotive_app_desc" />
-    -->
-
-    <!-- Opt out of metrics collection: https://developer.android.com/develop/ui/views/layout/webapps/managing-webview#metrics -->
-    <meta-data android:name="android.webkit.WebView.MetricsOptOut"
-               android:value="true" />
-
-    <activity android:name=".ShareActivity"
-              android:theme="@android:style/Theme.Translucent.NoTitleBar"
-              android:excludeFromRecents="true"
-              android:launchMode="singleTask"
-              android:taskAffinity=""
-              android:windowSoftInputMode="stateHidden"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:exported="true">
-
-        <intent-filter>
-            <action android:name="android.intent.action.SEND" />
-            <category android:name="android.intent.category.DEFAULT"/>
-            <data android:mimeType="audio/*" />
-            <data android:mimeType="image/*" />
-            <data android:mimeType="text/plain" />
-            <data android:mimeType="video/*" />
-            <data android:mimeType="application/*"/>
-            <data android:mimeType="text/*"/>
-            <data android:mimeType="*/*"/>
-        </intent-filter>
-
-        <intent-filter>
-            <data android:scheme="mailto"/>
-            <action android:name="android.intent.action.SENDTO"/>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <category android:name="android.intent.category.BROWSABLE"/>
-        </intent-filter>
-
-        <intent-filter>
-            <action android:name="android.intent.action.SEND_MULTIPLE" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <data android:mimeType="audio/*" />
-            <data android:mimeType="image/*" />
-            <data android:mimeType="text/plain" />
-            <data android:mimeType="video/*" />
-            <data android:mimeType="application/*"/>
-            <data android:mimeType="text/*"/>
-            <data android:mimeType="*/*"/>
-        </intent-filter>
-        <meta-data
-            android:name="android.service.chooser.chooser_target_service"
-            android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
-
-    </activity>
-
-    <activity android:name=".ConversationListActivity"
-              android:label="@string/app_name"
-              android:launchMode="singleTask"
-              android:theme="@style/TextSecure.Splash"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:exported="true" />
-
-    <activity-alias android:name=".RoutingActivity"
-                    android:targetActivity=".ConversationListActivity"
-                    android:exported="true">
-
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-            <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
-        </intent-filter>
-
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
-            <data android:scheme="openpgp4fpr" />
-            <data android:scheme="OPENPGP4FPR"
-                tools:ignore="AppLinkUrlError" />
-            <data android:scheme="OpenPGP4FPR"
-                tools:ignore="AppLinkUrlError" />
-            <data android:scheme="OpenPGP4Fpr"
-                tools:ignore="AppLinkUrlError" />
-            <data android:scheme="OpenPGP4fpr"
-                tools:ignore="AppLinkUrlError" />
-        </intent-filter>
-
-        <intent-filter android:autoVerify="true">
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="https"
-                  android:host="i.delta.chat" />
-        </intent-filter>
-
-        <meta-data android:name="com.sec.minimode.icon.portrait.normal"
-                   android:resource="@mipmap/ic_launcher" />
-        <meta-data android:name="com.sec.minimode.icon.landscape.normal"
-                   android:resource="@mipmap/ic_launcher" />
-        <meta-data
-            android:name="android.app.shortcuts"
-            android:resource="@xml/shortcuts" />
-
-    </activity-alias>
-
-    <activity android:name=".ConversationListArchiveActivity"
-              android:label="@string/chat_archived_label"
-              android:launchMode="singleTask"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:parentActivityName=".ConversationListActivity">
-        <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.thoughtcrime.securesms.ConversationListActivity" />
-    </activity>
-
-    <activity android:name=".ConversationListRelayingActivity"
-              android:label="@string/app_name"
-              android:launchMode="singleTask"
-              android:theme="@style/TextSecure.LightNoActionBar"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
-
-    <activity android:name=".ConversationActivity"
-              android:windowSoftInputMode="stateUnchanged"
-              android:launchMode="singleTask"
-              android:relinquishTaskIdentity="true"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:parentActivityName=".ConversationListActivity">
-        <!--
-        Without relinquishTaskIdentity="true", we would have the following bug:
-        - Directly open a chat via shortcut (by long-pressing on the DeltaChat icon in the launcher)
-        - Press back twice
-        - Reopen DeltaChat from recent apps
-        - Expected: ConversationList shown. Actual: The chat from the beginning is shown again.
-        -->
-        <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.thoughtcrime.securesms.ConversationListActivity" />
-    </activity>
-
-    <activity android:name=".GroupCreateActivity"
-          android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".contacts.NewContactActivity"
-          android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".NewConversationActivity"
-              android:theme="@style/TextSecure.LightNoActionBar"
-              android:windowSoftInputMode="stateHidden"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
-    </activity>
-
-    <activity android:name=".ContactMultiSelectionActivity"
-          android:label="@string/contacts_title"
-          android:windowSoftInputMode="stateHidden"
-          android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".ApplicationPreferencesActivity"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".WelcomeActivity"
-              android:launchMode="singleTop"
-              android:theme="@style/TextSecure.LightNoActionBar"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".relay.EditRelayActivity"
-              android:launchMode="singleTask"
-              android:windowSoftInputMode="stateUnchanged"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
-    </activity>
-
-    <activity android:name=".relay.RelayListActivity"
-              android:windowSoftInputMode="stateHidden"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".proxy.ProxySettingsActivity"
-              android:label="@string/proxy_settings"
-              android:windowSoftInputMode="stateHidden"
-              android:exported="true"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
-
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
-            <data android:scheme="ss" />
-            <data android:scheme="socks5" />
-            <data android:scheme="SOCKS5" tools:ignore="AppLinkUrlError" />
-            <data android:scheme="SS" tools:ignore="AppLinkUrlError" />
-        </intent-filter>
-
-    </activity>
-
-
-    <activity android:name=".LogViewActivity"
-              android:label="@string/pref_log_header"
-              android:windowSoftInputMode="stateHidden"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".MediaPreviewActivity"
-              android:label="@string/media_preview"
-              android:windowSoftInputMode="stateHidden"
-              android:launchMode="singleTask"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".ProfileActivity"
-              android:theme="@style/TextSecure.LightNoActionBar"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".AllMediaActivity"
-        android:theme="@style/TextSecure.LightNoActionBar"
-        android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".DummyActivity"
-              android:theme="@android:style/Theme.NoDisplay"
-              android:enabled="true"
-              android:allowTaskReparenting="true"
-              android:noHistory="true"
-              android:excludeFromRecents="true"
-              android:alwaysRetainTaskState="false"
-              android:stateNotNeeded="true"
-              android:clearTaskOnLaunch="true"
-              android:finishOnTaskLaunch="true" />
-
-    <activity android:name=".AttachContactActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".BlockedContactsActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".scribbles.ScribbleActivity"
-              android:theme="@style/TextSecure.ScribbleTheme"
-              android:windowSoftInputMode="stateHidden"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".scribbles.StickerSelectActivity"
-              android:theme="@style/TextSecure.ScribbleTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".InstantOnboardingActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:windowSoftInputMode="stateHidden|adjustResize"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
-              android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <category android:name="android.intent.category.BROWSABLE"/>
-            <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
-            <data android:scheme="DCACCOUNT"
-                tools:ignore="AppLinkUrlError" />
-            <data android:scheme="dcaccount"
-                tools:ignore="AppLinkUrlError" />
-            <data android:scheme="DCLOGIN"
-                tools:ignore="AppLinkUrlError" />
-            <data android:scheme="dclogin"
-                tools:ignore="AppLinkUrlError" />
-        </intent-filter>
-    </activity>
-
-    <activity android:name=".CreateProfileActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:windowSoftInputMode="stateHidden|adjustResize"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".qr.QrActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".qr.QrShowActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".qr.RegistrationQrActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".qr.BackupTransferActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-        <activity android:name=".preferences.ChatBackgroundActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
-
-    <activity android:name=".LocalHelpActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
-    </activity>
-
-    <activity android:name=".calls.CallActivity"
-              android:label=""
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
-    </activity>
-
-    <activity android:name=".WebxdcActivity"
-              android:label=""
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
-    </activity>
-
-    <activity android:name=".WebxdcStoreActivity"
-              android:theme="@style/TextSecure.LightTheme"
-              android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
-    </activity>
-
-    <activity android:name=".FullMsgActivity"
+    <application
+        android:name=".ApplicationContext"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        tools:replace="android:allowBackup"
+        android:allowBackup="false"
         android:theme="@style/TextSecure.LightTheme"
-        android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
-    </activity>
+        android:largeHeap="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        android:requestLegacyExternalStorage="true"
+        tools:targetApi="TIRAMISU"
+        android:hasFragileUserData="true">
 
-    <activity android:name=".ConnectivityActivity"
-        android:theme="@style/TextSecure.LightTheme"
-        android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
-    </activity>
+        <!-- android car support, see https://developer.android.com/training/auto/start/, as this potentially
+            blocks releases on gplay due to extra-checks, we disable this during the first gplay releases -->
+        <!-- <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc"
+            /> -->
 
-    <service
-        android:name=".geolocation.LocationBackgroundService"
-        android:foregroundServiceType="location" />
-
-    <service
-        android:name=".service.GenericForegroundService"
-        android:foregroundServiceType="dataSync" />
-
-    <service
-        android:name=".service.FetchForegroundService"
-        android:foregroundServiceType="dataSync" />
-
-    <service
-        android:name=".service.AudioPlaybackService"
-        android:foregroundServiceType="mediaPlayback"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="androidx.media3.session.MediaSessionService"/>
-        </intent-filter>
-    </service>
-
-    <receiver android:name=".notifications.MarkReadReceiver"
-              android:enabled="true"
-              android:exported="false">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.notifications.MARK_NOTICED"/>
-            <action android:name="org.thoughtcrime.securesms.notifications.CANCEL"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.DeclineCallReceiver"
-              android:enabled="true"
-              android:exported="false">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.notifications.DECLINE_CALL_NOTICED"/>
-        </intent-filter>
-    </receiver>
-
-    <receiver android:name=".notifications.RemoteReplyReceiver"
-              android:enabled="true"
-              android:exported="false">
-        <intent-filter>
-            <action android:name="org.thoughtcrime.securesms.notifications.WEAR_REPLY"/>
-        </intent-filter>
-    </receiver>
-
-    <provider android:name="androidx.core.content.FileProvider"
-              android:authorities="${applicationId}.fileprovider"
-              android:exported="false"
-              android:grantUriPermissions="true">
-
-        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths" />
-
-        <!--
-            tell SafeContentResolver to allow incoming share-file Intent pointing to files from
-            this content resolver, it could be the user sharing the app's log file to a chat.
-            See:
-            https://github.com/deltachat/deltachat-android/pull/3052
-            https://github.com/deltachat/deltachat-android/pull/3031
-        -->
+        <!-- Opt out of metrics collection: https://developer.android.com/develop/ui/views/layout/webapps/managing-webview#metrics -->
         <meta-data
-            android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
+            android:name="android.webkit.WebView.MetricsOptOut"
             android:value="true" />
 
-    </provider>
+        <activity
+            android:name=".ShareActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:exported="true">
 
-    <provider
-        android:name=".connect.AttachmentsContentProvider"
-        android:authorities="${applicationId}.attachments"
-        android:grantUriPermissions="true"
-        android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="application/*" />
+                <data android:mimeType="text/*" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
 
-      <!--
-          tell SafeContentResolver to allow incoming share-file Intent pointing to files from
-          this content resolver, it could be the user sharing a file from one chat to another.
-          See: https://github.com/deltachat/deltachat-android/pull/3031
-      -->
-      <meta-data
-          android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
-          android:value="true" />
+            <intent-filter>
+                <data android:scheme="mailto" />
+                <action android:name="android.intent.action.SENDTO" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
 
-    </provider>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="audio/*" />
+                <data android:mimeType="image/*" />
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="video/*" />
+                <data android:mimeType="application/*" />
+                <data android:mimeType="text/*" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.chooser.chooser_target_service"
+                android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
 
-    <receiver android:name=".service.BootReceiver"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            <action android:name="org.thoughtcrime.securesms.RESTART"/>
-        </intent-filter>
-    </receiver>
+        </activity>
 
-    <receiver
-        android:name=".service.PanicResponderListener"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="info.guardianproject.panic.action.TRIGGER" />
-        </intent-filter>
-    </receiver>
+        <activity
+            android:name=".ConversationListActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/TextSecure.Splash"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:exported="true" />
 
-    <uses-library android:name="com.sec.android.app.multiwindow" android:required="false"/>
-    <meta-data android:name="com.sec.android.support.multiwindow" android:value="true" />
-    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W" android:value="632.0dip" />
-    <meta-data android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H" android:value="598.0dip" />
-    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632.0dip" />
-    <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598.0dip" />
-</application>
+        <activity-alias
+            android:name=".RoutingActivity"
+            android:targetActivity=".ConversationListActivity"
+            android:exported="true">
 
-<queries>
-    <intent>
-        <action android:name="android.media.action.IMAGE_CAPTURE" />
-    </intent>
-    <intent>
-      <action android:name="android.intent.action.TTS_SERVICE" />
-    </intent>
-</queries>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+                <data android:scheme="openpgp4fpr" />
+                <data
+                    android:scheme="OPENPGP4FPR"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="OpenPGP4FPR"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="OpenPGP4Fpr"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="OpenPGP4fpr"
+                    tools:ignore="AppLinkUrlError" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="i.delta.chat" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.sec.minimode.icon.portrait.normal"
+                android:resource="@mipmap/ic_launcher" />
+            <meta-data
+                android:name="com.sec.minimode.icon.landscape.normal"
+                android:resource="@mipmap/ic_launcher" />
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
+        </activity-alias>
+
+        <activity
+            android:name=".ConversationListArchiveActivity"
+            android:label="@string/chat_archived_label"
+            android:launchMode="singleTask"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:parentActivityName=".ConversationListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.thoughtcrime.securesms.ConversationListActivity" />
+        </activity>
+
+        <activity
+            android:name=".ConversationListRelayingActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/TextSecure.LightNoActionBar"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".ConversationActivity"
+            android:windowSoftInputMode="stateUnchanged"
+            android:launchMode="singleTask"
+            android:relinquishTaskIdentity="true"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:parentActivityName=".ConversationListActivity">
+            <!-- Without relinquishTaskIdentity="true", we would have the following bug: - Directly open
+                a chat via shortcut (by long-pressing on the DeltaChat icon in the launcher) - Press back twice - Reopen
+                DeltaChat from recent apps - Expected: ConversationList shown. Actual: The chat from the beginning is
+                shown again. -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.thoughtcrime.securesms.ConversationListActivity" />
+        </activity>
+
+        <activity
+            android:name=".GroupCreateActivity"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".contacts.NewContactActivity"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".NewConversationActivity"
+            android:theme="@style/TextSecure.LightNoActionBar"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+        </activity>
+
+        <activity
+            android:name=".ContactMultiSelectionActivity"
+            android:label="@string/contacts_title"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".ApplicationPreferencesActivity"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".WelcomeActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/TextSecure.LightNoActionBar"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".relay.EditRelayActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateUnchanged"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+        </activity>
+
+        <activity
+            android:name=".relay.RelayListActivity"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".proxy.ProxySettingsActivity"
+            android:label="@string/proxy_settings"
+            android:windowSoftInputMode="stateHidden"
+            android:exported="true"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+                <data android:scheme="ss" />
+                <data android:scheme="socks5" />
+                <data
+                    android:scheme="SOCKS5"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="SS"
+                    tools:ignore="AppLinkUrlError" />
+            </intent-filter>
+
+        </activity>
+
+
+        <activity
+            android:name=".LogViewActivity"
+            android:label="@string/pref_log_header"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".MediaPreviewActivity"
+            android:label="@string/media_preview"
+            android:windowSoftInputMode="stateHidden"
+            android:launchMode="singleTask"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/TextSecure.LightNoActionBar"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".AllMediaActivity"
+            android:theme="@style/TextSecure.LightNoActionBar"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".DummyActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:enabled="true"
+            android:allowTaskReparenting="true"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:alwaysRetainTaskState="false"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:finishOnTaskLaunch="true" />
+
+        <activity
+            android:name=".AttachContactActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".BlockedContactsActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".scribbles.ScribbleActivity"
+            android:theme="@style/TextSecure.ScribbleTheme"
+            android:windowSoftInputMode="stateHidden"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".scribbles.StickerSelectActivity"
+            android:theme="@style/TextSecure.ScribbleTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".InstantOnboardingActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Android's scheme matcher is case-sensitive, so include most likely variations -->
+                <data
+                    android:scheme="DCACCOUNT"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="dcaccount"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="DCLOGIN"
+                    tools:ignore="AppLinkUrlError" />
+                <data
+                    android:scheme="dclogin"
+                    tools:ignore="AppLinkUrlError" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CreateProfileActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".qr.QrActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".qr.QrShowActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".qr.RegistrationQrActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".qr.BackupTransferActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".preferences.ChatBackgroundActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
+
+        <activity
+            android:name=".LocalHelpActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+        </activity>
+
+        <activity
+            android:name=".calls.CallActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden"
+            android:launchMode="singleTask"
+            android:taskAffinity=".calls.PipCallTask"
+            android:theme="@style/Theme.App.NoActionBar.Fullscreen"
+            android:exported="false"
+            android:supportsPictureInPicture="true"
+            android:excludeFromRecents="true">
+        </activity>
+
+        <activity
+            android:name=".WebxdcActivity"
+            android:label=""
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
+        </activity>
+
+        <activity
+            android:name=".WebxdcStoreActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize|uiMode">
+        </activity>
+
+        <activity
+            android:name=".FullMsgActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+        </activity>
+
+        <activity
+            android:name=".ConnectivityActivity"
+            android:theme="@style/TextSecure.LightTheme"
+            android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize">
+        </activity>
+
+        <service
+            android:name=".geolocation.LocationBackgroundService"
+            android:foregroundServiceType="location" />
+
+        <service
+            android:name=".service.GenericForegroundService"
+            android:foregroundServiceType="dataSync" />
+
+        <service
+            android:name=".service.FetchForegroundService"
+            android:foregroundServiceType="dataSync" />
+
+        <service
+            android:name=".service.AudioPlaybackService"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".calls.CallService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="camera|microphone" />
+
+        <receiver
+            android:name=".notifications.MarkReadReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="org.thoughtcrime.securesms.notifications.MARK_NOTICED" />
+                <action android:name="org.thoughtcrime.securesms.notifications.CANCEL" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".notifications.RemoteReplyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="org.thoughtcrime.securesms.notifications.WEAR_REPLY" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+
+            <!-- tell SafeContentResolver to allow incoming share-file Intent pointing to files from
+                this content resolver, it could be the user sharing the app's log file to a chat. See: https://github.com/deltachat/deltachat-android/pull/3052
+                https://github.com/deltachat/deltachat-android/pull/3031 -->
+            <meta-data
+                android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
+                android:value="true" />
+
+        </provider>
+
+        <provider
+            android:name=".connect.AttachmentsContentProvider"
+            android:authorities="${applicationId}.attachments"
+            android:grantUriPermissions="true"
+            android:exported="false">
+
+            <!-- tell SafeContentResolver to allow incoming share-file Intent pointing to files from
+                this content resolver, it could be the user sharing a file from one chat to another. See: https://github.com/deltachat/deltachat-android/pull/3031 -->
+            <meta-data
+                android:name="de.cketti.safecontentresolver.ALLOW_INTERNAL_ACCESS"
+                android:value="true" />
+
+        </provider>
+
+        <receiver
+            android:name=".service.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="org.thoughtcrime.securesms.RESTART" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".service.PanicResponderListener"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="info.guardianproject.panic.action.TRIGGER" />
+            </intent-filter>
+        </receiver>
+
+        <uses-library
+            android:name="com.sec.android.app.multiwindow"
+            android:required="false" />
+        <meta-data
+            android:name="com.sec.android.support.multiwindow"
+            android:value="true" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_W"
+            android:value="632.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.DEFAULT_SIZE_H"
+            android:value="598.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W"
+            android:value="632.0dip" />
+        <meta-data
+            android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H"
+            android:value="598.0dip" />
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 </manifest>

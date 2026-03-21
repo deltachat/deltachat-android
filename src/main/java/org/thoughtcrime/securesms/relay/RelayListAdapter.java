@@ -1,31 +1,29 @@
 package org.thoughtcrime.securesms.relay;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.thoughtcrime.securesms.R;
-
+import chat.delta.rpc.types.TransportListEntry;
 import java.util.ArrayList;
 import java.util.List;
-
-import chat.delta.rpc.types.EnteredLoginParam;
+import org.thoughtcrime.securesms.R;
 
 public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.RelayViewHolder> {
 
-  private List<EnteredLoginParam> relays = new ArrayList<>();
+  private List<TransportListEntry> relays = new ArrayList<>();
   private final OnRelayClickListener listener;
   private String mainRelayAddr;
 
   public interface OnRelayClickListener {
-    void onRelayClick(EnteredLoginParam relay);
-    void onRelayLongClick(View view, EnteredLoginParam relay);
+    void onRelayClick(TransportListEntry relay);
+
+    void onRelayLongClick(View view, TransportListEntry relay);
   }
 
   public RelayListAdapter(OnRelayClickListener listener) {
@@ -36,7 +34,7 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
     return mainRelayAddr;
   }
 
-  public void setRelays(@Nullable List<EnteredLoginParam> relays, String mainRelayAddr) {
+  public void setRelays(@Nullable List<TransportListEntry> relays, String mainRelayAddr) {
     this.relays = relays != null ? relays : new ArrayList<>();
     this.mainRelayAddr = mainRelayAddr;
     notifyDataSetChanged();
@@ -45,15 +43,15 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
   @NonNull
   @Override
   public RelayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext())
-      .inflate(R.layout.relay_list_item, parent, false);
+    View view =
+        LayoutInflater.from(parent.getContext()).inflate(R.layout.relay_list_item, parent, false);
     return new RelayViewHolder(view);
   }
 
   @Override
   public void onBindViewHolder(@NonNull RelayViewHolder holder, int position) {
-    EnteredLoginParam relay = relays.get(position);
-    boolean isMain = relay.addr != null && relay.addr.equals(mainRelayAddr);
+    TransportListEntry relay = relays.get(position);
+    boolean isMain = relay.param.addr != null && relay.param.addr.equals(mainRelayAddr);
     holder.bind(relay, isMain, listener);
   }
 
@@ -74,24 +72,36 @@ public class RelayListAdapter extends RecyclerView.Adapter<RelayListAdapter.Rela
       mainIndicator = itemView.findViewById(R.id.main_indicator);
     }
 
-    public void bind(EnteredLoginParam relay, boolean isMain, OnRelayClickListener listener) {
-      String[] parts = relay.addr.split("@");
-      titleText.setText(parts.length == 2? parts[1] : parts[0]);
-      subtitleText.setText(parts.length == 2? parts[0] : "");
+    public void bind(TransportListEntry relay, boolean isMain, OnRelayClickListener listener) {
+      Context context = itemView.getContext();
+      String[] parts = relay.param.addr.split("@");
+      titleText.setText(parts.length == 2 ? parts[1] : parts[0]);
+
+      String subtitle = parts.length == 2 ? parts[0] : "";
+      if (isMain) {
+        subtitle += " · " + context.getString(R.string.used_for_sending);
+      }
+      if (relay.isUnpublished) {
+        subtitle += " · " + context.getString(R.string.hidden_from_contacts);
+      }
+      subtitleText.setText(subtitle);
+
       mainIndicator.setVisibility(isMain ? View.VISIBLE : View.INVISIBLE);
 
-      itemView.setOnClickListener(v -> {
-        if (listener != null) {
-          listener.onRelayClick(relay);
-        }
-      });
+      itemView.setOnClickListener(
+          v -> {
+            if (listener != null) {
+              listener.onRelayClick(relay);
+            }
+          });
 
-      itemView.setOnLongClickListener(v -> {
-        if (listener != null) {
-          listener.onRelayLongClick(v, relay);
-        }
-        return true;
-      });
+      itemView.setOnLongClickListener(
+          v -> {
+            if (listener != null) {
+              listener.onRelayLongClick(v, relay);
+            }
+            return true;
+          });
     }
   }
 }

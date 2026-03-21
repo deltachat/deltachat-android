@@ -5,7 +5,6 @@
       <li><a href="#howtoe2ee">Як мені знайти людей для спілкування?</a></li>
       <li><a href="#why-is-a-chat-marked-as-request">Why is a chat marked as “Request”?</a></li>
       <li><a href="#how-can-i-put-two-of-my-friends-in-contact-with-each-other">How can I put two of my friends in contact with each other?</a></li>
-      <li><a href="#чи-підтримує-delta-chat-вкладення-у-вигляді-фото-відео-тощо">Чи підтримує Delta Chat вкладення у вигляді фото, відео тощо?</a></li>
       <li><a href="#multiple-accounts">Що таке профілі? Як я можу перемикатися між ними?</a></li>
       <li><a href="#хто-бачить-моє-зображення-профілю">Хто бачить моє зображення профілю?</a></li>
       <li><a href="#signature">Чи можу я встановити біографію/статус у Delta Chat?</a></li>
@@ -14,6 +13,7 @@
       <li><a href="#що-означає-зелена-точка">Що означає зелена точка?</a></li>
       <li><a href="#що-означають-галочки-біля-вихідних-повідомлень">Що означають галочки біля вихідних повідомлень?</a></li>
       <li><a href="#edit">Виправлення помилок та видалення повідомлень після надсилання</a></li>
+      <li><a href="#mediaquality">How is media quality handled?</a></li>
       <li><a href="#ephemeralmsgs">Як працюють повідомлення, що зникають?</a></li>
       <li><a href="#delold">Що станеться, якщо я ввімкну «Видаляти старі повідомлення з пристрою»?</a></li>
     </ul>
@@ -204,19 +204,6 @@ You can also add a little introduction message.</p>
 <p>The second contact will receive a <strong>card</strong> then
 and can tap it to start chatting with the first contact.</p>
     
-      <h3 id="чи-підтримує-delta-chat-вкладення-у-вигляді-фото-відео-тощо">
-        
-        
-          Чи підтримує Delta Chat вкладення у вигляді фото, відео тощо? <a href="#чи-підтримує-delta-chat-вкладення-у-вигляді-фото-відео-тощо" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Так. Images, videos, files, voice messages etc. can be sent using the <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attachment-</strong>
-or <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> <strong>Voice Message</strong> buttons</p>
-
-<p>З міркувань продуктивності, зображення оптимізовані та надсилаються в меншому розмірі за замовчуванням, але ви можете надіслати їх як «файл», щоб зберегти оригінал.</p>
-    
       <h3 id="multiple-accounts">
         
         
@@ -380,6 +367,32 @@ has <strong>Settings → Chats → Read Receipts</strong> enabled.</p>
 <p>Відредаговані повідомлення матимуть позначку “Відредаговано” поруч з міткою часу, видалені повідомлення будуть видалені без позначки в чаті. Сповіщення не надсилаються і відсутнє часове обмеження.</p>
 
 <p>Зауважте, що початкове повідомлення все ще може бути отримане учасниками чату які могли вже відповісти, переслати, зберегти, зробити знімок екрану або іншим чином скопіювати повідомлення.</p>
+    
+      <h3 id="mediaquality">
+        
+        
+          How is media quality handled? <a href="#mediaquality" class="anchor"></a>
+        
+        
+      </h3>
+
+<p>Images, videos, files, voice messages etc. can be sent using the <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attach-</strong>
+or <img style="vertical-align:middle; width:0.8em; margin:1px" src="../mic.png" alt="Microphone" /> <strong>Voice Message</strong> buttons.</p>
+
+<ul>
+  <li>
+    <p>By default, compression ensures <strong>fast, efficient delivery</strong> that respects everyone’s data limits and storage.
+This is ideal for everyday communication.</p>
+  </li>
+  <li>
+    <p>In regions with worse connectivity,
+you can choose higher compression at <strong>Settings → Chats → Outgoing Media Quality</strong>.</p>
+  </li>
+  <li>
+    <p>If you specifically need to send media in its <strong>original quality</strong>, use <img style="vertical-align:middle; width:1.0em; margin:1px" src="../paperclip.png" alt="Paperclip" /> <strong>Attach → File</strong> in the chat.
+Please use this method sparingly, as sending original files will significantly increase data usage for you and all recipients in the chat.</p>
+  </li>
+</ul>
     
       <h3 id="ephemeralmsgs">
         

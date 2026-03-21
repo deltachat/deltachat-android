@@ -56,7 +56,7 @@
                 android:padding="6dp"
                 android:contentDescription="@string/ImageEditorHud_add_text"
                 android:src="@drawable/ic_text_32" />
-                
+
             <ImageView
                 android:id="@+id/scribble_draw_button"
                 android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
             android:layout_height="wrap_content"
             app:barrierDirection="start"
             app:constraint_referenced_ids="scribble_confirm_button,scribble_save_button"
-            tools:layout_editor_absoluteY="21dp"/>
+            tools:layout_editor_absoluteY="21dp" />
 
         <ImageView
             android:id="@+id/scribble_confirm_button"
@@ -150,7 +150,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:contentDescription="@string/save"
-            android:background="@drawable/circle_universal_overlay"/>
+            android:background="@drawable/circle_universal_overlay" />
 
         <org.thoughtcrime.securesms.scribbles.widget.VerticalSlideColorPicker
             android:id="@+id/scribble_color_picker"
@@ -191,7 +191,7 @@
             android:textColor="@color/core_white"
             android:shadowColor="@color/black"
             android:shadowRadius="15"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

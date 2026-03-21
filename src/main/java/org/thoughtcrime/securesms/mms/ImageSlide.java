@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2011 Whisper Systems
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -10,7 +10,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -18,12 +18,9 @@ package org.thoughtcrime.securesms.mms;
 
 import android.content.Context;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.b44t.messenger.DcMsg;
-
 import org.thoughtcrime.securesms.attachments.Attachment;
 import org.thoughtcrime.securesms.attachments.DcAttachment;
 import org.thoughtcrime.securesms.util.MediaUtil;
@@ -40,7 +37,10 @@ public class ImageSlide extends Slide {
   }
 
   public ImageSlide(Context context, Uri uri, String fileName, long size, int width, int height) {
-    super(context, constructAttachmentFromUri(context, uri, MediaUtil.IMAGE_JPEG, size, width, height, uri, fileName, false));
+    super(
+        context,
+        constructAttachmentFromUri(
+            context, uri, MediaUtil.IMAGE_JPEG, size, width, height, uri, fileName, false));
   }
 
   @Override
