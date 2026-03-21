@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">확인</string>
@@ -14,7 +12,6 @@
     <string name="off">꺼짐</string>
     <string name="def">기본값</string>
     <string name="default_value">기본 (%1$s)</string>
-    <string name="default_value_as_above">기본 (위와 동일함)</string>
     <string name="custom">커스텀</string>
     <string name="none">없음</string>
     <string name="automatic">자동</string>
@@ -229,7 +226,6 @@
     <string name="menu_more_options">더 많은 옵션</string>
     <string name="menu_learn_spelling">맞춤법 배우기</string>
     <string name="jump_to_message">메시지로 이동</string>
-    <string name="copy_json">JSON 복사</string>
     <string name="replace_draft">초안 대체</string>
     <string name="title_share_location">그룹 구성원과 위치 공유하기</string>
     <string name="device_talk">기기 메시지</string>
@@ -281,11 +277,9 @@
     <string name="ask_remove_members">그룹에서 %1$s을/를 제거하시겠습니까?</string>
     <string name="open_url_confirmation">이 링크를 여시겠습니까?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">연락처</string>
     <string name="contacts_type_email_above">위에 이메일 주소를 입력하세요.</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -333,21 +327,12 @@
     <string name="start_app">시작...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">채팅 요청을 먼저 수락하십시오.</string>
-    <!-- map -->
-    <string name="filter_map_on_time">시간 범위 내 위치 표시</string>
-    <string name="show_location_traces">기록 보기</string>
-    <string name="add_poi">관심 지점 전송</string>
-
-
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">%1$s에 대해 다시 묻지 마시오</string>
     <string name="puny_code_warning_header">의심되는 링크가 탐지됨</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">정말 %1$s에 방문하시겠습니까?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">이 링크는 서로 다른 알파벳의 유사하게 생긴 문자를 잘못 전달할 수 있습니다. %1$s 링크를 따라가면 라틴어가 아닌 문자의 경우 정상적인 %2$s로 이어집니다. 이러한 문자를 예상하지 못한 경우 이 링크는 안전하지 않을 수 있습니다.</string>
-
 
     <!-- search -->
     <string name="search">검색</string>
@@ -401,7 +386,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%2$s중 %1$s 사용됨</string>
 
-
     <string name="scan_invitation_code">초대 코드 스캔</string>
     <string name="login_title">로그인</string>
     <string name="login_inbox">받은 편지함</string>
@@ -443,7 +427,6 @@
     <string name="ask_send_files_to_selected_chats">%1$d 파일을 %2$d 채팅으로 보내시겠습니까?</string>
     <string name="share_text_multiple_chats">\"%2$s\"를 %1$d 채팅에 보내시겠습니까?</string>
     <string name="share_abort">권한이 없어 공유가 중단되었습니다.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">내 프로필</string>
@@ -690,9 +673,6 @@
     <string name="ImageEditorHud_flip">뒤집기</string>
     <string name="ImageEditorHud_rotate">돌리기</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">이것은 Delta Chat 데스크톱 공식 앱입니다.</string>
-    <string name="about_licensed_under_desktop">이 소프트웨어는 GNU GPL 버전 3에 따라 라이센스가 부여되며 소스 코드는 GitHub에서 사용할 수 있습니다.</string>
     <string name="welcome_desktop">Delta Chat에 오신 것을 환영합니다.</string>
     <string name="global_menu_preferences_language_desktop">언어</string>
     <string name="global_menu_file_desktop">파일</string>
@@ -725,6 +705,7 @@
     <string name="message_detail_received_desktop">받음</string>
     <string name="menu.view.developer.open.log.folder">로그 폴더 열기</string>
     <string name="menu.view.developer.open.current.log.file">현재 로그 파일 열기</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">맞춤법 제안을 찾을 수 없습니다.</string>
     <string name="show_window">창 보이기</string>
 

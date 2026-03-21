@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Av</string>
     <string name="def">Standard</string>
     <string name="default_value">Standard (%1$s)</string>
-    <string name="default_value_as_above">Standard (samma som ovan)</string>
     <string name="custom">Anpassat</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatiskt</string>
@@ -36,8 +33,6 @@
     <string name="update">Uppdatera</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Bilaga</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Vill du bifoga \"%1$s\"?</string>
     <string name="back">Tillbaka</string>
     <string name="close">Stäng</string>
     <string name="close_window">Stäng fönster</string>
@@ -345,8 +340,6 @@
     <string name="menu_more_options">Mer alternativ</string>
     <string name="menu_learn_spelling">Lär stavning</string>
     <string name="jump_to_message">Hoppa till meddelande</string>
-    <string name="jump_to_original_message">Hoppa till ursprungligt meddelande</string>
-    <string name="copy_json">Kopiera JSON</string>
     <string name="replace_draft">Ersätt utkast</string>
     <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
     <string name="device_talk">Enhetsmeddelanden</string>
@@ -413,7 +406,6 @@
     <string name="declined_call">Nekade samtal</string>
     <string name="canceled_call">Avbrutna samtal</string>
     <string name="missed_call">Missade samtal</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Vill du verkligen lämna?</string>
@@ -441,11 +433,9 @@
     <string name="ask_remove_from_channel">Vill du ta bort %1$s från kanalen?</string>
     <string name="open_url_confirmation">Vill du öppna denna länk?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontakter</string>
     <string name="contacts_type_email_above">Skriv in e-postadressen ovan</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -506,24 +496,13 @@
     <string name="send_file_to">Skicka \"%1$s\" till...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Skicka meddelande till...</string>
-    <string name="enable_realtime">Realtidsappar</string>
-    <string name="enable_realtime_explain">Aktivera realtidsanslutningar för appar som är kopplade till chattar. Om detta är aktiverat kan chattpartners kanske få reda på din IP-adress när du startar en app.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Visa platser inom tidsramen</string>
-    <string name="show_location_traces">Visa spår</string>
-    <string name="add_poi">Skicka intressant plats</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Fråga inte igen för %1$s</string>
     <string name="puny_code_warning_header">Misstänkt länk identifierad</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Är du säker på att du vill besöka %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Denna länk kan förvränga tecken med liknande utseende från olika alfabet. Om du följer länken som är märkt %1$s kommer du till %2$s, vilket är normalt för icke-latinska tecken. Om du inte förväntade dig sådana tecken kan den här länken vara skadlig.</string>
-
 
     <!-- search -->
     <string name="search">Sök</string>
@@ -533,7 +512,6 @@
     <string name="search_no_result_for_x">Inga resultat hittades för \" %s \"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Olästa</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppnamn</string>
@@ -614,7 +592,6 @@
     <string name="messages">Meddelanden</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s av %2$s används</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -720,7 +697,6 @@
     <string name="videos_sent_without_recoding">(Om du skickar flera videor skickas de i befintligt skick, vilket kan vara stort. Om du vill göra dem mindre och spara data kan du skicka varje video i ett eget meddelande)</string>
     <string name="share_text_multiple_chats">Vill du skicka denna text till %1$d chattar?\n\n\"%2$s\"</string>
     <string name="share_abort">Delningen avbröts på grund av saknad behörighet.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Din profilinformation</string>
@@ -829,8 +805,6 @@
     <string name="profile_image_delete">Ta bort profilbild</string>
     <string name="pref_show_tray_icon">Visa systemfältsikon</string>
     <string name="pref_edit_profile">Redigera profil</string>
-    <string name="disable_imap_idle">Avaktivera IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Använd inte IMAP IDLE-tillägget även om servern stöder det. Om du aktiverar det här alternativet kommer hämtningen av meddelanden att fördröjas, aktivera det endast för testning.</string>
     <string name="send_stats_to_devs">Skicka statistik till Delta Chats utvecklare</string>
     <string name="stats_device_message">Vill du hjälpa till att förbättra Delta Chat och stödja efterforskning genom att skicka anonym användningsstatistik varje vecka? \n\n👉 Tryck här ... 👈</string>
     <string name="stats_confirmation_dialog">Vill du hjälpa till att förbättra Delta Chat och stödja efterforskning genom att skicka anonym användningsstatistik varje vecka?</string>
@@ -1046,7 +1020,6 @@
     <string name="new_messages_body">Du har nya meddelanden</string>
     <string name="n_messages_in_m_chats">%1$d meddelanden i %2$d chattar</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Behörighet krävs</string>
     <string name="perm_continue">Fortsätt</string>
@@ -1067,9 +1040,6 @@
     <string name="ImageEditorHud_flip">Vänd</string>
     <string name="ImageEditorHud_rotate">Rotera</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Detta är den officiella Delta Chat skrivbordsappen.</string>
-    <string name="about_licensed_under_desktop">Denna programvara är licensierad enligt GNU GPL version 3 och källkoden finns tillgänglig på GitHub.</string>
     <string name="welcome_desktop">Välkommen till Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Språk</string>
     <string name="global_menu_file_desktop">Arkiv</string>
@@ -1108,9 +1078,8 @@
     <string name="message_detail_received_desktop">mottaget</string>
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med alternativet --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med alternativet --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Inga stavningsförslag hittades.</string>
     <string name="show_window">Visa fönster</string>
 

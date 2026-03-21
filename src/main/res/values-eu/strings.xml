@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Ados</string>
@@ -18,7 +16,6 @@
     <string name="off">Ez</string>
     <string name="def">Lehenetsia</string>
     <string name="default_value">Lehenetsia (%1$s)</string>
-    <string name="default_value_as_above">Lehenetsia (aurreko bera)</string>
     <string name="custom">Pertsonalizatua</string>
     <string name="none">Bat ere ez</string>
     <string name="automatic">Automatikoa</string>
@@ -36,8 +33,6 @@
     <string name="update">Eguneratu</string>
     <string name="emoji">Emojia</string>
     <string name="attachment">Eranskina</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Erantsi \"%1$s\"?</string>
     <string name="back">Atzera</string>
     <string name="close">Itxi</string>
     <string name="close_window">Leihoa itxi</string>
@@ -329,8 +324,6 @@
     <string name="menu_more_options">Aukera gehiago</string>
     <string name="menu_learn_spelling">Ikasi ortografia</string>
     <string name="jump_to_message">Joan mezura</string>
-    <string name="jump_to_original_message">Joan jatorrizko mezura</string>
-    <string name="copy_json">Kopiatu JSON</string>
     <string name="replace_draft">Ordeztu zirriborroa</string>
     <string name="title_share_location">Partekatu kokalekua taldeko kide guztiak</string>
     <string name="device_talk">Gailuaren mezuak</string>
@@ -393,7 +386,6 @@
     <string name="declined_call">Ukatutako deia</string>
     <string name="canceled_call">Bertan behera utzitako deia</string>
     <string name="missed_call">Galdutako deia</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ziur irten nahi duzula?</string>
@@ -421,11 +413,9 @@
     <string name="ask_remove_from_channel">Ezabatu %1$s kanaletik?</string>
     <string name="open_url_confirmation">Esteka hau ireki nahi duzu?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontaktuak</string>
     <string name="contacts_type_email_above">Idatzi e-mail helbidea goian</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -486,24 +476,13 @@
     <string name="send_file_to">Bidali \"%1$s\" honi...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Bidali mezua honi...</string>
-    <string name="enable_realtime">Denbora errealeko aplikazioak</string>
-    <string name="enable_realtime_explain">Gaitu denbora errealeko konexioak txatei atxikitako aplikazioentzat. Gaituz gero, baliteke txat-kideek zure IP helbidea ezagutu ahal izatea aplikazio bat abiarazten duzunean.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Erakutsi kokalekuak denbora markoan</string>
-    <string name="show_location_traces">Erakutsi lorratzak</string>
-    <string name="add_poi">Bidali interesezko puntua</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Ez galdetu berriro honengatik: %1$s</string>
     <string name="puny_code_warning_header">Esteka susmagarria atzeman da</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Ziur zaude %1$s bisitatu nahi duzula?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Lotura honek alfabeto desberdinetako antzeko itxura duten karaktereak nahas ditzake. %1$s izeneko esteka jarraitzeak %2$s(e)ra eramango zaitu, eta hori ohikoa da ez-latindar karaktereentzat. Karaktere horiek espero ez bazenituen, esteka hau kaltegarria izan daitezke.</string>
-
 
     <!-- search -->
     <string name="search">Bilatu</string>
@@ -513,7 +492,6 @@
     <string name="search_no_result_for_x">Ez da emaitzarik aurkitu \"%s\" bilaketarentzat</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Irakurri gabe</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Taldearen izena</string>
@@ -594,7 +572,6 @@
     <string name="messages">Mezuak</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%2$setik %1$s erabilita</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -701,7 +678,6 @@
     <string name="share_text_multiple_chats">Bidali testua hau %1$d txatetara?\n\n\"%2$s\"</string>
     <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Zure profileko informazioa</string>
     <string name="pref_profile_photo">Profileko argazkia</string>
@@ -804,8 +780,6 @@
     <string name="profile_image_delete">Ezabatu abatarra</string>
     <string name="pref_show_tray_icon">Erakutsi sistema-erretilu ikonoa</string>
     <string name="pref_edit_profile">Editatu kontua</string>
-    <string name="disable_imap_idle">Desgaitu IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Ez erabili IMAP IDLE luzapena, zerbitzariak onartzen badu ere. Aukera hau gaitzeak mezuen berreskuratzea atzeratuko du, gaitu ezazu probak egiteko soilik.</string>
     <string name="send_stats_to_devs">Bidali estatistikak Delta Chat-eko garatzaileei</string>
     <string name="stats_device_message">Delta Chat hobetzen lagundu eta ikerketa babestu nahi duzu astero erabilera-estatistika anonimoak bidalita?\n\n👉 Sakatu hemen… 👈</string>
     <string name="stats_confirmation_dialog">Delta Chat hobetzen lagundu eta ikerketa babestu nahi duzu astero erabilera-estatistika anonimoak bidalita?</string>
@@ -1021,7 +995,6 @@
     <string name="new_messages_body">Mezu berriak dituzu</string>
     <string name="n_messages_in_m_chats">%1$d mezu %2$d txatetan</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Baimena behar da</string>
     <string name="perm_continue">Jarraitu</string>
@@ -1042,9 +1015,6 @@
     <string name="ImageEditorHud_flip">Irauli</string>
     <string name="ImageEditorHud_rotate">Biratu</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Hau Delta Chat Desktop aplikazio ofiziala da.</string>
-    <string name="about_licensed_under_desktop">Software honek GNU GPL 3 bertsioaren lizentziapean dago eta iturburu-kodea GitHub-en dago eskuragarri.</string>
     <string name="welcome_desktop">Ongi etorri Delta Chat-era</string>
     <string name="global_menu_preferences_language_desktop">Hautatu hizkuntza...</string>
     <string name="global_menu_file_desktop">Fitxategia</string>
@@ -1083,9 +1053,8 @@
     <string name="message_detail_received_desktop">jasota</string>
     <string name="menu.view.developer.open.log.folder">Ireki egunkarien karpeta</string>
     <string name="menu.view.developer.open.current.log.file">Ireki uneko egunkari-fitxategia</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Erretiluko ikonoa ezin da desgaitu, Delta Chat --minimized aukerarekin abiarazi baita.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Erretiluko ikonoa ezin da desgaitu, Delta Chat --minimized aukerarekin abiarazi baita.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Ez dago ortografia-iradokizunik.</string>
     <string name="show_window">Erakutsi leihoa</string>
 

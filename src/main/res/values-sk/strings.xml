@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Vypnúť</string>
     <string name="def">Štandardné nastavenie</string>
     <string name="default_value">Štandardné nastavenie (%1$s)</string>
-    <string name="default_value_as_above">Predvolené (rovnaké ako vyššie)</string>
     <string name="custom">Vlastný</string>
     <string name="none">Nie je</string>
     <string name="automatic">Automatický</string>
@@ -36,8 +33,6 @@
     <string name="update">Aktualizovať</string>
     <string name="emoji">Smajlíci</string>
     <string name="attachment">Príloha</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Priložiť „%1$s“?</string>
     <string name="back">Späť</string>
     <string name="close">Zatvoriť</string>
     <string name="close_window">Zavrieť okno</string>
@@ -329,8 +324,6 @@
     <string name="menu_more_options">Ďalšie možnosti</string>
     <string name="menu_learn_spelling">Naučiť sa pravopis</string>
     <string name="jump_to_message">Prejsť na správu</string>
-    <string name="jump_to_original_message">Zobraziť pôvodnú správu</string>
-    <string name="copy_json">Kopírovať JSON</string>
     <string name="replace_draft">Nahradiť koncept</string>
     <string name="title_share_location">Zdieľať polohu so všetkými členmi skupiny</string>
     <string name="device_talk">Správy zariadenia</string>
@@ -399,11 +392,9 @@
     <string name="ask_remove_from_channel">Odstrániť %1$s z kanálu?</string>
     <string name="open_url_confirmation">Chcete otvoriť tento odkaz?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontakty</string>
     <string name="contacts_type_email_above">Vyššie zadajte e-mailovú adresu</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -467,21 +458,13 @@
     <string name="send_file_to">Poslať \"%1$s\"...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Poslať správu...</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Zobraziť polohy v časovom rámci</string>
-    <string name="show_location_traces">Zobraziť stopy</string>
-    <string name="add_poi">Pošlite zaujímavé miesto</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Nepýtať sa znovu %1$s</string>
     <string name="puny_code_warning_header">Zistené podozrivé prepojenie</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Naozaj chcete navštíviť %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Sledovali ste odkaz, ktorý by mohol skresľovať znaky použitím podobne vyzerajúcich znakov z rôznych abecied. Sledovanie odkazu označeného %1$s povedie k %2$s, čo je normálne pre znaky mimo latinky. Ak ste takéto znaky nečakali, tento odkaz môže byť škodlivý</string>
-
 
     <!-- search -->
     <string name="search">Vyhľadávanie</string>
@@ -491,7 +474,6 @@
     <string name="search_no_result_for_x">Neboli nájdené žiadne výsledky pre \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Neprečítané</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Názov skupiny</string>
@@ -561,7 +543,6 @@
     <string name="messages">Správy</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s z %2$svyužitých </string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -639,7 +620,6 @@
     <string name="ask_send_files_to_selected_chats">Poslať %1$d súbor(y) do %2$d konverzácií?</string>
     <string name="share_text_multiple_chats">Odoslať tento text d %1$d konverzácií?\n\n \"%2$s\"</string>
     <string name="share_abort">Zdieľanie bolo prerušené z dôvodu chýbajúcich povolení.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Informácie o vašom účte</string>
@@ -924,9 +904,6 @@
     <string name="ImageEditorHud_flip">Preklopiť</string>
     <string name="ImageEditorHud_rotate">Otočiť</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Toto je oficiálna aplikácia Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Tento softvér je licencovaný pod GNU GPL verzie 3 a zdrojový kód je k dispozícii na GitHub-e.</string>
     <string name="welcome_desktop">Víta vás Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Jazyk</string>
     <string name="global_menu_file_desktop">Súbor</string>
@@ -962,9 +939,8 @@
     <string name="message_detail_received_desktop">prijaté</string>
     <string name="menu.view.developer.open.log.folder">Otvoriť priečinok denníka</string>
     <string name="menu.view.developer.open.current.log.file">Otvoriť aktuálny súbor protokolu</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Ikonu v systémovej lište nie je možné vypnúť, pretože Delta Chat bol spustený s prepínačom --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikonu v systémovej lište nie je možné vypnúť, pretože Delta Chat bol spustený s prepínačom --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Neboli nájdené žiadne návrhy opravy preklepov.</string>
     <string name="show_window">Zobraziť okno</string>
 

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">AB</string>
@@ -13,7 +11,6 @@
     <string name="off">Istudadu</string>
     <string name="def">Predefinidu</string>
     <string name="default_value">Predefinidu (%1$s)</string>
-    <string name="default_value_as_above">Predefinidu (comente in subra)</string>
     <string name="custom">Personalizadu</string>
     <string name="none">Perunu</string>
     <string name="automatic">Automàticu</string>
@@ -217,11 +214,9 @@
     <string name="ask_remove_members">Cheres bogare %1$sdae su grupu?</string>
     <string name="open_url_confirmation">Cheres abèrrere custu ligàmene?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Cuntatos</string>
     <string name="contacts_type_email_above">Inserta s\'indiritzu de posta eletrònica inoghe in subra</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -258,12 +253,6 @@
     <string name="saved">Sarvadu</string>
     <string name="retry_send">Torra a proare a imbiare su messàgiu</string>
     <string name="cannot_display_unsuported_file_type">Impossìbile ammustrare custa casta de documentu: %s</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Ammustra sas positziones in su tempus</string>
-    <string name="show_location_traces">Ammustra sas rastas</string>
-    <string name="add_poi">Imbia puntu de interesse</string>
-
-
     <!-- search -->
     <string name="search">Chirca</string>
     <string name="search_explain">Chirca in sas tzarradas, sos cuntatos e sos messàgios</string>
@@ -328,7 +317,6 @@
     <string name="ask_send_files_to_selected_chats">Cheres imbiare %1$d documentu(os) a %2$d tzarradas?</string>
     <string name="share_text_multiple_chats">Cheres inviare custu testu a %1$d tzarradas?\n\n\"%2$s\"</string>
     <string name="share_abort">Cumpartzidura annullada pro permissos chi mancant.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Sas informatziones de profilu tuas</string>

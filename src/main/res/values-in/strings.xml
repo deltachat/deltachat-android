@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -14,7 +12,6 @@
     <string name="off">Mati</string>
     <string name="def">Default</string>
     <string name="default_value">Default (%1$s)</string>
-    <string name="default_value_as_above">Default (sama seperti di atas)</string>
     <string name="custom">Menurut pesanan</string>
     <string name="none">Tidak ada</string>
     <string name="automatic">Otomatis</string>
@@ -238,7 +235,6 @@
     <string name="menu_more_options">Opsi Lainnya</string>
     <string name="menu_learn_spelling">Belajar Ejaan</string>
     <string name="jump_to_message">Lompat ke Pesan</string>
-    <string name="copy_json">Salin JSON</string>
     <string name="title_share_location">Bagikan lokasi kepada seluruh anggota grup</string>
     <string name="device_talk">Pesan perangkat</string>
     <string name="device_talk_subtitle">Pesan-pesan buatan lokal</string>
@@ -285,11 +281,9 @@
     <string name="ask_remove_members">Hapus %1$s dari grup?</string>
     <string name="open_url_confirmation">Apakah anda ingin membuka pranala ini?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontak</string>
     <string name="contacts_type_email_above">Ketik alamat email di atas</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -324,12 +318,6 @@
     <string name="retry_send">Coba lagi mengirim pesan</string>
     <string name="cannot_display_unsuported_file_type">Tidak dapat menampilkan tipe berkas ini: %s</string>
     <string name="attachment_failed_to_load">Gagal memuat lampiran</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Tunjukkan lokasi dalam jangka waktu</string>
-    <string name="show_location_traces">Tunjukkan jejak</string>
-    <string name="add_poi">Kirim titik menarik</string>
-
-
     <!-- search -->
     <string name="search">Cari</string>
     <string name="search_explain">Mencari obrolan, kontak dan pesan</string>
@@ -392,7 +380,6 @@
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Diteruskan ke…</string>
     <string name="share_abort">Pembagian dibatalkan karena tidak ada izin.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Info profil Anda</string>
@@ -545,9 +532,6 @@
     <string name="perm_explain_access_to_location_denied">Untuk melampirkan lokasi, lihat pengaturan aplikasi, pilih \"Perizinan\", dan aktifkan \"Lokasi\".</string>
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Gambar di mana saja untuk diburamkan</string>
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Ini adalah aplikasi resmi Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Perangkat lunak ini berlisensi di bawah GNU GPL versi 3 dan kode sumber tersedia di GitHub.</string>
     <string name="welcome_desktop">Selamat Datang di Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Bahasa</string>
     <string name="global_menu_file_desktop">Berkas</string>
