@@ -121,7 +121,6 @@ public class CallActivity extends AppCompatActivity {
           if (isInPipMode) {
             topBar.setVisibility(View.GONE);
             bottomLayoutContainer.setVisibility(View.GONE);
-            localVideoContainer.setVisibility(View.GONE);
             incomingCallPrompt.setVisibility(View.GONE);
           } else {
             topBar.setVisibility(View.VISIBLE);
@@ -132,9 +131,9 @@ public class CallActivity extends AppCompatActivity {
                 updateUIForState(state);
               }
             }
-            layoutVideos();
           }
 
+          layoutVideos();
           updateProximityWakeLock();
         });
 
@@ -524,7 +523,6 @@ public class CallActivity extends AppCompatActivity {
     Log.d(TAG, "onNewIntent called - activity reused");
   }
 
-  // TODO: resource strings
   private void updateUIForState(CallViewModel.CallState state) {
     Log.d(TAG, "Call state: " + state);
 
@@ -541,7 +539,6 @@ public class CallActivity extends AppCompatActivity {
         bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
-        remoteAvatarView.setVisibility(View.GONE);
         break;
 
       case PROMPTING_USER_ACCEPT:
@@ -550,7 +547,6 @@ public class CallActivity extends AppCompatActivity {
         bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.VISIBLE);
         answerModeSelector.setVisibility(View.VISIBLE);
-        remoteAvatarView.setVisibility(View.GONE);
         initializeAnswerModeSelector();
         break;
 
@@ -560,7 +556,6 @@ public class CallActivity extends AppCompatActivity {
         bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
-        remoteAvatarView.setVisibility(View.VISIBLE);
         break;
 
       case CONNECTING:
@@ -569,7 +564,6 @@ public class CallActivity extends AppCompatActivity {
         bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
-        remoteAvatarView.setVisibility(View.VISIBLE);
         break;
 
       case CONNECTED:
@@ -578,12 +572,10 @@ public class CallActivity extends AppCompatActivity {
         bottomLayoutContainer.setVisibility(View.VISIBLE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
-        remoteAvatarView.setVisibility(View.VISIBLE);
         break;
 
       case RECONNECTING:
         statusText.setText(R.string.call_reconnecting);
-        remoteAvatarView.setVisibility(View.VISIBLE);
         break;
 
       case ENDED:
@@ -597,7 +589,6 @@ public class CallActivity extends AppCompatActivity {
         bottomLayoutContainer.setVisibility(View.GONE);
         callerIconContainer.setVisibility(View.GONE);
         answerModeSelector.setVisibility(View.GONE);
-        remoteAvatarView.setVisibility(View.VISIBLE);
 
         new Handler(Looper.getMainLooper())
             .postDelayed(
@@ -702,7 +693,6 @@ public class CallActivity extends AppCompatActivity {
   private void layoutVideos() {
     if (isFinishing() || isDestroyed()) return;
     if (viewModel == null) return;
-    if (isInPictureInPictureMode()) return;
 
     CallViewModel.CallState state = viewModel.getCallState().getValue();
     if (state == CallViewModel.CallState.ENDED || state == CallViewModel.CallState.ERROR) return;
@@ -715,46 +705,41 @@ public class CallActivity extends AppCompatActivity {
     VideoTrack localTrack = viewModel.getLocalVideoTrack().getValue();
     VideoTrack remoteTrack = viewModel.getRemoteVideoTrack().getValue();
 
-    boolean shouldShowRemoteVideoView = false;
+    boolean showFullScreen = false;
 
-    if (state == CallViewModel.CallState.CONNECTED) {
-      // Call established: local in corner, remote in center
-
-      if (remoteTrack != null && Boolean.TRUE.equals(remoteVideoEnabled)) {
-        remoteTrack.addSink(remoteVideoView);
-        shouldShowRemoteVideoView = true;
-      }
-
-      if (localTrack != null && Boolean.TRUE.equals(videoEnabled)) {
-        localTrack.addSink(localVideoView);
-        localVideoContainer.setVisibility(View.VISIBLE);
-      } else {
-        localVideoContainer.setVisibility(View.GONE);
-      }
-
-      Log.d(TAG, "Video layout: Connected (local corner, remote full-screen)");
-
+    if (state == CallViewModel.CallState.CONNECTED
+        && remoteTrack != null
+        && Boolean.TRUE.equals(remoteVideoEnabled)) {
+      remoteTrack.addSink(remoteVideoView);
+      showFullScreen = true;
     } else if (!coordinator.isIncomingCall()
-        && (state == CallViewModel.CallState.RINGING
-            || state == CallViewModel.CallState.CONNECTING)) {
-      if (localTrack != null && Boolean.TRUE.equals(videoEnabled)) {
-        // Outgoing call before connected: local preview in center, hide corner
-        localTrack.addSink(remoteVideoView);
-        shouldShowRemoteVideoView = true;
-        localVideoContainer.setVisibility(View.GONE);
-        Log.d(TAG, "Video layout: Outgoing preview (local full-screen)");
-      } else {
-        localVideoContainer.setVisibility(View.GONE);
-        Log.d(TAG, "Video layout: Outgoing audio-only");
-      }
-
-    } else {
-      // All other cases: just show avatar
-      localVideoContainer.setVisibility(View.GONE);
-      Log.d(TAG, "Video layout: Showing avatar only");
+        && (state == CallViewModel.CallState.RINGING || state == CallViewModel.CallState.CONNECTING)
+        && localTrack != null
+        && Boolean.TRUE.equals(videoEnabled)) {
+      localTrack.addSink(remoteVideoView);
+      showFullScreen = true;
     }
 
-    remoteVideoView.setVisibility(shouldShowRemoteVideoView ? View.VISIBLE : View.GONE);
+    remoteVideoView.setVisibility(showFullScreen ? View.VISIBLE : View.GONE);
+
+    boolean showCorner =
+        state == CallViewModel.CallState.CONNECTED
+            && localTrack != null
+            && Boolean.TRUE.equals(videoEnabled)
+            && !isInPictureInPictureMode();
+
+    if (showCorner) {
+      localTrack.addSink(localVideoView);
+    }
+
+    localVideoContainer.setVisibility(showCorner ? View.VISIBLE : View.GONE);
+
+    boolean showAvatar =
+        !showFullScreen
+            && state != CallViewModel.CallState.PROMPTING_USER_ACCEPT
+            && state != CallViewModel.CallState.INITIALIZING;
+
+    remoteAvatarView.setVisibility(showAvatar ? View.VISIBLE : View.GONE);
   }
 
   private void detachAllTracks() {
