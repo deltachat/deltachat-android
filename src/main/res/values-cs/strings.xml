@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Vypnuto</string>
     <string name="def">Výchozí</string>
     <string name="default_value">Výchozí (%1$s)</string>
-    <string name="default_value_as_above">Výchozí (jako výše)</string>
     <string name="custom">Vlastní</string>
     <string name="none">Žádný</string>
     <string name="automatic">Automaticky</string>
@@ -36,8 +33,6 @@
     <string name="update">Aktualizovat</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Příloha</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">Připojit \"%1$s\"?</string>
     <string name="back">Zpět</string>
     <string name="close">Zavřít</string>
     <string name="close_window">Zavřít okno</string>
@@ -347,8 +342,6 @@
     <string name="menu_more_options">Další možnosti</string>
     <string name="menu_learn_spelling">Naučte se pravopis</string>
     <string name="jump_to_message">Přejít na zprávu</string>
-    <string name="jump_to_original_message">Přejít na původní zprávu</string>
-    <string name="copy_json">Kopírovat JSON</string>
     <string name="replace_draft">Nahradit rozepsanou zprávu</string>
     <string name="title_share_location">Sdílet polohu se všemi členy skupiny</string>
     <string name="device_talk">Zprávy v zařízení</string>
@@ -401,7 +394,6 @@
     <string name="declined_call">Odmítnutý hovor</string>
     <string name="canceled_call">Zrušený hovor</string>
     <string name="missed_call">Zmeškaný hovor</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Jste si jistý, že chcete odejít?</string>
@@ -433,11 +425,9 @@
     <string name="ask_remove_from_channel">Odstranit %1$s z kanálu?</string>
     <string name="open_url_confirmation">Přejete si otevřít tento odkaz?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Kontakty</string>
     <string name="contacts_type_email_above">Zadejte e-mail výše</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -504,24 +494,13 @@
     <string name="send_file_to">Odeslat \"%1$s\"...</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Odeslat zprávu...</string>
-    <string name="enable_realtime">Real-time aplikace</string>
-    <string name="enable_realtime_explain">Umožnit aplikacím sdíleným v chatech, aby navazovaly spojení v reálném čase. Tato volba umožní vašim kontaktům zjistit vaši IP adresu, když nějakou aplikaci spustíte.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Zobrazit polohy v časovém úseku</string>
-    <string name="show_location_traces">Zobrazit trasy</string>
-    <string name="add_poi">Odeslat bod zájmu</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">U %1$s se již znovu neptat</string>
     <string name="puny_code_warning_header">Byl nalezen podezřelý odkaz</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Opravdu si přejete navštívit stránku %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Tento odkaz může obsahovat znaky zaměněné za podobně vypadající znaky z cizích abeced. Odkaz označený jako %1$s vás navede na stránku %2$s, což je normální pro znaky mimo anglickou latinku. Pokud neočekáváte adresu s takovýmito znaky, odkaz může být škodlivý.</string>
-
 
     <!-- search -->
     <string name="search">Hledat</string>
@@ -531,7 +510,6 @@
     <string name="search_no_result_for_x">Žádný výsledek pro \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Nepřečtené</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Název skupiny</string>
@@ -612,7 +590,6 @@
     <string name="messages">Zprávy</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">Zaplněno %1$s z %2$s</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -719,7 +696,6 @@
     <string name="share_text_multiple_chats">Poslat tento text do %1$d chatů?\n\n\"%2$s\"</string>
     <string name="share_abort">Sdílení přerušeno kvůli chybějícím oprávnění.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Přehled účtu</string>
     <string name="pref_profile_photo">Profilový obrázek</string>
@@ -821,8 +797,6 @@
     <string name="profile_image_delete">Smazat profilový obrázek</string>
     <string name="pref_show_tray_icon">Zobrazit ikonu v oznamovací oblasti</string>
     <string name="pref_edit_profile">Upravit profil</string>
-    <string name="disable_imap_idle">Zakázat IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Nepoužívat rozšíření IMAP IDLE ani když jej server podporuje. Zapnutí této volby zvýší prodlevu při získávání zpráv, použijte ji jen pro testování.</string>
     <string name="send_stats_to_devs">Odeslat statistiky vývojářům Delta Chatu</string>
     <string name="stats_msg_body">Příloha obsahuje anonymní statistiky používání, které nám pomáhají zlepšovat službu Delta Chat. Děkujeme vám!</string>
 
@@ -1028,7 +1002,6 @@
     <string name="new_messages_body">Máte nové zprávy</string>
     <string name="n_messages_in_m_chats">%1$d zprávy v %2$d chatech </string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Oprávnění vyžadováno</string>
     <string name="perm_continue">Pokračovat</string>
@@ -1049,9 +1022,6 @@
     <string name="ImageEditorHud_flip">Zrcadlení</string>
     <string name="ImageEditorHud_rotate">Otočení</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Toto je oficiální aplikace Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Tento software je distribuován pod licencí GNU GPL verze 3 a jeho zdrojový kód je k dispozici na GitHubu.</string>
     <string name="welcome_desktop">Vítejte v aplikaci Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Jazyk</string>
     <string name="global_menu_file_desktop">Soubor</string>
@@ -1090,9 +1060,8 @@
     <string name="message_detail_received_desktop">přijato</string>
     <string name="menu.view.developer.open.log.folder">Otevřít složku protokolu</string>
     <string name="menu.view.developer.open.current.log.file">Otevřít stávající soubor s protokolem</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s volbou --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Ikonu na panelu nelze deaktivovat, protože Delta Chat byl spuštěn s volbou --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Žádné pravopisné návrhy.</string>
     <string name="show_window">Zobrazit okno</string>
 

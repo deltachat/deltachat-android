@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">Εντάξει</string>
@@ -14,7 +12,6 @@
     <string name="off">Απενεργοποιημένο</string>
     <string name="def">Προεπιλογή</string>
     <string name="default_value">Προεπιλογή(%1$s)</string>
-    <string name="default_value_as_above">Προκαθορισμένο (Ίδιο με το παραπάνω)</string>
     <string name="custom">Προσαρμογή</string>
     <string name="none">Κανένα</string>
     <string name="automatic">Αυτόματα</string>
@@ -237,7 +234,6 @@
     <string name="menu_more_options">Περισσότερες Επιλογές</string>
     <string name="menu_learn_spelling">Μάθε Ορθογραφία</string>
     <string name="jump_to_message">Μετακίνηση στη Συνομιλία</string>
-    <string name="copy_json">Αντιγραφή JSON</string>
     <string name="replace_draft">Αντικατάσταση Σχεδίου</string>
     <string name="title_share_location">Διαμοιρασμός τοποθεσίας με όλα τα μέλη της ομάδας</string>
     <string name="device_talk">Μηνύματα Συσκευής</string>
@@ -291,11 +287,9 @@
     <string name="ask_remove_members">Αφαίρεση του/της %1$s από την ομάδα;</string>
     <string name="open_url_confirmation">Θέλετε να ανοίξετε αυτό τον σύνδεσμό;</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Επαφές</string>
     <string name="contacts_type_email_above">Εισάγετε την διεύθυνση e-mail παραπάνω</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -349,21 +343,12 @@
     <string name="start_app">Εκκίνηση…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Αποδεχτείτε πρώτα το αίτημα συνομιλίας.</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Εμφάνιση τοποθεσιών σε χρονικό πλαίσιο</string>
-    <string name="show_location_traces">Εμφάνιση ιχνών</string>
-    <string name="add_poi">Αποστολή σημείου ενδιαφέροντος</string>
-
-
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Μην ξαναρωτήθω για %1$s</string>
     <string name="puny_code_warning_header">Εντοπίστηκε ύποπτος σύνδεσμος</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Είστε σίγουροι ότι θέλετε να επισκεφθείτε %1$s;</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Αυτός ο σύνδεσμος μπορεί να παραποιεί χαρακτήρες με παρόμοια εμφάνιση από διαφορετικά αλφάβητα. Ακολουθώντας τον σύνδεσμο με την ετικέτα %1$s θα οδηγήσει σε %2$s κάτι που είναι φυσιολογικό για μη λατινικούς χαρακτήρες. Αν δεν περιμένατε τέτοιους χαρακτήρες, αυτός ο σύνδεσμος θα μπορούσε να είναι επιβλαβής.</string>
-
 
     <!-- search -->
     <string name="search">Αναζήτηση</string>
@@ -418,7 +403,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s από %2$s χρησιμοποιείται</string>
 
-
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
     <string name="login_title">Σύνδεση</string>
     <string name="login_inbox">Εισερχόμενα</string>
@@ -462,7 +446,6 @@
     <string name="ask_send_files_to_selected_chats">Αποστολή %1$d αρχείου(-ων) σε %2$d συνομιλίες;</string>
     <string name="share_text_multiple_chats">Αποστολή αυτού του κειμένου σε %1$d συνομιλίες;\n\n\"%2$s\"</string>
     <string name="share_abort">Η κοινή χρήση ματαιώθηκε λόγω έλλειψης αδειών.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Πληροφορίες Προφίλ</string>
@@ -722,9 +705,6 @@
     <string name="ImageEditorHud_flip">Εναλλαγή</string>
     <string name="ImageEditorHud_rotate">Περιστροφή</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Αυτή είναι η επίσημη εφαρμογή Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Αυτό το λογισμικό έχει άδεια χρήσης σύμφωνα με την GNU GPL έκδοση 3 και ο πηγαίος κώδικας είναι διαθέσιμος στο GitHub.</string>
     <string name="welcome_desktop">Καλώς ήρθατε στο Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Γλώσσα</string>
     <string name="global_menu_file_desktop">Αρχείο</string>
@@ -759,9 +739,8 @@
     <string name="message_detail_received_desktop">Παραλήφθηκε</string>
     <string name="menu.view.developer.open.log.folder">Άνοιγμα του φακέλου καταγραφής</string>
     <string name="menu.view.developer.open.current.log.file">Άνοιγμα του τρέχον αρχείου καταγραφής</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Δεν βρέθηκαν προτάσεις ορθογραφίας.</string>
     <string name="show_window">Εμφάνιση παραθύρου</string>
 

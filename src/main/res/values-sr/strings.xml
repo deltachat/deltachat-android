@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">У реду</string>
@@ -14,7 +12,6 @@
     <string name="off">Искључено</string>
     <string name="def">Подразумевано</string>
     <string name="default_value">Задато (%1$s)</string>
-    <string name="default_value_as_above">Задато (исто као изнад)</string>
     <string name="custom">Посебно</string>
     <string name="none">Ништа</string>
     <string name="automatic">Аутоматски</string>
@@ -275,7 +272,6 @@
     <string name="menu_more_options">Више опција</string>
     <string name="menu_learn_spelling">Научи правопис</string>
     <string name="jump_to_message">Иди на поруку</string>
-    <string name="copy_json">Копирај JSON</string>
     <string name="replace_draft">Замени нацрт</string>
     <string name="title_share_location">Подели положај са свим члановима групе</string>
     <string name="device_talk">Поруке уређаја</string>
@@ -342,11 +338,9 @@
     <string name="ask_remove_from_channel">Да ли желите да уклоните %1$s са канала?</string>
     <string name="open_url_confirmation">Да ли желите да отворите ову везу?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Контакти</string>
     <string name="contacts_type_email_above">Унесите е-адресу изнад</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -403,21 +397,12 @@
     <string name="start_app">Покретање...</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Прво прихватите захтев за ћаскање.</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Прикажи положаје у временском периоду?</string>
-    <string name="show_location_traces">Прикажи трагове</string>
-    <string name="add_poi">Пошаљи интересантно место</string>
-
-
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Не питај поново за %1$s</string>
     <string name="puny_code_warning_header">Детектован је сумњив линк</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Јесте ли сигурни да желите да приступите %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Ова веза може погрешно приказати знакове са сличним изгледом из различитих алфабета. Праћење означене везе %1$s ће довести до %2$s што је нормално за нелатинске знакове. Ако нисте очекивали такве ликове, ова веза би могла бити штетна.</string>
-
 
     <!-- search -->
     <string name="search">Претрага</string>
@@ -474,7 +459,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$sод %2$sискоришћени</string>
 
-
     <string name="scan_invitation_code">Скенирај код позива за приступ.</string>
     <string name="login_title">Пријави се</string>
     <string name="login_inbox">Пријем</string>
@@ -518,7 +502,6 @@
     <string name="ask_send_files_to_selected_chats">Пошаљи %1$d фајл(ове) у %2$d ћаскања?</string>
     <string name="share_text_multiple_chats">Пошаљи овај текст %1$dиз ћаскања?\n\n„%2$s“</string>
     <string name="share_abort">Дељење прекинуто због неодговарајуће дозволе.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Подаци вашег профила</string>
@@ -782,9 +765,6 @@
     <string name="ImageEditorHud_flip">Окрени</string>
     <string name="ImageEditorHud_rotate">Обрни</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Ово је званична Delta Chat апликација за рачунар.</string>
-    <string name="about_licensed_under_desktop">Овај програм је лиценциран под ГНУ ГПЛ верзија 3 лиценцом и изворни код је доступан на Гитхабу.</string>
     <string name="welcome_desktop">Добродошли у Delta Chat.</string>
     <string name="global_menu_preferences_language_desktop">Језик</string>
     <string name="global_menu_file_desktop">Фајл</string>
@@ -819,9 +799,8 @@
     <string name="message_detail_received_desktop">примљено</string>
     <string name="menu.view.developer.open.log.folder">Отвори директоријум где се налазе дневници</string>
     <string name="menu.view.developer.open.current.log.file">Отвори тренутни дневник</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Иконица на системској касети не може да се онемогући јер је Delta Chat покренут са --minimized опцијом.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Нема предлога за исправке правописа.</string>
     <string name="show_window">Прикажи прозор</string>
 

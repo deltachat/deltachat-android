@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Desactivado</string>
     <string name="def">Por defecto</string>
     <string name="default_value">Por defecto (%1$s)</string>
-    <string name="default_value_as_above">Por defecto (igual que el superior)</string>
     <string name="custom">Personalizado</string>
     <string name="none">Ninguno</string>
     <string name="automatic">Automático</string>
@@ -36,8 +33,6 @@
     <string name="update">Actualización</string>
     <string name="emoji">Emoji</string>
     <string name="attachment">Adjunto</string>
-    <!-- the placeholder will be replaced by the name of the image or file to attach -->
-    <string name="ask_attach">¿Adjunta \"%1$s\"?</string>
     <string name="back">Atrás</string>
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
@@ -74,6 +69,8 @@
     <string name="mark_as_read">Marcar como leído</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Leído</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">No leído</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Cargando…</string>
     <string name="hide">Ocultar</string>
@@ -357,8 +354,6 @@
     <string name="menu_more_options">Más opciones</string>
     <string name="menu_learn_spelling">Aprender ortografía</string>
     <string name="jump_to_message">Saltar al mensaje</string>
-    <string name="jump_to_original_message">Saltar al mensaje original</string>
-    <string name="copy_json">Copiar JSON</string>
     <string name="replace_draft">Reemplazar borrador</string>
     <string name="title_share_location">Compartir ubicación con todos los miembros del grupo</string>
     <string name="device_talk">Mensajes del dispositivo</string>
@@ -432,6 +427,7 @@
     <string name="declined_call">Llamada rechazada</string>
     <string name="canceled_call">Llamada cancelada</string>
     <string name="missed_call">Llamada perdida</string>
+    <string name="already_in_call">Ya estás en una llamada</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -462,11 +458,9 @@
     <string name="ask_remove_from_channel">¿Quita %1$s del canal?</string>
     <string name="open_url_confirmation">¿Quieres abrir este enlace?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Contactos</string>
     <string name="contacts_type_email_above">Escriba la dirección de correo arriba</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -530,24 +524,13 @@
     <string name="send_file_to">Enviar \"%1$s\" a…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Enviar mensaje a…</string>
-    <string name="enable_realtime">Aplicaciones en tiempo real</string>
-    <string name="enable_realtime_explain">Habilite las conexiones en tiempo real para las aplicaciones compartidas en los chats. Si esta opción está habilitada, los participantes del chat podrán descubrir su dirección IP cuando inicie una aplicación.</string>
-
-    <!-- map -->
-    <string name="filter_map_on_time">Mostrar ubicaciones en el marco de tiempo</string>
-    <string name="show_location_traces">Mostrar trazas</string>
-    <string name="add_poi">Enviar punto de interés</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">No preguntar nuevamente para %1$s</string>
     <string name="puny_code_warning_header">Enlace sospechoso detectado</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">¿Estás seguro de que quieres visitar %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Siguió un enlace que podría estar tergiversando caracteres al usar caracteres de diferentes alfabetos con un aspecto similar. Seguir el enlace etiquetado %1$s conducirá a %2$s, que es normal para caracteres no latinos. Si no esperaba tales caracteres, este enlace podría ser dañino.</string>
-
 
     <!-- search -->
     <string name="search">Buscar</string>
@@ -557,7 +540,6 @@
     <string name="search_no_result_for_x">No se encontraron resultados para \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">No leído</string>
-
 
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Nombre del grupo</string>
@@ -638,7 +620,6 @@
     <string name="messages">Mensajes</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s de %2$s usado</string>
-
 
     <!-- welcome and login -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
@@ -752,7 +733,6 @@
     <string name="share_text_multiple_chats">¿Enviar este texto a %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
 
-
     <!-- preferences -->
     <string name="pref_profile_info_headline">Información de perfil</string>
     <string name="pref_profile_photo">Foto de perfil</string>
@@ -860,8 +840,6 @@
     <string name="profile_image_delete">Borrar imagen de perfil</string>
     <string name="pref_show_tray_icon">Mostrar icono de bandeja</string>
     <string name="pref_edit_profile">Editar perfil</string>
-    <string name="disable_imap_idle">Deshabilitar IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">No utilizar la extensión IMAP IDLE aunque el servidor la admita. Habilitar esta opción retrasará el recibo de mensajes, actívala solo para pruebas.</string>
     <string name="send_stats_to_devs">Enviar estadísticas a los desarrolladores de Delta Chat</string>
     <string name="stats_device_message">¿Quieres ayudar a mejorar Delta Chat y apoyar la investigación enviando estadísticas de uso anónimas semanales?\n\n👉 Pulsa aquí… 👈</string>
     <string name="stats_confirmation_dialog">¿Quieres ayudar a mejorar Delta Chat y apoyar la investigación enviando estadísticas de uso anónimas semanales?</string>
@@ -1077,7 +1055,6 @@
     <string name="new_messages_body">Tienes mensajes nuevos</string>
     <string name="n_messages_in_m_chats">%1$d mensajes en %2$d chats</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Permiso requerido</string>
     <string name="perm_continue">Continuar</string>
@@ -1098,9 +1075,6 @@
     <string name="ImageEditorHud_flip">Voltear</string>
     <string name="ImageEditorHud_rotate">Rotar</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Esta es la aplicación oficial de Delta Chat para escritorio.</string>
-    <string name="about_licensed_under_desktop">Este programa está licenciado bajo GNU GPL versión 3 y el código está disponible en GitHub.</string>
     <string name="welcome_desktop">Bienvenido a Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Idioma</string>
     <string name="global_menu_file_desktop">Archivo</string>
@@ -1139,9 +1113,8 @@
     <string name="message_detail_received_desktop">recibido</string>
     <string name="menu.view.developer.open.log.folder">Abrir Carpeta de Logs</string>
     <string name="menu.view.developer.open.current.log.file">Abrir Archivo de Logs Actual</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">El icono de la bandeja no se puede desactivar ya que Delta Chat se inició con la opción --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
 

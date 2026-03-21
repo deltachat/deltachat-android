@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -14,7 +12,6 @@
     <string name="off">Tắt</string>
     <string name="def">Mặc định</string>
     <string name="default_value">Mặc định (%1$s)</string>
-    <string name="default_value_as_above">Mặc định (giống như trên)</string>
     <string name="custom">Tùy chỉnh</string>
     <string name="none">Không</string>
     <string name="automatic">Tự động</string>
@@ -252,7 +249,6 @@
     <string name="menu_more_options">Tùy chọn khác</string>
     <string name="menu_learn_spelling">Học đánh vần</string>
     <string name="jump_to_message">Chuyển tới tin nhắn</string>
-    <string name="copy_json">Sao chép JSON</string>
     <string name="replace_draft">Thay thế bản nháp</string>
     <string name="title_share_location">Chia sẻ vị trí với tất cả thành viên nhóm</string>
     <string name="device_talk">Tin nhắn thiết bị</string>
@@ -305,11 +301,9 @@
     <string name="ask_remove_members">Loại %1$s khỏi nhóm?</string>
     <string name="open_url_confirmation">Bạn có muốn mở liên kết này không?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Danh bạ</string>
     <string name="contacts_type_email_above">Nhập địa chỉ e-mail ở trên</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -364,21 +358,13 @@
     <string name="send_file_to">Gửi \"%1$s\" tới…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Gửi tin nhắn tới…</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Hiển thị vị trí trong khung thời gian</string>
-    <string name="show_location_traces">Hiển thị dấu vết</string>
-    <string name="add_poi">Gửi điểm ưa thích</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Đừng hỏi lại %1$s</string>
     <string name="puny_code_warning_header">Đã phát hiện liên kết đáng ngờ</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Bạn có chắc chắn muốn ghé thăm %1$s không?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Liên kết này có thể trình bày sai các ký tự có hình dáng tương tự từ các bảng chữ cái khác nhau. Đi theo liên kết có nhãn %1$s sẽ dẫn đến %2$s, điều này là bình thường đối với các ký tự không phải Latinh. Nếu bạn không mong đợi những ký tự như vậy thì liên kết này có thể có hại.</string>
-
 
     <!-- search -->
     <string name="search">Tìm kiếm</string>
@@ -462,7 +448,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s trong tổng số %2$s đã được sử dụng</string>
 
-
     <string name="scan_invitation_code">Quét mã mời</string>
     <string name="login_title">Đăng nhập</string>
     <string name="login_inbox">Hộp thư đến</string>
@@ -506,7 +491,6 @@
     <string name="ask_send_files_to_selected_chats">Gửi %1$d tệp tới %2$d cuộc trò chuyện?</string>
     <string name="share_text_multiple_chats">Gửi văn bản này tới %1$d cuộc trò chuyện?\n\n\"%2$s\"</string>
     <string name="share_abort">Chia sẻ bị hủy do thiếu quyền.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Thông tin hồ sơ của bạn</string>
@@ -598,8 +582,6 @@
     <string name="profile_image_delete">Xóa ảnh hồ sơ</string>
     <string name="pref_show_tray_icon">Hiển thị biểu tượng khay</string>
     <string name="pref_edit_profile">Chỉnh sửa hồ sơ</string>
-    <string name="disable_imap_idle">Tắt IMAP IDLE</string>
-    <string name="disable_imap_idle_explain">Không sử dụng tiện ích mở rộng IMAP IDLE ngay cả khi máy chủ hỗ trợ nó. Bật tùy chọn này sẽ trì hoãn việc truy xuất tin nhắn, chỉ bật nó để kiểm tra.</string>
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Kết quả tìm kiếm</string>
     <string name="emoji_not_found">Không tìm thấy emoji nào</string>
@@ -767,7 +749,6 @@
     <string name="new_messages">Tin nhắn mới</string>
     <string name="n_messages_in_m_chats">%1$d tin nhắn trong %2$d cuộc trò chuyện</string>
 
-
     <!-- permissions -->
     <string name="perm_required_title">Cần có sự cho phép</string>
     <string name="perm_continue">Tiếp tục</string>
@@ -788,9 +769,6 @@
     <string name="ImageEditorHud_flip">Lật</string>
     <string name="ImageEditorHud_rotate">Xoay</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Đây là ứng dụng Delta Chat Desktop chính thức.</string>
-    <string name="about_licensed_under_desktop">Phần mềm này được cấp phép theo GNU GPL phiên bản 3 và mã nguồn có sẵn trên GitHub.</string>
     <string name="welcome_desktop">Chào mừng đến với Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Ngôn ngữ</string>
     <string name="global_menu_file_desktop">Tập tin</string>
@@ -825,9 +803,8 @@
     <string name="message_detail_received_desktop">đã nhận được</string>
     <string name="menu.view.developer.open.log.folder">Mở thư mục nhật ký</string>
     <string name="menu.view.developer.open.current.log.file">Mở tệp nhật ký hiện tại</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">Không thể tắt biểu tượng khay vì Delta Chat đã được bắt đầu bằng tùy chọn --giảm-thiểu.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Không thể tắt biểu tượng khay vì Delta Chat đã được bắt đầu bằng tùy chọn --giảm-thiểu.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Không tìm thấy gợi ý chính tả.</string>
     <string name="show_window">Hiển thị cửa sổ</string>
 

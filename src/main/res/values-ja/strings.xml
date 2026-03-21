@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">了承</string>
@@ -14,7 +12,6 @@
     <string name="off">切</string>
     <string name="def">標準</string>
     <string name="default_value">初期値（%1$s）</string>
-    <string name="default_value_as_above">初期値（同上）</string>
     <string name="custom">カスタム</string>
     <string name="none">無し</string>
     <string name="automatic">自動</string>
@@ -205,7 +202,6 @@
     <string name="menu_zoom_out">縮小</string>
     <string name="menu_save_log">ログ保存</string>
     <string name="jump_to_message">メッセージへ移動</string>
-    <string name="copy_json">JSONをコピー</string>
     <string name="title_share_location">現在地を全員に公開する</string>
     <string name="device_talk">デバイスのメッセージ</string>
     <string name="device_talk_subtitle">ローカルで生成されたメッセージ</string>
@@ -250,11 +246,9 @@
     <string name="ask_remove_members">%1$sをグループから排除しますか</string>
     <string name="open_url_confirmation">このリンクを開きますか？</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">連絡先一覧</string>
     <string name="contacts_type_email_above">上にメールアドレスを入力してください。</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -295,10 +289,7 @@
     <!-- mailing lists -->
     <string name="mailing_list">メーリングリスト</string>
 
-    <string name="show_location_traces">トレースを表示する</string>
-    <string name="add_poi">指定位置を送る</string>
-
-
+    <!-- punycode warning / labeled links -->
     <string name="puny_code_warning_header">疑わしいリンクが検出された</string>
     <!-- search -->
     <string name="search">検索</string>
@@ -374,7 +365,6 @@
     <string name="ask_send_files_to_selected_chats">%1$dつのファイルを%2$d個のチャットに送りますか。</string>
     <string name="share_text_multiple_chats">%2$sを%1$d個のチャットに送りますか。</string>
     <string name="share_abort">権限エラー：共有が一時中断されました。</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">ユーザープロファイル</string>

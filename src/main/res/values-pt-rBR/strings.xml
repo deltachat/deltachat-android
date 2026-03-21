@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- common strings without special context -->
     <string name="app_name">Delta Chat</string>
     <string name="ok">OK</string>
@@ -18,7 +16,6 @@
     <string name="off">Desligado</string>
     <string name="def">Padrão</string>
     <string name="default_value">Padrão (%1$s)</string>
-    <string name="default_value_as_above">Padrão (igual acima)</string>
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
     <string name="automatic">Automático</string>
@@ -263,7 +260,6 @@
     <string name="menu_more_options">Mais opções</string>
     <string name="menu_learn_spelling">Aprender ortografia</string>
     <string name="jump_to_message">Pular para a mensagem</string>
-    <string name="copy_json">Copiar JSON</string>
     <string name="replace_draft">Substituir rascunho </string>
     <string name="title_share_location">Compartilhar localização com o grupo</string>
     <string name="device_talk">Mensagens desse aparelho</string>
@@ -319,11 +315,9 @@
     <string name="ask_remove_members">Remover %1$s do grupo?</string>
     <string name="open_url_confirmation">Você quer abrir este link?</string>
 
-
     <!-- contact list -->
     <string name="contacts_title">Contatos</string>
     <string name="contacts_type_email_above">Digite o e-mail acima</string>
-
 
     <!-- chatlist and chat view -->
     <plurals name="chat_archived">
@@ -384,21 +378,13 @@
     <string name="send_file_to">Enviar \"%1$s\" para…</string>
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Enviar Mensagem para…</string>
-    <!-- map -->
-    <string name="filter_map_on_time">Exibir localização no tempo.</string>
-    <string name="show_location_traces">Exibir pegadas</string>
-    <string name="add_poi">Enviar ponto de interesse</string>
-
 
     <!-- punycode warning / labeled links -->
-    <!-- placeholder is domain/hostname that should be trusted -->
-    <string name="open_external_url_trust_domain">Não perguntar de novo por %1$s</string>
     <string name="puny_code_warning_header">Link suspeito detectado</string>
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Tem certeza que deseja visitar %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
     <string name="puny_code_warning_description">Você clicou em um link que pode estar representando maliciosamente letras de aparência semelhante com o uso de alfabetos diferentes. Seguir o link rotulado como %1$s levará a %2$s, o que é normal para caracteres não latinos. Se você não esperava esses caracteres, este link pode ser prejudicial</string>
-
 
     <!-- search -->
     <string name="search">Procurar</string>
@@ -476,7 +462,6 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s de %2$s usado</string>
 
-
     <string name="scan_invitation_code">Escanear Código De Convite</string>
     <string name="login_title">Acessar</string>
     <string name="login_inbox">Caixa de entrada</string>
@@ -520,7 +505,6 @@
     <string name="ask_send_files_to_selected_chats">Enviar %1$d arquivo(s) para %2$d conversas?</string>
     <string name="share_text_multiple_chats">Enviar este texto para %1$d conversas?\n\n\"%2$s\"</string>
     <string name="share_abort">Compartilhamento abortado devido a falta de permissões.</string>
-
 
     <!-- preferences -->
     <string name="pref_profile_info_headline">Informações do seu perfil</string>
@@ -784,9 +768,6 @@
     <string name="ImageEditorHud_flip">Girar</string>
     <string name="ImageEditorHud_rotate">Rodar</string>
 
-    <!-- strings introduced on desktop. we want to share strings between the os, in general, please do not add generic strings here -->
-    <string name="about_offical_app_desktop">Este é o aplicativo oficial Delta Chat Desktop.</string>
-    <string name="about_licensed_under_desktop">Este software é licenciado sob a GNU GPL versão 3 e o código-fonte está disponível no GitHub.</string>
     <string name="welcome_desktop">Boas-vindas ao Delta Chat.</string>
     <string name="global_menu_preferences_language_desktop">Escolher língua...</string>
     <string name="global_menu_file_desktop">Arquivo</string>
@@ -821,9 +802,8 @@
     <string name="message_detail_received_desktop">recebido</string>
     <string name="menu.view.developer.open.log.folder">Abrir pasta de relatórios</string>
     <string name="menu.view.developer.open.current.log.file">Abrir relatório atual</string>
-    <string
-        name="explain_desktop_minimized_disabled_tray_pref"
-        tools:ignore="TypographyDashes">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">O ícone da bandeja não pode ser desativado porque o Delta Chat foi iniciado com a opção --minimized.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Nenhuma sugestão de ortografia encontrada.</string>
     <string name="show_window">Mostrar Janela</string>
 
