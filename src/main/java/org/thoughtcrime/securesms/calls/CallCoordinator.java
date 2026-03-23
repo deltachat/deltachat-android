@@ -1310,7 +1310,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     // Check full screen intent permission on Android 14+
-    boolean canUseFullScreen;
+    boolean canUseFullScreen = false;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
       canUseFullScreen = canUseFullScreenIntent();
       if (!canUseFullScreen) {
@@ -1354,7 +1354,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
     Notification.Builder builder;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    if (canUseFullScreen && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
       // Android 12+, CallStyle
       Person caller =
           new Person.Builder().setName(callerName).setIcon(callerIcon).setImportant(true).build();
