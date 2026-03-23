@@ -243,7 +243,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   private void handleMarkfreshSelected() {
     final DcContext dcContext = DcHelper.getContext(requireActivity());
     final Set<Long> selectedConversations =
-      new HashSet<Long>(getListAdapter().getBatchSelections());
+        new HashSet<Long>(getListAdapter().getBatchSelections());
     for (long chatId : selectedConversations) {
       dcContext.markfreshChat((int) chatId);
     }
