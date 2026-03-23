@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Mark chats as unread (long tap a chat and select the corresponding option from the three-dot-menu)
 * Fix file sharing to certain apps (e.g. Material Files, etc.)
 * Remove proxy toggle from profile editing to avoid confusion
 
