@@ -69,6 +69,8 @@
     <string name="mark_as_read">标记为已读</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">已读</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">未读</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">加载中…</string>
     <string name="hide">隐藏</string>
@@ -401,6 +403,8 @@
     <string name="declined_call">已拒接来电</string>
     <string name="canceled_call">已取消通话</string>
     <string name="missed_call">未接来电</string>
+    <string name="already_in_call">已在通话中</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">是否确定要离开？</string>
@@ -929,8 +933,9 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s 将消息定时销毁计时器设为 %1$s 周</string>
     <string name="chat_unencrypted_explanation">此聊天中的消息使用传统电子邮件，未进行端到端加密。</string>
+    <string name="messages_are_e2ee">消息是端到端加密的。</string>
     <string name="chat_protection_enabled_tap_to_learn_more">消息是端到端加密的。点按即可了解详情。</string>
-    <string name="chat_protection_enabled_explanation">此聊天中的所有消息都经过端到端加密。\n\n端到端加密可确保您与聊天对象之间的消息保持私密。即使是服务器、提供者或中继也无法读取。</string>
+    <string name="chat_protection_enabled_explanation">此聊天中的所有消息都是端到端加密的。\n\n端到端加密可确保您与聊天对象之间的消息保持私密。即使是服务器、提供者或中继也无法读取。</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s 需要端到端加密，但此聊天尚未设置。点按即可了解详情。</string>
     <string name="invalid_unencrypted_explanation">要建立端到端加密，您可以亲自和联系人碰面并扫描联系人的二维码。</string>
     <string name="learn_more">了解更多</string>
