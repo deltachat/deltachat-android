@@ -1,7 +1,6 @@
 # Delta Chat Android Changelog
 
-## v2.46.0
-2026-03
+## Unreleased
 
 * Allow to set chat description
 * Unified date display in call bubbles
@@ -19,7 +18,7 @@
 * Fix: avoid "reply privately" not quoting the selected message sometimes
 * Fix: properly hide the calls button
 * Some more bug fixes and updated translations
-* Update to core 2.46.0
+* Update to core 2.47.0
 
 ## v2.43.0
 2026-02
