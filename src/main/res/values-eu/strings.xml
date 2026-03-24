@@ -69,6 +69,8 @@
     <string name="mark_as_read">Ezarri irakurri gisa</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Markatu irakurrita</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Irakurri gabe</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Kargatzen...</string>
     <string name="hide">Ezkutatu</string>
@@ -115,6 +117,13 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Azken aldiz begiratua %1$s</string>
     <string name="last_seen_unknown">Azken aldiz begiratzea: ezezaguna</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">minutu %d</item>
+        <item quantity="other">%d minutu</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Minutu 1 baino gutxiago</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">min %d</item>
@@ -156,6 +165,7 @@
         <item quantity="other">%d hautatu dira</item>
     </plurals>
     <string name="selected_colon">Hautaketa:</string>
+    <string name="selected">Hautatua</string>
     <string name="self">Ni</string>
     <string name="draft">Zirriborroa</string>
     <string name="image">Irudia</string>
@@ -167,6 +177,9 @@
     <string name="add_to_sticker_collection">Gehitu Sticker bildumara</string>
     <string name="add_stickers_instructions">Stickerretara gehitzeko, klik egin \"Ireki sticker karpeta\" aukeran, sortu azpikarpeta bat zure sticker multzoarentzat eta arrastatu irudi eta sticker fitxategiak bertara.</string>
     <string name="open_sticker_folder">Ireki sticker karpeta</string>
+    <string name="ask_add_sticker_to_collection">Gehitu eranskailu hau zure bildumara?</string>
+    <string name="ask_delete_sticker">Ezabatu eranskailu hau?</string>
+    <string name="sticker_picker_empty_hint">Sakatu eranskailu bat hemen gehitzeko</string>
     <string name="images">Irudiak</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audioa</string>
@@ -248,6 +261,11 @@
     <string name="new_channel">Kanal berria</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanalaren izena</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">Ikustaldi %d</item>
+        <item quantity="other">%d ikustaldi</item>
+    </plurals>
     <string name="email">Posta elektronikoa</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Posta elektroniko berria</string>
@@ -261,8 +279,9 @@
     <string name="menu_archive_chat">Artxibatu txata</string>
     <string name="menu_unarchive_chat">Berreskuratu txata artxibotik</string>
     <string name="menu_add_attachment">Gehitu eranskina</string>
-    <string name="menu_leave_group">Atera taldetik</string>
+    <string name="menu_leave_group">Utzi taldea</string>
     <string name="menu_leave_channel">Utzi kanala</string>
+    <string name="menu_leave_and_delete">Utzi eta ezabatu niretzat</string>
     <string name="menu_delete_chat">Ezabatu txata</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Garbitu txata</string>
@@ -375,6 +394,16 @@
     <string name="answer_call">Erantzun</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Ukatu</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Audio deia</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Bideo deia</string>
+    <string name="call_initializing">Abiarazten…</string>
+    <string name="call_incoming">Sarrerako deia</string>
+    <string name="call_ringing">Jotzen...</string>
+    <string name="call_reconnecting">Berriz konektatzen...</string>
+    <string name="call_ended">Deia amaitu da</string>
+    <string name="call_failed">Deiak huts egin du</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Irteerako audio deia</string>
     <!-- deprecated, use "Video call" instead -->
@@ -386,6 +415,8 @@
     <string name="declined_call">Ukatutako deia</string>
     <string name="canceled_call">Bertan behera utzitako deia</string>
     <string name="missed_call">Galdutako deia</string>
+    <string name="already_in_call">Dei batean dagoeneko</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ziur irten nahi duzula?</string>
@@ -635,9 +666,16 @@
     <string name="add_transport">Gehitu errelea</string>
     <string name="remove_transport">Ezabatu errelea</string>
     <string name="edit_transport">Editatu errelea</string>
+    <string name="used_for_sending">Bidaltzeko erabilita</string>
+    <string name="hide_from_contacts">Ezkutatu kontaktuetatik</string>
+    <string name="hidden_from_contacts">Kontaktuetatik ezkutatuta</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Mezuak errele guztietan jasotzen dira</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Gehitu errelea?</string>
     <string name="invalid_transport_qr">Eskaneatutako QR kodeak ez dauka baliozko errelerik.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Ezabatu \"%1$s\" errelea?\n\nErrele hau bakarrik ezagutzen duten kontaktuak ezin izango dira zurekin harremanetan jarri zuk mezu bat berriro bidali arte.\n\nZalantzarik baduzu, hobe da ezkutatzea ezabatzea baino.</string>
     <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
     <string name="login_error_mail">Sartu baliozko e-mail helbide bat</string>
     <string name="login_error_server">Sartu baliozko zerbitzari / IP helbide bat</string>
@@ -692,6 +730,7 @@
     <string name="pref_enter_sends">Enter teklarekin bidali</string>
     <string name="pref_enter_sends_explain">Enter tekla sakatzeak mezua bidaliko du</string>
     <string name="pref_outgoing_media_quality">Bidalitako multimediaren kalitatea</string>
+    <string name="pref_outgoing_media_quality_hint">Jatorrizko kalitatean bidaltzeko, erantsi multimedia \"Fitxategi\" gisa. Honek datu askoz gehiago kontsumitzen du zuretzat eta jasotzaileentzat.</string>
     <string name="pref_outgoing_balanced">Orekatua</string>
     <string name="pref_outgoing_worse">Kalitate txarragoa, tamaina txikia</string>
     <string name="pref_vibrate">Bibratu</string>
@@ -702,6 +741,10 @@
     <string name="pref_notifications">Jakinarazpenak</string>
     <string name="pref_mention_notifications">Aipamenak</string>
     <string name="pref_mention_notifications_explain">Mutututako taldeetan, jaso zuretzat diren mezuen jakinarazpenak, hala nola erantzunak edo erreakzioak</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Deiak</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Erakutsi dei-pantaila deiak jasotzean</string>
     <string name="pref_notifications_show">Erakutsi</string>
     <string name="pref_notifications_priority">Lehentasuna</string>
     <string name="pref_notifications_explain">Gaitu sistemaren jakinarazpenak mezu berrientzat</string>
@@ -907,6 +950,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s(e)k mezuen desagerpen-denbora %1$s astekoa dela ezarri du.</string>
     <string name="chat_unencrypted_explanation">Txat honetako mezuek ohiko eposta helbidea erabiltzen dute eta ez daude muturretik muturrera zifratuta.</string>
+    <string name="messages_are_e2ee">Mezuak muturretik muturrera zifratuta daude.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Mezuak muturretik muturrera zifratuta daude. Sakatu gehiago jakiteko.</string>
     <string name="chat_protection_enabled_explanation">Txat honetako mezu guztiak muturretik muturrera zifratuta daude.\n\nMuturretik muturrera zifratzeak mezuak pribatu mantentzen ditu zure eta zure txat kideen artean. Zerbitzariek, hornitzaileek edo erreleek ere ezin dituzte irakurri.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s(e)k muturretik muturrera zifratzea behar du, eta txat honetan oraindik ez dago konfiguratuta. Sakatu gehiago jakiteko.</string>

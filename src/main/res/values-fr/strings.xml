@@ -69,6 +69,8 @@
     <string name="mark_as_read">Marquer comme lu</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Marquer comme lu</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Non lus</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Chargement...</string>
     <string name="hide">Cacher</string>
@@ -115,6 +117,14 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Dernière activité %1$s</string>
     <string name="last_seen_unknown">Vu·e pour la dernière fois : inconnu</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">Durée : %d minute</item>
+        <item quantity="many">Durée : %d minutes</item>
+        <item quantity="other">Durée : %d minutes</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Durée : moins de 1 minute</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -165,6 +175,7 @@
         <item quantity="other">%d Sélectionnés</item>
     </plurals>
     <string name="selected_colon">Sélection :</string>
+    <string name="selected">Sélectionné</string>
     <string name="self">Moi</string>
     <string name="draft">Brouillon</string>
     <string name="image">Image</string>
@@ -174,8 +185,11 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Vignette</string>
     <string name="add_to_sticker_collection">Ajouter à la collection de vignettes</string>
-    <string name="add_stickers_instructions">Pour ajouter des vignettes, appuyez sur \"Ouvrir le dossier Vignettes\", créez un sous-dossier pour votre paquet de vignettes et faites-y glisser vos fichiers image ou vignette </string>
+    <string name="add_stickers_instructions">Pour ajouter des vignettes, appuyez sur « Ouvrir le dossier Vignettes », créez un sous-dossier pour votre paquet de vignettes et faites-y glisser vos fichiers image ou vignette </string>
     <string name="open_sticker_folder">Ouvrir le dossier Vignettes</string>
+    <string name="ask_add_sticker_to_collection">Ajouter cette vignette à votre collection ?</string>
+    <string name="ask_delete_sticker">Supprimer cette vignette ?</string>
+    <string name="sticker_picker_empty_hint">Touchez une vignette pour l\'ajouter ici</string>
     <string name="images">Images</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Audio</string>
@@ -278,6 +292,7 @@
     <string name="menu_add_attachment">Ajouter une pièce jointe</string>
     <string name="menu_leave_group">Quitter le groupe</string>
     <string name="menu_leave_channel">Quitter le canal</string>
+    <string name="menu_leave_and_delete">Quitter et supprimer pour moi</string>
     <string name="menu_delete_chat">Supprimer la discussion</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Vider la discussion</string>
@@ -296,7 +311,7 @@
     <string name="menu_copy_image_to_clipboard">Copier l\'image</string>
     <string name="menu_copy_email_to_clipboard">Copier l\'adresse courriel</string>
     <string name="paste_from_clipboard">Coller depuis le presse-papiers</string>
-    <string name="ask_copy_unopenable_link_to_clipboard">Le lien \"%1$d\" ne peut pas être ouvert dans le navigateur, souhaitez-vous le copier dans le presse-papier à la place ?</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">Le lien « %1$d » ne peut pas être ouvert dans le navigateur, souhaitez-vous le copier dans le presse-papier à la place ?</string>
     <string name="menu_forward">Faire suivre le message</string>
     <string name="menu_reply">Répondre au message</string>
     <string name="menu_mute">Mettre en sourdine</string>
@@ -360,7 +375,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Ajouter à l\'écran d\'accueil</string>
     <string name="donate">Faire un don</string>
-    <string name="donate_device_msg">❤️ On dirait que vous aimez bien Delta Chat !\n\nNous vous serions reconnaissants d\'envisager de nous faire un don pour aider Delta Chat à rester libre et gratuit pour tout le monde.\n\nBien que Delta Chat soit gratuit et open source, son développement coûte de l\'argent. Aidez-nous à garder Delta Chat indépendant et à le rendre encore plus génial à l\'avenir.\n\nhttps://delta.chat/fr/donate</string>
+    <string name="donate_device_msg">❤️ On dirait que Delta Chat vous plaît !\n\nNous vous serions reconnaissants d\'envisager de nous faire un don pour aider Delta Chat à rester libre et gratuit pour tout le monde.\n\nBien que Delta Chat soit gratuit et open source, son développement coûte de l\'argent. Aidez-nous à garder Delta Chat indépendant et à le rendre encore plus génial à l\'avenir.\n\nhttps://delta.chat/fr/donate</string>
 
     <string name="mute_for_one_hour">Sourdine pendant 1 heure</string>
     <string name="mute_for_eight_hours">Sourdine pendant 8 heures</string>
@@ -391,6 +406,16 @@
     <string name="answer_call">Décrocher</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Refuser</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Appel audio</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Appel vidéo</string>
+    <string name="call_initializing">Initialisation en cours</string>
+    <string name="call_incoming">Appel entrant</string>
+    <string name="call_ringing">Sonnerie en cours</string>
+    <string name="call_reconnecting">Reconnexion en cours</string>
+    <string name="call_ended">Appel terminé</string>
+    <string name="call_failed">L\'appel a échoué</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Appel audio sortant</string>
     <!-- deprecated, use "Video call" instead -->
@@ -402,6 +427,8 @@
     <string name="declined_call">Appel refusé</string>
     <string name="canceled_call">Appel annulé</string>
     <string name="missed_call">Appel manqué</string>
+    <string name="already_in_call">Déjà en appel</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter la discussion ?</string>
@@ -475,7 +502,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Enregistrer le message</string>
     <string name="saved_messages">Messages enregistrés</string>
-    <string name="saved_messages_explain">• Transférez les messages ici pour les retrouver facilement\n\n• Prenez des notes ou enregistrez des vocaux\n\n• Ajoutez des fichiers multimédias en pièces jointes pour les sauvegarder</string>
+    <string name="saved_messages_explain">• Transférez les messages ici pour les retrouver facilement\n\n• Prenez des notes ou enregistrez des vocaux\n\n• Ajoutez des fichiers multimédias en pièces jointes pour les enregistrer</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Enregistrés</string>
     <string name="save_as">Enregistrer sous</string>
@@ -624,7 +651,7 @@
     <string name="welcome_chat_over_email">Messagerie décentralisée sécurisée</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
-    <string name="login_advanced_hint">Ce type de connexion est réservé aux utilisateurs avancés.\n\n• N\'utilisez pas une adresse déjà employée dans une autre appli.\n\n• Les serveurs de courriel classiques permettent les discussions non chiffrées de bout en bout, lesquelles sont représentées par une icône enveloppe.</string>
+    <string name="login_advanced_hint">Ce type de connexion est réservé aux utilisateurs avancés.\n\n• N\'utilisez pas une adresse déjà employée dans une autre appli.\n\n• Les serveurs de courriel classiques autorisent les discussions non chiffrées de bout en bout, lesquelles sont représentées par une icône enveloppe.</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
     <string name="login_imap_server">Serveur IMAP</string>
@@ -656,9 +683,16 @@
     <string name="add_transport">Ajouter un relais</string>
     <string name="remove_transport">Supprimer un relais</string>
     <string name="edit_transport">Modifier le relais</string>
+    <string name="used_for_sending">Utilisé pour les envois</string>
+    <string name="hide_from_contacts">Masquer pour les contacts</string>
+    <string name="hidden_from_contacts">Masqué pour les contacts</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Les messages sont reçus sur tous les relais.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Ajouter le relais ?</string>
     <string name="invalid_transport_qr">Le code QR scanné ne renvoie pas vers un relais valide.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Supprimer le relai %1$s ? Les contacts qui connaissent uniquement ce relai risquent de ne plus pouvoir vous joindre jusqu\'à ce que vous leur envoyiez un nouveau message. En cas de doute, mieux vaut le masquer que le supprimer.</string>
     <string name="login_certificate_checks">Vérification du certificat</string>
     <string name="login_error_mail">Entrez une adresse courriel valide</string>
     <string name="login_error_server">Entre un serveur / adresse IP valide</string>
@@ -713,6 +747,7 @@
     <string name="pref_enter_sends">Touche Entrée pour envoyer</string>
     <string name="pref_enter_sends_explain">Appuyez sur la touche Entrée pour envoyer des messages texte</string>
     <string name="pref_outgoing_media_quality">Qualité du média en sortie</string>
+    <string name="pref_outgoing_media_quality_hint">Pour envoyer un fichier multimédia dans sa qualité d\'origine, joignez-le au message en tant que « Fichier ». Cette méthode utilise beaucoup plus de données, aussi bien pour vous que pour vos destinataires.</string>
     <string name="pref_outgoing_balanced">Équilibré</string>
     <string name="pref_outgoing_worse">Qualité la plus basse, taille réduite</string>
     <string name="pref_vibrate">Vibrer</string>
@@ -723,6 +758,10 @@
     <string name="pref_notifications">Notifications</string>
     <string name="pref_mention_notifications">Mentions</string>
     <string name="pref_mention_notifications_explain">Dans les groupes mis en sourdine, notifier les messages qui vous sont adressés, tels que les réponses ou les réactions</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Appels</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">Afficher l\'écran d\'appel pour tous les appels entrants</string>
     <string name="pref_notifications_show">Afficher</string>
     <string name="pref_notifications_priority">Priorité</string>
     <string name="pref_notifications_explain">Activer les notifications système pour les nouveaux messages</string>
@@ -771,7 +810,7 @@
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mode appareils multiples</string>
     <string name="pref_multidevice_explain">Synchronise vos messages avec vos autres appareils. Activé automatiquement lorsque vous ajoutez un deuxième appareil</string>
-    <string name="pref_multidevice_change_warn">Le mode appareils multiples doit être activé quand vous utilisez le même profil sur plusieurs appareils. Désactivez cette option seulement si vous avez supprimé ce profil de vos autres appareils.\n\nDésactiver le mode alors que vous utilisez un profil sur plusieurs appareils causera un certain nombre de problèmes, dont des messages perdus.</string>
+    <string name="pref_multidevice_change_warn">Le mode appareils multiples doit être activé quand vous utilisez le même profil sur plusieurs appareils. Désactivez cette option seulement si vous avez supprimé ce profil de tous vos autres appareils.\n\nDésactiver ce mode alors que vous utilisez un profil sur plusieurs appareils causera un certain nombre de problèmes, dont des messages perdus.</string>
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
     <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
     <string name="pref_show_emails">Voir les courriels classiques</string>
@@ -804,7 +843,7 @@
     <string name="send_stats_to_devs">Envoyer les statistiques aux développeurs de Delta Chat</string>
     <string name="stats_device_message">Voulez-vous participer à l\'amélioration de Delta Chat et soutenir nos recherches en envoyant des statistiques d\'utilisation hebdomadaires de manière anonyme ?\n\n👉 Appuyez ici… 👈</string>
     <string name="stats_confirmation_dialog">Voulez-vous participer à l\'amélioration de Delta Chat et soutenir nos recherches en envoyant des statistiques d\'utilisation hebdomadaires de manière anonyme ?</string>
-    <string name="stats_thanks">Merci ! Vous pouvez toujours désactiver l\'envoi dans \"Paramètres -> Avancé\".\n\nAuriez-vous 5 minutes de plus pour participer à une étude scientifique sur la sécurité de Delta Chat ?</string>
+    <string name="stats_thanks">Merci ! Vous pouvez toujours désactiver l\'envoi dans « Paramètres -> Avancé ».\n\nAuriez-vous 5 minutes de plus pour participer à une étude scientifique sur la sécurité de Delta Chat ?</string>
     <string name="stats_disable_dialog">L\'envoi de statistiques est déjà activé.\n\nSouhaitez-vous le désactiver ?</string>
     <string name="disable">Désactiver</string>
     <string name="stats_keep_sending">Maintenir l\'envoi de statistiques</string>
@@ -928,6 +967,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Délai avant disparition des messages éphémères défini à %1$s semaines par %2$s.</string>
     <string name="chat_unencrypted_explanation">Les messages de cette discussion utilisent le courriel classique et ne sont pas chiffrés de bout en bout.</string>
+    <string name="messages_are_e2ee">Les messages sont chiffrés de bout en bout.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Les messages sont chiffrés de bout en bout. Toucher pour en savoir plus.</string>
     <string name="chat_protection_enabled_explanation">Tous les messages de cette discussion sont chiffrés de bout-en-bout.\n\nLe chiffrement de bout-en-bout garantit la confidentialité des messages échangés par les membres d\'une discussion. Même les serveurs, les fournisseurs de courriel et les relais ne peuvent pas les lire. </string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s nécessite un chiffrement de bout en bout qui n\'est pas encore configuré sur cette discussion. Appuyez pour en savoir plus.</string>

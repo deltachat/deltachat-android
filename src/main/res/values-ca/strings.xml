@@ -100,7 +100,7 @@
     <string name="email_address">Adreça de correu electrònic</string>
     <string name="bad_email_address">Adreça de correu electrònic errònia.</string>
     <string name="password">Contrasenya</string>
-    <string name="existing_password">Ja existeix aquesta contrasenya</string>
+    <string name="existing_password">Contrasenya existent</string>
     <string name="now">Ara</string>
     <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
     <string name="danger">Perill</string>
@@ -658,20 +658,20 @@
     <string name="proxy_enabled">Servidor intermediari activat</string>
     <string name="proxy_enabled_hint">Esteu fent servir un servidor intermediari. Si teniu problemes per a connectar-vos, proveu un servidor intermediari diferent.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
-    <string name="transports">Relés</string>
-    <string name="add_transport">Afegir Relé</string>
-    <string name="remove_transport">Elimina Relé</string>
-    <string name="edit_transport">Edita Relé</string>
+    <string name="transports">Retransmissors</string>
+    <string name="add_transport">Afegir Retransmissor</string>
+    <string name="remove_transport">Elimina Retransmissors</string>
+    <string name="edit_transport">Edita Retransmissor</string>
     <string name="used_for_sending">Utilitzat per enviar</string>
     <string name="hide_from_contacts">Amagar als contactes</string>
     <string name="hidden_from_contacts">Amagat als contactes</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Missatges rebuts en tots els relés</string>
+    <string name="transport_list_hint">Missatges rebuts en tots els retransmissors</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
-    <string name="confirm_add_transport">Afegeix aquest relé?</string>
-    <string name="invalid_transport_qr">El codi QR escanejat no conté un relé vàlid.</string>
+    <string name="confirm_add_transport">Afegir aquest retransmissor?</string>
+    <string name="invalid_transport_qr">El codi QR escanejat no conté un retransmissor vàlid.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_or_hide_transport_x">Esborrar el relé \"%1$s\"?\n\nEls contactes que només coneixen aquest relé no et podran contactar fins que els escriguis de nou.\n\nSi no ho tens clar, amaga\'l enlloc d\'esborrar-lo.</string>
+    <string name="confirm_remove_or_hide_transport_x">Esborrar el retransmissor \"%1$s\"?\n\nEls contactes que només coneixen aquest retransmissor no et podran contactar fins que els escriguis de nou.\n\nSi no ho tens clar, amaga\'l enlloc d\'esborrar-lo.</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>
     <string name="login_error_server">Si us plau poseu un servidor / adreça IP vàlida</string>
@@ -947,7 +947,7 @@
     <string name="ephemeral_timer_weeks_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s setmanes.</string>
     <string name="chat_unencrypted_explanation">Els missatges en aquest xat fan servir el correu electrònic tradicional i no estan xifrats d\'extrem a extrem.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
-    <string name="chat_protection_enabled_explanation">Ara es garanteix que tots els missatges d\'aquest xat són xifrats d\'extrem a extrem.\n\nEl xifratge d\'extrem a extrem manté privats els missatges entre vós i els companys de xat. Ni tan sols el vostre proveïdor de correu electrònic pot llegir-los.</string>
+    <string name="chat_protection_enabled_explanation">Tots els missatges en aquest xat estan xifrats d\'extrem a extrem. El xifrat d\'extrem a extrem manté els missatges privats entre tu i els destinataris. Ni tan sols els servidors, els proveïdors o els retransmissors els poden llegir.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">%1$srequereix xifratge d\'extrem a extrem, que encara no s\'ha configurat per a aquest xat. Toqueu per a obtenir més informació.</string>
     <string name="invalid_unencrypted_explanation">Per a establir xifratge d\'extrem a extrem, heu de trobar-vos amb els contactes en persona i escanejar el seu codi QR per a poder afegir-los.</string>
     <string name="learn_more">Més informació</string>
