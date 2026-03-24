@@ -22,6 +22,8 @@ import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 import chat.delta.rpc.types.SecurejoinSource;
 import java.net.IDN;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.IntentUtils;
@@ -31,6 +33,9 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
     implements SearchView.OnQueryTextListener, WebView.FindListener {
   private static final String TAG = WebViewActivity.class.getSimpleName();
+  // Regex to extract the host from a URL for IDN conversion.
+  private static final Pattern URL_PATTERN =
+      Pattern.compile("^((?:[a-zA-Z0-9]+://)?)([^/?#]+)(.*)$");
 
   protected WebView webView;
 
@@ -320,9 +325,17 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
     }
 
     if (shouldAskToOpenLink()) {
+      String displayUrl;
+      try {
+        Matcher m = URL_PATTERN.matcher(url);
+        displayUrl = m.find() ? m.group(1) + IDN.toASCII(m.group(2)) + m.group(3) : url;
+      } catch (IllegalArgumentException e) {
+        // IDN.toASCII() failed (e.g. string too long), fall back to raw url
+        displayUrl = url;
+      }
       new AlertDialog.Builder(this)
           .setTitle(R.string.open_url_confirmation)
-          .setMessage(IDN.toASCII(url))
+          .setMessage(displayUrl)
           .setNeutralButton(R.string.cancel, null)
           .setPositiveButton(R.string.open, (d, w) -> IntentUtils.showInBrowser(this, url))
           .setNegativeButton(
