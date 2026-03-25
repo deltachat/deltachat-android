@@ -33,7 +33,7 @@ import org.unifiedpush.android.connector.data.PushMessage;
 import org.unifiedpush.android.connector.data.ResolvedDistributor;
 
 public class UnifiedPushService extends PushService {
-  private static String TAG = "UnifiedPushService";
+  private static final String TAG = "UnifiedPushService";
   private static volatile String prefixedToken;
 
   @Override
