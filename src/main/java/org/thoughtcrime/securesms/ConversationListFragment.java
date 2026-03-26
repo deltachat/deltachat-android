@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.PermissionChecker;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcChatlist;
@@ -45,6 +46,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ShareUtil;
@@ -85,6 +87,8 @@ public class ConversationListFragment extends BaseConversationListFragment
     eventCenter.addObserver(DcContext.DC_EVENT_REACTIONS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONNECTIVITY_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_SELFAVATAR_CHANGED, this);
+
+    updateReminders();
   }
 
   @Override
@@ -137,8 +141,6 @@ public class ConversationListFragment extends BaseConversationListFragment
   @Override
   public void onResume() {
     super.onResume();
-
-    updateReminders();
 
     if (requireActivity().getIntent().getIntExtra(RELOAD_LIST, 0) == 1 && !chatlistJustLoaded) {
       loadChatlist();
@@ -194,6 +196,7 @@ public class ConversationListFragment extends BaseConversationListFragment
             DozeReminder.addDozeReminderDeviceMsg(context);
           }
           FcmReceiveService.waitForRegisterFinished();
+          UnifiedPushUtils.waitForRegisterFinished(context);
         } catch (Exception e) {
           e.printStackTrace();
         }
@@ -211,7 +214,7 @@ public class ConversationListFragment extends BaseConversationListFragment
                 .ifNecessary()
                 .onAllGranted(
                     () -> {
-                      DozeReminder.maybeAskDirectly(activity);
+                      onPostNotificationsGranted();
                     })
                 .onAnyDenied(
                     () -> {
@@ -226,12 +229,48 @@ public class ConversationListFragment extends BaseConversationListFragment
                       dcContext.addDeviceMsg("android.notifications-disabled", msg);
                     })
                 .execute();
-          } else {
-            DozeReminder.maybeAskDirectly(activity);
+          } else if (PermissionChecker.checkSelfPermission(
+                  activity, Manifest.permission.POST_NOTIFICATIONS)
+              == PermissionChecker.PERMISSION_GRANTED) {
+            onPostNotificationsGranted();
           }
         } else {
-          DozeReminder.maybeAskDirectly(activity);
+          onPostNotificationsGranted();
         }
+      }
+
+      private void onPostNotificationsGranted() {
+        UnifiedPushUtils.InitCallback initCallback =
+            status -> {
+              switch (status) {
+                case NoPush:
+                  DozeReminder.maybeAskDirectly(activity);
+                  break;
+                case PushInit:
+                  // If reliable service is enabled while an UnifiedPush distributor is installed on
+                  // the
+                  // system, it disables UnifiedPush, and mayInitUnifiedPush always calls this
+                  // callback
+                  // with NoPush => we never enter this switch branch, and never
+                  // reset reliable service in this case.
+                  //
+                  // But, if reliableService was set before UnifiedPush support, or when the user
+                  // didn't
+                  // have any UnifiedPush service installed, then UnifiedPush isn't disabled.
+                  // So, if this callback is called with PushInit, it means the user now have a
+                  // distributor on their system, and we need to reset reliableService to the
+                  // default.
+                  Prefs.resetReliableService(activity);
+                  // This will wait for UnifiedPush to be registered
+                  updateReminders();
+                  break;
+                case HasPush:
+                  // Do nothing
+                  break;
+              }
+            };
+
+        UnifiedPushUtils.mayInitUnifiedPush(activity, initCallback);
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, activity);
   }
