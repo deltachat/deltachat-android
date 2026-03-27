@@ -2,7 +2,9 @@ Delta Chat on hajutatud ja turvaline sõnumirakendus, mis sobib kasutamiseks per
 
 Ülevaade tähtsamatest omadustest:
 
-• Anonüümne - kiirel ja kohesel liitumisel pole vaja sisestada telefoninumbrit, e-posti aadressi ega muid privaatseid andmeid.
+• Privaatne - kiirel ja kohesel liitumisel pole vaja sisestada telefoninumbrit ega muid privaatseid andmeid.
+
+• Sõbrad ja pere: sa suhtled vaid nendega, keda sa tead. Tundmatud kasutajad ei saa sulle sõnumeid saata ilma sinu nõusolekuta.
 
 • Paindlik - toetab mitmeid vestlusprofiile ja on kergelt seadistatav mitmetes seadmetes.
 
