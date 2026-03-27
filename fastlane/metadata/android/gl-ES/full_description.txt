@@ -2,7 +2,9 @@ Delta Chat é un aplicación descentralizada para mensaxería instantánea, fiab
 
 Unha ollada ás características:
 
-• Anonimato. Acceso instantáneo se precisar número de teléfono, correo electrónico ou outros datos privados.
+• Privacidade. Acceso instantáneo se precisar número de teléfono, ou outros datos privados.
+
+• Amizades e familia: Conversa só coas persoas que coñeces. As persoas descoñecidas non poden seguirte ou enviarche mensaxes sen consentimento recíproco.
 
 • Flexible. É compatible con varios perfís de conversa e configúrase facilmente en varios dispositivos.
 
