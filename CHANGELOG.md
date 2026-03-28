@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Add a warning when editing relays
+
 ## v2.47.0
 2026-03
 
