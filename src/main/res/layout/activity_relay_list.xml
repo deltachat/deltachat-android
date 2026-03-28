@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include layout="@layout/status_bar_background" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/relay_list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="88dp"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/relay_list_item" />
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/relay_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/relay_list_item" />
+
+        <TextView
+            android:id="@+id/transport_list_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:text="@string/transport_list_hint"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorSecondary" />
+
+    </LinearLayout>
 
     <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
         android:id="@+id/fab_add_relay"
@@ -28,4 +48,4 @@
         android:focusable="true"
         android:contentDescription="@string/add_transport" />
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
