@@ -8,34 +8,38 @@
 
     <include layout="@layout/status_bar_background" />
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/relay_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clipToPadding="false"
+        android:fillViewport="true">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/relay_list"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:paddingBottom="8dp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/relay_list_item" />
-
-        <TextView
-            android:id="@+id/transport_list_hint"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="100dp"
-            android:text="@string/transport_list_hint"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/relay_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:scrollbars="none"
+                tools:listitem="@layout/relay_list_item" />
+
+            <TextView
+                android:id="@+id/transport_list_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/transport_list_hint"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?android:attr/textColorSecondary" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton
         android:id="@+id/fab_add_relay"
