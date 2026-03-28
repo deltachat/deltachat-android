@@ -670,7 +670,7 @@
     <string name="hide_from_contacts">Hide from Contacts</string>
     <string name="hidden_from_contacts">Hidden from contacts</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Messages are received on all relays.</string>
+    <string name="transport_list_hint">Messages are received on all relays.\n\n⚠️ If you change anything here, make sure all your devices run at least version 2.47.0. Otherwise older devices may miss messages.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Add this relay?</string>
     <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>

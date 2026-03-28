@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ScrollView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -99,7 +100,8 @@ public class RelayListActivity extends BaseActionBarActivity
     PulsingFloatingActionButton fabAdd = findViewById(R.id.fab_add_relay);
 
     // add padding to avoid content hidden behind system bars
-    ViewUtil.applyWindowInsets(recyclerView);
+    ScrollView scrollView = findViewById(R.id.relay_scroll_view);
+    ViewUtil.applyWindowInsets(scrollView);
     // Apply insets to prevent fab from being covered by system bars
     ViewUtil.applyWindowInsetsAsMargin(fabAdd);
 
