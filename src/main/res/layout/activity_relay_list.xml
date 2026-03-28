@@ -30,7 +30,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:paddingTop="8dp"
-            android:paddingBottom="16dp"
+            android:paddingBottom="100dp"
             android:text="@string/transport_list_hint"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="?android:attr/textColorSecondary" />
