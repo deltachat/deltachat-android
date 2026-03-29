@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -18,6 +19,7 @@ import java.util.List;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.util.Util;
 
 public class StickerPickerView extends RecyclerView {
 
@@ -130,25 +132,26 @@ public class StickerPickerView extends RecyclerView {
 
     private void deleteSticker(File stickerFile) {
       if (stickerFile != null && stickerFile.exists()) {
-        new androidx.appcompat.app.AlertDialog.Builder(context)
-            .setTitle(R.string.delete)
-            .setMessage(R.string.ask_delete_sticker)
-            .setPositiveButton(
-                R.string.delete,
-                (dialog, which) -> {
-                  if (stickerFile.delete()) {
-                    int position = stickerFiles.indexOf(stickerFile);
-                    if (position >= 0) {
-                      stickerFiles.remove(position);
-                      notifyItemRemoved(position);
-                    }
-                    if (listener != null) {
-                      listener.onStickerDeleted(stickerFile);
-                    }
-                  }
-                })
-            .setNegativeButton(R.string.cancel, null)
-            .show();
+        AlertDialog dialog =
+            new AlertDialog.Builder(context)
+                .setMessage(R.string.ask_delete_sticker)
+                .setPositiveButton(
+                    R.string.delete,
+                    (d, which) -> {
+                      if (stickerFile.delete()) {
+                        int position = stickerFiles.indexOf(stickerFile);
+                        if (position >= 0) {
+                          stickerFiles.remove(position);
+                          notifyItemRemoved(position);
+                        }
+                        if (listener != null) {
+                          listener.onStickerDeleted(stickerFile);
+                        }
+                      }
+                    })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+        Util.redPositiveButton(dialog);
       }
     }
 
