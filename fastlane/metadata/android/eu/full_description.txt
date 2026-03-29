@@ -2,7 +2,9 @@ Delta Chat mezularitza deszentralizatu fidagarria da, lagunekin, senideekin, tal
 
 Ezaugarriak begirada batean:
 
-• Anonimoa. Berehalako onboarding-a telefono zenbakirik, posta elektronikorik edo bestelako datu pribaturik gabe.
+• Pribatua. Berehalako sarrera telefono zenbakirik edo bestelako datu pribaturik gabe.
+
+• Lagunak eta familia: Ezagutzen dituzun pertsonekin bakarrik txateatu. Erabiltzaile ezezagunek ezin dizute mezurik bidali edo jarraitu elkarri baimenik gabe.
 
 • Malgua. Txat profil ugari onartzen ditu eta erraza da hainbat gailutan konfiguratzea.
 
