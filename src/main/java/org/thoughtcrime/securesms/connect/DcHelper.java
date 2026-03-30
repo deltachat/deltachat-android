@@ -141,8 +141,6 @@ public class DcHelper {
     dcContext.setStockTranslation(91, context.getString(R.string.devicemsg_self_deleted));
     dcContext.setStockTranslation(97, context.getString(R.string.forwarded));
     dcContext.setStockTranslation(98, context.getString(R.string.devicemsg_storage_exceeding));
-    dcContext.setStockTranslation(99, context.getString(R.string.n_bytes_message));
-    dcContext.setStockTranslation(100, context.getString(R.string.download_max_available_until));
     dcContext.setStockTranslation(103, context.getString(R.string.incoming_messages));
     dcContext.setStockTranslation(104, context.getString(R.string.outgoing_messages));
     dcContext.setStockTranslation(107, context.getString(R.string.connectivity_connected));
