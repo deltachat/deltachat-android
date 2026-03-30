@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix file sharing to certain apps (e.g. Material Files, etc.)
+
 ## v2.48.0
 2026-03
 
