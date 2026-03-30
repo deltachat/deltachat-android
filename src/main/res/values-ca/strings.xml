@@ -69,6 +69,8 @@
     <string name="mark_as_read">Marca-ho com a llegit</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Llegit</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">No llegit</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">S\'està carregant...</string>
     <string name="hide">Amaga</string>
@@ -413,6 +415,8 @@
     <string name="declined_call">Trucada rebutjada</string>
     <string name="canceled_call">Trucada cancel·lada</string>
     <string name="missed_call">Trucada perduda</string>
+    <string name="already_in_call">En una trucada</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Segur que vols sortir?</string>
@@ -606,7 +610,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Ja tinc un perfil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Inici de sessió correu-e clàssic</string>
+    <string name="manual_account_setup_option">Utilitza correu-e clàssic com a retransmissor</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">El vostre perfil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -666,7 +670,7 @@
     <string name="hide_from_contacts">Amagar als contactes</string>
     <string name="hidden_from_contacts">Amagat als contactes</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Missatges rebuts en tots els retransmissors</string>
+    <string name="transport_list_hint">Els missatges es reben en tots els retransmissors.  ⚠️ Si canvies qualsevol cosa aquí, assegura\'t que tots els teus dispositius funcionin com a mínim amb la versió 2.47.0. Sinó, els dispositius més antics podrien no rebre els missatges.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Afegir aquest retransmissor?</string>
     <string name="invalid_transport_qr">El codi QR escanejat no conté un retransmissor vàlid.</string>
@@ -946,10 +950,11 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s ha definit el temporitzador dels missatges efímers a %1$s setmanes.</string>
     <string name="chat_unencrypted_explanation">Els missatges en aquest xat fan servir el correu electrònic tradicional i no estan xifrats d\'extrem a extrem.</string>
+    <string name="messages_are_e2ee">Els missatges són xifrats d\'extrem a extrem</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Us garantim que a partir d\'ara els missatges són xifrats d\'extrem a extrem. Toqueu per a obtenir més informació.</string>
     <string name="chat_protection_enabled_explanation">Tots els missatges en aquest xat estan xifrats d\'extrem a extrem. El xifrat d\'extrem a extrem manté els missatges privats entre tu i els destinataris. Ni tan sols els servidors, els proveïdors o els retransmissors els poden llegir.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">%1$srequereix xifratge d\'extrem a extrem, que encara no s\'ha configurat per a aquest xat. Toqueu per a obtenir més informació.</string>
-    <string name="invalid_unencrypted_explanation">Per a establir xifratge d\'extrem a extrem, heu de trobar-vos amb els contactes en persona i escanejar el seu codi QR per a poder afegir-los.</string>
+    <string name="invalid_unencrypted_explanation">Per a establir xifratge d\'extrem a extrem, heu de trobar-vos amb els contactes en persona i escanejar el seu codi QR per a afegir-los.</string>
     <string name="learn_more">Més informació</string>
 
     <string name="devicemsg_self_deleted">Heu esborrat el xat «Missatges desats».\n\nℹ️ Per a usar altre cop la funcionalitat de «Missatges desats», creeu un xat nou amb vós mateix.</string>

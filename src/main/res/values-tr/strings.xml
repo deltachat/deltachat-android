@@ -69,6 +69,8 @@
     <string name="mark_as_read">Okundu Olarak İmle</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Okundu İmi</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Okunmayan</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Yükleniyor…</string>
     <string name="hide">Gizle</string>
@@ -163,6 +165,7 @@
         <item quantity="other">%d Seçildi</item>
     </plurals>
     <string name="selected_colon">Seçilen:</string>
+    <string name="selected">Seçilen</string>
     <string name="self">Ben</string>
     <string name="draft">Taslak</string>
     <string name="image">Görsel</string>
@@ -395,6 +398,12 @@
     <string name="audio_call">Sesli arama</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Görüntülü arama</string>
+    <string name="call_initializing">Başlatılıyor…</string>
+    <string name="call_incoming">Gelen arama</string>
+    <string name="call_ringing">Çalıyor…</string>
+    <string name="call_reconnecting">Yeniden bağlanıyor…</string>
+    <string name="call_ended">Arama sonlandırıldı</string>
+    <string name="call_failed">Arama başarısız</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Giden sesli arama</string>
     <!-- deprecated, use "Video call" instead -->
@@ -406,6 +415,8 @@
     <string name="declined_call">Reddedilen arama</string>
     <string name="canceled_call">İptal edilen arama</string>
     <string name="missed_call">Yanıtlanmayan arama</string>
+    <string name="already_in_call">Zaten bir aramada</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
@@ -655,9 +666,16 @@
     <string name="add_transport">Aktarıcı Ekle</string>
     <string name="remove_transport">Aktarıcıyı Kaldır</string>
     <string name="edit_transport">Aktarıcıyı Düzenle</string>
+    <string name="used_for_sending">Gönderim için kullanıldı</string>
+    <string name="hide_from_contacts">Kişilerden Gizle</string>
+    <string name="hidden_from_contacts">Kişilerden gizlendi</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">İletiler tüm aktarıcılardan alınır.\n\n⚠️ Burada herhangi bir şeyi değiştirirseniz, tüm aygıtlarınızın en azından 2.47.0 sürümünü çalıştırdığından emin olun. Yoksa daha eski aygıtlar iletileri kaçırabilir.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Bu aktarıcı eklensin mi?</string>
     <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir aktarıcı içermiyor.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">“%1$s” aktarıcısı kaldırılsın mı?\n\nYalnızca bu aktarıcıyı bilen kişiler, onlara yeniden ileti gönderene kadar size ulaşamayabilir.\n\nKuşkuluysanız, onu kaldırmak yerine gizleyin.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="login_error_server">Lütfen geçerli bir sunucu / IP adresi girin</string>
@@ -932,6 +950,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s tarafından kaybolan iletiler zamanlayıcısı %1$s hafta olarak ayarlandı.</string>
     <string name="chat_unencrypted_explanation">Bu sohbetteki iletiler klasik e-posta kullanıyor ve uçtan uca şifreli değil.</string>
+    <string name="messages_are_e2ee">İletiler uçtan uca şifrelidir.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">İletiler uçtan uca şifreleniyor. Daha fazlasını öğrenmek için dokunun.</string>
     <string name="chat_protection_enabled_explanation">Bu sohbetteki tüm iletiler uçtan uca şifreleniyor.\n\nUçtan uca şifreleme, iletilerinizi sizin ve sohbet ortaklarınızın arasında özel tutar. Sunucular, sağlayıcılar ya da aktarıcılar bile onları okuyamaz.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s, bu sohbet için henüz ayarlanmayan uçtan uca şifrelemeyi gerektirir. Daha fazlasını öğrenmek için dokunun.</string>

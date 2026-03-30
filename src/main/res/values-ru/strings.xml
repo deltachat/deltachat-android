@@ -69,13 +69,15 @@
     <string name="mark_as_read">Отметить как прочитанное</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Прочитано</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Не прочитано</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Загрузка…</string>
     <string name="hide">Скрыть</string>
     <string name="activate">Активировать</string>
     <string name="load_remote_content">Загрузка изображений из внешних источников</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Изображения, размещенные на внешних источниках, могут быть использованы для слежки за вами.\n\nЭта настройка также позволяет загружать шрифты и другое содержимое. Если она отключена, вы сможете видеть встроенные или кешированные изображения.\n\nРазрешить загрузку из внешних источников?</string>
+    <string name="load_remote_content_ask">Изображения, размещенные на внешних источниках, могут быть использованы для слежки за вами.\n\nЭта настройка также позволяет загружать шрифты и другой контент. Если она отключена, вы сможете видеть встроенные или кешированные изображения.\n\nРазрешить загрузку из внешних источников?</string>
     <string name="always">Всегда</string>
     <string name="always_load_remote_images">Всегда загружать изображения из внешних источников</string>
     <string name="once">Только сейчас</string>
@@ -183,6 +185,7 @@
         <item quantity="other">%d выбрано</item>
     </plurals>
     <string name="selected_colon">Выбрано:</string>
+    <string name="selected">Выбрано</string>
     <string name="self">Я</string>
     <string name="draft">Черновик</string>
     <string name="image">Изображение</string>
@@ -192,7 +195,7 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стикер</string>
     <string name="add_to_sticker_collection">Добавить в коллекцию стикеров</string>
-    <string name="add_stickers_instructions">Для добавления стикеров, нажмите \"Открыть папку стикеров\", создайте подпапку для набора ваших стикеров и перетащите туда изображения и файлы стикеров</string>
+    <string name="add_stickers_instructions">Для добавления стикеров, нажмите \"Открыть папку стикеров\", создайте в ней подпапку для вашего набора стикеров и перетащите туда файлы изображений и стикеров</string>
     <string name="open_sticker_folder">Открыть папку стикеров</string>
     <string name="ask_add_sticker_to_collection">Добавить этот стикер в коллекцию?</string>
     <string name="ask_delete_sticker">Удалить этот стикер?</string>
@@ -366,8 +369,8 @@
     <string name="title_share_location">Делиться местоположением со всеми участниками группы</string>
     <string name="device_talk">Сообщения устройства</string>
     <string name="device_talk_subtitle">Сообщения, созданные устройством</string>
-    <string name="device_talk_explain">Сообщения в этом чате создаются локально на вашем устройстве для уведомления о обновлениях и проблемах при использовании приложения.</string>
-    <string name="device_talk_welcome_message2">Оставайтесь на связи!\n\n🙌 Нажмите \"QR-код\" на главном экране обоих устройств. Выберите \"Сканировать QR-код\" на одном устройстве и покажите его на другом.\n\n🌍 Если вы не находитесь в одном помещении, отсканируйте код с помощью видеозвонка или поделитесь ссылкой-приглашением из раздела \"Сканировать QR-код\"\n\nЗатем: Наслаждайтесь децентрализованным мессенджером. В отличие от других популярных приложений, он работает без центрального управления, отслеживания и продажи ваших данных, а также данных ваших друзей, коллег или семьи крупным организациям.</string>
+    <string name="device_talk_explain">Сообщения в этом чате генерируются локально на вашем устройстве чтобы информировать об обновлениях и проблемах при использовании приложения.</string>
+    <string name="device_talk_welcome_message2">Оставайтесь на связи!\n\n🙌 Нажмите \"QR-код\" на главном экране обоих устройств. На одном устройстве выберите \"Сканировать QR-код\" и направьте камеру на другое устройство.\n\n🌍 Если устройства находятся в разных местах, отсканируйте код с помощью видеозвонка или поделитесь ссылкой-приглашением из раздела \"Сканировать QR-код\"\n\nЗатем: Наслаждайтесь децентрализованным мессенджером. В отличие от других популярных приложений, он не имеет центра управления и не отслеживает ваши действия, а также не продаёт данные о вас, ваших друзьях, коллегах или членах семьи крупным организациям.</string>
     <string name="edit_contact">Редактировать контакт</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Закрепить чат</string>
@@ -383,7 +386,7 @@
     <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
     <string name="add_to_home_screen">Добавить на главный экран</string>
     <string name="donate">Пожертвовать</string>
-    <string name="donate_device_msg">❤️ Кажется, вам нравится Delta Chat!\n\nРассмотрите возможность сделать пожертвование, чтобы Delta Chat и дальше оставался бесплатным для всех пользователей.\n\nDelta Chat — это бесплатное приложение с открытым исходным кодом, но его разработка требует денег. Поддержите нас, чтобы сохранить независимость Delta Chat и сделать его ещё более крутым в будущем.\n\nhttps://delta.chat/donate</string>
+    <string name="donate_device_msg">❤️ Кажется, вам нравится Delta Chat!\n\nРассмотрите возможность сделать пожертвование, чтобы помочь нам сохранить Delta Chat бесплатным для всех пользователей.\n\nХотя использование Delta Chat бесплатно и исходный код открыт, разработка требует финансовых затрат. Помогите нам сохранить независимость Delta Chat и сделать его еще лучше в будущем.\n\nhttps://delta.chat/donate</string>
 
     <string name="mute_for_one_hour">На 1 час</string>
     <string name="mute_for_eight_hours">На 8 часов</string>
@@ -419,7 +422,12 @@
     <string name="audio_call">Аудиозвонок</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Видеозвонок</string>
+    <string name="call_initializing">Инициализация...</string>
     <string name="call_incoming">Входящий звонок</string>
+    <string name="call_ringing">Звонок...</string>
+    <string name="call_reconnecting">Переподключение...</string>
+    <string name="call_ended">Звонок завершен</string>
+    <string name="call_failed">Звонок не удался</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Исходящий аудиозвонок</string>
     <!-- deprecated, use "Video call" instead -->
@@ -431,6 +439,8 @@
     <string name="declined_call">Отклонённый звонок</string>
     <string name="canceled_call">Отменённый звонок</string>
     <string name="missed_call">Пропущенный звонок</string>
+    <string name="already_in_call">Вызов уже идёт</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Вы действительно хотите выйти?</string>
@@ -450,11 +460,11 @@
     </plurals>
     <string name="ask_forward">Переслать сообщения для %1$s?</string>
     <string name="ask_forward_multiple">Переслать сообщения в %1$d чата(ов)?</string>
-    <string name="ask_export_attachment">Экспорт вложений позволит любому приложению на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
-    <string name="ask_block_contact">Заблокировать этот контакт?\n\nЗаблокированные контакты не будут показаны в личных сообщениях или группах, созданных ими.\n\nВ других группах сообщения заблокированных контактов будут по-прежнему доступны.</string>
+    <string name="ask_export_attachment">Экспорт вложений позволит другим приложениям на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
+    <string name="ask_block_contact">Заблокировать этот контакт?\n\nЗаблокированные контакты не будут показаны в личных сообщениях или группах, созданных ими.\n\nВ других группах сообщения заблокированных контактов, по-прежнему будут видны.</string>
     <string name="ask_unblock_contact">Разблокировать этот контакт?</string>
-    <string name="ask_delete_contacts">Удалить контакты?\n\nКонтакты из действующих чатов не могут быть удалены навсегда.</string>
-    <string name="ask_delete_contact">Удалить контакт %1$s?\n\nКонтакты из действующих чатов не могут быть удалены навсегда.</string>
+    <string name="ask_delete_contacts">Удалить контакты?\n\nКонтакты из действующих чатов нельзя удалить безвозвратно.</string>
+    <string name="ask_delete_contact">Удалить контакт %1$s?\n\nКонтакты из действующих чатов нельзя удалить безвозвратно.</string>
     <string name="ask_start_chat_with">Создать чат с %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Удалить %1$s из группы?</string>
@@ -509,7 +519,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Сохранить сообщение</string>
     <string name="saved_messages">Сохранённые сообщения</string>
-    <string name="saved_messages_explain">• Пересылайте сообщения сюда для быстрого доступа\n\n• Создайте текстовые или голосовые заметки\n\n• Прикрепляйте медиафайлы, чтобы сохранить их</string>
+    <string name="saved_messages_explain">• Пересылайте сообщения сюда для быстрого доступа\n\n• Делайте заметки или записывайте голосовые сообщения\n\n• Прикрепляйте медиафайлы, чтобы сохранить их</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Сохранено</string>
     <string name="save_as">Сохранить как…</string>
@@ -537,7 +547,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Вы уверены, что хотите посетить %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Эта ссылка может искажать символы, представляя их похожими на символы из других алфавитов. Переход по ссылке отмеченной %1$s приведет к %2$s, что является нормальным для нелатинских символов. Если вы не ожидали увидеть такие символы, эта ссылка может быть опасной.</string>
+    <string name="puny_code_warning_description">Эта ссылка может искажать символы, заменяя их похожими символами из других алфавитов. Переход по ссылке отмеченной %1$s приведет к %2$s, что является нормальным для нелатинских символов. Если вы не ожидали увидеть такие символы, эта ссылка может быть опасной.</string>
 
     <!-- search -->
     <string name="search">Поиск</string>
@@ -587,7 +597,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Добавить второе устройство</string>
     <string name="multidevice_same_network_hint">Убедитесь, что оба устройства подключены к одной и той же локальной или Wi-Fi сети.</string>
-    <string name="multidevice_this_creates_a_qr_code">Это позволяет создать QR-код, который можно отсканировать на втором устройстве, чтобы скопировать профиль.\n\nУбедитесь, что посторонние люди или камера не видят следующий экран.</string>
+    <string name="multidevice_this_creates_a_qr_code">Это позволяет создать QR-код, который можно отсканировать на втором устройстве, чтобы скопировать профиль.\n\nУбедитесь, что посторонние лица или камеры не могут видеть следующий экран.</string>
     <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другом устройстве (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, выберите \"У меня уже есть профиль / Добавить как второе устройство\" и отсканируйте код, показанный здесь</string>
@@ -684,15 +694,22 @@
     <string name="proxy_share_explain">Ваши друзья могут добавить этот прокси, отсканировав QR-код.</string>
     <string name="proxy_share_link">Поделиться ссылкой</string>
     <string name="proxy_enabled">Прокси включен</string>
-    <string name="proxy_enabled_hint">Вы используете прокси. При проблемах с подключением, попробуйте другой прокси.</string>
+    <string name="proxy_enabled_hint">Вы используете прокси. При проблемах с подключением, попробуйте использовать другой прокси-сервер.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Релеи</string>
     <string name="add_transport">Добавить релей</string>
     <string name="remove_transport">Удалить релей</string>
     <string name="edit_transport">Редактировать релей</string>
+    <string name="used_for_sending">Используется для отправки</string>
+    <string name="hide_from_contacts">Скрыть из контактов</string>
+    <string name="hidden_from_contacts">Скрыт из контактов</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Сообщения поступают на все релеи.\n\n⚠️ Если вы что-либо измените здесь, убедитесь, что все ваши устройства работают как минимум на версии 2.47.0. В противном случае старые устройства могут пропускать сообщения.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Добавить этот релей?</string>
     <string name="invalid_transport_qr">Отсканированный QR-код не содержит корректный релей.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Удалить релей \"%1$s\"?\n\nКонтакты, знающие только этот релей, могут потерять связь с вами, пока вы не напишете им снова.\n\nЕсли сомневаетесь, лучше скрыть его, а не удалять.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>
     <string name="login_error_mail">Введите корректный адрес электронной почты</string>
     <string name="login_error_server">Введите корректный адрес сервера / IP-адрес</string>
@@ -967,18 +984,19 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s включает автоудаление сообщений через %1$s недель.</string>
     <string name="chat_unencrypted_explanation">Сообщения в этом чате используют обычную электронную почту и не зашифрованы сквозным шифрованием.</string>
+    <string name="messages_are_e2ee">Сообщения защищены сквозным шифрованием.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Сообщения защищены сквозным шифрованием. Нажмите, чтобы узнать больше.</string>
     <string name="chat_protection_enabled_explanation">Все сообщения в этом чате зашифрованы сквозным шифрованием.\n\nСквозное шифрование обеспечивает конфиденциальность переписки между вами и вашими собеседниками. Ни серверы, ни провайдеры, ни релеи не смогут прочитать сообщения.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s требуется сквозное шифрование, которое ещё не настроено для данного чата. Нажмите, чтобы узнать больше.</string>
     <string name="invalid_unencrypted_explanation">Чтобы установить сквозное шифрование, вы можете встретиться с контактами лично и отсканировать их QR-код, чтобы подтвердить их личность.</string>
     <string name="learn_more">Узнать больше</string>
 
-    <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с самим собой.</string>
+    <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с собой.</string>
     <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
-    <string name="devicemsg_storage_exceeding">⚠️ Хранилище вашего провайдера почти заполнено: %1$s%% уже использовано.\n\nЕсли хранилище полностью заполнено, вы не сможете получать сообщения.\n\n👉 Проверьте, можно ли удалить старые данные в веб-интерфейсе провайдера, и подумайте об включении \"Настройки / Чаты / Удалить старые сообщения\". Текущее использование хранилища можно проверить в любое время в разделе \"Настройки / Соединение\".</string>
+    <string name="devicemsg_storage_exceeding">⚠️ Место на сервере вашего провайдера скоро закончится, уже использовано: %1$s%%.\n\nЕсли место на сервере будет полностью заполнено, вы не сможете получать сообщения.\n\n👉 Проверьте, можно ли удалить старые данные через веб-интерфейс вашего провайдера, и подумайте о включении опции \"Настройки / Чаты / Удалить старые сообщения\". Вы всегда можете проверить текущее использование места на сервере в разделе \"Настройки / Соединение\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
-    <string name="devicemsg_bad_time">⚠️ Вероятно, дата или время на вашем устройстве неточные (%1$s).\n\nУстановите правильное время ⏰🔧 чтобы обеспечить правильное получение сообщений.</string>
-    <string name="devicemsg_update_reminder">⚠️ Вероятно, ваша версия Delta Chat устарела.\n\nЭто может привести к проблемам, поскольку ваши собеседники используют более новые версии, а вы не имеете доступа к последним функциям 😳\nПроверьте https://get.delta.chat или магазин приложений на наличие обновлений.</string>
+    <string name="devicemsg_bad_time">⚠️ Вероятно, дата или время на вашем устройстве установлены неверно (%1$s).\n\nНастройте часы ⏰🔧 чтобы ваши сообщения доставлялись правильно.</string>
+    <string name="devicemsg_update_reminder">⚠️ Вероятно, ваша версия Delta Chat устарела.\n\nЭто может вызвать проблемы, поскольку ваши собеседники используют более новые версии, а у вас нет доступа к последним функциям. 😳\nПожалуйста, проверьте наличие обновлений на сайте https://get.delta.chat или в магазине приложений.</string>
 
     <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Разблокируйте для продолжения</string>
@@ -993,12 +1011,12 @@
     <string name="qrscan_ask_join_group">Вы хотите присоединиться к группе \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Вы хотите присоединиться к каналу \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Отсканированный отпечаток не совпадает с последним известным отпечатком %1$s.</string>
-    <string name="qrscan_no_addr_found">QR-код содержит отпечаток ключа, но не содержит адрес электронной почты.\n\nДля проверки подлинности с использованием альтернативного канала связи следует сначала установить с получателем защищённое соединение.</string>
+    <string name="qrscan_no_addr_found">Этот QR-код содержит отпечаток ключа, но не содержит адрес.\n\nДля проверки подлинности с использованием альтернативного канала связи следует сначала установить с получателем защищённое соединение.</string>
     <string name="qrscan_contains_text">Текст из QR-кода:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL из QR-кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
-    <string name="withdraw_verifycontact_explain">Этот QR-код могут сканировать другие люди, чтобы связаться с вами.\n\nВы можете сбросить его, чтобы существующий QR-код или ссылка-приглашение больше не работали.</string>
-    <string name="withdraw_verifygroup_explain">Этот QR-код могут сканировать другие люди, чтобы присоединиться к группе \"%1$s\".\n\nВы можете сбросить его, чтобы существующий QR-код или ссылка-приглашение больше не работали.</string>
+    <string name="withdraw_verifycontact_explain">Этот QR-код можно отсканировать, чтобы связаться с вами.\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать</string>
+    <string name="withdraw_verifygroup_explain">Этот QR-код можно отсканировать, чтобы присоединиться к группе \"%1$s\".\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать</string>
     <string name="withdraw_joinbroadcast_explain">Этот QR-код могут сканировать другие пользователи для присоединения к каналу \"%1$s\".\n\nВы можете сбросить его, чтобы существующий QR-код или пригласительная ссылка перестали работать.</string>
     <string name="withdraw_qr_code">Сбросить QR-код</string>
     <string name="revive_verifycontact_explain">Этот QR-код был сброшен и больше не работает.</string>
@@ -1022,9 +1040,9 @@
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Авторизоваться в \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_started">%1$s приглашает вас в группу.\n\nОжидаем ответ от %2$s…</string>
+    <string name="secure_join_started">%1$s приглашает вас присоединиться к этой группе.\n\nОжидаем ответа от устройства %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
-    <string name="secure_join_channel_started">%1$s приглашает вас присоединиться к этому каналу.\n\nОжидаем ответа устройства %2$s…</string>
+    <string name="secure_join_channel_started">%1$s приглашает вас присоединиться к этому каналу.\n\nОжидаем ответа от устройства %2$s...</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s ответил(а), ожидаем добавления в группу…</string>
     <string name="secure_join_wait">Устанавливается соединение, пожалуйста, подождите…</string>
@@ -1173,25 +1191,25 @@
     <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
     <string name="add_to_widget">Добавить в виджет</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
-    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото- и видеосъёмки, и сканирования QR-кодов.</string>
-    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat требует разрешения на передачу вашего местоположения в течение того времени, на которое вы включили обмен местоположением.</string>
-    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat требует разрешения на передачу вашего местоположения в течение того времени, на которое вы включили обмен местоположением.</string>
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat использует вашу камеру для фото- и видеосъёмки, а также для сканирования QR-кодов.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat требует разрешения на передачу информации о вашем местоположении на тот период времени, в течение которого вы разрешили обмен данными о местоположении.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat требует разрешения на передачу информации о вашем местоположении на тот период времени, в течение которого вы разрешили обмен данными о местоположении.</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat использует микрофон для записи и отправки голосовых сообщений, а также видео со звуком.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat предоставит вам возможность выбирать какие фотографии и из какой галереи отправлять.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat хочет сохранить изображения в вашей галерее.</string>
-    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat поддерживает использование Face ID для защиты локального профиля, создания резервных копий и настройки второго устройства.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat может использовать Face ID для защиты локального профиля, создания резервных копий и настройки второго устройства.</string>
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Мгновенная доставка</string>
     <string name="pref_background_notifications">Использовать соединение в фоновом режиме</string>
-    <string name="pref_background_notifications_explain">Требуется отключение оптимизации батареи, используйте, если уведомления не приходят вовремя.</string>
+    <string name="pref_background_notifications_explain">Требуется отключение оптимизации батареи, используйте, если уведомления приходят с задержкой</string>
     <string name="pref_reliable_service">Принудительное соединение в фоновом режиме</string>
     <string name="pref_reliable_service_explain">Активирует постоянное уведомление</string>
 
     <string name="pref_background_notifications_rationale">Чтобы поддерживать соединение с сервером электронной почты и получать сообщения в фоновом режиме, отключите оптимизацию батареи на следующем шаге.\n\nDelta Chat расходует мало ресурсов и бережно относится к вашей батарее.</string>
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Нажмите здесь, чтобы получать сообщения, когда Delta Chat находится в фоновом режиме.</string>
-    <string name="perm_enable_bg_already_done">Вы уже разрешили Delta Chat получать сообщения в фоновом режиме.\n\nЕсли сообщения не приходят в фоновом режиме, проверьте также системные настройки.</string>
+    <string name="perm_enable_bg_already_done">Вы уже разрешили Delta Chat получать сообщения в фоновом режиме.\n\nЕсли сообщения все равно не приходят в фоновом режиме, также проверьте настройки вашей системы.</string>
 
     <!-- device messages for updates -->
     <string name="update_2_0">Что нового?\n\n💯 Сквозное шифрование стало постоянной и надёжной функцией. 🔒 Замков больше нет!\n\n✉️ Обычные письма без сквозного шифрования помечены значком конверта\n\n😻 Обновлённый экран профиля для всех контактов\n\n🔲 Новая кнопка быстрого доступа к приложениям, используемым в чате\n\n❤️ Поддержите нас финансово, чтобы мы сохранили независимость и продолжали вносить улучшения: %1$s</string>

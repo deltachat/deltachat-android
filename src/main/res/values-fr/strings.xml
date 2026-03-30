@@ -686,8 +686,6 @@
     <string name="used_for_sending">Utilisé pour les envois</string>
     <string name="hide_from_contacts">Masquer pour les contacts</string>
     <string name="hidden_from_contacts">Masqué pour les contacts</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Les messages sont reçus sur tous les relais.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Ajouter le relais ?</string>
     <string name="invalid_transport_qr">Le code QR scanné ne renvoie pas vers un relais valide.</string>
