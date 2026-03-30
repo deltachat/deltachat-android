@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

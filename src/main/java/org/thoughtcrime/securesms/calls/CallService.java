@@ -412,17 +412,18 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     Log.d(TAG, "switchCamera");
 
     if (mediaStreamManager != null) {
-      mediaStreamManager.switchCamera(new MediaStreamManager.CameraSwitchCallback() {
-        @Override
-        public void onCameraSwitch(boolean isFrontCamera) {
-          callCoordinator.updateFrontCamera(isFrontCamera);
-        }
+      mediaStreamManager.switchCamera(
+          new MediaStreamManager.CameraSwitchCallback() {
+            @Override
+            public void onCameraSwitch(boolean isFrontCamera) {
+              callCoordinator.updateFrontCamera(isFrontCamera);
+            }
 
-        @Override
-        public void onError(String error) {
-          Log.e(TAG, "Camera switch failed: " + error);
-        }
-      });
+            @Override
+            public void onError(String error) {
+              Log.e(TAG, "Camera switch failed: " + error);
+            }
+          });
     }
   }
 

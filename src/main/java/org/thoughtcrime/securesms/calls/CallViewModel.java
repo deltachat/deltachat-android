@@ -5,7 +5,6 @@ import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.telecom.DisconnectCause;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.telecom.CallEndpointCompat;
@@ -13,12 +12,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
-
-import org.webrtc.PeerConnection;
-import org.webrtc.VideoTrack;
-
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import org.webrtc.PeerConnection;
+import org.webrtc.VideoTrack;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallViewModel extends AndroidViewModel {
