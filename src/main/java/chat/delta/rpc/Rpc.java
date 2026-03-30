@@ -821,6 +821,16 @@ public class Rpc {
   }
 
   /**
+   * Marks the last incoming message in the chat as _fresh_.
+   * <p>
+   * UI can use this to offer a "mark unread" option,
+   * so that already noticed chats get a badge counter again.
+   */
+  public void markfreshChat(Integer accountId, Integer chatId) throws RpcException {
+    transport.call("markfresh_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
    * Returns the message that is immediately followed by the last seen
    * message.
    * From the point of view of the user this is effectively
