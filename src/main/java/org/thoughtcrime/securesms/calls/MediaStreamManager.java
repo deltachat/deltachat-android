@@ -1,9 +1,12 @@
 package org.thoughtcrime.securesms.calls;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
 import org.thoughtcrime.securesms.EglUtils;
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
@@ -31,10 +34,16 @@ public class MediaStreamManager {
   private VideoSource videoSource;
   private AudioSource audioSource;
   private SurfaceTextureHelper surfaceTextureHelper;
+  private volatile boolean isFrontCamera = true;
 
   public interface Callback {
     void onMediaStreamReady(MediaStream stream);
 
+    void onError(String error);
+  }
+
+  public interface CameraSwitchCallback {
+    void onCameraSwitch(boolean isFrontCamera);
     void onError(String error);
   }
 
@@ -45,6 +54,7 @@ public class MediaStreamManager {
   }
 
   /** Create media stream with audio and optionally video */
+  @RequiresApi(api = Build.VERSION_CODES.M)
   public void createMediaStream(Callback callback) {
     try {
       MediaStream mediaStream = peerConnectionFactory.createLocalMediaStream(STREAM_ID);
@@ -91,6 +101,7 @@ public class MediaStreamManager {
       if (enumerator.isFrontFacing(deviceName)) {
         VideoCapturer capturer = enumerator.createCapturer(deviceName, null);
         if (capturer != null) {
+          isFrontCamera = true;
           return capturer;
         }
       }
@@ -100,6 +111,7 @@ public class MediaStreamManager {
     for (String deviceName : deviceNames) {
       VideoCapturer capturer = enumerator.createCapturer(deviceName, null);
       if (capturer != null) {
+        isFrontCamera = enumerator.isFrontFacing(deviceName);
         return capturer;
       }
     }
@@ -107,12 +119,33 @@ public class MediaStreamManager {
     return null;
   }
 
-  public void switchCamera() {
+  public void switchCamera(@Nullable CameraSwitchCallback callback) {
     if (videoCapturer instanceof CameraVideoCapturer) {
       CameraVideoCapturer cameraVideoCapturer = (CameraVideoCapturer) videoCapturer;
-      cameraVideoCapturer.switchCamera(null);
-      Log.d(TAG, "Camera switched");
+      cameraVideoCapturer.switchCamera(new CameraVideoCapturer.CameraSwitchHandler() {
+        @Override
+        public void onCameraSwitchDone(boolean isFront) {
+          isFrontCamera = isFront;
+          Log.d(TAG, "Camera switched, isFront: " + isFront);
+          if (callback != null) {
+            callback.onCameraSwitch(isFront);
+          }
+        }
+
+        @Override
+        public void onCameraSwitchError(String errorDescription) {
+          Log.e(TAG, "Camera switch error: " + errorDescription);
+          if (callback != null) {
+            callback.onError(errorDescription);
+          }
+        }
+      });
+      Log.d(TAG, "Camera switch requested");
     }
+  }
+
+  public boolean isFrontCamera() {
+    return isFrontCamera;
   }
 
   /** Cleanup resources */

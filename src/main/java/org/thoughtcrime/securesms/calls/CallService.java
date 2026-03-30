@@ -164,6 +164,8 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
             webRTCClient.setLocalMediaStream(stream);
 
+            callCoordinator.updateFrontCamera(mediaStreamManager.isFrontCamera());
+
             callCoordinator.setVideoEnabled(startsWithVideo);
 
             if (!stream.videoTracks.isEmpty()) {
@@ -410,7 +412,17 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     Log.d(TAG, "switchCamera");
 
     if (mediaStreamManager != null) {
-      mediaStreamManager.switchCamera();
+      mediaStreamManager.switchCamera(new MediaStreamManager.CameraSwitchCallback() {
+        @Override
+        public void onCameraSwitch(boolean isFrontCamera) {
+          callCoordinator.updateFrontCamera(isFrontCamera);
+        }
+
+        @Override
+        public void onError(String error) {
+          Log.e(TAG, "Camera switch failed: " + error);
+        }
+      });
     }
   }
 

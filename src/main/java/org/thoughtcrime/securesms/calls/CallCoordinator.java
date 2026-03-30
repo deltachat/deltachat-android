@@ -95,6 +95,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final MutableLiveData<String> displayName = new MutableLiveData<>();
   private final MutableLiveData<Icon> displayIcon = new MutableLiveData<>();
   private final MutableLiveData<Boolean> outgoingCallPlaced = new MutableLiveData<>(false);
+  private final MutableLiveData<Boolean> isFrontCamera = new MutableLiveData<>(true);
 
   // Audio Routing Support
   private final MediatorLiveData<CallEndpointCompat> currentAudioEndpoint =
@@ -325,6 +326,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     return availableAudioEndpoints;
   }
 
+  public LiveData<Boolean> getIsFrontCamera() {
+    return isFrontCamera;
+  }
+
   // State Update Methods (CallService)
 
   public void updateConnectionState(PeerConnection.PeerConnectionState state) {
@@ -359,6 +364,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     isRelayUsed.postValue(isRelay);
   }
 
+  public void updateFrontCamera(boolean front) {
+    Log.d(TAG, "updateFrontCamera: " + front);
+    isFrontCamera.postValue(front);
+  }
+
   public void reportError(String error) {
     Log.e(TAG, "reportError: " + error);
     errorMessage.postValue(error);
@@ -366,7 +376,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   // Delayed Media Initialization Support
 
-  public void startMediaCapture() {
+  public synchronized void startMediaCapture() {
     Log.d(TAG, "startMediaCapture");
     if (callService != null) {
       callService.startMediaCapture();
@@ -375,7 +385,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  public void handleCallControlScopeAnswer() {
+  public synchronized void handleCallControlScopeAnswer() {
     Log.d(TAG, "handleCallControlScopeAnswer");
 
     if (!isIncomingCall) {
@@ -628,7 +638,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     cleanupCall(activeAccId, activeCallId);
   }
 
-  public void setAudioEnabled(boolean enabled) {
+  public synchronized void setAudioEnabled(boolean enabled) {
     Log.d(TAG, "setAudioEnabled: " + enabled);
 
     localAudioEnabled.postValue(enabled);
@@ -640,7 +650,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  public void setVideoEnabled(boolean enabled) {
+  public synchronized void setVideoEnabled(boolean enabled) {
     Log.d(TAG, "setVideoEnabled: " + enabled);
 
     localVideoEnabled.postValue(enabled);
@@ -652,14 +662,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  public void switchCamera() {
+  public synchronized void switchCamera() {
     Log.d(TAG, "switchCamera");
     if (callService != null) {
       callService.switchCamera();
     }
   }
 
-  public void startOutgoingCall() {
+  public synchronized void startOutgoingCall() {
     Log.d(TAG, "startOutgoingCall");
     if (callService != null) {
       callService.startOutgoingCall();
