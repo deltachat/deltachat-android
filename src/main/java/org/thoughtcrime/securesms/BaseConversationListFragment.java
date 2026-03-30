@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,7 +44,11 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
+
 public abstract class BaseConversationListFragment extends Fragment implements ActionMode.Callback {
+  private static final String TAG = BaseConversationListFragment.class.getSimpleName();
   protected ActionMode actionMode;
   protected PulsingFloatingActionButton fab;
 
@@ -241,12 +246,19 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   }
 
   private void handleMarkfreshSelected() {
-    final DcContext dcContext = DcHelper.getContext(requireActivity());
     final Set<Long> selectedConversations =
         new HashSet<Long>(getListAdapter().getBatchSelections());
-    for (long chatId : selectedConversations) {
-      dcContext.markfreshChat((int) chatId);
+
+    final Rpc rpc = DcHelper.getRpc(requireActivity());
+    try {
+      int accId = rpc.getSelectedAccountId();
+      for (long chatId : selectedConversations) {
+        rpc.markfreshChat(accId, (int) chatId);
+      }
+    } catch (RpcException e) {
+      Log.e(TAG, "RPC error", e);
     }
+
     if (actionMode != null) {
       actionMode.finish();
       actionMode = null;
