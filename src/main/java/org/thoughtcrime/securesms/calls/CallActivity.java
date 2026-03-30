@@ -504,6 +504,8 @@ public class CallActivity extends AppCompatActivity {
         viewModel.getVideoEnabled(), v -> videoConfigChanged.setValue(true));
     videoConfigChanged.addSource(
         viewModel.getRemoteVideoEnabled(), v -> videoConfigChanged.setValue(true));
+    videoConfigChanged.addSource(
+        viewModel.getIsFrontCamera(), v -> videoConfigChanged.setValue(true));
 
     // Video layout
     videoConfigChanged.observe(
@@ -705,17 +707,21 @@ public class CallActivity extends AppCompatActivity {
     VideoTrack localTrack = viewModel.getLocalVideoTrack().getValue();
     VideoTrack remoteTrack = viewModel.getRemoteVideoTrack().getValue();
 
+    boolean isFront = Boolean.TRUE.equals(viewModel.getIsFrontCamera().getValue());
+
     boolean showFullScreen = false;
 
     if (state == CallViewModel.CallState.CONNECTED
         && remoteTrack != null
         && Boolean.TRUE.equals(remoteVideoEnabled)) {
+      remoteVideoView.setMirror(false);
       remoteTrack.addSink(remoteVideoView);
       showFullScreen = true;
     } else if (!coordinator.isIncomingCall()
         && (state == CallViewModel.CallState.RINGING || state == CallViewModel.CallState.CONNECTING)
         && localTrack != null
         && Boolean.TRUE.equals(videoEnabled)) {
+      remoteVideoView.setMirror(isFront);
       localTrack.addSink(remoteVideoView);
       showFullScreen = true;
     }
@@ -729,6 +735,7 @@ public class CallActivity extends AppCompatActivity {
             && !isInPictureInPictureMode();
 
     if (showCorner) {
+      localVideoView.setMirror(isFront);
       localTrack.addSink(localVideoView);
     }
 

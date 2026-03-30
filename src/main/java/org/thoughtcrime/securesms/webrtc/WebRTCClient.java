@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,34 +58,34 @@ public class WebRTCClient {
   private final Context context;
   private final Handler mainHandler;
   private PeerConnectionFactory peerConnectionFactory;
-  private PeerConnection peerConnection;
-  private List<PeerConnection.IceServer> iceServers;
+  private volatile PeerConnection peerConnection;
+  private volatile List<PeerConnection.IceServer> iceServers;
 
   private DataChannel iceTricklingDataChannel;
   private DataChannel mutedStateDataChannel;
 
   // ICE candidate
   private final List<IceCandidate> iceCandidateBuffer;
-  private boolean iceTricklingChannelOpen;
-  private boolean mutedStateChannelOpen;
-  private boolean enableIceTrickling;
-  private boolean isEnded = false;
+  private volatile boolean iceTricklingChannelOpen;
+  private volatile boolean mutedStateChannelOpen;
+  private volatile boolean enableIceTrickling;
+  private final AtomicBoolean isEnded = new AtomicBoolean(false);
 
   // ICE gathering
   private volatile boolean isIceGatheringComplete;
   private volatile boolean hasRelayCandidate;
   private volatile boolean hasSrflxCandidate;
   private volatile boolean hasHostCandidate;
-  private CountDownLatch iceGatheringLatch;
-  private CountDownLatch relayCandidateLatch;
-  private CountDownLatch srflxCandidateLatch;
+  private volatile CountDownLatch iceGatheringLatch;
+  private volatile CountDownLatch relayCandidateLatch;
+  private volatile CountDownLatch srflxCandidateLatch;
 
   // Media
   private MediaStream localStream;
-  private VideoTrack localVideoTrack;
-  private AudioTrack localAudioTrack;
-  private VideoTrack remoteVideoTrack;
-  private AudioTrack remoteAudioTrack;
+  private volatile VideoTrack localVideoTrack;
+  private volatile AudioTrack localAudioTrack;
+  private volatile VideoTrack remoteVideoTrack;
+  private volatile AudioTrack remoteAudioTrack;
 
   // Callbacks to ViewModel
   private final Callbacks callbacks;
@@ -644,7 +645,7 @@ public class WebRTCClient {
                       boolean gotIce = waitForEnoughIce();
 
                       synchronized (WebRTCClient.this) {
-                        if (isEnded || peerConnection == null) {
+                        if (isEnded.get() || peerConnection == null) {
                           Log.d(TAG, "Call ended during ICE gathering, aborting");
                           return;
                         }
@@ -803,7 +804,7 @@ public class WebRTCClient {
                       boolean gotIce = waitForEnoughIce();
 
                       synchronized (WebRTCClient.this) {
-                        if (isEnded || peerConnection == null) {
+                        if (isEnded.get() || peerConnection == null) {
                           Log.d(TAG, "Call ended during ICE gathering, aborting");
                           return;
                         }
@@ -939,12 +940,10 @@ public class WebRTCClient {
   // Cleanup
 
   public synchronized void endCall() {
-    if (isEnded) {
+    if (!isEnded.compareAndSet(false, true)) {
       Log.d(TAG, "endCall() already called, skipping");
       return;
     }
-
-    isEnded = true;
     Log.d(TAG, "Ending call");
 
     // Unblock any thread waiting in waitForEnoughIce()
