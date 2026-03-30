@@ -69,6 +69,8 @@
     <string name="mark_as_read">Märgi loetuks</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Märgi loetuks</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Märgi mitteloetuks</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Laadimisel…</string>
     <string name="hide">Peida</string>
@@ -163,6 +165,7 @@
         <item quantity="other">Valitud: %d</item>
     </plurals>
     <string name="selected_colon">Valitud:</string>
+    <string name="selected">Valitud</string>
     <string name="self">Mina</string>
     <string name="draft">Kavand</string>
     <string name="image">Polt</string>
@@ -395,6 +398,12 @@
     <string name="audio_call">Häälkõne</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Videokõne</string>
+    <string name="call_initializing">Valmendan…</string>
+    <string name="call_incoming">Saabuv kõne</string>
+    <string name="call_ringing">Heliseb…</string>
+    <string name="call_reconnecting">Ühendan uuesti…</string>
+    <string name="call_ended">Kõne on lõppenud</string>
+    <string name="call_failed">Kõne ühendamine ei õnnestunud</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Väljuv häälkõne</string>
     <!-- deprecated, use "Video call" instead -->
@@ -406,6 +415,8 @@
     <string name="declined_call">Keeldutud kõne</string>
     <string name="canceled_call">katkestatud kõne</string>
     <string name="missed_call">Märkamata kõne</string>
+    <string name="already_in_call">Kõne  juba on pooleli</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Kas oled kindel, et soovid lahkuda?</string>
@@ -655,9 +666,14 @@
     <string name="add_transport">Lisa alusühendus</string>
     <string name="remove_transport">Eemalda alusühendus</string>
     <string name="edit_transport">Muuda alusühendust</string>
+    <string name="used_for_sending">Kasutatud saatmiseks</string>
+    <string name="hide_from_contacts">Peida kontaktidest</string>
+    <string name="hidden_from_contacts">Peidetud kontaktidest</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
-    <string name="confirm_add_transport">Kas lisad selle alusühenduse?</string>
-    <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust</string>
+    <string name="confirm_add_transport">Kas lisad selle alusühenduse (edastusserveri)?</string>
+    <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust (edastusserverid)</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Kas eemaldad alusühenduse (edastusserveri) „%1$s“?\n\nKui mõni kontakt teab vaid seda ühendusviisi, siis ta ei pruugi sind kätte saada enne, kui oled talle uuesti kirjutanud.\n\nKui kahtled, siis eemakdamise asemel pigem peida see alusühendus (edastusserver).</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
     <string name="login_error_mail">Palun sisesta korrektne e-posti aadress</string>
     <string name="login_error_server">Palun sisesta korrektne serveri täisnimi või ip-aadress</string>
@@ -932,6 +948,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s määras isekustuvate sõnumite kehtivuseks %1$s nädalat.</string>
     <string name="chat_unencrypted_explanation">Sõnumid siin vestluses kasutavad klassikalist e-postiliidestust ja pole läbivalt krüptitud.</string>
+    <string name="messages_are_e2ee">Sõnumid on läbivalt krüptitud.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Sõnumid on läbivalt krüptitud. Lisateabe ligemiseks klõpsi.</string>
     <string name="chat_protection_enabled_explanation">Kõik selle vestluse sõnumid on läbivalt krüptitud.\n\nSee tagab, et sõnumid on loetavad vaid sinu ja vestluse teis(t)e osapool(t)e poolt. Ei teenusepakkujad, serverihaldajad, ega põrgatajad ei saa neid sõnumeid lugeda.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s eeldab läbiva krüptimise kasutamist, aga see pole veel antud vestluse jaoks seadistatud. Lisateabe ligemiseks klõpsi.</string>
