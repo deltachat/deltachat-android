@@ -13,6 +13,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
 
@@ -38,6 +39,7 @@ public class CallViewModel extends AndroidViewModel {
   private final LiveData<Boolean> outgoingCallPlaced;
   private final LiveData<CallEndpointCompat> currentAudioEndpoint;
   private final LiveData<List<CallEndpointCompat>> availableAudioEndpoints;
+  private final LiveData<Boolean> isFrontCamera;
 
   // Translated from coordinator's connectionState
   private final MediatorLiveData<CallState> callState;
@@ -46,7 +48,7 @@ public class CallViewModel extends AndroidViewModel {
   private Observer<VideoTrack> answerCallObserver;
   private Observer<VideoTrack> startOutgoingCallObserver;
 
-  private boolean hasCallEnded = false;
+  private final AtomicBoolean hasCallEnded = new AtomicBoolean(false);
 
   // User-facing call states
   public enum CallState {
@@ -79,6 +81,7 @@ public class CallViewModel extends AndroidViewModel {
     this.outgoingCallPlaced = callCoordinator.getOutgoingCallPlaced();
     this.currentAudioEndpoint = callCoordinator.getCurrentAudioEndpoint();
     this.availableAudioEndpoints = callCoordinator.getAvailableAudioEndpoints();
+    this.isFrontCamera = callCoordinator.getIsFrontCamera();
 
     this.callState = new MediatorLiveData<>(CallState.INITIALIZING);
 
@@ -113,9 +116,7 @@ public class CallViewModel extends AndroidViewModel {
 
           if (state == PeerConnection.PeerConnectionState.FAILED
               || state == PeerConnection.PeerConnectionState.CLOSED) {
-            if (!hasCallEnded) {
-              hasCallEnded = true;
-            }
+            hasCallEnded.set(true);
           }
         });
 
@@ -257,11 +258,10 @@ public class CallViewModel extends AndroidViewModel {
   public void declineCall() {
     Log.d(TAG, "declineCall");
 
-    if (hasCallEnded) {
+    if (!hasCallEnded.compareAndSet(false, true)) {
       Log.w(TAG, "Call already ended");
       return;
     }
-    hasCallEnded = true;
 
     callCoordinator.declineCall();
   }
@@ -269,11 +269,10 @@ public class CallViewModel extends AndroidViewModel {
   public void hangUp() {
     Log.d(TAG, "hangUp");
 
-    if (hasCallEnded) {
+    if (!hasCallEnded.compareAndSet(false, true)) {
       Log.w(TAG, "Call already ended");
       return;
     }
-    hasCallEnded = true;
 
     callCoordinator.hangUp();
   }
@@ -354,8 +353,7 @@ public class CallViewModel extends AndroidViewModel {
   public void onCallDisconnected(DisconnectCause disconnectCause) {
     Log.d(TAG, "onCallDisconnected callback from CallControlScope, cause: " + disconnectCause);
 
-    if (!hasCallEnded) {
-      hasCallEnded = true;
+    if (hasCallEnded.compareAndSet(false, true)) {
       callState.postValue(CallState.ENDED);
     }
   }
@@ -412,6 +410,10 @@ public class CallViewModel extends AndroidViewModel {
 
   public LiveData<List<CallEndpointCompat>> getAvailableAudioEndpoints() {
     return availableAudioEndpoints;
+  }
+
+  public LiveData<Boolean> getIsFrontCamera() {
+    return isFrontCamera;
   }
 
   // Notification Action Handlers
