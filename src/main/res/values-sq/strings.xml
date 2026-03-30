@@ -666,7 +666,7 @@
     <string name="hide_from_contacts">Fshihe prej Kontaktesh</string>
     <string name="hidden_from_contacts">Fshehur prej kontakteve</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Mesazhet merren në krejt reletë.</string>
+    <string name="transport_list_hint">Mesazhet merren në të tëra reletë.\n\n⚠️ Nëse ndryshoni diçka këtu, sigurohuni se krejt pajisjet tuaja xhirojnë të paktën versionin 2.47.0. Përndryshe, pajisje më të vjetra mund të humbin mesazhe.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Të shtohet kjo rele?</string>
     <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>

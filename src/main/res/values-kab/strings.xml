@@ -69,6 +69,8 @@
     <string name="mark_as_read">Creḍ am akken yettwaɣra</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Creḍ yettwaɣra</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Ur ittwaɣṛi ara</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading"> Asali...</string>
     <string name="hide">Ffer</string>
@@ -411,6 +413,8 @@
     <string name="declined_call">Tiɣri tettwagi</string>
     <string name="canceled_call">Tiɣri tettwasefsex</string>
     <string name="missed_call">Tiɣri ittwazeglen</string>
+    <string name="already_in_call">Aqli deg usiwel yakan</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Tetḥeqqeḍ tebɣiḍ ad truḥeḍ? </string>
@@ -663,8 +667,6 @@
     <string name="used_for_sending">Yettwaseqdec i tuzzna</string>
     <string name="hide_from_contacts">Ffer-it ɣef inermisen</string>
     <string name="hidden_from_contacts">Uffir ɣef inermisen</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Iznan ttwaremsen ɣef meṛṛa imedwal</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Rnu amedwel-agi?</string>
     <string name="invalid_transport_qr">Tangalt QR ittusemḍen ur tesɛi ara amedwel ameɣtu</string>
@@ -724,6 +726,7 @@
     <string name="pref_enter_sends">Kcem tisura i umazan</string>
     <string name="pref_enter_sends_explain">Asiti ɣef tanast Kcem ad yazen aḍris n yiznan</string>
     <string name="pref_outgoing_media_quality">Taɣara n umidya</string>
+    <string name="pref_outgoing_media_quality_hint">Akken ad tazneḍ afaylu s taɣara-ines taɣbalut, mudd-d amidya s wudem n \"Afaylu\". Ayagi ad iseqdac ugar n yisefka i kečč akked  iɣerwaḍen-ik·im.</string>
     <string name="pref_outgoing_balanced">Imnekni</string>
     <string name="pref_outgoing_worse">Taɣara n diri, tiddi tameẓyant</string>
     <string name="pref_vibrate">Argagi</string>
@@ -943,6 +946,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Amkud n yiznan ur nettdum ara yettwasbed ar %1$s n yimalas sɣur %2$s.</string>
     <string name="chat_unencrypted_explanation">Iznan deg udiwenni-a sseqdacen imayl aklasiki, ur ttwawgelhen ara seg yixef ɣer yixef.</string>
+    <string name="messages_are_e2ee">Iznan tteddun s wudem n uwgelhen seg yixef ɣer yixef.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Iznan ttwawgelhen seg yixef ɣer yixef. Sit akken ad tissineḍ ugar.</string>
     <string name="chat_protection_enabled_explanation">Iznan akk yellan deg udiwenni-a ttwawgelhen seg yixef ɣer yixef.\n\nAwgelhen n yixef ɣer yixef yettaǧǧa iznan d usligen gar-ak·am d yecriken n udiwenni. Ula d iqeddacen, isaǧǧawen neɣ imsawaḍen ur zemren ad ten-ɣren.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️%1$s Yesra awgelhen n yixef ɣer yixef ur nelli ara yakan i udiwenni-a. Sit akken ad tissineḍ ugar.</string>

@@ -669,8 +669,6 @@
     <string name="used_for_sending">Bidaltzeko erabilita</string>
     <string name="hide_from_contacts">Ezkutatu kontaktuetatik</string>
     <string name="hidden_from_contacts">Kontaktuetatik ezkutatuta</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Mezuak errele guztietan jasotzen dira</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Gehitu errelea?</string>
     <string name="invalid_transport_qr">Eskaneatutako QR kodeak ez dauka baliozko errelerik.</string>

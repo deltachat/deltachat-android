@@ -652,8 +652,6 @@
     <string name="used_for_sending">用于发送</string>
     <string name="hide_from_contacts">对联系人隐藏</string>
     <string name="hidden_from_contacts">已对联系人隐藏</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">在所有中继上均已收到消息。</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">添加此中继？</string>
     <string name="invalid_transport_qr">扫描的二维码不包含有效的中继。</string>

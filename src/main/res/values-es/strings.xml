@@ -627,7 +627,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Ya tengo un perfil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Iniciar sesión con correo electrónico</string>
+    <string name="manual_account_setup_option">Usar correo-e clásico como Retransmisor</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Tu perfil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -679,20 +679,20 @@
     <string name="proxy_enabled">Proxy activado</string>
     <string name="proxy_enabled_hint">Estás utilizando un proxy. Si tienes problemas para conectarte, prueba con otro proxy.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
-    <string name="transports">Transportes</string>
-    <string name="add_transport">Añadir transporte</string>
-    <string name="remove_transport">Eliminar transporte</string>
-    <string name="edit_transport">Editar transporte</string>
+    <string name="transports">Retransmisores</string>
+    <string name="add_transport">Añadir Retransmisor</string>
+    <string name="remove_transport">Eliminar Retransmisor</string>
+    <string name="edit_transport">Editar Retransmisor</string>
     <string name="used_for_sending">Usado para enviar</string>
     <string name="hide_from_contacts">Ocultar de los contactos</string>
     <string name="hidden_from_contacts">Ocultado de los contactos</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Los mensajes se reciben en todos los relays.</string>
+    <string name="transport_list_hint">Los mensajes se reciben en todos los retransmisores.\n\n⚠️ Si cambias algo aquí, asegúrese de que todos sus dispositivos ejecutan al menos la versión 2.47.0. De lo contrario, los dispositivos más antiguos pueden perder algunos mensajes.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
-    <string name="confirm_add_transport">¿Añadir este transporte?</string>
-    <string name="invalid_transport_qr">El código QR escaneado no contiene un transporte válido.</string>
+    <string name="confirm_add_transport">¿Añadir este retransmisor?</string>
+    <string name="invalid_transport_qr">El código QR escaneado no contiene un retransmisor válido.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_or_hide_transport_x">¿Eliminar el relay \"%1$s\"?\n\nLos contactos que solo conocen este relay podrían no comunicarse contigo hasta que les envíes otro mensaje.\n\nEn caso de duda, es mejor ocultarlo que eliminarlo.</string>
+    <string name="confirm_remove_or_hide_transport_x">¿Eliminar el retransmisor \"%1$s\"?\n\nLos contactos que solo conocen este retransmisor podrían no comunicarse contigo hasta que les envíes otro mensaje.\n\nEn caso de duda, es mejor ocultarlo que eliminarlo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
     <string name="login_error_mail">Por favor, introduzca una dirección de correo válida</string>
     <string name="login_error_server">Por favor, introduzca un servidor / dirección IP válido</string>
@@ -967,6 +967,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Temporizador de la desaparición de mensajes establecido en %1$s semanas por %2$s.</string>
     <string name="chat_unencrypted_explanation">Los mensajes en este chat usan el correo electrónico clásico y no están cifrados de extremo a extremo.</string>
+    <string name="messages_are_e2ee">Los mensajes están cifrados de extremo a extremo.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">A partir de ahora se garantiza que los mensajes están cifrados de extremo a extremo . Toca para obtener más información.</string>
     <string name="chat_protection_enabled_explanation">Ahora se garantiza que todos los mensajes en este chat están cifrados de extremo a extremo.\n\nEl cifrado de extremo a extremo mantiene los mensajes privados entre tú y tus compañeros de chat. Ni siquiera tu proveedor de correo electrónico puede leerlos.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requiere cifrado de extremo a extremo que aún no está configurado para este chat. Toca para obtener más información.</string>

@@ -670,7 +670,7 @@
     <string name="hide_from_contacts">Verbergen op contactpersonenlijst</string>
     <string name="hidden_from_contacts">Verborgen op contactpersonenlijst</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Berichten worden op alle relays ontvangen.</string>
+    <string name="transport_list_hint">Berichten worden op alle relays ontvangen.\n\n⚠️ Als je hier iets wijzigt, doe dat dan alléén als ál je apparaten gebruikmaken van versie 2.47.0, anders kunnen er berichten ontbreken.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Wil je deze server toevoegen?</string>
     <string name="invalid_transport_qr">De gescande QR-code bevat geen geldige overdrachtsserver.</string>
