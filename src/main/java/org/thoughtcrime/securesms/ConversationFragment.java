@@ -1034,7 +1034,6 @@ public class ConversationFragment extends MessageSelectorFragment {
     @Override
     public void onStickerClicked(DcMsg messageRecord) {
       new AlertDialog.Builder(getContext())
-          .setTitle(R.string.add_to_sticker_collection)
           .setMessage(R.string.ask_add_sticker_to_collection)
           .setPositiveButton(
               R.string.ok,
