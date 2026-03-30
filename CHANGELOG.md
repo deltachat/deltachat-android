@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.48.0
+2026-03
 
 * Add a warning when editing relays
 * Fix message reordering problems in multi-relay setups
