@@ -95,6 +95,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final MutableLiveData<String> displayName = new MutableLiveData<>();
   private final MutableLiveData<Icon> displayIcon = new MutableLiveData<>();
   private final MutableLiveData<Boolean> outgoingCallPlaced = new MutableLiveData<>(false);
+  private final MutableLiveData<Boolean> answeredElsewhere = new MutableLiveData<>(false);
   private final MutableLiveData<Boolean> isFrontCamera = new MutableLiveData<>(true);
 
   // Audio Routing Support
@@ -316,6 +317,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   public LiveData<Boolean> getOutgoingCallPlaced() {
     return outgoingCallPlaced;
+  }
+
+  public LiveData<Boolean> getAnsweredElsewhere() {
+    return answeredElsewhere;
   }
 
   public LiveData<CallEndpointCompat> getCurrentAudioEndpoint() {
@@ -856,7 +861,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               onIncomingCall(accId, callId, event.getData2Str(), hasVideo);
               break;
             case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
-              onIncomingCallAccepted(callId);
+              boolean fromThisDevice = event.getData2Int() != 0; // Data2 is from_this_device
+              onIncomingCallAccepted(callId, fromThisDevice);
               break;
             case DcContext.DC_EVENT_OUTGOING_CALL_ACCEPTED:
               String answerSDP = event.getData2Str();
@@ -912,8 +918,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     startAndBindService();
   }
 
-  private synchronized void onIncomingCallAccepted(int callId) {
-    Log.d(TAG, "onIncomingCallAccepted: callId=" + callId);
+  private synchronized void onIncomingCallAccepted(int callId, boolean fromThisDevice) {
+    Log.d(TAG, "onIncomingCallAccepted: callId=" + callId + ", fromThisDevice=" + fromThisDevice);
+
+    if (!fromThisDevice) {
+      onCallAnsweredOnOtherDevice();
+      return;
+    }
 
     if (activeCallId == null || !activeCallId.equals(callId)) {
       Log.w(TAG, "Accepted call ID doesn't match active call");
@@ -926,6 +937,52 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     showOrUpdateOngoingNotification("Call with " + callerName);
+  }
+
+  private synchronized void onCallAnsweredOnOtherDevice() {
+    Log.d(TAG, "Call was answered on another device");
+
+    if (!hasActiveCall()) {
+      Log.d(TAG, "No active call, ignoring");
+      return;
+    }
+
+    // Prevent notifyBackendCallEnded() from firing during WebRTC teardown.
+    // The call is still active on the other device.
+    hasNotifiedBackend = true;
+
+    if (callService != null) {
+      callService.stopRingtone();
+    }
+
+    notificationManager.cancel(NOTIFICATION_ID_CALL);
+
+    answeredElsewhere.postValue(true);
+
+    // Disconnect from Telecom CallControlScope
+    CallControlScope scope = activeCallControlScope;
+    if (scope != null) {
+      scope.disconnect(
+          new DisconnectCause(DisconnectCause.REMOTE),
+          new Continuation<CallControlResult>() {
+            @NonNull
+            @Override
+            public CoroutineContext getContext() {
+              return EmptyCoroutineContext.INSTANCE;
+            }
+
+            @Override
+            public void resumeWith(@NonNull Object result) {
+              Log.d(TAG, "Disconnect (answered elsewhere) completed");
+            }
+          });
+    }
+
+    if (callService != null) {
+      callService.endCall();
+    }
+
+    cleanupCall(activeAccId, activeCallId);
   }
 
   private void onOutgoingCallAccepted(int callId, String answerSdp) {
@@ -1135,6 +1192,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   private void resetLiveDataForNewCall() {
     connectionState.postValue(PeerConnection.PeerConnectionState.NEW);
+    answeredElsewhere.postValue(false); // clearLiveData() must not reset answeredElsewhere
     clearLiveData();
   }
 

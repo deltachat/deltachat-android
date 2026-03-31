@@ -416,6 +416,7 @@
     <string name="canceled_call">Canceled call</string>
     <string name="missed_call">Missed call</string>
     <string name="already_in_call">Already in a call</string>
+    <string name="call_answered_elsewhere">Call answered on another device</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
