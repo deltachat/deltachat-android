@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.relay;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
 import android.content.DialogInterface;
@@ -24,7 +23,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
@@ -44,7 +42,6 @@ import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
