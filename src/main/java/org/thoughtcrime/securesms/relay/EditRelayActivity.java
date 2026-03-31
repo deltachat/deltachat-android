@@ -79,8 +79,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   Spinner smtpSecurity;
   Spinner certCheck;
 
-  private SwitchCompat proxySwitch;
-
   Rpc rpc;
   int accId;
 
@@ -115,13 +113,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     imapSecurity = findViewById(R.id.imap_security);
     smtpSecurity = findViewById(R.id.smtp_security);
     certCheck = findViewById(R.id.cert_check);
-
-    proxySwitch = findViewById(R.id.proxy_settings);
-    proxySwitch.setOnClickListener(
-        l -> {
-          proxySwitch.setChecked(!proxySwitch.isChecked()); // revert toggle
-          startActivity(new Intent(this, ProxySettingsActivity.class));
-        });
 
     String addr = getIntent().getStringExtra(EXTRA_ADDR);
     EnteredLoginParam config = null;
@@ -185,10 +176,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     boolean expandAdvanced = false;
     int intVal;
 
-    intVal = DcHelper.getInt(this, CONFIG_PROXY_ENABLED);
-    proxySwitch.setChecked(intVal == 1);
-    expandAdvanced = expandAdvanced || intVal == 1;
-
     if (config != null) { // configured
       emailInput.setText(config.addr);
       if (!TextUtils.isEmpty(config.addr)) {
@@ -246,7 +233,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   @Override
   public void onResume() {
     super.onResume();
-    proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
   }
 
   private void showLog() {

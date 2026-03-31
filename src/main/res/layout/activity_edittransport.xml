@@ -129,7 +129,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, cert_check_label, cert_check, view_log_button, proxy_settings" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, cert_check_label, cert_check, view_log_button" />
 
             <ImageView
                 android:id="@+id/advanced_icon"
@@ -157,17 +157,6 @@
                 app:layout_constraintStart_toEndOf="@id/advanced_icon"
                 app:layout_constraintTop_toBottomOf="@id/no_servers_hint" />
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/proxy_settings"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:text="@string/proxy_use_proxy"
-                app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
-                app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-                app:layout_constraintTop_toBottomOf="@id/advanced_text" />
-
             <TextView
                 android:id="@+id/inbox"
                 android:layout_width="wrap_content"
@@ -176,7 +165,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/login_inbox"
                 app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-                app:layout_constraintTop_toBottomOf="@id/proxy_settings" />
+                app:layout_constraintTop_toBottomOf="@id/advanced_text" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/imap_login"
