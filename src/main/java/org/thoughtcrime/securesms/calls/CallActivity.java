@@ -373,6 +373,7 @@ public class CallActivity extends AppCompatActivity {
                   case INITIALIZING:
                   case PROMPTING_USER_ACCEPT:
                   case ENDED:
+                  case ANSWERED_ELSEWHERE:
                   case ERROR:
                   default:
                     finish();
@@ -578,6 +579,23 @@ public class CallActivity extends AppCompatActivity {
 
       case RECONNECTING:
         statusText.setText(R.string.call_reconnecting);
+        break;
+
+      case ANSWERED_ELSEWHERE:
+        statusText.setText(R.string.call_answered_elsewhere);
+        incomingCallPrompt.setVisibility(View.GONE);
+        bottomLayoutContainer.setVisibility(View.GONE);
+        callerIconContainer.setVisibility(View.GONE);
+        answerModeSelector.setVisibility(View.GONE);
+
+        new Handler(Looper.getMainLooper())
+            .postDelayed(
+                () -> {
+                  if (!isFinishing()) {
+                    finish();
+                  }
+                },
+                1500);
         break;
 
       case ENDED:
@@ -840,6 +858,7 @@ public class CallActivity extends AppCompatActivity {
           case INITIALIZING:
           case PROMPTING_USER_ACCEPT:
           case ENDED:
+          case ANSWERED_ELSEWHERE:
           case ERROR:
           default:
             finish();
@@ -890,7 +909,9 @@ public class CallActivity extends AppCompatActivity {
   protected void onDestroy() {
     super.onDestroy();
 
-    detachAllTracks();
+    if (viewModel != null) {
+      detachAllTracks();
+    }
 
     // Release video renderers
     if (localVideoView != null) {

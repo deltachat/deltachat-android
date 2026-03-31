@@ -37,6 +37,7 @@ public class CallViewModel extends AndroidViewModel {
   private final LiveData<String> displayName;
   private final LiveData<Icon> displayIcon;
   private final LiveData<Boolean> outgoingCallPlaced;
+  private final LiveData<Boolean> answeredElsewhere;
   private final LiveData<CallEndpointCompat> currentAudioEndpoint;
   private final LiveData<List<CallEndpointCompat>> availableAudioEndpoints;
   private final LiveData<Boolean> isFrontCamera;
@@ -58,6 +59,7 @@ public class CallViewModel extends AndroidViewModel {
     CONNECTING,
     CONNECTED,
     RECONNECTING,
+    ANSWERED_ELSEWHERE,
     ENDED,
     ERROR
   }
@@ -79,6 +81,7 @@ public class CallViewModel extends AndroidViewModel {
     this.displayName = callCoordinator.getDisplayName();
     this.displayIcon = callCoordinator.getDisplayIcon();
     this.outgoingCallPlaced = callCoordinator.getOutgoingCallPlaced();
+    this.answeredElsewhere = callCoordinator.getAnsweredElsewhere();
     this.currentAudioEndpoint = callCoordinator.getCurrentAudioEndpoint();
     this.availableAudioEndpoints = callCoordinator.getAvailableAudioEndpoints();
     this.isFrontCamera = callCoordinator.getIsFrontCamera();
@@ -108,6 +111,10 @@ public class CallViewModel extends AndroidViewModel {
     callState.addSource(
         callCoordinator.getConnectionState(),
         state -> {
+          if (callState.getValue() == CallState.ANSWERED_ELSEWHERE) {
+            return;
+          }
+
           CallState newState = translateConnectionState(state);
 
           if (callState.getValue() != newState) {
@@ -127,6 +134,15 @@ public class CallViewModel extends AndroidViewModel {
             if (callState.getValue() == CallState.CONNECTING) {
               callState.setValue(CallState.RINGING);
             }
+          }
+        });
+
+    callState.addSource(
+        answeredElsewhere,
+        value -> {
+          if (Boolean.TRUE.equals(value)) {
+            hasCallEnded.set(true);
+            callState.setValue(CallState.ANSWERED_ELSEWHERE);
           }
         });
   }
