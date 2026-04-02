@@ -2,7 +2,9 @@ Delta Chat é um mensageiro instantâneo descentralizado que é fácil e diverti
 
 Funcionalidades resumidamente:
 
-• Anónimo. Integração instantânea sem um número de telemóvel, email ou outros dados privados.
+• Privado. Integração instantânea sem um número de telemóvel ou outros dados privados.
+
+• Amigos e Família: Converse apenas com pessoas que conhece.Utilizadores desconhecidos não podem mandar-lhe mensagens ou segui-lo sem consentimento mútuo.
 
 • Flexível. Suporta múltiplos perfis de conversa e é fácil de configurar em múltiplos dispositivos.
 
