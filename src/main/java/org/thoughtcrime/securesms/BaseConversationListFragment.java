@@ -174,11 +174,11 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     return false;
   }
 
-  private boolean areSomeSelectedChatsNoticed() {
+  private boolean areSomeSelectedChatsFresh() {
     DcContext dcContext = DcHelper.getContext(requireActivity());
     final Set<Long> selectedChats = getListAdapter().getBatchSelections();
     for (long chatId : selectedChats) {
-      if (dcContext.getFreshMsgCount((int) chatId) <= 0) {
+      if (dcContext.getFreshMsgCount((int) chatId) > 0) {
         return true;
       }
     }
@@ -470,9 +470,9 @@ public abstract class BaseConversationListFragment extends Fragment implements A
         muteItem.setTitle(R.string.menu_unmute);
       }
 
-      final boolean someAreNoticed = areSomeSelectedChatsNoticed();
-      menu.findItem(R.id.menu_marknoticed_selected).setVisible(!someAreNoticed);
-      menu.findItem(R.id.menu_markfresh_selected).setVisible(someAreNoticed);
+      final boolean someAreFresh = areSomeSelectedChatsFresh();
+      menu.findItem(R.id.menu_marknoticed_selected).setVisible(someAreFresh);
+      menu.findItem(R.id.menu_markfresh_selected).setVisible(!someAreFresh);
     }
   }
 
