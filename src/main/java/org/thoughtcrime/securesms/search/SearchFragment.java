@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import chat.delta.rpc.types.SecurejoinSource;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContact;
@@ -30,6 +31,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
+import org.thoughtcrime.securesms.qr.QrCodeHandler;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
@@ -197,6 +199,14 @@ public class SearchFragment extends BaseConversationListFragment
       int chatId = message.getChatId();
       int startingPosition = DcMsg.getMessagePosition(message, dcContext);
       conversationList.openConversation(chatId, startingPosition);
+    }
+  }
+
+  @Override
+  public void onInviteLinkClicked(@NonNull String inviteLink) {
+    if (getActivity() != null) {
+      QrCodeHandler qrCodeHandler = new QrCodeHandler(getActivity());
+      qrCodeHandler.handleOnlySecureJoinQr(inviteLink, SecurejoinSource.Clipboard, null);
     }
   }
 

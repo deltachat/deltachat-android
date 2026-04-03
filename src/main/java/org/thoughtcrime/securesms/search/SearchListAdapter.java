@@ -23,8 +23,9 @@ import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 
 class SearchListAdapter
-    extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
+    extends BaseConversationListAdapter<RecyclerView.ViewHolder>
     implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder> {
+  private static final int TYPE_INVITE_LINK = 0;
   private static final int TYPE_CHATS = 1;
   private static final int TYPE_CONTACTS = 2;
   private static final int TYPE_MESSAGES = 3;
@@ -49,18 +50,39 @@ class SearchListAdapter
 
   @NonNull
   @Override
-  public SearchResultViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+  public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    if (viewType == TYPE_INVITE_LINK) {
+      return new InviteLinkViewHolder(
+          LayoutInflater.from(parent.getContext())
+              .inflate(R.layout.search_invite_link_item, parent, false));
+    }
     return new SearchResultViewHolder(
         LayoutInflater.from(parent.getContext())
             .inflate(R.layout.conversation_list_item_view, parent, false));
   }
 
   @Override
-  public void onBindViewHolder(@NonNull SearchResultViewHolder holder, int position) {
+  public int getItemViewType(int position) {
+    if (searchResult.getInviteLink() != null && position == 0) {
+      return TYPE_INVITE_LINK;
+    }
+    return TYPE_CHATS; // TYPE_CHATS, TYPE_CONTACTS, TYPE_MESSAGES all reuse SearchResultViewHolder
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    if (holder instanceof InviteLinkViewHolder) {
+      String inviteLink = searchResult.getInviteLink();
+      ((InviteLinkViewHolder) holder).bind(inviteLink, eventListener, context);
+      return;
+    }
+
+    SearchResultViewHolder searchHolder = (SearchResultViewHolder) holder;
+
     DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
-      holder.bind(
+      searchHolder.bind(
           context,
           conversationResult,
           glideRequests,
@@ -74,20 +96,22 @@ class SearchListAdapter
     DcContact contactResult = getContactResult(position);
 
     if (contactResult != null) {
-      holder.bind(contactResult, glideRequests, eventListener, searchResult.getQuery());
+      searchHolder.bind(contactResult, glideRequests, eventListener, searchResult.getQuery());
       return;
     }
 
     DcMsg messageResult = getMessageResult(position);
 
     if (messageResult != null) {
-      holder.bind(messageResult, glideRequests, eventListener, searchResult.getQuery());
+      searchHolder.bind(messageResult, glideRequests, eventListener, searchResult.getQuery());
     }
   }
 
   @Override
-  public void onViewRecycled(SearchResultViewHolder holder) {
-    holder.recycle();
+  public void onViewRecycled(RecyclerView.ViewHolder holder) {
+    if (holder instanceof SearchResultViewHolder) {
+      ((SearchResultViewHolder) holder).recycle();
+    }
   }
 
   @Override
@@ -97,7 +121,9 @@ class SearchListAdapter
 
   @Override
   public long getHeaderId(int position) {
-    if (getConversationResult(position) != null) {
+    if (searchResult.getInviteLink() != null && position == 0) {
+      return TYPE_INVITE_LINK;
+    } else if (getConversationResult(position) != null) {
       return TYPE_CHATS;
     } else if (getContactResult(position) != null) {
       return TYPE_CONTACTS;
@@ -121,6 +147,9 @@ class SearchListAdapter
     boolean maybeLimitedTo1000 = false;
 
     switch (headerType) {
+      case TYPE_INVITE_LINK:
+        viewHolder.bind(context.getString(R.string.open_invite_link));
+        return;
       case TYPE_CHATS:
         textId = R.plurals.n_chats;
         count = searchResult.getChats().getCnt();
@@ -162,8 +191,9 @@ class SearchListAdapter
 
   @Nullable
   private DcChatlist.Item getConversationResult(int position) {
-    if (position < searchResult.getChats().getCnt()) {
-      return searchResult.getChats().getItem(position);
+    int offset = getInviteLinkOffset();
+    if (position >= offset && position < offset + searchResult.getChats().getCnt()) {
+      return searchResult.getChats().getItem(position - offset);
     }
     return null;
   }
@@ -184,8 +214,12 @@ class SearchListAdapter
     return null;
   }
 
+  private int getInviteLinkOffset() {
+    return searchResult.getInviteLink() != null ? 1 : 0;
+  }
+
   private int getFirstContactIndex() {
-    return searchResult.getChats().getCnt();
+    return getInviteLinkOffset() + searchResult.getChats().getCnt();
   }
 
   private int getFirstMessageIndex() {
@@ -200,6 +234,26 @@ class SearchListAdapter
     void onContactClicked(@NonNull DcContact contact);
 
     void onMessageClicked(@NonNull DcMsg message);
+
+    void onInviteLinkClicked(@NonNull String inviteLink);
+  }
+
+  static class InviteLinkViewHolder extends RecyclerView.ViewHolder {
+
+    private final TextView titleView;
+    private final TextView subtitleView;
+
+    InviteLinkViewHolder(View itemView) {
+      super(itemView);
+      titleView = itemView.findViewById(R.id.invite_link_title);
+      subtitleView = itemView.findViewById(R.id.invite_link_subtitle);
+    }
+
+    void bind(@NonNull String inviteLink, @NonNull EventListener eventListener, @NonNull Context context) {
+      titleView.setText(context.getString(R.string.open_invite_link));
+      subtitleView.setText(inviteLink);
+      itemView.setOnClickListener(view -> eventListener.onInviteLinkClicked(inviteLink));
+    }
   }
 
   static class SearchResultViewHolder extends RecyclerView.ViewHolder {

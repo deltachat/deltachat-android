@@ -73,6 +73,9 @@ class SearchViewModel extends ViewModel {
       return;
     }
 
+    // detect invite links (https://i.delta.chat/...)
+    String inviteLink = Util.isInviteURL(query) ? query : null;
+
     // #1 search for chats
     long startMs = System.currentTimeMillis();
     DcChatlist conversations =
@@ -83,7 +86,7 @@ class SearchViewModel extends ViewModel {
     // #2 search for contacts
     if (!query.equals(lastQuery) && overallCnt > 0) {
       Log.i(TAG, "... skipping getContacts() and searchMsgs(), more recent search pending");
-      callback.onResult(new SearchResult(query, new int[0], conversations, new int[0]));
+      callback.onResult(new SearchResult(query, new int[0], conversations, new int[0], inviteLink));
       return;
     }
 
@@ -95,19 +98,19 @@ class SearchViewModel extends ViewModel {
     // #3 search for messages
     if (forwarding) {
       Log.i(TAG, "... searchMsgs() disabled by caller");
-      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0], inviteLink));
       return;
     }
 
     if (query.length() <= 1) {
       Log.i(TAG, "... skipping searchMsgs(), string too short");
-      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0], inviteLink));
       return;
     }
 
     if (!query.equals(lastQuery) && overallCnt > 0) {
       Log.i(TAG, "... skipping searchMsgs(), more recent search pending");
-      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0], inviteLink));
       return;
     }
 
@@ -115,7 +118,7 @@ class SearchViewModel extends ViewModel {
     int[] messages = dcContext.searchMsgs(0, query);
     Log.i(TAG, "⏰ searchMsgs(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
-    callback.onResult(new SearchResult(query, contacts, conversations, messages));
+    callback.onResult(new SearchResult(query, contacts, conversations, messages, inviteLink));
   }
 
   @NonNull
