@@ -2,7 +2,9 @@ Delta Chat è un affidabile sistema di messaggistica istantanea decentralizzato,
 
 Caratteristiche in sintesi:
 
-• Anonimo. Inserimento immediato senza numero di telefono, e-mail o altri dati privati.
+• Privato. Attivazione immediata senza numero di telefono o altri dati privati.
+
+• Amici & Famiglia. Comunica solo con persone che conosci. Gli sconosciuti non possono scriverti o seguirti senza mutuo consenso.
 
 • Flessibile. Supporta più profili di chat ed è facile da configurare su più dispositivi.
 
