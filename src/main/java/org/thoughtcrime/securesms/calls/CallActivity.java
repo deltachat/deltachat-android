@@ -95,6 +95,11 @@ public class CallActivity extends AppCompatActivity {
 
   private PowerManager.WakeLock proximityWakeLock;
 
+  // States
+  private boolean awaitingPermissionResult = false;
+  private boolean pausedWhileAwaitingPermission = false;
+  private boolean intentHandled = false;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -152,18 +157,21 @@ public class CallActivity extends AppCompatActivity {
 
     // Intent handling needs permissions
     if (!hasMicrophonePermission()) {
+      awaitingPermissionResult = true;
       ActivityCompat.requestPermissions(
           this, new String[] {Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION_REQUEST_CODE);
       return;
     }
 
     if (shouldRequestCameraPermission()) {
+      awaitingPermissionResult = true;
       ActivityCompat.requestPermissions(
           this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
       return;
     }
 
     handleIntents(getIntent());
+    intentHandled = true;
   }
 
   private void handleIntents(Intent intent) {
@@ -205,7 +213,6 @@ public class CallActivity extends AppCompatActivity {
 
     if (!coordinator.hasActiveCall()) {
       Log.e(TAG, "No active call exists, cannot proceed");
-      Toast.makeText(this, "No active call", Toast.LENGTH_SHORT).show();
       finish();
       return;
     }
@@ -834,10 +841,40 @@ public class CallActivity extends AppCompatActivity {
     return coordinator.isStartsWithVideo() && !hasCameraPermission();
   }
 
+  private void handleMicPermissionDenied() {
+    Toast.makeText(this, R.string.call_requires_mic_permission, Toast.LENGTH_LONG).show();
+
+    CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
+    if (coordinator.hasActiveCall()
+        && coordinator.isIncomingCall()
+        && !coordinator.hasOngoingCall()) {
+      coordinator.declineCall();
+    }
+
+    finish();
+  }
+
+  private void proceedAfterPermissions() {
+    if (intentHandled) return;
+
+    if (shouldRequestCameraPermission()) {
+      awaitingPermissionResult = true;
+      ActivityCompat.requestPermissions(
+          this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+      return;
+    }
+
+    handleIntents(getIntent());
+    intentHandled = true;
+  }
+
   @Override
   public void onRequestPermissionsResult(
       int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+    awaitingPermissionResult = false;
+    pausedWhileAwaitingPermission = false;
 
     CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
 
@@ -846,22 +883,7 @@ public class CallActivity extends AppCompatActivity {
           grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
       if (!micGranted) {
-        Toast.makeText(this, "Microphone permission is required for calls", Toast.LENGTH_LONG)
-            .show();
-
-        if (coordinator.hasActiveCall()
-            && coordinator.isIncomingCall()
-            && !coordinator.hasOngoingCall()) {
-          coordinator.declineCall();
-        }
-
-        finish();
-        return;
-      }
-
-      if (shouldRequestCameraPermission()) {
-        ActivityCompat.requestPermissions(
-            this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+        handleMicPermissionDenied();
         return;
       }
 
@@ -878,7 +900,7 @@ public class CallActivity extends AppCompatActivity {
       }
     }
 
-    handleIntents(getIntent());
+    proceedAfterPermissions();
   }
 
   // Picture-in-Picture
@@ -886,6 +908,11 @@ public class CallActivity extends AppCompatActivity {
   @Override
   public void onUserLeaveHint() {
     super.onUserLeaveHint();
+
+    // Do not finish activity when a permission request is pending
+    if (awaitingPermissionResult) {
+      return;
+    }
 
     // Enter PiP mode when user presses home button during active call
     if (viewModel != null) {
@@ -944,9 +971,41 @@ public class CallActivity extends AppCompatActivity {
   protected void onPause() {
     super.onPause();
 
+    if (awaitingPermissionResult) {
+      pausedWhileAwaitingPermission = true;
+    }
+
     if (proximityWakeLock != null && proximityWakeLock.isHeld()) {
       proximityWakeLock.release();
       Log.d(TAG, "Proximity wake lock released in onDestroy");
+    }
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+    // Fallback for Android 16 bug: onRequestPermissionsResult not called
+    if (awaitingPermissionResult && pausedWhileAwaitingPermission) {
+      Log.w(TAG, "Permission result callback not received, handling in onResume");
+
+      awaitingPermissionResult = false;
+      pausedWhileAwaitingPermission = false;
+
+      if (!hasMicrophonePermission()) {
+        handleMicPermissionDenied();
+        return;
+      }
+
+      // Mic was granted without callback
+      if (shouldRequestCameraPermission()) {
+        awaitingPermissionResult = true;
+        ActivityCompat.requestPermissions(
+            this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+        return;
+      }
+
+      proceedAfterPermissions();
     }
   }
 
