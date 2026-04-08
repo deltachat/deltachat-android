@@ -527,22 +527,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    // Check microphone and camera permissions
-    if (!hasMicrophonePermission()) {
-      Log.e(TAG, "Microphone permission not granted");
-      Intent intent = new Intent(appContext, CallActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-      appContext.startActivity(intent);
-      notificationManager.cancel(NOTIFICATION_ID_CALL);
-      return;
-    }
-
-    if (startsWithVideo && !hasCameraPermission()) {
-      Log.w(TAG, "Camera permission not granted");
-      startsWithVideo = false;
-    }
-
-    // Launch CallActivity with answer action
+    // Launch CallActivity
     Intent intent = new Intent(appContext, CallActivity.class);
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     appContext.startActivity(intent);
@@ -1218,7 +1203,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    // Check camera and microphone permissions
+    // Check microphone permission
     if (!hasMicrophonePermission()) {
       Log.e(TAG, "Microphone permission not granted");
 
@@ -1226,11 +1211,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
       appContext.startActivity(intent);
       return;
-    }
-
-    if (startsWithVideo && !hasCameraPermission()) {
-      Log.w(TAG, "Camera permission not granted, will start audio-only");
-      startsWithVideo = false;
     }
 
     resetLiveDataForNewCall();

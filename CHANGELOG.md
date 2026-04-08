@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Fix file sharing to certain apps (e.g. Material Files, etc.)
+* Fix problem with calls when microphone permission is not granted
 * Remove proxy toggle from profile editing to avoid confusion
 
 ## v2.48.0

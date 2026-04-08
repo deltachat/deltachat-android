@@ -1,11 +1,14 @@
 package org.thoughtcrime.securesms.calls;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.EglUtils;
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
@@ -93,6 +96,12 @@ public class MediaStreamManager {
 
   @Nullable
   private VideoCapturer createVideoCapturer() {
+    if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED) {
+      Log.w(TAG, "Camera permission not granted");
+      return null;
+    }
+
     Camera2Enumerator enumerator = new Camera2Enumerator(context);
 
     // Try front camera first
