@@ -4,6 +4,7 @@
 
 * Fix file sharing to certain apps (e.g. Material Files, etc.)
 * Remove proxy toggle from profile editing to avoid confusion
+* Fix taking pictures and videos in devices with SD cards
 
 ## v2.48.0
 2026-03
