@@ -4,6 +4,7 @@
 
 * Fix file sharing to certain apps (e.g. Material Files, etc.)
 * Fix problem with calls when microphone permission is not granted
+* Fix taking pictures and videos in devices with SD cards
 * Remove proxy toggle from profile editing to avoid confusion
 
 ## v2.48.0

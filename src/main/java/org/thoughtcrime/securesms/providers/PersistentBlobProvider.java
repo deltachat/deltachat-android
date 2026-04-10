@@ -208,7 +208,6 @@ public class PersistentBlobProvider {
         return getFile(context, ContentUris.parseId(uri)).delete();
     }
 
-    //noinspection SimplifiableIfStatement
     if (isExternalBlobUri(context, uri)) {
       return new File(uri.getPath()).delete();
     }
@@ -287,6 +286,20 @@ public class PersistentBlobProvider {
 
   private static @NonNull File getExternalDir(Context context) throws IOException {
     File externalDir = context.getExternalCacheDir();
+
+    if (externalDir != null) {
+      try {
+        FileProviderUtil.getUriFor(context, new File(externalDir, "test"));
+      } catch (IllegalArgumentException e) {
+        Log.w(
+            TAG,
+            "External cache dir not resolvable by FileProvider, "
+                + "falling back to internal cache",
+            e);
+        externalDir = null;
+      }
+    }
+
     if (externalDir == null) {
       externalDir = context.getCacheDir();
     }
