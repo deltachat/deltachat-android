@@ -573,10 +573,6 @@
     <string name="up_to_x_most_worse_quality_images">Lên đến %1$s, hầu hết các hình ảnh có chất lượng kém hơn</string>
     <string name="up_to_x_most_balanced_quality_images">Lên đến %1$s, hình ảnh có chất lượng cân bằng nhất</string>
     <string name="download_failed">Tải xuống không thành công</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s tin nhắn</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Tải xuống tối đa có sẵn cho đến %1$s</string>
     <string name="profile_image_select">Chọn ảnh hồ sơ</string>
     <string name="select_your_new_profile_image">Chọn hình ảnh hồ sơ mới của bạn</string>
     <string name="profile_image_delete">Xóa ảnh hồ sơ</string>
