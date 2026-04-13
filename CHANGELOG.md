@@ -5,7 +5,11 @@
 * Fix file sharing to certain apps (e.g. Material Files, etc.)
 * Fix problem with calls when microphone permission is not granted
 * Fix taking pictures and videos in devices with SD cards
+* Fix flipped orientation for some images
+* Fix: avoid empty contact request chats when using invite links in a multi-device setup
 * Remove proxy toggle from profile editing to avoid confusion
+* Updated translations
+* Update to core 2.49.0
 
 ## v2.48.0
 2026-03
