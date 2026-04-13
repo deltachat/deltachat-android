@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.49.0
+2026-04
 
 * Fix file sharing to certain apps (e.g. Material Files, etc.)
 * Fix problem with calls when microphone permission is not granted
