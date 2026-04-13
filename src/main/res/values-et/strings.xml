@@ -669,6 +669,8 @@
     <string name="used_for_sending">Kasutatud saatmiseks</string>
     <string name="hide_from_contacts">Peida kontaktidest</string>
     <string name="hidden_from_contacts">Peidetud kontaktidest</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Sõnumid saavad kõik alusühendused (edastusserverid).\n\n⚠️ Kui muudad siin midagi, siis palun kontrolli, et kõikides sinu seadmetes on kasutusel vähemalt versioon 2.47.0. Vastasel juhul võivad vanema tarkvaraga seadmetes jääta sõnumid saabumata.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Kas lisad selle alusühenduse (edastusserveri)?</string>
     <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust (edastusserverid)</string>
@@ -812,10 +814,6 @@
     <string name="up_to_x_most_worse_quality_images">Suurusega kuni %1$s, üldjuhul kehva kvaliteediga pildid</string>
     <string name="up_to_x_most_balanced_quality_images">Suurusega kuni %1$s, üldjuhul mõistliku kvaliteediga pildid</string>
     <string name="download_failed">Allalaadimine ei õnnestunud</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">Sõnum suurusega %1$s</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Allalaadimise ülempiir on saadaval kuni %1$s</string>
     <string name="profile_image_select">Vali profiilipilt</string>
     <string name="select_your_new_profile_image">Vali oma uus profiilipilt</string>
     <string name="profile_image_delete">Kustuta profiilipilt</string>

@@ -627,7 +627,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">Ya tengo un perfil</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Usar correo-e clásico como Retransmisor</string>
+    <string name="manual_account_setup_option">Usar correo electrónico como Retransmisor</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Tu perfil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -831,10 +831,6 @@
     <string name="up_to_x_most_worse_quality_images">Hasta %1$s, la mayoría de imágenes de peor calidad</string>
     <string name="up_to_x_most_balanced_quality_images">Hasta %1$s, la mayoría de imágenes de calidad balanceada</string>
     <string name="download_failed">Descarga fallida</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">Mensaje de %1$s</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Descarga disponible hasta %1$s</string>
     <string name="profile_image_select">Seleccionar imagen de perfil</string>
     <string name="select_your_new_profile_image">Seleccionar tu nueva imagen de perfil</string>
     <string name="profile_image_delete">Borrar imagen de perfil</string>
