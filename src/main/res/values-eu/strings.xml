@@ -113,7 +113,7 @@
     <string name="last_week">Azken astea</string>
     <string name="last_month">Azken hilabetea</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">%1$s-n ikusi da azken</string>
+    <string name="last_seen_at">Azken aldiz begiratua: %1$s</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Azken aldiz begiratua %1$s</string>
     <string name="last_seen_unknown">Azken aldiz begiratzea: ezezaguna</string>
@@ -669,6 +669,8 @@
     <string name="used_for_sending">Bidaltzeko erabilita</string>
     <string name="hide_from_contacts">Ezkutatu kontaktuetatik</string>
     <string name="hidden_from_contacts">Kontaktuetatik ezkutatuta</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Mezuak errele guztietan jasotzen dira.\n\n⚠️ Hemen zerbait aldatzen baduzu, ziurtatu zure gailu guztiek gutxienez 2.47.0 bertsioa dutela. Bestela, gailu zaharragoek mezuak gal ditzakete.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Gehitu errelea?</string>
     <string name="invalid_transport_qr">Eskaneatutako QR kodeak ez dauka baliozko errelerik.</string>
@@ -812,10 +814,6 @@
     <string name="up_to_x_most_worse_quality_images">%1$s arte: kalitate txarreneko irudiak</string>
     <string name="up_to_x_most_balanced_quality_images">%1$s arte: kalitate orekatueneko irudiak</string>
     <string name="download_failed">Deskargak huts egin du</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s mezu</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Deskargatu eskuragarri dagoen gehienezkoa %1$s arte</string>
     <string name="profile_image_select">Aukeratu abatarra</string>
     <string name="select_your_new_profile_image">Aukeratu zure abatar berria</string>
     <string name="profile_image_delete">Ezabatu abatarra</string>
