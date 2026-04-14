@@ -38,7 +38,7 @@ import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
 import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
-import org.thoughtcrime.securesms.geolocation.DcLocationManager;
+import org.thoughtcrime.securesms.geolocation.LocationStreamingService;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
@@ -59,7 +59,6 @@ public class ApplicationContext extends MultiDexApplication {
   private Rpc rpc;
   private DcContext dcContext;
 
-  private DcLocationManager dcLocationManager;
   private DcEventCenter eventCenter;
   private NotificationCenter notificationCenter;
   private JobManager jobManager;
@@ -122,15 +121,6 @@ public class ApplicationContext extends MultiDexApplication {
     synchronized (initLock) {
       this.dcContext = dcContext;
     }
-  }
-
-  /**
-   * Get DcLocationManager instance, waiting for initialization if necessary. This method is
-   * thread-safe and will block until initialization is complete.
-   */
-  public DcLocationManager getLocationManager() {
-    ensureInitialized();
-    return dcLocationManager;
   }
 
   /**
@@ -255,11 +245,14 @@ public class ApplicationContext extends MultiDexApplication {
               }
               dcContext = dcAccounts.getSelectedAccount();
               notificationCenter = new NotificationCenter(this);
-              dcLocationManager = new DcLocationManager(this, dcContext);
 
               isInitialized = true;
               initLock.notifyAll();
               Log.i(TAG, "DcAccounts initialization complete");
+
+              if (dcContext.isSendingLocationsToChat(0)) {
+                LocationStreamingService.ensureRunning(this);
+              }
 
               // set translations before starting I/O to avoid sending untranslated MDNs (issue
               // #2288)
