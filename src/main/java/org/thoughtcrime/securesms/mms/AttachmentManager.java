@@ -510,12 +510,12 @@ public class AttachmentManager {
         .withPermanentDenialDialog(
             activity.getString(R.string.perm_explain_access_to_location_denied))
         .onAllGranted(
-            () ->
-                ShareLocationDialog.show(
-                    activity,
-                    durationInSeconds ->
-                        LocationStreamingService.startSharing(
-                            appContext, chatId, durationInSeconds)))
+            () -> {
+              ShareLocationDialog.show(
+                  activity,
+                  durationInSeconds ->
+                      LocationStreamingService.startSharing(appContext, chatId, durationInSeconds));
+            })
         .request(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
             android.Manifest.permission.ACCESS_COARSE_LOCATION)

@@ -15,9 +15,8 @@ import com.google.android.gms.location.Priority;
 public class GmsLocationSource implements LocationSource {
 
   private static final String TAG = GmsLocationSource.class.getSimpleName();
-  private static final long UPDATE_INTERVAL_MS = 3000;
-  private static final long FASTEST_INTERVAL_MS = 1000;
-  private static final float MIN_DISTANCE_M = 5f;
+  private static final long UPDATE_INTERVAL_MS = 3_000;
+  private static final long FASTEST_INTERVAL_MS = 1_000;
 
   private FusedLocationProviderClient client;
   private LocationCallback locationCallback;
@@ -29,7 +28,7 @@ public class GmsLocationSource implements LocationSource {
     LocationRequest request =
         new LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, UPDATE_INTERVAL_MS)
             .setMinUpdateIntervalMillis(FASTEST_INTERVAL_MS)
-            .setMinUpdateDistanceMeters(MIN_DISTANCE_M)
+            .setMinUpdateDistanceMeters(0)
             .setWaitForAccurateLocation(false)
             .build();
 
@@ -57,23 +56,6 @@ public class GmsLocationSource implements LocationSource {
       client.removeLocationUpdates(locationCallback);
       client = null;
       locationCallback = null;
-    }
-  }
-
-  @Override
-  public void getCurrentLocation(@NonNull Context context, @NonNull Callback callback) {
-    FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(context);
-    try {
-      client
-          .getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, null)
-          .addOnSuccessListener(
-              location -> {
-                if (location != null) {
-                  callback.onLocationUpdate(location);
-                }
-              });
-    } catch (SecurityException e) {
-      Log.w(TAG, "No permission for getCurrentLocation", e);
     }
   }
 }

@@ -86,6 +86,7 @@ public class LocationStreamingService extends Service {
   @Override
   public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
     if (intent != null && ACTION_STOP.equals(intent.getAction())) {
+      stopAllSharing();
       stopSelf();
       return START_NOT_STICKY;
     }
@@ -97,6 +98,13 @@ public class LocationStreamingService extends Service {
     }
 
     return START_STICKY;
+  }
+
+  private void stopAllSharing() {
+    for (int chatId : ActiveLocationChats.getAllIds(this)) {
+      DcHelper.getContext(this).sendLocationsToChat(chatId, 0);
+    }
+    ActiveLocationChats.clear(this);
   }
 
   @Nullable
@@ -130,16 +138,13 @@ public class LocationStreamingService extends Service {
 
   private void beginLocationUpdates() {
     source = LocationSourceFactory.create(this);
-
-    source.getCurrentLocation(this, this::onNewLocation);
     source.startUpdates(this, this::onNewLocation);
   }
 
   private void onNewLocation(Location location) {
-    if (LocationUtils.isBetter(location, lastPublished)) {
-      publishAndWrite(location);
-      lastPublished = location;
-    }
+    Log.d(TAG, "onNewLocation raw: " + location);
+    publishAndWrite(location);
+    lastPublished = location;
   }
 
   private void publishAndWrite(Location location) {
@@ -151,9 +156,10 @@ public class LocationStreamingService extends Service {
                 (float) location.getLatitude(),
                 (float) location.getLongitude(),
                 location.getAccuracy());
+    Log.d(TAG, "keepGoing: " + keepGoing);
 
     if (!keepGoing) {
-      ActiveLocationChats.clear(this);
+      stopAllSharing();
       stopSelf();
     }
   }

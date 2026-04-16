@@ -11,12 +11,6 @@ public interface LocationSource {
 
   void stopUpdates();
 
-  /**
-   * Request a single current location to seed the stream. May return null if no fresh fix is
-   * available.
-   */
-  void getCurrentLocation(@NonNull Context context, @NonNull Callback callback);
-
   interface Callback {
     void onLocationUpdate(@NonNull Location location);
   }

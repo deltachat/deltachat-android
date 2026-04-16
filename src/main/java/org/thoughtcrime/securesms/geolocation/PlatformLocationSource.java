@@ -2,25 +2,24 @@ package org.thoughtcrime.securesms.geolocation;
 
 import android.content.Context;
 import android.location.LocationManager;
+import android.os.Build;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.core.location.LocationListenerCompat;
 import androidx.core.location.LocationManagerCompat;
 import androidx.core.location.LocationRequestCompat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.Executor;
 
 public class PlatformLocationSource implements LocationSource {
 
   private static final String TAG = PlatformLocationSource.class.getSimpleName();
-  private static final long UPDATE_INTERVAL_MS = 3_000;
-  private static final float MIN_DISTANCE_M = 5f;
+  private static final long UPDATE_INTERVAL_MS = 0;
 
   private LocationManager locationManager;
   private final List<LocationListenerCompat> activeListeners = new ArrayList<>();
-  private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
   @Override
   public void startUpdates(@NonNull Context context, @NonNull Callback callback) {
@@ -30,27 +29,37 @@ public class PlatformLocationSource implements LocationSource {
       return;
     }
 
-    requestProvider(LocationManager.GPS_PROVIDER, callback);
-    requestProvider(LocationManager.NETWORK_PROVIDER, callback);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+      // API 31+, fused provider manages GPS + network internally
+      requestProvider(context, LocationManager.FUSED_PROVIDER, callback);
+    } else {
+      // API 23–30: register on both providers separately.
+      requestProvider(context, LocationManager.GPS_PROVIDER, callback);
+      requestProvider(context, LocationManager.NETWORK_PROVIDER, callback);
+    }
   }
 
-  private void requestProvider(String provider, Callback callback) {
+  private void requestProvider(Context context, String provider, Callback callback) {
     if (locationManager == null) return;
 
-    try {
-      if (!locationManager.isProviderEnabled(provider)) return;
+    boolean enabled = locationManager.isProviderEnabled(provider);
+    Log.d(TAG, "Provider " + provider + " enabled: " + enabled);
+    if (!enabled) return;
 
+    try {
       LocationRequestCompat request =
           new LocationRequestCompat.Builder(UPDATE_INTERVAL_MS)
-              .setMinUpdateDistanceMeters(MIN_DISTANCE_M)
+              .setMinUpdateDistanceMeters(0)
               .setQuality(LocationRequestCompat.QUALITY_HIGH_ACCURACY)
               .build();
 
       LocationListenerCompat listener = callback::onLocationUpdate;
+      Executor mainExecutor = ContextCompat.getMainExecutor(context);
 
       LocationManagerCompat.requestLocationUpdates(
-          locationManager, provider, request, executor, listener);
+          locationManager, provider, request, mainExecutor, listener);
       activeListeners.add(listener);
+      Log.d(TAG, "Registered on provider: " + provider);
     } catch (SecurityException | IllegalArgumentException e) {
       Log.e(TAG, "Cannot request " + provider + " updates", e);
     }
@@ -67,34 +76,6 @@ public class PlatformLocationSource implements LocationSource {
         }
       }
       activeListeners.clear();
-    }
-    executor.shutdown();
-  }
-
-  @Override
-  public void getCurrentLocation(@NonNull Context context, @NonNull Callback callback) {
-    LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-    if (lm == null) return;
-
-    // Prefer GPS, but fall back to network if GPS isn't enabled
-    String provider =
-        lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
-            ? LocationManager.GPS_PROVIDER
-            : LocationManager.NETWORK_PROVIDER;
-
-    try {
-      LocationManagerCompat.getCurrentLocation(
-          lm,
-          provider,
-          (android.os.CancellationSignal) null,
-          executor,
-          location -> {
-            if (location != null) {
-              callback.onLocationUpdate(location);
-            }
-          });
-    } catch (SecurityException e) {
-      Log.w(TAG, "No permission for getCurrentLocation", e);
     }
   }
 }
