@@ -29,22 +29,27 @@ public class PlatformLocationSource implements LocationSource {
       return;
     }
 
+    boolean registered = false;
+
+    // API 31+: try the platform fused provider first
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-      // API 31+, fused provider manages GPS + network internally
-      requestProvider(context, LocationManager.FUSED_PROVIDER, callback);
-    } else {
-      // API 23–30: register on both providers separately.
+      registered = requestProvider(context, LocationManager.FUSED_PROVIDER, callback);
+    }
+
+    // Fall back (or complement) with individual providers
+    if (!registered) {
       requestProvider(context, LocationManager.GPS_PROVIDER, callback);
       requestProvider(context, LocationManager.NETWORK_PROVIDER, callback);
     }
   }
 
-  private void requestProvider(Context context, String provider, Callback callback) {
-    if (locationManager == null) return;
+  private boolean requestProvider(Context context, String provider, Callback callback) {
+    if (locationManager == null) return false;
 
-    boolean enabled = locationManager.isProviderEnabled(provider);
-    Log.d(TAG, "Provider " + provider + " enabled: " + enabled);
-    if (!enabled) return;
+    if (!locationManager.isProviderEnabled(provider)) {
+      Log.d(TAG, "Provider " + provider + " not enabled, skipping");
+      return false;
+    }
 
     try {
       LocationRequestCompat request =
@@ -60,8 +65,10 @@ public class PlatformLocationSource implements LocationSource {
           locationManager, provider, request, mainExecutor, listener);
       activeListeners.add(listener);
       Log.d(TAG, "Registered on provider: " + provider);
+      return true;
     } catch (SecurityException | IllegalArgumentException e) {
       Log.e(TAG, "Cannot request " + provider + " updates", e);
+      return false;
     }
   }
 
