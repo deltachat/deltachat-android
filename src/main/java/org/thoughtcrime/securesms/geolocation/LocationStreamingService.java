@@ -188,7 +188,7 @@ public class LocationStreamingService extends Service {
       NotificationChannel channel =
           new NotificationChannel(
               CHANNEL_ID,
-              getString(R.string.location_streaming_channel_name),
+              getString(R.string.location_streaming_notification_title),
               NotificationManager.IMPORTANCE_LOW);
       channel.setDescription(getString(R.string.location_streaming_channel_desc));
       channel.setShowBadge(false);
