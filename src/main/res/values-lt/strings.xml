@@ -720,8 +720,6 @@
     <string name="up_to_x_most_worse_quality_images">Iki %1$s, iš esmės, blogos kokybės paveikslus</string>
     <string name="up_to_x_most_balanced_quality_images">Iki %1$s, iš esmės, subalansuotos kokybės paveikslus</string>
     <string name="download_failed">Atsiuntimas nepavyko</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s žinutė</string>
     <string name="profile_image_select">Pasirinkti profilio nuotrauką</string>
     <string name="select_your_new_profile_image">Pasirinkite naują profilio nuotrauką</string>
     <string name="profile_image_delete">Ištrinti profilio nuotrauką</string>

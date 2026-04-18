@@ -52,7 +52,8 @@ import org.webrtc.VideoTrack;
 public class CallActivity extends AppCompatActivity {
 
   private static final String TAG = CallActivity.class.getSimpleName();
-  private static final int PERMISSION_REQUEST_CODE = 1001;
+  private static final int MIC_PERMISSION_REQUEST_CODE = 1001;
+  private static final int CAMERA_PERMISSION_REQUEST_CODE = 1002;
 
   public static final String ACTION_ANSWER_CALL = BuildConfig.APPLICATION_ID + ".ANSWER_CALL";
   public static final String ACTION_DECLINE_CALL = BuildConfig.APPLICATION_ID + ".DECLINE_CALL";
@@ -94,9 +95,29 @@ public class CallActivity extends AppCompatActivity {
 
   private PowerManager.WakeLock proximityWakeLock;
 
+  // States
+  private boolean awaitingPermissionResult = false;
+  private boolean pausedWhileAwaitingPermission = false;
+  private boolean intentHandled = false;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    // Destructive actions need nothing
+    String action = getIntent() != null ? getIntent().getAction() : null;
+    if (ACTION_DECLINE_CALL.equals(action)) {
+      Log.d(TAG, "Handling DECLINE_CALL action from notification");
+      CallCoordinator.getInstance(getApplication()).declineCall();
+      finish();
+      return;
+    }
+    if (ACTION_HANGUP_CALL.equals(action)) {
+      Log.d(TAG, "Handling HANGUP_CALL action from notification");
+      CallCoordinator.getInstance(getApplication()).hangUp();
+      finish();
+      return;
+    }
 
     setContentView(R.layout.activity_call);
 
@@ -107,11 +128,6 @@ public class CallActivity extends AppCompatActivity {
     setupInsets();
 
     initializeProximityWakeLock();
-
-    if (!hasRequiredPermissions()) {
-      requestRequiredPermissions();
-      return;
-    }
 
     // PiP listener
     addOnPictureInPictureModeChangedListener(
@@ -139,44 +155,71 @@ public class CallActivity extends AppCompatActivity {
 
     initializeViewModel();
 
+    // Intent handling needs permissions
+    if (!hasMicrophonePermission()) {
+      awaitingPermissionResult = true;
+      ActivityCompat.requestPermissions(
+          this, new String[] {Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION_REQUEST_CODE);
+      return;
+    }
+
+    if (shouldRequestCameraPermission()) {
+      awaitingPermissionResult = true;
+      ActivityCompat.requestPermissions(
+          this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+      return;
+    }
+
     handleIntents(getIntent());
+    intentHandled = true;
   }
 
   private void handleIntents(Intent intent) {
-    if (intent == null || viewModel == null) {
+    if (intent == null) {
       return;
     }
 
     CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
 
-    if (!coordinator.hasActiveCall()) {
-      Log.e(TAG, "No active call exists, cannot proceed");
-      Toast.makeText(this, "No active call", Toast.LENGTH_SHORT).show();
-      finish();
-      return;
-    }
-
     String action = intent.getAction();
     Log.d(TAG, "handleIntents: action=" + action);
 
-    // Handle notification actions
-    if (ACTION_ANSWER_CALL.equals(action)) {
-      Log.d(TAG, "Handling ANSWER_CALL action from notification");
-      viewModel.handleNotificationAnswer();
-      return;
-    }
-
+    // Destructive actions without ViewModel
     if (ACTION_DECLINE_CALL.equals(action)) {
-      Log.d(TAG, "Handling DECLINE_CALL action from notification");
-      viewModel.handleNotificationDecline();
+      Log.d(TAG, "Handling DECLINE_CALL action");
+      if (viewModel != null) {
+        viewModel.handleNotificationDecline();
+      } else {
+        coordinator.declineCall();
+      }
       finish();
       return;
     }
 
     if (ACTION_HANGUP_CALL.equals(action)) {
-      Log.d(TAG, "Handling HANGUP_CALL action from notification");
-      viewModel.handleNotificationHangup();
+      Log.d(TAG, "Handling HANGUP_CALL action");
+      if (viewModel != null) {
+        viewModel.handleNotificationHangup();
+      } else {
+        coordinator.hangUp();
+      }
       finish();
+      return;
+    }
+
+    if (viewModel == null) {
+      return;
+    }
+
+    if (!coordinator.hasActiveCall()) {
+      Log.e(TAG, "No active call exists, cannot proceed");
+      finish();
+      return;
+    }
+
+    if (ACTION_ANSWER_CALL.equals(action)) {
+      Log.d(TAG, "Handling ANSWER_CALL action from notification");
+      viewModel.handleNotificationAnswer();
       return;
     }
 
@@ -373,6 +416,7 @@ public class CallActivity extends AppCompatActivity {
                   case INITIALIZING:
                   case PROMPTING_USER_ACCEPT:
                   case ENDED:
+                  case ANSWERED_ELSEWHERE:
                   case ERROR:
                   default:
                     finish();
@@ -504,6 +548,8 @@ public class CallActivity extends AppCompatActivity {
         viewModel.getVideoEnabled(), v -> videoConfigChanged.setValue(true));
     videoConfigChanged.addSource(
         viewModel.getRemoteVideoEnabled(), v -> videoConfigChanged.setValue(true));
+    videoConfigChanged.addSource(
+        viewModel.getIsFrontCamera(), v -> videoConfigChanged.setValue(true));
 
     // Video layout
     videoConfigChanged.observe(
@@ -576,6 +622,23 @@ public class CallActivity extends AppCompatActivity {
 
       case RECONNECTING:
         statusText.setText(R.string.call_reconnecting);
+        break;
+
+      case ANSWERED_ELSEWHERE:
+        statusText.setText(R.string.call_answered_elsewhere);
+        incomingCallPrompt.setVisibility(View.GONE);
+        bottomLayoutContainer.setVisibility(View.GONE);
+        callerIconContainer.setVisibility(View.GONE);
+        answerModeSelector.setVisibility(View.GONE);
+
+        new Handler(Looper.getMainLooper())
+            .postDelayed(
+                () -> {
+                  if (!isFinishing()) {
+                    finish();
+                  }
+                },
+                1500);
         break;
 
       case ENDED:
@@ -705,17 +768,21 @@ public class CallActivity extends AppCompatActivity {
     VideoTrack localTrack = viewModel.getLocalVideoTrack().getValue();
     VideoTrack remoteTrack = viewModel.getRemoteVideoTrack().getValue();
 
+    boolean isFront = Boolean.TRUE.equals(viewModel.getIsFrontCamera().getValue());
+
     boolean showFullScreen = false;
 
     if (state == CallViewModel.CallState.CONNECTED
         && remoteTrack != null
         && Boolean.TRUE.equals(remoteVideoEnabled)) {
+      remoteVideoView.setMirror(false);
       remoteTrack.addSink(remoteVideoView);
       showFullScreen = true;
     } else if (!coordinator.isIncomingCall()
         && (state == CallViewModel.CallState.RINGING || state == CallViewModel.CallState.CONNECTING)
         && localTrack != null
         && Boolean.TRUE.equals(videoEnabled)) {
+      remoteVideoView.setMirror(isFront);
       localTrack.addSink(remoteVideoView);
       showFullScreen = true;
     }
@@ -729,6 +796,7 @@ public class CallActivity extends AppCompatActivity {
             && !isInPictureInPictureMode();
 
     if (showCorner) {
+      localVideoView.setMirror(isFront);
       localTrack.addSink(localVideoView);
     }
 
@@ -758,18 +826,46 @@ public class CallActivity extends AppCompatActivity {
 
   // Permissions
 
-  private boolean hasRequiredPermissions() {
-    return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-            == PackageManager.PERMISSION_GRANTED
-        && ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
-            == PackageManager.PERMISSION_GRANTED;
+  private boolean hasMicrophonePermission() {
+    return ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
+        == PackageManager.PERMISSION_GRANTED;
   }
 
-  private void requestRequiredPermissions() {
-    ActivityCompat.requestPermissions(
-        this,
-        new String[] {Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO},
-        PERMISSION_REQUEST_CODE);
+  private boolean hasCameraPermission() {
+    return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+        == PackageManager.PERMISSION_GRANTED;
+  }
+
+  private boolean shouldRequestCameraPermission() {
+    CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
+    return coordinator.isStartsWithVideo() && !hasCameraPermission();
+  }
+
+  private void handleMicPermissionDenied() {
+    Toast.makeText(this, R.string.call_requires_mic_permission, Toast.LENGTH_LONG).show();
+
+    CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
+    if (coordinator.hasActiveCall()
+        && coordinator.isIncomingCall()
+        && !coordinator.hasOngoingCall()) {
+      coordinator.declineCall();
+    }
+
+    finish();
+  }
+
+  private void proceedAfterPermissions() {
+    if (intentHandled) return;
+
+    if (shouldRequestCameraPermission()) {
+      awaitingPermissionResult = true;
+      ActivityCompat.requestPermissions(
+          this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+      return;
+    }
+
+    handleIntents(getIntent());
+    intentHandled = true;
   }
 
   @Override
@@ -777,38 +873,34 @@ public class CallActivity extends AppCompatActivity {
       int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-    if (requestCode == PERMISSION_REQUEST_CODE) {
-      boolean microphoneGranted = false;
-      boolean cameraGranted = false;
+    awaitingPermissionResult = false;
+    pausedWhileAwaitingPermission = false;
 
-      for (int i = 0; i < permissions.length; i++) {
-        if (permissions[i].equals(Manifest.permission.RECORD_AUDIO)) {
-          microphoneGranted = (grantResults[i] == PackageManager.PERMISSION_GRANTED);
-        } else if (permissions[i].equals(Manifest.permission.CAMERA)) {
-          cameraGranted = (grantResults[i] == PackageManager.PERMISSION_GRANTED);
-        }
-      }
+    CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
 
-      if (!microphoneGranted) {
-        Toast.makeText(this, "Microphone permission is required for calls", Toast.LENGTH_LONG)
-            .show();
-        finish();
+    if (requestCode == MIC_PERMISSION_REQUEST_CODE) {
+      boolean micGranted =
+          grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+
+      if (!micGranted) {
+        handleMicPermissionDenied();
         return;
       }
 
-      CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
+    } else if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+      boolean cameraGranted =
+          grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
-      if (!cameraGranted && coordinator.isStartsWithVideo()) {
+      if (!cameraGranted) {
         Log.w(TAG, "Camera permission denied, switching to audio-only");
         Toast.makeText(
                 this, "Starting audio-only call (camera permission denied)", Toast.LENGTH_SHORT)
             .show();
         coordinator.setStartsWithVideo(false);
       }
-
-      initializeViewModel();
-      handleIntents(getIntent());
     }
+
+    proceedAfterPermissions();
   }
 
   // Picture-in-Picture
@@ -816,6 +908,11 @@ public class CallActivity extends AppCompatActivity {
   @Override
   public void onUserLeaveHint() {
     super.onUserLeaveHint();
+
+    // Do not finish activity when a permission request is pending
+    if (awaitingPermissionResult) {
+      return;
+    }
 
     // Enter PiP mode when user presses home button during active call
     if (viewModel != null) {
@@ -833,6 +930,7 @@ public class CallActivity extends AppCompatActivity {
           case INITIALIZING:
           case PROMPTING_USER_ACCEPT:
           case ENDED:
+          case ANSWERED_ELSEWHERE:
           case ERROR:
           default:
             finish();
@@ -873,6 +971,10 @@ public class CallActivity extends AppCompatActivity {
   protected void onPause() {
     super.onPause();
 
+    if (awaitingPermissionResult) {
+      pausedWhileAwaitingPermission = true;
+    }
+
     if (proximityWakeLock != null && proximityWakeLock.isHeld()) {
       proximityWakeLock.release();
       Log.d(TAG, "Proximity wake lock released in onDestroy");
@@ -880,10 +982,40 @@ public class CallActivity extends AppCompatActivity {
   }
 
   @Override
+  protected void onResume() {
+    super.onResume();
+
+    // Fallback for Android 16 bug: onRequestPermissionsResult not called
+    if (awaitingPermissionResult && pausedWhileAwaitingPermission) {
+      Log.w(TAG, "Permission result callback not received, handling in onResume");
+
+      awaitingPermissionResult = false;
+      pausedWhileAwaitingPermission = false;
+
+      if (!hasMicrophonePermission()) {
+        handleMicPermissionDenied();
+        return;
+      }
+
+      // Mic was granted without callback
+      if (shouldRequestCameraPermission()) {
+        awaitingPermissionResult = true;
+        ActivityCompat.requestPermissions(
+            this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+        return;
+      }
+
+      proceedAfterPermissions();
+    }
+  }
+
+  @Override
   protected void onDestroy() {
     super.onDestroy();
 
-    detachAllTracks();
+    if (viewModel != null) {
+      detachAllTracks();
+    }
 
     // Release video renderers
     if (localVideoView != null) {

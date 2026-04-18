@@ -142,17 +142,13 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
       return;
     }
 
-    // Check permissions
-    boolean hasMicrophone = callCoordinator.hasMicrophonePermission();
-    boolean hasCamera = callCoordinator.hasCameraPermission();
-
-    if (!hasMicrophone) {
+    if (!callCoordinator.hasMicrophonePermission()) {
       Log.e(TAG, "Microphone permission not granted, cannot start call");
       callCoordinator.reportError("Microphone permission is required for calls");
       return;
     }
 
-    boolean startsWithVideo = callCoordinator.isStartsWithVideo() && hasCamera;
+    boolean startsWithVideo = callCoordinator.isStartsWithVideo();
 
     Log.d(TAG, "Creating media stream with video: " + startsWithVideo);
 
@@ -164,14 +160,18 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
             webRTCClient.setLocalMediaStream(stream);
 
+            callCoordinator.updateFrontCamera(mediaStreamManager.isFrontCamera());
+
             callCoordinator.setVideoEnabled(startsWithVideo);
 
             if (!stream.videoTracks.isEmpty()) {
               VideoTrack localTrack = stream.videoTracks.get(0);
               callCoordinator.updateLocalVideoTrack(localTrack);
             } else {
-              Log.w(TAG, "Camera unavailable, call will be audio-only");
-              callCoordinator.reportError("Camera unavailable, using audio only");
+              Log.w(TAG, "No video track in stream, call will be audio-only");
+              if (startsWithVideo) {
+                callCoordinator.reportError("Camera unavailable, using audio only");
+              }
               callCoordinator.setVideoEnabled(false);
             }
 
@@ -181,7 +181,9 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
           @Override
           public void onError(String error) {
             Log.e(TAG, "Failed to setup media: " + error);
-            callCoordinator.reportError("Camera/microphone error: " + error);
+            if (startsWithVideo) {
+              callCoordinator.reportError("Camera/microphone error: " + error);
+            }
             callCoordinator.setVideoEnabled(false);
           }
         });
@@ -410,7 +412,18 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     Log.d(TAG, "switchCamera");
 
     if (mediaStreamManager != null) {
-      mediaStreamManager.switchCamera();
+      mediaStreamManager.switchCamera(
+          new MediaStreamManager.CameraSwitchCallback() {
+            @Override
+            public void onCameraSwitch(boolean isFrontCamera) {
+              callCoordinator.updateFrontCamera(isFrontCamera);
+            }
+
+            @Override
+            public void onError(String error) {
+              Log.e(TAG, "Camera switch failed: " + error);
+            }
+          });
     }
   }
 

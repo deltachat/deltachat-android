@@ -1,9 +1,14 @@
 package org.thoughtcrime.securesms.calls;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.EglUtils;
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
@@ -31,9 +36,16 @@ public class MediaStreamManager {
   private VideoSource videoSource;
   private AudioSource audioSource;
   private SurfaceTextureHelper surfaceTextureHelper;
+  private volatile boolean isFrontCamera = true;
 
   public interface Callback {
     void onMediaStreamReady(MediaStream stream);
+
+    void onError(String error);
+  }
+
+  public interface CameraSwitchCallback {
+    void onCameraSwitch(boolean isFrontCamera);
 
     void onError(String error);
   }
@@ -45,6 +57,7 @@ public class MediaStreamManager {
   }
 
   /** Create media stream with audio and optionally video */
+  @RequiresApi(api = Build.VERSION_CODES.M)
   public void createMediaStream(Callback callback) {
     try {
       MediaStream mediaStream = peerConnectionFactory.createLocalMediaStream(STREAM_ID);
@@ -83,6 +96,12 @@ public class MediaStreamManager {
 
   @Nullable
   private VideoCapturer createVideoCapturer() {
+    if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED) {
+      Log.w(TAG, "Camera permission not granted");
+      return null;
+    }
+
     Camera2Enumerator enumerator = new Camera2Enumerator(context);
 
     // Try front camera first
@@ -91,6 +110,7 @@ public class MediaStreamManager {
       if (enumerator.isFrontFacing(deviceName)) {
         VideoCapturer capturer = enumerator.createCapturer(deviceName, null);
         if (capturer != null) {
+          isFrontCamera = true;
           return capturer;
         }
       }
@@ -100,6 +120,7 @@ public class MediaStreamManager {
     for (String deviceName : deviceNames) {
       VideoCapturer capturer = enumerator.createCapturer(deviceName, null);
       if (capturer != null) {
+        isFrontCamera = enumerator.isFrontFacing(deviceName);
         return capturer;
       }
     }
@@ -107,12 +128,61 @@ public class MediaStreamManager {
     return null;
   }
 
-  public void switchCamera() {
-    if (videoCapturer instanceof CameraVideoCapturer) {
-      CameraVideoCapturer cameraVideoCapturer = (CameraVideoCapturer) videoCapturer;
-      cameraVideoCapturer.switchCamera(null);
-      Log.d(TAG, "Camera switched");
+  public void switchCamera(@Nullable CameraSwitchCallback callback) {
+    if (!(videoCapturer instanceof CameraVideoCapturer)) {
+      Log.e(TAG, "switchCamera called but videoCapturer is not a CameraVideoCapturer");
+      return;
     }
+
+    CameraVideoCapturer cameraVideoCapturer = (CameraVideoCapturer) videoCapturer;
+
+    // Find the opposite-facing camera
+    Camera2Enumerator enumerator = new Camera2Enumerator(context);
+    String[] deviceNames = enumerator.getDeviceNames();
+
+    String targetCameraName = null;
+    for (String deviceName : deviceNames) {
+      boolean isTargetFront = !isFrontCamera;
+      boolean deviceIsFront = enumerator.isFrontFacing(deviceName);
+
+      if (deviceIsFront == isTargetFront) {
+        targetCameraName = deviceName;
+        break; // Take the first match
+      }
+    }
+
+    if (targetCameraName == null) {
+      Log.e(TAG, "No camera found with opposite facing direction");
+      if (callback != null) {
+        callback.onError("No opposite camera available");
+      }
+      return;
+    }
+
+    final String finalTargetCameraName = targetCameraName;
+    Log.d(TAG, "Switching to camera: " + finalTargetCameraName);
+
+    // Call with explicit camera name
+    cameraVideoCapturer.switchCamera(
+        new CameraVideoCapturer.CameraSwitchHandler() {
+          @Override
+          public void onCameraSwitchDone(boolean isFront) {
+            Log.d(TAG, "switchCamera SUCCESS, isFront=" + isFront);
+            isFrontCamera = isFront;
+            if (callback != null) callback.onCameraSwitch(isFront);
+          }
+
+          @Override
+          public void onCameraSwitchError(String errorDescription) {
+            Log.e(TAG, "switchCamera FAILED: " + errorDescription);
+            if (callback != null) callback.onError(errorDescription);
+          }
+        },
+        finalTargetCameraName);
+  }
+
+  public boolean isFrontCamera() {
+    return isFrontCamera;
   }
 
   /** Cleanup resources */

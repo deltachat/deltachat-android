@@ -69,6 +69,8 @@
     <string name="mark_as_read">Segna come Letto</string>
     <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Segna Letto</string>
+    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Non Letto</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Caricamento…</string>
     <string name="hide">Nascondi</string>
@@ -173,6 +175,7 @@
         <item quantity="other">%d selezionati</item>
     </plurals>
     <string name="selected_colon">Selezionato:</string>
+    <string name="selected">Selezionato</string>
     <string name="self">Io</string>
     <string name="draft">Bozza</string>
     <string name="image">Immagine</string>
@@ -407,6 +410,12 @@
     <string name="audio_call">Chiamata audio</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Videochiamata</string>
+    <string name="call_initializing">Inizializzazione...</string>
+    <string name="call_incoming">Chiamata in arrivo</string>
+    <string name="call_ringing">Squilla…</string>
+    <string name="call_reconnecting">Riconnessione…</string>
+    <string name="call_ended">Chiamata terminata</string>
+    <string name="call_failed">Chiamata non riuscita</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Chiamata in uscita</string>
     <!-- deprecated, use "Video call" instead -->
@@ -418,6 +427,8 @@
     <string name="declined_call">Chiamata rifiutata</string>
     <string name="canceled_call">Chiamata annullata</string>
     <string name="missed_call">Chiamata persa</string>
+    <string name="already_in_call">Già in chiamata</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Sei sicuro di voler abbandonare?</string>
@@ -672,9 +683,16 @@
     <string name="add_transport">Aggiungi Trasporto</string>
     <string name="remove_transport">Rimuovi Trasporto</string>
     <string name="edit_transport">Modifica Trasporto</string>
+    <string name="used_for_sending">Utilizzato per l\'invio</string>
+    <string name="hide_from_contacts">Nascondi dai Contatti</string>
+    <string name="hidden_from_contacts">Nascosto dai contatti</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">I messaggi vengono ricevuti su tutti i ripetitori.\n\n⚠️ Se modifichi qualcosa qui, assicurati che tutti i tuoi dispositivi abbiano almeno la versione 2.47.0. Altrimenti i dispositivi più vecchi potrebbero non ricevere i messaggi.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Aggiungere questo trasporto?</string>
     <string name="invalid_transport_qr">Il codice QR scansionato non contiene un mezzo di trasporto valido.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_or_hide_transport_x">Rimuovo ripetitore \"%1$s\"?\n\nI contatti che conoscono solo questo relay potrebbero non raggiungerti finché non invierai loro un altro messaggio. In caso di dubbio, nascondilo invece di rimuoverlo.</string>
     <string name="login_certificate_checks">Controlli Certificato</string>
     <string name="login_error_mail">Per piacere Inserisci un indirizzo e-mail valido</string>
     <string name="login_error_server">Per piacere inserisci un server / indirizzo IP valido</string>
@@ -729,6 +747,7 @@
     <string name="pref_enter_sends">Spedisci con Invio</string>
     <string name="pref_enter_sends_explain">Premendo il tasto Invio invierà i messaggi</string>
     <string name="pref_outgoing_media_quality">Qualità Media in Uscita</string>
+    <string name="pref_outgoing_media_quality_hint">Per inviare contenuti in qualità originale, allega i file multimediali come \"File\". Questo comporta un consumo di dati significativamente maggiore sia per te che per i destinatari.</string>
     <string name="pref_outgoing_balanced">Bilanciata</string>
     <string name="pref_outgoing_worse">Qualità peggiore, dimensione ridotta</string>
     <string name="pref_vibrate">Vibra</string>
@@ -812,10 +831,6 @@
     <string name="up_to_x_most_worse_quality_images">Fino a %1$s, immagini di qualità peggiore</string>
     <string name="up_to_x_most_balanced_quality_images">Fino a %1$s, immagini di qualità più equilibrata</string>
     <string name="download_failed">Scaricamento fallito</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s messaggio</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Scaricamento disponibile massimo fino a %1$s</string>
     <string name="profile_image_select">Seleziona Immagine Profilo</string>
     <string name="select_your_new_profile_image">Seleziona la tua nuova immagine profilo</string>
     <string name="profile_image_delete">Elimina Immagine Profilo</string>
@@ -948,6 +963,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Timer messaggi a scomparsa impostato su %1$s settimane da %2$s.</string>
     <string name="chat_unencrypted_explanation">I messaggi in questa chat utilizzano l\' e-mail classica e non sono crittografati end-to-end.</string>
+    <string name="messages_are_e2ee">I messaggi sono crittografati end-to-end.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">I messaggi sono crittografati end-to-end. Tocca per saperne di più.</string>
     <string name="chat_protection_enabled_explanation">Tutti i messaggi in questa chat sono crittografati end-to-end. La crittografia end-to-end mantiene privati i messaggi tra te e i tuoi interlocutori. Nemmeno servers, providers o relays possono leggerli.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s richiede la crittografia end-to-end che non è ancora configurata per questa chat. Tocca per saperne di più.</string>

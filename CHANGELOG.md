@@ -1,7 +1,31 @@
 # Delta Chat Android Changelog
 
-## Next
+## Unreleased
+
 * Add support for UnifiedPush
+* Better incoming call system integration
+* Calls are not experimental anymore and don't need to be manually enabled
+* Allow mini-apps to play audio without user interaction
+
+## v2.49.0
+2026-04
+
+* Fix file sharing to certain apps (e.g. Material Files, etc.)
+* Fix problem with calls when microphone permission is not granted
+* Fix taking pictures and videos in devices with SD cards
+* Fix flipped orientation for some images
+* Fix: avoid empty contact request chats when using invite links in a multi-device setup
+* Remove proxy toggle from profile editing to avoid confusion
+* Updated translations
+* Update to core 2.49.0
+
+## v2.48.0
+2026-03
+
+* Add a warning when editing relays
+* Fix message reordering problems in multi-relay setups
+* Some more bug fixes and updated translations
+* Update to core 2.48.0
 
 ## v2.47.0
 2026-03

@@ -686,8 +686,6 @@
     <string name="used_for_sending">Utilisé pour les envois</string>
     <string name="hide_from_contacts">Masquer pour les contacts</string>
     <string name="hidden_from_contacts">Masqué pour les contacts</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Les messages sont reçus sur tous les relais.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Ajouter le relais ?</string>
     <string name="invalid_transport_qr">Le code QR scanné ne renvoie pas vers un relais valide.</string>
@@ -831,10 +829,6 @@
     <string name="up_to_x_most_worse_quality_images">Jusqu\'à %1$s, plus basse qualité d\'image</string>
     <string name="up_to_x_most_balanced_quality_images">Jusqu\'à %1$s, qualité d\'image la plus équilibrée </string>
     <string name="download_failed">Échec du téléchargement</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s message</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Télécharger le plus possible jusqu\'à %1$s</string>
     <string name="profile_image_select">Sélectionnez l\'image de profil</string>
     <string name="select_your_new_profile_image">Sélectionnez votre nouvelle image de profil</string>
     <string name="profile_image_delete">Supprimer l\'image de profil</string>

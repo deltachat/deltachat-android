@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.relay;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
 import android.content.DialogInterface;
@@ -24,7 +23,6 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
@@ -44,7 +42,6 @@ import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -78,8 +75,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   Spinner imapSecurity;
   Spinner smtpSecurity;
   Spinner certCheck;
-
-  private SwitchCompat proxySwitch;
 
   Rpc rpc;
   int accId;
@@ -115,13 +110,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     imapSecurity = findViewById(R.id.imap_security);
     smtpSecurity = findViewById(R.id.smtp_security);
     certCheck = findViewById(R.id.cert_check);
-
-    proxySwitch = findViewById(R.id.proxy_settings);
-    proxySwitch.setOnClickListener(
-        l -> {
-          proxySwitch.setChecked(!proxySwitch.isChecked()); // revert toggle
-          startActivity(new Intent(this, ProxySettingsActivity.class));
-        });
 
     String addr = getIntent().getStringExtra(EXTRA_ADDR);
     EnteredLoginParam config = null;
@@ -185,10 +173,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     boolean expandAdvanced = false;
     int intVal;
 
-    intVal = DcHelper.getInt(this, CONFIG_PROXY_ENABLED);
-    proxySwitch.setChecked(intVal == 1);
-    expandAdvanced = expandAdvanced || intVal == 1;
-
     if (config != null) { // configured
       emailInput.setText(config.addr);
       if (!TextUtils.isEmpty(config.addr)) {
@@ -246,7 +230,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   @Override
   public void onResume() {
     super.onResume();
-    proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
   }
 
   private void showLog() {

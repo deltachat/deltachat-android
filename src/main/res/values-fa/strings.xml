@@ -770,10 +770,6 @@
     <string name="up_to_x_most_worse_quality_images">تا سقف %1$s، بدترین کیفیت تصویر</string>
     <string name="up_to_x_most_balanced_quality_images">تا سقف %1$s، متعادل‌ترین کیفیت تصویر</string>
     <string name="download_failed">بارگیری ناموفق</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">پیام %1$s </string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">سقف دانلود تا %1$s فعال خواهد بود</string>
     <string name="profile_image_select">انتخاب تصویر نمایه</string>
     <string name="select_your_new_profile_image">تصویر نمایهٔ جدیدتان را برگزینید</string>
     <string name="profile_image_delete">حذف تصویر نمایه</string>
