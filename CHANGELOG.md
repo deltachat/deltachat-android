@@ -4,6 +4,7 @@
 
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
+* Allow mini-apps to play audio without user interaction
 
 ## v2.49.0
 2026-04
