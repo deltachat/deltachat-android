@@ -5,6 +5,7 @@
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
 * Allow mini-apps to play audio without user interaction
+* Mark chats as unread (long tap a chat and select the corresponding option from the three-dot-menu)
 
 ## v2.49.0
 2026-04

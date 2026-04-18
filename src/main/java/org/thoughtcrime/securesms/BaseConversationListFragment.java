@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,6 +27,8 @@ import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.fragment.app.Fragment;
+import chat.delta.rpc.Rpc;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -44,6 +47,7 @@ import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public abstract class BaseConversationListFragment extends Fragment implements ActionMode.Callback {
+  private static final String TAG = BaseConversationListFragment.class.getSimpleName();
   protected ActionMode actionMode;
   protected PulsingFloatingActionButton fab;
 
@@ -170,6 +174,17 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     return false;
   }
 
+  private boolean areSomeSelectedChatsFresh() {
+    DcContext dcContext = DcHelper.getContext(requireActivity());
+    final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+    for (long chatId : selectedChats) {
+      if (dcContext.getFreshMsgCount((int) chatId) > 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   private void handlePinAllSelected() {
     final DcContext dcContext = DcHelper.getContext(requireActivity());
     final Set<Long> selectedConversations =
@@ -223,6 +238,26 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     for (long chatId : selectedConversations) {
       dcContext.marknoticedChat((int) chatId);
     }
+    if (actionMode != null) {
+      actionMode.finish();
+      actionMode = null;
+    }
+  }
+
+  private void handleMarkfreshSelected() {
+    final Set<Long> selectedConversations =
+        new HashSet<Long>(getListAdapter().getBatchSelections());
+
+    final Rpc rpc = DcHelper.getRpc(requireActivity());
+    try {
+      int accId = rpc.getSelectedAccountId();
+      for (long chatId : selectedConversations) {
+        rpc.markfreshChat(accId, (int) chatId);
+      }
+    } catch (RpcException e) {
+      Log.e(TAG, "RPC error", e);
+    }
+
     if (actionMode != null) {
       actionMode.finish();
       actionMode = null;
@@ -409,6 +444,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     if (!isRelayingMessageContent(requireActivity())) {
       final int selectedCount = getListAdapter().getBatchSelections().size();
       menu.findItem(R.id.menu_add_to_home_screen).setVisible(selectedCount == 1);
+
       MenuItem archiveItem = menu.findItem(R.id.menu_archive_selected);
       if (offerToArchive()) {
         archiveItem.setIcon(R.drawable.ic_archive_white_24dp);
@@ -417,6 +453,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
         archiveItem.setIcon(R.drawable.ic_unarchive_white_24dp);
         archiveItem.setTitle(R.string.menu_unarchive_chat);
       }
+
       MenuItem pinItem = menu.findItem(R.id.menu_pin_selected);
       if (areSomeSelectedChatsUnpinned()) {
         pinItem.setIcon(R.drawable.ic_pin_white);
@@ -425,12 +462,17 @@ public abstract class BaseConversationListFragment extends Fragment implements A
         pinItem.setIcon(R.drawable.ic_unpin_white);
         pinItem.setTitle(R.string.unpin_chat);
       }
+
       MenuItem muteItem = menu.findItem(R.id.menu_mute_selected);
       if (areSomeSelectedChatsUnmuted()) {
         muteItem.setTitle(R.string.menu_mute);
       } else {
         muteItem.setTitle(R.string.menu_unmute);
       }
+
+      final boolean someAreFresh = areSomeSelectedChatsFresh();
+      menu.findItem(R.id.menu_marknoticed_selected).setVisible(someAreFresh);
+      menu.findItem(R.id.menu_markfresh_selected).setVisible(!someAreFresh);
     }
   }
 
@@ -483,6 +525,9 @@ public abstract class BaseConversationListFragment extends Fragment implements A
       return true;
     } else if (itemId == R.id.menu_marknoticed_selected) {
       handleMarknoticedSelected();
+      return true;
+    } else if (itemId == R.id.menu_markfresh_selected) {
+      handleMarkfreshSelected();
       return true;
     } else if (itemId == R.id.menu_add_to_home_screen) {
       handleAddToHomeScreen();
