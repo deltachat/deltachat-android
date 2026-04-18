@@ -1042,6 +1042,12 @@
     <string name="new_messages_body">You have new messages</string>
     <string name="n_messages_in_m_chats">%1$d messages in %2$d chats</string>
 
+    <!-- location streaming -->
+    <string name="location_streaming_channel_desc">Channel for On-demand Location Streaming</string>
+    <string name="location_streaming_notification_title">Location Streaming</string>
+    <string name="location_streaming_notification_text">You are sharing your location</string>
+    <string name="location_rationale">To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.</string>
+
     <!-- permissions -->
     <string name="perm_required_title">Permission required</string>
     <string name="perm_continue">Continue</string>
