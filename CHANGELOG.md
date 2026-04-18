@@ -5,6 +5,7 @@
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
 * Display a permanent notification when doing location streaming and get rid of dangerous "Access Location in Background" permission
+* Allow mini-apps to play audio without user interaction
 
 ## v2.49.0
 2026-04
