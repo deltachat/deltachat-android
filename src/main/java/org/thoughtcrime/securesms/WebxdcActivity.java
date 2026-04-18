@@ -33,6 +33,8 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.WebxdcMessageInfo;
+
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -73,6 +75,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String baseURL;
   private String sourceCodeUrl = "";
   private String selfAddr;
+  private boolean isAppSender;
+  private boolean isBroadcast;
   private int sendUpdateMaxSize;
   private int sendUpdateInterval;
   private boolean internetAccess = false;
@@ -215,13 +219,21 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     // (a random-id would also work, but would need maintenance and does not add benefits as we
     // regard the file-part interceptRequest() only,
     // also a random-id is not that useful for debugging)
-    this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
+    this.baseURL = "https://acc" + accountId + "-msg" + appMessageId + ".localhost";
 
-    final JSONObject info = this.dcAppMsg.getWebxdcInfo();
-    internetAccess = JsonUtils.optBoolean(info, "internet_access");
-    selfAddr = info.optString("self_addr");
-    sendUpdateMaxSize = info.optInt("send_update_max_size");
-    sendUpdateInterval = info.optInt("send_update_interval");
+    try {
+      WebxdcMessageInfo info = rpc.getWebxdcInfo(accountId, appMessageId);
+      internetAccess = info.internetAccess;
+      selfAddr = info.selfAddr;
+      isAppSender = info.isAppSender;
+      isBroadcast = info.isBroadcast;
+      sendUpdateMaxSize = info.sendUpdateMaxSize;
+      sendUpdateInterval = info.sendUpdateInterval;
+    } catch (RpcException e) { // unexpected error, log it and finish
+      Log.i(TAG, "RPC Error", e);
+      finish();
+      return;
+    }
 
     toggleFakeProxy(!internetAccess);
 
@@ -612,6 +624,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     @JavascriptInterface
     public String selfName() {
       return WebxdcActivity.this.dcContext.getName();
+    }
+
+    @JavascriptInterface
+    public boolean isAppSender() {
+      return WebxdcActivity.this.isAppSender;
+    }
+
+    @JavascriptInterface
+    public boolean isBroadcast() {
+      return WebxdcActivity.this.isBroadcast;
     }
 
     /**
