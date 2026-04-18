@@ -4,7 +4,7 @@
 
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
-* Allow sharing location while the app is in background
+* Display a permanent notification when doing location streaming and get rid of dangerous "Access Location in Background" permission
 
 ## v2.49.0
 2026-04
