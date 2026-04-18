@@ -47,7 +47,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.MediaPreviewActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareLocationDialog;
@@ -64,7 +63,8 @@ import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.geolocation.DcLocationManager;
+import org.thoughtcrime.securesms.geolocation.ActiveLocationChats;
+import org.thoughtcrime.securesms.geolocation.LocationStreamingService;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
@@ -490,47 +490,36 @@ public class AttachmentManager {
   }
 
   public static void selectLocation(Activity activity, int chatId) {
-    ApplicationContext applicationContext = ApplicationContext.getInstance(activity);
-    DcLocationManager dcLocationManager = applicationContext.getLocationManager();
+    Context appContext = activity.getApplicationContext();
 
-    if (DcHelper.getContext(applicationContext).isSendingLocationsToChat(chatId)) {
-      dcLocationManager.stopSharingLocation(chatId);
-      return;
+    if (DcHelper.getContext(appContext).isSendingLocationsToChat(chatId)) {
+      if (LocationStreamingService.isRunning()) {
+        LocationStreamingService.stopSharing(appContext, chatId);
+        return;
+      }
+      // Stale — service is dead but chat layer still thinks it's sharing.
+      // Clean up this chat and fall through to the fresh start flow.
+      ActiveLocationChats.remove(appContext, chatId);
+      DcHelper.getContext(appContext).sendLocationsToChat(chatId, 0);
     }
 
-    // see
-    // https://support.google.com/googleplay/android-developer/answer/9799150#zippy=%2Cstep-provide-prominent-in-app-disclosure
-    // for rationale dialog requirements
-    Permissions.PermissionsBuilder permissionsBuilder =
-        Permissions.with(activity)
-            .ifNecessary()
-            .withRationaleDialog(
-                "To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.",
-                R.drawable.ic_location_on_white_24dp)
-            .withPermanentDenialDialog(
-                activity.getString(R.string.perm_explain_access_to_location_denied))
-            .onAllGranted(
-                () -> {
-                  ShareLocationDialog.show(
-                      activity,
-                      durationInSeconds -> {
-                        if (durationInSeconds == 1) {
-                          dcLocationManager.shareLastLocation(chatId);
-                        } else {
-                          dcLocationManager.shareLocation(durationInSeconds, chatId);
-                        }
-                      });
-                });
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-      permissionsBuilder.request(
-          Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-          Manifest.permission.ACCESS_FINE_LOCATION,
-          Manifest.permission.ACCESS_COARSE_LOCATION);
-    } else {
-      permissionsBuilder.request(
-          Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
-    }
-    permissionsBuilder.execute();
+    Permissions.with(activity)
+        .ifNecessary()
+        .withRationaleDialog(
+            activity.getString(R.string.location_rationale), R.drawable.ic_location_on_white_24dp)
+        .withPermanentDenialDialog(
+            activity.getString(R.string.perm_explain_access_to_location_denied))
+        .onAllGranted(
+            () -> {
+              ShareLocationDialog.show(
+                  activity,
+                  durationInSeconds ->
+                      LocationStreamingService.startSharing(appContext, chatId, durationInSeconds));
+            })
+        .request(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION)
+        .execute();
   }
 
   private @Nullable Uri getSlideUri() {

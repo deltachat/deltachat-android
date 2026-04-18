@@ -248,6 +248,7 @@ dependencies {
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
     }
+    gplayImplementation 'com.google.android.gms:play-services-location:21.3.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.27.3'
