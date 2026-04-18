@@ -600,13 +600,13 @@
     <string name="multidevice_this_creates_a_qr_code">Это позволяет создать QR-код, который можно отсканировать на втором устройстве, чтобы скопировать профиль.\n\nУбедитесь, что посторонние лица или камеры не могут видеть следующий экран.</string>
     <string name="multidevice_install_dc_on_other_device">Установите Delta Chat на другом устройстве (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, выберите \"У меня уже есть профиль / Добавить как второе устройство\" и отсканируйте код, показанный здесь</string>
+    <string name="multidevice_tap_scan_on_other_device">Запустите Delta Chat, нажмите \"У меня уже есть профиль / Добавить как второе устройство\" и отсканируйте показанный здесь код</string>
     <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
     <string name="multidevice_qr_subtitle">Отсканируйте, чтобы настроить второе устройство для %1$s</string>
     <string name="multidevice_receiver_title">Добавить как второе устройство</string>
-    <string name="multidevice_open_settings_on_other_device">На первом устройстве запустите Delta Chat, откройте \"Настройки / Добавить второе устройство\" и отсканируйте показанный там код</string>
+    <string name="multidevice_open_settings_on_other_device">На первом устройстве запустите Delta Chat, перейдите в \"Настройки / Добавить второе устройство\" и отсканируйте показанный там код</string>
     <string name="multidevice_receiver_scanning_ask">Скопировать профиль с другого устройства на это устройство?</string>
-    <string name="multidevice_receiver_needs_update">Профиль, который вы хотите импортировать, создан в более новой версии Delta Chat. Чтобы продолжить настройку второго устройства, пожалуйста, обновите это устройство до последней версии Delta Chat.</string>
+    <string name="multidevice_receiver_needs_update">Профиль, который вы хотите импортировать, создан в более новой версии Delta Chat.\n\nЧтобы продолжить настройку второго устройства, пожалуйста, обновите это устройство до последней версии Delta Chat.</string>
     <string name="multidevice_abort">Прервать настройку второго устройства?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Это сделает недействительным QR-код, скопированный в буфер обмена.</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Профиль перенесен на ваше второе устройство.</string>
@@ -668,7 +668,7 @@
     <string name="welcome_chat_over_email">Безопасный децентрализованный чат</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Войти</string>
-    <string name="login_advanced_hint">Эта авторизация предназначена для опытных пользователей:\n\n• Не используйте адрес, который вы уже используете в другом приложении.\n\n• Обычный почтовый сервер позволяет вести чаты без сквозного шифрования, что отмечено значком почты.</string>
+    <string name="login_advanced_hint">Этот способ входа предназначен для опытных пользователей:\n\n• Не используйте адрес, который вы уже используете в другом приложении.\n\n• Обычный почтовый сервер позволяет вести чаты без сквозного шифрования, (такие чаты помечаются значком конверта).</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">Имя пользователя IMAP</string>
     <string name="login_imap_server">Сервер IMAP</string>
@@ -704,7 +704,7 @@
     <string name="hide_from_contacts">Скрыть из контактов</string>
     <string name="hidden_from_contacts">Скрыт из контактов</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Сообщения поступают на все релеи.\n\n⚠️ Если вы что-либо измените здесь, убедитесь, что все ваши устройства работают как минимум на версии 2.47.0. В противном случае старые устройства могут пропускать сообщения.</string>
+    <string name="transport_list_hint">Сообщения поступают на все релеи.\n\n⚠️ Если вы измените какие-либо настройки в этом разделе, убедитесь, что на всех ваших устройствах установлена версия Delta Chat не ниже 2.47.0. В противном случае старые версии могут не получать сообщения.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Добавить этот релей?</string>
     <string name="invalid_transport_qr">Отсканированный QR-код не содержит корректный релей.</string>
@@ -746,7 +746,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Отправить %1$d файла(ов) в \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Отправить %1$d файл(ов) в %2$d чата(ов)?</string>
-    <string name="videos_sent_without_recoding">(Отправка нескольких видео приведет к их отправке в исходном виде, что может потребовать значительного объема данных. Чтобы уменьшить размер файлов и сэкономить трафик, отправляйте каждое видео в отдельном сообщении.)</string>
+    <string name="videos_sent_without_recoding">(Отправка нескольких видео приведет к их отправке в исходном виде, что может потребовать значительного объема данных. Чтобы уменьшить размер файлов и сэкономить трафик, отправляйте каждое видео в отдельном сообщении)</string>
     <string name="share_text_multiple_chats">Отправить текст в %1$d чата(ов)?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия необходимых разрешений.</string>
 
@@ -764,7 +764,7 @@
     <string name="pref_enter_sends">Отправка по Enter</string>
     <string name="pref_enter_sends_explain">Нажатие клавиши Enter отправит текстовые сообщения</string>
     <string name="pref_outgoing_media_quality">Качество отправляемых медиафайлов</string>
-    <string name="pref_outgoing_media_quality_hint">Чтобы отправить файлы в оригинальном качестве, прикрепляйте их как \"Файл\". Это потребует больше трафика для вас и ваших получателей.</string>
+    <string name="pref_outgoing_media_quality_hint">Чтобы отправить файлы в исходном качестве, прикрепляйте их как \"Файл\". Это потребует больше трафика для вас и ваших получателей.</string>
     <string name="pref_outgoing_balanced">Сбалансированное</string>
     <string name="pref_outgoing_worse">Низкое качество, малый размер</string>
     <string name="pref_vibrate">Вибрация</string>
@@ -813,7 +813,7 @@
     <string name="pref_other">Другое</string>
     <string name="pref_backup">Резервное копирование</string>
     <string name="pref_backup_explain">Резервное копирование чатов на внешний носитель</string>
-    <string name="pref_backup_export_explain">Резервная копия поможет вам восстановить данные на этом или на другом устройстве.\n\nРезервная копия содержит все сообщения, контакты и чаты, а также параметры сквозного шифрования Autocrypt. Храните файл резервной копии в безопасном месте или удалите его как можно скорее.</string>
+    <string name="pref_backup_export_explain">Резервная копия поможет вам восстановить данные на этом или на другом устройстве.\n\nРезервная копия содержит все сообщения, контакты и чаты, а также параметры сквозного шифрования Autocrypt. Храните файл резервной копии в безопасном месте или удалите его при первой возможности.</string>
     <string name="pref_backup_export_this">Экспортировать профиль</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Экспорт всех %1$d профилей</string>
@@ -826,8 +826,8 @@
     <string name="pref_imap_folder_warn_disable_defaults">Если вы измените этот параметр, убедитесь, что ваш сервер и другие клиенты настроены соответствующим образом.\n\nВ противном случае, всё может перестать работать.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Режим нескольких устройств</string>
-    <string name="pref_multidevice_explain">Синхронизируйте свои сообщения с другими устройствами. Автоматически включается при добавлении второго устройства</string>
-    <string name="pref_multidevice_change_warn">Режим нескольких устройств должен быть включен при использовании одного и того же профиля на нескольких устройствах. Отключайте эту настройку, только если вы удалили этот профиль со всех остальных устройств.\n\nОтключение режима нескольких устройств при использовании профиля на нескольких устройствах приведет к пропуску сообщений и другим проблемам.</string>
+    <string name="pref_multidevice_explain">Синхронизируйте свои сообщения с другими устройствами. Функция включается автоматически при добавлении второго устройства</string>
+    <string name="pref_multidevice_change_warn">Режим нескольких устройств должен быть включен, если вы используете один и тот же профиль на нескольких устройствах. Отключайте эту настройку, только если вы удалили этот профиль со всех остальных устройств.\n\nОтключение режима нескольких устройств при использовании профиля на нескольких устройствах приведет к потере сообщений и возникновению других проблем.</string>
     <string name="pref_auto_folder_moves">Автоперемещение в папку DeltaChat</string>
     <string name="pref_only_fetch_mvbox_title">Загружать только из папки DeltaChat</string>
     <string name="pref_show_emails">Показывать обычную почту</string>
@@ -848,10 +848,6 @@
     <string name="up_to_x_most_worse_quality_images">До %1$s, изображения плохого качества</string>
     <string name="up_to_x_most_balanced_quality_images">До %1$s, изображения среднего качества</string>
     <string name="download_failed">Загрузка не удалась</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s сообщение</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Максимальная загрузка доступна до %1$s</string>
     <string name="profile_image_select">Выбрать изображение профиля</string>
     <string name="select_your_new_profile_image">Выбрать новое изображение профиля</string>
     <string name="profile_image_delete">Удалить изображение профиля</string>
@@ -860,7 +856,7 @@
     <string name="send_stats_to_devs">Отправить статистику разработчикам Delta Chat</string>
     <string name="stats_device_message">Хотите помочь улучшить Delta Chat и поддержать исследования, отправляя еженедельную анонимную статистику использования?\n\n👉 Нажмите здесь...👈</string>
     <string name="stats_confirmation_dialog">Хотите помочь улучшить Delta Chat и поддержать исследования, отправляя еженедельную анонимную статистику использования?</string>
-    <string name="stats_thanks">Спасибо! Вы всегда можете отключить отправку в разделе \"Настройки -> Дополнительно\"\n\nУ вас есть 5 минут, чтобы принять участие в научном исследовании по безопасности Delta Chat?</string>
+    <string name="stats_thanks">Спасибо! Вы всегда можете отключить отправку в разделе \"Настройки -> Дополнительно\"\n\nУ вас есть 5 минут, чтобы принять участие в исследовании безопасности Delta Chat?</string>
     <string name="stats_disable_dialog">Отправка статистики уже включена.\n\nВы хотите отключить её?</string>
     <string name="disable">Отключить</string>
     <string name="stats_keep_sending">Продолжить отправку</string>
@@ -893,7 +889,7 @@
     <string name="autodel_device_title">Удалять сообщения с устройства</string>
     <string name="autodel_server_title">Удалять сообщения с сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
-    <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n• Это относится ко всем медиафайлам\n\n• Сообщения будут удалены, независимо от того, были ли они просмотрены или нет.\n\n• \"Сохранённые сообщения\" будут пропущены при локальном удалении</string>
+    <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n• Это действие затронет все медиафайлы\n\n• Сообщения будут удалены, независимо от того, были ли они прочитаны или нет.\n\n• \"Сохранённые сообщения\" не будут удалены с устройства</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n⚠️ Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере.\n\n⚠️ Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете обычные клиенты электронной почты</string>
     <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
@@ -1015,9 +1011,9 @@
     <string name="qrscan_contains_text">Текст из QR-кода:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL из QR-кода:\n\n%1$s</string>
     <string name="qrscan_fingerprint_label">Отпечаток</string>
-    <string name="withdraw_verifycontact_explain">Этот QR-код можно отсканировать, чтобы связаться с вами.\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать</string>
-    <string name="withdraw_verifygroup_explain">Этот QR-код можно отсканировать, чтобы присоединиться к группе \"%1$s\".\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать</string>
-    <string name="withdraw_joinbroadcast_explain">Этот QR-код могут сканировать другие пользователи для присоединения к каналу \"%1$s\".\n\nВы можете сбросить его, чтобы существующий QR-код или пригласительная ссылка перестали работать.</string>
+    <string name="withdraw_verifycontact_explain">Этот QR-код можно отсканировать, чтобы связаться с вами.\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать.</string>
+    <string name="withdraw_verifygroup_explain">Этот QR-код можно отсканировать, чтобы присоединиться к группе \"%1$s\".\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать.</string>
+    <string name="withdraw_joinbroadcast_explain">Этот QR-код можно отсканировать, чтобы присоединиться к каналу \"%1$s\".\n\nВы можете сбросить его и тогда существующий QR-код или ссылка-приглашение перестанут работать.</string>
     <string name="withdraw_qr_code">Сбросить QR-код</string>
     <string name="revive_verifycontact_explain">Этот QR-код был сброшен и больше не работает.</string>
     <string name="revive_qr_code">Активировать QR-код</string>
@@ -1034,7 +1030,7 @@
     <string name="qrshow_join_contact_hint">Отсканируйте, чтобы начать чат с %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Нет соединения с интернетом, невозможно выполнить настройку QR-кода.</string>
     <string name="qraccount_ask_create_and_login">Создать новый профиль на \"%1$s\" и авторизоваться?</string>
-    <string name="set_name_and_avatar_explain">Укажите имя, которое будут видеть ваши контакты. Также можно установить изображение профиля.</string>
+    <string name="set_name_and_avatar_explain">Укажите имя, которое будут видеть ваши контакты. Вы также можете установить изображение профиля.</string>
     <string name="please_enter_name">Введите имя.</string>
     <string name="qraccount_qr_code_cannot_be_used">Отсканированный QR-код не может быть использован для создания нового профиля.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
@@ -1076,12 +1072,12 @@
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
     <string name="perm_continue">Продолжить</string>
-    <string name="perm_explain_access_to_camera_denied">Чтобы делать фотографии, снимать видео, откройте настройки приложения, выберите \"Разрешения\" и включите \"Камера\".</string>
+    <string name="perm_explain_access_to_camera_denied">Чтобы делать фотографии, снимать видео, откройте настройки приложения, выберите \"Разрешения\" и включите доступ к \"Камере\".</string>
     <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
-    <string name="perm_explain_access_to_mic_denied">Чтобы отправлять аудиосообщения, откройте настройки приложения, выберите \"Разрешения\" или \"Конфиденциальность и безопасность\" и включите \"Микрофон\".</string>
-    <string name="perm_explain_access_to_storage_denied">Чтобы получать или отправлять файлы, откройте настройки приложения, выберите \"Разрешения\" и включите \"Хранилище\".</string>
-    <string name="perm_explain_access_to_location_denied">Чтобы прикрепить местоположение, откройте настройки приложения, выберите \"Разрешения\" и включите \"Местоположение\".</string>
-    <string name="perm_explain_access_to_notifications_denied">Для получения уведомлений, перейдите в \"Настройки системы / Приложения / Delta Chat\" и включите \"Уведомления\".</string>
+    <string name="perm_explain_access_to_mic_denied">Чтобы отправлять аудиосообщения, откройте настройки приложения, выберите \"Разрешения\" или \"Конфиденциальность и безопасность\" и включите доступ к \"Микрофону\".</string>
+    <string name="perm_explain_access_to_storage_denied">Чтобы получать или отправлять файлы, откройте настройки приложения, выберите \"Разрешения\" и включите доступ к \"Хранилищу\".</string>
+    <string name="perm_explain_access_to_location_denied">Чтобы прикрепить местоположение, откройте настройки приложения, выберите \"Разрешения\" и включите доступ к \"Местоположению\".</string>
+    <string name="perm_explain_access_to_notifications_denied">Для получения уведомлений, перейдите в \"Настройки системы / Приложения / Delta Chat\" и включите доступ к \"Уведомлениям\".</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Нарисуйте где угодно, чтобы размыть</string>
@@ -1166,11 +1162,11 @@
     <string name="share_account_not_configured">Профиль не настроен.</string>
     <string name="cannot_play_audio_file">Аудиофайл не может быть воспроизведён.</string>
     <!-- iOS camera permission alert -->
-    <string name="perm_ios_explain_access_to_camera_denied">Чтобы делать фотографии, снимать видео и использовать сканер QR-кодов, откройте системные настройки и включите \"Камера\".</string>
+    <string name="perm_ios_explain_access_to_camera_denied">Чтобы делать фотографии, снимать видео и использовать сканер QR-кодов, откройте системные настройки и включите доступ к \"Камере\".</string>
     <string name="open_settings">Открыть настройки</string>
     <!-- iOS device contact alert -->
     <string name="import_device_contacts">Импорт контактов устройства</string>
-    <string name="import_device_contacts_hint">Чтобы переписываться с контактами из вашей адресной книги, откройте \"Настройки\" и включите \"Контакты\".</string>
+    <string name="import_device_contacts_hint">Чтобы переписываться с контактами из вашей адресной книги, откройте \"Настройки\" и включите доступ к \"Контактам\".</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Отключено в Delta Chat.</string>
     <string name="disabled_in_system_settings">Отключено в системных настройках</string>
@@ -1212,5 +1208,5 @@
     <string name="perm_enable_bg_already_done">Вы уже разрешили Delta Chat получать сообщения в фоновом режиме.\n\nЕсли сообщения все равно не приходят в фоновом режиме, также проверьте настройки вашей системы.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Что нового?\n\n💯 Сквозное шифрование стало постоянной и надёжной функцией. 🔒 Замков больше нет!\n\n✉️ Обычные письма без сквозного шифрования помечены значком конверта\n\n😻 Обновлённый экран профиля для всех контактов\n\n🔲 Новая кнопка быстрого доступа к приложениям, используемым в чате\n\n❤️ Поддержите нас финансово, чтобы мы сохранили независимость и продолжали вносить улучшения: %1$s</string>
+    <string name="update_2_0">Что нового?\n\n💯 Сквозное шифрование стало постоянной и надёжной функцией. Значки замков 🔒 убраны!\n\n✉️ Обычные письма без сквозного шифрования помечены значком конверта\n\n😻 Обновлённый экран профиля для всех контактов\n\n🔲 Новая кнопка быстрого доступа к приложениям, используемым в чате\n\n❤️ Пожалуйста, сделайте пожертвование, чтобы помочь нам сохранить независимость и продолжать работу над улучшениями: %1$s</string>
 </resources>

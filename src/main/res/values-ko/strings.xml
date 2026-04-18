@@ -502,10 +502,6 @@
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">%1$s까지 </string>
     <string name="download_failed">다운로드 실패</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">%1$s 메시지</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">%1$s까지 최대 다운로드 가능</string>
     <string name="profile_image_select">프로필 이미지 선택</string>
     <string name="select_your_new_profile_image">새로운 프로필 이미지 선택</string>
     <string name="profile_image_delete">프로필 이미지 삭제</string>

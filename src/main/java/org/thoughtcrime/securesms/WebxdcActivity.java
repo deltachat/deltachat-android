@@ -227,6 +227,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setJavaScriptEnabled(true);
+    webSettings.setMediaPlaybackRequiresUserGesture(false);
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(!internetAccess);
     webSettings.setAllowContentAccess(false);

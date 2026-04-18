@@ -801,10 +801,6 @@
     <string name="up_to_x_most_worse_quality_images">До %1$s, зображення найгіршої якості</string>
     <string name="up_to_x_most_balanced_quality_images">До %1$s, найбільш збалансована якість зображень</string>
     <string name="download_failed">Не вдалося завантажити</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">Повідомлення розміром %1$s\'</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Доступний для завантаження максимум до %1$s</string>
     <string name="profile_image_select">Вибрати зображення профілю</string>
     <string name="select_your_new_profile_image">Вибрати ваше нове зображення профілю</string>
     <string name="profile_image_delete">Видалити зображення профілю</string>

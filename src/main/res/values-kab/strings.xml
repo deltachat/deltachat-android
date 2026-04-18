@@ -810,10 +810,6 @@
     <string name="up_to_x_most_worse_quality_images">Arma d %1$s, tugniwin n tɣara n diri maḍi</string>
     <string name="up_to_x_most_balanced_quality_images">Arma d %1$s, tugniwin n tɣara yemneknayen</string>
     <string name="download_failed">Asader ur yeddi ara</string>
-    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB. Resulting string eg. "1 MiB message" -->
-    <string name="n_bytes_message">Izen %1$s</string>
-    <!-- %1$s will be replaced by human-readable date and time -->
-    <string name="download_max_available_until">Sader-d afellay i yellan alamma d %1$s</string>
     <string name="profile_image_select">Fren tugna n umaɣnu</string>
     <string name="select_your_new_profile_image">Fren tugna-ik·im tamaynut n umaɣnu</string>
     <string name="profile_image_delete">Kkes tugna n umaɣnu</string>

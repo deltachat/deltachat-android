@@ -527,22 +527,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    // Check microphone and camera permissions
-    if (!hasMicrophonePermission()) {
-      Log.e(TAG, "Microphone permission not granted");
-      Intent intent = new Intent(appContext, CallActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-      appContext.startActivity(intent);
-      notificationManager.cancel(NOTIFICATION_ID_CALL);
-      return;
-    }
-
-    if (startsWithVideo && !hasCameraPermission()) {
-      Log.w(TAG, "Camera permission not granted");
-      startsWithVideo = false;
-    }
-
-    // Launch CallActivity with answer action
+    // Launch CallActivity
     Intent intent = new Intent(appContext, CallActivity.class);
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     appContext.startActivity(intent);
@@ -1218,7 +1203,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    // Check camera and microphone permissions
+    // Check microphone permission
     if (!hasMicrophonePermission()) {
       Log.e(TAG, "Microphone permission not granted");
 
@@ -1226,11 +1211,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
       appContext.startActivity(intent);
       return;
-    }
-
-    if (startsWithVideo && !hasCameraPermission()) {
-      Log.w(TAG, "Camera permission not granted, will start audio-only");
-      startsWithVideo = false;
     }
 
     resetLiveDataForNewCall();
@@ -1378,10 +1358,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     // Check full screen intent permission on Android 14+
-    boolean canUseFullScreen = false;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-      canUseFullScreen = canUseFullScreenIntent();
-      if (!canUseFullScreen) {
+      if (!canUseFullScreenIntent()) {
         Log.w(TAG, "Full screen intent permission not granted, notification will appear normally");
       }
     }
@@ -1422,7 +1400,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
     Notification.Builder builder;
-    if (canUseFullScreen && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
       // Android 12+, CallStyle
       Person caller =
           new Person.Builder().setName(callerName).setIcon(callerIcon).setImportant(true).build();

@@ -178,7 +178,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="add_to_sticker_collection">Add to Sticker Collection</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">To add stickers, tap "Open Sticker Folder", create a subfolder for your sticker pack, and drag image and sticker files there</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Open Sticker Folder</string>
     <string name="ask_add_sticker_to_collection">Add this sticker to your collection?</string>
     <string name="ask_delete_sticker">Delete this sticker?</string>
@@ -420,6 +422,7 @@
     <string name="missed_call">Missed call</string>
     <string name="already_in_call">Already in a call</string>
     <string name="call_answered_elsewhere">Call answered on another device</string>
+    <string name="call_requires_mic_permission">Microphone permission is required for calls</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
