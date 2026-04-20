@@ -11,7 +11,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
  */
 public final class LocationSourceFactory {
 
-  private static final String TAG = LocationSourceFactory.class.getSimpleName();
+  private static final String TAG = "LocationSourceFactory";
 
   private LocationSourceFactory() {}
 

@@ -20,7 +20,7 @@ import org.thoughtcrime.securesms.R;
 /** Bottom sheet dialog for selecting audio output device */
 @RequiresApi(Build.VERSION_CODES.O)
 public class AudioDevicePickerDialog extends BottomSheetDialog {
-  private static final String TAG = AudioDevicePickerDialog.class.getSimpleName();
+  private static final String TAG = "AudioDevicePickerDialog";
 
   public interface OnDeviceSelectedListener {
     void onDeviceSelected(CallEndpointCompat endpoint);

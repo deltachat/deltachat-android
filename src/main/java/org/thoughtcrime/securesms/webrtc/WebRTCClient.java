@@ -44,7 +44,7 @@ import org.webrtc.VideoTrack;
 @RequiresApi(Build.VERSION_CODES.M)
 public class WebRTCClient {
 
-  private static final String TAG = WebRTCClient.class.getSimpleName();
+  private static final String TAG = "WebRTCClient";
 
   private static final int DC_ID_ICE_TRICKLING = 1;
   private static final int DC_ID_MUTED_STATE = 3;

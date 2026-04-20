@@ -59,7 +59,7 @@ public class DcMsg {
   public static final int DC_VIDEOCHATTYPE_UNKNOWN = 0;
   public static final int DC_VIDEOCHATTYPE_BASICWEBRTC = 1;
 
-  private static final String TAG = DcMsg.class.getSimpleName();
+  private static final String TAG = "DcMsg";
 
   public DcMsg(DcContext context, int viewtype) {
     msgCPtr = context.createMsgCPtr(viewtype);

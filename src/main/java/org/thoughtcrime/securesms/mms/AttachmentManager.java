@@ -75,7 +75,7 @@ import org.thoughtcrime.securesms.util.views.Stub;
 
 public class AttachmentManager {
 
-  private static final String TAG = AttachmentManager.class.getSimpleName();
+  private static final String TAG = "AttachmentManager";
 
   private final @NonNull Context context;
   private final @NonNull Stub<View> attachmentViewStub;

@@ -79,7 +79,7 @@ import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends MessageSelectorFragment {
-  private static final String TAG = ConversationFragment.class.getSimpleName();
+  private static final String TAG = "ConversationFragment";
 
   private static final int SCROLL_ANIMATION_THRESHOLD = 50;
 

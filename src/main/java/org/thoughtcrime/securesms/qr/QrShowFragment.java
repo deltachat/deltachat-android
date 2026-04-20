@@ -30,7 +30,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class QrShowFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = QrShowFragment.class.getSimpleName();
+  private static final String TAG = "QrShowFragment";
   public static final int WHITE = 0xFFFFFFFF;
   private static final int BLACK = 0xFF000000;
   private static final int WIDTH = 400;

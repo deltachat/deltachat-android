@@ -40,7 +40,7 @@ import org.thoughtcrime.securesms.util.Util;
  */
 public class DirectShareUtil {
 
-  private static final String TAG = DirectShareUtil.class.getSimpleName();
+  private static final String TAG = "DirectShareUtil";
   private static final String SHORTCUT_CATEGORY = "android.shortcut.conversation";
 
   public static void clearShortcut(@NonNull Context context, int chatId) {

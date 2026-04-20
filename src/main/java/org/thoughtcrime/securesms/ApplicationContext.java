@@ -50,7 +50,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.webxdc.WebxdcGarbageCollectionWorker;
 
 public class ApplicationContext extends MultiDexApplication {
-  private static final String TAG = ApplicationContext.class.getSimpleName();
+  private static final String TAG = "ApplicationContext";
   private static final Object initLock = new Object();
   private static volatile boolean isInitialized = false;
 

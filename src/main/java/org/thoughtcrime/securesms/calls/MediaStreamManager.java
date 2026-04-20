@@ -24,7 +24,7 @@ import org.webrtc.VideoTrack;
 
 public class MediaStreamManager {
 
-  private static final String TAG = MediaStreamManager.class.getSimpleName();
+  private static final String TAG = "MediaStreamManager";
   private static final String STREAM_ID = "local_stream";
   private static final String AUDIO_TRACK_ID = "audio_track";
   private static final String VIDEO_TRACK_ID = "video_track";

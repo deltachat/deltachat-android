@@ -31,7 +31,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ReactionsDetailsFragment extends DialogFragment
     implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = ReactionsDetailsFragment.class.getSimpleName();
+  private static final String TAG = "ReactionsDetailsFragment";
   private static final String ARG_MSG_ID = "msg_id";
 
   private RecyclerView recyclerView;

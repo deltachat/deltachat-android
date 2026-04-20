@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public class QrCodeHandler {
-  private static final String TAG = QrCodeHandler.class.getSimpleName();
+  private static final String TAG = "QrCodeHandler";
 
   public static int SECUREJOIN_SOURCE_EXTERNAL_LINK = 1;
   public static int SECUREJOIN_SOURCE_INTERNAL_LINK = 2;

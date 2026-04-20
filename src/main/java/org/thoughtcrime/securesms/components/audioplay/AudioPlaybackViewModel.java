@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class AudioPlaybackViewModel extends ViewModel {
-  private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();
+  private static final String TAG = "AudioPlaybackViewModel";
 
   private static final int NON_MESSAGE_AUDIO_MSG_ID =
       0; // Audios not attached to a message doesn't have message id.

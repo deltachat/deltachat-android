@@ -35,7 +35,7 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 public class MediaUtil {
 
-  private static final String TAG = MediaUtil.class.getSimpleName();
+  private static final String TAG = "MediaUtil";
 
   public static final String IMAGE_WEBP = "image/webp";
   public static final String IMAGE_JPEG = "image/jpeg";

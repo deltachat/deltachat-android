@@ -6,7 +6,7 @@ import android.util.Log;
 /** Non-GMS, always uses the platform LocationManager. */
 public final class LocationSourceFactory {
 
-  private static final String TAG = LocationSourceFactory.class.getSimpleName();
+  private static final String TAG = "LocationSourceFactory";
 
   private LocationSourceFactory() {}
 
