@@ -25,6 +25,8 @@
     <string name="downloading">Downloading…</string>
     <string name="open_attachment">Open Attachment</string>
     <string name="join">Join</string>
+    <string name="join_group">Join Group</string>
+    <string name="join_channel">Join Channel</string>
     <string name="rejoin">Rejoin</string>
     <string name="delete">Delete</string>
     <string name="delete_for_me">Delete for Me</string>
@@ -90,6 +92,7 @@
     <string name="offline">Offline</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Next</string>
+    <string name="warning">Warning</string>
     <string name="error">Error</string>
     <string name="error_x">Error: %1$s</string>
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
@@ -522,8 +525,11 @@
     <!-- search -->
     <string name="search">Search</string>
     <string name="search_in_chat">Search in Chat</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">Search in %1$s</string>
     <string name="search_files">Search Files</string>
     <string name="search_explain">Search for chats, contacts, and messages</string>
+    <string name="search_result_for_x">Result for \"%1$s\"</string>
     <string name="search_no_result_for_x">No results found for \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Unread</string>
@@ -534,7 +540,9 @@
     <string name="remove_group_image">Remove Group Image</string>
     <string name="change_group_image">Change Group Image</string>
     <string name="group_create_button">Create Group</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Please enter a name for the group.</string>
+    <string name="please_enter_chat_name">Please enter a name.</string>
     <string name="group_add_members">Add Members</string>
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
     <string name="profile_encryption">Encryption</string>
@@ -771,6 +779,8 @@
     <string name="pref_incognito_keyboard_explain">Request keyboard to disable personalized learning</string>
     <string name="pref_read_receipts">Read Receipts</string>
     <string name="pref_read_receipts_explain">If read receipts are disabled, you won\'t be able to see read receipts from others.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">Read by</string>
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Encryption</string>
     <string name="pref_manage_keys">Manage Keys</string>
@@ -883,9 +893,12 @@
     <string name="group_name_changed_by_you">You changed the group name from \"%1$s\" to \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Group name changed from \"%1$s\" to \"%2$s\" by %3$s.</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">Channel name changed from \"%1$s\" to \"%2$s\".</string>
     <string name="group_image_changed_by_you">You changed the group image.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Group image changed by %1$s.</string>
+    <string name="channel_image_changed">Channel image changed.</string>
     <string name="chat_description_changed_by_you">You changed the chat description.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">Chat description changed by %1$s.</string>
@@ -1022,6 +1035,8 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s already has a draft message, do you want to replace it?</string>
     <string name="mailto_link_could_not_be_decoded">mailto link could not be decoded: %1$s</string>
+    <string name="remove_quote">Remove quote</string>
+    <string name="remove_attachment">Remove attachment</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">Reply</string>
@@ -1080,6 +1095,7 @@
     <string name="global_menu_help_about_desktop">About Delta Chat</string>
     <string name="global_menu_file_open_desktop">Open Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Minimize</string>
+    <string name="no_account_selected">Select a profile or create a new profile</string>
     <string name="no_chat_selected_suggestion_desktop">Select a chat or create a new chat</string>
     <string name="write_message_desktop">Write a message</string>
     <string name="encryption_info_title_desktop">Encryption Info</string>
@@ -1101,9 +1117,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
+    <string name="data_found_other_installation_message">Your profiles from another Delta Chat installation are not accessible - different installations store their data in separate locations.\n\nTo keep existing profiles:\n1. Quit now\n2. Open the other Delta Chat - if needed, reinstall it from %1$s\n3. Back up each profile at \"Settings/Chats\"\n4. Relaunch this version\n5. Restore the backups using \"I already have a profile\"\n\nContinue without your previous profiles?</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Keybindings</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Navigation</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Message Input</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Selected Message</string>
     <string name="switch_between_chats">Switch between Chats</string>
     <string name="scroll_messages">Scroll Messages</string>
     <!-- command to put the cursor to the search input field -->
