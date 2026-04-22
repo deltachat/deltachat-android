@@ -221,6 +221,8 @@ public class DcHelper {
     dcContext.setStockTranslation(201, context.getString(R.string.qrshow_join_channel_hint));
     dcContext.setStockTranslation(202, context.getString(R.string.you_joined_the_channel));
     dcContext.setStockTranslation(203, context.getString(R.string.secure_join_channel_started));
+    dcContext.setStockTranslation(204, context.getString(R.string.channel_name_changed));
+    dcContext.setStockTranslation(205, context.getString(R.string.channel_image_changed));
     dcContext.setStockTranslation(210, context.getString(R.string.stats_msg_body));
     dcContext.setStockTranslation(220, context.getString(R.string.proxy_enabled));
     dcContext.setStockTranslation(221, context.getString(R.string.proxy_enabled_hint));
