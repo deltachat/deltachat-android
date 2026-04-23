@@ -112,9 +112,9 @@ public class AudioView extends FrameLayout {
           if (state != null && msgId == state.getMsgId() && audioUri.equals(state.getAudioUri())) {
             // Same audio
             if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
-              viewModel.pause(msgId, audioUri);
+              viewModel.pause(msgId);
             } else {
-              viewModel.play(msgId, audioUri);
+              viewModel.play(msgId);
             }
           } else {
             // Different audio
@@ -145,7 +145,7 @@ public class AudioView extends FrameLayout {
           @Override
           public void onStopTrackingTouch(SeekBar seekBar) {
             viewModel.setUserSeeking(false);
-            viewModel.seekTo(seekBar.getProgress(), msgId, audioUri);
+            viewModel.seekTo(seekBar.getProgress(), msgId);
           }
         });
 
