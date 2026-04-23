@@ -18,19 +18,19 @@ public class ShareLocationDialog {
           switch (which) {
             default:
             case 0:
-              shareLocationUnit = 5 * 60;
-              break;
-            case 1:
               shareLocationUnit = 30 * 60;
               break;
-            case 2:
+            case 1:
               shareLocationUnit = 60 * 60;
               break;
-            case 3:
+            case 2:
               shareLocationUnit = 2 * 60 * 60;
               break;
-            case 4:
+            case 3:
               shareLocationUnit = 6 * 60 * 60;
+              break;
+            case 4:
+              shareLocationUnit = 24 * 60 * 60;
               break;
           }
 
