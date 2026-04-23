@@ -36,7 +36,7 @@ import org.thoughtcrime.securesms.util.Prefs;
  * @author Moxie Marlinspike
  */
 public class ContactAccessor {
-  private static final String TAG = "ContactSelectionListFragment";
+  private static final String TAG = "ContactAccessor";
 
   private static final int CONTACT_CURSOR_NAME = 0;
 
