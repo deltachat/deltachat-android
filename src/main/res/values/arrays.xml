@@ -124,6 +124,7 @@
         <item>@string/share_location_for_30_minutes</item>
         <item>@string/share_location_for_one_hour</item>
         <item>@string/share_location_for_two_hours</item>
+        <item>@string/share_location_for_six_hours</item>
         <item>@string/share_location_for_24_hours</item>
     </string-array>
 
