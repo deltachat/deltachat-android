@@ -307,8 +307,7 @@ public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
 
   private boolean showGroupNameEmptyToast(String groupName) {
     if (groupName == null) {
-      Toast.makeText(this, getString(R.string.group_please_enter_group_name), Toast.LENGTH_LONG)
-          .show();
+      Toast.makeText(this, getString(R.string.please_enter_chat_name), Toast.LENGTH_LONG).show();
       return true;
     }
     return false;
