@@ -37,7 +37,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class RelayListActivity extends BaseActionBarActivity
     implements RelayListAdapter.OnRelayClickListener, DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = RelayListActivity.class.getSimpleName();
+  private static final String TAG = "RelayListActivity";
   public static final String EXTRA_QR_DATA = "qr_data";
 
   private RelayListAdapter adapter;

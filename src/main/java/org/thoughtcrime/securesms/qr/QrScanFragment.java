@@ -19,7 +19,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class QrScanFragment extends Fragment {
 
-  private static final String TAG = QrScanFragment.class.getSimpleName();
+  private static final String TAG = "QrScanFragment";
 
   private CompoundBarcodeView barcodeScannerView;
   private MyCaptureManager capture;

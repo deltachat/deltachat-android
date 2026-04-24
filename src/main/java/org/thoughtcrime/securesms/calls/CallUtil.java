@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.BitmapUtil;
 
 public class CallUtil {
-  private static final String TAG = CallUtil.class.getSimpleName();
+  private static final String TAG = "CallUtil";
 
   @RequiresApi(api = Build.VERSION_CODES.O)
   public static void startAudioCall(Context context, int chatId) {

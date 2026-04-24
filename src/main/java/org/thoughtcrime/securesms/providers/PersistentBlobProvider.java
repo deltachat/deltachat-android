@@ -24,7 +24,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class PersistentBlobProvider {
 
-  private static final String TAG = PersistentBlobProvider.class.getSimpleName();
+  private static final String TAG = "PersistentBlobProvider";
 
   private static final String URI_STRING = "content://org.thoughtcrime.securesms/capture-new";
   public static final Uri CONTENT_URI = Uri.parse(URI_STRING);

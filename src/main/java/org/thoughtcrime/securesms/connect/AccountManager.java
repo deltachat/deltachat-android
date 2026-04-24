@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.accounts.AccountSelectionListFragment;
 
 public class AccountManager {
 
-  private static final String TAG = AccountManager.class.getSimpleName();
+  private static final String TAG = "AccountManager";
   private static final String LAST_ACCOUNT_ID = "last_account_id";
   private static AccountManager self;
 

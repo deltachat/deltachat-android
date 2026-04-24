@@ -56,7 +56,7 @@ public class ConversationListFragment extends BaseConversationListFragment
   public static final String ARCHIVE = "archive";
   public static final String RELOAD_LIST = "reload_list";
 
-  private static final String TAG = ConversationListFragment.class.getSimpleName();
+  private static final String TAG = "ConversationListFragment";
 
   private RecyclerView list;
   private View emptyState;

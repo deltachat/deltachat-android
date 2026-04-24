@@ -30,7 +30,7 @@ import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.Util;
 
 public class ProfileAdapter extends RecyclerView.Adapter {
-  private static final String TAG = ProfileAdapter.class.getSimpleName();
+  private static final String TAG = "ProfileAdapter";
 
   public static final int ITEM_AVATAR = 10;
   public static final int ITEM_DIVIDER = 20;

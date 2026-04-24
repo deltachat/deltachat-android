@@ -41,7 +41,7 @@ import org.thoughtcrime.securesms.qr.QrCodeHandler;
  */
 public class NewConversationActivity extends ContactSelectionActivity {
 
-  private static final String TAG = NewConversationActivity.class.getSimpleName();
+  private static final String TAG = "NewConversationActivity";
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {

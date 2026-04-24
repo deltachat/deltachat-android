@@ -22,7 +22,7 @@ import org.thoughtcrime.securesms.ConversationListActivity;
 
 public class AudioPlaybackService extends MediaSessionService {
 
-  private static final String TAG = AudioPlaybackService.class.getSimpleName();
+  private static final String TAG = "AudioPlaybackService";
 
   private ExoPlayer player;
   private MediaSession session;

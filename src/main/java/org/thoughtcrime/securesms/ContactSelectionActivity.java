@@ -29,7 +29,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
  */
 public abstract class ContactSelectionActivity extends PassphraseRequiredActionBarActivity
     implements ContactSelectionListFragment.OnContactSelectedListener {
-  private static final String TAG = ContactSelectionActivity.class.getSimpleName();
+  private static final String TAG = "ContactSelectionActivity";
 
   protected ContactSelectionListFragment contactsFragment;
 

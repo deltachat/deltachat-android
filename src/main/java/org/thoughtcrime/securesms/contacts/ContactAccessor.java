@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.thoughtcrime.securesms.ContactSelectionListFragment;
 import org.thoughtcrime.securesms.util.Hash;
 import org.thoughtcrime.securesms.util.Prefs;
 
@@ -37,7 +36,7 @@ import org.thoughtcrime.securesms.util.Prefs;
  * @author Moxie Marlinspike
  */
 public class ContactAccessor {
-  private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
+  private static final String TAG = "ContactAccessor";
 
   private static final int CONTACT_CURSOR_NAME = 0;
 

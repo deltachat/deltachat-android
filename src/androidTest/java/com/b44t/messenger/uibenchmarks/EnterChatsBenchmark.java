@@ -39,7 +39,7 @@ public class EnterChatsBenchmark {
   // PLEASE BACKUP YOUR ACCOUNT BEFORE RUNNING THIS!
   // ==============================================================================================
 
-  private static final String TAG = EnterChatsBenchmark.class.getSimpleName();
+  private static final String TAG = "EnterChatsBenchmark";
 
   @Rule
   public ActivityScenarioRule<ConversationListActivity> activityRule =

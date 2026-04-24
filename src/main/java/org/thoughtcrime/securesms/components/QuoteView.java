@@ -35,7 +35,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class QuoteView extends FrameLayout implements RecipientForeverObserver {
 
-  private static final String TAG = QuoteView.class.getSimpleName();
+  private static final String TAG = "QuoteView";
 
   private static final int MESSAGE_TYPE_PREVIEW = 0;
 

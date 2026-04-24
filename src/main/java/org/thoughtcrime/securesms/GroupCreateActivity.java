@@ -46,7 +46,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class GroupCreateActivity extends PassphraseRequiredActionBarActivity
     implements ItemClickListener {
 
-  private static final String TAG = GroupCreateActivity.class.getSimpleName();
+  private static final String TAG = "GroupCreateActivity";
   public static final String EDIT_GROUP_CHAT_ID = "edit_group_chat_id";
   public static final String CREATE_BROADCAST = "create_broadcast";
   public static final String UNENCRYPTED = "unencrypted";

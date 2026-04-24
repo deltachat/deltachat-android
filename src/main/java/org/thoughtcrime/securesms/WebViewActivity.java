@@ -32,7 +32,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class WebViewActivity extends PassphraseRequiredActionBarActivity
     implements SearchView.OnQueryTextListener, WebView.FindListener {
-  private static final String TAG = WebViewActivity.class.getSimpleName();
+  private static final String TAG = "WebViewActivity";
   // Regex to extract the host from a URL for IDN conversion.
   private static final Pattern URL_PATTERN =
       Pattern.compile("^((?:[a-zA-Z0-9]+://)?)([^/?#]+)(.*)$");

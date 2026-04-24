@@ -15,7 +15,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class EphemeralMessagesDialog {
 
-  private static final String TAG = EphemeralMessagesDialog.class.getSimpleName();
+  private static final String TAG = "EphemeralMessagesDialog";
 
   public static void show(
       final Context context,

@@ -50,7 +50,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.views.Stub;
 
 public class ViewUtil {
-  private static final String TAG = ViewUtil.class.getSimpleName();
+  private static final String TAG = "ViewUtil";
 
   @SuppressWarnings("deprecation")
   public static void setBackground(final @NonNull View v, final @Nullable Drawable drawable) {

@@ -21,7 +21,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 public class KeepAliveService extends Service {
 
-  private static final String TAG = KeepAliveService.class.getSimpleName();
+  private static final String TAG = "KeepAliveService";
 
   static KeepAliveService s_this = null;
 
