@@ -215,7 +215,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
                   calleeName = "Unknown";
                 }
 
-                showOrUpdateOngoingNotification("Calling " + calleeName + "...");
+                showOrUpdateOngoingNotification(
+                    appContext.getString(R.string.calling_person, calleeName));
               }
 
               // Initialize call
@@ -409,7 +410,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     // notification without a gap.
     String callerName = displayName.getValue();
     if (callerName == null) callerName = "Unknown";
-    showOrUpdateOngoingNotification("Call with " + callerName);
+    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
 
     // Notify Android system with CallControlScope
     CallControlScope scope = activeCallControlScope;
@@ -928,7 +929,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       callerName = "Unknown";
     }
 
-    showOrUpdateOngoingNotification("Call with " + callerName);
+    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
   }
 
   private synchronized void onCallAnsweredOnOtherDevice() {
@@ -1015,7 +1016,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     if (calleeName == null) {
       calleeName = "Unknown";
     }
-    showOrUpdateOngoingNotification("Call with " + calleeName);
+    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, calleeName));
   }
 
   private synchronized void onCallEnded(int accId, int callId) {

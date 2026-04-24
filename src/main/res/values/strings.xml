@@ -427,6 +427,8 @@
     <string name="already_in_call">Already in a call</string>
     <string name="call_answered_elsewhere">Call answered on another device</string>
     <string name="call_requires_mic_permission">Microphone permission is required for calls</string>
+    <string name="call_with">Call with %1$s</string>
+    <string name="calling_person">Calling %1$s…</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
