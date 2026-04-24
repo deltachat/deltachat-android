@@ -402,6 +402,15 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       callService.stopRingtone();
     }
 
+    // Promote the service to foreground immediately. Waiting until onIncomingCallAccepted
+    // on executor pool thread is too late on stricter OEM.
+    //
+    // Do not cancel() but use showOrUpdateOngoingNotification to replace incoming
+    // notification without a gap.
+    String callerName = displayName.getValue();
+    if (callerName == null) callerName = "Unknown";
+    showOrUpdateOngoingNotification("Call with " + callerName);
+
     // Notify Android system with CallControlScope
     CallControlScope scope = activeCallControlScope;
     if (scope != null) {
@@ -425,8 +434,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             }
           });
     }
-
-    notificationManager.cancel(NOTIFICATION_ID_CALL);
   }
 
   public void answerWebRTC() {
@@ -1099,6 +1106,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     if (!activeAccId.equals(accId) || !activeCallId.equals(callId)) {
       Log.w(TAG, "Cleanup IDs don't match active call, aborting");
       return;
+    }
+
+    if (callService != null) {
+      try {
+        callService.stopForegroundAndDismiss();
+      } catch (Exception e) {
+        Log.w(TAG, "stopForegroundAndDismiss failed", e);
+      }
     }
 
     // Clear state
