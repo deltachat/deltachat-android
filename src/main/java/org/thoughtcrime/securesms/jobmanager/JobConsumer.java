@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 
 class JobConsumer extends Thread {
 
-  private static final String TAG = JobConsumer.class.getSimpleName();
+  private static final String TAG = "JobConsumer";
 
   enum JobResult {
     SUCCESS,

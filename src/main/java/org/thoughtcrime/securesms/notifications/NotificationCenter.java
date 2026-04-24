@@ -54,7 +54,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 public class NotificationCenter {
-  private static final String TAG = NotificationCenter.class.getSimpleName();
+  private static final String TAG = "NotificationCenter";
   @NonNull private final ApplicationContext context;
   private volatile ChatData visibleChat = null;
   private volatile Pair<Integer, Integer> visibleWebxdc = null;

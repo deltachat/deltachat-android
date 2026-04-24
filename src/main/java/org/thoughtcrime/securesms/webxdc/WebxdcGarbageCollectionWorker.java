@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class WebxdcGarbageCollectionWorker extends ListenableWorker {
-  private static final String TAG = WebxdcGarbageCollectionWorker.class.getSimpleName();
+  private static final String TAG = "WebxdcGarbageCollectionWorker";
   private Context context;
 
   public WebxdcGarbageCollectionWorker(Context context, WorkerParameters params) {

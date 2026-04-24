@@ -40,7 +40,7 @@ import org.thoughtcrime.securesms.util.BitmapUtil;
  */
 final class UriGlideRenderer implements Renderer {
 
-  private static final String TAG = UriGlideRenderer.class.getSimpleName();
+  private static final String TAG = "UriGlideRenderer";
 
   private static final int PREVIEW_DIMENSION_LIMIT = 2048;
   private static final int MAX_BLUR_DIMENSION = 300;

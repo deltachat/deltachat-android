@@ -30,7 +30,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class ThumbnailView extends FrameLayout {
 
-  private static final String TAG = ThumbnailView.class.getSimpleName();
+  private static final String TAG = "ThumbnailView";
   private static final int WIDTH = 0;
   private static final int HEIGHT = 1;
   private static final int MIN_WIDTH = 0;

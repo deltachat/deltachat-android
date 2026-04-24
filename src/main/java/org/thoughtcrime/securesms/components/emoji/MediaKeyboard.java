@@ -22,7 +22,7 @@ import org.thoughtcrime.securesms.util.ResUtil;
 public class MediaKeyboard extends LinearLayout
     implements InputView, Consumer<EmojiViewItem>, StickerPickerView.StickerPickerListener {
 
-  private static final String TAG = MediaKeyboard.class.getSimpleName();
+  private static final String TAG = "MediaKeyboard";
 
   @Nullable private MediaKeyboardListener keyboardListener;
   private EmojiPickerView emojiPicker;

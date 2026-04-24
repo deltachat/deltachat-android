@@ -23,7 +23,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class LocationStreamingService extends Service {
 
-  private static final String TAG = LocationStreamingService.class.getSimpleName();
+  private static final String TAG = "LocationStreamingService";
   private static final String ACTION_STOP = "org.thoughtcrime.securesms.geolocation.STOP_STREAMING";
   private static final int NOTIFICATION_ID = 8801;
   private static final String CHANNEL_ID = "location_streaming";

@@ -47,7 +47,7 @@ import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public abstract class BaseConversationListFragment extends Fragment implements ActionMode.Callback {
-  private static final String TAG = BaseConversationListFragment.class.getSimpleName();
+  private static final String TAG = "BaseConversationListFragment";
   protected ActionMode actionMode;
   protected PulsingFloatingActionButton fab;
 

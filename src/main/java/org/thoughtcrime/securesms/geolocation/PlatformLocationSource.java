@@ -15,7 +15,7 @@ import java.util.concurrent.Executor;
 
 public class PlatformLocationSource implements LocationSource {
 
-  private static final String TAG = PlatformLocationSource.class.getSimpleName();
+  private static final String TAG = "PlatformLocationSource";
   private static final long UPDATE_INTERVAL_MS = 0;
 
   private LocationManager locationManager;

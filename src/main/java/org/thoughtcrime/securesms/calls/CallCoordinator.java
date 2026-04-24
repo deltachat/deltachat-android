@@ -63,7 +63,7 @@ import org.webrtc.VideoTrack;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallCoordinator implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = CallCoordinator.class.getSimpleName();
+  private static final String TAG = "CallCoordinator";
 
   // Notification channels
   private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls";

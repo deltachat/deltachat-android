@@ -14,7 +14,7 @@ import com.google.android.gms.location.Priority;
 
 public class GmsLocationSource implements LocationSource {
 
-  private static final String TAG = GmsLocationSource.class.getSimpleName();
+  private static final String TAG = "GmsLocationSource";
   private static final long UPDATE_INTERVAL_MS = 3_000;
   private static final long FASTEST_INTERVAL_MS = 1_000;
 

@@ -33,7 +33,7 @@ import org.webrtc.VideoTrack;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallService extends Service implements WebRTCClient.Callbacks {
 
-  private static final String TAG = CallService.class.getSimpleName();
+  private static final String TAG = "CallService";
 
   private final IBinder binder = new LocalBinder();
 
