@@ -283,7 +283,7 @@ public class AttachmentManager {
             removableMediaView.display(audioView, false);
             removableMediaView.addRemoveClickListener(
                 v -> {
-                  playbackViewModel.stop(audioView.getMsgId(), audioView.getAudioUri());
+                  playbackViewModel.stop(audioView.getMsgId());
                 });
             result.set(true);
           } else if (slide.isVcard()) {
