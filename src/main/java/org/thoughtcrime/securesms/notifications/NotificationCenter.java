@@ -181,6 +181,7 @@ public class NotificationCenter {
   public static final int ID_MSG_SUMMARY = 2;
   public static final int ID_GENERIC = 3;
   public static final int ID_FETCH = 4;
+  public static final int ID_INFO = 5;
   public static final int ID_MSG_OFFSET =
       0; // msgId is added - as msgId start at 10, there are no conflicts with lower numbers
 
@@ -205,8 +206,31 @@ public class NotificationCenter {
   // overview)
   public static final String CH_MSG_PREFIX = "ch_msg";
   public static final String CH_MSG_VERSION = "5";
+
+  /**
+   * Receive messages in background.
+   *
+   * <p>Ensure reliable message receiving.
+   */
   public static final String CH_PERMANENT = "dc_fg_notification_ch";
+
+  /**
+   * Generic Background Service
+   *
+   * <p>Ensure app will not be killed while long ongoing background tasks are running.
+   */
   public static final String CH_GENERIC = "ch_generic";
+
+  /**
+   * General information
+   *
+   * <p>Inform about the application state, e.g. when the app needs to be opened to reconfigure push
+   * notifications.
+   *
+   * <p>High importance
+   */
+  public static final String CH_INFO = "ch_info";
+
   public static final String CH_CALLS_PREFIX = "call_chan";
 
   private boolean notificationChannelsSupported() {
