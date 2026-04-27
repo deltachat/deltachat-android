@@ -513,11 +513,7 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     Log.d(TAG, "Starting call FGS with notification id: " + id);
     try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-        int types =
-            ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL
-                | ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
-                | ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA;
-        startForeground(id, notification, types);
+        startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL);
       } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         int types =
             ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
