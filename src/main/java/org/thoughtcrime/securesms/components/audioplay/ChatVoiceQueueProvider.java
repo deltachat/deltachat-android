@@ -42,7 +42,7 @@ public class ChatVoiceQueueProvider implements AudioPlaybackQueueProvider {
     List<QueueItem> queue = new ArrayList<>();
     for (int i = startIndex; i < msgIds.length; i++) {
       DcMsg msg = dcContext.getMsg(msgIds[i]);
-      if (msg.getType() == DcMsg.DC_MSG_VOICE) {
+      if (msg.getType() == DcMsg.DC_MSG_VOICE || msg.getType() == DcMsg.DC_MSG_AUDIO) {
         Uri uri = new AudioSlide(context, msg).getUri();
         if (uri != null) {
           queue.add(new QueueItem(msgIds[i], uri));
