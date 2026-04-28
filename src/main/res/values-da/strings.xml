@@ -304,6 +304,7 @@
     <string name="remove_group_image">Fjern gruppeikon</string>
     <string name="change_group_image">Ændre gruppeikon</string>
     <string name="group_create_button">Oprette gruppe</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Indtast et navn til gruppen.</string>
     <string name="group_add_members">Tilføj medlemmer</string>
     <string name="group_self_not_in_group">Man skal være medlem af gruppen for at udføre denne handling.</string>

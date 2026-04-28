@@ -66,8 +66,9 @@
     <string name="show_full_message">Teljes üzenet megjelenítése…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Összes megjelölése olvasottként</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Megjelölés olvasottként</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Megjelölés olvasottként</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Betöltés…</string>
@@ -165,7 +166,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Matrica</string>
     <string name="add_to_sticker_collection">Hozzáadás a matricagyűjteményhez</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">A matricák hozzáadásához koppintson a „Matricamappa megnyitása” lehetőségre, hozzon létre egy almappát a matricacsomagnak, és húzza oda a kép- és matricafájlokat.</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Matricamappa megnyitása</string>
     <string name="images">Képek</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -487,6 +490,7 @@
     <string name="remove_group_image">Csoport profilképének eltávolítása</string>
     <string name="change_group_image">Csoport profilképének megváltoztatása</string>
     <string name="group_create_button">Csoport készítése</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Csoport nevének magadása.</string>
     <string name="group_add_members">Tagok hozzáadása</string>
     <string name="group_self_not_in_group">A csoport tagjának kell lennie, ahhoz, hogy ezt megtehesse.</string>
@@ -930,7 +934,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Már létezik egy piszkozat a következő szöveggel: %1$s, biztosan le akarja cserélni?</string>
     <string name="mailto_link_could_not_be_decoded">Nem sikerült dekódolni a mailto-hivatkozást: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Válasz</string>
     <string name="notify_new_message">Új üzenet</string>
@@ -1009,7 +1012,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Nem találhatók helyesírási javaslatok.</string>
     <string name="show_window">Ablak megjelenítése</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Billentyűkötések</string>
     <string name="switch_between_chats">Váltás a csevegések között</string>

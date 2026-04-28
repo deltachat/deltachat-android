@@ -222,6 +222,7 @@
     <string name="group_name">Qrup adı</string>
     <string name="group_avatar">Qrupun şəkili</string>
     <string name="group_create_button">Qrup yarat</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Xahiş edirik qrup üçün bir ad daxil et.</string>
     <string name="group_add_members">Üzv elavə et</string>
     <string name="group_self_not_in_group">Bunu etmək üçün qrupun üzvü olmalısan.</string>

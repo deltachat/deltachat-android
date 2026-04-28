@@ -263,6 +263,7 @@
     <string name="remove_group_image">Boga s\'immàgine de su grupu</string>
     <string name="change_group_image">Càmbia s\'immàgine de su grupu</string>
     <string name="group_create_button">Crea unu grupu</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Inserta unu nùmene pro su grupu.</string>
     <string name="group_add_members">Annanghe mambros</string>
     <string name="group_self_not_in_group">Depes èssre unu membru de su grupu pro fàghere cust\'atzione.</string>

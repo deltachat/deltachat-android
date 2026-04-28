@@ -66,10 +66,11 @@
     <string name="show_full_message">Sken izen ummid...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Creḍ akken ma llan amzun ttwaɣran</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Creḍ am akken yettwaɣra</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Creḍ yettwaɣra</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Ur ittwaɣṛi ara</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading"> Asali...</string>
@@ -175,7 +176,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Tamenṭaḍt</string>
     <string name="add_to_sticker_collection">Rnu ɣer tegrumma n tamenṭaḍt</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Akken ad ternuḍ tamenṭaḍt, sit ɣef \" ldi akaram n tmenṭaḍt \", snulfu-d akaram anaddaw i ukemmus-ik·im n tmenṭaḍt, zuɣer tugna akked ifuyla n tmenṭaḍt din</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Ldi akaran n tmenṭaḍt</string>
     <string name="ask_add_sticker_to_collection">Arni ticṛeṭ-agi n tesfift ɣer tegrumma-inek·inem?</string>
     <string name="ask_delete_sticker">Kkes ticṛet-agi n tesfift?</string>
@@ -414,7 +417,6 @@
     <string name="canceled_call">Tiɣri tettwasefsex</string>
     <string name="missed_call">Tiɣri ittwazeglen</string>
     <string name="already_in_call">Aqli deg usiwel yakan</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Tetḥeqqeḍ tebɣiḍ ad truḥeḍ? </string>
@@ -528,6 +530,7 @@
     <string name="remove_group_image">Kkes tugna n unagraw</string>
     <string name="change_group_image">Beddel tugna n ugraw</string>
     <string name="group_create_button">Rnu agraw</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Ma ulac aɣilif, sekcem isem n ugraw.</string>
     <string name="group_add_members">Rnu imttekkiyen</string>
     <string name="group_self_not_in_group">Issefk ad tiliḍ d aɛeggal deg ugraw akken ad tgeḍ tigawt-a.</string>
@@ -1014,7 +1017,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ɣur-s yakkan izen n urewway, tebɣiḍ ad t-tbeddleḍ?</string>
     <string name="mailto_link_could_not_be_decoded">aseɣwen mailto ur izmir ara ad ittwastengel: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Err</string>
     <string name="notify_new_message">Izen amaynut</string>
@@ -1093,7 +1095,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Ulac isumar n teɣdirawt yettwafen.</string>
     <string name="show_window">Sken asfaylu</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Inegzumen n unasiw</string>
     <string name="switch_between_chats">Senfel gar Idiwenniyen</string>
