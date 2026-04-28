@@ -430,7 +430,9 @@
     <string name="already_in_call">Already in a call</string>
     <string name="call_answered_elsewhere">Call answered on another device</string>
     <string name="call_requires_mic_permission">Microphone permission is required for calls</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Call with %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Calling %1$s…</string>
 
     <!-- get confirmations -->
