@@ -27,7 +27,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.common.util.concurrent.ListenableFuture;
 import java.util.ArrayList;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
-import org.thoughtcrime.securesms.components.audioplay.ChatVoiceQueueProvider;
+import org.thoughtcrime.securesms.components.audioplay.ChatAudioQueueProvider;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.AudioPlaybackService;
@@ -109,7 +109,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
     playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
-    playbackViewModel.setQueueProvider(new ChatVoiceQueueProvider(this, chatId));
+    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId));
     initializeMediaController();
   }
 

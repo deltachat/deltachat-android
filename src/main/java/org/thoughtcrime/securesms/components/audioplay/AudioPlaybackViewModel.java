@@ -15,7 +15,7 @@ import androidx.media3.common.MediaItem;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
 import androidx.media3.session.MediaController;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +38,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
 
   private @Nullable MediaController mediaController;
-  private @Nullable AudioPlaybackQueueProvider queueProvider;
+  private @Nullable ChatAudioQueueProvider queueProvider;
   private @Nullable Player.Listener playerListener;
   private final Handler handler;
   private boolean isUserSeeking = false;
@@ -78,32 +78,35 @@ public class AudioPlaybackViewModel extends ViewModel {
 
     updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
 
-    List<MediaItem> items = buildMediaItemQueue(msgId, audioUri);
-    mediaController.setMediaItems(items, 0, 0);
+    List<MediaItem> items;
+    int startIndex;
+
+    if (queueProvider != null) {
+      items = queueProvider.buildAudioQueue();
+      startIndex = indexOfMediaId(items, msgId);
+    } else {
+      items = Collections.emptyList();
+      startIndex = -1;
+    }
+
+    if (startIndex < 0) {
+      items =
+          Collections.singletonList(
+              new MediaItem.Builder().setMediaId(String.valueOf(msgId)).setUri(audioUri).build());
+      startIndex = 0;
+    }
+
+    mediaController.setMediaItems(items, startIndex, 0);
     mediaController.prepare();
     mediaController.play();
   }
 
-  private List<MediaItem> buildMediaItemQueue(int startMsgId, Uri fallbackUri) {
-    List<MediaItem> items = new ArrayList<>();
-
-    if (queueProvider != null) {
-      List<AudioPlaybackQueueProvider.QueueItem> queue = queueProvider.buildVoiceQueue(startMsgId);
-      // Only use the queue if it actually starts with the requested msg.
-      if (!queue.isEmpty() && queue.get(0).getMsgId() == startMsgId) {
-        for (AudioPlaybackQueueProvider.QueueItem item : queue) {
-          items.add(toMediaItem(item.getMsgId(), item.getUri()));
-        }
-        return items;
-      }
+  private static int indexOfMediaId(List<MediaItem> items, int msgId) {
+    String target = String.valueOf(msgId);
+    for (int i = 0; i < items.size(); i++) {
+      if (target.equals(items.get(i).mediaId)) return i;
     }
-
-    items.add(toMediaItem(startMsgId, fallbackUri));
-    return items;
-  }
-
-  private MediaItem toMediaItem(int msgId, Uri uri) {
-    return new MediaItem.Builder().setMediaId(String.valueOf(msgId)).setUri(uri).build();
+    return -1;
   }
 
   public LiveData<Map<Integer, Long>> getDurations() {
@@ -353,7 +356,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   }
 
   // Playing Queue
-  public void setQueueProvider(@Nullable AudioPlaybackQueueProvider provider) {
+  public void setQueueProvider(@Nullable ChatAudioQueueProvider provider) {
     this.queueProvider = provider;
   }
 
