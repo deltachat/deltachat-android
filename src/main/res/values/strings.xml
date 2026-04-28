@@ -753,7 +753,7 @@
     <string name="pref_outgoing_media_quality">Outgoing Media Quality</string>
     <string name="pref_outgoing_media_quality_hint">To send original quality, attach media as a \"File\". This uses significantly more data for you and your recipients.</string>
     <string name="pref_outgoing_balanced">Balanced</string>
-    <string name="pref_outgoing_worse">Worse quality, small size</string>
+    <string name="pref_outgoing_worse">Worse quality, save data</string>
     <string name="pref_vibrate">Vibrate</string>
     <string name="pref_screen_security">Screen Security</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
