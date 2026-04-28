@@ -52,7 +52,7 @@
     <string name="show_full_message">Показване на пълното съобщение...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Маркиране на всички като прочетени</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Прочетено</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Зарежда се ...</string>
@@ -143,7 +143,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стикер</string>
     <string name="add_to_sticker_collection">Добавяне към колекция от стикери</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">За да добавите стикери, натиснете върху \"Отваряне на папка Стикери\", създайте подпапка за Вашия пакет от стикери и дърпайте файлове със стикери и изображения тук</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Отваряне на папка Стикери</string>
     <string name="images">Изображения</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -390,6 +392,7 @@
     <string name="remove_group_image">Премахване на изображението на групата</string>
     <string name="change_group_image">Промяна на изображението на групата</string>
     <string name="group_create_button">Създаване на група</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Моля, въведете име на групата</string>
     <string name="group_add_members">Добавяне на членове</string>
     <string name="group_self_not_in_group">Трябва да сте член на групата, за да изпълните това действие.</string>
@@ -787,7 +790,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s вече има съобщение чернова, искате ли да го замените?</string>
     <string name="mailto_link_could_not_be_decoded">Неуспешно декодиране на mailto връзка: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Отговор</string>
     <string name="notify_new_message">Ново съобщение</string>
@@ -861,7 +863,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Няма открити предложения за правопис.</string>
     <string name="show_window">Показване на прозореца</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Обвързвания на клавиши към команди</string>
     <string name="switch_between_chats">Превключване между чатовете</string>

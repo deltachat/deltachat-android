@@ -285,6 +285,7 @@
     <string name="remove_group_image">سڕینەوەی وێنەی کۆڕ</string>
     <string name="change_group_image">گۆڕینی ناوی کۆڕ</string>
     <string name="group_create_button">کۆڕێک درووست بکە</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">تکایە ناوێک بنووسە بۆ کۆڕەکە.</string>
     <string name="group_add_members">ئەندام زیاد بکە</string>
     <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>

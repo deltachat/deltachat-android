@@ -66,10 +66,11 @@
     <string name="show_full_message">Mostra el missatge sencer...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marca-ho tot com a llegit</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Marca-ho com a llegit</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Llegit</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">No llegit</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">S\'està carregant...</string>
@@ -175,7 +176,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Adhesiu</string>
     <string name="add_to_sticker_collection">Afegeix a la col·lecció d\'adhesius</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Per a afegir adhesius: premeu \"Obre la carpeta d\'adhesius\", creeu una subcarpeta per a la vostra col·lecció d\'adhesius i arrossegueu-hi la imatge i els fitxers d\'adhesius.</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Obre la carpeta d\'adhesius</string>
     <string name="ask_add_sticker_to_collection">Afegir l\'adhesiu a la col·lecció?</string>
     <string name="ask_delete_sticker">Esborrar l\'adhesiu?</string>
@@ -416,7 +419,6 @@
     <string name="canceled_call">Trucada cancel·lada</string>
     <string name="missed_call">Trucada perduda</string>
     <string name="already_in_call">En una trucada</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Segur que vols sortir?</string>
@@ -530,6 +532,7 @@
     <string name="remove_group_image">Elimina la imatge del grup</string>
     <string name="change_group_image">Canvia la imatge del grup</string>
     <string name="group_create_button">Crea el grup</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Si us plau, poseu nom al grup.</string>
     <string name="group_add_members">Afegiu-hi membres</string>
     <string name="group_self_not_in_group">Has de ser membre del grup per poder fer això.</string>
@@ -1018,7 +1021,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ja té un missatge d\'esborrany, voleu substituir-lo?</string>
     <string name="mailto_link_could_not_be_decoded">No s\'ha pogut desxifrar l\'enllaç mailto: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Respondre</string>
     <string name="notify_new_message">Missatge nou</string>
@@ -1097,7 +1099,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">No s\'ha trobat cap suggeriment ortogràfic.</string>
     <string name="show_window">Mostra la finestra</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Dreceres de teclat</string>
     <string name="switch_between_chats">Canvia entre xats</string>

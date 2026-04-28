@@ -25,6 +25,8 @@
     <string name="downloading">Po shkarkohet…</string>
     <string name="open_attachment">Hap Bashkëngjitjen</string>
     <string name="join">Hyni</string>
+    <string name="join_group">Bëhuni Pjesë e Grupit</string>
+    <string name="join_channel">Ejani në Kanal</string>
     <string name="rejoin">Rihyni</string>
     <string name="delete">Fshije</string>
     <string name="delete_for_me">Fshije për Mua</string>
@@ -65,10 +67,11 @@
     <string name="show_full_message">Shfaq Mesazhin e Plotë…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Vëru Shenjë të Tërave Si të Lexuar</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Vëri Shenjë Si të Lexuar</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Të lexuar</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">I palexuar</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Po ngarkohet…</string>
@@ -89,6 +92,7 @@
     <string name="offline">Jo në linjë</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Pasuesja</string>
+    <string name="warning">Kujdes</string>
     <string name="error">Gabim</string>
     <string name="error_x">Gabim: %1$s</string>
     <string name="no_app_to_handle_data">S\’gjendet dot një aplikacion për trajtimin e këtij lloji të dhënash.</string>
@@ -173,7 +177,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Ngjitës</string>
     <string name="add_to_sticker_collection">Shtoje te Koleksion Ngjitësish</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Që të shtoni ngjitës, prekni “Hap Dosje Ngjitësish”, krijoni një nëndosje për paketën e ngjitësit tuaj dhe tërhiqni në të figurë dhe kartela ngjitësi</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Hap Dosje Ngjitësish</string>
     <string name="ask_add_sticker_to_collection">Të shtohet ky ngjitës te koleksioni juaj?</string>
     <string name="ask_delete_sticker">Të fshihet ky ngjitës?</string>
@@ -412,6 +418,8 @@
     <string name="canceled_call">Thirrje e anuluar</string>
     <string name="missed_call">Thirrje e humbur</string>
     <string name="already_in_call">Tashmë në një thirrje</string>
+    <string name="call_answered_elsewhere">Thirrje që ka marrë përgjigje në pajisje tjetër</string>
+    <string name="call_requires_mic_permission">Leja mbi mikrofonin është e domosdoshme për thirrje</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -514,8 +522,11 @@
     <!-- search -->
     <string name="search">Kërko</string>
     <string name="search_in_chat">Kërko në Fjalosje</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">Kërko në %1$s</string>
     <string name="search_files">Kërko në Kartela</string>
     <string name="search_explain">Kërkoni për fjalosje, kontakte dhe mesazhe.</string>
+    <string name="search_result_for_x">Përfundim për “%1$s</string>
     <string name="search_no_result_for_x">S\’u gjetën përfundime për “%s”</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Të palexuar</string>
@@ -526,7 +537,9 @@
     <string name="remove_group_image">Hiqe Figurën e Grupit</string>
     <string name="change_group_image">Ndryshoni Figurë Grupi</string>
     <string name="group_create_button">Krijoni Grup</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Ju lutemi, jepni një emër për grupin.</string>
+    <string name="please_enter_chat_name">Ju lutemi, jepni një emër.</string>
     <string name="group_add_members">Shtoni Anëtarë</string>
     <string name="group_self_not_in_group">Që të kryeni këtë veprim, duhet të jeni anëtar i grupit.</string>
     <string name="profile_encryption">Fshehtëzim</string>
@@ -763,6 +776,8 @@
     <string name="pref_incognito_keyboard_explain">Kërkoji tastierës të çaktivizojë nxënie të personalizuar</string>
     <string name="pref_read_receipts">Dëftesa Leximi</string>
     <string name="pref_read_receipts_explain">Nëse dëftesat e leximit janë të çaktivizuara, s\’do të jeni në gjendje të shihni dëftesa leximi prej të tjerësh.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">Lexuar nga</string>
     <string name="pref_server">Shërbyes</string>
     <string name="pref_encryption">Fshehtëzim</string>
     <string name="pref_manage_keys">Administroni Kyçe</string>
@@ -874,9 +889,12 @@
     <string name="group_name_changed_by_you">E ndryshuat emrin e grupit nga “%1$s” në “%2$s”.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Emri i grupit u ndryshua nga “%1$s” në “%2$s” nga %3$s.</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">Emri i kanalit ndryshoi nga “%1$s%2$s.</string>
     <string name="group_image_changed_by_you">Ndryshuat figurën e grupit</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Figura e grupit u ndryshua nga %1$s.</string>
+    <string name="channel_image_changed">Ndryshoi figura e kanalit</string>
     <string name="chat_description_changed_by_you">Ndryshuat përshkrimin e fjalosjes.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">Përshkrimi i fjalosjes u ndryshua nga %1$s.</string>
@@ -1013,6 +1031,8 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s përmban tashmë një skicë mesazhi, doni të zëvendësohet?</string>
     <string name="mailto_link_could_not_be_decoded">s’u shkodua dot lidhje mailto: %1$s</string>
+    <string name="remove_quote">Hiqe citimin</string>
+    <string name="remove_attachment">Hiqe bashkëngjitjen</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">Përgjigjuni</string>
@@ -1029,6 +1049,9 @@
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Keni mesazhe të rinj</string>
     <string name="n_messages_in_m_chats">%1$d mesazhe në %2$d fjalosje</string>
+
+    <string name="location_streaming_notification_text">Po tregoni vendndodhjen tuaj</string>
+    <string name="location_rationale">Që të jepni vendndodhjen aty për aty për anëtarë të fjalosjes, lejojeni Delta Chat-in të përdorë të dhëna të vendndodhjes suaj.\n\nPër ta bërë vendndodhjen e atypëratyshme të funksionojë rrjedhshëm, përdoren të dhëna edhe kur aplikacioni është i mbyllur, ose jo në përdorim.</string>
 
     <!-- permissions -->
     <string name="perm_required_title">Lypset leje</string>
@@ -1071,6 +1094,7 @@
     <string name="global_menu_help_about_desktop">Rreth Delta Chat-it</string>
     <string name="global_menu_file_open_desktop">Hap Delta Chat-in</string>
     <string name="global_menu_minimize_to_tray">Minimizoje</string>
+    <string name="no_account_selected">Përzgjidhni një profil, ose krijoni një profil të ri</string>
     <string name="no_chat_selected_suggestion_desktop">Përzgjidhni një fjalosje ose krijoni një të tillë të re</string>
     <string name="write_message_desktop">Shkruani një mesazh</string>
     <string name="encryption_info_title_desktop">Hollësi Fshehtëzimi</string>
@@ -1092,9 +1116,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">S’u gjetën sugjerimi drejtshkrimi.</string>
     <string name="show_window">Shfaq Dritare</string>
+    <string name="data_found_other_installation_message">Profilet tuaja nga instalim tjetër i Delta Chat-it s’mund të përdoren - instalime të ndryshme i depozitojnë të dhënat e veta në vendndodhje të ndryshme:\n1. Mbylle tani\n2. Hap Delta Chat-in tjetër - në u dashtë, riinstaloje nga %1$s\n3. Kopjeruaje secilin profil te “Rregullime/Fjalosje”4. Rinis këtë version\n5. Riktheni kopjeruajtje duke përdorur “Kam tashmë një profil”\n\nTë vazhdohet pa profilet tuaj të mëparshëm?</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Kombinim tastesh</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Lëvizje</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Dhënie Mesazhi</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Përzgjedhje Mesazhi</string>
     <string name="switch_between_chats">Kaloni nga një Fjalosje në tjetrën</string>
     <string name="scroll_messages">Rrëshqitni nëpër Mesazhe</string>
     <!-- command to put the cursor to the search input field -->

@@ -66,10 +66,11 @@
     <string name="show_full_message">Erakutsi mezu osoa</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Ezarri denak irakurri gisa</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Ezarri irakurri gisa</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Markatu irakurrita</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Irakurri gabe</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Kargatzen...</string>
@@ -175,7 +176,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Stickerra</string>
     <string name="add_to_sticker_collection">Gehitu Sticker bildumara</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Stickerretara gehitzeko, klik egin \"Ireki sticker karpeta\" aukeran, sortu azpikarpeta bat zure sticker multzoarentzat eta arrastatu irudi eta sticker fitxategiak bertara.</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Ireki sticker karpeta</string>
     <string name="ask_add_sticker_to_collection">Gehitu eranskailu hau zure bildumara?</string>
     <string name="ask_delete_sticker">Ezabatu eranskailu hau?</string>
@@ -416,7 +419,6 @@
     <string name="canceled_call">Bertan behera utzitako deia</string>
     <string name="missed_call">Galdutako deia</string>
     <string name="already_in_call">Dei batean dagoeneko</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ziur irten nahi duzula?</string>
@@ -530,6 +532,7 @@
     <string name="remove_group_image">Ezabatu taldearen irudia</string>
     <string name="change_group_image">Aldatu taldearen irudia</string>
     <string name="group_create_button">Sortu taldea</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Idatzi izen bat taldearentzat.</string>
     <string name="group_add_members">Gehitu kideak</string>
     <string name="group_self_not_in_group">Taldeko kidea izan behar zara ekintza hau burutzeko.</string>
@@ -1018,7 +1021,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s(e)k zirriborro bat du dagoeneko, ordezkatu nahi duzu?</string>
     <string name="mailto_link_could_not_be_decoded"> mailto esteka ezin izan da deszifratu: %1$s </string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Erantzun</string>
     <string name="notify_new_message">Mezu berria</string>
@@ -1097,7 +1099,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Ez dago ortografia-iradokizunik.</string>
     <string name="show_window">Erakutsi leihoa</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tekla-konbinazioak</string>
     <string name="switch_between_chats">Aldatu txaten artean</string>
@@ -1174,5 +1175,5 @@
     <string name="perm_enable_bg_already_done">Dagoeneko baimendu diozu Delta Chat aplikazioari bigarren planoan mezuak jasotzea,\n\nOraindik ere mezuak heltzen ez badira, egiaztatu ere zure sistemaren ezarpenak.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Zer berri?\n\n💯 Muturretik muturrerako zifratze fidagarria eta betirakoa da orain. Sarrailak 🔒 joan dira!\n\n✉️ Muturretik muturrerako zifratzerik gabeko posta elektroniko klasikoa gutun-azal ikur batekin markatuta dago\n\n😻 Kontuaren pantaila berria zure kontaktu guztientzat\n\n🔲 Txat batean erabilitako aplikazioetara azkar sartzeko botoi berria\n\n❤️ Mesedez, egin dohaintza independente jarraitzen laguntzeko eta hobekuntzak ekartzen jarraitzeko: %1$s</string>
+    <string name="update_2_0">Zer berri?\n\n💯 Muturretik muturrerako zifratze fidagarria eta betirakoa da orain. Sarrailak 🔒 joan dira!\n\n✉️ Muturretik muturrerako zifratzerik gabeko posta elektroniko klasikoa gutun-azal ikur batekin markatuta dago\n\n😻 Profil-bistaratze berri hobetua zure kontaktu guztientzat\n\n🔲 Txat batean erabilitako aplikazioetara azkar sartzeko botoi berria\n\n❤️ Mesedez, egin dohaintza independente jarraitzen laguntzeko eta hobekuntzak ekartzen jarraitzeko: %1$s</string>
 </resources>

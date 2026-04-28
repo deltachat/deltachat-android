@@ -344,6 +344,7 @@
     <string name="remove_group_image">그룹 이미지 제거</string>
     <string name="change_group_image">그룹 이미지 변경</string>
     <string name="group_create_button">그룹 만들기</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">그룹 이름을 입력하시오</string>
     <string name="group_add_members">대화상대 추가</string>
     <string name="group_self_not_in_group">실행을 위해선 그룹의 멤버가 되어야 합니다.</string>
@@ -641,7 +642,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s에 이미 임시 저장된 메시지가 있습니다. 바꾸시겠습니까?</string>
     <string name="mailto_link_could_not_be_decoded">링크로 보내는 메일을 디코딩할 수 없습니다: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">답장하기</string>
     <string name="notify_new_message">새 메시지</string>
@@ -704,7 +704,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">맞춤법 제안을 찾을 수 없습니다.</string>
     <string name="show_window">창 보이기</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">키 바인딩</string>
     <string name="switch_between_chats">채팅 간 전환</string>

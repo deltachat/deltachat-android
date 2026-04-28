@@ -25,6 +25,8 @@
     <string name="downloading">Загрузка…</string>
     <string name="open_attachment">Открыть вложение</string>
     <string name="join">Присоединиться</string>
+    <string name="join_group">Вступить в группу</string>
+    <string name="join_channel">Присоединиться к каналу</string>
     <string name="rejoin">Присоединиться снова</string>
     <string name="delete">Удалить</string>
     <string name="delete_for_me">Удалить для меня</string>
@@ -66,10 +68,13 @@
     <string name="show_full_message">Показать сообщение полностью…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Отметить все как прочитанные</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Отметить как прочитанное</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Прочитано</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Отметить как непрочитанное</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Не прочитано</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Загрузка…</string>
@@ -90,6 +95,7 @@
     <string name="offline">Не в сети</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Далее</string>
+    <string name="warning">Предупреждение</string>
     <string name="error">Ошибка</string>
     <string name="error_x">Ошибка: %1$s</string>
     <string name="no_app_to_handle_data">Не удалось найти приложение для обработки этого типа данных.</string>
@@ -195,7 +201,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стикер</string>
     <string name="add_to_sticker_collection">Добавить в коллекцию стикеров</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Для добавления стикеров, нажмите \"Открыть папку стикеров\", создайте в ней подпапку для вашего набора стикеров и перетащите туда файлы изображений и стикеров</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Открыть папку стикеров</string>
     <string name="ask_add_sticker_to_collection">Добавить этот стикер в коллекцию?</string>
     <string name="ask_delete_sticker">Удалить этот стикер?</string>
@@ -440,6 +448,8 @@
     <string name="canceled_call">Отменённый звонок</string>
     <string name="missed_call">Пропущенный звонок</string>
     <string name="already_in_call">Вызов уже идёт</string>
+    <string name="call_answered_elsewhere">Звонок отвечен на другом устройстве</string>
+    <string name="call_requires_mic_permission">Для совершения звонков требуется разрешение на использование микрофона</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -552,8 +562,11 @@
     <!-- search -->
     <string name="search">Поиск</string>
     <string name="search_in_chat">Поиск в чате</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">Поиск в %1$s</string>
     <string name="search_files">Поиск файлов</string>
     <string name="search_explain">Поиск чатов, контактов и сообщений</string>
+    <string name="search_result_for_x">Результат по запросу \"%1$s\"</string>
     <string name="search_no_result_for_x">Ничего не найдено по запросу \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Не прочитано</string>
@@ -564,7 +577,9 @@
     <string name="remove_group_image">Удалить изображение группы</string>
     <string name="change_group_image">Изменить изображение группы</string>
     <string name="group_create_button">Создать группу</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Введите название группы</string>
+    <string name="please_enter_chat_name">Пожалуйста, введите имя.</string>
     <string name="group_add_members">Добавить участников</string>
     <string name="group_self_not_in_group">Вы должны быть участником группы, чтобы выполнить это действие.</string>
     <string name="profile_encryption">Шифрование</string>
@@ -801,6 +816,8 @@
     <string name="pref_incognito_keyboard_explain">Запрос клавиатуре на отключение персонализированного обучения</string>
     <string name="pref_read_receipts">Уведомления о прочтении</string>
     <string name="pref_read_receipts_explain">Если уведомления о прочтении отключены, вы не будете видеть подтверждения прочтения сообщений другими пользователями.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">Прочитано</string>
     <string name="pref_server">Сервер</string>
     <string name="pref_encryption">Шифрование</string>
     <string name="pref_manage_keys">Управление ключами</string>
@@ -913,9 +930,12 @@
     <string name="group_name_changed_by_you">Вы изменили название группы с \"%1$s\" на \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s меняет название группы с \"%1$s\" на \"%2$s\".</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">Название канала изменено с \"%1$s\" на \"%2$s\".</string>
     <string name="group_image_changed_by_you">Вы изменили изображение группы.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s меняет изображение группы.</string>
+    <string name="channel_image_changed">Изображение канала изменено.</string>
     <string name="chat_description_changed_by_you">Вы изменили описание чата.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">Описание чата изменено пользователем %1$s.</string>
@@ -1052,6 +1072,8 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s уже имеет черновик, вы хотите его заменить?</string>
     <string name="mailto_link_could_not_be_decoded">ссылка mailto не может быть обработана: %1$s</string>
+    <string name="remove_quote">Удалить цитату</string>
+    <string name="remove_attachment">Удалить вложение</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">Ответить</string>
@@ -1068,6 +1090,12 @@
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Есть новые сообщения</string>
     <string name="n_messages_in_m_chats">%1$d сообщений в %2$d чатах</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_channel_desc">Канал для потоковой передачи местоположения по запросу</string>
+    <string name="location_streaming_notification_title">Потоковая передача местоположения</string>
+    <string name="location_streaming_notification_text">Вы делитесь своим местоположением</string>
+    <string name="location_rationale">Чтобы поделиться своим местоположением в реальном времени с участниками чата, разрешите Delta Chat использовать данные о вашем местоположении.\n\nДля обеспечения бесперебойной работы функции передачи геопозиции данные используются даже тогда, когда приложение закрыто или не активно.</string>
 
     <!-- permissions -->
     <string name="perm_required_title">Требуется разрешение</string>
@@ -1110,7 +1138,8 @@
     <string name="global_menu_help_about_desktop">О Delta Chat</string>
     <string name="global_menu_file_open_desktop">Открыть Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Свернуть</string>
-    <string name="no_chat_selected_suggestion_desktop">Выберите чат или создайте новый</string>
+    <string name="no_account_selected">Выберите или создайте новый профиль</string>
+    <string name="no_chat_selected_suggestion_desktop">Выберите или создайте новый чат</string>
     <string name="write_message_desktop">Напишите сообщение</string>
     <string name="encryption_info_title_desktop">Информация о шифровании</string>
     <string name="delete_message_desktop">Удалить сообщение</string>
@@ -1131,9 +1160,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Не найдены варианты исправления орфографии.</string>
     <string name="show_window">Показать окно</string>
+    <string name="data_found_other_installation_message">Профили из другой установки Delta Chat недоступны - разные экземпляры приложения хранят данные в отдельных папках.\n\nЧтобы сохранить существующие профили:\n1. Выйдите сейчас.\n2. Откройте другую установку Delta Chat - если потребуется, переустановите её из %1$s\n3. Создайте резервные копии каждого профиля в разделе \"Настройки/Чаты\"\n4. Запустите текущую версию приложения\n5. Восстановите данные из резервных копий, выбрав \"У меня уже есть профиль\"\n\nПродолжить без предыдущих профилей?</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Горячие клавиши</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Навигация</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Поле ввода сообщения</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Выбранное сообщение</string>
     <string name="switch_between_chats">Переключение между чатами</string>
     <string name="scroll_messages">Прокрутка сообщений</string>
     <!-- command to put the cursor to the search input field -->

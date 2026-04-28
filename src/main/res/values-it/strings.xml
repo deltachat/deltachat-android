@@ -25,6 +25,8 @@
     <string name="downloading">Scarico…</string>
     <string name="open_attachment">Apri Allegato</string>
     <string name="join">Partecipa</string>
+    <string name="join_group">Unisciti al Gruppo</string>
+    <string name="join_channel">Unisciti al Canale</string>
     <string name="rejoin">Ripartecipa</string>
     <string name="delete">Elimina</string>
     <string name="delete_for_me">Cancella per Me</string>
@@ -66,10 +68,13 @@
     <string name="show_full_message">Mostra Messaggio Completo…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Segna Tutti come Letti</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Segna come Letto</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Segna Letto</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Segna Non Letto</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Non Letto</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Caricamento…</string>
@@ -90,6 +95,7 @@
     <string name="offline">Non in linea</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Avanti</string>
+    <string name="warning">Attenzione</string>
     <string name="error">Errore</string>
     <string name="error_x">Errore: %1$s</string>
     <string name="no_app_to_handle_data">Non ho trovato un\'app per gestire questo tipo di dati.</string>
@@ -185,7 +191,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Adesivo</string>
     <string name="add_to_sticker_collection">Aggiungi alla Raccolta Adesivi</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Per aggiungere adesivi, tocca \"Apri Cartella Adesivi\", crea una sottocartella per il tuo pacchetto di adesivi e trascina lì i file di immagini e adesivi</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Apri Cartella Adesivi</string>
     <string name="ask_add_sticker_to_collection">Aggiungere questo adesivo alla tua collezione?</string>
     <string name="ask_delete_sticker">Eliminare questo adesivo?</string>
@@ -428,6 +436,8 @@
     <string name="canceled_call">Chiamata annullata</string>
     <string name="missed_call">Chiamata persa</string>
     <string name="already_in_call">Già in chiamata</string>
+    <string name="call_answered_elsewhere">Chiamata risposta su un altro dispositivo</string>
+    <string name="call_requires_mic_permission">Per le chiamate è necessaria l\'autorizzazione per l\'utilizzo del microfono.</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -535,8 +545,11 @@
     <!-- search -->
     <string name="search">Cerca</string>
     <string name="search_in_chat">Cerca nella Chat</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">Cerca in %1$s</string>
     <string name="search_files">Cerca File</string>
     <string name="search_explain">Cerca chat, contatti e messaggi</string>
+    <string name="search_result_for_x">Risultato per \"%1$s\"</string>
     <string name="search_no_result_for_x">Nessun risultato trovato per \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Non Letto</string>
@@ -547,7 +560,9 @@
     <string name="remove_group_image">Rimuovi Immagine Gruppo</string>
     <string name="change_group_image">Cambia Immagine Gruppo</string>
     <string name="group_create_button">Crea Gruppo</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Per piacere inserisci un nome per il gruppo.</string>
+    <string name="please_enter_chat_name">Inserisci un nome.</string>
     <string name="group_add_members">Aggiungi Membri</string>
     <string name="group_self_not_in_group">Devi essere un membro del gruppo per fare questa azione.</string>
     <string name="profile_encryption">Crittografia</string>
@@ -784,6 +799,8 @@
     <string name="pref_incognito_keyboard_explain">Richiedi alla tastiera di disattivare l\'apprendimento personalizzato</string>
     <string name="pref_read_receipts">Ricevute di Lettura</string>
     <string name="pref_read_receipts_explain">Se le conferme di lettura sono disattivate, non potrai vedere le conferme di lettura degli altri.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">Letto da</string>
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Crittografia</string>
     <string name="pref_manage_keys">Gestisci Chiavi</string>
@@ -896,9 +913,12 @@
     <string name="group_name_changed_by_you">Hai cambiato il nome del gruppo da \"%1$s\" a \"%2$s\".</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Nome gruppo cambiato da \"%1$s\" a \"%2$s\" da %3$s.</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">Il nome del canale è cambiato da \"%1$s\" a \"%2$s\".</string>
     <string name="group_image_changed_by_you">Hai cambiato l\'immagine del gruppo.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Immagine del gruppo cambiata da %1$s.</string>
+    <string name="channel_image_changed">Immagine canale cambiata.</string>
     <string name="chat_description_changed_by_you">Hai cambiato la descrizione della chat.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">Descrizione della chat modificata da %1$s.</string>
@@ -1035,6 +1055,8 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ha già una bozza di messaggio, vuoi sostituirla?</string>
     <string name="mailto_link_could_not_be_decoded">Il collegamento mailto non può essere decodificato: %1$s</string>
+    <string name="remove_quote">Rimuovi citazione</string>
+    <string name="remove_attachment">Rimuovi allegato</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">Rispondi</string>
@@ -1051,6 +1073,12 @@
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Hai nuovi messaggi</string>
     <string name="n_messages_in_m_chats">%1$d messaggi in %2$d chat</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_channel_desc">Canale Trasmissione della Posizione su Richiesta</string>
+    <string name="location_streaming_notification_title">Trasmissione Posizione</string>
+    <string name="location_streaming_notification_text">Stai condividendo la tua posizione</string>
+    <string name="location_rationale">Per condividere la tua posizione in tempo reale con i membri della chat, consenti a Delta Chat di utilizzare i tuoi dati di geolocalizzazione.\n\nPer garantire il funzionamento continuo della geolocalizzazione in tempo reale, i dati di geolocalizzazione vengono utilizzati anche quando l\'app è chiusa o non in uso.</string>
 
     <!-- permissions -->
     <string name="perm_required_title">Autorizzazione richiesta</string>
@@ -1093,6 +1121,7 @@
     <string name="global_menu_help_about_desktop">Informazioni Delta Chat</string>
     <string name="global_menu_file_open_desktop">Apri Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Minimizza</string>
+    <string name="no_account_selected">Seleziona un profilo o creane uno nuovo</string>
     <string name="no_chat_selected_suggestion_desktop">Seleziona una chat o crea una nuova chat</string>
     <string name="write_message_desktop">Scrivi un messaggio</string>
     <string name="encryption_info_title_desktop">Informazioni Cifratura</string>
@@ -1114,9 +1143,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Nessun suggerimento ortografico trovato.</string>
     <string name="show_window">Mostra Finestra</string>
+    <string name="data_found_other_installation_message">I profili di un\'altra installazione di Delta Chat non sono accessibili: le diverse installazioni memorizzano i dati in posizioni separate.\n\nPer mantenere i profili esistenti:\n1. Esci ora\n2. Apri l\'altro Delta Chat; se necessario, reinstallalo da %1$s\n3. Esegui il backup di ciascun profilo in \"Impostazioni/Chat\"\n4. Riavvia questa versione\n5. Ripristina i backup utilizzando \"Ho già un profilo\"\n\nContinuare senza i profili precedenti?</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Associazioni tasti</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Navigazione</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Scrivi Messaggio</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Messaggio Selezionato</string>
     <string name="switch_between_chats">Passa da una Chat all\'altra</string>
     <string name="scroll_messages">Scorri Messaggi</string>
     <!-- command to put the cursor to the search input field -->

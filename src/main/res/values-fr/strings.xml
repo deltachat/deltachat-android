@@ -66,10 +66,11 @@
     <string name="show_full_message">Montrer le message complet...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marquer tout comme lu</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Marquer comme lu</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Marquer comme lu</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Non lus</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Chargement...</string>
@@ -185,7 +186,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Vignette</string>
     <string name="add_to_sticker_collection">Ajouter à la collection de vignettes</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Pour ajouter des vignettes, appuyez sur « Ouvrir le dossier Vignettes », créez un sous-dossier pour votre paquet de vignettes et faites-y glisser vos fichiers image ou vignette </string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Ouvrir le dossier Vignettes</string>
     <string name="ask_add_sticker_to_collection">Ajouter cette vignette à votre collection ?</string>
     <string name="ask_delete_sticker">Supprimer cette vignette ?</string>
@@ -428,7 +431,6 @@
     <string name="canceled_call">Appel annulé</string>
     <string name="missed_call">Appel manqué</string>
     <string name="already_in_call">Déjà en appel</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Voulez-vous vraiment quitter la discussion ?</string>
@@ -547,6 +549,7 @@
     <string name="remove_group_image">Retirer l\'image du groupe</string>
     <string name="change_group_image">Changer l\'image du groupe</string>
     <string name="group_create_button">Créer un groupe</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Entrez un nom pour le groupe.</string>
     <string name="group_add_members">Ajouter des participants</string>
     <string name="group_self_not_in_group">Vous devez être membre du groupe pour effectuer cette action.</string>
@@ -1033,7 +1036,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$sa déjà un message en brouillon, voulez-vous le remplacer?</string>
     <string name="mailto_link_could_not_be_decoded">Le lien mailto n\'a pas pu être décodé: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Répondre</string>
     <string name="notify_new_message">Nouveau message</string>
@@ -1112,7 +1114,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Aucune propositions de correction trouvées.</string>
     <string name="show_window">Afficher la fenêtre</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Raccourcis clavier</string>
     <string name="switch_between_chats">Naviguer entre les discussions</string>
