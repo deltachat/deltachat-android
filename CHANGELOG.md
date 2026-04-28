@@ -8,6 +8,7 @@
 * Allow to share location for 24 hours
 * Allow mini-apps to play audio without user interaction
 * Mark chats as unread (long tap a chat and select the corresponding option from the three-dot-menu)
+* Fix process of upgrading from a very old version of the app
 
 ## v2.49.0
 2026-04

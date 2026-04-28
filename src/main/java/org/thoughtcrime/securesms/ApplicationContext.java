@@ -191,7 +191,7 @@ public class ApplicationContext extends MultiDexApplication {
               Log.i(TAG, "DcAccounts created");
               rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
               Log.i(TAG, "Rpc created");
-              AccountManager.getInstance().migrateToDcAccounts(this);
+              AccountManager.getInstance().migrateToDcAccounts(this, dcAccounts);
 
               int[] allAccounts = dcAccounts.getAll();
               Log.i(TAG, "Number of profiles: " + allAccounts.length);

@@ -38,7 +38,7 @@ public class AccountManager {
     return self;
   }
 
-  public void migrateToDcAccounts(ApplicationContext context) {
+  public void migrateToDcAccounts(Context context, DcAccounts dcAccounts) {
     try {
       int selectAccountId = 0;
 
@@ -49,8 +49,7 @@ public class AccountManager {
           if (!file.isDirectory()
               && file.getName().startsWith("messenger")
               && file.getName().endsWith(".db")) {
-            int accountId =
-                ApplicationContext.getDcAccounts().migrateAccount(file.getAbsolutePath());
+            int accountId = dcAccounts.migrateAccount(file.getAbsolutePath());
             if (accountId != 0) {
               String selName =
                   PreferenceManager.getDefaultSharedPreferences(context)
@@ -67,7 +66,7 @@ public class AccountManager {
       }
 
       if (selectAccountId != 0) {
-        ApplicationContext.getDcAccounts().selectAccount(selectAccountId);
+        dcAccounts.selectAccount(selectAccountId);
       }
     } catch (Exception e) {
       Log.e(TAG, "Error in migrateToDcAccounts()", e);
