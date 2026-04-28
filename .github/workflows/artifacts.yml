@@ -4,14 +4,20 @@ on:
     workflows: ["Upload Preview APK"]
     types: [completed]
 
+permissions: {}
+
 jobs:
   artifacts-url-comments:
     name: add artifact links to pull request
+    permissions:
+      pull-requests: write
+      actions: read
+      contents: read
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: add artifact links to pull request
-        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        uses: tonyhallett/artifacts-url-comments@0965ff1a7ae03c5c1644d3c30f956effea4e05ef # v1.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

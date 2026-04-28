@@ -6,6 +6,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
+permissions: {}
+
 jobs:
   build:
     name: Upload Preview APK
@@ -14,6 +16,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           submodules: recursive
+          persist-credentials: false
 
       - uses: actions/setup-java@v5
         with:
@@ -30,15 +33,15 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Validate Gradle Wrapper
-        uses: gradle/actions/wrapper-validation@v4
+        uses: gradle/actions/wrapper-validation@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
 
-      - uses: android-actions/setup-android@v3
-      - uses: nttld/setup-ndk@v1
+      - uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 # v4.0.1
+      - uses: nttld/setup-ndk@ed92fe6cadad69be94a966a7ee3271275e62f779 # v1.6.0
         id: setup-ndk
         with:
           ndk-version: r27
 
-      - uses: Swatinem/rust-cache@v2
+      - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
         with:
           workspaces: jni/deltachat-core-rust
 
