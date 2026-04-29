@@ -66,8 +66,9 @@
     <string name="show_full_message">نشووݩ داڌن پیوم کامل...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">پوی ن خونده بیڌه بزݩ</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">نشووه ناڌن و عونوان خونده وابیڌه</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">علامت و عونوان خونده بیڌه</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">هونی بار اونه...</string>
@@ -159,7 +160,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
     <string name="add_to_sticker_collection">ٱووردن و مجمۊعه استیکر</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">سی ٱووردن برچسب ری «گۊشیڌن دوبلگه برچسب» بزنین، ی لم دوبلگه ای سی کتن برچسب خوتووݩ وورکل کۊنین وو برچسبا ن و اوچو بکشین</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">گۊشیڌن دوبلگه استیکر</string>
     <string name="images">شؽواتا</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -448,6 +451,5 @@
     <string name="message_detail_sent_desktop">فشناڌ</string>
     <string name="message_detail_received_desktop">گرؽڌه وابی</string>
     <string name="show_window">نشووݩ داڌن نیمدری</string>
-
     <string name="open_settings">گۊشیڌن سامووا</string>
     </resources>

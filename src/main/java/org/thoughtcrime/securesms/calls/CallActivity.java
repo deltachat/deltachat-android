@@ -51,7 +51,7 @@ import org.webrtc.VideoTrack;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallActivity extends AppCompatActivity {
 
-  private static final String TAG = CallActivity.class.getSimpleName();
+  private static final String TAG = "CallActivity";
   private static final int MIC_PERMISSION_REQUEST_CODE = 1001;
   private static final int CAMERA_PERMISSION_REQUEST_CODE = 1002;
 

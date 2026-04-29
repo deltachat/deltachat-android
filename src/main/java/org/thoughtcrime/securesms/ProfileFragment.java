@@ -38,7 +38,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class ProfileFragment extends Fragment
     implements ProfileAdapter.ItemClickListener, DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = ProfileFragment.class.getSimpleName();
+  private static final String TAG = "ProfileFragment";
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
 

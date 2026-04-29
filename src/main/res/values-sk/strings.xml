@@ -63,8 +63,9 @@
     <string name="show_full_message">Zobraziť celú správu ...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Všetko prečítané</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Označiť ako prečítané</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Prečítané</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Načítam…</string>
@@ -179,7 +180,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Nálepka</string>
     <string name="add_to_sticker_collection">Pridať do zbierky nálepiek</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Pre pridanie nálepiek, ťuknite na \"Otvoriť priečinok s nálepkami\", vytvorte priečinok pre svoju sadu nálepiek a prekopírujte doň nálepky</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Otvoriť priečinok s nálepkami</string>
     <string name="images">Snímky</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -481,6 +484,7 @@
     <string name="remove_group_image">Odstrániť obrázok skupin</string>
     <string name="change_group_image">Zmeniť obrázok skupiny</string>
     <string name="group_create_button">Vytvorte skupinu</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Zadajte názov skupiny.</string>
     <string name="group_add_members">Pridať členov</string>
     <string name="group_self_not_in_group">Ak chcete vykonať túto akciu, musíte byť členom skupiny.</string>
@@ -869,7 +873,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s už má koncept správy, chcete ho nahradiť?</string>
     <string name="mailto_link_could_not_be_decoded">prepojenie mailto sa nepodarilo dekódovať: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Odpovedať</string>
     <string name="notify_new_message">Nová správa</string>
@@ -939,7 +942,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Neboli nájdené žiadne návrhy opravy preklepov.</string>
     <string name="show_window">Zobraziť okno</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Klávesové skratky</string>
     <string name="switch_between_chats">Prepínanie medzi konverzáciami</string>

@@ -66,8 +66,9 @@
     <string name="show_full_message">Vis hele meldingen</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Merk alt som lest</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Merk som lest</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Lest</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Laster...</string>
@@ -165,7 +166,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Merke</string>
     <string name="add_to_sticker_collection">Legg til merkesamling</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for merkepakken, og dra bilder og merkefiler dit</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Åpne merkemappe</string>
     <string name="images">Bilder</string>
     <!-- a noun, used for "Music" and other "Audio" files -->

@@ -29,7 +29,7 @@ import org.thoughtcrime.securesms.R;
 public class StickerSelectActivity extends FragmentActivity
     implements StickerSelectFragment.StickerSelectionListener {
 
-  private static final String TAG = StickerSelectActivity.class.getSimpleName();
+  private static final String TAG = "StickerSelectActivity";
 
   public static final String EXTRA_STICKER_FILE = "extra_sticker_file";
 

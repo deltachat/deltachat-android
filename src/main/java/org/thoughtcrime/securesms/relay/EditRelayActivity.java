@@ -56,7 +56,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     PORT,
   }
 
-  private static final String TAG = EditRelayActivity.class.getSimpleName();
+  private static final String TAG = "EditRelayActivity";
   public static final String EXTRA_ADDR = "extra_addr";
 
   private TextInputEditText emailInput;

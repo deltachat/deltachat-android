@@ -45,7 +45,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = AdvancedPreferenceFragment.class.getSimpleName();
+  private static final String TAG = "AdvancedPreferenceFragment";
 
   private ListPreference showEmails;
   CheckBoxPreference selfReportingCheckbox;

@@ -19,7 +19,7 @@ import androidx.viewpager.widget.ViewPager;
  */
 public class HackyViewPager extends ViewPager {
 
-  private static final String TAG = HackyViewPager.class.getSimpleName();
+  private static final String TAG = "HackyViewPager";
 
   public HackyViewPager(Context context) {
     super(context);

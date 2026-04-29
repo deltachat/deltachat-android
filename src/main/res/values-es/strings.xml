@@ -66,10 +66,11 @@
     <string name="show_full_message">Mostrar mensaje completo…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marcar todo como leído</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Marcar como leído</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Leído</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">No leído</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Cargando…</string>
@@ -185,7 +186,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="add_to_sticker_collection">Añadir a la colección de stickers</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Para añadir stickers, toca en \"Abrir carpeta de stickers\", crea una subcarpeta para tu colección de stickers y copia imágenes y stickers allí</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Abrir la carpeta de stickers</string>
     <string name="ask_add_sticker_to_collection">¿Añadir este sticker a tu colección?</string>
     <string name="ask_delete_sticker">¿Eliminar este sticker?</string>
@@ -428,7 +431,6 @@
     <string name="canceled_call">Llamada cancelada</string>
     <string name="missed_call">Llamada perdida</string>
     <string name="already_in_call">Ya estás en una llamada</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">¿Seguro que quieres abandonar este canal?</string>
@@ -447,7 +449,7 @@
     <string name="ask_forward">¿Reenviar mensajes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensajes a %1$d chats?</string>
     <string name="ask_export_attachment">Los adjuntos exportados serán accesibles desde cualquier otra aplicación en su dispositivo. ¿Continuar?</string>
-    <string name="ask_block_contact">¿Bloquear este contacto? Ya no recibirás mensajes de este contacto.</string>
+    <string name="ask_block_contact">¿Bloquear este contacto? Ya no recibirás mensajes ni se mostrarán grupos creados por contactos bloqueados. En otros grupos con contactos bloqueados seguirás viendo sus mensajes.</string>
     <string name="ask_unblock_contact">¿Desbloquear este contacto? Una vez más podrá recibir mensajes de este contacto.</string>
     <string name="ask_delete_contacts">¿Eliminar contactos?\n\nContactos con un chat en curso y contactos de la libreta de direcciones del sistema no pueden ser eliminados de forma permanente.</string>
     <string name="ask_delete_contact">¿Eliminar contacto %1$s?\n\nContactos con chats en curso o de la libreta de direcciones del sistema no pueden ser eliminados.</string>
@@ -547,6 +549,7 @@
     <string name="remove_group_image">Eliminar imagen de grupo</string>
     <string name="change_group_image">Cambiar imagen de grupo</string>
     <string name="group_create_button">Crear grupo</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Por favor introduzca un nombre para el grupo.</string>
     <string name="group_add_members">Añadir miembros</string>
     <string name="group_self_not_in_group">Debes ser un miembro del grupo para realizar esta acción.</string>
@@ -1035,7 +1038,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ya tiene un mensaje borrador, ¿quieres reemplazarlo?</string>
     <string name="mailto_link_could_not_be_decoded">El enlace mailto no se pudo decodificar: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Responder</string>
     <string name="notify_new_message">Nuevo mensaje</string>
@@ -1114,7 +1116,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">No se encontraron sugerencias ortográficas.</string>
     <string name="show_window">Mostrar ventana</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Atajos de tecla</string>
     <string name="switch_between_chats">Alternar entre chats</string>

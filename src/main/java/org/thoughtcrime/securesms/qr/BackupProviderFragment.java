@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class BackupProviderFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = BackupProviderFragment.class.getSimpleName();
+  private static final String TAG = "BackupProviderFragment";
 
   private DcContext dcContext;
   private DcBackupProvider dcBackupProvider;

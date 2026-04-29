@@ -41,7 +41,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListFragment extends DialogFragment
     implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = AccountSelectionListFragment.class.getSimpleName();
+  private static final String TAG = "AccountSelectionListFragment";
   private static final String ARG_SELECT_ONLY = "select_only";
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;

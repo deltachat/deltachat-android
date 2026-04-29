@@ -22,7 +22,7 @@ import org.thoughtcrime.securesms.animation.AnimationCompleteListener;
 
 public class SearchToolbar extends LinearLayout {
 
-  private static final String TAG = SearchToolbar.class.getSimpleName();
+  private static final String TAG = "SearchToolbar";
   private float x, y;
   private MenuItem searchItem;
   private EditText searchText;

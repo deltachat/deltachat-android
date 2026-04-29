@@ -69,7 +69,7 @@ import org.thoughtcrime.securesms.util.Util;
 public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     implements RecipientModifiedListener, LoaderManager.LoaderCallbacks<DcMediaGalleryElement> {
 
-  private static final String TAG = MediaPreviewActivity.class.getSimpleName();
+  private static final String TAG = "MediaPreviewActivity";
 
   public static final String ACTIVITY_TITLE_EXTRA = "activity_title";
   public static final String EDIT_AVATAR_CHAT_ID = "avatar_for_chat_id";

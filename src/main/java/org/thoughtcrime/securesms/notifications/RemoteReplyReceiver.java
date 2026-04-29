@@ -33,7 +33,7 @@ import org.thoughtcrime.securesms.util.Util;
 /** Get the response text from the Wearable Device and sends an message as a reply */
 public class RemoteReplyReceiver extends BroadcastReceiver {
 
-  public static final String TAG = RemoteReplyReceiver.class.getSimpleName();
+  public static final String TAG = "RemoteReplyReceiver";
   public static final String REPLY_ACTION = "org.thoughtcrime.securesms.notifications.WEAR_REPLY";
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String CHAT_ID_EXTRA = "chat_id";

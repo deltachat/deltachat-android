@@ -12,7 +12,7 @@ import org.thoughtcrime.securesms.util.AsyncLoader;
 
 public class PagingMediaLoader extends AsyncLoader<DcMediaGalleryElement> {
 
-  private static final String TAG = PagingMediaLoader.class.getSimpleName();
+  private static final String TAG = "PagingMediaLoader";
 
   private final DcMsg msg;
   private final boolean leftIsRecent;

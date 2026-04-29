@@ -15,7 +15,7 @@ import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.Util;
 
 class SearchViewModel extends ViewModel {
-  private static final String TAG = SearchViewModel.class.getSimpleName();
+  private static final String TAG = "SearchViewModel";
   private final ObservingLiveData searchResult;
   private String lastQuery;
   private final DcContext dcContext;

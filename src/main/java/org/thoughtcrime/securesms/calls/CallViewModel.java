@@ -20,7 +20,7 @@ import org.webrtc.VideoTrack;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallViewModel extends AndroidViewModel {
 
-  private static final String TAG = CallViewModel.class.getSimpleName();
+  private static final String TAG = "CallViewModel";
 
   private final CallCoordinator callCoordinator;
 

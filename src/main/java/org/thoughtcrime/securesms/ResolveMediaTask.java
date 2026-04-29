@@ -17,7 +17,7 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 
 public class ResolveMediaTask extends AsyncTask<Uri, Void, Uri> {
 
-  private static final String TAG = ResolveMediaTask.class.getSimpleName();
+  private static final String TAG = "ResolveMediaTask";
 
   interface OnMediaResolvedListener {
     void onMediaResolved(Uri uri);

@@ -22,7 +22,7 @@ import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPrefere
 
 public class Prefs {
 
-  private static final String TAG = Prefs.class.getSimpleName();
+  private static final String TAG = "Prefs";
 
   public static final String RELIABLE_SERVICE_PREF = "pref_reliable_service";
   public static final String DISABLE_PASSPHRASE_PREF = "pref_disable_passphrase";

@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public class QrCodeHandler {
-  private static final String TAG = QrCodeHandler.class.getSimpleName();
+  private static final String TAG = "QrCodeHandler";
 
   public static int SECUREJOIN_SOURCE_EXTERNAL_LINK = 1;
   public static int SECUREJOIN_SOURCE_INTERNAL_LINK = 2;
@@ -363,20 +363,24 @@ public class QrCodeHandler {
       SecurejoinSource source,
       SecurejoinUiPath uipath) {
     String msg;
+    int positiveButton;
     switch (qrParsed.getState()) {
       case DcContext.DC_QR_ASK_VERIFYGROUP:
         msg = activity.getString(R.string.qrscan_ask_join_group, qrParsed.getText1());
+        positiveButton = R.string.join_group;
         break;
       case DcContext.DC_QR_ASK_JOIN_BROADCAST:
         msg = activity.getString(R.string.qrscan_ask_join_channel, qrParsed.getText1());
+        positiveButton = R.string.join_channel;
         break;
       default:
         msg = activity.getString(R.string.ask_start_chat_with, name);
+        positiveButton = R.string.ok;
         break;
     }
     builder.setMessage(msg);
     builder.setPositiveButton(
-        android.R.string.ok,
+        positiveButton,
         (dialogInterface, i) -> {
           secureJoinByQr(qrRawString, source, uipath);
         });

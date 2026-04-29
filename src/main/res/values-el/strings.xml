@@ -360,6 +360,7 @@
     <string name="remove_group_image">Αφαίρεση φωτογραφίας ομάδας;</string>
     <string name="change_group_image">Αλλαγή Εικόνας Ομάδας</string>
     <string name="group_create_button">Δημιουργία ομάδας</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Εισάγετε ένα όνομα για αυτή την ομάδα.</string>
     <string name="group_add_members">Προσθήκη μελών</string>
     <string name="group_self_not_in_group">Πρέπει να είστε μέλος της ομάδας για να εκτελέσετε αυτήν την ενέργεια.</string>
@@ -673,7 +674,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s έχει ήδη ένα πρόχειρο μήνυμα, θέλετε να το αντικαταστήσετε;</string>
     <string name="mailto_link_could_not_be_decoded">Αδυναμία αποκωδικοποίησης του συνδέσμου mailto: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Απάντηση</string>
     <string name="notify_new_message">Νέο μήνυμα</string>
@@ -739,7 +739,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Δεν βρέθηκαν προτάσεις ορθογραφίας.</string>
     <string name="show_window">Εμφάνιση παραθύρου</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Keybindings</string>
     <string name="switch_between_chats">Εναλλαγή μεταξύ συνομιλιών</string>

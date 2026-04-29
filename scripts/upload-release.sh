@@ -34,6 +34,7 @@ cd ../..
 SYMBOLS_ZIP="$APK-symbols.zip"
 rm $SYMBOLS_ZIP
 zip -r $SYMBOLS_ZIP obj
+zip $SYMBOLS_ZIP build/outputs/mapping/gplayRelease/mapping.txt
 ls -l $SYMBOLS_ZIP
 rsync --progress $SYMBOLS_ZIP jekyll@download.delta.chat:/var/www/html/download/android/symbols/
 

@@ -15,7 +15,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 public class AudioCodec {
 
-  private static final String TAG = AudioCodec.class.getSimpleName();
+  private static final String TAG = "AudioCodec";
 
   private static final int SAMPLE_RATE = 44100;
   private static final int CHANNELS = 1;
@@ -191,7 +191,7 @@ public class AudioCodec {
                 setFinished();
               }
             },
-            AudioCodec.class.getSimpleName())
+            "AudioCodec")
         .start();
   }
 

@@ -243,3 +243,15 @@ $ANDROID_NDK_ROOT/ndk-stack --sym obj/local/armeabi-v7a --dump crash.txt > decod
 `obj/local/armeabi-v7a` is the extracted path from `deltachat-gplay-release-X.X.X.apk-symbols.zip` file from https://download.delta.chat/android/symbols/
 
 Replace `armeabi-v7a` by the correct architecture the logs come from (can be guessed by trial and error)
+
+
+### Deobfuscating Java Stack Traces
+
+Because the app uses code minification (ProGuard/R8), Java stack traces in crash reports are obfuscated.
+To decode them, use `retrace` with the `mapping.txt` file that is included in the symbols zip:
+
+```
+retrace mapping.txt crash.txt > decoded-crash.txt
+```
+
+`mapping.txt` is extracted from the same `deltachat-gplay-release-X.X.X.apk-symbols.zip` file available at https://download.delta.chat/android/symbols/

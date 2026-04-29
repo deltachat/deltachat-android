@@ -43,7 +43,7 @@ public class InputPanel extends ConstraintLayout
         KeyboardAwareLinearLayout.OnKeyboardShownListener,
         MediaKeyboard.MediaKeyboardListener {
 
-  private static final String TAG = InputPanel.class.getSimpleName();
+  private static final String TAG = "InputPanel";
 
   private static final int FADE_TIME = 150;
 

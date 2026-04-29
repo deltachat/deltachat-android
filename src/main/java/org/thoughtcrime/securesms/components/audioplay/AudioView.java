@@ -23,7 +23,7 @@ import org.thoughtcrime.securesms.util.DateUtils;
 
 public class AudioView extends FrameLayout {
 
-  private static final String TAG = AudioView.class.getSimpleName();
+  private static final String TAG = "AudioView";
 
   private final @NonNull ImageView playPauseButton;
   private final AnimatedVectorDrawableCompat playToPauseDrawable;

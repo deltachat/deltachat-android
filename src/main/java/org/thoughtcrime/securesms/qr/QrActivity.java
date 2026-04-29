@@ -40,7 +40,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
 
-  private static final String TAG = QrActivity.class.getSimpleName();
+  private static final String TAG = "QrActivity";
   public static final String EXTRA_SCAN_RELAY = "scan_relay";
 
   private static final int REQUEST_CODE_IMAGE = 46243;

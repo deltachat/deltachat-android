@@ -15,7 +15,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.DateUtils;
 
 public class CallItemView extends FrameLayout {
-  private static final String TAG = CallItemView.class.getSimpleName();
+  private static final String TAG = "CallItemView";
 
   private final @NonNull ImageView icon;
   private final @NonNull TextView title;

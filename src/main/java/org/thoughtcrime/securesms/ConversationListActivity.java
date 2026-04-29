@@ -67,6 +67,7 @@ import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.DirectShareUtil;
+import org.thoughtcrime.securesms.geolocation.LocationStreamingService;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -88,7 +89,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener {
-  private static final String TAG = ConversationListActivity.class.getSimpleName();
+  private static final String TAG = "ConversationListActivity";
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
@@ -440,6 +441,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     refreshTitle();
     invalidateOptionsMenu();
     DirectShareUtil.triggerRefreshDirectShare(this);
+    if (DcHelper.getContext(this).isSendingLocationsToChat(0)) {
+      LocationStreamingService.ensureRunning(this);
+    }
   }
 
   @Override

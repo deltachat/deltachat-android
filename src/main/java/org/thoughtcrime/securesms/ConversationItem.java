@@ -85,7 +85,7 @@ import org.thoughtcrime.securesms.util.views.Stub;
  * @author Moxie Marlinspike
  */
 public class ConversationItem extends BaseConversationItem {
-  private static final String TAG = ConversationItem.class.getSimpleName();
+  private static final String TAG = "ConversationItem";
 
   private static final Rect SWIPE_RECT = new Rect();
 

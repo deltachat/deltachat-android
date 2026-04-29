@@ -149,7 +149,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         InputPanel.Listener,
         InputPanel.MediaListener,
         AudioView.OnActionListener {
-  private static final String TAG = ConversationActivity.class.getSimpleName();
+  private static final String TAG = "ConversationActivity";
 
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String CHAT_ID_EXTRA = "chat_id";

@@ -166,6 +166,7 @@
     <string name="search">தேடு</string>
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">குழுவின் பெயர்</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">குழுவிற்கு ஒரு பெயரை சூட்டவும்</string>
     <string name="group_add_members">உறுப்பினர்களை சேர்க்க</string>
     <string name="profile_encryption">மறைகுறியாக்கம்</string>
