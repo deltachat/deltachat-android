@@ -6,8 +6,11 @@
 * Calls are not experimental anymore and don't need to be manually enabled
 * Display a permanent notification when doing location streaming and get rid of dangerous "Access Location in Background" permission
 * Autoplay all voice messages in a chat
+* Allow to share location for 24 hours
 * Allow mini-apps to play audio without user interaction
 * Mark chats as unread (long tap a chat and select the corresponding option from the three-dot-menu)
+* Fix process of upgrading from a very old version of the app
+* Show more recent added stickers at the top of the sticker picker
 
 ## v2.49.0
 2026-04

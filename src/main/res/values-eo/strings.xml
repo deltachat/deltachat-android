@@ -61,8 +61,9 @@
     <string name="show_full_message">Afiŝu la tutan mesaĝon...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Marki ĉiujn legitaj</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Marki kiel legita</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Legi</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ŝarĝado...</string>
@@ -337,6 +338,7 @@
     <string name="group_name">Grup-nomo</string>
     <string name="group_avatar">Bildo de la grupo</string>
     <string name="group_create_button">Krei grupon</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Bonvolu enigi nomon por la grupo.</string>
     <string name="group_add_members">Aldoni anojn</string>
     <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>

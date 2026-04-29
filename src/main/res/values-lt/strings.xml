@@ -76,6 +76,7 @@
     <string name="undo">Atšaukti</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Kitas</string>
+    <string name="warning">Įspėjimas</string>
     <string name="error">Klaida</string>
     <string name="error_x">Klaida: %1$s</string>
     <string name="no_app_to_handle_data">Nepavyksta rasti programėlės, kuri apdorotų šį duomenų tipą.</string>
@@ -163,8 +164,13 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Lipdukas</string>
     <string name="add_to_sticker_collection">Pridėti į lipdukų rinkinį</string>
-    <string name="add_stickers_instructions">Norėdami pridėti lipdukų, bakstelėkite „Atverti lipdukų aplanką“, sukurkite savo lipdukų paketui poaplankį ir tempkite į jį paveikslų ir lipdukų failus</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
+    <string name="add_stickers_instructions">Norėdami pridėti lipdukų, bakstelėkite „Atverti lipdukų aplanką“, sukurkite savo lipdukų paketui poaplankį ir tempkite į jį paveikslų bei lipdukų failus</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Atverti lipdukų aplanką</string>
+    <string name="ask_add_sticker_to_collection">Pridėti šį lipduką į jūsų rinkinį?</string>
+    <string name="ask_delete_sticker">Ištrinti šį lipduką?</string>
+    <string name="sticker_picker_empty_hint">Spustelėkite ant lipduko norėdami jį čia pridėti.</string>
     <string name="images">Paveikslai</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Garso įrašai</string>
@@ -254,6 +260,7 @@
     <string name="menu_add_attachment">Pridėti priedą</string>
     <string name="menu_leave_group">Išeiti iš grupės</string>
     <string name="menu_leave_channel">Išeiti iš kanalo</string>
+    <string name="menu_leave_and_delete">Išeiti ir ištrinti man</string>
     <string name="menu_delete_chat">Ištrinti pokalbį</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Išvalyti pokalbį</string>
@@ -355,6 +362,16 @@
     <string name="answer_call">Atsiliepti</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Atmesti</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Garso skambutis</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Vaizdo skambutis</string>
+    <string name="call_initializing">Inicijuojama…</string>
+    <string name="call_incoming">Gaunamasis skambutis</string>
+    <string name="call_ringing">Skambinama…</string>
+    <string name="call_reconnecting">Jungiamasi iš naujo…</string>
+    <string name="call_ended">Skambutis baigtas</string>
+    <string name="call_failed">Skambutis patyrė nesėkmę</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">Išsiunčiamasis garso skambutis</string>
     <!-- deprecated, use "Video call" instead -->
@@ -364,6 +381,7 @@
     <!-- deprecated, use "Video call" instead -->
     <string name="incoming_video_call">Gaunamasis vaizdo skambutis</string>
     <string name="missed_call">Praleistas skambutis</string>
+    <string name="call_answered_elsewhere">Atsiliepta kitame įrenginyje</string>
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ar tikrai norite išeiti?</string>
@@ -468,7 +486,9 @@
     <string name="remove_group_image">Šalinti grupės paveikslą</string>
     <string name="change_group_image">Keisti grupės paveikslą</string>
     <string name="group_create_button">Sukurti grupę</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Įveskite grupės pavadinimą.</string>
+    <string name="please_enter_chat_name">Įrašykite pavadinimą.</string>
     <string name="group_add_members">Pridėti dalyvius</string>
     <string name="group_self_not_in_group">Norėdami atlikti šį veiksmą, privalote būti grupės dalyviu.</string>
     <string name="profile_encryption">Šifravimas</string>
@@ -883,7 +903,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Pokalbyje „%1$s“ jau yra žinutės juodraštis. Ar norite jį pakeisti?</string>
     <string name="mailto_link_could_not_be_decoded">nepavyko dekoduoti mailto nuorodos: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">Atsakyti</string>
     <string name="notify_new_message">Nauja žinutė</string>
@@ -946,7 +965,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Nerasta jokių rašybos pasiūlymų.</string>
     <string name="show_window">Rodyti langą</string>
-
     <string name="switch_between_chats">Perjungti tarp pokalbių</string>
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
     <string name="a11y_delivery_status_error">Pristatymo būsena: Klaida</string>

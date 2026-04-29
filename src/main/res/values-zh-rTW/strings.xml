@@ -66,8 +66,9 @@
     <string name="show_full_message">顯示完整訊息⋯</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">全部標記為已讀</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">標記為已讀</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">已讀</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">載入中⋯</string>
@@ -163,7 +164,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">貼圖</string>
     <string name="add_to_sticker_collection">新增至貼圖集</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">要添加貼圖，請點擊「打開貼圖資料夾」 ，為您的貼圖包創建一個子資料夾，然後將圖像和貼圖檔拖拽到那裡</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">開啟貼圖資料夾</string>
     <string name="ask_add_sticker_to_collection">將這個貼圖加入你的收藏嗎？</string>
     <string name="ask_delete_sticker">移除這個貼圖？</string>
@@ -509,6 +512,7 @@
     <string name="remove_group_image">移除群組圖片</string>
     <string name="change_group_image">變更群組圖片</string>
     <string name="group_create_button">建立群組</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">請輸入群組的名稱</string>
     <string name="group_add_members">新增成員</string>
     <string name="group_self_not_in_group">你必須先加入群組，才能執行本功能。</string>
@@ -994,7 +998,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s已有草稿消息，是否要替換它？</string>
     <string name="mailto_link_could_not_be_decoded">mailto 連結無法解碼：%1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">回覆</string>
     <string name="notify_new_message">新訊息</string>
@@ -1073,7 +1076,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">未找到拼寫建議。</string>
     <string name="show_window">顯示視窗</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">按鍵綁定</string>
     <string name="switch_between_chats">在聊天之間切換</string>

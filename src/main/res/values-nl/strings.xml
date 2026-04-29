@@ -25,6 +25,8 @@
     <string name="downloading">Bezig met downloaden…</string>
     <string name="open_attachment">Bijlage openen</string>
     <string name="join">Deelnemen</string>
+    <string name="join_group">Deelnemen aan groep</string>
+    <string name="join_channel">Deelnemen aan kanaal</string>
     <string name="rejoin">Opnieuw deelnemen</string>
     <string name="delete">Verwijderen</string>
     <string name="delete_for_me">Verwijderen voor mij</string>
@@ -66,10 +68,13 @@
     <string name="show_full_message">Volledig bericht tonen…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Alles markeren als gelezen</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Markeren als gelezen</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Gelezen</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Markeren als ongelezen</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Ongelezen</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Bezig met laden…</string>
@@ -90,6 +95,7 @@
     <string name="offline">Offline</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Volgende</string>
+    <string name="warning">Waarschuwing</string>
     <string name="error">Fout</string>
     <string name="error_x">Fout: %1$s</string>
     <string name="no_app_to_handle_data">Er is geen app die deze inhoud kan openen.</string>
@@ -175,7 +181,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Sticker</string>
     <string name="add_to_sticker_collection">Toevoegen aan stickerverzameling</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">Stickers toevoegen kan als volgt: druk op ‘Stickermap openen’, maak een onderliggende map aan voor je pakket en plaats afbeeldings- en stickerbestanden in de map.</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">Stickermap openen</string>
     <string name="ask_add_sticker_to_collection">Wil je deze sticker toevoegen aan je verzameling?</string>
     <string name="ask_delete_sticker">Wil je deze sticker verwijderen?</string>
@@ -416,6 +424,8 @@
     <string name="canceled_call">Afgebroken oproep</string>
     <string name="missed_call">Gemiste oproep</string>
     <string name="already_in_call">Reeds in gesprek</string>
+    <string name="call_answered_elsewhere">Er is opgenomen op een ander apparaat</string>
+    <string name="call_requires_mic_permission">Microfoontoegang is vereist om te kunnen bellen</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -518,8 +528,11 @@
     <!-- search -->
     <string name="search">Zoeken</string>
     <string name="search_in_chat">Gesprek doorzoeken</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">‘%1$s’ doorzoeken</string>
     <string name="search_files">Bestanden doorzoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
+    <string name="search_result_for_x">Zoekresultaten voor “%1$s”</string>
     <string name="search_no_result_for_x">Er zijn geen resultaten voor “%s”</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Ongelezen</string>
@@ -530,7 +543,9 @@
     <string name="remove_group_image">Groepsfoto verwijderen</string>
     <string name="change_group_image">Groepsfoto wijzigen</string>
     <string name="group_create_button">Groep aanmaken</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Geef de groep een naam.</string>
+    <string name="please_enter_chat_name">Voer een naam in.</string>
     <string name="group_add_members">Deelnemers toevoegen</string>
     <string name="group_self_not_in_group">Om deze actie uit te kunnen voeren moet je deelnemen aan de groep.</string>
     <string name="profile_encryption">Versleuteling</string>
@@ -767,6 +782,8 @@
     <string name="pref_incognito_keyboard_explain">Verzoek het toetsenbord om geen persoonlijke woorden op te nemen</string>
     <string name="pref_read_receipts">Leesbevestigingen</string>
     <string name="pref_read_receipts_explain">Als je leesbevestigingen uitschakelt, zie je geen leesbevestigingen van anderen.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">Gelezen door</string>
     <string name="pref_server">Server</string>
     <string name="pref_encryption">Versleuteling</string>
     <string name="pref_manage_keys">Sleutels beheren</string>
@@ -879,9 +896,12 @@
     <string name="group_name_changed_by_you">Je hebt de groepsnaam gewijzigd. Oude naam: “%1$s” - Nieuwe naam: “%2$s”</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">De groepsnaam is gewijzigd door %3$s. Oude naam: “%1$s” - Nieuwe naam: “%2$s”</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">De kanaalnaam is gewijzigd van ‘%1$s’ in ‘%2$s’.</string>
     <string name="group_image_changed_by_you">Je hebt de groepsfoto gewijzigd.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">De groepsfoto is gewijzigd door %1$s.</string>
+    <string name="channel_image_changed">De kanaalafbeelding is gewijzigd.</string>
     <string name="chat_description_changed_by_you">Je hebt de gespreksbeschrijving aangepast.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">De gespreksbeschrijving is aangepast door %1$s.</string>
@@ -1018,6 +1038,8 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s bevat al een concept. Wil je dit vervangen?</string>
     <string name="mailto_link_could_not_be_decoded">De mailto-link kan niet worden ontcijferd: %1$s</string>
+    <string name="remove_quote">Citaat verwijderen</string>
+    <string name="remove_attachment">Bijlage verwijderen</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">Beantwoorden</string>
@@ -1034,6 +1056,12 @@
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Je hebt nieuwe berichten</string>
     <string name="n_messages_in_m_chats">%1$d berichten in %2$d gesprekken</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_channel_desc">Kanaal voor locatie delen op verzoek</string>
+    <string name="location_streaming_notification_title">Locatiedeling</string>
+    <string name="location_streaming_notification_text">Je deelt op dit moment je locatie</string>
+    <string name="location_rationale">Om je locatie live te kunnen blijven doorgeven aan andere deelnemers, is locatietoegang vereist.\n\nHiervoor is het ook nodig om je locatie op de achtergrond door te geven.</string>
 
     <!-- permissions -->
     <string name="perm_required_title">Recht vereist</string>
@@ -1076,6 +1104,7 @@
     <string name="global_menu_help_about_desktop">Over Delta Chat</string>
     <string name="global_menu_file_open_desktop">Delta Chat openen</string>
     <string name="global_menu_minimize_to_tray">Minimaliseren</string>
+    <string name="no_account_selected">Kies een profiel of maak een nieuw profiel aan</string>
     <string name="no_chat_selected_suggestion_desktop">Kies een gesprek of begin een gesprek</string>
     <string name="write_message_desktop">Schrijf een bericht</string>
     <string name="encryption_info_title_desktop">Versleutelingsinformatie</string>
@@ -1097,9 +1126,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Geen suggesties gevonden.</string>
     <string name="show_window">Venster tonen</string>
+    <string name="data_found_other_installation_message">Profielen uit een andere Delta Chat-installatie zijn niet beschikbaar, daar ze allen gebruikmaken van eigen opslaglocaties.\n\nWil je tóch bestaande profielen gebruiken, volg dan deze stappen:\n1. Sluit de app af\n2. Open de andere Delta Chat-installatie en herinstalleer deze zonodig vanaf %1$s\n3. Maak een reservekopie van ieder profiel via ‘Instellingen → Gesprekken’\n4. Herstart deze versie\n5. Herstel de gesprekken door te kiezen voor ‘Ik heb al een profiel’\n\nWil je doorgaan zonder bestaande profielen?</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Sneltoetsen</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Navigatie</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Berichtinvoer</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Gekozen bericht</string>
     <string name="switch_between_chats">Wisselen van gesprek</string>
     <string name="scroll_messages">Scrollen door berichten</string>
     <!-- command to put the cursor to the search input field -->

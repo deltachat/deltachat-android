@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
@@ -13,7 +14,9 @@ import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -432,6 +435,12 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     disposeWebRTC();
 
+    try {
+      stopForeground(STOP_FOREGROUND_REMOVE);
+    } catch (Exception e) {
+      Log.w(TAG, "stopForeground failed", e);
+    }
+
     stopService();
   }
 
@@ -494,13 +503,44 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   // Foreground Notification
 
   public void startForegroundWithNotification(int id, Notification notification) {
-    Log.d(TAG, "Starting foreground with notification id: " + id);
-    startForeground(id, notification);
+    // Always run on main thread
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      new Handler(Looper.getMainLooper())
+          .post(() -> startForegroundWithNotification(id, notification));
+      return;
+    }
+
+    Log.d(TAG, "Starting call FGS with notification id: " + id);
+    try {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+        startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL);
+      } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        int types =
+            ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
+                | ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA;
+        startForeground(id, notification, types);
+      } else {
+        startForeground(id, notification);
+      }
+    } catch (Exception e) {
+      Log.e(TAG, "startForeground failed", e);
+      if (callCoordinator != null) {
+        callCoordinator.reportError("Failed to activate call FGS: " + e.getMessage());
+      }
+    }
   }
 
   public void stopForegroundAndDismiss() {
-    Log.d(TAG, "Stopping foreground and dismissing notification");
-    stopForeground(STOP_FOREGROUND_REMOVE);
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      new Handler(Looper.getMainLooper()).post(this::stopForegroundAndDismiss);
+      return;
+    }
+    Log.d(TAG, "Stopping call FGS and dismissing notification");
+    try {
+      stopForeground(STOP_FOREGROUND_REMOVE);
+    } catch (Exception e) {
+      Log.w(TAG, "stopForeground failed", e);
+    }
   }
 
   // Cleanup

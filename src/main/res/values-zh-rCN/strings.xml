@@ -25,6 +25,8 @@
     <string name="downloading">下载中…</string>
     <string name="open_attachment">打开附件</string>
     <string name="join">加入</string>
+    <string name="join_group">加入群组</string>
+    <string name="join_channel">加入频道</string>
     <string name="rejoin">重新加入</string>
     <string name="delete">删除</string>
     <string name="delete_for_me">为我删除</string>
@@ -66,10 +68,13 @@
     <string name="show_full_message">显示完整消息…</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">将所有标记为已读</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">标记为已读</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">已读</string>
-    <!-- Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">标记为未读</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">未读</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">加载中…</string>
@@ -90,6 +95,7 @@
     <string name="offline">离线</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">下一步</string>
+    <string name="warning">警告</string>
     <string name="error">错误</string>
     <string name="error_x">错误：%1$s</string>
     <string name="no_app_to_handle_data">找不到用于处理此类数据的应用。</string>
@@ -165,7 +171,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">贴纸</string>
     <string name="add_to_sticker_collection">添加到贴纸收藏集</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">要添加贴纸，请点按“打开贴纸文件夹”，为贴纸包创建一个子文件夹，然后将图片和贴纸文件拖动到那里</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">打开贴纸文件夹</string>
     <string name="ask_add_sticker_to_collection">将此贴纸添加到您的收藏集？</string>
     <string name="ask_delete_sticker">删除此贴纸？</string>
@@ -404,6 +412,8 @@
     <string name="canceled_call">已取消通话</string>
     <string name="missed_call">未接来电</string>
     <string name="already_in_call">已在通话中</string>
+    <string name="call_answered_elsewhere">通话已在其他设备上接听</string>
+    <string name="call_requires_mic_permission">通话需要麦克风权限</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -501,8 +511,11 @@
     <!-- search -->
     <string name="search">搜索</string>
     <string name="search_in_chat">搜索聊天</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">在 %1$s 中搜索</string>
     <string name="search_files">搜索文件</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
+    <string name="search_result_for_x">“%1$s”的结果</string>
     <string name="search_no_result_for_x">没有找到有关\"%s\"的结果</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">未读</string>
@@ -513,7 +526,9 @@
     <string name="remove_group_image">移除群组图像</string>
     <string name="change_group_image">更改群组图像</string>
     <string name="group_create_button">创建群组</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">请输入群组名称。</string>
+    <string name="please_enter_chat_name">请输入名称。</string>
     <string name="group_add_members">添加成员</string>
     <string name="group_self_not_in_group">为了执行此操作，您必须是群组成员。</string>
     <string name="profile_encryption">加密</string>
@@ -750,6 +765,8 @@
     <string name="pref_incognito_keyboard_explain">请求输入法禁用个性化学习</string>
     <string name="pref_read_receipts">已读回执</string>
     <string name="pref_read_receipts_explain">禁用已读回执后，您将无法看到其他人的已读回执。</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">已读</string>
     <string name="pref_server">服务器</string>
     <string name="pref_encryption">加密</string>
     <string name="pref_manage_keys">管理密钥</string>
@@ -862,9 +879,12 @@
     <string name="group_name_changed_by_you">你已将群组名称从“%1$s”更改为“%2$s”</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s已将群组名称从“%1$s”更改为“%2$s”</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">频道名称已从“%1$s”更改为“%2$s”。</string>
     <string name="group_image_changed_by_you">你更改了群组图像</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s 更改了群组图像</string>
+    <string name="channel_image_changed">频道图像已更改。</string>
     <string name="chat_description_changed_by_you">您更改了聊天描述。</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">聊天描述已由 %1$s 更改。</string>
@@ -1001,6 +1021,8 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s 已经有一条草稿消息，是否要替换？</string>
     <string name="mailto_link_could_not_be_decoded">无法解码 mailto 链接：%1$s</string>
+    <string name="remove_quote">移除引用</string>
+    <string name="remove_attachment">移除附件</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">回复</string>
@@ -1017,6 +1039,12 @@
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">你有新消息</string>
     <string name="n_messages_in_m_chats">%1$d 条消息，位于 %2$d 个聊天内</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_channel_desc">按需位置流频道</string>
+    <string name="location_streaming_notification_title">位置流</string>
+    <string name="location_streaming_notification_text">您正在共享您的位置</string>
+    <string name="location_rationale">要与聊天成员共享您的实时位置，请允许 Delta Chat 使用您的位置数据。\n\n为了确保实时位置无缝工作，即使应用已关闭或未使用，也会使用位置数据。</string>
 
     <!-- permissions -->
     <string name="perm_required_title">需要权限</string>
@@ -1059,6 +1087,7 @@
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
     <string name="global_menu_file_open_desktop">打开 Delta Chat</string>
     <string name="global_menu_minimize_to_tray">最小化</string>
+    <string name="no_account_selected">选择配置文件或创建新配置文件</string>
     <string name="no_chat_selected_suggestion_desktop">选择聊天或创建新聊天</string>
     <string name="write_message_desktop">输入消息…</string>
     <string name="encryption_info_title_desktop">加密信息</string>
@@ -1080,9 +1109,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">未找到拼写建议</string>
     <string name="show_window">显示窗口</string>
+    <string name="data_found_other_installation_message">您无法访问其他 Delta Chat 安装中的配置文件 - 不同安装的数据存储在不同的位置。\n\n要保留现有配置文件：\n1. 立即退出\n2. 打开其他 Delta Chat - 如果需要，请从 %1$s 重新安装\n3. 在“设置/聊天”中备份每个配置文件\n4. 重新启动此版本\n5. 使用“我已有账号”恢复备份\n\n不使用之前的配置文件继续吗？</string>
 
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">按键绑定</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">导航</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">消息输入</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">已选消息</string>
     <string name="switch_between_chats">在不同聊天间切换</string>
     <string name="scroll_messages">滚动消息</string>
     <!-- command to put the cursor to the search input field -->

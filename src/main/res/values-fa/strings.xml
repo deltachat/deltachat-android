@@ -66,8 +66,9 @@
     <string name="show_full_message">نمایش پیام کامل...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">همه را خوانده شده بزن</string>
+    <!-- Used as an menu entry or button -->
     <string name="mark_as_read">علامت زدن به عنوان خوانده شده</string>
-    <!-- Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">علامت زدن به عنوان خوانده شده</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">در حال بارگیری...</string>
@@ -165,7 +166,9 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
     <string name="add_to_sticker_collection">افزودن به مجموعه استیکر</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
     <string name="add_stickers_instructions">برای اضافه کردن برچسب روی «بازکردن پوشهٔ برچسب» بزنید، یک زیرپوشه برای دستهٔ برچسب خود درست کنید و برچسب‌ها را به آن‌جا بکشید</string>
+    <!-- deprecated -->
     <string name="open_sticker_folder">بازکردن پوشه استیکر</string>
     <string name="images">تصاویر</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
@@ -499,6 +502,7 @@
     <string name="remove_group_image">حذف تصویر گروه</string>
     <string name="change_group_image">حذف تصویر گروه</string>
     <string name="group_create_button">ایجاد گروه</string>
+    <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">لطفا نامی برای گروه وارد کنید. </string>
     <string name="group_add_members">افزودن اعضا</string>
     <string name="group_self_not_in_group">برای این کار باید عضو گروه باشید.</string>
@@ -970,7 +974,6 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s هم‌اکنون هم یک پیام پیش‌نویس دارد؛ آیا می‌خواهید آن را جایگزین کنید؟</string>
     <string name="mailto_link_could_not_be_decoded">امکان کدگشایی پیوند mailto وجود ندارد: %1$s</string>
-
     <!-- notifications -->
     <string name="notify_reply_button">پاسخ</string>
     <string name="notify_new_message">پیام جدید</string>
@@ -1049,7 +1052,6 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">هیچ پیشنهادی برای املا پیدا نشد</string>
     <string name="show_window">نمایش پنجره</string>
-
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">کلیدهای میانبر</string>
     <string name="switch_between_chats">جابه‌جا شدن میان گپ‌ها</string>
