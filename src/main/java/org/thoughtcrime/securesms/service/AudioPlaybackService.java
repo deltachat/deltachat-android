@@ -21,6 +21,7 @@ import androidx.media3.session.MediaSessionService;
 import androidx.media3.session.SessionCommand;
 import androidx.media3.session.SessionCommands;
 import androidx.media3.session.SessionResult;
+import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -57,21 +58,25 @@ public class AudioPlaybackService extends MediaSessionService {
               }
 
               String host = uri.getHost();
+              String segment = uri.getLastPathSegment();
+              int accountId = 0;
               int msgId = 0;
-              if (host != null) {
+              if (host != null && segment != null) {
                 try {
-                  msgId = Integer.parseInt(host);
+                  accountId = Integer.parseInt(host);
+                  msgId = Integer.parseInt(segment);
                 } catch (NumberFormatException ignored) {
                 }
               }
-              if (msgId <= 0) {
+              if (accountId <= 0 || msgId <= 0) {
                 throw new IOException("Invalid dcmsg uri: " + uri);
               }
 
-              DcMsg msg = DcHelper.getContext(this).getMsg(msgId);
+              DcContext dcContext = DcHelper.getAccounts(this).getAccount(accountId);
+              DcMsg msg = dcContext.getMsg(msgId);
               Uri resolved = new AudioSlide(this, msg).getUri();
               if (resolved == null) {
-                throw new IOException("No file for msgId " + msgId);
+                throw new IOException("No file for msgId " + msgId + " in account " + accountId);
               }
               return dataSpec.withUri(resolved);
             });

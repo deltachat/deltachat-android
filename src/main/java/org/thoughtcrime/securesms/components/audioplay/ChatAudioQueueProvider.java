@@ -14,10 +14,12 @@ public class ChatAudioQueueProvider {
 
   private final Context context;
   private final int chatId;
+  private final int accountId;
 
-  public ChatAudioQueueProvider(@NonNull Context context, int chatId) {
+  public ChatAudioQueueProvider(@NonNull Context context, int chatId, int accountId) {
     this.context = context.getApplicationContext();
     this.chatId = chatId;
+    this.accountId = accountId;
   }
 
   @NonNull
@@ -28,7 +30,11 @@ public class ChatAudioQueueProvider {
     List<MediaItem> items = new ArrayList<>(msgIds.length);
     for (int msgId : msgIds) {
       String id = String.valueOf(msgId);
-      items.add(new MediaItem.Builder().setMediaId(id).setUri(Uri.parse("dcmsg://" + id)).build());
+      items.add(
+          new MediaItem.Builder()
+              .setMediaId(id)
+              .setUri(Uri.parse("dcmsg://" + accountId + "/" + id))
+              .build());
     }
     return items;
   }

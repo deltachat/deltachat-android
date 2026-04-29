@@ -108,8 +108,9 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
+    int accountId = DcHelper.getAccounts(this).getSelectedAccount().getAccountId();
     playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
-    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId));
+    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId, accountId));
     initializeMediaController();
   }
 

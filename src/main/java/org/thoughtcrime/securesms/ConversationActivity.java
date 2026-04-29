@@ -222,8 +222,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeViews();
     initializeResources();
 
+    int accountId = DcHelper.getAccounts(this).getSelectedAccount().getAccountId();
     playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
-    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId));
+    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId, accountId));
     initializeMediaController();
 
     initializeSecurity(false, isDefaultSms)
