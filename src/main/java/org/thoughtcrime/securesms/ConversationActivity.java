@@ -101,6 +101,7 @@ import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.audioplay.AudioView;
+import org.thoughtcrime.securesms.components.audioplay.ChatAudioQueueProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -221,7 +222,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeViews();
     initializeResources();
 
+    int accountId = DcHelper.getAccounts(this).getSelectedAccount().getAccountId();
     playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
+    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId, accountId));
     initializeMediaController();
 
     initializeSecurity(false, isDefaultSms)
@@ -411,6 +414,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       mediaController = null;
       playbackViewModel.setMediaController(null);
     }
+    playbackViewModel.setQueueProvider(null);
     super.onDestroy();
   }
 
