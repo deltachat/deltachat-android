@@ -71,7 +71,7 @@ public class StickerPickerView extends RecyclerView {
     }
 
     // Sort stickers just to provide consistent order
-    Collections.sort(stickerFiles, (f1, f2) -> f1.getName().compareToIgnoreCase(f2.getName()));
+    Collections.sort(stickerFiles, (f1, f2) -> f2.getName().compareToIgnoreCase(f1.getName()));
 
     return stickerFiles;
   }
