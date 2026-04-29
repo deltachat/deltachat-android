@@ -70,29 +70,28 @@ public class AudioPlaybackViewModel extends ViewModel {
   public void loadAudioAndPlay(int msgId, Uri audioUri) {
     if (mediaController == null) return;
 
+    String mediaId = String.valueOf(msgId);
+
     MediaItem current = mediaController.getCurrentMediaItem();
-    if (current != null && String.valueOf(msgId).equals(current.mediaId)) {
+    if (current != null && mediaId.equals(current.mediaId)) {
       mediaController.play();
       return;
     }
 
     updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
 
-    List<MediaItem> items;
-    int startIndex;
+    List<MediaItem> items = null;
+    int startIndex = -1;
 
     if (queueProvider != null) {
       items = queueProvider.buildAudioQueue();
-      startIndex = indexOfMediaId(items, msgId);
-    } else {
-      items = Collections.emptyList();
-      startIndex = -1;
+      startIndex = indexOfMediaId(items, mediaId);
     }
 
     if (startIndex < 0) {
       items =
           Collections.singletonList(
-              new MediaItem.Builder().setMediaId(String.valueOf(msgId)).setUri(audioUri).build());
+              new MediaItem.Builder().setMediaId(mediaId).setUri(audioUri).build());
       startIndex = 0;
     }
 
@@ -101,10 +100,9 @@ public class AudioPlaybackViewModel extends ViewModel {
     mediaController.play();
   }
 
-  private static int indexOfMediaId(List<MediaItem> items, int msgId) {
-    String target = String.valueOf(msgId);
+  private static int indexOfMediaId(List<MediaItem> items, String mediaId) {
     for (int i = 0; i < items.size(); i++) {
-      if (target.equals(items.get(i).mediaId)) return i;
+      if (mediaId.equals(items.get(i).mediaId)) return i;
     }
     return -1;
   }

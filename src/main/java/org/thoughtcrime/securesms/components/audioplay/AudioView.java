@@ -109,7 +109,7 @@ public class AudioView extends FrameLayout {
 
           AudioPlaybackState state = viewModel.getPlaybackState().getValue();
 
-          if (state != null && msgId == state.getMsgId() && audioUri.equals(state.getAudioUri())) {
+          if (state != null && msgId == state.getMsgId()) {
             // Same audio
             if (state.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
               viewModel.pause(msgId);
@@ -305,7 +305,7 @@ public class AudioView extends FrameLayout {
     if (audioUri == null || state == null) return;
 
     // Check if this state is about this message
-    boolean isThisMessage = msgId == state.getMsgId() && audioUri.equals(state.getAudioUri());
+    boolean isThisMessage = msgId == state.getMsgId();
 
     if (isThisMessage) {
       updateUIForPlaybackState(state);
@@ -340,13 +340,9 @@ public class AudioView extends FrameLayout {
   private void onDurationsChanged(Map<Integer, Long> durations) {
     AudioPlaybackState state = viewModel.getPlaybackState().getValue();
 
-    // When there is no playback happening, msgId can be -1 and audioUri is null
-    if (state != null
-        && msgId >= 0
-        && msgId == state.getMsgId()
-        && audioUri != null
-        && audioUri.equals(state.getAudioUri())) {
-      return; // Is playing this message
+    // When there is no playback happening, msgId can be -1
+    if (state != null && msgId >= 0 && msgId == state.getMsgId()) {
+      return;
     }
 
     Long duration = durations.get(msgId);

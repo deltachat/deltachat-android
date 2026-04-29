@@ -36,7 +36,7 @@ public class PlatformLocationSource implements LocationSource {
       registered = requestProvider(context, LocationManager.FUSED_PROVIDER, callback);
     }
 
-    // Fall back (or complement) with individual providers
+    // Fall back with individual providers
     if (!registered) {
       requestProvider(context, LocationManager.GPS_PROVIDER, callback);
       requestProvider(context, LocationManager.NETWORK_PROVIDER, callback);

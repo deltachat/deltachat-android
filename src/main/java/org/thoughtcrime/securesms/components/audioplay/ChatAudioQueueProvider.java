@@ -9,7 +9,6 @@ import com.b44t.messenger.DcMsg;
 import java.util.ArrayList;
 import java.util.List;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.mms.AudioSlide;
 
 public class ChatAudioQueueProvider {
 
@@ -28,11 +27,8 @@ public class ChatAudioQueueProvider {
 
     List<MediaItem> items = new ArrayList<>(msgIds.length);
     for (int msgId : msgIds) {
-      DcMsg msg = dcContext.getMsg(msgId);
-      Uri uri = new AudioSlide(context, msg).getUri();
-      if (uri != null) {
-        items.add(new MediaItem.Builder().setMediaId(String.valueOf(msgId)).setUri(uri).build());
-      }
+      String id = String.valueOf(msgId);
+      items.add(new MediaItem.Builder().setMediaId(id).setUri(Uri.parse("dcmsg://" + id)).build());
     }
     return items;
   }
