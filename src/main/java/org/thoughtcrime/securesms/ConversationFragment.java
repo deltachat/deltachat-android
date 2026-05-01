@@ -926,6 +926,8 @@ public class ConversationFragment extends MessageSelectorFragment {
           WebxdcActivity.openWebxdcActivity(
               getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
         }
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_LOCATIONSTREAMING_ENABLED) {
+        WebxdcActivity.openMaps(getContext(), (int) chatId);
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_DESCRIPTION_CHANGED) {
         Intent intent = new Intent(getContext(), ProfileActivity.class);
         intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, (int) chatId);
