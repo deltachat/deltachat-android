@@ -151,24 +151,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     }
     updateWebxdcStoreSummary();
 
-    Preference newBroadcastList = this.findPreference("pref_new_broadcast_list");
-    if (newBroadcastList != null) {
-      newBroadcastList.setOnPreferenceChangeListener(
-          (preference, newValue) -> {
-            if ((Boolean) newValue) {
-              new AlertDialog.Builder(requireActivity())
-                  .setTitle("Thanks for trying out \"Channels\"!")
-                  .setMessage(
-                      "• You can now create new \"Channels\" from the \"New Chat\" dialog\n\n"
-                          + "• If you want to quit the experimental feature, you can disable it at \"Settings / Advanced\"")
-                  .setCancelable(false)
-                  .setPositiveButton(R.string.ok, null)
-                  .show();
-            }
-            return true;
-          });
-    }
-
     Preference locationStreamingEnabled = this.findPreference("pref_location_streaming_enabled");
     if (locationStreamingEnabled != null) {
       locationStreamingEnabled.setOnPreferenceChangeListener(
