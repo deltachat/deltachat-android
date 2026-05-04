@@ -449,25 +449,23 @@ public class ConversationItem extends BaseConversationItem {
       bodyText.setVisibility(View.VISIBLE);
 
       // Register a TalkBack "Actions" entry for each link in the message
-      if (spannable instanceof Spanned) {
-        Spanned spanned = (Spanned) spannable;
-        final TextView tv = bodyText;
-        for (LongClickCopySpan span :
-            spanned.getSpans(0, spanned.length(), LongClickCopySpan.class)) {
-          int start = spanned.getSpanStart(span);
-          int end = spanned.getSpanEnd(span);
-          if (start >= 0 && end > start && end <= spanned.length()) {
-            String linkText = spanned.subSequence(start, end).toString();
-            String label = context.getString(R.string.accessibility_link_action, linkText);
-            linkActionIds.add(
-                ViewCompat.addAccessibilityAction(
-                    this,
-                    label,
-                    (v, args) -> {
-                      span.onClick(tv);
-                      return true;
-                    }));
-          }
+      Spanned spanned = (Spanned) spannable;
+      final TextView tv = bodyText;
+      for (LongClickCopySpan span :
+          spanned.getSpans(0, spanned.length(), LongClickCopySpan.class)) {
+        int start = spanned.getSpanStart(span);
+        int end = spanned.getSpanEnd(span);
+        if (start >= 0 && end > start && end <= spanned.length()) {
+          String linkText = spanned.subSequence(start, end).toString();
+          String label = context.getString(R.string.accessibility_link_action, linkText);
+          linkActionIds.add(
+              ViewCompat.addAccessibilityAction(
+                  this,
+                  label,
+                  (v, args) -> {
+                    span.onClick(tv);
+                    return true;
+                  }));
         }
       }
     }
