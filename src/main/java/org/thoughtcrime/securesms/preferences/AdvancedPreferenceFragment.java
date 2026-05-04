@@ -3,9 +3,6 @@ package org.thoughtcrime.securesms.preferences;
 import static android.app.Activity.RESULT_OK;
 import static android.text.InputType.TYPE_TEXT_VARIATION_URI;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_BCC_SELF;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_MVBOX_MOVE;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_ONLY_FETCH_MVBOX;
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_SHOW_EMAILS;
 import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_STATS_SENDING;
 
 import android.content.Context;
@@ -47,11 +44,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "AdvancedPreferenceFragment";
 
-  private ListPreference showEmails;
   CheckBoxPreference selfReportingCheckbox;
   CheckBoxPreference multiDeviceCheckbox;
-  CheckBoxPreference mvboxMoveCheckbox;
-  CheckBoxPreference onlyFetchMvboxCheckbox;
   private ActivityResultLauncher<Intent> screenLockLauncher;
 
   @Override
@@ -66,16 +60,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
                 openRelayListActivity();
               }
             });
-
-    showEmails = (ListPreference) this.findPreference("pref_show_emails");
-    if (showEmails != null) {
-      showEmails.setOnPreferenceChangeListener(
-          (preference, newValue) -> {
-            updateListSummary(preference, newValue);
-            dcContext.setConfigInt(CONFIG_SHOW_EMAILS, Util.objectToInt(newValue));
-            return true;
-          });
-    }
 
     multiDeviceCheckbox = (CheckBoxPreference) this.findPreference("pref_bcc_self");
     if (multiDeviceCheckbox != null) {
@@ -99,40 +83,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
               return false;
             }
           });
-    }
-
-    mvboxMoveCheckbox = (CheckBoxPreference) this.findPreference("pref_mvbox_move");
-    if (mvboxMoveCheckbox != null) {
-      mvboxMoveCheckbox.setOnPreferenceChangeListener(
-          (preference, newValue) -> {
-            boolean enabled = (Boolean) newValue;
-            dcContext.setConfigInt(CONFIG_MVBOX_MOVE, enabled ? 1 : 0);
-            return true;
-          });
-    }
-
-    onlyFetchMvboxCheckbox = this.findPreference("pref_only_fetch_mvbox");
-    if (onlyFetchMvboxCheckbox != null) {
-      onlyFetchMvboxCheckbox.setOnPreferenceChangeListener(
-          ((preference, newValue) -> {
-            final boolean enabled = (Boolean) newValue;
-            if (enabled) {
-              new AlertDialog.Builder(requireContext())
-                  .setMessage(R.string.pref_imap_folder_warn_disable_defaults)
-                  .setPositiveButton(
-                      R.string.ok,
-                      (dialogInterface, i) -> {
-                        dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, 1);
-                        ((CheckBoxPreference) preference).setChecked(true);
-                      })
-                  .setNegativeButton(R.string.cancel, null)
-                  .show();
-              return false;
-            } else {
-              dcContext.setConfigInt(CONFIG_ONLY_FETCH_MVBOX, 0);
-              return true;
-            }
-          }));
     }
 
     Preference screenSecurity = this.findPreference(Prefs.SCREEN_SECURITY_PREF);
@@ -213,10 +163,6 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
             return true;
           }));
     }
-
-    if (dcContext.isChatmail()) {
-      findPreference("pref_category_legacy").setVisible(false);
-    }
   }
 
   @Override
@@ -231,14 +177,8 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
             ((ApplicationPreferencesActivity) requireActivity()).getSupportActionBar())
         .setTitle(R.string.menu_advanced);
 
-    String value = Integer.toString(dcContext.getConfigInt("show_emails"));
-    showEmails.setValue(value);
-    updateListSummary(showEmails, value);
-
     selfReportingCheckbox.setChecked(0 != dcContext.getConfigInt(CONFIG_STATS_SENDING));
     multiDeviceCheckbox.setChecked(0 != dcContext.getConfigInt(CONFIG_BCC_SELF));
-    mvboxMoveCheckbox.setChecked(0 != dcContext.getConfigInt(CONFIG_MVBOX_MOVE));
-    onlyFetchMvboxCheckbox.setChecked(0 != dcContext.getConfigInt(CONFIG_ONLY_FETCH_MVBOX));
   }
 
   protected File copyToCacheDir(Uri uri) throws IOException {
