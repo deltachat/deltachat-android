@@ -4,6 +4,7 @@
 
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
+* Channels are no longer experimental and are enabled by default
 * Display a permanent notification when doing location streaming and get rid of dangerous "Access Location in Background" permission
 * Autoplay all voice messages in a chat
 * Allow to share location for 24 hours

@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.util.AsyncLoader;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
@@ -53,10 +52,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
     }
     if (query == null && addCreateGroupLinks) {
       additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_GROUP);
-
-      final boolean broadcastsEnabled = Prefs.isNewBroadcastAvailable(getContext());
-      if (broadcastsEnabled)
-        additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST);
+      additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST);
 
       if (!dcContext.isChatmail()) {
         additional_items =
