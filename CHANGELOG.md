@@ -12,6 +12,7 @@
 * Fix process of upgrading from a very old version of the app
 * Show more recent added stickers at the top of the sticker picker
 * Allow to open links in messages via actions in TalkBack menu
+* Allow to open map if user clicks "Location streaming enabled" system message
 
 ## v2.49.0
 2026-04
