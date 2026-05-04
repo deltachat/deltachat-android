@@ -20,7 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.CheckBoxPreference;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,7 +37,6 @@ import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
 import org.thoughtcrime.securesms.util.StreamUtil;
-import org.thoughtcrime.securesms.util.Util;
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     implements DcEventCenter.DcEventDelegate {
