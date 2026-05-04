@@ -191,36 +191,6 @@ public class AttachmentManager {
     this.slide = Optional.of(slide);
   }
 
-  /*
-  public ListenableFuture<Boolean> setLocation(@NonNull final SignalPlace place,
-                                               @NonNull final MediaConstraints constraints)
-  {
-    inflateStub();
-
-    SettableFuture<Boolean>  returnResult = new SettableFuture<>();
-    ListenableFuture<Bitmap> future       = mapView.display(place);
-
-    attachmentViewStub.get().setVisibility(View.VISIBLE);
-    removableMediaView.display(mapView, false);
-
-    future.addListener(new AssertedSuccessListener<Bitmap>() {
-      @Override
-      public void onSuccess(@NonNull Bitmap result) {
-        byte[]        blob          = BitmapUtil.toByteArray(result);
-        Uri           uri           = PersistentBlobProvider.getInstance(context)
-                                                            .create(context, blob, MediaUtil.IMAGE_PNG, null);
-        LocationSlide locationSlide = new LocationSlide(context, uri, blob.length, place);
-
-        setSlide(locationSlide);
-        attachmentListener.onAttachmentChanged();
-        returnResult.set(true);
-      }
-    });
-
-    return returnResult;
-  }
-  */
-
   @SuppressLint("StaticFieldLeak")
   public ListenableFuture<Boolean> setMedia(
       @NonNull final GlideRequests glideRequests,
@@ -491,15 +461,16 @@ public class AttachmentManager {
 
   public static void selectLocation(Activity activity, int chatId) {
     Context appContext = activity.getApplicationContext();
+    int accountId = DcHelper.getAccounts(appContext).getSelectedAccount().getAccountId();
 
     if (DcHelper.getContext(appContext).isSendingLocationsToChat(chatId)) {
       if (LocationStreamingService.isRunning()) {
-        LocationStreamingService.stopSharing(appContext, chatId);
+        LocationStreamingService.stopSharing(appContext, accountId, chatId);
         return;
       }
       // Stale — service is dead but chat layer still thinks it's sharing.
       // Clean up this chat and fall through to the fresh start flow.
-      ActiveLocationChats.remove(appContext, chatId);
+      ActiveLocationChats.remove(appContext, accountId, chatId);
       DcHelper.getContext(appContext).sendLocationsToChat(chatId, 0);
     }
 
@@ -514,7 +485,8 @@ public class AttachmentManager {
               ShareLocationDialog.show(
                   activity,
                   durationInSeconds ->
-                      LocationStreamingService.startSharing(appContext, chatId, durationInSeconds));
+                      LocationStreamingService.startSharing(
+                          appContext, accountId, chatId, durationInSeconds));
             })
         .request(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
