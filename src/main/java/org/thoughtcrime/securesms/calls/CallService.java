@@ -126,13 +126,13 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   }
 
   /**
-   * Start camera/microphone capture
+   * Start media capture
    *
    * <p>Must be called when app is in foreground. Called by coordinator when ViewModel/Activity is
    * ready.
    */
   public void startMediaCapture() {
-    Log.d(TAG, "startMediaCapture (Camera/Microphone)");
+    Log.d(TAG, "startMediaCapture");
 
     if (webRTCClient != null && webRTCClient.hasLocalMediaStream()) {
       Log.w(TAG, "Media already initialized, skipping");
@@ -153,7 +153,7 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     boolean startsWithVideo = callCoordinator.isStartsWithVideo();
 
-    Log.d(TAG, "Creating media stream with video: " + startsWithVideo);
+    Log.d(TAG, "Creating media stream");
 
     mediaStreamManager.createMediaStream(
         new MediaStreamManager.Callback() {
@@ -163,20 +163,14 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
             webRTCClient.setLocalMediaStream(stream);
 
-            callCoordinator.updateFrontCamera(mediaStreamManager.isFrontCamera());
-
-            callCoordinator.setVideoEnabled(startsWithVideo);
-
             if (!stream.videoTracks.isEmpty()) {
               VideoTrack localTrack = stream.videoTracks.get(0);
               callCoordinator.updateLocalVideoTrack(localTrack);
-            } else {
-              Log.w(TAG, "No video track in stream, call will be audio-only");
-              if (startsWithVideo) {
-                callCoordinator.reportError("Camera unavailable, using audio only");
-              }
-              callCoordinator.setVideoEnabled(false);
             }
+
+            callCoordinator.setVideoEnabled(startsWithVideo);
+
+            callCoordinator.updateMediaCaptureReady(true);
 
             Log.d(TAG, "Media capture complete, ready for call");
           }
@@ -184,10 +178,7 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
           @Override
           public void onError(String error) {
             Log.e(TAG, "Failed to setup media: " + error);
-            if (startsWithVideo) {
-              callCoordinator.reportError("Camera/microphone error: " + error);
-            }
-            callCoordinator.setVideoEnabled(false);
+            callCoordinator.reportError("Camera/microphone error: " + error);
           }
         });
   }
@@ -395,12 +386,30 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     }
   }
 
-  public void setVideoEnabled(boolean enabled) {
+  public boolean setVideoEnabled(boolean enabled) {
     Log.d(TAG, "setVideoEnabled: " + enabled);
 
-    if (webRTCClient != null) {
-      webRTCClient.setVideoEnabled(enabled);
+    if (enabled) {
+      if (mediaStreamManager != null) {
+        boolean captureReady = mediaStreamManager.startVideoCapture();
+        if (!captureReady) {
+          Log.w(TAG, "Failed to start video capture");
+          return false;
+        }
+        callCoordinator.updateFrontCamera(mediaStreamManager.isFrontCamera());
+      }
+      if (webRTCClient != null) {
+        webRTCClient.setVideoEnabled(true);
+      }
+    } else {
+      if (webRTCClient != null) {
+        webRTCClient.setVideoEnabled(false);
+      }
+      if (mediaStreamManager != null) {
+        mediaStreamManager.stopVideoCapture();
+      }
     }
+    return true;
   }
 
   public void sendMutedState(boolean audioEnabled, boolean videoEnabled) {

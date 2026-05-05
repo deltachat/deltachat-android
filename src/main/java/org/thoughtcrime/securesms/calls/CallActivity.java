@@ -54,6 +54,7 @@ public class CallActivity extends AppCompatActivity {
   private static final String TAG = "CallActivity";
   private static final int MIC_PERMISSION_REQUEST_CODE = 1001;
   private static final int CAMERA_PERMISSION_REQUEST_CODE = 1002;
+  private static final int CAMERA_MID_CALL_PERMISSION_REQUEST_CODE = 1003;
 
   public static final String ACTION_ANSWER_CALL = BuildConfig.APPLICATION_ID + ".ANSWER_CALL";
   public static final String ACTION_DECLINE_CALL = BuildConfig.APPLICATION_ID + ".DECLINE_CALL";
@@ -374,6 +375,18 @@ public class CallActivity extends AppCompatActivity {
     videoButton.setOnClickListener(
         v -> {
           if (viewModel != null) {
+            Boolean currentEnabled = viewModel.getVideoEnabled().getValue();
+            boolean needToEnable = currentEnabled == null || !currentEnabled;
+
+            if (needToEnable && !hasCameraPermission()) {
+              awaitingPermissionResult = true;
+              ActivityCompat.requestPermissions(
+                  this,
+                  new String[] {Manifest.permission.CAMERA},
+                  CAMERA_MID_CALL_PERMISSION_REQUEST_CODE);
+              return;
+            }
+
             viewModel.toggleVideo();
           }
         });
@@ -877,6 +890,18 @@ public class CallActivity extends AppCompatActivity {
     pausedWhileAwaitingPermission = false;
 
     CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
+
+    if (requestCode == CAMERA_MID_CALL_PERMISSION_REQUEST_CODE) {
+      boolean cameraGranted =
+          grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+
+      if (cameraGranted && viewModel != null) {
+        viewModel.toggleVideo();
+      } else {
+        Toast.makeText(this, R.string.call_requires_camera_permission, Toast.LENGTH_SHORT).show();
+      }
+      return;
+    }
 
     if (requestCode == MIC_PERMISSION_REQUEST_CODE) {
       boolean micGranted =

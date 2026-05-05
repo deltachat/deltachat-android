@@ -29,6 +29,10 @@ public class MediaStreamManager {
   private static final String AUDIO_TRACK_ID = "audio_track";
   private static final String VIDEO_TRACK_ID = "video_track";
 
+  private static final int VIDEO_WIDTH = 1280;
+  private static final int VIDEO_HEIGHT = 720;
+  private static final int VIDEO_FPS = 30;
+
   private final Context context;
   private final PeerConnectionFactory peerConnectionFactory;
 
@@ -37,6 +41,7 @@ public class MediaStreamManager {
   private AudioSource audioSource;
   private SurfaceTextureHelper surfaceTextureHelper;
   private volatile boolean isFrontCamera = true;
+  private volatile boolean isCapturing = false;
 
   public interface Callback {
     void onMediaStreamReady(MediaStream stream);
@@ -56,9 +61,8 @@ public class MediaStreamManager {
     this.peerConnectionFactory = peerConnectionFactory;
   }
 
-  /** Create media stream with audio and optionally video */
-  @RequiresApi(api = Build.VERSION_CODES.M)
-  public void createMediaStream(Callback callback) {
+  /** Create a media stream with an audio track and a video track. */
+  public synchronized void createMediaStream(Callback callback) {
     try {
       MediaStream mediaStream = peerConnectionFactory.createLocalMediaStream(STREAM_ID);
 
@@ -68,23 +72,10 @@ public class MediaStreamManager {
       AudioTrack audioTrack = peerConnectionFactory.createAudioTrack(AUDIO_TRACK_ID, audioSource);
       mediaStream.addTrack(audioTrack);
 
-      // Create video track
-      videoCapturer = createVideoCapturer();
-      if (videoCapturer == null) {
-        callback.onError("No camera available");
-        callback.onMediaStreamReady(mediaStream);
-        return;
-      }
-
-      videoSource = peerConnectionFactory.createVideoSource(videoCapturer.isScreencast());
+      // Create video source and track
+      videoSource = peerConnectionFactory.createVideoSource(false);
       VideoTrack videoTrack = peerConnectionFactory.createVideoTrack(VIDEO_TRACK_ID, videoSource);
       mediaStream.addTrack(videoTrack);
-
-      // Start capturing
-      surfaceTextureHelper =
-          SurfaceTextureHelper.create("CaptureThread", EglUtils.getEglBase().getEglBaseContext());
-      videoCapturer.initialize(surfaceTextureHelper, context, videoSource.getCapturerObserver());
-      videoCapturer.startCapture(1280, 720, 30);
 
       callback.onMediaStreamReady(mediaStream);
 
@@ -92,6 +83,62 @@ public class MediaStreamManager {
       Log.e(TAG, "Failed to create media stream", e);
       callback.onError("Failed to access camera/microphone: " + e.getMessage());
     }
+  }
+
+  /**
+   * Open the camera and start sending frames to VideoSource.
+   *
+   * @return true if the camera is capturing, false if it could not be started
+   */
+  @RequiresApi(api = Build.VERSION_CODES.M)
+  public synchronized boolean startVideoCapture() {
+    if (isCapturing) {
+      return true;
+    }
+
+    if (videoSource == null) {
+      Log.e(TAG, "VideoSource not initialized");
+      return false;
+    }
+
+    if (videoCapturer == null) {
+      videoCapturer = createVideoCapturer();
+      if (videoCapturer == null) {
+        Log.w(TAG, "Cannot start video capture: no camera available");
+        return false;
+      }
+
+      if (surfaceTextureHelper == null) {
+        surfaceTextureHelper =
+            SurfaceTextureHelper.create("CaptureThread", EglUtils.getEglBase().getEglBaseContext());
+      }
+
+      videoCapturer.initialize(surfaceTextureHelper, context, videoSource.getCapturerObserver());
+    }
+
+    videoCapturer.startCapture(VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS);
+    isCapturing = true;
+    Log.d(TAG, "Video capture started");
+    return true;
+  }
+
+  /** Stop the camera. The capturer is kept alive. */
+  public synchronized void stopVideoCapture() {
+    if (!isCapturing) {
+      return;
+    }
+
+    if (videoCapturer != null) {
+      try {
+        videoCapturer.stopCapture();
+        Log.d(TAG, "Video capture stopped");
+      } catch (InterruptedException e) {
+        Log.e(TAG, "Interrupted while stopping capture", e);
+        Thread.currentThread().interrupt();
+      }
+    }
+
+    isCapturing = false;
   }
 
   @Nullable
@@ -129,6 +176,14 @@ public class MediaStreamManager {
   }
 
   public void switchCamera(@Nullable CameraSwitchCallback callback) {
+    if (!isCapturing) {
+      Log.w(TAG, "Cannot switch camera while not capturing");
+      if (callback != null) {
+        callback.onError("Camera not active");
+      }
+      return;
+    }
+
     if (!(videoCapturer instanceof CameraVideoCapturer)) {
       Log.e(TAG, "switchCamera called but videoCapturer is not a CameraVideoCapturer");
       return;
@@ -186,16 +241,20 @@ public class MediaStreamManager {
   }
 
   /** Cleanup resources */
-  public void dispose() {
+  public synchronized void dispose() {
     if (videoCapturer != null) {
       try {
-        videoCapturer.stopCapture();
+        if (isCapturing) {
+          videoCapturer.stopCapture();
+        }
       } catch (InterruptedException e) {
         Log.e(TAG, "Error stopping capture", e);
       }
       videoCapturer.dispose();
       videoCapturer = null;
     }
+
+    isCapturing = false;
 
     if (surfaceTextureHelper != null) {
       surfaceTextureHelper.dispose();

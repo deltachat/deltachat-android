@@ -97,6 +97,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private final MutableLiveData<Boolean> outgoingCallPlaced = new MutableLiveData<>(false);
   private final MutableLiveData<Boolean> answeredElsewhere = new MutableLiveData<>(false);
   private final MutableLiveData<Boolean> isFrontCamera = new MutableLiveData<>(true);
+  private final MutableLiveData<Boolean> mediaCaptureReady = new MutableLiveData<>(false);
 
   // Audio Routing Support
   private final MediatorLiveData<CallEndpointCompat> currentAudioEndpoint =
@@ -336,6 +337,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     return isFrontCamera;
   }
 
+  public LiveData<Boolean> getMediaCaptureReady() {
+    return mediaCaptureReady;
+  }
+
   // State Update Methods (CallService)
 
   public void updateConnectionState(PeerConnection.PeerConnectionState state) {
@@ -373,6 +378,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   public void updateFrontCamera(boolean front) {
     Log.d(TAG, "updateFrontCamera: " + front);
     isFrontCamera.postValue(front);
+  }
+
+  public void updateMediaCaptureReady(boolean ready) {
+    Log.d(TAG, "updateMediaCaptureReady: " + ready);
+    mediaCaptureReady.postValue(ready);
   }
 
   public void reportError(String error) {
@@ -651,11 +661,17 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   public synchronized void setVideoEnabled(boolean enabled) {
     Log.d(TAG, "setVideoEnabled: " + enabled);
 
+    if (callService != null) {
+      boolean success = callService.setVideoEnabled(enabled);
+      if (!success && enabled) {
+        enabled = false;
+        reportError("Camera unavailable");
+      }
+    }
+
     localVideoEnabled.postValue(enabled);
 
     if (callService != null) {
-      callService.setVideoEnabled(enabled);
-
       callService.sendMutedState(Boolean.TRUE.equals(localAudioEnabled.getValue()), enabled);
     }
   }
@@ -1194,6 +1210,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private void resetLiveDataForNewCall() {
     connectionState.postValue(PeerConnection.PeerConnectionState.NEW);
     answeredElsewhere.postValue(false); // clearLiveData() must not reset answeredElsewhere
+    mediaCaptureReady.postValue(false);
     clearLiveData();
   }
 
@@ -1209,6 +1226,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     outgoingCallPlaced.postValue(false);
     currentAudioEndpoint.postValue(null);
     availableAudioEndpoints.postValue(null);
+    mediaCaptureReady.postValue(false);
   }
 
   public synchronized void initiateOutgoingCall(int accId, int chatId, boolean startsWithVideo) {
