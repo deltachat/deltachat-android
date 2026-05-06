@@ -837,7 +837,7 @@
     <string name="pref_show_emails_all">All</string>
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_experimental_features_explain">These features may be unstable and may be changed or removed</string>
-    <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
+    <string name="pref_on_demand_location_streaming">Location Streaming</string>
     <string name="pref_background_default">Default image</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
@@ -1079,8 +1079,6 @@
     <string name="n_messages_in_m_chats">%1$d messages in %2$d chats</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">Channel for On-demand Location Streaming</string>
-    <string name="location_streaming_notification_title">Location Streaming</string>
     <string name="location_streaming_notification_text">You are sharing your location</string>
     <string name="location_rationale">To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.</string>
 
