@@ -190,7 +190,6 @@ public class LocationStreamingService extends Service {
               CHANNEL_ID,
               getString(R.string.pref_on_demand_location_streaming),
               NotificationManager.IMPORTANCE_LOW);
-      channel.setDescription("Channel for Location Streaming");
       channel.setShowBadge(false);
       NotificationManager nm = getSystemService(NotificationManager.class);
       if (nm != null) nm.createNotificationChannel(channel);
