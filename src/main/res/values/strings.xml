@@ -61,7 +61,9 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Apps &amp; Media</string>
     <string name="profile">Profile</string>
+    <!-- deprecated -->
     <string name="all_profiles">All Profiles</string>
+    <!-- deprecated -->
     <string name="current_profile">Current Profile</string>
     <string name="main_menu">Main Menu</string>
     <string name="start_chat">Start Chat</string>
@@ -767,11 +769,12 @@
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
     <string name="pref_calls">Calls</string>
     <!-- Details about what the "Calls" notification setting does -->
-    <string name="pref_calls_explain">Show call screen on incoming calls</string>
+    <string name="pref_calls_explain">Show call screen for accepted contacts</string>
     <string name="pref_notifications_show">Show</string>
     <string name="pref_notifications_priority">Priority</string>
     <string name="pref_notifications_explain">Enable system notifications for new messages</string>
     <string name="pref_show_notification_content">Show message content in notification</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Shows sender and first words of the message in notifications</string>
     <string name="pref_led_color">LED Color</string>
     <string name="pref_sound">Sound</string>
@@ -834,7 +837,7 @@
     <string name="pref_show_emails_all">All</string>
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_experimental_features_explain">These features may be unstable and may be changed or removed</string>
-    <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
+    <string name="pref_on_demand_location_streaming">Location Streaming</string>
     <string name="pref_background_default">Default image</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
@@ -1076,8 +1079,6 @@
     <string name="n_messages_in_m_chats">%1$d messages in %2$d chats</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">Channel for On-demand Location Streaming</string>
-    <string name="location_streaming_notification_title">Location Streaming</string>
     <string name="location_streaming_notification_text">You are sharing your location</string>
     <string name="location_rationale">To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.</string>
 
