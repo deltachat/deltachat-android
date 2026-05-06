@@ -144,7 +144,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       notifyCalls.setOnPreferenceChangeListener(
           (preference, newValue) -> {
             boolean enabled = (Boolean) newValue;
-            dcContext.setConfig("who_can_call_me", enabled? "1" : "2");
+            dcContext.setConfig("who_can_call_me", enabled ? "1" : "2");
             return true;
           });
     }
