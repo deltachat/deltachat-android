@@ -120,6 +120,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private String pendingOfferSdp;
   private boolean hasNotifiedBackend = false;
   private boolean hasAutoSelectedEarpiece = false;
+  private boolean pendingMediaCapture = false;
 
   private CallControlScope activeCallControlScope;
   private CallViewModel activeCallViewModel;
@@ -228,6 +229,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               } else {
                 mainHandler.removeCallbacks(outgoingRingtoneRunnable);
                 mainHandler.postDelayed(outgoingRingtoneRunnable, 1500);
+              }
+
+              if (pendingMediaCapture) {
+                pendingMediaCapture = false;
+                callService.startMediaCapture();
               }
             }
           }
@@ -397,7 +403,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     if (callService != null) {
       callService.startMediaCapture();
     } else {
-      Log.w(TAG, "Cannot start media capture, service not ready");
+      Log.d(TAG, "Service not ready, deferring media capture");
+      pendingMediaCapture = true;
     }
   }
 
@@ -1145,6 +1152,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     this.pendingOfferSdp = null;
     this.hasNotifiedBackend = false;
     this.hasAutoSelectedEarpiece = false;
+    this.pendingMediaCapture = false;
 
     mainHandler.removeCallbacks(outgoingRingtoneRunnable);
 
@@ -1237,16 +1245,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    // Check microphone permission
-    if (!hasMicrophonePermission()) {
-      Log.e(TAG, "Microphone permission not granted");
-
-      Intent intent = new Intent(appContext, CallActivity.class);
-      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-      appContext.startActivity(intent);
-      return;
-    }
-
     resetLiveDataForNewCall();
 
     this.activeCallId = -1; // Placeholder call ID for Intent
@@ -1272,7 +1270,9 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     this.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
 
-    startAndBindService();
+    if (hasMicrophonePermission()) {
+      startAndBindService();
+    }
 
     launchCallActivity();
   }
@@ -1302,6 +1302,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     // Add call to CallsManager
     addCallToTelecom(callAttributes, calleeName, calleeIcon);
+  }
+
+  public synchronized void ensureServiceStarted() {
+    if (isServiceBound || !hasActiveCall()) {
+      return;
+    }
+    Log.d(TAG, "Starting service after permission grant");
+    startAndBindService();
   }
 
   private void addCallToTelecom(
