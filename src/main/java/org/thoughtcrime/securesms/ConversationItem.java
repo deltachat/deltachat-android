@@ -457,7 +457,7 @@ public class ConversationItem extends BaseConversationItem {
         int end = spanned.getSpanEnd(span);
         if (start >= 0 && end > start && end <= spanned.length()) {
           String linkText = spanned.subSequence(start, end).toString();
-          String label = context.getString(R.string.accessibility_link_action, linkText);
+          String label = context.getString(R.string.open_link, linkText);
           linkActionIds.add(
               ViewCompat.addAccessibilityAction(
                   this,

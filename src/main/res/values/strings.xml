@@ -1176,6 +1176,8 @@
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Wallpaper preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Open %1$s</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop sharing location</string>
@@ -1229,9 +1231,6 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
-
-    <!-- Accessibility -->
-    <string name="accessibility_link_action">Open %1$s</string>
 
     <!-- device messages for updates -->
     <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
