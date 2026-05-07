@@ -74,9 +74,6 @@
 
     <color name="delete_account_item_bg">#eeeeee</color>
 
-    <color name="calls_dark_surface">#1B1C1F</color>
-    <color name="calls_dark_on_surface">#E2E1E5</color>
-    <color name="calls_dark_on_surface_variant">#BEBFC5</color>
     <color name="calls_button_foreground">#FFFFFF</color>
     <color name="calls_button_background">#6B6B6B</color>
     <color name="calls_red">#FF0017</color>
