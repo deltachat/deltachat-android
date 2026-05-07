@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:contentDescription="Contact photo"
+        android:importantForAccessibility="no"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
         app:layout_constraintWidth_percent="0.4"
         app:layout_constraintDimensionRatio="1:1"
@@ -115,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:contentDescription="Caller photo"
+            android:importantForAccessibility="no"
             tools:src="@drawable/ic_person" />
 
     </com.google.android.material.card.MaterialCardView>
