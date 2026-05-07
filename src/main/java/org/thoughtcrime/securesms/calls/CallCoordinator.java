@@ -23,6 +23,7 @@ import android.os.Looper;
 import android.telecom.DisconnectCause;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
@@ -32,6 +33,7 @@ import androidx.core.telecom.CallControlScope;
 import androidx.core.telecom.CallEndpointCompat;
 import androidx.core.telecom.CallException;
 import androidx.core.telecom.CallsManager;
+import androidx.core.util.Pair;
 import androidx.lifecycle.FlowLiveDataConversions;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
@@ -898,31 +900,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       int accId, int callId, String offerSdp, boolean startsWithVideo) {
     Log.d(TAG, "onIncomingCall: accId=" + accId + ", callId=" + callId);
 
-    if (hasActiveCall()) {
-      Log.w(TAG, "Already have an active call, ignoring incoming call");
-      return;
-    }
+    Pair<DcChat, String> result = setupIncomingCallState(accId, callId, offerSdp, startsWithVideo);
+    if (result == null) return;
 
-    resetLiveDataForNewCall();
-
-    this.activeAccId = accId;
-    this.activeCallId = callId;
-    this.isIncomingCall = true;
-    this.startsWithVideo = startsWithVideo;
-    this.pendingOfferSdp = offerSdp;
-
-    // Get caller info
-    DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
-    int chatId = dcContext.getMsg(callId).getChatId();
-    this.activeChatId = chatId;
-    DcChat dcChat = dcContext.getChat(chatId);
-    String callerName = getNameFromChat(dcChat);
+    DcChat dcChat = result.first;
+    String callerName = result.second;
     Icon callerIcon = getIconFromChat(this.appContext, dcChat);
 
-    displayName.postValue(callerName);
     displayIcon.postValue(callerIcon);
-
-    this.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
 
     // Add to CallsManager
     CallAttributesCompat callAttributes = createCallAttributes(callerName, callId, true);
@@ -932,6 +917,37 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     showIncomingCallNotification(callerName, callerIcon);
 
     startAndBindService();
+  }
+
+  public synchronized void handleIncomingCallFromConversation(
+      int accId, int callId, String offerSdp, boolean hasVideo) {
+    Log.d(TAG, "handleIncomingCallFromConversation: accId=" + accId + ", callId=" + callId);
+
+    if (offerSdp == null || offerSdp.isEmpty()) {
+      Log.e(TAG, "Cannot start incoming call: no SDP offer");
+      return;
+    }
+
+    Pair<DcChat, String> result = setupIncomingCallState(accId, callId, offerSdp, hasVideo);
+    if (result == null) return;
+
+    DcChat dcChat = result.first;
+    String callerName = result.second;
+
+    new Thread(
+            () -> {
+              Icon callerIcon = getIconFromChat(this.appContext, dcChat);
+              displayIcon.postValue(callerIcon);
+            })
+        .start();
+
+    // Add to CallsManager
+    CallAttributesCompat callAttributes = createCallAttributes(callerName, callId, true);
+    addCallToTelecom(callAttributes, callerName, null);
+
+    startAndBindService();
+
+    launchCallActivity();
   }
 
   private synchronized void onIncomingCallAccepted(int callId, boolean fromThisDevice) {
@@ -1302,6 +1318,35 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     // Add call to CallsManager
     addCallToTelecom(callAttributes, calleeName, calleeIcon);
+  }
+
+  @Nullable
+  private Pair<DcChat, String> setupIncomingCallState(
+      int accId, int callId, String offerSdp, boolean startsWithVideo) {
+    if (hasActiveCall()) {
+      Log.w(TAG, "Already have an active call, ignoring incoming call");
+      return null;
+    }
+
+    resetLiveDataForNewCall();
+
+    this.activeAccId = accId;
+    this.activeCallId = callId;
+    this.isIncomingCall = true;
+    this.startsWithVideo = startsWithVideo;
+    this.pendingOfferSdp = offerSdp;
+
+    DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
+    int chatId = dcContext.getMsg(callId).getChatId();
+    this.activeChatId = chatId;
+    DcChat dcChat = dcContext.getChat(chatId);
+    String callerName = getNameFromChat(dcChat);
+
+    displayName.postValue(callerName);
+
+    this.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
+
+    return new Pair<>(dcChat, callerName);
   }
 
   public synchronized void ensureServiceStarted() {
