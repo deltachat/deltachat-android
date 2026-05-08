@@ -423,9 +423,11 @@ public abstract class BaseConversationListFragment extends Fragment implements A
                   .setIcon(IconCompat.createWithAdaptiveBitmap(avatar))
                   .setIntent(intent)
                   .build();
+          boolean success =
+              ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null);
           Util.runOnMain(
               () -> {
-                if (!ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null)) {
+                if (!success) {
                   Toast.makeText(
                           activity,
                           "ErrAddToHomescreen: requestPinShortcut() failed",
