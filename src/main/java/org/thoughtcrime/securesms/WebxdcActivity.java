@@ -547,7 +547,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       Toast.makeText(context, R.string.one_moment, Toast.LENGTH_SHORT).show();
       Util.runOnAnyBackgroundThread(
           () -> {
-            if (!ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)) {
+            boolean success;
+            try {
+              sucess = ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null);
+            } catch (Exception e) {
+              Log.e(TAG, "ErrAddToHomescreen: requestPinShortcut() failed", e);
+              success = false;
+            }
+            if (!success) {
               Util.runOnMain(
                   () ->
                       Toast.makeText(

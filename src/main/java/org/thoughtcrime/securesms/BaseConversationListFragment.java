@@ -423,8 +423,14 @@ public abstract class BaseConversationListFragment extends Fragment implements A
                   .setIcon(IconCompat.createWithAdaptiveBitmap(avatar))
                   .setIntent(intent)
                   .build();
-          boolean success =
-              ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null);
+
+          boolean success;
+          try {
+            success = ShortcutManagerCompat.requestPinShortcut(activity, shortcutInfoCompat, null);
+          } catch (Exception e) {
+            Log.e(TAG, "ErrAddToHomescreen: requestPinShortcut() failed", e);
+            success = false;
+          }
           Util.runOnMain(
               () -> {
                 if (!success) {
