@@ -431,9 +431,10 @@ public abstract class BaseConversationListFragment extends Fragment implements A
             Log.e(TAG, "ErrAddToHomescreen: requestPinShortcut() failed", e);
             success = false;
           }
+          boolean finalSuccess = success;
           Util.runOnMain(
               () -> {
-                if (!success) {
+                if (!finalSuccess) {
                   Toast.makeText(
                           activity,
                           "ErrAddToHomescreen: requestPinShortcut() failed",

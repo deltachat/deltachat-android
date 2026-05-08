@@ -549,7 +549,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
           () -> {
             boolean success;
             try {
-              sucess = ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null);
+              success = ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null);
             } catch (Exception e) {
               Log.e(TAG, "ErrAddToHomescreen: requestPinShortcut() failed", e);
               success = false;
