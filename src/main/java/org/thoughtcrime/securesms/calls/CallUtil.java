@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,7 +16,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.telecom.CallEndpointCompat;
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -54,9 +56,7 @@ public class CallUtil {
       return;
     }
 
-    DcContext dcContext = DcHelper.getContext(context);
-
-    if (dcContext.getConnectivity() < DcContext.DC_CONNECTIVITY_WORKING) {
+    if (!isNetworkAvailable(context)) {
       new AlertDialog.Builder(context)
           .setMessage(context.getString(R.string.call_requires_connection))
           .setPositiveButton(android.R.string.ok, null)
@@ -64,7 +64,7 @@ public class CallUtil {
       return;
     }
 
-    int accId = dcContext.getAccountId();
+    int accId = DcHelper.getContext(context).getAccountId();
     coordinator.initiateOutgoingCall(accId, chatId, startsWithVideo);
   }
 
@@ -149,5 +149,18 @@ public class CallUtil {
         break;
     }
     return iconRes;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.M)
+  private static boolean isNetworkAvailable(Context context) {
+    ConnectivityManager manager =
+        (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    if (manager == null) return true;
+
+    Network network = manager.getActiveNetwork();
+    if (network == null) return false;
+
+    NetworkCapabilities caps = manager.getNetworkCapabilities(network);
+    return caps != null && caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
   }
 }
