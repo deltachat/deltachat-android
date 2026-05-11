@@ -10,8 +10,10 @@ import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.telecom.CallEndpointCompat;
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -52,7 +54,17 @@ public class CallUtil {
       return;
     }
 
-    int accId = DcHelper.getContext(context).getAccountId();
+    DcContext dcContext = DcHelper.getContext(context);
+
+    if (dcContext.getConnectivity() < DcContext.DC_CONNECTIVITY_WORKING) {
+      new AlertDialog.Builder(context)
+          .setMessage(context.getString(R.string.call_requires_connection))
+          .setPositiveButton(android.R.string.ok, null)
+          .show();
+      return;
+    }
+
+    int accId = dcContext.getAccountId();
     coordinator.initiateOutgoingCall(accId, chatId, startsWithVideo);
   }
 
