@@ -523,7 +523,9 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private static class SingleItemPagerAdapter extends RecyclerView.Adapter<SingleItemPagerAdapter.MediaViewHolder> implements MediaItemAdapter {
+  private static class SingleItemPagerAdapter
+      extends RecyclerView.Adapter<SingleItemPagerAdapter.MediaViewHolder>
+      implements MediaItemAdapter {
 
     private final GlideRequests glideRequests;
     private final Window window;
@@ -595,7 +597,9 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
-  private static class DcMediaPagerAdapter extends RecyclerView.Adapter<DcMediaPagerAdapter.MediaViewHolder> implements MediaItemAdapter {
+  private static class DcMediaPagerAdapter
+      extends RecyclerView.Adapter<DcMediaPagerAdapter.MediaViewHolder>
+      implements MediaItemAdapter {
 
     private final WeakHashMap<Integer, MediaView> mediaViews = new WeakHashMap<>();
 
@@ -636,8 +640,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     @NonNull
     @Override
     public MediaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-      View itemView =
-          LayoutInflater.from(context).inflate(R.layout.media_view_page, parent, false);
+      View itemView = LayoutInflater.from(context).inflate(R.layout.media_view_page, parent, false);
       return new MediaViewHolder(itemView);
     }
 
