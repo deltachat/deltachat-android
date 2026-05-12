@@ -198,7 +198,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private final boolean isSecureText = true;
   private boolean isDefaultSms = true;
   private boolean isSecurityInitialized = false;
-  private boolean successfulForwardingAttempt = false;
   private boolean isEditing = false;
   private boolean switchedProfile = false;
 
@@ -844,20 +843,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
-      String name = dcChat.getName();
-      if (!dcChat.isMultiUser()) {
-        int[] contactIds = dcContext.getChatContacts(chatId);
-        if (contactIds.length == 1 || contactIds.length == 2) {
-          name = dcContext.getContact(contactIds[0]).getDisplayName();
-        }
-      }
       new AlertDialog.Builder(this)
-          .setMessage(getString(R.string.ask_forward, name))
+          .setMessage(getString(R.string.ask_forward, dcChat.getName()))
           .setPositiveButton(
               R.string.ok,
               (dialogInterface, i) -> {
                 SendRelayedMessageUtil.immediatelyRelay(this, chatId);
-                successfulForwardingAttempt = true;
               })
           .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
           .setOnCancelListener(dialog -> finish())

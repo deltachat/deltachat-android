@@ -174,8 +174,4 @@ public class ShareUtil {
   public static void setSharedTitle(Intent composeIntent, String text) {
     composeIntent.putExtra(SHARED_TITLE, text);
   }
-
-  public static void setDirectSharing(Intent composeIntent, int chatId) {
-    composeIntent.putExtra(DIRECT_SHARING_CHAT_ID, chatId);
-  }
 }
