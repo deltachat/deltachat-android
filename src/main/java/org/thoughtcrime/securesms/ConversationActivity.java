@@ -848,7 +848,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       new AlertDialog.Builder(this)
           .setMessage(getResources().getQuantityString(R.plurals.ask_forward_messages, messageCount, messageCount, dcChat.getName()))
           .setPositiveButton(
-              R.string.ok,
+              R.string.forward,
               (dialogInterface, i) -> {
                 SendRelayedMessageUtil.immediatelyRelay(this, chatId);
               })
