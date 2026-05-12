@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.telecom.CallEndpointCompat;
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -61,7 +62,6 @@ public class CallUtil {
           .setMessage(context.getString(R.string.call_requires_connection))
           .setPositiveButton(android.R.string.ok, null)
           .show();
-      return;
     }
 
     int accId = DcHelper.getContext(context).getAccountId();
@@ -157,10 +157,17 @@ public class CallUtil {
         (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     if (manager == null) return true;
 
+    boolean networkAvailable = false;
     Network network = manager.getActiveNetwork();
-    if (network == null) return false;
+    if (network != null) {
+      NetworkCapabilities caps = manager.getNetworkCapabilities(network);
+      networkAvailable =
+          caps != null && caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
+    }
 
-    NetworkCapabilities caps = manager.getNetworkCapabilities(network);
-    return caps != null && caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
+    boolean serverConnected =
+        DcHelper.getContext(context).getConnectivity() >= DcContext.DC_CONNECTIVITY_WORKING;
+
+    return networkAvailable || serverConnected;
   }
 }
