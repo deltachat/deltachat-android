@@ -157,6 +157,12 @@ public class AccountSelectionListFragment extends DialogFragment
       onSetTag(accountId);
     } else if (itemId == R.id.menu_move_to_top) {
       onMoveToTop(accountId);
+    } else if (itemId == R.id.menu_mark_all_as_read) {
+      try {
+        DcHelper.getRpc(requireActivity()).marknoticedAllChats(accountId);
+      } catch (RpcException e) {
+        Log.e(TAG, "Error calling rpc.marknoticedAllChats()", e);
+      }
     }
   }
 

@@ -56,6 +56,12 @@
         android:title="@string/pref_in_chat_sounds"
         android:defaultValue="true" />
 
+    <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
+        android:key="pref_notify_calls"
+        android:title="@string/pref_calls"
+        android:summary="@string/pref_calls_explain"
+        android:defaultValue="true" />
+
     <PreferenceCategory android:title="@string/pref_instant_delivery">
         <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
             android:key="pref_ignore_battery_optimizations"

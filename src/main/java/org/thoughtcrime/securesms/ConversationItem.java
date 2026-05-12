@@ -457,7 +457,7 @@ public class ConversationItem extends BaseConversationItem {
         int end = spanned.getSpanEnd(span);
         if (start >= 0 && end > start && end <= spanned.length()) {
           String linkText = spanned.subSequence(start, end).toString();
-          String label = context.getString(R.string.accessibility_link_action, linkText);
+          String label = context.getString(R.string.open_link, linkText);
           linkActionIds.add(
               ViewCompat.addAccessibilityAction(
                   this,
@@ -1091,7 +1091,18 @@ public class ConversationItem extends BaseConversationItem {
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
             int callId = messageRecord.getId();
             CallCoordinator coordinator = CallCoordinator.getInstance(context);
-            coordinator.showIncomingCallScreen(callId);
+
+            if (coordinator.hasActiveCall()) {
+              coordinator.showIncomingCallScreen(callId);
+            } else {
+              if (callInfo.sdpOffer == null) {
+                Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
+                return;
+              }
+              int accId = dcContext.getAccountId();
+              coordinator.handleIncomingCallFromConversation(
+                  accId, callId, callInfo.sdpOffer, callInfo.hasVideo);
+            }
           } else {
             if (callInfo.hasVideo) {
               CallUtil.startVideoCall(getContext(), chatId);

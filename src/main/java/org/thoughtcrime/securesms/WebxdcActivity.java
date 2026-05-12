@@ -545,11 +545,25 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               .build();
 
       Toast.makeText(context, R.string.one_moment, Toast.LENGTH_SHORT).show();
-      if (!ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null)) {
-        Toast.makeText(
-                context, "ErrAddToHomescreen: requestPinShortcut() failed", Toast.LENGTH_LONG)
-            .show();
-      }
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            boolean success;
+            try {
+              success = ShortcutManagerCompat.requestPinShortcut(context, shortcutInfoCompat, null);
+            } catch (Exception e) {
+              Log.e(TAG, "ErrAddToHomescreen: requestPinShortcut() failed", e);
+              success = false;
+            }
+            if (!success) {
+              Util.runOnMain(
+                  () ->
+                      Toast.makeText(
+                              context,
+                              "ErrAddToHomescreen: requestPinShortcut() failed",
+                              Toast.LENGTH_LONG)
+                          .show());
+            }
+          });
     } catch (Exception e) {
       Toast.makeText(context, "ErrAddToHomescreen: " + e, Toast.LENGTH_LONG).show();
     }
