@@ -206,8 +206,6 @@
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capture</string>
-    <!-- Switch audio output eg. from earphone to front speaker -->
-    <string name="switch_speaker">Switch Speaker</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Switch Camera</string>
     <!-- Toggle camera on/off eg. during an video call -->
