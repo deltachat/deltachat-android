@@ -843,10 +843,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
-      int messageIds [] = ShareUtil.getForwardedMessageIDs(this);
+      int messageIds[] = ShareUtil.getForwardedMessageIDs(this);
       int messageCount = messageIds == null ? 0 : messageIds.length;
       new AlertDialog.Builder(this)
-          .setMessage(getResources().getQuantityString(R.plurals.ask_forward_messages, messageCount, messageCount, dcChat.getName()))
+          .setMessage(
+              getResources()
+                  .getQuantityString(
+                      R.plurals.ask_forward_messages, messageCount, messageCount, dcChat.getName()))
           .setPositiveButton(
               R.string.forward,
               (dialogInterface, i) -> {
