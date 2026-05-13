@@ -57,15 +57,22 @@ public class CallUtil {
       return;
     }
 
+    Runnable proceedWithCall =
+        () -> {
+          int accId = DcHelper.getContext(context).getAccountId();
+          coordinator.initiateOutgoingCall(accId, chatId, startsWithVideo);
+        };
+
     if (!isNetworkAvailable(context)) {
       new AlertDialog.Builder(context)
           .setMessage(context.getString(R.string.call_requires_connection))
-          .setPositiveButton(android.R.string.ok, null)
+          .setPositiveButton(R.string.perm_continue, (dialog, which) -> proceedWithCall.run())
+          .setNegativeButton(android.R.string.cancel, null)
           .show();
+      return;
     }
 
-    int accId = DcHelper.getContext(context).getAccountId();
-    coordinator.initiateOutgoingCall(accId, chatId, startsWithVideo);
+    proceedWithCall.run();
   }
 
   @Nullable
