@@ -633,12 +633,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     } else if (itemId == R.id.menu_start_audio_call) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        CallUtil.startAudioCall(context, chatId);
+        CallUtil.startAudioCall(this, chatId);
       }
       return true;
     } else if (itemId == R.id.menu_start_video_call) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        CallUtil.startVideoCall(context, chatId);
+        CallUtil.startVideoCall(this, chatId);
       }
       return true;
     } else if (itemId == R.id.menu_all_media) {

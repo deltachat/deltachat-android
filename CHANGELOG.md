@@ -5,6 +5,7 @@
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
 * Calls can be answered by tapping messages
+* Notify the user when they try to make a call while the device is offline
 * Channels are no longer experimental and are available by default
 * Display a permanent notification when doing location streaming and get rid of dangerous "Access Location in Background" permission
 * Autoplay all voice messages in a chat
