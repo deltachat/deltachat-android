@@ -14,6 +14,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcContext;
@@ -23,12 +24,18 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import org.thoughtcrime.securesms.ConversationListRelayingActivity;
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
+import org.thoughtcrime.securesms.util.views.ProgressDialog;
+import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 
 public class SendRelayedMessageUtil {
+
+  private static final String TAG = "SendRelayedMessageUtil";
 
   public static void immediatelyRelay(Activity activity, int chatId) {
     immediatelyRelay(activity, new Long[] {(long) chatId});
@@ -99,26 +106,63 @@ public class SendRelayedMessageUtil {
     ArrayList<Uri> uris = sharedUris;
     String text = sharedText;
 
+    AtomicReference<ProgressDialog> progressDialogRef = new AtomicReference<>(null);
+    boolean hasVideos = containsVideoType(context, uris);
+    boolean isFinishing = context instanceof Activity && ((Activity) context).isFinishing();
+    if (hasVideos && !isFinishing) {
+      Util.runOnMain(
+          () -> {
+            progressDialogRef.set(
+                ProgressDialog.show(
+                    context, "", context.getString(R.string.one_moment), true, false));
+          });
+    }
+
     if (uris.size() == 1) {
-      dcContext.sendMsg(chatId, createMessage(context, uris.get(0), text));
+      DcMsg msg = createMessage(context, uris.get(0), text);
+      if (hasVideos && !isFinishing) {
+        if (!VideoRecoder.prepareVideo(context, chatId, msg)) {
+          Log.w(TAG, "prepareVideo failed for " + uris.get(0));
+        }
+      }
+      dcContext.sendMsg(chatId, msg);
     } else {
       if (text != null) {
         dcContext.sendMsg(chatId, createMessage(context, null, text));
       }
       for (Uri uri : uris) {
-        dcContext.sendMsg(chatId, createMessage(context, uri, null));
+        DcMsg msg = createMessage(context, uri, null);
+        if (!isFinishing && isVideoUri(context, uri)) {
+          if (!VideoRecoder.prepareVideo(context, chatId, msg)) {
+            Log.w(TAG, "prepareVideo failed for " + uri);
+          }
+        }
+        dcContext.sendMsg(chatId, msg);
       }
+    }
+
+    ProgressDialog dialog = progressDialogRef.get();
+    if (dialog != null) {
+      Util.runOnMain(
+          () -> {
+            try {
+              dialog.dismiss();
+            } catch (final IllegalArgumentException e) {
+              // The activity is finishing/destroyed, do nothing.
+            }
+          });
     }
   }
 
-  public static boolean containsVideoType(Context context, ArrayList<Uri> uris) {
+  private static boolean containsVideoType(Context context, ArrayList<Uri> uris) {
     for (final Uri uri : uris) {
-      final String mimeType = MediaUtil.getMimeType(context, uri);
-      if (MediaUtil.isVideoType(mimeType)) {
-        return true;
-      }
+      if (isVideoUri(context, uri)) return true;
     }
     return false;
+  }
+
+  private static boolean isVideoUri(Context context, Uri uri) {
+    return MediaUtil.isVideoType(MediaUtil.getMimeType(context, uri));
   }
 
   public static DcMsg createMessage(Context context, Uri uri, String text)
