@@ -307,7 +307,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_volume_up"
-                android:contentDescription="@string/switch_speaker"
+                android:contentDescription="@string/audio"
                 app:tint="@color/calls_button_foreground"
                 app:backgroundTint="@color/calls_button_background"
                 app:fabSize="normal"

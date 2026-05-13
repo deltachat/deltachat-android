@@ -66,7 +66,7 @@ public class ShareUtil {
     }
   }
 
-  static int[] getForwardedMessageIDs(Activity activity) {
+  public static int[] getForwardedMessageIDs(Activity activity) {
     try {
       return activity.getIntent().getIntArrayExtra(FORWARDED_MESSAGE_IDS);
     } catch (NullPointerException npe) {
@@ -173,9 +173,5 @@ public class ShareUtil {
 
   public static void setSharedTitle(Intent composeIntent, String text) {
     composeIntent.putExtra(SHARED_TITLE, text);
-  }
-
-  public static void setDirectSharing(Intent composeIntent, int chatId) {
-    composeIntent.putExtra(DIRECT_SHARING_CHAT_ID, chatId);
   }
 }
