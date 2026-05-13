@@ -20,6 +20,7 @@
 * Allow to disable incoming calls notifications
 * Fix: do not accidentally set draft in chats that don't allow sending messages
 * Fix swipe navigation between tabs in RTL languages
+* Remove legacy option
 
 ## v2.49.0
 2026-04
