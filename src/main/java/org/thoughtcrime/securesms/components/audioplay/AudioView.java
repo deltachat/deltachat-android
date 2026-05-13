@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.Observer;
-import androidx.preference.PreferenceManager;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import java.util.Map;
@@ -25,7 +24,6 @@ import org.thoughtcrime.securesms.util.DateUtils;
 public class AudioView extends FrameLayout {
 
   private static final String TAG = "AudioView";
-  private static final String PREF_SPEED_INDEX = "pref_audio_playback_speed_index";
   private static final float[] SPEEDS = {1f, 1.5f, 2f};
   private static final String[] SPEED_LABELS = {"1×", "1.5×", "2×"};
 
@@ -43,6 +41,7 @@ public class AudioView extends FrameLayout {
   private OnActionListener listener;
 
   private int speedIndex = 0;
+  private boolean isActiveMessage = false;
   private int msgId = -1;
   private Uri audioUri;
   private int progress;
@@ -71,9 +70,7 @@ public class AudioView extends FrameLayout {
     this.speedButton = findViewById(R.id.audio_speed_button);
     this.mask = findViewById(R.id.interception_mask);
 
-    this.speedIndex =
-        PreferenceManager.getDefaultSharedPreferences(context).getInt(PREF_SPEED_INDEX, 0);
-    this.speedButton.setText(SPEED_LABELS[speedIndex]);
+    this.speedButton.setText(SPEED_LABELS[0]);
 
     updateTimestampsAndSeekBar();
 
@@ -142,10 +139,6 @@ public class AudioView extends FrameLayout {
         v -> {
           speedIndex = (speedIndex + 1) % SPEEDS.length;
           speedButton.setText(SPEED_LABELS[speedIndex]);
-          PreferenceManager.getDefaultSharedPreferences(getContext())
-              .edit()
-              .putInt(PREF_SPEED_INDEX, speedIndex)
-              .apply();
           if (viewModel != null) {
             viewModel.setPlaybackSpeed(SPEEDS[speedIndex]);
           }
@@ -215,9 +208,6 @@ public class AudioView extends FrameLayout {
     msgId = audio.getDcMsgId();
     audioUri = audio.getUri();
     playPauseButton.setImageDrawable(playDrawable);
-    if (viewModel != null) {
-      viewModel.setPlaybackSpeed(SPEEDS[speedIndex]);
-    }
 
     seekBar.setEnabled(true);
 
@@ -331,18 +321,28 @@ public class AudioView extends FrameLayout {
   private void onPlaybackStateChanged(AudioPlaybackState state) {
     if (audioUri == null || state == null) return;
 
-    // Check if this state is about this message
     boolean isThisMessage = msgId == state.getMsgId();
 
     if (isThisMessage) {
+      if (!isActiveMessage) {
+        // Just became active — reset speed to 1x
+        speedIndex = 0;
+        speedButton.setText(SPEED_LABELS[0]);
+        if (viewModel != null) {
+          viewModel.setPlaybackSpeed(1f);
+        }
+      }
+      speedButton.setVisibility(View.VISIBLE);
       updateUIForPlaybackState(state);
     } else {
+      speedButton.setVisibility(View.GONE);
       togglePlayPause(false);
 
       // Also clear progress to avoid confusion
       this.progress = 0;
       updateTimestampsAndSeekBar();
     }
+    isActiveMessage = isThisMessage;
   }
 
   private void updateUIForPlaybackState(AudioPlaybackState state) {

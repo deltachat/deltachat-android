@@ -77,6 +77,7 @@
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:textColor="@color/audio_icon"
                         style="@style/Signal.Text.Caption"
+                        android:visibility="gone"
                         android:contentDescription="@string/playback_speed" />
 
                     <TextView
