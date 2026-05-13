@@ -4,7 +4,6 @@ import android.content.ComponentName;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -12,18 +11,19 @@ import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.media3.session.MediaController;
 import androidx.media3.session.SessionCommand;
 import androidx.media3.session.SessionToken;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.common.util.concurrent.ListenableFuture;
 import java.util.ArrayList;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
@@ -55,7 +55,6 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
       this.type3 = type3;
     }
   }
-  ;
 
   private DcContext dcContext;
   private int chatId;
@@ -64,7 +63,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
   private final ArrayList<TabData> tabs = new ArrayList<>();
   private Toolbar toolbar;
   private TabLayout tabLayout;
-  private ViewPager viewPager;
+  private ViewPager2 viewPager;
 
   private @Nullable MediaController mediaController;
   private ListenableFuture<MediaController> mediaControllerFuture;
@@ -98,8 +97,20 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
           isGlobalGallery() ? R.string.menu_all_media : R.string.apps_and_media);
     }
 
-    this.tabLayout.setupWithViewPager(viewPager);
-    this.viewPager.setAdapter(new AllMediaPagerAdapter(getSupportFragmentManager()));
+    AllMediaPagerAdapter adapter = new AllMediaPagerAdapter(this);
+    this.viewPager.setAdapter(adapter);
+    this.viewPager.registerOnPageChangeCallback(
+        new ViewPager2.OnPageChangeCallback() {
+          @Override
+          public void onPageSelected(int position) {
+            adapter.onPageChanged(position);
+          }
+        });
+    new TabLayoutMediator(
+            this.tabLayout,
+            this.viewPager,
+            (tab, position) -> tab.setText(getString(tabs.get(position).title)))
+        .attach();
     if (getIntent().getBooleanExtra(FORCE_GALLERY, false)) {
       this.viewPager.setCurrentItem(1, false);
     }
@@ -186,31 +197,16 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     return contactId == 0 && chatId == 0;
   }
 
-  private class AllMediaPagerAdapter extends FragmentStatePagerAdapter {
-    private Object currentFragment = null;
+  private class AllMediaPagerAdapter extends FragmentStateAdapter {
+    private int currentPosition = -1;
 
-    AllMediaPagerAdapter(FragmentManager fragmentManager) {
-      super(fragmentManager);
-    }
-
-    @Override
-    public void setPrimaryItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-      super.setPrimaryItem(container, position, object);
-      if (currentFragment != null && currentFragment != object) {
-        ActionMode action = null;
-        if (currentFragment instanceof MessageSelectorFragment) {
-          action = ((MessageSelectorFragment) currentFragment).getActionMode();
-        }
-        if (action != null) {
-          action.finish();
-        }
-      }
-      currentFragment = object;
+    AllMediaPagerAdapter(FragmentActivity activity) {
+      super(activity);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
+    public Fragment createFragment(int position) {
       TabData data = tabs.get(position);
       Fragment fragment;
       Bundle args = new Bundle();
@@ -233,13 +229,24 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
       return tabs.size();
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-      return getString(tabs.get(position).title);
+    private void onPageChanged(int newPosition) {
+      if (currentPosition != -1 && currentPosition != newPosition) {
+        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+          if (!(fragment instanceof MessageSelectorFragment)) {
+            continue;
+          }
+
+          ActionMode action = ((MessageSelectorFragment) fragment).getActionMode();
+          if (action != null) {
+            action.finish();
+          }
+        }
+      }
+      currentPosition = newPosition;
     }
   }
 
