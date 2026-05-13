@@ -233,7 +233,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     @Override
     public Fragment createFragment(int position) {
       if (position == TAB_SHOW) {
-        qrShowFragment = new QrShowFragment(this);
+        qrShowFragment = new QrShowFragment(QrActivity.this);
         return qrShowFragment;
       }
       return new QrScanFragment();
