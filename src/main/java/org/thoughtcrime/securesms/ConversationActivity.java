@@ -198,7 +198,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private final boolean isSecureText = true;
   private boolean isDefaultSms = true;
   private boolean isSecurityInitialized = false;
-  private boolean successfulForwardingAttempt = false;
   private boolean isEditing = false;
   private boolean switchedProfile = false;
 
@@ -634,12 +633,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     } else if (itemId == R.id.menu_start_audio_call) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        CallUtil.startAudioCall(context, chatId);
+        CallUtil.startAudioCall(this, chatId);
       }
       return true;
     } else if (itemId == R.id.menu_start_video_call) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        CallUtil.startVideoCall(context, chatId);
+        CallUtil.startVideoCall(this, chatId);
       }
       return true;
     } else if (itemId == R.id.menu_all_media) {
@@ -844,20 +843,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
-      String name = dcChat.getName();
-      if (!dcChat.isMultiUser()) {
-        int[] contactIds = dcContext.getChatContacts(chatId);
-        if (contactIds.length == 1 || contactIds.length == 2) {
-          name = dcContext.getContact(contactIds[0]).getDisplayName();
-        }
-      }
+      int messageIds[] = ShareUtil.getForwardedMessageIDs(this);
+      int messageCount = messageIds == null ? 0 : messageIds.length;
       new AlertDialog.Builder(this)
-          .setMessage(getString(R.string.ask_forward, name))
+          .setMessage(
+              getResources()
+                  .getQuantityString(
+                      R.plurals.ask_forward_messages, messageCount, messageCount, dcChat.getName()))
           .setPositiveButton(
-              R.string.ok,
+              R.string.forward,
               (dialogInterface, i) -> {
                 SendRelayedMessageUtil.immediatelyRelay(this, chatId);
-                successfulForwardingAttempt = true;
               })
           .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
           .setOnCancelListener(dialog -> finish())

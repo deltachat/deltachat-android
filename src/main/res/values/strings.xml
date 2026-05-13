@@ -206,8 +206,6 @@
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capture</string>
-    <!-- Switch audio output eg. from earphone to front speaker -->
-    <string name="switch_speaker">Switch Speaker</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Switch Camera</string>
     <!-- Toggle camera on/off eg. during an video call -->
@@ -440,6 +438,7 @@
     <string name="call_answered_elsewhere">Call answered on another device</string>
     <string name="call_requires_camera_permission">Camera permission is required for video calls</string>
     <string name="call_requires_mic_permission">Microphone permission is required for calls</string>
+    <string name="call_requires_connection">Cannot start call. Make sure your device has an internet connection and try again.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Call with %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -458,6 +457,12 @@
         <item quantity="one">Delete %d message?</item>
         <item quantity="other">Delete %d messages?</item>
     </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Forward message to %2$s?</item>
+        <item quantity="other">Forward %1$d messages to %2$s?</item>
+    </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
     <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
