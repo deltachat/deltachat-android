@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.lifecycle.Observer;
+import androidx.preference.PreferenceManager;
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import java.util.Map;
@@ -24,6 +25,9 @@ import org.thoughtcrime.securesms.util.DateUtils;
 public class AudioView extends FrameLayout {
 
   private static final String TAG = "AudioView";
+  private static final String PREF_SPEED_INDEX = "pref_audio_playback_speed_index";
+  private static final float[] SPEEDS = {1f, 1.5f, 2f};
+  private static final String[] SPEED_LABELS = {"1×", "1.5×", "2×"};
 
   private final @NonNull ImageView playPauseButton;
   private final AnimatedVectorDrawableCompat playToPauseDrawable;
@@ -34,9 +38,11 @@ public class AudioView extends FrameLayout {
   private final @NonNull SeekBar seekBar;
   private final @NonNull TextView timestamp;
   private final @NonNull TextView title;
+  private final @NonNull TextView speedButton;
   private final @NonNull View mask;
   private OnActionListener listener;
 
+  private int speedIndex = 0;
   private int msgId = -1;
   private Uri audioUri;
   private int progress;
@@ -62,7 +68,12 @@ public class AudioView extends FrameLayout {
     this.seekBar = findViewById(R.id.seek);
     this.timestamp = findViewById(R.id.timestamp);
     this.title = findViewById(R.id.title);
+    this.speedButton = findViewById(R.id.audio_speed_button);
     this.mask = findViewById(R.id.interception_mask);
+
+    this.speedIndex =
+        PreferenceManager.getDefaultSharedPreferences(context).getInt(PREF_SPEED_INDEX, 0);
+    this.speedButton.setText(SPEED_LABELS[speedIndex]);
 
     updateTimestampsAndSeekBar();
 
@@ -124,6 +135,19 @@ public class AudioView extends FrameLayout {
 
           if (listener != null) {
             listener.onPlayPauseButtonClicked(v);
+          }
+        });
+
+    speedButton.setOnClickListener(
+        v -> {
+          speedIndex = (speedIndex + 1) % SPEEDS.length;
+          speedButton.setText(SPEED_LABELS[speedIndex]);
+          PreferenceManager.getDefaultSharedPreferences(getContext())
+              .edit()
+              .putInt(PREF_SPEED_INDEX, speedIndex)
+              .apply();
+          if (viewModel != null) {
+            viewModel.setPlaybackSpeed(SPEEDS[speedIndex]);
           }
         });
 
@@ -191,6 +215,9 @@ public class AudioView extends FrameLayout {
     msgId = audio.getDcMsgId();
     audioUri = audio.getUri();
     playPauseButton.setImageDrawable(playDrawable);
+    if (viewModel != null) {
+      viewModel.setPlaybackSpeed(SPEEDS[speedIndex]);
+    }
 
     seekBar.setEnabled(true);
 

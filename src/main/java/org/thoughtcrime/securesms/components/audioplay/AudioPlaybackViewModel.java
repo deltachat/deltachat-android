@@ -235,6 +235,12 @@ public class AudioPlaybackViewModel extends ViewModel {
     this.isUserSeeking = isUserSeeking;
   }
 
+  public void setPlaybackSpeed(float speed) {
+    if (mediaController != null) {
+      mediaController.setPlaybackSpeed(speed);
+    }
+  }
+
   // Private methods
   private void setupPlayerListener() {
     if (mediaController == null) return;
