@@ -23,6 +23,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
@@ -111,6 +112,12 @@ public class EditRelayActivity extends BaseActionBarActivity
     smtpSecurity = findViewById(R.id.smtp_security);
     certCheck = findViewById(R.id.cert_check);
 
+    SwitchCompat enforceE2eeSwitch = findViewById(R.id.enforce_e2ee_switch);
+    enforceE2eeSwitch.setOnCheckedChangeListener(
+        (b, isChecked) -> {
+          // TODO: use new core API to set the config
+        });
+
     String addr = getIntent().getStringExtra(EXTRA_ADDR);
     EnteredLoginParam config = null;
     try {
@@ -172,6 +179,10 @@ public class EditRelayActivity extends BaseActionBarActivity
 
     boolean expandAdvanced = false;
     int intVal;
+
+    intVal = 0; // TODO: get the current "enforce_e2ee" value
+    enforceE2eeSwitch.setChecked(intVal == 1);
+    expandAdvanced = expandAdvanced || intVal == 1;
 
     if (config != null) { // configured
       emailInput.setText(config.addr);
