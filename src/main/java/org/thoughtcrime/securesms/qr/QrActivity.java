@@ -15,10 +15,11 @@ import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
@@ -48,7 +49,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
   private static final int TAB_SCAN = 1;
 
   private TabLayout tabLayout;
-  private ViewPager viewPager;
+  private ViewPager2 viewPager;
   private QrShowFragment qrShowFragment;
   private boolean scanRelay;
 
@@ -68,7 +69,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     qrShowFragment = new QrShowFragment(this);
     tabLayout = ViewUtil.findById(this, R.id.tab_layout);
     viewPager = ViewUtil.findById(this, R.id.pager);
-    ProfilePagerAdapter adapter = new ProfilePagerAdapter(this, getSupportFragmentManager());
+    ProfilePagerAdapter adapter = new ProfilePagerAdapter(this);
     viewPager.setAdapter(adapter);
 
     setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
@@ -76,29 +77,24 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     getSupportActionBar().setTitle(scanRelay ? R.string.add_transport : R.string.menu_new_contact);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    viewPager.setCurrentItem(scanRelay ? TAB_SCAN : TAB_SHOW);
+    viewPager.setCurrentItem(scanRelay ? TAB_SCAN : TAB_SHOW, false);
     if (scanRelay) tabLayout.setVisibility(View.GONE);
 
-    viewPager.addOnPageChangeListener(
-        new ViewPager.OnPageChangeListener() {
-          @Override
-          public void onPageScrolled(
-              int position, float positionOffset, int positionOffsetPixels) {}
-
+    viewPager.registerOnPageChangeCallback(
+        new ViewPager2.OnPageChangeCallback() {
           @Override
           public void onPageSelected(int position) {
             QrActivity.this.invalidateOptionsMenu();
             checkPermissions(position, adapter, viewPager);
           }
-
-          @Override
-          public void onPageScrollStateChanged(int state) {}
         });
 
-    tabLayout.setupWithViewPager(viewPager);
+    new TabLayoutMediator(
+            tabLayout, viewPager, (tab, position) -> tab.setText(adapter.getPageTitle(position)))
+        .attach();
   }
 
-  private void checkPermissions(int position, ProfilePagerAdapter adapter, ViewPager viewPager) {
+  private void checkPermissions(int position, ProfilePagerAdapter adapter, ViewPager2 viewPager) {
     if (position == TAB_SCAN) {
       Permissions.with(QrActivity.this)
           .request(Manifest.permission.CAMERA)
@@ -106,7 +102,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
           .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
           .onAllGranted(
               () ->
-                  ((QrScanFragment) adapter.getItem(TAB_SCAN))
+                  ((QrScanFragment) adapter.createFragment(TAB_SCAN))
                       .handleQrScanWithPermissions(QrActivity.this))
           .onAnyDenied(
               () -> {
@@ -228,47 +224,28 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     viewPager.setCurrentItem(TAB_SCAN);
   }
 
-  private class ProfilePagerAdapter extends FragmentStatePagerAdapter {
-
-    private final QrActivity activity;
-
-    ProfilePagerAdapter(QrActivity activity, FragmentManager fragmentManager) {
-      super(fragmentManager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-      this.activity = activity;
+  private class ProfilePagerAdapter extends FragmentStateAdapter {
+    ProfilePagerAdapter(FragmentActivity activity) {
+      super(activity);
     }
 
     @NonNull
     @Override
-    public Fragment getItem(int position) {
-      Fragment fragment;
-
-      switch (position) {
-        case TAB_SHOW:
-          fragment = activity.qrShowFragment;
-          break;
-
-        default:
-          fragment = new QrScanFragment();
-          break;
+    public Fragment createFragment(int position) {
+      if (position == TAB_SHOW) {
+        qrShowFragment = new QrShowFragment(QrActivity.this);
+        return qrShowFragment;
       }
-
-      return fragment;
+      return new QrScanFragment();
     }
 
     @Override
-    public int getCount() {
+    public int getItemCount() {
       return 2;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-      switch (position) {
-        case TAB_SHOW:
-          return getString(R.string.qrshow_title);
-
-        default:
-          return getString(R.string.qrscan_title);
-      }
+    private CharSequence getPageTitle(int position) {
+      return getString(position == TAB_SHOW ? R.string.qrshow_title : R.string.qrscan_title);
     }
   }
 }

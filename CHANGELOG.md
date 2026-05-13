@@ -19,6 +19,7 @@
 * Allow to open map if user clicks "Location streaming enabled" system message
 * Allow to disable incoming calls notifications
 * Fix: do not accidentally set draft in chats that don't allow sending messages
+* Fix swipe navigation between tabs in RTL languages
 
 ## v2.49.0
 2026-04

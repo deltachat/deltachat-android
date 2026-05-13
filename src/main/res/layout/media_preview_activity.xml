@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:background="@color/gray95">
 
-    <org.thoughtcrime.securesms.components.viewpager.HackyViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/media_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
