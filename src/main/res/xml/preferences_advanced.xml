@@ -62,26 +62,4 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="pref_category_legacy"
-        android:title="Legacy">
-
-        <ListPreference
-            android:key="pref_show_emails"
-            android:title="@string/pref_show_emails"
-            android:entries="@array/pref_show_emails_entries"
-            android:entryValues="@array/pref_show_emails_values" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="true"
-            android:key="pref_mvbox_move"
-            android:title="@string/pref_auto_folder_moves" />
-
-        <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:key="pref_only_fetch_mvbox"
-            android:title="@string/pref_only_fetch_mvbox_title" />
-
-    </PreferenceCategory>
-
 </PreferenceScreen>
