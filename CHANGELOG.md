@@ -20,7 +20,11 @@
 * Allow to disable incoming calls notifications
 * Fix: do not accidentally set draft in chats that don't allow sending messages
 * Fix swipe navigation between tabs in RTL languages
+<<<<<<< adb/issues-3928
 * Compress videos when sharing multiple files into a chat
+=======
+* Remove legacy option
+>>>>>>> main
 
 ## v2.49.0
 2026-04
