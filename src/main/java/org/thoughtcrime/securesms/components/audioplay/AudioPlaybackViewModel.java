@@ -235,7 +235,14 @@ public class AudioPlaybackViewModel extends ViewModel {
     this.isUserSeeking = isUserSeeking;
   }
 
-  public void setPlaybackSpeed(float speed) {
+  private int playbackSpeedIndex = 0;
+
+  public int getPlaybackSpeedIndex() {
+    return playbackSpeedIndex;
+  }
+
+  public void setPlaybackSpeed(float speed, int speedIndex) {
+    playbackSpeedIndex = speedIndex;
     if (mediaController != null) {
       mediaController.setPlaybackSpeed(speed);
     }

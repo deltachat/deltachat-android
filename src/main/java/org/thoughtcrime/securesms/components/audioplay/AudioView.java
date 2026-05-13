@@ -140,7 +140,7 @@ public class AudioView extends FrameLayout {
           speedIndex = (speedIndex + 1) % SPEEDS.length;
           speedButton.setText(SPEED_LABELS[speedIndex]);
           if (viewModel != null) {
-            viewModel.setPlaybackSpeed(SPEEDS[speedIndex]);
+            viewModel.setPlaybackSpeed(SPEEDS[speedIndex], speedIndex);
           }
         });
 
@@ -325,12 +325,8 @@ public class AudioView extends FrameLayout {
 
     if (isThisMessage) {
       if (!isActiveMessage) {
-        // Just became active — reset speed to 1x
-        speedIndex = 0;
-        speedButton.setText(SPEED_LABELS[0]);
-        if (viewModel != null) {
-          viewModel.setPlaybackSpeed(1f);
-        }
+        speedIndex = viewModel != null ? viewModel.getPlaybackSpeedIndex() : 0;
+        speedButton.setText(SPEED_LABELS[speedIndex]);
       }
       speedButton.setVisibility(View.VISIBLE);
       updateUIForPlaybackState(state);
