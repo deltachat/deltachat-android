@@ -154,7 +154,7 @@ public class SendRelayedMessageUtil {
     }
   }
 
-  private static boolean containsVideoType(Context context, ArrayList<Uri> uris) {
+  public static boolean containsVideoType(Context context, ArrayList<Uri> uris) {
     for (final Uri uri : uris) {
       if (isVideoUri(context, uri)) return true;
     }
