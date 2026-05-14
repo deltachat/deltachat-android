@@ -44,7 +44,7 @@ public class QrInviteData {
         contactId = qrParsed.getId();
         DcContact contact = dcContext.getContact(contactId);
         title = contact.getDisplayName();
-        subtitle = contact.getAddr();
+        subtitle = context.getString(R.string.start_chat);
         break;
       case DcContext.DC_QR_ASK_VERIFYGROUP:
         title = qrParsed.getText1();
