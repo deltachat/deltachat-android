@@ -200,6 +200,14 @@ public class SearchFragment extends BaseConversationListFragment
     }
   }
 
+  @Override
+  public void onInvitationClicked(@NonNull String rawQrString) {
+    ConversationListActivity conversationList = (ConversationListActivity) getActivity();
+    if (conversationList != null) {
+      conversationList.handleQrFromSearch(rawQrString);
+    }
+  }
+
   public void updateSearchQuery(@NonNull String query) {
     if (viewModel != null) {
       viewModel.updateQuery(query);
