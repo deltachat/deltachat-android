@@ -636,6 +636,7 @@
     <string name="connectivity_connected">Connected</string>
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Not supported by your provider.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
