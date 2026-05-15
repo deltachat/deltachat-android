@@ -11,6 +11,7 @@
 * Autoplay all voice messages in a chat
 * Allow to share location for 24 hours
 * Allow mini-apps to play audio without user interaction
+* Allow to paste and open invitation links from search
 * Mark chats as unread (long tap a chat and select the corresponding option from the three-dot-menu)
 * Add "Mark all as read" option to profile menu in the profile switcher
 * Fix process of upgrading from a very old version of the app

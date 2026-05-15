@@ -25,6 +25,7 @@ import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
 class SearchListAdapter
     extends BaseConversationListAdapter<SearchListAdapter.SearchResultViewHolder>
     implements StickyHeaderDecoration.StickyHeaderAdapter<SearchListAdapter.HeaderViewHolder> {
+  private static final int TYPE_QR_INVITE = 0;
   private static final int TYPE_CHATS = 1;
   private static final int TYPE_CONTACTS = 2;
   private static final int TYPE_MESSAGES = 3;
@@ -57,6 +58,14 @@ class SearchListAdapter
 
   @Override
   public void onBindViewHolder(@NonNull SearchResultViewHolder holder, int position) {
+    if (isQrInvitePosition(position)) {
+      QrInviteData inviteData = searchResult.getQrInviteData();
+      if (inviteData != null) {
+        holder.bind(inviteData, glideRequests, eventListener);
+      }
+      return;
+    }
+
     DcChatlist.Item conversationResult = getConversationResult(position);
 
     if (conversationResult != null) {
@@ -97,7 +106,9 @@ class SearchListAdapter
 
   @Override
   public long getHeaderId(int position) {
-    if (getConversationResult(position) != null) {
+    if (isQrInvitePosition(position)) {
+      return TYPE_QR_INVITE;
+    } else if (getConversationResult(position) != null) {
       return TYPE_CHATS;
     } else if (getContactResult(position) != null) {
       return TYPE_CONTACTS;
@@ -116,33 +127,39 @@ class SearchListAdapter
   @Override
   public void onBindHeaderViewHolder(HeaderViewHolder viewHolder, int position) {
     int headerType = (int) getHeaderId(position);
-    int textId = R.plurals.n_messages;
-    int count = 1;
-    boolean maybeLimitedTo1000 = false;
+    String title;
 
-    switch (headerType) {
-      case TYPE_CHATS:
-        textId = R.plurals.n_chats;
-        count = searchResult.getChats().getCnt();
-        break;
-      case TYPE_CONTACTS:
-        textId = R.plurals.n_contacts;
-        count = searchResult.getContacts().length;
-        break;
-      case TYPE_MESSAGES:
-        textId = R.plurals.n_messages;
-        count = searchResult.getMessages().length;
-        maybeLimitedTo1000 =
-            count == 1000; // a count of 1000 results may be limited, see documentation of
-        // dc_search_msgs()
-        break;
-    }
+    if (headerType == TYPE_QR_INVITE) {
+      title = context.getString(R.string.link);
+    } else {
+      int textId = R.plurals.n_messages;
+      int count = 1;
+      boolean maybeLimitedTo1000 = false;
 
-    String title = context.getResources().getQuantityString(textId, count, count);
-    if (maybeLimitedTo1000) {
-      title =
-          title.replace(
-              "000", "000+"); // skipping the first digit allows formattings as "1.000" or "1,000"
+      switch (headerType) {
+        case TYPE_CHATS:
+          textId = R.plurals.n_chats;
+          count = searchResult.getChats().getCnt();
+          break;
+        case TYPE_CONTACTS:
+          textId = R.plurals.n_contacts;
+          count = searchResult.getContacts().length;
+          break;
+        case TYPE_MESSAGES:
+          textId = R.plurals.n_messages;
+          count = searchResult.getMessages().length;
+          maybeLimitedTo1000 =
+              count == 1000; // a count of 1000 results may be limited, see documentation of
+          // dc_search_msgs()
+          break;
+      }
+
+      title = context.getResources().getQuantityString(textId, count, count);
+      if (maybeLimitedTo1000) {
+        title =
+            title.replace(
+                "000", "000+"); // skipping the first digit allows formattings as "1.000" or "1,000"
+      }
     }
     viewHolder.bind(title);
   }
@@ -160,10 +177,19 @@ class SearchListAdapter
     notifyDataSetChanged();
   }
 
+  private int getQrInviteCount() {
+    return searchResult.getQrInviteData() != null ? 1 : 0;
+  }
+
+  private boolean isQrInvitePosition(int position) {
+    return position == 0 && searchResult.getQrInviteData() != null;
+  }
+
   @Nullable
   private DcChatlist.Item getConversationResult(int position) {
-    if (position < searchResult.getChats().getCnt()) {
-      return searchResult.getChats().getItem(position);
+    int offset = position - getQrInviteCount();
+    if (offset >= 0 && offset < searchResult.getChats().getCnt()) {
+      return searchResult.getChats().getItem(offset);
     }
     return null;
   }
@@ -185,7 +211,7 @@ class SearchListAdapter
   }
 
   private int getFirstContactIndex() {
-    return searchResult.getChats().getCnt();
+    return getQrInviteCount() + searchResult.getChats().getCnt();
   }
 
   private int getFirstMessageIndex() {
@@ -200,6 +226,8 @@ class SearchListAdapter
     void onContactClicked(@NonNull DcContact contact);
 
     void onMessageClicked(@NonNull DcMsg message);
+
+    void onInvitationClicked(@NonNull String rawQrString);
   }
 
   static class SearchResultViewHolder extends RecyclerView.ViewHolder {
@@ -257,9 +285,20 @@ class SearchListAdapter
       root.setOnClickListener(view -> eventListener.onMessageClicked(messageResult));
     }
 
+    void bind(
+        @NonNull QrInviteData inviteData,
+        @NonNull GlideRequests glideRequests,
+        @NonNull EventListener eventListener) {
+      root.bind(inviteData, glideRequests);
+      root.setOnClickListener(
+          view -> eventListener.onInvitationClicked(inviteData.getRawQrString()));
+      root.setOnLongClickListener(null);
+    }
+
     void recycle() {
       root.unbind();
       root.setOnClickListener(null);
+      root.setOnLongClickListener(null);
     }
   }
 

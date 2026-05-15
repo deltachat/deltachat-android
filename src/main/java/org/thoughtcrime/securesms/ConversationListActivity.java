@@ -601,6 +601,13 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     }
   }
 
+  public void handleQrFromSearch(String rawQrString) {
+    qrData = rawQrString;
+    new QrCodeHandler(this)
+        .handleQrData(
+            rawQrString, SecurejoinSource.Scan, SecurejoinUiPath.QrIcon, relayLockLauncher);
+  }
+
   private void handleResetRelaying() {
     resetRelayingMessageContent(this);
     refreshTitle();
