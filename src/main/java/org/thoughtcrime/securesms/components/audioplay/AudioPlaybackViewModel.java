@@ -31,6 +31,7 @@ public class AudioPlaybackViewModel extends ViewModel {
       0; // Audios not attached to a message doesn't have message id.
 
   private final MutableLiveData<AudioPlaybackState> playbackState;
+  private final MutableLiveData<Float> playbackSpeed = new MutableLiveData<>(1f);
 
   private final MutableLiveData<Map<Integer, Long>> durations =
       new MutableLiveData<>(new HashMap<>());
@@ -52,6 +53,10 @@ public class AudioPlaybackViewModel extends ViewModel {
     return playbackState;
   }
 
+  public LiveData<Float> getPlaybackSpeed() {
+    return playbackSpeed;
+  }
+
   public void setMediaController(@Nullable MediaController controller) {
     if (this.mediaController != null && playerListener != null) {
       this.mediaController.removeListener(playerListener);
@@ -59,8 +64,14 @@ public class AudioPlaybackViewModel extends ViewModel {
     playerListener = null;
 
     this.mediaController = controller;
-    if (mediaController != null && mediaController.isPlaying()) {
-      startUpdateProgress();
+    if (mediaController != null) {
+      Float speed = playbackSpeed.getValue();
+      if (speed != null && speed != 1f) {
+        mediaController.setPlaybackSpeed(speed);
+      }
+      if (mediaController.isPlaying()) {
+        startUpdateProgress();
+      }
     }
     updateCurrentState(true);
     setupPlayerListener();
@@ -233,6 +244,13 @@ public class AudioPlaybackViewModel extends ViewModel {
 
   public void setUserSeeking(boolean isUserSeeking) {
     this.isUserSeeking = isUserSeeking;
+  }
+
+  public void setPlaybackSpeed(float speed) {
+    playbackSpeed.setValue(speed);
+    if (mediaController != null) {
+      mediaController.setPlaybackSpeed(speed);
+    }
   }
 
   // Private methods
