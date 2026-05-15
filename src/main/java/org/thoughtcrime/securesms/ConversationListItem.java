@@ -245,8 +245,9 @@ public class ConversationListItem extends RelativeLayout
       avatar.setAvatar(glideRequests, recipient, false);
       avatar.setSeenRecently(contact.wasSeenRecently());
     } else {
-      GeneratedContactPhoto photo = new GeneratedContactPhoto(inviteData.getDisplayTitle());
-      avatar.setImageDrawable(photo.asDrawable(getContext(), 0xFF808080, true));
+      avatar.setImageDrawable(
+          new GeneratedContactPhoto("+")
+              .asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
       avatar.setSeenRecently(false);
     }
   }
