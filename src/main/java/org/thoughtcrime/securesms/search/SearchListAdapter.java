@@ -130,7 +130,7 @@ class SearchListAdapter
     String title;
 
     if (headerType == TYPE_QR_INVITE) {
-      title = context.getString(R.string.qr_invitation_header);
+      title = context.getString(R.string.link);
     } else {
       int textId = R.plurals.n_messages;
       int count = 1;
