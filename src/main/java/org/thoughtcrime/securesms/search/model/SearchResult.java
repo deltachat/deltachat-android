@@ -1,7 +1,9 @@
 package org.thoughtcrime.securesms.search.model;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.b44t.messenger.DcChatlist;
+import org.thoughtcrime.securesms.search.QrInviteData;
 
 /**
  * Represents an all-encompassing search result that can contain various result for different
@@ -16,16 +18,27 @@ public class SearchResult {
   private final int[] contacts;
   private final DcChatlist conversations;
   private final int[] messages;
+  private final QrInviteData qrInviteData;
 
   public SearchResult(
       @NonNull String query,
       @NonNull int[] contacts,
       @NonNull DcChatlist conversations,
       @NonNull int[] messages) {
+    this(query, contacts, conversations, messages, null);
+  }
+
+  public SearchResult(
+      @NonNull String query,
+      @NonNull int[] contacts,
+      @NonNull DcChatlist conversations,
+      @NonNull int[] messages,
+      @Nullable QrInviteData qrInviteData) {
     this.query = query;
     this.contacts = contacts;
     this.conversations = conversations;
     this.messages = messages;
+    this.qrInviteData = qrInviteData;
   }
 
   public int[] getContacts() {
@@ -44,8 +57,16 @@ public class SearchResult {
     return query;
   }
 
+  @Nullable
+  public QrInviteData getQrInviteData() {
+    return qrInviteData;
+  }
+
   public int size() {
-    return contacts.length + conversations.getCnt() + messages.length;
+    return (qrInviteData != null ? 1 : 0)
+        + contacts.length
+        + conversations.getCnt()
+        + messages.length;
   }
 
   public boolean isEmpty() {
