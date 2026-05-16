@@ -21,6 +21,7 @@
 * Allow to disable incoming calls notifications
 * Fix: do not accidentally set draft in chats that don't allow sending messages
 * Fix swipe navigation between tabs in RTL languages
+* Compress videos when sharing multiple files into a chat
 * Remove legacy option
 
 ## v2.49.0
