@@ -17,13 +17,15 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.ServiceCompat;
 import androidx.core.content.ContextCompat;
+import com.b44t.messenger.DcAccounts;
+import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class LocationStreamingService extends Service {
 
-  private static final String TAG = "LocationStreamingService";
+  private static final String TAG = "LocationStreamingSvc";
   private static final String ACTION_STOP = "org.thoughtcrime.securesms.geolocation.STOP_STREAMING";
   private static final int NOTIFICATION_ID = 8801;
   private static final String CHANNEL_ID = "location_streaming";
@@ -35,29 +37,33 @@ public class LocationStreamingService extends Service {
 
   // static API
 
-  /** Register a chat for location updates, then ensure the service is running. */
-  public static void startSharing(Context context, int chatId, int durationSeconds) {
-    ActiveLocationChats.add(context, chatId);
-    DcHelper.getContext(context).sendLocationsToChat(chatId, durationSeconds);
+  /**
+   * Register a chat for location updates on a specific account, then ensure the service is running.
+   */
+  public static void startSharing(Context context, int accountId, int chatId, int durationSeconds) {
+    ActiveLocationChats.add(context, accountId, chatId);
+    DcHelper.getAccounts(context)
+        .getAccount(accountId)
+        .sendLocationsToChat(chatId, durationSeconds);
     ContextCompat.startForegroundService(
         context, new Intent(context, LocationStreamingService.class));
   }
 
-  /** Unregister a chat. If no chats remain, stop the service. */
-  public static void stopSharing(Context context, int chatId) {
-    ActiveLocationChats.remove(context, chatId);
-    DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
-    if (!DcHelper.getContext(context).isSendingLocationsToChat(0)) {
+  /** Unregister a chat on an account. If no chats remain for all accounts, stop the service. */
+  public static void stopSharing(Context context, int accountId, int chatId) {
+    ActiveLocationChats.remove(context, accountId, chatId);
+    DcHelper.getAccounts(context).getAccount(accountId).sendLocationsToChat(chatId, 0);
+    if (ActiveLocationChats.isEmpty(context)) {
       context.stopService(new Intent(context, LocationStreamingService.class));
     }
   }
 
   public static void ensureRunning(Context context) {
+    if (ActiveLocationChats.isEmpty(context)) {
+      return;
+    }
     if (!hasLocationPermission(context)) {
-      for (int chatId : ActiveLocationChats.getAllIds(context)) {
-        DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
-      }
-      ActiveLocationChats.clear(context);
+      stopAllSharingFor(context);
       return;
     }
     ContextCompat.startForegroundService(
@@ -101,10 +107,18 @@ public class LocationStreamingService extends Service {
   }
 
   private void stopAllSharing() {
-    for (int chatId : ActiveLocationChats.getAllIds(this)) {
-      DcHelper.getContext(this).sendLocationsToChat(chatId, 0);
+    stopAllSharingFor(this);
+  }
+
+  private static void stopAllSharingFor(Context context) {
+    DcAccounts accounts = DcHelper.getAccounts(context);
+    for (int accountId : ActiveLocationChats.getAccountIds(context)) {
+      DcContext dcContext = accounts.getAccount(accountId);
+      for (int chatId : ActiveLocationChats.getChatIds(context, accountId)) {
+        dcContext.sendLocationsToChat(chatId, 0);
+      }
     }
-    ActiveLocationChats.clear(this);
+    ActiveLocationChats.clear(context);
   }
 
   @Nullable
@@ -150,16 +164,23 @@ public class LocationStreamingService extends Service {
   private void publishAndWrite(Location location) {
     LocationData.getInstance().post(location);
 
-    boolean keepGoing =
-        DcHelper.getContext(this)
-            .setLocation(
-                (float) location.getLatitude(),
-                (float) location.getLongitude(),
-                location.getAccuracy());
-    Log.d(TAG, "keepGoing: " + keepGoing);
+    DcAccounts accounts = DcHelper.getAccounts(this);
 
-    if (!keepGoing) {
-      stopAllSharing();
+    for (int accountId : ActiveLocationChats.getAccountIds(this)) {
+      DcContext dcContext = accounts.getAccount(accountId);
+      boolean keepGoing =
+          dcContext.setLocation(
+              (float) location.getLatitude(),
+              (float) location.getLongitude(),
+              location.getAccuracy());
+      Log.d(TAG, "account " + accountId + " keepGoing: " + keepGoing);
+
+      if (!keepGoing) {
+        ActiveLocationChats.removeAccount(this, accountId);
+      }
+    }
+
+    if (ActiveLocationChats.isEmpty(this)) {
       stopSelf();
     }
   }
