@@ -493,6 +493,14 @@
             android:exported="false"
             android:foregroundServiceType="camera|microphone|phoneCall" />
 
+        <service
+            android:name=".service.UnifiedPushService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="org.unifiedpush.android.connector.PUSH_EVENT" />
+            </intent-filter>
+        </service>
+
         <receiver
             android:name=".notifications.MarkReadReceiver"
             android:enabled="true"

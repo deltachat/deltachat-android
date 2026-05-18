@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Add support for UnifiedPush
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
 * Calls can be answered by tapping messages
