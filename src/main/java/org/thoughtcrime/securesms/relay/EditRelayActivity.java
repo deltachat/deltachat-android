@@ -115,7 +115,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     SwitchCompat enforceE2eeSwitch = findViewById(R.id.enforce_e2ee_switch);
     enforceE2eeSwitch.setOnCheckedChangeListener(
         (b, isChecked) -> {
-          // TODO: use new core API to set the config
+          getContext(this).setConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION, isChecked ? 1 : 0);
         });
 
     String addr = getIntent().getStringExtra(EXTRA_ADDR);
@@ -180,9 +180,9 @@ public class EditRelayActivity extends BaseActionBarActivity
     boolean expandAdvanced = false;
     int intVal;
 
-    intVal = 0; // TODO: get the current "enforce_e2ee" value
+    intVal = getContext(this).getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION);
     enforceE2eeSwitch.setChecked(intVal == 1);
-    expandAdvanced = expandAdvanced || intVal == 1;
+    expandAdvanced = expandAdvanced || intVal == 0;
 
     if (config != null) { // configured
       emailInput.setText(config.addr);
