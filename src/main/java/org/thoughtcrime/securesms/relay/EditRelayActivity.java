@@ -76,6 +76,7 @@ public class EditRelayActivity extends BaseActionBarActivity
   Spinner imapSecurity;
   Spinner smtpSecurity;
   Spinner certCheck;
+  private SwitchCompat enforceE2eeSwitch;
 
   Rpc rpc;
   int accId;
@@ -111,12 +112,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     imapSecurity = findViewById(R.id.imap_security);
     smtpSecurity = findViewById(R.id.smtp_security);
     certCheck = findViewById(R.id.cert_check);
-
-    SwitchCompat enforceE2eeSwitch = findViewById(R.id.enforce_e2ee_switch);
-    enforceE2eeSwitch.setOnCheckedChangeListener(
-        (b, isChecked) -> {
-          getContext(this).setConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION, isChecked ? 1 : 0);
-        });
+    enforceE2eeSwitch = findViewById(R.id.enforce_e2ee_switch);
 
     String addr = getIntent().getStringExtra(EXTRA_ADDR);
     EnteredLoginParam config = null;
@@ -511,9 +507,12 @@ public class EditRelayActivity extends BaseActionBarActivity
     param.smtpPassword = getParam(R.id.smtp_password_text, false);
     param.certificateChecks = certificateChecksFromInt(certCheck.getSelectedItemPosition());
 
+    final String forceEncryption = enforceE2eeSwitch.isChecked() ? "1" : "0";
+
     new Thread(
             () -> {
               try {
+                rpc.setConfig(accId, DcHelper.CONFIG_FORCE_ENCRYPTION, forceEncryption);
                 rpc.addOrUpdateTransport(accId, param);
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();
