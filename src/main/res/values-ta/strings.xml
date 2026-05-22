@@ -140,12 +140,14 @@
     <string name="mute_for_seven_days">7 நாட்கள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_forever">எப்போதுமே ஊமையாக்கு</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 நிமிடங்கள் </string>
+
     <string name="share_location_for_30_minutes">30 நிமிடங்கள் </string>
     <string name="share_location_for_one_hour">1 மணி</string>
     <string name="share_location_for_two_hours">2 மணிகள்</string>
     <string name="share_location_for_six_hours">6 மணிகள்</string>
-
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">தேர்வு செய்யப்பட்ட செய்திகளை இவற்றுக்கு %1$s முன்னோக்கி அனுப்பவா ?</string>
     <string name="ask_block_contact">இந்த தொடர்பை முடக்கவா ?</string>
     <!-- contact list -->

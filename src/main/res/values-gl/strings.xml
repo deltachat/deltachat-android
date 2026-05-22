@@ -59,7 +59,9 @@
     <string name="media">Medios</string>
     <string name="apps_and_media">Apps &amp; Multimedia</string>
     <string name="profile">Perfil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Todos os Perfís</string>
+    <!-- deprecated -->
     <string name="current_profile">Perfil Actual</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inciar chat</string>
@@ -80,6 +82,7 @@
     <string name="always">Sempre</string>
     <string name="always_load_remote_images">Descargar sempre imaxes remotas</string>
     <string name="once">Unha vez</string>
+    <!-- deprecated -->
     <string name="show_warning">Mostrar aviso</string>
     <string name="not_now">Agora non</string>
     <string name="never">Nunca</string>
@@ -184,6 +187,7 @@
     <string name="camera">Cámara</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capturar</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Cambiar de cámara</string>
     <string name="toggle_fullscreen">Activar modo de pantalla completa</string>
     <string name="location">Localización</string>
@@ -347,12 +351,13 @@
     <string name="mute_for_seven_days">Acalar durante 7 días</string>
     <string name="mute_forever">Acalar para sempre</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">durante 5 min.</string>
+
     <string name="share_location_for_30_minutes">durante 30 min.</string>
     <string name="share_location_for_one_hour">durante 1 hora</string>
     <string name="share_location_for_two_hours">durante 2 h.</string>
     <string name="share_location_for_six_hours">durante 6 h.</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Enviar o seguinte ficheiro a %s?</item>
         <item quantity="other">Enviar os seguintes %d ficheiros a %s?</item>
@@ -372,6 +377,7 @@
         <item quantity="one">Eliminar %d mensaxe en todos os teus dispositivos?</item>
         <item quantity="other">Eliminar %d mensaxes en todos os teus dispositivos?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Reenviar mensaxes a %1$s?</string>
     <string name="ask_forward_multiple">¿Reenviar mensaxes a %1$d conversas?</string>
     <string name="ask_export_attachment">Exportar anexo? Ao exportar anexos outras aplicacións no dispositivo terán acceso a eles.\n\nGardar?</string>
@@ -659,6 +665,7 @@
     <string name="pref_notifications_priority">Prioridade</string>
     <string name="pref_notifications_explain">Activa as notificación para as novas mensaxes</string>
     <string name="pref_show_notification_content">Motra o contido da mensaxe na notificación</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Mostra a remitente e as primeiras palabras da mensaxe na notificación</string>
     <string name="pref_led_color">Cor LED</string>
     <string name="pref_sound">Son</string>
@@ -697,12 +704,19 @@
     <string name="pref_background">Fondo</string>
     <string name="pref_background_btn_default">Usar imaxe por omisión</string>
     <string name="pref_background_btn_gallery">Escoller na galería</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Se desactivas esta opción, asegúrate de que o servidor e os teus outros clientes están configurados de xeito acorde.\n\nSe non, algo podería fallar.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Mover automáticamente ao cartafol DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Obter só desde cartafol DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Mostrar correos clásicos</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Non, só conversas</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Para os contactos aceptados</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Todos</string>
     <string name="pref_experimental_features">Zona de probas</string>
     <string name="pref_on_demand_location_streaming">Difusión da ubicación por solicitude</string>
@@ -743,12 +757,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eliminar mensaxes antigas</string>
     <string name="autodel_device_title">Borrar mensaxes do dispositivo</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Borrar mensaxes do servidor</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Queres borrar %1$d mensaxes agora e todas as novas mensaxes \"%2$s\" no futuro?\n\n• Esto inclúe todo o multimedia\n\n• As mensaxes borraranse fosen lidas ou non\n\n• As \"mensaxes gardadas\" non serán borradas do dispositivo.</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Desexas eliminar %1$d mensaxes e todas as \"%2$s\" novas mensaxes obtidas no futuro?\n\n⚠️ Esto inclúe emails, multimedia e \"Mensaxes gardadas\" en tódolos cartafoles do servidor\n\n⚠️ Non uses esta función se queres manter os datos gardados no servidor\n\n⚠️ Non uses esta función se estás a utilizar outro cliente de email ademáis de Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Esto inclúe emails, multimedia e \"Mensaxes gardadas\" en tódolos cartafoles do servidor. Non uses esta función se queres manter os datos gardados no servidor ou se estás a utilizar outro cliente de email ademáis de Delta Chat.</string>
     <string name="autodel_confirm">Entendo, dalle e borra as mensaxes todas</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -826,7 +841,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Temporizador de desaparición de mensaxes definido en %1$s semanas por %2$s.</string>
     <string name="devicemsg_self_deleted">Eliminaches o chat \"Mensaxes gardadas\".\n\nℹ️ Para usar \"Mensaxes gardadas\" de novo, crea un novo chat contigo mesmo.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ A almacenaxe do teu provedor vaise esgotar, xa utilizaches %1$s %%.\n\nPode que non recibas mensaxes cando a almacenaxe chegue a 100%% utilizado.\n\n👉 Mira se podes eliminar datos antigos na interface web do teu provedor e pensa se debes activar \"Axustes / Eliminar Mensaxes Antigas\". Podes ver a almacenaxe actual utilizada en \"Axustes / Conectividade\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ A hora ou data no teu dispositivo poderían ser incorrectas (%1$s).\n\nAxusta o reloxio ⏰🔧 para asegurar que as túas mensaxes son recibidas correctamente.</string>
@@ -976,7 +991,6 @@
     <string name="a11y_message_context_menu_btn_label">Accións da mensaxe</string>
     <string name="a11y_background_preview_label">Vista previa do fondo</string>
     <string name="a11y_disappearing_messages_activated">Activada a desaparición de mensaxes</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Deixar de compartir localización</string>
     <string name="a11y_voice_message_hint_ios">Tras gravar, dobre toque para enviar. Para desbotar a gravación, rabuña con dous dedos.</string>

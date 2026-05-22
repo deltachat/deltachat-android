@@ -125,6 +125,7 @@
     <string name="documents">Dokumenter</string>
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Skift kamera</string>
     <string name="location">Placering</string>
     <string name="gallery">Galleri</string>
@@ -226,14 +227,15 @@
     <string name="mute_for_seven_days">Dæmp i 7 dage</string>
     <string name="mute_forever">Stille for altid</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">i 5 minutter</string>
+
     <string name="share_location_for_30_minutes">i 30 minutter</string>
     <string name="share_location_for_one_hour">i 1 time</string>
     <string name="share_location_for_two_hours">i 2 timer</string>
     <string name="share_location_for_six_hours">i 6 timer</string>
-
     <plurals name="ask_send_following_n_files_to">
-        <item quantity="one">Send den følgende fil til 2%s?</item>
+        <item quantity="one">Send den følgende fil til %s?</item>
         <item quantity="other">Send de følgende %d filer til %s?</item>
     </plurals>
     <string name="file_saved_to">Fil gemt til \"%1$s\".</string>
@@ -242,6 +244,7 @@
         <item quantity="one">Slet %d besked?</item>
         <item quantity="other">Slet %d beskeder?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Videresend beskeder til %1$s?</string>
     <string name="ask_forward_multiple">Videresend beskeder til %1$d samtaler?  </string>
     <string name="ask_export_attachment">Eksportér vedhæftninger? Eksport af vedhæftninger vil tillade alle programmer på din enhed adgang til dem.\n\nFortsæt?</string>
@@ -406,6 +409,7 @@
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_notifications_explain">Aktivér systemnotifikationer for nye beskeder</string>
     <string name="pref_show_notification_content">Vis beskedindhold i notifikationer</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Viser afsender og første ord af beskeden i notifikationer</string>
     <string name="pref_led_color">LED farve</string>
     <string name="pref_sound">Lyd</string>
@@ -440,11 +444,17 @@
     <string name="pref_background">Baggrund</string>
     <string name="pref_background_btn_default">Brug standardbillede</string>
     <string name="pref_background_btn_gallery">Vælg fra galleri</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Ved deaktivering af denne indstiiling vær sikker på at server og andre klienter er indstillet tilsvarende.\n\nEllers fungerer det måske slet ikke.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Flytter automatisk til DeltaChat mappe</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Vis klassisk e-mail</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Nej, kun samtaler</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">For godkendte kontakter</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Alle</string>
     <string name="pref_experimental_features">Eksperimentelle features</string>
     <string name="pref_on_demand_location_streaming">On-demand lokationsstreaming</string>
@@ -472,12 +482,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Slet gamle beskeder</string>
     <string name="autodel_device_title">Slet beskeder fra enhed</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Slet beskeder fra server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Vil du slette %1$d beskeder nu og alle nyligt hentede beskeder \"%2$s\" i fremtiden?\n\n• Dette inkluderer alle medier\n\n• Beskeder vil blive slettet uanset om de er set eller ej\n\n• \"Gemte beskeder\" vil ikke blive slettet lokalt</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Vil du slette %1$d beskeder nu og alle nyligt hentede beskeder \"%2$s\" fremover?\n\n⚠️ Dette inkluderer e-mails, medier og \"Gemte beskeder\" i alle mapper på serveren\n\n⚠️ Brug ikke denne funktion hvis du vil beholde data på serveren\n\n⚠️ Brug ikke denne funktion hvis du benytter andre e-mail klienter end Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Dette inkluderer email, medier og \"Gemte beskeder\" i alle server mapper. Brug ikke denne funktion hvis du vil beholde data på serveren eller hvis du bruger andre emailklienter end Delta Chat.</string>
     <string name="autodel_confirm">Jeg forstår, slet alle disse beskeder</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -636,7 +647,6 @@
     <string name="a11y_message_context_menu_btn_label">Beskedhandlinger</string>
     <string name="a11y_background_preview_label">Baggrundsvisning</string>
     <string name="a11y_disappearing_messages_activated">Beskeder med tidsudløb aktiveret</string>
-
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat bruger dit kamera til at sende billeder, videoer og skanne QR-koder</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat bruger din mikrofon til at optage og sende talebeskeder og videoer med lyd.</string>

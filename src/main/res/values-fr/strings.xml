@@ -59,7 +59,9 @@
     <string name="media">Média</string>
     <string name="apps_and_media">Applis &amp; fichiers multimédias</string>
     <string name="profile">Profil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Tous les profils</string>
+    <!-- deprecated -->
     <string name="current_profile">Profil actuel</string>
     <string name="main_menu">Menu principal</string>
     <string name="start_chat">Commencer la discussion</string>
@@ -82,6 +84,7 @@
     <string name="always">Toujours</string>
     <string name="always_load_remote_images">Toujours charger les images distantes</string>
     <string name="once">Une fois</string>
+    <!-- deprecated -->
     <string name="show_warning">Montrer l\'avertissement</string>
     <string name="not_now">Pas maintenant</string>
     <string name="never">Jamais</string>
@@ -208,6 +211,7 @@
     <string name="camera">Caméra</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Enregistrer</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Changer de caméra</string>
     <string name="toggle_fullscreen">Activer le plein écran</string>
     <string name="location">Position</string>
@@ -386,12 +390,13 @@
     <string name="mute_for_seven_days">Sourdine pendant 7 jours</string>
     <string name="mute_forever">Toujours en sourdine</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">pour 5 minutes</string>
+
     <string name="share_location_for_30_minutes">pour 30 minutes</string>
     <string name="share_location_for_one_hour">pour 1 heure</string>
     <string name="share_location_for_two_hours">pour 2 heures</string>
     <string name="share_location_for_six_hours">pour 6 heures</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Envoyer le fichier suivant à %s ?</item>
         <item quantity="many">Envoyer les %d fichiers suivants à %s ?</item>
@@ -446,6 +451,7 @@
         <item quantity="many">Supprimer %d messages ?</item>
         <item quantity="other">Supprimer %d messages ?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Faire suivre les messages à %1$s ?</string>
     <string name="ask_forward_multiple">Faire suivre les messages à %1$d discussions ?</string>
     <string name="ask_export_attachment">Exporter des pièces jointes permettra aux autres applications sur votre appareil d\'y accéder.\n\nContinuer ?</string>
@@ -767,6 +773,7 @@
     <string name="pref_notifications_priority">Priorité</string>
     <string name="pref_notifications_explain">Activer les notifications système pour les nouveaux messages</string>
     <string name="pref_show_notification_content">Montrer le contenu du message dans la notification</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Montre l\'expéditeur et les premiers mots du message dans les notifications</string>
     <string name="pref_led_color">Couleur de LED</string>
     <string name="pref_sound">Son</string>
@@ -807,16 +814,23 @@
     <string name="pref_background">Arrière-plan</string>
     <string name="pref_background_btn_default">Utilisez l\'image par défaut</string>
     <string name="pref_background_btn_gallery">Sélectionner depuis la galerie</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Si vous désactivez cette option, assurez-vous que votre serveur et vos autres clients sont configurés en conséquence.\n\nSinon des choses pourraient ne pas fonctionner du tout.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mode appareils multiples</string>
     <string name="pref_multidevice_explain">Synchronise vos messages avec vos autres appareils. Activé automatiquement lorsque vous ajoutez un deuxième appareil</string>
     <string name="pref_multidevice_change_warn">Le mode appareils multiples doit être activé quand vous utilisez le même profil sur plusieurs appareils. Désactivez cette option seulement si vous avez supprimé ce profil de tous vos autres appareils.\n\nDésactiver ce mode alors que vous utilisez un profil sur plusieurs appareils causera un certain nombre de problèmes, dont des messages perdus.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Déplacer automatiquement vers le dossier DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Ne consulter que le dossier DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Voir les courriels classiques</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Non, seulement les discussions</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Pour les contacts acceptés</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Tout</string>
     <string name="pref_experimental_features">Fonctionnalités expérimentales</string>
     <string name="pref_experimental_features_explain">Ces fonctionnalités peuvent présenter des instabilités, être modifiées ou supprimées</string>
@@ -871,14 +885,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Supprimer les anciens messages</string>
     <string name="autodel_device_title">Supprimer les messages de l\'appareil</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Supprimer les messages du serveur</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Voulez-vous supprimer %1$d messages maintenant ainsi que tous les nouveaux futurs messages reçus « %2$s » ?\n\n• Cela inclut tous les fichiers multimédia\n\n• Les messages seront effacés qu\'ils aient été vus ou non\n\n• Les « Messages sauvegardés » seront préservés de la suppression locale</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Voulez-vous supprimer %1$d messages maintenant ainsi que tous les futurs messages reçus « %2$s » ?\n\n⚠️ Cela inclut les courriels, les fichier multimédias et les « Messages enregistrés » dans tous les répertoires du serveur\n\n⚠️ N\'utilisez pas cette fonctionnalité si vous voulez conserver vos données sur le serveur ou si vous utilisez des clients de courriel classiques en plus de Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Cela inclut les courriels, les fichiers multimédias et les « Messages enregistrés » dans tous les répertoires du serveur. N\'utilisez pas cette fonctionnalité si vous voulez conserver vos données sur le serveur ou si vous utilisez des clients de courriel classiques en plus de Delta Chat</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Activer la suppression immédiate</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Si vous activez la suppression immédiate, vous ne pourrez pas utiliser plusieurs appareils sur ce profil.</string>
     <string name="autodel_confirm">J\'ai compris, supprimer tous ces messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -972,7 +989,7 @@
     <string name="learn_more">En savoir plus</string>
 
     <string name="devicemsg_self_deleted">Vous avez supprimé la discussion « Messages enregistrés ».\n\nℹ️ Pour utiliser la fonctionnalité « Messages enregistrés » à nouveau, commencez une nouvelle discussion avec vous-même.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Bientôt plus d\'espace de stockage chez votre fournisseur : %1$s%% utilisés.\n\nQuand il sera plein, vous ne pourrez probablement plus recevoir de messages.\n\n👉 Vérifiez si vous pouvez supprimer des éléments anciens directement via l\'interface web de votre fournisseur, et envisagez d\'activer l\'option « Paramètres/ Discussions/ Supprimer les anciens messages ». Vous pouvez vérifier à tout moment le volume utilisé dans votre espace de stockage depuis « Paramètres/ Connectivité ».</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ L\'heure ou la date de votre appareil semble erronée (%1$s).\n\nRéglez votre horloge ⏰🔧 pour que vos messages soient bien reçus.</string>
@@ -1135,7 +1152,6 @@
     <string name="a11y_message_context_menu_btn_label">Actions sur le message</string>
     <string name="a11y_background_preview_label">Aperçu de l\'arrière-plan</string>
     <string name="a11y_disappearing_messages_activated">Messages éphémères activés</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Arrêter de partager la position</string>
     <string name="a11y_voice_message_hint_ios">Après l\'enregistrement, poussez deux fois pour envoyer. Pour le supprimer, balayez l\'écran avec deux doigts.</string>
