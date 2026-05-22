@@ -19,6 +19,7 @@
 * Allow to open links in messages via actions in TalkBack menu
 * Allow to open map if user clicks "Location streaming enabled" system message
 * Allow to disable incoming calls notifications
+* Add an option to process unencrypted messages; by default, only encrypted messages can be sent or received
 * Fix: do not accidentally set draft in chats that don't allow sending messages
 * Fix swipe navigation between tabs in RTL languages
 * Remove legacy option
