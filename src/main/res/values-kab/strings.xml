@@ -59,7 +59,9 @@
     <string name="media">Amidya</string>
     <string name="apps_and_media">Isnasen &amp; Amidya</string>
     <string name="profile">Amaɣnu</string>
+    <!-- deprecated -->
     <string name="all_profiles">Akk imeɣna</string>
+    <!-- deprecated -->
     <string name="current_profile">Amaɣnu amiran</string>
     <string name="main_menu">Umuɣ agejdan</string>
     <string name="start_chat">Bdu adiwinni</string>
@@ -82,6 +84,7 @@
     <string name="always">Dima</string>
     <string name="always_load_remote_images">Sali-d yal tikelt tugniwin n unmeggag</string>
     <string name="once">Tikkelt</string>
+    <!-- deprecated -->
     <string name="show_warning">Sken ulɣu</string>
     <string name="not_now">Mačči tura</string>
     <string name="never">Werǧin</string>
@@ -198,6 +201,7 @@
     <string name="camera">Takamiṛat</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Tuṭṭfa </string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Beddel takamiṛat </string>
     <string name="toggle_fullscreen">Ldi/Mdel askar n ugdil ačuran</string>
     <string name="location">Adig</string>
@@ -373,12 +377,13 @@
     <string name="mute_for_seven_days">Sgugem i 7 wussan</string>
     <string name="mute_forever">Sgugem i lebda</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">I 5 n tisdatin</string>
+
     <string name="share_location_for_30_minutes">I 30 n tisdatin</string>
     <string name="share_location_for_one_hour">I 1 usrag</string>
     <string name="share_location_for_two_hours">I 2 yisragen</string>
     <string name="share_location_for_six_hours">I 6 yisragen</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Azen afylu-agi ɣer %s?</item>
         <item quantity="other">Azen %d ifuyla-agi ɣer %s?</item>
@@ -430,6 +435,7 @@
         <item quantity="one">Kkes %d n yizen?</item>
         <item quantity="other">Kkes %d n yiznan?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Welleh iznan ɣer %1$s?</string>
     <string name="ask_forward_multiple">Welleh iznan ɣer %1$d n yidiwenniyen?</string>
     <string name="ask_export_attachment">Asifeḍ n imeddayen ad yeǧǧ isnasen-nniḍen deg yibenk-ik·im ad kecmen ɣur-sen.\n\nad tkemmleḍ?</string>
@@ -748,6 +754,7 @@
     <string name="pref_notifications_priority">Tazwart</string>
     <string name="pref_notifications_explain">Rmed ilɣa n unagraw i yiznan imaynuten</string>
     <string name="pref_show_notification_content">Sken agbur n yizen deg ulɣu</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Sken-d amazan akked wawalen imezwura n yizen deg yilɣa</string>
     <string name="pref_led_color">Ini LED</string>
     <string name="pref_sound">Imesli</string>
@@ -788,16 +795,23 @@
     <string name="pref_background">Tugniwin n ugilal</string>
     <string name="pref_background_btn_default">Seqdec tugna tamezwert</string>
     <string name="pref_background_btn_gallery">Fren seg timidelt</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Ma tbeddleḍ aɣewwaṛ-a, senqed aqeddac-ik·im d yimsaɣen-ik·im-nniḍen ad ttuswelen akken iwata.\n\nMa ulac, yezmer lḥal ur tteddunt ara akk tɣawsiwin.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Askar n tugett n yibenk</string>
     <string name="pref_multidevice_explain">Mtawi iznan-ik·im akked ibenkan-nniḍen. Irmed s wudem awurman deg tmerna n yibenk wis sin</string>
     <string name="pref_multidevice_change_warn">Askar aget-ibenk yessefk ad yettwarmed mi ara tesqedceḍ yiwen n umaɣnu deg ddeqs n yibenkan. Sens kan aɣewwaṛ-agi ma yella tekkseḍ amaɣnu-yagi seg yibenkan-ik·im nniḍen.\n\nAsens n usakar n waget-ibenk mi ara tesqedceḍ amaɣnu ɣef ddeqs n yibenkan ad d-yeglu s yiznan yettwazeglen akked wuguren-nniḍen.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Ddu s wudem awurman ɣer ukaram n DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Awi-d kan seg akaram n DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Sken imaylen iklasanen</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Ala, idiwenniyen kan</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">I yinermisen yettwaqeblen</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Akk</string>
     <string name="pref_experimental_features">Timahilin tirmitanin</string>
     <string name="pref_experimental_features_explain">Timahilin-agi zemrent ad ilint ur rkident ara, daɣen zemrent ad ttwabeddlent neɣ ad ttwakksent</string>
@@ -852,14 +866,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Kkes iznan iqbuṛen</string>
     <string name="autodel_device_title">Kkes iznan seg yibenk</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Kkes iznan seg uqeddac</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Tebɣiḍ ad tekkseḍ %1$d n iznan tura akk d yiznan imaynuten \"%2$s\" ɣer zdat?\n\n• Deg-s akk imidyaten\n\n• Iznan ad ttwakksen ma yella ttwalan neɣ ala\n\n• \"Iznan yettwaskelsen\" ad ttwazeglen seg tukksa tadigant</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Tebɣiḍ ad tekkseḍ %1$d n iznan tura akk d yiznan imaynuten \"%2$s\" ɣer zdat?\n\n⚠️ Ayagi yegber imaylen, imidyaten akked \" iznan yettwakelsen \" deg ikaramen meṛṛa n uqeddac\n\n⚠️ Ur sseqdac ara tawuri-a ma tebɣiḍ ad teǧǧeḍ isefka ɣef uqeddac neɣ ma tesqedceḍ imsaɣen n yimaylen iklasikiyen daɣen</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Ayagi yegber imaylen, imidyaten akked \" iznan yettwakelsen \" deg ikaramen meṛṛa n uqeddac. Ur sseqdac ara tawuri-a ma tebɣiḍ ad teǧǧeḍ isefka ɣef uqeddac neɣ ma tesqedceḍ imsaɣen n yimaylen iklasikiyen daɣen</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Rmed tukksa n dindin</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Ma tremdeḍ tukksa n dindin ur tezmireḍ ara ad tesqedceḍ aṭas n yibenkan deg umaɣnu-a. </string>
     <string name="autodel_confirm">Fehmeɣ, kkes akk iznan-agi</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -953,7 +970,7 @@
     <string name="learn_more">Issin ugar</string>
 
     <string name="devicemsg_self_deleted">Tekkseḍ adiwenni n \" iznan yettwakelsen \".\n\nℹ️ Akken ad tesqedceḍ tamahilt \" iznan yettwakelsen \", rnu adiwenni amaynut akked yiman-ik·im. </string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️Asaǧǧaw-ik·im n usekles qrib ad yaččar: %1$s%% yettwaseqdec yakan.\n\nAhat ur tezmireḍ ara ad d-remseḍ iznan ma yella asekles yeččur.\n\n 👉 Ttxil-k·m senqed ma yella tzemreḍ ad tekkseḍ isefka iqburen deg ugrudem n web n isaǧǧawen syin rmed \"Iɣewwaṛen / Idiwenniyen / Kkes iznan iqbuṛen\". Tzemreḍ ad tesneqdeḍ aseqdec n usekles-inek·inem amiran deg \"Iɣewwaṛen / tuqqna\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Azemz neɣ akud deg yibenk-ik·im yettban-d ur iṣeḥḥa ara (%1$s).\n\nṢeggem tamasragt-ik·im ⏰🔧Akken ad neḍmen d akken iznan-ik·im ad ttwaremsen akken iwata. </string>
@@ -1116,7 +1133,6 @@
     <string name="a11y_message_context_menu_btn_label">Tigawin n yizen</string>
     <string name="a11y_background_preview_label">Taskant n tugna n ugilal</string>
     <string name="a11y_disappearing_messages_activated">Iznan ur nettdum ara yettwarmed</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Ḥbes beṭṭu n wadig</string>
     <string name="a11y_voice_message_hint_ios">Seld asekles, sit snat n tikkal i tuzna. Akken ad tekkseḍ asekles, sfeḍ s sin yiḍarren.</string>

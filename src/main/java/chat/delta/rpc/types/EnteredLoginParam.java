@@ -12,6 +12,13 @@ public class EnteredLoginParam {
   /** TLS options: whether to allow invalid certificates and/or invalid hostnames. Default: Automatic */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public EnteredCertificateChecks certificateChecks;
+  /**
+   * IMAP server folder.
+   * <p>
+   * Defaults to "INBOX" if not set. Should not be an empty string.
+   */
+  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
+  public String imapFolder;
   /** Imap server port. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public Integer imapPort;

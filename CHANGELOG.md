@@ -23,6 +23,11 @@
 * Fix: do not accidentally set draft in chats that don't allow sending messages
 * Fix swipe navigation between tabs in RTL languages
 * Remove legacy option
+* Don't show non-delivery-notfications in broadcast channels
+* Resend the last 10 messages to new broadcast member
+* Enable PQC (Post-Quantum Cryptography) decrypting support for incoming messages
+* Fix: avoid invalid empty "~" notifications when some peer is streaming location
+* Update to core 2.50.0
 
 ## v2.49.0
 2026-04

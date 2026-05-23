@@ -59,7 +59,9 @@
     <string name="media">Multimèdia</string>
     <string name="apps_and_media">Apps &amp; Multimèdia</string>
     <string name="profile">Perfil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Tots els Perfils</string>
+    <!-- deprecated -->
     <string name="current_profile">Perfil Actual</string>
     <string name="main_menu">Menú principal</string>
     <string name="start_chat">Inicia un xat</string>
@@ -82,6 +84,7 @@
     <string name="always">Sempre</string>
     <string name="always_load_remote_images">Carrega sempre les imatges remotes</string>
     <string name="once">Una vegada</string>
+    <!-- deprecated -->
     <string name="show_warning">Mostra l\'advertiment</string>
     <string name="not_now">Ara no</string>
     <string name="never">Mai</string>
@@ -198,6 +201,7 @@
     <string name="camera">Càmera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Captura</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Canvia la càmera</string>
     <string name="toggle_fullscreen">Alterna el mode de pantalla completa</string>
     <string name="location">Ubicació</string>
@@ -375,12 +379,13 @@
     <string name="mute_for_seven_days">Silencia 7 dies</string>
     <string name="mute_forever">Sempre silenciat</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">Durant 5 minuts</string>
+
     <string name="share_location_for_30_minutes">Durant 30 minuts</string>
     <string name="share_location_for_one_hour">Durant 1 hora</string>
     <string name="share_location_for_two_hours">Durant 2 hores</string>
     <string name="share_location_for_six_hours">Durant 6 hores</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Voleu enviar el següent fitxer a %s?</item>
         <item quantity="other">Voleu enviar els següents %d fitxers a %s?</item>
@@ -432,6 +437,7 @@
         <item quantity="one">¿Esborra %d missatge de tots els teus dispositius?</item>
         <item quantity="other">¿Esborra %d missatges de tots els teus dispositius?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Reenvia missatges a %1$s?</string>
     <string name="ask_forward_multiple">Voleu reenviar els missatges a %1$d xats?</string>
     <string name="ask_export_attachment">En exportar els adjunts permetreu que altres aplicacions del dispositiu hi puguin accedir.\n\nVoleu continuar?</string>
@@ -752,6 +758,7 @@
     <string name="pref_notifications_priority">Prioritat</string>
     <string name="pref_notifications_explain">Habilita les notificacions del sistema per als missatges nous</string>
     <string name="pref_show_notification_content">Mostra el contingut del missatge a la notificació</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Mostra el remitent i les primeres paraules del missatge en les notificacions</string>
     <string name="pref_led_color">Color LED</string>
     <string name="pref_sound">So</string>
@@ -792,16 +799,23 @@
     <string name="pref_background">Fons</string>
     <string name="pref_background_btn_default">Usa la imatge per defecte</string>
     <string name="pref_background_btn_gallery">Trieu de la galeria</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Si desactiveu aquesta opció, assegureu-vos que el vostre servidor i els altres programes estiguin configurats de la mateixa manera.\n\nAltrament podeu tenir problemes de funcionament.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mode multidispositiu</string>
     <string name="pref_multidevice_explain">Sincronitza els vostres missatges amb els vostres altres dispositius. Activat automàticament quan s\'afegeix un segon dispositiu.</string>
     <string name="pref_multidevice_change_warn">El mode multidispositiu ha d\'estar habilitat quan feu servir el mateix perfil des de diferents dispositius. Desactiva aquesta opció només si has esborrat aquest perfil de tots els altres dispositius.\n\nDesactivar aquesta opció mentre es fa servir el mateix perfil en múltiples dispositius farà que es perdin missatges i hi hagi altres problemes.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Moure automàticament a la carpeta de Delta Chat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Agafa només de la carpeta de DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Mostra els correus clàssics</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">No, només xats</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Per a contactes acceptats</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Tot</string>
     <string name="pref_experimental_features">Funcionalitats experimentals</string>
     <string name="pref_experimental_features_explain">Aquestes funcionalitats poden ser inestables i poden canviar o ser suprimides</string>
@@ -856,14 +870,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Esborra els missatges antics</string>
     <string name="autodel_device_title">Esborra els missatges del dispositiu</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Esborra els missatges del servidor</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Voleu esborrar ara %1$d missatges i tots els missatges \"%2$s\" futurs?\n\n• Això inclou tot el contingut multimèdia\n\n• S\'esborraran els missatges fins i tot si no s\'han llegit\n\n• Els \"Missatges desats\" no s\'esborraran de l\'emmagatzematge local</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Voleu esborrar ara %1$d missatges i tots els missatges nous \"%2$s\" futurs?\n\n⚠️ Això inclou els correus, contingut multimèdia i \"Missatges desats\" a totes les carpetes del servidor\n\n⚠️ No utilitzeu aquesta funció si voleu conservar les dades al servidor\n\n⚠️ No utilitzeu aquesta funció si feu servir un client de correu diferent a Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Això inclou els correus electrònics, contingut multimèdia i «Missatges desats» en totes les carpetes del servidor. No useu aquesta funció si voleu conservar dades al servidor o si useu altres clients de correu més enllà de Delta Chat.</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Activa l\'esborrament immediat</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Si habiliteu l\'esborrament immediat no podeu usar múltiples dispositius en aquest perfil.</string>
     <string name="autodel_confirm">Ho entenc, esborra tots aquests missatges</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -957,7 +974,7 @@
     <string name="learn_more">Més informació</string>
 
     <string name="devicemsg_self_deleted">Heu esborrat el xat «Missatges desats».\n\nℹ️ Per a usar altre cop la funcionalitat de «Missatges desats», creeu un xat nou amb vós mateix.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Esteu a punt de quedar-vos sense espai d\'emmagatzematge al vostre proveïdor: ja esteu utilitzant %1$s%% .\n\nPodríeu deixar de rebre missatges si s\'emplena.\n\n👉 Reviseu a la interfície web del proveïdor si podeu esborrar dades antigues i considereu habilitar \"Preferències / Xats i multimèdia / Esborra els missatges antics\". Podeu veure sempre el nivell d\'ocupació a \"Preferències / Connectivitat\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ La data o l\'hora del vostre dispositiu no semblen correctes (%1$s).\n\nAdjusteu el rellotge ⏰🔧 per a assegurar que els missatges es reben correctament.</string>
@@ -1120,7 +1137,6 @@
     <string name="a11y_message_context_menu_btn_label">Accions de missatge</string>
     <string name="a11y_background_preview_label">Previsualització del fons de pantalla</string>
     <string name="a11y_disappearing_messages_activated">S\'han activat els missatges efímers</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Deixa de compartir la ubicació</string>
     <string name="a11y_voice_message_hint_ios">Després d\'enregistrar, feu doble toc per a enviar-lo. Per a descartar l\'enregistrament, fregueu amb dos dits.</string>

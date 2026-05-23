@@ -194,14 +194,16 @@
     <string name="mute_for_seven_days">A sa muda pro 7 dies</string>
     <string name="mute_forever">A sa muda pro semper</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">pro 5 minutos</string>
+
     <string name="share_location_for_30_minutes">pro 30 minutos</string>
     <string name="share_location_for_one_hour">pro 1 ora</string>
     <string name="share_location_for_two_hours">pro 2 oras</string>
     <string name="share_location_for_six_hours">pro 6 oras</string>
-
     <string name="file_saved_to">Documentu sarvadu in \"%1$s\".</string>
 
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Inoltrare su messàgiu a %1$s?</string>
     <string name="ask_forward_multiple">Inoltrare messàgios a %1$d tzarradas?</string>
     <string name="ask_export_attachment">Esportare sos allegados? S\'esportatzione de sos allegados at a permìtere a cale si siat àtera aplicatzione in su dispositivu tuo de b\'atzèdere.\n\nSighire?</string>
@@ -377,11 +379,17 @@
     <string name="pref_background">Isfundu</string>
     <string name="pref_background_btn_default">Imprea s\'immàgine predefinida</string>
     <string name="pref_background_btn_gallery">Ischerta dae sa galleria</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Si disabìlitas custa opztione assegura·ti chi su serbidore tuo e totu sos àteros clientes siant cunfigurados in sa matessi manera\n\nSi nono sas cosas diant pòdere non funtzionare pro nudda.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Tramudòngios automàticos a sa cartella DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Ammustra sas lìteras traditzionales</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Nono, tzarradas ebbia</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Pro sos cuntatos atzetados</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Totus</string>
     <string name="pref_experimental_features">Funtzionalidades isperimentales</string>
     <string name="pref_on_demand_location_streaming">Trasmissione de sa positzione suta dimanda</string>
@@ -399,6 +407,7 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Iscantzella sos messàgios betzos</string>
     <string name="autodel_device_title">Iscantzella sos messàgios dae su dispositivu</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Iscantzella sos messàgios dae su servidore</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Cheres iscantzellare%1$d messàgios como e totu sos messàgios arribados \"%2$s\" in su tempus benidore?\n\n• Custu at a incluire totu sos documentos multimediales\n\n• Sos messàgios ant a èssere iscantzellados fintzas si no ant a èssere istados lèghidos\n\n• Sos \"Messàgios sarvados\" ant a èssere esclùdidos dae s\'iscantzellamentu locale</string>

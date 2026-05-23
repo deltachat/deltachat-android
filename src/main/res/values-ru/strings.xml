@@ -16,7 +16,7 @@
     <string name="off">Выкл.</string>
     <string name="def">По умолчанию</string>
     <string name="default_value">По умолчанию (%1$s)</string>
-    <string name="custom">Персональная настройка</string>
+    <string name="custom">Свой вариант</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматически</string>
     <string name="strict">Строгий</string>
@@ -55,13 +55,15 @@
     <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Беззвучный</string>
     <string name="ephemeral_messages">Исчезающие сообщения</string>
-    <string name="ephemeral_messages_hint">Применяется ко всем участникам этого чата, но они по-прежнему могут копировать, сохранять и пересылать сообщения.</string>
+    <string name="ephemeral_messages_hint">Настройка распространяется на всех участников; однако сообщения всё ещё можно копировать, сохранять и пересылать</string>
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
     <string name="apps_and_media">Приложения и медиафайлы</string>
     <string name="profile">Профиль</string>
+    <!-- deprecated -->
     <string name="all_profiles">Все профили</string>
+    <!-- deprecated -->
     <string name="current_profile">Текущий профиль</string>
     <string name="main_menu">Главное меню</string>
     <string name="start_chat">Начать чат</string>
@@ -86,6 +88,7 @@
     <string name="always">Всегда</string>
     <string name="always_load_remote_images">Всегда загружать изображения из внешних источников</string>
     <string name="once">Только сейчас</string>
+    <!-- deprecated -->
     <string name="show_warning">Показать предупреждение</string>
     <string name="not_now">Не сейчас</string>
     <string name="never">Никогда</string>
@@ -222,8 +225,11 @@
     <string name="bot">Бот</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
-    <string name="capture">Захват</string>
+    <string name="capture">Снять</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Переключить камеру</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Переключить камеру</string>
     <string name="toggle_fullscreen">Полноэкранный режим</string>
     <string name="location">Местоположение</string>
     <string name="locations">Местоположения</string>
@@ -378,7 +384,7 @@
     <string name="device_talk">Сообщения устройства</string>
     <string name="device_talk_subtitle">Сообщения, созданные устройством</string>
     <string name="device_talk_explain">Сообщения в этом чате генерируются локально на вашем устройстве чтобы информировать об обновлениях и проблемах при использовании приложения.</string>
-    <string name="device_talk_welcome_message2">Оставайтесь на связи!\n\n🙌 Нажмите \"QR-код\" на главном экране обоих устройств. На одном устройстве выберите \"Сканировать QR-код\" и направьте камеру на другое устройство.\n\n🌍 Если устройства находятся в разных местах, отсканируйте код с помощью видеозвонка или поделитесь ссылкой-приглашением из раздела \"Сканировать QR-код\"\n\nЗатем: Наслаждайтесь децентрализованным мессенджером. В отличие от других популярных приложений, он не имеет центра управления и не отслеживает ваши действия, а также не продаёт данные о вас, ваших друзьях, коллегах или членах семьи крупным организациям.</string>
+    <string name="device_talk_welcome_message2">Оставайтесь на связи!\n\n🙌 Нажмите \"QR-код\" на главном экране обоих устройств. На одном устройстве выберите \"Сканировать QR-код\" и направьте камеру на другое устройство.\n\n🌍 Если устройства находятся в разных местах, отсканируйте код с помощью видеозвонка или поделитесь ссылкой-приглашением из раздела \"Сканировать QR-код\"\n\nЗатем: Пользуйтесь преимуществами децентрализованного мессенджера. В отличие от других популярных приложений, он не имеет центрального узла управления, не следит за вами и не продает ваши данные, данные о ваших друзьях, коллегах или членах семьи крупным организациям.</string>
     <string name="edit_contact">Редактировать контакт</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Закрепить чат</string>
@@ -402,11 +408,14 @@
     <string name="mute_for_seven_days">На 7 дней</string>
     <string name="mute_forever">Постоянно</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 минут</string>
+
     <string name="share_location_for_30_minutes">30 минут</string>
     <string name="share_location_for_one_hour">1 час</string>
     <string name="share_location_for_two_hours">2 часа</string>
     <string name="share_location_for_six_hours">6 часов</string>
+    <string name="share_location_for_24_hours">В течение 24 часов</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Отправить следующий файл %s?</item>
@@ -426,6 +435,8 @@
     <string name="answer_call">Ответить</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Отклонить</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Завершить вызов</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Аудиозвонок</string>
     <!-- Used in call bubbles, summaries, notifications -->
@@ -449,7 +460,12 @@
     <string name="missed_call">Пропущенный звонок</string>
     <string name="already_in_call">Вызов уже идёт</string>
     <string name="call_answered_elsewhere">Звонок отвечен на другом устройстве</string>
+    <string name="call_requires_camera_permission">Для видеозвонков требуется разрешение на использование камеры</string>
     <string name="call_requires_mic_permission">Для совершения звонков требуется разрешение на использование микрофона</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Звонок от %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">Вызов %1$s…</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -468,7 +484,15 @@
         <item quantity="many">Удалить %d сообщений?</item>
         <item quantity="other">Удалить %d сообщений?</item>
     </plurals>
-    <string name="ask_forward">Переслать сообщения для %1$s?</string>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Переслать сообщение пользователю %2$s?</item>
+        <item quantity="few">Переслать %1$d сообщения пользователям %2$s?</item>
+        <item quantity="many">Переслать %1$d сообщения пользователям %2$s?</item>
+        <item quantity="other">Переслать %1$d сообщения пользователям %2$s?</item>
+    </plurals>
+    <!-- deprecated, use ask_forward_messages -->
+    <string name="ask_forward">Переслать сообщения %1$s?</string>
     <string name="ask_forward_multiple">Переслать сообщения в %1$d чата(ов)?</string>
     <string name="ask_export_attachment">Экспорт вложений позволит другим приложениям на вашем устройстве получить к ним доступ.\n\nПродолжить?</string>
     <string name="ask_block_contact">Заблокировать этот контакт?\n\nЗаблокированные контакты не будут показаны в личных сообщениях или группах, созданных ими.\n\nВ других группах сообщения заблокированных контактов, по-прежнему будут видны.</string>
@@ -557,7 +581,7 @@
     <!-- placeholder contains the hostname converted to ascii -->
     <string name="puny_code_warning_question">Вы уверены, что хотите посетить %1$s?</string>
     <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
-    <string name="puny_code_warning_description">Эта ссылка может искажать символы, заменяя их похожими символами из других алфавитов. Переход по ссылке отмеченной %1$s приведет к %2$s, что является нормальным для нелатинских символов. Если вы не ожидали увидеть такие символы, эта ссылка может быть опасной.</string>
+    <string name="puny_code_warning_description">Эта ссылка может использовать визуально похожие символы из разных алфавитов. Переход по ссылке отмеченной %1$s приведет к %2$s, что является нормальным для нелатинских символов. Если вы не ожидали увидеть такие символы, эта ссылка может быть опасной.</string>
 
     <!-- search -->
     <string name="search">Поиск</string>
@@ -750,7 +774,7 @@
     <string name="delete_account_explain_with_name">Все данные профиля \"%s\" на этом устройстве будут безвозвратно удалены, включая настройки сквозного шифрования, контакты, чаты, сообщения и медиафайлы. Это действие не может быть отменено.</string>
     <string name="unconfigured_account">Не настроенный профиль</string>
     <string name="unconfigured_account_hint">Откройте профиль чтобы настроить его.</string>
-    <string name="try_connect_now">Попробуйте подключиться сейчас</string>
+    <string name="try_connect_now">Попробовать подключиться сейчас</string>
     <string name="sync_all">Синхронизировать все</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
     <string name="configuration_failed_with_error">Ошибка конфигурации. Ошибка: %1$s</string>
@@ -781,7 +805,7 @@
     <string name="pref_outgoing_media_quality">Качество отправляемых медиафайлов</string>
     <string name="pref_outgoing_media_quality_hint">Чтобы отправить файлы в исходном качестве, прикрепляйте их как \"Файл\". Это потребует больше трафика для вас и ваших получателей.</string>
     <string name="pref_outgoing_balanced">Сбалансированное</string>
-    <string name="pref_outgoing_worse">Низкое качество, малый размер</string>
+    <string name="pref_outgoing_worse">Низкое качество, экономия данных</string>
     <string name="pref_vibrate">Вибрация</string>
     <string name="pref_screen_security">Безопасность экрана</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
@@ -793,11 +817,12 @@
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
     <string name="pref_calls">Звонки</string>
     <!-- Details about what the "Calls" notification setting does -->
-    <string name="pref_calls_explain">Показывать экран входящего вызова</string>
+    <string name="pref_calls_explain">Показывать экран вызова для принятых контактов</string>
     <string name="pref_notifications_show">Показывать</string>
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_notifications_explain">Включить системные уведомления для новых сообщений</string>
     <string name="pref_show_notification_content">Показывать содержимое сообщения в уведомлении</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Показать отправителя и текст сообщения в уведомлениях</string>
     <string name="pref_led_color">Цвет светодиода </string>
     <string name="pref_sound">Звук</string>
@@ -840,20 +865,27 @@
     <string name="pref_background">Обои для чатов</string>
     <string name="pref_background_btn_default">Использовать изображение по умолчанию</string>
     <string name="pref_background_btn_gallery">Выбрать из галереи</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Если вы измените этот параметр, убедитесь, что ваш сервер и другие клиенты настроены соответствующим образом.\n\nВ противном случае, всё может перестать работать.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Режим нескольких устройств</string>
     <string name="pref_multidevice_explain">Синхронизируйте свои сообщения с другими устройствами. Функция включается автоматически при добавлении второго устройства</string>
     <string name="pref_multidevice_change_warn">Режим нескольких устройств должен быть включен, если вы используете один и тот же профиль на нескольких устройствах. Отключайте эту настройку, только если вы удалили этот профиль со всех остальных устройств.\n\nОтключение режима нескольких устройств при использовании профиля на нескольких устройствах приведет к потере сообщений и возникновению других проблем.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Автоперемещение в папку DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Загружать только из папки DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Показывать обычную почту</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Нет, только чаты</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Для принятых контактов</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Все</string>
     <string name="pref_experimental_features">Экспериментальные функции</string>
     <string name="pref_experimental_features_explain">Эти функции могут быть нестабильными и могут быть изменены или удалены</string>
-    <string name="pref_on_demand_location_streaming">Трансляция местоположения по запросу</string>
+    <string name="pref_on_demand_location_streaming">Трансляция местоположения</string>
     <string name="pref_background_default">Изображение по умолчанию</string>
     <string name="pref_background_default_color">Цвет по умолчанию</string>
     <string name="pref_background_custom_image">Персональное изображение</string>
@@ -904,14 +936,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Удалить старые сообщения</string>
     <string name="autodel_device_title">Удалять сообщения с устройства</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Удалять сообщения с сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n• Это действие затронет все медиафайлы\n\n• Сообщения будут удалены, независимо от того, были ли они прочитаны или нет.\n\n• \"Сохранённые сообщения\" не будут удалены с устройства</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Вы хотите удалить %1$d сообщений сейчас и все новые сообщения \"%2$s\" в дальнейшем?\n\n⚠️ Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере.\n\n⚠️ Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете обычные клиенты электронной почты</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Это относится ко всем электронным письмам, медиафайлам и \"Сохранённым сообщениям\" во всех папках на сервере. Не используйте эту функцию, если хотите сохранить данные на сервере или если вы используете обычные клиенты электронной почты</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Включить удаление без запроса</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Если включить удаление без запроса, вы не сможете использовать этот профиль на нескольких устройствах.</string>
     <string name="autodel_confirm">Я понимаю, удалить все эти сообщения</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -1008,7 +1043,7 @@
     <string name="learn_more">Узнать больше</string>
 
     <string name="devicemsg_self_deleted">Вы удалили чат \"Сохраненные сообщения\".\n\nℹ️ Чтобы снова использовать функцию \"Сохраненные сообщения\", создайте новый чат с собой.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Место на сервере вашего провайдера скоро закончится, уже использовано: %1$s%%.\n\nЕсли место на сервере будет полностью заполнено, вы не сможете получать сообщения.\n\n👉 Проверьте, можно ли удалить старые данные через веб-интерфейс вашего провайдера, и подумайте о включении опции \"Настройки / Чаты / Удалить старые сообщения\". Вы всегда можете проверить текущее использование места на сервере в разделе \"Настройки / Соединение\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Вероятно, дата или время на вашем устройстве установлены неверно (%1$s).\n\nНастройте часы ⏰🔧 чтобы ваши сообщения доставлялись правильно.</string>
@@ -1092,8 +1127,6 @@
     <string name="n_messages_in_m_chats">%1$d сообщений в %2$d чатах</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">Канал для потоковой передачи местоположения по запросу</string>
-    <string name="location_streaming_notification_title">Потоковая передача местоположения</string>
     <string name="location_streaming_notification_text">Вы делитесь своим местоположением</string>
     <string name="location_rationale">Чтобы поделиться своим местоположением в реальном времени с участниками чата, разрешите Delta Chat использовать данные о вашем местоположении.\n\nДля обеспечения бесперебойной работы функции передачи геопозиции данные используются даже тогда, когда приложение закрыто или не активно.</string>
 
@@ -1189,6 +1222,8 @@
     <string name="a11y_message_context_menu_btn_label">Действия с сообщением</string>
     <string name="a11y_background_preview_label">Предпросмотр</string>
     <string name="a11y_disappearing_messages_activated">Исчезающие сообщения включены</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Открыть %1$s</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Прекратить делиться местоположением</string>
