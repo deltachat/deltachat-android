@@ -61,6 +61,7 @@
     <string name="always">Întotdeauna</string>
     <string name="always_load_remote_images">Încărcați întotdeauna imagini la distanță</string>
     <string name="once">Odată ce</string>
+    <!-- deprecated -->
     <string name="show_warning">Afișați avertismentul</string>
     <string name="not_now">Nu acum</string>
     <string name="never">Niciodata</string>
@@ -159,6 +160,7 @@
     <string name="camera">Cameră</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Captură</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Comutați camera</string>
     <string name="toggle_fullscreen">Comutarea modului ecran complet</string>
     <string name="location">Locație</string>
@@ -275,12 +277,13 @@
     <string name="mute_for_seven_days">Silențios timp de 7 zile</string>
     <string name="mute_forever">Silențios pentru totdeauna</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">Timp de 5 minute</string>
+
     <string name="share_location_for_30_minutes">Timp de 30 de minute</string>
     <string name="share_location_for_one_hour">Timp de 1 oră</string>
     <string name="share_location_for_two_hours">Timp de 2 ore</string>
     <string name="share_location_for_six_hours">Timp de 6 ore</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Trimiteți următorul fișier la %s?</item>
         <item quantity="few">Trimiteți următoarele %d fișiere la %s?</item>
@@ -293,6 +296,7 @@
         <item quantity="few">Ștergeți %d mesaje?</item>
         <item quantity="other">Ștergeți %d de mesaje?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Transmiteți mesajele către %1$s?</string>
     <string name="ask_forward_multiple">Transmiteți mesajele către %1$d chat-uri?</string>
     <string name="ask_export_attachment">Exportul atașamentelor va permite altor aplicații de pe dispozitivul dumneavoastră să le acceseze them.\n\nContinue?</string>
@@ -516,6 +520,7 @@
     <string name="pref_notifications_priority">Prioritate</string>
     <string name="pref_notifications_explain">Activați notificările de sistem pentru mesajele noi</string>
     <string name="pref_show_notification_content">Afișați conținutul mesajului în notificare</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Afișează expeditorul și primele cuvinte ale mesajului în notificări</string>
     <string name="pref_led_color">Culoare LED</string>
     <string name="pref_sound">Sunet</string>

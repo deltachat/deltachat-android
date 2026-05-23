@@ -59,7 +59,9 @@
     <string name="media">رسانه</string>
     <string name="apps_and_media">برنامه‌ها و رسانه‌ها</string>
     <string name="profile">نمایه</string>
+    <!-- deprecated -->
     <string name="all_profiles">تمام نمایه‌ها</string>
+    <!-- deprecated -->
     <string name="current_profile">نمایهٔ فعلی</string>
     <string name="main_menu">فهرست اصلی</string>
     <string name="start_chat">شروع گپ</string>
@@ -80,6 +82,7 @@
     <string name="always">همیشه</string>
     <string name="always_load_remote_images">تصاویر با منبع بیرونی همیشه بارگیری شوند</string>
     <string name="once">همین یک بار</string>
+    <!-- deprecated -->
     <string name="show_warning">نمایش هشدار</string>
     <string name="not_now">اکنون نه</string>
     <string name="never">هرگز</string>
@@ -185,6 +188,7 @@
     <string name="camera">دوربین</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرفتن</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">تغییر دوربین</string>
     <string name="toggle_fullscreen">تغییر وضعیت تمام صفحه</string>
     <string name="location">موقعیت مکانی</string>
@@ -356,12 +360,13 @@
     <string name="mute_for_seven_days">ساکت کردن به مدت۷ روز</string>
     <string name="mute_forever">ساکت کردن دائمی</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">به مدت ۵ دقیقه</string>
+
     <string name="share_location_for_30_minutes">به مدت ۳۰ دقیقه</string>
     <string name="share_location_for_one_hour">به مدت ۱ ساعت</string>
     <string name="share_location_for_two_hours">به مدت ۲ ساعت</string>
     <string name="share_location_for_six_hours">به مدت ۶ ساعت</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">ارسال این پرونده به %s؟</item>
         <item quantity="other">ارسال این %d پرونده به %s؟</item>
@@ -402,6 +407,7 @@
         <item quantity="one">آیا می‌خواهید از روی تمام دستگاه‌هایتان %d پیام را حذف کنید؟</item>
         <item quantity="other">حذف %dپیام؟</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">پیام‌ها به %1$s هدایت شوند؟</string>
     <string name="ask_forward_multiple">انتقال پیام‌ها به %1$d گپ؟</string>
     <string name="ask_export_attachment">ضمیمه صادر شود؟ صادر کردن ضمیمه باعث می‌شود دیگر نرم‌افزارهای روی دستگاه شما بتوانند به آن دسترسی داشته باشند. \n\nادامه می‌دهید؟</string>
@@ -709,6 +715,7 @@
     <string name="pref_notifications_priority">اولویت</string>
     <string name="pref_notifications_explain">فعال کردن اعلان‌های سیستم برای پیام‌های جدید</string>
     <string name="pref_show_notification_content">نمایش محتوای پیام در اعلان</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">نمایش ارسال کننده و اولین کلمات پیام در اعلان</string>
     <string name="pref_led_color"> LED رنگ</string>
     <string name="pref_sound">صدا</string>
@@ -749,16 +756,23 @@
     <string name="pref_background">پس‌زمینه</string>
     <string name="pref_background_btn_default">استفاده از تصویر پیش‌فرض</string>
     <string name="pref_background_btn_gallery">انتخاب از گالری</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">اگر این گزینه را غیر فعال می‌کنید از اینکه سرور شما و حساب‌هایتان هم بر این اساس تنظیم شده باشند.\n\n در غیر این صورت ممکن است هیچ چیز کار نکند. </string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">حالت چند دستگاهی</string>
     <string name="pref_multidevice_explain">همگام‌سازی پیام‌های شما با دیگر دستگاه‌هایتان. در صورت اضافه کردن دستگاه دوم به صورت خودکار فعال می‌شود.</string>
     <string name="pref_multidevice_change_warn">حالت چند دستگاهی زمانی که از یک نمایه روی چند دستگاه استفاده می‌کنید باید فعال شود. تنها در صورتی این تنظیم را غیرفعال کنید که این نمایه را از روی همهٔ دیگر دستگاه‌هایتان حذف کرده‌اید. \n\n غیرفعال کردن حالت چند دستگاهی زمانی که یک نمایه را روی چند دستگاه دارید باعث می‌شود که بعضی پیام‌ها گم شوند و همچنین مشکل‌های دیگری به وجود می‌آورد.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">انتقال خودکار به پوشه دلتاچت</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">فقط پوشه دلتاچت را بررسی کن</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">نمایش رایانامه‌های معمولی</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">نه، فقط گپ‌ها</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">برای مخاطبین پذیرفته شده</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">همه</string>
     <string name="pref_experimental_features">ویژگی‌های آزمایشی</string>
     <string name="pref_experimental_features_explain">این ویژگی‌ها ممکن است ناپایدار باشند و همچنین ممکن است بعدا تغییر کنند یا حذف شوند</string>
@@ -813,14 +827,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">پاک کردن پیام‌های قدیمی</string>
     <string name="autodel_device_title">پاک کردن پیام‌ها از دستگاه</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">پاک کردن پیام‌ها از سرور</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">آیا می‌خواهید %1$d پیام جدید و دریافت شده را در زمان%2$s در آینده پاک کنید؟\n\n• این شامل همه رسانه‌ها هم می‌شود\n\n• پیام‌ها جدای از اینکه دیده شده باشند یا نه پاک می‌شوند. \"پیام های ذخیره شده\" شامل این پاک کردن محلی نمی‌شوند. </string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">آیا می‌خواهید %1$d پیام را اکنون و تمام پیام‌های آیندهٔ «%2$s» را پاک کنید؟/n/n⚠️ این شامل رایانامه‌ها، رسانه و «پیام‌های ذخیره شده» در همه پوشه‌های کارساز(سرور) می‌شود/n/n⚠️ اگر می‌خواهید داده‌ها در کارساز باقی بمانند از این قابلیت استفاده نکنید/n/n⚠️ اگر به‌جز دلتاچت از دیگر نرم‌افزارهای رایانامه هم استفاده می‌کنید این قابلیت را به کار نگیرید.</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">این شامل رایانامه‌ها، رسانه‌ها و «پیام‌های ذخیره شده» در تمام پوشه‌های کارساز(سرور) می‌شود. اگر می‌خواهید داده‌ها را در کارساز نگه دارید از این قابلیت استفاده نکنید. اگر از دیگر نرم‌افزارهای رایانامه به‌جز دلتاچت استفاده می‌کنید هم از این قابلیت استفاده نکنید.</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">فعال‌سازی حذف بلافاصله</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">اگر حذف بلافاصله را فعال کنید، نمی‌توانید این نمایه را روی چند دستگاه داشته باشید.</string>
     <string name="autodel_confirm">متوجه هستم، همه پیام‌ها حذف شوند</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -910,7 +927,7 @@
     <string name="learn_more">بیشتر بدانید</string>
 
     <string name="devicemsg_self_deleted">شما گپ «پیام‌های ذخیره شده» را پاک کردید.\n\nℹ️ برای استفادهٔ دوباره از «پیام‌های ذخیره شده» کافی است یک گپ جدید با خودتان درست کنید. </string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding"> ⚠️ میزان فضای در دسترس کارساز رایانامه شما در حال تمام شدن است. %1$s از %% استفاده شده است. اگر فضا کاملا پر شده باشد دیگر امکان دریافت پیام را نخواهید داشت. 👈 لطفا پیام‌های قدیمی در رایانامه خود را از طریق نسخهٔ وب رایانامه پاک کنید. همچنین می‌توانید گزینه پاک کردن پیام‌های قدیمی در دلتاچت را فعال نمایید. هروقت خواستید می‌توانید فضای در دسترس را از «تنظیم‌ها / اتصال‌ها» بررسی کنید. </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">هشدار⚠️ به نظر می‌رسد زمان و تاریخ دستگاه شما دقیق نیست(%1$s). ساعت دستگاه خود را تنظیم کنید ⏰🔧 تا پیام‌ها به درستی دریافت شوند. </string>
@@ -1073,7 +1090,6 @@
     <string name="a11y_message_context_menu_btn_label">عملیات‌های پیام</string>
     <string name="a11y_background_preview_label">پیش‌نمایش پس‌زمینه</string>
     <string name="a11y_disappearing_messages_activated">پیام‌های ناپدید شونده فعال شدند</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">توقف اشتراک موقعیت مکانی</string>
     <string name="a11y_voice_message_hint_ios">پس از ضبط کردن برای ارسال دوبار ضربه بزنید. برای حذف و رد ضبط کردن با دو انگشت خود بکشید. </string>

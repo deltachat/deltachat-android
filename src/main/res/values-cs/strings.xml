@@ -25,6 +25,8 @@
     <string name="downloading">Stahování...</string>
     <string name="open_attachment">Otevřít přílohu</string>
     <string name="join">Připojit se</string>
+    <string name="join_group">Připojit se ke skupině</string>
+    <string name="join_channel">Připojte se ke kanálu</string>
     <string name="rejoin">Znovu se připojit</string>
     <string name="delete">Smazat</string>
     <string name="delete_for_me">Smazat pro mě</string>
@@ -59,7 +61,9 @@
     <string name="media">Multimédia</string>
     <string name="apps_and_media">Aplikace a multimédia</string>
     <string name="profile">Profil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Všechny profily</string>
+    <!-- deprecated -->
     <string name="current_profile">Aktuální profil</string>
     <string name="main_menu">Hlavní nabídka</string>
     <string name="start_chat">Začít chatovat</string>
@@ -70,6 +74,10 @@
     <string name="mark_as_read">Označit jako přečtené</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Přečteno</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Označit jako nepřečtené</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Nepřečtené</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Načítání...</string>
     <string name="hide">Skrýt</string>
@@ -80,6 +88,7 @@
     <string name="always">Vždy</string>
     <string name="always_load_remote_images">Vždy načítat vzdálené obrázky</string>
     <string name="once">Jednou</string>
+    <!-- deprecated -->
     <string name="show_warning">Zobrazovat varování</string>
     <string name="not_now">Teď ne</string>
     <string name="never">Nikdy</string>
@@ -89,6 +98,7 @@
     <string name="offline">Offline</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Další</string>
+    <string name="warning">Varování</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba: %1$s</string>
     <string name="no_app_to_handle_data">Aplikace pro tento typ dat nenalezena.</string>
@@ -116,6 +126,15 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Naposledy viděni %1$s</string>
     <string name="last_seen_unknown">Naposledy viděno: Neznámý</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d minutové trvání</item>
+        <item quantity="few">%d minut trvání</item>
+        <item quantity="many">%d minut trvání</item>
+        <item quantity="other">%d minut trvání</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Méně než 1 minuta</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min.</item>
@@ -175,6 +194,7 @@
         <item quantity="other">%d vybráno</item>
     </plurals>
     <string name="selected_colon">Vybráno:</string>
+    <string name="selected">Vybráno</string>
     <string name="self">Já</string>
     <string name="draft">Rozepsané</string>
     <string name="image">Obrázek</string>
@@ -188,6 +208,9 @@
     <string name="add_stickers_instructions">Přejete-li si přidat nálepky, klepněte na „Otevřít složku nálepek“, vytvořte podsložku pro balíček nálepek a přetáhněte do ní soubory obrázků a nálepek</string>
     <!-- deprecated -->
     <string name="open_sticker_folder">Otevřít složku nálepek</string>
+    <string name="ask_add_sticker_to_collection">Přidat tuto nálepku do své sbírky?</string>
+    <string name="ask_delete_sticker">Smazat tuto nálepku?</string>
+    <string name="sticker_picker_empty_hint">Klepnutím na nálepku ji sem přidáte.</string>
     <string name="images">Obrázky</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Zvukové záznamy</string>
@@ -203,6 +226,7 @@
     <string name="camera">Fotoaparát</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Spoušť</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Přepnout kameru</string>
     <string name="toggle_fullscreen">Přepnout režim celé obrazovky</string>
     <string name="location">Poloha</string>
@@ -374,12 +398,13 @@
     <string name="mute_for_seven_days">Ztlumit na 7 dní</string>
     <string name="mute_forever">Ztlumit navždy</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">Na 5 minut</string>
+
     <string name="share_location_for_30_minutes">Na 30 minut</string>
     <string name="share_location_for_one_hour">Na 1 hodinu</string>
     <string name="share_location_for_two_hours">Na 2 hodiny</string>
     <string name="share_location_for_six_hours">Na 6 hodin</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Odeslat následující soubor do chatu %s?</item>
         <item quantity="few">Odeslat následující %d soubory do chatu %s?</item>
@@ -414,6 +439,7 @@
         <item quantity="many">Smazat %d zpráv ze všech Vašich zařízení?</item>
         <item quantity="other">Smazat %d zpráv ze všech vašich zařízení?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Přejete si přeposlat zprávy do chatu %1$s?</string>
     <string name="ask_forward_multiple">Přejete si přeposlat zprávy do %1$d chatů?</string>
     <string name="ask_export_attachment">Uložením příloh je zpřístupníte ostatním aplikacím na tomto zařízení.\n\nPřejete si pokračovat?</string>
@@ -727,6 +753,7 @@
     <string name="pref_notifications_priority">Priorita</string>
     <string name="pref_notifications_explain">Povolit systémová oznámení nových zpráv</string>
     <string name="pref_show_notification_content">Zobrazit obsah zprávy uvnitř oznámení</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Zobrazit odesílatele a první slova zprávy uvnitř oznámení</string>
     <string name="pref_led_color">Barva diody</string>
     <string name="pref_sound">Zvuk</string>
@@ -767,16 +794,23 @@
     <string name="pref_background">Pozadí</string>
     <string name="pref_background_btn_default">Použít výchozí obrázek</string>
     <string name="pref_background_btn_gallery">Vybrat z galerie</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Při změně této volby se ujistěte, že váš server a ostatní klientské aplikace mají odpovídající nastavení.\n\nJinak může vše přestat fungovat.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Režim pro více zařízení</string>
     <string name="pref_multidevice_explain">Synchronizujte zprávy s ostatními zařízeními. Automaticky povoleno při přidání druhého zařízení</string>
     <string name="pref_multidevice_change_warn">Při použití stejného profilu na více zařízeních musí být povolen \"režim více zařízení\". Toto nastavení zakažte pouze v případě, že jste tento profil odstranili ze všech ostatních zařízení. \n\n Zakázání režimu \"režim více zařízení\" při používání profilu na více zařízeních bude mít za následek zmeškané zprávy a další problémy.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Automaticky přesouvat do složky DeltaChat </string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Načítat pouze ze složky DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Zobrazovat běžné e-maily</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Ne, pouze chaty</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Pro přijaté kontakty</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Vše</string>
     <string name="pref_experimental_features">Experimentální funkce </string>
     <string name="pref_experimental_features_explain">Tyto funkce mohou být nestabilní a mohou být změněny nebo odstraněny.</string>
@@ -825,14 +859,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Mazat staré zprávy</string>
     <string name="autodel_device_title">Mazat zprávy ze zařízení</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Mazat zprávy ze serveru</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Skutečně smazat %1$d zpráv a všechny v budoucnu stažené zprávy \"%2$s\"?\n\n• Toto zahrnuje všechna multimédia\n\n• Zprávy budou smazány bez ohledu na jejich přečtení\n\n• \"Uložené zprávy\" budou ponechány</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Skutečně smazat %1$d zprávy a všechny v budoucnu stažené zprávy \"%2$s\"?\n\n⚠️ Toto zahrnuje e-maily, multimédia a \"Uložené zprávy\" ve všech složkách na serveru\n\n⚠️ Nepoužívejte tuto funkci, pokud si přejete ponechat data na serveru\n\n⚠️ Nepoužívejte tuto funkci, pokud používáte i jiné e-mailové klienty mimo Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Toto zahrnuje e-maily, multimédia a \"Uložené zprávy\" ve všech složkách na serveru. Nepoužívejte tuto funkci, pokud chcete ponechat data na serveru, nebo pokud používáte i jiné e-mailové programy mimo Delta Chat</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Zapnout okamžité mazání</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Pokud zapnete okamžité mazání, nemůžete tento profil používat na více zařízeních.</string>
     <string name="autodel_confirm">Rozumím. Smazat všechny tyto zprávy</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -922,7 +959,7 @@
     <string name="learn_more">Další informace</string>
 
     <string name="devicemsg_self_deleted">Smazali jste chat „Uložené zprávy“.\n\nℹ️ Chcete-li znovu použít funkci „Uložené zprávy“, založte nový chat sami se sebou.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Úložiště u vašeho poskytovatele je téměř vyčerpané: %1$s %% je již využito.\n\nPokud se úložiště zaplní, nebudete moci přijímat zprávy.\n\n👉 Zkuste smazat stará data ve webovém prostředí poskytovatele a zvažte povolení volby \"Nastavení / Chaty a multimédia / Mazat staré zprávy\". Aktuální využití úložiště můžete kdykoliv zkontrolovat v \"Nastavení / Připojení\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Datum a čas na vašem zařízení se zdají být nepřesné (%1$s).\n\nUpravte si čas ⏰🔧, abyste mohli přijímat své zprávy.</string>
@@ -1084,7 +1121,6 @@
     <string name="a11y_message_context_menu_btn_label">Akce zprávy</string>
     <string name="a11y_background_preview_label">Náhled tapety</string>
     <string name="a11y_disappearing_messages_activated">Mizející zprávy jsou zapnuty</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Přestat sdílet polohu</string>
     <string name="a11y_voice_message_hint_ios">Po ukončení nahrávání stiskněte dvakrát pro odeslání. Pro zahození nahrané zprávy, přejeďte dvěma prsty.</string>

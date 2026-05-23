@@ -59,6 +59,7 @@
     <string name="load_remote_content">Memuat Gambar Jarak Jauh</string>
     <string name="always">Selalu</string>
     <string name="once">Sekali</string>
+    <!-- deprecated -->
     <string name="show_warning">Tampilkan Peringatan</string>
     <string name="not_now">Tidak sekarang</string>
     <string name="never">Tidak pernah</string>
@@ -143,6 +144,7 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Tangkap</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Ganti kamera</string>
     <string name="toggle_fullscreen">Beralih ke Mode Layar Penuh</string>
     <string name="location">Lokasi</string>
@@ -256,12 +258,13 @@
     <string name="mute_for_seven_days">Diamkan untuk 7 hari</string>
     <string name="mute_forever">Diamkan seterusnya</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">untuk 5 menit</string>
+
     <string name="share_location_for_30_minutes">untuk 30 menit</string>
     <string name="share_location_for_one_hour">untuk 1 jam</string>
     <string name="share_location_for_two_hours">untuk 2 jam</string>
     <string name="share_location_for_six_hours">untuk 6 jam</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="other">Kirimkan yang berikut ini %d berkas ke %s?</item>
     </plurals>
@@ -270,6 +273,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Teruskan pesan ke %1$s?</string>
     <string name="ask_export_attachment">Ekspor lampiran? Mengekspor lampiran akan membuat aplikasi lain di perangkat anda terakses.\n\nLanjut?</string>
     <string name="ask_block_contact">Blokir kontak ini? Anda tak akan lagi menerima pesan dari kontak ini.</string>
@@ -404,6 +408,7 @@
     <string name="pref_notifications">Notifikasi</string>
     <string name="pref_notifications_show">Menunjukkan</string>
     <string name="pref_notifications_priority">Prioritas</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Tampilkan pengirim dan kata-kata awal dari pesan di dalam notifikasi</string>
     <string name="pref_led_color">Warna LED</string>
     <string name="pref_sound">Suara</string>
@@ -435,10 +440,15 @@
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Tampilkan email klasik</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Tidak, hanya obrolan saja</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Untuk kontak yang telah diterima</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Semua</string>
     <string name="pref_experimental_features">Fitur yang masih bersifat eksperimen</string>
     <string name="pref_background_default">Latar belakang default</string>
@@ -457,6 +467,7 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Hapus pesan-pesan lama</string>
     <string name="autodel_device_title">Hapus pesarn dari perangkat</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Hapus pesan dari server</string>
     <string name="autodel_confirm">Saya mengerti, hapus semua pesan ini</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->

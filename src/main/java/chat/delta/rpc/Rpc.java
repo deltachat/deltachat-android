@@ -443,10 +443,19 @@ public class Rpc {
   }
 
   /**
-   * Estimate the number of messages that will be deleted
-   * by the set_config()-options `delete_device_after` or `delete_server_after`.
+   * Estimates the number of messages that will be deleted
+   * by the `set_config()`-option `delete_device_after`.
+   * <p>
    * This is typically used to show the estimated impact to the user
    * before actually enabling deletion of old messages.
+   * <p>
+   * Messages in the "Saved Messages" chat are not counted as they will not be deleted automatically.
+   * <p>
+   * Parameters:
+   * - `from_server`: Deprecated, pass `false` here
+   * - `seconds`: Count messages older than the given number of seconds.
+   * <p>
+   * Returns the number of messages that are older than the given number of seconds.
    */
   public Integer estimateAutoDeletionCount(Integer accountId, Boolean fromServer, Integer seconds) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "estimate_auto_deletion_count", mapper.valueToTree(accountId), mapper.valueToTree(fromServer), mapper.valueToTree(seconds));
@@ -913,8 +922,22 @@ public class Rpc {
   }
 
   /**
-   * Returns all messages of a particular chat.
+   * Get all message IDs belonging to a chat.
    * <p>
+   * The list is already sorted and starts with the oldest message.
+   * Clients should not try to re-sort the list as this would be an expensive action
+   * and would result in inconsistencies between clients.
+   * Note that the messages are not necessarily sorted by their ID or by their displayed timestamp;
+   * UIs need to handle both the case of descending message IDs
+   * and of decreasing timestamps.
+   * <p>
+   * Optionally, 'daymarkers' added to the ID array may help to
+   * implement virtual lists.
+   * <p>
+   * Parameters:
+   * <p>
+   * * chat_id The chat ID of which the messages IDs should be queried.
+   * * _info_only: Deprecated, pass `false` here.
    * * `add_daymarker` - If `true`, add day markers as `DC_MSG_ID_DAYMARKER` to the result,
    * e.g. [1234, 1237, 9, 1239]. The day marker timestamp is the midnight one for the
    * corresponding (following) day in the local timezone.
@@ -932,6 +955,14 @@ public class Rpc {
     return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_existing_msg_ids", mapper.valueToTree(accountId), mapper.valueToTree(msgIds));
   }
 
+  /**
+   * Get all messages belonging to a chat.
+   * <p>
+   * Similar to `get_message_ids` / `getMessageIds`,
+   * see that function for details.
+   * The difference is that this function here returns a list of `MessageListItem`,
+   * which is an enum of a message or a daymarker.
+   */
   public java.util.List<MessageListItem> getMessageListItems(Integer accountId, Integer chatId, Boolean infoOnly, Boolean addDaymarker) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<MessageListItem>>(){}, "get_message_list_items", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(infoOnly), mapper.valueToTree(addDaymarker));
   }
@@ -1181,11 +1212,6 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "make_vcard", mapper.valueToTree(accountId), mapper.valueToTree(contacts));
   }
 
-  /** Sets vCard containing the given contacts to the message draft. */
-  public void setDraftVcard(Integer accountId, Integer msgId, java.util.List<Integer> contacts) throws RpcException {
-    transport.call("set_draft_vcard", mapper.valueToTree(accountId), mapper.valueToTree(msgId), mapper.valueToTree(contacts));
-  }
-
   /**
    * Returns the [`ChatId`] for the 1:1 chat with `contact_id` if it exists.
    * <p>
@@ -1328,8 +1354,45 @@ public class Rpc {
     return transport.callForResult(new TypeReference<String>(){}, "get_connectivity_html", mapper.valueToTree(accountId));
   }
 
+  /**
+   * Sets current location.
+   * <p>
+   * Returns true if location streaming is currently
+   * enabled and locations should be updated.
+   * <p>
+   * Location is represented as latitude and longitude in degrees
+   * and horizontal accuracy in meters.
+   */
+  public Boolean setLocation(Float latitude, Float longitude, Float accuracy) throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "set_location", mapper.valueToTree(latitude), mapper.valueToTree(longitude), mapper.valueToTree(accuracy));
+  }
+
   public java.util.List<Location> getLocations(Integer accountId, Integer chatId, Integer contactId, Integer timestampBegin, Integer timestampEnd) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<Location>>(){}, "get_locations", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(contactId), mapper.valueToTree(timestampBegin), mapper.valueToTree(timestampEnd));
+  }
+
+  /**
+   * Enables location streaming in chat identified by `chat_id` for `seconds` seconds.
+   * <p>
+   * Pass 0 as the number of seconds to disable location streaming in the chat.
+   */
+  public void sendLocationsToChat(Integer accountId, Integer chatId, Integer seconds) throws RpcException {
+    transport.call("send_locations_to_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(seconds));
+  }
+
+  /** Returns whether any chat is sending locations. */
+  public Boolean isSendingLocations(Integer accountId) throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "is_sending_locations", mapper.valueToTree(accountId));
+  }
+
+  /** Returns whether `chat_id` is sending locations. */
+  public Boolean isSendingLocationsToChat(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "is_sending_locations_to_chat", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /** Stops sending locations to all chats. */
+  public void stopSendingLocations() throws RpcException {
+    transport.call("stop_sending_locations");
   }
 
   public void sendWebxdcStatusUpdate(Integer accountId, Integer instanceMsgId, String updateStr, String descr) throws RpcException {
@@ -1467,17 +1530,18 @@ public class Rpc {
     transport.call("resend_messages", mapper.valueToTree(accountId), mapper.valueToTree(messageIds));
   }
 
+  /** @deprecated as of 2026-04; use `send_msg` with `Viewtype::Sticker` instead. */
   public Integer sendSticker(Integer accountId, Integer chatId, String stickerPath) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "send_sticker", mapper.valueToTree(accountId), mapper.valueToTree(chatId), mapper.valueToTree(stickerPath));
   }
 
   /**
-   * Send a reaction to message.
+   * Sends a reaction to message.
    * <p>
-   * Reaction is a string of emojis separated by spaces. Reaction to a
-   * single message can be sent multiple times. The last reaction
-   * received overrides all previously received reactions. It is
-   * possible to remove all reactions by sending an empty string.
+   * A reaction is a string that represents an emoji.
+   * You can call this function again to change the emoji;
+   * the last sent reaction overrides all previously sent reactions.
+   * It is possible to remove the reaction by sending an empty string.
    */
   public Integer sendReaction(Integer accountId, Integer messageId, java.util.List<String> reaction) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "send_reaction", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(reaction));
