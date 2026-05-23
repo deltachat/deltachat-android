@@ -42,7 +42,7 @@
     <string name="later">Geroago</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Berriro bidali</string>
-    <string name="edited">Editatu egin da</string>
+    <string name="edited">Editatu egin da:</string>
     <string name="edit_message">Mezua editatu</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Artxibatu</string>
@@ -59,7 +59,9 @@
     <string name="media">Multimedia</string>
     <string name="apps_and_media">Aplikazioak eta multimedia</string>
     <string name="profile">Kontua</string>
+    <!-- deprecated -->
     <string name="all_profiles">Kontu guztiak</string>
+    <!-- deprecated -->
     <string name="current_profile">Oraingo kontua</string>
     <string name="main_menu">Menu nagusia</string>
     <string name="start_chat">Hasi txata</string>
@@ -82,6 +84,7 @@
     <string name="always">Beti</string>
     <string name="always_load_remote_images">Kargatu urrutiko irudiak beti</string>
     <string name="once">Behin</string>
+    <!-- deprecated -->
     <string name="show_warning">Erakutsi abisua</string>
     <string name="not_now">Orain ez</string>
     <string name="never">Inoiz ez</string>
@@ -198,6 +201,7 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Harrapatu</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Aldatu kamera</string>
     <string name="toggle_fullscreen">Aldatu pantaila osoa modua</string>
     <string name="location">Kokalekua</string>
@@ -347,7 +351,7 @@
     <string name="menu_learn_spelling">Ikasi ortografia</string>
     <string name="jump_to_message">Joan mezura</string>
     <string name="replace_draft">Ordeztu zirriborroa</string>
-    <string name="title_share_location">Partekatu kokalekua taldeko kide guztiak</string>
+    <string name="title_share_location">Partekatu kokalekua kide guztiekin</string>
     <string name="device_talk">Gailuaren mezuak</string>
     <string name="device_talk_subtitle">Lokalki sortutako mezuak</string>
     <string name="device_talk_explain">Txat honetako mezuak zure Delta Chat aplikazioak sortu ditu lokalki. Egileek aplikazioaren eguneraketei buruz eta erabileran arazoei buruz informatzeko erabiltzen dute.</string>
@@ -375,12 +379,13 @@
     <string name="mute_for_seven_days">Mututu 7 egun</string>
     <string name="mute_forever">Mututu betirako</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 minutuz</string>
+
     <string name="share_location_for_30_minutes">30 minutuz</string>
-    <string name="share_location_for_one_hour">Ordu 1</string>
+    <string name="share_location_for_one_hour">Ordubetez</string>
     <string name="share_location_for_two_hours">2 orduz</string>
     <string name="share_location_for_six_hours">6 orduz</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Bidali hurrengo fitxategia %s-(e)ra?</item>
         <item quantity="other">Bidali hurrengo %d fitxategiak %s(e)ra?</item>
@@ -432,6 +437,7 @@
         <item quantity="one">Ezabatu mezu %d?</item>
         <item quantity="other">Ezabatu %d mezu?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Birbidali mezuak %1$s erabiltzaileari?</string>
     <string name="ask_forward_multiple">Bidali mezuak %1$d txatetara?</string>
     <string name="ask_export_attachment">Esportatu eranskina? Eranskinak esportatzeak zure beste gailuko beste aplikazioek atzitzea ahalbidetuko du.\n\nJarraitu?</string>
@@ -752,6 +758,7 @@
     <string name="pref_notifications_priority">Lehentasuna</string>
     <string name="pref_notifications_explain">Gaitu sistemaren jakinarazpenak mezu berrientzat</string>
     <string name="pref_show_notification_content">Erakutsi mezuaren edukia jakinarazpenean</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Erakutsi bidaltzailea eta mezuaren lehen hitza jakinarazpenetan</string>
     <string name="pref_led_color">LED kolorea</string>
     <string name="pref_sound">Soinua</string>
@@ -792,16 +799,23 @@
     <string name="pref_background">Atzealdea</string>
     <string name="pref_background_btn_default">Erabili irudi lehenetsia</string>
     <string name="pref_background_btn_gallery">Hautatu galeriatik</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Aukera hau desaktibatuz gero, egiaztatu zure zerbitzaria eta beste bezeroen konfigurazioa bat datorrela.\n\nBestela agian gauzak ez dabiltza.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Gailu anitzeko modua</string>
     <string name="pref_multidevice_explain">Sinkronizatu zure mezuak zure beste gailuekin. Automatikoki gaitzen da bigarren gailu bat gehitzean.</string>
     <string name="pref_multidevice_change_warn">Gailu anitzeko moduak gaituta egon behar du kontu bera hainbat gailutan erabiltzean. Desaktibatu ezarpen hau soilik kontu hau beste gailu guztietatik kendu baduzu.\n\nGailu anitzeko modua desaktibatzeak kontua hainbat gailutan erabiltzen ari den bitartean, mezuak galtzea eta bestelako arazoak eragingo ditu.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Automatikoki mugitzen du DeltaChat karpetara</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Delta Chat karpetatik soilik berreskuratu</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Erakutsi ohiko e-mailak</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Ez, txatak besterik ez</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Onartutako kontaktuena</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Denak</string>
     <string name="pref_experimental_features">Ezaugarri esperimentalak</string>
     <string name="pref_experimental_features_explain">Baliteke ezaugarri hauek ezegonkorrak izatea eta gerora aldatzea edo kentzea.</string>
@@ -856,14 +870,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ezabatu mezu zaharrak</string>
     <string name="autodel_device_title">Ezabatu mezuak gailutik</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Ezabatu mezuak zerbitzaritik</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d mezu ezabatu nahi dituzu orain eta \"%2$s\" etorkizunean jasotako mezuak ere?\n\n• Honek multimedia ere barne hartzen du\n\n• Mezuak ikusi ala ez ezabatuko dira\n\n• \"Gordetako mezuak\" ez dira lokalki ezabatuko</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">%1$d mezu ezabatu nahi dituzu orain eta \"%2$s\" etorkizunean jasotako mezuak ere?\n\n⚠️ Honek mezu elektronikoak, multimedia eta \"Gordetako mezuak\" barne hartzen ditu zerbitzariko karpeta guztietan\n\n⚠️ Ez erabili funtzio hau datuak zerbitzarian gorde nahi badituzu edo posta bezero klasikoak ere erabiltzen badituzu</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Honek barne hartzen ditu mezu elektronikoak, multimedia eta \"Gordetako mezuak\" zerbitzariko karpeta guztietan. Ez erabili funtzio hau datuak zerbitzarian gorde nahi badituzu edo mezu elektronikoen bezero klasikoak ere erabiltzen badituzu.</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Berehalako ezabatzea aktibatu</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Berehalako ezabaketa gaitzen baduzu, ezin izango dituzu gailu anitz erabili profil honetan.</string>
     <string name="autodel_confirm">Ulertzen dut, ezabatu mezuk guzti hauek</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -957,7 +974,7 @@
     <string name="learn_more">Ikasi gehiago</string>
 
     <string name="devicemsg_self_deleted">\"Gordetako mezuak\" txata ezabatu duzu.\n\nℹ️ \"Gordetako mezuak\" funtzioa berriro erabiltzeko, sortu txat berri bat zure buruarekin.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Zure hornitzailearen biltegiratzea agortzear dago: %%-tik %1$s erabili dituzu dagoeneko.\n\nLitekeena da mezuak jaso ezin izatea biltegiratzea beteta badago.\n\n👉 Mesedez, egiaztatu datu zaharrak hornitzailearen web-interfazean ezaba ditzakezun eta kontuan hartu \"Ezarpenak / Txatak / Ezabatu mezu zaharrak\" aukera aktibatzea. Zure uneko biltegiratze-erabilera edozein unetan egiaztatu dezakezu \"Ezarpenak / Konektibitatea\" atalean.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Zure gailuko data edo ordua okerra dela dirudi (%1$s).\n\nEgokitu zure erlojua ⏰🔧 zure mezuak zuzen jasotzen direla ziurtatzeko.</string>
@@ -1120,7 +1137,6 @@
     <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
     <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
     <string name="a11y_disappearing_messages_activated">Desagertzen diren mezuak aktibatu dira</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Utzi kokapena partekatzeari</string>
     <string name="a11y_voice_message_hint_ios">Grabatu ondoren, sakatu bi aldiz bidaltzeko. Grabazioa baztertzeko, pasatu bi hatz gainetik.</string>

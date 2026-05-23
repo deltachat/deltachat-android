@@ -137,6 +137,7 @@
     <string name="camera">카메라</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">캡쳐</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">카메라 전환</string>
     <string name="toggle_fullscreen">전체 화면 모드 전환</string>
     <string name="location">위치</string>
@@ -251,12 +252,13 @@
     <string name="mute_for_seven_days">7일 동안 알림 끄기</string>
     <string name="mute_forever">영구히 음소거</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5분 동안</string>
+
     <string name="share_location_for_30_minutes">30분 동안</string>
     <string name="share_location_for_one_hour">1시간 동안</string>
     <string name="share_location_for_two_hours">2시간 동안</string>
     <string name="share_location_for_six_hours">6시간 동안</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="other">%s에게 %d파일을 보낼까요?</item>
     </plurals>
@@ -265,6 +267,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">%d개의 메시지를 삭제하시겠습니까?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">%1$s님에게 메시지를 전달할까요?</string>
     <string name="ask_forward_multiple">%1$d 채팅으로 메시지를 전달하시겠습니까?</string>
     <string name="ask_export_attachment">첨부 파일을 내보내면 단말기의 다른 앱에서 해당 첨부 파일에 액세스할 수 있습니다.\n\n계속하시겠습니까?</string>
@@ -453,6 +456,7 @@
     <string name="pref_notifications_priority">우선순위</string>
     <string name="pref_notifications_explain">새 메시지에 대한 시스템 알림 활성화</string>
     <string name="pref_show_notification_content">알림에 메시지 내용 표시</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">알림에서 메시지를 보낸 사람과 첫 번째 단어를 표시합니다.</string>
     <string name="pref_led_color">LED 색상</string>
     <string name="pref_sound">알림음</string>
@@ -487,11 +491,17 @@
     <string name="pref_background">채팅방 배경화면</string>
     <string name="pref_background_btn_default">기본 이미지 사용</string>
     <string name="pref_background_btn_gallery">갤러리에서 선택됨</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">이 선택사항을 변경할 경우, 서버와 다른 클라이언트가 적절하게 구성되어 있는지 확인하십시오.\n\n그렇지 않으면 상황이 전혀 작동하지 않을 수 있습니다.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">DeltaChat 폴더로 자동 이동</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">DeltaChat 폴더에서만 가져오기</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">아뇨, 오직 채팅만</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">승인된 연락처의 경우</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">전부</string>
     <string name="pref_on_demand_location_streaming">주문형 위치 스트리밍</string>
     <string name="pref_background_default">기본 배경</string>
@@ -520,10 +530,11 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">오래된 메시지 삭제</string>
     <string name="autodel_device_title">기기에서 메시지 삭제</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">서버에서 메시지 삭제</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d 메시지와 새로 가져온 모든 메시지 \"%2$s\"를 나중에 삭제하시겠습니까?\n\n• 여기에는 모든 미디어가 포함됩니다.\n\n• 메시지가 표시되었는지 여부에 관계없이 삭제됩니다.\n\n• \"저장된 메시지\"는 로컬 삭제에서 건너뜁니다.</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">여기에는 모든 서버 폴더에 있는 전자 메일, 미디어 및 \"저장된 메시지\"가 포함됩니다. 서버에 데이터를 보관하거나 Delta Chat 외에 다른 이메일 클라이언트를 사용하는 경우 이 기능을 사용하지 마십시오.</string>
     <string name="autodel_confirm">알겠습니다. 모든 메시지를 삭제하세요.</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -592,7 +603,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s가 사라지는 메시지 타이머를 %1$s주로 설정함.</string>
     <string name="devicemsg_self_deleted">저장된 메시지 대화를 삭제했습니다.\n\nℹ️\"저장된 메시지\" 기능을 다시 사용하려면 자신과의 대화를 새로 만드십시오.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ 공급자의 저장공간이 곧 고갈될 예정입니다. %1$s%%가 이미 사용 중입니다.\n\n저장공간이 가득 찬 경우 메시지를 수신하지 못할 수 있습니다.\n\n👉 공급자의 웹 인터페이스에서 이전 데이터를 삭제할 수 있는지 확인하고 \"설정 / 이전 메시지 삭제\"를 활성화하는 것을 고려하십시오. \"설정/연결\"에서 언제든지 현재 저장공간 사용량을 확인할 수 있습니다.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ 장치의 날짜 또는 시간이 정확하지 않은 것 같습니다(%1$s).\n\n메시지가 올바르게 수신되도록 시계 ⏰🔧를 조정하세요.</string>
@@ -721,7 +732,6 @@
     <string name="a11y_delivery_status_invalid">잘못된 전송 상태</string>
     <string name="a11y_background_preview_label">배경 미리보기</string>
     <string name="a11y_disappearing_messages_activated">사라지는 메시지 활성화됨</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">위치 공유 중지</string>
     <string name="a11y_voice_message_hint_ios">녹화가 끝나면 두 번 눌러 전송합니다. 기록을 삭제하려면 두 손가락으로 문지르십시오.</string>

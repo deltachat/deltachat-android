@@ -122,6 +122,7 @@
     <string name="camera">カメラ</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">撮影</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">カメラを切り替える</string>
     <string name="toggle_fullscreen">フルスクリーン</string>
     <string name="location">場所</string>
@@ -223,17 +224,19 @@
     <string name="mute_for_seven_days">7日間停止する</string>
     <string name="mute_forever">無効</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5分間</string>
+
     <string name="share_location_for_30_minutes">30分間</string>
     <string name="share_location_for_one_hour">1時間</string>
     <string name="share_location_for_two_hours">2時間</string>
     <string name="share_location_for_six_hours">6時間</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="other">%sさんに%dつのファイルを送る？</item>
     </plurals>
     <string name="file_saved_to">%1$sに保存しました。</string>
 
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">%1$sにメッセージを転送しますか？</string>
     <string name="ask_forward_multiple">%1$dチャットにメッセージを転送しますか？</string>
     <string name="ask_export_attachment">添付ファイルをエクスポートしますか？添付ファイルをエクスポートすると、他のアプリからもアクセスできるようになります。\n\nよろしいですか？</string>
@@ -392,6 +395,7 @@
     <string name="pref_notifications_priority">優先度</string>
     <string name="pref_notifications_explain">新着メッセージ通知を有効にします</string>
     <string name="pref_show_notification_content">通知にメッセージの内容を表示します</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">通知には、送信者と最初の単語を表示します</string>
     <string name="pref_led_color">LED色</string>
     <string name="pref_sound">通知音</string>
@@ -426,10 +430,15 @@
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">デフォルトの画像を使う</string>
     <string name="pref_background_btn_gallery">ギャラリーから選ぶ</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">DeltaChatフォルダに自動で移動する</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">一般的なメールを表示する</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">いいえ、チャットのみ</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">許可されたユーザーのみ</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">全部</string>
     <string name="pref_experimental_features">実験的な機能</string>
     <string name="pref_on_demand_location_streaming">オンデマンドの位置情報配信</string>
@@ -459,6 +468,7 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">古いメッセージの削除</string>
     <string name="autodel_device_title">端末からメッセージを削除する</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">サーバーからメッセージを削除する</string>
     <string name="autodel_confirm">分かりました。メッセージを削除していいです。</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -603,5 +613,4 @@
     <string name="a11y_delivery_status_read">送信状態：既読</string>
     <string name="a11y_delivery_status_invalid">不明な送信状態</string>
     <string name="a11y_disappearing_messages_activated">消えるメッセージを有効にしました。</string>
-
     </resources>
