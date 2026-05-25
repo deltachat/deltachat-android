@@ -129,7 +129,7 @@
                 android:visibility="gone"
                 tools:visibility="visible"
                 app:constraint_referenced_ids="inbox, imap_login, imap_server, imap_port, imap_security_label, imap_security, outbox_view_spacer_top,
-            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, cert_check_label, cert_check, view_log_button" />
+            outbox, smtp_login, smtp_password, smtp_server, smtp_port, smtp_security_label, smtp_security, cert_check_label, cert_check, view_log_button, enforce_e2ee_switch" />
 
             <ImageView
                 android:id="@+id/advanced_icon"
@@ -362,6 +362,17 @@
                 app:layout_constraintStart_toStartOf="@id/guideline_root_start"
                 app:layout_constraintTop_toBottomOf="@id/cert_check_label" />
 
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/enforce_e2ee_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:text="@string/enforce_e2ee"
+                app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
+                app:layout_constraintStart_toStartOf="@id/guideline_root_start"
+                app:layout_constraintTop_toBottomOf="@id/cert_check" />
+
             <TextView
                 android:id="@+id/view_log_button"
                 android:layout_width="0dp"
@@ -375,7 +386,7 @@
                 android:paddingBottom="32dp"
                 app:layout_constraintEnd_toEndOf="@id/guideline_root_end"
                 app:layout_constraintStart_toStartOf="@id/guideline_root_start"
-                app:layout_constraintTop_toBottomOf="@id/cert_check" />
+                app:layout_constraintTop_toBottomOf="@id/enforce_e2ee_switch" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
