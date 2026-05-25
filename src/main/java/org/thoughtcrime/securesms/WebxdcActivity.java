@@ -34,7 +34,6 @@ import androidx.core.graphics.drawable.IconCompat;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.WebxdcMessageInfo;
-
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
