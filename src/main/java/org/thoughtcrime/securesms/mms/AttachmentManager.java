@@ -63,7 +63,6 @@ import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.geolocation.ActiveLocationChats;
 import org.thoughtcrime.securesms.geolocation.LocationStreamingService;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -499,7 +498,6 @@ public class AttachmentManager {
       }
       // Stale — service is dead but chat layer still thinks it's sharing.
       // Clean up this chat and fall through to the fresh start flow.
-      ActiveLocationChats.remove(appContext, chatId);
       DcHelper.getContext(appContext).sendLocationsToChat(chatId, 0);
     }
 

@@ -17,13 +17,15 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.ServiceCompat;
 import androidx.core.content.ContextCompat;
+import chat.delta.rpc.RpcException;
+import com.b44t.messenger.DcAccounts;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 
 public class LocationStreamingService extends Service {
 
-  private static final String TAG = "LocationStreamingService";
+  private static final String TAG = "LocationStreamingSvc";
   private static final String ACTION_STOP = "org.thoughtcrime.securesms.geolocation.STOP_STREAMING";
   private static final int NOTIFICATION_ID = 8801;
   private static final String CHANNEL_ID = "location_streaming";
@@ -37,7 +39,6 @@ public class LocationStreamingService extends Service {
 
   /** Register a chat for location updates, then ensure the service is running. */
   public static void startSharing(Context context, int chatId, int durationSeconds) {
-    ActiveLocationChats.add(context, chatId);
     DcHelper.getContext(context).sendLocationsToChat(chatId, durationSeconds);
     ContextCompat.startForegroundService(
         context, new Intent(context, LocationStreamingService.class));
@@ -45,27 +46,35 @@ public class LocationStreamingService extends Service {
 
   /** Unregister a chat. If no chats remain, stop the service. */
   public static void stopSharing(Context context, int chatId) {
-    ActiveLocationChats.remove(context, chatId);
     DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
-    if (!DcHelper.getContext(context).isSendingLocationsToChat(0)) {
+    if (!isAnySharingActive(context)) {
       context.stopService(new Intent(context, LocationStreamingService.class));
     }
   }
 
   public static void ensureRunning(Context context) {
     if (!hasLocationPermission(context)) {
-      for (int chatId : ActiveLocationChats.getAllIds(context)) {
-        DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
-      }
-      ActiveLocationChats.clear(context);
+      stopAllSharing(context);
       return;
     }
-    ContextCompat.startForegroundService(
-        context, new Intent(context, LocationStreamingService.class));
+    if (isAnySharingActive(context)) {
+      ContextCompat.startForegroundService(
+          context, new Intent(context, LocationStreamingService.class));
+    }
   }
 
   public static boolean isRunning() {
     return running;
+  }
+
+  private static boolean isAnySharingActive(Context context) {
+    DcAccounts accounts = DcHelper.getAccounts(context);
+    for (int accountId : accounts.getAll()) {
+      if (accounts.getAccount(accountId).isSendingLocationsToChat(0)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   // lifecycle
@@ -86,7 +95,7 @@ public class LocationStreamingService extends Service {
   @Override
   public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
     if (intent != null && ACTION_STOP.equals(intent.getAction())) {
-      stopAllSharing();
+      stopAllSharing(this);
       stopSelf();
       return START_NOT_STICKY;
     }
@@ -100,11 +109,12 @@ public class LocationStreamingService extends Service {
     return START_STICKY;
   }
 
-  private void stopAllSharing() {
-    for (int chatId : ActiveLocationChats.getAllIds(this)) {
-      DcHelper.getContext(this).sendLocationsToChat(chatId, 0);
+  private static void stopAllSharing(Context context) {
+    try {
+      DcHelper.getRpc(context).stopSendingLocations();
+    } catch (RpcException e) {
+      Log.e(TAG, "Failed to stop sending locations", e);
     }
-    ActiveLocationChats.clear(this);
   }
 
   @Nullable
@@ -150,16 +160,21 @@ public class LocationStreamingService extends Service {
   private void publishAndWrite(Location location) {
     LocationData.getInstance().post(location);
 
-    boolean keepGoing =
-        DcHelper.getContext(this)
-            .setLocation(
-                (float) location.getLatitude(),
-                (float) location.getLongitude(),
-                location.getAccuracy());
+    boolean keepGoing;
+    try {
+      keepGoing =
+          DcHelper.getRpc(this)
+              .setLocation(
+                  (float) location.getLatitude(),
+                  (float) location.getLongitude(),
+                  location.getAccuracy());
+    } catch (RpcException e) {
+      Log.e(TAG, "Failed to set location", e);
+      return;
+    }
     Log.d(TAG, "keepGoing: " + keepGoing);
 
     if (!keepGoing) {
-      stopAllSharing();
       stopSelf();
     }
   }
