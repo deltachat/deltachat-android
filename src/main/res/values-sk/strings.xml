@@ -56,7 +56,9 @@
     <string name="media">Médiá</string>
     <string name="apps_and_media">Aplikácie a médiá</string>
     <string name="profile">Účet</string>
+    <!-- deprecated -->
     <string name="all_profiles">Všetky účty</string>
+    <!-- deprecated -->
     <string name="current_profile">Aktuálny účet</string>
     <string name="main_menu">Hlavné menu</string>
     <string name="start_chat">Začať konverzáciu</string>
@@ -76,6 +78,7 @@
     <string name="load_remote_content_ask">Na sledovanie vás možno použiť obrázky nadiaľku.\n\nToto nastavenie tiež umožňuje načítať písma a ďalší obsah. Aj keď je vypnutá, stále sa vám môžu zobrazovať vložené alebo uložené obrázky.\n\nNačítať vzdialené obrázky?</string>
     <string name="always">Vždy</string>
     <string name="once">Raz</string>
+    <!-- deprecated -->
     <string name="show_warning">Zobraziť varovanie</string>
     <string name="not_now">Teraz nie</string>
     <string name="never">Nikdy</string>
@@ -199,6 +202,7 @@
     <string name="camera">Fotoaparát</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Zachytiť</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Prepnúť fotoaparát</string>
     <string name="toggle_fullscreen">Prepnúť režim zobrazenia na celú obrazovku</string>
     <string name="location">Poloha</string>
@@ -353,12 +357,13 @@
     <string name="mute_for_seven_days">Stíšiť na 7 dní</string>
     <string name="mute_forever">Stlmiť navždy</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">po dobu 5 minút</string>
+
     <string name="share_location_for_30_minutes">po dobu 30 minút</string>
     <string name="share_location_for_one_hour">po dobu 1 hodiny</string>
     <string name="share_location_for_two_hours">po dobu 2 hodín</string>
     <string name="share_location_for_six_hours">po dobu 6 hodín</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Odoslať nasledujúci súbor %s používateľovi?</item>
         <item quantity="few">Odoslať nasledujúce %d súbory %s používateľovi?</item>
@@ -381,6 +386,7 @@
         <item quantity="many">Odstrániť %d správ zo všetkých vašich zariadení?</item>
         <item quantity="other">Odstrániť %d správ zo všetkých vašich zariadení?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Preposielať správy na %1$s?</string>
     <string name="ask_forward_multiple">Preposielať správy do %1$d konverzácií?</string>
     <string name="ask_export_attachment">Exportovať prílohu? Exportovanie príloh umožní prístup k nim všetkým ďalším aplikáciám na vašom zariadení.\n\nChcete pokračovať?</string>
@@ -650,6 +656,7 @@
     <string name="pref_notifications_priority">Priorita</string>
     <string name="pref_notifications_explain">Povoliť systémové upozornenia na nové správy</string>
     <string name="pref_show_notification_content">Zobraziť obsah správy v upozornení</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">V oznámeniach sa zobrazuje odosielateľ a prvé slová správy</string>
     <string name="pref_led_color">Farba LED</string>
     <string name="pref_sound">Zvuk</string>
@@ -689,12 +696,19 @@
     <string name="pref_background">Pozadie</string>
     <string name="pref_background_btn_default">Použiť predvolený obrázok</string>
     <string name="pref_background_btn_gallery">Vyberte z galérie</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Ak túto možnosť zakážete, uistite sa, že váš server a ostatní klienti sú zodpovedajúcim spôsobom nakonfigurovaní.\n\nV opačnom prípade nemusí fungovať vôbec.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Automaticky presúvať do priečinka DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Prijímať iba z priečinka DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Zobraziť klasické e-maily</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Nie, iba konverzácie</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Pre prijaté kontakty</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Všetky</string>
     <string name="pref_experimental_features">Experimentálne vlastnosti</string>
     <string name="pref_on_demand_location_streaming">Vysielanie polohy na požiadanie</string>
@@ -740,12 +754,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Odstraňovať staré správy</string>
     <string name="autodel_device_title">Odstráňte správy zo zariadenia</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Odstraňovať správy zo servera</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Chcete odstrániť %1$d správy a všetky novo načítané správy %2$s v budúcnosti?\n\n• Zahŕňa to všetky médiá\n\n• Správy budú odstránené bez ohľadu na to, či boli alebo neboli videné\n\n• „Uložené správy \"bude preskočené z lokálneho mazania</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Chcete odstrániť %1$d správy a všetky novo načítané správy %2$s v budúcnosti?\n\n⚠️ Zahŕňa to e-maily, médiá a uložené správy vo všetkých priečinkoch servera\n\n⚠️ Túto funkciu nepoužívajte, ak chcete uchovanie údajov na serveri\n\n⚠️ Túto funkciu nepoužívajte, ak okrem Delta Chatu používate aj iných e-mailových klientov</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Patria sem e-maily, médiá a „Uložené správy“ vo všetkých priečinkoch servera. Túto funkciu nepoužívajte, ak chcete uchovať údaje na serveri alebo ak okrem Delta Chatu používate aj iných e-mailových klientov.</string>
     <string name="autodel_confirm">Rozumiem, vymazať všetky tieto správy</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -821,7 +836,7 @@
     <string name="learn_more">Zistiť viac</string>
 
     <string name="devicemsg_self_deleted">Odstránili ste konverzáciu \"Uložené správy\".\n\nℹ️ Aby ste využili funkciu \"Uložené správy\" znova, vytvorte novú konverzáciu so sebou.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Úložisko vašeho poskytovateľa čoskoro prekročí limit, už%1$s%% sú využité.\n\n Je možné, že nebudete môcť prijímať správy, ak bude úložisko 100 %% využité.\n\n👉 Prosím skontrolujte, či môžete vo webovom rozhraní poskytovateľa vymazať staré údaje, a zvážte aktiváciu „Nastavenia / Odstrániť Staré Správy“. Aktuálne využitie úložiska si môžete kedykoľvek skontrolovať v časti „Nastavenia / Pripojenie“. </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">Zdá sa, že dátum alebo čas vášho zariadenia je nepresný (%1$s).\n\nUpravte si hodiny ⏰🔧, aby ste zaistili správne prijímanie správ. </string>
@@ -963,7 +978,6 @@
     <string name="a11y_message_context_menu_btn_label">Akcie správ</string>
     <string name="a11y_background_preview_label">Ukážka na pozadí</string>
     <string name="a11y_disappearing_messages_activated">Miznúce správy boli aktivované</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Vypnúť zdieľanie polohy</string>
     <string name="a11y_voice_message_hint_ios">Po zaznamenaní nahrávky ju dvojitým klepnutím odošlete. Nahrávku zahodíte potiahnutím dvoma prstami vľavo-vpravo.</string>

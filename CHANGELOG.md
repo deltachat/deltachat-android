@@ -4,12 +4,30 @@
 
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
+* Calls can be answered by tapping messages
+* Notify the user when they try to make a call while the device is offline
+* Channels are no longer experimental and are available by default
 * Display a permanent notification when doing location streaming and get rid of dangerous "Access Location in Background" permission
+* Autoplay all voice messages in a chat
 * Allow to share location for 24 hours
 * Allow mini-apps to play audio without user interaction
+* Allow to paste and open invitation links from search
 * Mark chats as unread (long tap a chat and select the corresponding option from the three-dot-menu)
+* Add "Mark all as read" option to profile menu in the profile switcher
 * Fix process of upgrading from a very old version of the app
 * Show more recent added stickers at the top of the sticker picker
+* Allow to open links in messages via actions in TalkBack menu
+* Allow to open map if user clicks "Location streaming enabled" system message
+* Allow to disable incoming calls notifications
+* Add an option to process unencrypted messages; by default, only encrypted messages can be sent or received
+* Fix: do not accidentally set draft in chats that don't allow sending messages
+* Fix swipe navigation between tabs in RTL languages
+* Remove legacy option
+* Don't show non-delivery-notfications in broadcast channels
+* Resend the last 10 messages to new broadcast member
+* Enable PQC (Post-Quantum Cryptography) decrypting support for incoming messages
+* Fix: avoid invalid empty "~" notifications when some peer is streaming location
+* Update to core 2.50.0
 
 ## v2.49.0
 2026-04

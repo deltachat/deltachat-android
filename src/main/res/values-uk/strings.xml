@@ -59,7 +59,9 @@
     <string name="media">Медіа</string>
     <string name="apps_and_media">Додатки й медіа</string>
     <string name="profile">Профіль</string>
+    <!-- deprecated -->
     <string name="all_profiles">Усі профілі</string>
+    <!-- deprecated -->
     <string name="current_profile">Поточний Профіль</string>
     <string name="main_menu">Головне меню</string>
     <string name="start_chat">Почати розмову</string>
@@ -82,6 +84,7 @@
     <string name="always">Завжди</string>
     <string name="always_load_remote_images">Завжди завантажувати віддалені зображення</string>
     <string name="once">Один раз</string>
+    <!-- deprecated -->
     <string name="show_warning">Показати попередження</string>
     <string name="not_now">Не зараз</string>
     <string name="never">Ніколи</string>
@@ -218,6 +221,7 @@
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Захопити</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Перемкнути камеру</string>
     <string name="toggle_fullscreen">Перейти в повноекранний режим</string>
     <string name="location">Розташування</string>
@@ -397,12 +401,13 @@
     <string name="mute_for_seven_days">Вимкнути сповіщення на 7 днів</string>
     <string name="mute_forever">Вимкнути сповіщення назавжди</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">на 5 хвилин</string>
+
     <string name="share_location_for_30_minutes">на 30 хвилин</string>
     <string name="share_location_for_one_hour">на 1 годину</string>
     <string name="share_location_for_two_hours">на 2 години</string>
     <string name="share_location_for_six_hours">на 6 годин</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Надіслати цей файл → %s?</item>
         <item quantity="few">Надіслати ці %d файли → %s?</item>
@@ -460,6 +465,7 @@
         <item quantity="many">Видалити %d повідомлень?</item>
         <item quantity="other">Видалити %d повідомлень?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Переслати повідомлення %1$s?</string>
     <string name="ask_forward_multiple">Переслати повідомлення в %1$d?</string>
     <string name="ask_export_attachment">Якщо експортувати вкладені файли, інші програми на вашому пристрої отримають до них доступ.\n\nПродовжити?</string>
@@ -786,6 +792,7 @@
     <string name="pref_notifications_priority">Пріоритет</string>
     <string name="pref_notifications_explain">Увімкнути системні сповіщення для нових повідомлень</string>
     <string name="pref_show_notification_content">Відображати вміст повідомлення у сповіщенні</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Відображає відправника та перші слова повідомлення в сповіщеннях</string>
     <string name="pref_led_color">Колір світлодіоду</string>
     <string name="pref_sound">Звук</string>
@@ -826,16 +833,23 @@
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Використовувати тло за замовчуванням</string>
     <string name="pref_background_btn_gallery">Вибрати з галереї</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Якщо ви змінюєте цей параметр, переконайтеся, що Ваш сервер та інші Ваші клієнти налаштовані відповідним чином.\n\nІнакше щось може взагалі не працювати.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Режим роботи з декількома пристроями</string>
     <string name="pref_multidevice_explain">Синхронізуйте свої повідомлення з іншими пристроями. Автоматично вмикається після додавання іншими пристроями</string>
     <string name="pref_multidevice_change_warn">Режим декількох пристроїв має бути увімкнений, якщо ви використовуєте один і той самий профіль на декількох пристроях. Вимикайте цей параметр, лише якщо ви видалили цей профіль з усіх інших пристроїв.\n\nВимкнення режиму декількох пристроїв під час використання профілю на декількох пристроях призведе до пропусків повідомлення та інших проблем.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Автоматично пересувати до папки DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Збирати лише з теки DeltaChat.</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Показувати звичайну пошту</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Ні, лише чати</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Для прийнятих контактів</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Всі</string>
     <string name="pref_experimental_features">Експериментальні функції</string>
     <string name="pref_experimental_features_explain">Ці функції можуть бути нестабільними і можуть бути змінені або видалені</string>
@@ -890,14 +904,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Видалити старі повідомлення</string>
     <string name="autodel_device_title">Видалити повідомлення з пристрою</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Видалити повідомлення з сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Ви хочете видалити %1$d повідомлень зараз і всі нові повідомлення \"%2$s\" у майбутньому?\n\n- Це включає всі медіа\n\n- Повідомлення буде видалено незалежно від того, чи були вони переглянуті чи ні\n\n- \"Збережені повідомлення\" буде пропущено при локальному видаленні</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Ви хочете видалити %1$d повідмолень зараз і всі нові повідомлення \"%2$s\" в майбутньому?\n\n⚠️ Сюди входять електронні листи, медіа та \"Збережені повідомлення\" у всіх теках сервера\n\n⚠️ Не використовуйте цю функцію, якщо ви хочете зберегти дані на сервері або якщо ви також використовуєте класичні поштові клієнти</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Сюди входять електронні листи, медіафайли та \"Збережені повідомлення\" у всіх папках сервера. Не використовуйте цю функцію, якщо ви хочете зберігати дані на сервері або якщо ви використовуєте класичні поштові клієнти</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Увімкнути одномоментне видалення</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Якщо ви ввімкнули одномоментне видалення, ви не зможете використовувати кілька пристроїв у цьому профілі.</string>
     <string name="autodel_confirm">Я розумію, видалити всі ці повідомлення</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -991,7 +1008,7 @@
     <string name="learn_more">Дізнатися більше</string>
 
     <string name="devicemsg_self_deleted">Ви видалили чат \"Збережені повідомлення\".\n\nℹ️ Аби використовувати функцію \"Збережені повідомлення\" знову, створіть новий чат самі із собою.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Сховище вашого провайдера електронної пошти майже заповнено, уже використовується %1$s%%.\n\nМожливо, Ви не зможете отримувати повідомлення, коли сховище буде заповнене.\n\n👉 Перевірте, чи можна видалити старі дані у веб-інтерфейсі провайдера та ввімкніть \"Налаштування / Чати / Видалити старі повідомлення\". Ви можете будь-коли перевірити своє поточне використання сховища в \"Налаштування / Зʼєднання\". </string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Дата й час на вашому пристрої видаються неточними (%1$s).\n\nНалаштуйте свій годинник ⏰🔧 для правильного отримання повідомлень.</string>
@@ -1154,7 +1171,6 @@
     <string name="a11y_message_context_menu_btn_label">Дії з повідомленням</string>
     <string name="a11y_background_preview_label">Попередній перегляд фону</string>
     <string name="a11y_disappearing_messages_activated">Зникнення повідомлень увімкнено</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Припинити надсилати геодані</string>
     <string name="a11y_voice_message_hint_ios">Після запису двічі торкніться для відправки. Щоб скинути запис, проведіть двома пальцями.</string>

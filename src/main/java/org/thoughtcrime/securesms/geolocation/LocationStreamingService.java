@@ -188,9 +188,8 @@ public class LocationStreamingService extends Service {
       NotificationChannel channel =
           new NotificationChannel(
               CHANNEL_ID,
-              getString(R.string.location_streaming_notification_title),
+              getString(R.string.pref_on_demand_location_streaming),
               NotificationManager.IMPORTANCE_LOW);
-      channel.setDescription(getString(R.string.location_streaming_channel_desc));
       channel.setShowBadge(false);
       NotificationManager nm = getSystemService(NotificationManager.class);
       if (nm != null) nm.createNotificationChannel(channel);
@@ -209,7 +208,7 @@ public class LocationStreamingService extends Service {
         PendingIntent.getService(this, 1, stopIntent, PendingIntent.FLAG_IMMUTABLE);
 
     return new NotificationCompat.Builder(this, CHANNEL_ID)
-        .setContentTitle(getString(R.string.location_streaming_notification_title))
+        .setContentTitle(getString(R.string.pref_on_demand_location_streaming))
         .setContentText(getString(R.string.location_streaming_notification_text))
         .setSmallIcon(R.drawable.ic_location_on_white_24dp)
         .setOngoing(true)

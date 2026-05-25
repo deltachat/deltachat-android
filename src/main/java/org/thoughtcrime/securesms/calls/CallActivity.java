@@ -6,11 +6,13 @@ import android.app.PictureInPictureParams;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.util.Rational;
 import android.view.View;
@@ -22,7 +24,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -54,6 +58,7 @@ public class CallActivity extends AppCompatActivity {
   private static final String TAG = "CallActivity";
   private static final int MIC_PERMISSION_REQUEST_CODE = 1001;
   private static final int CAMERA_PERMISSION_REQUEST_CODE = 1002;
+  private static final int CAMERA_MID_CALL_PERMISSION_REQUEST_CODE = 1003;
 
   public static final String ACTION_ANSWER_CALL = BuildConfig.APPLICATION_ID + ".ANSWER_CALL";
   public static final String ACTION_DECLINE_CALL = BuildConfig.APPLICATION_ID + ".DECLINE_CALL";
@@ -99,6 +104,7 @@ public class CallActivity extends AppCompatActivity {
   private boolean awaitingPermissionResult = false;
   private boolean pausedWhileAwaitingPermission = false;
   private boolean intentHandled = false;
+  private boolean doNotAutoFinish = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -227,6 +233,7 @@ public class CallActivity extends AppCompatActivity {
       Log.d(TAG, "Resuming existing call");
     } else if (!coordinator.isIncomingCall()) {
       Log.d(TAG, "Starting outgoing call");
+      coordinator.ensureServiceStarted();
       viewModel.startOutgoingCallWhenReady();
     }
   }
@@ -374,6 +381,18 @@ public class CallActivity extends AppCompatActivity {
     videoButton.setOnClickListener(
         v -> {
           if (viewModel != null) {
+            Boolean currentEnabled = viewModel.getVideoEnabled().getValue();
+            boolean needToEnable = currentEnabled == null || !currentEnabled;
+
+            if (needToEnable && !hasCameraPermission()) {
+              awaitingPermissionResult = true;
+              ActivityCompat.requestPermissions(
+                  this,
+                  new String[] {Manifest.permission.CAMERA},
+                  CAMERA_MID_CALL_PERMISSION_REQUEST_CODE);
+              return;
+            }
+
             viewModel.toggleVideo();
           }
         });
@@ -634,7 +653,7 @@ public class CallActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper())
             .postDelayed(
                 () -> {
-                  if (!isFinishing()) {
+                  if (!isFinishing() && !doNotAutoFinish) {
                     finish();
                   }
                 },
@@ -643,7 +662,9 @@ public class CallActivity extends AppCompatActivity {
 
       case ENDED:
         statusText.setText(R.string.call_ended);
-        finish();
+        if (!doNotAutoFinish) {
+          finish();
+        }
         break;
 
       case ERROR:
@@ -656,7 +677,7 @@ public class CallActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper())
             .postDelayed(
                 () -> {
-                  if (!isFinishing()) {
+                  if (!isFinishing() && !doNotAutoFinish) {
                     finish();
                   }
                 },
@@ -842,16 +863,28 @@ public class CallActivity extends AppCompatActivity {
   }
 
   private void handleMicPermissionDenied() {
-    Toast.makeText(this, R.string.call_requires_mic_permission, Toast.LENGTH_LONG).show();
-
     CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
-    if (coordinator.hasActiveCall()
-        && coordinator.isIncomingCall()
-        && !coordinator.hasOngoingCall()) {
-      coordinator.declineCall();
+
+    if (coordinator.hasActiveCall() && !coordinator.hasOngoingCall()) {
+      if (coordinator.isIncomingCall()) {
+        coordinator.declineCall();
+      } else {
+        coordinator.hangUp();
+      }
     }
 
-    finish();
+    if (!shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO)) {
+      doNotAutoFinish = true;
+      showPermissionSettingsDialog(
+          getString(R.string.call_requires_mic_permission),
+          () -> {
+            doNotAutoFinish = false;
+            if (!isFinishing()) finish();
+          });
+    } else {
+      Toast.makeText(this, R.string.call_requires_mic_permission, Toast.LENGTH_LONG).show();
+      finish();
+    }
   }
 
   private void proceedAfterPermissions() {
@@ -878,6 +911,22 @@ public class CallActivity extends AppCompatActivity {
 
     CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
 
+    if (requestCode == CAMERA_MID_CALL_PERMISSION_REQUEST_CODE) {
+      boolean cameraGranted =
+          grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+
+      if (cameraGranted && viewModel != null) {
+        viewModel.toggleVideo();
+      } else {
+        if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+          showPermissionSettingsDialog(getString(R.string.call_requires_camera_permission), null);
+        } else {
+          Toast.makeText(this, R.string.call_requires_camera_permission, Toast.LENGTH_SHORT).show();
+        }
+      }
+      return;
+    }
+
     if (requestCode == MIC_PERMISSION_REQUEST_CODE) {
       boolean micGranted =
           grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
@@ -893,14 +942,50 @@ public class CallActivity extends AppCompatActivity {
 
       if (!cameraGranted) {
         Log.w(TAG, "Camera permission denied, switching to audio-only");
-        Toast.makeText(
-                this, "Starting audio-only call (camera permission denied)", Toast.LENGTH_SHORT)
-            .show();
+        if (!shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+          Toast.makeText(
+                  this,
+                  "Camera permission permanently denied. Enable in app settings for video calls.",
+                  Toast.LENGTH_LONG)
+              .show();
+        } else {
+          Toast.makeText(
+                  this, "Starting audio-only call (camera permission denied)", Toast.LENGTH_SHORT)
+              .show();
+        }
         coordinator.setStartsWithVideo(false);
       }
     }
 
     proceedAfterPermissions();
+  }
+
+  private void showPermissionSettingsDialog(String message, @Nullable Runnable onDismissAction) {
+    if (isFinishing() || isDestroyed()) {
+      if (onDismissAction != null) onDismissAction.run();
+      return;
+    }
+
+    new AlertDialog.Builder(this)
+        .setTitle("Permission Required")
+        .setMessage(message)
+        .setPositiveButton(
+            "Open Settings",
+            (dialog, which) -> {
+              Intent intent =
+                  new Intent(
+                      Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                      Uri.fromParts("package", getPackageName(), null));
+              startActivity(intent);
+            })
+        .setNegativeButton(android.R.string.cancel, null)
+        .setOnDismissListener(
+            dialog -> {
+              if (onDismissAction != null) {
+                onDismissAction.run();
+              }
+            })
+        .show();
   }
 
   // Picture-in-Picture

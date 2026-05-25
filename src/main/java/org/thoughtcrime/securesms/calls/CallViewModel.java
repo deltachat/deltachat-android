@@ -46,8 +46,8 @@ public class CallViewModel extends AndroidViewModel {
   private final MediatorLiveData<CallState> callState;
 
   // Observer References for one-time observe
-  private Observer<VideoTrack> answerCallObserver;
-  private Observer<VideoTrack> startOutgoingCallObserver;
+  private Observer<Boolean> answerCallObserver;
+  private Observer<Boolean> startOutgoingCallObserver;
 
   private final AtomicBoolean hasCallEnded = new AtomicBoolean(false);
 
@@ -211,25 +211,24 @@ public class CallViewModel extends AndroidViewModel {
     callCoordinator.startMediaCapture();
 
     // Create one-time observer
-    LiveData<VideoTrack> localTrack = callCoordinator.getLocalVideoTrack();
+    LiveData<Boolean> mediaReady = callCoordinator.getMediaCaptureReady();
 
     answerCallObserver =
-        new Observer<VideoTrack>() {
+        new Observer<Boolean>() {
           @Override
-          public void onChanged(VideoTrack videoTrack) {
-            if (videoTrack != null) {
-              // Media is ready, remove observer
-              localTrack.removeObserver(this);
+          public void onChanged(Boolean ready) {
+            if (Boolean.TRUE.equals(ready)) {
+              mediaReady.removeObserver(this);
               answerCallObserver = null;
 
-              Log.d(TAG, "Local video ready, answering call (WebRTC)");
+              Log.d(TAG, "Media capture ready, answering call (WebRTC)");
 
               callCoordinator.answerWebRTC();
             }
           }
         };
 
-    localTrack.observeForever(answerCallObserver);
+    mediaReady.observeForever(answerCallObserver);
   }
 
   /** Start outgoing call with media capture Called by Activity for outgoing calls */
@@ -244,30 +243,28 @@ public class CallViewModel extends AndroidViewModel {
     callCoordinator.startMediaCapture();
 
     // Create one-time observer
-    LiveData<VideoTrack> localTrack = callCoordinator.getLocalVideoTrack();
-    VideoTrack currentValue = localTrack.getValue();
+    LiveData<Boolean> mediaReady = callCoordinator.getMediaCaptureReady();
 
-    if (currentValue != null) {
+    if (Boolean.TRUE.equals(mediaReady.getValue())) {
       Log.d(TAG, "Media already ready, starting call immediately");
       callCoordinator.startOutgoingCall();
     } else {
       startOutgoingCallObserver =
-          new Observer<VideoTrack>() {
+          new Observer<Boolean>() {
             @Override
-            public void onChanged(VideoTrack videoTrack) {
-              if (videoTrack != null) {
-                // Media is ready, remove observer
-                localTrack.removeObserver(this);
+            public void onChanged(Boolean ready) {
+              if (Boolean.TRUE.equals(ready)) {
+                mediaReady.removeObserver(this);
                 startOutgoingCallObserver = null;
 
-                Log.d(TAG, "Local video ready, starting outgoing call");
+                Log.d(TAG, "Media capture ready, starting outgoing call");
 
                 callCoordinator.startOutgoingCall();
               }
             }
           };
 
-      localTrack.observeForever(startOutgoingCallObserver);
+      mediaReady.observeForever(startOutgoingCallObserver);
     }
   }
 
@@ -460,12 +457,12 @@ public class CallViewModel extends AndroidViewModel {
     Log.d(TAG, "CallViewModel cleared");
 
     if (answerCallObserver != null) {
-      callCoordinator.getLocalVideoTrack().removeObserver(answerCallObserver);
+      callCoordinator.getMediaCaptureReady().removeObserver(answerCallObserver);
       answerCallObserver = null;
     }
 
     if (startOutgoingCallObserver != null) {
-      callCoordinator.getLocalVideoTrack().removeObserver(startOutgoingCallObserver);
+      callCoordinator.getMediaCaptureReady().removeObserver(startOutgoingCallObserver);
       startOutgoingCallObserver = null;
     }
 

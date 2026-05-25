@@ -54,7 +54,9 @@
     <string name="media">Aŭdovidaĵoj</string>
     <string name="apps_and_media">Apoj kaj vidaĵoj</string>
     <string name="profile">Profilo</string>
+    <!-- deprecated -->
     <string name="all_profiles">Ĉiuj profiloj</string>
+    <!-- deprecated -->
     <string name="current_profile">Aktuala profilo</string>
     <string name="main_menu">Ĉefa menuo</string>
     <string name="start_chat">Komenci Babiladon</string>
@@ -75,6 +77,7 @@
     <string name="always">Ĉiam</string>
     <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
+    <!-- deprecated -->
     <string name="show_warning">Afiŝu averton</string>
     <string name="not_now">Ne nun</string>
     <string name="never">Neniam</string>
@@ -173,6 +176,7 @@
     <string name="camera">Fotilo</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kapti</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Elektu alian kameraon</string>
     <string name="toggle_fullscreen">Baskulu el/al la plena ekrano</string>
     <string name="location">Loko</string>
@@ -285,14 +289,16 @@
     <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
     <string name="mute_forever">Silentigi por ĉiam</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">por 5 minutoj</string>
+
     <string name="share_location_for_30_minutes">por 30 minutoj</string>
     <string name="share_location_for_one_hour">por 1 horo</string>
     <string name="share_location_for_two_hours">por 2 horoj</string>
     <string name="share_location_for_six_hours">por 6 horoj</string>
-
     <string name="file_saved_to">Dosiero konservita kiel \"%1$s\".</string>
 
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
@@ -425,6 +431,7 @@
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Ĉiuj</string>
     <!-- notifications -->
     <string name="notify_reply_button">Respondi</string>

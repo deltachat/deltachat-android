@@ -101,6 +101,7 @@ import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.audioplay.AudioView;
+import org.thoughtcrime.securesms.components.audioplay.ChatAudioQueueProvider;
 import org.thoughtcrime.securesms.components.emoji.MediaKeyboard;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -197,7 +198,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private final boolean isSecureText = true;
   private boolean isDefaultSms = true;
   private boolean isSecurityInitialized = false;
-  private boolean successfulForwardingAttempt = false;
   private boolean isEditing = false;
   private boolean switchedProfile = false;
 
@@ -221,7 +221,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeViews();
     initializeResources();
 
+    int accountId = DcHelper.getAccounts(this).getSelectedAccount().getAccountId();
     playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
+    playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId, accountId));
     initializeMediaController();
 
     initializeSecurity(false, isDefaultSms)
@@ -411,6 +413,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       mediaController = null;
       playbackViewModel.setMediaController(null);
     }
+    playbackViewModel.setQueueProvider(null);
     super.onDestroy();
   }
 
@@ -630,12 +633,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return true;
     } else if (itemId == R.id.menu_start_audio_call) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        CallUtil.startAudioCall(context, chatId);
+        CallUtil.startAudioCall(this, chatId);
       }
       return true;
     } else if (itemId == R.id.menu_start_video_call) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        CallUtil.startVideoCall(context, chatId);
+        CallUtil.startVideoCall(this, chatId);
       }
       return true;
     } else if (itemId == R.id.menu_all_media) {
@@ -670,8 +673,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   public void setDraftText(String txt) {
-    composeText.setText(txt);
-    composeText.setSelection(composeText.getText().length());
+    try {
+      if (rpc.canSend(rpc.getSelectedAccountId(), chatId)) {
+        composeText.setText(txt);
+        composeText.setSelection(composeText.getText().length());
+      }
+    } catch (RpcException e) {
+      Log.e(TAG, "Rpc error", e);
+    }
   }
 
   public void hideSoftKeyboard() {
@@ -834,20 +843,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (dcChat.isSelfTalk()) {
       SendRelayedMessageUtil.immediatelyRelay(this, chatId);
     } else {
-      String name = dcChat.getName();
-      if (!dcChat.isMultiUser()) {
-        int[] contactIds = dcContext.getChatContacts(chatId);
-        if (contactIds.length == 1 || contactIds.length == 2) {
-          name = dcContext.getContact(contactIds[0]).getDisplayName();
-        }
-      }
+      int messageIds[] = ShareUtil.getForwardedMessageIDs(this);
+      int messageCount = messageIds == null ? 0 : messageIds.length;
       new AlertDialog.Builder(this)
-          .setMessage(getString(R.string.ask_forward, name))
+          .setMessage(
+              getResources()
+                  .getQuantityString(
+                      R.plurals.ask_forward_messages, messageCount, messageCount, dcChat.getName()))
           .setPositiveButton(
-              R.string.ok,
+              R.string.forward,
               (dialogInterface, i) -> {
                 SendRelayedMessageUtil.immediatelyRelay(this, chatId);
-                successfulForwardingAttempt = true;
               })
           .setNegativeButton(R.string.cancel, (dialogInterface, i) -> finish())
           .setOnCancelListener(dialog -> finish())
@@ -1112,6 +1118,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (chatId == DcChat.DC_CHAT_NO_CHAT)
       throw new IllegalStateException("can't display a conversation for no chat.");
     dcChat = DcHelper.getContext(context).getChat(chatId);
+    attachmentTypeSelector = null;
     recipient = new Recipient(this, dcChat);
     glideRequests = GlideApp.with(this);
 
@@ -1256,6 +1263,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     DcContext dcContext = DcHelper.getContext(context);
     final int currentChatId = dcChat.getId();
+    final boolean canSend = dcChat.canSend();
     Util.runOnAnyBackgroundThread(
         () -> {
           DcMsg msg = null;
@@ -1374,7 +1382,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               }
             }
           } else {
-            dcContext.setDraft(currentChatId, msg);
+            // set or clear draft if user can't send in chat since they can't delete it otherwise
+            dcContext.setDraft(currentChatId, canSend ? msg : null);
           }
           future.set(currentChatId);
         });

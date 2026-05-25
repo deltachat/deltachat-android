@@ -53,7 +53,9 @@
     <string name="media">Medija</string>
     <string name="apps_and_media">Programėlės ir medija</string>
     <string name="profile">Profilis</string>
+    <!-- deprecated -->
     <string name="all_profiles">Visi profiliai</string>
+    <!-- deprecated -->
     <string name="current_profile">Dabartinis profilis</string>
     <string name="main_menu">Pagrindinis meniu</string>
     <string name="start_chat">Pradėti pokalbį</string>
@@ -68,6 +70,7 @@
     <string name="always">Visada</string>
     <string name="always_load_remote_images">Visada įkelti nuotolinius paveikslus</string>
     <string name="once">Vieną kartą</string>
+    <!-- deprecated -->
     <string name="show_warning">Rodyti įspėjimą</string>
     <string name="not_now">Ne dabar</string>
     <string name="never">Niekada</string>
@@ -183,6 +186,7 @@
     <string name="documents">Dokumentai</string>
     <string name="contact">Adresatas</string>
     <string name="camera">Kamera</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Perjungti kamerą</string>
     <string name="toggle_fullscreen">Perjungti viso ekrano veikseną</string>
     <string name="location">Vieta</string>
@@ -344,12 +348,13 @@
     <string name="mute_for_seven_days">Išjungti 7 dienoms</string>
     <string name="mute_forever">Išjungti visam laikui</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 minutėms</string>
+
     <string name="share_location_for_30_minutes">30 minučių</string>
     <string name="share_location_for_one_hour">1 valandai</string>
     <string name="share_location_for_two_hours">2 valandoms</string>
     <string name="share_location_for_six_hours">6 valandoms</string>
-
     <string name="file_saved_to">Failas įrašytas į „%1$s“.</string>
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
@@ -399,6 +404,7 @@
         <item quantity="many">Ištrinti %d žinučių visuose jūsų įrenginiuose?</item>
         <item quantity="other">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Persiųsti žinutes %1$s?</string>
     <string name="ask_export_attachment">Eksportuoti priedą? Priedų eksportavimas leis bet kurioms kitoms programėlėms jūsų įrenginyje turėti prieigą prie šių priedų.\n\nTęsti?</string>
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
@@ -679,6 +685,7 @@
     <string name="pref_notifications_priority">Pirmenybė</string>
     <string name="pref_notifications_explain">Įjungti sistemos pranešimus apie naujas žinutes</string>
     <string name="pref_show_notification_content">Rodyti pranešime žinutės turinį</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Rodyti pranešimuose siuntėjo vardą ir pirmuosius žinutės žodžius</string>
     <string name="pref_led_color">Šviesos diodo spalva</string>
     <string name="pref_sound">Garsas</string>
@@ -718,14 +725,20 @@
     <string name="pref_background">Fonas</string>
     <string name="pref_background_btn_default">Naudoti numatytąjį paveikslą</string>
     <string name="pref_background_btn_gallery">Pasirinkti iš galerijos</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Jeigu išjungiate šį parametrą, įsitikinkite, kad jūsų serveris ir kiti klientai yra sukonfigūruoti atitinkamai.\n\nPriešingu atveju, tai gali iš viso neveikti.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Kelių įrenginių veiksena</string>
     <string name="pref_multidevice_explain">Sinchronizuoti jūsų žinutes su kitais įrenginiais. Automatiškai įjungta, kai pridėtas antrasis įrenginys</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Automatiniai perkėlimai į DeltaChat aplanką</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Rodyti klasikinius el. laiškus</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Ne, tik pokalbius</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Iš priimtų adresatų</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Iš visų</string>
     <string name="pref_experimental_features">Eksperimentinės ypatybės</string>
     <string name="pref_experimental_features_explain">Šios ypatybės gali būti nestabilios ir gali būti pakeistos ar pašalintos</string>
@@ -775,6 +788,7 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ištrinti senas žinutes</string>
     <string name="autodel_device_title">Ištrinti žinutes iš įrenginio</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Ištrinti žinutes iš serverio</string>
     <string name="autodel_confirm">Aš suprantu, ištrinti visas šias žinutes</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -976,7 +990,6 @@
     <string name="a11y_message_context_menu_btn_label">Veiksmai su žinute</string>
     <string name="a11y_background_preview_label">Fono peržiūra</string>
     <string name="a11y_disappearing_messages_activated">Išnykstančios žinutės aktyvuotos</string>
-
     <string name="a11y_connectivity_hint">Bakstelėkite du kartus norėdami pamatyti išsamesnę informaciją apie jungiamumą.</string>
     <string name="login_error_no_internet_connection">Nėra interneto ryšio, nepavyko prisijungti.</string>
     <string name="share_account_not_configured">Paskyra nėra sukonfigūruota.</string>

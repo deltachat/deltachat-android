@@ -24,6 +24,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Build;
 import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -36,6 +37,7 @@ import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.ViewCompat;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.CallInfo;
 import chat.delta.rpc.types.CallState;
@@ -44,6 +46,7 @@ import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import org.thoughtcrime.securesms.calls.CallCoordinator;
@@ -72,6 +75,7 @@ import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.reactions.ReactionsConversationView;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Linkifier;
+import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -118,6 +122,9 @@ public class ConversationItem extends BaseConversationItem {
   private Stub<VcardView> vcardViewStub;
   private Stub<CallItemView> callViewStub;
   private @Nullable EventListener eventListener;
+
+  // IDs of accessibility actions registered via ViewCompat.addAccessibilityAction
+  private final List<Integer> linkActionIds = new ArrayList<>();
 
   private int measureCalls;
 
@@ -423,6 +430,12 @@ public class ConversationItem extends BaseConversationItem {
     bodyText.setClickable(false);
     bodyText.setFocusable(false);
 
+    // Remove any link actions registered for the previous message binding
+    for (int id : linkActionIds) {
+      ViewCompat.removeAccessibilityAction(this, id);
+    }
+    linkActionIds.clear();
+
     String text = messageRecord.getText();
 
     if (messageRecord.getType() == DcMsg.DC_MSG_CALL || text.isEmpty()) {
@@ -434,6 +447,27 @@ public class ConversationItem extends BaseConversationItem {
       }
       bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);
+
+      // Register a TalkBack "Actions" entry for each link in the message
+      Spanned spanned = (Spanned) spannable;
+      final TextView tv = bodyText;
+      for (LongClickCopySpan span :
+          spanned.getSpans(0, spanned.length(), LongClickCopySpan.class)) {
+        int start = spanned.getSpanStart(span);
+        int end = spanned.getSpanEnd(span);
+        if (start >= 0 && end > start && end <= spanned.length()) {
+          String linkText = spanned.subSequence(start, end).toString();
+          String label = context.getString(R.string.open_link, linkText);
+          linkActionIds.add(
+              ViewCompat.addAccessibilityAction(
+                  this,
+                  label,
+                  (v, args) -> {
+                    span.onClick(tv);
+                    return true;
+                  }));
+        }
+      }
     }
 
     int downloadState = messageRecord.getDownloadState();
@@ -1057,7 +1091,18 @@ public class ConversationItem extends BaseConversationItem {
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
             int callId = messageRecord.getId();
             CallCoordinator coordinator = CallCoordinator.getInstance(context);
-            coordinator.showIncomingCallScreen(callId);
+
+            if (coordinator.hasActiveCall()) {
+              coordinator.showIncomingCallScreen(callId);
+            } else {
+              if (callInfo.sdpOffer == null) {
+                Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
+                return;
+              }
+              int accId = dcContext.getAccountId();
+              coordinator.handleIncomingCallFromConversation(
+                  accId, callId, callInfo.sdpOffer, callInfo.hasVideo);
+            }
           } else {
             if (callInfo.hasVideo) {
               CallUtil.startVideoCall(getContext(), chatId);

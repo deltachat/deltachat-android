@@ -61,7 +61,9 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Apps &amp; Media</string>
     <string name="profile">Profile</string>
+    <!-- deprecated -->
     <string name="all_profiles">All Profiles</string>
+    <!-- deprecated -->
     <string name="current_profile">Current Profile</string>
     <string name="main_menu">Main Menu</string>
     <string name="start_chat">Start Chat</string>
@@ -204,7 +206,10 @@
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capture</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Switch Camera</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Toggle Camera</string>
     <string name="toggle_fullscreen">Toggle Full Screen Mode</string>
     <string name="location">Location</string>
     <string name="locations">Locations</string>
@@ -406,6 +411,8 @@
     <string name="answer_call">Answer</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Decline</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">End Call</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Audio call</string>
     <!-- Used in call bubbles, summaries, notifications -->
@@ -429,7 +436,9 @@
     <string name="missed_call">Missed call</string>
     <string name="already_in_call">Already in a call</string>
     <string name="call_answered_elsewhere">Call answered on another device</string>
+    <string name="call_requires_camera_permission">Camera permission is required for video calls</string>
     <string name="call_requires_mic_permission">Microphone permission is required for calls</string>
+    <string name="call_requires_connection">Cannot start call. Make sure your device has an internet connection and try again.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Call with %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -448,6 +457,12 @@
         <item quantity="one">Delete %d message?</item>
         <item quantity="other">Delete %d messages?</item>
     </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Forward message to %2$s?</item>
+        <item quantity="other">Forward %1$d messages to %2$s?</item>
+    </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Forward messages to %1$s?</string>
     <string name="ask_forward_multiple">Forward messages to %1$d chats?</string>
     <string name="ask_export_attachment">Exporting attachments will allow other apps on your device to access them.\n\nContinue?</string>
@@ -621,6 +636,7 @@
     <string name="connectivity_connected">Connected</string>
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Not supported by your provider.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
@@ -657,7 +673,7 @@
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
-    <string name="login_advanced_hint">This login is for advanced users:\n\n• Do not use an address you\'re using in another app.\n\n• Classic email server allow chats without end-to-end encryption marked by a mail icon.</string>
+    <string name="login_advanced_hint">This login is for advanced users.\n\nDo not use an address you\'re using in another app.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>
@@ -692,6 +708,7 @@
     <string name="used_for_sending">Used for sending</string>
     <string name="hide_from_contacts">Hide from Contacts</string>
     <string name="hidden_from_contacts">Hidden from contacts</string>
+    <string name="enforce_e2ee">Enforce Encryption for All Relays</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Messages are received on all relays.\n\n⚠️ If you change anything here, make sure all your devices run at least version 2.47.0. Otherwise older devices may miss messages.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
@@ -767,11 +784,12 @@
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
     <string name="pref_calls">Calls</string>
     <!-- Details about what the "Calls" notification setting does -->
-    <string name="pref_calls_explain">Show call screen on incoming calls</string>
+    <string name="pref_calls_explain">Show call screen for accepted contacts</string>
     <string name="pref_notifications_show">Show</string>
     <string name="pref_notifications_priority">Priority</string>
     <string name="pref_notifications_explain">Enable system notifications for new messages</string>
     <string name="pref_show_notification_content">Show message content in notification</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Shows sender and first words of the message in notifications</string>
     <string name="pref_led_color">LED Color</string>
     <string name="pref_sound">Sound</string>
@@ -814,20 +832,27 @@
     <string name="pref_background">Wallpaper</string>
     <string name="pref_background_btn_default">Use Default Image</string>
     <string name="pref_background_btn_gallery">Select From Gallery</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Multi-Device Mode</string>
     <string name="pref_multidevice_explain">Synchronize your messages with your other devices. Automatically enabled on adding a second device</string>
     <string name="pref_multidevice_change_warn">Multi-Device Mode must be enabled when using the same profile on multiple devices. Only disable this setting if you have removed this profile from all your other devices.\n\nDisabling Multi-Device Mode while using the profile on multiple devices will result in missed messages and other problems.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Only Fetch from DeltaChat Folder</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Show Classic Emails</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">No, chats only</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">All</string>
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_experimental_features_explain">These features may be unstable and may be changed or removed</string>
-    <string name="pref_on_demand_location_streaming">On-demand Location Streaming</string>
+    <string name="pref_on_demand_location_streaming">Location Streaming</string>
     <string name="pref_background_default">Default image</string>
     <string name="pref_background_default_color">Default color</string>
     <string name="pref_background_custom_image">Custom image</string>
@@ -878,14 +903,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Delete Old Messages</string>
     <string name="autodel_device_title">Delete Messages from Device</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Delete Messages from Server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n• This includes all media\n\n• Messages will be deleted whether they were seen or not\n\n• \"Saved messages\" will be skipped from local deletion</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Do you want to delete %1$d messages now and all newly fetched messages \"%2$s\" in the future?\n\n⚠️ This includes emails, media and \"Saved messages\" in all server folders\n\n⚠️ Do not use this function if you want to keep data on the server or if you use classic email clients as well</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">This includes emails, media and \"Saved messages\" in all server folders. Do not use this function if you want to keep data on the server or if you use classic email clients as well</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Turn on at-once deletion</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">If you enable at-once deletion you cannot use multiple devices on this profile.</string>
     <string name="autodel_confirm">I understand, delete all these messages</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -1066,8 +1094,6 @@
     <string name="n_messages_in_m_chats">%1$d messages in %2$d chats</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">Channel for On-demand Location Streaming</string>
-    <string name="location_streaming_notification_title">Location Streaming</string>
     <string name="location_streaming_notification_text">You are sharing your location</string>
     <string name="location_rationale">To share your live location with chat members, allow Delta Chat to use your location data.\n\nTo make live location work gaplessly, location data is used even when the app is closed or not in use.</string>
 
@@ -1163,6 +1189,8 @@
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Wallpaper preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Open %1$s</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop sharing location</string>

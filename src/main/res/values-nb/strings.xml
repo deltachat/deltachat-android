@@ -25,6 +25,8 @@
     <string name="downloading">Laster ned...</string>
     <string name="open_attachment">Åpne vedlegg</string>
     <string name="join">Bli med</string>
+    <string name="join_group">Bli med i gruppe</string>
+    <string name="join_channel">Bli med i kanal</string>
     <string name="rejoin">Bli med igjen</string>
     <string name="delete">Slett</string>
     <string name="delete_for_me">Slett for meg</string>
@@ -59,7 +61,9 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Apper &amp; Media</string>
     <string name="profile">Profil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Alle profiler</string>
+    <!-- deprecated -->
     <string name="current_profile">Gjeldende profil</string>
     <string name="main_menu">Hovedmeny</string>
     <string name="start_chat">Start chat</string>
@@ -70,6 +74,10 @@
     <string name="mark_as_read">Merk som lest</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Lest</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Merk som ulest</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Ulest</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Laster...</string>
     <string name="hide">Skjul</string>
@@ -80,6 +88,7 @@
     <string name="always">Alltid</string>
     <string name="always_load_remote_images">Last alltid eksterne bilder</string>
     <string name="once">Én gang</string>
+    <!-- deprecated -->
     <string name="show_warning">Vis advarsel</string>
     <string name="not_now">Ikke nå</string>
     <string name="never">Aldri</string>
@@ -89,6 +98,7 @@
     <string name="offline">Avlogget</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Neste</string>
+    <string name="warning">Advarsel</string>
     <string name="error">Feil</string>
     <string name="error_x">Feil: %1$s</string>
     <string name="no_app_to_handle_data">Kan ikke finne en app som kan handtere denne typen data.</string>
@@ -116,6 +126,13 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Sist sett %1$s</string>
     <string name="last_seen_unknown">Sist sett: uvisst</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d minutters varighet</item>
+        <item quantity="other">%d minutters varighet</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Mindre enn 1 minutt</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minutt</item>
@@ -157,6 +174,7 @@
         <item quantity="other">%d valgte</item>
     </plurals>
     <string name="selected_colon">Valgt:</string>
+    <string name="selected">Valgt</string>
     <string name="self">Meg</string>
     <string name="draft">Kladd</string>
     <string name="image">Bilde</string>
@@ -170,6 +188,9 @@
     <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for merkepakken, og dra bilder og merkefiler dit</string>
     <!-- deprecated -->
     <string name="open_sticker_folder">Åpne merkemappe</string>
+    <string name="ask_add_sticker_to_collection">Legg dette merket til samlingen din?</string>
+    <string name="ask_delete_sticker">Slett dette merket?</string>
+    <string name="sticker_picker_empty_hint">Trykk på et merke for å legge det til her.</string>
     <string name="images">Bilder</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Lyd</string>
@@ -185,6 +206,7 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Ta opp</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Bytt kamera</string>
     <string name="toggle_fullscreen">Vis fullskjerm</string>
     <string name="location">Posisjon</string>
@@ -251,6 +273,11 @@
     <string name="new_channel">Ny kanal</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
     <string name="channel_name">Kanalnavn</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d utsikt</item>
+        <item quantity="other">%d visninger</item>
+    </plurals>
     <string name="email">E-post</string>
     <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
     <string name="new_email">Ny e-post</string>
@@ -266,6 +293,7 @@
     <string name="menu_add_attachment">Legg ved filer</string>
     <string name="menu_leave_group">Forlat gruppe</string>
     <string name="menu_leave_channel">Forlat kanal</string>
+    <string name="menu_leave_and_delete">Forlat &amp; slett for meg</string>
     <string name="menu_delete_chat">Slett chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Tøm chat</string>
@@ -356,11 +384,14 @@
     <string name="mute_for_seven_days">Demp i 7 dager</string>
     <string name="mute_forever">Alltid dempet</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">i 5 minutter</string>
+
     <string name="share_location_for_30_minutes">i 30 minutter</string>
     <string name="share_location_for_one_hour">i 1 time</string>
     <string name="share_location_for_two_hours">i 2 timer</string>
     <string name="share_location_for_six_hours">i 6 timer</string>
+    <string name="share_location_for_24_hours">i 24 timer</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Sende følgende fil til %s?</item>
@@ -370,13 +401,43 @@
 
     <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
     <string name="start_call">Ring</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_audio_call">Lydsamtale</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_video_call">Videosamtale</string>
     <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
     <string name="answer_call">Svar</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Avvis</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Lydsamtale</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videosamtale</string>
+    <string name="call_initializing">Initialiserer...</string>
+    <string name="call_incoming">Inkommende samtale</string>
+    <string name="call_ringing">Ringer...</string>
+    <string name="call_reconnecting">Gjenoppretter forbindelsen...</string>
+    <string name="call_ended">Samtale avsluttet</string>
+    <string name="call_failed">Samtale feilet</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="outgoing_audio_call">Utgående lydsamtale</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="outgoing_video_call">Utgående videosamtale</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="incoming_audio_call">Inkommende lydsamtale</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="incoming_video_call">Inkommende videosamtale</string>
     <string name="declined_call">Avvist anrop</string>
     <string name="canceled_call">Avbrutt anrop</string>
     <string name="missed_call">Ubesvart anrop</string>
+    <string name="already_in_call">Allerede i en samtale</string>
+    <string name="call_answered_elsewhere">Samtale besvart på en annen enhet</string>
+    <string name="call_requires_mic_permission">Mikrofontillatelse er nødvendig for samtaler</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Samtale med %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">Ringer %1$s...</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate?</string>
@@ -390,6 +451,7 @@
         <item quantity="one">Slett %d melding fra alle dine enheter?</item>
         <item quantity="other">Slett %d meldinger fra alle dine enheter?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
@@ -468,19 +530,63 @@
     <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
     <string name="send_message_to">Send melding til…</string>
 
+    <!-- punycode warning / labeled links -->
+    <string name="puny_code_warning_header">Mistenkelig lenke oppdaget</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">Er du sikker på at du vil besøke %1$s?</string>
     <!-- search -->
     <string name="search">Søk</string>
+    <string name="search_in_chat">Søk i chat</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">Søk i %1$s </string>
+    <string name="search_files">Søk i filer</string>
+    <string name="search_explain">Søk etter chatter, kontakter, og meldinger</string>
+    <string name="search_result_for_x">Resultat for \"%1$s\"</string>
+    <string name="search_no_result_for_x">Ingen resultater funnet for \"%s\"</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Ulest</string>
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Gruppenavn</string>
+    <string name="group_avatar">Gruppebilde</string>
+    <string name="remove_group_image">Fjern gruppebilde</string>
+    <string name="change_group_image">Endre gruppebilde</string>
     <string name="group_create_button">Lag gruppe</string>
+    <!-- deprecated, use please_enter_chat_name -->
+    <string name="group_please_enter_group_name">Skriv inn et navn på gruppen.</string>
+    <string name="please_enter_chat_name">Skriv inn et navn.</string>
     <string name="group_add_members">Legg til medlem</string>
+    <string name="group_self_not_in_group">Du må være medlem av gruppen for å utføre denne handlingen.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="profile_shared_chats">Delte chatter</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Tidligere medlemmer</string>
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galleri</string>
     <string name="tab_docs">Dokumenter</string>
+    <string name="tab_links">Lenker</string>
+    <string name="tab_map">Kart</string>
+    <string name="tab_gallery_empty_hint">Bilder og videor tilknyttet denne chatten vil vises her.</string>
+    <string name="tab_docs_empty_hint">Dokumenter og andre filer tilknyttet denne chatten vil vises her.</string>
+    <string name="tab_image_empty_hint">Bilder tilknyttet denne chatten vil vises her.</string>
+    <string name="tab_video_empty_hint">Videoer tilknyttet denne chatten vil vises her.</string>
+    <string name="tab_audio_empty_hint">Lydfiler og talebeskjeder tilknyttet denne chatten vil vises her.</string>
+    <string name="tab_webxdc_empty_hint">Apper tilknyttet denne chatten vil vises her.</string>
+    <string name="tab_all_media_empty_hint">Media tilknyttet denne chatten vil vises her.</string>
+    <string name="all_files_empty_hint">Dokumenter og andre filer tilknyttet alle chatter vil vises her.</string>
+    <string name="all_apps_empty_hint">Apper tilknyttet alle chatter vil vises her.</string>
     <string name="media_preview">Forhåndsvisning av medier</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">Rutenett for størrelsesforhold</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">Kvadratisk rutenett</string>
+    <string name="send_message">Send melding</string>
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">Legg til annen enhet</string>
+    <string name="multidevice_same_network_hint">Sørg for at begge enhetene er tilkoblet samme Wi-Fi eller nettverk</string>
     <string name="login_title">Logg inn</string>
     <string name="login_inbox">Innboks</string>
     <string name="login_imap_login">IMAP-innloggingsnavn</string>

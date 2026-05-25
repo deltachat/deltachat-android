@@ -34,7 +34,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   private CheckBoxPreference readReceiptsCheckbox;
 
   private ListPreference autoDelDevice;
-  private ListPreference autoDelServer;
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -85,15 +84,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
 
     autoDelDevice = findPreference("autodel_device");
     if (autoDelDevice != null) {
-      autoDelDevice.setOnPreferenceChangeListener(new AutodelChangeListener("delete_device_after"));
-    }
-
-    autoDelServer = findPreference("autodel_server");
-    if (autoDelServer != null) {
-      autoDelServer.setOnPreferenceChangeListener(new AutodelChangeListener("delete_server_after"));
-    }
-    if (dcContext.isChatmail()) {
-      autoDelServer.setVisible(false);
+      autoDelDevice.setOnPreferenceChangeListener(new AutodelChangeListener());
     }
   }
 
@@ -124,16 +115,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   private void initAutodelFromCore() {
-    String value = Integer.toString(dcContext.getConfigInt("delete_server_after"));
-    autoDelServer.setValue(value);
-    updateListSummary(
-        autoDelServer,
-        value,
-        (value.equals("0") || dcContext.isChatmail())
-            ? null
-            : getString(R.string.autodel_server_enabled_hint));
-
-    value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
+    String value = Integer.toString(dcContext.getConfigInt("delete_device_after"));
     autoDelDevice.setValue(value);
     updateListSummary(autoDelDevice, value);
   }
@@ -201,19 +183,14 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
   }
 
   private class AutodelChangeListener implements Preference.OnPreferenceChangeListener {
-    private final String coreKey;
-
-    AutodelChangeListener(String coreKey) {
-      this.coreKey = coreKey;
-    }
+    private final String coreKey = "delete_device_after";
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
       int timeout = Util.objectToInt(newValue);
       Context context = preference.getContext();
-      boolean fromServer = coreKey.equals("delete_server_after");
-      if (timeout > 0 && !(fromServer && dcContext.isChatmail())) {
-        int delCount = DcHelper.getContext(context).estimateDeletionCount(fromServer, timeout);
+      if (timeout > 0) {
+        int delCount = DcHelper.getContext(context).estimateDeletionCount(false, timeout);
 
         View gl = View.inflate(getActivity(), R.layout.dialog_with_checkbox, null);
         CheckBox confirmCheckbox = gl.findViewById(R.id.dialog_checkbox);
@@ -224,8 +201,7 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
         // "OK" and "Cancel" buttons would not be show. So, put the message into our custom view:
         msg.setText(
             String.format(
-                context.getString(
-                    fromServer ? R.string.autodel_server_ask : R.string.autodel_device_ask),
+                context.getString(R.string.autodel_device_ask),
                 delCount,
                 getSelectedSummary(preference, newValue)));
         confirmCheckbox.setText(R.string.autodel_confirm);
@@ -248,23 +224,6 @@ public class ChatsPreferenceFragment extends ListSummaryPreferenceFragment {
             .setCancelable(
                 true) // Enable the user to quickly cancel if they are intimidated by the warnings
             // :)
-            .setOnCancelListener(dialog -> initAutodelFromCore())
-            .show();
-      } else if (fromServer
-          && timeout
-              == 1 /*at once, using a constant that cannot be used in .xml would weaken grep ability*/) {
-        new AlertDialog.Builder(context)
-            .setTitle(R.string.autodel_server_warn_multi_device_title)
-            .setMessage(R.string.autodel_server_warn_multi_device)
-            .setPositiveButton(
-                android.R.string.ok,
-                (dialog, whichButton) -> {
-                  dcContext.setConfigInt(coreKey, timeout);
-                  initAutodelFromCore();
-                })
-            .setNegativeButton(
-                android.R.string.cancel, (dialog, whichButton) -> initAutodelFromCore())
-            .setCancelable(true)
             .setOnCancelListener(dialog -> initAutodelFromCore())
             .show();
       } else {

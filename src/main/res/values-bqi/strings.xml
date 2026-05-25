@@ -59,7 +59,9 @@
     <string name="media">وارسگر</string>
     <string name="apps_and_media">برنومه یل وو وارسگرا</string>
     <string name="profile">پوروفایل</string>
+    <!-- deprecated -->
     <string name="all_profiles">پوی پوروفایلا</string>
+    <!-- deprecated -->
     <string name="current_profile">پوروفایل هیم سکویی</string>
     <string name="main_menu">نومگه ٱسلی</string>
     <string name="start_chat">ناڌن پا گوفت وو لوفت</string>
@@ -78,6 +80,7 @@
     <string name="always">همیشه</string>
     <string name="always_load_remote_images">شؽواتا دیر ز دسرس هی بوگوئشن</string>
     <string name="once">هیم ی کرت</string>
+    <!-- deprecated -->
     <string name="show_warning">نشووݩ داڌن هوشدار</string>
     <string name="not_now">سکو ن</string>
     <string name="never">هیچ</string>
@@ -179,6 +182,7 @@
     <string name="camera">شؽواتگر</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرؽڌن</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">آلشت شؽواتگر</string>
     <string name="toggle_fullscreen">آلشت وزیت پوی بلگه</string>
     <string name="location">جاگه</string>
@@ -314,12 +318,13 @@
     <string name="mute_for_seven_days">بؽ دونگ کردن سی 7 رۊ</string>
     <string name="mute_forever">بؽ دونگ کردن سی همیشه</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">سی 5 دؽقه</string>
+
     <string name="share_location_for_30_minutes">سی 30 دؽقه</string>
     <string name="share_location_for_one_hour">سی 1 ساعت</string>
     <string name="share_location_for_two_hours">سی 2 ساعت</string>
     <string name="share_location_for_six_hours">سی 6 ساعت</string>
-
     <string name="file_saved_to">فایل من «%1$s» زفت وابی.</string>
 
     <plurals name="ask_delete_messages">
@@ -397,6 +402,7 @@
     <string name="pref_chats">گوفت وو لوفتا</string>
     <string name="pref_log_header">گوزارش</string>
     <string name="pref_background_btn_gallery">پسند ز شؽوات مال</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">پوی</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">تا سقف %1$s</string>
@@ -411,6 +417,7 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">پاک کردن پیوما قڌیمی</string>
     <string name="autodel_device_title">پاک کردن پیوما ز دسگا</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">پاک کردن پیوما ز سرور</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">ی کرت دیندا دانلود</string>

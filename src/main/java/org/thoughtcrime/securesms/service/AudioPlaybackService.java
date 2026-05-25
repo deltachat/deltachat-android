@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.service;
 
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
@@ -10,15 +11,24 @@ import androidx.annotation.OptIn;
 import androidx.media3.common.AudioAttributes;
 import androidx.media3.common.C;
 import androidx.media3.common.util.UnstableApi;
+import androidx.media3.datasource.DefaultDataSource;
+import androidx.media3.datasource.ResolvingDataSource;
 import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory;
+import androidx.media3.exoplayer.source.MediaSource;
 import androidx.media3.session.MediaSession;
 import androidx.media3.session.MediaSessionService;
 import androidx.media3.session.SessionCommand;
 import androidx.media3.session.SessionCommands;
 import androidx.media3.session.SessionResult;
+import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcMsg;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import java.io.IOException;
 import org.thoughtcrime.securesms.ConversationListActivity;
+import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.mms.AudioSlide;
 
 public class AudioPlaybackService extends MediaSessionService {
 
@@ -27,6 +37,7 @@ public class AudioPlaybackService extends MediaSessionService {
   private ExoPlayer player;
   private MediaSession session;
 
+  @OptIn(markerClass = UnstableApi.class)
   @Override
   public void onCreate() {
     super.onCreate();
@@ -37,10 +48,47 @@ public class AudioPlaybackService extends MediaSessionService {
             .setContentType(C.AUDIO_CONTENT_TYPE_SPEECH)
             .build();
 
+    ResolvingDataSource.Factory dataSourceFactory =
+        new ResolvingDataSource.Factory(
+            new DefaultDataSource.Factory(this),
+            dataSpec -> {
+              Uri uri = dataSpec.uri;
+              if (!"dcmsg".equals(uri.getScheme())) {
+                return dataSpec;
+              }
+
+              String host = uri.getHost();
+              String segment = uri.getLastPathSegment();
+              int accountId = 0;
+              int msgId = 0;
+              if (host != null && segment != null) {
+                try {
+                  accountId = Integer.parseInt(host);
+                  msgId = Integer.parseInt(segment);
+                } catch (NumberFormatException ignored) {
+                }
+              }
+              if (accountId <= 0 || msgId <= 0) {
+                throw new IOException("Invalid dcmsg uri: " + uri);
+              }
+
+              DcContext dcContext = DcHelper.getAccounts(this).getAccount(accountId);
+              DcMsg msg = dcContext.getMsg(msgId);
+              Uri resolved = new AudioSlide(this, msg).getUri();
+              if (resolved == null) {
+                throw new IOException("No file for msgId " + msgId + " in account " + accountId);
+              }
+              return dataSpec.withUri(resolved);
+            });
+
+    MediaSource.Factory mediaSourceFactory =
+        new DefaultMediaSourceFactory(this).setDataSourceFactory(dataSourceFactory);
+
     player =
         new ExoPlayer.Builder(this)
             .setAudioAttributes(audioAttributes, true)
             .setHandleAudioBecomingNoisy(true)
+            .setMediaSourceFactory(mediaSourceFactory)
             .build();
 
     // This is for click on the notification to go back to app

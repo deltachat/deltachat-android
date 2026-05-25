@@ -59,7 +59,9 @@
     <string name="media">Média</string>
     <string name="apps_and_media">Alkalmazások &amp; média</string>
     <string name="profile">Profil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Összes profil</string>
+    <!-- deprecated -->
     <string name="current_profile">Jelenlegi profil</string>
     <string name="main_menu">Főmenü</string>
     <string name="start_chat">Csevegés indítása</string>
@@ -80,6 +82,7 @@
     <string name="always">Mindig</string>
     <string name="always_load_remote_images">Mindig töltse be a távoli képeket</string>
     <string name="once">Azonnal</string>
+    <!-- deprecated -->
     <string name="show_warning">Figyelmeztetés megjelenítése</string>
     <string name="not_now">Most nem</string>
     <string name="never">Soha</string>
@@ -185,6 +188,7 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Rögzítés</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Kameraváltás</string>
     <string name="toggle_fullscreen">Váltás teljes képernyős módra</string>
     <string name="location">Hely</string>
@@ -356,12 +360,13 @@
     <string name="mute_for_seven_days">Némítás 7 napra</string>
     <string name="mute_forever">Némítás örökre</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 percre</string>
+
     <string name="share_location_for_30_minutes">30 percre</string>
     <string name="share_location_for_one_hour">1 órára</string>
     <string name="share_location_for_two_hours">2 órára</string>
     <string name="share_location_for_six_hours">6 órára</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">A következő fájl elküldése neki: %s?</item>
         <item quantity="other">A következő %d fájl elküldése „%s” számára?</item>
@@ -390,6 +395,7 @@
         <item quantity="one">Töröl %d üzenetet az összes eszközén?</item>
         <item quantity="other">Töröl %d üzenetet az összes eszközén?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Továbbítja az üzenetet „%1$s” számára?</string>
     <string name="ask_forward_multiple">Továbbítja az üzenetet a következő csevegésbe: %1$d?</string>
     <string name="ask_export_attachment">A mellékletek exportálása lehetővé teszi, hogy más alkalmazások is hozzáférjenek azokhoz az eszközön.\n\nFolytatja?</string>
@@ -688,6 +694,7 @@
     <string name="pref_notifications_priority">Prioritás</string>
     <string name="pref_notifications_explain">Rendszerértesítések engedélyezése az új üzenetekről</string>
     <string name="pref_show_notification_content">Üzenet tartalmának megjelenítése az értesítésben</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Az értesítésekben megjelenik az üzenet feladója és első szavai</string>
     <string name="pref_led_color">Értesítésjelző-fény színe</string>
     <string name="pref_sound">Hang</string>
@@ -728,12 +735,19 @@
     <string name="pref_background">Háttérkép</string>
     <string name="pref_background_btn_default">Alapértelemezett kép használata</string>
     <string name="pref_background_btn_gallery">Kiválasztás a galériából</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat nevű mappából történjen lekérdezés</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Nem, csak csevegések</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Elfogadott partnerek számára</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Összes</string>
     <string name="pref_experimental_features">Kísérleti funkciók</string>
     <string name="pref_on_demand_location_streaming">On-Demand folyamatos helymegosztás</string>
@@ -779,14 +793,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Régi üzenetek törlése</string>
     <string name="autodel_device_title">Üzenetek törlése az eszközről a letöltést követően</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Üzenetek törlése a kiszolgálóról a letöltést követően</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Szeretné törölni a %1$d üzenetet most és az összes újonnan érkező üzenetet a jövőben ekkor: „%2$s”?\n\n• Ez magában foglalja az összes médiát is\n\n• Az üzenetek törlésre kerülnek, akár látták őket, akár nem\n\n• A „Mentett üzenetek” nem kerülnek törlésre a helyi törlésből.</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Biztosan törölni szeretne %1$d üzenetet most, és a jövőben minden újonnan lekérdezett „%2$s” üzenetet?\n\n⚠️ Ez magába foglalja az e-maileket, a médiatartalmakat és a „Mentett üzeneteket” az összes kiszolgálómappában.\n\n⚠️ Ne használja ezt a funkciót, ha meg akarja tartani az adatokat a kiszolgálón, vagy ha klasszikus e-mail-klienseket is használ.</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Ez magába foglalja az e-maileket, a médiatartalmakat és a „Mentett üzeneteket” az összes kiszolgálómappában. Ne használja ezt a funkciót, ha meg akarja tartani az adatokat a kiszolgálón, vagy ha klasszikus e-mail-klienseket is használ.</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">A „Törlés a letöltés után azonnal” bekapcsolása</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Ha a „Törlés a letöltés után azonnal” engedélyezve van, akkor nem használhatja ezt a profilt több eszközről.</string>
     <string name="autodel_confirm">Értem, törölje ezeket az üzeneteket</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -875,7 +892,7 @@
     <string name="learn_more">Tudjon meg többet</string>
 
     <string name="devicemsg_self_deleted">Ön törölte a „Mentett üzenetek” csevegést.\n\nℹ️ A „Mentett üzenetek” funkció újbóli használatához hozzon létre egy új csevegést önmagával.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Az e-mail-szolgáltatójától kapott tárhelye hamarosan megtelik: %1$s%% már felhasználásra került.\n\n\nElképzelhető, hogy nem tud üzeneteket fogadni, ha a tárhelye megtelt.\n\n👉 Ellenőrizze, hogy a szolgáltatója webes felületén tudja-e törölni a DeltaChat-mappából az üzeneteket, és fontolja meg a „Beállítások / Csevegések és média / Üzenetek törlése a kiszolgálóról” engedélyezését. Az aktuális tárhelyhasználatot bármikor ellenőrizheti a „Beállítások / Tárhely” menüpontban.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Az eszközén lévő dátum vagy idő pontatlannak tűnik (%1$s).\n\nJavítsa meg az órát ⏰🔧 az üzenetek helyes fogadásának biztosítása érdekében.</string>
@@ -1033,7 +1050,6 @@
     <string name="a11y_message_context_menu_btn_label">Üzenetakciók</string>
     <string name="a11y_background_preview_label">Háttérkép előnézete</string>
     <string name="a11y_disappearing_messages_activated">Eltűnő üzenetek bekapcsolva</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Helymegosztás kikapcsolása.</string>
     <string name="a11y_voice_message_hint_ios">A felvétel rögzítése után duplán koppintson a küldéshez. A felvétel elvetéséhez csúsztassa két ujjával.</string>

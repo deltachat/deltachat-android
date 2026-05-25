@@ -61,7 +61,9 @@
     <string name="media">Medien</string>
     <string name="apps_and_media">Apps &amp; Medien</string>
     <string name="profile">Profil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Alle Profile</string>
+    <!-- deprecated -->
     <string name="current_profile">Aktuelles Profil</string>
     <string name="main_menu">Hauptmenü</string>
     <string name="start_chat">Chat starten</string>
@@ -86,6 +88,7 @@
     <string name="always">Immer</string>
     <string name="always_load_remote_images">Bilder immer nachladen</string>
     <string name="once">Einmal</string>
+    <!-- deprecated -->
     <string name="show_warning">Warnung anzeigen</string>
     <string name="not_now">Nicht jetzt</string>
     <string name="never">Nie</string>
@@ -203,7 +206,10 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Aufnehmen</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Kamera wechseln</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Kamera wechseln</string>
     <string name="toggle_fullscreen">Vollbildmodus umschalten</string>
     <string name="location">Standort</string>
     <string name="locations">Standorte</string>
@@ -380,11 +386,14 @@
     <string name="mute_for_seven_days">Stumm für 7 Tage</string>
     <string name="mute_forever">Stumm für immer</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">für 5 Minuten</string>
+
     <string name="share_location_for_30_minutes">für 30 Minuten</string>
     <string name="share_location_for_one_hour">für 1 Stunde</string>
     <string name="share_location_for_two_hours">für 2 Stunden</string>
     <string name="share_location_for_six_hours">für 6 Stunden</string>
+    <string name="share_location_for_24_hours">für 24 Stunden</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Die folgende Datei an %s senden?</item>
@@ -402,6 +411,8 @@
     <string name="answer_call">Annehmen</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Ablehnen</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Anruf beenden</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Sprachanruf</string>
     <!-- Used in call bubbles, summaries, notifications -->
@@ -425,7 +436,12 @@
     <string name="missed_call">Verpasster Anruf</string>
     <string name="already_in_call">Bereits im Anruf</string>
     <string name="call_answered_elsewhere">Anruf auf einem anderen Gerät beantwortet</string>
+    <string name="call_requires_camera_permission">Kamerazugriff für Videoanrufe erforderlich</string>
     <string name="call_requires_mic_permission">Mikrofonzugriff für Anrufe erforderlich</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Anruf mit %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">%1$s anrufen…</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -440,6 +456,12 @@
         <item quantity="one">%d Nachricht löschen?</item>
         <item quantity="other">%d Nachrichten löschen?</item>
     </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Nachricht an %2$s weiterleiten?</item>
+        <item quantity="other">%1$d Nachrichten an %2$s weiterleiten?</item>
+    </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Nachricht weiterleiten an %1$s?</string>
     <string name="ask_forward_multiple">Nachrichten an %1$d Chats weiterleiten?</string>
     <string name="ask_export_attachment">Das Exportieren von Anhängen ermöglicht es allen anderen Anwendungen auf deinem Gerät, auf diese zuzugreifen.\n\nFortfahren? </string>
@@ -745,9 +767,9 @@
     <string name="pref_enter_sends">Enter-Taste sendet</string>
     <string name="pref_enter_sends_explain">Durch Drücken der Eingabetaste werden Textnachrichten gesendet.</string>
     <string name="pref_outgoing_media_quality">Medienqualität beim Senden</string>
-    <string name="pref_outgoing_media_quality_hint">Um Originalqualität zu senden, hänge Medien als „Datei“ an. Dies verbraucht deutlich mehr Datenvolumen für dich und die Empfänger.</string>
+    <string name="pref_outgoing_media_quality_hint">Um Originalqualität zu senden, hänge Medien als „Datei“ an. Dies verbraucht deutlich mehr Daten für dich und die Empfänger.</string>
     <string name="pref_outgoing_balanced">Ausgewogen</string>
-    <string name="pref_outgoing_worse">Schlechte Qualität, kleine Dateien</string>
+    <string name="pref_outgoing_worse">Schlechte Qualität, Daten sparen</string>
     <string name="pref_vibrate">Vibrieren</string>
     <string name="pref_screen_security">Bildschirmsicherheit</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
@@ -764,6 +786,7 @@
     <string name="pref_notifications_priority">Priorität</string>
     <string name="pref_notifications_explain">System-Benachrichtigungen bei neuen Nachrichten aktivieren</string>
     <string name="pref_show_notification_content">Textinhalt in Benachrichtigungen anzeigen</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Absender und Textbeginn in Benachrichtigungen anzeigen</string>
     <string name="pref_led_color">LED-Farbe</string>
     <string name="pref_sound">Ton</string>
@@ -806,16 +829,23 @@
     <string name="pref_background">Hintergrund</string>
     <string name="pref_background_btn_default">Standard-Bild verwenden</string>
     <string name="pref_background_btn_gallery">Aus Galerie auswählen</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Wenn du diese Option änderst, stelle sicher, dass der Server und die anderen Geräte entsprechend konfiguriert sind\n\nAndernfalls funktionieren Dinge möglicherweise nicht wie erwartet.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Mehrgerätemodus</string>
     <string name="pref_multidevice_explain">Synchronisiere deine Nachrichten mit deinen anderen Geräten. Wird beim Hinzufügen eines zweiten Geräts automatisch aktiviert.</string>
     <string name="pref_multidevice_change_warn">Der Mehrgerätemodus muss aktiviert sein, wenn dasselbe Profil auf mehreren Geräten verwendet wird. Deaktiviere diese Einstellung nur, wenn du dieses Profil von allen anderen Geräten entfernt hast.\n\nDie Deaktivierung des Mehrgerätemodus bei Verwendung des Profils auf mehreren Geräten führt zu verlorenen Nachrichten und anderen Problemen.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Autom. Verschieben in den DeltaChat-Ordner</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Nur aus DeltaChat-Ordner lesen</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Normale E-Mails anzeigen</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Nein, nur Chats</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Akzeptierte Kontakte</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Alle</string>
     <string name="pref_experimental_features">Experimentelle Features</string>
     <string name="pref_experimental_features_explain">Die Features können instabil sein und geändert oder entfernt werden</string>
@@ -870,14 +900,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Alte Nachrichten löschen</string>
     <string name="autodel_device_title">Nachrichten vom Gerät löschen</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Nachrichten vom Server löschen</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n• Dies schliesst alle Medien mit ein\n\n• Nachrichten werden gelöscht, auch wenn sie nicht angesehen wurden\n\n• \"Gespeicherte Nachrichten\" werden nicht gelöscht</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Wirklich %1$d Nachrichten jetzt und zukünftig alle neuen Nachrichten \"%2$s\" löschen?\n\n⚠️ Dies schließt E-Mails, Medien und \"Gespeicherte Nachrichten\" aus allen Server-Ordnern mit ein\n\n⚠️ Verwende diese Funktion nicht, wenn du Daten auf dem Server behalten möchtest oder auch klassische E-Mail-Clients verwendest</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Dies schließt E-Mails, Medien und \"Gespeicherte Nachrichten\" aus allen Server-Ordnern mit ein. Verwenden diese Funktion nicht, wenn du Daten auf dem Server behalten möchtest oder auch klassische E-Mail-Clients verwendest.</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Sofortiges Löschen einschalten</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Wenn sofortiges Löschen aktiviert ist, können nicht mehrere Geräte für dieses Profil verwendet werden.</string>
     <string name="autodel_confirm">Verstanden, all diese Nachrichten löschen</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -974,7 +1007,7 @@
     <string name="learn_more">Mehr erfahren</string>
 
     <string name="devicemsg_self_deleted">Du hast den Chat \"Gespeicherte Nachrichten\" gelöscht.\n\nℹ️ Um die Funktion \"Gespeicherte Nachrichten\" erneut zu verwenden, erstelle einfach einen Chat mit dir selbst.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Der Speicherplatz deines Anbieters ist bald erschöpft; bereits %1$s%% sind verbraucht.\n\nDu kannst möglicherweise keine Nachrichten mehr empfangen, wenn der Speicherplatz komplett verbraucht ist.\n\n👉 Bitte prüfe, ob du alte Daten im Webinterface des Anbieters löschen kannst, und erwäge, \"Einstellungen / Chats / Alte Nachrichten löschen\" zu aktivieren. Den aktuellen Speicherverbrauch kannst du jederzeit unter \"Einstellungen / Verbindungsstatus\" überprüfen.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Dein Gerät scheint ein falsches Datum oder eine falsche Uhrzeit (%1$s) zu verwenden.\n\nStelle deine Uhr ⏰🔧 richtig ein, um sicherzustellen, dass deine Nachrichten korrekt empfangen werden.</string>
@@ -1058,8 +1091,6 @@
     <string name="n_messages_in_m_chats">%1$d Nachrichten in %2$d Chats</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">Kanal für Standortübertragung</string>
-    <string name="location_streaming_notification_title">Standardübertragung</string>
     <string name="location_streaming_notification_text">Du teilst deinen Standort</string>
     <string name="location_rationale">Damit du deinen aktuellen Standort teilen kannst, musst du Delta Chat die Nutzung deiner Standortdaten erlauben.\n\nDamit die Standortanzeige nahtlos funktioniert, werden Standortdaten auch dann verwendet, wenn die App geschlossen ist oder nicht genutzt wird.</string>
 
@@ -1155,6 +1186,8 @@
     <string name="a11y_message_context_menu_btn_label">Nachrichtaktionen</string>
     <string name="a11y_background_preview_label">Vorschau für Hintergrundbild</string>
     <string name="a11y_disappearing_messages_activated">Verschwindende Nachrichten eingeschaltet</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Öffne %1$s</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Teilen des Standorts beenden</string>
