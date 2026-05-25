@@ -23,7 +23,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +60,6 @@ public class ConversationListFragment extends BaseConversationListFragment
   private RecyclerView list;
   private View emptyState;
   private TextView emptySearch;
-  private final String queryFilter = "";
   private boolean archive;
   private Timer reloadTimer;
   private boolean chatlistJustLoaded;
@@ -285,22 +283,17 @@ public class ConversationListFragment extends BaseConversationListFragment
       Log.w(TAG, "Ignoring call to loadChatlist()");
       return;
     }
-    DcChatlist chatlist =
-        DcHelper.getContext(context)
-            .getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
+    long startMs = System.currentTimeMillis();
+    DcChatlist chatlist = DcHelper.getContext(context).getChatlist(listflags, null, 0);
+    Log.i(TAG, "⏰ getChatlist(): " + (System.currentTimeMillis() - startMs) + "ms");
 
     Util.runOnMain(
         () -> {
-          if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+          if (chatlist.getCnt() <= 0) {
             list.setVisibility(View.INVISIBLE);
             emptyState.setVisibility(View.VISIBLE);
             emptySearch.setVisibility(View.INVISIBLE);
             fab.startPulse(3 * 1000);
-          } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-            list.setVisibility(View.INVISIBLE);
-            emptyState.setVisibility(View.GONE);
-            emptySearch.setVisibility(View.VISIBLE);
-            emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
           } else {
             list.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
