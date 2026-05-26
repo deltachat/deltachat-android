@@ -230,7 +230,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       sendUpdateMaxSize = info.sendUpdateMaxSize;
       sendUpdateInterval = info.sendUpdateInterval;
     } catch (RpcException e) { // unexpected error, log it and finish
-      Log.i(TAG, "RPC Error", e);
+      Log.e(TAG, "RPC Error", e);
       finish();
       return;
     }
@@ -507,7 +507,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
               Util.runOnMain(() -> updateTitleAndMenu(info, chat));
             } catch (RpcException e) {
-              Log.i(TAG, "RPC Error", e);
+              Log.e(TAG, "RPC Error", e);
             }
           });
     }
