@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.50.0
+2026-05
 
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
