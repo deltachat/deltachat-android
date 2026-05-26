@@ -461,6 +461,7 @@
     <string name="connectivity_connected">Свързани сте</string>
     <string name="sending">Изпращане…</string>
     <string name="last_msg_sent_successfully">Последното съобщение беше изпратено успешно.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Не се поддържа от Вашия доставчик.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Съобщения</string>

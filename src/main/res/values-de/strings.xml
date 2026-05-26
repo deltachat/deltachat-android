@@ -438,6 +438,7 @@
     <string name="call_answered_elsewhere">Anruf auf einem anderen Gerät beantwortet</string>
     <string name="call_requires_camera_permission">Kamerazugriff für Videoanrufe erforderlich</string>
     <string name="call_requires_mic_permission">Mikrofonzugriff für Anrufe erforderlich</string>
+    <string name="call_requires_connection">Anruf kann nicht gestartet werden. Stelle sicher, dass dein Gerät mit dem Internet verbunden ist, und versuche es erneut.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Anruf mit %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -635,6 +636,7 @@
     <string name="connectivity_connected">Verbunden</string>
     <string name="sending">Sende…</string>
     <string name="last_msg_sent_successfully">Letzte Nachricht erfolgreich versandt.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Nicht unterstützt von deinem Anbieter.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Nachrichten</string>
@@ -671,7 +673,7 @@
     <string name="welcome_chat_over_email">Sicherer dezentraler Chat</string>
     <string name="scan_invitation_code">Einladungscode scannen</string>
     <string name="login_title">Login</string>
-    <string name="login_advanced_hint">Für fortgeschrittene Benutzer:\n\n• Verwende keine Adresse, die du bereits in einer anderen App nutzt.\n\n• Klassische E-Mail-Server ermöglichen Chats ohne Ende-zu-Ende-Verschlüsselung, gekennzeichnet durch ein E-Mail-Symbol.</string>
+    <string name="login_advanced_hint">Für fortgeschrittene Benutzer:\n\nVerwende keine Adresse, die du bereits in einer anderen App nutzt.</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
     <string name="login_imap_server">IMAP-Server</string>
@@ -706,6 +708,7 @@
     <string name="used_for_sending">Zum Senden verwendet</string>
     <string name="hide_from_contacts">Vor Kontakten verstecken</string>
     <string name="hidden_from_contacts">Vor Kontakten versteckt</string>
+    <string name="enforce_e2ee">Verschlüsselung für alle Relays erzwingen</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Nachrichten werden auf allen Relays empfangen.\n\n⚠️ Wenn Sie hier Änderungen vornehmen, stellen Sie sicher, dass auf allen Ihren Geräten mindestens Version 2.47.0 installiert ist. Andernfalls könnten auf älteren Versionen Nachrichten verloren gehen.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->

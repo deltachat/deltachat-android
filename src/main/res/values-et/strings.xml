@@ -438,6 +438,7 @@
     <string name="call_answered_elsewhere">Kõne on vastatud muus seadmes</string>
     <string name="call_requires_camera_permission">Videokõnede tegemiseks peab rakendusel olema õigus kasutada kaamerat</string>
     <string name="call_requires_mic_permission">Helistamiseks peab rakendusel olema õigus kasutada mikrofoni</string>
+    <string name="call_requires_connection">Helistamine (kõne algatamine) ei õnnestu. Palun kontrolli, et sinu nutiseadme internetiühendus toimib ja proovi uuesti.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Kõne kasutajaga %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -635,6 +636,7 @@
     <string name="connectivity_connected">Ühendatud</string>
     <string name="sending">Saadan…</string>
     <string name="last_msg_sent_successfully">Viimase sõnumi saatmine õnnestus.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Sinu teenusepakkuja ei toeta seda võimalust.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Sõnumid</string>
@@ -671,7 +673,7 @@
     <string name="welcome_chat_over_email">Turvaline hajutatud vestluslahendus</string>
     <string name="scan_invitation_code">Skaneeri kutsekoodi</string>
     <string name="login_title">Logi sisse</string>
-    <string name="login_advanced_hint">See sisselogimine sobib oskuskasutajatele:\n\n• Ära kasuta kontot, mis juba on kasutusel mõnes muus rakenduses.\n\n• Klassikaline e-posti server võimaldab vestlemist vaid ilma läbiva krüptimiseta ja seda märgistab kirja ikoon.</string>
+    <string name="login_advanced_hint">See sisselogimise viis on mõeldud oskuskasutajatele.\n\nPalun ära kasuta aadressi, mida kasutad juba teises rakenduses.</string>
     <string name="login_inbox">Saabuvad kirjad</string>
     <string name="login_imap_login">IMAP-i kasutajanimi</string>
     <string name="login_imap_server">IMAP-i server</string>
@@ -706,6 +708,7 @@
     <string name="used_for_sending">Kasutatud saatmiseks</string>
     <string name="hide_from_contacts">Peida kontaktidest</string>
     <string name="hidden_from_contacts">Peidetud kontaktidest</string>
+    <string name="enforce_e2ee">Kasuta kõikide alusühenduste (edastusserverite) puhul krüptimist</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Sõnumid saavad kõik alusühendused (edastusserverid).\n\n⚠️ Kui muudad siin midagi, siis palun kontrolli, et kõikides sinu seadmetes on kasutusel vähemalt versioon 2.47.0. Vastasel juhul võivad vanema tarkvaraga seadmetes jääda sõnumid saabumata.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->

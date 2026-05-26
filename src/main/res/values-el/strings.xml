@@ -401,6 +401,7 @@
     <string name="connectivity_connected">Συνδεδεμένο</string>
     <string name="sending">Στέλνεται…</string>
     <string name="last_msg_sent_successfully">Το τελευταίο μήνυμα στάλθηκε με επιτυχία.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Δεν υποστηρίζεται από τον πάροχο σας.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Μηνύματα</string>

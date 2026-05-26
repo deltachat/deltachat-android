@@ -605,6 +605,7 @@
     <string name="connectivity_connected">Yettwaqqen</string>
     <string name="sending">Tuzna...</string>
     <string name="last_msg_sent_successfully">Izen aneggaru yettwazen akken iwata. </string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">ur yettusefrak ara ɣer usaǧǧaw-ik·im.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Iznan</string>
@@ -641,7 +642,6 @@
     <string name="welcome_chat_over_email">Adiwenni Aɣelsan Aruslemmas</string>
     <string name="scan_invitation_code">Ḍumm tangalt n tinnubga</string>
     <string name="login_title">Kcem</string>
-    <string name="login_advanced_hint">Tuqqna-agi i yiseqdacen leqqayen:\n\n• Ur sseqdac ara tansa i tseqdaceḍ deg usnas nniḍen.\n\n• Aqeddac n yimayl aklasik yesirig anekcum war awgelhen seg yixef ɣer yixef yettwacerḍen s tignit n yimayl.</string>
     <string name="login_inbox">Tanaka n urmas</string>
     <string name="login_imap_login">Isem n tuqqna IMAP. </string>
     <string name="login_imap_server">Aqeddac IMAP</string>

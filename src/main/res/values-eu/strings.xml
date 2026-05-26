@@ -607,6 +607,7 @@
     <string name="connectivity_connected">Konektatuta</string>
     <string name="sending">Bidaltzen...</string>
     <string name="last_msg_sent_successfully">Azken mezua ondo bidali da.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Zure hornitzaileak ez du onartzen.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mezuak</string>
@@ -643,7 +644,6 @@
     <string name="welcome_chat_over_email">Txat deszentralizatu segurua</string>
     <string name="scan_invitation_code">Eskaneatu gonbidapen kodea</string>
     <string name="login_title">Hasi saioa</string>
-    <string name="login_advanced_hint">Saio-hasiera hau erabiltzaile aurreratuentzat da:\n\n• Ez erabili beste aplikazio batean erabiltzen ari zaren helbiderik.\n\n• Posta elektronikoko zerbitzari klasikoak txatak baimentzen ditu, muturretik muturrera zifratu gabe, posta-ikono batek markatuta.</string>
     <string name="login_inbox">Sarrera ontzia</string>
     <string name="login_imap_login">IMAP erabiltzaile-izena</string>
     <string name="login_imap_server">IMAP zerbitzaria</string>

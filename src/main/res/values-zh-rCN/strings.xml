@@ -617,6 +617,7 @@
     <string name="connectivity_connected">已连接</string>
     <string name="sending">发送中…</string>
     <string name="last_msg_sent_successfully">最后一条消息已成功发送。</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">不被您的邮件提供商支持。</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">消息</string>
@@ -653,7 +654,6 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
-    <string name="login_advanced_hint">此登录适用于高级用户：\n\n• 请勿使用您在其他应用中已使用的地址。\n\n• 传统电子邮件服务器允许进行未端到端加密的聊天，此类聊天以邮件图标标记。</string>
     <string name="login_inbox">收件箱</string>
     <string name="login_imap_login">IMAP 登录名</string>
     <string name="login_imap_server">IMAP 服务器</string>

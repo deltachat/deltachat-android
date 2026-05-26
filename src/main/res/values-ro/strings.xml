@@ -445,6 +445,7 @@
     <string name="connectivity_connected">Conectat</string>
     <string name="sending">Trimitere…</string>
     <string name="last_msg_sent_successfully">Ultimul mesaj a fost trimis cu succes.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Nu este suportat de furnizorul dumneavoastră.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mesaje</string>

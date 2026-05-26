@@ -218,6 +218,8 @@
     <string name="capture">Cattura</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Cambia Fotocamera</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Attiva/Disattiva Fotocamera</string>
     <string name="toggle_fullscreen">Attiva/Disattiva Modalità Schermo Intero</string>
     <string name="location">Posizione</string>
     <string name="locations">Posizioni</string>
@@ -421,6 +423,8 @@
     <string name="answer_call">Rispondi</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Rifiuta</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Fine Chiamata</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Chiamata audio</string>
     <!-- Used in call bubbles, summaries, notifications -->
@@ -444,6 +448,7 @@
     <string name="missed_call">Chiamata persa</string>
     <string name="already_in_call">Già in chiamata</string>
     <string name="call_answered_elsewhere">Chiamata risposta su un altro dispositivo</string>
+    <string name="call_requires_camera_permission">Per le videochiamate è necessaria l\'autorizzazione per l\'utilizzo della fotocamera.</string>
     <string name="call_requires_mic_permission">Per le chiamate è necessaria l\'autorizzazione per l\'utilizzo del microfono.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Chiama con %1$s</string>
@@ -464,6 +469,12 @@
         <item quantity="one">Cancella %d messaggio su tutti i tuoi dispositivi?</item>
         <item quantity="many">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
         <item quantity="other">Cancella %d messaggi su tutti i tuoi dispositivi?</item>
+    </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Inoltra messaggio a %2$s?</item>
+        <item quantity="many">Inoltra %1$d messaggi a %2$s?</item>
+        <item quantity="other">Inoltra %1$d messaggi a %2$s?</item>
     </plurals>
     <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Inoltrare messaggi a %1$s?</string>
@@ -642,6 +653,7 @@
     <string name="connectivity_connected">Connesso</string>
     <string name="sending">Invio...</string>
     <string name="last_msg_sent_successfully">Ultimo messaggio inviato con successo.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Non supportato dal tuo fornitore.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messaggi</string>
@@ -678,7 +690,6 @@
     <string name="welcome_chat_over_email">Chat Decentralizzata Sicura</string>
     <string name="scan_invitation_code">Scansiona Codice Invito</string>
     <string name="login_title">Accedi</string>
-    <string name="login_advanced_hint">Questo accesso è per utenti avanzati:\n\n• Non utilizzare un account che stai utilizzando in un\'altra app.\n\n• Il server e-mail classico consente chat senza crittografia end-to-end, contrassegnate da un\'icona di posta.</string>
     <string name="login_inbox">In Arrivo</string>
     <string name="login_imap_login">Nome Accesso IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -1193,6 +1204,9 @@
     <string name="a11y_message_context_menu_btn_label">Azioni messaggio</string>
     <string name="a11y_background_preview_label">Anteprima sfondo</string>
     <string name="a11y_disappearing_messages_activated">Messaggi che scompaiono attivati</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Apri %1$s</string>
+
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Smetti di condividere la posizione</string>
     <string name="a11y_voice_message_hint_ios">Dopo la registrazione, doppio tocco per inviare. Per scartare la registrazione, striscia con due dita.</string>

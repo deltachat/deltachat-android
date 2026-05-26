@@ -546,6 +546,7 @@
     <string name="connectivity_connected">Conectado</string>
     <string name="sending">Enviando...</string>
     <string name="last_msg_sent_successfully">Enviouse correctamente a última mensaxe.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">O teu provedor non ten soporte</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mensaxes</string>

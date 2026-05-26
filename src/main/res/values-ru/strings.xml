@@ -671,6 +671,7 @@
     <string name="connectivity_connected">Соединено</string>
     <string name="sending">Отправка…</string>
     <string name="last_msg_sent_successfully">Последнее сообщение отправлено успешно.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Не поддерживается вашим провайдером.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Сообщения</string>
@@ -707,7 +708,6 @@
     <string name="welcome_chat_over_email">Безопасный децентрализованный чат</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Войти</string>
-    <string name="login_advanced_hint">Этот способ входа предназначен для опытных пользователей:\n\n• Не используйте адрес, который вы уже используете в другом приложении.\n\n• Обычный почтовый сервер позволяет вести чаты без сквозного шифрования, (такие чаты помечаются значком конверта).</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">Имя пользователя IMAP</string>
     <string name="login_imap_server">Сервер IMAP</string>
