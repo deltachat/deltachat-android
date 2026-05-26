@@ -17,8 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.ServiceCompat;
 import androidx.core.content.ContextCompat;
+import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
-import com.b44t.messenger.DcAccounts;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -38,15 +38,24 @@ public class LocationStreamingService extends Service {
   // static API
 
   /** Register a chat for location updates, then ensure the service is running. */
-  public static void startSharing(Context context, int chatId, int durationSeconds) {
-    DcHelper.getContext(context).sendLocationsToChat(chatId, durationSeconds);
+  public static void startSharing(Context context, int accountId, int chatId, int durationSeconds) {
+    try {
+      DcHelper.getRpc(context).sendLocationsToChat(accountId, chatId, durationSeconds);
+    } catch (RpcException e) {
+      Log.e(TAG, "Failed to start location streaming", e);
+      return;
+    }
     ContextCompat.startForegroundService(
         context, new Intent(context, LocationStreamingService.class));
   }
 
   /** Unregister a chat. If no chats remain, stop the service. */
-  public static void stopSharing(Context context, int chatId) {
-    DcHelper.getContext(context).sendLocationsToChat(chatId, 0);
+  public static void stopSharing(Context context, int accountId, int chatId) {
+    try {
+      DcHelper.getRpc(context).sendLocationsToChat(accountId, chatId, 0);
+    } catch (RpcException e) {
+      Log.e(TAG, "Failed to stop location streaming", e);
+    }
     if (!isAnySharingActive(context)) {
       context.stopService(new Intent(context, LocationStreamingService.class));
     }
@@ -54,7 +63,11 @@ public class LocationStreamingService extends Service {
 
   public static void ensureRunning(Context context) {
     if (!hasLocationPermission(context)) {
-      stopAllSharing(context);
+      try {
+        DcHelper.getRpc(context).stopSendingLocations();
+      } catch (RpcException e) {
+        Log.e(TAG, "Failed to stop location streaming", e);
+      }
       return;
     }
     if (isAnySharingActive(context)) {
@@ -68,11 +81,16 @@ public class LocationStreamingService extends Service {
   }
 
   private static boolean isAnySharingActive(Context context) {
-    DcAccounts accounts = DcHelper.getAccounts(context);
-    for (int accountId : accounts.getAll()) {
-      if (accounts.getAccount(accountId).isSendingLocationsToChat(0)) {
-        return true;
+    try {
+      Rpc rpc = DcHelper.getRpc(context);
+      for (int accountId : rpc.getAllAccountIds()) {
+        if (rpc.isSendingLocations(accountId)) {
+          return true;
+        }
       }
+    } catch (RpcException e) {
+      Log.e(TAG, "Failed to check location streaming state", e);
+      return true;
     }
     return false;
   }
