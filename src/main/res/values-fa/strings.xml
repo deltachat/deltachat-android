@@ -577,6 +577,7 @@
     <string name="connectivity_connected">متصل شد</string>
     <string name="sending">در حال ارسال...</string>
     <string name="last_msg_sent_successfully">آخرین پیام با موفقیت ارسال شد.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">ارائه دهنده شما از این پشتیبانی نمی‌کند</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">پیام‌ها</string>
@@ -613,7 +614,6 @@
     <string name="welcome_chat_over_email">گفتگو غیرمتمرکز و ایمن</string>
     <string name="scan_invitation_code">اسکن کردن کد دعوت</string>
     <string name="login_title">ورود</string>
-    <string name="login_advanced_hint">این برای کاربر‌های حرفه‌ای است:\n\n • از یک آدرس که در برنامه‌ای دیگر استفاده می‌کنید استفاده نکنید.\n\n • ارائه‌دهندهٔ رایانامه کلاسیک اجازه خواهد داد که گپ‌ها بدون رمزنگاری سراسری باشند. این گپ‌ها به وسیلهٔ یک نماد نامه نشانه‌گذاری می‌شوند.</string>
     <string name="login_inbox">ورودی</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>

@@ -607,6 +607,7 @@
     <string name="connectivity_connected">Connectat</string>
     <string name="sending">Enviant...</string>
     <string name="last_msg_sent_successfully">Últim missatge enviat bé.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">No suportat pel vostre proveïdor.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Missatges</string>
@@ -643,7 +644,6 @@
     <string name="welcome_chat_over_email">Xat segur i descentralitzat</string>
     <string name="scan_invitation_code">Escaneja el Codi d\'Invitació</string>
     <string name="login_title">Identifiqueu-vos</string>
-    <string name="login_advanced_hint">Aquest inici de sessió és per a usuaris avançats:\n\n• No feu servir una adreça que utilitzeu a una altra app.\n\n• Les adreces de correu tradicional admeten xats sense xifrar d\'extrem a extrem, indicades amb una icona de correu.</string>
     <string name="login_inbox">Safata d\'entrada</string>
     <string name="login_imap_login">Nom d\'identificació IMAP</string>
     <string name="login_imap_server">Servidor IMAP</string>

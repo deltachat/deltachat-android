@@ -449,6 +449,7 @@
     <string name="connectivity_connected">Đã kết nối</string>
     <string name="sending">Đang gửi…</string>
     <string name="last_msg_sent_successfully">Tin nhắn cuối cùng được gửi thành công.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Không được nhà cung cấp của bạn hỗ trợ.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Tin nhắn</string>

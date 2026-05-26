@@ -465,6 +465,7 @@
     <string name="connectivity_connected">Yhdistetty</string>
     <string name="sending">Lähetetään</string>
     <string name="last_msg_sent_successfully">Viimeinen viesti lähetetty onnistuneesti.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Ei tuettu palveluntarjoajallasi.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Viestit</string>

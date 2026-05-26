@@ -565,6 +565,7 @@
     <string name="connectivity_connected">Kapcsolódott</string>
     <string name="sending">Küldés…</string>
     <string name="last_msg_sent_successfully">Utolsó üzenet sikeresen elküldve.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Az Ön szolgáltatója nem támogatja.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Üzenetek</string>

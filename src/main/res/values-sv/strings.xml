@@ -597,6 +597,7 @@
     <string name="connectivity_connected">Ansluten</string>
     <string name="sending">Skickar...</string>
     <string name="last_msg_sent_successfully">Senaste meddelandet skickat felfritt.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Stöds ej av din leverantör.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Meddelanden</string>
@@ -633,7 +634,6 @@
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
     <string name="login_title">Logga in</string>
-    <string name="login_advanced_hint">Denna inloggning är för avancerade användare:\n\n- Använd inte en adress som du använder i en annan app.\n\n- Klassisk e-postserver tillåter chattar utan totalsträckskryptering, markerad med en e-postikon.</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
     <string name="login_imap_server">IMAP server</string>
