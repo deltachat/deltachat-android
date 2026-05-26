@@ -627,6 +627,7 @@
     <string name="connectivity_connected">I lidhur</string>
     <string name="sending">Po dërgohet…</string>
     <string name="last_msg_sent_successfully">Mesazhi i fundit i dërguar me sukses.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">I pambuluar nga furnizuesi juaj i shërbimit</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mesazhe</string>
@@ -663,7 +664,6 @@
     <string name="welcome_chat_over_email">Fjalosje e Decentralizuar, e Parrezik</string>
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
-    <string name="login_advanced_hint">Kjo hyrje është për përdorues të përparuar:\n\n• Mos përdorni një llogari që po e përdorni me një aplikacion tjetër.\n\n• Shërbyesi klasik i email-eve lejon fjalosje pa fshehtëzim skaj-më-skaj, shënuar me një ikonë poste.</string>
     <string name="login_inbox">Të marrë</string>
     <string name="login_imap_login">Emër Hyrjeje në IMAP</string>
     <string name="login_imap_server">Shërbyes IMAP</string>

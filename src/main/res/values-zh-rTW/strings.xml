@@ -587,6 +587,7 @@
     <string name="connectivity_connected">已連接</string>
     <string name="sending">傳送中…</string>
     <string name="last_msg_sent_successfully">已成功送出上一條消息。</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">您的供應商不支援。</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">訊息</string>
@@ -623,7 +624,6 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
-    <string name="login_advanced_hint">此登入適用於進階使用者：\n\n• 不要使用你在其他應用程式中使用的位址。\n\n• 傳統的電子郵件伺服器允許未使用端對端加密的聊天，並以郵件圖示標示。</string>
     <string name="login_inbox">收件匣</string>
     <string name="login_imap_login">IMAP 帳號</string>
     <string name="login_imap_server">IMAP 伺服器</string>

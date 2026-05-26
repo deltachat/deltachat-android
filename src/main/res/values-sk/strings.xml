@@ -548,6 +548,7 @@
     <string name="connectivity_connected">Pripojené</string>
     <string name="sending">Odosielam...</string>
     <string name="last_msg_sent_successfully">Posledná správa odoslaná úspešne.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Nie je podporovaná vaším poskytovateľom.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Správy</string>

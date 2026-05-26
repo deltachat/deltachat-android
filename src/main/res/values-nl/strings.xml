@@ -635,6 +635,7 @@
     <string name="connectivity_connected">Verbonden</string>
     <string name="sending">Bezig met versturen…</string>
     <string name="last_msg_sent_successfully">Het nieuwste bericht is verstuurd.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Wordt niet ondersteund door je provider.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Berichten</string>
@@ -671,7 +672,6 @@
     <string name="welcome_chat_over_email">Veilige, gedecentraliseerde gesprekken</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
-    <string name="login_advanced_hint">Deze inlogfunctie is bedoeld voor gevorderden:\n\n• Gebruik géén account dat je al in een andere app gebruikt;\n\n• Op klassieke e-mailservers worden gesprekken zonder eind-tot-eindversleuteling aangeduid met een envelopje.</string>
     <string name="login_inbox">Postvak in</string>
     <string name="login_imap_login">IMAP-inlognaam</string>
     <string name="login_imap_server">IMAP-server</string>
