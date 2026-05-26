@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Add new webxdc.isAppSender and webxdc.isBroadcast APIs for mini-apps
+
 ## v2.50.0
 2026-05
 
