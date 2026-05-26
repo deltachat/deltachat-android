@@ -36,6 +36,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.util.ListenableFuture;
 import chat.delta.util.SettableFuture;
@@ -63,7 +64,6 @@ import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.database.AttachmentDatabase;
-import org.thoughtcrime.securesms.geolocation.ActiveLocationChats;
 import org.thoughtcrime.securesms.geolocation.LocationStreamingService;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
@@ -491,16 +491,29 @@ public class AttachmentManager {
 
   public static void selectLocation(Activity activity, int chatId) {
     Context appContext = activity.getApplicationContext();
+    Rpc rpc = DcHelper.getRpc(appContext);
+    int accountId = DcHelper.getContext(appContext).getAccountId();
 
-    if (DcHelper.getContext(appContext).isSendingLocationsToChat(chatId)) {
+    boolean currentlySharing;
+    try {
+      currentlySharing = rpc.isSendingLocationsToChat(accountId, chatId);
+    } catch (RpcException e) {
+      Log.e(TAG, "Failed to check location streaming state", e);
+      return;
+    }
+
+    if (currentlySharing) {
       if (LocationStreamingService.isRunning()) {
-        LocationStreamingService.stopSharing(appContext, chatId);
+        LocationStreamingService.stopSharing(appContext, accountId, chatId);
         return;
       }
       // Stale — service is dead but chat layer still thinks it's sharing.
-      // Clean up this chat and fall through to the fresh start flow.
-      ActiveLocationChats.remove(appContext, chatId);
-      DcHelper.getContext(appContext).sendLocationsToChat(chatId, 0);
+      // Clean up and fall through to the fresh start flow.
+      try {
+        rpc.sendLocationsToChat(accountId, chatId, 0);
+      } catch (RpcException e) {
+        Log.e(TAG, "Failed to stop stale location streaming", e);
+      }
     }
 
     Permissions.with(activity)
@@ -514,7 +527,8 @@ public class AttachmentManager {
               ShareLocationDialog.show(
                   activity,
                   durationInSeconds ->
-                      LocationStreamingService.startSharing(appContext, chatId, durationInSeconds));
+                      LocationStreamingService.startSharing(
+                          appContext, accountId, chatId, durationInSeconds));
             })
         .request(
             android.Manifest.permission.ACCESS_FINE_LOCATION,
