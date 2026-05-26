@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix: Location streaming now works correctly with multiple accounts
+
 ## v2.50.0
 2026-05
 
