@@ -33,6 +33,7 @@ import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
+import chat.delta.rpc.types.WebxdcMessageInfo;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -73,6 +74,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String baseURL;
   private String sourceCodeUrl = "";
   private String selfAddr;
+  private boolean isAppSender;
+  private boolean isBroadcast;
   private int sendUpdateMaxSize;
   private int sendUpdateInterval;
   private boolean internetAccess = false;
@@ -215,13 +218,22 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     // (a random-id would also work, but would need maintenance and does not add benefits as we
     // regard the file-part interceptRequest() only,
     // also a random-id is not that useful for debugging)
-    this.baseURL = "https://acc" + dcContext.getAccountId() + "-msg" + appMessageId + ".localhost";
+    this.baseURL = "https://acc" + accountId + "-msg" + appMessageId + ".localhost";
 
-    final JSONObject info = this.dcAppMsg.getWebxdcInfo();
-    internetAccess = JsonUtils.optBoolean(info, "internet_access");
-    selfAddr = info.optString("self_addr");
-    sendUpdateMaxSize = info.optInt("send_update_max_size");
-    sendUpdateInterval = info.optInt("send_update_interval");
+    WebxdcMessageInfo info;
+    try {
+      info = rpc.getWebxdcInfo(accountId, appMessageId);
+      internetAccess = info.internetAccess;
+      selfAddr = info.selfAddr;
+      isAppSender = info.isAppSender;
+      isBroadcast = info.isBroadcast;
+      sendUpdateMaxSize = info.sendUpdateMaxSize;
+      sendUpdateInterval = info.sendUpdateInterval;
+    } catch (RpcException e) { // unexpected error, log it and finish
+      Log.e(TAG, "RPC Error", e);
+      finish();
+      return;
+    }
 
     toggleFakeProxy(!internetAccess);
 
@@ -489,22 +501,22 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
           this.dcContext.getMsg(event.getData2Int()); // msg changed, reload data from db
       Util.runOnAnyBackgroundThread(
           () -> {
-            final JSONObject info = dcAppMsg.getWebxdcInfo();
-            final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
-            Util.runOnMain(
-                () -> {
-                  updateTitleAndMenu(info, chat);
-                });
+            try {
+              final WebxdcMessageInfo info =
+                  rpc.getWebxdcInfo(dcContext.getAccountId(), dcAppMsg.getId());
+              final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
+              Util.runOnMain(() -> updateTitleAndMenu(info, chat));
+            } catch (RpcException e) {
+              Log.e(TAG, "RPC Error", e);
+            }
           });
     }
   }
 
-  private void updateTitleAndMenu(JSONObject info, DcChat chat) {
-    final String docName = JsonUtils.optString(info, "document");
-    final String xdcName = JsonUtils.optString(info, "name");
-    final String currSourceCodeUrl = JsonUtils.optString(info, "source_code_url");
-    getSupportActionBar()
-        .setTitle((docName.isEmpty() ? xdcName : docName) + " – " + chat.getName());
+  private void updateTitleAndMenu(WebxdcMessageInfo info, DcChat chat) {
+    final String docName = TextUtils.isEmpty(info.document) ? info.name : info.document;
+    getSupportActionBar().setTitle(docName + " – " + chat.getName());
+    String currSourceCodeUrl = info.sourceCodeUrl != null ? info.sourceCodeUrl : "";
     if (!sourceCodeUrl.equals(currSourceCodeUrl)) {
       sourceCodeUrl = currSourceCodeUrl;
       invalidateOptionsMenu();
@@ -524,19 +536,20 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     Context context = activity.getApplicationContext();
     try {
       DcContext dcContext = DcHelper.getContext(context);
+      Rpc rpc = DcHelper.getRpc(context);
+      int accountId = dcContext.getAccountId();
       DcMsg msg = dcContext.getMsg(msgId);
-      final JSONObject info = msg.getWebxdcInfo();
+      WebxdcMessageInfo info = rpc.getWebxdcInfo(accountId, msgId);
 
-      final String docName = JsonUtils.optString(info, "document");
-      final String xdcName = JsonUtils.optString(info, "name");
-      byte[] blob = msg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
+      final String docName = TextUtils.isEmpty(info.document) ? info.name : info.document;
+      byte[] blob = msg.getWebxdcBlob(info.icon);
       ByteArrayInputStream is = new ByteArrayInputStream(blob);
       BitmapDrawable drawable = (BitmapDrawable) Drawable.createFromStream(is, "icon");
       Bitmap bitmap = drawable.getBitmap();
 
       ShortcutInfoCompat shortcutInfoCompat =
-          new ShortcutInfoCompat.Builder(context, "xdc-" + dcContext.getAccountId() + "-" + msgId)
-              .setShortLabel(docName.isEmpty() ? xdcName : docName)
+          new ShortcutInfoCompat.Builder(context, "xdc-" + accountId + "-" + msgId)
+              .setShortLabel(docName)
               .setIcon(
                   IconCompat.createWithBitmap(
                       bitmap)) // createWithAdaptiveBitmap() removes decorations but cuts out a too
@@ -626,6 +639,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     @JavascriptInterface
     public String selfName() {
       return WebxdcActivity.this.dcContext.getName();
+    }
+
+    @JavascriptInterface
+    public boolean isAppSender() {
+      return WebxdcActivity.this.isAppSender;
+    }
+
+    @JavascriptInterface
+    public boolean isBroadcast() {
+      return WebxdcActivity.this.isBroadcast;
     }
 
     /**

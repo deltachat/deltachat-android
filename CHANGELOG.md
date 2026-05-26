@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Add new webxdc.isAppSender and webxdc.isBroadcast APIs for mini-apps
 * Fix: Location streaming now works correctly with multiple accounts
 
 ## v2.50.0
