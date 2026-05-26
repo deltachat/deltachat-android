@@ -641,6 +641,7 @@
     <string name="connectivity_connected">Підключено</string>
     <string name="sending">Шлеться…</string>
     <string name="last_msg_sent_successfully">Останнє повідомлення успішно надіслано.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Не підтримується вашим провайдером електронної пошти.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Повідомлення</string>
@@ -677,7 +678,6 @@
     <string name="welcome_chat_over_email">Безпечний децентралізований чат</string>
     <string name="scan_invitation_code">Сканувати код запрошення</string>
     <string name="login_title">Увійти</string>
-    <string name="login_advanced_hint">Цей спосіб входу призначений для досвідчених користувачів:\n\n• Не використовуйте обліковий запис, який ви вже використовуєте в іншому застосунку.\n\n• Класичний поштовий сервер дозволяє чати без наскрізного шифрування — вони позначені піктограмою листа.</string>
     <string name="login_inbox">Вхідні</string>
     <string name="login_imap_login">IMAP-логін</string>
     <string name="login_imap_server">IMAP-сервер</string>

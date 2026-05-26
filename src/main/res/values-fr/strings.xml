@@ -624,6 +624,7 @@
     <string name="connectivity_connected">Connecté</string>
     <string name="sending">Envoi...</string>
     <string name="last_msg_sent_successfully">Dernier message envoyé avec succès.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Non pris en charge par votre fournisseur de mail.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
@@ -660,7 +661,6 @@
     <string name="welcome_chat_over_email">Messagerie décentralisée sécurisée</string>
     <string name="scan_invitation_code">Scanner le code d\'invitation</string>
     <string name="login_title">Connexion</string>
-    <string name="login_advanced_hint">Ce type de connexion est réservé aux utilisateurs avancés.\n\n• N\'utilisez pas une adresse déjà employée dans une autre appli.\n\n• Les serveurs de courriel classiques autorisent les discussions non chiffrées de bout en bout, lesquelles sont représentées par une icône enveloppe.</string>
     <string name="login_inbox">Boîte de réception</string>
     <string name="login_imap_login">Utilisateur IMAP</string>
     <string name="login_imap_server">Serveur IMAP</string>

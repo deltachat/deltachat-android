@@ -555,6 +555,7 @@
     <string name="connectivity_connected">Prisijungta</string>
     <string name="sending">Siunčiama…</string>
     <string name="last_msg_sent_successfully">Paskutinė žinutė sėkmingai išsiųsta.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Jūsų teikėjas nepalaiko šios ypatybės.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Žinutės</string>
@@ -589,7 +590,6 @@
     <string name="welcome_chat_over_email">Saugūs decentralizuoti pokalbiai</string>
     <string name="scan_invitation_code">Skenuoti pakvietimo kodą</string>
     <string name="login_title">Prisijungti</string>
-    <string name="login_advanced_hint">Šis prisijungimas skirtas patyrusiems naudotojams:\n\n• Nenaudokite adreso, kurį naudojate kitoje programoje.\n\n• Klasikinis el. pašto serveris leidžia pokalbius be ištisinio šifravimo, pažymėtus voko piktograma.</string>
     <string name="login_inbox">Gauta</string>
     <string name="login_imap_login">IMAP prisijungimo vardas</string>
     <string name="login_imap_server">IMAP serveris</string>

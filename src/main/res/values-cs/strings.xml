@@ -615,6 +615,7 @@
     <string name="connectivity_connected">Připojeno</string>
     <string name="sending">Odesílání...</string>
     <string name="last_msg_sent_successfully">Poslední zpráva úspěšně odeslána.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Nepodporováno vaším poskytovatelem.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Zprávy</string>
@@ -651,7 +652,6 @@
     <string name="welcome_chat_over_email">Zabezpečený decentralizovaný chat</string>
     <string name="scan_invitation_code">Naskenovat kód pozvánky</string>
     <string name="login_title">Přihlaš se</string>
-    <string name="login_advanced_hint">Toto přihlášení je určeno pro pokročilé uživatele: \n\n Nepoužívejte adresu, kterou používáte v jiné aplikaci. \n\n- Klasický e-mailový server umožňuje chatování bez koncového šifrování označeného ikonou pošty.</string>
     <string name="login_inbox">Příchozí</string>
     <string name="login_imap_login">IMAP uživatelské jméno</string>
     <string name="login_imap_server">IMAP server</string>
