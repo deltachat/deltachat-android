@@ -22,6 +22,7 @@ class SearchViewModel extends ViewModel {
   private final Context appContext;
   private final DcContext dcContext;
   private boolean forwarding = false;
+  private final Object bgSearchLock = new Object();
   private boolean inBgSearch;
   private boolean needsAnotherBgSearch;
 
@@ -45,27 +46,29 @@ class SearchViewModel extends ViewModel {
   }
 
   public void updateQuery() {
-    if (inBgSearch) {
-      needsAnotherBgSearch = true;
-      Log.i(TAG, "... search call debounced");
-    } else {
+    synchronized (bgSearchLock) {
+      if (inBgSearch) {
+        Log.i(TAG, "... search call debounced");
+        needsAnotherBgSearch = true;
+        return;
+      }
       inBgSearch = true;
-      Util.runOnBackground(
-          () -> {
-            Util.sleep(100);
-            needsAnotherBgSearch = false;
-            queryAndCallback(lastQuery, searchResult::postValue);
-
-            while (needsAnotherBgSearch) {
-              Util.sleep(100);
-              needsAnotherBgSearch = false;
-              Log.i(TAG, "... executing debounced search call");
-              queryAndCallback(lastQuery, searchResult::postValue);
-            }
-
-            inBgSearch = false;
-          });
     }
+    Util.runOnBackground(
+        () -> {
+          while (true) {
+            Log.i(TAG, "... executing debounced search call");
+            queryAndCallback(lastQuery, searchResult::postValue);
+            synchronized (bgSearchLock) {
+              if (!needsAnotherBgSearch) {
+                inBgSearch = false;
+                return;
+              }
+              needsAnotherBgSearch = false;
+            }
+            Util.sleep(100);
+          }
+        });
   }
 
   private void queryAndCallback(@NonNull String query, @NonNull SearchViewModel.Callback callback) {

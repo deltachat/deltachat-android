@@ -240,9 +240,9 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   public void loadChatlistAsync() {
     synchronized (loadChatlistLock) {
-      needsAnotherLoad = true;
       if (inLoadChatlist) {
         Log.i(TAG, "chatlist loading debounced");
+        needsAnotherLoad = true;
         return;
       }
       inLoadChatlist = true;
@@ -251,6 +251,9 @@ public class ConversationListFragment extends BaseConversationListFragment
     Util.runOnAnyBackgroundThread(
         () -> {
           while (true) {
+            Log.i(TAG, "executing debounced chatlist loading");
+            loadChatlist();
+
             synchronized (loadChatlistLock) {
               if (!needsAnotherLoad) {
                 inLoadChatlist = false;
@@ -259,8 +262,6 @@ public class ConversationListFragment extends BaseConversationListFragment
               needsAnotherLoad = false;
             }
 
-            Log.i(TAG, "executing debounced chatlist loading");
-            loadChatlist();
             Util.sleep(100);
           }
         });
