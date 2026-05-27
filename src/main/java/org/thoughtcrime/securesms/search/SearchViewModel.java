@@ -47,9 +47,9 @@ class SearchViewModel extends ViewModel {
 
   public void updateQuery() {
     synchronized (bgSearchLock) {
-      needsAnotherBgSearch = true;
       if (inBgSearch) {
         Log.i(TAG, "... search call debounced");
+        needsAnotherBgSearch = true;
         return;
       }
       inBgSearch = true;
