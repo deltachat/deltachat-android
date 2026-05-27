@@ -240,9 +240,9 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   public void loadChatlistAsync() {
     synchronized (loadChatlistLock) {
-      needsAnotherLoad = true;
       if (inLoadChatlist) {
         Log.i(TAG, "chatlist loading debounced");
+        needsAnotherLoad = true;
         return;
       }
       inLoadChatlist = true;
