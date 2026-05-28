@@ -877,13 +877,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleSharing() {
     ArrayList<Uri> uriList = ShareUtil.getSharedUris(this);
-    int sharedContactId = ShareUtil.getSharedContactId(this);
     if (uriList.size() > 1) {
       askSendingFiles(uriList, () -> SendRelayedMessageUtil.immediatelyRelay(this, chatId));
     } else {
-      if (sharedContactId != 0) {
-        addAttachmentContactInfo(sharedContactId);
-      } else if (uriList.isEmpty()) {
+      if (uriList.isEmpty()) {
         DcHelper.getContext(context)
             .setDraft(
                 chatId, SendRelayedMessageUtil.createMessage(this, null, getSharedText(this)));
