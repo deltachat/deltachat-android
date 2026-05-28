@@ -73,6 +73,9 @@ public class EditRelayActivity extends BaseActionBarActivity
   private ProgressDialog progressDialog;
   private boolean cancelled = false;
 
+  private View imapFolderLayout;
+  private boolean showImapFolder = false;
+
   Spinner imapSecurity;
   Spinner smtpSecurity;
   Spinner certCheck;
@@ -102,9 +105,11 @@ public class EditRelayActivity extends BaseActionBarActivity
 
     advancedGroup = findViewById(R.id.advanced_group);
     advancedIcon = findViewById(R.id.advanced_icon);
+    imapFolderLayout = findViewById(R.id.imap_folder);
     TextView advancedTextView = findViewById(R.id.advanced_text);
     TextInputEditText imapServerInput = findViewById(R.id.imap_server_text);
     TextInputEditText imapPortInput = findViewById(R.id.imap_port_text);
+    TextInputEditText imapFolderInput = findViewById(R.id.imap_folder_text);
     TextInputEditText smtpServerInput = findViewById(R.id.smtp_server_text);
     TextInputEditText smtpPortInput = findViewById(R.id.smtp_port_text);
     TextView viewLogText = findViewById(R.id.view_log_button);
@@ -196,6 +201,12 @@ public class EditRelayActivity extends BaseActionBarActivity
 
       if (config.imapPort != null) imapPortInput.setText(config.imapPort.toString());
       expandAdvanced = expandAdvanced || config.imapPort != null;
+
+      showImapFolder = !TextUtils.isEmpty(config.imapFolder);
+      if (showImapFolder) {
+        imapFolderInput.setText(config.imapFolder);
+        expandAdvanced = true;
+      }
 
       intVal = socketSecurityToInt(config.imapSecurity);
       imapSecurity.setSelection(ViewUtil.checkBounds(intVal, imapSecurity));
@@ -393,9 +404,11 @@ public class EditRelayActivity extends BaseActionBarActivity
     boolean advancedViewVisible = advancedGroup.getVisibility() == View.VISIBLE;
     if (advancedViewVisible) {
       advancedGroup.setVisibility(View.GONE);
+      imapFolderLayout.setVisibility(View.GONE);
       advancedIcon.setRotation(45);
     } else {
       advancedGroup.setVisibility(View.VISIBLE);
+      imapFolderLayout.setVisibility(showImapFolder ? View.VISIBLE : View.GONE);
       advancedIcon.setRotation(0);
     }
   }
@@ -498,6 +511,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     param.password = getParam(R.id.password_text, false);
     param.imapServer = getParam(R.id.imap_server_text, true);
     param.imapPort = Util.objectToInt(getParam(R.id.imap_port_text, true));
+    param.imapFolder = getParam(R.id.imap_folder_text, true);
     param.imapSecurity = socketSecurityFromInt(imapSecurity.getSelectedItemPosition());
     param.imapUser = getParam(R.id.imap_login_text, false);
     param.smtpServer = getParam(R.id.smtp_server_text, true);
