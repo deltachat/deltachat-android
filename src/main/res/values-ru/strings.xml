@@ -462,6 +462,7 @@
     <string name="call_answered_elsewhere">Звонок отвечен на другом устройстве</string>
     <string name="call_requires_camera_permission">Для видеозвонков требуется разрешение на использование камеры</string>
     <string name="call_requires_mic_permission">Для совершения звонков требуется разрешение на использование микрофона</string>
+    <string name="call_requires_connection">Не удалось начать вызов. Убедитесь, что ваше устройство подключено к интернету, и повторите попытку.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Звонок от %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -487,9 +488,9 @@
     <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
     <plurals name="ask_forward_messages">
         <item quantity="one">Переслать сообщение пользователю %2$s?</item>
-        <item quantity="few">Переслать %1$d сообщения пользователям %2$s?</item>
-        <item quantity="many">Переслать %1$d сообщения пользователям %2$s?</item>
-        <item quantity="other">Переслать %1$d сообщения пользователям %2$s?</item>
+        <item quantity="few">Переслать %1$d сообщения пользователю %2$s?</item>
+        <item quantity="many">Переслать %1$d сообщений пользователю %2$s?</item>
+        <item quantity="other">Переслать %1$d сообщений пользователю %2$s?</item>
     </plurals>
     <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Переслать сообщения %1$s?</string>
@@ -708,6 +709,7 @@
     <string name="welcome_chat_over_email">Безопасный децентрализованный чат</string>
     <string name="scan_invitation_code">Сканировать код приглашения</string>
     <string name="login_title">Войти</string>
+    <string name="login_advanced_hint">Этот способ входа предназначен для опытных пользователей.\n\nНе используйте адрес, который вы уже используете в другом приложении.</string>
     <string name="login_inbox">Входящие</string>
     <string name="login_imap_login">Имя пользователя IMAP</string>
     <string name="login_imap_server">Сервер IMAP</string>
@@ -742,6 +744,7 @@
     <string name="used_for_sending">Используется для отправки</string>
     <string name="hide_from_contacts">Скрыть из контактов</string>
     <string name="hidden_from_contacts">Скрыт из контактов</string>
+    <string name="enforce_e2ee">Принудительное шифрование для всех релеев</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Сообщения поступают на все релеи.\n\n⚠️ Если вы измените какие-либо настройки в этом разделе, убедитесь, что на всех ваших устройствах установлена версия Delta Chat не ниже 2.47.0. В противном случае старые версии могут не получать сообщения.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
