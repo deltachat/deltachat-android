@@ -430,6 +430,7 @@
     <string name="call_answered_elsewhere">Thirrje që ka marrë përgjigje në pajisje tjetër</string>
     <string name="call_requires_camera_permission">Për thirrje me video janë të domosdoshme leje mbi kamerën</string>
     <string name="call_requires_mic_permission">Leja mbi mikrofonin është e domosdoshme për thirrje</string>
+    <string name="call_requires_connection">S’niset dot thirrja. Sigurohuni se keni lidhje internet dhe riprovoni.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Thirrje me %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -664,6 +665,7 @@
     <string name="welcome_chat_over_email">Fjalosje e Decentralizuar, e Parrezik</string>
     <string name="scan_invitation_code">Skanoni Kod Ftese</string>
     <string name="login_title">Hyni</string>
+    <string name="login_advanced_hint">Kjo hyrje është për përdorues të thelluar.\n\nMos përdorni një adresë që e përdorni në një aplikacion tjetër.</string>
     <string name="login_inbox">Të marrë</string>
     <string name="login_imap_login">Emër Hyrjeje në IMAP</string>
     <string name="login_imap_server">Shërbyes IMAP</string>
@@ -698,6 +700,7 @@
     <string name="used_for_sending">E përdorur për dërgim</string>
     <string name="hide_from_contacts">Fshihe prej Kontaktesh</string>
     <string name="hidden_from_contacts">Fshehur prej kontakteve</string>
+    <string name="enforce_e2ee">Detyro Fshehtëzim për Krejt Reletë</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Mesazhet merren në të tëra reletë.\n\n⚠️ Nëse ndryshoni diçka këtu, sigurohuni se krejt pajisjet tuaja xhirojnë të paktën versionin 2.47.0. Përndryshe, pajisje më të vjetra mund të humbin mesazhe.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
@@ -841,6 +844,7 @@
     <string name="pref_show_emails_all">Krejt</string>
     <string name="pref_experimental_features">Veçori Eksperimentale</string>
     <string name="pref_experimental_features_explain">Këto veçori mund të jenë të paqëndrueshme dhe mund të ndryshohen, ose hiqen</string>
+    <string name="pref_on_demand_location_streaming">Dhënie Vendndodhjeje</string>
     <string name="pref_background_default">Figurë parazgjedhje</string>
     <string name="pref_background_default_color">Ngjyrë parazgjedhje</string>
     <string name="pref_background_custom_image">Figurë vetjake</string>

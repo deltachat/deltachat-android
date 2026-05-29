@@ -426,6 +426,7 @@
     <string name="call_answered_elsewhere">通话已在其他设备上接听</string>
     <string name="call_requires_camera_permission">视频通话需要摄像头权限</string>
     <string name="call_requires_mic_permission">通话需要麦克风权限</string>
+    <string name="call_requires_connection">无法开始通话。请确保您的设备已连接到互联网，然后重试。</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">与 %1$s 的通话</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -654,6 +655,7 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
+    <string name="login_advanced_hint">此登录适用于高级用户。\n\n请勿使用您在其他应用中已使用的地址。</string>
     <string name="login_inbox">收件箱</string>
     <string name="login_imap_login">IMAP 登录名</string>
     <string name="login_imap_server">IMAP 服务器</string>
@@ -688,6 +690,7 @@
     <string name="used_for_sending">用于发送</string>
     <string name="hide_from_contacts">对联系人隐藏</string>
     <string name="hidden_from_contacts">已对联系人隐藏</string>
+    <string name="enforce_e2ee">对所有中继强制加密</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">在所有中继上均已收到消息。\n\n⚠️ 如果您在此处进行任何更改，请确保所有设备至少运行 2.47.0 版本。否则，较旧的设备可能会错过消息。</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
