@@ -167,7 +167,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     notificationsEnabled.setChecked(!dcContext.isMuted());
     notificationsEnabled.setSummary(getSummary(getContext(), false));
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
-    notifyCalls.setChecked(dcContext.getConfig("who_can_call_me") != "2");
+    notifyCalls.setChecked(!"2".equals(dcContext.getConfig("who_can_call_me")));
 
     // set without altering "unset" state of the preference
     reliableService.setOnPreferenceChangeListener(null);
