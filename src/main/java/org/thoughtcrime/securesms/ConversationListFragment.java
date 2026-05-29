@@ -64,6 +64,7 @@ public class ConversationListFragment extends BaseConversationListFragment
   private Timer reloadTimer;
   private boolean chatlistJustLoaded;
   private boolean reloadTimerInstantly;
+  private boolean resetScrollPosition;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -303,6 +304,11 @@ public class ConversationListFragment extends BaseConversationListFragment
           }
 
           ((ConversationListAdapter) list.getAdapter()).changeData(chatlist);
+
+          if (resetScrollPosition) {
+            list.scrollToPosition(0);
+            resetScrollPosition = false;
+          }
         });
   }
 
@@ -358,5 +364,9 @@ public class ConversationListFragment extends BaseConversationListFragment
     } else {
       loadChatlistAsync();
     }
+  }
+
+  public void resetScrollPosition() {
+    resetScrollPosition = true;
   }
 }
