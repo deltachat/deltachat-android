@@ -6,6 +6,7 @@
 * Fix: Location streaming now works correctly with multiple accounts
 * Fix debouncing in chatlist and search
 * Fix sharing contact across profiles
+* Fix: Reset scroll location after switching account
 
 ## v2.50.0
 2026-05
