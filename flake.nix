@@ -35,6 +35,7 @@
           buildInputs = [
             android-sdk
             pkgs.openjdk17
+            pkgs.perl
             (pkgs.buildPackages.rust-bin.stable."${rust-version}".minimal.override {
               targets = [
                 "armv7-linux-androideabi"
