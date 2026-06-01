@@ -57,7 +57,7 @@ public class MediaView extends FrameLayout {
       long size,
       boolean autoplay)
       throws IOException {
-    mediaType = mediaType == null? "null" : mediaType;
+    mediaType = mediaType == null ? "null" : mediaType;
     if (mediaType.startsWith("image/")) {
       imageView.setVisibility(View.VISIBLE);
       if (videoView.resolved()) videoView.get().setVisibility(View.GONE);
