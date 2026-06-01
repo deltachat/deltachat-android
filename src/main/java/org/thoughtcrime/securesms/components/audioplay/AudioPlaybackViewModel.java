@@ -34,6 +34,7 @@ public class AudioPlaybackViewModel extends ViewModel {
 
   private final MutableLiveData<Map<Integer, Long>> durations =
       new MutableLiveData<>(new HashMap<>());
+  private final Map<Integer, Uri> durationUris = new HashMap<>();
   private final Set<Integer> extractionInProgress = new HashSet<>();
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
 
@@ -115,7 +116,17 @@ public class AudioPlaybackViewModel extends ViewModel {
     // Check cache
     Map<Integer, Long> currentDurations = durations.getValue();
     if (currentDurations != null && currentDurations.containsKey(msgId)) {
-      return;
+      Uri cachedUri = durationUris.get(msgId);
+      if (audioUri.equals(cachedUri)) {
+        return;
+      }
+      Map<Integer, Long> updated = new HashMap<>(currentDurations);
+      updated.remove(msgId);
+      durations.setValue(updated);
+      durationUris.remove(msgId);
+      synchronized (extractionInProgress) {
+        extractionInProgress.remove(msgId);
+      }
     }
 
     // Check extracting
@@ -136,6 +147,7 @@ public class AudioPlaybackViewModel extends ViewModel {
                 Map<Integer, Long> updatedDurations = new HashMap<>(durations.getValue());
                 updatedDurations.put(msgId, duration);
                 durations.setValue(updatedDurations);
+                durationUris.put(msgId, audioUri);
               });
 
           synchronized (extractionInProgress) {
@@ -386,6 +398,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   protected void onCleared() {
     stopUpdateProgress();
     extractionExecutor.shutdown();
+    durationUris.clear();
     super.onCleared();
   }
 }

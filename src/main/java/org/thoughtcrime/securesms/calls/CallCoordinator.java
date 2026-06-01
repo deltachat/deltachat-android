@@ -1464,12 +1464,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
     // Decline intent
-    Intent declineIntent = new Intent(this.appContext, CallActivity.class);
+    Intent declineIntent = new Intent(this.appContext, CallActionReceiver.class);
     declineIntent.setAction(CallActivity.ACTION_DECLINE_CALL);
-    declineIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
     PendingIntent declinePendingIntent =
-        PendingIntent.getActivity(
+        PendingIntent.getBroadcast(
             this.appContext,
             1,
             declineIntent,
@@ -1538,12 +1537,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Intent activityIntent = new Intent(this.appContext, CallActivity.class);
     activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-    Intent hangupIntent = new Intent(this.appContext, CallActivity.class);
+    Intent hangupIntent = new Intent(this.appContext, CallActionReceiver.class);
     hangupIntent.setAction(CallActivity.ACTION_HANGUP_CALL);
-    hangupIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
     PendingIntent hangupPendingIntent =
-        PendingIntent.getActivity(
+        PendingIntent.getBroadcast(
             this.appContext,
             3,
             hangupIntent,
