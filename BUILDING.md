@@ -56,7 +56,7 @@ $ ./gradlew assembleDebug
 
 Resulting APK files can be found in
 `build/outputs/apk/gplay/debug/` and
-`build/outputs/apk/fat/debug/`.
+`build/outputs/apk/foss/debug/`.
 
 ## Build Using Dockerfile
 
