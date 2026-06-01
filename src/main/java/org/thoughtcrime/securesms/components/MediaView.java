@@ -53,10 +53,11 @@ public class MediaView extends FrameLayout {
       @NonNull Window window,
       @NonNull Uri source,
       @Nullable String fileName,
-      @NonNull String mediaType,
+      @Nullable String mediaType,
       long size,
       boolean autoplay)
       throws IOException {
+    mediaType = mediaType == null ? "null" : mediaType;
     if (mediaType.startsWith("image/")) {
       imageView.setVisibility(View.VISIBLE);
       if (videoView.resolved()) videoView.get().setVisibility(View.GONE);

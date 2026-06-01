@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix: avoid crashes in Media preview sometimes
+
 ## 2.51.0
 2026-05
 
