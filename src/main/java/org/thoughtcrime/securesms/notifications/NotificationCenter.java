@@ -711,6 +711,7 @@ public class NotificationCenter {
                 new Person.Builder()
                     .setName(msg.getSenderName(senderContact))
                     .setIcon(getAvatarIcon(senderContact))
+                    .setBot(senderContact.isBot())
                     .build();
             style.addMessage(msgEntry.getValue(), msg.getSortTimestamp() * 1000, sender);
           }
