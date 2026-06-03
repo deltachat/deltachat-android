@@ -810,11 +810,12 @@ public class NotificationCenter {
     }
   }
 
-  public IconCompat getAvatarIcon(DcContact contact) {
-    return IconCompat.createWithBitmap(getAvatar(new Recipient(context, contact)));
+  public @Nullable IconCompat getAvatarIcon(DcContact contact) {
+    Bitmap avatar = getAvatar(new Recipient(context, contact));
+    return avatar != null ? IconCompat.createWithBitmap(avatar) : null;
   }
 
-  public Bitmap getAvatar(Recipient recipient) {
+  public @Nullable Bitmap getAvatar(Recipient recipient) {
     try {
       Drawable drawable;
       ContactPhoto contactPhoto = recipient.getContactPhoto(context);
