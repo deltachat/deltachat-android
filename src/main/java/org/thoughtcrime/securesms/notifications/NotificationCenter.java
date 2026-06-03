@@ -23,8 +23,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.Person;
 import androidx.core.app.RemoteInput;
 import androidx.core.app.TaskStackBuilder;
+import androidx.core.graphics.drawable.IconCompat;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -414,10 +416,6 @@ public class NotificationCenter {
               privacy.isDisplayMessage()
                   ? dcMsg.getSummarytext(2000)
                   : context.getString(R.string.notify_new_message);
-          if (dcChat.isMultiUser() && privacy.isDisplayContact()) {
-            shortLine =
-                dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + shortLine;
-          }
           String tickerLine = shortLine;
           if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
             tickerLine =
@@ -643,7 +641,7 @@ public class NotificationCenter {
 
       // Set avatar
       if (privacy.isDisplayContact()) {
-        Bitmap bitmap = getAvatar(dcChat);
+        Bitmap bitmap = getAvatar(new Recipient(context, dcChat));
         if (bitmap != null) {
           builder.setLargeIcon(bitmap);
         }
@@ -694,14 +692,29 @@ public class NotificationCenter {
         }
       }
 
-      // Create inbox style (gets visible if the notification is expanded)
+      // Create messaging style
       if (privacy.isDisplayContact() && privacy.isDisplayMessage() && messagesForInbox != null) {
         try {
-          NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-          for (String line : messagesForInbox.values()) {
-            inboxStyle.addLine(line);
+          DcContact selfContact = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
+          Person self =
+              new Person.Builder()
+                  .setName(selfContact.getDisplayName())
+                  .setIcon(getAvatarIcon(selfContact))
+                  .build();
+          NotificationCompat.MessagingStyle style = new NotificationCompat.MessagingStyle(self);
+          style.setGroupConversation(dcChat.isMultiUser());
+          style.setConversationTitle(dcChat.getName());
+          for (Map.Entry<Integer, String> msgEntry : messagesForInbox.entrySet()) {
+            DcMsg msg = dcContext.getMsg(msgEntry.getKey());
+            DcContact senderContact = dcContext.getContact(msg.getFromId());
+            Person sender =
+                new Person.Builder()
+                    .setName(msg.getSenderName(senderContact))
+                    .setIcon(getAvatarIcon(senderContact))
+                    .build();
+            style.addMessage(msgEntry.getValue(), msg.getSortTimestamp(), sender);
           }
-          builder.setStyle(inboxStyle);
+          builder.setStyle(style);
         } catch (Exception e) {
           Log.w(TAG, e);
         }
@@ -797,8 +810,11 @@ public class NotificationCenter {
     }
   }
 
-  public Bitmap getAvatar(DcChat dcChat) {
-    Recipient recipient = new Recipient(context, dcChat);
+  public IconCompat getAvatarIcon(DcContact contact) {
+    return IconCompat.createWithBitmap(getAvatar(new Recipient(context, contact)));
+  }
+
+  public Bitmap getAvatar(Recipient recipient) {
     try {
       Drawable drawable;
       ContactPhoto contactPhoto = recipient.getContactPhoto(context);

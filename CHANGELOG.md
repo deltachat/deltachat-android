@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Fix: avoid crashes in Media preview sometimes
+* Use message style notifications for longer message previews
 
 ## 2.51.0
 2026-05
