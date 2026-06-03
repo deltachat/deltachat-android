@@ -712,7 +712,7 @@ public class NotificationCenter {
                     .setName(msg.getSenderName(senderContact))
                     .setIcon(getAvatarIcon(senderContact))
                     .build();
-            style.addMessage(msgEntry.getValue(), msg.getSortTimestamp(), sender);
+            style.addMessage(msgEntry.getValue(), msg.getSortTimestamp() * 1000, sender);
           }
           builder.setStyle(style);
         } catch (Exception e) {
