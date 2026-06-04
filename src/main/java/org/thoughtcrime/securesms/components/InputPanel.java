@@ -332,6 +332,31 @@ public class InputPanel extends ConstraintLayout
     }
   }
 
+  public boolean isRecording() {
+    return microphoneRecorderView.isRecording();
+  }
+
+  public long getRecordingDuration() {
+    return recordTime.getElapsedTime();
+  }
+
+  public void resetRecordingUI() {
+    microphoneRecorderView.resetState();
+    recordLockCancel.setVisibility(View.GONE);
+    recordTime.hide();
+    slideToCancel.hide();
+
+    emojiToggle.setVisibility(View.VISIBLE);
+    emojiToggle.setAlpha(1f);
+    composeText.setVisibility(View.VISIBLE);
+    composeText.setAlpha(1f);
+    quickCameraToggle.setVisibility(View.VISIBLE);
+    quickCameraToggle.setAlpha(1f);
+    quickAudioToggle.setVisibility(View.VISIBLE);
+    quickAudioToggle.setAlpha(1f);
+    buttonToggle.setAlpha(1f);
+  }
+
   public interface Listener {
     void onRecorderStarted();
 
@@ -424,10 +449,10 @@ public class InputPanel extends ConstraintLayout
     }
 
     public long hide() {
-      long elapsedtime = System.currentTimeMillis() - startTime.get();
+      long elapsedTime = getElapsedTime();
       this.startTime.set(0);
       ViewUtil.fadeOut(this.recordTimeView, FADE_TIME, View.INVISIBLE);
-      return elapsedtime;
+      return elapsedTime;
     }
 
     @Override
@@ -438,6 +463,11 @@ public class InputPanel extends ConstraintLayout
         recordTimeView.setText(formatElapsedTime(elapsedTime));
         Util.runOnMainDelayed(this, UPDATE_EVERY_MS);
       }
+    }
+
+    public long getElapsedTime() {
+      long start = startTime.get();
+      return start > 0 ? System.currentTimeMillis() - start : 0;
     }
 
     private String formatElapsedTime(long ms) {

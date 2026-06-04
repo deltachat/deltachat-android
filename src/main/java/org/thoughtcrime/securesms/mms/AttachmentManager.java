@@ -17,14 +17,12 @@
 package org.thoughtcrime.securesms.mms;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
@@ -69,6 +67,7 @@ import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.Stub;
@@ -221,7 +220,6 @@ public class AttachmentManager {
   }
   */
 
-  @SuppressLint("StaticFieldLeak")
   public ListenableFuture<Boolean> setMedia(
       @NonNull final GlideRequests glideRequests,
       @NonNull final Uri uri,
@@ -235,158 +233,106 @@ public class AttachmentManager {
 
     final SettableFuture<Boolean> result = new SettableFuture<>();
 
-    new AsyncTask<Void, Void, Slide>() {
-      @Override
-      protected void onPreExecute() {
-        thumbnail.clear(glideRequests);
-        setAttachmentPresent(true);
-      }
+    thumbnail.clear(glideRequests);
+    setAttachmentPresent(true);
 
-      @Override
-      protected @Nullable Slide doInBackground(Void... params) {
-        try {
-          if (msg != null && msg.getType() == DcMsg.DC_MSG_WEBXDC) {
-            return new DocumentSlide(context, msg);
-          } else if (PartAuthority.isLocalUri(uri)) {
-            return getManuallyCalculatedSlideInfo(uri, width, height, msg);
-          } else {
-            Slide result = getContentResolverSlideInfo(uri, width, height, chatId);
-
-            if (result == null) return getManuallyCalculatedSlideInfo(uri, width, height, msg);
-            else return result;
-          }
-        } catch (IOException e) {
-          Log.w(TAG, e);
-          return null;
-        }
-      }
-
-      @Override
-      protected void onPostExecute(@Nullable final Slide slide) {
-        if (slide == null) {
-          setAttachmentPresent(false);
-          result.set(false);
-        } else if (slide.getFileSize() > 1024 * 1024 * 1024) {
-          // this is only a rough check, videos and images may be recoded
-          // and the core checks more carefully later.
-          setAttachmentPresent(false);
-          Log.w(TAG, "File too large.");
-          Toast.makeText(slide.context, "File too large.", Toast.LENGTH_LONG).show();
-          result.set(false);
-        } else {
-          setSlide(slide);
-          setAttachmentPresent(true);
-
-          if (slide.hasAudio()) {
-            audioView.setPlaybackViewModel(playbackViewModel);
-            audioView.setAudio((AudioSlide) slide);
-            removableMediaView.display(audioView, false);
-            removableMediaView.addRemoveClickListener(
-                v -> {
-                  playbackViewModel.stop(audioView.getMsgId());
-                });
-            result.set(true);
-          } else if (slide.isVcard()) {
-            vcardView.setVcard(glideRequests, (VcardSlide) slide, DcHelper.getRpc(context));
-            removableMediaView.display(vcardView, false);
-          } else if (slide.hasDocument()) {
-            if (slide.isWebxdcDocument()) {
-              DcMsg instance =
-                  msg != null ? msg : DcHelper.getContext(context).getMsg(slide.dcMsgId);
-              webxdcView.setWebxdc(instance, context.getString(R.string.webxdc_draft_hint));
-              webxdcView.setWebxdcClickListener(
-                  (v, s) -> {
-                    WebxdcActivity.openWebxdcActivity(context, instance);
-                  });
-              removableMediaView.display(webxdcView, false);
+    Util.runOnBackground(
+        () -> {
+          Slide slide = null;
+          try {
+            if (msg != null && msg.getType() == DcMsg.DC_MSG_WEBXDC) {
+              slide = new DocumentSlide(context, msg);
+            } else if (msg != null
+                && (msg.getType() == DcMsg.DC_MSG_AUDIO || msg.getType() == DcMsg.DC_MSG_VOICE)) {
+              slide = new AudioSlide(context, msg);
+            } else if (PartAuthority.isLocalUri(uri)) {
+              slide = getManuallyCalculatedSlideInfo(uri, width, height, msg, mediaType, chatId);
             } else {
-              documentView.setDocument((DocumentSlide) slide);
-              removableMediaView.display(documentView, false);
+              slide = getContentResolverSlideInfo(uri, width, height, chatId, mediaType);
+              if (slide == null) {
+                slide = getManuallyCalculatedSlideInfo(uri, width, height, msg, mediaType, chatId);
+              }
             }
-            result.set(true);
-          } else {
-            Attachment attachment = slide.asAttachment();
-            result.deferTo(
-                thumbnail.setImageResource(
-                    glideRequests, slide, attachment.getWidth(), attachment.getHeight()));
-            removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
+          } catch (IOException e) {
+            Log.w(TAG, e);
           }
 
-          attachmentListener.onAttachmentChanged();
-        }
-      }
+          final Slide finalSlide = slide;
+          Util.runOnMain(
+              () -> {
+                if (finalSlide == null) {
+                  setAttachmentPresent(false);
+                  result.set(false);
+                } else if (finalSlide.getFileSize() > 1024 * 1024 * 1024) {
+                  // this is only a rough check, videos and images may be recoded
+                  // and the core checks more carefully later.
+                  setAttachmentPresent(false);
+                  Log.w(TAG, "File too large.");
+                  Toast.makeText(finalSlide.context, "File too large.", Toast.LENGTH_LONG).show();
+                  result.set(false);
+                } else {
+                  setSlide(finalSlide);
+                  setAttachmentPresent(true);
 
-      private @Nullable Slide getContentResolverSlideInfo(
-          Uri uri, int width, int height, int chatId) {
+                  if (finalSlide.hasAudio()) {
+                    audioView.setPlaybackViewModel(playbackViewModel);
+                    audioView.setAudio((AudioSlide) finalSlide);
+                    removableMediaView.display(audioView, false);
+                    removableMediaView.addRemoveClickListener(
+                        v -> playbackViewModel.stop(audioView.getMsgId()));
+                    result.set(true);
+                  } else if (finalSlide.isVcard()) {
+                    vcardView.setVcard(
+                        glideRequests, (VcardSlide) finalSlide, DcHelper.getRpc(context));
+                    removableMediaView.display(vcardView, false);
+                  } else if (finalSlide.hasDocument()) {
+                    if (finalSlide.isWebxdcDocument()) {
+                      DcMsg instance =
+                          msg != null
+                              ? msg
+                              : DcHelper.getContext(context).getMsg(finalSlide.dcMsgId);
+                      webxdcView.setWebxdc(instance, context.getString(R.string.webxdc_draft_hint));
+                      webxdcView.setWebxdcClickListener(
+                          (v, s) -> WebxdcActivity.openWebxdcActivity(context, instance));
+                      removableMediaView.display(webxdcView, false);
+                    } else {
+                      documentView.setDocument((DocumentSlide) finalSlide);
+                      removableMediaView.display(documentView, false);
+                    }
+                    result.set(true);
+                  } else {
+                    Attachment attachment = finalSlide.asAttachment();
+                    result.deferTo(
+                        thumbnail.setImageResource(
+                            glideRequests,
+                            finalSlide,
+                            attachment.getWidth(),
+                            attachment.getHeight()));
+                    removableMediaView.display(thumbnail, mediaType == MediaType.IMAGE);
+                  }
 
-        long start = System.currentTimeMillis();
-        try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
+                  attachmentListener.onAttachmentChanged();
+                }
+              });
+        });
 
-          if (cursor != null && cursor.moveToFirst()) {
-            String fileName =
-                cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
-            long fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
-            String mimeType = context.getContentResolver().getType(uri);
+    return result;
+  }
 
-            if (width == 0 || height == 0) {
-              Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
-              width = dimens.first;
-              height = dimens.second;
-            }
-
-            Log.w(
-                TAG,
-                "remote slide with size "
-                    + fileSize
-                    + " took "
-                    + (System.currentTimeMillis() - start)
-                    + "ms");
-            return mediaType.createSlide(
-                context, uri, fileName, mimeType, fileSize, width, height, chatId);
-          }
-        }
-
-        return null;
-      }
-
-      private @NonNull Slide getManuallyCalculatedSlideInfo(
-          Uri uri, int width, int height, @Nullable DcMsg msg) throws IOException {
-        long start = System.currentTimeMillis();
-        Long mediaSize = null;
-        String fileName = null;
-        String mimeType = null;
-
-        if (msg != null) {
-          fileName = msg.getFilename();
-          mimeType = msg.getFilemime();
-        }
-
-        if (PartAuthority.isLocalUri(uri)) {
-          mediaSize = PartAuthority.getAttachmentSize(context, uri);
-          if (fileName == null) fileName = PartAuthority.getAttachmentFileName(context, uri);
-          if (mimeType == null) mimeType = PartAuthority.getAttachmentContentType(context, uri);
-        }
-
-        if (mediaSize == null) {
-          mediaSize = MediaUtil.getMediaSize(context, uri);
-        }
-
-        if (mimeType == null) {
-          mimeType = MediaUtil.getMimeType(context, uri);
-        }
+  private @Nullable Slide getContentResolverSlideInfo(
+      Uri uri, int width, int height, int chatId, MediaType mediaType) {
+    long start = System.currentTimeMillis();
+    try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
+      if (cursor != null && cursor.moveToFirst()) {
+        String fileName =
+            cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
+        long mediaSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE));
+        String mimeType = context.getContentResolver().getType(uri);
 
         if (width == 0 || height == 0) {
           Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
           width = dimens.first;
           height = dimens.second;
-        }
-
-        if (fileName == null) {
-          try {
-            fileName = new File(uri.getPath()).getName();
-          } catch (Exception e) {
-            Log.w(TAG, "Could not get file name from uri: " + e);
-          }
         }
 
         Log.w(
@@ -399,9 +345,61 @@ public class AttachmentManager {
         return mediaType.createSlide(
             context, uri, fileName, mimeType, mediaSize, width, height, chatId);
       }
-    }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
 
-    return result;
+    return null;
+  }
+
+  private @NonNull Slide getManuallyCalculatedSlideInfo(
+      Uri uri, int width, int height, @Nullable DcMsg msg, MediaType mediaType, int chatId)
+      throws IOException {
+    long start = System.currentTimeMillis();
+    Long mediaSize = null;
+    String fileName = null;
+    String mimeType = null;
+
+    if (msg != null) {
+      fileName = msg.getFilename();
+      mimeType = msg.getFilemime();
+    }
+
+    if (PartAuthority.isLocalUri(uri)) {
+      mediaSize = PartAuthority.getAttachmentSize(context, uri);
+      if (fileName == null) fileName = PartAuthority.getAttachmentFileName(context, uri);
+      if (mimeType == null) mimeType = PartAuthority.getAttachmentContentType(context, uri);
+    }
+
+    if (mediaSize == null) {
+      mediaSize = MediaUtil.getMediaSize(context, uri);
+    }
+
+    if (mimeType == null) {
+      mimeType = MediaUtil.getMimeType(context, uri);
+    }
+
+    if (width == 0 || height == 0) {
+      Pair<Integer, Integer> dimens = MediaUtil.getDimensions(context, mimeType, uri);
+      width = dimens.first;
+      height = dimens.second;
+    }
+
+    if (fileName == null) {
+      try {
+        fileName = new File(uri.getPath()).getName();
+      } catch (Exception e) {
+        Log.w(TAG, "Could not get file name from uri: " + e);
+      }
+    }
+
+    Log.w(
+        TAG,
+        "local slide with size "
+            + mediaSize
+            + " took "
+            + (System.currentTimeMillis() - start)
+            + "ms");
+    return mediaType.createSlide(
+        context, uri, fileName, mimeType, mediaSize, width, height, chatId);
   }
 
   // should be called when the attachment manager comes into view again.
@@ -727,13 +725,31 @@ public class AttachmentManager {
         mimeType = "application/octet-stream";
       }
 
+      DcContext dcContext = DcHelper.getContext(context);
+
       switch (this) {
         case IMAGE:
           return new ImageSlide(context, uri, fileName, dataSize, width, height);
         case GIF:
           return new GifSlide(context, uri, fileName, dataSize, width, height);
         case AUDIO:
-          return new AudioSlide(context, uri, dataSize, false, fileName);
+          DcMsg audioMsg = new DcMsg(dcContext, DcMsg.DC_MSG_AUDIO);
+          Attachment audioAttachment =
+              new UriAttachment(
+                  uri,
+                  null,
+                  mimeType,
+                  AttachmentDatabase.TRANSFER_PROGRESS_STARTED,
+                  dataSize,
+                  0,
+                  0,
+                  fileName,
+                  null,
+                  false);
+          String audioPath = audioAttachment.getRealPath(context);
+          audioMsg.setFileAndDeduplicate(audioPath, fileName, mimeType);
+          dcContext.setDraft(chatId, audioMsg);
+          return new AudioSlide(context, audioMsg);
         case VIDEO:
           return new VideoSlide(context, uri, fileName, dataSize);
         case DOCUMENT:
@@ -741,7 +757,6 @@ public class AttachmentManager {
           // draft
           // is set. Therefore we need to create a DcMsg already now.
           if (fileName != null && fileName.endsWith(".xdc")) {
-            DcContext dcContext = DcHelper.getContext(context);
             DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
             Attachment attachment =
                 new UriAttachment(

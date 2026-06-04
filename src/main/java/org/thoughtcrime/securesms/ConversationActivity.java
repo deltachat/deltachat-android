@@ -384,7 +384,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected void onPause() {
     super.onPause();
 
-    processComposeControls(ACTION_SAVE_DRAFT);
+    if (inputPanel.isRecording() && inputPanel.getRecordingDuration() > 1000) {
+      saveRecording();
+    } else {
+      processComposeControls(ACTION_SAVE_DRAFT);
+    }
 
     DcHelper.getNotificationCenter(this).clearVisibleChat();
     if (isFinishing()) overridePendingTransition(R.anim.fade_scale_in, R.anim.slide_to_right);
@@ -710,7 +714,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
     }
 
-    playbackViewModel.stopNonMessageAudioPlayback();
+    if (attachmentManager.isAttachmentPresent()) {
+      SlideDeck slideDeck = attachmentManager.buildSlideDeck();
+      int audioDraftId = slideDeck.getAudioDraftId();
+      if (audioDraftId != 0) {
+        playbackViewModel.stop(audioDraftId);
+      }
+    }
 
     boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
     Intent intent =
@@ -961,6 +971,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         setMedia(draft, MediaType.GIF).addListener(listener);
         break;
       case DcMsg.DC_MSG_AUDIO:
+      case DcMsg.DC_MSG_VOICE:
         setMedia(draft, MediaType.AUDIO).addListener(listener);
         break;
       case DcMsg.DC_MSG_VIDEO:
@@ -1254,9 +1265,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       inputPanel.clearQuote();
     }
 
-    // Stop draft audio playback regardless, since it is unlikely
-    // we will need background playback for drafts
-    playbackViewModel.stopNonMessageAudioPlayback();
+    // Stop draft audio playback
+    if (slideDeck != null) {
+      int audioDraftId = slideDeck.getAudioDraftId();
+      if (audioDraftId != 0) {
+        playbackViewModel.stop(audioDraftId);
+      }
+    }
 
     DcContext dcContext = DcHelper.getContext(context);
     final int currentChatId = dcChat.getId();
@@ -1661,6 +1676,56 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       }
       return false;
     }
+  }
+
+  private void saveRecording() {
+    inputPanel.resetRecordingUI();
+    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+    final int thisChatId = chatId;
+    final Optional<QuoteModel> quote = inputPanel.getQuote();
+
+    ListenableFuture<Pair<Uri, Long>> future = audioRecorder.stopRecording();
+    future.addListener(
+        new ListenableFuture.Listener<Pair<Uri, Long>>() {
+          @Override
+          public void onSuccess(final @NonNull Pair<Uri, Long> result) {
+            Util.runOnAnyBackgroundThread(
+                () -> {
+                  try {
+                    DcContext dcContext = DcHelper.getContext(context);
+                    String path =
+                        DcHelper.copyToBlobdir(
+                            ConversationActivity.this, result.first, "voice", ".m4a");
+
+                    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_VOICE);
+                    msg.setFileAndDeduplicate(path, null, null);
+                    if (quote.isPresent()) {
+                      msg.setQuote(quote.get().getQuotedMsg());
+                    }
+                    dcContext.setDraft(thisChatId, msg);
+                  } catch (Exception e) {
+                    Log.e(TAG, "Failed to save voice as draft", e);
+                  } finally {
+                    PersistentBlobProvider.getInstance()
+                        .delete(ConversationActivity.this, result.first);
+                  }
+
+                  runOnUiThread(
+                      () -> {
+                        if (chatId == thisChatId && !isFinishing() && !isDestroyed()) {
+                          initializeDraft();
+                          updateToggleButtonState();
+                        }
+                      });
+                });
+          }
+
+          @Override
+          public void onFailure(ExecutionException e) {
+            Log.w(TAG, "Failed to stop recording", e);
+          }
+        });
   }
 
   private class AttachButtonListener implements OnClickListener {

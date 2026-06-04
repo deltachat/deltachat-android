@@ -4,15 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.util.MediaUtil;
-import org.thoughtcrime.securesms.util.Util;
 
 public abstract class Attachment {
 
@@ -116,14 +111,7 @@ public abstract class Attachment {
           filename = filename.substring(0, i);
         }
       }
-      String path = DcHelper.getBlobdirFile(DcHelper.getContext(context), filename, ext);
-
-      // copy content to this file
-      InputStream inputStream = PartAuthority.getAttachmentStream(context, getDataUri());
-      OutputStream outputStream = new FileOutputStream(path);
-      Util.copy(inputStream, outputStream);
-
-      return path;
+      return DcHelper.copyToBlobdir(context, getDataUri(), filename, ext);
     } catch (Exception e) {
       e.printStackTrace();
       return null;
