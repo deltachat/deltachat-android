@@ -512,12 +512,7 @@ public class NotificationCenter {
           final String name = JsonUtils.optString(info, "name");
           String shortLine = name.isEmpty() ? text : (name + ": " + text);
           NotifData notifData =
-              new NotifData(
-                  new Person.Builder()
-                      .setIcon(
-                          IconCompat.createWithBitmap(getAvatar(new Recipient(context, dcChat))))
-                      .build(),
-                  shortLine);
+              new NotifData(new Person.Builder().setIcon(getAvatarIcon(dcChat)).build(), shortLine);
           maybeAddNotification(
               accountId, dcChat, msgId, notifData, shortLine, false, dcChat.isMultiUser());
         });
@@ -673,7 +668,7 @@ public class NotificationCenter {
 
       // Set avatar
       if (privacy.isDisplayContact()) {
-        Bitmap bitmap = getAvatar(new Recipient(context, dcChat));
+        Bitmap bitmap = getAvatar(dcChat);
         if (bitmap != null) {
           builder.setLargeIcon(bitmap);
         }
@@ -837,12 +832,25 @@ public class NotificationCenter {
     }
   }
 
-  public @Nullable IconCompat getAvatarIcon(DcContact contact) {
-    Bitmap avatar = getAvatar(new Recipient(context, contact));
+  private @Nullable IconCompat getAvatarIcon(DcChat dcChat) {
+    Bitmap avatar = getAvatar(dcChat);
     return avatar != null ? IconCompat.createWithBitmap(avatar) : null;
   }
 
-  public @Nullable Bitmap getAvatar(Recipient recipient) {
+  private @Nullable IconCompat getAvatarIcon(DcContact dcContact) {
+    Bitmap avatar = getAvatar(dcContact);
+    return avatar != null ? IconCompat.createWithBitmap(avatar) : null;
+  }
+
+  private @Nullable Bitmap getAvatar(DcChat dcChat) {
+    return getAvatar(new Recipient(context, dcChat));
+  }
+
+  private @Nullable Bitmap getAvatar(DcContact dcContact) {
+    return getAvatar(new Recipient(context, dcContact));
+  }
+
+  private @Nullable Bitmap getAvatar(Recipient recipient) {
     try {
       Drawable drawable;
       ContactPhoto contactPhoto = recipient.getContactPhoto(context);
