@@ -63,8 +63,18 @@ public class NotificationCenter {
   private volatile long lastAudibleNotification = 0;
   private static final long MIN_AUDIBLE_PERIOD_MILLIS = TimeUnit.SECONDS.toMillis(2);
 
-  // Map<accountId, Map<chatId, lines>, contains the last lines of each chat for each account
-  private final HashMap<Integer, HashMap<Integer, LinkedHashMap<Integer, String>>> inboxes =
+  private static class NotifData {
+    final Person sender;
+    final String text;
+
+    NotifData(Person sender, String text) {
+      this.sender = sender;
+      this.text = text;
+    }
+  }
+
+  // notification history of each chat for each account
+  private final HashMap<Integer, HashMap<Integer, LinkedHashMap<Integer, NotifData>>> inboxes =
       new HashMap<>();
 
   public NotificationCenter(Context context) {
@@ -412,27 +422,31 @@ public class NotificationCenter {
           DcMsg dcMsg = dcContext.getMsg(msgId);
           NotificationPrivacyPreference privacy = Prefs.getNotificationPrivacy(context);
 
+          DcContact sender = dcContext.getContact(dcMsg.getFromId());
+          String senderName = dcMsg.getSenderName(sender);
           String shortLine =
               privacy.isDisplayMessage()
                   ? dcMsg.getSummarytext(2000)
                   : context.getString(R.string.notify_new_message);
           String tickerLine = shortLine;
-          if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
-            tickerLine =
-                dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + tickerLine;
 
-            if (dcMsg.getOverrideSenderName() != null) {
-              // There is an "overridden" display name on the message, so, we need to prepend the
-              // display name to the message,
-              // i.e. set the shortLine to be the same as the tickerLine.
-              shortLine = tickerLine;
-            }
+          NotifData notifData =
+              new NotifData(
+                  new Person.Builder()
+                      .setName(senderName)
+                      .setIcon(getAvatarIcon(sender))
+                      .setBot(sender.isBot())
+                      .build(),
+                  shortLine);
+
+          if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
+            tickerLine = senderName + ": " + tickerLine;
           }
 
           DcMsg quotedMsg = dcMsg.getQuotedMsg();
           boolean isMention = dcChat.isMultiUser() && quotedMsg != null && quotedMsg.isOutgoing();
 
-          maybeAddNotification(accountId, dcChat, msgId, shortLine, tickerLine, true, isMention);
+          maybeAddNotification(accountId, dcChat, msgId, notifData, tickerLine, true, isMention);
         });
   }
 
@@ -449,6 +463,7 @@ public class NotificationCenter {
           }
 
           DcContact sender = dcContext.getContact(contactId);
+          String senderName = dcMsg.getSenderName(sender);
           String shortLine =
               context.getString(
                   R.string.reaction_by_other,
@@ -456,8 +471,18 @@ public class NotificationCenter {
                   reaction,
                   dcMsg.getSummarytext(2000));
           DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
+
+          NotifData notifData =
+              new NotifData(
+                  new Person.Builder()
+                      .setName(senderName)
+                      .setIcon(getAvatarIcon(sender))
+                      .setBot(sender.isBot())
+                      .build(),
+                  shortLine);
+
           maybeAddNotification(
-              accountId, dcChat, msgId, shortLine, shortLine, false, dcChat.isMultiUser());
+              accountId, dcChat, msgId, notifData, shortLine, false, dcChat.isMultiUser());
         });
   }
 
@@ -471,6 +496,7 @@ public class NotificationCenter {
 
           DcContext dcContext = context.getDcAccounts().getAccount(accountId);
           DcMsg dcMsg = dcContext.getMsg(msgId);
+          DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
           DcMsg parentMsg;
           if (dcMsg.getType() == DcMsg.DC_MSG_WEBXDC) {
             parentMsg = dcMsg;
@@ -485,9 +511,15 @@ public class NotificationCenter {
           JSONObject info = parentMsg.getWebxdcInfo();
           final String name = JsonUtils.optString(info, "name");
           String shortLine = name.isEmpty() ? text : (name + ": " + text);
-          DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
+          NotifData notifData =
+              new NotifData(
+                  new Person.Builder()
+                      .setIcon(
+                          IconCompat.createWithBitmap(getAvatar(new Recipient(context, dcChat))))
+                      .build(),
+                  shortLine);
           maybeAddNotification(
-              accountId, dcChat, msgId, shortLine, shortLine, false, dcChat.isMultiUser());
+              accountId, dcChat, msgId, notifData, shortLine, false, dcChat.isMultiUser());
         });
   }
 
@@ -496,7 +528,7 @@ public class NotificationCenter {
       int accountId,
       DcChat dcChat,
       int msgId,
-      String shortLine,
+      NotifData notifData,
       String tickerLine,
       boolean playInChatSound,
       boolean isMention) {
@@ -536,20 +568,20 @@ public class NotificationCenter {
     // the user may eg. have chosen a different sound
     String notificationChannel = getNotificationChannel(notificationManager, chatData, dcChat);
 
-    LinkedHashMap<Integer, String> messagesForInbox = null;
+    LinkedHashMap<Integer, NotifData> messagesForInbox = null;
     if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
       synchronized (inboxes) {
-        HashMap<Integer, LinkedHashMap<Integer, String>> accountInbox = inboxes.get(accountId);
+        HashMap<Integer, LinkedHashMap<Integer, NotifData>> accountInbox = inboxes.get(accountId);
         if (accountInbox == null) {
           accountInbox = new HashMap<>();
           inboxes.put(accountId, accountInbox);
         }
-        LinkedHashMap<Integer, String> messages = accountInbox.get(chatId);
+        LinkedHashMap<Integer, NotifData> messages = accountInbox.get(chatId);
         if (messages == null) {
           messages = new LinkedHashMap<>();
           accountInbox.put(chatId, messages);
         }
-        messages.put(msgId, shortLine);
+        messages.put(msgId, notifData);
         messagesForInbox = new LinkedHashMap<>(messages);
       }
     }
@@ -562,7 +594,7 @@ public class NotificationCenter {
         dcContext,
         dcChat,
         notificationChannel,
-        shortLine,
+        notifData.text,
         tickerLine,
         signal,
         messagesForInbox,
@@ -581,7 +613,7 @@ public class NotificationCenter {
       String contentText,
       String ticker,
       boolean signal,
-      LinkedHashMap<Integer, String> messagesForInbox,
+      LinkedHashMap<Integer, NotifData> messagesForInbox,
       int messageCount,
       boolean includeSummary) {
     try {
@@ -704,16 +736,10 @@ public class NotificationCenter {
           NotificationCompat.MessagingStyle style = new NotificationCompat.MessagingStyle(self);
           style.setGroupConversation(dcChat.isMultiUser());
           style.setConversationTitle(dcChat.getName());
-          for (Map.Entry<Integer, String> msgEntry : messagesForInbox.entrySet()) {
-            DcMsg msg = dcContext.getMsg(msgEntry.getKey());
-            DcContact senderContact = dcContext.getContact(msg.getFromId());
-            Person sender =
-                new Person.Builder()
-                    .setName(msg.getSenderName(senderContact))
-                    .setIcon(getAvatarIcon(senderContact))
-                    .setBot(senderContact.isBot())
-                    .build();
-            style.addMessage(msgEntry.getValue(), msg.getSortTimestamp() * 1000, sender);
+          for (Map.Entry<Integer, NotifData> msgEntry : messagesForInbox.entrySet()) {
+            long timestamp_ms = dcContext.getMsg(msgEntry.getKey()).getSortTimestamp() * 1000;
+            NotifData notifData = msgEntry.getValue();
+            style.addMessage(notifData.text, timestamp_ms, notifData.sender);
           }
           builder.setStyle(style);
         } catch (Exception e) {
@@ -762,7 +788,7 @@ public class NotificationCenter {
 
   @WorkerThread
   private void rebuildNotification(
-      int accountId, int chatId, LinkedHashMap<Integer, String> messages) {
+      int accountId, int chatId, LinkedHashMap<Integer, NotifData> messages) {
     try {
       DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accountId);
       DcChat dcChat = dcContext.getChat(chatId);
@@ -780,9 +806,9 @@ public class NotificationCenter {
       // Get the latest message ID (last entry in LinkedHashMap)
       Integer latestMsgId = null;
       String lastLine = null;
-      for (Map.Entry<Integer, String> entry : messages.entrySet()) {
+      for (Map.Entry<Integer, NotifData> entry : messages.entrySet()) {
         latestMsgId = entry.getKey();
-        lastLine = entry.getValue();
+        lastLine = entry.getValue().text;
       }
       if (latestMsgId == null || lastLine == null) {
         return;
@@ -855,12 +881,12 @@ public class NotificationCenter {
   public void removeNotification(int accountId, int chatId, int msgId) {
     boolean shouldCancelNotification = false;
     boolean removeSummary = false;
-    LinkedHashMap<Integer, String> remainingMessages = null;
+    LinkedHashMap<Integer, NotifData> remainingMessages = null;
 
     synchronized (inboxes) {
-      HashMap<Integer, LinkedHashMap<Integer, String>> accountInbox = inboxes.get(accountId);
+      HashMap<Integer, LinkedHashMap<Integer, NotifData>> accountInbox = inboxes.get(accountId);
       if (accountInbox != null) {
-        LinkedHashMap<Integer, String> messages = accountInbox.get(chatId);
+        LinkedHashMap<Integer, NotifData> messages = accountInbox.get(chatId);
         if (messages != null) {
           messages.remove(msgId);
 
@@ -893,7 +919,7 @@ public class NotificationCenter {
   public void removeNotifications(int accountId, int chatId) {
     boolean removeSummary;
     synchronized (inboxes) {
-      HashMap<Integer, LinkedHashMap<Integer, String>> accountInbox = inboxes.get(accountId);
+      HashMap<Integer, LinkedHashMap<Integer, NotifData>> accountInbox = inboxes.get(accountId);
       if (accountInbox == null) {
         accountInbox = new HashMap<>();
       }
@@ -919,7 +945,7 @@ public class NotificationCenter {
     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
     String tag = String.valueOf(accountId);
     synchronized (inboxes) {
-      HashMap<Integer, LinkedHashMap<Integer, String>> accountInbox = inboxes.get(accountId);
+      HashMap<Integer, LinkedHashMap<Integer, NotifData>> accountInbox = inboxes.get(accountId);
       notificationManager.cancel(tag, ID_MSG_SUMMARY);
       if (accountInbox != null) {
         for (Integer chatId : accountInbox.keySet()) {
