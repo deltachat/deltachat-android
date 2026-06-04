@@ -23,6 +23,10 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import org.thoughtcrime.securesms.ApplicationContext;
@@ -31,6 +35,7 @@ import org.thoughtcrime.securesms.LocalHelpActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -416,6 +421,15 @@ public class DcHelper {
       filename = filename.substring(0, point);
     }
     return getBlobdirFile(dcContext, filename, ext);
+  }
+
+  public static String copyToBlobdir(Context context, Uri uri, String filename, String ext)
+      throws IOException {
+    String path = getBlobdirFile(getContext(context), filename, ext);
+    InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+    OutputStream outputStream = new FileOutputStream(path);
+    Util.copy(inputStream, outputStream);
+    return path;
   }
 
   @NonNull
