@@ -3,6 +3,9 @@
 ## Unreleased
 
 * Fix: avoid crashes in Media preview sometimes
+* Fix: Incorrect total time when attaching audio files as draft
+* Fix: Audio files in draft showing total time from wrong file
+* Voice recording will be automatically saved as draft when interrupted 
 
 ## 2.51.0
 2026-05
