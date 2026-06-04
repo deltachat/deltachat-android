@@ -428,6 +428,10 @@ public class NotificationCenter {
               privacy.isDisplayMessage()
                   ? dcMsg.getSummarytext(2000)
                   : context.getString(R.string.notify_new_message);
+          if (dcChat.isMultiUser() && privacy.isDisplayContact()) {
+            shortLine =
+                dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + shortLine;
+          }
           String tickerLine = shortLine;
 
           NotifData notifData =
