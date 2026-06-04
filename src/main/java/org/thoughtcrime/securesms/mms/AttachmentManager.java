@@ -725,13 +725,31 @@ public class AttachmentManager {
         mimeType = "application/octet-stream";
       }
 
+      DcContext dcContext = DcHelper.getContext(context);
+
       switch (this) {
         case IMAGE:
           return new ImageSlide(context, uri, fileName, dataSize, width, height);
         case GIF:
           return new GifSlide(context, uri, fileName, dataSize, width, height);
         case AUDIO:
-          return new AudioSlide(context, uri, dataSize, false, fileName);
+          DcMsg audioMsg = new DcMsg(dcContext, DcMsg.DC_MSG_AUDIO);
+          Attachment audioAttachment =
+              new UriAttachment(
+                  uri,
+                  null,
+                  mimeType,
+                  AttachmentDatabase.TRANSFER_PROGRESS_STARTED,
+                  dataSize,
+                  0,
+                  0,
+                  fileName,
+                  null,
+                  false);
+          String audioPath = audioAttachment.getRealPath(context);
+          audioMsg.setFileAndDeduplicate(audioPath, fileName, mimeType);
+          dcContext.setDraft(chatId, audioMsg);
+          return new AudioSlide(context, audioMsg);
         case VIDEO:
           return new VideoSlide(context, uri, fileName, dataSize);
         case DOCUMENT:
@@ -739,7 +757,6 @@ public class AttachmentManager {
           // draft
           // is set. Therefore we need to create a DcMsg already now.
           if (fileName != null && fileName.endsWith(".xdc")) {
-            DcContext dcContext = DcHelper.getContext(context);
             DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_WEBXDC);
             Attachment attachment =
                 new UriAttachment(

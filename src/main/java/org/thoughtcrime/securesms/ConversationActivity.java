@@ -714,7 +714,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       extras.putInt(ConversationListFragment.RELOAD_LIST, 1);
     }
 
-    playbackViewModel.stopNonMessageAudioPlayback();
+    if (attachmentManager.isAttachmentPresent()) {
+      SlideDeck slideDeck = attachmentManager.buildSlideDeck();
+      int audioDraftId = slideDeck.getAudioDraftId();
+      if (audioDraftId != 0) {
+        playbackViewModel.stop(audioDraftId);
+      }
+    }
 
     boolean archived = getIntent().getBooleanExtra(FROM_ARCHIVED_CHATS_EXTRA, false);
     Intent intent =
@@ -1259,9 +1265,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       inputPanel.clearQuote();
     }
 
-    // Stop draft audio playback regardless, since it is unlikely
-    // we will need background playback for drafts
-    playbackViewModel.stopNonMessageAudioPlayback();
+    // Stop draft audio playback
+    if (slideDeck != null) {
+      int audioDraftId = slideDeck.getAudioDraftId();
+      if (audioDraftId != 0) {
+        playbackViewModel.stop(audioDraftId);
+      }
+    }
 
     DcContext dcContext = DcHelper.getContext(context);
     final int currentChatId = dcChat.getId();

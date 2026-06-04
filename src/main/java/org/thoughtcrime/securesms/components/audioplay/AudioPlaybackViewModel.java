@@ -27,9 +27,6 @@ import java.util.concurrent.Executors;
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = "AudioPlaybackViewModel";
 
-  private static final int NON_MESSAGE_AUDIO_MSG_ID =
-      0; // Audios not attached to a message doesn't have message id.
-
   private final MutableLiveData<AudioPlaybackState> playbackState;
 
   private final MutableLiveData<Map<Integer, Long>> durations =
@@ -203,10 +200,6 @@ public class AudioPlaybackViewModel extends ViewModel {
     if (mediaController == null) return false;
     MediaItem current = mediaController.getCurrentMediaItem();
     return current != null && String.valueOf(msgId).equals(current.mediaId);
-  }
-
-  public void stopNonMessageAudioPlayback() {
-    stopByIds(NON_MESSAGE_AUDIO_MSG_ID);
   }
 
   // A special method for deleting message, where we only use message Ids
