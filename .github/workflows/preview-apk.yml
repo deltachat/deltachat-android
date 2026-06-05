@@ -11,7 +11,6 @@ permissions: {}
 jobs:
   build:
     name: Upload Preview APK
-    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
       contents: read
