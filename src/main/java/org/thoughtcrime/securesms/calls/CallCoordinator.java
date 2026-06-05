@@ -184,6 +184,29 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
+  private void disconnectTelecom(DisconnectCause cause) {
+    CallControlScope scope = activeCallControlScope;
+    if (scope == null) {
+      Log.d(TAG, "No active CallControlScope, skipping disconnect");
+      return;
+    }
+
+    scope.disconnect(
+        cause,
+        new Continuation<CallControlResult>() {
+          @NonNull
+          @Override
+          public CoroutineContext getContext() {
+            return EmptyCoroutineContext.INSTANCE;
+          }
+
+          @Override
+          public void resumeWith(@NonNull Object result) {
+            Log.d(TAG, "Telecom disconnect completed: " + result);
+          }
+        });
+  }
+
   private void addEventListeners() {
     DcEventCenter eventCenter = DcHelper.getEventCenter(this.appContext);
     eventCenter.removeObservers(this);
@@ -581,28 +604,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     notifyBackendCallEnded();
 
-    // Disconnect with CallControlScope
-    CallControlScope scope = activeCallControlScope;
-    if (scope != null) {
-      scope.disconnect(
-          new DisconnectCause(DisconnectCause.REJECTED),
-          new Continuation<CallControlResult>() {
-            @NonNull
-            @Override
-            public CoroutineContext getContext() {
-              return EmptyCoroutineContext.INSTANCE;
-            }
-
-            @Override
-            public void resumeWith(@NonNull Object result) {
-              if (result instanceof CallControlResult) {
-                Log.d(TAG, "Decline succeeded with CallControlScope");
-              } else if (result instanceof kotlin.Result.Failure) {
-                Log.e(TAG, "Decline failed", ((kotlin.Result.Failure) result).exception);
-              }
-            }
-          });
-    }
+    disconnectTelecom(new DisconnectCause(DisconnectCause.REJECTED));
 
     // End call on service
     if (callService != null) {
@@ -623,28 +625,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     notifyBackendCallEnded();
 
-    // Disconnect with CallControlScope
-    CallControlScope scope = activeCallControlScope;
-    if (scope != null) {
-      scope.disconnect(
-          new DisconnectCause(DisconnectCause.LOCAL),
-          new Continuation<CallControlResult>() {
-            @NonNull
-            @Override
-            public CoroutineContext getContext() {
-              return EmptyCoroutineContext.INSTANCE;
-            }
-
-            @Override
-            public void resumeWith(@NonNull Object result) {
-              if (result instanceof CallControlResult) {
-                Log.d(TAG, "Hang up succeeded with CallControlScope");
-              } else if (result instanceof kotlin.Result.Failure) {
-                Log.e(TAG, "Hang up failed", ((kotlin.Result.Failure) result).exception);
-              }
-            }
-          });
-    }
+    disconnectTelecom(new DisconnectCause(DisconnectCause.LOCAL));
 
     // End call on service
     if (callService != null) {
@@ -991,24 +972,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     answeredElsewhere.postValue(true);
 
-    // Disconnect from Telecom CallControlScope
-    CallControlScope scope = activeCallControlScope;
-    if (scope != null) {
-      scope.disconnect(
-          new DisconnectCause(DisconnectCause.REMOTE),
-          new Continuation<CallControlResult>() {
-            @NonNull
-            @Override
-            public CoroutineContext getContext() {
-              return EmptyCoroutineContext.INSTANCE;
-            }
-
-            @Override
-            public void resumeWith(@NonNull Object result) {
-              Log.d(TAG, "Disconnect (answered elsewhere) completed");
-            }
-          });
-    }
+    disconnectTelecom(new DisconnectCause(DisconnectCause.REMOTE));
 
     if (callService != null) {
       callService.endCall();
@@ -1086,25 +1050,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       callService.stopRingtone();
     }
 
-    // Disconnect from CallControlScope
-    if (activeCallControlScope != null) {
-      activeCallControlScope.disconnect(
-          // We actually don't know if this is incoming or outgoing
-          // But we have to provide one of LOCAL, REMOTE, MISSED, REJECTED
-          new DisconnectCause(DisconnectCause.REMOTE),
-          new Continuation<CallControlResult>() {
-            @NonNull
-            @Override
-            public CoroutineContext getContext() {
-              return EmptyCoroutineContext.INSTANCE;
-            }
-
-            @Override
-            public void resumeWith(@NonNull Object result) {
-              Log.d(TAG, "Disconnect completed");
-            }
-          });
-    }
+    disconnectTelecom(new DisconnectCause(DisconnectCause.REMOTE));
 
     if (callService != null) {
       callService.endCall();
@@ -1127,6 +1073,18 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     notifyBackendCallEnded();
+
+    DisconnectCause cause;
+    if (state == PeerConnection.PeerConnectionState.FAILED) {
+      cause = new DisconnectCause(DisconnectCause.REMOTE, "PeerConnection failed");
+    } else {
+      cause = new DisconnectCause(DisconnectCause.LOCAL, "PeerConnection closed");
+    }
+    disconnectTelecom(cause);
+
+    if (callService != null) {
+      callService.endCall();
+    }
 
     // Cleanup
     if (hasActiveCall()) {
