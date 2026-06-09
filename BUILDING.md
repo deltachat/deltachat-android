@@ -47,7 +47,7 @@ Nix development environment contains Rust with cross-compilation toolchains and 
 
 To [build an APK](https://developer.android.com/studio/build/building-cmdline) run the following 2 steps.
 Note that the first step may take some time to build for all architectures. You can optionally read 
-[the first comment block in the `ndk-make.sh` script](https://github.com/deltachat/deltachat-android/blob/main/scripts/ndk-make.sh)
+[the first comment block in the `ndk-make.sh` script](./scripts/ndk-make.sh)
 for pointers on how to build for a specific architecture.
 ```
 $ scripts/ndk-make.sh
