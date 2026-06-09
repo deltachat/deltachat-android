@@ -25,6 +25,8 @@
     <string name="downloading">Deskargatzen...</string>
     <string name="open_attachment">Erantsitakoa ireki</string>
     <string name="join">Batu</string>
+    <string name="join_group">Sartu taldean</string>
+    <string name="join_channel">Sartu kanalean</string>
     <string name="rejoin">Batu berriro</string>
     <string name="delete">Ezabatu</string>
     <string name="delete_for_me">Ezabatu niretzat</string>
@@ -72,6 +74,8 @@
     <string name="mark_as_read">Ezarri irakurri gisa</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Markatu irakurrita</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Markatu irakurri gabeko gisa</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
     <string name="mark_as_unread_short">Irakurri gabe</string>
     <!-- Placeholder text when something is loading -->
@@ -94,6 +98,7 @@
     <string name="offline">Lineaz kanpo</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Hurrengoa</string>
+    <string name="warning">Abisua</string>
     <string name="error">Errorea</string>
     <string name="error_x">Errorea: %1$s</string>
     <string name="no_app_to_handle_data">Ezin izan da datu mota hau kudeatzeko aplikaziorik.</string>
@@ -203,6 +208,8 @@
     <string name="capture">Harrapatu</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Aldatu kamera</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Aldatu kamera</string>
     <string name="toggle_fullscreen">Aldatu pantaila osoa modua</string>
     <string name="location">Kokalekua</string>
     <string name="locations">Kokalekuak</string>
@@ -386,6 +393,8 @@
     <string name="share_location_for_one_hour">Ordubetez</string>
     <string name="share_location_for_two_hours">2 orduz</string>
     <string name="share_location_for_six_hours">6 orduz</string>
+    <string name="share_location_for_24_hours">24 orduz</string>
+
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Bidali hurrengo fitxategia %s-(e)ra?</item>
         <item quantity="other">Bidali hurrengo %d fitxategiak %s(e)ra?</item>
@@ -402,6 +411,8 @@
     <string name="answer_call">Erantzun</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Ukatu</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Amaitu deia</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Audio deia</string>
     <!-- Used in call bubbles, summaries, notifications -->

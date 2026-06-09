@@ -228,6 +228,8 @@
     <string name="capture">Zrób to</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Przełącz kamerę</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Przełącz kamerę</string>
     <string name="toggle_fullscreen">Przełącz na tryb pełnoekranowy</string>
     <string name="location">Lokalizacja</string>
     <string name="locations">Lokalizacje</string>
@@ -433,6 +435,8 @@
     <string name="answer_call">Odbierz</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Odrzuć</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Zakończ połączenie</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Połączenie audio</string>
     <!-- Used in call bubbles, summaries, notifications -->
@@ -456,7 +460,9 @@
     <string name="missed_call">Połączenie anulowane</string>
     <string name="already_in_call">Już w trakcie rozmowy</string>
     <string name="call_answered_elsewhere">Połączenie odebrane na innym urządzeniu</string>
+    <string name="call_requires_camera_permission">Do połączeń wideo wymagane jest zezwolenie na korzystanie z kamery</string>
     <string name="call_requires_mic_permission">Do połączeń wymagane jest zezwolenie na korzystanie z mikrofonu</string>
+    <string name="call_requires_connection">Nie można nawiązać połączenia. Upewnij się, że urządzenie ma połączenie z internetem i spróbuj ponownie.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Rozmowa z %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -478,6 +484,13 @@
         <item quantity="few">Usunąć %d wiadomości?</item>
         <item quantity="many">Usunąć %d wiadomości?</item>
         <item quantity="other">Usunąć %d wiadomości?</item>
+    </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Przekazać wiadomość do %2$s?</item>
+        <item quantity="few">Przekazać %1$d wiadomości do %2$s?</item>
+        <item quantity="many">Przekazać %1$d wiadomości do %2$s?</item>
+        <item quantity="other">Przekazać %1$d wiadomości do %2$s?</item>
     </plurals>
     <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Przekazać wiadomości do użytkownika %1$s?</string>
@@ -696,6 +709,7 @@
     <string name="welcome_chat_over_email">Bezpieczny zdecentralizowany czat</string>
     <string name="scan_invitation_code">Zeskanuj kod zaproszenia</string>
     <string name="login_title">Zaloguj się</string>
+    <string name="login_advanced_hint">To logowanie jest przeznaczone dla zaawansowanych użytkowników.\n\nNie używaj adresu, którego używasz w innej aplikacji.</string>
     <string name="login_inbox">Skrzynka odbiorcza</string>
     <string name="login_imap_login">Nazwa użytkownika IMAP</string>
     <string name="login_imap_server">Serwer IMAP</string>
@@ -730,6 +744,7 @@
     <string name="used_for_sending">Służy do wysyłania</string>
     <string name="hide_from_contacts">Ukryj w kontaktach</string>
     <string name="hidden_from_contacts">Ukryty w kontaktach</string>
+    <string name="enforce_e2ee">Wymuś szyfrowanie dla wszystkich przekaźników</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Wiadomości są odbierane na wszystkich przekaźnikach.\n\n⚠️ Jeśli cokolwiek tutaj zmienisz, upewnij się, że wszystkie twoje urządzenia mają co najmniej wersję 2.47.0. W przeciwnym razie starsze urządzenia mogą nie odebrać wiadomości.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
@@ -805,7 +820,7 @@
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
     <string name="pref_calls">Połączenia</string>
     <!-- Details about what the "Calls" notification setting does -->
-    <string name="pref_calls_explain">Pokaż ekran połączenia przy połączeniach przychodzących</string>
+    <string name="pref_calls_explain">Pokaż ekran połączenia dla zaakceptowanych kontaktów</string>
     <string name="pref_notifications_show">Pokaż</string>
     <string name="pref_notifications_priority">Priorytet</string>
     <string name="pref_notifications_explain">Włącz powiadomienia systemowe o nowych wiadomościach</string>
