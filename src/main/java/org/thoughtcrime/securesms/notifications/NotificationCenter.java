@@ -26,6 +26,8 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.Person;
 import androidx.core.app.RemoteInput;
 import androidx.core.app.TaskStackBuilder;
+import androidx.core.content.pm.ShortcutInfoCompat;
+import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -44,6 +46,7 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
@@ -440,6 +443,7 @@ public class NotificationCenter {
                       .setName(senderName)
                       .setIcon(getAvatarIcon(sender))
                       .setBot(sender.isBot())
+                      .setKey(dcContext.getAccountId() + "-" + sender.getId())
                       .build(),
                   shortLine);
 
@@ -726,6 +730,21 @@ public class NotificationCenter {
       // Create messaging style
       if (privacy.isDisplayContact() && privacy.isDisplayMessage() && messagesForInbox != null) {
         try {
+          Intent viewChatIntent = new Intent(context, ShareActivity.class);
+          viewChatIntent.setAction(Intent.ACTION_SEND);
+          viewChatIntent.putExtra(ShareActivity.EXTRA_ACC_ID, dcContext.getAccountId());
+          viewChatIntent.putExtra(ShareActivity.EXTRA_CHAT_ID, dcChat.getId());
+
+          ShortcutInfoCompat shortcut =
+              new ShortcutInfoCompat.Builder(
+                      context, "chat-" + dcContext.getAccountId() + "-" + dcChat.getId())
+                  .setShortLabel(dcChat.getName())
+                  .setLongLived(true)
+                  .setIntent(viewChatIntent)
+                  .build();
+          ShortcutManagerCompat.pushDynamicShortcut(context, shortcut);
+          builder.setShortcutInfo(shortcut);
+
           DcContact selfContact = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
           Person self =
               new Person.Builder()
@@ -733,8 +752,10 @@ public class NotificationCenter {
                   .setIcon(getAvatarIcon(selfContact))
                   .build();
           NotificationCompat.MessagingStyle style = new NotificationCompat.MessagingStyle(self);
-          style.setGroupConversation(dcChat.isMultiUser());
-          style.setConversationTitle(dcChat.getName());
+          if (dcChat.isMultiUser()) {
+            style.setGroupConversation(true);
+            style.setConversationTitle(dcChat.getName());
+          }
           for (Map.Entry<Integer, NotifData> msgEntry : messagesForInbox.entrySet()) {
             long timestamp_ms = dcContext.getMsg(msgEntry.getKey()).getSortTimestamp() * 1000;
             NotifData notifData = msgEntry.getValue();
