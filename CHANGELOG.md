@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.52.0
+2026-06
 
 * Fix: avoid crashes in Media preview sometimes
 * Fix: Incorrect total time when attaching audio files as draft
@@ -9,7 +10,7 @@
 * Voice recording will be automatically saved as draft when interrupted 
 * Update to core 2.52.0
 
-## 2.51.0
+## v2.51.0
 2026-05
 
 * Better incoming call system integration
