@@ -719,9 +719,6 @@ public class Rpc {
    * because the word "channel" already appears a lot in the code,
    * which would make it hard to grep for it.
    * <p>
-   * After creation, the chat contains no recipients and is in _unpromoted_ state;
-   * see [`CommandApi::create_group_chat`] for more information on the unpromoted state.
-   * <p>
    * Returns the created chat's id.
    */
   public Integer createBroadcast(Integer accountId, String chatName) throws RpcException {

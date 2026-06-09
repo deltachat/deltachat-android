@@ -5,7 +5,9 @@
 * Fix: avoid crashes in Media preview sometimes
 * Fix: Incorrect total time when attaching audio files as draft
 * Fix: Audio files in draft showing total time from wrong file
+* Fix: Update the channel title after joining if the QR code had an outdated title
 * Voice recording will be automatically saved as draft when interrupted 
+* Update to core 2.52.0
 
 ## 2.51.0
 2026-05
