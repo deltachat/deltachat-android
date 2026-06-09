@@ -11,7 +11,7 @@
 * Update to core 2.52.0
 
 ## v2.51.0
-2026-05
+2026-06
 
 * Better incoming call system integration
 * Calls are not experimental anymore and don't need to be manually enabled
