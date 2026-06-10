@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.RingtoneManager;
@@ -34,6 +35,7 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import java.io.ByteArrayInputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.HashMap;
@@ -427,15 +429,14 @@ public class NotificationCenter {
 
           DcContact sender = dcContext.getContact(dcMsg.getFromId());
           String senderName = dcMsg.getSenderName(sender);
-          String shortLine =
+          String text =
               privacy.isDisplayMessage()
                   ? dcMsg.getSummarytext(2000)
                   : context.getString(R.string.notify_new_message);
+          String shortLine = text;
           if (dcChat.isMultiUser() && privacy.isDisplayContact()) {
-            shortLine =
-                dcMsg.getSenderName(dcContext.getContact(dcMsg.getFromId())) + ": " + shortLine;
+            shortLine = senderName + ": " + text;
           }
-          String tickerLine = shortLine;
 
           NotifData notifData =
               new NotifData(
@@ -443,12 +444,13 @@ public class NotificationCenter {
                       .setName(senderName)
                       .setIcon(getAvatarIcon(sender))
                       .setBot(sender.isBot())
-                      .setKey(dcContext.getAccountId() + "-" + sender.getId())
+                      .setKey(accountId + "-" + sender.getId())
                       .build(),
-                  shortLine);
+                  text);
 
-          if (!dcChat.isMultiUser() && privacy.isDisplayContact()) {
-            tickerLine = senderName + ": " + tickerLine;
+          String tickerLine = text;
+          if (privacy.isDisplayContact()) {
+            tickerLine = senderName + ": " + text;
           }
 
           DcMsg quotedMsg = dcMsg.getQuotedMsg();
@@ -472,7 +474,7 @@ public class NotificationCenter {
 
           DcContact sender = dcContext.getContact(contactId);
           String senderName = dcMsg.getSenderName(sender);
-          String shortLine =
+          String text =
               context.getString(
                   R.string.reaction_by_other,
                   sender.getDisplayName(),
@@ -486,11 +488,12 @@ public class NotificationCenter {
                       .setName(senderName)
                       .setIcon(getAvatarIcon(sender))
                       .setBot(sender.isBot())
+                      .setKey(accountId + "-" + sender.getId())
                       .build(),
-                  shortLine);
+                  text);
 
           maybeAddNotification(
-              accountId, dcChat, msgId, notifData, shortLine, false, dcChat.isMultiUser());
+              accountId, dcChat, msgId, notifData, text, false, dcChat.isMultiUser());
         });
   }
 
@@ -518,11 +521,34 @@ public class NotificationCenter {
 
           JSONObject info = parentMsg.getWebxdcInfo();
           final String name = JsonUtils.optString(info, "name");
-          String shortLine = name.isEmpty() ? text : (name + ": " + text);
-          NotifData notifData =
-              new NotifData(new Person.Builder().setIcon(getAvatarIcon(dcChat)).build(), shortLine);
+          String tickerLine = name.isEmpty() ? text : (name + ": " + text);
+
+          NotifData notifData;
+          if (dcChat.isMultiUser()) {
+            byte[] blob = parentMsg.getWebxdcBlob(JsonUtils.optString(info, "icon"));
+            notifData =
+                new NotifData(
+                    new Person.Builder()
+                        .setName(name)
+                        .setIcon(getAvatarIcon(blob))
+                        .setKey(accountId + "-webxdc-" + msgId)
+                        .build(),
+                    text);
+          } else {
+            DcContact sender = dcContext.getContact(contactId);
+            notifData =
+                new NotifData(
+                    new Person.Builder()
+                        .setName(dcMsg.getSenderName(sender))
+                        .setIcon(getAvatarIcon(sender))
+                        .setBot(sender.isBot())
+                        .setKey(dcContext.getAccountId() + "-" + sender.getId())
+                        .build(),
+                    tickerLine);
+          }
+
           maybeAddNotification(
-              accountId, dcChat, msgId, notifData, shortLine, false, dcChat.isMultiUser());
+              accountId, dcChat, msgId, notifData, tickerLine, false, dcChat.isMultiUser());
         });
   }
 
@@ -572,7 +598,7 @@ public class NotificationCenter {
     String notificationChannel = getNotificationChannel(notificationManager, chatData, dcChat);
 
     LinkedHashMap<Integer, NotifData> messagesForInbox = null;
-    if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
+    if (privacy.isDisplayContact()) {
       synchronized (inboxes) {
         HashMap<Integer, LinkedHashMap<Integer, NotifData>> accountInbox = inboxes.get(accountId);
         if (accountInbox == null) {
@@ -583,6 +609,9 @@ public class NotificationCenter {
         if (messages == null) {
           messages = new LinkedHashMap<>();
           accountInbox.put(chatId, messages);
+        }
+        if (!privacy.isDisplayMessage()) {
+          messages.clear();
         }
         messages.put(msgId, notifData);
         messagesForInbox = new LinkedHashMap<>(messages);
@@ -728,7 +757,7 @@ public class NotificationCenter {
       }
 
       // Create messaging style
-      if (privacy.isDisplayContact() && privacy.isDisplayMessage() && messagesForInbox != null) {
+      if (privacy.isDisplayContact() && messagesForInbox != null) {
         try {
           Intent viewChatIntent = new Intent(context, ShareActivity.class);
           viewChatIntent.setAction(Intent.ACTION_SEND);
@@ -750,6 +779,7 @@ public class NotificationCenter {
               new Person.Builder()
                   .setName(selfContact.getDisplayName())
                   .setIcon(getAvatarIcon(selfContact))
+                  .setKey(accountId + "-" + selfContact.getId())
                   .build();
           NotificationCompat.MessagingStyle style = new NotificationCompat.MessagingStyle(self);
           if (dcChat.isMultiUser()) {
@@ -855,6 +885,16 @@ public class NotificationCenter {
     } catch (Exception e) {
       Log.e(TAG, "cannot rebuild notification", e);
     }
+  }
+
+  private static @Nullable IconCompat getAvatarIcon(byte[] blob) {
+    if (blob == null) {
+      return null;
+    }
+    ByteArrayInputStream is = new ByteArrayInputStream(blob);
+    BitmapDrawable drawable = (BitmapDrawable) Drawable.createFromStream(is, "icon");
+    Bitmap bitmap = drawable.getBitmap();
+    return IconCompat.createWithBitmap(bitmap);
   }
 
   private @Nullable IconCompat getAvatarIcon(DcChat dcChat) {
