@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
+import com.b44t.messenger.DcContext;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.zxing.BinaryBitmap;
@@ -120,10 +121,12 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
 
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
+    DcContext dcContext = DcHelper.getContext(this);
+
     menu.clear();
     getMenuInflater().inflate(R.menu.qr_show, menu);
     menu.findItem(R.id.new_classic_contact)
-        .setVisible(!scanRelay && !DcHelper.getContext(this).isChatmail());
+        .setVisible(!scanRelay && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0);
 
     Util.redMenuItem(menu, R.id.withdraw);
     if (tabLayout.getSelectedTabPosition() == TAB_SCAN) {
