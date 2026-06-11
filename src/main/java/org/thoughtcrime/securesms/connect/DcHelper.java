@@ -505,16 +505,20 @@ public class DcHelper {
         .show();
   }
 
-  public static void showInvalidUnencryptedDialog(Context context) {
-    new AlertDialog.Builder(context)
+  public static AlertDialog.Builder prepareInvalidUnencryptedDialog(
+      Context context, AlertDialog.Builder builder) {
+    return builder
         .setMessage(context.getString(R.string.invalid_unencrypted_explanation))
         .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#howtoe2ee"))
         .setNegativeButton(
             R.string.qrscan_title,
             (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
         .setPositiveButton(R.string.ok, null)
-        .setCancelable(true)
-        .show();
+        .setCancelable(true);
+  }
+
+  public static void showInvalidUnencryptedDialog(Context context) {
+    prepareInvalidUnencryptedDialog(context, new AlertDialog.Builder(context)).show();
   }
 
   public static void openHelp(Context context, String section) {

@@ -57,22 +57,26 @@ public class LongClickCopySpan extends ClickableSpan {
         DcContext dcContext = DcHelper.getContext(activity);
 
         int contactId = dcContext.lookupContactIdByAddr(addr);
-        if (contactId == 0 && dcContext.mayBeValidAddr(addr)) {
-          contactId = dcContext.createContact(null, addr);
-        }
-        DcContact contact = dcContext.getContact(contactId);
-        if (contact.getId() != 0
+        DcContact contact = (contactId != 0) ? dcContext.getContact(contactId) : null;
+        if (contact != null
             && !contact.isBlocked()
             && dcContext.getChatIdByContactId(contact.getId()) != 0) {
           openChat(activity, contact);
+        } else if (contact == null
+            && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 1) {
+          DcHelper.showInvalidUnencryptedDialog(activity);
         } else {
+          String name = contact != null ? contact.getDisplayName() : addr;
           new AlertDialog.Builder(activity)
-              .setMessage(
-                  activity.getString(R.string.ask_start_chat_with, contact.getDisplayName()))
+              .setMessage(activity.getString(R.string.ask_start_chat_with, name))
               .setPositiveButton(
                   android.R.string.ok,
                   (dialog, which) -> {
-                    openChat(activity, contact);
+                    openChat(
+                        activity,
+                        contact == null
+                            ? dcContext.getContact(dcContext.createContact(null, addr))
+                            : contact);
                   })
               .setNegativeButton(R.string.cancel, null)
               .show();
