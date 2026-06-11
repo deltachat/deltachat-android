@@ -344,10 +344,6 @@ public class DcContext {
     return displayname;
   }
 
-  public boolean isChatmail() {
-    return getConfigInt("is_chatmail") == 1;
-  }
-
   public boolean isMuted() {
     return getConfigInt("is_muted") == 1;
   }
