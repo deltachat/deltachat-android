@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Use message style notifications for longer message previews
+
 ## v2.52.0
 2026-06
 
