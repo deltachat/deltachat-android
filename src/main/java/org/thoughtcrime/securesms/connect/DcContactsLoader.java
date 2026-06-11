@@ -46,7 +46,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
     if (query == null && addScanQRLink) {
       additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_QR_INVITE);
     }
-    if (addCreateContactLink && !dcContext.isChatmail()) {
+    if (addCreateContactLink && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0) {
       additional_items =
           Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT);
     }
@@ -54,7 +54,7 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
       additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_GROUP);
       additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST);
 
-      if (!dcContext.isChatmail()) {
+      if (dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0) {
         additional_items =
             Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP);
       }
