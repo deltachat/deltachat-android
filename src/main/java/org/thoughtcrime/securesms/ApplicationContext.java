@@ -275,6 +275,7 @@ public class ApplicationContext extends MultiDexApplication {
               Log.i(
                   "DeltaChat",
                   "++++++++++++++++++ NetworkCallback.onAvailable() #" + debugOnAvailableCount++);
+              // onBlockedStatusChanged is only available on API 29+
               if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                 getDcAccounts().maybeNetwork();
               }
