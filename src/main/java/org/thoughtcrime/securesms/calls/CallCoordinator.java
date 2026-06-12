@@ -57,6 +57,7 @@ import kotlinx.coroutines.Dispatchers;
 import kotlinx.coroutines.flow.Flow;
 import kotlinx.coroutines.flow.FlowKt;
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -70,7 +71,9 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   // Notification channels
   private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls";
   private static final String CHANNEL_ID_ONGOING = "voip_ongoing_calls";
+  private static final String CHANNEL_ID_MISSED = "voip_missed_calls";
   private static final int NOTIFICATION_ID_CALL = 1001;
+  private static final int NOTIFICATION_ID_MISSED_CALL = 1002;
 
   private static final String CALL_IDENTIFIER_SCHEME = "deltachat:";
 
@@ -123,6 +126,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private boolean hasNotifiedBackend = false;
   private boolean hasAutoSelectedEarpiece = false;
   private boolean pendingMediaCapture = false;
+  private boolean wasAnsweredLocally = false;
 
   private CallControlScope activeCallControlScope;
   private CallViewModel activeCallViewModel;
@@ -169,8 +173,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     ongoingChannel.setDescription("Notifications for active DeltaChat calls");
     ongoingChannel.setSound(null, null);
 
+    NotificationChannel missedChannel =
+        new NotificationChannel(
+            CHANNEL_ID_MISSED, "Missed Calls", NotificationManager.IMPORTANCE_HIGH);
+    missedChannel.setDescription("Notifications for missed DeltaChat calls");
+
     notificationManager.createNotificationChannel(incomingChannel);
     notificationManager.createNotificationChannel(ongoingChannel);
+    notificationManager.createNotificationChannel(missedChannel);
   }
 
   private void registerTelecom() {
@@ -440,6 +450,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       Log.w(TAG, "Not an incoming call");
       return;
     }
+
+    wasAnsweredLocally = true;
 
     if (callService != null) {
       callService.stopRingtone();
@@ -1056,6 +1068,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       callService.endCall();
     }
 
+    if (isIncomingCall && !wasAnsweredLocally) {
+      showMissedCallNotification(activeAccId, activeChatId);
+    }
+
     // Clear active states
     cleanupCall(accId, callId);
   }
@@ -1127,6 +1143,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     this.hasNotifiedBackend = false;
     this.hasAutoSelectedEarpiece = false;
     this.pendingMediaCapture = false;
+    this.wasAnsweredLocally = false;
 
     mainHandler.removeCallbacks(outgoingRingtoneRunnable);
 
@@ -1488,6 +1505,52 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     notificationManager.notify(NOTIFICATION_ID_CALL, builder.build());
+  }
+
+  private void showMissedCallNotification(int accId, int chatId) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      if (!hasNotificationPermission()) {
+        Log.w(TAG, "Cannot show missed call notification: no permission");
+        return;
+      }
+    }
+
+    DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
+    DcChat dcChat = dcContext.getChat(chatId);
+    String callerName = CallUtil.getNameFromChat(dcChat);
+
+    Intent intent = new Intent(appContext, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+    PendingIntent contentIntent =
+        PendingIntent.getActivity(
+            appContext,
+            NOTIFICATION_ID_MISSED_CALL,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+    Notification.Builder builder =
+        new Notification.Builder(appContext, CHANNEL_ID_MISSED)
+            .setSmallIcon(R.drawable.icon_notification)
+            .setContentTitle("Missed call")
+            .setContentText(callerName)
+            .setContentIntent(contentIntent)
+            .setAutoCancel(true);
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+      builder.setCategory(Notification.CATEGORY_MISSED_CALL);
+    } else {
+      builder.setCategory(Notification.CATEGORY_CALL);
+    }
+
+    Icon icon = displayIcon.getValue();
+    if (icon != null) {
+      builder.setLargeIcon(icon);
+    }
+
+    notificationManager.notify(NOTIFICATION_ID_MISSED_CALL, builder.build());
   }
 
   private Notification buildOngoingCallNotification(
