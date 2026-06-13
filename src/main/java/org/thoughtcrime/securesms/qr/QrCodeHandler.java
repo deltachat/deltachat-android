@@ -314,6 +314,12 @@ public class QrCodeHandler {
 
   private void showFingerprintOrQrSuccess(
       AlertDialog.Builder builder, DcLot qrParsed, String name) {
+    if (qrParsed.getState() == DcContext.DC_QR_ADDR
+        && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 1) {
+      DcHelper.prepareInvalidUnencryptedDialog(activity, builder);
+      return;
+    }
+
     @StringRes
     int resId =
         qrParsed.getState() == DcContext.DC_QR_ADDR
