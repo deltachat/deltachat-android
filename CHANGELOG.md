@@ -1,5 +1,10 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Use message style notifications for longer message previews
+* Remove notification after audio playback ends
+
 ## v2.52.0
 2026-06
 
@@ -7,7 +12,7 @@
 * Fix: Incorrect total time when attaching audio files as draft
 * Fix: Audio files in draft showing total time from wrong file
 * Fix: Update the channel title after joining if the QR code had an outdated title
-* Voice recording will be automatically saved as draft when interrupted 
+* Voice recording will be automatically saved as draft when interrupted
 * Update to core 2.52.0
 
 ## v2.51.0
