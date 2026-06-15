@@ -450,6 +450,7 @@
     <string name="call_answered_elsewhere">Chiamata risposta su un altro dispositivo</string>
     <string name="call_requires_camera_permission">Per le videochiamate è necessaria l\'autorizzazione per l\'utilizzo della fotocamera.</string>
     <string name="call_requires_mic_permission">Per le chiamate è necessaria l\'autorizzazione per l\'utilizzo del microfono.</string>
+    <string name="call_requires_connection">Impossibile avviare la chiamata. Assicurati che il tuo dispositivo disponga di una connessione a Internet e riprova.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Chiama con %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
@@ -690,6 +691,7 @@
     <string name="welcome_chat_over_email">Chat Decentralizzata Sicura</string>
     <string name="scan_invitation_code">Scansiona Codice Invito</string>
     <string name="login_title">Accedi</string>
+    <string name="login_advanced_hint">Questo login è riservato agli utenti avanzati.\n\nNon utilizzare un indirizzo che stai già usando in un\'altra app.</string>
     <string name="login_inbox">In Arrivo</string>
     <string name="login_imap_login">Nome Accesso IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -724,6 +726,7 @@
     <string name="used_for_sending">Utilizzato per l\'invio</string>
     <string name="hide_from_contacts">Nascondi dai Contatti</string>
     <string name="hidden_from_contacts">Nascosto dai contatti</string>
+    <string name="enforce_e2ee">Applica Crittografia a Tutti i Ripetitori</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">I messaggi vengono ricevuti su tutti i ripetitori.\n\n⚠️ Se modifichi qualcosa qui, assicurati che tutti i tuoi dispositivi abbiano almeno la versione 2.47.0. Altrimenti i dispositivi più vecchi potrebbero non ricevere i messaggi.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
