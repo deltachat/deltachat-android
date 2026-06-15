@@ -673,7 +673,7 @@
     <string name="welcome_chat_over_email">Sicherer dezentraler Chat</string>
     <string name="scan_invitation_code">Einladungscode scannen</string>
     <string name="login_title">Login</string>
-    <string name="login_advanced_hint">Für fortgeschrittene Benutzer:\n\nVerwende keine Adresse, die du bereits in einer anderen App nutzt.</string>
+    <string name="login_advanced_hint">Für fortgeschrittene Benutzer.\n\nVerwende keine Adresse, die du bereits in einer anderen App nutzt.</string>
     <string name="login_inbox">Posteingang</string>
     <string name="login_imap_login">IMAP-Anmeldename</string>
     <string name="login_imap_server">IMAP-Server</string>
