@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.53.0
+2026-06
 
 * Use message style notifications for longer message previews
 * Remove notification after audio playback ends
