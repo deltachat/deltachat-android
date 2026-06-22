@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Allow to select multiple files for sending
+
 ## v2.53.0
 2026-06
 
