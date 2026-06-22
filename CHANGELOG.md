@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Allow to select multiple files for sending
+* Fix: properly hide draft attachment during in-chat search
 
 ## v2.53.0
 2026-06
