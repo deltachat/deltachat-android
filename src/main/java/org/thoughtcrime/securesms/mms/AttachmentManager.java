@@ -445,7 +445,7 @@ public class AttachmentManager {
   }
 
   public static void selectDocument(Activity activity, int requestCode) {
-    selectMediaType(activity, "*/*", null, requestCode);
+    selectMediaType(activity, "*/*", null, requestCode, null, true);
   }
 
   public static void selectWebxdc(Activity activity, int requestCode) {
@@ -483,7 +483,7 @@ public class AttachmentManager {
         .ifNecessary()
         .withPermanentDenialDialog(
             activity.getString(R.string.perm_explain_access_to_storage_denied))
-        .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode))
+        .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode, null, false))
         .execute();
   }
 
@@ -606,20 +606,6 @@ public class AttachmentManager {
               }
             })
         .execute();
-  }
-
-  public static void selectMediaType(
-      Activity activity, @NonNull String type, @Nullable String[] extraMimeType, int requestCode) {
-    selectMediaType(activity, type, extraMimeType, requestCode, null, false);
-  }
-
-  public static void selectMediaType(
-      Activity activity,
-      @NonNull String type,
-      @Nullable String[] extraMimeType,
-      int requestCode,
-      @Nullable Uri initialUri) {
-    selectMediaType(activity, type, extraMimeType, requestCode, initialUri, false);
   }
 
   public static void selectMediaType(
