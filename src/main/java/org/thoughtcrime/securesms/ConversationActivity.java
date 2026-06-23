@@ -1141,30 +1141,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void setInputPanelVisibility(boolean isInitialization) {
+    int inputPanelVisibility;
+    boolean isAttamchentHidden;
     if (dcChat.canSend()) {
-      synchronized (searchLock) {
-        if (searchMenu != null) { // in search mode, don't change visibility directly
-          beforeSearchInputPanelVisibility = View.VISIBLE;
-          beforeSearchAttachmentEditorHidden = false;
-        } else {
-          inputPanel.setVisibility(View.VISIBLE);
-          attachmentManager.setHidden(false);
-        }
-      }
+      inputPanelVisibility = View.VISIBLE;
+      isAttamchentHidden = false;
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
       // ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
       // fragment.handleRemoveBottomInsets();
     } else {
-      synchronized (searchLock) {
-        if (searchMenu != null) { // in search mode, don't change visibility directly
-          beforeSearchInputPanelVisibility = View.GONE;
-          beforeSearchAttachmentEditorHidden = true;
-        } else {
-          inputPanel.setVisibility(View.GONE);
-          attachmentManager.setHidden(true);
-        }
-      }
+      inputPanelVisibility = View.GONE;
+      isAttamchentHidden = true;
       hideSoftKeyboard();
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
@@ -1174,6 +1162,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         fragment.handleAddBottomInsets();
       }
       */
+    }
+    synchronized (searchLock) {
+      if (searchMenu != null) { // in search mode, don't change visibility directly
+        beforeSearchInputPanelVisibility = inputPanelVisibility;
+        beforeSearchAttachmentEditorHidden = isAttamchentHidden;
+      } else {
+        inputPanel.setVisibility(inputPanelVisibility);
+        attachmentManager.setHidden(isAttamchentHidden);
+      }
     }
   }
 
