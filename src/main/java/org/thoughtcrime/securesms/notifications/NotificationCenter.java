@@ -429,6 +429,11 @@ public class NotificationCenter {
 
           DcContact sender = dcContext.getContact(dcMsg.getFromId());
           String senderName = dcMsg.getSenderName(sender);
+          String contactId = String.valueOf(sender.getId());
+          if (dcMsg.getOverrideSenderName() != null) {
+              // msg has ~overrideSenderName, we need to treat it as a separate Person with different ID
+              contactId += "-" + senderName;
+          }
           String text =
               privacy.isDisplayMessage()
                   ? dcMsg.getSummarytext(2000)
@@ -444,7 +449,7 @@ public class NotificationCenter {
                       .setName(senderName)
                       .setIcon(getAvatarIcon(sender))
                       .setBot(sender.isBot())
-                      .setKey(accountId + "-" + sender.getId())
+                      .setKey(accountId + "-" + contactId)
                       .build(),
                   text);
 
