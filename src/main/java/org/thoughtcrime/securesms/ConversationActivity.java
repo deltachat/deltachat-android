@@ -441,32 +441,19 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           else mediaType = MediaType.IMAGE;
           setMedia(singleUri, mediaType);
         } else {
-          final ClipData multipleUris = data.getClipData();
-          if (multipleUris != null) {
-            final int uriCount = multipleUris.getItemCount();
-            if (uriCount > 0) {
-              ArrayList<Uri> uriList = new ArrayList<>(uriCount);
-              for (int i = 0; i < uriCount; i++) {
-                uriList.add(multipleUris.getItemAt(i).getUri());
-              }
-              askSendingFiles(
-                  uriList,
-                  () -> {
-                    Util.runOnAnyBackgroundThread(
-                        () -> {
-                          SendRelayedMessageUtil.sendMultipleMsgs(this, chatId, uriList, null);
-                        });
-                  });
-            }
-          }
+          sendMultipleMsgs(data);
         }
         break;
 
       case PICK_DOCUMENT:
-        final String docMimeType = MediaUtil.getMimeType(this, data.getData());
-        final MediaType docMediaType =
-            MediaUtil.isAudioType(docMimeType) ? MediaType.AUDIO : MediaType.DOCUMENT;
-        setMedia(data.getData(), docMediaType);
+        if (data.getData() != null) { // single Uri
+          final String docMimeType = MediaUtil.getMimeType(this, data.getData());
+          final MediaType docMediaType =
+              MediaUtil.isAudioType(docMimeType) ? MediaType.AUDIO : MediaType.DOCUMENT;
+          setMedia(data.getData(), docMediaType);
+        } else {
+          sendMultipleMsgs(data);
+        }
         break;
 
       case PICK_WEBXDC:
@@ -506,6 +493,25 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       case ScribbleActivity.SCRIBBLE_REQUEST_CODE:
         setMedia(data.getData(), MediaType.IMAGE);
         break;
+    }
+  }
+
+  private void sendMultipleMsgs(Intent data) {
+    final ClipData multipleUris = data.getClipData();
+    if (multipleUris != null) {
+      final int uriCount = multipleUris.getItemCount();
+      if (uriCount > 0) {
+        ArrayList<Uri> uriList = new ArrayList<>(uriCount);
+        for (int i = 0; i < uriCount; i++) {
+          uriList.add(multipleUris.getItemAt(i).getUri());
+        }
+        askSendingFiles(
+            uriList,
+            () -> {
+              Util.runOnAnyBackgroundThread(
+                  () -> SendRelayedMessageUtil.sendMultipleMsgs(this, chatId, uriList, null));
+            });
+      }
     }
   }
 
