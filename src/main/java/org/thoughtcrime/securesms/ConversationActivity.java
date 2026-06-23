@@ -1977,13 +1977,24 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   public void initializeContactRequest() {
     if (!dcChat.isContactRequest()) {
-      messageRequestBottomView.setVisibility(View.GONE);
-      beforeSearchMsgRequestVisibility = View.GONE;
+      synchronized (searchLock) {
+        if (searchMenu != null) { // in search mode, don't change visibility directly
+          beforeSearchMsgRequestVisibility = View.GONE;
+        } else {
+          messageRequestBottomView.setVisibility(View.GONE);
+        }
+      }
       return;
     }
 
-    beforeSearchMsgRequestVisibility = View.VISIBLE;
-    messageRequestBottomView.setVisibility(View.VISIBLE);
+    synchronized (searchLock) {
+      if (searchMenu != null) { // in search mode, don't change visibility directly
+        beforeSearchMsgRequestVisibility = View.VISIBLE;
+      } else {
+        messageRequestBottomView.setVisibility(View.VISIBLE);
+      }
+    }
+
     messageRequestBottomView.setAcceptOnClickListener(
         v -> {
           DcHelper.getContext(context).acceptChat(chatId);
