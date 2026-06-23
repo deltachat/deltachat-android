@@ -432,6 +432,7 @@ public class NotificationCenter {
           String contactId = String.valueOf(sender.getId());
           if (dcMsg.getOverrideSenderName() != null) {
             // we need to treat the contact as a separate Person with different ID
+            // otherwise the name will be overwritten by future notifications
             contactId += "-" + senderName;
           }
           String text =
