@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Allow to select multiple files for sending
 * Add notifications for missed calls
 
 ## v2.53.0
