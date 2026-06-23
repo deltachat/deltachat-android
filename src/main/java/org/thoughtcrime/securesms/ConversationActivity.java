@@ -166,6 +166,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int RECORD_VIDEO = 8;
   private static final int PICK_WEBXDC = 9;
 
+  private static final Object searchLock = new Object();
+
   private GlideRequests glideRequests;
   protected ComposeText composeText;
   private AnimatingToggle buttonToggle;
@@ -1140,19 +1142,29 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void setInputPanelVisibility(boolean isInitialization) {
     if (dcChat.canSend()) {
-      inputPanel.setVisibility(View.VISIBLE);
-      beforeSearchInputPanelVisibility = View.VISIBLE;
-      attachmentManager.setHidden(false);
-      beforeSearchAttachmentEditorHidden = false;
+      synchronized (searchLock) {
+        if (searchMenu != null) { // in search mode, don't change visibility directly
+          beforeSearchInputPanelVisibility = View.VISIBLE;
+          beforeSearchAttachmentEditorHidden = false;
+        } else {
+          inputPanel.setVisibility(View.VISIBLE);
+          attachmentManager.setHidden(false);
+        }
+      }
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
       // ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
       // fragment.handleRemoveBottomInsets();
     } else {
-      inputPanel.setVisibility(View.GONE);
-      beforeSearchInputPanelVisibility = View.GONE;
-      attachmentManager.setHidden(true);
-      beforeSearchAttachmentEditorHidden = true;
+      synchronized (searchLock) {
+        if (searchMenu != null) { // in search mode, don't change visibility directly
+          beforeSearchInputPanelVisibility = View.GONE;
+          beforeSearchAttachmentEditorHidden = true;
+        } else {
+          inputPanel.setVisibility(View.GONE);
+          attachmentManager.setHidden(true);
+        }
+      }
       hideSoftKeyboard();
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
@@ -1886,23 +1898,28 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void searchExpand(final Menu menu, final MenuItem searchItem) {
-    searchMenu = menu;
+    synchronized (searchLock) {
+      searchMenu = menu;
 
-    beforeSearchAttachmentEditorHidden = attachmentManager.isHidden();
-    beforeSearchMsgRequestVisibility = messageRequestBottomView.getVisibility();
-    beforeSearchInputPanelVisibility = inputPanel.getVisibility();
-    attachmentManager.setHidden(true);
-    messageRequestBottomView.setVisibility(View.GONE);
-    inputPanel.setVisibility(View.GONE);
+      beforeSearchAttachmentEditorHidden = attachmentManager.isHidden();
+      beforeSearchMsgRequestVisibility = messageRequestBottomView.getVisibility();
+      beforeSearchInputPanelVisibility = inputPanel.getVisibility();
+
+      attachmentManager.setHidden(true);
+      messageRequestBottomView.setVisibility(View.GONE);
+      inputPanel.setVisibility(View.GONE);
+    }
 
     ConversationActivity.this.makeSearchMenuVisible(menu, searchItem);
   }
 
   private void searchCollapse() {
-    searchMenu = null;
-    attachmentManager.setHidden(beforeSearchAttachmentEditorHidden);
-    messageRequestBottomView.setVisibility(beforeSearchMsgRequestVisibility);
-    inputPanel.setVisibility(beforeSearchInputPanelVisibility);
+    synchronized (searchLock) {
+      searchMenu = null;
+      attachmentManager.setHidden(beforeSearchAttachmentEditorHidden);
+      messageRequestBottomView.setVisibility(beforeSearchMsgRequestVisibility);
+      inputPanel.setVisibility(beforeSearchInputPanelVisibility);
+    }
 
     // trigger onPrepareOptionsMenu() to restore correct menu visibility
     invalidateOptionsMenu();
