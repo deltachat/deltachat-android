@@ -431,8 +431,8 @@ public class NotificationCenter {
           String senderName = dcMsg.getSenderName(sender);
           String contactId = String.valueOf(sender.getId());
           if (dcMsg.getOverrideSenderName() != null) {
-              // msg has ~overrideSenderName, we need to treat it as a separate Person with different ID
-              contactId += "-" + senderName;
+            // we need to treat the contact as a separate Person with different ID
+            contactId += "-" + senderName;
           }
           String text =
               privacy.isDisplayMessage()
