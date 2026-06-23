@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Add notifications for missed calls
 * Allow to select multiple files for sending
 * Fix: properly hide draft attachment during in-chat search
 
