@@ -174,7 +174,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected ConversationTitleView titleView;
   private ConversationFragment fragment;
   private InputAwareLayout container;
-  private View inputArea;
   private ScaleStableImageView backgroundView;
   private MessageRequestsBottomView messageRequestBottomView;
   private ProgressDialog progressDialog;
@@ -1018,7 +1017,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     attachButton = ViewUtil.findById(this, R.id.attach_button);
     composeText = ViewUtil.findById(this, R.id.embedded_text_editor);
     emojiPickerContainer = ViewUtil.findById(this, R.id.emoji_picker_container);
-    inputArea = ViewUtil.findById(this, R.id.input_area);
     container = ViewUtil.findById(this, R.id.layout_container);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel = ViewUtil.findById(this, R.id.bottom_panel);
@@ -1143,14 +1141,18 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void setInputPanelVisibility(boolean isInitialization) {
     if (dcChat.canSend()) {
       inputPanel.setVisibility(View.VISIBLE);
+      beforeSearchInputPanelVisibility = View.VISIBLE;
       attachmentManager.setHidden(false);
+      beforeSearchAttachmentEditorHidden = false;
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
       // ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
       // fragment.handleRemoveBottomInsets();
     } else {
       inputPanel.setVisibility(View.GONE);
+      beforeSearchInputPanelVisibility = View.GONE;
       attachmentManager.setHidden(true);
+      beforeSearchAttachmentEditorHidden = true;
       hideSoftKeyboard();
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
@@ -1861,6 +1863,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   // in-chat search
 
+  private boolean beforeSearchAttachmentEditorHidden;
+  private int beforeSearchMsgRequestVisibility;
+  private int beforeSearchInputPanelVisibility;
+
   private Menu searchMenu = null;
   private int[] searchResult = {};
   private int searchResultPosition = -1;
@@ -1881,13 +1887,22 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void searchExpand(final Menu menu, final MenuItem searchItem) {
     searchMenu = menu;
-    inputArea.setVisibility(View.GONE);
+
+    beforeSearchAttachmentEditorHidden = attachmentManager.isHidden();
+    beforeSearchMsgRequestVisibility = messageRequestBottomView.getVisibility();
+    beforeSearchInputPanelVisibility = inputPanel.getVisibility();
+    attachmentManager.setHidden(true);
+    messageRequestBottomView.setVisibility(View.GONE);
+    inputPanel.setVisibility(View.GONE);
+
     ConversationActivity.this.makeSearchMenuVisible(menu, searchItem);
   }
 
   private void searchCollapse() {
     searchMenu = null;
-    inputArea.setVisibility(View.VISIBLE);
+    attachmentManager.setHidden(beforeSearchAttachmentEditorHidden);
+    messageRequestBottomView.setVisibility(beforeSearchMsgRequestVisibility);
+    inputPanel.setVisibility(beforeSearchInputPanelVisibility);
 
     // trigger onPrepareOptionsMenu() to restore correct menu visibility
     invalidateOptionsMenu();
@@ -1949,9 +1964,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   public void initializeContactRequest() {
     if (!dcChat.isContactRequest()) {
       messageRequestBottomView.setVisibility(View.GONE);
+      beforeSearchMsgRequestVisibility = View.GONE;
       return;
     }
 
+    beforeSearchMsgRequestVisibility = View.VISIBLE;
     messageRequestBottomView.setVisibility(View.VISIBLE);
     messageRequestBottomView.setAcceptOnClickListener(
         v -> {

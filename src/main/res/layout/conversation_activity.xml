@@ -36,40 +36,33 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-            <LinearLayout
-                android:id="@+id/input_area"
+            <ViewStub
+                android:id="@+id/attachment_editor_stub"
+                android:inflatedId="@+id/attachment_editor"
+                android:layout="@layout/conversation_activity_attachment_editor_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <org.thoughtcrime.securesms.messagerequests.MessageRequestsBottomView
+                android:id="@+id/conversation_activity_message_request_bottom_bar"
+                android:background="?android:attr/windowBackground"
+                android:visibility="gone"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
+                android:focusable="true" />
 
-                <ViewStub
-                    android:id="@+id/attachment_editor_stub"
-                    android:inflatedId="@+id/attachment_editor"
-                    android:layout="@layout/conversation_activity_attachment_editor_stub"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <include layout="@layout/conversation_input_panel" />
 
-                <org.thoughtcrime.securesms.messagerequests.MessageRequestsBottomView
-                    android:id="@+id/conversation_activity_message_request_bottom_bar"
-                    android:background="?android:attr/windowBackground"
-                    android:visibility="gone"
-                    android:clickable="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="16dp"
-                    android:paddingStart="16dp"
-                    android:paddingRight="16dp"
-                    android:paddingEnd="16dp"
-                    android:focusable="true" />
+            <FrameLayout
+                android:id="@+id/emoji_picker_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-                <include layout="@layout/conversation_input_panel" />
-
-                <FrameLayout
-                    android:id="@+id/emoji_picker_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
         </LinearLayout>
     </org.thoughtcrime.securesms.components.InputAwareLayout>
 </RelativeLayout>

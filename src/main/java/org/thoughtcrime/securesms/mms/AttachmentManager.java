@@ -787,6 +787,10 @@ public class AttachmentManager {
     updateVisibility();
   }
 
+  public boolean isHidden() {
+    return hidden;
+  }
+
   private void setAttachmentPresent(boolean isPresent) {
     this.attachmentPresent = isPresent;
     updateVisibility();
