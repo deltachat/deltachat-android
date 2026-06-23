@@ -212,7 +212,12 @@ public class WelcomeActivity extends BaseActionBarActivity
               File imexDir = DcHelper.getImexDir();
               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 AttachmentManager.selectMediaType(
-                    this, "application/x-tar", null, PICK_BACKUP, StorageUtil.getDownloadUri());
+                    this,
+                    "application/x-tar",
+                    null,
+                    PICK_BACKUP,
+                    StorageUtil.getDownloadUri(),
+                    false);
               } else {
                 final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
                 if (backupFile != null) {
