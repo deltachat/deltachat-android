@@ -57,6 +57,7 @@ import kotlinx.coroutines.Dispatchers;
 import kotlinx.coroutines.flow.Flow;
 import kotlinx.coroutines.flow.FlowKt;
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -70,7 +71,18 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   // Notification channels
   private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls";
   private static final String CHANNEL_ID_ONGOING = "voip_ongoing_calls";
+  private static final String CHANNEL_ID_MISSED = "voip_missed_calls";
   private static final int NOTIFICATION_ID_CALL = 1001;
+  static final int NOTIFICATION_ID_MISSED_CALL = 1002;
+
+  private static final int PI_ANSWER = 0;
+  private static final int PI_DECLINE = 1;
+  private static final int PI_FULLSCREEN = 2;
+  private static final int PI_HANGUP = 3;
+  private static final int PI_ONGOING_CONTENT = 4;
+  private static final int PI_MISSED_CONTENT = 5;
+  private static final int PI_MISSED_CALLBACK = 6;
+  private static final int PI_MISSED_MESSAGE = 7;
 
   private static final String CALL_IDENTIFIER_SCHEME = "deltachat:";
 
@@ -123,6 +135,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private boolean hasNotifiedBackend = false;
   private boolean hasAutoSelectedEarpiece = false;
   private boolean pendingMediaCapture = false;
+  private boolean wasAnsweredLocally = false;
 
   private CallControlScope activeCallControlScope;
   private CallViewModel activeCallViewModel;
@@ -169,8 +182,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     ongoingChannel.setDescription("Notifications for active DeltaChat calls");
     ongoingChannel.setSound(null, null);
 
+    NotificationChannel missedChannel =
+        new NotificationChannel(
+            CHANNEL_ID_MISSED, "Missed Calls", NotificationManager.IMPORTANCE_HIGH);
+    missedChannel.setDescription("Notifications for missed DeltaChat calls");
+
     notificationManager.createNotificationChannel(incomingChannel);
     notificationManager.createNotificationChannel(ongoingChannel);
+    notificationManager.createNotificationChannel(missedChannel);
   }
 
   private void registerTelecom() {
@@ -440,6 +459,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       Log.w(TAG, "Not an incoming call");
       return;
     }
+
+    wasAnsweredLocally = true;
 
     if (callService != null) {
       callService.stopRingtone();
@@ -871,7 +892,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               // This event is problematic because it can trigger in both directions,
               // in addition to multiple other scenarios which cannot easily be distinguished
               // May cause problems in edge cases
-              onCallEnded(accId, callId);
+              onCallEnded(accId, callId, startsWithVideo);
               break;
           }
         });
@@ -1022,7 +1043,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, calleeName));
   }
 
-  private synchronized void onCallEnded(int accId, int callId) {
+  private synchronized void onCallEnded(int accId, int callId, boolean startsWithVideo) {
     Log.d(TAG, "onCallEnded: accId=" + accId + ", callId=" + callId);
 
     if (!hasActiveCall()) {
@@ -1054,6 +1075,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     if (callService != null) {
       callService.endCall();
+    }
+
+    if (isIncomingCall && !wasAnsweredLocally) {
+      showMissedCallNotification(activeAccId, activeChatId, startsWithVideo);
     }
 
     // Clear active states
@@ -1127,6 +1152,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     this.hasNotifiedBackend = false;
     this.hasAutoSelectedEarpiece = false;
     this.pendingMediaCapture = false;
+    this.wasAnsweredLocally = false;
 
     mainHandler.removeCallbacks(outgoingRingtoneRunnable);
 
@@ -1417,7 +1443,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     PendingIntent answerPendingIntent =
         PendingIntent.getActivity(
             this.appContext,
-            0,
+            PI_ANSWER,
             answerIntent,
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -1428,7 +1454,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     PendingIntent declinePendingIntent =
         PendingIntent.getBroadcast(
             this.appContext,
-            1,
+            PI_DECLINE,
             declineIntent,
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -1439,7 +1465,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     PendingIntent fullScreenPendingIntent =
         PendingIntent.getActivity(
             this.appContext,
-            2,
+            PI_FULLSCREEN,
             fullScreenIntent,
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -1490,6 +1516,87 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     notificationManager.notify(NOTIFICATION_ID_CALL, builder.build());
   }
 
+  private void showMissedCallNotification(int accId, int chatId, boolean wasVideoCall) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      if (!hasNotificationPermission()) {
+        Log.w(TAG, "Cannot show missed call notification: no permission");
+        return;
+      }
+    }
+
+    DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
+    DcChat dcChat = dcContext.getChat(chatId);
+    String callerName = CallUtil.getNameFromChat(dcChat);
+
+    Intent contentAction = new Intent(appContext, ConversationActivity.class);
+    contentAction.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    contentAction.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
+    contentAction.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+    PendingIntent contentIntent =
+        PendingIntent.getActivity(
+            appContext,
+            PI_MISSED_CONTENT,
+            contentAction,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+    Intent callBackAction = new Intent(appContext, CallActionReceiver.class);
+    callBackAction.setAction(CallActivity.ACTION_CALL_BACK);
+    callBackAction.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    callBackAction.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
+    callBackAction.putExtra(CallActivity.EXTRA_STARTS_WITH_VIDEO, wasVideoCall);
+
+    PendingIntent callBackIntent =
+        PendingIntent.getBroadcast(
+            appContext,
+            PI_MISSED_CALLBACK,
+            callBackAction,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+    Intent messageAction = new Intent(appContext, CallActionReceiver.class);
+    messageAction.setAction(CallActivity.ACTION_MESSAGE);
+    messageAction.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    messageAction.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
+
+    PendingIntent messageIntent =
+        PendingIntent.getBroadcast(
+            appContext,
+            PI_MISSED_MESSAGE,
+            messageAction,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+    String contentText = appContext.getString(R.string.missed_call);
+
+    Notification.Builder builder =
+        new Notification.Builder(appContext, CHANNEL_ID_MISSED)
+            .setSmallIcon(R.drawable.icon_notification)
+            .setContentTitle(callerName)
+            .setContentText(contentText)
+            .setContentIntent(contentIntent)
+            .setAutoCancel(true)
+            .addAction(
+                new Notification.Action.Builder(
+                        null, appContext.getString(R.string.call_back), callBackIntent)
+                    .build())
+            .addAction(
+                new Notification.Action.Builder(
+                        null, appContext.getString(R.string.chat_input_placeholder), messageIntent)
+                    .build());
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+      builder.setCategory(Notification.CATEGORY_MISSED_CALL);
+    } else {
+      builder.setCategory(Notification.CATEGORY_CALL);
+    }
+
+    Icon icon = displayIcon.getValue();
+    if (icon != null) {
+      builder.setLargeIcon(icon);
+    }
+
+    notificationManager.notify(NOTIFICATION_ID_MISSED_CALL, builder.build());
+  }
+
   private Notification buildOngoingCallNotification(
       String statusText, String displayName, Icon icon) {
     Intent activityIntent = new Intent(this.appContext, CallActivity.class);
@@ -1501,14 +1608,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     PendingIntent hangupPendingIntent =
         PendingIntent.getBroadcast(
             this.appContext,
-            3,
+            PI_HANGUP,
             hangupIntent,
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
     PendingIntent contentIntent =
         PendingIntent.getActivity(
             this.appContext,
-            4,
+            PI_ONGOING_CONTENT,
             activityIntent,
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 

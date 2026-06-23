@@ -63,6 +63,9 @@ public class CallActivity extends AppCompatActivity {
   public static final String ACTION_ANSWER_CALL = BuildConfig.APPLICATION_ID + ".ANSWER_CALL";
   public static final String ACTION_DECLINE_CALL = BuildConfig.APPLICATION_ID + ".DECLINE_CALL";
   public static final String ACTION_HANGUP_CALL = BuildConfig.APPLICATION_ID + ".HANGUP_CALL";
+  public static final String ACTION_CALL_BACK = BuildConfig.APPLICATION_ID + ".CALL_BACK";
+  public static final String ACTION_MESSAGE = BuildConfig.APPLICATION_ID + ".MESSAGE";
+  public static final String EXTRA_STARTS_WITH_VIDEO = "starts_with_video";
 
   // Views
 
