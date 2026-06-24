@@ -1142,17 +1142,17 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void setInputPanelVisibility(boolean isInitialization) {
     int inputPanelVisibility;
-    boolean isAttamchentHidden;
+    boolean isAttachmentHidden;
     if (dcChat.canSend()) {
       inputPanelVisibility = View.VISIBLE;
-      isAttamchentHidden = false;
+      isAttachmentHidden = false;
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
       // ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
       // fragment.handleRemoveBottomInsets();
     } else {
       inputPanelVisibility = View.GONE;
-      isAttamchentHidden = true;
+      isAttachmentHidden = true;
       hideSoftKeyboard();
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
@@ -1166,10 +1166,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     synchronized (searchLock) {
       if (searchMenu != null) { // in search mode, don't change visibility directly
         beforeSearchInputPanelVisibility = inputPanelVisibility;
-        beforeSearchAttachmentEditorHidden = isAttamchentHidden;
+        beforeSearchAttachmentEditorHidden = isAttachmentHidden;
       } else {
         inputPanel.setVisibility(inputPanelVisibility);
-        attachmentManager.setHidden(isAttamchentHidden);
+        attachmentManager.setHidden(isAttachmentHidden);
       }
     }
   }
