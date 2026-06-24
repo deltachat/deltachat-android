@@ -166,6 +166,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private static final int RECORD_VIDEO = 8;
   private static final int PICK_WEBXDC = 9;
 
+  private static final Object searchLock = new Object();
+
   private GlideRequests glideRequests;
   protected ComposeText composeText;
   private AnimatingToggle buttonToggle;
@@ -174,7 +176,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected ConversationTitleView titleView;
   private ConversationFragment fragment;
   private InputAwareLayout container;
-  private View composePanel;
   private ScaleStableImageView backgroundView;
   private MessageRequestsBottomView messageRequestBottomView;
   private ProgressDialog progressDialog;
@@ -1018,7 +1019,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     attachButton = ViewUtil.findById(this, R.id.attach_button);
     composeText = ViewUtil.findById(this, R.id.embedded_text_editor);
     emojiPickerContainer = ViewUtil.findById(this, R.id.emoji_picker_container);
-    composePanel = ViewUtil.findById(this, R.id.bottom_panel);
     container = ViewUtil.findById(this, R.id.layout_container);
     quickAttachmentToggle = ViewUtil.findById(this, R.id.quick_attachment_toggle);
     inputPanel = ViewUtil.findById(this, R.id.bottom_panel);
@@ -1136,21 +1136,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     recipient = new Recipient(this, dcChat);
     glideRequests = GlideApp.with(this);
 
-    setComposePanelVisibility(true);
+    setInputPanelVisibility(true);
     initializeContactRequest();
   }
 
-  private void setComposePanelVisibility(boolean isInitialization) {
+  private void setInputPanelVisibility(boolean isInitialization) {
+    int inputPanelVisibility;
+    boolean isAttachmentHidden;
     if (dcChat.canSend()) {
-      composePanel.setVisibility(View.VISIBLE);
-      attachmentManager.setHidden(false);
+      inputPanelVisibility = View.VISIBLE;
+      isAttachmentHidden = false;
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
       // ViewUtil.forceApplyWindowInsets(findViewById(R.id.root_layout), true, false, true, true);
       // fragment.handleRemoveBottomInsets();
     } else {
-      composePanel.setVisibility(View.GONE);
-      attachmentManager.setHidden(true);
+      inputPanelVisibility = View.GONE;
+      isAttachmentHidden = true;
       hideSoftKeyboard();
       // FIXME: disabled for now to avoid problems with chat scrolling and keyboard covering input
       // bar
@@ -1160,6 +1162,15 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         fragment.handleAddBottomInsets();
       }
       */
+    }
+    synchronized (searchLock) {
+      if (searchMenu != null) { // in search mode, don't change visibility directly
+        beforeSearchInputPanelVisibility = inputPanelVisibility;
+        beforeSearchAttachmentEditorHidden = isAttachmentHidden;
+      } else {
+        inputPanel.setVisibility(inputPanelVisibility);
+        attachmentManager.setHidden(isAttachmentHidden);
+      }
     }
   }
 
@@ -1848,7 +1859,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       dcChat = dcContext.getChat(chatId);
       titleView.setTitle(glideRequests, dcChat);
       initializeSecurity(isSecureText, isDefaultSms);
-      setComposePanelVisibility(false);
+      setInputPanelVisibility(false);
       initializeContactRequest();
     } else if ((eventId == DcContext.DC_EVENT_INCOMING_MSG
             || eventId == DcContext.DC_EVENT_MSG_READ)
@@ -1861,7 +1872,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   // in-chat search
 
-  private int beforeSearchComposeVisibility = View.VISIBLE;
+  private boolean beforeSearchAttachmentEditorHidden;
+  private int beforeSearchMsgRequestVisibility;
+  private int beforeSearchInputPanelVisibility;
 
   private Menu searchMenu = null;
   private int[] searchResult = {};
@@ -1882,17 +1895,28 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void searchExpand(final Menu menu, final MenuItem searchItem) {
-    searchMenu = menu;
+    synchronized (searchLock) {
+      searchMenu = menu;
 
-    beforeSearchComposeVisibility = composePanel.getVisibility();
-    composePanel.setVisibility(View.GONE);
+      beforeSearchAttachmentEditorHidden = attachmentManager.isHidden();
+      beforeSearchMsgRequestVisibility = messageRequestBottomView.getVisibility();
+      beforeSearchInputPanelVisibility = inputPanel.getVisibility();
+
+      attachmentManager.setHidden(true);
+      messageRequestBottomView.setVisibility(View.GONE);
+      inputPanel.setVisibility(View.GONE);
+    }
 
     ConversationActivity.this.makeSearchMenuVisible(menu, searchItem);
   }
 
   private void searchCollapse() {
-    searchMenu = null;
-    composePanel.setVisibility(beforeSearchComposeVisibility);
+    synchronized (searchLock) {
+      searchMenu = null;
+      attachmentManager.setHidden(beforeSearchAttachmentEditorHidden);
+      messageRequestBottomView.setVisibility(beforeSearchMsgRequestVisibility);
+      inputPanel.setVisibility(beforeSearchInputPanelVisibility);
+    }
 
     // trigger onPrepareOptionsMenu() to restore correct menu visibility
     invalidateOptionsMenu();
@@ -1953,16 +1977,29 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   public void initializeContactRequest() {
     if (!dcChat.isContactRequest()) {
-      messageRequestBottomView.setVisibility(View.GONE);
+      synchronized (searchLock) {
+        if (searchMenu != null) { // in search mode, don't change visibility directly
+          beforeSearchMsgRequestVisibility = View.GONE;
+        } else {
+          messageRequestBottomView.setVisibility(View.GONE);
+        }
+      }
       return;
     }
 
-    messageRequestBottomView.setVisibility(View.VISIBLE);
+    synchronized (searchLock) {
+      if (searchMenu != null) { // in search mode, don't change visibility directly
+        beforeSearchMsgRequestVisibility = View.VISIBLE;
+      } else {
+        messageRequestBottomView.setVisibility(View.VISIBLE);
+      }
+    }
+
     messageRequestBottomView.setAcceptOnClickListener(
         v -> {
           DcHelper.getContext(context).acceptChat(chatId);
           messageRequestBottomView.setVisibility(View.GONE);
-          composePanel.setVisibility(View.VISIBLE);
+          inputPanel.setVisibility(View.VISIBLE);
         });
 
     if (dcChat.getType() == DcChat.DC_CHAT_TYPE_GROUP) {
