@@ -429,6 +429,12 @@ public class NotificationCenter {
 
           DcContact sender = dcContext.getContact(dcMsg.getFromId());
           String senderName = dcMsg.getSenderName(sender);
+          String personId = accountId + "-" + dcMsg.getFromId();
+          if (dcMsg.getOverrideSenderName() != null) {
+            // we need to treat the contact as a separate Person with different ID
+            // otherwise the name will be overwritten by future notifications
+            personId += "-" + senderName;
+          }
           String text =
               privacy.isDisplayMessage()
                   ? dcMsg.getSummarytext(2000)
@@ -444,7 +450,7 @@ public class NotificationCenter {
                       .setName(senderName)
                       .setIcon(getAvatarIcon(sender))
                       .setBot(sender.isBot())
-                      .setKey(accountId + "-" + sender.getId())
+                      .setKey(personId)
                       .build(),
                   text);
 
@@ -472,12 +478,11 @@ public class NotificationCenter {
             // just do nothing.
           }
 
-          DcContact sender = dcContext.getContact(contactId);
-          String senderName = dcMsg.getSenderName(sender);
+          DcContact contact = dcContext.getContact(contactId);
           String text =
               context.getString(
                   R.string.reaction_by_other,
-                  sender.getDisplayName(),
+                  contact.getDisplayName(),
                   reaction,
                   dcMsg.getSummarytext(2000));
           DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
@@ -485,10 +490,10 @@ public class NotificationCenter {
           NotifData notifData =
               new NotifData(
                   new Person.Builder()
-                      .setName(senderName)
-                      .setIcon(getAvatarIcon(sender))
-                      .setBot(sender.isBot())
-                      .setKey(accountId + "-" + sender.getId())
+                      .setName(contact.getDisplayName())
+                      .setIcon(getAvatarIcon(contact))
+                      .setBot(contact.isBot())
+                      .setKey(accountId + "-" + contactId)
                       .build(),
                   text);
 
@@ -539,10 +544,10 @@ public class NotificationCenter {
             notifData =
                 new NotifData(
                     new Person.Builder()
-                        .setName(dcMsg.getSenderName(sender))
+                        .setName(sender.getDisplayName())
                         .setIcon(getAvatarIcon(sender))
                         .setBot(sender.isBot())
-                        .setKey(dcContext.getAccountId() + "-" + sender.getId())
+                        .setKey(accountId + "-" + contactId)
                         .build(),
                     tickerLine);
           }
