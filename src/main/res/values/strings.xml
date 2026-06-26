@@ -73,7 +73,7 @@
     <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Mark as Read</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">Mark Read</string>
+    <string name="mark_as_read_short">Read</string>
     <!-- Used as an menu entry or button -->
     <string name="mark_as_unread">Mark as Unread</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
