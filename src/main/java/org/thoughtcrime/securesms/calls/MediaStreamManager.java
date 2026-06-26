@@ -9,10 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+import java.util.List;
 import org.thoughtcrime.securesms.EglUtils;
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
 import org.webrtc.Camera2Enumerator;
+import org.webrtc.CameraEnumerationAndroid;
 import org.webrtc.CameraVideoCapturer;
 import org.webrtc.MediaConstraints;
 import org.webrtc.MediaStream;
@@ -22,6 +24,7 @@ import org.webrtc.VideoCapturer;
 import org.webrtc.VideoSource;
 import org.webrtc.VideoTrack;
 
+@RequiresApi(Build.VERSION_CODES.M)
 public class MediaStreamManager {
 
   private static final String TAG = "MediaStreamManager";
@@ -29,9 +32,9 @@ public class MediaStreamManager {
   private static final String AUDIO_TRACK_ID = "audio_track";
   private static final String VIDEO_TRACK_ID = "video_track";
 
-  private static final int VIDEO_WIDTH = 1280;
-  private static final int VIDEO_HEIGHT = 720;
-  private static final int VIDEO_FPS = 30;
+  private static final int TARGET_WIDTH = 1280;
+  private static final int TARGET_HEIGHT = 720;
+  private static final int TARGET_FPS = 30;
 
   private final Context context;
   private final PeerConnectionFactory peerConnectionFactory;
@@ -42,6 +45,9 @@ public class MediaStreamManager {
   private SurfaceTextureHelper surfaceTextureHelper;
   private volatile boolean isFrontCamera = true;
   private volatile boolean isCapturing = false;
+  private volatile String currentDeviceName;
+  private volatile int currentCaptureWidth;
+  private volatile int currentCaptureHeight;
 
   public interface Callback {
     void onMediaStreamReady(MediaStream stream);
@@ -90,7 +96,6 @@ public class MediaStreamManager {
    *
    * @return true if the camera is capturing, false if it could not be started
    */
-  @RequiresApi(api = Build.VERSION_CODES.M)
   public synchronized boolean startVideoCapture() {
     if (isCapturing) {
       return true;
@@ -116,9 +121,23 @@ public class MediaStreamManager {
       videoCapturer.initialize(surfaceTextureHelper, context, videoSource.getCapturerObserver());
     }
 
-    videoCapturer.startCapture(VIDEO_WIDTH, VIDEO_HEIGHT, VIDEO_FPS);
+    int[] captureFormat = selectCaptureFormat(currentDeviceName);
+    currentCaptureWidth = captureFormat[0];
+    currentCaptureHeight = captureFormat[1];
+
+    videoCapturer.startCapture(currentCaptureWidth, currentCaptureHeight, TARGET_FPS);
+    videoSource.adaptOutputFormat(TARGET_WIDTH, TARGET_HEIGHT, TARGET_FPS);
     isCapturing = true;
-    Log.d(TAG, "Video capture started");
+    Log.d(
+        TAG,
+        "Video capture started at "
+            + currentCaptureWidth
+            + "x"
+            + currentCaptureHeight
+            + ", adapted to "
+            + TARGET_WIDTH
+            + "x"
+            + TARGET_HEIGHT);
     return true;
   }
 
@@ -141,6 +160,60 @@ public class MediaStreamManager {
     isCapturing = false;
   }
 
+  private int[] selectCaptureFormat(@Nullable String deviceName) {
+    if (deviceName == null) {
+      Log.w(TAG, "Device name is null, using target dimensions");
+      return new int[] {TARGET_WIDTH, TARGET_HEIGHT};
+    }
+
+    Camera2Enumerator enumerator = new Camera2Enumerator(context);
+    List<CameraEnumerationAndroid.CaptureFormat> formats =
+        enumerator.getSupportedFormats(deviceName);
+
+    if (formats == null || formats.isEmpty()) {
+      Log.w(TAG, "No supported formats for " + deviceName);
+      return new int[] {TARGET_WIDTH, TARGET_HEIGHT};
+    }
+
+    CameraEnumerationAndroid.CaptureFormat best = null;
+    int bestPixels = Integer.MAX_VALUE;
+
+    for (CameraEnumerationAndroid.CaptureFormat f : formats) {
+      if (f.width >= TARGET_WIDTH && f.height >= TARGET_HEIGHT) {
+        int pixels = f.width * f.height;
+        if (pixels < bestPixels) {
+          bestPixels = pixels;
+          best = f;
+        }
+      }
+    }
+
+    if (best != null) {
+      Log.d(
+          TAG, "Selected capture format: " + best.width + "x" + best.height + " for " + deviceName);
+      return new int[] {best.width, best.height};
+    }
+
+    CameraEnumerationAndroid.CaptureFormat largest = null;
+    int largestPixels = 0;
+    for (CameraEnumerationAndroid.CaptureFormat f : formats) {
+      int pixels = f.width * f.height;
+      if (pixels > largestPixels) {
+        largestPixels = pixels;
+        largest = f;
+      }
+    }
+
+    if (largest != null) {
+      Log.w(
+          TAG,
+          "Using largest format " + largest.width + "x" + largest.height + " for " + deviceName);
+      return new int[] {largest.width, largest.height};
+    }
+
+    return new int[] {TARGET_WIDTH, TARGET_HEIGHT};
+  }
+
   @Nullable
   private VideoCapturer createVideoCapturer() {
     if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
@@ -158,6 +231,7 @@ public class MediaStreamManager {
         VideoCapturer capturer = enumerator.createCapturer(deviceName, null);
         if (capturer != null) {
           isFrontCamera = true;
+          currentDeviceName = deviceName;
           return capturer;
         }
       }
@@ -168,6 +242,7 @@ public class MediaStreamManager {
       VideoCapturer capturer = enumerator.createCapturer(deviceName, null);
       if (capturer != null) {
         isFrontCamera = enumerator.isFrontFacing(deviceName);
+        currentDeviceName = deviceName;
         return capturer;
       }
     }
@@ -224,6 +299,30 @@ public class MediaStreamManager {
           public void onCameraSwitchDone(boolean isFront) {
             Log.d(TAG, "switchCamera SUCCESS, isFront=" + isFront);
             isFrontCamera = isFront;
+            currentDeviceName = finalTargetCameraName;
+
+            int[] newFormat = selectCaptureFormat(finalTargetCameraName);
+            if (newFormat[0] != currentCaptureWidth || newFormat[1] != currentCaptureHeight) {
+              Log.d(
+                  TAG,
+                  "Changing capture format: "
+                      + currentCaptureWidth
+                      + "x"
+                      + currentCaptureHeight
+                      + " to "
+                      + newFormat[0]
+                      + "x"
+                      + newFormat[1]);
+              currentCaptureWidth = newFormat[0];
+              currentCaptureHeight = newFormat[1];
+              cameraVideoCapturer.changeCaptureFormat(
+                  currentCaptureWidth, currentCaptureHeight, TARGET_FPS);
+            }
+
+            if (videoSource != null) {
+              videoSource.adaptOutputFormat(TARGET_WIDTH, TARGET_HEIGHT, TARGET_FPS);
+            }
+
             if (callback != null) callback.onCameraSwitch(isFront);
           }
 
