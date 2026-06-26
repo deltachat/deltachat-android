@@ -725,7 +725,7 @@ public class NotificationCenter {
 
           NotificationCompat.Action markAsReadAction =
               new NotificationCompat.Action(
-                  R.drawable.check, context.getString(R.string.mark_as_read_short), markReadIntent);
+                  R.drawable.check, context.getString(R.string.mark_as_read), markReadIntent);
 
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             NotificationCompat.Action replyAction =
