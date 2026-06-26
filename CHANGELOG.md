@@ -4,6 +4,7 @@
 
 * Allow to select multiple files for sending
 * Add notifications for missed calls
+* Video call preview now accurately shows what is sent to remote
 * Fix: properly hide draft attachment during in-chat search
 
 ## v2.53.0
