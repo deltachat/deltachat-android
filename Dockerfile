@@ -8,6 +8,7 @@ wget \
 curl \
 unzip \
 openjdk-17-jre \
+openjdk-17-jdk \
 file \
 build-essential \
 && rm -rf /var/lib/apt/lists/*
