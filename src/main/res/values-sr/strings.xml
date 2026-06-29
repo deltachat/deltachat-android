@@ -52,6 +52,7 @@
     <string name="chat">Ћаскање</string>
     <string name="media">Медији</string>
     <string name="profile">Профил</string>
+    <!-- deprecated -->
     <string name="all_profiles">Сви профили</string>
     <string name="main_menu">Главни мени</string>
     <string name="start_chat">Започните ћаскање</string>
@@ -72,6 +73,7 @@
     <string name="always">Увек</string>
     <string name="always_load_remote_images">Увек учитај слике са сервера</string>
     <string name="once">Само једном</string>
+    <!-- deprecated -->
     <string name="show_warning">Прикажи упозорење</string>
     <string name="not_now">Не сада</string>
     <string name="never">Никад</string>
@@ -175,6 +177,7 @@
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Сними</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Промени камеру</string>
     <string name="toggle_fullscreen">Обрће режим пуног екрана</string>
     <string name="location">Локација</string>
@@ -298,12 +301,13 @@
     <string name="mute_for_seven_days">Утишај на 7 дана</string>
     <string name="mute_forever">Утишај заувек</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">на 5 минута</string>
+
     <string name="share_location_for_30_minutes">За 30 минута</string>
     <string name="share_location_for_one_hour">За 1 сат</string>
     <string name="share_location_for_two_hours">За 2 сата</string>
     <string name="share_location_for_six_hours">За 6 сати</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Пошаљи датотеку %s?</item>
         <item quantity="few">Пошаљи %d датотеке %s?</item>
@@ -325,6 +329,7 @@
         <item quantity="few">Да ли желите да избришите %d поруке?</item>
         <item quantity="other">Да ли желите да избришите %d поруке?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Да ли желите да проследите поруке %1$s?</string>
     <string name="ask_forward_multiple">Да ли желите да проследим поруке за %1$dћаскања?</string>
     <string name="ask_export_attachment">Извоз прилога ће омогућити другим апликацијама на вашем уређају да им приступе.\n\nДа ли желите ли да наставите?</string>
@@ -455,6 +460,7 @@
     <string name="connectivity_connected">Повезани</string>
     <string name="sending">Слање...</string>
     <string name="last_msg_sent_successfully">Последња порука је успешно послата.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Није подржано од вашег провајдера.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Поруке</string>
@@ -530,6 +536,7 @@
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_notifications_explain">Дозволи обавештења за нове поруке преко оперативног система</string>
     <string name="pref_show_notification_content">Прикажи садржај поруке у обавештењима.</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Прикажи пошиљаоца и првих пар речи поруке у обавештењима</string>
     <string name="pref_led_color">Боја ЛЕД светла</string>
     <string name="pref_sound">Звук</string>
@@ -564,12 +571,19 @@
     <string name="pref_background">Позадина</string>
     <string name="pref_background_btn_default">Користи дату слику</string>
     <string name="pref_background_btn_gallery">Изабери из галерије</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Ако промените ову опцију, морате проверити да су ваш сервер и ваши други клијенти конфигурисани у складу са тим.\n\nУ супротном апликација можда уопште неће функционисати.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Аутоматски премести у DeltaChat директоријум</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Примај поруке само из DeltaChat директоријума</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Прикажи обичне поруке е-поште</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Не, само ћаскања</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">За прихваћене контакте</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Сви</string>
     <string name="pref_experimental_features">Експерименталне могућности</string>
     <string name="pref_on_demand_location_streaming">Проток положаја на захтев</string>
@@ -605,12 +619,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Избриши старе поруке</string>
     <string name="autodel_device_title">Избриши поруке са уређаја</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Избриши поруке са сервера</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Да ли желите да избришете %1$d поруке сада и све новопреузете поруке „%2$s“ у будућности?\n\n• Ово укључује све медије\n\n• Поруке ће бити избрисане без обзира да ли су виђене или не\n\n• \"Сачуване поруке\" неће бити избрисане на уређају</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Да ли желите да избришете %1$d поруке сада и све новопреузете поруке „%2$s“ у будућности?\n\n⚠️ Ово укључује све поруке е-поште, медије и „Сачуване поруке“ у свим директоријумима на серверу\n\n⚠️ Немојте користити ову функцију ако користите било које друге клијенте е-поште осим Delta Chat-а</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Ово укључује све поруке е-поште, медије и „Сачуване поруке“ у свим директоријумима на серверу. Немојте користити ову функцију ако користите било које друге клијенте е-поште осим Delta Chat-а.</string>
     <string name="autodel_confirm">Разумем и желим да избришем све ове поруке</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -683,7 +698,7 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">%2$s је подесио хронометар за нестајуће поруке на %1$s недеље.</string>
     <string name="devicemsg_self_deleted">Обрисали сте ћаскање „Сачуване поруке“.\n\nℹ️ Ако желите да користите „Сачуване поруке“ могућност поново, направите ново ћаскање са самим собом.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Складишни простор вашег имејл провајдера ће ускоро да понестане: %1$s%% већ се користи.\n\nМожда нећете моћи да примате поруке ако је складиште пунo.\n\n👉 Проверите да ли можете да избришете старе податке у веб интерфејсу провајдера и размислите да омогућите „Подешавања / Избриши старе поруке“ опцију. Можете да проверите тренутну употребу меморијског простора у било ком тренутку у „Подешавања / Повезивање“.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Изгледа да датум или време на вашем уређају нису тачни (%1$s).\n\nПодесите сат ⏰🔧 да бисте били сигурни да ће ваше поруке бити правилно примљене.</string>
@@ -821,7 +836,6 @@
     <string name="a11y_message_context_menu_btn_label">Радње над порукама</string>
     <string name="a11y_background_preview_label">Провири у позадини</string>
     <string name="a11y_disappearing_messages_activated">Нестајуће поруке су активиране</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Престаните са дељењем положаја</string>
     <string name="a11y_voice_message_hint_ios">Након снимања, двапут додирните да бисте послали. Да бисте одбацили снимак, трљајте га са два прста.</string>

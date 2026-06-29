@@ -61,7 +61,9 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Apps en media</string>
     <string name="profile">Profiel</string>
+    <!-- deprecated -->
     <string name="all_profiles">Alle profielen</string>
+    <!-- deprecated -->
     <string name="current_profile">Huidig profiel</string>
     <string name="main_menu">Hoofdmenu</string>
     <string name="start_chat">Gesprek beginnen</string>
@@ -86,6 +88,7 @@
     <string name="always">Altijd</string>
     <string name="always_load_remote_images">Externe afbeeldingen altijd laden</string>
     <string name="once">Eenmalig</string>
+    <!-- deprecated -->
     <string name="show_warning">Waarschuwing tonen</string>
     <string name="not_now">Niet nu</string>
     <string name="never">Nooit</string>
@@ -203,7 +206,10 @@
     <string name="camera">Camera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Vastleggen</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Andere camera</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Camera aan/uit</string>
     <string name="toggle_fullscreen">Schermvullende weergave aan/uit</string>
     <string name="location">Locatie</string>
     <string name="locations">Locaties</string>
@@ -380,11 +386,14 @@
     <string name="mute_for_seven_days">7 dagen lang uitschakelen</string>
     <string name="mute_forever">Permanent uitschakelen</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 minuten lang</string>
+
     <string name="share_location_for_30_minutes">30 minuten lang</string>
     <string name="share_location_for_one_hour">1 uur lang</string>
     <string name="share_location_for_two_hours">2 uur lang</string>
     <string name="share_location_for_six_hours">6 uur lang</string>
+    <string name="share_location_for_24_hours">24 uur lang</string>
 
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Wil je het volgende bestand versturen aan %s?</item>
@@ -402,6 +411,8 @@
     <string name="answer_call">Aanvaarden</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">Weigeren</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Gesprek beëindigen</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="audio_call">Audiogesprek</string>
     <!-- Used in call bubbles, summaries, notifications -->
@@ -425,7 +436,13 @@
     <string name="missed_call">Gemiste oproep</string>
     <string name="already_in_call">Reeds in gesprek</string>
     <string name="call_answered_elsewhere">Er is opgenomen op een ander apparaat</string>
+    <string name="call_requires_camera_permission">Cameratoegang is vereist om te kunnen videobellen</string>
     <string name="call_requires_mic_permission">Microfoontoegang is vereist om te kunnen bellen</string>
+    <string name="call_requires_connection">De oproep kan niet worden gestart. Zorg dat je verbonden bent met het internet en probeer het opnieuw.</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Bellen met %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">Aan het bellen met %1$s…</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -440,7 +457,13 @@
         <item quantity="one">Wil je %d bericht verwijderen?</item>
         <item quantity="other">Wil je %d berichten verwijderen?</item>
     </plurals>
-    <string name="ask_forward">Wil je de berichten doorsturen aan %1$s?</string>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Wil je dit bericht doorsturen naar %2$s?</item>
+        <item quantity="other">Wil je %1$d berichten doorsturen naar %2$s?</item>
+    </plurals>
+    <!-- deprecated, use ask_forward_messages -->
+    <string name="ask_forward">Wil je de berichten doorsturen naar %1$s?</string>
     <string name="ask_forward_multiple">Wil je de berichten doorsturen naar %1$d gesprekken?</string>
     <string name="ask_export_attachment">Als je de bijlage exporteert, geef je andere apps op je apparaat toegang om hem uit te lezen.\n\nWil je doorgaan?</string>
     <string name="ask_block_contact">Wil je deze contactpersoon blokkeren? Hij/zij kan je geen berichten meer sturen.</string>
@@ -613,6 +636,7 @@
     <string name="connectivity_connected">Verbonden</string>
     <string name="sending">Bezig met versturen…</string>
     <string name="last_msg_sent_successfully">Het nieuwste bericht is verstuurd.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Wordt niet ondersteund door je provider.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Berichten</string>
@@ -649,7 +673,7 @@
     <string name="welcome_chat_over_email">Veilige, gedecentraliseerde gesprekken</string>
     <string name="scan_invitation_code">Uitnodigingscode scannen</string>
     <string name="login_title">Inloggen</string>
-    <string name="login_advanced_hint">Deze inlogfunctie is bedoeld voor gevorderden:\n\n• Gebruik géén account dat je al in een andere app gebruikt;\n\n• Op klassieke e-mailservers worden gesprekken zonder eind-tot-eindversleuteling aangeduid met een envelopje.</string>
+    <string name="login_advanced_hint">Deze inlogmethode is alleen voor ervaren gebruikers.\n\nGebruik geen adres dat je reeds in een andere app gebruikt.</string>
     <string name="login_inbox">Postvak in</string>
     <string name="login_imap_login">IMAP-inlognaam</string>
     <string name="login_imap_server">IMAP-server</string>
@@ -684,6 +708,7 @@
     <string name="used_for_sending">Wordt gebruikt voor versturen</string>
     <string name="hide_from_contacts">Verbergen op contactpersonenlijst</string>
     <string name="hidden_from_contacts">Verborgen op contactpersonenlijst</string>
+    <string name="enforce_e2ee">Versleuteling afdwingen op alle relays</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Berichten worden op alle relays ontvangen.\n\n⚠️ Als je hier iets wijzigt, doe dat dan alléén als ál je apparaten gebruikmaken van versie 2.47.0, anders kunnen er berichten ontbreken.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
@@ -764,6 +789,7 @@
     <string name="pref_notifications_priority">Prioriteit</string>
     <string name="pref_notifications_explain">Systeemmeldingen tonen bij nieuwe berichten</string>
     <string name="pref_show_notification_content">Berichtinhoud tonen op meldingen</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Toont de afzender en eerste regel van berichten op meldingen</string>
     <string name="pref_led_color">Ledkleur</string>
     <string name="pref_sound">Geluid</string>
@@ -806,16 +832,23 @@
     <string name="pref_background">Achtergrond</string>
     <string name="pref_background_btn_default">Standaardafbeelding gebruiken</string>
     <string name="pref_background_btn_gallery">Kiezen uit galerij</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Als je deze optie uitschakelt, zorg er dan voor dat je server en overige clients goed ingesteld zijn.\n\nAls dat niet zo is, dan werkt het misschien helemaal niet.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Meerdere apparaten</string>
     <string name="pref_multidevice_explain">Synchroniseer berichten met andere apparaten. Dit wordt automatisch ingeschakeld na het toevoegen van een secundair apparaat.</string>
     <string name="pref_multidevice_change_warn">Let op: deze modus moet op alle apparaten worden ingeschakeld op hetzelfde profiel. Schakel deze instelling alleen uit als je je profiel van alle andere apparaten hebt verwijderd.\n\nDoor deze modus uit te schakelen terwijl het profiel nog gebruikt wordt, gaan er berichten verloren en kunnen er andere problemen ontstaan.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Automatisch verplaatsen naar DeltaChat-map</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Alleen DeltaChat-map controleren</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Klassieke e-mails tonen</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Nee, alleen gesprekken</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Van goedgekeurde contactpersonen</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Alles</string>
     <string name="pref_experimental_features">Experimentele functies</string>
     <string name="pref_experimental_features_explain">Let op: deze functies zijn experimenteel en kunnen te allen tijde worden aangepast of verwijderd</string>
@@ -870,14 +903,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Oude berichten verwijderen</string>
     <string name="autodel_device_title">Berichten verwijderen van apparaat</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Berichten verwijderen van server</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten ‘%2$s’?\n\n• Dit omvat alle media\n\n• Berichten worden verwijderd, ongeacht of ze bekeken zijn\n\n• Het gesprek ‘Bewaarde berichten’ wordt overgeslagen.</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Wil je nu %1$d berichten verwijderen en toekomstige berichten ‘%2$s’,?\n\n⚠️ Dit omvat alle berichten, media en het gesprek ‘Bewaarde berichten’.\n\n⚠️ Gebruik deze functie niet als je je gegevens wilt bewaren op de server\n\n⚠️ Gebruik deze functie niet als je ook andere e-mailclients gebruikt</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Dit omvat alle berichten, media en het gesprek ‘Bewaarde berichten’. Gebruik deze functie niet als je je gegevens wilt bewaren op de server of als je ook andere e-mailclients gebruikt.</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Onmiddellijke verwijdering inschakelen</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Let op: als je deze optie inschakelt, dan kun je geen meerdere apparaten tegelijk meer gebruiken met dit profiel.</string>
     <string name="autodel_confirm">Ik begrijp het; verwijder alle berichten</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -974,7 +1010,7 @@
     <string name="learn_more">Meer informatie</string>
 
     <string name="devicemsg_self_deleted">Je hebt het gesprek ‘Bewaarde berichten’ verwijderd.\n\nℹ️ Als je weer gebruik wilt maken van deze functie, begin dan een nieuw gesprek met jezelf.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ De opslagruimte die je provider biedt is bijna overschreden. Momenteel heb je %1$s%% ervan in gebruik.\n\nAls je geen ruimte meer hebt, kun je mogelijk geen berichten meer ontvangen.\n\n👉 Kijk of je oude gegevens kunt verwijderen in de webclient van je provider. Overweeg ook ‘Instellingen → Oude berichten verwijderen’ in te schakelen. Je kunt je huidige gebruik te allen tijde bekijken via ‘Instellingen → Verbindingen’.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ De datum en tijd van je apparaat lijken niet te kloppen (%1$s).\n\nVerzet je klok ⏰🔧 om er zeker van te zijn dat je berichten kunt ontvangen.</string>
@@ -1058,8 +1094,6 @@
     <string name="n_messages_in_m_chats">%1$d berichten in %2$d gesprekken</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">Kanaal voor locatie delen op verzoek</string>
-    <string name="location_streaming_notification_title">Locatiedeling</string>
     <string name="location_streaming_notification_text">Je deelt op dit moment je locatie</string>
     <string name="location_rationale">Om je locatie live te kunnen blijven doorgeven aan andere deelnemers, is locatietoegang vereist.\n\nHiervoor is het ook nodig om je locatie op de achtergrond door te geven.</string>
 
@@ -1155,6 +1189,8 @@
     <string name="a11y_message_context_menu_btn_label">Berichtacties</string>
     <string name="a11y_background_preview_label">Achtergrondvoorbeeld</string>
     <string name="a11y_disappearing_messages_activated">Verdwijnende berichten zijn ingeschakeld</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">‘%1$s’ openen</string>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop locatiedeling</string>

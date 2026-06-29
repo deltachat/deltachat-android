@@ -165,12 +165,14 @@
     <string name="mute_for_seven_days">7 günlük söndür</string>
     <string name="mute_forever">Həmişə səssiz</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 dəqiqə üçün</string>
+
     <string name="share_location_for_30_minutes">30 qəqiqə üçün</string>
     <string name="share_location_for_one_hour">1 saat üçün</string>
     <string name="share_location_for_two_hours">2 saat üçün </string>
     <string name="share_location_for_six_hours">6 saat üçün</string>
-
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
     <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>
@@ -317,11 +319,17 @@
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Klassik e-poçtları göstər</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Hamısı</string>
     <string name="pref_background_default">Özünəməxsus arxa fon</string>
     <string name="pref_background_default_color">Özünəməxsus rəng</string>

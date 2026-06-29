@@ -27,13 +27,11 @@ import java.util.concurrent.Executors;
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = "AudioPlaybackViewModel";
 
-  private static final int NON_MESSAGE_AUDIO_MSG_ID =
-      0; // Audios not attached to a message doesn't have message id.
-
   private final MutableLiveData<AudioPlaybackState> playbackState;
 
   private final MutableLiveData<Map<Integer, Long>> durations =
       new MutableLiveData<>(new HashMap<>());
+  private final Map<Integer, Uri> durationUris = new HashMap<>();
   private final Set<Integer> extractionInProgress = new HashSet<>();
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
 
@@ -115,7 +113,17 @@ public class AudioPlaybackViewModel extends ViewModel {
     // Check cache
     Map<Integer, Long> currentDurations = durations.getValue();
     if (currentDurations != null && currentDurations.containsKey(msgId)) {
-      return;
+      Uri cachedUri = durationUris.get(msgId);
+      if (audioUri.equals(cachedUri)) {
+        return;
+      }
+      Map<Integer, Long> updated = new HashMap<>(currentDurations);
+      updated.remove(msgId);
+      durations.setValue(updated);
+      durationUris.remove(msgId);
+      synchronized (extractionInProgress) {
+        extractionInProgress.remove(msgId);
+      }
     }
 
     // Check extracting
@@ -136,6 +144,7 @@ public class AudioPlaybackViewModel extends ViewModel {
                 Map<Integer, Long> updatedDurations = new HashMap<>(durations.getValue());
                 updatedDurations.put(msgId, duration);
                 durations.setValue(updatedDurations);
+                durationUris.put(msgId, audioUri);
               });
 
           synchronized (extractionInProgress) {
@@ -191,10 +200,6 @@ public class AudioPlaybackViewModel extends ViewModel {
     if (mediaController == null) return false;
     MediaItem current = mediaController.getCurrentMediaItem();
     return current != null && String.valueOf(msgId).equals(current.mediaId);
-  }
-
-  public void stopNonMessageAudioPlayback() {
-    stopByIds(NON_MESSAGE_AUDIO_MSG_ID);
   }
 
   // A special method for deleting message, where we only use message Ids
@@ -259,7 +264,10 @@ public class AudioPlaybackViewModel extends ViewModel {
                 updateCurrentState(false);
               } else if (player.getPlaybackState() == Player.STATE_ENDED
                   && !player.hasNextMediaItem()) {
-                mediaController.setPlayWhenReady(false);
+                mediaController.stop();
+                mediaController.clearMediaItems();
+                stopUpdateProgress();
+                playbackState.setValue(AudioPlaybackState.idle());
               }
             }
           }
@@ -386,6 +394,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   protected void onCleared() {
     stopUpdateProgress();
     extractionExecutor.shutdown();
+    durationUris.clear();
     super.onCleared();
   }
 }

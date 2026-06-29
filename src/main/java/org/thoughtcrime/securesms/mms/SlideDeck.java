@@ -78,4 +78,13 @@ public class SlideDeck {
     }
     return 0;
   }
+
+  public int getAudioDraftId() {
+    for (Slide slide : slides) {
+      if (slide.hasAudio() && slide.dcMsgId != 0) {
+        return slide.dcMsgId;
+      }
+    }
+    return 0;
+  }
 }

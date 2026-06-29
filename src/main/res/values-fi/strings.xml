@@ -64,6 +64,7 @@
     <string name="always">Aina</string>
     <string name="always_load_remote_images">Lataa aina kuvat verkosta</string>
     <string name="once">Kerran</string>
+    <!-- deprecated -->
     <string name="show_warning">Näytä varoitus</string>
     <string name="not_now">Ei nyt</string>
     <string name="never">Ei koskaan</string>
@@ -161,6 +162,7 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kuvaa</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Vaihda kameraa</string>
     <string name="toggle_fullscreen">Koko näytön tila</string>
     <string name="location">Sijainti</string>
@@ -288,15 +290,16 @@
     <string name="mute_for_seven_days">Mykistä 7 päiväksi</string>
     <string name="mute_forever">Mykistä ikuisesti</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 minuutiksi</string>
+
     <string name="share_location_for_30_minutes">30 minuutiksi</string>
     <string name="share_location_for_one_hour">1 tunniksi</string>
     <string name="share_location_for_two_hours">2 tunniksi</string>
     <string name="share_location_for_six_hours">6 tunniksi</string>
-
     <plurals name="ask_send_following_n_files_to">
-        <item quantity="one">Lähetä seuraava tiedosto yhteystiedolle%s?</item>
-        <item quantity="other">Lähetä seuraavat %dtiedostot yhteystiedolle%s?</item>
+        <item quantity="one">Lähetä seuraava tiedosto yhteystiedolle %s?</item>
+        <item quantity="other">Lähetä seuraavat %d tiedostot yhteystiedolle %s?</item>
     </plurals>
     <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
 
@@ -304,6 +307,7 @@
         <item quantity="one">Poista %d viesti?</item>
         <item quantity="other">Poista %d viestiä?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Välitä viestit yhteystiedolle %1$s?</string>
     <string name="ask_forward_multiple">Välitä viestit %1$d keskustelulle?</string>
     <string name="ask_export_attachment">Liitteiden vieminen antaa muille laitteen sovelluksille mahdollisuuden lukea niitä.\n\nJatka?</string>
@@ -461,6 +465,7 @@
     <string name="connectivity_connected">Yhdistetty</string>
     <string name="sending">Lähetetään</string>
     <string name="last_msg_sent_successfully">Viimeinen viesti lähetetty onnistuneesti.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Ei tuettu palveluntarjoajallasi.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Viestit</string>
@@ -564,6 +569,7 @@
     <string name="pref_notifications_priority">Prioriteetti</string>
     <string name="pref_notifications_explain">Ota järjestelmäilmoitukset käyttöön uusista viesteistä</string>
     <string name="pref_show_notification_content">Näytä viestien sisältö ilmoituksissa</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Näytä lähettäjä ja viestin ensimmäiset sanat ilmoituksissa</string>
     <string name="pref_led_color">LEDin väri</string>
     <string name="pref_sound">Ääni</string>
@@ -602,12 +608,19 @@
     <string name="pref_background">Taustakuva</string>
     <string name="pref_background_btn_default">Käytä oletuskuvaa</string>
     <string name="pref_background_btn_gallery">Valitse galleriasta</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Jos muutat tätä asetusta, varmista että palvelimesi ja muut päätelaitteesi ovat määritetty vastaavasti.\n\nMuutoin ne eivät ehkä toimi lainkaan.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Siirrä automaattisesti DeltaChat -kansioon</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Hae vain DeltaChat -kansiosta</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Näytä tavanomaiset sähköpostiviestit</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Ei, vain pikaviestit</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Hyväksytyille yhteystiedoille</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Kaikki</string>
     <string name="pref_experimental_features">Kokeelliset ominaisuudet</string>
     <string name="pref_on_demand_location_streaming">Tarvittaessa sijainnin jatkuva jakaminen</string>
@@ -653,12 +666,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Poista vanhat viestit</string>
     <string name="autodel_device_title">Poista viestit laitteelta</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Poista viestit palvelimelta</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Haluatko poistaa %1$d viestiä heti ja kaikki uudet viestit \"%2$s\" jatkossa?\n\n• Tämä sisältää kaiken median\n\n• Viestit poistetaan riippumatta siitä onko ne nähty vai ei\n\n• \"Tallennetut viestit\" jätetään paikalliselle laitteelle</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Haluatko poistaa %1$d viestiä heti ja kaikki uudet viestit \"%2$s\" jatkossa?\n\n⚠️ Tämä sisältää sähköpostiviestit, median ja kaikki \"Tallennetut viestit\" kaikissa palvelimen kansioissa\n\n⚠️ Älä käytä tätä toimintoa, jos haluat säilyttää tiedot palvelimella\n\n⚠️ Älä käytä tätä toimintoa, jos käytät muita sähköpostisovelluksia Delta Chatin lisäksi</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Tämä sisältää sähköpostit, median ja \"Tallennetut viestit\" kaikissa palvelimen kansioissa. Älä käytä tätä toimintoa, jos haluat pitää tietosi palvelimella tai jos käytät muita sähköpostisovelluksia Delta Chatin lisäksi.</string>
     <string name="autodel_confirm">Ymmärrän, poista kaikki nämä viestit</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -739,7 +753,7 @@
     <string name="learn_more">Lue lisää</string>
 
     <string name="devicemsg_self_deleted">Poistit \"Tallennetut viestit\" -keskustelun.\n\nℹ️ Aloita uusi keskustelu itsesi kanssa, niin voit jälleen käyttää \"Tallennetut viestit\" -ominaisuutta.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Palveluntarjoajasi tallennuskiintiö ylitetään pian, käytössä on jo %1$s / %%.\n\nEt välttämättä enää voi vastaanottaa viestejäsi, kun 100 %% on käytössä.\n\n👉 Kokeile poistaa viestejä palveluntarjoajasi internetkäyttöliittymästä. Kannattaa myös ehkä kytkeä päälle \"Asetukset / Poista vanhat viestit\". Voit tarkistaa tämän hetkisen tallennustilan käytön \"Asetukset / Yhteys\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Laitteesi päivämäärä tai aika vaikuttaa olevan väärässä (%1$s).\n\nAseta kellonaika ⏰🔧 varmistaaksesi, että viestin vastaanottaminen onnistuu.</string>
@@ -890,7 +904,6 @@
     <string name="a11y_message_context_menu_btn_label">Viestin toiminnot</string>
     <string name="a11y_background_preview_label">Esikatselu taustalla</string>
     <string name="a11y_disappearing_messages_activated">Viestien katoaminen päällä</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Lopeta sijainnin jakaminen</string>
     <string name="a11y_voice_message_hint_ios">Nauhoittamisen jälkeen napauta kahdesti lähettääksesi. Hylätäksesi nauhoitteen pyyhkäise vasemmalta oikealle kahdella sormella.</string>

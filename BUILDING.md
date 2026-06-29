@@ -47,7 +47,7 @@ Nix development environment contains Rust with cross-compilation toolchains and 
 
 To [build an APK](https://developer.android.com/studio/build/building-cmdline) run the following 2 steps.
 Note that the first step may take some time to build for all architectures. You can optionally read 
-[the first comment block in the `ndk-make.sh` script](https://github.com/deltachat/deltachat-android/blob/master/scripts/ndk-make.sh) 
+[the first comment block in the `ndk-make.sh` script](./scripts/ndk-make.sh)
 for pointers on how to build for a specific architecture.
 ```
 $ scripts/ndk-make.sh
@@ -56,7 +56,7 @@ $ ./gradlew assembleDebug
 
 Resulting APK files can be found in
 `build/outputs/apk/gplay/debug/` and
-`build/outputs/apk/fat/debug/`.
+`build/outputs/apk/foss/debug/`.
 
 ## Build Using Dockerfile
 
@@ -114,7 +114,7 @@ deltachat@6012dcb974fe:/home/app$ ./gradlew assembleDebug
 
   In /etc/containers/storage.conf, replace the line: `driver = ""` with: `driver = "overlay"`.
   You can also set the `driver` option to something else, you just need to set it to _something_.
-  [Read about possible options here](https://github.com/containers/storage/blob/master/docs/containers-storage.conf.5.md#storage-table).
+  [Read about possible options here](https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md#storage-table).
 
 ## <a name="setup-podman"></a>Setup Podman
 
@@ -135,8 +135,8 @@ See https://wiki.archlinux.org/index.php/Podman#Rootless_Podman for more informa
 
 To setup build environment manually:
 - _Either_, in Android Studio, go to "Tools / SDK Manager / SDK Tools", enable "Show Package Details",
-  select "CMake" and the desired NDK (install the same NDK version as the [Dockerfile](https://github.com/deltachat/deltachat-android/blob/master/Dockerfile)), hit "Apply".
-- _Or_ read [Dockerfile](https://github.com/deltachat/deltachat-android/blob/master/Dockerfile) and mimic what it does.
+  select "CMake" and the desired NDK (install the same NDK version as the [Dockerfile](./Dockerfile)), hit "Apply".
+- _Or_ read [Dockerfile](./Dockerfile) and mimic what it does.
 
 Then, in both cases, install Rust using [rustup](https://rustup.rs/)
 and Rust toolchains for cross-compilation by executing `scripts/install-toolchains.sh`.

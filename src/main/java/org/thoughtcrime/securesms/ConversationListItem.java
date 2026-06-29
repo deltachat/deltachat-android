@@ -44,9 +44,11 @@ import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.components.DeliveryStatusView;
 import org.thoughtcrime.securesms.components.FromTextView;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.contacts.avatars.GeneratedContactPhoto;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.search.QrInviteData;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
@@ -214,6 +216,40 @@ public class ConversationListItem extends RelativeLayout
     setBatchState(false);
     avatar.setAvatar(glideRequests, recipient, false);
     avatar.setSeenRecently(false);
+  }
+
+  public void bind(@NonNull QrInviteData inviteData, @NonNull GlideRequests glideRequests) {
+    this.selectedThreads = Collections.emptySet();
+
+    fromView.setText(inviteData.getDisplayTitle());
+    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    subjectView.setVisibility(VISIBLE);
+    subjectView.setText(inviteData.getDisplaySubtitle());
+    subjectView.setTypeface(LIGHT_TYPEFACE);
+    subjectView.setTextColor(
+        ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_subject_color));
+
+    dateView.setText("");
+    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    archivedBadgeView.setVisibility(GONE);
+    requestBadgeView.setVisibility(GONE);
+    unreadIndicator.setVisibility(GONE);
+    deliveryStatusIndicator.setNone();
+
+    setBatchState(false);
+
+    if (inviteData.getContactId() > 0) {
+      DcContext dcContext = DcHelper.getContext(getContext());
+      DcContact contact = dcContext.getContact(inviteData.getContactId());
+      Recipient recipient = new Recipient(getContext(), contact);
+      avatar.setAvatar(glideRequests, recipient, false);
+      avatar.setSeenRecently(contact.wasSeenRecently());
+    } else {
+      avatar.setImageDrawable(
+          new GeneratedContactPhoto("+")
+              .asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
+      avatar.setSeenRecently(false);
+    }
   }
 
   @Override

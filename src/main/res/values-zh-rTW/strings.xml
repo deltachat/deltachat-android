@@ -59,7 +59,9 @@
     <string name="media">多媒體</string>
     <string name="apps_and_media">應用程式和媒體</string>
     <string name="profile">賬戶</string>
+    <!-- deprecated -->
     <string name="all_profiles">所有賬戶</string>
+    <!-- deprecated -->
     <string name="current_profile">當前賬戶</string>
     <string name="main_menu">主選單</string>
     <string name="start_chat">開始聊天</string>
@@ -80,6 +82,7 @@
     <string name="always">永遠</string>
     <string name="always_load_remote_images">總是載入遠端圖片</string>
     <string name="once">僅一次</string>
+    <!-- deprecated -->
     <string name="show_warning">顯示警告</string>
     <string name="not_now">現在不要</string>
     <string name="never">永遠不要</string>
@@ -186,6 +189,7 @@
     <string name="camera">相機</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">拍攝</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">切換相機</string>
     <string name="toggle_fullscreen">切換全螢幕模式</string>
     <string name="location">地點</string>
@@ -362,12 +366,13 @@
     <string name="mute_for_seven_days">靜音7天</string>
     <string name="mute_forever">永遠靜音</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5分鐘</string>
+
     <string name="share_location_for_30_minutes">30分鐘</string>
     <string name="share_location_for_one_hour">1小時</string>
     <string name="share_location_for_two_hours">2小時</string>
     <string name="share_location_for_six_hours">6小時</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="other">要將%d個檔案傳送給%s？</item>
     </plurals>
@@ -415,6 +420,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">是否刪除所有裝置上的%d條訊息？</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">轉發訊息給%1$s？</string>
     <string name="ask_forward_multiple">轉發訊息到%1$d個聊天？</string>
     <string name="ask_export_attachment">要匯出附件嗎？匯出的附件可以用裝置上的其它應用程式打開。\n\n要繼續嗎？</string>
@@ -581,6 +587,7 @@
     <string name="connectivity_connected">已連接</string>
     <string name="sending">傳送中…</string>
     <string name="last_msg_sent_successfully">已成功送出上一條消息。</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">您的供應商不支援。</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">訊息</string>
@@ -617,7 +624,6 @@
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">掃描邀請碼</string>
     <string name="login_title">登入</string>
-    <string name="login_advanced_hint">此登入適用於進階使用者：\n\n• 不要使用你在其他應用程式中使用的位址。\n\n• 傳統的電子郵件伺服器允許未使用端對端加密的聊天，並以郵件圖示標示。</string>
     <string name="login_inbox">收件匣</string>
     <string name="login_imap_login">IMAP 帳號</string>
     <string name="login_imap_server">IMAP 伺服器</string>
@@ -730,6 +736,7 @@
     <string name="pref_notifications_priority">通知優先權</string>
     <string name="pref_notifications_explain">為新訊息啟用系統通知</string>
     <string name="pref_show_notification_content">在通知中顯示訊息內容</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">顯示通知中訊息的寄件人和開頭部分</string>
     <string name="pref_led_color">LED顏色</string>
     <string name="pref_sound">音效</string>
@@ -770,16 +777,23 @@
     <string name="pref_background">背景</string>
     <string name="pref_background_btn_default">使用預設圖案</string>
     <string name="pref_background_btn_gallery">從相簿中挑選</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">如果關閉本選項的話，請務必確定你的伺服器和其它客戶端應用程式都使用相同的設定，否則很可能不能運作。</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">多裝置模式</string>
     <string name="pref_multidevice_explain">將您的訊息與其他裝置同步。新增第二個裝置時自動啟用</string>
     <string name="pref_multidevice_change_warn">在多個裝置上使用同一的帳戶時，必須啟用多裝置模式。只有在您已從所有其他設備移除此帳戶後，才可以禁用此設定。\n\n在多個裝置上使用該帳戶時禁用多裝置模式將導致漏接訊息及其他問題。</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">自動搬移到 DeltaChat 資料夾</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">僅從 DeltaChat 資料夾中獲取</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">顯示傳統email</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">只顯示對話</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">顯示已接受的聯絡人</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">所有郵件</string>
     <string name="pref_experimental_features">實驗性功能</string>
     <string name="pref_experimental_features_explain">這些功能可能不穩定，並且可能會被更改或移除</string>
@@ -834,14 +848,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">刪除舊訊息</string>
     <string name="autodel_device_title">從裝置中刪除訊息</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">從伺服器中刪除訊息</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">您是否要立即刪除%1$d條消息，之後在收到消息「%2$s」后刪除它們？ \n\n⚠️ 這包括伺服器所有媒體\n\n•這包括所有媒體\n\n• 無論消息是否被看到都將被刪除\n\n• “已保存的郵件”將不會被本地刪除</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">您是否要立即刪除%1$d條訊息，之後在訊息收到「%2$s」后刪除它們？ \n\n⚠️ 這包括伺服器所有資料夾中的電子郵件、媒體和“保存的消息”\n\n⚠️ 如果您想在伺服器上保留數據，請不要使用此功能\n\n⚠️ 如果您正在使用 Delta Chat 之外的電子郵件用戶端，請不要使用此功能</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">這包括所有伺服器資料夾中的電子郵件、媒體和「保存的訊息」。如果您想將數據保留在伺服器上，或者您正在使用 Delta Chat 以外的其他電子郵件用戶端，請不要使用此功能。</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">啟用一次性刪除</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">如果啟用一次性刪除，則您無法使用多個裝置登入該賬戶。</string>
     <string name="autodel_confirm">我已知曉，刪除所有這些消息</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -934,7 +951,7 @@
     <string name="learn_more">瞭解更多</string>
 
     <string name="devicemsg_self_deleted">您刪除了「已保存的訊息」聊天。\n\nℹ️要再次使用「已保存的訊息」功能，請與自己創建新聊天。</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ 您的供應商的存儲空間即將用完：已使用%1$s%%。\n\n如果存儲空間已滿，您可能無法接收訊息。\n\n👉請檢查您是否可以在提供商的網頁介面中刪除舊數據，並考慮啟用「設定/聊天和媒體/刪除舊訊息」。您可以隨時在「設定/連接」 中檢查您目前的儲存使用方式。</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ 您裝置上的日期或時間似乎不準確 （%1$s）。\n\n調整您的時鐘⏰🔧以確保您的訊息被正確接收。</string>
@@ -1097,7 +1114,6 @@
     <string name="a11y_message_context_menu_btn_label">訊息動作</string>
     <string name="a11y_background_preview_label">壁紙預覽</string>
     <string name="a11y_disappearing_messages_activated">自動刪除訊息計時器設置已啟用</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">停止分享位置</string>
     <string name="a11y_voice_message_hint_ios">錄製后，按兩下以傳送。要放棄錄製內容，請用兩根手指劃動。</string>

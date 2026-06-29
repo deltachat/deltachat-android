@@ -64,6 +64,7 @@
     <string name="always">Luôn luôn</string>
     <string name="always_load_remote_images">Luôn tải hình ảnh từ xa</string>
     <string name="once">Một lần</string>
+    <!-- deprecated -->
     <string name="show_warning">Hiển thị cảnh báo</string>
     <string name="not_now">Không phải bây giờ</string>
     <string name="never">Không bao giờ</string>
@@ -153,6 +154,7 @@
     <string name="camera">Máy ảnh</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Chụp</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Chuyển đổi máy ảnh</string>
     <string name="toggle_fullscreen">Chuyển đổi Chế độ toàn màn hình</string>
     <string name="location">Vị trí</string>
@@ -277,12 +279,13 @@
     <string name="mute_for_seven_days">Tắt tiếng trong 7 ngày</string>
     <string name="mute_forever">Tắt tiếng vĩnh viễn</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">Trong 5 phút</string>
+
     <string name="share_location_for_30_minutes">Trong 30 phút</string>
     <string name="share_location_for_one_hour">Trong 1 giờ</string>
     <string name="share_location_for_two_hours">Trong 2 giờ</string>
     <string name="share_location_for_six_hours">Trong 6 giờ</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="other">Gửi tập tin sau tới %s?</item>
     </plurals>
@@ -291,6 +294,7 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Chuyển tiếp tin nhắn tới %1$s?</string>
     <string name="ask_forward_multiple">Chuyển tiếp tin nhắn tới %1$d cuộc trò chuyện?</string>
     <string name="ask_export_attachment">Xuất tệp đính kèm sẽ cho phép các ứng dụng khác trên thiết bị của bạn truy cập chúng.\n\nTiếp tục?</string>
@@ -445,6 +449,7 @@
     <string name="connectivity_connected">Đã kết nối</string>
     <string name="sending">Đang gửi…</string>
     <string name="last_msg_sent_successfully">Tin nhắn cuối cùng được gửi thành công.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Không được nhà cung cấp của bạn hỗ trợ.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Tin nhắn</string>
@@ -520,6 +525,7 @@
     <string name="pref_notifications_priority">Ưu tiên</string>
     <string name="pref_notifications_explain">Bật thông báo hệ thống cho tin nhắn mới</string>
     <string name="pref_show_notification_content">Hiển thị nội dung tin nhắn trong thông báo</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Hiển thị người gửi và từ đầu tiên của tin nhắn trong thông báo</string>
     <string name="pref_led_color">Màu LED</string>
     <string name="pref_sound">Âm thanh</string>
@@ -556,12 +562,19 @@
     <string name="pref_background">Hình nền</string>
     <string name="pref_background_btn_default">Sử dụng hình ảnh mặc định</string>
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Tự động di chuyển đến Thư mục DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Chỉ tìm nạp từ thư mục DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Hiển thị E-mail cổ điển</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Không, chỉ trò chuyện</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Đối với các liên hệ được chấp nhận</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Tất cả</string>
     <string name="pref_experimental_features">Tính năng thử nghiệm</string>
     <string name="pref_on_demand_location_streaming">Truyền phát vị trí theo yêu cầu</string>
@@ -599,12 +612,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Xóa tin nhắn cũ</string>
     <string name="autodel_device_title">Xóa tin nhắn khỏi thiết bị</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Xóa tin nhắn khỏi máy chủ</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Bạn có muốn xóa %1$d tin nhắn ngay bây giờ và tất cả các tin nhắn mới được tìm nạp \"%2$s\" trong tương lai không?\n\n• Điều này bao gồm tất cả phương tiện\n\n• Tin nhắn sẽ bị xóa dù chúng có được nhìn thấy hay không\n\n• \"Tin nhắn đã lưu\" sẽ bị bỏ qua khỏi quá trình xóa cục bộ</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Bạn có muốn xóa %1$d tin nhắn ngay bây giờ và tất cả các tin nhắn mới được tìm nạp \"%2$s\" trong tương lai không?\n\n⚠️ Điều này bao gồm e-mail, phương tiện và \"Tin nhắn đã lưu\" trong tất cả máy chủ thư mục\n\n⚠️ Không sử dụng chức năng này nếu bạn muốn giữ dữ liệu trên máy chủ\n\n⚠️ Không sử dụng chức năng này nếu bạn đang sử dụng các ứng dụng e-mail khác ngoài Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Điều này bao gồm e-mail, phương tiện và \"Tin nhắn đã lưu\" trong tất cả các thư mục máy chủ. Không sử dụng chức năng này nếu bạn muốn giữ dữ liệu trên máy chủ hoặc nếu bạn đang sử dụng các ứng dụng e-mail khác ngoài Delta Chat.</string>
     <string name="autodel_confirm">Tôi hiểu, hãy xóa tất cả những tin nhắn này</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -681,7 +695,7 @@
     <string name="learn_more">Tìm hiểu thêm</string>
 
     <string name="devicemsg_self_deleted">Bạn đã xóa cuộc trò chuyện \"Tin nhắn đã lưu\".\n\nℹ️ Để sử dụng lại tính năng \"Tin nhắn đã lưu\", hãy tạo một cuộc trò chuyện mới với chính bạn.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Bộ nhớ nhà cung cấp của bạn sắp hết: %1$s%% đã được sử dụng.\n\nBạn có thể không nhận được tin nhắn nếu bộ nhớ đầy.\n\n 👉 Vui lòng kiểm tra xem bạn có thể xóa không dữ liệu cũ trong giao diện web của nhà cung cấp và cân nhắc bật \"Cài đặt / Xóa tin nhắn cũ\". Bạn có thể kiểm tra mức sử dụng bộ nhớ hiện tại của mình bất kỳ lúc nào tại \"Cài đặt / Kết nối\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Ngày hoặc giờ trên thiết bị của bạn có vẻ không chính xác (%1$s).\n\nĐiều chỉnh đồng hồ của bạn ⏰🔧 để đảm bảo tin nhắn của bạn được nhận chính xác.</string>
@@ -826,7 +840,6 @@
     <string name="a11y_message_context_menu_btn_label">Hành động tin nhắn</string>
     <string name="a11y_background_preview_label">Xem trước hình nền</string>
     <string name="a11y_disappearing_messages_activated">Đã kích hoạt tin nhắn biến mất</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Dừng chia sẻ vị trí</string>
     <string name="a11y_voice_message_hint_ios">Sau khi ghi, nhấn đúp để gửi. Để loại bỏ bản ghi, hãy chà bằng hai ngón tay.</string>

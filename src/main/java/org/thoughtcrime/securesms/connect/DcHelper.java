@@ -23,6 +23,10 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import org.thoughtcrime.securesms.ApplicationContext;
@@ -31,6 +35,7 @@ import org.thoughtcrime.securesms.LocalHelpActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -55,6 +60,7 @@ public class DcHelper {
   public static final String CONFIG_PRIVATE_TAG = "private_tag";
   public static final String CONFIG_STATS_SENDING = "stats_sending";
   public static final String CONFIG_STATS_ID = "stats_id";
+  public static final String CONFIG_FORCE_ENCRYPTION = "force_encryption";
 
   public static DcContext getContext(@NonNull Context context) {
     return ApplicationContext.getInstance(context).getDcContext();
@@ -417,6 +423,15 @@ public class DcHelper {
     return getBlobdirFile(dcContext, filename, ext);
   }
 
+  public static String copyToBlobdir(Context context, Uri uri, String filename, String ext)
+      throws IOException {
+    String path = getBlobdirFile(getContext(context), filename, ext);
+    InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+    OutputStream outputStream = new FileOutputStream(path);
+    Util.copy(inputStream, outputStream);
+    return path;
+  }
+
   @NonNull
   public static ThreadRecord getThreadRecord(
       Context context, DcLot summary, DcChat chat) { // adapted from ThreadDatabase.getCurrent()
@@ -490,16 +505,20 @@ public class DcHelper {
         .show();
   }
 
-  public static void showInvalidUnencryptedDialog(Context context) {
-    new AlertDialog.Builder(context)
+  public static AlertDialog.Builder prepareInvalidUnencryptedDialog(
+      Context context, AlertDialog.Builder builder) {
+    return builder
         .setMessage(context.getString(R.string.invalid_unencrypted_explanation))
         .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#howtoe2ee"))
         .setNegativeButton(
             R.string.qrscan_title,
             (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
         .setPositiveButton(R.string.ok, null)
-        .setCancelable(true)
-        .show();
+        .setCancelable(true);
+  }
+
+  public static void showInvalidUnencryptedDialog(Context context) {
+    prepareInvalidUnencryptedDialog(context, new AlertDialog.Builder(context)).show();
   }
 
   public static void openHelp(Context context, String section) {

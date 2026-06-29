@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,8 +26,11 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ShareUtil;
@@ -35,6 +39,8 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ProfileActivity extends PassphraseRequiredActionBarActivity
     implements DcEventCenter.DcEventDelegate {
+
+  private static final String TAG = "ProfileActivity";
 
   public static final String CHAT_ID_EXTRA = "chat_id";
   public static final String CONTACT_ID_EXTRA = "contact_id";
@@ -398,7 +404,18 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
     Intent composeIntent = new Intent();
     DcContact dcContact = dcContext.getContact(contactId);
     if (dcContact.isKeyContact()) {
-      ShareUtil.setSharedContactId(composeIntent, contactId);
+      try {
+        byte[] vcard =
+            rpc.makeVcard(rpc.getSelectedAccountId(), Collections.singletonList(contactId))
+                .getBytes();
+        Uri vcardUri =
+            PersistentBlobProvider.getInstance().create(this, vcard, "text/vcard", "contact.vcf");
+        ArrayList<Uri> uris = new ArrayList<>();
+        uris.add(vcardUri);
+        ShareUtil.setSharedUris(composeIntent, uris);
+      } catch (RpcException e) {
+        Log.e(TAG, "Failed to create vCard for sharing contactId=" + contactId, e);
+      }
     } else {
       ShareUtil.setSharedText(composeIntent, dcContact.getAddr());
     }

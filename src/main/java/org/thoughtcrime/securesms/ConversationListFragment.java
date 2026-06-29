@@ -23,7 +23,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,11 +60,11 @@ public class ConversationListFragment extends BaseConversationListFragment
   private RecyclerView list;
   private View emptyState;
   private TextView emptySearch;
-  private final String queryFilter = "";
   private boolean archive;
   private Timer reloadTimer;
   private boolean chatlistJustLoaded;
   private boolean reloadTimerInstantly;
+  private boolean resetScrollPosition;
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -242,9 +241,9 @@ public class ConversationListFragment extends BaseConversationListFragment
 
   public void loadChatlistAsync() {
     synchronized (loadChatlistLock) {
-      needsAnotherLoad = true;
       if (inLoadChatlist) {
         Log.i(TAG, "chatlist loading debounced");
+        needsAnotherLoad = true;
         return;
       }
       inLoadChatlist = true;
@@ -253,6 +252,9 @@ public class ConversationListFragment extends BaseConversationListFragment
     Util.runOnAnyBackgroundThread(
         () -> {
           while (true) {
+            Log.i(TAG, "executing debounced chatlist loading");
+            loadChatlist();
+
             synchronized (loadChatlistLock) {
               if (!needsAnotherLoad) {
                 inLoadChatlist = false;
@@ -261,8 +263,6 @@ public class ConversationListFragment extends BaseConversationListFragment
               needsAnotherLoad = false;
             }
 
-            Log.i(TAG, "executing debounced chatlist loading");
-            loadChatlist();
             Util.sleep(100);
           }
         });
@@ -285,22 +285,17 @@ public class ConversationListFragment extends BaseConversationListFragment
       Log.w(TAG, "Ignoring call to loadChatlist()");
       return;
     }
-    DcChatlist chatlist =
-        DcHelper.getContext(context)
-            .getChatlist(listflags, queryFilter.isEmpty() ? null : queryFilter, 0);
+    long startMs = System.currentTimeMillis();
+    DcChatlist chatlist = DcHelper.getContext(context).getChatlist(listflags, null, 0);
+    Log.i(TAG, "⏰ getChatlist(): " + (System.currentTimeMillis() - startMs) + "ms");
 
     Util.runOnMain(
         () -> {
-          if (chatlist.getCnt() <= 0 && TextUtils.isEmpty(queryFilter)) {
+          if (chatlist.getCnt() <= 0) {
             list.setVisibility(View.INVISIBLE);
             emptyState.setVisibility(View.VISIBLE);
             emptySearch.setVisibility(View.INVISIBLE);
             fab.startPulse(3 * 1000);
-          } else if (chatlist.getCnt() <= 0 && !TextUtils.isEmpty(queryFilter)) {
-            list.setVisibility(View.INVISIBLE);
-            emptyState.setVisibility(View.GONE);
-            emptySearch.setVisibility(View.VISIBLE);
-            emptySearch.setText(getString(R.string.search_no_result_for_x, queryFilter));
           } else {
             list.setVisibility(View.VISIBLE);
             emptyState.setVisibility(View.GONE);
@@ -309,6 +304,11 @@ public class ConversationListFragment extends BaseConversationListFragment
           }
 
           ((ConversationListAdapter) list.getAdapter()).changeData(chatlist);
+
+          if (resetScrollPosition) {
+            list.scrollToPosition(0);
+            resetScrollPosition = false;
+          }
         });
   }
 
@@ -364,5 +364,9 @@ public class ConversationListFragment extends BaseConversationListFragment
     } else {
       loadChatlistAsync();
     }
+  }
+
+  public void resetScrollPosition() {
+    resetScrollPosition = true;
   }
 }

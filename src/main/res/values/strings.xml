@@ -73,7 +73,7 @@
     <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Mark as Read</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
-    <string name="mark_as_read_short">Mark Read</string>
+    <string name="mark_as_read_short">Read</string>
     <!-- Used as an menu entry or button -->
     <string name="mark_as_unread">Mark as Unread</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
@@ -435,6 +435,7 @@
     <string name="canceled_call">Canceled call</string>
     <string name="missed_call">Missed call</string>
     <string name="already_in_call">Already in a call</string>
+    <string name="call_back">Call back</string>
     <string name="call_answered_elsewhere">Call answered on another device</string>
     <string name="call_requires_camera_permission">Camera permission is required for video calls</string>
     <string name="call_requires_mic_permission">Microphone permission is required for calls</string>
@@ -636,6 +637,7 @@
     <string name="connectivity_connected">Connected</string>
     <string name="sending">Sending…</string>
     <string name="last_msg_sent_successfully">Last message sent successfully.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Not supported by your provider.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messages</string>
@@ -672,7 +674,7 @@
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>
-    <string name="login_advanced_hint">This login is for advanced users:\n\n• Do not use an address you\'re using in another app.\n\n• Classic email server allow chats without end-to-end encryption marked by a mail icon.</string>
+    <string name="login_advanced_hint">This login is for advanced users.\n\nDo not use an address you\'re using in another app.</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">IMAP Login Name</string>
     <string name="login_imap_server">IMAP Server</string>
@@ -707,6 +709,7 @@
     <string name="used_for_sending">Used for sending</string>
     <string name="hide_from_contacts">Hide from Contacts</string>
     <string name="hidden_from_contacts">Hidden from contacts</string>
+    <string name="enforce_e2ee">Enforce Encryption for All Relays</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Messages are received on all relays.\n\n⚠️ If you change anything here, make sure all your devices run at least version 2.47.0. Otherwise older devices may miss messages.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->

@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import com.b44t.messenger.DcChatlist;
 import com.b44t.messenger.DcContext;
+import com.b44t.messenger.DcLot;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.search.model.SearchResult;
 import org.thoughtcrime.securesms.util.Util;
@@ -18,13 +19,16 @@ class SearchViewModel extends ViewModel {
   private static final String TAG = "SearchViewModel";
   private final ObservingLiveData searchResult;
   private String lastQuery;
+  private final Context appContext;
   private final DcContext dcContext;
   private boolean forwarding = false;
+  private final Object bgSearchLock = new Object();
   private boolean inBgSearch;
   private boolean needsAnotherBgSearch;
 
   SearchViewModel(@NonNull Context context) {
-    this.dcContext = DcHelper.getContext(context.getApplicationContext());
+    this.appContext = context.getApplicationContext();
+    this.dcContext = DcHelper.getContext(appContext);
     this.searchResult = new ObservingLiveData();
   }
 
@@ -42,27 +46,29 @@ class SearchViewModel extends ViewModel {
   }
 
   public void updateQuery() {
-    if (inBgSearch) {
-      needsAnotherBgSearch = true;
-      Log.i(TAG, "... search call debounced");
-    } else {
+    synchronized (bgSearchLock) {
+      if (inBgSearch) {
+        Log.i(TAG, "... search call debounced");
+        needsAnotherBgSearch = true;
+        return;
+      }
       inBgSearch = true;
-      Util.runOnBackground(
-          () -> {
-            Util.sleep(100);
-            needsAnotherBgSearch = false;
-            queryAndCallback(lastQuery, searchResult::postValue);
-
-            while (needsAnotherBgSearch) {
-              Util.sleep(100);
-              needsAnotherBgSearch = false;
-              Log.i(TAG, "... executing debounced search call");
-              queryAndCallback(lastQuery, searchResult::postValue);
-            }
-
-            inBgSearch = false;
-          });
     }
+    Util.runOnBackground(
+        () -> {
+          while (true) {
+            Log.i(TAG, "... executing debounced search call");
+            queryAndCallback(lastQuery, searchResult::postValue);
+            synchronized (bgSearchLock) {
+              if (!needsAnotherBgSearch) {
+                inBgSearch = false;
+                return;
+              }
+              needsAnotherBgSearch = false;
+            }
+            Util.sleep(100);
+          }
+        });
   }
 
   private void queryAndCallback(@NonNull String query, @NonNull SearchViewModel.Callback callback) {
@@ -71,6 +77,12 @@ class SearchViewModel extends ViewModel {
     if (TextUtils.isEmpty(query)) {
       callback.onResult(SearchResult.EMPTY);
       return;
+    }
+
+    QrInviteData qrInviteData = null;
+    if (!forwarding && query.contains(":")) {
+      DcLot qrParsed = dcContext.checkQr(query);
+      qrInviteData = QrInviteData.from(appContext, dcContext, qrParsed, query);
     }
 
     // #1 search for chats
@@ -83,7 +95,8 @@ class SearchViewModel extends ViewModel {
     // #2 search for contacts
     if (!query.equals(lastQuery) && overallCnt > 0) {
       Log.i(TAG, "... skipping getContacts() and searchMsgs(), more recent search pending");
-      callback.onResult(new SearchResult(query, new int[0], conversations, new int[0]));
+      callback.onResult(
+          new SearchResult(query, new int[0], conversations, new int[0], qrInviteData));
       return;
     }
 
@@ -95,19 +108,19 @@ class SearchViewModel extends ViewModel {
     // #3 search for messages
     if (forwarding) {
       Log.i(TAG, "... searchMsgs() disabled by caller");
-      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0], qrInviteData));
       return;
     }
 
     if (query.length() <= 1) {
       Log.i(TAG, "... skipping searchMsgs(), string too short");
-      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0], qrInviteData));
       return;
     }
 
     if (!query.equals(lastQuery) && overallCnt > 0) {
       Log.i(TAG, "... skipping searchMsgs(), more recent search pending");
-      callback.onResult(new SearchResult(query, contacts, conversations, new int[0]));
+      callback.onResult(new SearchResult(query, contacts, conversations, new int[0], qrInviteData));
       return;
     }
 
@@ -115,7 +128,7 @@ class SearchViewModel extends ViewModel {
     int[] messages = dcContext.searchMsgs(0, query);
     Log.i(TAG, "⏰ searchMsgs(" + query + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
-    callback.onResult(new SearchResult(query, contacts, conversations, messages));
+    callback.onResult(new SearchResult(query, contacts, conversations, messages, qrInviteData));
   }
 
   @NonNull

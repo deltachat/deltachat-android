@@ -64,6 +64,7 @@
     <string name="always">Винаги</string>
     <string name="always_load_remote_images">Винаги да се зареждат отдалечените изображения</string>
     <string name="once">Веднъж</string>
+    <!-- deprecated -->
     <string name="show_warning">Показване на предупреждение</string>
     <string name="not_now">Не сега</string>
     <string name="never">Никога</string>
@@ -161,6 +162,7 @@
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Заснемане</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Превключване на камерата</string>
     <string name="toggle_fullscreen">Включване/изключване на пълноекранния режим</string>
     <string name="location">Местоположение</string>
@@ -288,18 +290,20 @@
     <string name="mute_for_seven_days">Спиране на звука за 7 дни</string>
     <string name="mute_forever">Спиране на звука за постоянно</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">За 5 минути</string>
+
     <string name="share_location_for_30_minutes">За 30 минути</string>
     <string name="share_location_for_one_hour">За 1 час</string>
     <string name="share_location_for_two_hours">За 2 часа</string>
     <string name="share_location_for_six_hours">За 6 часа</string>
-
     <plurals name="ask_send_following_n_files_to">
-        <item quantity="one">Да бъде ли изпратен следният файл на%s?</item>
+        <item quantity="one">Да бъде ли изпратен следният файл на %s?</item>
         <item quantity="other">Да бъдат ли изпратени следните %d файлове на %s?</item>
     </plurals>
     <string name="file_saved_to">Файлът е записан в \"%1$s\"</string>
 
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Да бъдат ли препратени съобщенията на %1$s?</string>
     <string name="ask_forward_multiple">Да бъдат ли препратени съобщенията към %1$d чата?</string>
     <string name="ask_export_attachment">Експортирането на прикачените файлове ще даде възможност други приложения на Вашето устройство да имат достъп до тях.\n\nИскате ли да продължите?</string>
@@ -457,6 +461,7 @@
     <string name="connectivity_connected">Свързани сте</string>
     <string name="sending">Изпращане…</string>
     <string name="last_msg_sent_successfully">Последното съобщение беше изпратено успешно.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Не се поддържа от Вашия доставчик.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Съобщения</string>
@@ -560,6 +565,7 @@
     <string name="pref_notifications_priority">Приоритет</string>
     <string name="pref_notifications_explain">Да бъдат разрешени системните уведомления за нови съобщения</string>
     <string name="pref_show_notification_content">Да се показва в уведомлението съдържанието на съобщението</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Да се показва в уведомлението подателят и първите думи на съобщението</string>
     <string name="pref_led_color">Цвят на LED светлината</string>
     <string name="pref_sound">Звук</string>
@@ -598,12 +604,19 @@
     <string name="pref_background">Фон</string>
     <string name="pref_background_btn_default">Да се използва подразбиращото се изображение</string>
     <string name="pref_background_btn_gallery">Избор от галерията</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Ако промение тази опция, се уверете, че Вашият сървър и другите Ви клиенти са конфигурирани по съответен начин.\n\nВ противен случай е възможно нещата въобще да не работят.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">Автоматично преместване в папката DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Да се извлича само от папката DeltaChat</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Да се показват класически e-mail съобщения</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Не, само чатове</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">За приетите контакти</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Всички</string>
     <string name="pref_experimental_features">Експериментални възможности</string>
     <string name="pref_on_demand_location_streaming">Поточно излъчване на местоположението при поискване</string>
@@ -649,12 +662,13 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Изтриване на старите съобщения</string>
     <string name="autodel_device_title">Изтриване на съобщенията от устройството</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">Изтриване на съобщенията от сървъра</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Искате ли да изтриете %1$d съобщения сега, както и всички съобщения \"%2$s\", които ще бъдат изтегляни в бъдеще?\n\n• Това включва всички медийни файлове\n\n• Съобщенията ще бъдат изтрити, независимо от това дали са видени или не\n\n• Съобщенията от \"Запазени съобщения\" няма да бъдат изтривани локално</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">Искате ли да изтриете %1$d съобщения сега и всички съобщения \"%2$s\", които ще бъдат изтегляни в бъдеще?\n\n⚠️ Това включва електронна поща, медийни файлове и съобщенията от \"Записани съобщения\" във всички папки на сървъра\n\n⚠️ Не ползвайте тази функция, ако искате да запазите данните на сървъра\n\n⚠️ Не ползвайте тази функция, ако работите с други клиенти за електронна поща освен Delta Chat</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Това включва електронна поща, медийни файлове и \"Запазени съобщения\" във всички папки на сървъра. Не ползвайте тази функция, ако искате да запазите данните на сървъра или ако работите с други клиенти за електронна поща освен Delta Chat.</string>
     <string name="autodel_confirm">Разбирам. Всички тези съобщения да бъдат изтрити</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -733,7 +747,7 @@
     <string name="learn_more">Научете повече</string>
 
     <string name="devicemsg_self_deleted">Изтрихте чата \"Запазени съобщения\".\n\nℹ️ За да използвате възможността \"Запазени съобщения\" отново, създайте нов чат със себе си.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Мястото за съхранение, предоставено от Вашия доставчик, скоро ще бъде изчерпано:%1$s%% вече са използвани.\n\nМоже да нямате възможност да получавате съобщения, ако мястото за съхранение е заето напълно.\n\n👉 Моля, проверете дали не бихте могли да изтриете стари данни през уеб интерфейса на доставчика и обмислете дали да не включите \"Настройки / Изтриване на старите съобщения\". Можете по всяко време да проверите текущо използваното място за съхранение в \"Настройки / Свързаност\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Изглежда датата и часът на Вашето устройство са неточни (%1$s).\n\nНастройте часовника ⏰🔧, за да имате сигурност, че Вашите съобщения се получават правилно.</string>
@@ -884,7 +898,6 @@
     <string name="a11y_message_context_menu_btn_label">Действия, свързани със съобщението</string>
     <string name="a11y_background_preview_label">Предварителен преглед на тапет</string>
     <string name="a11y_disappearing_messages_activated">Активирани са изчезващите съобщения</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Споделянето на местоположението да бъде спряно</string>
     <string name="a11y_voice_message_hint_ios">След като приключите със записа, докоснете двукратно, за да го изпратите. За да го отхвърлите, приплъзнете с два пръста.</string>

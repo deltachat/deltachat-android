@@ -61,7 +61,9 @@
     <string name="media">Ortam</string>
     <string name="apps_and_media">Uygulamalar ve Ortamlar</string>
     <string name="profile">Profil</string>
+    <!-- deprecated -->
     <string name="all_profiles">Tüm Profiller</string>
+    <!-- deprecated -->
     <string name="current_profile">Şu Anki Profil</string>
     <string name="main_menu">Ana Menü</string>
     <string name="start_chat">Sohbet Başlat</string>
@@ -86,6 +88,7 @@
     <string name="always">Her zaman</string>
     <string name="always_load_remote_images">Her Zaman Uzak Görselleri Yükle</string>
     <string name="once">Bir kez</string>
+    <!-- deprecated -->
     <string name="show_warning">Uyarı Göster</string>
     <string name="not_now">Şimdi değil</string>
     <string name="never">Hiçbir zaman</string>
@@ -203,6 +206,7 @@
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Yakala</string>
+    <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Kamerayı Değiştir</string>
     <string name="toggle_fullscreen">Tam Ekran Moduna Geç</string>
     <string name="location">Konum</string>
@@ -380,12 +384,13 @@
     <string name="mute_for_seven_days">7 günlüğüne sessize al</string>
     <string name="mute_forever">Sonsuza dek sessize al</string>
 
+    <!-- deprecated -->
     <string name="share_location_for_5_minutes">5 dakikalığına</string>
+
     <string name="share_location_for_30_minutes">30 dakikalığına</string>
     <string name="share_location_for_one_hour">1 saatliğine</string>
     <string name="share_location_for_two_hours">2 saatliğine</string>
     <string name="share_location_for_six_hours">6 saatliğine</string>
-
     <plurals name="ask_send_following_n_files_to">
         <item quantity="one">Aşağıdaki dosya %s kişisine gönderilsin mi?</item>
         <item quantity="other">Aşağıdaki %d dosya %s kişisine gönderilsin mi?</item>
@@ -426,7 +431,6 @@
     <string name="already_in_call">Zaten bir aramada</string>
     <string name="call_answered_elsewhere">Arama başka bir aygıtta yanıtlandı</string>
     <string name="call_requires_mic_permission">Mikrofon izni aramalar için gereklidir</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ayrılmak istediğinizden emin misiniz?</string>
@@ -440,6 +444,7 @@
         <item quantity="one">%d ileti silinsin mi?</item>
         <item quantity="other">%d ileti silinsin mi?</item>
     </plurals>
+    <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">İletiler %1$s kişisine iletilsin mi?</string>
     <string name="ask_forward_multiple">İletiler %1$d sohbete iletilsin mi?</string>
     <string name="ask_export_attachment">İlişikleri dışa aktarmak, aygıtınızdaki diğer uygulamaların onlara erişmesine izin verir.\n\nSürdürülsün mü?</string>
@@ -613,6 +618,7 @@
     <string name="connectivity_connected">Bağlı</string>
     <string name="sending">Gönderiliyor…</string>
     <string name="last_msg_sent_successfully">Son ileti başarıyla gönderildi.</string>
+    <!-- deprecated -->
     <string name="not_supported_by_provider">Sağlayıcınız tarafından desteklenmiyor.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">İletiler</string>
@@ -649,7 +655,6 @@
     <string name="welcome_chat_over_email">Güvenli Merkezi Olmayan Sohbet</string>
     <string name="scan_invitation_code">Çağrı Kodunu Tara</string>
     <string name="login_title">Giriş Yap</string>
-    <string name="login_advanced_hint">Bu giriş gelişmiş kullanıcılar içindir:\n\n• Başka bir uygulamada kullandığınız bir hesabı kullanmayın.\n\n• Klasik e-posta sunucusu, bir posta simgesiyle işaretlenerek uçtan uca şifreleme olmayan sohbetlere izin verir.</string>
     <string name="login_inbox">Gelen Kutusu</string>
     <string name="login_imap_login">IMAP Giriş Adı</string>
     <string name="login_imap_server">IMAP Sunucusu</string>
@@ -764,6 +769,7 @@
     <string name="pref_notifications_priority">Öncelik</string>
     <string name="pref_notifications_explain">Yeni iletiler için sistem bildirimlerini etkinleştir</string>
     <string name="pref_show_notification_content">Bildirimde ileti içeriğini göster</string>
+    <!-- deprecated -->
     <string name="pref_show_notification_content_explain">Bildirimlerde iletinin gönderenini ve ilk sözcüklerini gösterir</string>
     <string name="pref_led_color">LED Rengi</string>
     <string name="pref_sound">Ses</string>
@@ -806,16 +812,23 @@
     <string name="pref_background">Duvar Kâğıdı</string>
     <string name="pref_background_btn_default">Varsayılan Görseli Kullan</string>
     <string name="pref_background_btn_gallery">Galeriden Seç</string>
+    <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Bu seçeneği değiştirirseniz, sunucunuzun ve diğer istemcilerinizin uygun olarak yapılandırıldığından emin olun.\n\nDeğilse özellikler hiç çalışmayabilir.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Çoklu Aygıt Modu</string>
     <string name="pref_multidevice_explain">İletilerinizi diğer aygıtlarınızla eşzamanlayın. İkinci bir aygıt eklendiğinde otomatik olarak etkinleştirilir</string>
     <string name="pref_multidevice_change_warn">Aynı profili birden fazla aygıtta kullanırken Çoklu Aygıt Modu etkinleştirilmelidir. Bu ayarı yalnızca bu profili diğer tüm aygıtlarınızdan kaldırdıysanız etkisizleştirin.\n\nProfili birden fazla aygıtta kullanırken Çoklu Aygıt Modu\'nu etkisizleştirmek, iletilerin kaçırılmasına ve diğer sorunlara neden olur.</string>
+    <!-- deprecated -->
     <string name="pref_auto_folder_moves">DeltaChat Klasörüne Otomatik Olarak Taşı</string>
+    <!-- deprecated -->
     <string name="pref_only_fetch_mvbox_title">Yalnızca DeltaChat Klasöründen Getir</string>
+    <!-- deprecated -->
     <string name="pref_show_emails">Klasik E-Postaları Göster</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_no">Hayır, yalnızca sohbetler</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">Kabul edilen kişiler için</string>
+    <!-- deprecated -->
     <string name="pref_show_emails_all">Tümü</string>
     <string name="pref_experimental_features">Deneysel Özellikler</string>
     <string name="pref_experimental_features_explain">Bu özellikler, kararsız olabilir ve değiştirilebilir ya da kaldırılabilir</string>
@@ -870,14 +883,17 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Eski İletileri Sil</string>
     <string name="autodel_device_title">İletileri Aygıttan Sil</string>
+    <!-- deprecated -->
     <string name="autodel_server_title">İletileri Sunucudan Sil</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n• Bu, tüm ortamları kapsar\n\n• İletiler görülse de görülmese de silinecek\n\n• “Kaydedilen İletiler” yerel silmeden atlanacak</string>
-    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <!-- deprecated -->
     <string name="autodel_server_ask">%1$d iletiyi şimdi ve gelecekte yeni getirilen tüm iletileri “%2$s” silmek istiyor musunuz?\n\n⚠️ Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar\n\n⚠️ Verileri sunucuda tutmak istiyorsanız ya da klasik e-posta istemcilerini de kullanıyorsanız bu işlevi kullanmayın</string>
-    <!-- shown below enabled autodel_server-option, should be a summary of autodel_server_ask and remind about the impact -->
+    <!-- deprecated -->
     <string name="autodel_server_enabled_hint">Bu, tüm sunucu klasörlerindeki e-postaları, ortamları ve “Kaydedilen İletiler”i kapsar. Verileri sunucuda tutmak istiyorsanız ya da klasik e-posta istemcilerini de kullanıyorsanız bu işlevi kullanmayın</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">Bir kerede silmeyi aç</string>
+    <!-- deprecated -->
     <string name="autodel_server_warn_multi_device">Bir kerede silmeyi etkinleştirirseniz, bu profilde çoklu aygıtları kullanamazsınız.</string>
     <string name="autodel_confirm">Anladım, tüm bu iletileri sil</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
@@ -974,7 +990,7 @@
     <string name="learn_more">Daha Fazlasını Öğrenin</string>
 
     <string name="devicemsg_self_deleted">“Kaydedilen İletiler” sohbetini sildiniz.\n\nℹ️ “Kaydedilen İletiler” özelliğini yeniden kullanmak için kendinizle yeni bir sohbet oluşturun.</string>
-    <!-- %1$s will be replaced by the amount of storage already used, sth. as '500 MB'. If you want to use a percentage sign, type in two of them, eg. %1$s %% -->
+    <!-- deprecated -->
     <string name="devicemsg_storage_exceeding">⚠️ Sağlayıcınızın depolaması dolmak üzere: %1$s%% zaten kullanımda.\n\nDepolama tam dolduğunda iletileri alamayabilirsiniz.\n\n👉 Lütfen sağlayıcınızın web arabiriminden eski verileri silip silemeyeceğinizi denetleyin ve “Ayarlar / Sohbetler / Eski İletileri Sil”i etkinleştirmeyi düşünün. Herhangi bir zamanda şu anki depolama kullanımınızı “Ayarlar / Bağlanabilirlik”ten denetleyebilirsiniz.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Aygıtınızdaki tarih ya da saat yanlış görünüyor (%1$s).\n\nİletilerinizin doğru şekilde alınmasını sağlamak için saatinizi ⏰🔧 ayarlayın.</string>
@@ -1058,8 +1074,6 @@
     <string name="n_messages_in_m_chats">%2$d sohbette %1$d ileti</string>
 
     <!-- location streaming -->
-    <string name="location_streaming_channel_desc">İsteğe Bağlı Konum Akışı için Kanal</string>
-    <string name="location_streaming_notification_title">Konum Akışı</string>
     <string name="location_streaming_notification_text">Konumunuzu paylaşıyorsunuz</string>
     <string name="location_rationale">Sohbet üyeleriyle canlı konumunuzu paylaşmak için Delta Chat\'in konum verilerinizi kullanmasına izin verin.\n\nCanlı konumun çalışmasını kesintisiz yapmak için konum verileri, uygulama kapatıldığında ya da kullanımda değilken bile kullanılır.</string>
 
@@ -1155,7 +1169,6 @@
     <string name="a11y_message_context_menu_btn_label">İleti eylemleri</string>
     <string name="a11y_background_preview_label">Duvar kâğıdı önizlemesi</string>
     <string name="a11y_disappearing_messages_activated">Kaybolan iletiler etkinleştirildi</string>
-
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Konum paylaşımını durdur</string>
     <string name="a11y_voice_message_hint_ios">Kaydettikten sonra göndermek için çift dokunun. Kaydı atmak için iki parmakla sarın.</string>
