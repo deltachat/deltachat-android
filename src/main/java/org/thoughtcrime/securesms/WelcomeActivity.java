@@ -49,7 +49,7 @@ public class WelcomeActivity extends BaseActionBarActivity
     implements DcEventCenter.DcEventDelegate {
   public static final String BACKUP_QR_EXTRA = "backup_qr_extra";
   public static final int PICK_BACKUP = 20574;
-  private static final String TAG = WelcomeActivity.class.getSimpleName();
+  private static final String TAG = "WelcomeActivity";
   public static final String TMP_BACKUP_FILE = "tmp-backup-file";
 
   private ProgressDialog progressDialog = null;
@@ -212,7 +212,12 @@ public class WelcomeActivity extends BaseActionBarActivity
               File imexDir = DcHelper.getImexDir();
               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 AttachmentManager.selectMediaType(
-                    this, "application/x-tar", null, PICK_BACKUP, StorageUtil.getDownloadUri());
+                    this,
+                    "application/x-tar",
+                    null,
+                    PICK_BACKUP,
+                    StorageUtil.getDownloadUri(),
+                    false);
               } else {
                 final String backupFile = dcContext.imexHasBackup(imexDir.getAbsolutePath());
                 if (backupFile != null) {

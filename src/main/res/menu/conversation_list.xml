@@ -32,6 +32,11 @@
         app:showAsAction="never" />
 
     <item
+        android:title="@string/mark_as_unread"
+        android:id="@+id/menu_markfresh_selected"
+        app:showAsAction="never" />
+
+    <item
         android:title="@string/add_to_home_screen"
         android:id="@+id/menu_add_to_home_screen"
         app:showAsAction="never" />

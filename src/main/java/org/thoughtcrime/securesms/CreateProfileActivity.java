@@ -42,7 +42,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 @SuppressLint("StaticFieldLeak")
 public class CreateProfileActivity extends BaseActionBarActivity {
 
-  private static final String TAG = CreateProfileActivity.class.getSimpleName();
+  private static final String TAG = "CreateProfileActivity";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 

@@ -47,7 +47,7 @@ import org.thoughtcrime.securesms.util.ShareUtil;
  */
 public class ShareActivity extends PassphraseRequiredActionBarActivity
     implements ResolveMediaTask.OnMediaResolvedListener {
-  private static final String TAG = ShareActivity.class.getSimpleName();
+  private static final String TAG = "ShareActivity";
 
   public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
@@ -258,12 +258,11 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       final String addr = extraEmail[0];
       int contactId = dcContext.lookupContactIdByAddr(addr);
 
-      if (contactId == 0) {
-        contactId = dcContext.createContact(null, addr);
+      if (contactId != 0 || dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0) {
+        if (contactId == 0) contactId = dcContext.createContact(null, addr);
+        chatId = dcContext.createChatByContactId(contactId);
+        accId = dcContext.getAccountId();
       }
-
-      chatId = dcContext.createChatByContactId(contactId);
-      accId = dcContext.getAccountId();
     }
     Intent composeIntent;
     if (accId != -1 && chatId > 0) {

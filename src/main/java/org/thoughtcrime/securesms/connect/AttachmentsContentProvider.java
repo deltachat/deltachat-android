@@ -3,17 +3,23 @@ package org.thoughtcrime.securesms.connect;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.provider.OpenableColumns;
 import android.webkit.MimeTypeMap;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.b44t.messenger.DcContext;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Objects;
 import org.thoughtcrime.securesms.util.MediaUtil;
 
 public class AttachmentsContentProvider extends ContentProvider {
+
+  private static final String[] ALL_COLUMNS = {OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE};
 
   /* We save all attachments in our private files-directory
   that cannot be read by other apps.
@@ -46,7 +52,8 @@ public class AttachmentsContentProvider extends ContentProvider {
   }
 
   @Override
-  public int delete(@NonNull Uri arg0, String arg1, String[] arg2) {
+  public int delete(
+      @NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
     return 0;
   }
 
@@ -55,7 +62,7 @@ public class AttachmentsContentProvider extends ContentProvider {
     String file = uri.getPathSegments().get(0);
     String mimeType = DcHelper.sharedFiles.get(file);
 
-    return DcHelper.checkMime(uri.toString(), mimeType);
+    return DcHelper.checkMime(uri.getPathSegments().get(1), mimeType);
   }
 
   @Override
@@ -65,22 +72,69 @@ public class AttachmentsContentProvider extends ContentProvider {
   }
 
   @Override
-  public Uri insert(@NonNull Uri arg0, ContentValues arg1) {
+  public Uri insert(@NonNull Uri arg0, ContentValues values) {
     return null;
   }
 
   @Override
   public boolean onCreate() {
-    return false;
+    return true;
   }
 
   @Override
-  public Cursor query(@NonNull Uri arg0, String[] arg1, String arg2, String[] arg3, String arg4) {
-    return null;
+  public Cursor query(
+      @NonNull Uri uri,
+      @Nullable String[] projection,
+      @Nullable String selection,
+      @Nullable String[] selectionArgs,
+      @Nullable String sortOrder) {
+    // Segment [0] is the blob file key ("ef39a39"), same as in openFile() and getType()
+    // Segment [1] is the original display name ("text.txt")
+    String file = uri.getPathSegments().get(0);
+
+    // Same guard used in openFile()
+    if (!DcHelper.sharedFiles.containsKey(file)) {
+      return null;
+    }
+
+    // Resolve the actual File
+    DcContext dcContext = DcHelper.getContext(Objects.requireNonNull(getContext()));
+    File privateFile = new File(dcContext.getBlobdir(), file);
+
+    // Default to all supported columns
+    if (projection == null) {
+      projection = ALL_COLUMNS;
+    }
+
+    // Build column-name and value arrays
+    String[] cols = new String[projection.length];
+    Object[] values = new Object[projection.length];
+    int i = 0;
+    for (String col : projection) {
+      if (OpenableColumns.DISPLAY_NAME.equals(col)) {
+        cols[i] = OpenableColumns.DISPLAY_NAME;
+        values[i++] = uri.getPathSegments().get(1);
+      } else if (OpenableColumns.SIZE.equals(col)) {
+        cols[i] = OpenableColumns.SIZE;
+        values[i++] = privateFile.length();
+      }
+    }
+
+    // Set arrays to only matched columns.
+    cols = Arrays.copyOf(cols, i);
+    values = Arrays.copyOf(values, i);
+
+    MatrixCursor cursor = new MatrixCursor(cols, 1);
+    cursor.addRow(values);
+    return cursor;
   }
 
   @Override
-  public int update(@NonNull Uri arg0, ContentValues arg1, String arg2, String[] arg3) {
+  public int update(
+      @NonNull Uri uri,
+      @Nullable ContentValues values,
+      @Nullable String selection,
+      @Nullable String[] selectionArgs) {
     return 0;
   }
 }

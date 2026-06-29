@@ -287,4 +287,15 @@ public final class MicrophoneRecorderView extends FrameLayout implements View.On
           .start();
     }
   }
+
+  public boolean isRecording() {
+    return state != State.NOT_RUNNING;
+  }
+
+  public void resetState() {
+    if (state != State.NOT_RUNNING) {
+      state = State.NOT_RUNNING;
+      hideUi();
+    }
+  }
 }

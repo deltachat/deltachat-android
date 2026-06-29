@@ -15,6 +15,10 @@ public class WebxdcMessageInfo {
   public String icon;
   /** True if full internet access should be granted to the app. */
   public Boolean internetAccess;
+  /** Define if the local user is the one who initially shared the webxdc application in the chat. */
+  public Boolean isAppSender;
+  /** Define if the app runs in a broadcasting context. */
+  public Boolean isBroadcast;
   /**
    * The name of the app.
    * <p>

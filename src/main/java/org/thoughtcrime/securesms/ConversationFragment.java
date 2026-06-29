@@ -79,7 +79,7 @@ import org.thoughtcrime.securesms.util.views.ConversationAdaptiveActionsToolbar;
 
 @SuppressLint("StaticFieldLeak")
 public class ConversationFragment extends MessageSelectorFragment {
-  private static final String TAG = ConversationFragment.class.getSimpleName();
+  private static final String TAG = "ConversationFragment";
 
   private static final int SCROLL_ANIMATION_THRESHOLD = 50;
 
@@ -926,6 +926,8 @@ public class ConversationFragment extends MessageSelectorFragment {
           WebxdcActivity.openWebxdcActivity(
               getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
         }
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_LOCATIONSTREAMING_ENABLED) {
+        WebxdcActivity.openMaps(getContext(), (int) chatId);
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_DESCRIPTION_CHANGED) {
         Intent intent = new Intent(getContext(), ProfileActivity.class);
         intent.putExtra(ProfileActivity.CHAT_ID_EXTRA, (int) chatId);
@@ -1034,7 +1036,6 @@ public class ConversationFragment extends MessageSelectorFragment {
     @Override
     public void onStickerClicked(DcMsg messageRecord) {
       new AlertDialog.Builder(getContext())
-          .setTitle(R.string.add_to_sticker_collection)
           .setMessage(R.string.ask_add_sticker_to_collection)
           .setPositiveButton(
               R.string.ok,

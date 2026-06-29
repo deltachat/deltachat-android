@@ -13,13 +13,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.Observer;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class CallViewModel extends AndroidViewModel {
 
-  private static final String TAG = CallViewModel.class.getSimpleName();
+  private static final String TAG = "CallViewModel";
 
   private final CallCoordinator callCoordinator;
 
@@ -36,17 +37,19 @@ public class CallViewModel extends AndroidViewModel {
   private final LiveData<String> displayName;
   private final LiveData<Icon> displayIcon;
   private final LiveData<Boolean> outgoingCallPlaced;
+  private final LiveData<Boolean> answeredElsewhere;
   private final LiveData<CallEndpointCompat> currentAudioEndpoint;
   private final LiveData<List<CallEndpointCompat>> availableAudioEndpoints;
+  private final LiveData<Boolean> isFrontCamera;
 
   // Translated from coordinator's connectionState
   private final MediatorLiveData<CallState> callState;
 
   // Observer References for one-time observe
-  private Observer<VideoTrack> answerCallObserver;
-  private Observer<VideoTrack> startOutgoingCallObserver;
+  private Observer<Boolean> answerCallObserver;
+  private Observer<Boolean> startOutgoingCallObserver;
 
-  private boolean hasCallEnded = false;
+  private final AtomicBoolean hasCallEnded = new AtomicBoolean(false);
 
   // User-facing call states
   public enum CallState {
@@ -56,6 +59,7 @@ public class CallViewModel extends AndroidViewModel {
     CONNECTING,
     CONNECTED,
     RECONNECTING,
+    ANSWERED_ELSEWHERE,
     ENDED,
     ERROR
   }
@@ -77,8 +81,10 @@ public class CallViewModel extends AndroidViewModel {
     this.displayName = callCoordinator.getDisplayName();
     this.displayIcon = callCoordinator.getDisplayIcon();
     this.outgoingCallPlaced = callCoordinator.getOutgoingCallPlaced();
+    this.answeredElsewhere = callCoordinator.getAnsweredElsewhere();
     this.currentAudioEndpoint = callCoordinator.getCurrentAudioEndpoint();
     this.availableAudioEndpoints = callCoordinator.getAvailableAudioEndpoints();
+    this.isFrontCamera = callCoordinator.getIsFrontCamera();
 
     this.callState = new MediatorLiveData<>(CallState.INITIALIZING);
 
@@ -105,6 +111,10 @@ public class CallViewModel extends AndroidViewModel {
     callState.addSource(
         callCoordinator.getConnectionState(),
         state -> {
+          if (callState.getValue() == CallState.ANSWERED_ELSEWHERE) {
+            return;
+          }
+
           CallState newState = translateConnectionState(state);
 
           if (callState.getValue() != newState) {
@@ -113,9 +123,7 @@ public class CallViewModel extends AndroidViewModel {
 
           if (state == PeerConnection.PeerConnectionState.FAILED
               || state == PeerConnection.PeerConnectionState.CLOSED) {
-            if (!hasCallEnded) {
-              hasCallEnded = true;
-            }
+            hasCallEnded.set(true);
           }
         });
 
@@ -126,6 +134,15 @@ public class CallViewModel extends AndroidViewModel {
             if (callState.getValue() == CallState.CONNECTING) {
               callState.setValue(CallState.RINGING);
             }
+          }
+        });
+
+    callState.addSource(
+        answeredElsewhere,
+        value -> {
+          if (Boolean.TRUE.equals(value)) {
+            hasCallEnded.set(true);
+            callState.setValue(CallState.ANSWERED_ELSEWHERE);
           }
         });
   }
@@ -194,25 +211,24 @@ public class CallViewModel extends AndroidViewModel {
     callCoordinator.startMediaCapture();
 
     // Create one-time observer
-    LiveData<VideoTrack> localTrack = callCoordinator.getLocalVideoTrack();
+    LiveData<Boolean> mediaReady = callCoordinator.getMediaCaptureReady();
 
     answerCallObserver =
-        new Observer<VideoTrack>() {
+        new Observer<Boolean>() {
           @Override
-          public void onChanged(VideoTrack videoTrack) {
-            if (videoTrack != null) {
-              // Media is ready, remove observer
-              localTrack.removeObserver(this);
+          public void onChanged(Boolean ready) {
+            if (Boolean.TRUE.equals(ready)) {
+              mediaReady.removeObserver(this);
               answerCallObserver = null;
 
-              Log.d(TAG, "Local video ready, answering call (WebRTC)");
+              Log.d(TAG, "Media capture ready, answering call (WebRTC)");
 
               callCoordinator.answerWebRTC();
             }
           }
         };
 
-    localTrack.observeForever(answerCallObserver);
+    mediaReady.observeForever(answerCallObserver);
   }
 
   /** Start outgoing call with media capture Called by Activity for outgoing calls */
@@ -227,41 +243,38 @@ public class CallViewModel extends AndroidViewModel {
     callCoordinator.startMediaCapture();
 
     // Create one-time observer
-    LiveData<VideoTrack> localTrack = callCoordinator.getLocalVideoTrack();
-    VideoTrack currentValue = localTrack.getValue();
+    LiveData<Boolean> mediaReady = callCoordinator.getMediaCaptureReady();
 
-    if (currentValue != null) {
+    if (Boolean.TRUE.equals(mediaReady.getValue())) {
       Log.d(TAG, "Media already ready, starting call immediately");
       callCoordinator.startOutgoingCall();
     } else {
       startOutgoingCallObserver =
-          new Observer<VideoTrack>() {
+          new Observer<Boolean>() {
             @Override
-            public void onChanged(VideoTrack videoTrack) {
-              if (videoTrack != null) {
-                // Media is ready, remove observer
-                localTrack.removeObserver(this);
+            public void onChanged(Boolean ready) {
+              if (Boolean.TRUE.equals(ready)) {
+                mediaReady.removeObserver(this);
                 startOutgoingCallObserver = null;
 
-                Log.d(TAG, "Local video ready, starting outgoing call");
+                Log.d(TAG, "Media capture ready, starting outgoing call");
 
                 callCoordinator.startOutgoingCall();
               }
             }
           };
 
-      localTrack.observeForever(startOutgoingCallObserver);
+      mediaReady.observeForever(startOutgoingCallObserver);
     }
   }
 
   public void declineCall() {
     Log.d(TAG, "declineCall");
 
-    if (hasCallEnded) {
+    if (!hasCallEnded.compareAndSet(false, true)) {
       Log.w(TAG, "Call already ended");
       return;
     }
-    hasCallEnded = true;
 
     callCoordinator.declineCall();
   }
@@ -269,11 +282,10 @@ public class CallViewModel extends AndroidViewModel {
   public void hangUp() {
     Log.d(TAG, "hangUp");
 
-    if (hasCallEnded) {
+    if (!hasCallEnded.compareAndSet(false, true)) {
       Log.w(TAG, "Call already ended");
       return;
     }
-    hasCallEnded = true;
 
     callCoordinator.hangUp();
   }
@@ -354,8 +366,7 @@ public class CallViewModel extends AndroidViewModel {
   public void onCallDisconnected(DisconnectCause disconnectCause) {
     Log.d(TAG, "onCallDisconnected callback from CallControlScope, cause: " + disconnectCause);
 
-    if (!hasCallEnded) {
-      hasCallEnded = true;
+    if (hasCallEnded.compareAndSet(false, true)) {
       callState.postValue(CallState.ENDED);
     }
   }
@@ -414,6 +425,10 @@ public class CallViewModel extends AndroidViewModel {
     return availableAudioEndpoints;
   }
 
+  public LiveData<Boolean> getIsFrontCamera() {
+    return isFrontCamera;
+  }
+
   // Notification Action Handlers
 
   public void handleNotificationAnswer() {
@@ -442,12 +457,12 @@ public class CallViewModel extends AndroidViewModel {
     Log.d(TAG, "CallViewModel cleared");
 
     if (answerCallObserver != null) {
-      callCoordinator.getLocalVideoTrack().removeObserver(answerCallObserver);
+      callCoordinator.getMediaCaptureReady().removeObserver(answerCallObserver);
       answerCallObserver = null;
     }
 
     if (startOutgoingCallObserver != null) {
-      callCoordinator.getLocalVideoTrack().removeObserver(startOutgoingCallObserver);
+      callCoordinator.getMediaCaptureReady().removeObserver(startOutgoingCallObserver);
       startOutgoingCallObserver = null;
     }
 

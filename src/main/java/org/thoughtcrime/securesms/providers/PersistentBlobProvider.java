@@ -24,7 +24,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class PersistentBlobProvider {
 
-  private static final String TAG = PersistentBlobProvider.class.getSimpleName();
+  private static final String TAG = "PersistentBlobProvider";
 
   private static final String URI_STRING = "content://org.thoughtcrime.securesms/capture-new";
   public static final Uri CONTENT_URI = Uri.parse(URI_STRING);
@@ -208,7 +208,6 @@ public class PersistentBlobProvider {
         return getFile(context, ContentUris.parseId(uri)).delete();
     }
 
-    //noinspection SimplifiableIfStatement
     if (isExternalBlobUri(context, uri)) {
       return new File(uri.getPath()).delete();
     }
@@ -287,6 +286,20 @@ public class PersistentBlobProvider {
 
   private static @NonNull File getExternalDir(Context context) throws IOException {
     File externalDir = context.getExternalCacheDir();
+
+    if (externalDir != null) {
+      try {
+        FileProviderUtil.getUriFor(context, new File(externalDir, "test"));
+      } catch (IllegalArgumentException e) {
+        Log.w(
+            TAG,
+            "External cache dir not resolvable by FileProvider, "
+                + "falling back to internal cache",
+            e);
+        externalDir = null;
+      }
+    }
+
     if (externalDir == null) {
       externalDir = context.getCacheDir();
     }

@@ -19,7 +19,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class BackupReceiverFragment extends Fragment implements DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = BackupProviderFragment.class.getSimpleName();
+  private static final String TAG = "BackupProviderFragment";
 
   private DcContext dcContext;
   private TextView statusLine;

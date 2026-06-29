@@ -26,7 +26,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class VideoRecoder {
 
-  private static final String TAG = VideoRecoder.class.getSimpleName();
+  private static final String TAG = "VideoRecoder";
 
   private static final String MIME_TYPE = "video/avc";
   private final boolean cancelCurrentVideoConversion = false;

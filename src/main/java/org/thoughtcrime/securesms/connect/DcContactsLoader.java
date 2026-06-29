@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.util.AsyncLoader;
-import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 
 public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
@@ -47,18 +46,15 @@ public class DcContactsLoader extends AsyncLoader<DcContactsLoader.Ret> {
     if (query == null && addScanQRLink) {
       additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_QR_INVITE);
     }
-    if (addCreateContactLink && !dcContext.isChatmail()) {
+    if (addCreateContactLink && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0) {
       additional_items =
           Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT);
     }
     if (query == null && addCreateGroupLinks) {
       additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_GROUP);
+      additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST);
 
-      final boolean broadcastsEnabled = Prefs.isNewBroadcastAvailable(getContext());
-      if (broadcastsEnabled)
-        additional_items = Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_BROADCAST);
-
-      if (!dcContext.isChatmail()) {
+      if (dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0) {
         additional_items =
             Util.appendInt(additional_items, DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP);
       }

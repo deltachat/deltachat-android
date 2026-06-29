@@ -14,7 +14,7 @@ import org.thoughtcrime.securesms.service.FetchForegroundService;
 import org.thoughtcrime.securesms.util.Util;
 
 public class DcEventCenter {
-  private static final String TAG = DcEventCenter.class.getSimpleName();
+  private static final String TAG = "DcEventCenter";
   private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> currentAccountObservers =
       new Hashtable<>();
   private @NonNull final Hashtable<Integer, ArrayList<DcEventDelegate>> multiAccountObservers =

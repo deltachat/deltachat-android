@@ -46,10 +46,10 @@
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <!-- normal/instant permissions - adding them here is enough -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
@@ -71,6 +71,8 @@
         android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_PHONE_CALL" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
     <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
 
     <!-- force compiling libs on older sdk than supported; runtime checks are required -->
@@ -81,7 +83,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:theme="@style/TextSecure.LightTheme"
         android:largeHeap="true"
@@ -465,16 +466,17 @@
         </activity>
 
         <service
-            android:name=".geolocation.LocationBackgroundService"
-            android:foregroundServiceType="location" />
-
-        <service
             android:name=".service.GenericForegroundService"
             android:foregroundServiceType="dataSync" />
 
         <service
             android:name=".service.FetchForegroundService"
             android:foregroundServiceType="dataSync" />
+
+        <service
+            android:name=".geolocation.LocationStreamingService"
+            android:foregroundServiceType="location"
+            android:exported="false" />
 
         <service
             android:name=".service.AudioPlaybackService"
@@ -489,7 +491,12 @@
             android:name=".calls.CallService"
             android:enabled="true"
             android:exported="false"
-            android:foregroundServiceType="camera|microphone" />
+            android:foregroundServiceType="camera|microphone|phoneCall" />
+
+        <receiver
+            android:name=".calls.CallActionReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
         <receiver
             android:name=".notifications.MarkReadReceiver"

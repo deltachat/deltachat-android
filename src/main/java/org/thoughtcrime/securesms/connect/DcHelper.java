@@ -23,6 +23,10 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
 import com.b44t.messenger.DcMsg;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import org.thoughtcrime.securesms.ApplicationContext;
@@ -31,6 +35,7 @@ import org.thoughtcrime.securesms.LocalHelpActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
 import org.thoughtcrime.securesms.database.model.ThreadRecord;
+import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.qr.QrActivity;
@@ -42,22 +47,20 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class DcHelper {
 
-  private static final String TAG = DcHelper.class.getSimpleName();
+  private static final String TAG = "DcHelper";
 
   public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
   public static final String CONFIG_DISPLAY_NAME = "displayname";
   public static final String CONFIG_SELF_STATUS = "selfstatus";
   public static final String CONFIG_SELF_AVATAR = "selfavatar";
-  public static final String CONFIG_MVBOX_MOVE = "mvbox_move";
-  public static final String CONFIG_ONLY_FETCH_MVBOX = "only_fetch_mvbox";
   public static final String CONFIG_BCC_SELF = "bcc_self";
-  public static final String CONFIG_SHOW_EMAILS = "show_emails";
   public static final String CONFIG_MEDIA_QUALITY = "media_quality";
   public static final String CONFIG_PROXY_ENABLED = "proxy_enabled";
   public static final String CONFIG_PROXY_URL = "proxy_url";
   public static final String CONFIG_PRIVATE_TAG = "private_tag";
   public static final String CONFIG_STATS_SENDING = "stats_sending";
   public static final String CONFIG_STATS_ID = "stats_id";
+  public static final String CONFIG_FORCE_ENCRYPTION = "force_encryption";
 
   public static DcContext getContext(@NonNull Context context) {
     return ApplicationContext.getInstance(context).getDcContext();
@@ -141,8 +144,6 @@ public class DcHelper {
     dcContext.setStockTranslation(91, context.getString(R.string.devicemsg_self_deleted));
     dcContext.setStockTranslation(97, context.getString(R.string.forwarded));
     dcContext.setStockTranslation(98, context.getString(R.string.devicemsg_storage_exceeding));
-    dcContext.setStockTranslation(99, context.getString(R.string.n_bytes_message));
-    dcContext.setStockTranslation(100, context.getString(R.string.download_max_available_until));
     dcContext.setStockTranslation(103, context.getString(R.string.incoming_messages));
     dcContext.setStockTranslation(104, context.getString(R.string.outgoing_messages));
     dcContext.setStockTranslation(107, context.getString(R.string.connectivity_connected));
@@ -223,6 +224,8 @@ public class DcHelper {
     dcContext.setStockTranslation(201, context.getString(R.string.qrshow_join_channel_hint));
     dcContext.setStockTranslation(202, context.getString(R.string.you_joined_the_channel));
     dcContext.setStockTranslation(203, context.getString(R.string.secure_join_channel_started));
+    dcContext.setStockTranslation(204, context.getString(R.string.channel_name_changed));
+    dcContext.setStockTranslation(205, context.getString(R.string.channel_image_changed));
     dcContext.setStockTranslation(210, context.getString(R.string.stats_msg_body));
     dcContext.setStockTranslation(220, context.getString(R.string.proxy_enabled));
     dcContext.setStockTranslation(221, context.getString(R.string.proxy_enabled_hint));
@@ -420,6 +423,15 @@ public class DcHelper {
     return getBlobdirFile(dcContext, filename, ext);
   }
 
+  public static String copyToBlobdir(Context context, Uri uri, String filename, String ext)
+      throws IOException {
+    String path = getBlobdirFile(getContext(context), filename, ext);
+    InputStream inputStream = PartAuthority.getAttachmentStream(context, uri);
+    OutputStream outputStream = new FileOutputStream(path);
+    Util.copy(inputStream, outputStream);
+    return path;
+  }
+
   @NonNull
   public static ThreadRecord getThreadRecord(
       Context context, DcLot summary, DcChat chat) { // adapted from ThreadDatabase.getCurrent()
@@ -493,16 +505,20 @@ public class DcHelper {
         .show();
   }
 
-  public static void showInvalidUnencryptedDialog(Context context) {
-    new AlertDialog.Builder(context)
+  public static AlertDialog.Builder prepareInvalidUnencryptedDialog(
+      Context context, AlertDialog.Builder builder) {
+    return builder
         .setMessage(context.getString(R.string.invalid_unencrypted_explanation))
         .setNeutralButton(R.string.learn_more, (d, w) -> openHelp(context, "#howtoe2ee"))
         .setNegativeButton(
             R.string.qrscan_title,
             (d, w) -> context.startActivity(new Intent(context, QrActivity.class)))
         .setPositiveButton(R.string.ok, null)
-        .setCancelable(true)
-        .show();
+        .setCancelable(true);
+  }
+
+  public static void showInvalidUnencryptedDialog(Context context) {
+    prepareInvalidUnencryptedDialog(context, new AlertDialog.Builder(context)).show();
   }
 
   public static void openHelp(Context context, String section) {

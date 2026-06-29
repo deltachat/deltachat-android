@@ -20,7 +20,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public abstract class BaseActionBarActivity extends AppCompatActivity {
 
-  private static final String TAG = BaseActionBarActivity.class.getSimpleName();
+  private static final String TAG = "BaseActionBarActivity";
   protected DynamicTheme dynamicTheme = new DynamicTheme();
 
   protected void onPreCreate() {

@@ -30,7 +30,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class WebxdcStoreActivity extends PassphraseRequiredActionBarActivity {
-  private static final String TAG = WebxdcStoreActivity.class.getSimpleName();
+  private static final String TAG = "WebxdcStoreActivity";
 
   private DcContext dcContext;
   private Rpc rpc;

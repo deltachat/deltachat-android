@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.util.FileProviderUtil;
 
 public class LogViewActivity extends BaseActionBarActivity {
 
-  private static final String TAG = LogViewActivity.class.getSimpleName();
+  private static final String TAG = "LogViewActivity";
 
   LogViewFragment logViewFragment;
 

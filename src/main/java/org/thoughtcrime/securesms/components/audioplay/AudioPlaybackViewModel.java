@@ -6,34 +6,38 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.media3.common.MediaItem;
+import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
 import androidx.media3.session.MediaController;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class AudioPlaybackViewModel extends ViewModel {
-  private static final String TAG = AudioPlaybackViewModel.class.getSimpleName();
-
-  private static final int NON_MESSAGE_AUDIO_MSG_ID =
-      0; // Audios not attached to a message doesn't have message id.
+  private static final String TAG = "AudioPlaybackViewModel";
 
   private final MutableLiveData<AudioPlaybackState> playbackState;
 
   private final MutableLiveData<Map<Integer, Long>> durations =
       new MutableLiveData<>(new HashMap<>());
+  private final Map<Integer, Uri> durationUris = new HashMap<>();
   private final Set<Integer> extractionInProgress = new HashSet<>();
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
 
   private @Nullable MediaController mediaController;
+  private @Nullable ChatAudioQueueProvider queueProvider;
+  private @Nullable Player.Listener playerListener;
   private final Handler handler;
   private boolean isUserSeeking = false;
 
@@ -47,6 +51,11 @@ public class AudioPlaybackViewModel extends ViewModel {
   }
 
   public void setMediaController(@Nullable MediaController controller) {
+    if (this.mediaController != null && playerListener != null) {
+      this.mediaController.removeListener(playerListener);
+    }
+    playerListener = null;
+
     this.mediaController = controller;
     if (mediaController != null && mediaController.isPlaying()) {
       startUpdateProgress();
@@ -59,30 +68,41 @@ public class AudioPlaybackViewModel extends ViewModel {
   public void loadAudioAndPlay(int msgId, Uri audioUri) {
     if (mediaController == null) return;
 
-    // Set media item if we have a different audio.
-    if (isDifferentAudio(msgId, audioUri)) {
-      updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
+    String mediaId = String.valueOf(msgId);
 
-      MediaItem mediaItem =
-          new MediaItem.Builder().setMediaId(String.valueOf(msgId)).setUri(audioUri).build();
-      mediaController.setMediaItem(mediaItem);
-      mediaController.prepare();
+    MediaItem current = mediaController.getCurrentMediaItem();
+    if (current != null && mediaId.equals(current.mediaId)) {
+      mediaController.play();
+      return;
     }
 
-    play(msgId, audioUri);
+    updateState(msgId, audioUri, AudioPlaybackState.PlaybackStatus.LOADING, 0, 0);
+
+    List<MediaItem> items = null;
+    int startIndex = -1;
+
+    if (queueProvider != null) {
+      items = queueProvider.buildAudioQueue();
+      startIndex = indexOfMediaId(items, mediaId);
+    }
+
+    if (startIndex < 0) {
+      items =
+          Collections.singletonList(
+              new MediaItem.Builder().setMediaId(mediaId).setUri(audioUri).build());
+      startIndex = 0;
+    }
+
+    mediaController.setMediaItems(items, startIndex, 0);
+    mediaController.prepare();
+    mediaController.play();
   }
 
-  private boolean isSameAudio(int msgId, Uri audioUri) {
-    return !isDifferentAudio(msgId, audioUri);
-  }
-
-  private boolean isDifferentAudio(int msgId, Uri audioUri) {
-    AudioPlaybackState currentState = playbackState.getValue();
-
-    return currentState != null
-        && (msgId != currentState.getMsgId()
-            || currentState.getAudioUri() == null
-            || currentState.getAudioUri() != null && !currentState.getAudioUri().equals(audioUri));
+  private static int indexOfMediaId(List<MediaItem> items, String mediaId) {
+    for (int i = 0; i < items.size(); i++) {
+      if (mediaId.equals(items.get(i).mediaId)) return i;
+    }
+    return -1;
   }
 
   public LiveData<Map<Integer, Long>> getDurations() {
@@ -93,7 +113,17 @@ public class AudioPlaybackViewModel extends ViewModel {
     // Check cache
     Map<Integer, Long> currentDurations = durations.getValue();
     if (currentDurations != null && currentDurations.containsKey(msgId)) {
-      return;
+      Uri cachedUri = durationUris.get(msgId);
+      if (audioUri.equals(cachedUri)) {
+        return;
+      }
+      Map<Integer, Long> updated = new HashMap<>(currentDurations);
+      updated.remove(msgId);
+      durations.setValue(updated);
+      durationUris.remove(msgId);
+      synchronized (extractionInProgress) {
+        extractionInProgress.remove(msgId);
+      }
     }
 
     // Check extracting
@@ -114,6 +144,7 @@ public class AudioPlaybackViewModel extends ViewModel {
                 Map<Integer, Long> updatedDurations = new HashMap<>(durations.getValue());
                 updatedDurations.put(msgId, duration);
                 durations.setValue(updatedDurations);
+                durationUris.put(msgId, audioUri);
               });
 
           synchronized (extractionInProgress) {
@@ -138,46 +169,68 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
   }
 
-  public void pause(int msgId, Uri audioUri) {
-    if (mediaController != null && isSameAudio(msgId, audioUri)) {
+  public void pause(int msgId) {
+    if (isCurrentItem(msgId)) {
       mediaController.pause();
     }
   }
 
-  public void play(int msgId, Uri audioUri) {
-    if (mediaController != null && isSameAudio(msgId, audioUri)) {
+  public void play(int msgId) {
+    if (isCurrentItem(msgId)) {
       mediaController.play();
     }
   }
 
-  public void seekTo(long position, int msgId, Uri audioUri) {
-    if (mediaController != null && isSameAudio(msgId, audioUri)) {
+  public void seekTo(long position, int msgId) {
+    if (isCurrentItem(msgId)) {
       mediaController.seekTo(position);
     }
   }
 
-  public void stop(int msgId, Uri audioUri) {
-    if (mediaController != null && isSameAudio(msgId, audioUri)) {
+  public void stop(int msgId) {
+    if (isCurrentItem(msgId)) {
       mediaController.stop();
+      mediaController.clearMediaItems();
       stopUpdateProgress();
       playbackState.setValue(AudioPlaybackState.idle());
     }
   }
 
-  public void stopNonMessageAudioPlayback() {
-    stopByIds(NON_MESSAGE_AUDIO_MSG_ID);
+  private boolean isCurrentItem(int msgId) {
+    if (mediaController == null) return false;
+    MediaItem current = mediaController.getCurrentMediaItem();
+    return current != null && String.valueOf(msgId).equals(current.mediaId);
   }
 
   // A special method for deleting message, where we only use message Ids
   public void stopByIds(int... msgIds) {
-    AudioPlaybackState currentState = playbackState.getValue();
+    if (mediaController == null) return;
 
-    if (mediaController != null && currentState != null) {
+    AudioPlaybackState currentState = playbackState.getValue();
+    boolean stoppedCurrent = false;
+
+    if (currentState != null) {
       for (int msgId : msgIds) {
         if (msgId == currentState.getMsgId()) {
           mediaController.stop();
+          mediaController.clearMediaItems();
           stopUpdateProgress();
           playbackState.setValue(AudioPlaybackState.idle());
+          stoppedCurrent = true;
+          break;
+        }
+      }
+    }
+
+    if (!stoppedCurrent) {
+      Set<String> deletedMediaIds = new HashSet<>();
+      for (int msgId : msgIds) {
+        deletedMediaIds.add(String.valueOf(msgId));
+      }
+      for (int i = mediaController.getMediaItemCount() - 1; i >= 0; i--) {
+        MediaItem item = mediaController.getMediaItemAt(i);
+        if (deletedMediaIds.contains(item.mediaId)) {
+          mediaController.removeMediaItem(i);
         }
       }
     }
@@ -191,10 +244,10 @@ public class AudioPlaybackViewModel extends ViewModel {
   private void setupPlayerListener() {
     if (mediaController == null) return;
 
-    mediaController.addListener(
+    playerListener =
         new Player.Listener() {
           @Override
-          public void onEvents(Player player, Player.Events events) {
+          public void onEvents(@NonNull Player player, @NonNull Player.Events events) {
             if (events.containsAny(Player.EVENT_IS_PLAYING_CHANGED)) {
               if (player.isPlaying()) {
                 startUpdateProgress();
@@ -203,20 +256,43 @@ public class AudioPlaybackViewModel extends ViewModel {
               }
               updateCurrentState(false);
             }
+            if (events.containsAny(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
+              updateCurrentState(true);
+            }
             if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
               if (player.getPlaybackState() == Player.STATE_READY) {
                 updateCurrentState(false);
-              } else if (player.getPlaybackState() == Player.STATE_ENDED) {
-                // This is to prevent automatically playing after the audio
-                // has been play to the end once, then user dragged the seek bar again
-                mediaController.setPlayWhenReady(false);
+              } else if (player.getPlaybackState() == Player.STATE_ENDED
+                  && !player.hasNextMediaItem()) {
+                mediaController.stop();
+                mediaController.clearMediaItems();
+                stopUpdateProgress();
+                playbackState.setValue(AudioPlaybackState.idle());
               }
             }
-            if (events.containsAny(Player.EVENT_PLAYER_ERROR)) {
+          }
+
+          @Override
+          public void onPlayerError(@NonNull PlaybackException error) {
+            Log.w(
+                TAG,
+                "Playback error on msgId="
+                    + (mediaController.getCurrentMediaItem() != null
+                        ? mediaController.getCurrentMediaItem().mediaId
+                        : "null"),
+                error);
+
+            if (mediaController.hasNextMediaItem()) {
+              mediaController.seekToNextMediaItem();
+              mediaController.prepare();
+              mediaController.play();
+            } else {
               updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.ERROR, 0, 0);
+              mediaController.clearMediaItems();
             }
           }
-        });
+        };
+    mediaController.addListener(playerListener);
   }
 
   private void updateCurrentState(boolean queryPlaying) {
@@ -285,6 +361,11 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
   }
 
+  // Playing Queue
+  public void setQueueProvider(@Nullable ChatAudioQueueProvider provider) {
+    this.queueProvider = provider;
+  }
+
   // Progress tracking
   private final Runnable progressRunnable =
       new Runnable() {
@@ -313,6 +394,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   protected void onCleared() {
     stopUpdateProgress();
     extractionExecutor.shutdown();
+    durationUris.clear();
     super.onCleared();
   }
 }

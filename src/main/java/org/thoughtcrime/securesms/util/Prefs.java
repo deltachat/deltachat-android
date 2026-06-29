@@ -22,7 +22,7 @@ import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPrefere
 
 public class Prefs {
 
-  private static final String TAG = Prefs.class.getSimpleName();
+  private static final String TAG = "Prefs";
 
   public static final String RELIABLE_SERVICE_PREF = "pref_reliable_service";
   public static final String DISABLE_PASSPHRASE_PREF = "pref_disable_passphrase";
@@ -196,14 +196,6 @@ public class Prefs {
     } catch (Exception e) {
       return false;
     }
-  }
-
-  public static boolean isNewBroadcastAvailable(Context context) {
-    return getBooleanPreference(context, "pref_new_broadcast_list", false);
-  }
-
-  public static boolean isCallsEnabled(Context context) {
-    return getBooleanPreference(context, "pref_calls_enabled", false);
   }
 
   // ringtone

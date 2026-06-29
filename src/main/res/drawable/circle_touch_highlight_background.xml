@@ -7,4 +7,12 @@
             <solid android:color="@color/black" />
         </shape>
     </item>
+    <item>
+        <selector>
+            <item
+                android:state_focused="true"
+                android:drawable="@color/primary_alpha_focus" />
+            <item android:drawable="@android:color/transparent" />
+        </selector>
+    </item>
 </ripple>

@@ -23,7 +23,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder {
-  private static final String TAG = DozeReminder.class.getSimpleName();
+  private static final String TAG = "DozeReminder";
 
   public static boolean isEligible(Context context) {
     if (context == null) {

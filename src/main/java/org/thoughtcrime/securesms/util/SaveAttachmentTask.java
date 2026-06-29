@@ -34,7 +34,7 @@ import org.thoughtcrime.securesms.util.task.ProgressDialogAsyncTask;
 
 public class SaveAttachmentTask
     extends ProgressDialogAsyncTask<SaveAttachmentTask.Attachment, Void, Pair<Integer, Uri>> {
-  private static final String TAG = SaveAttachmentTask.class.getSimpleName();
+  private static final String TAG = "SaveAttachmentTask";
 
   static final int SUCCESS = 0;
   private static final int FAILURE = 1;

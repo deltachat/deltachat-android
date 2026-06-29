@@ -92,6 +92,10 @@ public class AttachmentTypeSelector extends PopupWindow {
       ViewUtil.findById(layout, R.id.location_linear_layout).setVisibility(View.GONE);
     }
 
+    if (DcHelper.getContext(context).getChat(chatId).isOutBroadcast()) {
+      ViewUtil.findById(layout, R.id.webxdc_linear_layout).setVisibility(View.GONE);
+    }
+
     setLocationButtonImage(context);
 
     setContentView(layout);

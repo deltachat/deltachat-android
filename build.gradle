@@ -28,8 +28,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 744
-        versionName "2.46.0"
+        versionCode 751
+        versionName "2.53.0"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
@@ -248,6 +248,7 @@ dependencies {
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
     }
+    gplayImplementation 'com.google.android.gms:play-services-location:21.3.0'
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.27.3'

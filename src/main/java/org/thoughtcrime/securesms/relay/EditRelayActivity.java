@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.relay;
 
-import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PROXY_ENABLED;
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
 import android.content.DialogInterface;
@@ -44,7 +43,6 @@ import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.permissions.Permissions;
-import org.thoughtcrime.securesms.proxy.ProxySettingsActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -59,7 +57,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     PORT,
   }
 
-  private static final String TAG = EditRelayActivity.class.getSimpleName();
+  private static final String TAG = "EditRelayActivity";
   public static final String EXTRA_ADDR = "extra_addr";
 
   private TextInputEditText emailInput;
@@ -75,11 +73,13 @@ public class EditRelayActivity extends BaseActionBarActivity
   private ProgressDialog progressDialog;
   private boolean cancelled = false;
 
+  private View imapFolderLayout;
+  private boolean showImapFolder = false;
+
   Spinner imapSecurity;
   Spinner smtpSecurity;
   Spinner certCheck;
-
-  private SwitchCompat proxySwitch;
+  private SwitchCompat enforceE2eeSwitch;
 
   Rpc rpc;
   int accId;
@@ -105,9 +105,11 @@ public class EditRelayActivity extends BaseActionBarActivity
 
     advancedGroup = findViewById(R.id.advanced_group);
     advancedIcon = findViewById(R.id.advanced_icon);
+    imapFolderLayout = findViewById(R.id.imap_folder);
     TextView advancedTextView = findViewById(R.id.advanced_text);
     TextInputEditText imapServerInput = findViewById(R.id.imap_server_text);
     TextInputEditText imapPortInput = findViewById(R.id.imap_port_text);
+    TextInputEditText imapFolderInput = findViewById(R.id.imap_folder_text);
     TextInputEditText smtpServerInput = findViewById(R.id.smtp_server_text);
     TextInputEditText smtpPortInput = findViewById(R.id.smtp_port_text);
     TextView viewLogText = findViewById(R.id.view_log_button);
@@ -115,13 +117,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     imapSecurity = findViewById(R.id.imap_security);
     smtpSecurity = findViewById(R.id.smtp_security);
     certCheck = findViewById(R.id.cert_check);
-
-    proxySwitch = findViewById(R.id.proxy_settings);
-    proxySwitch.setOnClickListener(
-        l -> {
-          proxySwitch.setChecked(!proxySwitch.isChecked()); // revert toggle
-          startActivity(new Intent(this, ProxySettingsActivity.class));
-        });
+    enforceE2eeSwitch = findViewById(R.id.enforce_e2ee_switch);
 
     String addr = getIntent().getStringExtra(EXTRA_ADDR);
     EnteredLoginParam config = null;
@@ -185,9 +181,9 @@ public class EditRelayActivity extends BaseActionBarActivity
     boolean expandAdvanced = false;
     int intVal;
 
-    intVal = DcHelper.getInt(this, CONFIG_PROXY_ENABLED);
-    proxySwitch.setChecked(intVal == 1);
-    expandAdvanced = expandAdvanced || intVal == 1;
+    intVal = getContext(this).getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION);
+    enforceE2eeSwitch.setChecked(intVal == 1);
+    expandAdvanced = expandAdvanced || intVal == 0;
 
     if (config != null) { // configured
       emailInput.setText(config.addr);
@@ -205,6 +201,12 @@ public class EditRelayActivity extends BaseActionBarActivity
 
       if (config.imapPort != null) imapPortInput.setText(config.imapPort.toString());
       expandAdvanced = expandAdvanced || config.imapPort != null;
+
+      showImapFolder = !TextUtils.isEmpty(config.imapFolder);
+      if (showImapFolder) {
+        imapFolderInput.setText(config.imapFolder);
+        expandAdvanced = true;
+      }
 
       intVal = socketSecurityToInt(config.imapSecurity);
       imapSecurity.setSelection(ViewUtil.checkBounds(intVal, imapSecurity));
@@ -246,7 +248,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   @Override
   public void onResume() {
     super.onResume();
-    proxySwitch.setChecked(DcHelper.getInt(this, CONFIG_PROXY_ENABLED) == 1);
   }
 
   private void showLog() {
@@ -403,9 +404,11 @@ public class EditRelayActivity extends BaseActionBarActivity
     boolean advancedViewVisible = advancedGroup.getVisibility() == View.VISIBLE;
     if (advancedViewVisible) {
       advancedGroup.setVisibility(View.GONE);
+      imapFolderLayout.setVisibility(View.GONE);
       advancedIcon.setRotation(45);
     } else {
       advancedGroup.setVisibility(View.VISIBLE);
+      imapFolderLayout.setVisibility(showImapFolder ? View.VISIBLE : View.GONE);
       advancedIcon.setRotation(0);
     }
   }
@@ -508,6 +511,7 @@ public class EditRelayActivity extends BaseActionBarActivity
     param.password = getParam(R.id.password_text, false);
     param.imapServer = getParam(R.id.imap_server_text, true);
     param.imapPort = Util.objectToInt(getParam(R.id.imap_port_text, true));
+    param.imapFolder = getParam(R.id.imap_folder_text, true);
     param.imapSecurity = socketSecurityFromInt(imapSecurity.getSelectedItemPosition());
     param.imapUser = getParam(R.id.imap_login_text, false);
     param.smtpServer = getParam(R.id.smtp_server_text, true);
@@ -517,9 +521,12 @@ public class EditRelayActivity extends BaseActionBarActivity
     param.smtpPassword = getParam(R.id.smtp_password_text, false);
     param.certificateChecks = certificateChecksFromInt(certCheck.getSelectedItemPosition());
 
+    final String forceEncryption = enforceE2eeSwitch.isChecked() ? "1" : "0";
+
     new Thread(
             () -> {
               try {
+                rpc.setConfig(accId, DcHelper.CONFIG_FORCE_ENCRYPTION, forceEncryption);
                 rpc.addOrUpdateTransport(accId, param);
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressDialog.dismiss();

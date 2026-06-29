@@ -67,7 +67,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
  */
 public class ContactSelectionListFragment extends Fragment
     implements LoaderManager.LoaderCallbacks<DcContactsLoader.Ret>, DcEventCenter.DcEventDelegate {
-  private static final String TAG = ContactSelectionListFragment.class.getSimpleName();
+  private static final String TAG = "ContactSelectionListFragment";
 
   public static final String MULTI_SELECT = "multi_select";
   public static final String SELECT_UNENCRYPTED_EXTRA = "select_unencrypted_extra";

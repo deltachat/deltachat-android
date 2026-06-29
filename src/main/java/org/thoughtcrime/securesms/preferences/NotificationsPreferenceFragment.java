@@ -34,11 +34,12 @@ import org.thoughtcrime.securesms.util.Prefs;
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment
     implements Preference.OnPreferenceChangeListener {
 
-  private static final String TAG = NotificationsPreferenceFragment.class.getSimpleName();
+  private static final String TAG = "NotificationsPreferenceFragment";
 
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
   private CheckBoxPreference mentionNotifEnabled;
+  private CheckBoxPreference notifyCalls;
   private CheckBoxPreference reliableService;
   private ActivityResultLauncher<Intent> ringtonePickerLauncher;
 
@@ -137,6 +138,16 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
             return true;
           });
     }
+
+    notifyCalls = this.findPreference("pref_notify_calls");
+    if (notifyCalls != null) {
+      notifyCalls.setOnPreferenceChangeListener(
+          (preference, newValue) -> {
+            boolean enabled = (Boolean) newValue;
+            dcContext.setConfig("who_can_call_me", enabled ? "1" : "2");
+            return true;
+          });
+    }
   }
 
   @Override
@@ -156,6 +167,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     notificationsEnabled.setChecked(!dcContext.isMuted());
     notificationsEnabled.setSummary(getSummary(getContext(), false));
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
+    notifyCalls.setChecked(!"2".equals(dcContext.getConfig("who_can_call_me")));
 
     // set without altering "unset" state of the preference
     reliableService.setOnPreferenceChangeListener(null);

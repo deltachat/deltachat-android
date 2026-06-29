@@ -38,7 +38,6 @@ import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.connect.NetworkStateReceiver;
 import org.thoughtcrime.securesms.crypto.DatabaseSecret;
 import org.thoughtcrime.securesms.crypto.DatabaseSecretProvider;
-import org.thoughtcrime.securesms.geolocation.DcLocationManager;
 import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
@@ -51,7 +50,7 @@ import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.webxdc.WebxdcGarbageCollectionWorker;
 
 public class ApplicationContext extends MultiDexApplication {
-  private static final String TAG = ApplicationContext.class.getSimpleName();
+  private static final String TAG = "ApplicationContext";
   private static final Object initLock = new Object();
   private static volatile boolean isInitialized = false;
 
@@ -59,7 +58,6 @@ public class ApplicationContext extends MultiDexApplication {
   private Rpc rpc;
   private DcContext dcContext;
 
-  private DcLocationManager dcLocationManager;
   private DcEventCenter eventCenter;
   private NotificationCenter notificationCenter;
   private JobManager jobManager;
@@ -122,15 +120,6 @@ public class ApplicationContext extends MultiDexApplication {
     synchronized (initLock) {
       this.dcContext = dcContext;
     }
-  }
-
-  /**
-   * Get DcLocationManager instance, waiting for initialization if necessary. This method is
-   * thread-safe and will block until initialization is complete.
-   */
-  public DcLocationManager getLocationManager() {
-    ensureInitialized();
-    return dcLocationManager;
   }
 
   /**
@@ -202,7 +191,7 @@ public class ApplicationContext extends MultiDexApplication {
               Log.i(TAG, "DcAccounts created");
               rpc = new Rpc(new FFITransport(dcAccounts.getJsonrpcInstance()));
               Log.i(TAG, "Rpc created");
-              AccountManager.getInstance().migrateToDcAccounts(this);
+              AccountManager.getInstance().migrateToDcAccounts(this, dcAccounts);
 
               int[] allAccounts = dcAccounts.getAll();
               Log.i(TAG, "Number of profiles: " + allAccounts.length);
@@ -239,12 +228,6 @@ public class ApplicationContext extends MultiDexApplication {
                 // 2025-12-16: The setting was removed.
                 // Revert it to the default if it was changed in the past.
                 ac.setConfigInt("webxdc_realtime_enabled", 1);
-
-                // 2025-11-12: this is needed until core starts ignoring "delete_server_after" for
-                // chatmail
-                if (ac.isChatmail()) {
-                  ac.setConfig("delete_server_after", null); // reset
-                }
               }
               if (allAccounts.length == 0) {
                 try {
@@ -255,7 +238,6 @@ public class ApplicationContext extends MultiDexApplication {
               }
               dcContext = dcAccounts.getSelectedAccount();
               notificationCenter = new NotificationCenter(this);
-              dcLocationManager = new DcLocationManager(this, dcContext);
 
               isInitialized = true;
               initLock.notifyAll();
@@ -293,7 +275,10 @@ public class ApplicationContext extends MultiDexApplication {
               Log.i(
                   "DeltaChat",
                   "++++++++++++++++++ NetworkCallback.onAvailable() #" + debugOnAvailableCount++);
-              getDcAccounts().maybeNetwork();
+              // onBlockedStatusChanged is only available on API 29+
+              if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                getDcAccounts().maybeNetwork();
+              }
             }
 
             @Override
@@ -301,8 +286,13 @@ public class ApplicationContext extends MultiDexApplication {
                 @NonNull android.net.Network network, boolean blocked) {
               Log.i(
                   "DeltaChat",
-                  "++++++++++++++++++ NetworkCallback.onBlockedStatusChanged() #"
+                  "++++++++++++++++++ NetworkCallback.onBlockedStatusChanged("
+                      + blocked
+                      + ") #"
                       + debugOnBlockedStatusChangedCount++);
+              if (!blocked) {
+                getDcAccounts().maybeNetwork();
+              }
             }
 
             @Override

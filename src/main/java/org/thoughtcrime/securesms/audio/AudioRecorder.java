@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.util.Util;
 
 public class AudioRecorder {
 
-  private static final String TAG = AudioRecorder.class.getSimpleName();
+  private static final String TAG = "AudioRecorder";
 
   private static final ExecutorService executor = ThreadUtil.newDynamicSingleThreadedExecutor();
 
