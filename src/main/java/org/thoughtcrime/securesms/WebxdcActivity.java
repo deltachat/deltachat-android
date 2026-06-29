@@ -195,7 +195,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
           }
         });
 
-    chatId = b.getInt(EXTRA_CHAT_ID);
     int appMessageId = b.getInt(EXTRA_APP_MSG_ID);
     int accountId = b.getInt(EXTRA_ACCOUNT_ID);
     this.dcContext = DcHelper.getContext(getApplicationContext());
@@ -210,6 +209,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       finish();
       return;
     }
+    chatId = b.getInt(EXTRA_CHAT_ID, dcAppMsg.getChatId());
 
     DcEventCenter eventCenter =
         DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
