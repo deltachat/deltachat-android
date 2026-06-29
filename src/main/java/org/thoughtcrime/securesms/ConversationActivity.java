@@ -262,6 +262,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               public void handleOnBackPressed() {
                 if (container.isInputOpen()) {
                   container.hideCurrentInput(composeText);
+                } else if (searchMenu != null) {
+                  searchCollapse();
                 } else {
                   handleReturnToConversationList();
                 }
