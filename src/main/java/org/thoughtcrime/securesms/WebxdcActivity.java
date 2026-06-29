@@ -328,6 +328,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     menu.clear();
     this.getMenuInflater().inflate(R.menu.webxdc, menu);
     menu.findItem(R.id.source_code).setVisible(!sourceCodeUrl.isEmpty());
+    boolean isDraft = dcAppMsg.getState() == DcMsg.DC_STATE_OUT_DRAFT;
+    menu.findItem(R.id.menu_add_to_home_screen).setVisible(!isDraft);
+    menu.findItem(R.id.show_in_chat).setVisible(!isDraft);
     return true;
   }
 
