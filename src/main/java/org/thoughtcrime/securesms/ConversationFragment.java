@@ -102,6 +102,7 @@ public class ConversationFragment extends MessageSelectorFragment {
   private AddReactionView addReactionView;
   private TextView noMessageTextView;
   private Timer reloadTimer;
+  private ConversationScrollListener scrollListener;
 
   public boolean isPaused;
   private Debouncer markseenDebouncer;
@@ -326,7 +327,10 @@ public class ConversationFragment extends MessageSelectorFragment {
             .getIntExtra(ConversationActivity.STARTING_POSITION_EXTRA, -1);
     this.firstLoad = true;
 
-    OnScrollListener scrollListener = new ConversationScrollListener(getActivity());
+    if (scrollListener != null) {
+      list.removeOnScrollListener(scrollListener);
+    }
+    scrollListener = new ConversationScrollListener(getActivity());
     list.addOnScrollListener(scrollListener);
   }
 
