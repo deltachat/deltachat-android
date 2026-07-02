@@ -8,6 +8,7 @@
 * Fix: properly hide draft attachment during in-chat search
 * Fix: close mini-apps and chats if they are deleted
 * Fix: cancel in-chat search when back is pressed, instead of directly returning to chatlist
+* Fix: "go to bottom" floating button not appearing sometimes when user jumped to message
 
 ## v2.53.0
 2026-06
