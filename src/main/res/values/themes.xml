@@ -74,8 +74,6 @@
 
         <!-- light theme -->
         <item name="conversation_background">@color/gray10</item>
-        <item name="conversation_transport_sms_indicator">@drawable/ic_send_sms_insecure</item>
-        <item name="conversation_transport_push_indicator">@drawable/ic_send_push</item>
         <item name="conversation_transport_popup_background">@color/white</item>
         <item name="conversation_emoji_toggle">@drawable/ic_mood_grey600_24dp</item>
         <item name="conversation_keyboard_toggle">@drawable/ic_keyboard_grey600_24dp</item>
@@ -219,8 +217,6 @@
 
         <!-- dark theme -->
         <item name="conversation_background">@color/black</item>
-        <item name="conversation_transport_sms_indicator">@drawable/ic_send_sms_insecure_dark</item>
-        <item name="conversation_transport_push_indicator">@drawable/ic_send_push</item>
         <item name="conversation_transport_popup_background">@color/black</item>
         <item name="conversation_emoji_toggle">@drawable/ic_mood_white_24dp</item>
         <item name="conversation_keyboard_toggle">@drawable/ic_keyboard_white_24dp</item>
