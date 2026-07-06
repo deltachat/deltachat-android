@@ -15,6 +15,9 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Icon;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -69,7 +72,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "CallCoordinator";
 
   // Notification channels
-  private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls";
+  private static final String CHANNEL_ID_INCOMING_OLD = "voip_incoming_calls";
+  static final String CHANNEL_ID_INCOMING_V2 = "voip_incoming_calls_v2";
   private static final String CHANNEL_ID_ONGOING = "voip_ongoing_calls";
   private static final String CHANNEL_ID_MISSED = "voip_missed_calls";
   private static final int NOTIFICATION_ID_CALL = 1001;
@@ -170,11 +174,22 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   private void createNotificationChannels() {
+    notificationManager.deleteNotificationChannel(CHANNEL_ID_INCOMING_OLD);
+
+    Uri ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+    AudioAttributes ringtoneAttributes =
+        new AudioAttributes.Builder()
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+            .setLegacyStreamType(AudioManager.STREAM_RING)
+            .build();
+
     NotificationChannel incomingChannel =
         new NotificationChannel(
-            CHANNEL_ID_INCOMING, "Incoming Calls", NotificationManager.IMPORTANCE_HIGH);
+            CHANNEL_ID_INCOMING_V2, "Incoming Calls", NotificationManager.IMPORTANCE_HIGH);
     incomingChannel.setDescription("Notifications for incoming DeltaChat calls");
-    incomingChannel.setSound(null, null);
+    incomingChannel.setSound(ringtoneUri, ringtoneAttributes);
+    incomingChannel.enableVibration(true);
 
     NotificationChannel ongoingChannel =
         new NotificationChannel(
@@ -268,9 +283,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               // Initialize call
               callService.initializeCall();
 
-              if (isIncomingCall) {
-                callService.startIncomingRingtone();
-              } else {
+              if (!isIncomingCall) {
                 mainHandler.removeCallbacks(outgoingRingtoneRunnable);
                 mainHandler.postDelayed(outgoingRingtoneRunnable, 1500);
               }
@@ -603,12 +616,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     appContext.startActivity(intent);
 
-    // CallStyle is always on top, so it will overlap
-    // Downside is once notification is dismissed and user backs out,
-    // the only way to get back to the call is to click on the message again.
-    notificationManager.cancel(NOTIFICATION_ID_CALL);
-
-    Log.d(TAG, "Answering call: " + callId);
+    Log.d(TAG, "Showing incoming call screen: " + callId);
   }
 
   public synchronized void declineCall() {
@@ -1476,7 +1484,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
           new Person.Builder().setName(callerName).setIcon(callerIcon).setImportant(true).build();
 
       builder =
-          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING)
+          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING_V2)
               .setSmallIcon(R.drawable.icon_notification)
               .setContentTitle("Incoming call")
               .setContentText("Incoming call from " + callerName)
@@ -1491,7 +1499,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     } else {
       // Android 8-12: Notification with actions
       builder =
-          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING)
+          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING_V2)
               .setSmallIcon(R.drawable.icon_notification)
               .setContentTitle("Incoming call")
               .setContentText("Incoming call from " + callerName)
@@ -1513,7 +1521,9 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
                       .build());
     }
 
-    notificationManager.notify(NOTIFICATION_ID_CALL, builder.build());
+    Notification notification = builder.build();
+    notification.flags |= Notification.FLAG_INSISTENT;
+    notificationManager.notify(NOTIFICATION_ID_CALL, notification);
   }
 
   private void showMissedCallNotification(int accId, int chatId, boolean wasVideoCall) {
