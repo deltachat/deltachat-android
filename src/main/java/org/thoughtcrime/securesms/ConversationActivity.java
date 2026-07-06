@@ -262,6 +262,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
               public void handleOnBackPressed() {
                 if (container.isInputOpen()) {
                   container.hideCurrentInput(composeText);
+                } else if (searchMenu != null) {
+                  searchCollapse();
                 } else {
                   handleReturnToConversationList();
                 }
@@ -278,6 +280,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     eventCenter.removeObservers(this);
 
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_DELETED, this);
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED, this);
     eventCenter.addMultiAccountObserver(DcContext.DC_EVENT_CONTACTS_CHANGED, this);
 
@@ -1867,6 +1870,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       DcContact contact = recipient.getDcContact();
       titleView.setSeenRecently(
           contact != null ? dcContext.getContact(contact.getId()).wasSeenRecently() : false);
+    } else if (eventId == DcContext.DC_EVENT_CHAT_DELETED && event.getData1Int() == chatId) {
+      finish();
     }
   }
 

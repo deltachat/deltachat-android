@@ -61,6 +61,7 @@ import org.thoughtcrime.securesms.util.Util;
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "WebxdcActivity";
   private static final String EXTRA_ACCOUNT_ID = "accountId";
+  private static final String EXTRA_CHAT_ID = "chatId";
   private static final String EXTRA_APP_MSG_ID = "appMessageId";
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final String EXTRA_HREF = "href";
@@ -70,6 +71,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
   private Rpc rpc;
+  private int chatId;
   private DcMsg dcAppMsg;
   private String baseURL;
   private String sourceCodeUrl = "";
@@ -102,7 +104,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         return;
       }
     }
-    openWebxdcActivity(context, msgId, true, "");
+    openWebxdcActivity(context, msgId, chatId, true, "");
   }
 
   public static void openWebxdcActivity(Context context, DcMsg instance) {
@@ -110,22 +112,23 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   public static void openWebxdcActivity(Context context, @NonNull DcMsg instance, String href) {
-    openWebxdcActivity(context, instance.getId(), false, href);
+    openWebxdcActivity(context, instance.getId(), instance.getChatId(), false, href);
   }
 
   public static void openWebxdcActivity(
-      Context context, int msgId, boolean hideActionBar, String href) {
+      Context context, int msgId, int chatId, boolean hideActionBar, String href) {
     if (!Util.isClickedRecently()) {
-      context.startActivity(getWebxdcIntent(context, msgId, hideActionBar, href));
+      context.startActivity(getWebxdcIntent(context, msgId, chatId, hideActionBar, href));
     }
   }
 
   private static Intent getWebxdcIntent(
-      Context context, int msgId, boolean hideActionBar, String href) {
+      Context context, int msgId, int chatId, boolean hideActionBar, String href) {
     DcContext dcContext = DcHelper.getContext(context);
     Intent intent = new Intent(context, WebxdcActivity.class);
     intent.setAction(Intent.ACTION_VIEW);
     intent.putExtra(EXTRA_ACCOUNT_ID, dcContext.getAccountId());
+    intent.putExtra(EXTRA_CHAT_ID, chatId);
     intent.putExtra(EXTRA_APP_MSG_ID, msgId);
     intent.putExtra(EXTRA_HIDE_ACTION_BAR, hideActionBar);
     intent.putExtra(EXTRA_HREF, href);
@@ -135,12 +138,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static Intent[] getWebxdcIntentWithParentStack(Context context, int msgId) {
     DcContext dcContext = DcHelper.getContext(context);
 
+    int chatId = dcContext.getMsg(msgId).getChatId();
     final Intent chatIntent =
         new Intent(context, ConversationActivity.class)
-            .putExtra(ConversationActivity.CHAT_ID_EXTRA, dcContext.getMsg(msgId).getChatId())
+            .putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId)
             .setAction(Intent.ACTION_VIEW);
 
-    final Intent webxdcIntent = getWebxdcIntent(context, msgId, false, "");
+    final Intent webxdcIntent = getWebxdcIntent(context, msgId, chatId, false, "");
 
     return TaskStackBuilder.create(context)
         .addNextIntentWithParentStack(chatIntent)
@@ -191,12 +195,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
           }
         });
 
-    DcEventCenter eventCenter =
-        DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
-    eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_REALTIME_DATA, this);
-
     int appMessageId = b.getInt(EXTRA_APP_MSG_ID);
     int accountId = b.getInt(EXTRA_ACCOUNT_ID);
     this.dcContext = DcHelper.getContext(getApplicationContext());
@@ -211,6 +209,15 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       finish();
       return;
     }
+    chatId = b.getInt(EXTRA_CHAT_ID, dcAppMsg.getChatId());
+
+    DcEventCenter eventCenter =
+        DcHelper.getEventCenter(WebxdcActivity.this.getApplicationContext());
+    eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_STATUS_UPDATE, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELETED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_CHAT_DELETED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_WEBXDC_REALTIME_DATA, this);
 
     // `msg_id` in the subdomain makes sure, different apps using same files do not share the same
     // cache entry
@@ -321,6 +328,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     menu.clear();
     this.getMenuInflater().inflate(R.menu.webxdc, menu);
     menu.findItem(R.id.source_code).setVisible(!sourceCodeUrl.isEmpty());
+    boolean isDraft = dcAppMsg.getState() == DcMsg.DC_STATE_OUT_DRAFT;
+    menu.findItem(R.id.menu_add_to_home_screen).setVisible(!isDraft);
+    menu.findItem(R.id.show_in_chat).setVisible(!isDraft);
     return true;
   }
 
@@ -510,6 +520,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               Log.e(TAG, "RPC Error", e);
             }
           });
+    } else if ((eventId == DcContext.DC_EVENT_MSG_DELETED
+            && event.getData2Int() == dcAppMsg.getId())
+        || (eventId == DcContext.DC_EVENT_CHAT_DELETED && event.getData1Int() == chatId)) {
+      finish();
     }
   }
 
