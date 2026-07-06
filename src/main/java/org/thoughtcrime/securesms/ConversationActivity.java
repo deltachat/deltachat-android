@@ -1064,7 +1064,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     composeText.setOnEditorActionListener(sendButtonListener);
     attachButton.setOnClickListener(new AttachButtonListener());
-    attachButton.setOnLongClickListener(new AttachButtonLongClickListener());
     sendButton.setOnClickListener(sendButtonListener);
     sendButton.setEnabled(true);
     sendButton.addOnTransportChangedListener(
@@ -1753,13 +1752,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     public void onClick(View v) {
       fragment.hideAddReactionView();
       handleAddAttachment();
-    }
-  }
-
-  private class AttachButtonLongClickListener implements View.OnLongClickListener {
-    @Override
-    public boolean onLongClick(View v) {
-      return sendButton.performLongClick();
     }
   }
 
