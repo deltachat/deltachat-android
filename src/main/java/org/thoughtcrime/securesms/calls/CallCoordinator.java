@@ -72,8 +72,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "CallCoordinator";
 
   // Notification channels
-  private static final String CHANNEL_ID_INCOMING_OLD = "voip_incoming_calls";
-  static final String CHANNEL_ID_INCOMING_V2 = "voip_incoming_calls_v2";
+  private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls_v2";
   private static final String CHANNEL_ID_ONGOING = "voip_ongoing_calls";
   private static final String CHANNEL_ID_MISSED = "voip_missed_calls";
   private static final int NOTIFICATION_ID_CALL = 1001;
@@ -174,7 +173,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   private void createNotificationChannels() {
-    notificationManager.deleteNotificationChannel(CHANNEL_ID_INCOMING_OLD);
+    notificationManager.deleteNotificationChannel("voip_incoming_calls");
 
     Uri ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
     AudioAttributes ringtoneAttributes =
@@ -186,7 +185,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     NotificationChannel incomingChannel =
         new NotificationChannel(
-            CHANNEL_ID_INCOMING_V2, "Incoming Calls", NotificationManager.IMPORTANCE_HIGH);
+            CHANNEL_ID_INCOMING, "Incoming Calls", NotificationManager.IMPORTANCE_HIGH);
     incomingChannel.setDescription("Notifications for incoming DeltaChat calls");
     incomingChannel.setSound(ringtoneUri, ringtoneAttributes);
     incomingChannel.enableVibration(true);
@@ -1484,7 +1483,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
           new Person.Builder().setName(callerName).setIcon(callerIcon).setImportant(true).build();
 
       builder =
-          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING_V2)
+          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING)
               .setSmallIcon(R.drawable.icon_notification)
               .setContentTitle("Incoming call")
               .setContentText("Incoming call from " + callerName)
@@ -1499,7 +1498,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     } else {
       // Android 8-12: Notification with actions
       builder =
-          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING_V2)
+          new Notification.Builder(this.appContext, CHANNEL_ID_INCOMING)
               .setSmallIcon(R.drawable.icon_notification)
               .setContentTitle("Incoming call")
               .setContentText("Incoming call from " + callerName)
