@@ -60,15 +60,6 @@
         name="conversation_background"
         format="reference|color" />
     <attr
-        name="conversation_transport_sms_indicator"
-        format="reference" />
-    <attr
-        name="conversation_transport_push_indicator"
-        format="reference" />
-    <attr
-        name="conversation_transport_popup_background"
-        format="reference" />
-    <attr
         name="conversation_emoji_toggle"
         format="reference" />
     <attr
