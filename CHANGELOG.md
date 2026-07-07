@@ -10,6 +10,7 @@
 * Fix: close mini-apps and chats if they are deleted
 * Fix: cancel in-chat search when back is pressed, instead of directly returning to chatlist
 * Fix: "go to bottom" floating button not appearing sometimes when user jumped to message
+* Fix: incoming call ringtone now respects user's notification channel sound setting instead of the system default
 
 ## v2.53.0
 2026-06
