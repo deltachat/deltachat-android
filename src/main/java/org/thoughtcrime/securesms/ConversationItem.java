@@ -23,7 +23,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Build;
-import android.text.SpannableStringBuilder;
+import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -441,8 +441,10 @@ public class ConversationItem extends BaseConversationItem {
     if (messageRecord.getType() == DcMsg.DC_MSG_CALL || text.isEmpty()) {
       bodyText.setVisibility(View.GONE);
     } else {
-      SpannableStringBuilder spannable =
-          Linkifier.linkify(new SpannableStringBuilder(text), batchSelected.isEmpty());
+      SpannableString spannable = new SpannableString(text);
+      if (batchSelected.isEmpty()) {
+        spannable = Linkifier.linkify(spannable);
+      }
       bodyText.setText(spannable);
       bodyText.setVisibility(View.VISIBLE);
 
