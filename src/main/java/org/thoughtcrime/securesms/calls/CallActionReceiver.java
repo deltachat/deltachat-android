@@ -22,10 +22,9 @@ public class CallActionReceiver extends BroadcastReceiver {
     String action = intent.getAction();
     Log.d(TAG, "Received action: " + action);
 
-    if (CallActivity.ACTION_DECLINE_CALL.equals(action)) {
-      CallCoordinator.getInstance(context).declineCall();
-    } else if (CallActivity.ACTION_HANGUP_CALL.equals(action)) {
-      CallCoordinator.getInstance(context).hangUp();
+    if (CallActivity.ACTION_DECLINE_CALL.equals(action)
+        || CallActivity.ACTION_HANGUP_CALL.equals(action)) {
+      CallCoordinator.getInstance(context).endCall(false);
     } else if (CallActivity.ACTION_CALL_BACK.equals(action)) {
       int chatId = intent.getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
       int accId = intent.getIntExtra(ConversationActivity.ACCOUNT_ID_EXTRA, -1);

@@ -41,6 +41,7 @@ import androidx.lifecycle.FlowLiveDataConversions;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
@@ -136,9 +137,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private boolean startsWithVideo;
   private String pendingOfferSdp;
   private boolean hasNotifiedBackend = false;
-  private boolean hasAutoSelectedEarpiece = false;
+  private boolean hasAutoSelectedEndpoint = false;
   private boolean pendingMediaCapture = false;
-  private boolean wasAnsweredLocally = false;
+  private boolean answerInProgress = false;
+  private Observer<Boolean> answerMediaObserver;
 
   private CallControlScope activeCallControlScope;
   private CallViewModel activeCallViewModel;
@@ -395,6 +397,30 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     return availableAudioEndpoints;
   }
 
+  static CallEndpointCompat findPreferredEndpoint(
+      List<CallEndpointCompat> endpoints, boolean startsWithVideo) {
+    if (endpoints == null || endpoints.isEmpty()) return null;
+
+    for (CallEndpointCompat endpoint : endpoints) {
+      int type = endpoint.getType();
+      if (type == CallEndpointCompat.TYPE_BLUETOOTH
+          || type == CallEndpointCompat.TYPE_WIRED_HEADSET) {
+        return endpoint;
+      }
+    }
+
+    int fallbackType =
+        startsWithVideo ? CallEndpointCompat.TYPE_SPEAKER : CallEndpointCompat.TYPE_EARPIECE;
+
+    for (CallEndpointCompat endpoint : endpoints) {
+      if (endpoint.getType() == fallbackType) {
+        return endpoint;
+      }
+    }
+
+    return null;
+  }
+
   public LiveData<Boolean> getIsFrontCamera() {
     return isFrontCamera;
   }
@@ -464,15 +490,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  public synchronized void handleCallControlScopeAnswer() {
-    Log.d(TAG, "handleCallControlScopeAnswer");
+  public synchronized void answerCall(boolean fromTelecom) {
+    Log.d(TAG, "answerCall: fromTelecom=" + fromTelecom);
 
     if (!isIncomingCall) {
       Log.w(TAG, "Not an incoming call");
       return;
     }
 
-    wasAnsweredLocally = true;
+    if (answerInProgress) {
+      Log.d(TAG, "Answer already in progress");
+      return;
+    }
+
+    answerInProgress = true;
 
     if (callService != null) {
       callService.stopRingtone();
@@ -487,29 +518,57 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     if (callerName == null) callerName = "Unknown";
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
 
-    // Notify Android system with CallControlScope
-    CallControlScope scope = activeCallControlScope;
-    if (scope != null) {
-      scope.answer(
-          CallAttributesCompat.CALL_TYPE_VIDEO_CALL,
-          new Continuation<CallControlResult>() {
-            @NonNull
-            @Override
-            public CoroutineContext getContext() {
-              return EmptyCoroutineContext.INSTANCE;
-            }
-
-            @Override
-            public void resumeWith(@NonNull Object result) {
-              if (result instanceof CallControlResult) {
-                Log.d(TAG, "Answer succeeded with CallControlScope");
-              } else if (result instanceof kotlin.Result.Failure) {
-                Log.e(TAG, "Answer failed", ((kotlin.Result.Failure) result).exception);
-                reportError("Failed to answer call");
+    // Only notify Telecom if the answer originated from UI
+    if (!fromTelecom) {
+      CallControlScope scope = activeCallControlScope;
+      if (scope != null) {
+        scope.answer(
+            CallAttributesCompat.CALL_TYPE_VIDEO_CALL,
+            new Continuation<CallControlResult>() {
+              @NonNull
+              @Override
+              public CoroutineContext getContext() {
+                return EmptyCoroutineContext.INSTANCE;
               }
-            }
-          });
+
+              @Override
+              public void resumeWith(@NonNull Object result) {
+                if (result instanceof CallControlResult) {
+                  Log.d(TAG, "Answer succeeded with CallControlScope");
+                } else if (result instanceof kotlin.Result.Failure) {
+                  Log.e(TAG, "Answer failed", ((kotlin.Result.Failure) result).exception);
+                  reportError("Failed to answer call");
+                }
+              }
+            });
+      }
     }
+
+    // Start media capture and answer WebRTC when ready
+    startMediaCapture();
+
+    mainHandler.post(
+        () -> {
+          LiveData<Boolean> mediaReady = getMediaCaptureReady();
+
+          if (Boolean.TRUE.equals(mediaReady.getValue())) {
+            answerWebRTC();
+            return;
+          }
+
+          answerMediaObserver =
+              new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean ready) {
+                  if (Boolean.TRUE.equals(ready)) {
+                    mediaReady.removeObserver(this);
+                    answerMediaObserver = null;
+                    answerWebRTC();
+                  }
+                }
+              };
+          mediaReady.observeForever(answerMediaObserver);
+        });
   }
 
   public void answerWebRTC() {
@@ -605,8 +664,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    if (hasOngoingCall()) {
-      Log.d(TAG, "Call already ongoing");
+    if (answerInProgress || hasOngoingCall()) {
+      Log.d(TAG, "Call already being answered or ongoing");
       return;
     }
 
@@ -618,11 +677,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "Showing incoming call screen: " + callId);
   }
 
-  public synchronized void declineCall() {
-    Log.d(TAG, "declineCall called");
+  public synchronized void endCall(boolean fromTelecom) {
+    Log.d(TAG, "endCall: fromTelecom=" + fromTelecom);
 
-    if (activeCallId == null) {
-      Log.w(TAG, "Call already ended or no active call");
+    if (!hasActiveCall()) {
+      Log.w(TAG, "No active call to end");
       return;
     }
 
@@ -632,28 +691,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     notifyBackendCallEnded();
 
-    disconnectTelecom(new DisconnectCause(DisconnectCause.REJECTED));
-
-    // End call on service
-    if (callService != null) {
-      callService.endCall();
+    if (!fromTelecom) {
+      DisconnectCause cause =
+          isIncomingCall && !answerInProgress
+              ? new DisconnectCause(DisconnectCause.REJECTED)
+              : new DisconnectCause(DisconnectCause.LOCAL);
+      disconnectTelecom(cause);
     }
-
-    // Cleanup
-    cleanupCall(activeAccId, activeCallId);
-  }
-
-  public synchronized void hangUp() {
-    Log.d(TAG, "hangUp called");
-
-    if (activeCallId == null) {
-      Log.w(TAG, "Call already ended or no active call");
-      return;
-    }
-
-    notifyBackendCallEnded();
-
-    disconnectTelecom(new DisconnectCause(DisconnectCause.LOCAL));
 
     // End call on service
     if (callService != null) {
@@ -721,17 +765,12 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               EmptyCoroutineContext.INSTANCE,
               (scope, continuation) -> FlowKt.first(endpointsFlow, continuation));
 
-      // For audio-only calls, prefer earpiece
-      if (!startsWithVideo && !endpoints.isEmpty()) {
-        for (CallEndpointCompat endpoint : endpoints) {
-          if (endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE) {
-            Log.d(TAG, "Pre-selected earpiece for audio-only call");
-            return endpoint;
-          }
-        }
+      CallEndpointCompat preferred = findPreferredEndpoint(endpoints, startsWithVideo);
+      if (preferred != null) {
+        Log.d(TAG, "Preferred endpoint: " + preferred.getName() + ", type=" + preferred.getType());
       }
 
-      return null;
+      return preferred;
 
     } catch (Exception e) {
       Log.e(TAG, "Failed to get preferred starting endpoint", e);
@@ -760,28 +799,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
           // Turns out the system Bluetooth/AudioService will trigger a second audio change
           // And Telecom tries to prevent it but doesn't always success, so a delayed
           // switch is still needed as a backup
-          if (!hasAutoSelectedEarpiece && !startsWithVideo) {
-            hasAutoSelectedEarpiece = true;
+          if (!hasAutoSelectedEndpoint) {
+            hasAutoSelectedEndpoint = true;
 
             if (value != null && !value.isEmpty()) {
-              // Find earpiece endpoint
-              CallEndpointCompat earpieceEndpoint = null;
-              for (CallEndpointCompat endpoint : value) {
-                if (endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE) {
-                  earpieceEndpoint = endpoint;
-                  break;
-                }
-              }
-
-              final CallEndpointCompat finalEarpieceEndpoint = earpieceEndpoint;
+              final CallEndpointCompat finalPreferred =
+                  findPreferredEndpoint(value, startsWithVideo);
 
               mainHandler.postDelayed(
                   () -> {
-                    if (finalEarpieceEndpoint != null) {
-                      Log.d(TAG, "Auto-selecting earpiece for audio-only outgoing call");
-                      requestAudioEndpointChange(finalEarpieceEndpoint);
+                    if (finalPreferred != null) {
+                      Log.d(TAG, "Auto-selecting endpoint: " + finalPreferred.getName());
+                      requestAudioEndpointChange(finalPreferred);
                     } else {
-                      Log.d(TAG, "No earpiece endpoint available on this device");
+                      Log.d(TAG, "No preferred endpoint found");
                     }
 
                     // Only start collecting current audio endpoint after we made the selection
@@ -792,11 +823,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
                   1000);
             }
           } else {
-            mainHandler.postDelayed(
-                () -> {
-                  startCurrentEndpointCollection(scope);
-                },
-                500);
+            mainHandler.postDelayed(() -> startCurrentEndpointCollection(scope), 500);
           }
         });
   }
@@ -1084,7 +1111,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       callService.endCall();
     }
 
-    if (isIncomingCall && !wasAnsweredLocally) {
+    if (isIncomingCall && !answerInProgress) {
       showMissedCallNotification(activeAccId, activeChatId, startsWithVideo);
     }
 
@@ -1157,14 +1184,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     this.startsWithVideo = false;
     this.pendingOfferSdp = null;
     this.hasNotifiedBackend = false;
-    this.hasAutoSelectedEarpiece = false;
+    this.hasAutoSelectedEndpoint = false;
     this.pendingMediaCapture = false;
-    this.wasAnsweredLocally = false;
+    this.answerInProgress = false;
 
     mainHandler.removeCallbacks(outgoingRingtoneRunnable);
 
     mainHandler.post(
         () -> {
+          if (answerMediaObserver != null) {
+            getMediaCaptureReady().removeObserver(answerMediaObserver);
+            answerMediaObserver = null;
+            Log.d(TAG, "Removed answer media observer");
+          }
+
           if (currentAudioEndpointSource != null) {
             currentAudioEndpoint.removeSource(currentAudioEndpointSource);
             currentAudioEndpointSource = null;
@@ -1353,36 +1386,30 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     try {
       callsManager.addCall(
           callAttributes,
+          // These callbacks are only invoked by remote surfaces (BT headset, watch, Android
+          // Auto)
           // onAnswer
           (callType, continuation) -> {
             Log.d(TAG, "CallControlScope: onAnswer with type: " + callType);
-            if (activeCallViewModel != null && isIncomingCall) {
-              activeCallViewModel.onCallAnswered();
+            if (isIncomingCall) {
+              answerCall(true);
             }
             return Unit.INSTANCE;
           },
           // onDisconnect
           (disconnectCause, continuation) -> {
             Log.d(TAG, "CallControlScope: onDisconnect, cause: " + disconnectCause);
-            if (activeCallViewModel != null) {
-              activeCallViewModel.onCallDisconnected(disconnectCause);
-            }
+            endCall(true);
             return Unit.INSTANCE;
           },
           // onSetActive
           continuation -> {
             Log.d(TAG, "CallControlScope: onSetActive");
-            if (activeCallViewModel != null) {
-              activeCallViewModel.onCallActive();
-            }
             return Unit.INSTANCE;
           },
           // onSetInactive
           continuation -> {
             Log.d(TAG, "CallControlScope: onSetInactive");
-            if (activeCallViewModel != null) {
-              activeCallViewModel.onCallInactive();
-            }
             return Unit.INSTANCE;
           },
           // CallControlScope lambda
