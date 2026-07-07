@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms;
 
 import android.content.Context;
-import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,7 +32,7 @@ public class ProfileStatusItem extends LinearLayout {
   }
 
   public void set(String status) {
-    statusTextView.setText(Linkifier.linkify(new SpannableString(status)));
+    statusTextView.setText(Linkifier.linkify(new SpannableStringBuilder(status)));
   }
 
   private class PassthroughClickListener implements View.OnLongClickListener, View.OnClickListener {
