@@ -1856,6 +1856,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       initializeSecurity(isSecureText, isDefaultSms);
       setInputPanelVisibility(false);
       initializeContactRequest();
+      invalidateOptionsMenu();
     } else if ((eventId == DcContext.DC_EVENT_INCOMING_MSG
             || eventId == DcContext.DC_EVENT_MSG_READ)
         && event.getData1Int() == chatId) {
