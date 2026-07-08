@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /* Utility for text linkify-ing */
 public class Linkifier {
-  private static final int MAX_DISPLAY_LINK_LENGTH = 32;
+  private static final int MAX_DISPLAY_LINK_LENGTH = 80;
   private static final String ELLIPSIS = "…";
 
   private static final Pattern CMD_PATTERN =
