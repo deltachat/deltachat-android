@@ -97,7 +97,11 @@ public class CallViewModel extends AndroidViewModel {
     callCoordinator.setActiveCallViewModel(this);
 
     if (callCoordinator.isIncomingCall()) {
-      callState.setValue(CallState.PROMPTING_USER_ACCEPT);
+      if (callCoordinator.isAnswerInProgress()) {
+        callState.setValue(CallState.CONNECTING);
+      } else {
+        callState.setValue(CallState.PROMPTING_USER_ACCEPT);
+      }
     } else {
       callState.setValue(CallState.CONNECTING);
     }

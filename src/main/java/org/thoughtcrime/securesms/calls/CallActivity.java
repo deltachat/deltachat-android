@@ -223,6 +223,16 @@ public class CallActivity extends AppCompatActivity {
       Log.d(TAG, "Starting outgoing call");
       coordinator.ensureServiceStarted();
       viewModel.startOutgoingCallWhenReady();
+    } else if (coordinator.isAnswerInProgress()) {
+      if (!hasMicrophonePermission()) {
+        Log.d(TAG, "Headset answered but mic permission missing");
+        awaitingPermissionResult = true;
+        ActivityCompat.requestPermissions(
+            this, new String[] {Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION_REQUEST_CODE);
+        return;
+      }
+      Log.d(TAG, "Completing answer after permission grant");
+      coordinator.answerAfterPermissions();
     }
   }
 
@@ -920,6 +930,10 @@ public class CallActivity extends AppCompatActivity {
         return;
       }
 
+      if (coordinator.isAnswerInProgress()) {
+        coordinator.answerAfterPermissions();
+        return;
+      }
     } else if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
       boolean cameraGranted =
           grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;

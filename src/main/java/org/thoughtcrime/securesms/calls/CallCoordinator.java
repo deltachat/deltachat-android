@@ -509,15 +509,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       callService.stopRingtone();
     }
 
-    // Promote the service to foreground immediately. Waiting until onIncomingCallAccepted
-    // on executor pool thread is too late on stricter OEM.
-    //
-    // Do not cancel() but use showOrUpdateOngoingNotification to replace incoming
-    // notification without a gap.
-    String callerName = displayName.getValue();
-    if (callerName == null) callerName = "Unknown";
-    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
-
     // Only notify Telecom if the answer originated from UI
     if (!fromTelecom) {
       CallControlScope scope = activeCallControlScope;
@@ -544,31 +535,19 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       }
     }
 
-    // Start media capture and answer WebRTC when ready
-    startMediaCapture();
+    if (!hasMicrophonePermission()) {
+      Log.w(TAG, "Mic permission missing, prompting user with notification");
 
-    mainHandler.post(
-        () -> {
-          LiveData<Boolean> mediaReady = getMediaCaptureReady();
+      String callerName = displayName.getValue();
+      if (callerName == null) callerName = "Unknown";
 
-          if (Boolean.TRUE.equals(mediaReady.getValue())) {
-            answerWebRTC();
-            return;
-          }
+      launchCallActivity();
+      showPermissionNeededNotification(callerName);
 
-          answerMediaObserver =
-              new Observer<Boolean>() {
-                @Override
-                public void onChanged(Boolean ready) {
-                  if (Boolean.TRUE.equals(ready)) {
-                    mediaReady.removeObserver(this);
-                    answerMediaObserver = null;
-                    answerWebRTC();
-                  }
-                }
-              };
-          mediaReady.observeForever(answerMediaObserver);
-        });
+      return;
+    }
+
+    answerAfterPermissions();
   }
 
   public void answerWebRTC() {
@@ -1753,6 +1732,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     return startsWithVideo;
   }
 
+  public synchronized boolean isAnswerInProgress() {
+    return answerInProgress;
+  }
+
   public synchronized void setStartsWithVideo(boolean startsWithVideo) {
     this.startsWithVideo = startsWithVideo;
   }
@@ -1784,5 +1767,75 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     NotificationManager notificationManager =
         (NotificationManager) appContext.getSystemService(Context.NOTIFICATION_SERVICE);
     return notificationManager != null && notificationManager.canUseFullScreenIntent();
+  }
+
+  private void showPermissionNeededNotification(String callerName) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      if (!hasNotificationPermission()) {
+        Log.w(TAG, "Cannot show permission-needed notification: no notification permission");
+        return;
+      }
+    }
+
+    Intent activityIntent = new Intent(appContext, CallActivity.class);
+    activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+    PendingIntent contentIntent =
+        PendingIntent.getActivity(
+            appContext,
+            PI_FULLSCREEN,
+            activityIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+    String title = appContext.getString(R.string.call_with, callerName);
+    String text = appContext.getString(R.string.call_grant_mic_permission);
+
+    Notification.Builder builder =
+        new Notification.Builder(appContext, CHANNEL_ID_INCOMING)
+            .setSmallIcon(R.drawable.icon_notification)
+            .setContentTitle(title)
+            .setContentText(text)
+            .setContentIntent(contentIntent)
+            .setFullScreenIntent(contentIntent, true)
+            .setOngoing(true)
+            .setCategory(Notification.CATEGORY_CALL);
+
+    notificationManager.notify(NOTIFICATION_ID_CALL, builder.build());
+
+    Log.d(TAG, "Showing permission-needed notification");
+  }
+
+  public void answerAfterPermissions() {
+    Log.d(TAG, "answerAfterPermissions");
+
+    String callerName = displayName.getValue();
+    if (callerName == null) callerName = "Unknown";
+    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
+
+    ensureServiceStarted();
+    startMediaCapture();
+
+    mainHandler.post(
+        () -> {
+          LiveData<Boolean> mediaReady = getMediaCaptureReady();
+
+          if (Boolean.TRUE.equals(mediaReady.getValue())) {
+            answerWebRTC();
+            return;
+          }
+
+          answerMediaObserver =
+              new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean ready) {
+                  if (Boolean.TRUE.equals(ready)) {
+                    mediaReady.removeObserver(this);
+                    answerMediaObserver = null;
+                    answerWebRTC();
+                  }
+                }
+              };
+          mediaReady.observeForever(answerMediaObserver);
+        });
   }
 }
