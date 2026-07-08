@@ -12,6 +12,9 @@
 * Fix: cancel in-chat search when back is pressed, instead of directly returning to chatlist
 * Fix: "go to bottom" floating button not appearing sometimes when user jumped to message
 * Fix: incoming call ringtone now respects user's notification channel sound setting instead of the system default
+* Fix: Calls now prioritize headset before earpiece
+* Fix: Calls now respect remote controls (Bluetooth, Auto, etc.)
+* Fix: Call now show a notification for missing mic permission when answered with remote controls
 
 ## v2.53.0
 2026-06

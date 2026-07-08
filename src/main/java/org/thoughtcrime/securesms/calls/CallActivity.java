@@ -6,6 +6,7 @@ import android.app.PictureInPictureParams;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -115,15 +116,9 @@ public class CallActivity extends AppCompatActivity {
 
     // Destructive actions need nothing
     String action = getIntent() != null ? getIntent().getAction() : null;
-    if (ACTION_DECLINE_CALL.equals(action)) {
-      Log.d(TAG, "Handling DECLINE_CALL action from notification");
-      CallCoordinator.getInstance(getApplication()).declineCall();
-      finish();
-      return;
-    }
-    if (ACTION_HANGUP_CALL.equals(action)) {
-      Log.d(TAG, "Handling HANGUP_CALL action from notification");
-      CallCoordinator.getInstance(getApplication()).hangUp();
+    if (ACTION_DECLINE_CALL.equals(action) || ACTION_HANGUP_CALL.equals(action)) {
+      Log.d(TAG, "Handling " + action + " action from notification");
+      CallCoordinator.getInstance(getApplication()).endCall(false);
       finish();
       return;
     }
@@ -131,6 +126,8 @@ public class CallActivity extends AppCompatActivity {
     setContentView(R.layout.activity_call);
 
     setupWindowFlags();
+
+    setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
 
     initializeViews();
 
@@ -193,24 +190,12 @@ public class CallActivity extends AppCompatActivity {
     String action = intent.getAction();
     Log.d(TAG, "handleIntents: action=" + action);
 
-    // Destructive actions without ViewModel
-    if (ACTION_DECLINE_CALL.equals(action)) {
-      Log.d(TAG, "Handling DECLINE_CALL action");
+    if (ACTION_DECLINE_CALL.equals(action) || ACTION_HANGUP_CALL.equals(action)) {
+      Log.d(TAG, "Handling " + action + " action");
       if (viewModel != null) {
-        viewModel.handleNotificationDecline();
+        viewModel.endCall();
       } else {
-        coordinator.declineCall();
-      }
-      finish();
-      return;
-    }
-
-    if (ACTION_HANGUP_CALL.equals(action)) {
-      Log.d(TAG, "Handling HANGUP_CALL action");
-      if (viewModel != null) {
-        viewModel.handleNotificationHangup();
-      } else {
-        coordinator.hangUp();
+        coordinator.endCall(false);
       }
       finish();
       return;
@@ -238,6 +223,16 @@ public class CallActivity extends AppCompatActivity {
       Log.d(TAG, "Starting outgoing call");
       coordinator.ensureServiceStarted();
       viewModel.startOutgoingCallWhenReady();
+    } else if (coordinator.isAnswerInProgress()) {
+      if (!hasMicrophonePermission()) {
+        Log.d(TAG, "Headset answered but mic permission missing");
+        awaitingPermissionResult = true;
+        ActivityCompat.requestPermissions(
+            this, new String[] {Manifest.permission.RECORD_AUDIO}, MIC_PERMISSION_REQUEST_CODE);
+        return;
+      }
+      Log.d(TAG, "Completing answer after permission grant");
+      coordinator.answerAfterPermissions();
     }
   }
 
@@ -361,7 +356,7 @@ public class CallActivity extends AppCompatActivity {
     declineButton.setOnClickListener(
         v -> {
           if (viewModel != null) {
-            viewModel.declineCall();
+            viewModel.endCall();
           }
           finish();
         });
@@ -369,7 +364,7 @@ public class CallActivity extends AppCompatActivity {
     endCallButton.setOnClickListener(
         v -> {
           if (viewModel != null) {
-            viewModel.hangUp();
+            viewModel.endCall();
           }
           finish();
         });
@@ -869,11 +864,7 @@ public class CallActivity extends AppCompatActivity {
     CallCoordinator coordinator = CallCoordinator.getInstance(getApplication());
 
     if (coordinator.hasActiveCall() && !coordinator.hasOngoingCall()) {
-      if (coordinator.isIncomingCall()) {
-        coordinator.declineCall();
-      } else {
-        coordinator.hangUp();
-      }
+      coordinator.endCall(false);
     }
 
     if (!shouldShowRequestPermissionRationale(Manifest.permission.RECORD_AUDIO)) {
@@ -939,6 +930,10 @@ public class CallActivity extends AppCompatActivity {
         return;
       }
 
+      if (coordinator.isAnswerInProgress()) {
+        coordinator.answerAfterPermissions();
+        return;
+      }
     } else if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
       boolean cameraGranted =
           grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
