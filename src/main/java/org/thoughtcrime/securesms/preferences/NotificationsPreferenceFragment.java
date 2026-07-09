@@ -201,7 +201,9 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       // This also allow users who have disabled UnifiedPush by mistake to reset it.
       Prefs.enableUnifiedPush(context);
       // If the build supports UnifiedPush, we init it
-      UnifiedPushUtils.mayInitUnifiedPush(getActivity(), s -> {});
+      UnifiedPushUtils.mayInitUnifiedPush(getActivity(), s -> {
+        notificationsEnabled.setSummary(getSummary(context, false));
+      });
     }
     notificationsEnabled.setSummary(getSummary(context, false));
     return true;
@@ -304,7 +306,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         return detailed ? context.getString(R.string.on) : "";
       } else if (FcmReceiveService.getToken() != null) {
         return detailed ? context.getString(R.string.on) : "";
-      } else if (UnifiedPush.getAckDistributor(context) != null) {
+        // The summary may be updated as soon as we toggle off
+        // the "unreliable bg service": we may have not yet received
+        // the push endpoint => we rely on savedDistributor to know.
+      } else if (UnifiedPush.getSavedDistributor(context) != null) {
         // Always show
         return context.getString(R.string.pref_notification_desc_using_unifiedpush);
       } else {
