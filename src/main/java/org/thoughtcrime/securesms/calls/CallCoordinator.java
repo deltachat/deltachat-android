@@ -190,7 +190,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             CHANNEL_ID_INCOMING, "Incoming Calls", NotificationManager.IMPORTANCE_HIGH);
     incomingChannel.setDescription("Notifications for incoming DeltaChat calls");
     incomingChannel.setSound(ringtoneUri, ringtoneAttributes);
-    incomingChannel.enableVibration(true);
+    incomingChannel.setVibrationPattern(new long[] {0, 1000, 1000});
 
     NotificationChannel ongoingChannel =
         new NotificationChannel(
