@@ -2,9 +2,13 @@ package org.thoughtcrime.securesms.preferences;
 
 import static android.app.Activity.RESULT_OK;
 
+import static org.thoughtcrime.securesms.notifications.UnifiedPushUtils.PUSH_ERROR_ACTION;
+
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -44,6 +48,13 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   private CheckBoxPreference notifyCalls;
   private CheckBoxPreference reliableService;
   private ActivityResultLauncher<Intent> ringtonePickerLauncher;
+
+  private BroadcastReceiver pushEventReceiver = new BroadcastReceiver() {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      resumeUi();
+    }
+  };
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -164,6 +175,20 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         .getSupportActionBar()
         .setTitle(R.string.pref_notifications);
 
+    try {
+      ContextCompat.registerReceiver(
+        requireContext(),
+        pushEventReceiver,
+        new IntentFilter(PUSH_ERROR_ACTION),
+        ContextCompat.RECEIVER_NOT_EXPORTED
+      );
+    } catch (IllegalStateException e) {
+      Log.e(TAG, "Could not access context", e);
+    }
+    resumeUi();
+  }
+
+  private void resumeUi() {
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
@@ -175,6 +200,16 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     reliableService.setOnPreferenceChangeListener(null);
     reliableService.setChecked(Prefs.reliableService(getActivity()));
     reliableService.setOnPreferenceChangeListener(this);
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    try {
+      requireContext().unregisterReceiver(pushEventReceiver);
+    } catch (IllegalStateException e) {
+      Log.e(TAG, "Could not access context", e);
+    }
   }
 
   @Override
