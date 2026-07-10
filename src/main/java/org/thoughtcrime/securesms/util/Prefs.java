@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Set;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
-import org.unifiedpush.android.connector.UnifiedPush;
 
 public class Prefs {
 
@@ -268,7 +268,7 @@ public class Prefs {
   }
 
   public static boolean reliableService(Context context) {
-    boolean defaultVal = !(isFcmPushEnabled(context) || UnifiedPush.getAckDistributor(context) != null);
+    boolean defaultVal = !(isFcmPushEnabled(context) || UnifiedPushUtils.hasPushDistributor(context, true));
     return getBooleanPreference(context, RELIABLE_SERVICE_PREF, defaultVal);
   }
 
