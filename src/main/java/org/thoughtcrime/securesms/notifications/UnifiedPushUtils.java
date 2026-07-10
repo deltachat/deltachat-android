@@ -7,6 +7,8 @@ import android.util.Log;
 import androidx.appcompat.app.AlertDialog;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.KeepAliveService;
+import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.unifiedpush.android.connector.UnifiedPush;
@@ -142,15 +144,35 @@ public class UnifiedPushUtils {
   }
 
   /**
+   * If an error occur during registration,
+   * we disable UnifiedPush, reset reliable service pref
+   * and try to start the KeepAliveService
+   * @param context
+   */
+  public static void disableOnError(Context context) {
+    Prefs.disableUnifiedPush(context);
+    UnifiedPushService.unregister(context);
+    Prefs.resetReliableService(context);
+    try {
+      KeepAliveService.maybeStartSelf(context);
+    } catch (Exception e) {
+      Log.e(TAG, "An error occurred while trying to start KeepAliveService", e);
+    }
+  }
+
+  /**
    * Returns directly if we don't have registered for UnifiedPush, or if we are already registered,
    * and we have received an endpoint. Else, wait for the endpoint, or a registration failed.
+   *
+   * Disable UnifiedPush if we don't receive one or the other within the timeout,
+   * and show a notification to the user.
    *
    * @param context
    */
   public static void waitForRegisterFinished(Context context) {
     Log.d(TAG, "waitForRegisterFinished");
-    // Wait 5 secs at most
-    for (int i = 0; i < 50; ++i) {
+    // Wait 8 secs at most
+    for (int i = 0; i < 16; ++i) {
       // This is the distributor we registered to
       String saved = UnifiedPush.getSavedDistributor(context);
       // This is the distributor we registered to, which has sent an endpoint
@@ -161,7 +183,8 @@ public class UnifiedPushUtils {
       // Or if we received an endpoint (saved.equals(ack))
       // => return
       if (saved == null || saved.equals(ack)) return;
-      Util.sleep(100);
+      Util.sleep(500);
     }
+    disableOnError(context);
   }
 }

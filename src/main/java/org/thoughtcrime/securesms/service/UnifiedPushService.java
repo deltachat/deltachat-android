@@ -24,6 +24,7 @@ import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.IntentUtils;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.unifiedpush.android.connector.FailedReason;
 import org.unifiedpush.android.connector.PushService;
 import org.unifiedpush.android.connector.UnifiedPush;
@@ -91,8 +92,9 @@ public class UnifiedPushService extends PushService {
   @Override
   public void onRegistrationFailed(@NonNull FailedReason failedReason, @NonNull String _s) {
     Log.w(TAG, "Registration failed " + failedReason.name());
-    // Do nothing, it is either already setup, and we can continue with the current endpoint,
-    // or it should resolve by itself during next setup
+    if (!UnifiedPushUtils.hasPushDistributor(this, true)) {
+      UnifiedPushUtils.disableOnError(this);
+    }
   }
 
   @Override
