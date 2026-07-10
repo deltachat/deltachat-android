@@ -262,6 +262,10 @@ public class ConversationListFragment extends BaseConversationListFragment
                   Prefs.resetReliableService(activity);
                   // This will wait for UnifiedPush to be registered
                   updateReminders();
+                  // If UnifiedPush registration timed out
+                  // A timeout may happen only for the first registration,
+                  // when we never received a single endpoint yet
+                  DozeReminder.maybeAskDirectly(activity);
                   break;
                 case HasPush:
                   // Do nothing
