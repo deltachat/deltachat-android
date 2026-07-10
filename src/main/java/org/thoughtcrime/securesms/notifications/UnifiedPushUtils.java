@@ -186,5 +186,6 @@ public class UnifiedPushUtils {
       Util.sleep(500);
     }
     disableOnError(context);
+    UnifiedPushNotifications.showRegistrationTimeout(context);
   }
 }
