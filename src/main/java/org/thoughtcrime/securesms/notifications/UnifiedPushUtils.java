@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.notifications;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +17,10 @@ import org.unifiedpush.android.connector.data.ResolvedDistributor;
 
 public class UnifiedPushUtils {
   private static String TAG = "UnifiedPushUtils";
+  /**
+   * Used to update the UI with broadcasts if something fails
+   */
+  public static final String PUSH_ERROR_ACTION = "push_event";
 
   private interface DialogCallback {
     void onCancel();
@@ -153,6 +158,11 @@ public class UnifiedPushUtils {
     Prefs.disableUnifiedPush(context);
     UnifiedPushService.unregister(context);
     Prefs.resetReliableService(context);
+    context.sendBroadcast(
+      new Intent()
+        .setPackage(context.getPackageName())
+        .setAction(PUSH_ERROR_ACTION)
+    );
     try {
       KeepAliveService.maybeStartSelf(context);
     } catch (Exception e) {
