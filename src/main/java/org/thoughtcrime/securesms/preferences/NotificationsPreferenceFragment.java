@@ -32,7 +32,6 @@ import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.unifiedpush.android.connector.UnifiedPush;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment
     implements Preference.OnPreferenceChangeListener {
@@ -189,7 +188,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     Prefs.setReliableService(context, enabled);
     if (enabled) {
       KeepAliveService.startSelf(context);
-      if (!UnifiedPush.getDistributors(context).isEmpty()) {
+      if (UnifiedPushUtils.countAvailableDistributors(context) != 0) {
         // If reliable service is set when the system has an UnifiedPush distributor:
         // we disable UnifiedPush.
         Prefs.disableUnifiedPush(context);
@@ -309,7 +308,7 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         // The summary may be updated as soon as we toggle off
         // the "unreliable bg service": we may have not yet received
         // the push endpoint => we rely on savedDistributor to know.
-      } else if (UnifiedPush.getSavedDistributor(context) != null) {
+      } else if (UnifiedPushUtils.hasPushDistributor(context, false)) {
         // Always show
         return context.getString(R.string.pref_notification_desc_using_unifiedpush);
       } else {

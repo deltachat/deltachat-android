@@ -2,6 +2,8 @@ package org.thoughtcrime.securesms.notifications;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
+
 import androidx.appcompat.app.AlertDialog;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
@@ -11,6 +13,7 @@ import org.unifiedpush.android.connector.UnifiedPush;
 import org.unifiedpush.android.connector.data.ResolvedDistributor;
 
 public class UnifiedPushUtils {
+  private static String TAG = "UnifiedPushUtils";
 
   private interface DialogCallback {
     void onCancel();
@@ -38,6 +41,7 @@ public class UnifiedPushUtils {
    * @param initCallback Callback with [InitStatus]
    */
   public static void mayInitUnifiedPush(Activity activity, InitCallback initCallback) {
+    Log.d(TAG, "mayInitUnifiedPush");
     if (Prefs.isFcmPushEnabled(activity)) {
       initCallback.onInit(InitStatus.HasPush);
       return;
@@ -76,6 +80,7 @@ public class UnifiedPushUtils {
    * UnifiedPush on at least 2 distributors.
    */
   private static void selectUnifiedPushDistributor(Activity activity, InitCallback initCallback) {
+    Log.d(TAG, "selectUnifiedPushDistributor");
     DialogCallback callback =
         new DialogCallback() {
           private final Activity context = activity;
@@ -108,6 +113,7 @@ public class UnifiedPushUtils {
   }
 
   private static void introduceUnifiedPushDialog(Context context, DialogCallback callback) {
+    Log.d(TAG, "introduceUnifiedPushDialog");
     new AlertDialog.Builder(context)
         .setMessage(R.string.dialog_introduce_unifiedpush_selection)
         .setCancelable(true)
@@ -117,12 +123,32 @@ public class UnifiedPushUtils {
   }
 
   /**
+   * @param context
+   * @param confirmed if we have already received an endpoint
+   * @return `true` if we have a distributor registered, with the confirmed condition
+   */
+  public static boolean hasPushDistributor(Context context, boolean confirmed) {
+    Log.d(TAG, "hasPushDistributor");
+    if (confirmed) {
+      return UnifiedPush.getAckDistributor(context) != null;
+    } else {
+      return UnifiedPush.getSavedDistributor(context) != null;
+    }
+  }
+
+  public static int countAvailableDistributors(Context context) {
+    Log.d(TAG, "countAvailableDistributor");
+    return UnifiedPush.getDistributors(context).size();
+  }
+
+  /**
    * Returns directly if we don't have registered for UnifiedPush, or if we are already registered,
    * and we have received an endpoint. Else, wait for the endpoint, or a registration failed.
    *
    * @param context
    */
   public static void waitForRegisterFinished(Context context) {
+    Log.d(TAG, "waitForRegisterFinished");
     // Wait 5 secs at most
     for (int i = 0; i < 50; ++i) {
       // This is the distributor we registered to

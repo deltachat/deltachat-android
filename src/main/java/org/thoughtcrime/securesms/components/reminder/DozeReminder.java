@@ -19,8 +19,8 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.util.Prefs;
-import org.unifiedpush.android.connector.UnifiedPush;
 
 @SuppressLint("BatteryLife")
 public class DozeReminder {
@@ -116,7 +116,7 @@ public class DozeReminder {
 
   private static boolean isPushAvailableAndSufficient(Context context) {
     return ApplicationContext.getDcAccounts().isAllChatmail()
-        && (FcmReceiveService.getToken() != null || UnifiedPush.getAckDistributor(context) != null);
+        && (FcmReceiveService.getToken() != null || UnifiedPushUtils.hasPushDistributor(context, true));
   }
 
   public static void maybeAskDirectly(Context context) {

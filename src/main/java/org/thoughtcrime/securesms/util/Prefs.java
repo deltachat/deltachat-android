@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Set;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
-import org.unifiedpush.android.connector.UnifiedPush;
 
 public class Prefs {
 
@@ -259,7 +259,7 @@ public class Prefs {
     }
 
     // if the key was unset, then calculate default value
-    return !(isFcmPushEnabled(context) || UnifiedPush.getAckDistributor(context) != null)
+    return !(isFcmPushEnabled(context) || UnifiedPushUtils.hasPushDistributor(context, true))
         || !DcHelper.getAccounts(context).isAllChatmail();
   }
 
