@@ -3,6 +3,9 @@ package org.thoughtcrime.securesms.notifications;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +17,8 @@ import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
 import org.unifiedpush.android.connector.UnifiedPush;
 import org.unifiedpush.android.connector.data.ResolvedDistributor;
+
+import javax.annotation.Nullable;
 
 public class UnifiedPushUtils {
   private static String TAG = "UnifiedPushUtils";
@@ -31,6 +36,10 @@ public class UnifiedPushUtils {
   public interface InitCallback {
     void onInit(InitStatus status);
   }
+
+  public interface TryPickCallback {
+    void run(boolean success);
+}
 
   public enum InitStatus {
     /** Push is configured */
@@ -130,6 +139,28 @@ public class UnifiedPushUtils {
   }
 
   /**
+   * Try to use a non-default distributor.
+   *
+   * Runs `callback.run(true)` if a new distributor has been picked,
+   * else `callback.run(false)`
+   *
+   * Does not check if Push notifications, or UnifiedPush are enabled
+   *
+   * @param activity Activity
+   * @param callback Callback
+   */
+  public static void tryPickUnifiedPushDistributor(Activity activity, TryPickCallback callback) {
+    Log.d(TAG, "tryPickUnifiedPushDistributor");
+    UnifiedPush.tryPickDistributor(activity,  res -> {
+      if (res) {
+        ApplicationContext.getInstance(activity).initializePush();
+      }
+      callback.run(res);
+      return null;
+    });
+  }
+
+  /**
    * @param context
    * @param confirmed if we have already received an endpoint
    * @return `true` if we have a distributor registered, with the confirmed condition
@@ -146,6 +177,28 @@ public class UnifiedPushUtils {
   public static int countAvailableDistributors(Context context) {
     Log.d(TAG, "countAvailableDistributor");
     return UnifiedPush.getDistributors(context).size();
+  }
+
+  public static @Nullable String getDistributorName(Context context) {
+    String distributor = UnifiedPush.getSavedDistributor(context);
+    if (distributor == null) return  null;
+    try {
+      ApplicationInfo ai;
+      if (Build.VERSION.SDK_INT >= 33) {
+        ai = context.getPackageManager().getApplicationInfo(
+          distributor,
+          PackageManager.ApplicationInfoFlags.of(
+            PackageManager.GET_META_DATA
+          )
+        );
+      } else {
+        ai = context.getPackageManager().getApplicationInfo(distributor, 0);
+      }
+      return context.getPackageManager().getApplicationLabel(ai).toString();
+    } catch (PackageManager.NameNotFoundException e) {
+      Log.e(TAG, "Could not resolve app name", e);
+      return distributor;
+    }
   }
 
   /**
