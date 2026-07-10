@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
         android:key="pref_enable_notifications"
         android:title="@string/pref_notifications"
         android:defaultValue="true" />
+
+    <Preference
+        android:key="pref_unifiedpush_distrib"
+        android:title="@string/pref_select_distributor"
+        app:isPreferenceVisible="false" />
 
     <org.thoughtcrime.securesms.components.SwitchPreferenceCompat
         android:dependency="pref_enable_notifications"
