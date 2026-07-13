@@ -254,7 +254,7 @@ dependencies {
     }
     gplayImplementation 'com.google.android.gms:play-services-location:21.3.0'
 
-    implementation('org.unifiedpush.android:connector:3.3.2')
+    implementation('org.unifiedpush.android:connector:3.3.4-rc1')
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.27.3'
