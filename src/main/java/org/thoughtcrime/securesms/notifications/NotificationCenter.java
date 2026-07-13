@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.WorkerThread;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -30,6 +31,7 @@ import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -49,6 +51,9 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
+import org.thoughtcrime.securesms.calls.CallActionReceiver;
+import org.thoughtcrime.securesms.calls.CallActivity;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
@@ -179,6 +184,19 @@ public class NotificationCenter {
     intent.setPackage(context.getPackageName());
     return PendingIntent.getBroadcast(
         context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  private PendingIntent getCallBackIntent(ChatData chatData, boolean video) {
+    Intent intent = new Intent(CallActivity.ACTION_CALL_BACK);
+    intent.setClass(context, CallActionReceiver.class);
+    intent.setData(Uri.parse("custom://" + chatData.accountId + "." + chatData.chatId));
+    intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId);
+    intent.putExtra(CallActivity.EXTRA_STARTS_WITH_VIDEO, video);
+    intent.setPackage(context.getPackageName());
+    return PendingIntent.getBroadcast(
+        context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
   }
 
   // Groups and Notification channel groups
@@ -756,6 +774,29 @@ public class NotificationCenter {
               new NotificationCompat.WearableExtender()
                   .addAction(markAsReadAction)
                   .addAction(wearableReplyAction));
+        } catch (Exception e) {
+          Log.w(TAG, e);
+        }
+      }
+
+      if (privacy.isDisplayContact()) {
+        try {
+          DcMsg dcMsg = dcContext.getMsg(msgId);
+          if (dcMsg.getType() == DcMsg.DC_MSG_CALL) {
+            boolean wasVideo = false;
+            try {
+              wasVideo = DcHelper.getRpc(context).callInfo(accountId, msgId).hasVideo;
+            } catch (RpcException e) {
+              Log.w(TAG, "Could not get call video flag", e);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              builder.addAction(
+                  new NotificationCompat.Action(
+                      R.drawable.baseline_call_24,
+                      context.getString(R.string.call_back),
+                      getCallBackIntent(chatData, wasVideo)));
+            }
+          }
         } catch (Exception e) {
           Log.w(TAG, e);
         }
