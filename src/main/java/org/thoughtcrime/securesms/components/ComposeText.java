@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -176,7 +177,7 @@ public class ComposeText extends AppCompatEditText {
   private static class CommitContentListener
       implements InputConnectionCompat.OnCommitContentListener {
 
-    private static final String TAG = CommitContentListener.class.getName();
+    private static final String TAG = "CommitContentListener";
 
     private final InputPanel.MediaListener mediaListener;
 
@@ -198,13 +199,20 @@ public class ComposeText extends AppCompatEditText {
       }
 
       if (inputContentInfo.getDescription().getMimeTypeCount() > 0) {
+        Uri uri = inputContentInfo.getContentUri();
         mediaListener.onMediaSelected(
-            inputContentInfo.getContentUri(), inputContentInfo.getDescription().getMimeType(0));
+            uri, inputContentInfo.getDescription().getMimeType(0), isSticker(uri));
 
         return true;
       }
 
       return false;
+    }
+
+    private boolean isSticker(Uri uri) {
+      String uriString = uri.toString();
+      return uriString.contains("sticker")
+          || uriString.contains("com.touchtype.swiftkey.fileprovider/share_images");
     }
   }
 }

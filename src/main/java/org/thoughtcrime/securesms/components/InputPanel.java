@@ -477,6 +477,6 @@ public class InputPanel extends ConstraintLayout
   }
 
   public interface MediaListener {
-    void onMediaSelected(@NonNull Uri uri, String contentType);
+    void onMediaSelected(@NonNull Uri uri, String contentType, boolean isSticker);
   }
 }
