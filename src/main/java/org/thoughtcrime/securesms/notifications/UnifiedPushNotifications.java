@@ -41,7 +41,6 @@ public class UnifiedPushNotifications {
     @StringRes int resId = 0;
     switch (reason) {
       case INTERNAL_ERROR:
-        // No break;
       case ACTION_REQUIRED:
         resId = R.string.notification_unifiedpush_internal_error;
         break;
