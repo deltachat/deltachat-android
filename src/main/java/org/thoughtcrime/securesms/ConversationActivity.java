@@ -1601,10 +1601,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   // media selected by the system keyboard
   @Override
-  public void onMediaSelected(@NonNull Uri uri, String contentType) {
+  public void onMediaSelected(@NonNull Uri uri, String contentType, boolean isSticker) {
     if (isEditing) return;
     if (MediaUtil.isImageType(contentType)) {
-      sendSticker(uri, contentType);
+      if (isSticker) {
+        sendSticker(uri, contentType);
+      } else {
+        setMedia(uri, MediaType.IMAGE);
+      }
     } else if (MediaUtil.isVideoType(contentType)) {
       setMedia(uri, MediaType.VIDEO);
     } else if (MediaUtil.isAudioType(contentType)) {

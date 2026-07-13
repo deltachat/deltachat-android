@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -27,6 +28,7 @@ import androidx.core.view.inputmethod.InputConnectionCompat;
 import androidx.core.view.inputmethod.InputContentInfoCompat;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.TransportOption;
+import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 
 public class ComposeText extends AppCompatEditText {
@@ -54,6 +56,9 @@ public class ComposeText extends AppCompatEditText {
   @Override
   public boolean onTextContextMenuItem(int id) {
     if (id == android.R.id.paste) {
+      if (pasteMediaFromClipboard()) {
+        return true;
+      }
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         id = android.R.id.pasteAsPlainText;
       } else if (ViewCompat.getOnReceiveContentMimeTypes(this) != null) {
@@ -72,6 +77,31 @@ public class ComposeText extends AppCompatEditText {
       }
     }
     return super.onTextContextMenuItem(id);
+  }
+
+  private boolean pasteMediaFromClipboard() {
+    if (mediaListener == null) return false;
+
+    ClipboardManager cm =
+        (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+    ClipData clip = (cm == null) ? null : cm.getPrimaryClip();
+
+    if (clip == null) return false;
+
+    for (int i = 0; i < clip.getItemCount(); i++) {
+      Uri uri = clip.getItemAt(i).getUri();
+      if (uri == null) continue;
+
+      String contentType = MediaUtil.getMimeType(getContext(), uri);
+      if (contentType == null) continue;
+
+      if (MediaUtil.isImageVideoOrAudioType(contentType)) {
+        mediaListener.onMediaSelected(uri, contentType, false);
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public String getTextTrimmed() {
@@ -176,7 +206,7 @@ public class ComposeText extends AppCompatEditText {
   private static class CommitContentListener
       implements InputConnectionCompat.OnCommitContentListener {
 
-    private static final String TAG = CommitContentListener.class.getName();
+    private static final String TAG = "CommitContentListener";
 
     private final InputPanel.MediaListener mediaListener;
 
@@ -198,13 +228,20 @@ public class ComposeText extends AppCompatEditText {
       }
 
       if (inputContentInfo.getDescription().getMimeTypeCount() > 0) {
+        Uri uri = inputContentInfo.getContentUri();
         mediaListener.onMediaSelected(
-            inputContentInfo.getContentUri(), inputContentInfo.getDescription().getMimeType(0));
+            uri, inputContentInfo.getDescription().getMimeType(0), isSticker(uri));
 
         return true;
       }
 
       return false;
+    }
+
+    private boolean isSticker(Uri uri) {
+      String uriString = uri.toString();
+      return uriString.contains("sticker")
+          || uriString.contains("com.touchtype.swiftkey.fileprovider/share_images");
     }
   }
 }
