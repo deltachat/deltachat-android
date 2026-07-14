@@ -76,10 +76,12 @@ public class NotificationCenter {
   private static class NotifData {
     final Person sender;
     final String text;
+    final boolean isCall;
 
-    NotifData(Person sender, String text) {
+    NotifData(Person sender, String text, boolean isCall) {
       this.sender = sender;
       this.text = text;
+      this.isCall = isCall;
     }
   }
 
@@ -470,7 +472,8 @@ public class NotificationCenter {
                       .setBot(sender.isBot())
                       .setKey(personId)
                       .build(),
-                  text);
+                  text,
+                  dcMsg.getType() == DcMsg.DC_MSG_CALL);
 
           String tickerLine = text;
           if (privacy.isDisplayContact()) {
@@ -513,7 +516,8 @@ public class NotificationCenter {
                       .setBot(contact.isBot())
                       .setKey(accountId + "-" + contactId)
                       .build(),
-                  text);
+                  text,
+                  false);
 
           maybeAddNotification(
               accountId, dcChat, msgId, notifData, text, false, dcChat.isMultiUser());
@@ -556,7 +560,8 @@ public class NotificationCenter {
                         .setIcon(getAvatarIcon(blob))
                         .setKey(accountId + "-webxdc-" + msgId)
                         .build(),
-                    text);
+                    text,
+                    false);
           } else {
             DcContact sender = dcContext.getContact(contactId);
             notifData =
@@ -567,7 +572,8 @@ public class NotificationCenter {
                         .setBot(sender.isBot())
                         .setKey(accountId + "-" + contactId)
                         .build(),
-                    tickerLine);
+                    tickerLine,
+                    false);
           }
 
           maybeAddNotification(
@@ -734,6 +740,14 @@ public class NotificationCenter {
         }
       }
 
+      boolean isCall = false;
+      if (messagesForInbox != null) {
+        NotifData current = messagesForInbox.get(msgId);
+        if (current != null) {
+          isCall = current.isCall;
+        }
+      }
+
       // Add buttons that allow some actions without opening Delta Chat.
       // If privacy options are enabled, the buttons are not added.
       if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
@@ -769,33 +783,33 @@ public class NotificationCenter {
                           .setLabel(context.getString(R.string.notify_reply_button))
                           .build())
                   .build();
-          builder.addAction(markAsReadAction);
-          builder.extend(
-              new NotificationCompat.WearableExtender()
-                  .addAction(markAsReadAction)
-                  .addAction(wearableReplyAction));
+
+          NotificationCompat.WearableExtender wearableExtender =
+              new NotificationCompat.WearableExtender().addAction(wearableReplyAction);
+          if (!isCall) {
+            builder.addAction(markAsReadAction);
+            wearableExtender.addAction(markAsReadAction);
+          }
+          builder.extend(wearableExtender);
         } catch (Exception e) {
           Log.w(TAG, e);
         }
       }
 
-      if (privacy.isDisplayContact()) {
+      if (privacy.isDisplayContact() && isCall) {
         try {
-          DcMsg dcMsg = dcContext.getMsg(msgId);
-          if (dcMsg.getType() == DcMsg.DC_MSG_CALL) {
-            boolean wasVideo = false;
-            try {
-              wasVideo = DcHelper.getRpc(context).callInfo(accountId, msgId).hasVideo;
-            } catch (RpcException e) {
-              Log.w(TAG, "Could not get call video flag", e);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-              builder.addAction(
-                  new NotificationCompat.Action(
-                      R.drawable.baseline_call_24,
-                      context.getString(R.string.call_back),
-                      getCallBackIntent(chatData, wasVideo)));
-            }
+          boolean wasVideo = false;
+          try {
+            wasVideo = DcHelper.getRpc(context).callInfo(accountId, msgId).hasVideo;
+          } catch (RpcException e) {
+            Log.w(TAG, "Could not get call video flag", e);
+          }
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            builder.addAction(
+                new NotificationCompat.Action(
+                    R.drawable.baseline_call_24,
+                    context.getString(R.string.call_back),
+                    getCallBackIntent(chatData, wasVideo)));
           }
         } catch (Exception e) {
           Log.w(TAG, e);
