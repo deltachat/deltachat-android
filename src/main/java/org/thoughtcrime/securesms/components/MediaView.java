@@ -86,4 +86,8 @@ public class MediaView extends FrameLayout {
       this.videoView.get().cleanup();
     }
   }
+
+  public void setOnMediaTapListener(@Nullable Runnable listener) {
+    imageView.setOnMediaTapListener(listener);
+  }
 }
