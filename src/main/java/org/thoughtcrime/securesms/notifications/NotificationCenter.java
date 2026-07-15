@@ -21,6 +21,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.WorkerThread;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -30,6 +31,7 @@ import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
 import androidx.core.content.pm.ShortcutManagerCompat;
 import androidx.core.graphics.drawable.IconCompat;
+import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
@@ -49,6 +51,9 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.ShareActivity;
+import org.thoughtcrime.securesms.calls.CallActionReceiver;
+import org.thoughtcrime.securesms.calls.CallActivity;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.preferences.widgets.NotificationPrivacyPreference;
@@ -71,10 +76,12 @@ public class NotificationCenter {
   private static class NotifData {
     final Person sender;
     final String text;
+    final boolean isCall;
 
-    NotifData(Person sender, String text) {
+    NotifData(Person sender, String text, boolean isCall) {
       this.sender = sender;
       this.text = text;
+      this.isCall = isCall;
     }
   }
 
@@ -179,6 +186,19 @@ public class NotificationCenter {
     intent.setPackage(context.getPackageName());
     return PendingIntent.getBroadcast(
         context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.O)
+  private PendingIntent getCallBackIntent(ChatData chatData, boolean video) {
+    Intent intent = new Intent(CallActivity.ACTION_CALL_BACK);
+    intent.setClass(context, CallActionReceiver.class);
+    intent.setData(Uri.parse("custom://" + chatData.accountId + "." + chatData.chatId));
+    intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, chatData.accountId);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatData.chatId);
+    intent.putExtra(CallActivity.EXTRA_STARTS_WITH_VIDEO, video);
+    intent.setPackage(context.getPackageName());
+    return PendingIntent.getBroadcast(
+        context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
   }
 
   // Groups and Notification channel groups
@@ -452,7 +472,8 @@ public class NotificationCenter {
                       .setBot(sender.isBot())
                       .setKey(personId)
                       .build(),
-                  text);
+                  text,
+                  dcMsg.getType() == DcMsg.DC_MSG_CALL);
 
           String tickerLine = text;
           if (privacy.isDisplayContact()) {
@@ -495,7 +516,8 @@ public class NotificationCenter {
                       .setBot(contact.isBot())
                       .setKey(accountId + "-" + contactId)
                       .build(),
-                  text);
+                  text,
+                  false);
 
           maybeAddNotification(
               accountId, dcChat, msgId, notifData, text, false, dcChat.isMultiUser());
@@ -538,7 +560,8 @@ public class NotificationCenter {
                         .setIcon(getAvatarIcon(blob))
                         .setKey(accountId + "-webxdc-" + msgId)
                         .build(),
-                    text);
+                    text,
+                    false);
           } else {
             DcContact sender = dcContext.getContact(contactId);
             notifData =
@@ -549,7 +572,8 @@ public class NotificationCenter {
                         .setBot(sender.isBot())
                         .setKey(accountId + "-" + contactId)
                         .build(),
-                    tickerLine);
+                    tickerLine,
+                    false);
           }
 
           maybeAddNotification(
@@ -716,6 +740,14 @@ public class NotificationCenter {
         }
       }
 
+      boolean isCall = false;
+      if (messagesForInbox != null) {
+        NotifData current = messagesForInbox.get(msgId);
+        if (current != null) {
+          isCall = current.isCall;
+        }
+      }
+
       // Add buttons that allow some actions without opening Delta Chat.
       // If privacy options are enabled, the buttons are not added.
       if (privacy.isDisplayContact() && privacy.isDisplayMessage()) {
@@ -751,11 +783,34 @@ public class NotificationCenter {
                           .setLabel(context.getString(R.string.notify_reply_button))
                           .build())
                   .build();
-          builder.addAction(markAsReadAction);
-          builder.extend(
-              new NotificationCompat.WearableExtender()
-                  .addAction(markAsReadAction)
-                  .addAction(wearableReplyAction));
+
+          NotificationCompat.WearableExtender wearableExtender =
+              new NotificationCompat.WearableExtender().addAction(wearableReplyAction);
+          if (!isCall) {
+            builder.addAction(markAsReadAction);
+            wearableExtender.addAction(markAsReadAction);
+          }
+          builder.extend(wearableExtender);
+        } catch (Exception e) {
+          Log.w(TAG, e);
+        }
+      }
+
+      if (privacy.isDisplayContact() && isCall) {
+        try {
+          boolean wasVideo = false;
+          try {
+            wasVideo = DcHelper.getRpc(context).callInfo(accountId, msgId).hasVideo;
+          } catch (RpcException e) {
+            Log.w(TAG, "Could not get call video flag", e);
+          }
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            builder.addAction(
+                new NotificationCompat.Action(
+                    R.drawable.baseline_call_24,
+                    context.getString(R.string.call_back),
+                    getCallBackIntent(chatData, wasVideo)));
+          }
         } catch (Exception e) {
           Log.w(TAG, e);
         }
