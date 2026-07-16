@@ -19,6 +19,7 @@ public class AudioCodec {
 
   private static final int SAMPLE_RATE = 44100;
   private static final int CHANNELS = 1;
+  private static final int BYTES_PER_SAMPLE = 2;
   private static final int BIT_RATE_BALANCED = 32000;
   private static final int BIT_RATE_WORSE = 24000;
 
@@ -29,7 +30,8 @@ public class AudioCodec {
 
   private volatile boolean running = true;
   private volatile boolean finished = false;
-  private long startTime = 0;
+  private volatile Exception encodingError = null;
+  private long totalSamples = 0;
 
   public AudioCodec(Context context, String outputPath) throws IOException {
     this.outputPath = outputPath;
@@ -70,8 +72,6 @@ public class AudioCodec {
   public void start() {
     new Thread(
             () -> {
-              this.startTime = System.nanoTime();
-
               MediaCodec.BufferInfo bufferInfo = new MediaCodec.BufferInfo();
               byte[] audioRecordData = new byte[bufferSize];
               MediaMuxer muxer = null;
@@ -141,9 +141,10 @@ public class AudioCodec {
                 }
               } catch (Exception e) {
                 Log.w(TAG, "Error during encoding", e);
+                this.encodingError = e;
               } finally {
                 try {
-                  if (muxerStarted && muxer != null) {
+                  if (muxerStarted) {
                     try {
                       muxer.stop();
                       Log.d(TAG, "Muxer stopped");
@@ -195,6 +196,10 @@ public class AudioCodec {
         .start();
   }
 
+  public Exception getEncodingError() {
+    return encodingError;
+  }
+
   private synchronized boolean isRunning() {
     return running;
   }
@@ -221,19 +226,16 @@ public class AudioCodec {
       if (codecBuffer != null) {
         codecBuffer.clear();
         codecBuffer.put(audioRecordData, 0, length);
-        long presentationTimeUs = getPresentationTimeUs();
+        long presentationTimeUs = totalSamples * 1_000_000L / SAMPLE_RATE;
         mediaCodec.queueInputBuffer(
             codecInputBufferIndex,
             0,
             length,
             presentationTimeUs,
             running ? 0 : MediaCodec.BUFFER_FLAG_END_OF_STREAM);
+        totalSamples += length / (BYTES_PER_SAMPLE * CHANNELS);
       }
     }
-  }
-
-  private long getPresentationTimeUs() {
-    return (System.nanoTime() - startTime) / 1000;
   }
 
   private AudioRecord createAudioRecord(int bufferSize) {

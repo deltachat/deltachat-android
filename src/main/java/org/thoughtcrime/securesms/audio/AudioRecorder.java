@@ -86,6 +86,16 @@ public class AudioRecorder {
 
           state.audioCodec.stop();
 
+          Exception encodingError = state.audioCodec.getEncodingError();
+          if (encodingError != null) {
+            File outputFile = new File(state.outputFilePath);
+            if (outputFile.exists() && !outputFile.delete()) {
+              Log.w(TAG, "Could not delete corrupt recording");
+            }
+            sendToFuture(future, new IOException("Recording failed", encodingError));
+            return;
+          }
+
           try {
             File outputFile = new File(state.outputFilePath);
 
