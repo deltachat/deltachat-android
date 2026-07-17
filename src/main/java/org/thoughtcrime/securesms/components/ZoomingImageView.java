@@ -98,7 +98,7 @@ public class ZoomingImageView extends FrameLayout {
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
   }
 
-  public void setOnMediaTapListener(@Nullable Runnable listener) {
+  public void setOnImageTapListener(@Nullable Runnable listener) {
     if (listener == null) {
       photoView.setOnViewTapListener(null);
       subsamplingImageView.setOnClickListener(null);

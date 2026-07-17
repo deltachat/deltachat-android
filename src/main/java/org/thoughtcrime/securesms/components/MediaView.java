@@ -87,7 +87,7 @@ public class MediaView extends FrameLayout {
     }
   }
 
-  public void setOnMediaTapListener(@Nullable Runnable listener) {
-    imageView.setOnMediaTapListener(listener);
+  public void setOnImageTapListener(@Nullable Runnable listener) {
+    imageView.setOnImageTapListener(listener);
   }
 }

@@ -164,7 +164,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
   }
 
-  private @Nullable Runnable getMediaTapListener() {
+  private @Nullable Runnable getImageTapListener() {
     return editAvatarChatId == 0 ? this::toggleFullscreen : null;
   }
 
@@ -282,7 +282,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
               initialMedia.uri,
               initialMedia.name,
               initialMedia.type,
-              getMediaTapListener(),
+              getImageTapListener(),
               initialMedia.size));
     }
   }
@@ -509,7 +509,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       @SuppressWarnings("ConstantConditions")
       DcMediaPagerAdapter adapter =
           new DcMediaPagerAdapter(
-              this, GlideApp.with(this), getWindow(), data, getMediaTapListener(), leftIsRecent);
+              this, GlideApp.with(this), getWindow(), data, getImageTapListener(), leftIsRecent);
       adapter.setActive(true);
       mediaPager.setAdapter(adapter);
 
@@ -603,7 +603,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
       try {
         holder.mediaView.set(glideRequests, window, uri, name, mediaType, size, true);
-        holder.mediaView.setOnMediaTapListener(onTap);
+        holder.mediaView.setOnImageTapListener(onTap);
       } catch (IOException e) {
         Log.w(TAG, e);
       }
@@ -708,7 +708,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         Log.w(TAG, e);
       }
 
-      holder.mediaView.setOnMediaTapListener(onTap);
+      holder.mediaView.setOnImageTapListener(onTap);
       mediaViews.put(position, holder.mediaView);
     }
 
