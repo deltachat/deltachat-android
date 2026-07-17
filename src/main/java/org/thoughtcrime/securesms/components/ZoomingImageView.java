@@ -52,6 +52,9 @@ public class ZoomingImageView extends FrameLayout {
     this.photoView = findViewById(R.id.image_view);
     this.subsamplingImageView = findViewById(R.id.subsampling_image_view);
 
+    this.photoView.setMaximumScale(8.0f);
+    this.photoView.setMediumScale(3.0f);
+
     this.subsamplingImageView.setOrientation(SubsamplingScaleImageView.ORIENTATION_USE_EXIF);
   }
 
@@ -93,6 +96,16 @@ public class ZoomingImageView extends FrameLayout {
         }
       }
     }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+  }
+
+  public void setOnImageTapListener(@Nullable Runnable listener) {
+    if (listener == null) {
+      photoView.setOnViewTapListener(null);
+      subsamplingImageView.setOnClickListener(null);
+    } else {
+      photoView.setOnViewTapListener((view, x, y) -> listener.run());
+      subsamplingImageView.setOnClickListener(v -> listener.run());
+    }
   }
 
   private void setImageViewUri(@NonNull GlideRequests glideRequests, @NonNull Uri uri) {

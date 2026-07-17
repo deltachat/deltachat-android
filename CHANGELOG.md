@@ -16,6 +16,7 @@
 * Fix: Calls now prioritize headset before earpiece
 * Fix: Calls now respect remote controls (Bluetooth, Auto, etc.)
 * Fix: Call now show a notification for missing mic permission when answered with remote controls
+* Fix: Allow fullscreen image preview on Android 15+
 
 ## v2.53.0
 2026-06
