@@ -25,6 +25,7 @@ import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.android.material.textfield.TextInputLayout;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
@@ -186,6 +187,10 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(container);
+
+    boolean isTeam = DcHelper.getContext(this).isTeamProfile();
+    ((TextInputLayout) ViewUtil.findById(this, R.id.name))
+        .setHint(isTeam ? R.string.team_name : R.string.pref_your_name);
 
     loginSuccessText.setVisibility(View.GONE);
   }
