@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.55.0
+2026-07
 
 * Allow to select multiple files for sending
 * Add notifications for missed calls
