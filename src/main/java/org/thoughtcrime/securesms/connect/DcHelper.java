@@ -143,7 +143,6 @@ public class DcHelper {
     dcContext.setStockTranslation(90, context.getString(R.string.reply_noun));
     dcContext.setStockTranslation(91, context.getString(R.string.devicemsg_self_deleted));
     dcContext.setStockTranslation(97, context.getString(R.string.forwarded));
-    dcContext.setStockTranslation(98, context.getString(R.string.devicemsg_storage_exceeding));
     dcContext.setStockTranslation(103, context.getString(R.string.incoming_messages));
     dcContext.setStockTranslation(104, context.getString(R.string.outgoing_messages));
     dcContext.setStockTranslation(107, context.getString(R.string.connectivity_connected));
@@ -152,7 +151,6 @@ public class DcHelper {
     dcContext.setStockTranslation(110, context.getString(R.string.sending));
     dcContext.setStockTranslation(111, context.getString(R.string.last_msg_sent_successfully));
     dcContext.setStockTranslation(112, context.getString(R.string.error_x));
-    dcContext.setStockTranslation(113, context.getString(R.string.not_supported_by_provider));
     dcContext.setStockTranslation(114, context.getString(R.string.messages));
     dcContext.setStockTranslation(116, context.getString(R.string.part_of_total_used));
     dcContext.setStockTranslation(117, context.getString(R.string.secure_join_started));
