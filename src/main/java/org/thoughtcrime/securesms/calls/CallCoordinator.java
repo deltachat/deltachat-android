@@ -588,24 +588,37 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
+    final int accId = activeAccId;
+    final int chatId = activeChatId;
+    final boolean video = startsWithVideo;
+    final int thisGeneration = callGeneration;
+
     new Thread(
             () -> {
+              int callId;
               try {
-                // RPC returns the final callId
-                int callId =
-                    rpc.placeOutgoingCall(activeAccId, activeChatId, offerSdp, startsWithVideo);
-
+                callId = rpc.placeOutgoingCall(accId, chatId, offerSdp, video);
                 Log.d(TAG, "Outgoing call initiated, final callId: " + callId);
-
-                // Update our stored callId
-                this.activeCallId = callId;
-
-                completeOutgoingCall(activeAccId, callId, activeChatId);
-
               } catch (RpcException e) {
                 Log.e(TAG, "Failed to send offer with RPC", e);
                 reportError("Failed to initiate call: " + e.getMessage());
+                return;
               }
+
+              synchronized (CallCoordinator.this) {
+                if (thisGeneration != callGeneration || !hasActiveCall()) {
+                  Log.w(TAG, "Call gone during placement, ending backend call " + callId);
+                  try {
+                    rpc.endCall(accId, callId);
+                  } catch (RpcException e) {
+                    Log.e(TAG, "Failed to end backend call", e);
+                  }
+                  return;
+                }
+                this.activeCallId = callId;
+              }
+
+              completeOutgoingCall(accId, callId, chatId);
             })
         .start();
   }
@@ -878,17 +891,21 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     // Always move to background
     eventExecutor.execute(
         () -> {
-          boolean hasVideo;
-
           switch (eventId) {
             case DcContext.DC_EVENT_INCOMING_CALL:
-              try {
-                hasVideo = this.rpc.callInfo(accId, callId).hasVideo;
-              } catch (RpcException e) {
-                Log.e(TAG, "Rpc.callInfo() failed", e);
-                hasVideo = false;
-              }
-              onIncomingCall(accId, callId, event.getData2Str(), hasVideo);
+              String offerSdp = event.getData2Str();
+              new Thread(
+                      () -> {
+                        boolean hasVideo;
+                        try {
+                          hasVideo = this.rpc.callInfo(accId, callId).hasVideo;
+                        } catch (RpcException e) {
+                          Log.e(TAG, "Rpc.callInfo() failed", e);
+                          hasVideo = false;
+                        }
+                        onIncomingCall(accId, callId, offerSdp, hasVideo);
+                      })
+                  .start();
               break;
             case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
               boolean fromThisDevice = event.getData2Int() != 0; // Data2 is from_this_device
@@ -899,9 +916,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               onOutgoingCallAccepted(callId, answerSDP);
               break;
             case DcContext.DC_EVENT_CALL_ENDED:
-              // This event is problematic because it can trigger in both directions,
-              // in addition to multiple other scenarios which cannot easily be distinguished
-              // May cause problems in edge cases
               onCallEnded(accId, callId);
               break;
           }
@@ -1142,6 +1156,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   public synchronized void cleanupCall(int accId, int callId) {
     Log.d(TAG, "cleanupCall: accId=" + accId + ", callId=" + callId);
 
+    mainHandler.post(
+        () -> {
+          try {
+            notificationManager.cancel(NOTIFICATION_ID_CALL);
+          } catch (Exception ignored) {
+          }
+        });
+
     if (!hasActiveCall()) {
       Log.d(TAG, "No active call to clean up");
       return;
@@ -1151,6 +1173,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       Log.w(TAG, "Cleanup IDs don't match active call, aborting");
       return;
     }
+
+    callGeneration++;
 
     if (callService != null) {
       try {
