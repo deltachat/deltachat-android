@@ -435,6 +435,7 @@
     <string name="canceled_call">Abgebrochener Anruf</string>
     <string name="missed_call">Verpasster Anruf</string>
     <string name="already_in_call">Bereits im Anruf</string>
+    <string name="call_back">Zurückrufen</string>
     <string name="call_answered_elsewhere">Anruf auf einem anderen Gerät beantwortet</string>
     <string name="call_requires_camera_permission">Kamerazugriff für Videoanrufe erforderlich</string>
     <string name="call_requires_mic_permission">Mikrofonzugriff für Anrufe erforderlich</string>

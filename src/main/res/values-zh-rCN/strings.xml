@@ -423,6 +423,7 @@
     <string name="canceled_call">已取消通话</string>
     <string name="missed_call">未接来电</string>
     <string name="already_in_call">已在通话中</string>
+    <string name="call_back">回拨</string>
     <string name="call_answered_elsewhere">通话已在其他设备上接听</string>
     <string name="call_requires_camera_permission">视频通话需要摄像头权限</string>
     <string name="call_requires_mic_permission">通话需要麦克风权限</string>

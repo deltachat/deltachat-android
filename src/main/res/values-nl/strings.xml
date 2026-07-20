@@ -435,6 +435,7 @@
     <string name="canceled_call">Afgebroken oproep</string>
     <string name="missed_call">Gemiste oproep</string>
     <string name="already_in_call">Reeds in gesprek</string>
+    <string name="call_back">Terugbellen</string>
     <string name="call_answered_elsewhere">Er is opgenomen op een ander apparaat</string>
     <string name="call_requires_camera_permission">Cameratoegang is vereist om te kunnen videobellen</string>
     <string name="call_requires_mic_permission">Microfoontoegang is vereist om te kunnen bellen</string>

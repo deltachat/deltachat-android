@@ -288,7 +288,7 @@ public class Rpc {
    * - [Self::add_transport_from_qr()] to add a transport
    * from a server encoded in a QR code.
    * - [Self::list_transports()] to get a list of all configured transports.
-   * - [Self::delete_transport()] to remove a transport.
+   * - [Self::set_transport_unpublished()] to remove a transport.
    * - [Self::set_transport_unpublished()] to set whether contacts see this transport.
    */
   public void addOrUpdateTransport(Integer accountId, EnteredLoginParam param) throws RpcException {
@@ -312,26 +312,34 @@ public class Rpc {
   /**
    * Returns the list of all email accounts that are used as a transport in the current profile.
    * Use [Self::add_or_update_transport()] to add or change a transport
-   * and [Self::delete_transport()] to delete a transport.
-   * Use [Self::list_transports_ex()] to additionally query
-   * whether the transports are marked as 'unpublished'.
+   * and [Self::set_transport_unpublished()] to remove a transport.
    */
   public java.util.List<EnteredLoginParam> listTransports(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<EnteredLoginParam>>(){}, "list_transports", mapper.valueToTree(accountId));
   }
 
   /**
+   * Deprecated 2026-06: This is not needed by UI implementations anymore,
+   * because unpublished relays now count as removed from the user point of view,
+   * and must not be shown in the list of relays.
+   * This means that UIs should use `list_transports()` instead of this function.
+   * <p>
    * Returns the list of all email accounts that are used as a transport in the current profile.
+   * <p>
+   * As opposed to `list_transports()`, this function also returns unpublished transports,
+   * and for each returned transport it returns the information whether or not is `unpublished`.
+   * <p>
    * Use [Self::add_or_update_transport()] to add or change a transport
-   * and [Self::delete_transport()] to delete a transport.
+   * and [Self::set_transport_unpublished()] to change whether a transport is 'published'.
    */
   public java.util.List<TransportListEntry> listTransportsEx(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<TransportListEntry>>(){}, "list_transports_ex", mapper.valueToTree(accountId));
   }
 
   /**
-   * Removes the transport with the specified email address
-   * (i.e. [EnteredLoginParam::addr]).
+   * Immediately deletes a transport, potentially causing messages not to arrive.
+   * This must ONLY be used by the automated tests.
+   * UI implementations must use [`Self::set_transport_unpublished`] instead.
    */
   public void deleteTransport(Integer accountId, String addr) throws RpcException {
     transport.call("delete_transport", mapper.valueToTree(accountId), mapper.valueToTree(addr));
@@ -339,15 +347,22 @@ public class Rpc {
 
   /**
    * Change whether the transport is unpublished.
+   * UIs should call this function when the user clicks on "Remove".
+   * Core will keep listening on this transport for some time,
+   * and automatically remove it once it is no longer needed.
    * <p>
    * Unpublished transports are not advertised to contacts,
    * and self-sent messages are not sent there,
    * so that we don't cause extra messages to the corresponding inbox,
    * but can still receive messages from contacts who don't know our new transport addresses yet.
    * <p>
-   * The default is false, but when the user updates from a version that didn't have this flag,
-   * existing secondary transports are set to unpublished,
-   * so that an existing transport address doesn't suddenly get spammed with a lot of messages.
+   * When more transports are added by [`Self::add_or_update_transport()`] or [`Self::add_transport_from_qr`],
+   * the least recently needed unpublished transport is automatically removed
+   * if this is necessary in order to stay below the maximum number of allowed relays.
+   * Also, unpublished transports that are not used to receive any new messages for a time defined by
+   * [`UNPUBLISHED_TRANSPORT_KEEP_TIME`] are automatically removed.
+   * <p>
+   * [`UNPUBLISHED_TRANSPORT_KEEP_TIME`]: deltachat::sql::UNPUBLISHED_TRANSPORT_KEEP_TIME
    */
   public void setTransportUnpublished(Integer accountId, String addr, Boolean unpublished) throws RpcException {
     transport.call("set_transport_unpublished", mapper.valueToTree(accountId), mapper.valueToTree(addr), mapper.valueToTree(unpublished));
@@ -696,7 +711,9 @@ public class Rpc {
    * Create a new unencrypted group chat.
    * <p>
    * Same as [`Self::create_group_chat`], but the chat is unencrypted and can only have
-   * address-contacts.
+   * address-contacts. NB: Chats with similar names and the same members are merged on other
+   * devices, but usually users don't create such chats and look up the existing one instead, so
+   * chat split on the first device is acceptable.
    */
   public Integer createGroupChatUnencrypted(Integer accountId, String name) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "create_group_chat_unencrypted", mapper.valueToTree(accountId), mapper.valueToTree(name));
