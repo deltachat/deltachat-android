@@ -5,6 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:title="@string/team_profile"
+        android:id="@+id/menu_team_profile"
+        app:showAsAction="never" />
+
+    <item
         android:title="@string/proxy_settings"
         android:id="@+id/menu_proxy_settings"
         android:icon="@drawable/ic_proxy_disabled_24"
