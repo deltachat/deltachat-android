@@ -248,7 +248,7 @@ public class RelayListActivity extends BaseActionBarActivity
                 R.string.remove_transport,
                 (d, which) -> {
                   try {
-                    rpc.deleteTransport(accId, relay.addr);
+                    rpc.setTransportUnpublished(accId, relay.addr, true);
                     loadRelays();
                   } catch (RpcException e) {
                     Log.e(TAG, "RPC.deleteTransport() failed", e);
