@@ -291,6 +291,7 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Toggle Emoji Keyboard</string>
     <string name="menu_edit_group">Edit Group</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Group Name and Image</string>
     <string name="menu_show_global_map">All Locations</string>
     <string name="menu_archive_chat">Archive Chat</string>
@@ -721,6 +722,8 @@
     <string name="confirm_add_transport">Add this relay?</string>
     <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">Remove relay \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Remove relay \"%1$s\"?\n\nContacts who only know this relay may not reach you until you message them again.\n\nIf in doubt, hide it rather than removing it.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
     <string name="login_error_mail">Please enter a valid email address</string>
