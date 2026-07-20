@@ -7,6 +7,7 @@
 * Video call preview now accurately shows what is sent to remote
 * Enhance display of messages with long links
 * Show in title if an app is still in draft mode
+* Remove "hide relay" option
 * Fix: don't send images pasted from clipboard as sticker
 * Fix: properly hide draft attachment during in-chat search
 * Fix: close mini-apps and chats if they are deleted

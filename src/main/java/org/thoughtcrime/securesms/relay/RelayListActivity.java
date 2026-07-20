@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
-import chat.delta.rpc.types.TransportListEntry;
+import chat.delta.rpc.types.EnteredLoginParam;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -54,7 +54,7 @@ public class RelayListActivity extends BaseActionBarActivity
   private ActivityResultLauncher<Intent> qrScannerLauncher;
 
   /** Relay selected for context menu via onRelayLongClick() */
-  private TransportListEntry contextMenuRelay = null;
+  private EnteredLoginParam contextMenuRelay = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -164,7 +164,7 @@ public class RelayListActivity extends BaseActionBarActivity
           String finalMainRelayAddr = mainRelayAddr;
 
           try {
-            List<TransportListEntry> relays = rpc.listTransportsEx(accId);
+            List<EnteredLoginParam> relays = rpc.listTransports(accId);
 
             Util.runOnMain(() -> adapter.setRelays(relays, finalMainRelayAddr));
           } catch (RpcException e) {
@@ -175,12 +175,12 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   @Override
-  public void onRelayClick(TransportListEntry relay) {
-    if (relay.param.addr != null && !relay.param.addr.equals(adapter.getMainRelay())) {
+  public void onRelayClick(EnteredLoginParam relay) {
+    if (relay.addr != null && !relay.addr.equals(adapter.getMainRelay())) {
       Util.runOnAnyBackgroundThread(
           () -> {
             try {
-              rpc.setConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS, relay.param.addr);
+              rpc.setConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS, relay.addr);
             } catch (RpcException e) {
               Log.e(TAG, "RPC.setConfig() failed", e);
             }
@@ -191,7 +191,7 @@ public class RelayListActivity extends BaseActionBarActivity
   }
 
   @Override
-  public void onRelayLongClick(View view, TransportListEntry relay) {
+  public void onRelayLongClick(View view, EnteredLoginParam relay) {
     contextMenuRelay = relay;
     registerForContextMenu(view);
     openContextMenu(view);
@@ -203,8 +203,8 @@ public class RelayListActivity extends BaseActionBarActivity
     super.onCreateContextMenu(menu, v, menuInfo);
     getMenuInflater().inflate(R.menu.relay_item_context, menu);
 
-    boolean nonNullAddr = contextMenuRelay != null && contextMenuRelay.param.addr != null;
-    boolean isMain = nonNullAddr && contextMenuRelay.param.addr.equals(adapter.getMainRelay());
+    boolean nonNullAddr = contextMenuRelay != null && contextMenuRelay.addr != null;
+    boolean isMain = nonNullAddr && contextMenuRelay.addr.equals(adapter.getMainRelay());
 
     Util.redMenuItem(menu, R.id.menu_delete_relay);
     menu.findItem(R.id.menu_delete_relay).setVisible(!isMain);
@@ -234,38 +234,27 @@ public class RelayListActivity extends BaseActionBarActivity
     return super.onContextItemSelected(item);
   }
 
-  private void onRelayEdit(TransportListEntry relay) {
+  private void onRelayEdit(EnteredLoginParam relay) {
     Intent intent = new Intent(this, EditRelayActivity.class);
-    intent.putExtra(EditRelayActivity.EXTRA_ADDR, relay.param.addr);
+    intent.putExtra(EditRelayActivity.EXTRA_ADDR, relay.addr);
     startActivity(intent);
   }
 
-  private void onRelayDelete(TransportListEntry relay) {
+  private void onRelayDelete(EnteredLoginParam relay) {
     AlertDialog dialog =
         new AlertDialog.Builder(this)
-            .setTitle(R.string.remove_transport)
-            .setMessage(getString(R.string.confirm_remove_or_hide_transport_x, relay.param.addr))
+            .setMessage(getString(R.string.confirm_remove_relay_x, relay.addr))
             .setPositiveButton(
                 R.string.remove_transport,
                 (d, which) -> {
                   try {
-                    rpc.deleteTransport(accId, relay.param.addr);
+                    rpc.setTransportUnpublished(accId, relay.addr, true);
                     loadRelays();
                   } catch (RpcException e) {
                     Log.e(TAG, "RPC.deleteTransport() failed", e);
                   }
                 })
             .setNegativeButton(R.string.cancel, null)
-            .setNeutralButton(
-                R.string.hide_from_contacts,
-                (d, which) -> {
-                  try {
-                    rpc.setTransportUnpublished(accId, relay.param.addr, true);
-                    loadRelays();
-                  } catch (RpcException e) {
-                    Log.e(TAG, "cannot unpublish relay: ", e);
-                  }
-                })
             .show();
     Util.redPositiveButton(dialog);
   }
