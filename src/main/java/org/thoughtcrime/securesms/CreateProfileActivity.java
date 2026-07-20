@@ -21,6 +21,7 @@ import android.widget.Toast;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.loader.app.LoaderManager;
+import com.b44t.messenger.DcContext;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -63,7 +64,12 @@ public class CreateProfileActivity extends BaseActionBarActivity {
 
     setContentView(R.layout.profile_create_activity);
 
-    getSupportActionBar().setTitle(R.string.pref_profile_info_headline);
+    DcContext dcContext = DcHelper.getContext(this);
+    getSupportActionBar()
+        .setTitle(
+            dcContext.isTeamProfile()
+                ? R.string.team_profile
+                : R.string.pref_profile_info_headline);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
 

@@ -178,24 +178,23 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   }
 
   private void onTeamProfileOptionSelected() {
-    final boolean teamProfileEnabled = "1".equals(dcContext.getConfig("team_profile"));
+    final boolean isTeamProfile = dcContext.isTeamProfile();
 
     new AlertDialog.Builder(this)
         .setTitle(R.string.create_team_profile)
         .setMessage(R.string.team_profile_explain)
         .setNegativeButton(R.string.cancel, null)
         .setPositiveButton(
-            teamProfileEnabled ? R.string.disable : R.string.create_team_profile,
+            isTeamProfile ? R.string.disable : R.string.create_team_profile,
             (d, w) -> {
-              String newValue = teamProfileEnabled ? "0" : "1";
-              dcContext.setConfig("team_profile", newValue);
+              dcContext.setConfig("team_profile", isTeamProfile ? "0" : "1");
               runOnUiThread(this::updateToProfileMode);
             })
         .show();
   }
 
   private void updateToProfileMode() {
-    if (dcContext != null && "1".equals(dcContext.getConfig("team_profile"))) {
+    if (dcContext != null && dcContext.isTeamProfile()) {
       nameInputLayout.setHint(R.string.team_name);
       getSupportActionBar().setTitle(R.string.create_team_profile);
     } else {
