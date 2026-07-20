@@ -17,6 +17,7 @@
 * Fix: Calls now respect remote controls (Bluetooth, Auto, etc.)
 * Fix: Call now show a notification for missing mic permission when answered with remote controls
 * Fix: Allow fullscreen image preview on Android 15+
+* Update to core 2.54.0
 
 ## v2.53.0
 2026-06
