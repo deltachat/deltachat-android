@@ -713,7 +713,9 @@
     <string name="remove_transport">Remove Relay</string>
     <string name="edit_transport">Edit Relay</string>
     <string name="used_for_sending">Used for sending</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Hide from Contacts</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Hidden from contacts</string>
     <string name="enforce_e2ee">Enforce Encryption for All Relays</string>
     <!-- Hint for the list of relays -->
