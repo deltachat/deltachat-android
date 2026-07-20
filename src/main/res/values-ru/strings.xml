@@ -459,6 +459,7 @@
     <string name="canceled_call">Отменённый звонок</string>
     <string name="missed_call">Пропущенный звонок</string>
     <string name="already_in_call">Вызов уже идёт</string>
+    <string name="call_back">Обратный звонок</string>
     <string name="call_answered_elsewhere">Звонок отвечен на другом устройстве</string>
     <string name="call_requires_camera_permission">Для видеозвонков требуется разрешение на использование камеры</string>
     <string name="call_requires_mic_permission">Для совершения звонков требуется разрешение на использование микрофона</string>
