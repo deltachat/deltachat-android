@@ -39,7 +39,6 @@ import com.google.zxing.integration.android.IntentResult;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.thoughtcrime.securesms.components.AvatarSelector;
