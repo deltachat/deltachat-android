@@ -23,7 +23,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.loader.app.LoaderManager;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
@@ -179,17 +178,16 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   }
 
   private void onTeamProfileOptionSelected() {
-    View dialogView = View.inflate(this, R.layout.dialog_team_profile, null);
-    SwitchCompat switchTeamProfile = dialogView.findViewById(R.id.switch_team_profile);
-    switchTeamProfile.setChecked("1".equals(dcContext.getConfig("team_profile")));
+    final boolean teamProfileEnabled = "1".equals(dcContext.getConfig("team_profile"));
 
     new AlertDialog.Builder(this)
-        .setView(dialogView)
+        .setTitle(R.string.create_team_profile)
+        .setMessage(R.string.team_profile_explain)
         .setNegativeButton(R.string.cancel, null)
         .setPositiveButton(
-            R.string.ok,
+            teamProfileEnabled ? R.string.disable : R.string.create_team_profile,
             (d, w) -> {
-              String newValue = switchTeamProfile.isChecked() ? "1" : "0";
+              String newValue = teamProfileEnabled ? "0" : "1";
               dcContext.setConfig("team_profile", newValue);
               runOnUiThread(this::updateToProfileMode);
             })

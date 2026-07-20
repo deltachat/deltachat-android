@@ -677,8 +677,7 @@
     <string name="instant_onboarding_confirm_group">Create a new profile and join \"%1$s\"?</string>
 
     <string name="team_profile">Team Profile</string>
-    <string name="team_profile_explain">A Team Profile is a shared profile managed by several people or organization.\n\nWARNING: This feature is experimental and might change or be removed in the future.</string>
-    <string name="team_profile_mode">Team Profile Mode</string>
+    <string name="team_profile_explain">A \"Team Profile\" is managed collectively by a group of people or an organization\n\n⚠️ Team Profiles are experimental and may be changed or removed in the future.</string>
     <string name="team_name">Team Name</string>
     <string name="create_team_profile">Create Team Profile</string>
 
