@@ -7,8 +7,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
-
 import androidx.appcompat.app.AlertDialog;
+import javax.annotation.Nullable;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
@@ -18,13 +18,10 @@ import org.thoughtcrime.securesms.util.Util;
 import org.unifiedpush.android.connector.UnifiedPush;
 import org.unifiedpush.android.connector.data.ResolvedDistributor;
 
-import javax.annotation.Nullable;
-
 public class UnifiedPushUtils {
   private static String TAG = "UnifiedPushUtils";
-  /**
-   * Used to update the UI with broadcasts if something fails
-   */
+
+  /** Used to update the UI with broadcasts if something fails */
   public static final String PUSH_ERROR_ACTION = "push_event";
 
   private interface DialogCallback {
@@ -39,7 +36,7 @@ public class UnifiedPushUtils {
 
   public interface TryPickCallback {
     void run(boolean success);
-}
+  }
 
   public enum InitStatus {
     /** Push is configured */
@@ -141,23 +138,24 @@ public class UnifiedPushUtils {
   /**
    * Try to use a non-default distributor.
    *
-   * Runs `callback.run(true)` if a new distributor has been picked,
-   * else `callback.run(false)`
+   * <p>Runs `callback.run(true)` if a new distributor has been picked, else `callback.run(false)`
    *
-   * Does not check if Push notifications, or UnifiedPush are enabled
+   * <p>Does not check if Push notifications, or UnifiedPush are enabled
    *
    * @param activity Activity
    * @param callback Callback
    */
   public static void tryPickUnifiedPushDistributor(Activity activity, TryPickCallback callback) {
     Log.d(TAG, "tryPickUnifiedPushDistributor");
-    UnifiedPush.tryPickDistributor(activity,  res -> {
-      if (res) {
-        ApplicationContext.getInstance(activity).initializePush();
-      }
-      callback.run(res);
-      return null;
-    });
+    UnifiedPush.tryPickDistributor(
+        activity,
+        res -> {
+          if (res) {
+            ApplicationContext.getInstance(activity).initializePush();
+          }
+          callback.run(res);
+          return null;
+        });
   }
 
   /**
@@ -181,16 +179,16 @@ public class UnifiedPushUtils {
 
   public static @Nullable String getDistributorName(Context context) {
     String distributor = UnifiedPush.getSavedDistributor(context);
-    if (distributor == null) return  null;
+    if (distributor == null) return null;
     try {
       ApplicationInfo ai;
       if (Build.VERSION.SDK_INT >= 33) {
-        ai = context.getPackageManager().getApplicationInfo(
-          distributor,
-          PackageManager.ApplicationInfoFlags.of(
-            PackageManager.GET_META_DATA
-          )
-        );
+        ai =
+            context
+                .getPackageManager()
+                .getApplicationInfo(
+                    distributor,
+                    PackageManager.ApplicationInfoFlags.of(PackageManager.GET_META_DATA));
       } else {
         ai = context.getPackageManager().getApplicationInfo(distributor, 0);
       }
@@ -202,9 +200,9 @@ public class UnifiedPushUtils {
   }
 
   /**
-   * If an error occur during registration,
-   * we disable UnifiedPush, reset reliable service pref
-   * and try to start the KeepAliveService
+   * If an error occur during registration, we disable UnifiedPush, reset reliable service pref and
+   * try to start the KeepAliveService
+   *
    * @param context
    */
   public static void disableOnError(Context context) {
@@ -212,10 +210,7 @@ public class UnifiedPushUtils {
     UnifiedPushService.unregister(context);
     Prefs.resetReliableService(context);
     context.sendBroadcast(
-      new Intent()
-        .setPackage(context.getPackageName())
-        .setAction(PUSH_ERROR_ACTION)
-    );
+        new Intent().setPackage(context.getPackageName()).setAction(PUSH_ERROR_ACTION));
     try {
       KeepAliveService.maybeStartSelf(context);
     } catch (Exception e) {
@@ -227,8 +222,8 @@ public class UnifiedPushUtils {
    * Returns directly if we don't have registered for UnifiedPush, or if we are already registered,
    * and we have received an endpoint. Else, wait for the endpoint, or a registration failed.
    *
-   * Disable UnifiedPush if we don't receive one or the other within the timeout,
-   * and show a notification to the user.
+   * <p>Disable UnifiedPush if we don't receive one or the other within the timeout, and show a
+   * notification to the user.
    *
    * @param context
    */

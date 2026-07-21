@@ -116,7 +116,8 @@ public class DozeReminder {
 
   private static boolean isPushAvailableAndSufficient(Context context) {
     return ApplicationContext.getDcAccounts().isAllChatmail()
-        && (FcmReceiveService.getToken() != null || UnifiedPushUtils.hasPushDistributor(context, true));
+        && (FcmReceiveService.getToken() != null
+            || UnifiedPushUtils.hasPushDistributor(context, true));
   }
 
   public static void maybeAskDirectly(Context context) {
