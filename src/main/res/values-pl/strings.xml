@@ -459,6 +459,7 @@
     <string name="canceled_call">Połączenie anulowane</string>
     <string name="missed_call">Połączenie anulowane</string>
     <string name="already_in_call">Już w trakcie rozmowy</string>
+    <string name="call_back">Oddzwoń</string>
     <string name="call_answered_elsewhere">Połączenie odebrane na innym urządzeniu</string>
     <string name="call_requires_camera_permission">Do połączeń wideo wymagane jest zezwolenie na korzystanie z kamery</string>
     <string name="call_requires_mic_permission">Do połączeń wymagane jest zezwolenie na korzystanie z mikrofonu</string>

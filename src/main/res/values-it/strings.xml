@@ -447,6 +447,7 @@
     <string name="canceled_call">Chiamata annullata</string>
     <string name="missed_call">Chiamata persa</string>
     <string name="already_in_call">Già in chiamata</string>
+    <string name="call_back">Richiama</string>
     <string name="call_answered_elsewhere">Chiamata risposta su un altro dispositivo</string>
     <string name="call_requires_camera_permission">Per le videochiamate è necessaria l\'autorizzazione per l\'utilizzo della fotocamera.</string>
     <string name="call_requires_mic_permission">Per le chiamate è necessaria l\'autorizzazione per l\'utilizzo del microfono.</string>

@@ -685,7 +685,7 @@
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">У мене вже є профіль</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
-    <string name="manual_account_setup_option">Використовувати класичну пошту як транспортний сервер</string>
+    <string name="manual_account_setup_option">Використовувати класичну пошту як ретранслятор</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Ваш профіль</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
@@ -737,21 +737,21 @@
     <string name="proxy_enabled">Проксі увімкнено</string>
     <string name="proxy_enabled_hint">Ви використовуєте проксі-сервер. Якщо у вас проблеми зі зʼєднанням, спробуйте інший проксі.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
-    <string name="transports">Транспортні сервери</string>
-    <string name="add_transport">Додати транспортний сервер</string>
-    <string name="remove_transport">Видалити транспортний сервер</string>
-    <string name="edit_transport">Редагувати транспортний сервер</string>
+    <string name="transports">Ретранслятори</string>
+    <string name="add_transport">Додати ретранслятор</string>
+    <string name="remove_transport">Видалити ретранслятор</string>
+    <string name="edit_transport">Редагувати ретранслятор</string>
     <string name="used_for_sending">Використовується для відправки</string>
     <string name="hide_from_contacts">Приховати від контактів</string>
     <string name="hidden_from_contacts">Приховано від контактів</string>
     <string name="enforce_e2ee">Застосувати політику шифрування для всіх ретрансляторів</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Повідомлення приймаються на всіх relay-серверах.\n\n⚠️ Якщо ви щось змінюєте тут, переконайтеся, що всі ваші пристрої працюють принаймні з версією 2.47.0. Інакше старіші пристрої можуть пропустити повідомлення.</string>
+    <string name="transport_list_hint">Повідомлення приймаються на всіх ретрансляторах.\n\n⚠️ Якщо ви щось змінюєте тут, переконайтеся, що всі ваші пристрої працюють принаймні з версією 2.47.0. Інакше старіші пристрої можуть пропустити повідомлення.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
-    <string name="confirm_add_transport">Додати цей транспортний сервер?</string>
-    <string name="invalid_transport_qr">Відсканований QR-код не містить дійсного транспортного сервера.</string>
+    <string name="confirm_add_transport">Додати цей ретранслятор?</string>
+    <string name="invalid_transport_qr">Відсканований QR-код не містить дійсного ретранслятора.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_or_hide_transport_x">Видалити relay-сервер \"%1$s\"?\n\nКонтакти, які знають тільки цей relay-сервер, можуть не зв\'язатися з вами, поки ви не напишете їм знову.\n\nЯкщо ви сумніваєтеся, сховайте його, а не видаляйте.</string>
+    <string name="confirm_remove_or_hide_transport_x">Видалити ретранслятор \"%1$s\"?\n\nКонтакти, які знають тільки цей ретранслятор, можуть не зв\'язатися з вами, поки ви не напишете їм знову.\n\nЯкщо ви сумніваєтеся, сховайте його, а не видаляйте.</string>
     <string name="login_certificate_checks">Перевірки сертифікатів</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>
     <string name="login_error_server">Вкажіть дійсний сервер / IP-адресу</string>
@@ -1040,7 +1040,7 @@
     <string name="chat_unencrypted_explanation">Повідомлення в цьому чаті використовують класичну електронну пошту і не мають наскрізного шифрування.</string>
     <string name="messages_are_e2ee">Повідомлення наскрізно зашифровані.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Відтепер повідомлення гарантовано будуть мати наскрізне шифрування. Торкніться, щоб дізнатися більше.</string>
-    <string name="chat_protection_enabled_explanation">Всі повідомлення в цьому чат наскрізь зашифровані.\n\nНаскрізне шифрування зберігає повідомлення конфіденційними між вами та вашими співрозмовинками. Навіть сервери, провайдери або ретранслятори не можуть їх прочитати.</string>
+    <string name="chat_protection_enabled_explanation">Всі повідомлення в цьому чаті наскрізь зашифровані.\n\nНаскрізне шифрування зберігає повідомлення конфіденційними між вами та вашими співрозмовинками. Навіть сервери, провайдери або ретранслятори не можуть їх прочитати.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s вимагає наскрізного шифрування, яке ще не налаштоване для цього чату. Натисніть, щоб дізнатися більше.</string>
     <string name="invalid_unencrypted_explanation">Щоб встановити наскрізне шифрування, Ви можете зустрітися з контактами особисто та відсканувати їх QR-код.</string>
     <string name="learn_more">Дізнатися більше</string>

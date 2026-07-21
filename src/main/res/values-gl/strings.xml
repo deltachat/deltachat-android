@@ -435,6 +435,7 @@
     <string name="canceled_call">Chamada cancelada</string>
     <string name="missed_call">Chamada perdida</string>
     <string name="already_in_call">Xa nunha chamada</string>
+    <string name="call_back">Devolver a chamada</string>
     <string name="call_answered_elsewhere">Chamada respondida noutro dispositivo</string>
     <string name="call_requires_camera_permission">É preciso o permiso da cámara para as videochamadas</string>
     <string name="call_requires_mic_permission">É preciso permiso para o micrófono para as chamadas</string>
@@ -464,7 +465,7 @@
     </plurals>
     <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Reenviar mensaxes a %1$s?</string>
-    <string name="ask_forward_multiple">¿Reenviar mensaxes a %1$d conversas?</string>
+    <string name="ask_forward_multiple">Reenviar mensaxes a %1$d conversas?</string>
     <string name="ask_export_attachment">Exportar anexo? Ao exportar anexos outras aplicacións no dispositivo terán acceso a eles.\n\nGardar?</string>
     <string name="ask_block_contact">Queres bloquear este contacto?\n\nAs mensaxes directas ou os grupos creados por contactos bloqueados non aparecerán.\n\nOutros grupos con contactos bloqueados seguirán mostrando as súas mensaxes.</string>
     <string name="ask_unblock_contact">Desbloquear este contacto?</string>
@@ -567,8 +568,8 @@
     <string name="change_group_image">Cambiar imaxe do grupo</string>
     <string name="group_create_button">Crear grupo</string>
     <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Por favor, introduce un nome para o grupo</string>
-    <string name="please_enter_chat_name">Introduce un nome.</string>
+    <string name="group_please_enter_group_name">Por favor, escribe un nome para o grupo</string>
+    <string name="please_enter_chat_name">Escribe un nome.</string>
     <string name="group_add_members">Engadir participantes</string>
     <string name="group_self_not_in_group">Debes ser parte do grupo para executar esta acción.</string>
     <string name="profile_encryption">Cifrado</string>
@@ -592,7 +593,7 @@
     <string name="all_apps_empty_hint">As aplicacións compartidas en calquera conversa amósanse aquí.</string>
     <string name="media_preview">Vista previa dos medios</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
-    <string name="aspect_ratio_grid">Grella de relación de aspecto</string>
+    <string name="aspect_ratio_grid">Grella de proporcións</string>
     <!-- option to show images in the gallery as square (instead of using correct width/height) -->
     <string name="square_grid">Grella cadrada</string>
     <string name="send_message">Enviar mensaxe</string>
@@ -686,20 +687,20 @@
     <string name="login_smtp_port">Porto SMTP</string>
     <string name="login_smtp_security">Seguridade SMTP</string>
     <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
-    <string name="proxy_settings">Proxy</string>
-    <string name="proxy_use_proxy">Usar Proxy</string>
-    <string name="proxy_add">Engadir Proxy</string>
-    <string name="proxy_add_explain">Tipos de proxy compatibles: HTTP(S), SOCKS5 e Shadowsocks.</string>
-    <string name="proxy_add_url_hint">Escribe aquí a ligazón ao proxy</string>
-    <string name="proxy_invalid">Proxy non compatible ou non válido</string>
+    <string name="proxy_settings">Mandatario</string>
+    <string name="proxy_use_proxy">Usar mandatario</string>
+    <string name="proxy_add">Engadir mandatario</string>
+    <string name="proxy_add_explain">Tipos de mandatarios compatibles: HTTP(S), SOCKS5 e Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Escribe aquí a ligazón ao mandatario</string>
+    <string name="proxy_invalid">Mandatario incompatible ou non válido</string>
     <string name="proxy_list_header">Proxys gardados</string>
-    <string name="proxy_delete">Eliminar Proxy</string>
+    <string name="proxy_delete">Eliminar mandatario</string>
     <string name="proxy_delete_explain">Tes certeza de querer eliminar \"%1$s\"?</string>
-    <string name="proxy_use_proxy_confirm">Queres usar o proxy \"%1$s\"?</string>
-    <string name="proxy_share_explain">As túas amizades poden engadir este proxy escaneando o código QR.</string>
+    <string name="proxy_use_proxy_confirm">Queres usar o mandatario \"%1$s\"?</string>
+    <string name="proxy_share_explain">As túas amizades poden engadir este mandatario escaneando o código QR.</string>
     <string name="proxy_share_link">Compartir ligazón</string>
-    <string name="proxy_enabled">Proxy activado</string>
-    <string name="proxy_enabled_hint">Estás a usar un proxy. Se tes problemas para conectarte, proba cun proxy diferente.</string>
+    <string name="proxy_enabled">Mandatario activado</string>
+    <string name="proxy_enabled_hint">Estás a usar un mandatario. Se tes problemas para conectar, proba cun mandatario diferente.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Repetidores</string>
     <string name="add_transport">Engadir repetidor</string>
@@ -717,10 +718,10 @@
     <!-- placeholder will be replaced by a relay server name -->
     <string name="confirm_remove_or_hide_transport_x">Eliminar o repetidor \"%1$s\"?\n\nOs contactos que só coñecen este retransmisor poden non contactar contigo ata que lles envíes unha nova mensaxe.\n\nEn caso de dúbida, ocúltao en lugar de eliminalo.</string>
     <string name="login_certificate_checks">Comprobacións do certificado</string>
-    <string name="login_error_mail">Introduce un enderezo de correo válido</string>
+    <string name="login_error_mail">Escribe un enderezo de correo válido</string>
     <string name="login_error_server">Introduce un servidor / enderezo IP válido</string>
     <string name="login_error_port">Introduce un porto válido (1–65535)</string>
-    <string name="login_error_required_fields">Introduce un enderezo de correo válido e o contrasinal</string>
+    <string name="login_error_required_fields">Escribe un enderezo de correo válido e un contrasinal</string>
     <string name="import_backup_title">Importar respaldo</string>
     <string name="import_backup_ask">Atopouse un respaldo en \"%1$s\".\n\nQueres importar e utilizar os seus datos e configuracións?</string>
     <string name="import_backup_no_backup_found">Non se atoparon respaldos.\n\nCopia o respaldo a \"%1$s\" e inténtao outra vez.</string>
@@ -799,7 +800,7 @@
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Claro</string>
     <string name="pref_dark_theme">Escuro</string>
-    <string name="pref_appearance">Aspecto</string>
+    <string name="pref_appearance">Aparencia</string>
     <string name="pref_theme">Decorado</string>
     <string name="pref_language">Idioma</string>
     <string name="pref_use_system_ui_font">Utilizar a fonte do sistema</string>
@@ -1041,7 +1042,7 @@
     <string name="revive_qr_code">Activar código QR</string>
     <string name="qrshow_title">Código QR de convite</string>
     <string name="qrshow_x_joining">%1$s uniuse.</string>
-    <string name="qrshow_x_verified">Introduciuse %1$s.</string>
+    <string name="qrshow_x_verified">%1$spresentouse.</string>
     <string name="qrshow_x_has_joined_group">%1$s uniuse ao grupo.</string>
     <string name="qrshow_join_group_title">Código QR de convite</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
@@ -1053,7 +1054,7 @@
     <string name="qrshow_join_contact_no_connection_toast">Sen conexión a internet, non se pode configurar o código QR.</string>
     <string name="qraccount_ask_create_and_login">Crear un novo perfil en \"%1$s\" e acceder alí?</string>
     <string name="set_name_and_avatar_explain">Define un nome recoñecíbel polos teus contactos. Tamén podes definir unha imaxe de perfil.</string>
-    <string name="please_enter_name">Por favor introduce un nome.</string>
+    <string name="please_enter_name">Por favor escribe un nome.</string>
     <string name="qraccount_qr_code_cannot_be_used">O código QR escaneado non se pode utilizar para crear unha nova conta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Iniciar sesión en \"%1$s\"?</string>
