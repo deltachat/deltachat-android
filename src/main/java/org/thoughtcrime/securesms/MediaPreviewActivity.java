@@ -32,10 +32,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,6 +65,7 @@ import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask.Attachment;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 /** Activity for displaying media attachments in-app */
 public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
@@ -89,6 +93,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private ViewPager2 mediaPager;
   private Recipient conversationRecipient;
   private boolean leftIsRecent;
+  private WindowInsetsControllerCompat windowInsetsController;
+  private boolean topBarHidden = false;
 
   private int restartItem = -1;
 
@@ -99,7 +105,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     dynamicTheme =
         new DynamicTheme() {
           public void onCreate(Activity activity) {
-            activity.setTheme(R.style.TextSecure_DarkTheme); // force dark theme
+            activity.setTheme(R.style.TextSecure_DarkNoActionBar_MediaPreview);
           }
 
           public void onResume(Activity activity) {}
@@ -110,13 +116,18 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   @SuppressWarnings("ConstantConditions")
   @Override
   protected void onCreate(Bundle bundle, boolean ready) {
-    setFullscreenIfPossible();
-    getWindow()
-        .setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     setContentView(R.layout.media_preview_activity);
+
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    ViewUtil.applyWindowInsets(toolbar, true, true, true, false);
+
+    windowInsetsController =
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+    windowInsetsController.setSystemBarsBehavior(
+        WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
 
     editAvatarChatId = getIntent().getIntExtra(EDIT_AVATAR_CHAT_ID, 0);
     @Nullable String title = getIntent().getStringExtra(ACTIVITY_TITLE_EXTRA);
@@ -134,8 +145,27 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-  private void setFullscreenIfPossible() {
-    getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+  private void toggleFullscreen() {
+    if (topBarHidden) showTopBar();
+    else hideTopBar();
+  }
+
+  @SuppressWarnings("ConstantConditions")
+  private void hideTopBar() {
+    topBarHidden = true;
+    getSupportActionBar().hide();
+    windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+  }
+
+  @SuppressWarnings("ConstantConditions")
+  private void showTopBar() {
+    topBarHidden = false;
+    getSupportActionBar().show();
+    windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
+  }
+
+  private @Nullable Runnable getImageTapListener() {
+    return editAvatarChatId == 0 ? this::toggleFullscreen : null;
   }
 
   @Override
@@ -252,6 +282,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
               initialMedia.uri,
               initialMedia.name,
               initialMedia.type,
+              getImageTapListener(),
               initialMedia.size));
     }
   }
@@ -477,7 +508,8 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     if (data != null) {
       @SuppressWarnings("ConstantConditions")
       DcMediaPagerAdapter adapter =
-          new DcMediaPagerAdapter(this, GlideApp.with(this), getWindow(), data, leftIsRecent);
+          new DcMediaPagerAdapter(
+              this, GlideApp.with(this), getWindow(), data, getImageTapListener(), leftIsRecent);
       adapter.setActive(true);
       mediaPager.setAdapter(adapter);
 
@@ -533,6 +565,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     private final String name;
     private final String mediaType;
     private final long size;
+    private final @Nullable Runnable onTap;
 
     private final LayoutInflater inflater;
 
@@ -543,12 +576,14 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         @NonNull Uri uri,
         @Nullable String name,
         @NonNull String mediaType,
+        @Nullable Runnable onTap,
         long size) {
       this.glideRequests = glideRequests;
       this.window = window;
       this.uri = uri;
       this.name = name;
       this.mediaType = mediaType;
+      this.onTap = onTap;
       this.size = size;
       this.inflater = LayoutInflater.from(context);
     }
@@ -568,6 +603,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
       try {
         holder.mediaView.set(glideRequests, window, uri, name, mediaType, size, true);
+        holder.mediaView.setOnImageTapListener(onTap);
       } catch (IOException e) {
         Log.w(TAG, e);
       }
@@ -608,6 +644,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     private final Window window;
     private final DcMediaGalleryElement gallery;
     private final boolean leftIsRecent;
+    private final @Nullable Runnable onTap;
 
     private boolean active;
     private int autoPlayPosition;
@@ -617,11 +654,13 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         @NonNull GlideRequests glideRequests,
         @NonNull Window window,
         @NonNull DcMediaGalleryElement gallery,
+        @Nullable Runnable onTap,
         boolean leftIsRecent) {
       this.context = context.getApplicationContext();
       this.glideRequests = glideRequests;
       this.window = window;
       this.gallery = gallery;
+      this.onTap = onTap;
       this.leftIsRecent = leftIsRecent;
       this.autoPlayPosition = gallery.getPosition();
     }
@@ -669,6 +708,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         Log.w(TAG, e);
       }
 
+      holder.mediaView.setOnImageTapListener(onTap);
       mediaViews.put(position, holder.mediaView);
     }
 

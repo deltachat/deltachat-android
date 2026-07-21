@@ -435,6 +435,7 @@
     <string name="canceled_call">katkestatud kõne</string>
     <string name="missed_call">Märkamata kõne</string>
     <string name="already_in_call">Kõne  juba on pooleli</string>
+    <string name="call_back">Helista tagasi</string>
     <string name="call_answered_elsewhere">Kõne on vastatud muus seadmes</string>
     <string name="call_requires_camera_permission">Videokõnede tegemiseks peab rakendusel olema õigus kasutada kaamerat</string>
     <string name="call_requires_mic_permission">Helistamiseks peab rakendusel olema õigus kasutada mikrofoni</string>

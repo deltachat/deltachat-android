@@ -15,6 +15,9 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Icon;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
@@ -38,6 +41,7 @@ import androidx.lifecycle.FlowLiveDataConversions;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcChat;
@@ -57,10 +61,10 @@ import kotlinx.coroutines.Dispatchers;
 import kotlinx.coroutines.flow.Flow;
 import kotlinx.coroutines.flow.FlowKt;
 import org.thoughtcrime.securesms.ApplicationContext;
-import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Util;
 import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
 
@@ -69,20 +73,16 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "CallCoordinator";
 
   // Notification channels
-  private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls";
+  private static final String CHANNEL_ID_INCOMING = "voip_incoming_calls_v2";
   private static final String CHANNEL_ID_ONGOING = "voip_ongoing_calls";
   private static final String CHANNEL_ID_MISSED = "voip_missed_calls";
   private static final int NOTIFICATION_ID_CALL = 1001;
-  static final int NOTIFICATION_ID_MISSED_CALL = 1002;
 
   private static final int PI_ANSWER = 0;
   private static final int PI_DECLINE = 1;
   private static final int PI_FULLSCREEN = 2;
   private static final int PI_HANGUP = 3;
   private static final int PI_ONGOING_CONTENT = 4;
-  private static final int PI_MISSED_CONTENT = 5;
-  private static final int PI_MISSED_CALLBACK = 6;
-  private static final int PI_MISSED_MESSAGE = 7;
 
   private static final String CALL_IDENTIFIER_SCHEME = "deltachat:";
 
@@ -133,9 +133,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private boolean startsWithVideo;
   private String pendingOfferSdp;
   private boolean hasNotifiedBackend = false;
-  private boolean hasAutoSelectedEarpiece = false;
+  private boolean hasAutoSelectedEndpoint = false;
   private boolean pendingMediaCapture = false;
-  private boolean wasAnsweredLocally = false;
+  private boolean answerInProgress = false;
+  private Observer<Boolean> answerMediaObserver;
+  private int callGeneration = 0;
 
   private CallControlScope activeCallControlScope;
   private CallViewModel activeCallViewModel;
@@ -170,11 +172,22 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   private void createNotificationChannels() {
+    notificationManager.deleteNotificationChannel("voip_incoming_calls");
+
+    Uri ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+    AudioAttributes ringtoneAttributes =
+        new AudioAttributes.Builder()
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+            .setLegacyStreamType(AudioManager.STREAM_RING)
+            .build();
+
     NotificationChannel incomingChannel =
         new NotificationChannel(
             CHANNEL_ID_INCOMING, "Incoming Calls", NotificationManager.IMPORTANCE_HIGH);
     incomingChannel.setDescription("Notifications for incoming DeltaChat calls");
-    incomingChannel.setSound(null, null);
+    incomingChannel.setSound(ringtoneUri, ringtoneAttributes);
+    incomingChannel.setVibrationPattern(new long[] {0, 1000, 1000});
 
     NotificationChannel ongoingChannel =
         new NotificationChannel(
@@ -268,9 +281,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               // Initialize call
               callService.initializeCall();
 
-              if (isIncomingCall) {
-                callService.startIncomingRingtone();
-              } else {
+              if (!isIncomingCall) {
                 mainHandler.removeCallbacks(outgoingRingtoneRunnable);
                 mainHandler.postDelayed(outgoingRingtoneRunnable, 1500);
               }
@@ -383,6 +394,30 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     return availableAudioEndpoints;
   }
 
+  static CallEndpointCompat findPreferredEndpoint(
+      List<CallEndpointCompat> endpoints, boolean startsWithVideo) {
+    if (endpoints == null || endpoints.isEmpty()) return null;
+
+    for (CallEndpointCompat endpoint : endpoints) {
+      int type = endpoint.getType();
+      if (type == CallEndpointCompat.TYPE_BLUETOOTH
+          || type == CallEndpointCompat.TYPE_WIRED_HEADSET) {
+        return endpoint;
+      }
+    }
+
+    int fallbackType =
+        startsWithVideo ? CallEndpointCompat.TYPE_SPEAKER : CallEndpointCompat.TYPE_EARPIECE;
+
+    for (CallEndpointCompat endpoint : endpoints) {
+      if (endpoint.getType() == fallbackType) {
+        return endpoint;
+      }
+    }
+
+    return null;
+  }
+
   public LiveData<Boolean> getIsFrontCamera() {
     return isFrontCamera;
   }
@@ -452,52 +487,64 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  public synchronized void handleCallControlScopeAnswer() {
-    Log.d(TAG, "handleCallControlScopeAnswer");
+  public synchronized void answerCall(boolean fromTelecom) {
+    Log.d(TAG, "answerCall: fromTelecom=" + fromTelecom);
 
     if (!isIncomingCall) {
       Log.w(TAG, "Not an incoming call");
       return;
     }
 
-    wasAnsweredLocally = true;
+    if (answerInProgress) {
+      Log.d(TAG, "Answer already in progress");
+      return;
+    }
+
+    answerInProgress = true;
 
     if (callService != null) {
       callService.stopRingtone();
     }
 
-    // Promote the service to foreground immediately. Waiting until onIncomingCallAccepted
-    // on executor pool thread is too late on stricter OEM.
-    //
-    // Do not cancel() but use showOrUpdateOngoingNotification to replace incoming
-    // notification without a gap.
-    String callerName = displayName.getValue();
-    if (callerName == null) callerName = "Unknown";
-    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
-
-    // Notify Android system with CallControlScope
-    CallControlScope scope = activeCallControlScope;
-    if (scope != null) {
-      scope.answer(
-          CallAttributesCompat.CALL_TYPE_VIDEO_CALL,
-          new Continuation<CallControlResult>() {
-            @NonNull
-            @Override
-            public CoroutineContext getContext() {
-              return EmptyCoroutineContext.INSTANCE;
-            }
-
-            @Override
-            public void resumeWith(@NonNull Object result) {
-              if (result instanceof CallControlResult) {
-                Log.d(TAG, "Answer succeeded with CallControlScope");
-              } else if (result instanceof kotlin.Result.Failure) {
-                Log.e(TAG, "Answer failed", ((kotlin.Result.Failure) result).exception);
-                reportError("Failed to answer call");
+    // Only notify Telecom if the answer originated from UI
+    if (!fromTelecom) {
+      CallControlScope scope = activeCallControlScope;
+      if (scope != null) {
+        scope.answer(
+            CallAttributesCompat.CALL_TYPE_VIDEO_CALL,
+            new Continuation<CallControlResult>() {
+              @NonNull
+              @Override
+              public CoroutineContext getContext() {
+                return EmptyCoroutineContext.INSTANCE;
               }
-            }
-          });
+
+              @Override
+              public void resumeWith(@NonNull Object result) {
+                if (result instanceof CallControlResult) {
+                  Log.d(TAG, "Answer succeeded with CallControlScope");
+                } else if (result instanceof kotlin.Result.Failure) {
+                  Log.e(TAG, "Answer failed", ((kotlin.Result.Failure) result).exception);
+                  reportError("Failed to answer call");
+                }
+              }
+            });
+      }
     }
+
+    if (!hasMicrophonePermission()) {
+      Log.w(TAG, "Mic permission missing, prompting user with notification");
+
+      String callerName = displayName.getValue();
+      if (callerName == null) callerName = "Unknown";
+
+      launchCallActivity();
+      showPermissionNeededNotification(callerName);
+
+      return;
+    }
+
+    answerAfterPermissions();
   }
 
   public void answerWebRTC() {
@@ -593,8 +640,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    if (hasOngoingCall()) {
-      Log.d(TAG, "Call already ongoing");
+    if (answerInProgress || hasOngoingCall()) {
+      Log.d(TAG, "Call already being answered or ongoing");
       return;
     }
 
@@ -603,19 +650,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     appContext.startActivity(intent);
 
-    // CallStyle is always on top, so it will overlap
-    // Downside is once notification is dismissed and user backs out,
-    // the only way to get back to the call is to click on the message again.
-    notificationManager.cancel(NOTIFICATION_ID_CALL);
-
-    Log.d(TAG, "Answering call: " + callId);
+    Log.d(TAG, "Showing incoming call screen: " + callId);
   }
 
-  public synchronized void declineCall() {
-    Log.d(TAG, "declineCall called");
+  public synchronized void endCall(boolean fromTelecom) {
+    Log.d(TAG, "endCall: fromTelecom=" + fromTelecom);
 
-    if (activeCallId == null) {
-      Log.w(TAG, "Call already ended or no active call");
+    if (!hasActiveCall()) {
+      Log.w(TAG, "No active call to end");
       return;
     }
 
@@ -625,28 +667,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     notifyBackendCallEnded();
 
-    disconnectTelecom(new DisconnectCause(DisconnectCause.REJECTED));
-
-    // End call on service
-    if (callService != null) {
-      callService.endCall();
+    if (!fromTelecom) {
+      DisconnectCause cause =
+          isIncomingCall && !answerInProgress
+              ? new DisconnectCause(DisconnectCause.REJECTED)
+              : new DisconnectCause(DisconnectCause.LOCAL);
+      disconnectTelecom(cause);
     }
-
-    // Cleanup
-    cleanupCall(activeAccId, activeCallId);
-  }
-
-  public synchronized void hangUp() {
-    Log.d(TAG, "hangUp called");
-
-    if (activeCallId == null) {
-      Log.w(TAG, "Call already ended or no active call");
-      return;
-    }
-
-    notifyBackendCallEnded();
-
-    disconnectTelecom(new DisconnectCause(DisconnectCause.LOCAL));
 
     // End call on service
     if (callService != null) {
@@ -714,17 +741,12 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               EmptyCoroutineContext.INSTANCE,
               (scope, continuation) -> FlowKt.first(endpointsFlow, continuation));
 
-      // For audio-only calls, prefer earpiece
-      if (!startsWithVideo && !endpoints.isEmpty()) {
-        for (CallEndpointCompat endpoint : endpoints) {
-          if (endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE) {
-            Log.d(TAG, "Pre-selected earpiece for audio-only call");
-            return endpoint;
-          }
-        }
+      CallEndpointCompat preferred = findPreferredEndpoint(endpoints, startsWithVideo);
+      if (preferred != null) {
+        Log.d(TAG, "Preferred endpoint: " + preferred.getName() + ", type=" + preferred.getType());
       }
 
-      return null;
+      return preferred;
 
     } catch (Exception e) {
       Log.e(TAG, "Failed to get preferred starting endpoint", e);
@@ -753,28 +775,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
           // Turns out the system Bluetooth/AudioService will trigger a second audio change
           // And Telecom tries to prevent it but doesn't always success, so a delayed
           // switch is still needed as a backup
-          if (!hasAutoSelectedEarpiece && !startsWithVideo) {
-            hasAutoSelectedEarpiece = true;
+          if (!hasAutoSelectedEndpoint) {
+            hasAutoSelectedEndpoint = true;
 
             if (value != null && !value.isEmpty()) {
-              // Find earpiece endpoint
-              CallEndpointCompat earpieceEndpoint = null;
-              for (CallEndpointCompat endpoint : value) {
-                if (endpoint.getType() == CallEndpointCompat.TYPE_EARPIECE) {
-                  earpieceEndpoint = endpoint;
-                  break;
-                }
-              }
-
-              final CallEndpointCompat finalEarpieceEndpoint = earpieceEndpoint;
+              final CallEndpointCompat finalPreferred =
+                  findPreferredEndpoint(value, startsWithVideo);
 
               mainHandler.postDelayed(
                   () -> {
-                    if (finalEarpieceEndpoint != null) {
-                      Log.d(TAG, "Auto-selecting earpiece for audio-only outgoing call");
-                      requestAudioEndpointChange(finalEarpieceEndpoint);
+                    if (finalPreferred != null) {
+                      Log.d(TAG, "Auto-selecting endpoint: " + finalPreferred.getName());
+                      requestAudioEndpointChange(finalPreferred);
                     } else {
-                      Log.d(TAG, "No earpiece endpoint available on this device");
+                      Log.d(TAG, "No preferred endpoint found");
                     }
 
                     // Only start collecting current audio endpoint after we made the selection
@@ -785,11 +799,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
                   1000);
             }
           } else {
-            mainHandler.postDelayed(
-                () -> {
-                  startCurrentEndpointCollection(scope);
-                },
-                500);
+            mainHandler.postDelayed(() -> startCurrentEndpointCollection(scope), 500);
           }
         });
   }
@@ -892,7 +902,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               // This event is problematic because it can trigger in both directions,
               // in addition to multiple other scenarios which cannot easily be distinguished
               // May cause problems in edge cases
-              onCallEnded(accId, callId, startsWithVideo);
+              onCallEnded(accId, callId);
               break;
           }
         });
@@ -913,7 +923,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     // Add to CallsManager
     CallAttributesCompat callAttributes = createCallAttributes(callerName, callId, true);
-    addCallToTelecom(callAttributes, callerName, callerIcon);
+    addCallToTelecom(callAttributes);
 
     // Show CallStyle notification
     showIncomingCallNotification(callerName, callerIcon);
@@ -945,7 +955,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     // Add to CallsManager
     CallAttributesCompat callAttributes = createCallAttributes(callerName, callId, true);
-    addCallToTelecom(callAttributes, callerName, null);
+    addCallToTelecom(callAttributes);
 
     startAndBindService();
 
@@ -1043,46 +1053,57 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, calleeName));
   }
 
-  private synchronized void onCallEnded(int accId, int callId, boolean startsWithVideo) {
-    Log.d(TAG, "onCallEnded: accId=" + accId + ", callId=" + callId);
+  private void onCallEnded(int accId, int callId) {
+    final boolean shouldNotifyMissed;
+    final int notifyAcc, notifyChat, notifyCall;
 
-    if (!hasActiveCall()) {
-      Log.w(TAG, "No active call, ignoring");
-      return;
+    synchronized (this) {
+      if (!hasActiveCall()) {
+        Log.w(TAG, "No active call, ignoring");
+        return;
+      }
+
+      if (!activeAccId.equals(accId) || !activeCallId.equals(callId)) {
+        Log.w(
+            TAG,
+            "Event IDs don't match active call "
+                + "(active: accId="
+                + activeAccId
+                + " callId="
+                + activeCallId
+                + ", event: accId="
+                + accId
+                + " callId="
+                + callId
+                + "), ignoring");
+        return;
+      }
+
+      if (callService != null) {
+        callService.stopRingtone();
+      }
+
+      disconnectTelecom(new DisconnectCause(DisconnectCause.REMOTE));
+
+      if (callService != null) {
+        callService.endCall();
+      }
+
+      shouldNotifyMissed = isIncomingCall && !answerInProgress;
+      notifyAcc = activeAccId;
+      notifyChat = activeChatId;
+      notifyCall = activeCallId;
+
+      // Clear active states
+      cleanupCall(accId, callId);
     }
 
-    if (!activeAccId.equals(accId) || !activeCallId.equals(callId)) {
-      Log.w(
-          TAG,
-          "Event IDs don't match active call "
-              + "(active: accId="
-              + activeAccId
-              + " callId="
-              + activeCallId
-              + ", event: accId="
-              + accId
-              + " callId="
-              + callId
-              + "), ignoring");
-      return;
+    if (shouldNotifyMissed) {
+      Util.runOnBackground(
+          () ->
+              DcHelper.getNotificationCenter(appContext)
+                  .notifyMessage(notifyAcc, notifyChat, notifyCall));
     }
-
-    if (callService != null) {
-      callService.stopRingtone();
-    }
-
-    disconnectTelecom(new DisconnectCause(DisconnectCause.REMOTE));
-
-    if (callService != null) {
-      callService.endCall();
-    }
-
-    if (isIncomingCall && !wasAnsweredLocally) {
-      showMissedCallNotification(activeAccId, activeChatId, startsWithVideo);
-    }
-
-    // Clear active states
-    cleanupCall(accId, callId);
   }
 
   private synchronized void handleConnectionEnded(PeerConnection.PeerConnectionState state) {
@@ -1150,14 +1171,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     this.startsWithVideo = false;
     this.pendingOfferSdp = null;
     this.hasNotifiedBackend = false;
-    this.hasAutoSelectedEarpiece = false;
+    this.hasAutoSelectedEndpoint = false;
     this.pendingMediaCapture = false;
-    this.wasAnsweredLocally = false;
+    this.answerInProgress = false;
 
     mainHandler.removeCallbacks(outgoingRingtoneRunnable);
 
     mainHandler.post(
         () -> {
+          if (answerMediaObserver != null) {
+            getMediaCaptureReady().removeObserver(answerMediaObserver);
+            answerMediaObserver = null;
+            Log.d(TAG, "Removed answer media observer");
+          }
+
           if (currentAudioEndpointSource != null) {
             currentAudioEndpoint.removeSource(currentAudioEndpointSource);
             currentAudioEndpointSource = null;
@@ -1247,6 +1274,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     resetLiveDataForNewCall();
 
+    callGeneration++;
     this.activeCallId = -1; // Placeholder call ID for Intent
     this.activeAccId = accId;
     this.activeChatId = chatId;
@@ -1295,13 +1323,12 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     // Get callee info
     String calleeName = displayName.getValue();
-    Icon calleeIcon = displayIcon.getValue();
 
     // Create call attributes
     CallAttributesCompat callAttributes = createCallAttributes(calleeName, activeCallId, false);
 
     // Add call to CallsManager
-    addCallToTelecom(callAttributes, calleeName, calleeIcon);
+    addCallToTelecom(callAttributes);
   }
 
   @Nullable
@@ -1314,6 +1341,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     resetLiveDataForNewCall();
 
+    callGeneration++;
     this.activeAccId = accId;
     this.activeCallId = callId;
     this.isIncomingCall = true;
@@ -1341,47 +1369,61 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     startAndBindService();
   }
 
-  private void addCallToTelecom(
-      CallAttributesCompat callAttributes, String displayName, Icon icon) {
+  private void addCallToTelecom(CallAttributesCompat callAttributes) {
+    final int thisGeneration = callGeneration;
     try {
       callsManager.addCall(
           callAttributes,
+          // These callbacks are only invoked by remote surfaces (BT headset, watch, Android
+          // Auto)
           // onAnswer
           (callType, continuation) -> {
             Log.d(TAG, "CallControlScope: onAnswer with type: " + callType);
-            if (activeCallViewModel != null && isIncomingCall) {
-              activeCallViewModel.onCallAnswered();
+            if (isIncomingCall) {
+              answerCall(true);
             }
             return Unit.INSTANCE;
           },
           // onDisconnect
           (disconnectCause, continuation) -> {
             Log.d(TAG, "CallControlScope: onDisconnect, cause: " + disconnectCause);
-            if (activeCallViewModel != null) {
-              activeCallViewModel.onCallDisconnected(disconnectCause);
-            }
+            endCall(true);
             return Unit.INSTANCE;
           },
           // onSetActive
           continuation -> {
             Log.d(TAG, "CallControlScope: onSetActive");
-            if (activeCallViewModel != null) {
-              activeCallViewModel.onCallActive();
-            }
             return Unit.INSTANCE;
           },
           // onSetInactive
           continuation -> {
             Log.d(TAG, "CallControlScope: onSetInactive");
-            if (activeCallViewModel != null) {
-              activeCallViewModel.onCallInactive();
-            }
             return Unit.INSTANCE;
           },
           // CallControlScope lambda
           scope -> {
-            Log.d(TAG, "CallControlScope initialized");
-            activeCallControlScope = scope;
+            synchronized (CallCoordinator.this) {
+              if (thisGeneration != callGeneration || !hasActiveCall()) {
+                scope.disconnect(
+                    new DisconnectCause(DisconnectCause.LOCAL),
+                    new Continuation<CallControlResult>() {
+                      @NonNull
+                      @Override
+                      public CoroutineContext getContext() {
+                        return EmptyCoroutineContext.INSTANCE;
+                      }
+
+                      @Override
+                      public void resumeWith(@NonNull Object result) {
+                        Log.d(TAG, "Orphaned scope disconnected: " + result);
+                      }
+                    });
+                return Unit.INSTANCE;
+              }
+
+              Log.d(TAG, "CallControlScope initialized");
+              activeCallControlScope = scope;
+            }
 
             mainHandler.post(() -> setupAudioEndpointCollection(scope));
 
@@ -1513,88 +1555,9 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
                       .build());
     }
 
-    notificationManager.notify(NOTIFICATION_ID_CALL, builder.build());
-  }
-
-  private void showMissedCallNotification(int accId, int chatId, boolean wasVideoCall) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      if (!hasNotificationPermission()) {
-        Log.w(TAG, "Cannot show missed call notification: no permission");
-        return;
-      }
-    }
-
-    DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
-    DcChat dcChat = dcContext.getChat(chatId);
-    String callerName = CallUtil.getNameFromChat(dcChat);
-
-    Intent contentAction = new Intent(appContext, ConversationActivity.class);
-    contentAction.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-    contentAction.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
-    contentAction.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-    PendingIntent contentIntent =
-        PendingIntent.getActivity(
-            appContext,
-            PI_MISSED_CONTENT,
-            contentAction,
-            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-    Intent callBackAction = new Intent(appContext, CallActionReceiver.class);
-    callBackAction.setAction(CallActivity.ACTION_CALL_BACK);
-    callBackAction.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-    callBackAction.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
-    callBackAction.putExtra(CallActivity.EXTRA_STARTS_WITH_VIDEO, wasVideoCall);
-
-    PendingIntent callBackIntent =
-        PendingIntent.getBroadcast(
-            appContext,
-            PI_MISSED_CALLBACK,
-            callBackAction,
-            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-    Intent messageAction = new Intent(appContext, CallActionReceiver.class);
-    messageAction.setAction(CallActivity.ACTION_MESSAGE);
-    messageAction.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
-    messageAction.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, accId);
-
-    PendingIntent messageIntent =
-        PendingIntent.getBroadcast(
-            appContext,
-            PI_MISSED_MESSAGE,
-            messageAction,
-            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-
-    String contentText = appContext.getString(R.string.missed_call);
-
-    Notification.Builder builder =
-        new Notification.Builder(appContext, CHANNEL_ID_MISSED)
-            .setSmallIcon(R.drawable.icon_notification)
-            .setContentTitle(callerName)
-            .setContentText(contentText)
-            .setContentIntent(contentIntent)
-            .setAutoCancel(true)
-            .addAction(
-                new Notification.Action.Builder(
-                        null, appContext.getString(R.string.call_back), callBackIntent)
-                    .build())
-            .addAction(
-                new Notification.Action.Builder(
-                        null, appContext.getString(R.string.chat_input_placeholder), messageIntent)
-                    .build());
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-      builder.setCategory(Notification.CATEGORY_MISSED_CALL);
-    } else {
-      builder.setCategory(Notification.CATEGORY_CALL);
-    }
-
-    Icon icon = displayIcon.getValue();
-    if (icon != null) {
-      builder.setLargeIcon(icon);
-    }
-
-    notificationManager.notify(NOTIFICATION_ID_MISSED_CALL, builder.build());
+    Notification notification = builder.build();
+    notification.flags |= Notification.FLAG_INSISTENT;
+    notificationManager.notify(NOTIFICATION_ID_CALL, notification);
   }
 
   private Notification buildOngoingCallNotification(
@@ -1717,6 +1680,10 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     return startsWithVideo;
   }
 
+  public synchronized boolean isAnswerInProgress() {
+    return answerInProgress;
+  }
+
   public synchronized void setStartsWithVideo(boolean startsWithVideo) {
     this.startsWithVideo = startsWithVideo;
   }
@@ -1748,5 +1715,75 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     NotificationManager notificationManager =
         (NotificationManager) appContext.getSystemService(Context.NOTIFICATION_SERVICE);
     return notificationManager != null && notificationManager.canUseFullScreenIntent();
+  }
+
+  private void showPermissionNeededNotification(String callerName) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+      if (!hasNotificationPermission()) {
+        Log.w(TAG, "Cannot show permission-needed notification: no notification permission");
+        return;
+      }
+    }
+
+    Intent activityIntent = new Intent(appContext, CallActivity.class);
+    activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+    PendingIntent contentIntent =
+        PendingIntent.getActivity(
+            appContext,
+            PI_FULLSCREEN,
+            activityIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+    String title = appContext.getString(R.string.call_with, callerName);
+    String text = appContext.getString(R.string.call_grant_mic_permission);
+
+    Notification.Builder builder =
+        new Notification.Builder(appContext, CHANNEL_ID_INCOMING)
+            .setSmallIcon(R.drawable.icon_notification)
+            .setContentTitle(title)
+            .setContentText(text)
+            .setContentIntent(contentIntent)
+            .setFullScreenIntent(contentIntent, true)
+            .setOngoing(true)
+            .setCategory(Notification.CATEGORY_CALL);
+
+    notificationManager.notify(NOTIFICATION_ID_CALL, builder.build());
+
+    Log.d(TAG, "Showing permission-needed notification");
+  }
+
+  public void answerAfterPermissions() {
+    Log.d(TAG, "answerAfterPermissions");
+
+    String callerName = displayName.getValue();
+    if (callerName == null) callerName = "Unknown";
+    showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
+
+    ensureServiceStarted();
+    startMediaCapture();
+
+    mainHandler.post(
+        () -> {
+          LiveData<Boolean> mediaReady = getMediaCaptureReady();
+
+          if (Boolean.TRUE.equals(mediaReady.getValue())) {
+            answerWebRTC();
+            return;
+          }
+
+          answerMediaObserver =
+              new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean ready) {
+                  if (Boolean.TRUE.equals(ready)) {
+                    mediaReady.removeObserver(this);
+                    answerMediaObserver = null;
+                    answerWebRTC();
+                  }
+                }
+              };
+          mediaReady.observeForever(answerMediaObserver);
+        });
   }
 }

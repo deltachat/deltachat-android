@@ -1,15 +1,26 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.55.0
+2026-07
 
 * Add support for UnifiedPush
 * Allow to select multiple files for sending
 * Add notifications for missed calls
 * Video call preview now accurately shows what is sent to remote
+* Enhance display of messages with long links
+* Show in title if an app is still in draft mode
+* Remove "hide relay" option
+* Fix: don't send images pasted from clipboard as sticker
 * Fix: properly hide draft attachment during in-chat search
 * Fix: close mini-apps and chats if they are deleted
 * Fix: cancel in-chat search when back is pressed, instead of directly returning to chatlist
 * Fix: "go to bottom" floating button not appearing sometimes when user jumped to message
+* Fix: incoming call ringtone now respects user's notification channel sound setting instead of the system default
+* Fix: Calls now prioritize headset before earpiece
+* Fix: Calls now respect remote controls (Bluetooth, Auto, etc.)
+* Fix: Call now show a notification for missing mic permission when answered with remote controls
+* Fix: Allow fullscreen image preview on Android 15+
+* Update to core 2.55.0
 
 ## v2.53.0
 2026-06

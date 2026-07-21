@@ -435,6 +435,15 @@
     <string name="canceled_call">Bertan behera utzitako deia</string>
     <string name="missed_call">Galdutako deia</string>
     <string name="already_in_call">Dei batean dagoeneko</string>
+    <string name="call_answered_elsewhere">Deia beste gailu batean erantzun da</string>
+    <string name="call_requires_camera_permission">Kamerarako baimena behar da bideo-deiak egiteko</string>
+    <string name="call_requires_mic_permission">Mikrofonorako baimena behar da bideo-deiak egiteko</string>
+    <string name="call_requires_connection">Ezin da deia hasi. Ziurtatu gailuak interneterako konexioa duela eta saiatu berriro.</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Deia %1$s(r)ekin</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">%1$s deitzen...</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ziur irten nahi duzula?</string>
@@ -447,6 +456,11 @@
     <plurals name="ask_delete_messages">
         <item quantity="one">Ezabatu mezu %d?</item>
         <item quantity="other">Ezabatu %d mezu?</item>
+    </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Birbidali mezua %2$s(r)i?</item>
+        <item quantity="other">Birbidali %1$d mezuak %2$s(r)i?</item>
     </plurals>
     <!-- deprecated, use ask_forward_messages -->
     <string name="ask_forward">Birbidali mezuak %1$s erabiltzaileari?</string>
@@ -537,8 +551,11 @@
     <!-- search -->
     <string name="search">Bilatu</string>
     <string name="search_in_chat">Bilatu txatetan</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">Bilatu %1$s</string>
     <string name="search_files">Bilatu fitxategiak</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
+    <string name="search_result_for_x">\"%1$s\" emaitzak</string>
     <string name="search_no_result_for_x">Ez da emaitzarik aurkitu \"%s\" bilaketarentzat</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Irakurri gabe</string>
@@ -551,6 +568,7 @@
     <string name="group_create_button">Sortu taldea</string>
     <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Idatzi izen bat taldearentzat.</string>
+    <string name="please_enter_chat_name">Mesedez, sartu izen bat.</string>
     <string name="group_add_members">Gehitu kideak</string>
     <string name="group_self_not_in_group">Taldeko kidea izan behar zara ekintza hau burutzeko.</string>
     <string name="profile_encryption">Zifratzea</string>
@@ -655,6 +673,7 @@
     <string name="welcome_chat_over_email">Txat deszentralizatu segurua</string>
     <string name="scan_invitation_code">Eskaneatu gonbidapen kodea</string>
     <string name="login_title">Hasi saioa</string>
+    <string name="login_advanced_hint">Saio-hasiera hau erabiltzaile aurreratuentzat da.\n\nEz erabili beste aplikazio batean erabiltzen ari zaren helbide bat.</string>
     <string name="login_inbox">Sarrera ontzia</string>
     <string name="login_imap_login">IMAP erabiltzaile-izena</string>
     <string name="login_imap_server">IMAP zerbitzaria</string>
@@ -689,6 +708,7 @@
     <string name="used_for_sending">Bidaltzeko erabilita</string>
     <string name="hide_from_contacts">Ezkutatu kontaktuetatik</string>
     <string name="hidden_from_contacts">Kontaktuetatik ezkutatuta</string>
+    <string name="enforce_e2ee">Behartu zifraketa errele guztietarako</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Mezuak errele guztietan jasotzen dira.\n\n⚠️ Hemen zerbait aldatzen baduzu, ziurtatu zure gailu guztiek gutxienez 2.47.0 bertsioa dutela. Bestela, gailu zaharragoek mezuak gal ditzakete.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
@@ -788,6 +808,8 @@
     <string name="pref_incognito_keyboard_explain">Eskatu teklatuari pertsonalizatutako ikasketa desgaitzea</string>
     <string name="pref_read_receipts">Irakurragiriak</string>
     <string name="pref_read_receipts_explain">Irakurragiriak desgaituta badaude, ezin izango dituzu besteen irakurragiriak ikusi.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">Irakurria:</string>
     <string name="pref_server">Zerbitzaria</string>
     <string name="pref_encryption">Zifratua</string>
     <string name="pref_manage_keys">Kudeatu gakoak</string>
@@ -910,9 +932,12 @@
     <string name="group_name_changed_by_you">Taldearen izena aldatu duzu, \"%1$s\" izatetik \"%2$s\" izatera.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">%3$s(e)k taldearen izena aldatu du, \"%1$s\" izatetik \"%2$s\" izatera.</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">Kanalaren izena \"%1$s\"-tik \"%2$s\"-ra aldatu da.</string>
     <string name="group_image_changed_by_you">Taldearen irudia aldatu duzu.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">%1$s(e)k taldearen irudia aldatu du</string>
+    <string name="channel_image_changed">Kanalaren irudia aldatu da</string>
     <string name="chat_description_changed_by_you">Txaten deskribapena aldatu duzu.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="chat_description_changed_by_other">%1$s(e)k txataren deskribapena aldatu du</string>
@@ -1049,6 +1074,9 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s(e)k zirriborro bat du dagoeneko, ordezkatu nahi duzu?</string>
     <string name="mailto_link_could_not_be_decoded"> mailto esteka ezin izan da deszifratu: %1$s </string>
+    <string name="remove_quote">Ezabatu aipamena</string>
+    <string name="remove_attachment">Ezabatu eranskina</string>
+
     <!-- notifications -->
     <string name="notify_reply_button">Erantzun</string>
     <string name="notify_new_message">Mezu berria</string>
@@ -1064,6 +1092,10 @@
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Mezu berriak dituzu</string>
     <string name="n_messages_in_m_chats">%1$d mezu %2$d txatetan</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_notification_text">Zure kokapena partekatzen ari zara</string>
+    <string name="location_rationale">Zure zuzeneko kokapena txat-kideekin partekatzeko, baimendu Delta Chat-ek zure lokalizazio-datuak erabiltzea.\n\nZuzeneko kokapenak modu egokian funtziona dezan, lokalizazio-datuak erabiltzen dira baita aplikazioa itxita dagoenean edo erabiltzen ez denean ere.</string>
 
     <!-- permissions -->
     <string name="perm_required_title">Baimena behar da</string>
@@ -1106,6 +1138,7 @@
     <string name="global_menu_help_about_desktop">Delta Chat-i buruz</string>
     <string name="global_menu_file_open_desktop">Ireki Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Txikitu</string>
+    <string name="no_account_selected">Aukeratu profil bat profil berria sortzeko</string>
     <string name="no_chat_selected_suggestion_desktop">Hautatu txat bat edo sortu txat berri bat</string>
     <string name="write_message_desktop">Idatzi mezu bat</string>
     <string name="encryption_info_title_desktop">Zifratzeari buruzko informazioa</string>
@@ -1127,8 +1160,16 @@
     <!-- deprecated, used on desktop although there is not spell checker -->
     <string name="no_spellcheck_suggestions_found">Ez dago ortografia-iradokizunik.</string>
     <string name="show_window">Erakutsi leihoa</string>
+    <string name="data_found_other_installation_message">Ezin zara Delta Chat-eko beste instalazio bateko zure profiletara sartu, instalazio bakoitzak bere kokalekuan gordetzen baititu datuak.\n\nDauden profilak gordetzeko:\n1. Irten\n2. Ireki Delta Chat-en beste instalazioa; behar izanez gero, berrinstalatu %1$s-(e)tik.\n3. Egin profil bakoitzaren segurtasun-kopia bat «Ezarpenak/Txatak» atalean.\n4. Abiarazi berriro aplikazioaren bertsio hau\n5. Leheneratu segurtasun-kopiak «Badut kontu bat» aukera erabiliz\n\nZure aurreko profilik gabe jarraitu nahi duzu?</string>
+
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tekla-konbinazioak</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Nabigazioa</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Mezu-sarrera</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Aukeratutako mezua</string>
     <string name="switch_between_chats">Aldatu txaten artean</string>
     <string name="scroll_messages">Korritu mezuak</string>
     <!-- command to put the cursor to the search input field -->
@@ -1148,6 +1189,9 @@
     <string name="a11y_message_context_menu_btn_label">Mezu-ekintzak</string>
     <string name="a11y_background_preview_label">Atzealdearen aurrebista</string>
     <string name="a11y_disappearing_messages_activated">Desagertzen diren mezuak aktibatu dira</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Irekin %1$s</string>
+
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Utzi kokapena partekatzeari</string>
     <string name="a11y_voice_message_hint_ios">Grabatu ondoren, sakatu bi aldiz bidaltzeko. Grabazioa baztertzeko, pasatu bi hatz gainetik.</string>

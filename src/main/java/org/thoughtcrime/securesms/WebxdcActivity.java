@@ -528,8 +528,15 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   private void updateTitleAndMenu(WebxdcMessageInfo info, DcChat chat) {
-    final String docName = TextUtils.isEmpty(info.document) ? info.name : info.document;
-    getSupportActionBar().setTitle(docName + " – " + chat.getName());
+    final String title;
+    if (dcAppMsg.getState() == DcMsg.DC_STATE_OUT_DRAFT) {
+      title = getString(R.string.draft);
+    } else {
+      final String docName = TextUtils.isEmpty(info.document) ? info.name : info.document;
+      title = docName + " – " + chat.getName();
+    }
+    getSupportActionBar().setTitle(title);
+
     String currSourceCodeUrl = info.sourceCodeUrl != null ? info.sourceCodeUrl : "";
     if (!sourceCodeUrl.equals(currSourceCodeUrl)) {
       sourceCodeUrl = currSourceCodeUrl;

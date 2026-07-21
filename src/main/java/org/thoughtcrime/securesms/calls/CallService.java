@@ -8,10 +8,7 @@ import android.content.pm.ServiceInfo;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.media.ToneGenerator;
-import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
@@ -45,11 +42,9 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   private MediaStreamManager mediaStreamManager;
 
   // Ringtone Resources
-  private Ringtone ringtone;
   private AudioManager audioManager;
   private AudioFocusRequest audioFocusRequest;
   private ToneGenerator toneGenerator;
-  private Runnable toneLoopRunnable;
 
   private CallCoordinator callCoordinator;
 
@@ -185,61 +180,6 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
   // Ringtone Management
 
-  public void startIncomingRingtone() {
-    Log.d(TAG, "startIncomingRingtone");
-
-    if (ringtone != null && ringtone.isPlaying()) {
-      Log.d(TAG, "Ringtone already playing");
-      return;
-    }
-
-    try {
-      // Get system default ringtone URI
-      Uri ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-
-      if (ringtoneUri == null) {
-        Log.w(TAG, "No default ringtone available");
-        return;
-      }
-
-      ringtone = RingtoneManager.getRingtone(getApplicationContext(), ringtoneUri);
-
-      if (ringtone == null) {
-        Log.e(TAG, "Failed to create Ringtone from URI: " + ringtoneUri);
-        return;
-      }
-
-      AudioAttributes audioAttributes =
-          new AudioAttributes.Builder()
-              .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-              .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
-              .setLegacyStreamType(AudioManager.STREAM_RING)
-              .build();
-
-      ringtone.setAudioAttributes(audioAttributes);
-
-      // Request audio focus
-      audioFocusRequest =
-          new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
-              .setAudioAttributes(audioAttributes)
-              .setWillPauseWhenDucked(false)
-              .build();
-
-      int result = audioManager.requestAudioFocus(audioFocusRequest);
-      if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-        Log.w(TAG, "Audio focus not granted");
-      }
-
-      ringtone.play();
-      Log.d(TAG, "Ringtone started playing");
-
-    } catch (Exception e) {
-      Log.e(TAG, "Failed to start ringtone", e);
-      // Clean up on error
-      stopRingtone();
-    }
-  }
-
   public void startOutgoingRingtone() {
     Log.d(TAG, "startOutgoingRingtone");
 
@@ -298,18 +238,6 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
         Log.e(TAG, "Error stopping ToneGenerator", e);
       }
       toneGenerator = null;
-    }
-
-    if (ringtone != null) {
-      try {
-        if (ringtone.isPlaying()) {
-          ringtone.stop();
-          Log.d(TAG, "Ringtone stopped");
-        }
-      } catch (Exception e) {
-        Log.e(TAG, "Error stopping ringtone", e);
-      }
-      ringtone = null;
     }
 
     if (audioFocusRequest != null && audioManager != null) {
