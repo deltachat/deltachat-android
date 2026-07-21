@@ -21,9 +21,9 @@ ls -l $APKGPLAY
 ls -l $APKDEV
 read -p "upload these apks to download.delta.chat/android/beta? ENTER to continue, CTRL-C to abort."
 
-# see docs/upload-release for some hints wrt keys
-rsync --progress $APKGPLAY jekyll@download.delta.chat:/var/www/html/download/android/beta/
-rsync --progress $APKDEV jekyll@download.delta.chat:/var/www/html/download/android/beta/
+# If you want to be able to upload, send your public SSH key to sysadmin@testrun.org 
+rsync --progress $APKGPLAY www-android@download.delta.chat:/var/www/html/download/android/beta/
+rsync --progress $APKDEV www-android@download.delta.chat:/var/www/html/download/android/beta/
 
 echo "upload done."
 echo ""
