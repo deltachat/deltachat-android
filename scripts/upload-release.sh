@@ -22,7 +22,11 @@ ls -l $APK
 read -p "upload this apk and belonging symbols to download.delta.chat/android? ENTER to continue, CTRL-C to abort."
 
 # If you want to be able to upload, send your public SSH key to sysadmin@testrun.org 
-rsync --progress $APK www-android@download.delta.chat:/var/www/html/download/android/
+if ! rsync --progress $APK www-android@download.delta.chat:/ ; then
+    echo "upload of $APK failed, aborting." >&2
+    exit 1
+fi
+
 
 cd ../..
 SYMBOLS_ZIP="$APK-symbols.zip"
@@ -30,7 +34,7 @@ rm $SYMBOLS_ZIP
 zip -r $SYMBOLS_ZIP obj
 zip $SYMBOLS_ZIP build/outputs/mapping/gplayRelease/mapping.txt
 ls -l $SYMBOLS_ZIP
-rsync --progress $SYMBOLS_ZIP www-android@download.delta.chat:/var/www/html/download/android/symbols/
+rsync --progress $SYMBOLS_ZIP www-android@download.delta.chat:/symbols/
 
 echo "upload done."
 echo ""
