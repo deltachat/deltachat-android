@@ -22,11 +22,11 @@ ls -l $APKDEV
 read -p "upload these apks to download.delta.chat/android/beta? ENTER to continue, CTRL-C to abort."
 
 # If you want to be able to upload, send your public SSH key to sysadmin@testrun.org
-if ! rsync --progress -e "ssh " "$APKGPLAY" www-android@download.delta.chat:/beta/; then
+if ! rsync --progress -e "ssh " "$APKGPLAY" www-download-android@download.delta.chat:/beta/; then
     echo "upload of $APKGPLAY failed, aborting." >&2
     exit 1
 fi
-if ! rsync --progress -e "ssh " "$APKDEV" www-android@download.delta.chat:/beta/; then
+if ! rsync --progress -e "ssh " "$APKDEV" www-download-android@download.delta.chat:/beta/; then
     echo "upload of $APKDEV failed, aborting." >&2
     exit 1
 fi
