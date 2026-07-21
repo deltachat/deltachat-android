@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add new experimental "Team Profile" mode in profile creation
+* Add support for UnifiedPush
 
 ## v2.55.0
 2026-07

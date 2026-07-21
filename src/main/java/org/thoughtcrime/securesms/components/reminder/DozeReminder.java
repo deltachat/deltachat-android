@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
 import org.thoughtcrime.securesms.util.Prefs;
 
 @SuppressLint("BatteryLife")
@@ -60,8 +61,9 @@ public class DozeReminder {
       Log.e(TAG, "Error calling getChatlist()", e);
     }
 
-    return !isPushAvailableAndSufficient(); // yip, asking for disabling battery optimisations makes
-    // sense
+    // yip, asking for disabling battery optimisations
+    // makes sense
+    return !isPushAvailableAndSufficient(context);
   }
 
   public static void addDozeReminderDeviceMsg(Context context) {
@@ -112,14 +114,15 @@ public class DozeReminder {
     }
   }
 
-  private static boolean isPushAvailableAndSufficient() {
+  private static boolean isPushAvailableAndSufficient(Context context) {
     return ApplicationContext.getDcAccounts().isAllChatmail()
-        && FcmReceiveService.getToken() != null;
+        && (FcmReceiveService.getToken() != null
+            || UnifiedPushUtils.hasPushDistributor(context, true));
   }
 
   public static void maybeAskDirectly(Context context) {
     try {
-      if (isPushAvailableAndSufficient()) {
+      if (isPushAvailableAndSufficient(context)) {
         return;
       }
 
