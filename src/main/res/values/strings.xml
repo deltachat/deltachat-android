@@ -677,6 +677,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Create a new profile and join \"%1$s\"?</string>
 
+    <string name="team">Team</string>
+    <string name="team_profile">Team Profile</string>
+    <string name="team_profile_explain">A \"Team Profile\" is managed collectively by a group of people or an organization.\n\n⚠️ Team Profiles are experimental and may be changed or removed in the future.</string>
+    <string name="team_name">Team Name</string>
+    <string name="create_team_profile">Create Team Profile</string>
+
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
     <string name="login_title">Log In</string>

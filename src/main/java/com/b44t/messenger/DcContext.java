@@ -344,6 +344,10 @@ public class DcContext {
     return displayname;
   }
 
+  public boolean isTeamProfile() {
+    return getConfigInt("team_profile") == 1;
+  }
+
   public boolean isMuted() {
     return getConfigInt("is_muted") == 1;
   }

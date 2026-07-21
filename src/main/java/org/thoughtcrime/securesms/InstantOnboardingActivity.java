@@ -32,12 +32,12 @@ import com.b44t.messenger.DcLot;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
-import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.thoughtcrime.securesms.components.AvatarSelector;
@@ -73,6 +73,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
 
   private ImageView avatar;
   private EditText name;
+  private TextInputLayout nameInputLayout;
   private TextView invitationText;
   private TextView privacyPolicyBtn;
   private Button signUpBtn;
@@ -100,11 +101,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   @Override
   public void onCreate(Bundle bundle) {
     super.onCreate(bundle);
-
     setContentView(R.layout.instant_onboarding_activity);
-
-    Objects.requireNonNull(getSupportActionBar())
-        .setTitle(R.string.onboarding_create_instant_account);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     boolean configured = DcHelper.getContext(this).isConfigured() == 1;
@@ -172,9 +169,38 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     } else if (itemId == R.id.menu_view_log) {
       startActivity(new Intent(this, LogViewActivity.class));
       return true;
+    } else if (itemId == R.id.menu_team_profile) {
+      onTeamProfileOptionSelected();
+      return true;
     }
 
     return false;
+  }
+
+  private void onTeamProfileOptionSelected() {
+    final boolean isTeamProfile = dcContext.isTeamProfile();
+
+    new AlertDialog.Builder(this)
+        .setTitle(R.string.create_team_profile)
+        .setMessage(R.string.team_profile_explain)
+        .setNegativeButton(R.string.cancel, null)
+        .setPositiveButton(
+            isTeamProfile ? R.string.disable : R.string.create_team_profile,
+            (d, w) -> {
+              dcContext.setConfig("team_profile", isTeamProfile ? "0" : "1");
+              runOnUiThread(this::updateToProfileMode);
+            })
+        .show();
+  }
+
+  private void updateToProfileMode() {
+    if (dcContext != null && dcContext.isTeamProfile()) {
+      nameInputLayout.setHint(R.string.team_name);
+      getSupportActionBar().setTitle(R.string.create_team_profile);
+    } else {
+      nameInputLayout.setHint(R.string.pref_your_name);
+      getSupportActionBar().setTitle(R.string.onboarding_create_instant_account);
+    }
   }
 
   @Override
@@ -337,6 +363,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private void initializeResources() {
     this.avatar = findViewById(R.id.avatar);
     this.name = findViewById(R.id.name_text);
+    this.nameInputLayout = findViewById(R.id.name);
     this.invitationText = findViewById(R.id.invitation_label);
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
     this.signUpBtn = findViewById(R.id.signup_button);
@@ -449,6 +476,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
                 .show(this, avatar));
 
     name.setText(DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME));
+    updateToProfileMode();
   }
 
   private void registerForEvents() {
