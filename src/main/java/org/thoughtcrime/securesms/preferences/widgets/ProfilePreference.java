@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.preferences.widgets;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ public class ProfilePreference extends Preference {
   private ImageView avatarView;
   private TextView profileNameView;
   private TextView profileStatusView;
+  private TextView teamBadgeView;
 
   public ProfilePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
@@ -52,6 +54,7 @@ public class ProfilePreference extends Preference {
     avatarView = (ImageView) viewHolder.findViewById(R.id.avatar);
     profileNameView = (TextView) viewHolder.findViewById(R.id.profile_name);
     profileStatusView = (TextView) viewHolder.findViewById(R.id.profile_status);
+    teamBadgeView = (TextView) viewHolder.findViewById(R.id.team_badge);
 
     refresh();
   }
@@ -78,6 +81,9 @@ public class ProfilePreference extends Preference {
     } else {
       profileNameView.setText(getContext().getString(R.string.pref_profile_info_headline));
     }
+
+    boolean isTeam = DcHelper.getContext(getContext()).isTeamProfile();
+    teamBadgeView.setVisibility(isTeam ? View.VISIBLE : View.GONE);
 
     final String status = DcHelper.get(getContext(), DcHelper.CONFIG_SELF_STATUS);
     if (!TextUtils.isEmpty(status)) {
