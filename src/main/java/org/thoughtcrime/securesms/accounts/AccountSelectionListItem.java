@@ -78,6 +78,9 @@ public class AccountSelectionListItem extends LinearLayout {
         name = self.getAddr();
       }
       addrOrTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
+      if (TextUtils.isEmpty(addrOrTag) && dcContext.isTeamProfile()) {
+        addrOrTag = getContext().getString(R.string.team);
+      }
       unreadCount = dcContext.getFreshMsgs().length;
       recipient = new Recipient(getContext(), self, name);
       this.contactPhotoImage.setConnectivity(dcContext.getConnectivity());

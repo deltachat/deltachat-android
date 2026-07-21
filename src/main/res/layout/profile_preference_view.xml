@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,15 +23,48 @@
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/profile_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:gravity="start"
-            android:textAlignment="viewStart"
-            android:textSize="20sp"
-            tools:text="Voltarine DeClyre" />
+            android:layout_marginBottom="5dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textAlignment="viewStart"
+                android:textSize="20sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintEnd_toStartOf="@+id/team_badge"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Voltarine DeClyre" />
+
+            <TextView
+                android:id="@+id/team_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:textColor="?attr/conversation_list_item_date_color"
+                android:background="@drawable/archived_indicator_background"
+                app:layout_constraintStart_toEndOf="@+id/profile_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/Signal.Text.Caption"
+                android:text="@string/team" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/profile_status"
