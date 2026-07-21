@@ -24,6 +24,8 @@ import org.thoughtcrime.securesms.util.DateUtils;
 public class AudioView extends FrameLayout {
 
   private static final String TAG = "AudioView";
+  private static final float[] SPEEDS = {1f, 1.5f, 2f};
+  private static final String[] SPEED_LABELS = {"1×", "1.5×", "2×"};
 
   private final @NonNull ImageView playPauseButton;
   private final AnimatedVectorDrawableCompat playToPauseDrawable;
@@ -34,9 +36,11 @@ public class AudioView extends FrameLayout {
   private final @NonNull SeekBar seekBar;
   private final @NonNull TextView timestamp;
   private final @NonNull TextView title;
+  private final @NonNull TextView speedButton;
   private final @NonNull View mask;
   private OnActionListener listener;
 
+  private int speedIndex = 0;
   private int msgId = -1;
   private Uri audioUri;
   private int progress;
@@ -44,6 +48,7 @@ public class AudioView extends FrameLayout {
   private AudioPlaybackViewModel viewModel;
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
   private final Observer<Map<Integer, Long>> durationObserver = this::onDurationsChanged;
+  private final Observer<Float> speedObserver = this::onPlaybackSpeedChanged;
   private boolean isPlaying;
 
   public AudioView(Context context) {
@@ -62,7 +67,10 @@ public class AudioView extends FrameLayout {
     this.seekBar = findViewById(R.id.seek);
     this.timestamp = findViewById(R.id.timestamp);
     this.title = findViewById(R.id.title);
+    this.speedButton = findViewById(R.id.audio_speed_button);
     this.mask = findViewById(R.id.interception_mask);
+
+    this.speedButton.setText(SPEED_LABELS[0]);
 
     updateTimestampsAndSeekBar();
 
@@ -99,6 +107,9 @@ public class AudioView extends FrameLayout {
 
       viewModel.getDurations().removeObserver(durationObserver);
       viewModel.getDurations().observeForever(durationObserver);
+
+      viewModel.getPlaybackSpeed().removeObserver(speedObserver);
+      viewModel.getPlaybackSpeed().observeForever(speedObserver);
     }
 
     playPauseButton.setOnClickListener(
@@ -127,6 +138,14 @@ public class AudioView extends FrameLayout {
 
           if (listener != null) {
             listener.onPlayPauseButtonClicked(v);
+          }
+        });
+
+    speedButton.setOnClickListener(
+        v -> {
+          speedIndex = (speedIndex + 1) % SPEEDS.length;
+          if (viewModel != null) {
+            viewModel.setPlaybackSpeed(SPEEDS[speedIndex]);
           }
         });
 
@@ -165,6 +184,7 @@ public class AudioView extends FrameLayout {
     if (viewModel != null) {
       viewModel.getPlaybackState().removeObserver(stateObserver);
       viewModel.getDurations().removeObserver(durationObserver);
+      viewModel.getPlaybackSpeed().removeObserver(speedObserver);
     }
     if (playToPauseDrawable != null) {
       playToPauseDrawable.clearAnimationCallbacks();
@@ -179,6 +199,7 @@ public class AudioView extends FrameLayout {
     if (this.viewModel != null) {
       this.viewModel.getPlaybackState().removeObserver(stateObserver);
       this.viewModel.getDurations().removeObserver(durationObserver);
+      this.viewModel.getPlaybackSpeed().removeObserver(speedObserver);
     }
 
     // ViewModel is used directly for simplicity, since there is no reuse yet
@@ -187,6 +208,7 @@ public class AudioView extends FrameLayout {
     if (viewModel != null) {
       viewModel.getPlaybackState().observeForever(stateObserver);
       viewModel.getDurations().observeForever(durationObserver);
+      viewModel.getPlaybackSpeed().observeForever(speedObserver);
     }
   }
 
@@ -310,8 +332,9 @@ public class AudioView extends FrameLayout {
   private void onPlaybackStateChanged(AudioPlaybackState state) {
     if (audioUri == null || state == null) return;
 
-    // Check if this state is about this message
     boolean isThisMessage = msgId == state.getMsgId();
+
+    speedButton.setVisibility(isThisMessage ? View.VISIBLE : View.GONE);
 
     if (isThisMessage) {
       updateUIForPlaybackState(state);
@@ -341,6 +364,17 @@ public class AudioView extends FrameLayout {
         // No special handling yet
         break;
     }
+  }
+
+  private void onPlaybackSpeedChanged(Float speed) {
+    if (speed == null) return;
+    for (int i = 0; i < SPEEDS.length; i++) {
+      if (Math.abs(SPEEDS[i] - speed) < 0.01f) {
+        speedIndex = i;
+        break;
+      }
+    }
+    speedButton.setText(SPEED_LABELS[speedIndex]);
   }
 
   private void onDurationsChanged(Map<Integer, Long> durations) {
