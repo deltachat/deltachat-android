@@ -31,9 +31,6 @@ public class EnteredLoginParam {
   /** Imap username. */
   @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
   public String imapUser;
-  /** If true, login via OAUTH2 (not recommended anymore). Default: false */
-  @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
-  public Boolean oauth2;
   /** Password. */
   public String password;
   /**
