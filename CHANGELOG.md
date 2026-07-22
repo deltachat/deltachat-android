@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.56.0
+2026-07
 
 * Add new experimental "Team Profile" mode in profile creation
 * Update to core 2.56.0
