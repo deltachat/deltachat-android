@@ -125,6 +125,7 @@
     <string name="menu_send">Göndər</string>
     <string name="menu_toggle_keyboard">Emoji klaviatura keçidi</string>
     <string name="menu_edit_group">Qrupu dəyiş</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Qrupun adı və şəkili</string>
     <string name="menu_show_global_map">Bütün yerləşmə yerləri göstər</string>
     <string name="menu_archive_chat">Çatın xəzinəsi</string>

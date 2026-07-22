@@ -210,6 +210,7 @@
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Alternar teclado emoji</string>
     <string name="menu_edit_group">Editar grupo</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Nome e imagem de grupo</string>
     <string name="menu_archive_chat">Arquivar chat</string>
     <string name="menu_unarchive_chat">Desarquivar chat</string>
@@ -287,7 +288,6 @@
     <string name="call_with">Chamada com %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">A chamar %1$s…</string>
-
     <plurals name="ask_delete_messages">
         <item quantity="one">Apagar %d mensagem?</item>
         <item quantity="many">Apagar %d mensagens?</item>
@@ -407,7 +407,7 @@
     <string name="login_smtp_security">SMTP segurança</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">Mensagens são recebidas em todos os relays.\n\n⚠️ Se alterares alguma coisa aqui, confirma que todos os teus dispositivos estão pelo menos na versão 2.47.0. Caso contrário, dispositivos mais desactualizados podem perder mensagens.</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Remover relay \"%1$s\"?\n\nContactos que conheçam apenas este relay não serão capazes de te contactar até lhes enviares uma nova mensagem.\n\nEm caso de dúvida, oculta-o em vez de o remover.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
     <string name="login_error_server">Por favor insira um servidor ou endereço IP válido</string>

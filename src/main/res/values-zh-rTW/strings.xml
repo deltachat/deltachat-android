@@ -268,6 +268,7 @@
     <string name="menu_send">送出</string>
     <string name="menu_toggle_keyboard">切換表情符號鍵盤</string>
     <string name="menu_edit_group">編輯群組</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">群組名稱及圖片</string>
     <string name="menu_show_global_map">顯示所有地點</string>
     <string name="menu_archive_chat">封存對話</string>
@@ -661,7 +662,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">新增這個中繼伺服器？</string>
     <string name="invalid_transport_qr">掃描的 QR 碼不包含有效的中繼伺服器。</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">移除中继“%1$s”？\n\n仅知道此中继的联系人可能无法联系到您，直到您再次发送消息。\n\n如有疑问，请将其隐藏而非移除。</string>
     <string name="login_certificate_checks">憑證檢查</string>
     <string name="login_error_mail">請輸入有效的電子郵件位址</string>

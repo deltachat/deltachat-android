@@ -158,6 +158,7 @@
     <string name="menu_send">送信</string>
     <string name="menu_toggle_keyboard">絵文字キーボードを呼び出す</string>
     <string name="menu_edit_group">グループを編集</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">グループ名と画像</string>
     <string name="menu_show_global_map">全ての位置情報を表示する</string>
     <string name="menu_archive_chat">チャットを保管</string>

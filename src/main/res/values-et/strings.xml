@@ -288,6 +288,7 @@
     <string name="menu_send">Saada</string>
     <string name="menu_toggle_keyboard">Lülita emojide klahvistik sisse/välja</string>
     <string name="menu_edit_group">Muuda gruppi</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Grupi nimi ja pilt</string>
     <string name="menu_show_global_map">Kõik asukohad</string>
     <string name="menu_archive_chat">Tõsta vestlus arhiivi</string>
@@ -444,7 +445,6 @@
     <string name="call_with">Kõne kasutajaga %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Helistan kasutajale %1$s…</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Kas oled kindel, et soovid lahkuda?</string>
@@ -715,7 +715,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Kas lisad selle alusühenduse (edastusserveri)?</string>
     <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust (edastusserverid)</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Kas eemaldad alusühenduse (edastusserveri) „%1$s“?\n\nKui mõni kontakt teab vaid seda ühendusviisi, siis ta ei pruugi sind kätte saada enne, kui oled talle uuesti kirjutanud.\n\nKui kahtled, siis eemakdamise asemel pigem peida see alusühendus (edastusserver).</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
     <string name="login_error_mail">Palun sisesta korrektne e-posti aadress</string>

@@ -286,6 +286,7 @@
     <string name="menu_send">Gönder</string>
     <string name="menu_toggle_keyboard">Emoji Klavyesine Geç</string>
     <string name="menu_edit_group">Grubu Düzenle</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Grup Adı ve Görseli</string>
     <string name="menu_show_global_map">Tüm Konumlar</string>
     <string name="menu_archive_chat">Sohbeti Arşivle</string>
@@ -694,7 +695,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Bu aktarıcı eklensin mi?</string>
     <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir aktarıcı içermiyor.</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">“%1$s” aktarıcısı kaldırılsın mı?\n\nYalnızca bu aktarıcıyı bilen kişiler, onlara yeniden ileti gönderene kadar size ulaşamayabilir.\n\nKuşkuluysanız, onu kaldırmak yerine gizleyin.</string>
     <string name="login_certificate_checks">Sertifika Denetimleri</string>
     <string name="login_error_mail">Lütfen geçerli bir e-posta adresi girin</string>

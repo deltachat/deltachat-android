@@ -204,6 +204,9 @@
     <string name="contact">Kontakt</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
+    <string name="front_camera">Frontkamera</string>
+    <string name="back_camera">Rückkamera</string>
+    <string name="microphone">Mikrofon</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Aufnehmen</string>
     <!-- Switch eg. from front to back camera -->
@@ -288,6 +291,7 @@
     <string name="menu_send">Senden</string>
     <string name="menu_toggle_keyboard">Emojis einblenden</string>
     <string name="menu_edit_group">Gruppe bearbeiten</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Gruppenname und -bild</string>
     <string name="menu_show_global_map">Alle Standorte</string>
     <string name="menu_archive_chat">Chat archivieren</string>
@@ -439,11 +443,13 @@
     <string name="call_answered_elsewhere">Anruf auf einem anderen Gerät beantwortet</string>
     <string name="call_requires_camera_permission">Kamerazugriff für Videoanrufe erforderlich</string>
     <string name="call_requires_mic_permission">Mikrofonzugriff für Anrufe erforderlich</string>
+    <string name="call_grant_mic_permission">Tippen für Mikrofonzugriff</string>
     <string name="call_requires_connection">Anruf kann nicht gestartet werden. Stelle sicher, dass dein Gerät mit dem Internet verbunden ist, und versuche es erneut.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Anruf mit %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">%1$s anrufen…</string>
+    <string name="audio_output">Audioausgang</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -716,6 +722,8 @@
     <string name="confirm_add_transport">Relay hinzufügen?</string>
     <string name="invalid_transport_qr">Der gescannte QR-Code enthält keine gültiges Relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">Relay \"%1$s\" entfernen?</string>
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Relay \"%1$s\" entfernen?\n\nKontakte, die nur dieses Relay kennen, erreichen dich möglicherweise erst wieder, wenn du ihnen erneut eine Nachricht schickst.\n\nIm Zweifelsfall, verstecke das Relay anstelle es zu löschen.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
     <string name="login_error_mail">Bitte eine gültige E-Mail-Adresse eingeben</string>

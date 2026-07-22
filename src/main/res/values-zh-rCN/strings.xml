@@ -194,6 +194,9 @@
     <string name="contact">联系人</string>
     <string name="bot">机器人</string>
     <string name="camera">相机</string>
+    <string name="front_camera">前置摄像头</string>
+    <string name="back_camera">后置摄像头</string>
+    <string name="microphone">麦克风</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">捕获</string>
     <!-- Switch eg. from front to back camera -->
@@ -277,6 +280,7 @@
     <string name="menu_send">发送</string>
     <string name="menu_toggle_keyboard">切换表情符号键盘</string>
     <string name="menu_edit_group">编辑群组</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">群组名称和图像</string>
     <string name="menu_show_global_map">显示所有位置</string>
     <string name="menu_archive_chat">归档聊天</string>
@@ -427,11 +431,13 @@
     <string name="call_answered_elsewhere">通话已在其他设备上接听</string>
     <string name="call_requires_camera_permission">视频通话需要摄像头权限</string>
     <string name="call_requires_mic_permission">通话需要麦克风权限</string>
+    <string name="call_grant_mic_permission">点按即可授予麦克风访问权限</string>
     <string name="call_requires_connection">无法开始通话。请确保您的设备已连接到互联网，然后重试。</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">与 %1$s 的通话</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">正在呼叫 %1$s…</string>
+    <string name="audio_output">音频输出</string>
 
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
@@ -653,6 +659,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">你想新建个人资料并加入 \"%1$s\" 聊天群吗？</string>
 
+    <string name="team">团队</string>
+    <string name="team_profile">团队配置</string>
+    <string name="team_profile_explain">“团队配置”由一群人或一个组织共同管理。\n\n⚠️ 团队配置目前处于实验阶段，未来可能会更改或移除。</string>
+    <string name="team_name">团队名称</string>
+    <string name="create_team_profile">创建团队配置</string>
+
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
     <string name="login_title">登录</string>
@@ -698,6 +710,8 @@
     <string name="confirm_add_transport">添加此中继？</string>
     <string name="invalid_transport_qr">扫描的二维码不包含有效的中继。</string>
     <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">移除中继“%1$s”？</string>
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">移除中继“%1$s”？\n\n仅知道此中继的联系人可能无法联系到您，直到您再次发送消息。\n\n如有疑问，请将其隐藏而非移除。</string>
     <string name="login_certificate_checks">证书检查</string>
     <string name="login_error_mail">请输入有效的电子邮件地址</string>

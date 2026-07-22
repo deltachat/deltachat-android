@@ -206,6 +206,7 @@
     <string name="menu_send">Lähetä</string>
     <string name="menu_toggle_keyboard">Näytä emoji-näppäimistö</string>
     <string name="menu_edit_group">Muokkaa ryhmää</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Ryhmän nimi ja kuva</string>
     <string name="menu_show_global_map">Näytä kaikki sijainnit</string>
     <string name="menu_archive_chat">Arkistoi keskustelu</string>

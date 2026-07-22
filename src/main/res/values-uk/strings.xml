@@ -310,6 +310,7 @@
     <string name="menu_send">Послати</string>
     <string name="menu_toggle_keyboard">Увімкнути емодзі-клавіатуру</string>
     <string name="menu_edit_group">Редагувати групу</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Назва групи та зображення</string>
     <string name="menu_show_global_map">Показати всі місця</string>
     <string name="menu_archive_chat">Архівувати чат</string>
@@ -467,7 +468,6 @@
     <string name="call_with">Зателефонувати до %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Дзвонимо до %1$s…</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Ви впевнені, що хочете піти?</string>
@@ -750,7 +750,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Додати цей ретранслятор?</string>
     <string name="invalid_transport_qr">Відсканований QR-код не містить дійсного ретранслятора.</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Видалити ретранслятор \"%1$s\"?\n\nКонтакти, які знають тільки цей ретранслятор, можуть не зв\'язатися з вами, поки ви не напишете їм знову.\n\nЯкщо ви сумніваєтеся, сховайте його, а не видаляйте.</string>
     <string name="login_certificate_checks">Перевірки сертифікатів</string>
     <string name="login_error_mail">Вкажіть дійсну адресу електронної пошти</string>

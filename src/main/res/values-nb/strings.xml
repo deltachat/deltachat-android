@@ -286,6 +286,7 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Slå på/av emoji-tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Gruppenavn og bilde</string>
     <string name="menu_show_global_map">Vis alle posisjoner</string>
     <string name="menu_archive_chat">Arkiver chat</string>
@@ -437,7 +438,6 @@
     <string name="call_with">Samtale med %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Ringer %1$s...</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Er du sikker på at du vil forlate?</string>

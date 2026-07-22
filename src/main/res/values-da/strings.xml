@@ -160,6 +160,7 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Skift emoji tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Gruppenavn og billede</string>
     <string name="menu_show_global_map">Vis alle placeringer</string>
     <string name="menu_archive_chat">Arkiver samtale</string>

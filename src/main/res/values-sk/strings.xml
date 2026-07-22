@@ -12,35 +12,38 @@
     <string name="yes">Áno</string>
     <string name="no">Nie</string>
     <string name="select">Vybrať</string>
-    <string name="on">Zapnúť</string>
-    <string name="off">Vypnúť</string>
-    <string name="def">Štandardné nastavenie</string>
-    <string name="default_value">Štandardné nastavenie (%1$s)</string>
-    <string name="custom">Vlastný</string>
-    <string name="none">Nie je</string>
-    <string name="automatic">Automatický</string>
-    <string name="strict">Striktný</string>
+    <string name="on">Zapnuté</string>
+    <string name="off">Vypnuté</string>
+    <string name="def">Predvolené</string>
+    <string name="default_value">Predvolené (%1$s)</string>
+    <string name="custom">Vlastné</string>
+    <string name="none">Nenastavené</string>
+    <string name="automatic">Automaticky</string>
+    <string name="strict">Presne</string>
     <string name="open">Otvoriť</string>
     <string name="download">Stiahnuť</string>
-    <string name="downloading">Sťahujem...</string>
+    <string name="downloading">Sťahovanie…</string>
     <string name="open_attachment">Otvoriť prílohu</string>
-    <string name="join">Spojiť</string>
-    <string name="rejoin">Znovu spojiť</string>
+    <string name="join">Pripojiť sa</string>
+    <string name="join_group">Pripojiť sa ku skupine</string>
+    <string name="join_channel">Pripojiť sa do kanála</string>
+    <string name="rejoin">Znovu sa pripojiť</string>
     <string name="delete">Odstrániť</string>
     <string name="delete_for_me">Odstrániť pre mňa</string>
     <string name="delete_for_everyone">Odstrániť pre všetkých</string>
-    <string name="info">Informácia</string>
+    <string name="info">Informácie</string>
     <string name="update">Aktualizovať</string>
     <string name="emoji">Smajlíci</string>
     <string name="attachment">Príloha</string>
     <string name="back">Späť</string>
-    <string name="close">Zatvoriť</string>
+    <string name="close">Zavrieť</string>
     <string name="close_window">Zavrieť okno</string>
-    <string name="forward">Vpred</string>
+    <string name="forward">Preposlať</string>
     <string name="create">Vytvoriť</string>
+    <string name="reset">Obnoviť</string>
     <string name="later">Neskôr</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
-    <string name="resend">Znovu poslať</string>
+    <string name="resend">Poslať znovu</string>
     <string name="edited">Upravená</string>
     <string name="edit_message">Upraviť správu</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -48,9 +51,11 @@
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Zrušiť archiváciu</string>
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
-    <string name="mute">Stíšiť</string>
+    <string name="mute">Stlmiť</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
+    <string name="muted">Stlmené</string>
     <string name="ephemeral_messages">Miznúce správy</string>
-    <string name="ephemeral_messages_hint">Tieto nastavenia platia pre všetkých účastníkov používajúcich Delta Chat. Môžu však kopírovať, ukladať a preposielať správy alebo používať iných e-mailových klientov.</string>
+    <string name="ephemeral_messages_hint">Platí pre všetkých členov tejto konverzácie, ktorí si však stále môžu správy ukladať, kopírovať alebo preposlať.</string>
     <string name="save">Uložiť</string>
     <string name="chat">Konverzácia</string>
     <string name="media">Médiá</string>
@@ -60,39 +65,45 @@
     <string name="all_profiles">Všetky účty</string>
     <!-- deprecated -->
     <string name="current_profile">Aktuálny účet</string>
-    <string name="main_menu">Hlavné menu</string>
+    <string name="main_menu">Hlavná ponuka</string>
     <string name="start_chat">Začať konverzáciu</string>
     <string name="show_full_message">Zobraziť celú správu ...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
-    <string name="mark_all_as_read">Všetko prečítané</string>
+    <string name="mark_all_as_read">Všetko ako prečítané</string>
     <!-- Used as an menu entry or button -->
     <string name="mark_as_read">Označiť ako prečítané</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Prečítané</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Označiť ako neprečítané</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Neprečítané</string>
     <!-- Placeholder text when something is loading -->
-    <string name="loading">Načítam…</string>
+    <string name="loading">Načítavanie…</string>
     <string name="hide">Skryť</string>
     <string name="activate">Zapnúť</string>
     <string name="load_remote_content">Načítať vzdialené obrázky</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">Na sledovanie vás možno použiť obrázky nadiaľku.\n\nToto nastavenie tiež umožňuje načítať písma a ďalší obsah. Aj keď je vypnutá, stále sa vám môžu zobrazovať vložené alebo uložené obrázky.\n\nNačítať vzdialené obrázky?</string>
+    <string name="load_remote_content_ask">Načítanie obrázkov je možné zneužiť na sledovanie vašej aktivity.\n\nToto nastavenie tiež umožňuje načítať písma a ďalší obsah. Aj keď to nie je povolené, stále sa môžu zobrazovať vložené obrázky alebo obrázky z vyrovnávacej pamäte.\n\nNačítať vzdialený obsah?</string>
     <string name="always">Vždy</string>
-    <string name="once">Raz</string>
+    <string name="always_load_remote_images">Vždy načítať vzdialené obrázky</string>
+    <string name="once">Len raz</string>
     <!-- deprecated -->
     <string name="show_warning">Zobraziť varovanie</string>
     <string name="not_now">Teraz nie</string>
     <string name="never">Nikdy</string>
-    <string name="one_moment">Moment...</string>
+    <string name="one_moment">Len chvíľu…</string>
     <string name="done">Hotovo</string>
     <string name="undo">Vrátiť späť</string>
     <string name="offline">Offline</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
-    <string name="next">Ďalšie</string>
+    <string name="next">Ďalej</string>
+    <string name="warning">Upozornenie</string>
     <string name="error">Chyba</string>
     <string name="error_x">Chyba: %1$s</string>
-    <string name="no_app_to_handle_data">Nemôžem nájsť aplikáciu na spracovanie tohto typu údajov.</string>
+    <string name="no_app_to_handle_data">Nie je možné nájsť aplikáciu na spracovanie tohto typu údajov.</string>
     <string name="no_browser_installed">Nie je nainštalovaný žiadny prehliadač.</string>
-    <string name="file_not_found">Nemohol nájsť %1$s.</string>
+    <string name="file_not_found">Nie je možné nájsť %1$s.</string>
     <!-- the placeholder will be replaced by the name of a file -->
     <string name="cannot_save_file">Nepodarilo sa uložiť %1$s.</string>
     <string name="copied_to_clipboard">Skopírované do schránky.</string>
@@ -109,12 +120,21 @@
     <string name="this_week">Tento týždeň</string>
     <string name="this_month">Tento mesiac</string>
     <string name="last_week">Minulý týždeň</string>
-    <string name="last_month">Minulý mesiac</string>
+    <string name="last_month">Minulý mesiacB</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
-    <string name="last_seen_at">Naposledy videné o%1$s</string>
+    <string name="last_seen_at">Naposledy videné o%1$sAA</string>
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
-    <string name="last_seen_relative">Naposledy online %1$s</string>
+    <string name="last_seen_relative">Naposledy videné %1$s</string>
     <string name="last_seen_unknown">Naposledy videné: Neznáme</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">Trvanie %dminútu</item>
+        <item quantity="few">Trvanie %d minútu</item>
+        <item quantity="many">Trvanie %d minúty</item>
+        <item quantity="other">Trvanie %d minút</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Menej ako minútu</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minúta</item>
@@ -265,6 +285,7 @@
     <string name="menu_send">Poslať</string>
     <string name="menu_toggle_keyboard">Prepnúť klávesnicu emodži</string>
     <string name="menu_edit_group">Upraviť skupinu</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Názov a obrázok skupiny</string>
     <string name="menu_show_global_map">Zobraziť všetky polohy</string>
     <string name="menu_archive_chat">Archivovať konverzáciu</string>
