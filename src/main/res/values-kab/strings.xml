@@ -281,6 +281,7 @@
     <string name="menu_send">Azen</string>
     <string name="menu_toggle_keyboard">Ldi/Fer anasiw n yimujit </string>
     <string name="menu_edit_group">Ẓreg agraw</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Isem n ugraw d tugna</string>
     <string name="menu_show_global_map">Akk adigen </string>
     <string name="menu_archive_chat">Ɣber adiwenni usrid</string>
@@ -679,7 +680,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Rnu amedwel-agi?</string>
     <string name="invalid_transport_qr">Tangalt QR ittusemḍen ur tesɛi ara amedwel ameɣtu</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Kkes amedwel \"%1$s\"?\n\nInermasen i yessnen kan amedwel-a, ahat ur d-ttawḍen ara ɣur-k·m alarma tuzneḍ-asen izen tikkelt nniḍen.\n\nMa yella ccek, ffer-it axir n tukksa-ines.</string>
     <string name="login_certificate_checks">Asenqed n uselkin</string>
     <string name="login_error_mail">Ma ulac aɣilif, sekcem tansa imayl tameɣtut</string>

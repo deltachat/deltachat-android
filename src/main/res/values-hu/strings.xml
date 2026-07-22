@@ -263,6 +263,7 @@
     <string name="menu_send">Küldés</string>
     <string name="menu_toggle_keyboard">Váltás emodzsibillentyűzetre</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Csoportnév és -kép</string>
     <string name="menu_show_global_map">Az összes hely megjelenítése</string>
     <string name="menu_archive_chat">Csevegés archiválása</string>

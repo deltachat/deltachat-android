@@ -200,6 +200,7 @@
     <string name="menu_send">Trimiteți</string>
     <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
     <string name="menu_edit_group">Editați grupul</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Numele și imaginea grupului</string>
     <string name="menu_show_global_map">Afișați toate locațiile</string>
     <string name="menu_archive_chat">Arhivă Chat</string>

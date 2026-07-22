@@ -288,6 +288,7 @@
     <string name="menu_send">Envia</string>
     <string name="menu_toggle_keyboard">Canvia al teclat d\'emojis</string>
     <string name="menu_edit_group">Edita el grup</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Nom i imatge del grup</string>
     <string name="menu_show_global_map">Totes les ubicacions</string>
     <string name="menu_archive_chat">Arxiva el xat</string>
@@ -443,7 +444,6 @@
     <string name="call_with">Truca amb %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Trucant %1$s…</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Segur que vols sortir?</string>
@@ -714,7 +714,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Afegir aquest retransmissor?</string>
     <string name="invalid_transport_qr">El codi QR escanejat no conté un retransmissor vàlid.</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Esborrar el retransmissor \"%1$s\"?\n\nEls contactes que només coneixen aquest retransmissor no et podran contactar fins que els escriguis de nou.\n\nSi no ho tens clar, amaga\'l enlloc d\'esborrar-lo.</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
     <string name="login_error_mail">Si us plau poseu una adreça d\'email vàlida</string>

@@ -223,6 +223,7 @@
     <string name="menu_send">Пошаљи</string>
     <string name="menu_toggle_keyboard">Емоџи тастатура</string>
     <string name="menu_edit_group">Уреди групу</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Назив и слика групе</string>
     <string name="menu_show_global_map">Прикажи све положаје</string>
     <string name="menu_archive_chat">Архивирај ћаскање</string>

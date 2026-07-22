@@ -288,6 +288,7 @@
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Activar teclado de emoticonas</string>
     <string name="menu_edit_group">Editar grupo</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Nome e imaxe do grupo</string>
     <string name="menu_show_global_map">Todas as localizacións</string>
     <string name="menu_archive_chat">Arquivar conversa</string>
@@ -444,7 +445,6 @@
     <string name="call_with">Chamada con %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Chamando a %1$s...</string>
-
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Tes a certeza de querer saír?</string>
@@ -715,7 +715,7 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Engadir este repetidor?</string>
     <string name="invalid_transport_qr">O código QR escaneado non contén un repetidor válido.</string>
-    <!-- placeholder will be replaced by a relay server name -->
+    <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Eliminar o repetidor \"%1$s\"?\n\nOs contactos que só coñecen este retransmisor poden non contactar contigo ata que lles envíes unha nova mensaxe.\n\nEn caso de dúbida, ocúltao en lugar de eliminalo.</string>
     <string name="login_certificate_checks">Comprobacións do certificado</string>
     <string name="login_error_mail">Escribe un enderezo de correo válido</string>

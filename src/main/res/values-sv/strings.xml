@@ -278,6 +278,7 @@
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Gruppnamn och bild</string>
     <string name="menu_show_global_map">Visa alla platser</string>
     <string name="menu_archive_chat">Arkivera chatt</string>
