@@ -263,6 +263,7 @@
     <string name="menu_send">ارسال</string>
     <string name="menu_toggle_keyboard">تعییر صفحه کلید شکلک‌ها</string>
     <string name="menu_edit_group">ویرایش گروه</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">نام و تصویر گروه</string>
     <string name="menu_show_global_map">نمایش همه موقعیت‌های مکانی</string>
     <string name="menu_archive_chat">بایگانی گپ</string>

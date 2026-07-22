@@ -286,6 +286,7 @@
     <string name="menu_send">Enviar</string>
     <string name="menu_toggle_keyboard">Ativar teclado de emojis</string>
     <string name="menu_edit_group">Modificar grupo</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
     <string name="menu_group_name_and_image">Nome e Imagem do grupo</string>
     <string name="menu_show_global_map">Todas as localizações</string>
     <string name="menu_archive_chat">Arquivar conversa</string>
