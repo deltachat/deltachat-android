@@ -32,7 +32,6 @@ import chat.delta.rpc.types.EnteredLoginParam;
 import chat.delta.rpc.types.Socket;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
-import com.b44t.messenger.DcProvider;
 import com.google.android.material.textfield.TextInputEditText;
 import java.util.List;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
@@ -63,11 +62,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   private TextInputEditText emailInput;
   private TextInputEditText passwordInput;
 
-  private View providerLayout;
-  private TextView providerHint;
-  private TextView providerLink;
-  private @Nullable DcProvider provider;
-
   private Group advancedGroup;
   private ImageView advancedIcon;
   private ProgressDialog progressDialog;
@@ -97,11 +91,6 @@ public class EditRelayActivity extends BaseActionBarActivity
 
     emailInput = findViewById(R.id.email_text);
     passwordInput = findViewById(R.id.password_text);
-
-    providerLayout = findViewById(R.id.provider_layout);
-    providerHint = findViewById(R.id.provider_hint);
-    providerLink = findViewById(R.id.provider_link);
-    providerLink.setOnClickListener(l -> onProviderLink());
 
     advancedGroup = findViewById(R.id.advanced_group);
     advancedIcon = findViewById(R.id.advanced_icon);
@@ -150,19 +139,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     }
 
     if (config != null) emailInput.setEnabled(false);
-    emailInput.addTextChangedListener(
-        new TextWatcher() {
-          @Override
-          public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-          @Override
-          public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-          @Override
-          public void afterTextChanged(Editable s) {
-            maybeCleanProviderInfo();
-          }
-        });
     emailInput.setOnFocusChangeListener(
         (view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
     imapServerInput.setOnFocusChangeListener(
@@ -268,7 +244,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     int id = item.getItemId();
 
     if (id == R.id.do_register) {
-      updateProviderInfo();
       onLogin();
       return true;
     } else if (id == android.R.id.home) {
@@ -298,7 +273,6 @@ public class EditRelayActivity extends BaseActionBarActivity
       switch (type) {
         case EMAIL:
           verifyEmail(inputEditText);
-          updateProviderInfo();
           break;
         case SERVER:
           verifyServer(inputEditText);
@@ -306,61 +280,6 @@ public class EditRelayActivity extends BaseActionBarActivity
         case PORT:
           verifyPort(inputEditText);
           break;
-      }
-    }
-  }
-
-  private void updateProviderInfo() {
-    Util.runOnBackground(
-        () -> {
-          provider = getContext(this).getProviderFromEmailWithDns(emailInput.getText().toString());
-          Util.runOnMain(
-              () -> {
-                if (provider != null) {
-                  Resources res = getResources();
-                  providerHint.setText(provider.getBeforeLoginHint());
-                  switch (provider.getStatus()) {
-                    case DcProvider.DC_PROVIDER_STATUS_PREPARATION:
-                      providerHint.setTextColor(res.getColor(R.color.provider_prep_fg));
-                      providerLink.setTextColor(res.getColor(R.color.provider_prep_fg));
-                      providerLayout.setBackgroundColor(res.getColor(R.color.provider_prep_bg));
-                      providerLayout.setVisibility(View.VISIBLE);
-                      break;
-
-                    case DcProvider.DC_PROVIDER_STATUS_BROKEN:
-                      providerHint.setTextColor(res.getColor(R.color.provider_broken_fg));
-                      providerLink.setTextColor(res.getColor(R.color.provider_broken_fg));
-                      providerLayout.setBackgroundColor(
-                          getResources().getColor(R.color.provider_broken_bg));
-                      providerLayout.setVisibility(View.VISIBLE);
-                      break;
-
-                    default:
-                      providerLayout.setVisibility(View.GONE);
-                      break;
-                  }
-                } else {
-                  providerLayout.setVisibility(View.GONE);
-                }
-              });
-        });
-  }
-
-  private void maybeCleanProviderInfo() {
-    if (provider != null && providerLayout.getVisibility() == View.VISIBLE) {
-      provider = null;
-      providerLayout.setVisibility(View.GONE);
-    }
-  }
-
-  private void onProviderLink() {
-    if (provider != null) {
-      String url = provider.getOverviewPage();
-      if (!url.isEmpty()) {
-        IntentUtils.showInBrowser(this, url);
-      } else {
-        // this should normally not happen
-        Toast.makeText(this, "ErrProviderWithoutUrl", Toast.LENGTH_LONG).show();
       }
     }
   }
