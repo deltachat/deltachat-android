@@ -70,14 +70,4 @@ public class DcAccounts {
   private native long getAccountCPtr(int accountId);
 
   private native long getSelectedAccountCPtr();
-
-  public boolean isAllChatmail() {
-    for (int accountId : getAll()) {
-      DcContext dcContext = getAccount(accountId);
-      if (dcContext.getConfigInt("is_chatmail") == 0) {
-        return false;
-      }
-    }
-    return true;
-  }
 }
