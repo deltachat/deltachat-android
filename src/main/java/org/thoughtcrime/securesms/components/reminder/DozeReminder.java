@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
-import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
@@ -113,8 +112,7 @@ public class DozeReminder {
   }
 
   private static boolean isPushAvailableAndSufficient() {
-    return ApplicationContext.getDcAccounts().isAllChatmail()
-        && FcmReceiveService.getToken() != null;
+    return FcmReceiveService.getToken() != null;
   }
 
   public static void maybeAskDirectly(Context context) {

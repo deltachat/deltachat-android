@@ -242,16 +242,7 @@ public class Prefs {
   }
 
   public static boolean reliableService(Context context) {
-    final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    if (prefs.contains(RELIABLE_SERVICE_PREF)) {
-      try {
-        return prefs.getBoolean(RELIABLE_SERVICE_PREF, true);
-      } catch (Exception e) {
-      }
-    }
-
-    // if the key was unset, then calculate default value
-    return !isPushEnabled(context) || !DcHelper.getAccounts(context).isAllChatmail();
+    return getBooleanPreference(context, RELIABLE_SERVICE_PREF, !isPushEnabled(context));
   }
 
   // vibrate
