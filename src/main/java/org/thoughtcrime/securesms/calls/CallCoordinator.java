@@ -909,7 +909,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               break;
             case DcContext.DC_EVENT_INCOMING_CALL_ACCEPTED:
               boolean fromThisDevice = event.getData2Int() != 0; // Data2 is from_this_device
-              onIncomingCallAccepted(callId, fromThisDevice);
+              onIncomingCallAccepted(accId, callId, fromThisDevice);
               break;
             case DcContext.DC_EVENT_OUTGOING_CALL_ACCEPTED:
               String answerSDP = event.getData2Str();
@@ -976,16 +976,17 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     launchCallActivity();
   }
 
-  private synchronized void onIncomingCallAccepted(int callId, boolean fromThisDevice) {
-    Log.d(TAG, "onIncomingCallAccepted: callId=" + callId + ", fromThisDevice=" + fromThisDevice);
+  private synchronized void onIncomingCallAccepted(int accId, int callId, boolean fromThisDevice) {
+    Log.d(TAG, "onIncomingCallAccepted: accId=" + accId + ", callId=" + callId
+      + ", fromThisDevice=" + fromThisDevice);
 
-    if (!fromThisDevice) {
-      onCallAnsweredOnOtherDevice();
+    if (!hasActiveCall() || !activeAccId.equals(accId) || !activeCallId.equals(callId)) {
+      Log.d(TAG, "Accepted event doesn't match active call, ignoring");
       return;
     }
 
-    if (activeCallId == null || !activeCallId.equals(callId)) {
-      Log.w(TAG, "Accepted call ID doesn't match active call");
+    if (!fromThisDevice) {
+      onCallAnsweredOnOtherDevice();
       return;
     }
 
