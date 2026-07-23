@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* properly update message views counter for channel owner
+
 ## v2.56.0
 2026-07
 
