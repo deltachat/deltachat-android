@@ -324,11 +324,6 @@ public class DcContext {
 
   public native boolean isSendingLocationsToChat(int chat_id);
 
-  public DcProvider getProviderFromEmailWithDns(String email) {
-    long cptr = getProviderFromEmailWithDnsCPtr(email);
-    return cptr != 0 ? new DcProvider(cptr) : null;
-  }
-
   public boolean isMentionsEnabled() {
     return getConfigInt(CONFIG_MUTE_MENTIONS_IF_MUTED) != 1;
   }
