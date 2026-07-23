@@ -1,0 +1,17 @@
+Delta Chat, arkadaşlar, aile, gruplar ve kuruluşlar için kullanımı kolay ve eğlenceli olan güvenilir, merkezi olmayan bir anlık mesajlaşma programıdır. Delta Chat, dünya çapında birçok mağaza ve platformda yılda birkaç kez ortaklaşa iyileştirmeler ve yeni özellikler yayınlayan özel bir TAKY katılımcı topluluğu tarafından geliştirilmiştir.
+
+Tek bakışta özellikler:
+
+- Anonim. Telefon numarası, e-posta veya diğer özel veriler olmadan anında katılım.
+
+- Esneklik. Birden fazla sohbet profilini destekler ve birden fazla cihazda kurulumu kolaydır.
+
+- Genişletilebilir. Herhangi bir sohbete alışveriş listeleri, takvimler veya oyun uygulamaları gibi araçlar ekleyin.
+
+- Güvenilir. Kötü ve olumsuz ağ koşullarında çalışır.
+
+- Güvenli. Denetlenen Uçtan Uca şifreleme, ağ ve sunucu saldırılarına karşı güvenlidir.
+
+- Egemen. Kendi e-posta adresiniz veya sunucunuz ile çalıştırılabilir.
+
+- TAKY. İnternet Standartları üzerine inşa edilmiş Tamamen Açık Kaynaklı/Özgür Yazılım.
