@@ -11,6 +11,7 @@ import androidx.emoji2.emojipicker.EmojiPickerView;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.Reactions;
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
@@ -64,8 +65,19 @@ public class AddReactionView extends LinearLayout {
   public void show(DcMsg msgToReactTo, View parentView, AddReactionListener listener) {
     init(); // init delayed as needed
 
-    if (msgToReactTo.isInfo() || !dcContext.getChat(msgToReactTo.getChatId()).canSend()) {
+    if (msgToReactTo.isInfo()) {
       return;
+    }
+    int chatId = msgToReactTo.getChatId();
+    DcChat dcChat = dcContext.getChat(chatId);
+    boolean inChannel =
+        dcChat.isInBroadcast() && dcContext.isContactInChat(chatId, DcContact.DC_CONTACT_ID_SELF);
+    if (!inChannel && !dcChat.canSend()) {
+      return;
+    }
+
+    if (dcChat.isInBroadcast()) {
+      anyReactionView.setVisibility(View.GONE);
     }
 
     this.msgToReactTo = msgToReactTo;
