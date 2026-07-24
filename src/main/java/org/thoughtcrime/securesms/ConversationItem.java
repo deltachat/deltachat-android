@@ -1087,17 +1087,17 @@ public class ConversationItem extends BaseConversationItem {
         int chatId = messageRecord.getChatId();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
           if (!messageRecord.isOutgoing() && callInfo.state instanceof CallState.Alerting) {
+            int accId = dcContext.getAccountId();
             int callId = messageRecord.getId();
             CallCoordinator coordinator = CallCoordinator.getInstance(context);
 
             if (coordinator.hasActiveCall()) {
-              coordinator.showIncomingCallScreen(callId);
+              coordinator.showIncomingCallScreen(accId, callId);
             } else {
               if (callInfo.sdpOffer == null) {
                 Toast.makeText(context, R.string.error, Toast.LENGTH_SHORT).show();
                 return;
               }
-              int accId = dcContext.getAccountId();
               coordinator.handleIncomingCallFromConversation(
                   accId, callId, callInfo.sdpOffer, callInfo.hasVideo);
             }
