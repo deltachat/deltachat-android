@@ -811,12 +811,11 @@ public class CallActivity extends AppCompatActivity {
     VideoTrack remoteTrack = viewModel.getRemoteVideoTrack().getValue();
 
     boolean isFront = Boolean.TRUE.equals(viewModel.getIsFrontCamera().getValue());
-
+    boolean active =
+        state == CallViewModel.CallState.CONNECTED || state == CallViewModel.CallState.RECONNECTING;
     boolean showFullScreen = false;
 
-    if (state == CallViewModel.CallState.CONNECTED
-        && remoteTrack != null
-        && Boolean.TRUE.equals(remoteVideoEnabled)) {
+    if (active && remoteTrack != null && Boolean.TRUE.equals(remoteVideoEnabled)) {
       remoteVideoView.setMirror(false);
       remoteTrack.addSink(remoteVideoView);
       showFullScreen = true;
@@ -832,7 +831,7 @@ public class CallActivity extends AppCompatActivity {
     remoteVideoView.setVisibility(showFullScreen ? View.VISIBLE : View.GONE);
 
     boolean showCorner =
-        state == CallViewModel.CallState.CONNECTED
+        active
             && localTrack != null
             && Boolean.TRUE.equals(videoEnabled)
             && !isInPictureInPictureMode();
@@ -1083,7 +1082,7 @@ public class CallActivity extends AppCompatActivity {
 
     if (proximityWakeLock != null && proximityWakeLock.isHeld()) {
       proximityWakeLock.release();
-      Log.d(TAG, "Proximity wake lock released in onDestroy");
+      Log.d(TAG, "Proximity wake lock released in onPause");
     }
   }
 

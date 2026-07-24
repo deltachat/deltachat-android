@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.calls;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Context;
@@ -9,12 +10,16 @@ import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
+import android.net.ConnectivityManager;
+import android.net.Network;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.PowerManager;
 import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import chat.delta.rpc.RpcException;
@@ -45,6 +50,11 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   private AudioManager audioManager;
   private AudioFocusRequest audioFocusRequest;
   private ToneGenerator toneGenerator;
+
+  private PowerManager.WakeLock callCpuWakeLock;
+  private ConnectivityManager connectivityManager;
+  private ConnectivityManager.NetworkCallback networkCallback;
+  private Network activeNetwork;
 
   private CallCoordinator callCoordinator;
 
@@ -93,6 +103,8 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     mediaStreamManager =
         new MediaStreamManager(getApplicationContext(), webRTCClient.getPeerConnectionFactory());
+
+    registerNetworkCallback();
 
     fetchIceServersAndSetup();
   }
@@ -370,6 +382,9 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
   public void endCall() {
     Log.d(TAG, "endCall");
 
+    stopRingtone();
+    releaseCpuWakeLock();
+    unregisterNetworkCallback();
     disposeWebRTC();
 
     try {
@@ -459,6 +474,8 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
       } else {
         startForeground(id, notification);
       }
+      acquireCpuWakeLock();
+      registerNetworkCallback();
     } catch (Exception e) {
       Log.e(TAG, "startForeground failed", e);
       if (callCoordinator != null) {
@@ -507,9 +524,79 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     Log.d(TAG, "CallService onDestroy");
 
     stopRingtone();
+    releaseCpuWakeLock();
+    unregisterNetworkCallback();
+
+    try {
+      stopForeground(STOP_FOREGROUND_REMOVE);
+    } catch (Exception e) {
+      Log.w(TAG, "stopForeground in onDestroy failed", e);
+    }
 
     disposeWebRTC();
 
     Log.d(TAG, "CallService destroyed");
+  }
+
+  @SuppressLint("WakelockTimeout")
+  private void acquireCpuWakeLock() {
+    if (callCpuWakeLock == null) {
+      PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+      callCpuWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "DeltaChat:callCpu");
+      callCpuWakeLock.setReferenceCounted(false);
+    }
+    if (!callCpuWakeLock.isHeld()) {
+      callCpuWakeLock.acquire();
+      Log.d(TAG, "Call CPU wake lock acquired");
+    }
+  }
+
+  private void releaseCpuWakeLock() {
+    if (callCpuWakeLock != null && callCpuWakeLock.isHeld()) {
+      callCpuWakeLock.release();
+      Log.d(TAG, "Call CPU wake lock released");
+    }
+  }
+
+  private void registerNetworkCallback() {
+    if (networkCallback != null) return;
+    connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    if (connectivityManager == null) return;
+
+    networkCallback =
+        new ConnectivityManager.NetworkCallback() {
+          @Override
+          public void onAvailable(@NonNull Network network) {
+            Network previous = activeNetwork;
+            activeNetwork = network;
+            if (previous != null && !previous.equals(network) && webRTCClient != null) {
+              webRTCClient.onNetworkChanged();
+            }
+          }
+
+          @Override
+          public void onLost(@NonNull Network network) {
+            if (network.equals(activeNetwork)) activeNetwork = null;
+          }
+        };
+    try {
+      connectivityManager.registerDefaultNetworkCallback(networkCallback);
+      Log.d(TAG, "Call network callback registered");
+    } catch (Exception e) {
+      Log.e(TAG, "registerDefaultNetworkCallback failed", e);
+      networkCallback = null;
+    }
+  }
+
+  private void unregisterNetworkCallback() {
+    if (connectivityManager != null && networkCallback != null) {
+      try {
+        connectivityManager.unregisterNetworkCallback(networkCallback);
+      } catch (Exception e) {
+        Log.w(TAG, "unregisterNetworkCallback failed", e);
+      }
+    }
+    networkCallback = null;
+    activeNetwork = null;
   }
 }
