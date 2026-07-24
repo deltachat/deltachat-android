@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -48,12 +49,16 @@ public class WebRTCClient {
 
   private static final int DC_ID_ICE_TRICKLING = 1;
   private static final int DC_ID_MUTED_STATE = 3;
+  private static final int DC_ID_RENEGOTIATION = 5;
 
   // ICE gathering timeouts
   private static final int RELAY_WAIT_MS = 10000;
   private static final int SRFLX_WAIT_MS = 5000;
   private static final int SRFLX_BURST_DELAY_MS = 150;
   private static final int HOST_WAIT_MS = 3000;
+  private static final int DISCONNECT_GRACE_MS = 3000;
+  private static final int ICE_RESTART_TIMEOUT_MS = 8000;
+  private static final int MAX_ICE_RESTART_ATTEMPTS = 3;
 
   private final Context context;
   private final Handler mainHandler;
@@ -79,6 +84,17 @@ public class WebRTCClient {
   private volatile CountDownLatch iceGatheringLatch;
   private volatile CountDownLatch relayCandidateLatch;
   private volatile CountDownLatch srflxCandidateLatch;
+
+  // renegotiation
+  private volatile boolean isCaller;
+  private volatile boolean initialNegotiationComplete;
+  private DataChannel renegotiationDataChannel;
+  private volatile boolean renegotiationChannelOpen;
+  private int iceRestartAttempts;
+  private final AtomicBoolean reconnecting = new AtomicBoolean(false);
+
+  private final Runnable disconnectGraceRunnable = this::onDisconnectGraceExpired;
+  private final Runnable iceRestartTimeoutRunnable = this::onIceRestartTimeout;
 
   // Media
   private MediaStream localStream;
@@ -248,6 +264,7 @@ public class WebRTCClient {
     rtcConfig.rtcpMuxPolicy = PeerConnection.RtcpMuxPolicy.REQUIRE;
     rtcConfig.iceCandidatePoolSize = 1;
     rtcConfig.sdpSemantics = PeerConnection.SdpSemantics.UNIFIED_PLAN;
+    rtcConfig.continualGatheringPolicy = PeerConnection.ContinualGatheringPolicy.GATHER_CONTINUALLY;
 
     peerConnection =
         peerConnectionFactory.createPeerConnection(rtcConfig, new PeerConnectionObserver());
@@ -267,9 +284,15 @@ public class WebRTCClient {
     this.srflxCandidateLatch = new CountDownLatch(1);
     this.enableIceTrickling = false;
 
+    this.initialNegotiationComplete = false;
+    this.iceRestartAttempts = 0;
+    this.reconnecting.set(false);
+    cancelReconnectTimers();
+
     // Create data channels
     setupIceTricklingDataChannel();
     setupMutedStateDataChannel();
+    setupRenegotiationDataChannel();
 
     Log.d(TAG, "PeerConnection created");
   }
@@ -283,16 +306,75 @@ public class WebRTCClient {
     @Override
     public void onIceConnectionChange(PeerConnection.IceConnectionState state) {
       Log.d(TAG, "ICE connection state: " + state);
+      if (state == PeerConnection.IceConnectionState.CONNECTED
+          || state == PeerConnection.IceConnectionState.COMPLETED) {
+        mainHandler.post(
+            () -> {
+              if (reconnecting.compareAndSet(true, false)) {
+                Log.d(TAG, "ICE recovered, clearing reconnecting");
+                cancelReconnectTimers();
+                iceRestartAttempts = 0;
+                callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTED);
+              }
+            });
+      }
     }
 
     @Override
     public void onConnectionChange(PeerConnection.PeerConnectionState state) {
       Log.d(TAG, "Connection state: " + state);
 
-      mainHandler.post(() -> callbacks.onConnectionStateChanged(state));
+      switch (state) {
+        case CONNECTED:
+          mainHandler.post(
+              () -> {
+                cancelReconnectTimers();
+                iceRestartAttempts = 0;
+                initialNegotiationComplete = true;
+                reconnecting.set(false);
+                callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTED);
+              });
+          detectRelayUsage();
+          break;
 
-      if (state == PeerConnection.PeerConnectionState.CONNECTED) {
-        detectRelayUsage();
+        case DISCONNECTED:
+          if (initialNegotiationComplete) {
+            mainHandler.post(WebRTCClient.this::onDisconnectedDuringCall);
+          } else {
+            mainHandler.post(
+                () ->
+                    callbacks.onConnectionStateChanged(
+                        PeerConnection.PeerConnectionState.DISCONNECTED));
+          }
+          break;
+
+        case FAILED:
+          if (initialNegotiationComplete) {
+            mainHandler.post(
+                () -> {
+                  cancelReconnectTimers();
+                  enterRecovery();
+                  triggerIceRestart();
+                });
+          } else {
+            mainHandler.post(
+                () ->
+                    callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.FAILED));
+          }
+          break;
+
+        case CONNECTING:
+          mainHandler.post(
+              () -> {
+                if (!reconnecting.get()) {
+                  callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING);
+                }
+              });
+          break;
+
+        default:
+          mainHandler.post(() -> callbacks.onConnectionStateChanged(state));
+          break;
       }
     }
 
@@ -591,6 +673,7 @@ public class WebRTCClient {
     }
 
     Log.d(TAG, "Starting outgoing call");
+    this.isCaller = true;
     mainHandler.post(
         () -> callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
 
@@ -729,6 +812,7 @@ public class WebRTCClient {
     }
 
     Log.d(TAG, "Accepting incoming call");
+    this.isCaller = false;
     mainHandler.post(
         () -> callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
 
@@ -951,6 +1035,10 @@ public class WebRTCClient {
     if (relayCandidateLatch != null) relayCandidateLatch.countDown();
     if (srflxCandidateLatch != null) srflxCandidateLatch.countDown();
 
+    cancelReconnectTimers();
+    reconnecting.set(false);
+    initialNegotiationComplete = false;
+
     if (peerConnection != null) {
       peerConnection.close();
       peerConnection.dispose();
@@ -981,6 +1069,12 @@ public class WebRTCClient {
     iceCandidateBuffer.clear();
     iceTricklingChannelOpen = false;
     mutedStateChannelOpen = false;
+    if (renegotiationDataChannel != null) {
+      renegotiationDataChannel.close();
+      renegotiationDataChannel.dispose();
+      renegotiationDataChannel = null;
+    }
+    renegotiationChannelOpen = false;
     enableIceTrickling = false;
     localStream = null;
     localVideoTrack = null;
@@ -1037,6 +1131,272 @@ public class WebRTCClient {
     } catch (JSONException e) {
       Log.e(TAG, "Failed to serialize ICE candidate", e);
       return "null";
+    }
+  }
+
+  private void onDisconnectedDuringCall() {
+    if (isEnded.get() || peerConnection == null) return;
+    enterRecovery();
+    mainHandler.removeCallbacks(disconnectGraceRunnable);
+    mainHandler.postDelayed(disconnectGraceRunnable, DISCONNECT_GRACE_MS);
+  }
+
+  private void enterRecovery() {
+    if (reconnecting.compareAndSet(false, true)) {
+      callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.DISCONNECTED);
+    }
+  }
+
+  private void onDisconnectGraceExpired() {
+    triggerIceRestart();
+  }
+
+  private void onIceRestartTimeout() {
+    triggerIceRestart();
+  }
+
+  private void triggerIceRestart() {
+    if (isEnded.get() || peerConnection == null) return;
+    if (peerConnection.connectionState() == PeerConnection.PeerConnectionState.CONNECTED) {
+      cancelReconnectTimers();
+      reconnecting.set(false);
+      return;
+    }
+    forceIceRestart();
+  }
+
+  private void forceIceRestart() {
+    if (isEnded.get() || peerConnection == null) return;
+    if (iceRestartAttempts >= MAX_ICE_RESTART_ATTEMPTS) {
+      giveUpReconnection();
+      return;
+    }
+    iceRestartAttempts++;
+    Log.d(TAG, "ICE restart attempt " + iceRestartAttempts + "/" + MAX_ICE_RESTART_ATTEMPTS);
+
+    if (isCaller) {
+      createAndSendRestartOffer();
+    } else {
+      sendRenegotiationMessage("restart-request", null);
+    }
+
+    mainHandler.removeCallbacks(iceRestartTimeoutRunnable);
+    mainHandler.postDelayed(iceRestartTimeoutRunnable, ICE_RESTART_TIMEOUT_MS);
+  }
+
+  private void giveUpReconnection() {
+    Log.w(TAG, "ICE restart attempts exhausted");
+    cancelReconnectTimers();
+    reconnecting.set(false);
+    callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.FAILED);
+  }
+
+  private void cancelReconnectTimers() {
+    mainHandler.removeCallbacks(disconnectGraceRunnable);
+    mainHandler.removeCallbacks(iceRestartTimeoutRunnable);
+  }
+
+  private void createAndSendRestartOffer() {
+    if (peerConnection == null) return;
+    peerConnection.restartIce();
+    peerConnection.createOffer(
+        new SdpObserver() {
+          @Override
+          public void onCreateSuccess(SessionDescription sdp) {
+            peerConnection.setLocalDescription(
+                new SdpObserver() {
+                  @Override
+                  public void onSetSuccess() {
+                    sendRenegotiationMessage("offer", sdp.description);
+                  }
+
+                  @Override
+                  public void onCreateSuccess(SessionDescription s) {}
+
+                  @Override
+                  public void onCreateFailure(String e) {}
+
+                  @Override
+                  public void onSetFailure(String error) {
+                    Log.e(TAG, "restart setLocalDescription failed: " + error);
+                  }
+                },
+                sdp);
+          }
+
+          @Override
+          public void onSetSuccess() {}
+
+          @Override
+          public void onCreateFailure(String error) {
+            Log.e(TAG, "restart createOffer failed: " + error);
+          }
+
+          @Override
+          public void onSetFailure(String error) {}
+        },
+        new MediaConstraints());
+  }
+
+  public void onNetworkChanged() {
+    mainHandler.post(
+        () -> {
+          if (isEnded.get() || peerConnection == null || !initialNegotiationComplete) return;
+          Log.d(TAG, "Network changed, proactively restarting ICE");
+          iceRestartAttempts = 0;
+          forceIceRestart();
+        });
+  }
+
+  private void setupRenegotiationDataChannel() {
+    DataChannel.Init init = new DataChannel.Init();
+    init.negotiated = true;
+    init.id = DC_ID_RENEGOTIATION;
+
+    renegotiationDataChannel = peerConnection.createDataChannel("renegotiation", init);
+
+    renegotiationDataChannel.registerObserver(
+        new DataChannel.Observer() {
+          @Override
+          public void onBufferedAmountChange(long amount) {}
+
+          @Override
+          public void onStateChange() {
+            DataChannel.State state = renegotiationDataChannel.state();
+            Log.d(TAG, "Renegotiation channel state: " + state);
+            if (state == DataChannel.State.OPEN) {
+              renegotiationChannelOpen = true;
+            } else if (state == DataChannel.State.CLOSED) {
+              renegotiationChannelOpen = false;
+            }
+          }
+
+          @Override
+          public void onMessage(DataChannel.Buffer buffer) {
+            String json = extractString(buffer);
+            try {
+              JSONObject obj = new JSONObject(json);
+              String type = obj.getString("type");
+              String sdp = obj.has("sdp") ? obj.getString("sdp") : null;
+              mainHandler.post(() -> handleRemoteRenegotiation(type, sdp));
+            } catch (JSONException e) {
+              Log.e(TAG, "Failed to parse renegotiation message", e);
+            }
+          }
+        });
+  }
+
+  private void sendRenegotiationMessage(String type, @Nullable String sdp) {
+    if (!renegotiationChannelOpen || renegotiationDataChannel == null) {
+      Log.w(TAG, "Renegotiation channel not open, dropping '" + type + "'");
+      return;
+    }
+    try {
+      JSONObject obj = new JSONObject();
+      obj.put("type", type);
+      if (sdp != null) obj.put("sdp", sdp);
+      ByteBuffer buf = ByteBuffer.wrap(obj.toString().getBytes(StandardCharsets.UTF_8));
+      renegotiationDataChannel.send(new DataChannel.Buffer(buf, false));
+      Log.d(TAG, "Sent renegotiation '" + type + "'");
+    } catch (JSONException e) {
+      Log.e(TAG, "Failed to serialize renegotiation message", e);
+    }
+  }
+
+  private void handleRemoteRenegotiation(String type, @Nullable String sdp) {
+    if (isEnded.get() || peerConnection == null) return;
+
+    switch (type) {
+      case "offer":
+        if (isCaller) return;
+        enterRecovery();
+        peerConnection.setRemoteDescription(
+            new SdpObserver() {
+              @Override
+              public void onSetSuccess() {
+                peerConnection.createAnswer(
+                    new SdpObserver() {
+                      @Override
+                      public void onCreateSuccess(SessionDescription answer) {
+                        peerConnection.setLocalDescription(
+                            new SdpObserver() {
+                              @Override
+                              public void onSetSuccess() {
+                                sendRenegotiationMessage("answer", answer.description);
+                              }
+
+                              @Override
+                              public void onCreateSuccess(SessionDescription s) {}
+
+                              @Override
+                              public void onCreateFailure(String e) {}
+
+                              @Override
+                              public void onSetFailure(String e) {
+                                Log.e(TAG, "restart answer setLocal failed: " + e);
+                              }
+                            },
+                            answer);
+                      }
+
+                      @Override
+                      public void onSetSuccess() {}
+
+                      @Override
+                      public void onCreateFailure(String e) {
+                        Log.e(TAG, "restart createAnswer failed: " + e);
+                      }
+
+                      @Override
+                      public void onSetFailure(String e) {}
+                    },
+                    new MediaConstraints());
+              }
+
+              @Override
+              public void onCreateSuccess(SessionDescription s) {}
+
+              @Override
+              public void onCreateFailure(String e) {}
+
+              @Override
+              public void onSetFailure(String e) {
+                Log.e(TAG, "restart offer setRemote failed: " + e);
+              }
+            },
+            new SessionDescription(SessionDescription.Type.OFFER, sdp));
+        break;
+
+      case "answer":
+        if (!isCaller) return;
+        peerConnection.setRemoteDescription(
+            new SdpObserver() {
+              @Override
+              public void onSetSuccess() {
+                Log.d(TAG, "Restart answer applied");
+              }
+
+              @Override
+              public void onCreateSuccess(SessionDescription s) {}
+
+              @Override
+              public void onCreateFailure(String e) {}
+
+              @Override
+              public void onSetFailure(String e) {
+                Log.e(TAG, "restart answer setRemote failed: " + e);
+              }
+            },
+            new SessionDescription(SessionDescription.Type.ANSWER, sdp));
+        break;
+
+      case "restart-request":
+        if (!isCaller) return;
+        triggerIceRestart();
+        break;
+
+      default:
+        Log.w(TAG, "Unknown renegotiation type: " + type);
     }
   }
 }

@@ -3,6 +3,7 @@
 ## Unreleased
 
 * properly update message views counter for channel owner
+* Fix: Call now tries to reconnect when network changes instead of closing
 
 ## v2.56.0
 2026-07
