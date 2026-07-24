@@ -2,7 +2,9 @@ Delta Chat, arkadaşlar, aile, gruplar ve kuruluşlar için kullanımı kolay ve
 
 Tek bakışta özellikler:
 
-- Anonim. Telefon numarası, e-posta veya diğer özel veriler olmadan anında katılım.
+- Gizli. Telefon numarası veya diğer özel veriler olmadan anında katılım.
+
+• Arkadaşlar ve Aile: Yalnızca tanıdığınız kişilerle sohbet edin. Tanımadığınız kullanıcılar, karşılıklı rıza olmadan size mesaj gönderemez veya sizi takip edemez.
 
 - Esneklik. Birden fazla sohbet profilini destekler ve birden fazla cihazda kurulumu kolaydır.
 
