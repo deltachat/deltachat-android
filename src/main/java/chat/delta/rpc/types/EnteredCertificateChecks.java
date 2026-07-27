@@ -2,7 +2,7 @@
 package chat.delta.rpc.types;
 
 public enum EnteredCertificateChecks {
-  /** `Automatic` means that provider database setting should be taken. If there is no provider database setting for certificate checks, check certificates strictly. */
+  /** `Automatic` means strict certificate checks, unless a legacy-domain override disables them. */
   automatic,
 
   /** Ensure that TLS certificate is valid for the server hostname. */
