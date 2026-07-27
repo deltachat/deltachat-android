@@ -997,15 +997,6 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContext_setLocation(JNIEnv *env, jo
 }
 
 
-JNIEXPORT jlong Java_com_b44t_messenger_DcContext_getProviderFromEmailWithDnsCPtr(JNIEnv *env, jobject obj, jstring email)
-{
-    CHAR_REF(email);
-        jlong ret = (jlong)dc_provider_new_from_email_with_dns(get_dc_context(env, obj), emailPtr);
-    CHAR_UNREF(email);
-    return ret;
-}
-
-
 /*******************************************************************************
  * DcEventEmitter
  ******************************************************************************/
@@ -1939,55 +1930,6 @@ JNIEXPORT jstring Java_com_b44t_messenger_DcBackupProvider_getQrSvg(JNIEnv *env,
 JNIEXPORT void Java_com_b44t_messenger_DcBackupProvider_waitForReceiver(JNIEnv *env, jobject obj)
 {
     dc_backup_provider_wait(get_dc_backup_provider(env, obj));
-}
-
-
-/*******************************************************************************
- * DcProvider
- ******************************************************************************/
-
-
-static dc_provider_t* get_dc_provider(JNIEnv *env, jobject obj)
-{
-    static jfieldID fid = 0;
-    if (fid==0) {
-        jclass cls = (*env)->GetObjectClass(env, obj);
-        fid = (*env)->GetFieldID(env, cls, "providerCPtr", "J" /*Signature, J=long*/);
-    }
-    if (fid) {
-        return (dc_provider_t*)(*env)->GetLongField(env, obj, fid);
-    }
-    return NULL;
-}
-
-
-JNIEXPORT void Java_com_b44t_messenger_DcProvider_unrefProviderCPtr(JNIEnv *env, jobject obj)
-{
-    dc_provider_unref(get_dc_provider(env, obj));
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcProvider_getStatus(JNIEnv *env, jobject obj)
-{
-    return (jint)dc_provider_get_status(get_dc_provider(env, obj));
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getBeforeLoginHint(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_provider_get_before_login_hint(get_dc_provider(env, obj));
-        jstring ret = JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
-}
-
-
-JNIEXPORT jstring Java_com_b44t_messenger_DcProvider_getOverviewPage(JNIEnv *env, jobject obj)
-{
-    char* temp = dc_provider_get_overview_page(get_dc_provider(env, obj));
-        jstring ret = JSTRING_NEW(temp);
-    dc_str_unref(temp);
-    return ret;
 }
 
 

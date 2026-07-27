@@ -121,7 +121,6 @@ public class ConversationFragment extends MessageSelectorFragment {
     eventCenter.addObserver(DcContext.DC_EVENT_REACTIONS_CHANGED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
-    eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
 
     markseenDebouncer = new Debouncer(800);
@@ -321,6 +320,18 @@ public class ConversationFragment extends MessageSelectorFragment {
     this.chatId =
         this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
     this.recipient = Recipient.from(getActivity(), Address.fromChat((int) this.chatId));
+
+    if (chatId > 0) {
+      DcEventCenter eventCenter = DcHelper.getEventCenter(getContext());
+      eventCenter.removeObserver(DcContext.DC_EVENT_MSG_READ, this);
+      eventCenter.removeObserver(DcContext.DC_EVENT_MSG_READ_COUNT_CHANGED, this);
+      eventCenter.addObserver(
+          recipient.getChat().isOutBroadcast()
+              ? DcContext.DC_EVENT_MSG_READ_COUNT_CHANGED
+              : DcContext.DC_EVENT_MSG_READ,
+          this);
+    }
+
     this.startingPosition =
         this.getActivity()
             .getIntent()
@@ -1159,6 +1170,7 @@ public class ConversationFragment extends MessageSelectorFragment {
       case DcContext.DC_EVENT_MSG_DELIVERED:
       case DcContext.DC_EVENT_MSG_FAILED:
       case DcContext.DC_EVENT_MSG_READ:
+      case DcContext.DC_EVENT_MSG_READ_COUNT_CHANGED:
         if (event.getData1Int() == chatId) {
           reloadList();
         }

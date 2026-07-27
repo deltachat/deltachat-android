@@ -204,6 +204,9 @@
     <string name="contact">Kontakt</string>
     <string name="bot">Robot</string>
     <string name="camera">Kaamera</string>
+    <string name="front_camera">Eeskaamera</string>
+    <string name="back_camera">Tagakaamera</string>
+    <string name="microphone">Mikrofon</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Salvesta pilt või video</string>
     <!-- Switch eg. from front to back camera -->
@@ -440,11 +443,14 @@
     <string name="call_answered_elsewhere">Kõne on vastatud muus seadmes</string>
     <string name="call_requires_camera_permission">Videokõnede tegemiseks peab rakendusel olema õigus kasutada kaamerat</string>
     <string name="call_requires_mic_permission">Helistamiseks peab rakendusel olema õigus kasutada mikrofoni</string>
+    <string name="call_grant_mic_permission">Klõpsa lubamaks mikrofoni kasutamist</string>
     <string name="call_requires_connection">Helistamine (kõne algatamine) ei õnnestu. Palun kontrolli, et sinu nutiseadme internetiühendus toimib ja proovi uuesti.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Kõne kasutajaga %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Helistan kasutajale %1$s…</string>
+    <string name="audio_output">Heliväljund</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">Kas oled kindel, et soovid lahkuda?</string>
@@ -671,6 +677,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Kas sa soovid luua uue profiili ja liituda „%1$s“ grupiga?</string>
 
+    <string name="team">Tiim</string>
+    <string name="team_profile">Tiimiprofiil</string>
+    <string name="team_profile_explain">Tiimiprofiili hallatakse üheskoos kasutajate grupi või organisatsiooni poolt.\n\n⚠️Selline võimalus on veel katsetamisjärgus ja võib tulevikus muutuda või sootuks ära kaduda.</string>
+    <string name="team_name">Tiimi nimi</string>
+    <string name="create_team_profile">Loo tiimiprofiil</string>
+
     <string name="welcome_chat_over_email">Turvaline hajutatud vestluslahendus</string>
     <string name="scan_invitation_code">Skaneeri kutsekoodi</string>
     <string name="login_title">Logi sisse</string>
@@ -715,6 +727,8 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Kas lisad selle alusühenduse (edastusserveri)?</string>
     <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust (edastusserverid)</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">Kas eemaldad „%1$s“ alusühenduse (edastusserveri)?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Kas eemaldad alusühenduse (edastusserveri) „%1$s“?\n\nKui mõni kontakt teab vaid seda ühendusviisi, siis ta ei pruugi sind kätte saada enne, kui oled talle uuesti kirjutanud.\n\nKui kahtled, siis eemakdamise asemel pigem peida see alusühendus (edastusserver).</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>

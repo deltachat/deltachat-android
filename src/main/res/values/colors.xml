@@ -53,11 +53,6 @@
 
     <color name="universal_overlay">#55444444</color>
 
-    <color name="provider_prep_bg">#fffdf7b2</color>
-    <color name="provider_prep_fg">#ff101010</color>
-    <color name="provider_broken_bg">#fffd0b00</color>
-    <color name="provider_broken_fg">#ffffffff</color>
-
     <color name="pinned_bg">#eeeeee</color>
     <color name="pinned_bg_dark">#222222</color>
 

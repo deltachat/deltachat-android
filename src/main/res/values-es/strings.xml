@@ -214,6 +214,9 @@
     <string name="contact">Contacto</string>
     <string name="bot">Bot</string>
     <string name="camera">Cámara</string>
+    <string name="front_camera">Cámara frontal</string>
+    <string name="back_camera">Cámara trasera</string>
+    <string name="microphone">Micrófono</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Capturar</string>
     <!-- Switch eg. from front to back camera -->
@@ -448,14 +451,18 @@
     <string name="canceled_call">Llamada cancelada</string>
     <string name="missed_call">Llamada perdida</string>
     <string name="already_in_call">Ya estás en una llamada</string>
+    <string name="call_back">Llamar de vuelta</string>
     <string name="call_answered_elsewhere">Llamada contestada en otro dispositivo</string>
     <string name="call_requires_camera_permission">Se requiere permiso de cámara para las videollamadas</string>
     <string name="call_requires_mic_permission">Se requiere permiso de micrófono para las llamadas</string>
+    <string name="call_grant_mic_permission">Toca para conceder acceso al micrófono</string>
     <string name="call_requires_connection">No se puede iniciar la llamada. Asegúrese de que su dispositivo tenga conexión a Internet e inténtelo de nuevo.</string>
     <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
     <string name="call_with">Llamada con %1$s</string>
     <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
     <string name="calling_person">Llamando a %1$s</string>
+    <string name="audio_output">Salida de audio</string>
+
     <!-- get confirmations -->
     <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
     <string name="ask_leave_group">¿Seguro que quieres abandonar este canal?</string>
@@ -688,6 +695,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">¿Desea crear un nuevo perfil y unirse al grupo \"%1$s\"?</string>
 
+    <string name="team">Equipo</string>
+    <string name="team_profile">Perfil de equipo</string>
+    <string name="team_profile_explain">Un \"perfil de equipo\" es gestionado de forma colectiva por un grupo de personas o una organización.\n\n⚠️ Los perfiles de equipo son experimentales y podrían modificarse o eliminarse en el futuro.</string>
+    <string name="team_name">Nombre del equipo</string>
+    <string name="create_team_profile">Crear perfil de equipo</string>
+
     <string name="welcome_chat_over_email">Chat seguro y descentralizado</string>
     <string name="scan_invitation_code">Escanear código de invitación</string>
     <string name="login_title">Iniciar sesión</string>
@@ -732,6 +745,8 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">¿Añadir este retransmisor?</string>
     <string name="invalid_transport_qr">El código QR escaneado no contiene un retransmisor válido.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">¿Eliminar retransmisor \"%1$s\"?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">¿Eliminar el retransmisor \"%1$s\"?\n\nLos contactos que solo conocen este retransmisor podrían no comunicarse contigo hasta que les envíes otro mensaje.\n\nEn caso de duda, es mejor ocultarlo que eliminarlo.</string>
     <string name="login_certificate_checks">Comprobaciones de certificados</string>
