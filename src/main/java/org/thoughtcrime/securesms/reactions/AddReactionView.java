@@ -76,10 +76,6 @@ public class AddReactionView extends LinearLayout {
       return;
     }
 
-    if (dcChat.isInBroadcast()) {
-      anyReactionView.setVisibility(View.GONE);
-    }
-
     this.msgToReactTo = msgToReactTo;
     this.listener = listener;
 
@@ -95,11 +91,14 @@ public class AddReactionView extends LinearLayout {
       }
     }
 
+    anyReactionView.setVisibility(View.VISIBLE);
     if (existingReaction != null && !existingHilited) {
       anyReactionView.setText(existingReaction);
       anyReactionView.setBackground(
           ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
       anyReactionClearsReaction = true;
+    } else if (dcChat.isInBroadcast()) {
+        anyReactionView.setVisibility(View.GONE);
     } else {
       anyReactionView.setText("⋯");
       anyReactionView.setBackground(null);
