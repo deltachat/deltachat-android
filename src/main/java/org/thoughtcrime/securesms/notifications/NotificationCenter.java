@@ -520,7 +520,7 @@ public class NotificationCenter {
                   false);
 
           maybeAddNotification(
-              accountId, dcChat, msgId, notifData, text, false, dcChat.isMultiUser());
+              accountId, dcChat, msgId, notifData, text, false, dcChat.isMultiUser() && !dcChat.isOutBroadcast());
         });
   }
 
