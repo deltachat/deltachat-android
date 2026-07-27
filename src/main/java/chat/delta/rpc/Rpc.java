@@ -153,18 +153,6 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "get_account_file_size", mapper.valueToTree(accountId));
   }
 
-  /**
-   * Returns provider for the given domain.
-   * <p>
-   * This function looks up domain in offline database.
-   * <p>
-   * For compatibility, email address can be passed to this function
-   * instead of the domain.
-   */
-  public ProviderInfo getProviderInfo(Integer accountId, String email) throws RpcException {
-    return transport.callForResult(new TypeReference<ProviderInfo>(){}, "get_provider_info", mapper.valueToTree(accountId), mapper.valueToTree(email));
-  }
-
   /** Checks if the context is already configured. */
   public Boolean isConfigured(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Boolean>(){}, "is_configured", mapper.valueToTree(accountId));
