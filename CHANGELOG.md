@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.57.0
+2026-07
 
 * properly update message views counter for channel owner
 * Fix: Call now tries to reconnect when network changes instead of closing
