@@ -713,6 +713,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Utworzyć nowy profil i dołączyć do grupy „%1$s”?</string>
 
+    <string name="team">Zespół</string>
+    <string name="team_profile">Profil zespołu</string>
+    <string name="team_profile_explain">„Profil zespołu” jest zarządzany zbiorowo przez grupę osób lub organizację.\n\n⚠️ Profile zespołu są eksperymentalne i w przyszłości mogą zostać zmienione lub usunięte.</string>
+    <string name="team_name">Nazwa zespołu</string>
+    <string name="create_team_profile">Utwórz profil zespołu</string>
+
     <string name="welcome_chat_over_email">Bezpieczny zdecentralizowany czat</string>
     <string name="scan_invitation_code">Zeskanuj kod zaproszenia</string>
     <string name="login_title">Zaloguj się</string>

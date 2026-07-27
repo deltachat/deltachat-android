@@ -695,6 +695,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Vuoi creare un nuovo profilo e unirti al \"%1$s\" gruppo chat?</string>
 
+    <string name="team">Squadra</string>
+    <string name="team_profile">Profilo Squadra</string>
+    <string name="team_profile_explain">Un \"Profilo Squadra\" è gestito collettivamente da un gruppo di persone o da un\'organizzazione.\n\n⚠️ I Profili Squadra sono sperimentali e potrebbero essere modificati o rimossi in futuro.</string>
+    <string name="team_name">Nome Squadra</string>
+    <string name="create_team_profile">Crea Profilo Squadra</string>
+
     <string name="welcome_chat_over_email">Chat Decentralizzata Sicura</string>
     <string name="scan_invitation_code">Scansiona Codice Invito</string>
     <string name="login_title">Accedi</string>
