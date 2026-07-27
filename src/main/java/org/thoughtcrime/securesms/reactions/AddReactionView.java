@@ -98,7 +98,7 @@ public class AddReactionView extends LinearLayout {
           ContextCompat.getDrawable(context, R.drawable.reaction_pill_background_selected));
       anyReactionClearsReaction = true;
     } else if (dcChat.isInBroadcast() || dcChat.isOutBroadcast()) {
-        anyReactionView.setVisibility(View.GONE);
+      anyReactionView.setVisibility(View.GONE);
     } else {
       anyReactionView.setText("⋯");
       anyReactionView.setBackground(null);
