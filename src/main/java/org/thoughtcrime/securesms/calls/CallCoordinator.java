@@ -65,7 +65,6 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.util.Util;
-import org.thoughtcrime.securesms.webrtc.SdpLinkToken;
 import org.webrtc.PeerConnection;
 import org.webrtc.VideoTrack;
 
@@ -583,7 +582,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         return;
       }
       session = activeSession;
-      session.offerSdp = offerSdp;
       accId = session.accId;
       chatId = session.chatId;
       video = session.startsWithVideo;
@@ -929,7 +927,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "onIncomingCall: accId=" + accId + ", callId=" + callId);
 
     if (hasActiveCall()) {
-      handleSecondaryIncomingCall(accId, callId, offerSdp);
+      Log.d(
+          TAG,
+          "Ignoring second incoming call while one is active (accId="
+              + accId
+              + ", callId="
+              + callId
+              + ")");
       return;
     }
 
@@ -953,41 +957,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     startAndBindService();
   }
 
-  private synchronized void handleSecondaryIncomingCall(int accId, int callId, String offerSdp) {
-    if (isConfidentlyIndependent(offerSdp)) {
-      Log.d(
-          TAG,
-          "Second incoming call (accId="
-              + accId
-              + ", callId="
-              + callId
-              + ") is independent; declining in core");
-      final int a = accId;
-      final int c = callId;
-      new Thread(
-              () -> {
-                try {
-                  rpc.endCall(a, c);
-                } catch (RpcException e) {
-                  Log.e(TAG, "Failed to decline independent second call", e);
-                }
-              })
-          .start();
-    } else {
-      Log.d(
-          TAG,
-          "Second incoming call (accId="
-              + accId
-              + ", callId="
-              + callId
-              + ") is linked or unclassifiable; tracking as shadow, not declining");
-      CallSession shadow = new CallSession(accId, callId, true);
-      shadow.offerSdp = offerSdp;
-      shadow.shadow = true;
-      sessions.add(shadow);
-    }
-  }
-
   public synchronized void handleIncomingCallFromConversation(
       int accId, int callId, String offerSdp, boolean hasVideo) {
     Log.d(TAG, "handleIncomingCallFromConversation: accId=" + accId + ", callId=" + callId);
@@ -998,7 +967,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
 
     if (hasActiveCall()) {
-      handleSecondaryIncomingCall(accId, callId, offerSdp);
+      Log.d(
+          TAG,
+          "Ignoring second incoming call while one is active (accId="
+              + accId
+              + ", callId="
+              + callId
+              + ")");
       return;
     }
 
@@ -1038,11 +1013,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     CallSession session = findSession(accId, callId);
     if (session == null) {
       Log.d(TAG, "Accepted event matches no tracked call, ignoring");
-      return;
-    }
-
-    if (session != activeSession) {
-      Log.d(TAG, "Shadow incoming accepted (fromThisDevice=" + fromThisDevice + "), ignoring");
       return;
     }
 
@@ -1092,7 +1062,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         TAG, "onOutgoingCallAccepted: accId=" + accId + ", callId=" + callId + ", got answer SDP");
 
     CallSession session = findSession(accId, callId);
-    if (session == null || session != activeSession || session.isIncoming) {
+    if (session == null || session.isIncoming) {
       Log.w(TAG, "Answer doesn't match the active outgoing call, ignoring");
       return;
     }
@@ -1138,12 +1108,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       CallSession session = findSession(accId, callId);
       if (session == null) {
         Log.w(TAG, "CALL_ENDED matches no tracked call, ignoring");
-        return;
-      }
-
-      if (session != activeSession) {
-        sessions.remove(session);
-        Log.d(TAG, "Shadow session ended (accId=" + accId + ", callId=" + callId + "), removed");
         return;
       }
 
@@ -1213,12 +1177,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     CallSession session = findSession(accId, callId);
     if (session == null) {
       Log.d(TAG, "No matching session to clean up");
-      return;
-    }
-
-    if (session != activeSession) {
-      sessions.remove(session);
-      Log.d(TAG, "Removed shadow session");
       return;
     }
 
@@ -1742,20 +1700,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   private synchronized boolean isLive(CallSession s) {
     return s != null && sessions.contains(s);
-  }
-
-  /**
-   * Returns true ONLY when we are certain the incoming offer belongs to no call we already track.
-   */
-  private synchronized boolean isConfidentlyIndependent(String newOffer) {
-    String newToken = SdpLinkToken.of(newOffer);
-    if (newToken == null) return false;
-    for (CallSession s : sessions) {
-      String t = SdpLinkToken.of(s.offerSdp);
-      if (t == null) return false;
-      if (t.equals(newToken)) return false;
-    }
-    return true;
   }
 
   public synchronized boolean hasActiveCall() {

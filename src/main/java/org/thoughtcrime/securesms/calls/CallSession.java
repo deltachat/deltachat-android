@@ -19,9 +19,6 @@ final class CallSession {
   CallControlScope callControlScope;
   CallEndpointCompat preferredStartingEndpoint;
 
-  // true = tracked-only entry
-  boolean shadow;
-
   CallSession(int accId, Integer callId, boolean isIncoming) {
     this.accId = accId;
     this.callId = callId;
