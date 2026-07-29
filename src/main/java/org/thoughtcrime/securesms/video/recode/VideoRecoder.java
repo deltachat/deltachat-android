@@ -467,7 +467,7 @@ public class VideoRecoder {
       return false;
     }
     // didWriteData(messageObject, cacheFile, true, error);
-    return true;
+    return !error;
   }
 
   private static class VideoEditedInfo {
@@ -684,9 +684,8 @@ public class VideoRecoder {
       if (!videoRecoder.convertVideo(vei, tempPath)) {
         alert(
             context,
-            String.format(
-                "Recoding failed for %s: cannot convert to temporary file %s", inPath, tempPath));
-        return false;
+            String.format("Could not recode %s; sending it at its original size.", inPath));
+        return true;
       }
 
       msg.setFileAndDeduplicate(tempPath, msg.getFilename(), msg.getFilemime());
