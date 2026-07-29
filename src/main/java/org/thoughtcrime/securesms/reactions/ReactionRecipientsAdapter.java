@@ -45,14 +45,6 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter {
               clickListener.onItemClick(getView());
             }
           });
-      ((ReactionRecipientItem) itemView)
-          .getReactionView()
-          .setOnClickListener(
-              view -> {
-                if (clickListener != null) {
-                  clickListener.onReactionClick(getView());
-                }
-              });
     }
 
     public ReactionRecipientItem getView() {
@@ -101,8 +93,6 @@ public class ReactionRecipientsAdapter extends RecyclerView.Adapter {
 
   public interface ItemClickListener {
     void onItemClick(ReactionRecipientItem item);
-
-    void onReactionClick(ReactionRecipientItem item);
   }
 
   public void changeData(ArrayList<Pair<Integer, String>> contactsReactions) {
