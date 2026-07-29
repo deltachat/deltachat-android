@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.reactions;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -61,9 +60,5 @@ public class ReactionRecipientItem extends LinearLayout {
 
   public String getReaction() {
     return reaction;
-  }
-
-  public View getReactionView() {
-    return reactionView;
   }
 }
