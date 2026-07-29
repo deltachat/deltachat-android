@@ -679,7 +679,7 @@
 
     <string name="team">Team</string>
     <string name="team_profile">Team Profile</string>
-    <string name="team_profile_explain">A \"Team Profile\" is managed collectively by a group of people or an organization.\n\n⚠️ Team Profiles are experimental and may be changed or removed in the future.</string>
+    <string name="team_profile_explain">A \"Team Profile\" is managed collectively by a group of people or an organization.\n\n⚠️ Team Profiles are experimental and subject to change.</string>
     <string name="team_name">Team Name</string>
     <string name="create_team_profile">Create Team Profile</string>
 
@@ -725,7 +725,7 @@
     <string name="hidden_from_contacts">Hidden from contacts</string>
     <string name="enforce_e2ee">Enforce Encryption for All Relays</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Messages are received on all relays.\n\n⚠️ If you change anything here, make sure all your devices run at least version 2.47.0. Otherwise older devices may miss messages.</string>
+    <string name="transport_list_hint">Messages are received on all relays.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Add this relay?</string>
     <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>
