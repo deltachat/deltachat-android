@@ -15,6 +15,7 @@ final class CallSession {
   String offerSdp;
   boolean answerInProgress;
   boolean hasNotifiedBackend;
+  volatile String cachedIceServersJson;
 
   CallControlScope callControlScope;
   CallEndpointCompat preferredStartingEndpoint;

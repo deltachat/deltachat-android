@@ -189,6 +189,7 @@ public class CallViewModel extends AndroidViewModel {
   public void answerCall() {
     Log.d(TAG, "answerCall");
     callCoordinator.answerCall(false);
+    callCoordinator.ensureServiceStartedFromForeground();
   }
 
   /** Start outgoing call with media capture Called by Activity for outgoing calls */
