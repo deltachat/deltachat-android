@@ -266,6 +266,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
                 showOrUpdateOngoingNotification(
                     appContext.getString(R.string.calling_person, calleeName));
+              } else if (activeSession.answerInProgress) {
+                String callerName = displayName.getValue();
+                if (callerName == null) {
+                  callerName = "Unknown";
+                }
+                showOrUpdateOngoingNotification(
+                    appContext.getString(R.string.call_with, callerName));
               }
 
               // Initialize call
@@ -878,7 +885,44 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   // Helper (CallService)
 
   public synchronized String fetchIceServers() throws RpcException {
+    if (activeSession == null) {
+      throw new RpcException("No active call");
+    }
+    if (activeSession.cachedIceServersJson != null) {
+      String cached = activeSession.cachedIceServersJson;
+      activeSession.cachedIceServersJson = null;
+      Log.d(TAG, "Using pre-fetched ICE servers");
+      return cached;
+    }
     return rpc.iceServers(activeSession.accId);
+  }
+
+  private void prefetchIceServers(CallSession session) {
+    final int accId = session.accId;
+    new Thread(
+            () -> {
+              try {
+                String iceServersJson = rpc.iceServers(accId);
+                synchronized (CallCoordinator.this) {
+                  if (isLive(session)) {
+                    session.cachedIceServersJson = iceServersJson;
+                    Log.d(TAG, "ICE servers pre-fetched");
+                  }
+                }
+              } catch (RpcException e) {
+                Log.e(TAG, "Failed to pre-fetch ICE servers", e);
+              }
+            })
+        .start();
+  }
+
+  public synchronized String getCachedIceServers() {
+    if (activeSession != null && activeSession.cachedIceServersJson != null) {
+      String cached = activeSession.cachedIceServersJson;
+      activeSession.cachedIceServersJson = null;
+      return cached;
+    }
+    return null;
   }
 
   @Override
@@ -954,7 +998,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     // Show CallStyle notification
     showIncomingCallNotification(callerName, callerIcon);
 
-    startAndBindService();
+    prefetchIceServers(session);
   }
 
   public synchronized void handleIncomingCallFromConversation(
@@ -1491,6 +1535,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         session.preferredStartingEndpoint);
   }
 
+  public synchronized void ensureServiceStartedFromForeground() {
+    if (isServiceBound || !hasActiveCall()) {
+      return;
+    }
+    if (activeSession.isIncoming && !activeSession.answerInProgress) {
+      return;
+    }
+    if (!hasMicrophonePermission()) {
+      return;
+    }
+    Log.d(TAG, "Starting service from foreground context");
+    startAndBindService();
+  }
+
   private void showIncomingCallNotification(String callerName, Icon callerIcon) {
     // Check notification permission
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -1801,7 +1859,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     if (callerName == null) callerName = "Unknown";
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
 
-    ensureServiceStarted();
     startMediaCapture();
 
     mainHandler.post(

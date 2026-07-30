@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix: Mic will stay active during a call when screen is off on Android 14+
+
 ## v2.57.0
 2026-07
 
