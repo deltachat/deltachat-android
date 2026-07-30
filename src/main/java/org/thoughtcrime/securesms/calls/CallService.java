@@ -106,7 +106,13 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     registerNetworkCallback();
 
-    fetchIceServersAndSetup();
+    String cachedIce = callCoordinator.getCachedIceServers();
+    if (cachedIce != null) {
+      webRTCClient.configure(cachedIce);
+      Log.d(TAG, "ICE servers configured from cache");
+    } else {
+      fetchIceServersAndSetup();
+    }
   }
 
   private void fetchIceServersAndSetup() {
@@ -465,7 +471,18 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
     Log.d(TAG, "Starting call FGS with notification id: " + id);
     try {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-        startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL);
+        int types =
+            ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL
+                | ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE;
+        if (callCoordinator.hasCameraPermission()) {
+          types |= ServiceInfo.FOREGROUND_SERVICE_TYPE_CAMERA;
+        }
+        try {
+          startForeground(id, notification, types);
+        } catch (SecurityException e) {
+          Log.w(TAG, "Combined FGS types not allowed, falling back to phoneCall only", e);
+          startForeground(id, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_PHONE_CALL);
+        }
       } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
         int types =
             ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE
