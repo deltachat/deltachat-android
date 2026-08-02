@@ -99,6 +99,7 @@ import org.thoughtcrime.securesms.components.InputPanel;
 import org.thoughtcrime.securesms.components.KeyboardAwareLinearLayout.OnKeyboardShownListener;
 import org.thoughtcrime.securesms.components.ScaleStableImageView;
 import org.thoughtcrime.securesms.components.SendButton;
+import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackState;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.audioplay.AudioView;
 import org.thoughtcrime.securesms.components.audioplay.ChatAudioQueueProvider;
@@ -1463,6 +1464,12 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     fragment.hideAddReactionView();
     Vibrator vibrator = ServiceUtil.getVibrator(this);
     vibrator.vibrate(20);
+
+    AudioPlaybackState currentPlaybackState = playbackViewModel.getPlaybackState().getValue();
+    if (currentPlaybackState != null
+        && currentPlaybackState.getStatus() == AudioPlaybackState.PlaybackStatus.PLAYING) {
+      playbackViewModel.pause(currentPlaybackState.getMsgId());
+    }
 
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
