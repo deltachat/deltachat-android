@@ -70,6 +70,7 @@ import org.thoughtcrime.securesms.reactions.AddReactionView;
 import org.thoughtcrime.securesms.reactions.ReactionsDetailsFragment;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.relay.EditRelayActivity;
+import org.thoughtcrime.securesms.updater.AppUpdate;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.Debouncer;
 import org.thoughtcrime.securesms.util.StickyHeaderDecoration;
@@ -935,6 +936,8 @@ public class ConversationFragment extends MessageSelectorFragment {
         DozeReminder.dozeReminderTapped(getContext());
       } else if (StatsSending.isStatsSendingDeviceMsg(getContext(), messageRecord)) {
         StatsSending.statsDeviceMsgTapped(getActivity());
+      } else if (AppUpdate.isUpdateDeviceMsg(getContext(), messageRecord)) {
+        AppUpdate.updateDeviceMsgTapped(getActivity());
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
         if (messageRecord.getParent() != null) {
           // if the parent webxdc message still exists
