@@ -24,15 +24,7 @@ public class DcChatlist {
 
   public native int getChatId(int index);
 
-  public DcChat getChat(int index) {
-    return new DcChat(accountId, getChatCPtr(index));
-  }
-
   public native int getMsgId(int index);
-
-  public DcMsg getMsg(int index) {
-    return new DcMsg(getMsgCPtr(index));
-  }
 
   public DcLot getSummary(int index, DcChat chat) {
     return new DcLot(getSummaryCPtr(index, chat == null ? 0 : chat.getChatCPtr()));
@@ -56,10 +48,6 @@ public class DcChatlist {
   private long chatlistCPtr; // CAVE: the name is referenced in the JNI
 
   private native void unrefChatlistCPtr();
-
-  private native long getChatCPtr(int index);
-
-  private native long getMsgCPtr(int index);
 
   private native long getSummaryCPtr(int index, long chatCPtr);
 }

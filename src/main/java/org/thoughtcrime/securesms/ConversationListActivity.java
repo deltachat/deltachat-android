@@ -421,6 +421,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (unreadCount == 0) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
+      String badgeText = Util.humanReadableCount(unreadCount);
       unreadIndicator.setImageDrawable(
           TextDrawable.builder()
               .beginConfig()
@@ -429,8 +430,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(
-                  String.valueOf(unreadCount), getResources().getColor(R.color.unread_count)));
+              .buildRound(badgeText, getResources().getColor(R.color.unread_count)));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
