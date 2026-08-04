@@ -4,6 +4,7 @@
 
 * Fix: Mic will stay active during a call when screen is off on Android 14+
 * Fix: allow to pick image without requiring storage permission
+* Fix: avoid overflow with big numbers in badge counters
 
 ## v2.57.0
 2026-07

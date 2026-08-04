@@ -110,6 +110,13 @@ public class Util {
     }
   }
 
+  public static String humanReadableCount(int count) {
+    if (count >= 1000) {
+      return (count / 1000) + "k";
+    }
+    return String.valueOf(count);
+  }
+
   public static List<Integer> toList(int[] array) {
     ArrayList<Integer> list = new ArrayList<>(array.length);
     for (int i : array) {
