@@ -310,6 +310,7 @@ public class ConversationListItem extends RelativeLayout
                           ? R.color.unread_count_muted_dark
                           : R.color.unread_count_muted)
                       : R.color.unread_count);
+      String badgeText = Util.humanReadableCount(unreadCount);
       unreadIndicator.setImageDrawable(
           TextDrawable.builder()
               .beginConfig()
@@ -318,7 +319,7 @@ public class ConversationListItem extends RelativeLayout
               .textColor(Color.WHITE)
               .bold()
               .endConfig()
-              .buildRound(String.valueOf(unreadCount), color));
+              .buildRound(badgeText, color));
       unreadIndicator.setVisibility(View.VISIBLE);
     }
   }
