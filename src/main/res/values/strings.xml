@@ -338,6 +338,7 @@
     <string name="accept">Accept</string>
     <string name="menu_play">Play</string>
     <string name="menu_pause">Pause</string>
+    <string name="playback_speed">Playback speed</string>
     <string name="menu_scroll_to_bottom">Scroll to the Bottom</string>
     <string name="menu_scroll_to_top">Scroll to the Top</string>
     <string name="menu_help">Help</string>
