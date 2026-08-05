@@ -24,6 +24,7 @@ public class AudioRecorder {
 
   private final Context context;
   private final PersistentBlobProvider blobProvider;
+  private final AudioFocusHolder audioFocusHolder;
 
   private final AtomicReference<RecordingState> recordingState = new AtomicReference<>(null);
 
@@ -37,13 +38,18 @@ public class AudioRecorder {
     }
   }
 
-  public AudioRecorder(@NonNull Context context) {
+  public AudioRecorder(@NonNull Context context, @NonNull Runnable onInterrupted) {
     this.context = context;
     this.blobProvider = PersistentBlobProvider.getInstance();
+    this.audioFocusHolder = new AudioFocusHolder(context, onInterrupted);
   }
 
   public void startRecording() {
     Log.w(TAG, "startRecording()");
+
+    if (!audioFocusHolder.acquire()) {
+      Log.w(TAG, "Recording without acquiring audio focus");
+    }
 
     executor.execute(
         () -> {
@@ -65,6 +71,7 @@ public class AudioRecorder {
           } catch (IOException e) {
             Log.w(TAG, e);
             recordingState.set(null);
+            audioFocusHolder.release();
           }
         });
   }
@@ -76,48 +83,52 @@ public class AudioRecorder {
 
     executor.execute(
         () -> {
-          RecordingState state = recordingState.getAndSet(null);
-
-          if (state == null || state.audioCodec == null) {
-            sendToFuture(
-                future, new IOException("MediaRecorder was never initialized successfully!"));
-            return;
-          }
-
-          state.audioCodec.stop();
-
-          Exception encodingError = state.audioCodec.getEncodingError();
-          if (encodingError != null) {
-            File outputFile = new File(state.outputFilePath);
-            if (outputFile.exists() && !outputFile.delete()) {
-              Log.w(TAG, "Could not delete corrupt recording");
-            }
-            sendToFuture(future, new IOException("Recording failed", encodingError));
-            return;
-          }
-
           try {
-            File outputFile = new File(state.outputFilePath);
+            RecordingState state = recordingState.getAndSet(null);
 
-            if (!outputFile.exists()) {
-              sendToFuture(future, new IOException("Output file does not exist"));
+            if (state == null || state.audioCodec == null) {
+              sendToFuture(
+                  future, new IOException("MediaRecorder was never initialized successfully!"));
               return;
             }
 
-            long size = outputFile.length();
+            state.audioCodec.stop();
 
-            // Create blob using synchronous file-based method
-            Uri captureUri =
-                blobProvider.create(context, outputFile, MediaUtil.AUDIO_M4A, "voice.m4a", size);
-
-            if (!outputFile.delete()) {
-              Log.d(TAG, "Temp file already moved or couldn't be deleted");
+            Exception encodingError = state.audioCodec.getEncodingError();
+            if (encodingError != null) {
+              File outputFile = new File(state.outputFilePath);
+              if (outputFile.exists() && !outputFile.delete()) {
+                Log.w(TAG, "Could not delete corrupt recording");
+              }
+              sendToFuture(future, new IOException("Recording failed", encodingError));
+              return;
             }
 
-            sendToFuture(future, new Pair<>(captureUri, size));
-          } catch (IOException ioe) {
-            Log.w(TAG, "Failed to create blob from recording", ioe);
-            sendToFuture(future, ioe);
+            try {
+              File outputFile = new File(state.outputFilePath);
+
+              if (!outputFile.exists()) {
+                sendToFuture(future, new IOException("Output file does not exist"));
+                return;
+              }
+
+              long size = outputFile.length();
+
+              // Create blob using synchronous file-based method
+              Uri captureUri =
+                  blobProvider.create(context, outputFile, MediaUtil.AUDIO_M4A, "voice.m4a", size);
+
+              if (!outputFile.delete()) {
+                Log.d(TAG, "Temp file already moved or couldn't be deleted");
+              }
+
+              sendToFuture(future, new Pair<>(captureUri, size));
+            } catch (IOException ioe) {
+              Log.w(TAG, "Failed to create blob from recording", ioe);
+              sendToFuture(future, ioe);
+            }
+          } finally {
+            audioFocusHolder.release();
           }
         });
 

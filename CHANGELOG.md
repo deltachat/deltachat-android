@@ -7,6 +7,7 @@
 * Fix: avoid overflow with big numbers in badge counters
 * Fix: make video players truly fullscreen
 * Fix: avoid ending search mode when a new message arrive to the chat
+* Fix: Recording now request and respect audio focus
 
 ## v2.57.0
 2026-07
