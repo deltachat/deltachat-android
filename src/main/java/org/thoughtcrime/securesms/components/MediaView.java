@@ -19,6 +19,8 @@ public class MediaView extends FrameLayout {
 
   private ZoomingImageView imageView;
   private Stub<VideoPlayer> videoView;
+  private @Nullable VideoPlayer.ControlsVisibilityListener controlsVisibilityListener;
+  private boolean isVideo;
 
   public MediaView(@NonNull Context context) {
     super(context);
@@ -58,17 +60,17 @@ public class MediaView extends FrameLayout {
       boolean autoplay)
       throws IOException {
     mediaType = mediaType == null ? "null" : mediaType;
+    isVideo = mediaType.startsWith("video/");
     if (mediaType.startsWith("image/")) {
       imageView.setVisibility(View.VISIBLE);
       if (videoView.resolved()) videoView.get().setVisibility(View.GONE);
       imageView.setImageUri(glideRequests, source, mediaType);
-    } else if (mediaType.startsWith("video/")) {
-      imageView.setVisibility(View.GONE);
-      videoView.get().setVisibility(View.VISIBLE);
-      videoView.get().setWindow(window);
-      videoView
-          .get()
-          .setVideoSource(new VideoSlide(getContext(), source, fileName, size), autoplay);
+    } else if (isVideo) {
+      VideoPlayer player = videoView.get();
+      player.setVisibility(View.VISIBLE);
+      player.setWindow(window);
+      player.setControlsVisibilityListener(controlsVisibilityListener);
+      player.setVideoSource(new VideoSlide(getContext(), source, fileName, size), autoplay);
     } else {
       throw new IOException("Unsupported media type: " + mediaType);
     }
@@ -89,5 +91,19 @@ public class MediaView extends FrameLayout {
 
   public void setOnImageTapListener(@Nullable Runnable listener) {
     imageView.setOnImageTapListener(listener);
+  }
+
+  public void setControlsVisibilityListener(
+      @Nullable VideoPlayer.ControlsVisibilityListener listener) {
+    this.controlsVisibilityListener = listener;
+    if (videoView.resolved()) videoView.get().setControlsVisibilityListener(listener);
+  }
+
+  public boolean isVideo() {
+    return isVideo;
+  }
+
+  public void setControlsVisible(boolean visible) {
+    if (isVideo && videoView.resolved()) videoView.get().setControlsVisible(visible);
   }
 }
