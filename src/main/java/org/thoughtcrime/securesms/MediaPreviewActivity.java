@@ -34,6 +34,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.WindowCompat;
@@ -80,6 +81,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   public static final String LEFT_IS_RECENT_EXTRA = "left_is_recent";
   public static final String DC_MSG_ID = "dc_msg_id";
   public static final String OPENED_FROM_PROFILE = "opened_from_profile";
+  private static final String STATE_TOP_BAR_VISIBLE = "top_bar_visible";
 
   /** USE ONLY IF YOU HAVE NO MESSAGE ID! */
   public static final String DATE_EXTRA = "date";
@@ -94,7 +96,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
   private Recipient conversationRecipient;
   private boolean leftIsRecent;
   private WindowInsetsControllerCompat windowInsetsController;
-  private boolean topBarHidden = false;
+  private boolean topBarVisible = true;
 
   private int restartItem = -1;
 
@@ -124,10 +126,19 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     ViewUtil.applyWindowInsets(toolbar, true, true, true, false);
 
+    if (!ViewUtil.isEdgeToEdgeSupported()) {
+      WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+      ViewUtil.setPaddingTop(toolbar, ViewUtil.getStatusBarHeight(toolbar));
+    }
+
     windowInsetsController =
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
     windowInsetsController.setSystemBarsBehavior(
         WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+
+    if (bundle != null) {
+      topBarVisible = bundle.getBoolean(STATE_TOP_BAR_VISIBLE, true);
+    }
 
     editAvatarChatId = getIntent().getIntExtra(EDIT_AVATAR_CHAT_ID, 0);
     @Nullable String title = getIntent().getStringExtra(ACTIVITY_TITLE_EXTRA);
@@ -137,6 +148,13 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     initializeViews();
     initializeResources();
+    setTopBarVisible(topBarVisible);
+  }
+
+  @Override
+  protected void onSaveInstanceState(@NonNull Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putBoolean(STATE_TOP_BAR_VISIBLE, topBarVisible);
   }
 
   @Override
@@ -145,27 +163,55 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-  private void toggleFullscreen() {
-    if (topBarHidden) showTopBar();
-    else hideTopBar();
+  private void toggleTopBar() {
+    setTopBarVisible(!topBarVisible);
   }
 
   @SuppressWarnings("ConstantConditions")
-  private void hideTopBar() {
-    topBarHidden = true;
-    getSupportActionBar().hide();
-    windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+  private void setTopBarVisible(boolean visible) {
+    final boolean changed = topBarVisible != visible;
+    topBarVisible = visible;
+    ActionBar supportBar = getSupportActionBar();
+    if (supportBar == null) return;
+
+    if (visible) {
+      supportBar.show();
+      windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
+    } else {
+      supportBar.hide();
+      windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+    }
+
+    if (changed) {
+      MediaView mediaView = getCurrentMediaView();
+      if (mediaView != null) mediaView.setControlsVisible(visible);
+    }
   }
 
-  @SuppressWarnings("ConstantConditions")
-  private void showTopBar() {
-    topBarHidden = false;
-    getSupportActionBar().show();
-    windowInsetsController.show(WindowInsetsCompat.Type.systemBars());
+  private void applyTopBarToPage(int position) {
+    MediaItemAdapter adapter = (MediaItemAdapter) mediaPager.getAdapter();
+    if (adapter == null) return;
+
+    MediaView mediaView = adapter.getMediaViewFor(position);
+    if (mediaView != null && mediaView.isVideo()) {
+      mediaView.setControlsVisible(topBarVisible);
+    }
+  }
+
+  private @Nullable MediaView getCurrentMediaView() {
+    MediaItemAdapter adapter = (MediaItemAdapter) mediaPager.getAdapter();
+    return adapter == null ? null : adapter.getMediaViewFor(mediaPager.getCurrentItem());
   }
 
   private @Nullable Runnable getImageTapListener() {
-    return editAvatarChatId == 0 ? this::toggleFullscreen : null;
+    return editAvatarChatId == 0 ? this::toggleTopBar : null;
+  }
+
+  private @Nullable ControlsVisibilityCallback getControlsVisibilityCallback() {
+    if (editAvatarChatId != 0) return null;
+    return (source, visible) -> {
+      if (source == getCurrentMediaView()) setTopBarVisible(visible);
+    };
   }
 
   @Override
@@ -283,8 +329,15 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
               initialMedia.name,
               initialMedia.type,
               getImageTapListener(),
+              getControlsVisibilityCallback(),
               initialMedia.size));
+      onAdapterChanged();
     }
+  }
+
+  private void onAdapterChanged() {
+    setTopBarVisible(topBarVisible);
+    mediaPager.post(() -> applyTopBarToPage(mediaPager.getCurrentItem()));
   }
 
   private int cleanupMedia() {
@@ -509,12 +562,20 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       @SuppressWarnings("ConstantConditions")
       DcMediaPagerAdapter adapter =
           new DcMediaPagerAdapter(
-              this, GlideApp.with(this), getWindow(), data, getImageTapListener(), leftIsRecent);
+              this,
+              GlideApp.with(this),
+              getWindow(),
+              data,
+              getImageTapListener(),
+              getControlsVisibilityCallback(),
+              leftIsRecent);
       adapter.setActive(true);
       mediaPager.setAdapter(adapter);
 
       if (restartItem < 0) mediaPager.setCurrentItem(data.getPosition(), false);
       else mediaPager.setCurrentItem(restartItem, false);
+
+      onAdapterChanged();
     }
   }
 
@@ -537,6 +598,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         if (item.recipient != null) item.recipient.addListener(MediaPreviewActivity.this);
 
         initializeActionBar();
+        applyTopBarToPage(position);
       }
     }
 
@@ -566,6 +628,9 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     private final String mediaType;
     private final long size;
     private final @Nullable Runnable onTap;
+    private final @Nullable ControlsVisibilityCallback controlsVisibilityCallback;
+
+    private @Nullable MediaView mediaView;
 
     private final LayoutInflater inflater;
 
@@ -577,6 +642,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         @Nullable String name,
         @NonNull String mediaType,
         @Nullable Runnable onTap,
+        @Nullable ControlsVisibilityCallback controlsVisibilityCallback,
         long size) {
       this.glideRequests = glideRequests;
       this.window = window;
@@ -584,6 +650,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       this.name = name;
       this.mediaType = mediaType;
       this.onTap = onTap;
+      this.controlsVisibilityCallback = controlsVisibilityCallback;
       this.size = size;
       this.inflater = LayoutInflater.from(context);
     }
@@ -601,6 +668,13 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
     @Override
     public void onBindViewHolder(@NonNull MediaViewHolder holder, int position) {
+      mediaView = holder.mediaView;
+      holder.mediaView.setControlsVisibilityListener(
+          controlsVisibilityCallback == null
+              ? null
+              : visible ->
+                  controlsVisibilityCallback.onControlsVisibilityChanged(
+                      holder.mediaView, visible));
       try {
         holder.mediaView.set(glideRequests, window, uri, name, mediaType, size, true);
         holder.mediaView.setOnImageTapListener(onTap);
@@ -612,7 +686,13 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     @Override
     public void onViewRecycled(@NonNull MediaViewHolder holder) {
       super.onViewRecycled(holder);
+      if (mediaView == holder.mediaView) mediaView = null;
       holder.mediaView.cleanup();
+    }
+
+    @Override
+    public @Nullable MediaView getMediaViewFor(int position) {
+      return mediaView;
     }
 
     @Override
@@ -645,6 +725,7 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     private final DcMediaGalleryElement gallery;
     private final boolean leftIsRecent;
     private final @Nullable Runnable onTap;
+    private final @Nullable ControlsVisibilityCallback controlsVisibilityCallback;
 
     private boolean active;
     private int autoPlayPosition;
@@ -655,12 +736,14 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
         @NonNull Window window,
         @NonNull DcMediaGalleryElement gallery,
         @Nullable Runnable onTap,
+        @Nullable ControlsVisibilityCallback controlsVisibilityCallback,
         boolean leftIsRecent) {
       this.context = context.getApplicationContext();
       this.glideRequests = glideRequests;
       this.window = window;
       this.gallery = gallery;
       this.onTap = onTap;
+      this.controlsVisibilityCallback = controlsVisibilityCallback;
       this.leftIsRecent = leftIsRecent;
       this.autoPlayPosition = gallery.getPosition();
     }
@@ -694,6 +777,14 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
 
       DcMsg msg = gallery.getMessage();
 
+      mediaViews.put(position, holder.mediaView);
+      holder.mediaView.setControlsVisibilityListener(
+          controlsVisibilityCallback == null
+              ? null
+              : visible ->
+                  controlsVisibilityCallback.onControlsVisibilityChanged(
+                      holder.mediaView, visible));
+
       try {
         //noinspection ConstantConditions
         holder.mediaView.set(
@@ -709,17 +800,18 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
       }
 
       holder.mediaView.setOnImageTapListener(onTap);
-      mediaViews.put(position, holder.mediaView);
     }
 
     @Override
     public void onViewRecycled(@NonNull MediaViewHolder holder) {
       super.onViewRecycled(holder);
-      int pos = holder.getBindingAdapterPosition();
-      if (pos != RecyclerView.NO_POSITION) {
-        mediaViews.remove(pos);
-      }
+      mediaViews.values().remove(holder.mediaView);
       holder.mediaView.cleanup();
+    }
+
+    @Override
+    public @Nullable MediaView getMediaViewFor(int position) {
+      return mediaViews.get(position);
     }
 
     public MediaItem getMediaItemFor(int position) {
@@ -790,8 +882,15 @@ public class MediaPreviewActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private interface ControlsVisibilityCallback {
+    void onControlsVisibilityChanged(@NonNull MediaView source, boolean visible);
+  }
+
   private interface MediaItemAdapter {
     MediaItem getMediaItemFor(int position);
+
+    @Nullable
+    MediaView getMediaViewFor(int position);
 
     void pause(int position);
   }
