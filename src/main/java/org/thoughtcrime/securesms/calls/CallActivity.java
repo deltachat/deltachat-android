@@ -1034,6 +1034,10 @@ public class CallActivity extends AppCompatActivity {
 
           case INITIALIZING:
           case PROMPTING_USER_ACCEPT:
+            // Let's just ignore the hint in these cases, as it's most likely
+            // unwanted, and caused issues on some setups.
+            break;
+
           case ENDED:
           case ANSWERED_ELSEWHERE:
           case ERROR:
