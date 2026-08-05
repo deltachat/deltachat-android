@@ -884,9 +884,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private void askSendingFiles(ArrayList<Uri> uriList, Runnable onConfirm) {
     String message =
         String.format(getString(R.string.ask_send_files_to_chat), uriList.size(), dcChat.getName());
-    if (SendRelayedMessageUtil.containsVideoType(context, uriList)) {
-      message += "\n\n" + getString(R.string.videos_sent_without_recoding);
-    }
     new AlertDialog.Builder(this)
         .setMessage(message)
         .setCancelable(false)
@@ -1138,6 +1135,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     recipient = new Recipient(this, dcChat);
     glideRequests = GlideApp.with(this);
 
+    searchMenu = null; // reset search on new intent
     setInputPanelVisibility(true);
     initializeContactRequest();
   }
@@ -1860,7 +1858,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       initializeSecurity(isSecureText, isDefaultSms);
       setInputPanelVisibility(false);
       initializeContactRequest();
-      invalidateOptionsMenu();
+      if (searchMenu == null) {
+        // invalidateOptionsMenu collapses the search bar,
+        // so only call it when user is not in search mode
+        invalidateOptionsMenu();
+      }
     } else if ((eventId == DcContext.DC_EVENT_INCOMING_MSG
             || eventId == DcContext.DC_EVENT_MSG_READ)
         && event.getData1Int() == chatId) {

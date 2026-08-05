@@ -454,18 +454,15 @@ public class AttachmentManager {
   }
 
   public static void selectGallery(Activity activity, int requestCode) {
-    // to enable camera roll,
-    // we're asking for "gallery permissions" also on newer systems that do not strictly require
-    // that.
+    // to enable camera roll, we're asking for "gallery permissions".
+    // Regardless of permissions granted or not,
+    // we continue launching the file picker since it doesn't require permissions.
     // (asking directly after tapping "attachment" would be not-so-good as the user may want to
-    // attach sth. else
-    // and asking for permissions is better done on-point)
+    // attach sth. else and asking for permissions is better done on-point)
     Permissions.with(activity)
         .request(Permissions.galleryPermissions())
         .ifNecessary()
-        .withPermanentDenialDialog(
-            activity.getString(R.string.perm_explain_access_to_storage_denied))
-        .onAllGranted(
+        .onAnyResult(
             () ->
                 selectMediaType(
                     activity,
@@ -478,12 +475,13 @@ public class AttachmentManager {
   }
 
   public static void selectImage(Activity activity, int requestCode) {
+    // similar to selectGallery, we ask for permission just for camera roll
+    // but it is not really necessary to pick image,
+    // so we proceed regardless of the result
     Permissions.with(activity)
         .request(Permissions.galleryPermissions())
         .ifNecessary()
-        .withPermanentDenialDialog(
-            activity.getString(R.string.perm_explain_access_to_storage_denied))
-        .onAllGranted(() -> selectMediaType(activity, "image/*", null, requestCode, null, false))
+        .onAnyResult(() -> selectMediaType(activity, "image/*", null, requestCode, null, false))
         .execute();
   }
 

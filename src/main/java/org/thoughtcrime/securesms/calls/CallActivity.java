@@ -1116,6 +1116,8 @@ public class CallActivity extends AppCompatActivity {
 
       proceedAfterPermissions();
     }
+
+    CallCoordinator.getInstance(this).ensureServiceStartedFromForeground();
   }
 
   @Override

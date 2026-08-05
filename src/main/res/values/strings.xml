@@ -679,7 +679,7 @@
 
     <string name="team">Team</string>
     <string name="team_profile">Team Profile</string>
-    <string name="team_profile_explain">A \"Team Profile\" is managed collectively by a group of people or an organization.\n\n⚠️ Team Profiles are experimental and may be changed or removed in the future.</string>
+    <string name="team_profile_explain">A \"Team Profile\" is managed collectively by a group of people or an organization.\n\n⚠️ Team Profiles are experimental and subject to change.</string>
     <string name="team_name">Team Name</string>
     <string name="create_team_profile">Create Team Profile</string>
 
@@ -725,12 +725,12 @@
     <string name="hidden_from_contacts">Hidden from contacts</string>
     <string name="enforce_e2ee">Enforce Encryption for All Relays</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Messages are received on all relays.\n\n⚠️ If you change anything here, make sure all your devices run at least version 2.47.0. Otherwise older devices may miss messages.</string>
+    <string name="transport_list_hint">Messages are received on all relays.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Add this relay?</string>
     <string name="invalid_transport_qr">The scanned QR code does not contain a valid relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Remove relay \"%1$s\"?</string>
+    <string name="confirm_remove_relay_x">Remove relay \"%1$s\"?\n\nBefore deletion, it will be gradually phased out so your contacts can switch over smoothly.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Remove relay \"%1$s\"?\n\nContacts who only know this relay may not reach you until you message them again.\n\nIf in doubt, hide it rather than removing it.</string>
     <string name="login_certificate_checks">Certificate Checks</string>
@@ -769,6 +769,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Send %1$d files to \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Send %1$d file(s) to %2$d chats?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Sending multiple videos will send them as-is, which may be large. To make them smaller and save data, you can send each video in its own message)</string>
     <string name="share_text_multiple_chats">Send this text to %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Sharing aborted due to missing permissions.</string>
