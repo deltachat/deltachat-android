@@ -31,6 +31,7 @@ public class AudioPlaybackViewModel extends ViewModel {
 
   private final MutableLiveData<Map<Integer, Long>> durations =
       new MutableLiveData<>(new HashMap<>());
+  private final MutableLiveData<Boolean> recording = new MutableLiveData<>(false);
   private final Map<Integer, Uri> durationUris = new HashMap<>();
   private final Set<Integer> extractionInProgress = new HashSet<>();
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
@@ -67,6 +68,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   // Public methods
   public void loadAudioAndPlay(int msgId, Uri audioUri) {
     if (mediaController == null) return;
+    if (Boolean.TRUE.equals(recording.getValue())) return;
 
     String mediaId = String.valueOf(msgId);
 
@@ -176,6 +178,7 @@ public class AudioPlaybackViewModel extends ViewModel {
   }
 
   public void play(int msgId) {
+    if (Boolean.TRUE.equals(recording.getValue())) return;
     if (isCurrentItem(msgId)) {
       mediaController.play();
     }
@@ -238,6 +241,21 @@ public class AudioPlaybackViewModel extends ViewModel {
 
   public void setUserSeeking(boolean isUserSeeking) {
     this.isUserSeeking = isUserSeeking;
+  }
+
+  public LiveData<Boolean> isRecording() {
+    return recording;
+  }
+
+  public void setRecording(boolean isRecording) {
+    if (Boolean.valueOf(isRecording).equals(recording.getValue())) return;
+    recording.setValue(isRecording);
+
+    if (isRecording) {
+      stopUpdateProgress();
+    } else if (mediaController != null && mediaController.isPlaying()) {
+      startUpdateProgress();
+    }
   }
 
   // Private methods

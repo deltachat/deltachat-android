@@ -260,8 +260,12 @@ public class InputPanel extends ConstraintLayout
     if (listener != null) listener.onRecorderLocked();
   }
 
-  public void onPause() {
+  public void cancelRecording() {
     this.microphoneRecorderView.cancelAction();
+  }
+
+  public void onPause() {
+    cancelRecording();
   }
 
   public void setEnabled(boolean enabled) {
