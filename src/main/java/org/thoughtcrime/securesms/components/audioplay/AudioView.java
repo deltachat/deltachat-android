@@ -35,6 +35,7 @@ public class AudioView extends FrameLayout {
   private final @NonNull TextView timestamp;
   private final @NonNull TextView title;
   private final @NonNull View mask;
+  private final Observer<Boolean> recordingObserver = this::onRecordingChanged;
   private OnActionListener listener;
 
   private int msgId = -1;
@@ -99,6 +100,9 @@ public class AudioView extends FrameLayout {
 
       viewModel.getDurations().removeObserver(durationObserver);
       viewModel.getDurations().observeForever(durationObserver);
+
+      viewModel.isRecording().removeObserver(recordingObserver);
+      viewModel.isRecording().observeForever(recordingObserver);
     }
 
     playPauseButton.setOnClickListener(
@@ -106,6 +110,7 @@ public class AudioView extends FrameLayout {
           Log.w(TAG, "playPauseButton onClick");
 
           if (viewModel == null || audioUri == null) return;
+          if (Boolean.TRUE.equals(viewModel.isRecording().getValue())) return;
 
           AudioPlaybackState state = viewModel.getPlaybackState().getValue();
 
@@ -165,6 +170,7 @@ public class AudioView extends FrameLayout {
     if (viewModel != null) {
       viewModel.getPlaybackState().removeObserver(stateObserver);
       viewModel.getDurations().removeObserver(durationObserver);
+      viewModel.isRecording().removeObserver(recordingObserver);
     }
     if (playToPauseDrawable != null) {
       playToPauseDrawable.clearAnimationCallbacks();
@@ -179,6 +185,7 @@ public class AudioView extends FrameLayout {
     if (this.viewModel != null) {
       this.viewModel.getPlaybackState().removeObserver(stateObserver);
       this.viewModel.getDurations().removeObserver(durationObserver);
+      this.viewModel.isRecording().removeObserver(recordingObserver);
     }
 
     // ViewModel is used directly for simplicity, since there is no reuse yet
@@ -187,6 +194,7 @@ public class AudioView extends FrameLayout {
     if (viewModel != null) {
       viewModel.getPlaybackState().observeForever(stateObserver);
       viewModel.getDurations().observeForever(durationObserver);
+      viewModel.isRecording().observeForever(recordingObserver);
     }
   }
 
@@ -195,7 +203,7 @@ public class AudioView extends FrameLayout {
     audioUri = audio.getUri();
     playPauseButton.setImageDrawable(playDrawable);
 
-    seekBar.setEnabled(true);
+    applyRecordingState(Boolean.TRUE.equals(viewModel.isRecording().getValue()));
 
     this.progress = 0;
     this.duration = 0;
@@ -277,6 +285,22 @@ public class AudioView extends FrameLayout {
 
   public void disablePlayer(boolean disable) {
     this.mask.setVisibility(disable ? View.VISIBLE : View.GONE);
+  }
+
+  private void applyRecordingState(boolean recording) {
+    playPauseButton.setEnabled(!recording);
+    playPauseButton.setAlpha(recording ? 0.5f : 1f);
+    seekBar.setEnabled(!recording);
+  }
+
+  private void onRecordingChanged(Boolean isRecording) {
+    applyRecordingState(isRecording);
+
+    if (isRecording) {
+      togglePlayPause(false);
+    } else {
+      onPlaybackStateChanged(viewModel.getPlaybackState().getValue());
+    }
   }
 
   public void getSeekBarGlobalVisibleRect(@NonNull Rect rect) {

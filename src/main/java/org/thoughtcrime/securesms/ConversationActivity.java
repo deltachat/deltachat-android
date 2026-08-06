@@ -388,7 +388,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected void onPause() {
     super.onPause();
 
-    if (inputPanel.isRecording() && inputPanel.getRecordingDuration() > 1000) {
+    if (shouldSaveRecording()) {
       saveRecording();
     } else {
       processComposeControls(ACTION_SAVE_DRAFT);
@@ -1054,7 +1054,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     attachmentTypeSelector = null;
     attachmentManager = new AttachmentManager(this, this);
-    audioRecorder = new AudioRecorder(this);
+    audioRecorder = new AudioRecorder(this, this::handleRecordingInterrupted);
 
     SendButtonListener sendButtonListener = new SendButtonListener();
     ComposeKeyPressedListener composeKeyPressedListener = new ComposeKeyPressedListener();
@@ -1467,6 +1467,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+    playbackViewModel.setRecording(true);
     audioRecorder.startRecording();
   }
 
@@ -1484,7 +1485,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-    ListenableFuture<Pair<Uri, Long>> future = audioRecorder.stopRecording();
+    ListenableFuture<Pair<Uri, Long>> future = stopAudioRecorder();
     future.addListener(
         new ListenableFuture.Listener<Pair<Uri, Long>>() {
           @Override
@@ -1535,7 +1536,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-    ListenableFuture<Pair<Uri, Long>> future = audioRecorder.stopRecording();
+    ListenableFuture<Pair<Uri, Long>> future = stopAudioRecorder();
     future.addListener(
         new ListenableFuture.Listener<Pair<Uri, Long>>() {
           @Override
@@ -1699,6 +1700,39 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
   }
 
+  private ListenableFuture<Pair<Uri, Long>> stopAudioRecorder() {
+    ListenableFuture<Pair<Uri, Long>> future = audioRecorder.stopRecording();
+    future.addListener(
+        new ListenableFuture.Listener<Pair<Uri, Long>>() {
+          @Override
+          public void onSuccess(Pair<Uri, Long> result) {
+            playbackViewModel.setRecording(false);
+          }
+
+          @Override
+          public void onFailure(ExecutionException e) {
+            playbackViewModel.setRecording(false);
+          }
+        });
+    return future;
+  }
+
+  private boolean shouldSaveRecording() {
+    return inputPanel.isRecording() && inputPanel.getRecordingDuration() > 1000;
+  }
+
+  private void handleRecordingInterrupted() {
+    if (!inputPanel.isRecording()) {
+      return;
+    }
+
+    if (shouldSaveRecording()) {
+      saveRecording();
+    } else {
+      inputPanel.cancelRecording();
+    }
+  }
+
   private void saveRecording() {
     inputPanel.resetRecordingUI();
     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -1706,7 +1740,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     final int thisChatId = chatId;
     final Optional<QuoteModel> quote = inputPanel.getQuote();
 
-    ListenableFuture<Pair<Uri, Long>> future = audioRecorder.stopRecording();
+    ListenableFuture<Pair<Uri, Long>> future = stopAudioRecorder();
     future.addListener(
         new ListenableFuture.Listener<Pair<Uri, Long>>() {
           @Override
