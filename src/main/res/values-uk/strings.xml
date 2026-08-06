@@ -742,7 +742,9 @@
     <string name="remove_transport">Видалити ретранслятор</string>
     <string name="edit_transport">Редагувати ретранслятор</string>
     <string name="used_for_sending">Використовується для відправки</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Приховати від контактів</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Приховано від контактів</string>
     <string name="enforce_e2ee">Застосувати політику шифрування для всіх ретрансляторів</string>
     <!-- Hint for the list of relays -->
