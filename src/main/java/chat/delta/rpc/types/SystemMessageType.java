@@ -19,11 +19,13 @@ public enum SystemMessageType {
   WebxdcStatusUpdate,
   CallAccepted,
   CallEnded,
+  MessagePinned,
+  MessageUnpinned,
 
-  /** 1:1 chats info message telling that SecureJoin has started and the user should wait for it to complete. */
+  /** Single chats info message telling that SecureJoin has started and the user should wait for it to complete. */
   SecurejoinWait,
 
-  /** 1:1 chats info message telling that SecureJoin is still running, but the user may already send messages. */
+  /** Single chats info message telling that SecureJoin is still running, but the user may already send messages. */
   SecurejoinWaitTimeout,
 
   /** Chat ephemeral message timer is changed. */

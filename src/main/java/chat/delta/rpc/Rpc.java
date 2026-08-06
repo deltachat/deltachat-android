@@ -143,11 +143,6 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Account>(){}, "get_account_info", mapper.valueToTree(accountId));
   }
 
-  /** Get the current push notification state. */
-  public NotifyState getPushState(Integer accountId) throws RpcException {
-    return transport.callForResult(new TypeReference<NotifyState>(){}, "get_push_state", mapper.valueToTree(accountId));
-  }
-
   /** Get the combined filesize of an account in bytes */
   public Integer getAccountFileSize(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "get_account_file_size", mapper.valueToTree(accountId));
@@ -513,7 +508,7 @@ public class Rpc {
    * - The chat or the contact is **not blocked**, so new messages from the user/the group may appear as a contact request
    * and the user may create the chat again.
    * - **Groups are not left** - this would
-   * be unexpected as (1) deleting a normal chat also does not prevent new mails
+   * be unexpected as (1) deleting a single chat also does not prevent new mails
    * from arriving, (2) leaving a group requires sending a message to
    * all group members - especially for groups not used for a longer time, this is
    * really unexpected when deletion results in contacting all members again,
@@ -648,7 +643,7 @@ public class Rpc {
   /**
    * Get the contact IDs belonging to a chat.
    * <p>
-   * - for normal chats, the function always returns exactly one contact,
+   * - for single chats, the function always returns exactly one contact,
    * DC_CONTACT_ID_SELF is returned only for SELF-chats.
    * <p>
    * - for group chats all members are returned, DC_CONTACT_ID_SELF is returned
@@ -901,7 +896,7 @@ public class Rpc {
    * The concrete action depends on the type of the chat and on the users settings
    * (dc_msgs_presented() may be a better name therefore, but well. :)
    * <p>
-   * - For normal chats, the IMAP state is updated, MDN is sent
+   * - For single chats, the IMAP state is updated, MDN is sent
    * (if set_config()-options `mdns_enabled` is set)
    * and the internal state is changed to @ref DC_STATE_IN_SEEN to reflect these actions.
    * <p>
@@ -990,6 +985,16 @@ public class Rpc {
   /** Fetch info desktop needs for creating a notification for a message */
   public MessageNotificationInfo getMessageNotificationInfo(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<MessageNotificationInfo>(){}, "get_message_notification_info", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /** Sets the "pinned" state for a message. */
+  public void setPinnedMessageState(Integer accountId, Integer messageId, Boolean pinnedState) throws RpcException {
+    transport.call("set_pinned_message_state", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(pinnedState));
+  }
+
+  /** Returns all pinned messages of a chat. */
+  public java.util.List<Integer> getPinnedMessages(Integer accountId, Integer chatId) throws RpcException {
+    return transport.callForResult(new TypeReference<java.util.List<Integer>>(){}, "get_pinned_messages", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
   }
 
   /**
@@ -1215,7 +1220,7 @@ public class Rpc {
   }
 
   /**
-   * Returns the [`ChatId`] for the 1:1 chat with `contact_id` if it exists.
+   * Returns the [`ChatId`] for the single chat with `contact_id` if it exists.
    * <p>
    * If it does not exist, `None` is returned.
    */
