@@ -675,7 +675,9 @@
     <string name="remove_transport">Kkes amedwel</string>
     <string name="edit_transport">Ẓreg amedwel</string>
     <string name="used_for_sending">Yettwaseqdec i tuzzna</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Ffer-it ɣef inermisen</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Uffir ɣef inermisen</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Rnu amedwel-agi?</string>

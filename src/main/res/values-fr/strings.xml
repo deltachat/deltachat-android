@@ -721,7 +721,9 @@
     <string name="remove_transport">Supprimer un relais</string>
     <string name="edit_transport">Modifier le relais</string>
     <string name="used_for_sending">Utilisé pour les envois</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Masquer pour les contacts</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Masqué pour les contacts</string>
     <string name="enforce_e2ee">Forcer le chiffrement pour tous les relais</string>
     <!-- Hint for the list of relays -->
