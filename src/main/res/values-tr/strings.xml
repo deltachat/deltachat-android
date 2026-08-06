@@ -688,7 +688,9 @@
     <string name="remove_transport">Aktarıcıyı Kaldır</string>
     <string name="edit_transport">Aktarıcıyı Düzenle</string>
     <string name="used_for_sending">Gönderim için kullanıldı</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Kişilerden Gizle</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Kişilerden gizlendi</string>
     <!-- Hint for the list of relays -->
     <string name="transport_list_hint">İletiler tüm aktarıcılardan alınır.\n\n⚠️ Burada herhangi bir şeyi değiştirirseniz, tüm aygıtlarınızın en azından 2.47.0 sürümünü çalıştırdığından emin olun. Yoksa daha eski aygıtlar iletileri kaçırabilir.</string>

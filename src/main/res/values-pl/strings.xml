@@ -715,7 +715,7 @@
 
     <string name="team">Zespół</string>
     <string name="team_profile">Profil zespołu</string>
-    <string name="team_profile_explain">„Profil zespołu” jest zarządzany zbiorowo przez grupę osób lub organizację.\n\n⚠️ Profile zespołu są eksperymentalne i w przyszłości mogą zostać zmienione lub usunięte.</string>
+    <string name="team_profile_explain">„Profil zespołu” jest zarządzany zbiorowo przez grupę osób lub organizację.\n\n⚠️ Profile zespołu są eksperymentalne i mogą ulec zmianie.</string>
     <string name="team_name">Nazwa zespołu</string>
     <string name="create_team_profile">Utwórz profil zespołu</string>
 
@@ -755,16 +755,18 @@
     <string name="remove_transport">Usuń serwer przekaźnikowy</string>
     <string name="edit_transport">Edytuj serwer przekaźnikowy</string>
     <string name="used_for_sending">Służy do wysyłania</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Ukryj w kontaktach</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Ukryty w kontaktach</string>
     <string name="enforce_e2ee">Wymuś szyfrowanie dla wszystkich przekaźników</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Wiadomości są odbierane na wszystkich przekaźnikach.\n\n⚠️ Jeśli cokolwiek tutaj zmienisz, upewnij się, że wszystkie twoje urządzenia mają co najmniej wersję 2.47.0. W przeciwnym razie starsze urządzenia mogą nie odebrać wiadomości.</string>
+    <string name="transport_list_hint">Wiadomości są odbierane na wszystkich przekaźnikach.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Dodać ten serwer przekaźnikowy?</string>
     <string name="invalid_transport_qr">Zeskanowany kod QR zawiera nieprawidłowy serwer przekaźnikowy.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Usinąć przekaźnik „%1$s”?|</string>
+    <string name="confirm_remove_relay_x">Usunąć przekaźnik „%1$s”?\n\nPrzed usunięciem dane będą stopniowo wycofywane, aby umożliwić płynne przełączenie kontaktów.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Usuń przekaźnik „%1$s”?\n\nKontakty, które znają tylko ten przekaźnik, mogą nie dotrzeć do ciebie, dopóki nie wyślesz do nich ponownej wiadomości.\n\nW razie wątpliwości ukryj go, zamiast usuwać.</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>

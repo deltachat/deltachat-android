@@ -679,7 +679,7 @@
 
     <string name="team">Tiim</string>
     <string name="team_profile">Tiimiprofiil</string>
-    <string name="team_profile_explain">Tiimiprofiili hallatakse üheskoos kasutajate grupi või organisatsiooni poolt.\n\n⚠️Selline võimalus on veel katsetamisjärgus ja võib tulevikus muutuda või sootuks ära kaduda.</string>
+    <string name="team_profile_explain">Tiimiprofiili hallatakse üheskoos kasutajate grupi või organisatsiooni poolt.\n\n⚠️Selline võimalus on veel katsetamisjärgus ja võib tulevikus muutuda.</string>
     <string name="team_name">Tiimi nimi</string>
     <string name="create_team_profile">Loo tiimiprofiil</string>
 
@@ -719,16 +719,18 @@
     <string name="remove_transport">Eemalda alusühendus</string>
     <string name="edit_transport">Muuda alusühendust</string>
     <string name="used_for_sending">Kasutatud saatmiseks</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Peida kontaktidest</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Peidetud kontaktidest</string>
     <string name="enforce_e2ee">Kasuta kõikide alusühenduste (edastusserverite) puhul krüptimist</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Sõnumid saavad kõik alusühendused (edastusserverid).\n\n⚠️ Kui muudad siin midagi, siis palun kontrolli, et kõikides sinu seadmetes on kasutusel vähemalt versioon 2.47.0. Vastasel juhul võivad vanema tarkvaraga seadmetes jääda sõnumid saabumata.</string>
+    <string name="transport_list_hint">Sõnumid saavad kõik alusühendused (edastusserverid).</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Kas lisad selle alusühenduse (edastusserveri)?</string>
     <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust (edastusserverid)</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Kas eemaldad „%1$s“ alusühenduse (edastusserveri)?</string>
+    <string name="confirm_remove_relay_x">Kas eemaldad „%1$s“ alusühenduse (edastusserveri)?Enne lõplikku kustutamist toimub vaikne üleminek, kus kõik sinu kontaktid saavad muudatusega arvestada.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Kas eemaldad alusühenduse (edastusserveri) „%1$s“?\n\nKui mõni kontakt teab vaid seda ühendusviisi, siis ta ei pruugi sind kätte saada enne, kui oled talle uuesti kirjutanud.\n\nKui kahtled, siis eemakdamise asemel pigem peida see alusühendus (edastusserver).</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>

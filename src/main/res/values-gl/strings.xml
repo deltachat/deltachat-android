@@ -707,7 +707,9 @@
     <string name="remove_transport">Eliminar repetidor</string>
     <string name="edit_transport">Editar repetidor</string>
     <string name="used_for_sending">Usado para enviar</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Ocultar dos contactos</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Oculto dos contactos</string>
     <string name="enforce_e2ee">Aplicar o cifrado para todos os repetidores</string>
     <!-- Hint for the list of relays -->
