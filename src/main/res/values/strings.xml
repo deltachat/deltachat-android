@@ -1276,4 +1276,6 @@
     <string name="update_available_msg">🎉 New version available. Tap this message to update and enjoy the new features</string>
     <string name="update_downloading">Downloading %1$s …</string>
     <string name="update_apk_mismatch">The downloaded apk does not match this app and will not be installed</string>
+    <string name="update_now">Update Now</string>
+    <string name="update_install_permission_explain">To install the update, please first allow Delta Chat to install apps in the system settings.</string>
 </resources>

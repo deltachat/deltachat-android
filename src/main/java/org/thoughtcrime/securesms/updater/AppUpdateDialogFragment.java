@@ -13,10 +13,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -29,7 +30,16 @@ public class AppUpdateDialogFragment extends DialogFragment {
 
   private static final String ARG_URL = "url";
   private static final String ARG_VERSION = "version";
-  private static final String STATE_DOWNLOAD_ID = "download_id";
+  private static final String KEY_STATE = "state";
+  private static final String KEY_DOWNLOAD_ID = "download_id";
+  private static final String KEY_ERROR_RES = "error_res";
+
+  private enum State {
+    CHECK_PERMISSION,
+    PERMISSION_NEEDED,
+    DOWNLOADING,
+    ERROR
+  }
 
   private static final int POLL_INTERVAL_MS = 500;
   private static final String DEST_FILENAME = "deltachat-update.apk";
@@ -37,15 +47,18 @@ public class AppUpdateDialogFragment extends DialogFragment {
   private final Handler handler = new Handler(Looper.getMainLooper());
 
   private DownloadManager downloadManager;
-  private long downloadId = -1;
-  private File destFile;
   private String versionString;
 
+  private State state = State.CHECK_PERMISSION;
+  private long downloadId = -1;
+  private @StringRes int errorRes;
+
+  private TextView messageText;
+  private View progressContainer;
   private ProgressBar progressBar;
   private TextView progressText;
 
   private Runnable pollRunnable;
-  private boolean finished;
 
   public static void show(FragmentActivity activity, AppUpdate.LatestVersion latest) {
     AppUpdateDialogFragment f = new AppUpdateDialogFragment();
@@ -59,44 +72,15 @@ public class AppUpdateDialogFragment extends DialogFragment {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setCancelable(false);
-
-    Context appContext = requireContext().getApplicationContext();
-    downloadManager = (DownloadManager) appContext.getSystemService(Context.DOWNLOAD_SERVICE);
+    downloadManager =
+        (DownloadManager)
+            requireContext().getApplicationContext().getSystemService(Context.DOWNLOAD_SERVICE);
     versionString = requireArguments().getString(ARG_VERSION, "");
 
-    File dir = appContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
-    if (dir == null || downloadManager == null) {
-      Toast.makeText(appContext, R.string.error, Toast.LENGTH_LONG).show();
-      dismissAllowingStateLoss();
-      return;
-    }
-    destFile = new File(dir, DEST_FILENAME);
-
     if (savedInstanceState != null) {
-      downloadId = savedInstanceState.getLong(STATE_DOWNLOAD_ID, -1);
-    }
-    if (downloadId == -1) {
-      startDownload(appContext);
-    }
-  }
-
-  private void startDownload(Context appContext) {
-    if (destFile.exists()) {
-      destFile.delete();
-    }
-    try {
-      DownloadManager.Request request =
-          new DownloadManager.Request(Uri.parse(requireArguments().getString(ARG_URL)));
-      request.setTitle(getString(R.string.update_downloading, versionString));
-      request.setDestinationInExternalFilesDir(
-          appContext, Environment.DIRECTORY_DOWNLOADS, DEST_FILENAME);
-      request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
-      downloadId = downloadManager.enqueue(request);
-    } catch (Exception e) {
-      Log.e(TAG, "Failed to start download", e);
-      Toast.makeText(appContext, R.string.error, Toast.LENGTH_LONG).show();
-      dismissAllowingStateLoss();
+      state = stateFromName(savedInstanceState.getString(KEY_STATE));
+      downloadId = savedInstanceState.getLong(KEY_DOWNLOAD_ID, -1);
+      errorRes = savedInstanceState.getInt(KEY_ERROR_RES, 0);
     }
   }
 
@@ -104,20 +88,29 @@ public class AppUpdateDialogFragment extends DialogFragment {
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     View view = requireActivity().getLayoutInflater().inflate(R.layout.app_update_dialog, null);
+    messageText = view.findViewById(R.id.update_message_text);
+    progressContainer = view.findViewById(R.id.update_progress_container);
     progressBar = view.findViewById(R.id.update_progress_bar);
     progressText = view.findViewById(R.id.update_progress_text);
 
     return new AlertDialog.Builder(requireContext())
-        .setTitle(getString(R.string.update_downloading, versionString))
         .setView(view)
-        .setNegativeButton(R.string.cancel, (d, w) -> cancelDownload())
-        .setCancelable(false)
+        .setPositiveButton(R.string.ok, null)
+        .setNegativeButton(R.string.cancel, null)
         .create();
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    render();
   }
 
   @Override
   public void onResume() {
     super.onResume();
+    advanceState();
+    render();
     startPolling();
   }
 
@@ -130,12 +123,131 @@ public class AppUpdateDialogFragment extends DialogFragment {
   @Override
   public void onSaveInstanceState(@NonNull Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putLong(STATE_DOWNLOAD_ID, downloadId);
+    outState.putString(KEY_STATE, state.name());
+    outState.putLong(KEY_DOWNLOAD_ID, downloadId);
+    outState.putInt(KEY_ERROR_RES, errorRes);
+  }
+
+  @Override
+  public void onDestroy() {
+    stopPolling();
+    super.onDestroy();
+  }
+
+  private void advanceState() {
+    if (state != State.CHECK_PERMISSION && state != State.PERMISSION_NEEDED) return;
+
+    Activity activity = getActivity();
+    if (activity == null) return;
+
+    if (!DcHelper.canInstallApks(activity)) {
+      state = State.PERMISSION_NEEDED;
+      return;
+    }
+    state = State.DOWNLOADING;
+    if (downloadId == -1) {
+      startDownload();
+    }
+  }
+
+  private void startDownload() {
+    Context appContext = requireContext().getApplicationContext();
+    File dir = appContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+    if (dir == null || downloadManager == null) {
+      showError(R.string.download_failed);
+      return;
+    }
+
+    File stale = new File(dir, DEST_FILENAME);
+    if (stale.exists() && !stale.delete()) {
+      Log.w(TAG, "could not delete file " + stale);
+    }
+
+    try {
+      DownloadManager.Request request =
+          new DownloadManager.Request(Uri.parse(requireArguments().getString(ARG_URL)));
+      request.setTitle(getString(R.string.update_downloading, versionString));
+      request.setDestinationInExternalFilesDir(
+          appContext, Environment.DIRECTORY_DOWNLOADS, DEST_FILENAME);
+      request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+      downloadId = downloadManager.enqueue(request);
+    } catch (Exception e) {
+      Log.e(TAG, "failed to start download", e);
+      showError(R.string.download_failed);
+    }
+  }
+
+  private void render() {
+    AlertDialog dialog = (AlertDialog) getDialog();
+    if (dialog == null) return;
+    Button positive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+    Button negative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+    if (positive == null || negative == null) return;
+
+    setCancelable(state == State.PERMISSION_NEEDED || state == State.ERROR);
+
+    switch (state) {
+      case PERMISSION_NEEDED:
+        messageText.setVisibility(View.VISIBLE);
+        messageText.setText(R.string.update_install_permission_explain);
+        progressContainer.setVisibility(View.GONE);
+        positive.setVisibility(View.VISIBLE);
+        positive.setText(R.string.open_settings);
+        positive.setOnClickListener(
+            v -> {
+              Activity activity = getActivity();
+              if (activity != null) {
+                DcHelper.requestInstallApksPermission(activity);
+              }
+            });
+        negative.setVisibility(View.VISIBLE);
+        negative.setText(R.string.cancel);
+        negative.setOnClickListener(v -> dismissAllowingStateLoss());
+        break;
+
+      case DOWNLOADING:
+        messageText.setVisibility(View.VISIBLE);
+        messageText.setText(getString(R.string.update_downloading, versionString));
+        progressContainer.setVisibility(View.VISIBLE);
+        positive.setVisibility(View.GONE);
+        negative.setVisibility(View.VISIBLE);
+        negative.setText(R.string.cancel);
+        negative.setOnClickListener(
+            v -> {
+              cancelDownload();
+              dismissAllowingStateLoss();
+            });
+        break;
+
+      case ERROR:
+        messageText.setVisibility(View.VISIBLE);
+        messageText.setText(errorRes != 0 ? errorRes : R.string.error);
+        progressContainer.setVisibility(View.GONE);
+        positive.setVisibility(View.VISIBLE);
+        positive.setText(R.string.ok);
+        positive.setOnClickListener(v -> dismissAllowingStateLoss());
+        negative.setVisibility(View.GONE);
+        break;
+
+      default:
+        messageText.setVisibility(View.GONE);
+        progressContainer.setVisibility(View.GONE);
+        positive.setVisibility(View.GONE);
+        negative.setVisibility(View.GONE);
+        break;
+    }
+  }
+
+  private void showError(@StringRes int messageRes) {
+    stopPolling();
+    state = State.ERROR;
+    errorRes = messageRes;
+    render();
   }
 
   private void startPolling() {
     stopPolling();
-    if (finished || downloadId == -1) return;
+    if (state != State.DOWNLOADING || downloadId == -1) return;
     pollRunnable = this::poll;
     handler.post(pollRunnable);
   }
@@ -148,37 +260,40 @@ public class AppUpdateDialogFragment extends DialogFragment {
   }
 
   private void poll() {
-    if (finished || downloadId == -1) return;
+    if (state != State.DOWNLOADING || downloadId == -1) return;
     Cursor cursor = null;
     try {
       cursor = downloadManager.query(new DownloadManager.Query().setFilterById(downloadId));
-      if (cursor == null || !cursor.moveToFirst()) {
-        return;
-      }
-      int status = cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS));
-      if (status == DownloadManager.STATUS_SUCCESSFUL) {
-        String localUri =
-            cursor.getString(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_LOCAL_URI));
-        String localPath = localUri != null ? Uri.parse(localUri).getPath() : null;
-        if (localPath == null) {
-          onDownloadFailed();
-        } else {
-          onDownloadSucceeded(localPath);
+      if (cursor != null && cursor.moveToFirst()) {
+        int status = cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS));
+        if (status == DownloadManager.STATUS_SUCCESSFUL) {
+          String localUri =
+              cursor.getString(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_LOCAL_URI));
+          String localPath = localUri != null ? Uri.parse(localUri).getPath() : null;
+          if (localPath == null) {
+            showError(R.string.download_failed);
+          } else {
+            onDownloadSucceeded(localPath);
+          }
+          return;
+        } else if (status == DownloadManager.STATUS_FAILED) {
+          showError(R.string.download_failed);
+          return;
         }
-        return;
+        updateProgress(
+            cursor.getLong(
+                cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)),
+            cursor.getLong(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)));
       }
-      long downloaded =
-          cursor.getLong(
-              cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR));
-      long total =
-          cursor.getLong(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_TOTAL_SIZE_BYTES));
-      updateProgress(downloaded, total);
     } catch (Exception e) {
       Log.e(TAG, "poll failed", e);
     } finally {
       if (cursor != null) cursor.close();
     }
-    handler.postDelayed(pollRunnable, POLL_INTERVAL_MS);
+
+    if (pollRunnable != null) {
+      handler.postDelayed(pollRunnable, POLL_INTERVAL_MS);
+    }
   }
 
   private void updateProgress(long downloaded, long total) {
@@ -188,54 +303,37 @@ public class AppUpdateDialogFragment extends DialogFragment {
       progressBar.setIndeterminate(false);
       progressBar.setMax(100);
       progressBar.setProgress(percent);
-      if (progressText != null) {
-        progressText.setText(getString(R.string.progress_percent, percent));
-      }
+      progressText.setText(getString(R.string.progress_percent, percent));
     } else {
       progressBar.setIndeterminate(true);
-      if (progressText != null) {
-        progressText.setText("");
-      }
+      progressText.setText("");
     }
   }
 
   private void onDownloadSucceeded(String localPath) {
-    if (finished) return;
-    finished = true;
     stopPolling();
 
     Context context = getContext();
-    if (context == null) return;
+    Activity activity = getActivity();
+    if (context == null || activity == null) return;
 
     PackageInfo info = context.getPackageManager().getPackageArchiveInfo(localPath, 0);
     if (info == null || !context.getPackageName().equals(info.packageName)) {
-      Toast.makeText(context, R.string.update_apk_mismatch, Toast.LENGTH_LONG).show();
       new File(localPath).delete();
-      dismissAllowingStateLoss();
+      showError(R.string.update_apk_mismatch);
       return;
     }
 
     Uri apkUri = downloadManager.getUriForDownloadedFile(downloadId);
-    Activity activity = getActivity();
-    if (activity != null && apkUri != null) {
-      DcHelper.installApk(activity, apkUri);
+    if (apkUri == null) {
+      showError(R.string.download_failed);
+      return;
     }
-    dismissAllowingStateLoss();
-  }
-
-  private void onDownloadFailed() {
-    if (finished) return;
-    finished = true;
-    stopPolling();
-    Context context = getContext();
-    if (context != null) {
-      Toast.makeText(context, R.string.download_failed, Toast.LENGTH_LONG).show();
-    }
+    DcHelper.installApk(activity, apkUri);
     dismissAllowingStateLoss();
   }
 
   private void cancelDownload() {
-    finished = true;
     stopPolling();
     if (downloadId != -1) {
       downloadManager.remove(downloadId);
@@ -243,9 +341,13 @@ public class AppUpdateDialogFragment extends DialogFragment {
     }
   }
 
-  @Override
-  public void onDestroy() {
-    stopPolling();
-    super.onDestroy();
+  private static State stateFromName(String name) {
+    if (name != null) {
+      try {
+        return State.valueOf(name);
+      } catch (IllegalArgumentException ignored) {
+      }
+    }
+    return State.CHECK_PERMISSION;
   }
 }

@@ -1067,6 +1067,11 @@ public class ConversationFragment extends MessageSelectorFragment {
           .setNegativeButton(R.string.cancel, null)
           .show();
     }
+
+    @Override
+    public void onUpdateNowClicked(DcMsg messageRecord) {
+      AppUpdate.updateDeviceMsgTapped(getActivity());
+    }
   }
 
   private class ActionModeCallback implements ActionMode.Callback {

@@ -108,10 +108,6 @@ public class AppUpdate {
   public static void updateDeviceMsgTapped(FragmentActivity activity) {
     LatestVersion latest = getLatestForThisBuild();
     if (latest == null || activity == null) return;
-    if (!DcHelper.canInstallApks(activity)) {
-      DcHelper.requestInstallApksPermission(activity);
-      return;
-    }
     AppUpdateDialogFragment.show(activity, latest);
   }
 }
