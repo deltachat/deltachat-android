@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<script>
+    // Allocates the whole per-renderer RTCPeerConnection budget so no other document in
+    // this app process can create one. See WebRtcHolder.java for additional info.
+    //
+    // `connections` is a top-level `const` and it must stay reachable for the lifetime
+    // of this document.
+    const connections = [];
+
+    (async () => {
+      const EXPECTED_CAPACITY = 500;
+      const HARD_LIMIT = 2000;
+      // 20 * 500ms = 10s, which must stay below WAITER_TIMEOUT_MS in WebRtcHolder.java.
+      const TOP_UP_ATTEMPTS = 20;
+      const TOP_UP_DELAY_MS = 500;
+
+      const release = () => {
+        for (const pc of connections) {
+          try { pc.close(); } catch (e) {}
+        }
+        connections.length = 0;
+      };
+
+      try {
+        if (typeof RTCPeerConnection === "undefined") {
+          HolderJSApi.onFillFinished(0, "RTCPeerConnection unavailable", false);
+          return;
+        }
+
+        const cert = {
+          certificates: [
+            await RTCPeerConnection.generateCertificate({
+              name: "ECDSA",
+              namedCurve: "P-256",
+            }),
+          ],
+        };
+
+        const fillUntilRejected = async () => {
+          while (connections.length < HARD_LIMIT) {
+            try {
+              connections.push(new RTCPeerConnection(cert));
+            } catch (error) {
+              return true;
+            }
+            if (connections.length % 50 === 0) {
+              // Yield so a page loading concurrently in the shared renderer is not blocked for
+              // the whole fill.
+              await new Promise((res) => setTimeout(res));
+            }
+          }
+          return false;
+        };
+
+        if (!(await fillUntilRejected())) {
+          const cl = connections.length;
+          release();
+          HolderJSApi.onFillFinished(cl, "no connection limit enforced", false);
+          return;
+        }
+
+        // We now hold every slot that was available. If that is fewer than the known capacity,
+        // something else still holds the rest.
+        let attempts = 0;
+        while (connections.length < EXPECTED_CAPACITY && attempts < TOP_UP_ATTEMPTS) {
+          attempts++;
+          await new Promise((res) => setTimeout(res, TOP_UP_DELAY_MS));
+          await fillUntilRejected();
+        }
+
+        if (connections.length < EXPECTED_CAPACITY) {
+          HolderJSApi.onFillFinished(
+            connections.length, "could not claim the whole budget", true);
+          return;
+        }
+
+        // Closing frees most of the memory (~46 KB instead of ~84 KB per connection) but does
+        // not free the slot. The process-wide counter is decremented in the destructor, not in
+        // close(). Note that an unclosed connection is kept alive by the engine, but a closed one
+        // is kept alive only by our reference to it. The `connections` array must not be cleared
+        // or go out of scope.
+        for (const pc of connections) {
+          pc.close();
+        }
+
+        let stillExhausted = false;
+        try {
+          new RTCPeerConnection();
+        } catch (error) {
+          stillExhausted = true;
+        }
+        if (!stillExhausted) {
+          const cl = connections.length;
+          release();
+          HolderJSApi.onFillFinished(
+            cl, "closed connections released their slots", false);
+          return;
+        }
+
+        HolderJSApi.onFillFinished(connections.length, null, true);
+      } catch (error) {
+        const cl = connections.length;
+        release();
+        HolderJSApi.onFillFinished(cl, "" + error, false);
+      }
+    })();
+</script>
+</body>
+</html>
