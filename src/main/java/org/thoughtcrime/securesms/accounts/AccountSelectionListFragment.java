@@ -5,7 +5,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +26,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import java.util.Arrays;
-import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
