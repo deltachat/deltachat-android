@@ -114,7 +114,8 @@ public class DozeReminder {
   }
 
   private static boolean isPushAvailableAndSufficient(Context context) {
-    return FcmReceiveService.getToken() != null || UnifiedPushUtils.hasPushDistributor(context, true);
+    return FcmReceiveService.getToken() != null
+        || UnifiedPushUtils.hasPushDistributor(context, true);
   }
 
   public static void maybeAskDirectly(Context context) {

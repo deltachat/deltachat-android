@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.preferences;
 
 import static android.app.Activity.RESULT_OK;
-
 import static org.thoughtcrime.securesms.notifications.UnifiedPushUtils.PUSH_ERROR_ACTION;
 
 import android.Manifest;
@@ -51,12 +50,13 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   private CheckBoxPreference reliableService;
   private ActivityResultLauncher<Intent> ringtonePickerLauncher;
 
-  private BroadcastReceiver pushEventReceiver = new BroadcastReceiver() {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-      resumeUi();
-    }
-  };
+  private BroadcastReceiver pushEventReceiver =
+      new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+          resumeUi();
+        }
+      };
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -148,17 +148,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
     selectDistributor = this.findPreference("pref_unifiedpush_distrib");
     if (selectDistributor != null) {
       selectDistributor.setOnPreferenceClickListener(
-        (preference) -> {
-          Activity activity = getActivity();
-          if (activity != null) {
-            UnifiedPushUtils.tryPickUnifiedPushDistributor(activity, res -> {
-              if (res) {
-                setUnifiedPushDistributorPref(getContext());
-              }
-            });
-          }
-          return true;
-        });
+          (preference) -> {
+            Activity activity = getActivity();
+            if (activity != null) {
+              UnifiedPushUtils.tryPickUnifiedPushDistributor(
+                  activity,
+                  res -> {
+                    if (res) {
+                      setUnifiedPushDistributorPref(getContext());
+                    }
+                  });
+            }
+            return true;
+          });
     }
 
     mentionNotifEnabled = this.findPreference("pref_enable_mention_notifications");
@@ -196,11 +198,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
     try {
       ContextCompat.registerReceiver(
-        requireContext(),
-        pushEventReceiver,
-        new IntentFilter(PUSH_ERROR_ACTION),
-        ContextCompat.RECEIVER_NOT_EXPORTED
-      );
+          requireContext(),
+          pushEventReceiver,
+          new IntentFilter(PUSH_ERROR_ACTION),
+          ContextCompat.RECEIVER_NOT_EXPORTED);
     } catch (IllegalStateException e) {
       Log.e(TAG, "Could not access context", e);
     }
@@ -255,10 +256,12 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       // This also allow users who have disabled UnifiedPush by mistake to reset it.
       Prefs.enableUnifiedPush(context);
       // If the build supports UnifiedPush, we init it
-      UnifiedPushUtils.mayInitUnifiedPush(getActivity(), s -> {
-        notificationsEnabled.setSummary(getSummary(context, false));
-        setUnifiedPushDistributorPref(getContext());
-      });
+      UnifiedPushUtils.mayInitUnifiedPush(
+          getActivity(),
+          s -> {
+            notificationsEnabled.setSummary(getSummary(context, false));
+            setUnifiedPushDistributorPref(getContext());
+          });
     }
     notificationsEnabled.setSummary(getSummary(context, false));
     setUnifiedPushDistributorPref(getContext());
@@ -297,12 +300,10 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   private void setUnifiedPushDistributorPref(Context context) {
     if (selectDistributor != null) {
       String currentDistributor = UnifiedPushUtils.getDistributorName(context);
-      if (
-        !dcContext.isMuted()
+      if (!dcContext.isMuted()
           && !Prefs.reliableService(context)
           && currentDistributor != null
-          && UnifiedPushUtils.countAvailableDistributors(context) > 1
-      ) {
+          && UnifiedPushUtils.countAvailableDistributors(context) > 1) {
         selectDistributor.setVisible(true);
         selectDistributor.setSummary(currentDistributor);
       } else {

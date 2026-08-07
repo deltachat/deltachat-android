@@ -268,7 +268,8 @@ public class Prefs {
   }
 
   public static boolean reliableService(Context context) {
-    boolean defaultVal = !(isFcmPushEnabled(context) || UnifiedPushUtils.hasPushDistributor(context, true));
+    boolean defaultVal =
+        !(isFcmPushEnabled(context) || UnifiedPushUtils.hasPushDistributor(context, true));
     return getBooleanPreference(context, RELIABLE_SERVICE_PREF, defaultVal);
   }
 
