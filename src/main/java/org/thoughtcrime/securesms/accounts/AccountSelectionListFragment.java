@@ -63,13 +63,6 @@ public class AccountSelectionListFragment extends DialogFragment
         new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.switch_account)
             .setNegativeButton(R.string.cancel, null);
-    if (!selectOnly) {
-      builder.setNeutralButton(
-          R.string.connectivity,
-          ((dialog, which) -> {
-            startActivity(new Intent(getActivity(), ConnectivityActivity.class));
-          }));
-    }
 
     LayoutInflater inflater = requireActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.account_selection_list_fragment, null);
