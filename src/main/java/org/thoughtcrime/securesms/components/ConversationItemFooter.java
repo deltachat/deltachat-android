@@ -29,6 +29,7 @@ public class ConversationItemFooter extends LinearLayout {
   private Integer textColor = null;
   private Context context;
   private Rpc rpc;
+  private int channelReadCount;
 
   public ConversationItemFooter(Context context) {
     super(context);
@@ -90,14 +91,15 @@ public class ConversationItemFooter extends LinearLayout {
 
     locationIndicatorView.setVisibility(messageRecord.hasLocation() ? View.VISIBLE : View.GONE);
 
+    channelReadCount = 0;
     boolean isOutChannel =
         DcHelper.getContext(context).getChat(messageRecord.getChatId()).isOutBroadcast();
 
     if (isOutChannel && messageRecord.isOutgoing()) {
       try {
         int accId = rpc.getSelectedAccountId();
-        int count = rpc.getMessageReadReceiptCount(accId, messageRecord.getId());
-        viewsLabel.setText(String.format("%d", count));
+        channelReadCount = rpc.getMessageReadReceiptCount(accId, messageRecord.getId());
+        viewsLabel.setText(String.format("%d", channelReadCount));
         viewsLabel.setVisibility(View.VISIBLE);
         viewsIcon.setVisibility(View.VISIBLE);
       } catch (RpcException e) {
@@ -144,10 +146,31 @@ public class ConversationItemFooter extends LinearLayout {
   }
 
   public String getDescription() {
-    String desc = dateView.getText().toString();
-    String deliveryDesc = deliveryStatusView.getDescription();
-    if (!"".equals(deliveryDesc)) {
-      desc += "\n" + deliveryDesc;
+    String desc = "";
+    if (locationIndicatorView.getVisibility() == View.VISIBLE) {
+      desc += context.getString(R.string.location) + "\n";
+    }
+
+    if (bookmarkIndicatorView.getVisibility() == View.VISIBLE) {
+      desc += context.getString(R.string.saved) + "\n";
+    }
+
+    if (editedView.getVisibility() == View.VISIBLE) {
+      desc += editedView.getText() + "\n";
+    }
+
+    desc += dateView.getText().toString();
+    if (channelReadCount >= 1) {
+      desc +=
+          "\n"
+              + context
+                  .getResources()
+                  .getQuantityString(R.plurals.x_members_read, channelReadCount, channelReadCount);
+    } else {
+      String deliveryDesc = deliveryStatusView.getDescription();
+      if (!"".equals(deliveryDesc)) {
+        desc += "\n" + deliveryDesc;
+      }
     }
     return desc;
   }

@@ -6,6 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:importantForAccessibility="noHideDescendants"
     tools:parentTag="org.thoughtcrime.securesms.components.ConversationItemFooter">
 
     <ImageView
@@ -35,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:linksClickable="false"
+        android:importantForAccessibility="no"
         style="@style/Signal.Text.Caption.MessageSent"
         android:textColor="?conversation_item_outgoing_text_secondary_color"
         android:text="@string/edited"
@@ -48,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:linksClickable="false"
+        android:importantForAccessibility="no"
         style="@style/Signal.Text.Caption.MessageSent"
         android:textColor="?conversation_item_outgoing_text_secondary_color"
         tools:text="30 mins" />
@@ -57,9 +60,9 @@
         android:layout_width="12sp"
         android:layout_height="11sp"
         android:src="@drawable/ic_location_msg"
+        android:importantForAccessibility="no"
         android:visibility="gone"
         android:layout_gravity="center_vertical|end"
-        android:contentDescription="@string/location"
         tools:visibility="gone" />
 
     <ImageView
@@ -81,6 +84,7 @@
         android:linksClickable="false"
         style="@style/Signal.Text.Caption.MessageSent"
         android:textColor="?conversation_item_outgoing_text_secondary_color"
+        android:importantForAccessibility="no"
         android:visibility="gone"
         tools:visibility="visible"
         tools:text="150" />
@@ -91,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|end"
         android:layout_marginStart="6dp"
-        android:contentDescription="@null"
+        android:importantForAccessibility="no"
         android:visibility="gone"
         app:tint="?attr/conversation_item_outgoing_text_secondary_color" />
 

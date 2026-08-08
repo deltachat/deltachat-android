@@ -1198,17 +1198,22 @@
     <string name="insert_newline">Insert Newline</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
-    <string name="a11y_delivery_status_error">Delivery status: Error</string>
-    <string name="a11y_delivery_status_sending">Delivery status: Sending</string>
-    <string name="a11y_delivery_status_draft">Delivery status: Draft</string>
-    <string name="a11y_delivery_status_delivered">Delivery status: Delivered</string>
-    <string name="a11y_delivery_status_read">Delivery status: Read</string>
+    <string name="a11y_delivery_status_error">Error</string>
+    <string name="a11y_delivery_status_sending">Sending</string>
+    <string name="a11y_delivery_status_draft">Draft</string>
+    <string name="a11y_delivery_status_delivered">Delivered</string>
+    <string name="a11y_delivery_status_read">Read</string>
     <string name="a11y_delivery_status_invalid">Invalid delivery status</string>
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
     <string name="a11y_background_preview_label">Wallpaper preview</string>
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
     <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
     <string name="open_link">Open %1$s</string>
+    <!-- The placeholder will be replaced by a number representing count of members who have seen a channel post eg. "150 members read". Used for accessibility -->
+    <plurals name="x_members_read">
+        <item quantity="one">%d member read</item>
+        <item quantity="other">%d members read</item>
+    </plurals>
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop sharing location</string>
