@@ -5,7 +5,6 @@ import static org.thoughtcrime.securesms.connect.DcHelper.CONFIG_PRIVATE_TAG;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +26,6 @@ import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import java.util.Arrays;
-import org.thoughtcrime.securesms.ConnectivityActivity;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
@@ -63,13 +61,6 @@ public class AccountSelectionListFragment extends DialogFragment
         new AlertDialog.Builder(requireActivity())
             .setTitle(R.string.switch_account)
             .setNegativeButton(R.string.cancel, null);
-    if (!selectOnly) {
-      builder.setNeutralButton(
-          R.string.connectivity,
-          ((dialog, which) -> {
-            startActivity(new Intent(getActivity(), ConnectivityActivity.class));
-          }));
-    }
 
     LayoutInflater inflater = requireActivity().getLayoutInflater();
     View view = inflater.inflate(R.layout.account_selection_list_fragment, null);
