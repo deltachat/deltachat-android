@@ -376,6 +376,7 @@
     <string name="pin">Pin</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Unpin</string>
+    <string name="pinned">Pinned</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
     <string name="source_code">Source Code</string>

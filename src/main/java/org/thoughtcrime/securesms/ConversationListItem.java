@@ -137,9 +137,11 @@ public class ConversationListItem extends RelativeLayout
             ? ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_unread_color)
             : ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_subject_color));
 
+    String dateDesc = "";
     if (thread.getDate() > 0) {
       CharSequence date = DateUtils.getBriefRelativeTimeSpanString(getContext(), thread.getDate());
       dateView.setText(date);
+      dateDesc += date + "\n";
     } else {
       dateView.setText("");
     }
@@ -150,6 +152,15 @@ public class ConversationListItem extends RelativeLayout
                 ? R.drawable.ic_pinned_chatlist
                 : 0,
             0);
+    dateDesc +=
+        thread.isSendingLocations()
+            ? getContext().getString(R.string.pref_on_demand_location_streaming) + "\n"
+            : "";
+    dateDesc +=
+        thread.getVisibility() == DcChat.DC_CHAT_VISIBILITY_PINNED
+            ? getContext().getString(R.string.pinned) + "\n"
+            : "";
+    dateView.setContentDescription(dateDesc);
 
     setStatusIcons(thread, state);
     setBatchState(batchMode);
@@ -162,6 +173,10 @@ public class ConversationListItem extends RelativeLayout
 
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         thread.isMuted() ? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
+    if (thread.isMuted()) {
+      fromView.setContentDescription(
+          fromView.getText() + "\n" + getContext().getString(R.string.muted));
+    }
   }
 
   public void bind(
