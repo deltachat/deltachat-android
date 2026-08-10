@@ -520,7 +520,7 @@ public class ConversationItem extends BaseConversationItem {
               passthroughClickListener.onClick(view);
             }
           });
-    } else if (AppUpdate.isUpdateDeviceMsg(context, messageRecord)) {
+    } else if (AppUpdate.isUpdateDeviceMsg(context, dcChat, messageRecord)) {
       showFullButton.setVisibility(View.GONE);
       msgActionButton.setVisibility(View.VISIBLE);
       msgActionButton.setEnabled(true);

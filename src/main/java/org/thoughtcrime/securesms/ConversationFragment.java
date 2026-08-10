@@ -936,7 +936,8 @@ public class ConversationFragment extends MessageSelectorFragment {
         DozeReminder.dozeReminderTapped(getContext());
       } else if (StatsSending.isStatsSendingDeviceMsg(getContext(), messageRecord)) {
         StatsSending.statsDeviceMsgTapped(getActivity());
-      } else if (AppUpdate.isUpdateDeviceMsg(getContext(), messageRecord)) {
+      } else if (AppUpdate.isUpdateDeviceMsg(
+          getContext(), getListAdapter().getChat(), messageRecord)) {
         AppUpdate.updateDeviceMsgTapped(getActivity());
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_WEBXDC_INFO_MESSAGE) {
         if (messageRecord.getParent() != null) {

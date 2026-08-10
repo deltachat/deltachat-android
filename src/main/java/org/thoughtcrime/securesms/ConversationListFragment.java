@@ -193,9 +193,7 @@ public class ConversationListFragment extends BaseConversationListFragment
           if (DozeReminder.isEligible(context)) {
             DozeReminder.addDozeReminderDeviceMsg(context);
           }
-          if (AppUpdate.isEligible(context)) {
-            AppUpdate.addUpdateDeviceMsg(context);
-          }
+          AppUpdate.reconcile(context);
           FcmReceiveService.waitForRegisterFinished();
         } catch (Exception e) {
           e.printStackTrace();

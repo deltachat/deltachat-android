@@ -43,6 +43,9 @@ public class Prefs {
   private static final String ENTER_SENDS_PREF = "pref_enter_sends";
   private static final String PROMPTED_DOZE_MSG_ID_PREF = "pref_prompted_doze_msg_id";
   private static final String STATS_DEVICE_MSG_ID_PREF = "pref_stats_device_msg_id";
+  private static final String UPDATE_MSG_VERSION_PREF = "pref_update_msg_version";
+  private static final String UPDATE_MSG_ACCOUNT_ID_PREF = "pref_update_msg_account_id";
+  private static final String UPDATE_MSG_ID_PREF = "pref_update_msg_id";
   public static final String DOZE_ASKED_DIRECTLY = "pref_doze_asked_directly";
   public static final String ASKED_FOR_NOTIFICATION_PERMISSION =
       "pref_asked_for_notification_permission";
@@ -179,6 +182,27 @@ public class Prefs {
 
   public static int getStatsDeviceMsgId(Context context) {
     return getIntegerPreference(context, STATS_DEVICE_MSG_ID_PREF, 0);
+  }
+
+  public static void setUpdateDeviceMsg(Context context, int version, int accountId, int msgId) {
+    PreferenceManager.getDefaultSharedPreferences(context)
+        .edit()
+        .putInt(UPDATE_MSG_VERSION_PREF, version)
+        .putInt(UPDATE_MSG_ACCOUNT_ID_PREF, accountId)
+        .putInt(UPDATE_MSG_ID_PREF, msgId)
+        .apply();
+  }
+
+  public static int getUpdateMsgVersion(Context context) {
+    return getIntegerPreference(context, UPDATE_MSG_VERSION_PREF, 0);
+  }
+
+  public static int getUpdateMsgId(Context context) {
+    return getIntegerPreference(context, UPDATE_MSG_ID_PREF, 0);
+  }
+
+  public static int getUpdateMsgAccountId(Context context) {
+    return getIntegerPreference(context, UPDATE_MSG_ACCOUNT_ID_PREF, 0);
   }
 
   public static boolean isPushEnabled(Context context) {

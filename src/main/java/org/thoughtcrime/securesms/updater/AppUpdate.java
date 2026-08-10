@@ -1,22 +1,27 @@
 package org.thoughtcrime.securesms.updater;
 
 import android.content.Context;
+import android.os.Environment;
+import android.util.Log;
 import androidx.fragment.app.FragmentActivity;
+import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
+import java.io.File;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.util.Prefs;
 
 public class AppUpdate {
   private static final String TAG = "AppUpdate";
 
   private static final String APP_KEY = "deltachat";
 
-  private static final long ONE_WEEK_SECONDS = 7L * 24 * 60 * 60;
+  static final String APK_FILENAME = "deltachat-update.apk";
 
   private static final String MOCK_LATEST_VERSIONS_JSON =
       "{"
@@ -29,6 +34,8 @@ public class AppUpdate {
           + "    }"
           + "  }"
           + "}";
+
+  private static volatile JSONObject cachedLatestVersions;
 
   public static class LatestVersion {
     public final int versionInteger;
@@ -47,8 +54,12 @@ public class AppUpdate {
 
   /** Mock function. */
   public static JSONObject getLatestVersions() {
+    JSONObject cached = cachedLatestVersions;
+    if (cached != null) return cached;
     try {
-      return new JSONObject(MOCK_LATEST_VERSIONS_JSON);
+      cached = new JSONObject(MOCK_LATEST_VERSIONS_JSON);
+      cachedLatestVersions = cached;
+      return cached;
     } catch (JSONException e) {
       return null;
     }
@@ -72,37 +83,71 @@ public class AppUpdate {
     }
   }
 
-  public static boolean isUpdateAvailable() {
+  private static int getTargetVersion() {
     LatestVersion latest = getLatestForThisBuild();
-    return latest != null && latest.versionInteger > BuildConfig.VERSION_CODE;
+    if (latest == null || latest.versionInteger <= BuildConfig.VERSION_CODE) return 0;
+    return latest.versionInteger;
   }
 
-  public static String buildUpdateText(Context context) {
-    return context.getString(R.string.update_available_msg);
+  public static synchronized void reconcile(Context context) {
+    try {
+      int target = getTargetVersion();
+      if (Prefs.getUpdateMsgVersion(context) == target) return;
+
+      deleteStoredMsg(context);
+
+      if (target == 0) {
+        deleteDownloadedApk(context);
+        Prefs.setUpdateDeviceMsg(context, 0, 0, 0);
+        return;
+      }
+
+      DcContext dcContext = DcHelper.getContext(context);
+      DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+      msg.setText(context.getString(R.string.update_available_msg));
+      int msgId = dcContext.addDeviceMsg(null, msg);
+      Prefs.setUpdateDeviceMsg(context, target, dcContext.getAccountId(), msgId);
+    } catch (Exception e) {
+      Log.e(TAG, "reconcile() failed", e);
+    }
   }
 
-  public static boolean isEligible(Context context) {
-    LatestVersion latest = getLatestForThisBuild();
-    if (latest == null) return false;
-    if (latest.versionInteger <= BuildConfig.VERSION_CODE) return false;
-    long nowSeconds = System.currentTimeMillis() / 1000L;
-    return latest.releaseTimestamp <= nowSeconds - ONE_WEEK_SECONDS;
+  private static void deleteStoredMsg(Context context) {
+    int msgId = Prefs.getUpdateMsgId(context);
+    if (msgId == 0) return;
+    try {
+      DcContext dcContext =
+          DcHelper.getAccounts(context).getAccount(Prefs.getUpdateMsgAccountId(context));
+      if (!dcContext.isOk()) return;
+      DcMsg msg = dcContext.getMsg(msgId);
+      if (msg.isOk() && msg.getFromId() == DcContact.DC_CONTACT_ID_DEVICE) {
+        dcContext.deleteMsgs(new int[] {msgId});
+      }
+    } catch (Exception e) {
+      Log.w(TAG, "could not delete update device message", e);
+    }
   }
 
-  public static void addUpdateDeviceMsg(Context context) {
-    LatestVersion latest = getLatestForThisBuild();
-    if (latest == null) return;
-    DcContext dcContext = DcHelper.getContext(context);
-    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-    msg.setText(buildUpdateText(context));
-    dcContext.addDeviceMsg("update_" + latest.versionInteger, msg);
+  static File getApkDir(Context context) {
+    return context.getApplicationContext().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
   }
 
-  public static boolean isUpdateDeviceMsg(Context context, DcMsg msg) {
-    return msg != null
-        && msg.getFromId() == DcContact.DC_CONTACT_ID_DEVICE
-        && isUpdateAvailable()
-        && buildUpdateText(context).equals(msg.getText());
+  private static void deleteDownloadedApk(Context context) {
+    File dir = getApkDir(context);
+    if (dir == null) return;
+    File apk = new File(dir, APK_FILENAME);
+    if (apk.exists() && !apk.delete()) {
+      Log.w(TAG, "could not delete " + apk);
+    }
+  }
+
+  public static boolean isUpdateDeviceMsg(Context context, DcChat dcChat, DcMsg msg) {
+    if (msg == null || dcChat == null) return false;
+    int msgId = Prefs.getUpdateMsgId(context);
+    if (msgId == 0) return false;
+    if (Prefs.getUpdateMsgVersion(context) <= BuildConfig.VERSION_CODE) return false;
+    if (dcChat.getAccountId() != Prefs.getUpdateMsgAccountId(context)) return false;
+    return msg.getId() == msgId && msg.getFromId() == DcContact.DC_CONTACT_ID_DEVICE;
   }
 
   public static void updateDeviceMsgTapped(FragmentActivity activity) {

@@ -42,6 +42,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
   }
 
   private static final int POLL_INTERVAL_MS = 500;
+  private static final int MAX_POLL_FAILURES = 3;
   private static final String DEST_FILENAME = "deltachat-update.apk";
 
   private final Handler handler = new Handler(Looper.getMainLooper());
@@ -51,6 +52,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
 
   private State state = State.CHECK_PERMISSION;
   private long downloadId = -1;
+  private int pollFailures;
   private @StringRes int errorRes;
 
   private TextView messageText;
@@ -152,13 +154,13 @@ public class AppUpdateDialogFragment extends DialogFragment {
 
   private void startDownload() {
     Context appContext = requireContext().getApplicationContext();
-    File dir = appContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+    File dir = AppUpdate.getApkDir(appContext);
     if (dir == null || downloadManager == null) {
       showError(R.string.download_failed);
       return;
     }
 
-    File stale = new File(dir, DEST_FILENAME);
+    File stale = new File(dir, AppUpdate.APK_FILENAME);
     if (stale.exists() && !stale.delete()) {
       Log.w(TAG, "could not delete file " + stale);
     }
@@ -168,8 +170,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
           new DownloadManager.Request(Uri.parse(requireArguments().getString(ARG_URL)));
       request.setTitle(getString(R.string.update_downloading, versionString));
       request.setDestinationInExternalFilesDir(
-          appContext, Environment.DIRECTORY_DOWNLOADS, DEST_FILENAME);
-      request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_HIDDEN);
+          appContext, Environment.DIRECTORY_DOWNLOADS, AppUpdate.APK_FILENAME);
       downloadId = downloadManager.enqueue(request);
     } catch (Exception e) {
       Log.e(TAG, "failed to start download", e);
@@ -245,9 +246,15 @@ public class AppUpdateDialogFragment extends DialogFragment {
     render();
   }
 
+  private void failDownload(@StringRes int messageRes) {
+    cancelDownload();
+    showError(messageRes);
+  }
+
   private void startPolling() {
     stopPolling();
     if (state != State.DOWNLOADING || downloadId == -1) return;
+    pollFailures = 0;
     pollRunnable = this::poll;
     handler.post(pollRunnable);
   }
@@ -264,29 +271,38 @@ public class AppUpdateDialogFragment extends DialogFragment {
     Cursor cursor = null;
     try {
       cursor = downloadManager.query(new DownloadManager.Query().setFilterById(downloadId));
-      if (cursor != null && cursor.moveToFirst()) {
-        int status = cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS));
-        if (status == DownloadManager.STATUS_SUCCESSFUL) {
-          String localUri =
-              cursor.getString(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_LOCAL_URI));
-          String localPath = localUri != null ? Uri.parse(localUri).getPath() : null;
-          if (localPath == null) {
-            showError(R.string.download_failed);
-          } else {
-            onDownloadSucceeded(localPath);
-          }
-          return;
-        } else if (status == DownloadManager.STATUS_FAILED) {
-          showError(R.string.download_failed);
-          return;
-        }
-        updateProgress(
-            cursor.getLong(
-                cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)),
-            cursor.getLong(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)));
+      if (cursor == null || !cursor.moveToFirst()) {
+        failDownload(R.string.download_failed);
+        return;
       }
+      pollFailures = 0;
+      int status = cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS));
+      if (status == DownloadManager.STATUS_SUCCESSFUL) {
+        String localUri =
+            cursor.getString(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_LOCAL_URI));
+        String localPath = localUri != null ? Uri.parse(localUri).getPath() : null;
+        if (localPath == null) {
+          failDownload(R.string.download_failed);
+        } else {
+          onDownloadSucceeded(localPath);
+        }
+        return;
+      } else if (status == DownloadManager.STATUS_FAILED
+          || status == DownloadManager.STATUS_PAUSED) {
+        failDownload(R.string.download_failed);
+        return;
+      }
+      updateProgress(
+          cursor.getLong(
+              cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_BYTES_DOWNLOADED_SO_FAR)),
+          cursor.getLong(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_TOTAL_SIZE_BYTES)));
     } catch (Exception e) {
       Log.e(TAG, "poll failed", e);
+      pollFailures++;
+      if (pollFailures >= MAX_POLL_FAILURES) {
+        failDownload(R.string.download_failed);
+        return;
+      }
     } finally {
       if (cursor != null) cursor.close();
     }
