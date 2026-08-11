@@ -677,6 +677,12 @@
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Ein neues Profil erstellen und \"%1$s\" beitreten?</string>
 
+    <string name="team">Team</string>
+    <string name="team_profile">Teamprofil</string>
+    <string name="team_profile_explain">Ein „Teamprofil“ wird gemeinsam von einer Gruppe oder einer Organisation verwaltet.\n\n⚠️ Teamprofil-Funktionen sind experimentell und können sich ändern.</string>
+    <string name="team_name">Teamname</string>
+    <string name="create_team_profile">Teamprofil erstellen</string>
+
     <string name="welcome_chat_over_email">Sicherer dezentraler Chat</string>
     <string name="scan_invitation_code">Einladungscode scannen</string>
     <string name="login_title">Login</string>
@@ -713,16 +719,18 @@
     <string name="remove_transport">Relay entfernen</string>
     <string name="edit_transport">Relay bearbeiten</string>
     <string name="used_for_sending">Zum Senden verwendet</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Vor Kontakten verstecken</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Vor Kontakten versteckt</string>
     <string name="enforce_e2ee">Verschlüsselung für alle Relays erzwingen</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Nachrichten werden auf allen Relays empfangen.\n\n⚠️ Wenn Sie hier Änderungen vornehmen, stellen Sie sicher, dass auf allen Ihren Geräten mindestens Version 2.47.0 installiert ist. Andernfalls könnten auf älteren Versionen Nachrichten verloren gehen.</string>
+    <string name="transport_list_hint">Nachrichten werden auf allen Relays empfangen.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Relay hinzufügen?</string>
     <string name="invalid_transport_qr">Der gescannte QR-Code enthält keine gültiges Relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Relay \"%1$s\" entfernen?</string>
+    <string name="confirm_remove_relay_x">Relay \"%1$s\" entfernen?\n\nVor dem endgültigen Löschen wird es schrittweise deaktiviert, um deinen Kontakten einen nahtlosen Übergang zu ermöglichen.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Relay \"%1$s\" entfernen?\n\nKontakte, die nur dieses Relay kennen, erreichen dich möglicherweise erst wieder, wenn du ihnen erneut eine Nachricht schickst.\n\nIm Zweifelsfall, verstecke das Relay anstelle es zu löschen.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>

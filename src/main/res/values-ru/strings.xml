@@ -715,7 +715,7 @@
 
     <string name="team">Команда</string>
     <string name="team_profile">Профиль команды</string>
-    <string name="team_profile_explain">\"Профиль команды\" управляется совместно группой лиц или организацией.\n\n⚠️ Профили команд являются экспериментальной функцией; в будущем они могут быть изменены или удалены.</string>
+    <string name="team_profile_explain">\"Профиль команды\" управляется совместно группой лиц или организацией.\n\n⚠️ Профили команд – это экспериментальный функционал, который может быть изменён.</string>
     <string name="team_name">Название команды</string>
     <string name="create_team_profile">Создать профиль команды</string>
 
@@ -755,16 +755,18 @@
     <string name="remove_transport">Удалить релей</string>
     <string name="edit_transport">Редактировать релей</string>
     <string name="used_for_sending">Используется для отправки</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Скрыть из контактов</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Скрыт из контактов</string>
     <string name="enforce_e2ee">Принудительное шифрование для всех релеев</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Сообщения поступают на все релеи.\n\n⚠️ Если вы измените какие-либо настройки в этом разделе, убедитесь, что на всех ваших устройствах установлена версия Delta Chat не ниже 2.47.0. В противном случае старые версии могут не получать сообщения.</string>
+    <string name="transport_list_hint">Сообщения поступают на все релеи.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Добавить этот релей?</string>
     <string name="invalid_transport_qr">Отсканированный QR-код не содержит корректный релей.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Удалить релей \"%1$s\"?</string>
+    <string name="confirm_remove_relay_x">Удалить релей \"%1$s\"?\n\nПеред удалением он будет постепенно выведен из обращения, чтобы ваши контакты могли плавно завершить переход.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Удалить релей \"%1$s\"?\n\nКонтакты, знающие только этот релей, могут потерять связь с вами, пока вы не напишете им снова.\n\nЕсли сомневаетесь, лучше скрыть его, а не удалять.</string>
     <string name="login_certificate_checks">Проверки сертификатов</string>

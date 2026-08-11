@@ -1,0 +1,1285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- common strings without special context -->
+    <string name="app_name">Delta Chat</string>
+    <string name="ok">בסדר</string>
+    <string name="cancel">ביטול</string>
+    <string name="clear_search">נקה את החיפוש</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">קישור</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">סרוק</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="select">בחר</string>
+    <string name="on">הפעל</string>
+    <string name="off">כבה</string>
+    <string name="def">ברירת מחדל</string>
+    <string name="default_value">ברירת מחדל (%1$s)</string>
+    <string name="custom">מותאם אישית</string>
+    <string name="none">אין</string>
+    <string name="automatic">אוטומטי</string>
+    <string name="strict">קפדני</string>
+    <string name="open">פתח</string>
+    <string name="download">הורדה</string>
+    <string name="downloading">מוריד...</string>
+    <string name="open_attachment">פתח קובץ מצורף</string>
+    <string name="join">הצטרפו</string>
+    <string name="join_group">הצטרף לקבוצה</string>
+    <string name="join_channel">הצטרף לערוץ</string>
+    <string name="rejoin">הצטרף מחדש</string>
+    <string name="delete">מחק</string>
+    <string name="delete_for_me">מחק עבורי</string>
+    <string name="delete_for_everyone">מחק עבור כולם</string>
+    <string name="info">מידע</string>
+    <string name="update">עדכון</string>
+    <string name="emoji">אמוג\'י</string>
+    <string name="attachment">קובץ מצורף</string>
+    <string name="back">אחורה</string>
+    <string name="close">סגור</string>
+    <string name="close_window">סגור חלון</string>
+    <string name="forward">קדימה</string>
+    <string name="create">צור</string>
+    <string name="reset">איפוס</string>
+    <string name="later">בהמשך</string>
+    <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
+    <string name="resend">שלח שוב</string>
+    <string name="edited">נערך</string>
+    <string name="edit_message">ערוך הודעה</string>
+    <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
+    <string name="archive">ארכיון</string>
+    <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
+    <string name="unarchive">בטל ארכיון</string>
+    <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
+    <string name="mute">השתק</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
+    <string name="muted">מושתק</string>
+    <string name="ephemeral_messages">הודעות נעלמות</string>
+    <string name="ephemeral_messages_hint">זה חל על כל המשתתפים בצ\'אט זה; הם עדיין יכולים להעתיק, לשמור ולהעביר הודעות.</string>
+    <string name="save">שמור</string>
+    <string name="chat">צ\'אט</string>
+    <string name="media">מדיה</string>
+    <string name="apps_and_media">אפליקציות &amp; מדיה</string>
+    <string name="profile">פרופיל</string>
+    <!-- deprecated -->
+    <string name="all_profiles">כל הפרופילים</string>
+    <!-- deprecated -->
+    <string name="current_profile">פרופיל נוכחי</string>
+    <string name="main_menu">תפריט ראשי</string>
+    <string name="start_chat">התחל צ\'אט</string>
+    <string name="show_full_message">הראה הודעה מלאה...</string>
+    <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
+    <string name="mark_all_as_read">סמן הכל כנקרא</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_read">סמן כנקרא</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
+    <string name="mark_as_read_short">קרא</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">סמן כלא נקרא</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">לא נקרא</string>
+    <!-- Placeholder text when something is loading -->
+    <string name="loading">טוען...</string>
+    <string name="hide">החבא</string>
+    <string name="activate">הפעל</string>
+    <string name="load_remote_content">טען תמונות מרוחקות</string>
+    <!-- Possible answers to the question are: Never, Always, Once -->
+    <string name="load_remote_content_ask">תמונות מרחוק יכולות לעקוב אחריך.\n\nהגדרה זו עשויה גם לטעון גופנים ותכנים אחרים. אם היא מושבתת, ייתכן שתמונות מוטמעות או שמורות במטמון יופיעו.\n\nלטעון תמונות מרחוק?</string>
+    <string name="always">תמיד</string>
+    <string name="always_load_remote_images">טען תמיד תמונות מרחוק</string>
+    <string name="once">פעם אחת</string>
+    <!-- deprecated -->
+    <string name="show_warning">הראה אזהרה</string>
+    <string name="not_now">לא כעת</string>
+    <string name="never">אף פעם</string>
+    <string name="one_moment">רק רגע...</string>
+    <string name="done">הסתיים</string>
+    <string name="undo">בטל</string>
+    <string name="offline">מנותק</string>
+    <!-- For the next view or as "continue". Should be as short as possible. -->
+    <string name="next">הבא</string>
+    <string name="warning">אזהרה</string>
+    <string name="error">שגיאה</string>
+    <string name="error_x">שגיאה: %1$s</string>
+    <string name="no_app_to_handle_data">לא נמצאה אפליקציה שתתמודד עם סוג הנתונים הזה.</string>
+    <string name="no_browser_installed">לא מותקן דפדפן</string>
+    <string name="file_not_found">לא נמצא %1$s</string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">לא ניתן לשמור %1$s</string>
+    <string name="copied_to_clipboard">הועתק ללוח.</string>
+    <string name="contacts_headline">אנשי קשר</string>
+    <string name="email_address">כתובת דוא\"ל</string>
+    <string name="bad_email_address">כתובת דוא\"ל שגויה.</string>
+    <string name="password">סיסמה</string>
+    <string name="existing_password">סיסמה קיימת</string>
+    <string name="now">כעת</string>
+    <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
+    <string name="danger">סכנה</string>
+    <string name="today">היום</string>
+    <string name="yesterday">אתמול</string>
+    <string name="this_week">השבוע</string>
+    <string name="this_month">החודש</string>
+    <string name="last_week">בשבוע שעבר</string>
+    <string name="last_month">בחודש שחלף</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <string name="last_seen_at">נראה לאחרונה ב %1$s</string>
+    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <string name="last_seen_relative">נראה לאחרונה %1$s</string>
+    <string name="last_seen_unknown">נראה לאחרונה: לא ידוע</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d משך הזמן בדקות</item>
+        <item quantity="two">%d משך הזמן בדקות</item>
+        <item quantity="other">%d משך הזמן בדקות</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">פחות מדקה</string>
+    <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
+    <plurals name="n_minutes">
+        <item quantity="one">%d דקה</item>
+        <item quantity="two">%d דקה</item>
+        <item quantity="other">%d דק\'</item>
+    </plurals>
+
+    <!-- Shown beside messages that are "N hours old". Prefer short strings, or well-known abbreviations. -->
+    <plurals name="n_hours">
+        <item quantity="one">%d שעה</item>
+        <item quantity="two">%d שעות</item>
+        <item quantity="other">%d שעות</item>
+    </plurals>
+    <plurals name="n_chats">
+        <item quantity="one">%d צ\'אט</item>
+        <item quantity="two">%d צ\'אטים</item>
+        <item quantity="other">%d צ\'אטים</item>
+    </plurals>
+    <plurals name="n_contacts">
+        <item quantity="one">%d צור קשר</item>
+        <item quantity="two">%d אנשי קשר</item>
+        <item quantity="other">%d אנשי קשר</item>
+    </plurals>
+    <plurals name="n_messages">
+        <item quantity="one">%d הודעה</item>
+        <item quantity="two">%d הודעות</item>
+        <item quantity="other">%d הודעות</item>
+    </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d תגובה</item>
+        <item quantity="two">%d תגובות</item>
+        <item quantity="other">%d תגובות</item>
+    </plurals>
+    <plurals name="n_members">
+        <item quantity="one">%d חבר</item>
+        <item quantity="two">%d חברים</item>
+        <item quantity="other">%d חברים</item>
+    </plurals>
+    <plurals name="n_recipients">
+        <item quantity="one">%d מנויים</item>
+        <item quantity="two">%d מנויים</item>
+        <item quantity="other">%d מנויים</item>
+    </plurals>
+    <!-- Short form for "N Items Selected" -->
+    <plurals name="n_selected">
+        <item quantity="one">%d נבחר</item>
+        <item quantity="two">%d נבחר</item>
+        <item quantity="other">%d נבחרו</item>
+    </plurals>
+    <string name="selected_colon">נבחר:</string>
+    <string name="selected">נבחר</string>
+    <string name="self">אני</string>
+    <string name="draft">טיוטה</string>
+    <string name="image">תמונה</string>
+    <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
+    <string name="reply_noun">ענה</string>
+    <string name="gif">GIF</string>
+    <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
+    <string name="sticker">מדבקה</string>
+    <string name="add_to_sticker_collection">הוסף לאוסף המדבקות</string>
+    <!-- deprecated, use sticker_picker_empty_hint instead -->
+    <string name="add_stickers_instructions">כדי להוסיף מדבקות, הקש על \"פתח את תיקיית מדבקות\", צור תיקיית משנה לחבילת המדבקות שלך, וגרור לשם את קבצי התמונות והמדבקות</string>
+    <!-- deprecated -->
+    <string name="open_sticker_folder">פתח את תיקיית המדבקות</string>
+    <string name="ask_add_sticker_to_collection">רוצה להוסיף את המדבקה הזו לאוסף שלך?</string>
+    <string name="ask_delete_sticker">למחוק את המדבקה הזו?</string>
+    <string name="sticker_picker_empty_hint">הקש על מדבקה כדי להוסיף אותה לכאן.</string>
+    <string name="images">תמונות</string>
+    <!-- a noun, used for "Music" and other "Audio" files -->
+    <string name="audio">אודיו</string>
+    <string name="voice_message">הודעה קולית</string>
+    <string name="forwarded">הועבר</string>
+    <string name="forwarded_message">הודעה שהועברה</string>
+    <!-- %1$s will be replaced by the name of the person who forwarded the message -->
+    <string name="forwarded_by">הועבר על ידי %1$s</string>
+    <string name="video">סרטון</string>
+    <string name="documents">מסמכים</string>
+    <string name="contact">איש קשר</string>
+    <string name="bot">בוט</string>
+    <string name="camera">מצלמה</string>
+    <string name="front_camera">מצלמה קדמית</string>
+    <string name="back_camera">מצלמה אחורית</string>
+    <string name="microphone">מיקרופון</string>
+    <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
+    <string name="capture">לכידה</string>
+    <!-- Switch eg. from front to back camera -->
+    <string name="switch_camera">החלף מצלמה</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">הפעל/כבה מצלמה</string>
+    <string name="toggle_fullscreen">הפעל/כבה מצב מסך מלא</string>
+    <string name="location">מיקום</string>
+    <string name="locations">מיקומים</string>
+    <string name="gallery">גלריה</string>
+    <string name="images_and_videos">תמונות וסרטונים</string>
+    <string name="file">קובץ</string>
+    <string name="files">קבצים</string>
+    <string name="files_attach_hint">שלחו קבצים מקוריים ותמונות שלא עברו דחיסה</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">בחר מקבצים</string>
+    <string name="choose_from_gallery">בחר מהגלריה</string>
+    <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_app">אפליקציה</string>
+    <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
+    <string name="webxdc_apps">אפליקציות</string>
+    <string name="webxdc_store_url">כתובת ה-URL של App Picker</string>
+    <string name="webxdc_store_url_explain">אם מוגדר, כתובת ה-URL תשמש כ\"בוחר האפליקציות\" במקום זו המוגדרת כברירת מחדל</string>
+    <string name="webxdc_draft_hint">לחץ על \"שלח\" כדי לשתף</string>
+    <string name="home">בית</string>
+    <string name="games">משחקים</string>
+    <string name="tools">כלים</string>
+    <string name="app_size">גודל</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
+    <string name="app_date_published">פורסם</string>
+    <string name="add_to_chat">הוסף לצ\'אט</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">דפדף</string>
+    <string name="unknown">לא ידוע</string>
+
+    <string name="green">ירוק</string>
+    <string name="red">אדום</string>
+    <string name="blue">כחול</string>
+    <string name="orange">כתום</string>
+    <string name="cyan">ציאן</string>
+    <string name="purple">סגול</string>
+    <string name="magenta">מג\'נטה</string>
+    <string name="white">לבן</string>
+
+    <string name="zoom">זום</string>
+    <string name="extra_small">קטן במיוחד</string>
+    <string name="small">קטן</string>
+    <string name="normal">רגיל</string>
+    <string name="large">גדול</string>
+    <string name="extra_large">גדול במיוחד</string>
+
+    <string name="fast">מהיר</string>
+    <string name="slow">איטי</string>
+
+    <!-- menu labels (or icon, buttons...) -->
+    <string name="menu_new_contact">איש קשר חדש</string>
+    <string name="menu_new_classic_contact">הוספת איש קשר באופן ידני</string>
+    <string name="new_classic_contact_explain">ניתן להשתמש באנשי הקשר שנוספו ידנית כדי לשלוח הודעות טקסט לכתובות דוא\"ל קלאסיות, אך אין ערובה לכך שהן מוצפנות מקצה לקצה.</string>
+    <string name="menu_new_chat">צ\'אט חדש</string>
+    <string name="menu_new_group">קבוצה חדשה</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">לשוחח עם…</string>
+    <string name="clone_chat">שיכפול צ\'אט</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">ערוץ</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">ערוצים</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">ערוץ חדש</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">שם הערוץ</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d תצוגה</item>
+        <item quantity="two">%d צפיות</item>
+        <item quantity="other">%d צפיות</item>
+    </plurals>
+    <string name="email">דוא\"ל</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">דוא\"ל חדש</string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">נושא</string>
+    <string name="menu_send">שלח</string>
+    <string name="menu_toggle_keyboard">הפעל/כבה את מקלדת האמוג\'י</string>
+    <string name="menu_edit_group">ערוך קבוצה</string>
+    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
+    <string name="menu_group_name_and_image">שם הקבוצה ותמונה</string>
+    <string name="menu_show_global_map">כל המיקומים</string>
+    <string name="menu_archive_chat">צ\'אט בארכיון</string>
+    <string name="menu_unarchive_chat">להחזיר את הצ\'אט מהארכיון</string>
+    <string name="menu_add_attachment">הוסף קובץ מצורף</string>
+    <string name="menu_leave_group">עזוב את הקבוצה</string>
+    <string name="menu_leave_channel">עזוב את הערוץ</string>
+    <string name="menu_leave_and_delete">השאר את \" &amp; \" – מחק בשבילי</string>
+    <string name="menu_delete_chat">מחק צ\'אט</string>
+    <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
+    <string name="clear_chat">נקה את הצ\'אט</string>
+    <string name="delete_contact">מחיקת איש קשר</string>
+    <string name="menu_delete_location">האם למחוק את המיקום הזה?</string>
+    <string name="menu_message_details">פרטי ההודעה</string>
+    <string name="menu_copy_to_clipboard">העתק ללוח</string>
+    <string name="share_invite_link">שתף קישור הזמנה</string>
+    <string name="share_invite_link_explain">כל מי שיש לו את הקישור הזה יכול לצפות בפרופיל שלך ולפתוח איתך בצ\'אט. שתף אותו רק עם אנשים שאתה בוטח בהם.</string>
+    <string name="invite_friends">הזמן חברים</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">צרו איתי קשר ב- Delta Chat :\n%1$s</string>
+    <string name="menu_copy_selection_to_clipboard">העתק את הבחירה</string>
+    <string name="menu_copy_link_to_clipboard">העתק קישור</string>
+    <string name="menu_copy_text_to_clipboard">העתק טקסט</string>
+    <string name="menu_copy_image_to_clipboard">העתק תמונה</string>
+    <string name="menu_copy_email_to_clipboard">העתק דוא\"ל</string>
+    <string name="paste_from_clipboard">הדבק מהלוח</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">לא ניתן לפתוח את הקישור \"%1$d\" בדפדפן האינטרנט. האם ברצונך להעתיק את הקישור ללוח במקום זאת?</string>
+    <string name="menu_forward">העברת הודעה</string>
+    <string name="menu_reply">השב להודעה</string>
+    <string name="menu_mute">השתקת התראות</string>
+    <string name="menu_unmute">הפעל צליל</string>
+    <string name="menu_export_attachment">ייצוא קובץ מצורף</string>
+    <string name="menu_export_attachments">ייצוא קבצים מצורפים</string>
+    <string name="menu_all_media">כל המדיה</string>
+    <string name="all_apps_and_media">כל האפליקציות &amp; מדיה</string>
+    <!-- Command to jump to the original message corresponding to a gallery image or document -->
+    <string name="show_in_chat">הצג בצ\'אט</string>
+    <string name="show_app_in_chat">הצג את האפליקציה בצ\'אט</string>
+    <string name="menu_share">שתף</string>
+    <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
+    <string name="block">חסום</string>
+    <string name="menu_block_contact">חסימת איש קשר</string>
+    <string name="menu_unblock_contact">הסרת חסימת איש קשר</string>
+    <string name="accept">קבל</string>
+    <string name="menu_play">הפעל</string>
+    <string name="menu_pause">השהיה</string>
+    <string name="menu_scroll_to_bottom">גלול למטה</string>
+    <string name="menu_scroll_to_top">גלול לראש העמוד</string>
+    <string name="menu_help">עזרה</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">אודות האפליקציות</string>
+    <string name="privacy_policy">מדיניות פרטיות</string>
+    <string name="menu_select_all">בחר הכל</string>
+    <string name="select_chat">בחר צ\'אט</string>
+    <string name="select_more">בחר עוד</string>
+    <string name="menu_edit_name">ערוך שם</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_explain">הגדר כינוי שיוצג לך במקום \"%1$s\". השאר את השדה ריק כדי להשתמש בשם שבחר איש הקשר.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_placeholder">כינוי ל-\"%1$s\"</string>
+    <string name="menu_settings">הגדרות</string>
+    <string name="menu_advanced">מתקדם</string>
+    <string name="menu_view_profile">הצג פרופיל</string>
+    <string name="menu_zoom_in">התקרב</string>
+    <string name="menu_zoom_out">התרחק</string>
+    <string name="menu_save_log">שמור יומן</string>
+    <string name="menu_more_options">אפשרויות נוספות</string>
+    <string name="menu_learn_spelling">למד איות</string>
+    <string name="jump_to_message">קפוץ להודעה</string>
+    <string name="replace_draft">החלף את הטיוטה</string>
+    <string name="title_share_location">שתף את המיקום עם כל חברי הקבוצה</string>
+    <string name="device_talk">הודעות המכשיר</string>
+    <string name="device_talk_subtitle">הודעות שנוצרו באופן מקומי</string>
+    <string name="device_talk_explain">ההודעות בצ\'אט זה נוצרות במכשיר שלך כדי ליידע אותך על עדכוני האפליקציה ועל בעיות המתעוררות במהלך השימוש.</string>
+    <string name="device_talk_welcome_message2">צרו איתנו קשר!\n\n🙌 לחצו על \"קוד QR\" במסך הראשי של שני המכשירים. בחרו \"סרוק קוד QR\" במכשיר אחד, וכיוונו אותו אל המכשיר השני\n\n🌍 אם אינכם נמצאים באותו החדר, סרקו באמצעות שיחת וידאו או שתפו קישור הזמנה מ\"סרוק קוד QR\"\n\nואז: תיהנו מחוויית המסרים המבוזרת שלכם. בניגוד לאפליקציות פופולריות אחרות, ללא שליטה מרכזית, מעקב או מכירת המידע שלכם, של חברים, עמיתים או בני משפחה לארגונים גדולים.</string>
+    <string name="edit_contact">ערוך פרטי קשר</string>
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
+    <string name="pin_chat">הצמד את הצ\'אט</string>
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin_chat">הסר את הצמדת הצ\'אט</string>
+    <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
+    <string name="pin">סיכה</string>
+    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <string name="unpin">הסר את הסימון</string>
+    <string name="ConversationFragment_quoted_message_not_found">לא נמצא ההודעה המקורית</string>
+    <string name="reply_privately">השב באופן פרטי</string>
+    <string name="source_code">קוד מקור</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">הוסף למסך הבית</string>
+    <string name="donate">לתרום</string>
+    <string name="donate_device_msg">❤️ נראה שאתם נהנים מ-Delta Chat!\n\nאנא שקלו לתרום כדי לעזור להבטיח ש-Delta Chat יישאר חינמי לכולם.\n\nאמנם השימוש ב-Delta Chat הוא חינמי והוא מבוסס קוד פתוח, אך הפיתוח עולה כסף. עזרו לנו לשמור על עצמאותו של Delta Chat ולהפוך אותו למדהים עוד יותר בעתיד.\n\nhttps://delta.chat/donate</string>
+
+    <string name="mute_for_one_hour">השתקה למשך שעה</string>
+    <string name="mute_for_eight_hours">השתקה למשך 8 שעות</string>
+    <string name="mute_for_one_day">השתקה למשך יום אחד</string>
+    <string name="mute_for_seven_days">השתקה למשך 7 ימים</string>
+    <string name="mute_forever">השתקה לצמיתות</string>
+
+    <!-- deprecated -->
+    <string name="share_location_for_5_minutes">במשך 5 דקות</string>
+
+    <string name="share_location_for_30_minutes">במשך 30 דקות</string>
+    <string name="share_location_for_one_hour">משך שעה</string>
+    <string name="share_location_for_two_hours">במשך שעתיים</string>
+    <string name="share_location_for_six_hours">במשך 6 שעות</string>
+    <string name="share_location_for_24_hours">במשך 24 שעות</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">האם לשלוח את הקובץ הבא לכתובת %s?</item>
+        <item quantity="two">האם יש לשלוח את הקבצים הבאים מ- %d לכתובת %s?</item>
+        <item quantity="other">האם יש לשלוח את הקבצים הבאים מ- %d לכתובת %s?</item>
+    </plurals>
+    <string name="file_saved_to">הקובץ נשמר ב-\"%1$s\".</string>
+
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">התקשר</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_audio_call">שיחת אודיו</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_video_call">שיחת וידאו</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">תשובה</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">סרב</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">סיים שיחה</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">שיחת אודיו</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">שיחת וידאו</string>
+    <string name="call_initializing">מתבצע אתחול…</string>
+    <string name="call_incoming">שיחה נכנסת</string>
+    <string name="call_ringing">הטלפון מצלצל…</string>
+    <string name="call_reconnecting">מחדש התחברות…</string>
+    <string name="call_ended">השיחה הסתיימה</string>
+    <string name="call_failed">השיחה נכשלה</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="outgoing_audio_call">שיחת טלפון יוצאת</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="outgoing_video_call">שיחת וידאו יוצאת</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="incoming_audio_call">שיחת טלפון נכנסת</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="incoming_video_call">שיחת וידאו נכנסת</string>
+    <string name="declined_call">שיחה שנדחתה</string>
+    <string name="canceled_call">שיחה שבוטלה</string>
+    <string name="missed_call">שיחה שלא נענתה</string>
+    <string name="already_in_call">נמצא כבר בשיחה</string>
+    <string name="call_back">התקשר שוב</string>
+    <string name="call_answered_elsewhere">השיחה נענתה במכשיר אחר</string>
+    <string name="call_requires_camera_permission">נדרשת הרשאת מצלמה לשיחות וידאו</string>
+    <string name="call_requires_mic_permission">נדרשת הרשאת מיקרופון לביצוע שיחות</string>
+    <string name="call_grant_mic_permission">הקש כדי לאפשר גישה למיקרופון</string>
+    <string name="call_requires_connection">לא ניתן להתחיל את השיחה. ודא שהמכשיר מחובר לאינטרנט ונסה שוב.</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">שיחה עם %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">מתקשר אל %1$s…</string>
+    <string name="audio_output">פלט שמע</string>
+
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">האם אתה בטוח שאתה רוצה לעזוב?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">למחוק את הצ\'אט ב- %d?</item>
+        <item quantity="two">למחוק את הצ\'אטים ב- %d?</item>
+        <item quantity="other">למחוק %d צ\'אטים?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">להסיר את הצ\'אט \"%1$s\"?</string>
+    <string name="ask_delete_message">למחוק את ההודעה הזו?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">להמחק הודעה מ- %d?</item>
+        <item quantity="two">למחוק הודעות מ- %d?</item>
+        <item quantity="other">למחוק %d הודעות?</item>
+    </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">להעביר את ההודעה ל- %2$s?</item>
+        <item quantity="two">להעביר הודעות מ- %1$d ל- %2$s?</item>
+        <item quantity="other">להעביר הודעות מ- %1$d ל- %2$s?</item>
+    </plurals>
+    <!-- deprecated, use ask_forward_messages -->
+    <string name="ask_forward">להעביר הודעות ל- %1$s?</string>
+    <string name="ask_forward_multiple">להעביר הודעות לצ\'אטים ב- %1$d?</string>
+    <string name="ask_export_attachment">ייצוא הקבצים המצורפים יאפשר לאפליקציות אחרות במכשיר שלך לגשת אליהם.\n\nלהמשיך?</string>
+    <string name="ask_block_contact">לחסום את איש הקשר הזה?\n\nהודעות ישירות או קבוצות שנוצרו על ידי אנשי קשר חסומים לא יופיעו.\n\nבקבוצות אחרות שבהן יש אנשי קשר חסומים, ההודעות שלהם ימשיכו להופיע.</string>
+    <string name="ask_unblock_contact">להסיר את החסימה של איש הקשר הזה?</string>
+    <string name="ask_delete_contacts">למחוק אנשי קשר?\n\nלא ניתן למחוק לצמיתות אנשי קשר שיש איתם שיחות פתוחות.</string>
+    <string name="ask_delete_contact">האם ברצונך למחוק את איש הקשר %1$s?\n\nלא ניתן למחוק לצמיתות אנשי קשר שיש איתם צ\'אטים פתוחים.</string>
+    <string name="ask_start_chat_with">לשוחח עם %1$s?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_members">להסיר את \" %1$s \" מהקבוצה?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">להסיר את \" %1$s \" מהערוץ?</string>
+    <string name="open_url_confirmation">האם ברצונך לפתוח את הקישור הזה?</string>
+
+    <!-- contact list -->
+    <string name="contacts_title">אנשי קשר</string>
+    <string name="contacts_type_email_above">הזן את כתובת הדוא\"ל למעלה</string>
+
+    <!-- chatlist and chat view -->
+    <plurals name="chat_archived">
+        <item quantity="one">%d הצ\'אט הועבר לארכיון</item>
+        <item quantity="two">%d שיחות בארכיון</item>
+        <item quantity="other">%d צ\'אטים בארכיון</item>
+    </plurals>
+    <plurals name="chat_unarchived">
+        <item quantity="one">%d צ\'אט שלא הועבר לארכיון</item>
+        <item quantity="two">%d צ\'אטים שלא נשמרו בארכיון</item>
+        <item quantity="other">%d צ\'אטים שלא נשמרו בארכיון</item>
+    </plurals>
+    <string name="chat_archived_chats_title">צ\'אטים בארכיון</string>
+    <string name="chat_please_enter_message">אנא הזן הודעה.</string>
+    <string name="chat_camera_unavailable">המצלמה אינה זמינה.</string>
+    <string name="chat_unable_to_record_audio">לא ניתן להקליט אודיו.</string>
+    <plurals name="chat_n_new_messages">
+        <item quantity="one">%d הודעה חדשה</item>
+        <item quantity="two">%d הודעות חדשות</item>
+        <item quantity="other">%d הודעות חדשות</item>
+    </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">שלח הודעה לכתובת %1$s.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">ערוצים הוא כלי המאפשר שידור מסרונים מיוצר הערוץ למנויים רשומים.</string>
+    <string name="chat_new_group_hint">אחרים יוכלו לראות את הקבוצה הזו רק לאחר שתשלח/י הודעה ראשונה.</string>
+    <string name="chat_record_slide_to_cancel">החלק כדי לבטל</string>
+    <string name="chat_record_explain">לחץ והחזק כדי להקליט הודעה קולית, שחרר כדי לשלוח</string>
+    <string name="chat_no_chats_yet_title">אין צ\'אטים.\nלחץ על \"+\" כדי לפתוח צ\'אט חדש.</string>
+    <string name="chat_all_archived">כל הצ\'אטים נשמרו בארכיון.\nלחץ על \"+\" כדי לפתוח צ\'אט חדש.</string>
+    <string name="chat_share_with_title">שתף עם…</string>
+    <string name="chat_input_placeholder">הודעה</string>
+    <string name="chat_archived_label">בארכיון</string>
+    <string name="chat_request_label">בקשה</string>
+    <string name="chat_request_label_explain">הכללת בקשות בספירות ובהתראות</string>
+    <string name="chat_no_messages">אין הודעות.</string>
+    <string name="chat_self_talk_subtitle">מסרים לעצמי</string>
+    <string name="archive_empty_hint">הצ\'אטים שהועברו לארכיון יופיעו כאן.</string>
+    <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
+    <string name="save_message">שמור הודעה</string>
+    <string name="saved_messages">הודעות שנשמרו</string>
+    <string name="saved_messages_explain">• העבר הודעות לכאן כדי להקל על הגישה\n\n• רשום הערות או הקלט תזכורות קוליות\n\n• צרף קבצי מדיה כדי לשמור אותם</string>
+    <!-- Should match "Saved" from "Saved messages" -->
+    <string name="saved">נשמר</string>
+    <string name="save_as">שמור בשם</string>
+    <string name="retry_send">נסה שוב לשלוח את ההודעה</string>
+    <string name="cannot_display_unsuported_file_type">לא ניתן להציג סוג קובץ זה: %s</string>
+    <string name="attachment_failed_to_load">לא הצליח לטעון את הקובץ המצורף</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">נעילת הקלטה</string>
+
+    <!-- mailing lists -->
+    <string name="mailing_list">רשימת תפוצה</string>
+
+    <!-- webxdc -->
+    <!-- "Start..." button for an app -->
+    <string name="start_app">התחל…</string>
+    <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
+    <string name="accept_request_first">אנא אשר תחילה את בקשת הצ\'אט.</string>
+    <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
+    <string name="send_file_to">שלח את \"%1$s\" אל…</string>
+    <!-- title shown above a list contacts where one should be selected (eg. when a webxdc attempts to send a message to a chat) -->
+    <string name="send_message_to">שלח הודעה ל…</string>
+
+    <!-- punycode warning / labeled links -->
+    <string name="puny_code_warning_header">זוהה קישור חשוד</string>
+    <!-- placeholder contains the hostname converted to ascii -->
+    <string name="puny_code_warning_question">האם אתה בטוח שברצונך לבקר באתר %1$s?</string>
+    <!-- this message is shown whenever a link with non-latin characters is clicked. first placeholder is original hostname with special chars, second placeholder is hostname encoded in ascii -->
+    <string name="puny_code_warning_description">קישור זה עלול להציג באופן שגוי תווים הדומים לתווים מאלפביתים אחרים. לחיצה על הקישור שכותרתו %1$s תוביל לכתובת %2$s, דבר שגרתי עבור תווים שאינם לטיניים. אם לא ציפית לתווים מסוג זה, קישור זה עלול להוות סיכון.</string>
+
+    <!-- search -->
+    <string name="search">חיפוש</string>
+    <string name="search_in_chat">חיפוש בצ\'אט</string>
+    <!-- Placeholder will be replaced by the chat name -->
+    <string name="search_in">חפש ב- %1$s</string>
+    <string name="search_files">חיפוש בקבצים</string>
+    <string name="search_explain">חיפוש אחר צ\'אטים, אנשי קשר והודעות</string>
+    <string name="search_result_for_x">תוצאות עבור \"%1$s\"</string>
+    <string name="search_no_result_for_x">לא נמצאו תוצאות עבור \"%s\"</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">לא נקרא</string>
+
+    <!-- create/edit groups, contact/group profile -->
+    <string name="group_name">שם הקבוצה</string>
+    <string name="group_avatar">תמונת קבוצה</string>
+    <string name="remove_group_image">הסר תמונת קבוצה</string>
+    <string name="change_group_image">שינוי תמונת הקבוצה</string>
+    <string name="group_create_button">יצירת קבוצה</string>
+    <!-- deprecated, use please_enter_chat_name -->
+    <string name="group_please_enter_group_name">אנא הזן שם לקבוצה.</string>
+    <string name="please_enter_chat_name">אנא הזן שם.</string>
+    <string name="group_add_members">הוסף חברים</string>
+    <string name="group_self_not_in_group">עליך להיות חבר בקבוצה כדי לבצע פעולה זו.</string>
+    <string name="profile_encryption">הצפנה</string>
+    <string name="profile_shared_chats">צ\'אטים משותפים</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">חברים לשעבר</string>
+    <string name="tab_contact">צור קשר</string>
+    <string name="tab_group">קבוצה</string>
+    <string name="tab_gallery">גלריה</string>
+    <string name="tab_docs">מסמכים</string>
+    <string name="tab_links">קישורים</string>
+    <string name="tab_map">מפה</string>
+    <string name="tab_gallery_empty_hint">תמונות וסרטונים המצורפים לצ\'אט זה יופיעו כאן.</string>
+    <string name="tab_docs_empty_hint">מסמכים וקבצים אחרים המצורפים לצ\'אט זה יופיעו כאן.</string>
+    <string name="tab_image_empty_hint">תמונות המצורפות לשיחה זו יופיעו כאן.</string>
+    <string name="tab_video_empty_hint">סרטונים המצורפים לצ\'אט זה יופיעו כאן.</string>
+    <string name="tab_audio_empty_hint">קובצי אודיו והודעות קוליות המצורפים לצ\'אט זה יופיעו כאן.</string>
+    <string name="tab_webxdc_empty_hint">אפליקציות המצורפות לצ\'אט זה יופיעו כאן.</string>
+    <string name="tab_all_media_empty_hint">קבצי מדיה המצורפים לכלל הצ\'אטים יופיעו כאן.</string>
+    <string name="all_files_empty_hint">מסמכים וקבצים אחרים המצורפים לכלל הצ\'אטים יופיעו כאן.</string>
+    <string name="all_apps_empty_hint">האפליקציות המקושרות לכלל הצ\'אטים יופיעו כאן.</string>
+    <string name="media_preview">תצוגה מקדימה</string>
+    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <string name="aspect_ratio_grid">רשת יחס רוחב-גובה</string>
+    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <string name="square_grid">רשת ריבועית</string>
+    <string name="send_message">שלח הודעה</string>
+
+    <!-- Multi Device -->
+    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
+    <string name="multidevice_title">הוסף מכשיר שני</string>
+    <string name="multidevice_same_network_hint">ודא ששני המכשירים מחוברים לאותה רשת Wi-Fi או לאותה רשת</string>
+    <string name="multidevice_this_creates_a_qr_code">פעולה זו יוצרת קוד QR שהמכשיר השני יכול לסרוק כדי להעתיק את הפרופיל.\n\nיש לוודא שאף צופה או מצלמה לא רצויים לא יוכלו לראות את המסך הבא.</string>
+    <string name="multidevice_install_dc_on_other_device">התקן את Delta Chat במכשיר הנוסף שלך (https://get.delta.chat)</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">הפעל את Delta Chat, הקש על \"כבר יש לי פרופיל / הוסף כמכשיר שני\" וסרוק את הקוד המוצג כאן</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
+    <string name="multidevice_qr_subtitle">סרוק כדי להגדיר מכשיר שני עבור %1$s</string>
+    <string name="multidevice_receiver_title">הוסף כמכשיר שני</string>
+    <string name="multidevice_open_settings_on_other_device">במכשיר הראשון, הפעל את Delta Chat, עבור ל\"הגדרות / הוסף מכשיר שני\" וסרוק את הקוד המוצג שם</string>
+    <string name="multidevice_receiver_scanning_ask">להעתיק את הפרופיל מהמכשיר האחר למכשיר זה?</string>
+    <string name="multidevice_receiver_needs_update">הפרופיל שברצונך לייבא הוא מגרסה חדשה יותר של Delta Chat.\n\nכדי להמשיך בהגדרת המכשיר השני, אנא עדכן מכשיר זה לגרסה העדכנית ביותר של Delta Chat.</string>
+    <string name="multidevice_abort">לבטל את הגדרת המכשיר השני?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">פעולה זו תבטל את תוקפו של קוד ה-QR שהועתק ללוח.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ הפרופיל הועבר למכשיר השני שלך.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">מכינים את הפרופיל…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">מעביר...</string>
+    <string name="troubleshooting">פתרון בעיות</string>
+
+    <!-- Connectivity -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">הודעות נכנסות</string>
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">הודעות יוצאות</string>
+    <string name="connectivity">קישוריות</string>
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
+    <string name="connectivity_not_connected">לא מחובר</string>
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_connecting">מתחבר…</string>
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_updating">מתעדכן…</string>
+    <!-- Shown in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">מחובר</string>
+    <string name="sending">שולח…</string>
+    <string name="last_msg_sent_successfully">ההודעה האחרונה נשלחה בהצלחה.</string>
+    <!-- deprecated -->
+    <string name="not_supported_by_provider">שירות זה אינו נתמך על ידי ספק השירות שלך.</string>
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
+    <string name="messages">הודעות</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">%1$s מ- %2$s בשימוש</string>
+
+    <!-- welcome and login -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
+    <string name="onboarding_create_instant_account">צור פרופיל חדש</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
+    <string name="onboarding_alternative_logins">יש לי כבר פרופיל</string>
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">השתמש בשרת דוא\"ל רגיל לממסר</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">הפרופיל שלך</string>
+    <!-- The placeholder will be replaced by the default onboarding server -->
+    <string name="instant_onboarding_agree_default2">מדיניות פרטיות עבור %1$s</string>
+    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <string name="instant_onboarding_agree_instance">אודות הפרופילים ב- %1$s</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">מסכים &amp; צור פרופיל</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">השתמש בשרת אחר</string>
+    <string name="instant_onboarding_other_server">רשימת שרתים של Chatmail</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <string name="instant_onboarding_group_info">צרו פרופיל כדי להצטרף לקבוצה \"%1$s\".</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
+    <string name="instant_onboarding_contact_info">צרו פרופיל כדי לשוחח עם %1$s.</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">ליצור פרופיל חדש ולהתחיל לשוחח עם %1$s?</string>
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">ליצור פרופיל חדש ולהצטרף ל-\"%1$s\"?</string>
+
+    <string name="team">צוות</string>
+    <string name="team_profile">פרופיל צוות</string>
+    <string name="team_profile_explain">\"פרופיל צוות\" מנוהל במשותף על ידי קבוצת אנשים או ארגון.\n\n⚠️ פרופילי הצוות נמצאים בשלב ניסיוני וכפופים לשינויים.</string>
+    <string name="team_name">שם הצוות</string>
+    <string name="create_team_profile">צור פרופיל צוות</string>
+
+    <string name="welcome_chat_over_email">צ\'אט מבוזר ומאובטח</string>
+    <string name="scan_invitation_code">סרוק את קוד ההזמנה</string>
+    <string name="login_title">התחבר</string>
+    <string name="login_advanced_hint">כניסה זו מיועדת למשתמשים מתקדמים.\n\nאין להשתמש בכתובת בה אתה משתמש גם באפליקציה אחרת.</string>
+    <string name="login_inbox">תיבת דואר נכנס</string>
+    <string name="login_imap_login">שם משתמש IMAP</string>
+    <string name="login_imap_server">שרת IMAP</string>
+    <string name="login_imap_port">יציאת IMAP</string>
+    <string name="login_imap_security">אבטחת IMAP</string>
+    <string name="login_outbox">תיבת דואר יוצא</string>
+    <string name="login_smtp_login">שם משתמש SMTP</string>
+    <string name="login_smtp_password">סיסמת SMTP</string>
+    <string name="login_smtp_server">שרת SMTP</string>
+    <string name="login_smtp_port">יציאת SMTP</string>
+    <string name="login_smtp_security">אבטחת SMTP</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
+    <string name="proxy_settings">פרוקסי</string>
+    <string name="proxy_use_proxy">השתמש בפרוקסי</string>
+    <string name="proxy_add">הוסף פרוקסי</string>
+    <string name="proxy_add_explain">סוגי פרוקסי נתמכים: HTTP(S), SOCKS5 ו- Shadowsocks.</string>
+    <string name="proxy_add_url_hint">הזן כאן את קישור הפרוקסי</string>
+    <string name="proxy_invalid">פרוקסי לא חוקי או שאינו נתמך</string>
+    <string name="proxy_list_header">פרוקסי שמורים</string>
+    <string name="proxy_delete">מחק פרוקסי</string>
+    <string name="proxy_delete_explain">האם אתה בטוח שברצונך למחוק את \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">האם ברצונך להשתמש בפרוקסי \"%1$s\"?</string>
+    <string name="proxy_share_explain">חבריך יכולים להוסיף את הפרוקסי הזה על ידי סריקת קוד ה-QR.</string>
+    <string name="proxy_share_link">שתף קישור</string>
+    <string name="proxy_enabled">פרוקסי מופעל</string>
+    <string name="proxy_enabled_hint">אתה משתמש בפרוקסי. אם אתה נתקל בבעיות בחיבור, נסה פרוקסי אחר.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">ממסרים</string>
+    <string name="add_transport">הוסף ממסר</string>
+    <string name="remove_transport">הסרת ממסר</string>
+    <string name="edit_transport">ערוך ממסר</string>
+    <string name="used_for_sending">משמש לשליחה</string>
+    <!-- deprecated -->
+    <string name="hide_from_contacts">הסתר מאנשי הקשר</string>
+    <!-- deprecated -->
+    <string name="hidden_from_contacts">מוסתר מאנשי הקשר</string>
+    <string name="enforce_e2ee">אכיפת הצפנה על כל השרתים הממסרים</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">ההודעות מתקבלות בכל השרתים.</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">להוסיף את הממסר הזה?</string>
+    <string name="invalid_transport_qr">קוד ה-QR שנסרק אינו מכיל ממסר תקין.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">להסיר את הממסר \"%1$s\"?\n\nלפני ההסרה, השירות יופסק בהדרגה כדי לאפשר לאנשי הקשר שלך לעבור לשירות החדש בצורה חלקה.</string>
+    <!-- deprecated -->
+    <string name="confirm_remove_or_hide_transport_x">להסיר את \"%1$s\"?\n\nאנשי הקשר שמכירים רק את \" \" עלולים שלא להצליח ליצור איתך קשר עד שתשלח להם הודעה נוספת.\n\nאם אתה מתלבט, עדיף להסתיר אותו מאשר להסיר אותו.</string>
+    <string name="login_certificate_checks">בדיקת תעודות</string>
+    <string name="login_error_mail">אנא הזן כתובת דוא\"ל חוקית</string>
+    <string name="login_error_server">אנא הזן כתובת שרת או כתובת IP חוקית</string>
+    <string name="login_error_port">אנא הזן יציאה חוקית (1–65535)</string>
+    <string name="login_error_required_fields">אנא הזן כתובת דוא\"ל חוקית וסיסמה</string>
+    <string name="import_backup_title">שחזור מגיבוי</string>
+    <string name="import_backup_ask">נמצא גיבוי בכתובת \"%1$s\".\n\nהאם ברצונך לייבא ולהשתמש בכל הנתונים וההגדרות המופיעים בו?</string>
+    <string name="import_backup_no_backup_found">לא נמצאו גיבויים.\n\nהעתיקו את הגיבוי ל-\"%1$s\" ונסו שוב.</string>
+    <!-- %1$s will be replaced by the failing address -->
+    <string name="login_error_cannot_login">לא ניתן להתחבר כ-\"%1$s\". אנא בדוק אם הכתובת והסיסמה נכונות.</string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">קבלת תעודות לא חוקיות</string>
+    <string name="switch_account">החלף פרופיל</string>
+    <string name="add_account">הוסף פרופיל</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">תווית פרופיל</string>
+    <string name="profile_tag_hint">למשל: עבודה, משפחה</string>
+    <string name="profile_tag_explain">הגדר תווית שתהיה גלויה רק לך; כך תוכל להבדיל בין הפרופילים שלך.</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">חזור לראש הדף</string>
+    <string name="delete_account">מחק פרופיל</string>
+    <string name="delete_account_ask">האם אתה בטוח שברצונך למחוק את נתוני הפרופיל שלך?</string>
+    <string name="delete_account_explain_with_name">כל נתוני הפרופיל של \"%s\" במכשיר זה יימחקו, לרבות הגדרות ההצפנה מקצה לקצה, אנשי הקשר, הצ\'אטים, ההודעות והקובצי מדיה. לא ניתן לבטל פעולה זו.</string>
+    <string name="unconfigured_account">פרופיל שלא הוגדר</string>
+    <string name="unconfigured_account_hint">פתח את הפרופיל כדי להגדיר אותו.</string>
+    <string name="try_connect_now">נסה להתחבר עכשיו</string>
+    <string name="sync_all">סנכרן הכל</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">ההגדרה נכשלה. שגיאה: %1$s</string>
+
+    <!-- share and forward messages -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
+    <string name="forward_to">העבר אל…</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">לשלוח %1$d קבצים ל \"%2$s\"?</string>
+    <string name="ask_send_files_to_selected_chats">לשלוח %1$d קובצ(ים) ל %2$d צ\'אטים?</string>
+    <string name="videos_sent_without_recoding">(שליחת מספר סרטונים תשלח אותם כפי שהם, והם עלולים להיות גדולים. כדי להקטין את גודלם ולחסוך בנפח נתונים, ניתן לשלוח כל סרטון בהודעה נפרדת)</string>
+    <string name="share_text_multiple_chats">שלח את הטקסט ל-%1$d צ\'אטים?\n\n\"%2$s\"</string>
+    <string name="share_abort">השיתוף הופסק בשל היעדר הרשאות.</string>
+
+    <!-- preferences -->
+    <string name="pref_profile_info_headline">הפרופיל שלך</string>
+    <string name="pref_profile_photo">תמונת פרופיל</string>
+    <string name="pref_blocked_contacts">אנשי קשר חסומים</string>
+    <string name="blocked_empty_hint">אנשי הקשר שנחסמו יופיעו כאן.</string>
+    <string name="pref_who_can_see_profile_explain">תמונת הפרופיל, השם והתיאור האישי שלך יישלחו יחד עם ההודעות שלך בעת התקשרות עם משתמשים אחרים.</string>
+    <string name="pref_your_name">שמך</string>
+    <!-- Label of the Bio/Signature/Status/Motto field -->
+    <string name="pref_default_status_label">ביוגרפיה</string>
+    <string name="chat_description">תיאור</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <string name="pref_enter_sends">מקש ה-Enter שולח</string>
+    <string name="pref_enter_sends_explain">לחיצה על מקש ה-Enter תשלח הודעות טקסט</string>
+    <string name="pref_outgoing_media_quality">איכות המדיה היוצאת</string>
+    <string name="pref_outgoing_media_quality_hint">כדי לשלוח את הקובץ באיכות המקורית, צרף את הקובץ כ\"קובץ\". פעולה זו צורכת נפח נתונים גדול בהרבה, הן עבורך והן עבור הנמענים שלך.</string>
+    <string name="pref_outgoing_balanced">מאוזן</string>
+    <string name="pref_outgoing_worse">איכות ירודה יותר, שמירת נתונים</string>
+    <string name="pref_vibrate">רטט</string>
+    <string name="pref_screen_security">אבטחת מסך</string>
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
+    <string name="pref_screen_security_explain">בקש לחסום צילומי מסך ברשימת הפעולות האחרונות ובתוך האפליקציה</string>
+    <string name="pref_screen_security_please_restart_hint">כדי להחיל את הגדרת אבטחת המסך, יש להפעיל מחדש את האפליקציה.</string>
+    <string name="pref_notifications">התראות</string>
+    <string name="pref_mention_notifications">אזכורים</string>
+    <string name="pref_mention_notifications_explain">בקבוצות עם צליל מושתק, הודעות המיועדות אליך, כגון תשובות או תגובות</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">שיחות</string>
+    <!-- Details about what the "Calls" notification setting does -->
+    <string name="pref_calls_explain">הצג מסך שיחה עבור אנשי הקשר שאושרו</string>
+    <string name="pref_notifications_show">הצג</string>
+    <string name="pref_notifications_priority">עדיפות</string>
+    <string name="pref_notifications_explain">הפעל התראות מערכת על הודעות חדשות</string>
+    <string name="pref_show_notification_content">הצג את תוכן ההודעה בהתראה</string>
+    <!-- deprecated -->
+    <string name="pref_show_notification_content_explain">מציג את השולח ואת המילים הראשונות של ההודעה בהתראות</string>
+    <string name="pref_led_color">צבע נורית ה-LED</string>
+    <string name="pref_sound">צליל</string>
+    <string name="pref_silent">שקט</string>
+    <string name="pref_privacy">פרטיות</string>
+    <string name="pref_system_default">הגדרת ברירת המחדל של המערכת</string>
+    <!-- Translators: as in "opposite of dark" -->
+    <string name="pref_light_theme">אור</string>
+    <string name="pref_dark_theme">חושך</string>
+    <string name="pref_appearance">מראה</string>
+    <string name="pref_theme">נושא</string>
+    <string name="pref_language">שפה</string>
+    <string name="pref_use_system_ui_font">השתמש בגופן המערכת</string>
+    <string name="pref_incognito_keyboard">מקלדת \"אינקוגניטו\"</string>
+    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
+    <string name="pref_incognito_keyboard_explain">בקש מהמקלדת להשבית את הלמידה המותאמת אישית</string>
+    <string name="pref_read_receipts">אישורי קריאה</string>
+    <string name="pref_read_receipts_explain">אם אישור הקריאה מושבת, לא תוכל לראות אישורי קריאה מאחרים.</string>
+    <!-- Title above a list of contacts who read a message -->
+    <string name="read_by">נקרא על ידי</string>
+    <string name="pref_server">שרת</string>
+    <string name="pref_encryption">הצפנה</string>
+    <string name="pref_manage_keys">ניהול מפתחות</string>
+    <string name="pref_chats">צ\'אטים</string>
+    <string name="pref_in_chat_sounds">צלילים בצ\'אט</string>
+    <string name="pref_view_log">הצג יומן</string>
+    <string name="pref_saved_log">היומן נשמר בתיקיית \"הורדות\"</string>
+    <string name="pref_save_log_failed">לא הצליח לשמור את היומן</string>
+    <string name="pref_log_header">יומן</string>
+    <string name="pref_other">אחר</string>
+    <string name="pref_backup">גיבוי</string>
+    <string name="pref_backup_explain">גיבוי צ\'אטים לאחסון חיצוני</string>
+    <string name="pref_backup_export_explain">גיבוי יסייע לך להגדיר התקנה חדשה במכשיר זה או במכשיר אחר.\n\nהגיבוי יכיל את כל ההודעות, אנשי הקשר והצ\'אטים, וכן את הגדרות ה-Autocrypt מקצה לקצה שלך. שמור את קובץ הגיבוי במקום בטוח או מחק אותו בהקדם האפשרי.</string>
+    <string name="pref_backup_export_this">ייצא פרופיל זה</string>
+    <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
+    <string name="pref_backup_export_all">ייצא את כל הפרופילים של \" %1$d \"</string>
+    <string name="pref_backup_export_start_button">התחל גיבוי</string>
+    <string name="pref_backup_written_to_x">הגיבוי נכתב בהצלחה לקובץ \"%1$s\".</string>
+    <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
+    <string name="pref_background">טפט</string>
+    <string name="pref_background_btn_default">השתמש בתמונה המוגדרת כברירת מחדל</string>
+    <string name="pref_background_btn_gallery">בחר מהגלריה</string>
+    <!-- deprecated -->
+    <string name="pref_imap_folder_warn_disable_defaults">אם תשנה את האפשרות הזו, הקפד שהשרת שלך והלקוחות האחרים שלך מוגדרים בהתאם.\n\nאחרת, ייתכן שהמערכת לא תעבוד כלל.</string>
+    <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
+    <string name="pref_multidevice">מצב ריבוי מכשירים</string>
+    <string name="pref_multidevice_explain">סנכרן את ההודעות שלך עם המכשירים האחרים שלך. האפשרות מופעלת אוטומטית עם הוספת מכשיר שני</string>
+    <string name="pref_multidevice_change_warn">יש להפעיל את \'מצב ריבוי מכשירים\' כאשר משתמשים באותו פרופיל במספר מכשירים. יש להשבית הגדרה זו רק אם הסרת את הפרופיל הזה מכל המכשירים האחרים שלך.\n\nהשבתת \'מצב ריבוי מכשירים\' בזמן השימוש בפרופיל במספר מכשירים תוביל להחמצת הודעות ולבעיות אחרות.</string>
+    <!-- deprecated -->
+    <string name="pref_auto_folder_moves">העבר אוטומטית לתיקיית DeltaChat</string>
+    <!-- deprecated -->
+    <string name="pref_only_fetch_mvbox_title">הורדה רק מהתיקייה DeltaChat</string>
+    <!-- deprecated -->
+    <string name="pref_show_emails">הצג מיילים קלאסיים</string>
+    <!-- deprecated -->
+    <string name="pref_show_emails_no">לא, צ\'אטים בלבד</string>
+    <!-- deprecated -->
+    <string name="pref_show_emails_accepted_contacts">עבור אנשי קשר שאושרו</string>
+    <!-- deprecated -->
+    <string name="pref_show_emails_all">הכל</string>
+    <string name="pref_experimental_features">תכונות ניסיוניות</string>
+    <string name="pref_experimental_features_explain">תכונות אלו עשויות להיות לא יציבות, והן עשויות להשתנות או להוסר</string>
+    <string name="pref_on_demand_location_streaming">הזרמת מיקום</string>
+    <string name="pref_background_default">תמונה ברירת מחדל</string>
+    <string name="pref_background_default_color">צבע ברירת מחדל</string>
+    <string name="pref_background_custom_image">תמונה מותאמת אישית</string>
+    <string name="pref_background_custom_color">צבע מותאם אישית</string>
+    <string name="export_aborted">הייצוא הופסק.</string>
+    <string name="auto_download_messages">הורדה אוטומטית של הודעות</string>
+    <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
+    <string name="up_to_x">עד %1$s</string>
+    <string name="up_to_x_most_worse_quality_images">עד %1$s, רוב התמונות באיכות הנמוכה ביותר</string>
+    <string name="up_to_x_most_balanced_quality_images">עד %1$s, תמונות באיכות מאוזנת ביותר</string>
+    <string name="download_failed">ההורדה נכשלה</string>
+    <string name="profile_image_select">בחר תמונת פרופיל</string>
+    <string name="select_your_new_profile_image">בחר את תמונת הפרופיל החדשה שלך</string>
+    <string name="profile_image_delete">מחק תמונת פרופיל</string>
+    <string name="pref_show_tray_icon">הצג סמל במגש המערכת</string>
+    <string name="pref_edit_profile">ערוך פרופיל</string>
+    <string name="send_stats_to_devs">שלח נתונים סטטיסטיים למפתחי Delta Chat</string>
+    <string name="stats_device_message">האם ברצונך לסייע בשיפור Delta Chat ולתמוך במחקר באמצעות שליחת נתוני שימוש אנונימיים מדי שבוע?\n\n👉 הקש כאן… 👈</string>
+    <string name="stats_confirmation_dialog">האם ברצונך לסייע בשיפור Delta Chat ולתמוך במחקר באמצעות שליחת נתוני שימוש אנונימיים מדי שבוע?</string>
+    <string name="stats_thanks">תודה! תמיד תוכל להשבית את שליחת ההודעות ב\"הגדרות -> מתקדם\".\n\nהאם יש לך עוד 5 דקות להשתתף במחקר מדעי בנושא אבטחת דלתא צ\'אט?</string>
+    <string name="stats_disable_dialog">שליחת הנתונים הסטטיסטיים כבר מופעלת.\n\nהאם ברצונך להשבית אותה?</string>
+    <string name="disable">השבת</string>
+    <string name="stats_keep_sending">המשך לשלוח</string>
+    <string name="stats_msg_body">הקובץ המצורף מכיל נתוני שימוש אנונימיים, המסייעים לנו לשפר את Delta Chat. למידע נוסף, בקרו בכתובת https://delta.chat/help#statssending. תודה!</string>
+
+    <!-- Emoji picker and categories -->
+    <string name="emoji_search_results">תוצאות חיפוש</string>
+    <string name="emoji_not_found">לא נמצא אמוג\'י</string>
+    <string name="emoji_recent">שימוש אחרון</string>
+    <string name="emoji_people">אנשים &amp; גוף</string>
+    <string name="emoji_nature">בעלי חיים &amp; טבע</string>
+    <string name="emoji_foods">אוכל &amp; משקאות</string>
+    <string name="emoji_activity">פעילות</string>
+    <string name="emoji_places">נסיעות &amp; מקומות</string>
+    <string name="emoji_objects">אובייקטים</string>
+    <string name="emoji_symbols">סמלים</string>
+    <string name="emoji_flags">דגלים</string>
+
+    <!-- Reactions -->
+    <string name="reactions">תגובות</string>
+    <!-- Verb, the action of adding a "Reaction" to a message. Used eg. in context menus, similar to "Reply" or "Forward" -->
+    <string name="react">הגב</string>
+    <!-- %1$s will be replaced by an emoji. %2$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %2$s will often not being visible). Eg. 'You reacted 👍 to "Found my suitcase"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer and work as well. -->
+    <string name="reaction_by_you">הגבת ב- %1$s ל-\"%2$s\"</string>
+    <!-- %1$s will be replaced a name. %2$s will be replaced by an emoji. %3$s will be replaced by message summary (the summary is often long and whole string gets truncated; words after %3$s will often not being visible). Eg. 'Alice reacted 👍 to "Nice photos"'. Use less than 20 characters, otherwise the string will be truncated too soon and too few information are shown. Do not try to translate "reacted to" too strict. Depending on the language, "added 👍 to" or "gave 👍 to" or just "👍 to" may be shorter and/or clearer work as well. -->
+    <string name="reaction_by_other">%1$s הגיב %2$s ל-\" \"%3$s</string>
+
+    <!-- automatically delete message -->
+    <string name="delete_old_messages">מחיקת הודעות ישנות</string>
+    <string name="autodel_device_title">מחיקת הודעות מהמכשיר</string>
+    <!-- deprecated -->
+    <string name="autodel_server_title">מחיקת הודעות מהשרת</string>
+    <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
+    <string name="autodel_device_ask">האם ברצונך למחוק %1$d הודעות כעת, וכן את כל ההודעות החדשות ב- \"%2$s\" שיורדו בעתיד?\n\n• זה כולל את כל קבצי המדיה\n\n• ההודעות יימחקו בין אם נקראו ובין אם לא\n\n• \"הודעות שמורות\" לא ייכללו במחיקה המקומית</string>
+    <!-- deprecated -->
+    <string name="autodel_server_ask">האם ברצונך למחוק %1$d הודעות כעת, וכן את כל ההודעות שיימשכו בעתיד ב- \"%2$s\"?\n\n⚠️ פעולה זו כוללת מיילים, קבצי מדיה ו\"הודעות שמורות\" בכל תיקיות השרת\n\n⚠️ אל תשתמש בפונקציה זו אם ברצונך לשמור את הנתונים בשרת או אם אתה משתמש גם בתוכנות דוא\"ל קלאסיות</string>
+    <!-- deprecated -->
+    <string name="autodel_server_enabled_hint">זה כולל הודעות דוא\"ל, קבצי מדיה ו\"הודעות שמורות\" בכל תיקיות השרת. אין להשתמש בפונקציה זו אם ברצונך לשמור את הנתונים בשרת או אם אתה משתמש גם בתוכנות דוא\"ל קלאסיות</string>
+    <!-- deprecated -->
+    <string name="autodel_server_warn_multi_device_title">הפעל מחיקה מיידית</string>
+    <!-- deprecated -->
+    <string name="autodel_server_warn_multi_device">אם תפעיל את האפשרות למחיקה מיידית, לא תוכל להשתמש במספר מכשירים בפרופיל זה.</string>
+    <string name="autodel_confirm">אני מבין, תמחק את כל ההודעות האלו</string>
+    <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
+    <string name="autodel_at_once">מיד לאחר ההורדה</string>
+    <string name="after_5_minutes">לאחר 5 דקות</string>
+    <string name="autodel_after_1_hour">לאחר שעה</string>
+    <string name="autodel_after_1_day">לאחר יום אחד</string>
+    <string name="autodel_after_1_week">לאחר שבוע אחד</string>
+    <string name="after_5_weeks">לאחר 5 שבועות</string>
+    <string name="autodel_after_1_year">לאחר שנה</string>
+
+    <!-- system messages -->
+    <string name="systemmsg_subject_for_new_contact">הודעה מאת %1$s</string>
+    <string name="systemmsg_failed_sending_to">לא הצליח לשלוח הודעה ל- %1$s.</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
+    <string name="group_name_changed_by_you">שינית את שם הקבוצה מ-\"%1$s\" ל-\"%2$s\".</string>
+    <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
+    <string name="group_name_changed_by_other">שם הקבוצה שונה מ-\"%1$s\" ל-\"%2$s\" על ידי %3$s.</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">שם הערוץ שונה מ-\"%1$s\" ל-\"%2$s\".</string>
+    <string name="group_image_changed_by_you">שינית את תמונת הקבוצה.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="group_image_changed_by_other">תמונת הקבוצה שונתה על ידי %1$s.</string>
+    <string name="channel_image_changed">תמונת הערוץ השתנתה.</string>
+    <string name="chat_description_changed_by_you">שינית את תיאור הצ\'אט.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">תיאור הצ\'אט שונה על ידי %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact added to the group -->
+    <string name="member_x_added">נוסף חבר: %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact added to the group -->
+    <string name="add_member_by_you">הוספת את החבר %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
+    <string name="add_member_by_other">החבר %1$s נוסף על ידי %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group -->
+    <string name="remove_member_by_you">הסרת את החבר %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
+    <string name="remove_member_by_other">החבר %1$s הוסר על ידי %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
+    <string name="member_x_removed">החבר \" %1$s \" הוסר.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">עזבת את הקבוצה.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">עזבת את הערוץ.</string>
+    <string name="you_joined_the_channel">הצטרפת לערוץ.</string>
+    <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
+    <string name="group_left_by_other">%1$s עזב את הקבוצה.</string>
+    <string name="group_image_deleted_by_you">מחקת את תמונת הקבוצה.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="group_image_deleted_by_other">תמונת הקבוצה נמחקה על ידי %1$s.</string>
+    <string name="location_enabled_by_you">הפעלת את הזרמת המיקום.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="location_enabled_by_other">הזרמת מיקום הופעלה על ידי %1$s.</string>
+    <string name="ephemeral_timer_disabled_by_you">השבתת את הטיימר של ההודעות הנעלמות.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_disabled_by_other">טיימר ההודעות הנעלמות הושבת על ידי %1$s.</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to -->
+    <string name="ephemeral_timer_seconds_by_you">הגדרת את טיימר ההיעלמות של ההודעות ל- %1$s שניות</string>
+    <!-- %1$s will be replaced by the number of seconds (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_seconds_by_other">טיימר ההודעות הנעלמות הוגדר ל- %1$s שניות על ידי %2$s.</string>
+    <string name="ephemeral_timer_1_hour_by_you">הגדרת את טיימר ההיעלמות של ההודעות לשעה אחת.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_hour_by_other">טיימר ההודעות הנעלמות הוגדר לשעה אחת על ידי %1$s.</string>
+    <string name="ephemeral_timer_1_day_by_you">הגדרת את טיימר ההיעלמות של ההודעות ליום אחד.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_day_by_other">טיימר ההודעות הנעלמות הוגדר ליום אחד על ידי %1$s.</string>
+    <string name="ephemeral_timer_1_week_by_you">הגדרת את טיימר ההיעלמות של ההודעות לשבוע אחד.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_week_by_other">טיימר ההודעות הנעלמות הוגדר לשבוע אחד על ידי %1$s.</string>
+    <string name="ephemeral_timer_1_year_by_you">הגדרת את טיימר ההיעלמות של ההודעות לשנה אחת.</string>
+    <!-- %1$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_1_year_by_other">טיימר ההודעות הנעלמות הוגדר לשנה אחת על ידי %1$s.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
+    <string name="ephemeral_timer_minutes_by_you">הגדרת את טיימר ההיעלמות של ההודעות ל- %1$s דקות.</string>
+    <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_minutes_by_other">טיימר ההודעות הנעלמות הוגדר ל- %1$s דקות על ידי %2$s.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to -->
+    <string name="ephemeral_timer_hours_by_you">הגדרת את טיימר ההיעלמות של ההודעות ל- %1$s שעות.</string>
+    <!-- %1$s will be replaced by the number of hours (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_hours_by_other">טיימר ההודעות הנעלמות הוגדר ל- %1$s שעות על ידי %2$s.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to -->
+    <string name="ephemeral_timer_days_by_you">הגדרת את טיימר ההיעלמות של ההודעות ל- %1$s ימים.</string>
+    <!-- %1$s will be replaced by the number of days (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_days_by_other">טיימר ההודעות הנעלמות הוגדר ל- %1$s ימים על ידי %2$s.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to -->
+    <string name="ephemeral_timer_weeks_by_you">הגדרת את טיימר ההיעלמות של ההודעות ל- %1$s שבועות.</string>
+    <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
+    <string name="ephemeral_timer_weeks_by_other">טיימר ההודעות הנעלמות הוגדר ל- %1$s שבועות על ידי %2$s.</string>
+    <string name="chat_unencrypted_explanation">ההודעות בצ\'אט זה נשלחות באמצעות דואר אלקטרוני רגיל ואינן מוצפנות מקצה לקצה.</string>
+    <string name="messages_are_e2ee">ההודעות מוצפנות מקצה לקצה.</string>
+    <string name="chat_protection_enabled_tap_to_learn_more">ההודעות מוצפנות מקצה לקצה. הקש כדי לקבל מידע נוסף.</string>
+    <string name="chat_protection_enabled_explanation">כל ההודעות בצ\'אט זה מוצפנות מקצה לקצה.\n\nהצפנה מקצה לקצה שומרת על פרטיות ההודעות בינך לבין שותפיך לצ\'אט. אפילו שרתים, ספקים או מתווכים אינם יכולים לקרוא אותן.</string>
+    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ שירות \" %1$s \" דורש הצפנה מקצה לקצה, אשר טרם הוגדרה בצ\'אט זה. הקש כדי לקבל מידע נוסף.</string>
+    <string name="invalid_unencrypted_explanation">כדי להגדיר הצפנה מקצה לקצה, תוכל להיפגש עם אנשי הקשר באופן אישי ולסרוק את קוד ה-QR שלהם כדי להוסיף אותם.</string>
+    <string name="learn_more">למידע נוסף</string>
+
+    <string name="devicemsg_self_deleted">מחקת את הצ\'אט \"הודעות שמורות\".\n\nℹ️ כדי להשתמש שוב בתכונה \"הודעות שמורות\", צור צ\'אט חדש עם עצמך.</string>
+    <!-- deprecated -->
+    <string name="devicemsg_storage_exceeding">⚠️ שטח האחסון של הספק שלך עומד להיגמר: %1$s%% כבר בשימוש.\n\nייתכן שלא תוכל לקבל הודעות אם שטח האחסון מלא.\n\n👉 אנא בדוק אם ניתן למחוק נתונים ישנים בממשק האינטרנט של הספק ושקול להפעיל את האפשרות \"הגדרות / צ\'אטים / מחיקת הודעות ישנות\". תוכל לבדוק את השימוש הנוכחי בשטח האחסון בכל עת ב\"הגדרות / קישוריות\".</string>
+    <!-- %1%s will be replaced by date and time in some human-readable format -->
+    <string name="devicemsg_bad_time">⚠️ נראה כי התאריך או השעה במכשיר שלך אינם מדויקים (%1$s).\n\nכוון את השעון שלך ⏰🔧 כדי להבטיח שההודעות שלך יתקבלו כהלכה.</string>
+    <string name="devicemsg_update_reminder">⚠️ ייתכן שגרסת Delta Chat שברשותך אינה מעודכנת.\n\nדבר זה עלול לגרום לבעיות, מכיוון שהשותפים שלך לצ\'אט משתמשים בגרסאות חדשות יותר – ואתה מפספס את התכונות העדכניות ביותר 😳\nאנא בדוק באתר https://get.delta.chat או בחנות האפליקציות שלך אם יש עדכונים.</string>
+
+    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
+    <string name="enter_system_secret_to_continue">הסר את הנעילה כדי להמשיך</string>
+
+    <!-- qr code stuff -->
+    <string name="qr_code">קוד QR</string>
+    <string name="load_qr_code_as_image">טען קוד QR כתמונה</string>
+    <string name="qrscan_title">סרוק את קוד ה-QR</string>
+    <string name="qrscan_hint">החזיקו את המצלמה מעל קוד ה-QR</string>
+    <string name="qrscan_hint_desktop">הזז את קוד ה-QR אל שדה הראייה של המצלמה</string>
+    <string name="qrscan_failed">לא ניתן לפענח את קוד ה-QR</string>
+    <string name="qrscan_ask_join_group">האם ברצונך להצטרף לקבוצה \"%1$s\"?</string>
+    <string name="qrscan_ask_join_channel">האם ברצונך להצטרף לערוץ \"%1$s\"?</string>
+    <string name="qrscan_fingerprint_mismatch">טביעת האצבע שנסרקה אינה תואמת את זו שנראתה לאחרונה עבור %1$s.</string>
+    <string name="qrscan_no_addr_found">קוד ה-QR הזה מכיל טביעת אצבע אך לא כתובת.\n\nלצורך אימות מחוץ לתחום התדר, אנא הקם תחילה חיבור מוצפן עם הנמען.</string>
+    <string name="qrscan_contains_text">טקסט של קוד QR שנסרק:\n\n%1$s</string>
+    <string name="qrscan_contains_url">כתובת ה-URL של קוד ה-QR שנסרק:\n\n%1$s</string>
+    <string name="qrscan_fingerprint_label">טביעת אצבע</string>
+    <string name="withdraw_verifycontact_explain">אנשים אחרים יכולים לסרוק את קוד ה-QR הזה כדי ליצור איתך קשר.\n\nניתן לאפס אותו, כך שקוד ה-QR או קישור ההזמנה הקיימים כבר לא יפעלו.</string>
+    <string name="withdraw_verifygroup_explain">אנשים אחרים יכולים לסרוק את קוד ה-QR הזה כדי להצטרף לקבוצה \"%1$s\".\n\nניתן לאפס אותו, כך שקוד ה-QR או קישור ההזמנה הקיימים כבר לא יפעלו.</string>
+    <string name="withdraw_joinbroadcast_explain">אנשים אחרים יכולים לסרוק את קוד ה-QR הזה כדי להצטרף לערוץ \"%1$s\".\n\nניתן לאפס אותו, כך שקוד ה-QR או קישור ההזמנה הקיימים כבר לא יפעלו.</string>
+    <string name="withdraw_qr_code">איפוס קוד QR</string>
+    <string name="revive_verifycontact_explain">קוד ה-QR הזה נמחק ואינו פעיל עוד.</string>
+    <string name="revive_qr_code">הפעל את קוד ה-QR</string>
+    <string name="qrshow_title">קוד הזמנה QR</string>
+    <string name="qrshow_x_joining">%1$s מצטרף.</string>
+    <string name="qrshow_x_verified">%1$s הוצג.</string>
+    <string name="qrshow_x_has_joined_group">%1$s הצטרף לקבוצה.</string>
+    <string name="qrshow_join_group_title">קוד הזמנה QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
+    <string name="qrshow_join_group_hint">סרוק את הברקוד כדי להצטרף לקבוצה \"%1$s\"</string>
+    <string name="qrshow_join_channel_hint">סרוק את הברקוד כדי להצטרף לערוץ \"%1$s\"</string>
+    <string name="qrshow_join_contact_title">קוד הזמנה QR</string>
+    <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
+    <string name="qrshow_join_contact_hint">סרוק כדי לשוחח עם %1$s</string>
+    <string name="qrshow_join_contact_no_connection_toast">אין חיבור לאינטרנט, לא ניתן לבצע את הגדרת קוד ה-QR.</string>
+    <string name="qraccount_ask_create_and_login">ליצור פרופיל חדש באתר \"%1$s\" ולהתחבר משם?</string>
+    <string name="set_name_and_avatar_explain">הגדר שם שאנשי הקשר שלך יזהו. תוכל גם להגדיר תמונת פרופיל.</string>
+    <string name="please_enter_name">אנא הזן שם.</string>
+    <string name="qraccount_qr_code_cannot_be_used">לא ניתן להשתמש בקוד ה-QR שנסרק כדי להגדיר פרופיל חדש.</string>
+    <!-- the placeholder will be replaced by the address of the profile -->
+    <string name="qrlogin_ask_login">להיכנס ל- \"%1$s\"?</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_started">%1$s הזמין אותך להצטרף לקבוצה זו.\n\nממתין לתגובה מהמכשיר של %2$s …</string>
+    <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_channel_started">%1$s הזמין אותך להצטרף לערוץ זה.\n\nממתין לתגובה מהמכשיר של %2$s …</string>
+    <!-- placeholder will be replaced by the name of the inviter. -->
+    <string name="secure_join_replies">%1$s השיב, וממתין שיצרפו אותו לקבוצה…</string>
+    <string name="secure_join_wait">מקימים חיבור, אנא המתן…</string>
+    <string name="contact_verified">%1$s הוצג.</string>
+    <string name="contact_blocked">חסמת את איש הקשר</string>
+    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <string name="verified_by">הוצג על ידי %1$s</string>
+    <string name="verified_by_you">הוצג על ידי</string>
+    <string name="verified_by_unknown">הוצג</string>
+    <string name="mailto_dialog_header_select_chat">בחר צ\'אט שאליו ברצונך לשלוח את ההודעה</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">יש כבר טיוטת הודעה ב- %1$s, האם ברצונך להחליף אותה?</string>
+    <string name="mailto_link_could_not_be_decoded">לא ניתן לפענח את קישור ה-mailto: %1$s</string>
+    <string name="remove_quote">הסר את הציטוט</string>
+    <string name="remove_attachment">הסר את הקובץ המצורף</string>
+
+    <!-- notifications -->
+    <string name="notify_reply_button">השב</string>
+    <string name="notify_new_message">הודעה חדשה</string>
+    <string name="notify_background_connection_enabled">חיבור ברקע מופעל</string>
+    <string name="notify_priority_high">גבוה</string>
+    <string name="notify_priority_max">מקס</string>
+    <string name="notify_name_and_message">שם והודעה</string>
+    <string name="notify_name_only">שם בלבד</string>
+    <string name="notify_no_name_or_message">אין שם או הודעה</string>
+    <string name="notifications_disabled">ההתראות מושבתות</string>
+    <string name="unreliable_bg_notifications">הפעל את האפשרות \"כפה חיבור ברקע\" כדי להבטיח קבלת התראות אמינות</string>
+    <string name="new_messages">הודעות חדשות</string>
+    <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
+    <string name="new_messages_body">יש לך הודעות חדשות</string>
+    <string name="n_messages_in_m_chats">%1$d הודעות ב- %2$d צ\'אטים</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_notification_text">אתה משתף את המיקום שלך</string>
+    <string name="location_rationale">כדי לשתף את המיקום הנוכחי שלך עם משתתפי הצ\'אט, אפשר ל-Delta Chat להשתמש בנתוני המיקום שלך.\n\nכדי שהמיקום הנוכחי יפעל ללא הפרעה, נתוני המיקום משמשים גם כשהאפליקציה סגורה או שאינה בשימוש.</string>
+
+    <!-- permissions -->
+    <string name="perm_required_title">נדרשת הרשאה</string>
+    <string name="perm_continue">המשך</string>
+    <string name="perm_explain_access_to_camera_denied">כדי לצלם תמונות או להקליט סרטונים, היכנס להגדרות האפליקציה, בחר \"הרשאות\" והפעל את \"מצלמה\".</string>
+    <!-- give the user an idea where to find the "Microphone" option. the hint is only shown if access was initially denied by the user. pick up wordings really used on the systems, but do not be overly precise: things shift around often and there are too many system we support to track every detail and click path -->
+    <string name="perm_explain_access_to_mic_denied">כדי לשלוח הודעות קוליות, היכנס להגדרות המערכת או לאפליקציה, בחר ב\"הרשאות\" או ב\"פרטיות &amp; אבטחה\", והפעל את \"מיקרופון\".</string>
+    <string name="perm_explain_access_to_storage_denied">כדי לקבל או לשלוח קבצים, היכנס להגדרות האפליקציה, בחר \"הרשאות\" והפעל את \"אחסון\".</string>
+    <string name="perm_explain_access_to_location_denied">כדי להפעיל את זיהוי המיקום, היכנס להגדרות האפליקציה, בחר \"הרשאות\" והפעל את \"מיקום\".</string>
+    <string name="perm_explain_access_to_notifications_denied">כדי לקבל התראות, היכנס ל\"הגדרות מערכת / אפליקציות / Delta Chat\" והפעל את האפשרות \"התראות\".</string>
+
+    <!-- ImageEditorHud -->
+    <string name="ImageEditorHud_draw_anywhere_to_blur">צייר בכל מקום כדי לטשטש</string>
+    <string name="ImageEditorHud_add_text">הוסף טקסט</string>
+    <string name="ImageEditorHud_blur">טשטוש</string>
+    <string name="ImageEditorHud_brush_marker">מברשת סימון</string>
+    <string name="ImageEditorHud_brush_highlight">מברשת הדגשה</string>
+    <string name="ImageEditorHud_crop">חתוך</string>
+    <string name="ImageEditorHud_flip">הפוך</string>
+    <string name="ImageEditorHud_rotate">סובב</string>
+
+    <string name="welcome_desktop">ברוכים הבאים ל- Delta Chat</string>
+    <string name="global_menu_preferences_language_desktop">שפה</string>
+    <string name="global_menu_file_desktop">קובץ</string>
+    <string name="global_menu_file_quit_desktop">יציאה</string>
+    <string name="global_menu_edit_desktop">ערוך</string>
+    <string name="global_menu_edit_undo_desktop">בטל</string>
+    <string name="global_menu_edit_redo_desktop">חזור</string>
+    <string name="global_menu_edit_cut_desktop">גזור</string>
+    <string name="global_menu_edit_copy_desktop">העתק</string>
+    <string name="global_menu_edit_paste_desktop">הדבק</string>
+    <string name="global_menu_view_desktop">הצג</string>
+    <string name="global_menu_view_floatontop_desktop">צוף מעל</string>
+    <string name="global_menu_view_developer_desktop">מפתח</string>
+    <string name="global_menu_view_developer_tools_desktop">כלי מפתחים</string>
+    <string name="global_menu_help_desktop">עזרה</string>
+    <string name="delta_chat_homepage">דף הבית של Delta Chat</string>
+    <string name="contribute">תרום</string>
+    <string name="global_menu_help_report_desktop">דווח על בעיה</string>
+    <string name="global_menu_help_about_desktop">אודות Delta Chat</string>
+    <string name="global_menu_file_open_desktop">פתח את Delta Chat</string>
+    <string name="global_menu_minimize_to_tray">צמצם</string>
+    <string name="no_account_selected">בחר פרופיל או צור פרופיל חדש</string>
+    <string name="no_chat_selected_suggestion_desktop">בחר צ\'אט או צור צ\'אט חדש</string>
+    <string name="write_message_desktop">כתוב הודעה</string>
+    <string name="encryption_info_title_desktop">מידע על הצפנה</string>
+    <string name="delete_message_desktop">מחק הודעה</string>
+    <string name="more_info_desktop">מידע נוסף</string>
+    <string name="timestamp_format_m_desktop">MMM D</string>
+    <string name="remove_desktop">הסר</string>
+    <string name="save_desktop">שמור</string>
+    <!-- Opposite of "Save". Undo a "Save" action. Similar to "Unmute", "Unpin". Could also be worded as "Save no longer" or so. -->
+    <string name="unsave">ביטול שמירה</string>
+    <string name="name_desktop">שם</string>
+    <string name="select_group_image_desktop">בחר תמונה קבוצתית</string>
+    <string name="export_backup_desktop">יצא גיבוי</string>
+    <string name="message_detail_sent_desktop">נשלח</string>
+    <string name="message_detail_received_desktop">התקבל</string>
+    <string name="menu.view.developer.open.log.folder">פתח את תיקיית היומנים</string>
+    <string name="menu.view.developer.open.current.log.file">פתח את קובץ היומן הנוכחי</string>
+    <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">לא ניתן להשבית את סמל מגש המערכת, שכן דלתא צ\'אט הופעל עם האופציה --מצומצם.</string>
+    <!-- deprecated, used on desktop although there is not spell checker -->
+    <string name="no_spellcheck_suggestions_found">לא נמצאו הצעות לאיות.</string>
+    <string name="show_window">הצג חלון</string>
+    <string name="data_found_other_installation_message">לא ניתן לגשת לפרופילים שלך מהתקנה אחרת של Delta Chat – התקנות שונות מאחסנות את הנתונים שלהן במיקומים נפרדים.\n\nכדי לשמור על הפרופילים הקיימים:\n1. צאו מהתוכנה כעת\n2. פתחו את Delta Chat האחר — במידת הצורך, התקינו אותו מחדש מ- %1$s\n3. גבו כל פרופיל תחת \"הגדרות/צ\'אטים\"\n4. הפעל מחדש את הגרסה הזו\n5. שחזרו את הגיבויים באמצעות \"כבר יש לי פרופיל\"\n\nהאם ברצונכם להמשיך ללא הפרופילים הקודמים שלכם?</string>
+
+    <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
+    <string name="keybindings">קיצורי מקשים</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">ניווט</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">הזנת הודעה</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">הודעה נבחרת</string>
+    <string name="switch_between_chats">מעבר בין צ\'אטים</string>
+    <string name="scroll_messages">גלול הודעות</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">חיפוש ממוקד</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">התמקד בשדה ההודעה </string>
+    <string name="force_refresh_network">כפה רענון הרשת</string>
+    <string name="insert_newline">הוספת שורה חדשה</string>
+
+    <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
+    <string name="a11y_delivery_status_error">סטטוס המשלוח: שגיאה</string>
+    <string name="a11y_delivery_status_sending">סטטוס המשלוח: שולח</string>
+    <string name="a11y_delivery_status_draft">סטטוס המסירה: טיוטה</string>
+    <string name="a11y_delivery_status_delivered">סטטוס המשלוח: נמסר</string>
+    <string name="a11y_delivery_status_read">סטטוס המסירה: נקרא</string>
+    <string name="a11y_delivery_status_invalid">סטטוס משלוח לא תקין</string>
+    <string name="a11y_message_context_menu_btn_label">פעולות הודעה</string>
+    <string name="a11y_background_preview_label">תצוגה מקדימה של טפט</string>
+    <string name="a11y_disappearing_messages_activated">הודעות נעלמות מופעלות</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">פתח %1$s</string>
+
+    <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="stop_sharing_location">הפסק לשתף את המיקום</string>
+    <string name="a11y_voice_message_hint_ios">לאחר ההקלטה, הקש פעמיים כדי לשלוח. כדי למחוק את ההקלטה, החלק עם שתי אצבעות.</string>
+    <string name="a11y_connectivity_hint">הקש פעמיים כדי להציג את פרטי החיבור.</string>
+    <string name="login_error_no_internet_connection">אין חיבור לאינטרנט, הכניסה נכשלה.</string>
+    <string name="share_account_not_configured">הפרופיל לא הוגדר.</string>
+    <string name="cannot_play_audio_file">לא ניתן לנגן את קובץ השמע.</string>
+    <!-- iOS camera permission alert -->
+    <string name="perm_ios_explain_access_to_camera_denied">כדי לצלם תמונות, להקליט סרטונים או להשתמש בסורק ה-QR, פתח את הגדרות המערכת והפעל את האפשרות \"מצלמה\".</string>
+    <string name="open_settings">פתח את ההגדרות</string>
+    <!-- iOS device contact alert -->
+    <string name="import_device_contacts">יבוא אנשי קשר מהמכשיר</string>
+    <string name="import_device_contacts_hint">כדי לשוחח בצ\'אט עם אנשי הקשר מהמכשיר שלך, פתח את \"הגדרות\" והפעל את האפשרות \"אנשי קשר\".</string>
+    <!-- iOS notification settings -->
+    <string name="disabled_in_dc">מושבת ב- Delta Chat</string>
+    <string name="disabled_in_system_settings">מושבת בהגדרות המערכת</string>
+    <string name="bg_app_refresh_disabled">\"רענון אפליקציות ברקע\" מושבת בהגדרות המערכת</string>
+    <string name="notifications_avg_minutes">בממוצע, כל %1$d דקות</string>
+    <string name="notifications_avg_hours">בממוצע כל %1$d שעות</string>
+    <string name="last_check_at">נבדק ב- %1$s</string>
+    <string name="system_settings">הגדרות מערכת</string>
+    <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
+    <string name="system_settings_notify_explain_ios">ערוך סוג, תגים, תצוגה מקדימה ועוד</string>
+    <!-- iOS shortcut widget -->
+    <!-- use the same translation for "Shortcuts" as the system is using, often the term "Shortcut" stays untranslated; check eg. how the "Shortcuts" system app is called in your locale -->
+    <string name="shortcuts_widget_title">קיצורי דרך</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="shortcuts_widget_description">השתמש באפשרות \"הוסף לווידג\'ט\" ב- Delta Chat כדי להוסיף פריטים</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="remove_from_widget">הסר מהווידג\'ט</string>
+    <!-- use the same translation for "Widget" as the system is using; often the term "Widget" stays untranslated -->
+    <string name="add_to_widget">הוסף לווידג\'ט</string>
+    <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
+    <string name="InfoPlist_NSCameraUsageDescription">Delta Chat משתמשת במצלמה שלך לצילום ושליחת תמונות וסרטונים, וכן לסריקת קודי QR.</string>
+    <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat זקוקה להרשאה לשתף את המיקום שלך למשך הזמן שבו הפכת את שיתוף המיקום לזמין.</string>
+    <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat זקוקה להרשאה לשתף את המיקום שלך למשך הזמן שבו הפכת את שיתוף המיקום לזמין.</string>
+    <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat משתמשת במיקרופון שלך כדי להקליט ולשלוח הודעות קוליות וסרטונים עם סאונד.</string>
+    <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat תאפשר לכם לבחור אילו תמונות מהספרייה שלכם לשלוח.</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat מבקש לשמור תמונות בספריית התמונות שלך.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat יכולה להשתמש ב-Face ID כדי להגן על הפרופיל המקומי שלך, על יצירת הגיבוי ועל הגדרת המכשיר השני.</string>
+
+    <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
+    <string name="pref_instant_delivery">משלוח מיידי</string>
+    <string name="pref_background_notifications">השתמש בחיבור ברקע</string>
+    <string name="pref_background_notifications_explain">נדרש להתעלם מאופטימיזציות הסוללה; יש להשתמש באפשרות זו אם ההתראות אינן מגיעות בזמן</string>
+    <string name="pref_reliable_service">כפה חיבור ברקע</string>
+    <string name="pref_reliable_service_explain">גורם להופעת התראה קבועה</string>
+
+    <string name="pref_background_notifications_rationale">כדי לשמור על החיבור ולקבל הודעות ברקע, התעלם מהאופטימיזציות של הסוללה בשלב הבא.\n\nדלתא צ\'אט צורכת מעט משאבים ומקפידה לא לרוקן את הסוללה שלך.</string>
+    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <string name="perm_enable_bg_reminder_title">לחץ כאן כדי לקבל הודעות בזמן ש- Delta Chat פועל ברקע.</string>
+    <string name="perm_enable_bg_already_done">כבר אישרת ל- Delta Chat לקבל הודעות ברקע.\n\nאם ההודעות עדיין לא מגיעות ברקע, אנא בדוק גם את הגדרות המערכת שלך.</string>
+
+    <!-- device messages for updates -->
+    <string name="update_2_0">מה חדש?\n\n💯 ההצפנה מקצה לקצה אמינה וכעת היא קבועה. מנעולים 🔒 נעלמו!\n\n✉️ דוא\"ל קלאסי ללא הצפנה מקצה לקצה מסומן בסמל של אות\n\n😻 מסך פרופיל משופר חדש לכל אנשי הקשר שלכם\n\n🔲 כפתור חדש לגישה מהירה לאפליקציות המשמשות בצ\'אט\n\n❤️ אנא תרמו כדי לעזור לנו להישאר עצמאיים ולהמשיך להביא שיפורים: %1$s</string>
+</resources>
