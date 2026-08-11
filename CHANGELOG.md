@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Improve a11y on Conversation List
+
 ## v2.58.0
 2026-08
 
