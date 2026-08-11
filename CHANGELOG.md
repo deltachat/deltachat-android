@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+* Add support for reactions in channels
+* Improve reactions details overview
+* Allow channel owners to mute their channel
 * Fix: Mic will stay active during a call when screen is off on Android 14+
 * Fix: allow to pick image without requiring storage permission
 * Fix: avoid overflow with big numbers in badge counters
@@ -12,7 +15,7 @@
 * Show phased out relays in connectivity view as such
 * Sending relay is a per-device setting now
 * Collect call information from all relays
-* Reduce traffic (no unncessary keys attached to group chats, improve read receipts)
+* Reduce traffic (no unnecessary keys attached to group chats, improve read receipts)
 * Send messages to up to 5 relays
 * Update to core 2.58.0
 

@@ -8,11 +8,7 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:focusable="true"
-    android:background="?attr/conversation_list_item_background"
-    android:paddingLeft="16dp"
-    android:paddingStart="16dp"
-    android:paddingRight="16dp"
-    android:paddingEnd="16dp">
+    android:background="?attr/conversation_list_item_background">
 
     <org.thoughtcrime.securesms.components.AvatarImageView
         android:id="@+id/contact_photo_image"
@@ -51,7 +47,6 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/reaction"
-        style="@style/ButtonSecondary"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:gravity="center"
