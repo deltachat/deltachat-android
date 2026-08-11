@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.58.0
+2026-08
 
 * Add support for reactions in channels
 * Improve reactions details overview
