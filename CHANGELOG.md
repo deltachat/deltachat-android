@@ -8,6 +8,7 @@
 * Fix: make video players truly fullscreen
 * Fix: avoid ending search mode when a new message arrive to the chat
 * Fix: Recording now request and respect audio focus
+* Update to core 2.58.0
 
 ## v2.57.0
 2026-07
