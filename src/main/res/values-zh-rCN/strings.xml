@@ -661,7 +661,7 @@
 
     <string name="team">团队</string>
     <string name="team_profile">团队配置</string>
-    <string name="team_profile_explain">“团队配置”由一群人或一个组织共同管理。\n\n⚠️ 团队配置目前处于实验阶段，未来可能会更改或移除。</string>
+    <string name="team_profile_explain">“团队配置”由一群人或一个组织共同管理。\n\n⚠️ 团队配置目前处于实验阶段，可能会有所更改。</string>
     <string name="team_name">团队名称</string>
     <string name="create_team_profile">创建团队配置</string>
 
@@ -701,16 +701,18 @@
     <string name="remove_transport">移除中继</string>
     <string name="edit_transport">编辑中继</string>
     <string name="used_for_sending">用于发送</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">对联系人隐藏</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">已对联系人隐藏</string>
     <string name="enforce_e2ee">对所有中继强制加密</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">在所有中继上均已收到消息。\n\n⚠️ 如果您在此处进行任何更改，请确保所有设备至少运行 2.47.0 版本。否则，较旧的设备可能会错过消息。</string>
+    <string name="transport_list_hint">在所有中继上均已收到消息。</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">添加此中继？</string>
     <string name="invalid_transport_qr">扫描的二维码不包含有效的中继。</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">移除中继“%1$s”？</string>
+    <string name="confirm_remove_relay_x">移除中继“%1$s”？在删除之前，它将逐步停用，以便您的联系人可以平稳过渡。</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">移除中继“%1$s”？\n\n仅知道此中继的联系人可能无法联系到您，直到您再次发送消息。\n\n如有疑问，请将其隐藏而非移除。</string>
     <string name="login_certificate_checks">证书检查</string>

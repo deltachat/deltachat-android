@@ -657,7 +657,9 @@
     <string name="remove_transport">移除中繼伺服器</string>
     <string name="edit_transport">編輯中繼伺服器</string>
     <string name="used_for_sending">用于发送</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">对联系人隐藏</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">已对联系人隐藏</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">新增這個中繼伺服器？</string>

@@ -698,7 +698,9 @@
     <string name="remove_transport">Hiqni Rele</string>
     <string name="edit_transport">Përpunoni Rele</string>
     <string name="used_for_sending">E përdorur për dërgim</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Fshihe prej Kontaktesh</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Fshehur prej kontakteve</string>
     <string name="enforce_e2ee">Detyro Fshehtëzim për Krejt Reletë</string>
     <!-- Hint for the list of relays -->

@@ -697,7 +697,7 @@
 
     <string name="team">Squadra</string>
     <string name="team_profile">Profilo Squadra</string>
-    <string name="team_profile_explain">Un \"Profilo Squadra\" è gestito collettivamente da un gruppo di persone o da un\'organizzazione.\n\n⚠️ I Profili Squadra sono sperimentali e potrebbero essere modificati o rimossi in futuro.</string>
+    <string name="team_profile_explain">Un \"Profilo Squadra\" è gestito collettivamente da un gruppo di persone o da un\'organizzazione.\n\n⚠️ I Profili Squadra sono sperimentali e soggetti a modifiche.</string>
     <string name="team_name">Nome Squadra</string>
     <string name="create_team_profile">Crea Profilo Squadra</string>
 
@@ -737,7 +737,9 @@
     <string name="remove_transport">Rimuovi Trasporto</string>
     <string name="edit_transport">Modifica Trasporto</string>
     <string name="used_for_sending">Utilizzato per l\'invio</string>
+    <!-- deprecated -->
     <string name="hide_from_contacts">Nascondi dai Contatti</string>
+    <!-- deprecated -->
     <string name="hidden_from_contacts">Nascosto dai contatti</string>
     <string name="enforce_e2ee">Applica Crittografia a Tutti i Ripetitori</string>
     <!-- Hint for the list of relays -->
