@@ -1044,7 +1044,11 @@ public class ConversationFragment extends MessageSelectorFragment {
 
     @Override
     public void onReactionClicked(DcMsg messageRecord) {
-      ReactionsDetailsFragment dialog = ReactionsDetailsFragment.newInstance(messageRecord.getId());
+      DcChat dcChat = getListAdapter().getChat();
+      boolean isBroadcast = dcChat.isInBroadcast() || dcChat.isOutBroadcast();
+
+      ReactionsDetailsFragment dialog =
+          ReactionsDetailsFragment.newInstance(messageRecord.getId(), isBroadcast);
       dialog.show(getActivity().getSupportFragmentManager(), null);
     }
 
