@@ -809,7 +809,7 @@
     <string name="pref_incognito_keyboard">Teclado incógnito</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Solicitar que o teclado non aprenda palabras escritas</string>
-    <string name="pref_read_receipts">Confirmación de lectura</string>
+    <string name="pref_read_receipts">Recibos de lectura</string>
     <string name="pref_read_receipts_explain">Se a confirmación de lectura está desactivada, non poderás ver as confirmacións das demais persoas.</string>
     <!-- Title above a list of contacts who read a message -->
     <string name="read_by">Lido por</string>
