@@ -157,7 +157,7 @@ public class ConversationListItem extends RelativeLayout
     DcContact contact = recipient.getDcContact();
     avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
-    setFromViewState(isSelected(), thread.isMuted());
+    setMutedState(thread.isMuted());
   }
 
   public void bind(
@@ -168,7 +168,7 @@ public class ConversationListItem extends RelativeLayout
     Recipient recipient = new Recipient(getContext(), contact);
 
     fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
-    setFromViewState(false, false);
+    setMutedState(false);
     subjectView.setVisibility(GONE);
     dateView.setText("");
     setContentState(false, false);
@@ -192,7 +192,7 @@ public class ConversationListItem extends RelativeLayout
     Recipient recipient = new Recipient(getContext(), sender);
 
     fromView.setText(recipient, true);
-    setFromViewState(false, false);
+    setMutedState(false);
     subjectView.setVisibility(VISIBLE);
     subjectView.setText(getHighlightedSpan(messageResult.getSummarytext(512), highlightSubstring));
 
@@ -218,7 +218,7 @@ public class ConversationListItem extends RelativeLayout
     this.selectedThreads = Collections.emptySet();
 
     fromView.setText(inviteData.getDisplayTitle());
-    setFromViewState(false, false);
+    setMutedState(false);
     subjectView.setVisibility(VISIBLE);
     subjectView.setText(inviteData.getDisplaySubtitle());
     subjectView.setTypeface(LIGHT_TYPEFACE);
@@ -300,6 +300,7 @@ public class ConversationListItem extends RelativeLayout
 
     if (!showUnreadBadge) {
       unreadIndicator.setVisibility(View.GONE);
+      unreadIndicator.setContentDescription(null);
     } else {
       boolean isMuted = thread.isMuted() || chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK;
       final int color =
@@ -321,6 +322,9 @@ public class ConversationListItem extends RelativeLayout
               .endConfig()
               .buildRound(badgeText, color));
       unreadIndicator.setVisibility(View.VISIBLE);
+      unreadIndicator.setContentDescription(
+          getResources()
+              .getQuantityString(R.plurals.chat_n_unread_messages, unreadCount, unreadCount));
     }
   }
 
@@ -334,19 +338,10 @@ public class ConversationListItem extends RelativeLayout
     }
   }
 
-  private void setFromViewState(boolean selected, boolean muted) {
+  private void setMutedState(boolean muted) {
     fromView.setCompoundDrawablesWithIntrinsicBounds(
         muted ? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
-
-    if (!selected && !muted) {
-      fromView.setContentDescription(null);
-      return;
-    }
-    CharSequence description = fromView.getText();
-    if (muted) {
-      description = withStatus(description, R.string.muted);
-    }
-    fromView.setContentDescription(description);
+    fromView.setContentDescription(muted ? withStatus(fromView.getText(), R.string.muted) : null);
   }
 
   private void setContentState(boolean pinned, boolean sendingLocations) {
