@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import androidx.annotation.DimenRes;
@@ -79,15 +78,9 @@ public class ConversationItemThumbnail extends FrameLayout {
         ThemeUtil.isDarkTheme(getContext()) ? DARK_THEME_OUTLINE_PAINT : LIGHT_THEME_OUTLINE_PAINT;
     this.cornerMask = new CornerMask(this);
 
-    setTouchDelegate(thumbnail.getTouchDelegate());
-  }
+    shade.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
 
-  public String getDescription() {
-    String desc = thumbnail.getDescription();
-    if (footer.getVisibility() == View.VISIBLE) {
-      desc += "\n" + footer.getDescription();
-    }
-    return desc;
+    setTouchDelegate(thumbnail.getTouchDelegate());
   }
 
   @Override
@@ -199,6 +192,7 @@ public class ConversationItemThumbnail extends FrameLayout {
     this.naturalWidth = naturalWidth;
     this.naturalHeight = naturalHeight;
     refreshSlideAttachmentState(thumbnail.setImageResource(glideRequests, slide), slide);
+    thumbnail.setContentDescription(thumbnail.getDescription());
   }
 
   public void clear(GlideRequests glideRequests) {

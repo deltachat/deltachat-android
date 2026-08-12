@@ -34,6 +34,8 @@ public class BorderlessImageView extends FrameLayout {
     this.image = findViewById(R.id.sticker_thumbnail);
     this.missingShade = findViewById(R.id.sticker_missing_shade);
     this.footer = findViewById(R.id.sticker_footer);
+
+    missingShade.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
   }
 
   @Override
@@ -64,10 +66,7 @@ public class BorderlessImageView extends FrameLayout {
     }
 
     missingShade.setVisibility(showControls ? View.VISIBLE : View.GONE);
-  }
-
-  public String getDescription() {
-    return getContext().getString(R.string.sticker) + "\n" + footer.getDescription();
+    image.setContentDescription(getContext().getString(R.string.sticker));
   }
 
   public ConversationItemFooter getFooter() {

@@ -91,11 +91,11 @@ public class WebxdcView extends FrameLayout {
 
   public String getDescription() {
     String desc = getContext().getString(R.string.webxdc_app);
-    desc += "\n" + appName.getText();
+    desc += ", " + appName.getText();
     if (appSubtitle.getText() != null
         && !appSubtitle.getText().toString().isEmpty()
         && !appSubtitle.getText().toString().equals(getContext().getString(R.string.webxdc_app))) {
-      desc += "\n" + appSubtitle.getText();
+      desc += ", " + appSubtitle.getText();
     }
     return desc;
   }

@@ -265,9 +265,9 @@ public class AudioView extends FrameLayout {
     } else {
       desc = getContext().getString(R.string.voice_message);
     }
-    desc += "\n" + this.timestamp.getText();
+    desc += ", " + this.timestamp.getText();
     if (title.getVisibility() == View.VISIBLE) {
-      desc += "\n" + this.title.getText();
+      desc += ", " + this.title.getText();
     }
     return desc;
   }

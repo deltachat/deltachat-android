@@ -1198,15 +1198,39 @@
     <string name="insert_newline">Insert Newline</string>
 
     <!-- accessibility, the general idea is to use the normal strings for accessibility hints wherever possible -->
-    <string name="a11y_delivery_status_error">Delivery status: Error</string>
-    <string name="a11y_delivery_status_sending">Delivery status: Sending</string>
+    <!-- deprecated -->
+    <string name="a11y_delivery_status_error">Error</string>
+    <string name="a11y_delivery_status_sending">Sending</string>
+    <!-- deprecated -->
     <string name="a11y_delivery_status_draft">Delivery status: Draft</string>
-    <string name="a11y_delivery_status_delivered">Delivery status: Delivered</string>
-    <string name="a11y_delivery_status_read">Delivery status: Read</string>
+    <string name="a11y_delivery_status_delivered">Delivered</string>
+    <string name="a11y_delivery_status_read">Read</string>
+    <!-- deprecated -->
     <string name="a11y_delivery_status_invalid">Invalid delivery status</string>
+    <!-- deprecated -->
     <string name="a11y_message_context_menu_btn_label">Message actions</string>
+    <!-- deprecated -->
     <string name="a11y_background_preview_label">Wallpaper preview</string>
+    <!-- deprecated -->
     <string name="a11y_disappearing_messages_activated">Disappearing messages activated</string>
+    <string name="a11y_msg_not_encrypted">Not end-to-end encrypted</string>
+
+    <plurals name="a11y_msg_read_by">
+        <item quantity="one">Read by %d</item>
+        <item quantity="other">Read by %d</item>
+    </plurals>
+    <string name="a11y_msg_reply_to">Replying to %1$s: %2$s</string>
+    <string name="a11y_msg_reply_to_no_author">Replying to: %1$s</string>
+
+    <string name="a11y_action_open_image">Open image</string>
+    <string name="a11y_action_open_video">Open video</string>
+    <string name="a11y_action_open_file">Open file</string>
+    <string name="a11y_action_open_contact">Open contact</string>
+    <string name="a11y_action_show_error">Show error</string>
+
+    <string name="a11y_reactions">Reactions: %1$s</string>
+    <string name="a11y_reactions_more">%1$d more</string>
+
     <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
     <string name="open_link">Open %1$s</string>
 
