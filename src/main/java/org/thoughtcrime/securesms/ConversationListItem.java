@@ -296,6 +296,7 @@ public class ConversationListItem extends RelativeLayout
     int unreadCount = thread.getUnreadCount();
     if (unreadCount == 0 || thread.isContactRequest()) {
       unreadIndicator.setVisibility(View.GONE);
+      unreadIndicator.setContentDescription(null);
     } else {
       boolean isMuted = thread.isMuted() || chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK;
       final int color =
@@ -317,6 +318,9 @@ public class ConversationListItem extends RelativeLayout
               .endConfig()
               .buildRound(badgeText, color));
       unreadIndicator.setVisibility(View.VISIBLE);
+      unreadIndicator.setContentDescription(
+          getResources()
+              .getQuantityString(R.plurals.chat_n_unread_messages, unreadCount, unreadCount));
     }
   }
 
