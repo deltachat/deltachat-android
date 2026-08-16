@@ -374,6 +374,8 @@
     <string name="unpin_chat">Unpin Chat</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Pin</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Pinned</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Unpin</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
@@ -504,6 +506,10 @@
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d new message</item>
         <item quantity="other">%d new messages</item>
+    </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d unread message</item>
+        <item quantity="other">%1$d unread messages</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Send a message to %1$s.</string>
