@@ -613,7 +613,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">使用其他伺服器</string>
     <string name="instant_onboarding_other_server">列出 Chatmail 伺服器</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">創建個人資料以加入群組 “%1$s ”</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">創建要與%1$s聊天的個人資料。</string>
@@ -702,6 +702,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">將%1$d個檔案傳送到「%2$s」？？</string>
     <string name="ask_send_files_to_selected_chats">將%1$d個檔案發送到%2$d個聊天？</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">（影片以原始大檔的形式發送。要將影片作為較小的檔案發送，請單獨附加它們）</string>
     <string name="share_text_multiple_chats">將此文本發送到%1$d個聊天？\n\n 「%2$s」</string>
     <string name="share_abort">共享失敗。權限不足。</string>

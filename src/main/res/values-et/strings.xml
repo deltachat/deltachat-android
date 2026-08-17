@@ -668,7 +668,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Kasuta muud serverid</string>
     <string name="instant_onboarding_other_server">Edastusserverite loend</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">„%1$s“ grupiga liitumiseks loo profiil.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">„%1$s“ kasutajaga vestlemiseks loo profiil.</string>
@@ -769,6 +769,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Kas saadad %1$d faili „%2$s“ vestlusesse?</string>
     <string name="ask_send_files_to_selected_chats">Kas saadad %1$d faili „%2$d“ vestlusesse?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Videod saadetakse algupäraste suurte failidena. Videote mahu vähendamiseks lisa nad manustena ükshaaval)</string>
     <string name="share_text_multiple_chats">Kas saadad selle teksti %1$d vestlusesse?\n\n„%2$s“</string>
     <string name="share_abort">Puuduvate õiguste tõttu on jagamine katkestatud.</string>

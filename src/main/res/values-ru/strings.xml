@@ -704,7 +704,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Использовать другой сервер</string>
     <string name="instant_onboarding_other_server">Список серверов Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Создайте профиль, чтобы присоединиться к группе \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Создайте профиль для чата с %1$s.</string>
@@ -805,6 +805,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Отправить %1$d файла(ов) в \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Отправить %1$d файл(ов) в %2$d чата(ов)?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Отправка нескольких видео приведет к их отправке в исходном виде, что может потребовать значительного объема данных. Чтобы уменьшить размер файлов и сэкономить трафик, отправляйте каждое видео в отдельном сообщении)</string>
     <string name="share_text_multiple_chats">Отправить текст в %1$d чата(ов)?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия необходимых разрешений.</string>

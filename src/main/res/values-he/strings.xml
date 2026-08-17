@@ -686,7 +686,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">השתמש בשרת אחר</string>
     <string name="instant_onboarding_other_server">רשימת שרתים של Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">צרו פרופיל כדי להצטרף לקבוצה \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">צרו פרופיל כדי לשוחח עם %1$s.</string>
@@ -787,6 +787,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">לשלוח %1$d קבצים ל \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">לשלוח %1$d קובצ(ים) ל %2$d צ\'אטים?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(שליחת מספר סרטונים תשלח אותם כפי שהם, והם עלולים להיות גדולים. כדי להקטין את גודלם ולחסוך בנפח נתונים, ניתן לשלוח כל סרטון בהודעה נפרדת)</string>
     <string name="share_text_multiple_chats">שלח את הטקסט ל-%1$d צ\'אטים?\n\n\"%2$s\"</string>
     <string name="share_abort">השיתוף הופסק בשל היעדר הרשאות.</string>

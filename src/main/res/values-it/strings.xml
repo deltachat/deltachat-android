@@ -310,7 +310,7 @@
     <string name="menu_add_attachment">Aggiungi Allegato</string>
     <string name="menu_leave_group">Abbandona Gruppo</string>
     <string name="menu_leave_channel">Abbandona Canale</string>
-    <string name="menu_leave_and_delete">Lascia &amp; Cancella per Me</string>
+    <string name="menu_leave_and_delete">Abbandona &amp; Cancella per Me</string>
     <string name="menu_delete_chat">Elimina Chat</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Cancella Messaggi</string>
@@ -686,7 +686,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Usa Altro Server</string>
     <string name="instant_onboarding_other_server">Elenco Server Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Crea un profilo per unirti al gruppo \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Crea un profilo per chattare con %1$s.</string>
@@ -787,6 +787,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Inviare %1$d file a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Invia %1$d file(s) a %2$d chat?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(I video vengono inviati come file originali, di grandi dimensioni. Per inviare i video come file più piccoli, allegali separatamente)</string>
     <string name="share_text_multiple_chats">Invia questo testo a %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
