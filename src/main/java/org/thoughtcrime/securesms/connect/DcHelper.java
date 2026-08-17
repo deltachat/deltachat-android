@@ -213,6 +213,10 @@ public class DcHelper {
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(178, context.getString(R.string.member_x_removed));
+    dcContext.setStockTranslation(179, context.getString(R.string.remove_you_by_other));
+    dcContext.setStockTranslation(180, context.getString(R.string.add_you_by_other));
+    dcContext.setStockTranslation(181, context.getString(R.string.member_you_removed));
+    dcContext.setStockTranslation(182, context.getString(R.string.member_you_added));
     dcContext.setStockTranslation(190, context.getString(R.string.secure_join_wait));
     dcContext.setStockTranslation(193, context.getString(R.string.donate_device_msg));
     dcContext.setStockTranslation(196, context.getString(R.string.declined_call));
