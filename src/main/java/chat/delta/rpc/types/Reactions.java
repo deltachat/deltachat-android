@@ -5,6 +5,12 @@ package chat.delta.rpc.types;
 public class Reactions {
   /** Unique reactions and their count, sorted in descending order. */
   public java.util.List<Reaction> reactions;
-  /** Map from a contact to it's reaction to message. There is only a single reaction per contact, but this contains a list of reactions for historical reasons. */
+  /**
+   * Map from a contact to it's reaction to message.
+   * <p>
+   * There is only a single reaction per contact, but this contains a list of reactions for historical reasons.
+   * <p>
+   * For channels subscribers, this map is empty or contains `ContactId::SELF` only.
+   */
   public java.util.Map<String, java.util.List<String>> reactionsByContact;
 }

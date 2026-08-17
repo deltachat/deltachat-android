@@ -583,7 +583,6 @@ public class Rpc {
    * to `check_qr()`.
    * <p>
    * **returns**: The chat ID of the joined chat, the UI may redirect to the this chat.
-   * A returned chat ID does not guarantee that the chat is protected or the belonging contact is verified.
    * <p>
    */
   public Integer secureJoin(Integer accountId, String qr) throws RpcException {
@@ -1652,6 +1651,32 @@ public class Rpc {
 
   public Integer miscSendDraft(Integer accountId, Integer chatId) throws RpcException {
     return transport.callForResult(new TypeReference<Integer>(){}, "misc_send_draft", mapper.valueToTree(accountId), mapper.valueToTree(chatId));
+  }
+
+  /**
+   * Get version information of a specific client and source
+   * across all configured accounts and transports.
+   * <p>
+   * Returns the source with the highest `version_integer`.
+   * If no matching version information is available at all, `None` is returned.
+   * <p>
+   * UIs shall call the function after a reasonable time after app start,
+   * when most relays have reported the information they have, say 30 seconds.
+   * After that, once a day.
+   * (it is accepted if by the simple approach an update message is delayed.
+   * an event was considered, but that seemed more complex for few benefit:
+   * as we do not know if "late" relays will report "better" versions,
+   * also there we would work with timeouts etc.)
+   * <p>
+   * If the reported `version_integer` is larger than the running app version,
+   * the UI shall report to the user, that an update is available,
+   * and, if possible, offer a direct update by the given URL.
+   * <p>
+   * Security note: consumers need to verify themselves
+   * that downloaded app files are valid before installing them.
+   */
+  public AppSource getAppVersion(String clientId, String sourceId) throws RpcException {
+    return transport.callForResult(new TypeReference<AppSource>(){}, "get_app_version", mapper.valueToTree(clientId), mapper.valueToTree(sourceId));
   }
 
 }

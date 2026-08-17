@@ -703,7 +703,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Použiť iný server</string>
     <string name="instant_onboarding_other_server">Zoznam serverov Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Vytvoriť účet na pridanie sa ku skupine „%1$s“.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Vytvoriť účet aby ste mohli konverzovať s používateľom %1$s.</string>
@@ -804,6 +804,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Poslať %1$d súbory do konverzácie „%2$s“?</string>
     <string name="ask_send_files_to_selected_chats">Poslať %1$d súbor(y) do %2$d konverzácií?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Ak pošlete viacero videí naraz, budú odoslané v pôvodnej podobe, čo môže znamenať veľký objem dát. Ak ich chcete zmenšiť a ušetriť dáta, môžete každé video poslať v samostatnej správe.)</string>
     <string name="share_text_multiple_chats">Odoslať tento text do %1$d konverzácií?\n\n„%2$s“</string>
     <string name="share_abort">Zdieľanie bolo prerušené z dôvodu chýbajúcich povolení.</string>

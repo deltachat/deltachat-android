@@ -668,7 +668,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Usa un altre servidor</string>
     <string name="instant_onboarding_other_server">Llista els servidors chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Creeu un perfil per unir-vos al grup \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Crea un perfil per a xatejar amb %1$s</string>
@@ -769,6 +769,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Voleu enviar %1$d fitxers a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Voleu enviar %1$d fitxer(s) a %2$d xats?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Els vídeos s\'envien en el format original, fitxers grans. Per a enviar vídeos en fitxers més petits, adjunteu-los per separat)</string>
     <string name="share_text_multiple_chats">Voleu enviar aquest text a %1$d xats?\n\n«%2$s»</string>
     <string name="share_abort">S\'ha avortat la compartició per falta de permisos.</string>
