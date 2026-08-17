@@ -40,7 +40,6 @@ public final class WebRtcHolder {
     FILLING,
     CONFIRMED,
     EMPTY,
-    PARTIAL,
   }
 
   // This is the mechanism itself. Also, there is no actual leak:
@@ -83,7 +82,7 @@ public final class WebRtcHolder {
   }
 
   private boolean isSettled() {
-    return state == State.CONFIRMED || state == State.EMPTY || state == State.PARTIAL;
+    return state == State.CONFIRMED || state == State.EMPTY;
   }
 
   public void awaitSettled(final Runnable callback) {
@@ -150,20 +149,16 @@ public final class WebRtcHolder {
     }
   }
 
-  private void handleFillFinished(int count, String error, boolean stillHolding) {
-    Util.assertMainThread();
+  private void handleFillFinished(String result, String reason) {
     if (state != State.FILLING) {
       return;
     }
-    if (error == null) {
+    if ("confirmed".equals(result)) {
       state = State.CONFIRMED;
-      Log.i(TAG, "Confirmed, holding " + count + " connections");
-    } else if (stillHolding) {
-      state = State.PARTIAL;
-      Log.w(TAG, "Holding " + count + " connections but not the whole budget: " + error);
+      Log.i(TAG, "Confirmed, holding the whole budget");
     } else {
       state = State.EMPTY;
-      Log.w(TAG, "Fill failed after " + count + " connections, released: " + error);
+      Log.w(TAG, "Released: " + reason);
       destroyWebView();
     }
     List<Runnable> pending = new ArrayList<>(waiters);
@@ -199,8 +194,8 @@ public final class WebRtcHolder {
 
   private class HolderJSApi {
     @JavascriptInterface
-    public void onFillFinished(final int count, final String error, final boolean stillHolding) {
-      Util.runOnMain(() -> handleFillFinished(count, error, stillHolding));
+    public void onFillFinished(final String result, final String reason) {
+      Util.runOnMain(() -> handleFillFinished(result, reason));
     }
   }
 }
