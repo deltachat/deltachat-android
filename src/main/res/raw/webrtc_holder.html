@@ -51,13 +51,7 @@
           }
           return false;
         };
-
-        if (!(await fillUntilRejected())) {
-          const cl = connections.length;
-          release();
-          HolderJSApi.onFillFinished(cl, "no connection limit enforced", false);
-          return;
-        }
+        await fillUntilRejected();
 
         // We now hold every slot that was available. If that is fewer than the known capacity,
         // something else still holds the rest.
