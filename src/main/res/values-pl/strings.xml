@@ -704,8 +704,8 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Użyj innego serwera</string>
     <string name="instant_onboarding_other_server">Lista serwerów Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
-    <string name="instant_onboarding_group_info">Tworzy profil, aby dołączyć do grupy „%1$s”.</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
+    <string name="instant_onboarding_group_info">Tworzy profil, aby dołączyć do „%1$s”.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Tworzy profil, aby rozmawiać z „%1$s”.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
@@ -805,6 +805,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Wysłać %1$d pliki do „%2$s”?</string>
     <string name="ask_send_files_to_selected_chats">Wysłać %1$d pliki do %2$d czatów?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Wysyłanie wielu filmów spowoduje wysłanie ich w stanie „jak są”, co może być duże. Aby je zmniejszyć i zaoszczędzić dane, możesz wysłać każdy film w osobnej wiadomości)</string>
     <string name="share_text_multiple_chats">Wysłać ten tekst do %1$d czatów?\n\n\"%2$s\"</string>
     <string name="share_abort">Udostępnianie zostało przerwane z powodu brakujących uprawnień.</string>

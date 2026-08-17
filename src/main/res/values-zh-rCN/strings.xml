@@ -650,7 +650,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">使用其他服务器</string>
     <string name="instant_onboarding_other_server">列出聊天邮件服务器</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">创建个人资料加入“%1$s” 群。</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">创建个人资料和 %1$s 聊天</string>
@@ -751,6 +751,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">发送 %1$d 个文件到“%2$s”？</string>
     <string name="ask_send_files_to_selected_chats">发送 %1$d 个文件到 %2$d 个聊天？</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">（发送多个视频将按原样发送，文件可能很大。为了减小文件体积并节省流量，您可以将每个视频单独发送一条消息。）</string>
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>

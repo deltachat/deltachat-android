@@ -1,5 +1,11 @@
 # Delta Chat Android Changelog
 
+## Next
+
+* Fix multi-device synchronization of read messages even if "Read Receipts" are disabled
+* Update translations
+* Update to core 2.58.0
+
 ## v2.58.0
 2026-08
 

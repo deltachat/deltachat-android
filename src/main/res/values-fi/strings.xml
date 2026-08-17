@@ -5,6 +5,10 @@
     <string name="ok">OK</string>
     <string name="cancel">Peruuta</string>
     <string name="clear_search">Tyhjennä haku</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Linkki</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skannaa</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
     <string name="select">Valitse</string>
@@ -21,6 +25,8 @@
     <string name="downloading">Ladataan</string>
     <string name="open_attachment">Avaa liite</string>
     <string name="join">Liity</string>
+    <string name="join_group">Liity ryhmään</string>
+    <string name="join_channel">Liity kanavalle</string>
     <string name="rejoin">Liity uudelleen</string>
     <string name="delete">Poista</string>
     <string name="info">Lisätietoja</string>
@@ -35,25 +41,40 @@
     <string name="later">Myöhemmin</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Lähetä uudelleen</string>
+    <string name="edited">Muokattu</string>
+    <string name="edit_message">Muokkaa viestiä</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
     <string name="archive">Arkistoi</string>
     <!-- Verb "to unarchive", as in "remove a chat from the archive", opposite of the previous string -->
     <string name="unarchive">Poista arkistosta</string>
     <!-- Verb "to mute". used to mute a chat, so that it is silenced e.g. does not make noise or cause notifications -->
     <string name="mute">Mykistä</string>
+    <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
+    <string name="muted">Mykistetty</string>
     <string name="ephemeral_messages">Katoavat viestit</string>
     <string name="ephemeral_messages_hint">Nämä asetukset pätevät kaikkiin Delta Chat -käyttäjiin. He voivat kuitenkin kopioida, tallentaa ja välittää viestejä tai käyttää toisia sähköpostisovelluksia.</string>
     <string name="save">Tallenna</string>
     <string name="chat">Keskustelu</string>
     <string name="media">Media</string>
+    <string name="apps_and_media">Sovellukset &amp; media</string>
     <string name="profile">Profiili</string>
+    <!-- deprecated -->
+    <string name="all_profiles">Kaikki profiilit</string>
+    <!-- deprecated -->
+    <string name="current_profile">Nykyinen profiili</string>
     <string name="main_menu">Päävalikko</string>
     <string name="start_chat">Aloita keskustelu</string>
     <string name="show_full_message">Näytä koko viesti...</string>
     <!-- Stay short here, say ~16 characters. The source string could also be "All Read", maybe that hint can make translations easier :) -->
     <string name="mark_all_as_read">Merkitse luetuksi</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_read">Merkitse luetuksi</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Luettu</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Merkitse lukemattomaksi</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Lukematon</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ladataan...</string>
     <string name="hide">Piilota</string>
@@ -74,11 +95,14 @@
     <string name="offline">Ei verkkoyhteyttä</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Seuraava</string>
+    <string name="warning">Varoitus</string>
     <string name="error">Virhe</string>
     <string name="error_x">Virhe: %1$s</string>
     <string name="no_app_to_handle_data">Tiedoston avaamiseen sopivaa sovellusta ei löydetty.</string>
     <string name="no_browser_installed">Selainta ei asennettu.</string>
     <string name="file_not_found">%1$s ei löytynyt. </string>
+    <!-- the placeholder will be replaced by the name of a file -->
+    <string name="cannot_save_file">Tiedostoa %1$s ei voitu tallentaa.</string>
     <string name="copied_to_clipboard">Kopioitu leikepöydälle</string>
     <string name="contacts_headline">Yhteystiedot</string>
     <string name="email_address">Sähköpostiosoite</string>
@@ -99,6 +123,13 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Nähty viimeksi %1$s</string>
     <string name="last_seen_unknown">Nähty viimeksi: ei tiedossa</string>
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">%d minuutin kesto</item>
+        <item quantity="other">%d minuutin kesto</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Alle yksi minuutti</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minuutti</item>
@@ -122,6 +153,10 @@
         <item quantity="one">%d viesti</item>
         <item quantity="other">%d viestiä</item>
     </plurals>
+    <plurals name="n_reactions">
+        <item quantity="one">%d reaktio</item>
+        <item quantity="other">%d reaktiota</item>
+    </plurals>
     <plurals name="n_members">
         <item quantity="one">%d jäsen</item>
         <item quantity="other">%d jäsentä</item>
@@ -135,6 +170,8 @@
         <item quantity="one">%d valittu</item>
         <item quantity="other">%d valittu</item>
     </plurals>
+    <string name="selected_colon">Valittu:</string>
+    <string name="selected">Valittu</string>
     <string name="self">Minä</string>
     <string name="draft">Luonnos</string>
     <string name="image">Kuva</string>
@@ -148,6 +185,8 @@
     <string name="add_stickers_instructions">Saat lisättyä tarroja valitsemalla \"Avaa tarrakansio\", luomalla alikansion tarrakokoelmallesi ja raahaamalla tarratiedostosi sinne</string>
     <!-- deprecated -->
     <string name="open_sticker_folder">Avaa tarrakansio</string>
+    <string name="ask_add_sticker_to_collection">Lisätäänkö tämä tarra kokoelmaan?</string>
+    <string name="ask_delete_sticker">Poistetaanko tämä tarra?</string>
     <string name="images">Kuvat</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Äänite</string>
@@ -159,7 +198,11 @@
     <string name="video">Video</string>
     <string name="documents">Asiakirjat</string>
     <string name="contact">Yhteystieto</string>
+    <string name="bot">Botti</string>
     <string name="camera">Kamera</string>
+    <string name="front_camera">Etukamera</string>
+    <string name="back_camera">Takakamera</string>
+    <string name="microphone">Mikrofoni</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kuvaa</string>
     <!-- Switch eg. from front to back camera -->
@@ -171,10 +214,23 @@
     <string name="images_and_videos">Kuvat ja videot</string>
     <string name="file">Tiedosto</string>
     <string name="files">Tiedostot</string>
+    <string name="files_attach_hint">Lähetä alkuperäiset tiedostot ja pakkaamattomat kuvat</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Valitse tiedostoista</string>
+    <string name="choose_from_gallery">Valitse galleriasta</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Sovellus</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Sovellukset</string>
+    <string name="webxdc_store_url">Sovellusvalitsimen URL-osoite</string>
+    <string name="games">Pelit</string>
+    <string name="tools">Työkalut</string>
+    <string name="app_size">Koko</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
+    <string name="app_date_published">Julkaistu</string>
+    <string name="add_to_chat">Lisää keskusteluun</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Selaa</string>
     <string name="unknown">Tuntematon</string>
 
     <string name="green">Vihreä</string>
@@ -202,7 +258,27 @@
     <string name="new_classic_contact_explain">Manuaalisesti lisättyjä yhteystietoja voidaan käyttää tavanomaisiin sähköposteihin ja niiden päästä-päähän salausta ei ole taattu.</string>
     <string name="menu_new_chat">Uusi keskustelu</string>
     <string name="menu_new_group">Uusi ryhmä</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Aloita keskustelu…</string>
     <string name="clone_chat">Kloonaa keskustelu</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanava</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanavat</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Uusi kanava</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanavan nimi</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">Nähty %d kerran</item>
+        <item quantity="other">Nähty %d kertaa</item>
+    </plurals>
+    <string name="email">Sähköposti</string>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Uusi sähköposti</string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">Aihe</string>
     <string name="menu_send">Lähetä</string>
     <string name="menu_toggle_keyboard">Näytä emoji-näppäimistö</string>
     <string name="menu_edit_group">Muokkaa ryhmää</string>
@@ -213,6 +289,7 @@
     <string name="menu_unarchive_chat">Siirrä keskustelu pois arkistosta</string>
     <string name="menu_add_attachment">Lisää liite</string>
     <string name="menu_leave_group">Poistu ryhmästä</string>
+    <string name="menu_leave_channel">Poistu kanavalta</string>
     <string name="menu_delete_chat">Poista keskustelu</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Tyhjennä keskustelu</string>
@@ -220,6 +297,10 @@
     <string name="menu_delete_location">Poista tämä sijainti?</string>
     <string name="menu_message_details">Viestin tiedot</string>
     <string name="menu_copy_to_clipboard">Kopioi leikepöydälle</string>
+    <string name="share_invite_link">Jaa kutsulinkki</string>
+    <string name="invite_friends">Kutsu kavereita</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Ota yhteys Delta Chatin kautta:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Kopioi valinta</string>
     <string name="menu_copy_link_to_clipboard">Kopioi linkki</string>
     <string name="menu_copy_text_to_clipboard">Kopioi teksti</string>
@@ -234,6 +315,7 @@
     <string name="menu_export_attachment">Vie liite</string>
     <string name="menu_export_attachments">Vie liitteet</string>
     <string name="menu_all_media">Kaikki media</string>
+    <string name="all_apps_and_media">Kaikki sovellukset &amp; media</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Näytä keskustelussa</string>
     <string name="show_app_in_chat">Näytä sovellus keskustelussa</string>
@@ -304,6 +386,59 @@
     </plurals>
     <string name="file_saved_to">Tiedosto tallennettu \"%1$s\".</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Soita</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_audio_call">Äänipuhelu</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_video_call">Videopuhelu</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Vastaa</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Älä vastaa</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Lopeta puhelu</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Äänipuhelu</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videopuhelu</string>
+    <string name="call_initializing">Alustetaan…</string>
+    <string name="call_incoming">Saapuva puhelu</string>
+    <string name="call_ringing">Soitetaan…</string>
+    <string name="call_reconnecting">Yhdistetään uudelleen…</string>
+    <string name="call_ended">Puhelu päättyi</string>
+    <string name="call_failed">Puhelu epäonnistui</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="outgoing_audio_call">Lähtevä äänipuhelu</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="outgoing_video_call">Lähtevä videopuhelu</string>
+    <!-- deprecated, use "Audio call" instead -->
+    <string name="incoming_audio_call">Saapuva äänipuhelu</string>
+    <!-- deprecated, use "Video call" instead -->
+    <string name="incoming_video_call">Saapuva videopuhelu</string>
+    <string name="missed_call">Vastaamaton puhelu</string>
+    <string name="already_in_call">Puhelu on jo käynnissä</string>
+    <string name="call_back">Soita takaisin</string>
+    <string name="call_answered_elsewhere">Puheluun vastattu toisella laitteella</string>
+    <string name="call_requires_camera_permission">Kameran käyttöoikeus vaaditaan videopuheluita varten</string>
+    <string name="call_requires_mic_permission">Mikrofonin käyttöoikeus vaaditaan puheluja varten</string>
+    <string name="call_grant_mic_permission">Napauta antaaksesi mikrofonin käyttöoikeuden</string>
+    <string name="call_requires_connection">Puhelua ei voitu aloittaa. Varmista, että laite on yhdistetty Internetiin, ja yritä uudelleen.</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Puhelu henkilön %1$s kanssa</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">Soitetaan %1$s…</string>
+    <string name="audio_output">Äänen ulostulo</string>
+
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Haluatko varmasti poistua?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Poistetaanko %d keskustelu?</item>
+        <item quantity="other">Poistetaanko %d keskustelua?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Poistetaanko keskustelu \"%1$s\"?</string>
+    <string name="ask_delete_message">Poistetaanko tämä viesti?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Poista %d viesti?</item>
         <item quantity="other">Poista %d viestiä?</item>
@@ -319,6 +454,8 @@
     <string name="ask_start_chat_with">Aloita keskustelu yhteystiedon %1$s kanssa?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Poista %1$s ryhmästä?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Poistetaanko %1$s kanavalta?</string>
     <string name="open_url_confirmation">Haluatko avata tämän linkin?</string>
 
     <!-- contact list -->
@@ -395,6 +532,9 @@
     <string name="search_files">Hae tiedostoja</string>
     <string name="search_explain">Etsi keskusteluja, yhteystietoja ja viestejä</string>
     <string name="search_no_result_for_x">Ei tuloksia haulle \"%s\"</string>
+    <!-- Adjective, as in "Show Unread Messages" -->
+    <string name="search_unread">Lukematon</string>
+
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">Ryhmän nimi</string>
     <string name="group_avatar">Ryhmän kuva</string>
@@ -403,10 +543,13 @@
     <string name="group_create_button">Luo ryhmä</string>
     <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">Anna ryhmän nimi</string>
+    <string name="please_enter_chat_name">Syötä nimi.</string>
     <string name="group_add_members">Lisää jäseniä</string>
     <string name="group_self_not_in_group">Sinun täytyy olla ryhmän jäsen suorittaaksesi tämän toiminnon.</string>
     <string name="profile_encryption">Salaus</string>
     <string name="profile_shared_chats">Jaetut keskustelut</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Aiemmat jäsenet</string>
     <string name="tab_contact">Yhteystieto</string>
     <string name="tab_group">Ryhmä</string>
     <string name="tab_gallery">Galleria</string>
@@ -420,6 +563,7 @@
     <string name="tab_audio_empty_hint">Tässä keskustelussa jaetut äänitiedostot ja -viestit näkyvät tässä.</string>
     <string name="tab_webxdc_empty_hint">Keskustelussa jaetut yksityiset sovellukset näkyvät tässä.</string>
     <string name="tab_all_media_empty_hint">Kun keskusteluissa jaetaan mediaa, se tulee näkymään täällä.</string>
+    <string name="all_files_empty_hint">Asiakirjat ja muut keskusteluihin liitetyt tiedostot näkyvät tässä.</string>
     <string name="all_apps_empty_hint">Kaikissa keskusteluissa jaetut yksityiset sovellukset näkyvät tässä.</string>
     <string name="media_preview">Median esikatselu</string>
     <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
@@ -491,7 +635,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Käytä toista palvelinta</string>
     <string name="instant_onboarding_other_server">Listaa chatmail -palvelimet</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Liity ryhmään \"%1$s\" luomalla profiili.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Keskustele %1$s kanssa luomalla profiili.</string>
@@ -499,6 +643,11 @@
     <string name="instant_onboarding_confirm_contact">Haluatko luoda uuden profiilin ja aloittaa keskustelun %1$s kanssa?</string>
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
     <string name="instant_onboarding_confirm_group">Haluatko luoda uuden profiilin ja liittyä ryhmään \"%1$s\"?</string>
+
+    <string name="team">Tiimi</string>
+    <string name="team_profile">Tiimiprofiili</string>
+    <string name="team_name">Tiimin nimi</string>
+    <string name="create_team_profile">Luo tiimiprofiili</string>
 
     <string name="welcome_chat_over_email">Turvallinen hajautettu keskustelu</string>
     <string name="scan_invitation_code">Skannaa kutsukoodi</string>
@@ -514,6 +663,20 @@
     <string name="login_smtp_server">SMTP -palvelin</string>
     <string name="login_smtp_port">SMTP -portti</string>
     <string name="login_smtp_security">SMTP -turvallisuusprotokolla</string>
+    <!-- the word "Proxy" might be left untranslated unless the destination language has a well-known term for a "Proxy Server", acting intermediary between the app and the server -->
+    <string name="proxy_settings">Välityspalvelin</string>
+    <string name="proxy_use_proxy">Käytä välityspalvelinta</string>
+    <string name="proxy_add">Lisää välityspalvelin</string>
+    <string name="proxy_add_explain">Tuetut välityspalvelimen tyypit: HTTP(S), SOCKS5 ja Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Kirjoita välityspalvelimen linkki tähän</string>
+    <string name="proxy_invalid">Virheellinen tai ei-tuettu välityspalvelin</string>
+    <string name="proxy_list_header">Tallennetut välityspalvelimet</string>
+    <string name="proxy_delete">Poista välityspalvelin</string>
+    <string name="proxy_delete_explain">Poistetaanko välityspalvelin \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Haluatko käyttää välityspalvelinta \"%1$s\"?</string>
+    <string name="proxy_share_explain">Kaverisi voivat lisätä tämän välityspalvelimen skannaamalla QR-koodin.</string>
+    <string name="proxy_enabled">Välityspalvelin otettu käyttöön</string>
+    <string name="proxy_enabled_hint">Käytät välityspalvelinta. Jos sinulla on yhdistämisongelmia, kokeile käyttää toista välityspalvelinta.</string>
     <string name="login_certificate_checks">Varmenteiden tarkastus</string>
     <string name="login_error_mail">Anna kelvollinen sähköpostiosoite</string>
     <string name="login_error_server">Anna kelvollinen palvelin tai IP-osoite</string>
@@ -528,6 +691,11 @@
     <string name="accept_invalid_certificates">Hyväksy rikkinäiset varmenteet</string>
     <string name="switch_account">Vaihda profiilia</string>
     <string name="add_account">Lisää profiili</string>
+    <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
+    <string name="profile_tag">Profiilin kutsumanimi</string>
+    <string name="profile_tag_hint">esim. Perhe, Työ</string>
+    <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
+    <string name="move_to_top">Siirrä ylimmäiseksi</string>
     <string name="delete_account">Poista profiili</string>
     <string name="delete_account_ask">Haluatko varmasti poistaa profiilisi tiedot?</string>
     <string name="delete_account_explain_with_name">Profiilin \"%s\" kaikki tiedot tullaan poistamaan tältä laitteelta, sisältäen päästä-päähän salauksen asetukset, yhteystiedot, keskustelut, viestit ja median. Tätä toimenpidettä ei voi peruuttaa.</string>
@@ -541,6 +709,8 @@
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">Välitä...</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">Lähetetäänkö %1$d tiedostoa keskusteluun \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Lähetä %1$d tiedosto(a) %2$d keskusteluun?</string>
     <string name="share_text_multiple_chats">Lähetä tämä teksti %1$d keskusteluun?\n\n\"%2$s\"</string>
     <string name="share_abort">Jakaminen keskeytetty puuttuvien käyttöoikeuksien vuoksi.</string>
@@ -554,6 +724,7 @@
     <string name="pref_your_name">Nimesi</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
     <string name="pref_default_status_label">Bio</string>
+    <string name="chat_description">Kuvaus</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Lähetä Enter -näppäimellä</string>
     <string name="pref_enter_sends_explain">Enter-näppäimen painaminen lähettää viestin</string>
@@ -566,6 +737,10 @@
     <string name="pref_screen_security_explain">Pyydä järjestelmää estämään näyttökuvien ottaminen sovelluksessa ja äskettäiset -näkymässä</string>
     <string name="pref_screen_security_please_restart_hint">Näyttölukon käyttöönotto vaatii sovelluksen uudelleenkäynnistyksen.</string>
     <string name="pref_notifications">Ilmoitukset</string>
+    <string name="pref_mention_notifications">Maininnat</string>
+    <string name="pref_mention_notifications_explain">Mykistetyissä ryhmissä, ilmoita minulle osoitetuista viesteistä, kuten vastauksista tai reaktioista</string>
+    <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
+    <string name="pref_calls">Puhelut</string>
     <string name="pref_notifications_show">Näytä</string>
     <string name="pref_notifications_priority">Prioriteetti</string>
     <string name="pref_notifications_explain">Ota järjestelmäilmoitukset käyttöön uusista viesteistä</string>
@@ -583,6 +758,7 @@
     <string name="pref_appearance">Ulkonäkö</string>
     <string name="pref_theme">Teema</string>
     <string name="pref_language">Kieli</string>
+    <string name="pref_use_system_ui_font">Käytä järjestelmän fonttia</string>
     <string name="pref_incognito_keyboard">Yksityinen näppäimistö</string>
     <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
     <string name="pref_incognito_keyboard_explain">Pyydä näppäimistöä poistamaan henkilökohtaistettu oppiminen käytöstä</string>
@@ -601,6 +777,7 @@
     <string name="pref_backup">Varmuuskopiointi</string>
     <string name="pref_backup_explain">Varmuuskopioi keskustelut ulkoiseen tallennustilaan</string>
     <string name="pref_backup_export_explain">Varmuuskopio auttaa siirtämään asennuksen tälle tai toiselle laitteelle.\n\nVarmuuskopio sisältää kaikki viestit, yhteystiedot ja keskustelut sekä päästä-päähän salauksen Autocrypt -tiedot. Pidä varmuuskopiotiedosto turvallisessa paikassa tai poista se heti kun mahdollista.</string>
+    <string name="pref_backup_export_this">Vie tämä profiili</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Vie kaikki %1$d profiilia</string>
     <string name="pref_backup_export_start_button">Aloita varmuuskopiointi</string>
@@ -692,9 +869,13 @@
     <string name="group_name_changed_by_you">Ryhmän nimi vaihdettu: \"%1$s\" --> \"%2$s\" minun toimestani.</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
     <string name="group_name_changed_by_other">Ryhmän nimi vaihdettu: \"%1$s\" --> \"%2$s\" käyttäjän %3$s toimesta.</string>
+    <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
+    <string name="channel_name_changed">Kanavan \"%1$s\" uudeksi nimeksi asetettu \"%2$s\".</string>
     <string name="group_image_changed_by_you">Ryhmän kuva vaihdettu minun toimestani.</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
     <string name="group_image_changed_by_other">Ryhmän kuva vaihdettu käyttäjän %1$s toimesta.</string>
+    <string name="channel_image_changed">Kanavan kuva vaihdettu.</string>
+    <string name="chat_description_changed_by_you">Muutit keskustelun kuvausta.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s lisätty.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
@@ -707,6 +888,11 @@
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Jäsen %1$s poistettu</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="group_left_by_you">Lähdit ryhmästä.</string>
+    <!-- "left" in the meaning of "exited". -->
+    <string name="channel_left_by_you">Lähdit kanavalta.</string>
+    <string name="you_joined_the_channel">Liityit kanavalle.</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s poistui ryhmästä.</string>
     <string name="group_image_deleted_by_you">Ryhmän kuva poistettu minun toimestani.</string>
@@ -771,6 +957,7 @@
     <string name="qrscan_hint_desktop">Siirrä QR koodi kameraan</string>
     <string name="qrscan_failed">QR-koodia ei voitu selvittää</string>
     <string name="qrscan_ask_join_group">Haluatko liittyä ryhmään \"%1$s\"?</string>
+    <string name="qrscan_ask_join_channel">Haluatko liittyä kanavalle \"%1$s\"?</string>
     <string name="qrscan_fingerprint_mismatch">Skannattu sormenjälki ei vastaa viimeksi nähtyä %1$s.</string>
     <string name="qrscan_no_addr_found">Tämä QR-koodi sisältää sormenjäljen mutta ei sähköpostiosoitetta.\n\nOffline-varmentamista varten tulee ensin luoda salattu yhteys vastaanottajaan.</string>
     <string name="qrscan_contains_text">Skannattu QR-koodin teksti:\n\n%1$s</string>
@@ -788,6 +975,7 @@
     <string name="qrshow_join_group_title">QR-kutsukoodi</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the group name, eg. "Scan to join group \"Testing group\"" -->
     <string name="qrshow_join_group_hint">Skannaa liittyäksesi ryhmään \"%1$s\"</string>
+    <string name="qrshow_join_channel_hint">Skannaa liittyäksesi kanavalle \"%1$s\"</string>
     <string name="qrshow_join_contact_title">QR-kutsukoodi</string>
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skannaa aloittaaksesi keskustelun käyttäjän %1$s kanssa</string>
@@ -811,6 +999,9 @@
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Keskustelussa %1$s on jo luonnos. Haluatko korvata sen?</string>
     <string name="mailto_link_could_not_be_decoded">mailto-linkkiä ei voitu selvittää: %1$s</string>
+    <string name="remove_quote">Poista lainaus</string>
+    <string name="remove_attachment">Poista liite</string>
+
     <!-- notifications -->
     <string name="notify_reply_button">Vastaa</string>
     <string name="notify_new_message">Uusi viesti</string>
@@ -826,6 +1017,8 @@
     <string name="new_messages_body">Sinulle on uusia viestejä</string>
     <string name="n_messages_in_m_chats">%1$d viestiä %2$d:ssä keskustelussa</string>
 
+    <!-- location streaming -->
+    <string name="location_streaming_notification_text">Jaat sijaintisi</string>
     <!-- permissions -->
     <string name="perm_required_title">Pääsylupa vaaditaan</string>
     <string name="perm_continue">Jatka</string>
@@ -861,10 +1054,13 @@
     <string name="global_menu_view_developer_desktop">Kehittäjä</string>
     <string name="global_menu_view_developer_tools_desktop">Kehittäjätyökalut</string>
     <string name="global_menu_help_desktop">Ohje</string>
+    <string name="delta_chat_homepage">Delta Chatin sivusto</string>
+    <string name="contribute">Osallistu</string>
     <string name="global_menu_help_report_desktop">Ilmoita ongelma</string>
     <string name="global_menu_help_about_desktop">Tietoja Delta Chatista</string>
     <string name="global_menu_file_open_desktop">Avaa Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Pienennä</string>
+    <string name="no_account_selected">Valitse profiili tai luo uusi profiili</string>
     <string name="no_chat_selected_suggestion_desktop">Valitse tai luo keskustelu</string>
     <string name="write_message_desktop">Kirjoita viesti</string>
     <string name="encryption_info_title_desktop">Salaustiedot</string>
@@ -886,6 +1082,12 @@
     <string name="show_window">Näytä ikkuna</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Näppäinkomennot</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="navigation_shortcut_section">Liikkuminen</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Viestin syöte</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Valittu viesti</string>
     <string name="switch_between_chats">Siirry keskustelusta toiseen</string>
     <string name="scroll_messages">Selaa viestejä</string>
     <!-- command to put the cursor to the search input field -->
@@ -905,6 +1107,9 @@
     <string name="a11y_message_context_menu_btn_label">Viestin toiminnot</string>
     <string name="a11y_background_preview_label">Esikatselu taustalla</string>
     <string name="a11y_disappearing_messages_activated">Viestien katoaminen päällä</string>
+    <!-- The placeholder will be replaced by a link, eg. "Open https://delta.chat". Used e.g. in for accessibility. -->
+    <string name="open_link">Avaa %1$s</string>
+
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Lopeta sijainnin jakaminen</string>
     <string name="a11y_voice_message_hint_ios">Nauhoittamisen jälkeen napauta kahdesti lähettääksesi. Hylätäksesi nauhoitteen pyyhkäise vasemmalta oikealle kahdella sormella.</string>
@@ -925,6 +1130,7 @@
     <string name="notifications_avg_minutes">Keskimäärin%1$d minuutin välein</string>
     <string name="notifications_avg_hours">Keskimäärin %1$d tunnin välein</string>
     <string name="last_check_at">Tarkistettu %1$s</string>
+    <string name="system_settings">Järjestelmän asetukset</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat käyttää kameraa kuvien ja videoiden kuvaamiseen ja lähettämiseen sekä QR-koodien skannaamiseen.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat tarvitsee oikeuden sijainnin tarkasteluun jakaakseen sijaintisi sallimallasi aikavälillä.</string>
