@@ -27,11 +27,6 @@
       };
 
       try {
-        if (typeof RTCPeerConnection === "undefined") {
-          HolderJSApi.onFillFinished(0, "RTCPeerConnection unavailable", false);
-          return;
-        }
-
         const cert = {
           certificates: [
             await RTCPeerConnection.generateCertificate({
