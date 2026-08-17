@@ -82,11 +82,6 @@
 
         if (blockedByHolder) {
           loadingProgress.style.display = "none";
-        } else {
-          await allocate();
-        }
-
-        if (blockedByHolder) {
           // The holder reported success, but verify it actually applies to this document in case
           // WebView's process model ever changed.
           let applied = false;
@@ -100,6 +95,8 @@
             loadingProgress.style.display = "";
             await allocate();
           }
+        } else {
+          await allocate();
         }
 
         try {
