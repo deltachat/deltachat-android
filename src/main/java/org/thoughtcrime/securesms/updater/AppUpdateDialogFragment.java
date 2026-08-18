@@ -62,11 +62,11 @@ public class AppUpdateDialogFragment extends DialogFragment {
 
   private Runnable pollRunnable;
 
-  public static void show(FragmentActivity activity, AppUpdate.LatestVersion latest) {
+  public static void show(FragmentActivity activity, String version, String downloadUrl) {
     AppUpdateDialogFragment f = new AppUpdateDialogFragment();
     Bundle args = new Bundle();
-    args.putString(ARG_URL, latest.downloadUrl);
-    args.putString(ARG_VERSION, latest.versionString);
+    args.putString(ARG_URL, downloadUrl);
+    args.putString(ARG_VERSION, version);
     f.setArguments(args);
     f.show(activity.getSupportFragmentManager(), "app_update_dialog");
   }
@@ -160,14 +160,14 @@ public class AppUpdateDialogFragment extends DialogFragment {
       return;
     }
 
+    Uri url = Uri.parse(requireArguments().getString(ARG_URL, ""));
     File stale = new File(dir, AppUpdate.APK_FILENAME);
     if (stale.exists() && !stale.delete()) {
       Log.w(TAG, "could not delete file " + stale);
     }
 
     try {
-      DownloadManager.Request request =
-          new DownloadManager.Request(Uri.parse(requireArguments().getString(ARG_URL)));
+      DownloadManager.Request request = new DownloadManager.Request(url);
       request.setTitle(getString(R.string.update_downloading, versionString));
       request.setDestinationInExternalFilesDir(
           appContext, Environment.DIRECTORY_DOWNLOADS, AppUpdate.APK_FILENAME);
