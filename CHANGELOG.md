@@ -3,6 +3,7 @@
 ## Next
 
 * Fix multi-device synchronization of read messages even if "Read Receipts" are disabled
+* Add self-updater for installations that are *not* installed from either Google Play or F-Droid
 * Update translations
 * Update to core 2.58.0
 

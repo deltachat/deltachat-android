@@ -74,6 +74,7 @@ import org.thoughtcrime.securesms.mms.StickerSlide;
 import org.thoughtcrime.securesms.mms.VcardSlide;
 import org.thoughtcrime.securesms.reactions.ReactionsConversationView;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.updater.AppUpdate;
 import org.thoughtcrime.securesms.util.Linkifier;
 import org.thoughtcrime.securesms.util.LongClickCopySpan;
 import org.thoughtcrime.securesms.util.LongClickMovementMethod;
@@ -515,6 +516,19 @@ public class ConversationItem extends BaseConversationItem {
           view -> {
             if (eventListener != null && batchSelected.isEmpty()) {
               eventListener.onShowFullClicked(messageRecord);
+            } else {
+              passthroughClickListener.onClick(view);
+            }
+          });
+    } else if (AppUpdate.isUpdateDeviceMsg(context, dcChat, messageRecord)) {
+      showFullButton.setVisibility(View.GONE);
+      msgActionButton.setVisibility(View.VISIBLE);
+      msgActionButton.setEnabled(true);
+      msgActionButton.setText(R.string.update_now);
+      msgActionButton.setOnClickListener(
+          view -> {
+            if (eventListener != null && batchSelected.isEmpty()) {
+              eventListener.onUpdateNowClicked(messageRecord);
             } else {
               passthroughClickListener.onClick(view);
             }

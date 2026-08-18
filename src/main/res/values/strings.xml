@@ -251,6 +251,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">White</string>
 
+    <string name="progress_percent">%1$d%%</string>
+
     <string name="zoom">Zoom</string>
     <string name="extra_small">Extra small</string>
     <string name="small">Small</string>
@@ -1271,4 +1273,9 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
+    <string name="update_available_msg">🎉 New version %1$s available. Tap this message to update and enjoy the new features</string>
+    <string name="update_downloading">Downloading %1$s …</string>
+    <string name="update_apk_mismatch">The downloaded apk does not match this app and will not be installed</string>
+    <string name="update_now">Update Now</string>
+    <string name="update_install_permission_explain">To install the update, please first allow Delta Chat to install apps in the system settings.</string>
 </resources>
