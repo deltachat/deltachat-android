@@ -26,7 +26,7 @@ public class AppUpdate {
   private static final String SOURCE_ID = "gplay";
   private static final String PLAY_STORE_PACKAGE = "com.android.vending";
 
-  private static final long CHECK_INTERVAL_MS = 24 * 60 * 60 * 1000L;
+  private static final long CHECK_INTERVAL_MS = 12 * 60 * 60 * 1000L;
 
   private static final String SEPARATOR = "\n";
 
