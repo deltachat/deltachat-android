@@ -104,6 +104,12 @@ public class AppUpdate {
   public static synchronized void cleanupUpdated(Context context) {
     try {
       StoredUpdate stored = StoredUpdate.load(context);
+      Log.i(
+          TAG,
+          "cleanupUpdated: stored="
+              + (stored == null ? "none" : stored.version)
+              + " running="
+              + BuildConfig.VERSION_CODE);
       if (stored == null || stored.version > BuildConfig.VERSION_CODE) return;
       deleteStoredMsg(context, stored);
       deleteDownloadedApk(context);
@@ -150,15 +156,27 @@ public class AppUpdate {
       }
 
       DcContext dcContext = DcHelper.getContext(context);
-      DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
-      msg.setText(context.getString(R.string.update_available_msg));
-      int msgId = dcContext.addDeviceMsg(null, msg);
+      int msgId =
+          dcContext.addDeviceMsg(
+              "update_" + version, makeUpdateMsg(context, dcContext, source.versionString));
+      if (msgId == 0) {
+        msgId =
+            dcContext.addDeviceMsg(
+                "update_" + version + "_" + System.currentTimeMillis(),
+                makeUpdateMsg(context, dcContext, source.versionString));
+      }
       new StoredUpdate(
               version, msgId, dcContext.getAccountId(), source.versionString, source.downloadUrl)
           .save(context);
     } catch (Exception e) {
       Log.e(TAG, "maybeCheckUpdate() failed", e);
     }
+  }
+
+  private static DcMsg makeUpdateMsg(Context context, DcContext dcContext, String versionString) {
+    DcMsg msg = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
+    msg.setText(context.getString(R.string.update_available_msg, versionString));
+    return msg;
   }
 
   private static void deleteStoredMsg(Context context, StoredUpdate stored) {
@@ -193,7 +211,6 @@ public class AppUpdate {
     StoredUpdate stored = StoredUpdate.load(context);
     return stored != null
         && stored.msgId != 0
-        && stored.version > BuildConfig.VERSION_CODE
         && dcChat.getAccountId() == stored.accountId
         && msg.getId() == stored.msgId
         && msg.getFromId() == DcContact.DC_CONTACT_ID_DEVICE;
