@@ -61,23 +61,43 @@
           ],
         };
 
-        console.log("WEBRTC-WG: allocating");
-        loadingProgress.value = 0;
-        while (connections.length < 500) {
-          try {
-            connections.push(new RTCPeerConnection(cert));
-            if (connections.length%50 == 0) {
-              loadingProgress.value = connections.length;
-              await new Promise((res) => setTimeout(res));
+        const allocate = async () => {
+          console.log("WEBRTC-WG: allocating");
+          loadingProgress.value = 0;
+          while (connections.length < 500) {
+            try {
+              connections.push(new RTCPeerConnection(cert));
+              if (connections.length%50 == 0) {
+                loadingProgress.value = connections.length;
+                await new Promise((res) => setTimeout(res));
+              }
+            } catch (error) {
+              new Array(1024*1024).fill(0);
+              await new Promise((res) => setTimeout(res, 500));
+              console.log("WEBRTC-WG: waiting for gc");
             }
-          } catch (error) {
-            loadingProgress.value++;
-            new Array(1024*1024).fill(0);
-            await new Promise((res) => setTimeout(res, 500));
-            console.log("WEBRTC-WG: waiting for gc");
           }
+          console.log("WEBRTC-WG: done");
+        };
+
+        if (blockedByHolder) {
+          loadingProgress.style.display = "none";
+          // The holder reported success, but verify it actually applies to this document in case
+          // WebView's process model ever changed.
+          let applied = false;
+          try {
+            connections.push(new RTCPeerConnection());
+          } catch (error) {
+            applied = true;
+          }
+          if (!applied) {
+            console.log("WEBRTC-WG: holder budget did not apply, filling locally");
+            loadingProgress.style.display = "";
+            await allocate();
+          }
+        } else {
+          await allocate();
         }
-        console.log("WEBRTC-WG: done");
 
         try {
           connections.push(new RTCPeerConnection());
@@ -93,8 +113,14 @@
               // Why `"*"`? See the comment below.
               sandboxedIframe.contentWindow.postMessage("performCheck", "*");
             };
-            /** @type {(e: MessageEvent) => void} */
-            const messageListener = (e) => {
+            let retry = null;
+            const finish = (result) => {
+              clearInterval(retry);
+              window.removeEventListener("message", messageListener);
+              resolve(result);
+            };
+            /** @type {(event: MessageEvent) => void} */
+            const messageListener = (event) => {
               // Checking `event.origin !== location.origin` just in case would be safer,
               // but `sandbox`ed iframes seem to send messages with `origin` set to `null`,
               // so we skip the check, relying on the fact that we don't actually load any
@@ -111,15 +137,15 @@
                   break;
                 }
                 case "result": {
-                  resolve(event.data.rtcpcCreationFailed);
-
                   sandboxedIframe.remove();
-                  window.removeEventListener("message", messageListener);
+                  finish(event.data.rtcpcCreationFailed);
                   break;
                 }
               }
             }
             window.addEventListener("message", messageListener);
+            retry = setInterval(askIframeToPerformCheck, 250);
+            setTimeout(() => finish(false), 10000);
             askIframeToPerformCheck();
           });
 
@@ -145,6 +171,7 @@
 
      const params = new URLSearchParams(document.location.search);
      const internetAccess = (params.get("i") || "0") === "1";
+     const blockedByHolder = (params.get("h") || "0") === "1";
      const href = params.get("href");
 
      if (internetAccess) {  // fill500 not needed, just load the frame
