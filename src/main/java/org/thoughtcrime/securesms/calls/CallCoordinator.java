@@ -34,7 +34,6 @@ import androidx.core.telecom.CallAttributesCompat;
 import androidx.core.telecom.CallControlResult;
 import androidx.core.telecom.CallControlScope;
 import androidx.core.telecom.CallEndpointCompat;
-import androidx.core.telecom.CallException;
 import androidx.core.telecom.CallsManager;
 import androidx.lifecycle.FlowLiveDataConversions;
 import androidx.lifecycle.LiveData;
@@ -127,6 +126,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   // Call metadata, single source of truth
   private boolean hasAutoSelectedEndpoint = false;
+  private volatile boolean telecomRegistered = false;
   private boolean pendingMediaCapture = false;
   private Observer<Boolean> answerMediaObserver;
   private final List<CallSession> sessions = new ArrayList<>();
@@ -151,7 +151,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     addEventListeners();
     createNotificationChannels();
-    registerTelecom();
+    ensureTelecomRegistered();
     createServiceConnection();
   }
 
@@ -196,19 +196,25 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     notificationManager.createNotificationChannel(missedChannel);
   }
 
-  private void registerTelecom() {
+  private boolean ensureTelecomRegistered() {
+    if (telecomRegistered) {
+      return true;
+    }
     try {
       int capabilities =
           CallsManager.CAPABILITY_BASELINE | CallsManager.CAPABILITY_SUPPORTS_VIDEO_CALLING;
       callsManager.registerAppWithTelecom(capabilities);
+      telecomRegistered = true;
       Log.d(TAG, "Successfully registered through Telecom");
     } catch (Exception e) {
       Log.e(TAG, "Failed to register with Telecom", e);
+      telecomRegistered = false;
     }
+    return telecomRegistered;
   }
 
-  private void disconnectTelecom(DisconnectCause cause) {
-    CallControlScope scope = activeSession != null ? activeSession.callControlScope : null;
+  private void disconnectTelecom(CallSession session, DisconnectCause cause) {
+    CallControlScope scope = session != null ? session.callControlScope : null;
     if (scope == null) {
       Log.d(TAG, "No active CallControlScope, skipping disconnect");
       return;
@@ -676,27 +682,19 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    if (callService != null) {
-      callService.stopRingtone();
-    }
+    CallSession session = activeSession;
+    notifyBackendCallEnded(session);
 
-    notifyBackendCallEnded();
-
+    DisconnectCause cause = null;
     if (!fromTelecom) {
-      DisconnectCause cause =
-          activeSession.isIncoming && !activeSession.answerInProgress
+      cause =
+          session.isIncoming && !session.answerInProgress
               ? new DisconnectCause(DisconnectCause.REJECTED)
               : new DisconnectCause(DisconnectCause.LOCAL);
-      disconnectTelecom(cause);
-    }
-
-    // End call on service
-    if (callService != null) {
-      callService.endCall();
     }
 
     // Cleanup
-    cleanupCall(activeSession.accId, activeSession.callId);
+    teardownSession(session, cause);
   }
 
   public synchronized void setAudioEnabled(boolean enabled) {
@@ -769,14 +767,14 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     }
   }
 
-  private synchronized void setupAudioEndpointCollection(CallControlScope scope) {
+  private synchronized void setupAudioEndpointCollection(
+      CallSession session, CallControlScope scope) {
     Log.d(TAG, "Setting up audio endpoint flow collection");
 
-    if (activeSession == null) {
+    if (session != activeSession) {
       Log.d(TAG, "No active session, skipping audio endpoint setup");
       return;
     }
-    final boolean startsWithVideo = activeSession.startsWithVideo;
 
     audioFlowScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
 
@@ -792,6 +790,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               "Available audio endpoints changed, count: " + (value != null ? value.size() : 0));
           availableAudioEndpoints.setValue(value);
 
+          if (session.endpointTask != null) {
+            mainHandler.removeCallbacks(session.endpointTask);
+            session.endpointTask = null;
+          }
+
           // Turns out the system Bluetooth/AudioService will trigger a second audio change
           // And Telecom tries to prevent it but doesn't always success, so a delayed
           // switch is still needed as a backup
@@ -799,11 +802,16 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             hasAutoSelectedEndpoint = true;
 
             if (value != null && !value.isEmpty()) {
-              final CallEndpointCompat finalPreferred =
-                  findPreferredEndpoint(value, startsWithVideo);
-
-              mainHandler.postDelayed(
+              session.endpointTask =
                   () -> {
+                    synchronized (CallCoordinator.this) {
+                      if (session != activeSession) {
+                        return;
+                      }
+                    }
+
+                    final CallEndpointCompat finalPreferred =
+                        findPreferredEndpoint(value, session.startsWithVideo);
                     if (finalPreferred != null) {
                       Log.d(TAG, "Auto-selecting endpoint: " + finalPreferred.getName());
                       requestAudioEndpointChange(finalPreferred);
@@ -815,11 +823,12 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
                     // The delay is to avoid a Telecom problem where at the beginning it will switch
                     // endpoints rapidly
                     startCurrentEndpointCollection(scope);
-                  },
-                  1000);
+                  };
+              mainHandler.postDelayed(session.endpointTask, 1000);
             }
           } else {
-            mainHandler.postDelayed(() -> startCurrentEndpointCollection(scope), 500);
+            session.endpointTask = () -> startCurrentEndpointCollection(scope);
+            mainHandler.postDelayed(session.endpointTask, 500);
           }
         });
   }
@@ -853,9 +862,13 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   // Request Audio Endpoint Change
   public synchronized void requestAudioEndpointChange(CallEndpointCompat endpoint) {
+    if (endpoint == null) {
+      return;
+    }
+
     Log.d(TAG, "Requesting audio endpoint change to: " + endpoint.getName());
 
-    if (activeSession.callControlScope == null) {
+    if (activeSession == null || activeSession.callControlScope == null) {
       Log.w(TAG, "No active call scope, cannot change endpoint");
       return;
     }
@@ -1084,21 +1097,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     // The call is still active on the other device.
     activeSession.hasNotifiedBackend = true;
 
-    if (callService != null) {
-      callService.stopRingtone();
-    }
-
     notificationManager.cancel(NOTIFICATION_ID_CALL);
 
     answeredElsewhere.postValue(true);
 
-    disconnectTelecom(new DisconnectCause(DisconnectCause.REMOTE));
-
-    if (callService != null) {
-      callService.endCall();
-    }
-
-    cleanupCall(activeSession.accId, activeSession.callId);
+    teardownSession(activeSession, new DisconnectCause(DisconnectCause.REMOTE));
   }
 
   private synchronized void onOutgoingCallAccepted(int accId, int callId, String answerSdp) {
@@ -1155,23 +1158,18 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         return;
       }
 
-      if (callService != null) {
-        callService.stopRingtone();
-      }
+      session.hasNotifiedBackend = true;
 
-      disconnectTelecom(new DisconnectCause(DisconnectCause.REMOTE));
+      shouldNotifyMissed =
+          session.isIncoming
+              && !session.answerInProgress
+              && session.chatId != null
+              && session.callId != null;
+      notifyAcc = session.accId;
+      notifyChat = shouldNotifyMissed ? session.chatId : 0;
+      notifyCall = shouldNotifyMissed ? session.callId : 0;
 
-      if (callService != null) {
-        callService.endCall();
-      }
-
-      shouldNotifyMissed = activeSession.isIncoming && !activeSession.answerInProgress;
-      notifyAcc = activeSession.accId;
-      notifyChat = activeSession.chatId;
-      notifyCall = activeSession.callId;
-
-      // Clear active states
-      cleanupCall(accId, callId);
+      teardownSession(session, new DisconnectCause(DisconnectCause.REMOTE));
     }
 
     if (shouldNotifyMissed) {
@@ -1185,44 +1183,38 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   private synchronized void handleConnectionEnded(PeerConnection.PeerConnectionState state) {
     Log.d(TAG, "handleConnectionEnded: " + state);
 
-    if (activeSession == null) {
+    CallSession session = activeSession;
+    if (session == null) {
       Log.w(TAG, "Call already ended or no active call");
       return;
     }
 
-    if (callService != null) {
-      callService.stopRingtone();
-    }
+    notifyBackendCallEnded(session);
 
-    notifyBackendCallEnded();
-
-    DisconnectCause cause;
-    if (state == PeerConnection.PeerConnectionState.FAILED) {
-      cause = new DisconnectCause(DisconnectCause.REMOTE, "PeerConnection failed");
-    } else {
-      cause = new DisconnectCause(DisconnectCause.LOCAL, "PeerConnection closed");
-    }
-    disconnectTelecom(cause);
-
-    if (callService != null) {
-      callService.endCall();
-    }
+    DisconnectCause cause =
+        state == PeerConnection.PeerConnectionState.FAILED
+            ? new DisconnectCause(DisconnectCause.REMOTE, "PeerConnection failed")
+            : new DisconnectCause(DisconnectCause.LOCAL, "PeerConnection closed");
 
     // Cleanup
-    if (hasActiveCall()) {
-      cleanupCall(activeSession.accId, activeSession.callId);
-    }
+    teardownSession(session, cause);
   }
 
-  /** Cleanup call state, used for clean up not initialized from backend events */
-  public synchronized void cleanupCall(int accId, int callId) {
-    Log.d(TAG, "cleanupCall: accId=" + accId + ", callId=" + callId);
-
-    CallSession session = findSession(accId, callId);
-    if (session == null) {
-      Log.d(TAG, "No matching session to clean up");
+  private synchronized void cleanupSession(CallSession session) {
+    if (!sessions.remove(session)) {
       return;
     }
+
+    if (session.endpointTask != null) {
+      mainHandler.removeCallbacks(session.endpointTask);
+      session.endpointTask = null;
+    }
+
+    if (session != activeSession) {
+      Log.d(TAG, "Cleaned up non-active session");
+      return;
+    }
+    activeSession = null;
 
     mainHandler.post(
         () -> {
@@ -1240,9 +1232,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
         Log.w(TAG, "stopForegroundAndDismiss failed", e);
       }
     }
-
-    sessions.remove(activeSession);
-    activeSession = null;
 
     this.activeCallViewModel = null;
     this.hasAutoSelectedEndpoint = false;
@@ -1290,23 +1279,23 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     Log.d(TAG, "Call cleanup complete");
   }
 
-  private synchronized void notifyBackendCallEnded() {
-    if (activeSession == null) {
-      Log.w(TAG, "No active call to notify backend about");
+  private synchronized void notifyBackendCallEnded(CallSession session) {
+    if (session == null) {
+      Log.w(TAG, "No call to notify backend about");
       return;
     }
-    if (activeSession.hasNotifiedBackend) {
+    if (session.hasNotifiedBackend) {
       Log.d(TAG, "Backend already notified of call end");
       return;
     }
 
-    if (activeSession.callId == null || activeSession.callId < 0) {
+    if (session.callId == null || session.callId < 0) {
       Log.w(TAG, "Cannot notify backend, invalid callId");
       return;
     }
-    activeSession.hasNotifiedBackend = true;
-    final int accId = activeSession.accId;
-    final int callId = activeSession.callId;
+    session.hasNotifiedBackend = true;
+    final int accId = session.accId;
+    final int callId = session.callId;
     new Thread(
             () -> {
               try {
@@ -1317,6 +1306,19 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               }
             })
         .start();
+  }
+
+  private synchronized void teardownSession(CallSession session, DisconnectCause cause) {
+    if (cause != null) {
+      disconnectTelecom(session, cause);
+    }
+
+    if (session == activeSession && callService != null) {
+      callService.stopRingtone();
+      callService.endCall();
+    }
+
+    cleanupSession(session);
   }
 
   private void resetLiveDataForNewCall() {
@@ -1370,8 +1372,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               displayIcon.postValue(calleeIcon);
             })
         .start();
-
-    session.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
 
     if (hasMicrophonePermission()) {
       startAndBindService();
@@ -1432,8 +1432,6 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     displayName.postValue(callerName);
 
-    session.preferredStartingEndpoint = getPreferredStartingEndpoint(startsWithVideo);
-
     return session;
   }
 
@@ -1446,6 +1444,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   private void addCallToTelecom(CallSession session, CallAttributesCompat callAttributes) {
+    if (!ensureTelecomRegistered()) {
+      Log.e(TAG, "Telecom registration failed, continue without it");
+      return;
+    }
+
     try {
       callsManager.addCall(
           callAttributes,
@@ -1500,7 +1503,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
               session.callControlScope = scope;
             }
             if (session == activeSession) {
-              mainHandler.post(() -> setupAudioEndpointCollection(scope));
+              mainHandler.post(() -> setupAudioEndpointCollection(session, scope));
             }
             return Unit.INSTANCE;
           },
@@ -1513,11 +1516,20 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
             @Override
             public void resumeWith(@NonNull Object result) {
-              Log.d(TAG, "addCall completed");
+              if (result instanceof kotlin.Result.Failure) {
+                Log.e(TAG, "addCall failed", ((kotlin.Result.Failure) result).exception);
+                telecomRegistered = false;
+                synchronized (CallCoordinator.this) {
+                  session.callControlScope = null;
+                }
+              } else {
+                Log.d(TAG, "addCall completed");
+              }
             }
           });
-    } catch (CallException e) {
+    } catch (Exception e) {
       Log.e(TAG, "Failed to add call to Telecom", e);
+      telecomRegistered = false;
     }
   }
 
@@ -1532,7 +1544,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
             : CallAttributesCompat.DIRECTION_OUTGOING,
         CallAttributesCompat.CALL_TYPE_VIDEO_CALL,
         CallAttributesCompat.SUPPORTS_SET_INACTIVE,
-        session.preferredStartingEndpoint);
+        getPreferredStartingEndpoint(session.startsWithVideo));
   }
 
   public synchronized void ensureServiceStartedFromForeground() {
