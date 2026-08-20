@@ -679,8 +679,7 @@
 
     <string name="team">Equipo</string>
     <string name="team_profile">Perfil do equipo</string>
-    <string name="team_profile_explain">Un \"perfil do equipo\" é xestionado colectivamente por un conxunto de persoas dunha organización.
-Os perfís de equipo son experimentais e están expostos a cambios.</string>
+    <string name="team_profile_explain">Un \"perfil do equipo\" é xestionado colectivamente por un conxunto de persoas dunha organización.\n\nOs perfís de equipo son experimentais e están expostos a cambios.</string>
     <string name="team_name">Nome do equipo</string>
     <string name="create_team_profile">Crear perfil do equipo</string>
 
@@ -731,8 +730,7 @@ Os perfís de equipo son experimentais e están expostos a cambios.</string>
     <string name="confirm_add_transport">Engadir este repetidor?</string>
     <string name="invalid_transport_qr">O código QR escaneado non contén un repetidor válido.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Eliminar repetidor \"%1$s\"?
-Antes da eliminación, será retirado gradualmente de modo que os seus contactos podan mudarse mainamente</string>
+    <string name="confirm_remove_relay_x">Eliminar repetidor \"%1$s\"?\n\nAntes da eliminación, será retirado gradualmente de modo que os seus contactos podan mudarse mainamente</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Eliminar o repetidor \"%1$s\"?\n\nOs contactos que só coñecen este retransmisor poden non contactar contigo ata que lles envíes unha nova mensaxe.\n\nEn caso de dúbida, ocúltao en lugar de eliminalo.</string>
     <string name="login_certificate_checks">Comprobacións do certificado</string>
@@ -963,16 +961,22 @@ Antes da eliminación, será retirado gradualmente de modo que os seus contactos
     <string name="chat_description_changed_by_other">Descrición da conversa modificada por %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added"> %1$s entrou no grupo.</string>
+    <string name="member_you_added">Engadíronte.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Engadiches a %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s engadiu a %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">Engadido/a por %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Eliminaches a %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$seliminou a %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">Borrado/a por %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Eliminouse a %1$s.</string>
+    <string name="member_you_removed">Borráronte.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Abandonaches o grupo.</string>
     <!-- "left" in the meaning of "exited". -->
