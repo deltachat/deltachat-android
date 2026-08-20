@@ -961,16 +961,22 @@
     <string name="chat_description_changed_by_other">De gespreksbeschrijving is aangepast door %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">‘%1$s’ is toegevoegd.</string>
+    <string name="member_you_added">Je bent toegevoegd.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Je hebt ‘%1$s’ toegevoegd.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">‘%1$s’ is toegevoegd door %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">Je bent toegevoegd door %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Je hebt ‘%1$s’ verwijderd.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">‘%1$s’ is verwijderd door %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">Je bent verwijderd door %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">‘%1$s’ is verwijderd.</string>
+    <string name="member_you_removed">Je bent verwijderd.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Je hebt de groep verlaten.</string>
     <!-- "left" in the meaning of "exited". -->
