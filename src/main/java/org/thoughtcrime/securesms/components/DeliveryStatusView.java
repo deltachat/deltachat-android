@@ -6,6 +6,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import androidx.annotation.NonNull;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.AccessibilityUtil;
 
@@ -20,6 +21,35 @@ public class DeliveryStatusView {
   public DeliveryStatusView(ImageView deliveryIndicator) {
     this.deliveryIndicator = deliveryIndicator;
     this.context = deliveryIndicator.getContext();
+    deliveryIndicator.setContentDescription(null);
+    deliveryIndicator.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+  }
+
+  public void setState(@NonNull MessageState state) {
+    switch (state) {
+      case DOWNLOADING:
+        setDownloading();
+        break;
+      case PREPARING:
+        setPreparing();
+        break;
+      case PENDING:
+        setPending();
+        break;
+      case SENT:
+        setSent();
+        break;
+      case READ:
+        setRead();
+        break;
+      case FAILED:
+        setFailed();
+        break;
+      case NONE:
+      default:
+        setNone();
+        break;
+    }
   }
 
   private void animatePrepare() {
@@ -69,46 +99,36 @@ public class DeliveryStatusView {
   public void setDownloading() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    deliveryIndicator.setContentDescription(context.getString(R.string.one_moment));
     animatePrepare();
   }
 
   public void setPreparing() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    deliveryIndicator.setContentDescription(
-        context.getString(R.string.a11y_delivery_status_sending));
     animatePrepare();
   }
 
   public void setPending() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sending);
-    deliveryIndicator.setContentDescription(
-        context.getString(R.string.a11y_delivery_status_sending));
     animateSending();
   }
 
   public void setSent() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_sent);
-    deliveryIndicator.setContentDescription(
-        context.getString(R.string.a11y_delivery_status_delivered));
     clearAnimation();
   }
 
   public void setRead() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_read);
-    deliveryIndicator.setContentDescription(context.getString(R.string.a11y_delivery_status_read));
     clearAnimation();
   }
 
   public void setFailed() {
     deliveryIndicator.setVisibility(View.VISIBLE);
     deliveryIndicator.setImageResource(R.drawable.ic_delivery_status_failed);
-    deliveryIndicator.setContentDescription(
-        context.getString(R.string.a11y_delivery_status_invalid));
     clearAnimation();
   }
 
@@ -122,12 +142,5 @@ public class DeliveryStatusView {
 
   public void resetTint() {
     deliveryIndicator.setColorFilter(null);
-  }
-
-  public String getDescription() {
-    if (deliveryIndicator.getVisibility() == View.VISIBLE) {
-      return deliveryIndicator.getContentDescription().toString();
-    }
-    return "";
   }
 }
