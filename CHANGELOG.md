@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Next
+## v2.59.0
+2026-08
 
 * Fix multi-device synchronization of read messages even if "Read Receipts" are disabled
 * Add self-updater for installations that are *not* installed from either Google Play or F-Droid
