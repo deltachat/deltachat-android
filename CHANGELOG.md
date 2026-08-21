@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix potential crashes under certain conditions when placing a call
+
 ## v2.59.0
 2026-08
 

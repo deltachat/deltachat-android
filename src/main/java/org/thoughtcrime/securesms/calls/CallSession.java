@@ -3,7 +3,6 @@ package org.thoughtcrime.securesms.calls;
 import android.os.Build;
 import androidx.annotation.RequiresApi;
 import androidx.core.telecom.CallControlScope;
-import androidx.core.telecom.CallEndpointCompat;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 final class CallSession {
@@ -18,7 +17,7 @@ final class CallSession {
   volatile String cachedIceServersJson;
 
   CallControlScope callControlScope;
-  CallEndpointCompat preferredStartingEndpoint;
+  Runnable endpointTask;
 
   CallSession(int accId, Integer callId, boolean isIncoming) {
     this.accId = accId;
