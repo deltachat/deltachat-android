@@ -161,8 +161,6 @@ android {
     }
     buildFeatures {
         buildConfig = true
-        renderScript true
-        aidl true
     }
 }
 
