@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application' version '8.11.1'
+    id 'com.android.application' version '9.3.1'
     id 'com.google.gms.google-services' version '4.4.1'
     id 'com.diffplug.spotless' version '8.3.0'
 }
@@ -134,11 +134,15 @@ android {
         }
     }
 
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = outputFileName
-                    .replace("deltachat-android", "deltachat")
-                    .replace(".apk", "-${variant.versionName}.apk")
+    androidComponents {
+        onVariants(selector().all()) { variant ->
+            variant.outputs.each { output ->
+                output.outputFileName.set(
+                        output.outputFileName.get()
+                        .replace("deltachat-android", "deltachat")
+                        .replace(".apk", "-${output.versionName.get()}.apk")
+                        )
+            }
         }
     }
 
@@ -156,6 +160,7 @@ android {
         abortOnError false
     }
     buildFeatures {
+        buildConfig = true
         renderScript true
         aidl true
     }
