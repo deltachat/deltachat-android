@@ -9,7 +9,7 @@
 
     <include layout="@layout/status_bar_background" />
 
-    <androidx.legacy.widget.Space
+    <android.widget.Space
         android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
@@ -30,7 +30,7 @@
 
     </RelativeLayout>
 
-    <androidx.legacy.widget.Space
+    <android.widget.Space
         android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp" />

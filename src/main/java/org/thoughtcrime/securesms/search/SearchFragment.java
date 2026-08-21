@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcChat;
@@ -60,8 +59,7 @@ public class SearchFragment extends BaseConversationListFragment
     super.onCreate(savedInstanceState);
 
     viewModel =
-        ViewModelProviders.of(
-                this, (ViewModelProvider.Factory) new SearchViewModel.Factory(requireContext()))
+        new ViewModelProvider(this, new SearchViewModel.Factory(requireContext()))
             .get(SearchViewModel.class);
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
