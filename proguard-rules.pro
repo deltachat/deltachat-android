@@ -19,6 +19,5 @@
 -keepclassmembers class org.webrtc.** { *; }
 -keepattributes InnerClasses
 
-# Room Database & WorkManager Rules
+# WorkManager-related rules
 -keep class * extends androidx.room.RoomDatabase { *; }
--keep class androidx.work.** { *; }
