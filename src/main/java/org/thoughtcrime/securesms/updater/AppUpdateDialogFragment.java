@@ -43,7 +43,6 @@ public class AppUpdateDialogFragment extends DialogFragment {
 
   private static final int POLL_INTERVAL_MS = 500;
   private static final int MAX_POLL_FAILURES = 3;
-  private static final String DEST_FILENAME = "deltachat-update.apk";
 
   private final Handler handler = new Handler(Looper.getMainLooper());
 
