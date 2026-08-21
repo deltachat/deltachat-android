@@ -412,6 +412,7 @@ public class ConversationFragment extends MessageSelectorFragment {
       menu.findItem(R.id.menu_context_reply_privately).setVisible(false);
       menu.findItem(R.id.menu_add_to_home_screen).setVisible(false);
       menu.findItem(R.id.menu_toggle_save).setVisible(false);
+      menu.findItem(R.id.menu_toggle_pin).setVisible(false);
     } else {
       DcMsg messageRecord = messageRecords.iterator().next();
       DcChat chat = getListAdapter().getChat();
@@ -432,6 +433,10 @@ public class ConversationFragment extends MessageSelectorFragment {
       toggleSave.setIcon(
           saved ? R.drawable.baseline_bookmark_remove_24 : R.drawable.baseline_bookmark_border_24);
       toggleSave.setTitle(saved ? R.string.unsave : R.string.save);
+
+      MenuItem togglePin = menu.findItem(R.id.menu_toggle_pin);
+      togglePin.setVisible(chat.isEncrypted() && chat.canSend() && !messageRecord.isInfo());
+      togglePin.setTitle(messageRecord.isPinned() ? R.string.unpin : R.string.pin);
     }
 
     // if one of the selected items cannot be saved, disable saving.
@@ -666,6 +671,14 @@ public class ConversationFragment extends MessageSelectorFragment {
       } else {
         rpc.saveMsgs(rpc.getSelectedAccountId(), Collections.singletonList(msg.getId()));
       }
+    } catch (RpcException e) {
+      Log.e(TAG, "RPC error", e);
+    }
+  }
+
+  private void handleTogglePin(final DcMsg msg) {
+    try {
+      rpc.setPinnedMessageState(rpc.getSelectedAccountId(), msg.getId(), !msg.isPinned());
     } catch (RpcException e) {
       Log.e(TAG, "RPC error", e);
     }
@@ -945,6 +958,10 @@ public class ConversationFragment extends MessageSelectorFragment {
           WebxdcActivity.openWebxdcActivity(
               getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
         }
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_PINNED) {
+        if (messageRecord.getParent() != null) {
+          scrollMaybeSmoothToMsgId(messageRecord.getParent().getId());
+        }
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_LOCATIONSTREAMING_ENABLED) {
         WebxdcActivity.openMaps(getContext(), (int) chatId);
       } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_CHAT_DESCRIPTION_CHANGED) {
@@ -1161,6 +1178,10 @@ public class ConversationFragment extends MessageSelectorFragment {
         return true;
       } else if (itemId == R.id.menu_toggle_save) {
         handleToggleSave(getListAdapter().getSelectedItems());
+        actionMode.finish();
+        return true;
+      } else if (itemId == R.id.menu_toggle_pin) {
+        handleTogglePin(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
         actionMode.finish();
         return true;
       }
