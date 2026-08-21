@@ -1,0 +1,19 @@
+Delta Chat, dostlar, ailə, qruplar və təşkilatlar üçün istifadəsi asan və əyləncəli olan etibarlı bir mərkəzləşdirilməmiş ani mesajlaşma vasitəsidir. Delta Chat, dünyanın bir çox mağaza və platformasında ildə bir neçə dəfə təkmilləşdirmələr və yeni funksiyalar təqdim edən xüsusi bir FOSS töhfəçi icması tərəfindən hazırlanmışdır.
+
+Xüsusiyyətlərə qısa baxış:
+
+• Şəxsi. Telefon nömrəsi və ya digər şəxsi məlumatlar olmadan ani qoşulma.
+
+• Dostlar və Ailə: Yalnız tanıdığınız insanlarla söhbət edin. Naməlum istifadəçilər qarşılıqlı razılıq olmadan sizə mesaj göndərə və ya izləyə bilməzlər.
+
+• Çevik. Birdən çox söhbət profilini dəstəkləyir və birdən çox cihazda quraşdırmaq asandır.
+
+• Genişləndirilə bilər. İstənilən söhbətə alış-veriş siyahıları, təqvimlər və ya oyun tətbiqləri kimi alətlər əlavə edin.
+
+• Etibarlı. Pis və rəqib şəbəkə şəraitində işləyir.
+
+• Təhlükəsiz. Şəbəkə və server hücumlarına qarşı təhlükəsiz olan yoxlanılmış Başdan-Uca şifrələmə.
+
+• Suveren. Öz e-poçt ünvanınız və ya serverinizlə işlədilə bilər.
+
+• FOSS. İnternet Standartları üzərində qurulmuş Tam Açıq Mənbə/Pulsuz Proqram Təminatı.

@@ -1,19 +1,19 @@
-டெல்டா அரட்டை ஒரு பரவலாக்கப்பட்ட மற்றும் பாதுகாப்பான மெசஞ்சர் பயன்பாடாகும்
- தற்போதுள்ள மின்னஞ்சல் உள்கட்டமைப்புடன் இணக்கமானது.
+டெல்டா Chat is a reliable decentralized instant messenger that is easy and fun பெறுநர் use க்கு friends, family, groups and organizations. டெல்டா Chat is developed by a dedicated FOSS contributor community that jointly releases refinements and புதிய நற்பொருத்தங்கள் several பெருக்கல் a year, across many stores and platforms world-wide.
 
- எனவே, டெல்டா அரட்டை மூலம் நீங்கள் நன்கு அறியப்பட்ட தூதர்களின் எளிமையைப் பெறுவீர்கள்
- மின்னஞ்சல்.
+Features at a glance:
 
- ஒரு பார்வையில் சில அம்சங்கள்:
+• Private. Instant on-boarding without a phone எண் or மற்றொன்று தனிப்பட்ட data.
 
- Multion பல சுயவிவர மற்றும் பல சாதன ஆதரவுடன் நம்பகமான உடனடி செய்தி.
+• Friends & Family: Only chat with people you know. தெரியவில்லை பயனர்கள் cannot செய்தி or follow you without mutual consent.
 
- Fast பாதுகாப்பான வேகமான சாட்மெயில் சேவையகங்களைப் பயன்படுத்தி எளிதாக பதிவு செய்க. உங்களுக்கு தொலைபேசி எண் அல்லது தனிப்பட்ட தரவு தேவையில்லை.
+• Flexible. Supports multiple chat profiles and is easy பெறுநர் setup on multiple devices.
 
- 📧 மாற்றாக, உங்கள் இன்பாக்சை அரட்டைகளாகப் படிக்க உங்கள் இருக்கும் கிளாசிக் மின்னஞ்சல் முகவரியைப் பயன்படுத்தவும்.
+• Extensible. கூட்டு கருவிகள் like shopping lists, calendars or gaming apps பெறுநர் any chat.
 
- Camal கேமிங் மற்றும் ஒத்துழைப்புக்கான அரட்டைகளில் ஊடாடும் மினி-ஆப்ச்.
+• Reliable. Works under bad and adversarial பிணையம் conditions.
 
- பிணையம் பிணையம் மற்றும் சேவையக தாக்குதல்களுக்கு எதிராக தணிக்கை செய்யப்பட்ட இறுதி முதல் இறுதி குறியாக்கம் பாதுகாப்பானது.
+• Secure. Audited End-to-End encryption safe against பிணையம் and சேவையகம் attacks.
 
- Strages இணையத் தரங்களில் கட்டமைக்கப்பட்ட மூல/இலவச மென்பொருளை முழுமையாகத் திறந்திருக்கும்.
+• Sovereign. Can be ஓடு with your own மின்னஞ்சல் முகவரி or server.
+
+• FOSS. Fully திற Source/Free Software, built on Internet Standards.
