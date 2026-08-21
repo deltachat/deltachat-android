@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application' version '8.11.1'
+    id 'com.android.application' version '9.3.1'
     id 'com.google.gms.google-services' version '4.4.1'
     id 'com.diffplug.spotless' version '8.3.0'
 }
@@ -134,11 +134,15 @@ android {
         }
     }
 
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = outputFileName
-                    .replace("deltachat-android", "deltachat")
-                    .replace(".apk", "-${variant.versionName}.apk")
+    androidComponents {
+        onVariants(selector().all()) { variant ->
+            variant.outputs.each { output ->
+                output.outputFileName.set(
+                        output.outputFileName.get()
+                        .replace("deltachat-android", "deltachat")
+                        .replace(".apk", "-${output.versionName.get()}.apk")
+                        )
+            }
         }
     }
 
@@ -156,8 +160,7 @@ android {
         abortOnError false
     }
     buildFeatures {
-        renderScript true
-        aidl true
+        buildConfig = true
     }
 }
 
@@ -199,15 +202,12 @@ dependencies {
     implementation 'androidx.webkit:webkit:1.14.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.appcompat:appcompat:1.7.1'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'com.google.android.material:material:1.13.0' // 1.14 requires minSdk>=23
     implementation ('androidx.preference:preference:1.2.1') {
         exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel'
         exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel-ktx'
     }
-    implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
     implementation 'androidx.exifinterface:exifinterface:1.4.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
