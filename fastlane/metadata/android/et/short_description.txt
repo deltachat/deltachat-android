@@ -1,1 +1,1 @@
-Privaatsed sõnumid e-posti teel. Elegantselt vanamoodne, hajutatud ja avatud.
+Detsentraliseeritud privaatne sõnumiklient vestluses jagatavate tarvikutega.
