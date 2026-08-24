@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Add speed button for voice message playback
+
 ## v2.59.1
 2026-08
 

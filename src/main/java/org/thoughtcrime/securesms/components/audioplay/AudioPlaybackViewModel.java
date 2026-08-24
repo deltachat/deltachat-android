@@ -26,12 +26,14 @@ import java.util.concurrent.Executors;
 
 public class AudioPlaybackViewModel extends ViewModel {
   private static final String TAG = "AudioPlaybackViewModel";
+  private static final float[] SPEEDS = {1.0f, 1.5f, 2.0f};
 
   private final MutableLiveData<AudioPlaybackState> playbackState;
 
   private final MutableLiveData<Map<Integer, Long>> durations =
       new MutableLiveData<>(new HashMap<>());
   private final MutableLiveData<Boolean> recording = new MutableLiveData<>(false);
+  private final MutableLiveData<Float> playbackSpeed = new MutableLiveData<>(1.0f);
   private final Map<Integer, Uri> durationUris = new HashMap<>();
   private final Set<Integer> extractionInProgress = new HashSet<>();
   private final ExecutorService extractionExecutor = Executors.newFixedThreadPool(2);
@@ -58,6 +60,9 @@ public class AudioPlaybackViewModel extends ViewModel {
     playerListener = null;
 
     this.mediaController = controller;
+    if (mediaController != null) {
+      playbackSpeed.setValue(mediaController.getPlaybackParameters().speed);
+    }
     if (mediaController != null && mediaController.isPlaying()) {
       startUpdateProgress();
     }
@@ -195,6 +200,7 @@ public class AudioPlaybackViewModel extends ViewModel {
       mediaController.stop();
       mediaController.clearMediaItems();
       stopUpdateProgress();
+      resetPlaybackSpeed();
       playbackState.setValue(AudioPlaybackState.idle());
     }
   }
@@ -218,6 +224,7 @@ public class AudioPlaybackViewModel extends ViewModel {
           mediaController.stop();
           mediaController.clearMediaItems();
           stopUpdateProgress();
+          resetPlaybackSpeed();
           playbackState.setValue(AudioPlaybackState.idle());
           stoppedCurrent = true;
           break;
@@ -258,6 +265,33 @@ public class AudioPlaybackViewModel extends ViewModel {
     }
   }
 
+  public LiveData<Float> getPlaybackSpeed() {
+    return playbackSpeed;
+  }
+
+  public void cyclePlaybackSpeed() {
+    if (mediaController == null) return;
+
+    Float current = playbackSpeed.getValue();
+    int ind = 0;
+    for (int i = 0; i < SPEEDS.length; i++) {
+      if (current != null && SPEEDS[i] == current) {
+        ind = i;
+        break;
+      }
+    }
+    float speed = SPEEDS[(ind + 1) % SPEEDS.length];
+    mediaController.setPlaybackSpeed(speed);
+    playbackSpeed.setValue(speed);
+  }
+
+  private void resetPlaybackSpeed() {
+    if (mediaController != null) {
+      mediaController.setPlaybackSpeed(SPEEDS[0]);
+    }
+    playbackSpeed.setValue(SPEEDS[0]);
+  }
+
   // Private methods
   private void setupPlayerListener() {
     if (mediaController == null) return;
@@ -277,6 +311,9 @@ public class AudioPlaybackViewModel extends ViewModel {
             if (events.containsAny(Player.EVENT_MEDIA_ITEM_TRANSITION)) {
               updateCurrentState(true);
             }
+            if (events.containsAny(Player.EVENT_PLAYBACK_PARAMETERS_CHANGED)) {
+              playbackSpeed.setValue(player.getPlaybackParameters().speed);
+            }
             if (events.containsAny(Player.EVENT_PLAYBACK_STATE_CHANGED)) {
               if (player.getPlaybackState() == Player.STATE_READY) {
                 updateCurrentState(false);
@@ -285,6 +322,7 @@ public class AudioPlaybackViewModel extends ViewModel {
                 mediaController.stop();
                 mediaController.clearMediaItems();
                 stopUpdateProgress();
+                resetPlaybackSpeed();
                 playbackState.setValue(AudioPlaybackState.idle());
               }
             }
@@ -306,6 +344,7 @@ public class AudioPlaybackViewModel extends ViewModel {
               mediaController.play();
             } else {
               updateCurrentAudioState(AudioPlaybackState.PlaybackStatus.ERROR, 0, 0);
+              resetPlaybackSpeed();
               mediaController.clearMediaItems();
             }
           }
