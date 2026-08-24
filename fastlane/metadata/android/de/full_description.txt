@@ -1,17 +1,19 @@
-Delta Chat ist eine dezentrale, sichere Messenger-App, die mit der bestehenden E-Mail-Infrastruktur vollständig kompatibel ist..
+Delta Chat ist ein verlässlicher dezentraler Messenger. Er ist einfach und ideal für Freunde, Familie, Gruppen und Organisationen. Entwickelt von einer engagierten Community für freie Software, die mehrmals jährlich Updates für alle Plattformen veröffentlicht.
 
-Mit Delta Chat erhalten Sie die Einfachheit bekannter Messenger mit der Reichweite von E-Mail.
+Funktionen im Überblick:
 
-Einige Funktionen auf einen Blick:
+• Privat: Schneller Start ohne Telefonnummer oder private Daten.
 
-💬 Zuverläßiges Instant-Messaging mit der Unterstützung mehrerer Profile und Geräte.
+• Familie & Freunde: Nur Chatten mit bekannten Personen. Unbekannte können ohne Zustimmung keine Nachrichten senden.
 
-⚡️ Nutzen Sie sichere und schnelle Chatmail-Server, um sich auf einfache Art anzumelden. Sie benötigen weder Telefonnummer noch private Angaben.
+• Flexibel: Unterstützt mehrere Profile und läuft auf verschiedenen Geräten.
 
-📧 Alternativ können Sie Ihre bestehende E-Mail-Adresse verwenden, um Ihren Posteingang als Chat-Nachrichten zu lesen.
+• Erweiterbar: Tools wie Einkaufslisten, Kalender oder Spiele direkt im Chat nutzen.
 
-🎮 Interaktive Mini-Apps in den Chats fürs Spielen und Zusammenarbeiten.
+• Zuverlässig: Funktioniert auch bei schlechter Netzwerkverbindung.
 
-🔒 Geprüfte Ende-zu-Ende-Verschlüsselung, die vor Netzwerk- und Server-Attacken schützt.
+• Sicher: Geprüfte Ende-zu-Ende-Verschlüsselung schützt vor Serverangriffen.
 
-🆓 Vollständig freie Open-Source-Software, nach Internet-Standards erstellt.
+• Unabhängig: Nutzt die eigene E-Mail-Adresse oder den eigenen Server.
+
+• Frei: Komplett quelloffene Software, die auf Internetstandards basiert.
