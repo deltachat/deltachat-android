@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.io.File;
@@ -17,10 +17,11 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 
-public class DeltaXActivity extends AppCompatActivity
+public class DeltaXActivity extends BaseActionBarActivity
     implements PluginAdapter.PluginActionListener {
 
   private DeltaX deltaX;
@@ -32,6 +33,11 @@ public class DeltaXActivity extends AppCompatActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_deltax);
+
+    ActionBar ab = getSupportActionBar();
+    if (ab != null) {
+      ab.setDisplayHomeAsUpEnabled(true);
+    }
 
     deltaX = DeltaX.getInstance(this);
     if (!deltaX.isInitialised()) {
@@ -126,5 +132,14 @@ public class DeltaXActivity extends AppCompatActivity
     Intent intent = new Intent(this, DeltaXPluginActivity.class);
     intent.putExtra(DeltaXPluginActivity.EXTRA_PACKAGE, plugin.getPackageName());
     startActivity(intent);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(android.view.MenuItem item) {
+    if (item.getItemId() == android.R.id.home) {
+      finish();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 }

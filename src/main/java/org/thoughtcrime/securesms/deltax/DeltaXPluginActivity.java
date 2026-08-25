@@ -5,34 +5,34 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
+import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 import org.thoughtcrime.securesms.deltax.ui.DeltaXPage;
 
-public class DeltaXPluginActivity extends AppCompatActivity {
+public class DeltaXPluginActivity extends BaseActionBarActivity {
 
   public static final String EXTRA_PACKAGE = "deltax_plugin_package";
 
   private DeltaX deltaX;
   private DeltaXPage page;
+  private LinearLayout container;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -44,73 +44,48 @@ public class DeltaXPluginActivity extends AppCompatActivity {
     String pkg = getIntent().getStringExtra(EXTRA_PACKAGE);
     PluginInfo plugin = pkg != null ? deltaX.getPluginLoader().getPlugin(pkg) : null;
 
-    Toolbar toolbar = new Toolbar(this);
-    toolbar.setId(View.generateViewId());
-    toolbar.setBackgroundColor(getColorCompat(R.attr.fab_color));
-    setSupportActionBar(toolbar);
+    setContentView(R.layout.activity_deltax_plugin);
+    container = findViewById(R.id.deltax_page_container);
+
     ActionBar ab = getSupportActionBar();
     if (ab != null) {
       ab.setDisplayHomeAsUpEnabled(true);
-      ab.setHomeAsUpIndicator(R.drawable.rounded_arrow_back_24);
       ab.setTitle(plugin != null ? plugin.manifest.name : getString(R.string.deltax_title));
     }
 
-    ScrollView scroll = new ScrollView(this);
-    scroll.setLayoutParams(
-        new LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
-    LinearLayout container = new LinearLayout(this);
-    container.setOrientation(LinearLayout.VERTICAL);
-    container.setPadding(8, 8, 8, 8);
-    container.setId(View.generateViewId());
-    scroll.addView(container);
-
-    LinearLayout root = new LinearLayout(this);
-    root.setOrientation(LinearLayout.VERTICAL);
-    root.setLayoutParams(
-        new ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-    root.addView(toolbar);
-    root.addView(scroll);
-
     if (plugin == null || plugin.globals == null) {
-      addText(container, getString(R.string.deltax_no_page));
+      addText(getString(R.string.deltax_no_page));
     } else {
       LuaValue onOpen = plugin.globals.get("onOpen");
       if (onOpen.isfunction()) {
         page = new DeltaXPage(this, plugin, deltaX, plugin.globals, this);
         onOpen.call(CoerceJavaToLua.coerce(page));
         for (DeltaXPage.Widget w : page.getWidgets()) {
-          buildWidget(container, w);
+          buildWidget(w);
         }
-        addSaveButton(container);
+        addSaveButton();
       } else {
-        addText(container, getString(R.string.deltax_no_page));
+        addText(getString(R.string.deltax_no_page));
       }
     }
-
-    setContentView(root);
   }
 
   @Override
-  public boolean onSupportNavigateUp() {
-    finish();
-    return true;
-  }
-
-  private int getColorCompat(int attr) {
-    android.util.TypedValue tv = new android.util.TypedValue();
-    getTheme().resolveAttribute(attr, tv, true);
-    return tv.data;
+  public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == android.R.id.home) {
+      finish();
+      return true;
+    }
+    return super.onOptionsItemSelected(item);
   }
 
   // ---------------------------------------------------------------- rendering
 
-  private void addText(LinearLayout parent, String text) {
+  private void addText(String text) {
     TextView t = new TextView(this);
     t.setText(text);
     t.setPadding(8, 8, 8, 8);
-    parent.addView(t);
+    container.addView(t);
   }
 
   private CardView newCard() {
@@ -133,7 +108,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
     return inner;
   }
 
-  private void buildWidget(LinearLayout parent, DeltaXPage.Widget w) {
+  private void buildWidget(DeltaXPage.Widget w) {
     switch (w.type) {
       case TITLE:
         {
@@ -141,7 +116,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
           t.setText(w.label);
           t.setTextSize(20);
           t.setPadding(8, 12, 8, 8);
-          parent.addView(t);
+          container.addView(t);
           break;
         }
       case TEXT:
@@ -149,7 +124,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
           TextView t = new TextView(this);
           t.setText(w.label);
           t.setPadding(8, 8, 8, 8);
-          parent.addView(t);
+          container.addView(t);
           break;
         }
       case SECTION:
@@ -159,8 +134,8 @@ public class DeltaXPluginActivity extends AppCompatActivity {
           t.setTextSize(12);
           t.setPadding(8, 16, 8, 4);
           t.setAllCaps(true);
-          t.setTextColor(getColorCompat(android.R.attr.textColorSecondary));
-          parent.addView(t);
+          t.setTextColor(getResources().getColor(android.R.color.darker_gray));
+          container.addView(t);
           break;
         }
       case INPUT:
@@ -192,7 +167,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
                 }
               });
           inner.addView(et);
-          parent.addView(card);
+          container.addView(card);
           break;
         }
       case SWITCH:
@@ -203,10 +178,9 @@ public class DeltaXPluginActivity extends AppCompatActivity {
           sw.setText(w.label);
           sw.setChecked(getBool(w));
           final String key = w.key;
-          sw.setOnCheckedChangeListener(
-              (v, checked) -> page.set(key, LuaValue.valueOf(checked)));
+          sw.setOnCheckedChangeListener((v, checked) -> page.set(key, LuaValue.valueOf(checked)));
           inner.addView(sw);
-          parent.addView(card);
+          container.addView(card);
           break;
         }
       case SLIDER:
@@ -241,7 +215,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
               });
           inner.addView(sb);
           inner.addView(val);
-          parent.addView(card);
+          container.addView(card);
           break;
         }
       case SELECT:
@@ -270,15 +244,15 @@ public class DeltaXPluginActivity extends AppCompatActivity {
               new android.widget.AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(
-                    android.widget.AdapterView<?> parent2, View view, int position, long id) {
+                    android.widget.AdapterView<?> parent, View view, int position, long id) {
                   page.set(key, LuaValue.valueOf(w.options[position]));
                 }
 
                 @Override
-                public void onNothingSelected(android.widget.AdapterView<?> parent2) {}
+                public void onNothingSelected(android.widget.AdapterView<?> parent) {}
               });
           inner.addView(sp);
-          parent.addView(card);
+          container.addView(card);
           break;
         }
       case BUTTON:
@@ -301,13 +275,13 @@ public class DeltaXPluginActivity extends AppCompatActivity {
                   }
                 });
           }
-          parent.addView(b);
+          container.addView(b);
           break;
         }
     }
   }
 
-  private void addSaveButton(LinearLayout parent) {
+  private void addSaveButton() {
     Button save = new Button(this, null, android.R.attr.buttonStyle);
     save.setText(R.string.deltax_save);
     LinearLayout.LayoutParams bp =
@@ -316,7 +290,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
     bp.setMargins(6, 12, 6, 6);
     save.setLayoutParams(bp);
     save.setOnClickListener(v -> page.save());
-    parent.addView(save);
+    container.addView(save);
   }
 
   // ---------------------------------------------------------------- value read

@@ -10,14 +10,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/deltax_title"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:padding="16dp" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/deltax_recycler"
             android:layout_width="match_parent"
