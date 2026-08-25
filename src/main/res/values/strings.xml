@@ -1279,7 +1279,7 @@
     <string name="update_now">Update Now</string>
     <string name="update_install_permission_explain">To install the update, please first allow Delta Chat to install apps in the system settings.</string>
 <string name="plugins">Plugins</string>
-<string name="deltax_title">DeltaX Plugins</string>
+    <string name="deltax_title">Plugin Management</string>
 <string name="deltax_reload">Reload</string>
 <string name="deltax_open_folder">Plugins folder</string>
 <string name="deltax_reloaded">Plugins reloaded</string>
