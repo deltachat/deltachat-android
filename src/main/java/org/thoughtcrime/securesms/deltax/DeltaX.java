@@ -9,6 +9,7 @@ import org.thoughtcrime.securesms.deltax.module.ConfigManager;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 import org.thoughtcrime.securesms.deltax.module.PluginLoader;
 import org.thoughtcrime.securesms.deltax.module.PluginPackager;
+import org.luaj.vm2.LuaValue;
 
 public class DeltaX {
 
@@ -137,5 +138,13 @@ public class DeltaX {
 
   public boolean isPluginDisabled(String packageName) {
     return evaluator.isDisabled(packageName);
+  }
+
+  /** Returns true when the plugin (by package name) registered an interactive page via onOpen. */
+  public boolean hasInteractivePage(String packageName) {
+    PluginInfo plugin = evaluator.getPlugin(packageName);
+    if (plugin == null || plugin.globals == null) return false;
+    LuaValue onOpen = plugin.globals.get("onOpen");
+    return onOpen.isfunction();
   }
 }

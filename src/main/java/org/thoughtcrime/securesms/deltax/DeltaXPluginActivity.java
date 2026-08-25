@@ -51,6 +51,7 @@ public class DeltaXPluginActivity extends AppCompatActivity {
     ActionBar ab = getSupportActionBar();
     if (ab != null) {
       ab.setDisplayHomeAsUpEnabled(true);
+      ab.setHomeAsUpIndicator(R.drawable.rounded_arrow_back_24);
       ab.setTitle(plugin != null ? plugin.manifest.name : getString(R.string.deltax_title));
     }
 

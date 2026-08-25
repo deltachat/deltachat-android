@@ -49,6 +49,9 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     h.sw.setOnCheckedChangeListener((buttonView, isChecked) -> listener.onToggle(p, isChecked));
     h.uninstall.setOnClickListener(v -> listener.onUninstall(p));
     h.open.setOnClickListener(v -> listener.onOpen(p));
+    boolean hasPage =
+        DeltaX.getInstance(h.itemView.getContext()).hasInteractivePage(p.getPackageName());
+    h.open.setVisibility(hasPage ? View.VISIBLE : View.GONE);
   }
 
   @Override
