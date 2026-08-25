@@ -31,8 +31,7 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
   @NonNull
   @Override
   public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-    View v =
-        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_plugin, parent, false);
+    View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_plugin, parent, false);
     return new ViewHolder(v);
   }
 
@@ -42,7 +41,8 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     h.name.setText(p.manifest.name);
     h.meta.setText("v" + p.manifest.version + " · " + p.manifest.author);
     h.desc.setText(p.manifest.description != null ? p.manifest.description : "");
-    boolean disabled = DeltaX.getInstance(h.itemView.getContext()).isPluginDisabled(p.getPackageName());
+    boolean disabled =
+        DeltaX.getInstance(h.itemView.getContext()).isPluginDisabled(p.getPackageName());
     h.sw.setChecked(!disabled);
     h.sw.setOnCheckedChangeListener((buttonView, isChecked) -> listener.onToggle(p, isChecked));
     h.uninstall.setOnClickListener(v -> listener.onUninstall(p));

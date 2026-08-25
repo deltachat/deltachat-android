@@ -20,7 +20,8 @@ import java.util.List;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 
-public class DeltaXActivity extends AppCompatActivity implements PluginAdapter.PluginActionListener {
+public class DeltaXActivity extends AppCompatActivity
+    implements PluginAdapter.PluginActionListener {
 
   private DeltaX deltaX;
   private RecyclerView recycler;
@@ -84,7 +85,8 @@ public class DeltaXActivity extends AppCompatActivity implements PluginAdapter.P
     if (tmp.exists()) tmp.delete();
     refresh();
     if (n > 0) {
-      Toast.makeText(this, getString(R.string.deltax_install_success, n), Toast.LENGTH_SHORT).show();
+      Toast.makeText(this, getString(R.string.deltax_install_success, n), Toast.LENGTH_SHORT)
+          .show();
     } else {
       Toast.makeText(this, R.string.deltax_install_failed, Toast.LENGTH_SHORT).show();
     }

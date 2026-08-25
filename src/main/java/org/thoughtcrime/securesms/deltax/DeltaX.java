@@ -3,8 +3,6 @@ package org.thoughtcrime.securesms.deltax;
 import android.content.Context;
 import android.util.Log;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.thoughtcrime.securesms.deltax.module.ConfigManager;
