@@ -19,5 +19,11 @@
 -keepclassmembers class org.webrtc.** { *; }
 -keepattributes InnerClasses
 
+# Keep LuaJ plugin engine classes (referenced via reflection / Class.forName,
+# e.g. org.luaj.vm2.lib.Bit32Lib$Bit32LibV, otherwise stripped by R8)
+-keep class org.luaj.vm2.** { *; }
+-dontwarn org.luaj.**
+
+
 # WorkManager-related rules
 -keep class * extends androidx.room.RoomDatabase { *; }
