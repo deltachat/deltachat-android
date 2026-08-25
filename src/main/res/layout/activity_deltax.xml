@@ -35,11 +35,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_add_white_24dp"
             app:backgroundTint="?attr/fab_color"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            app:pressedTranslationZ="12dp" />
+            android:src="@drawable/ic_add_white_24dp"
+            android:focusable="true"
+            android:contentDescription="@string/deltax_install" />
 
     </FrameLayout>
 
