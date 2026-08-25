@@ -1,7 +1,7 @@
 package org.thoughtcrime.securesms.deltax;
 
 import android.content.Context;
-import android.content.res.TypedValue;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
