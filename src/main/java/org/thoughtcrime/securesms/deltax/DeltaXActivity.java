@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.deltax;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
@@ -15,6 +16,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
+import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 
 public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder> {
