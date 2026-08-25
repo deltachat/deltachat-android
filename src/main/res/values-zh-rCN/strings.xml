@@ -1254,7 +1254,7 @@
     <!-- device messages for updates -->
     <string name="update_2_0">新版变化？\n\n💯 端到端加密现在可靠且永久。挂锁图标 🔒 没有了！\n\n✉️ 没有端到端加密的经典电子邮件用字母符号标记\n\n😻 所有联系人的新的增强的个人资料屏\n\n🔲 新增快速访问聊天中所用应用的按钮\n\n❤️ 请捐赠帮助我们保持独立并继续带来改进：%1$s</string>
 <string name="plugins">插件</string>
-    <string name="deltax_title">鎻掍欢绠＄悊</string>
+    <string name="deltax_title">鎻掍欢</string>
 <string name="deltax_reload">重新加载</string>
 <string name="deltax_open_folder">插件目录</string>
 <string name="deltax_reloaded">插件已重新加载</string>
