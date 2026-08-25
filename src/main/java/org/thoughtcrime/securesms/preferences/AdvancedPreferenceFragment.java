@@ -117,6 +117,17 @@ public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
           });
     }
 
+    Preference plugins = this.findPreference("pref_plugins");
+    if (plugins != null) {
+      plugins.setOnPreferenceClickListener(
+          (preference) -> {
+            startActivity(
+                new Intent(
+                    requireActivity(), org.thoughtcrime.securesms.deltax.DeltaXActivity.class));
+            return true;
+          });
+    }
+
     selfReportingCheckbox = this.findPreference("pref_stats_sending");
     if (selfReportingCheckbox != null) {
       selfReportingCheckbox.setOnPreferenceChangeListener(

@@ -1,0 +1,7 @@
+{
+    "name": "example",
+    "version": "1.0-test",
+    "main": "main.lua",
+    "description": "An example DeltaX plugin",
+    "author": "example"
+}

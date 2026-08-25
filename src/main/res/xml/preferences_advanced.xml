@@ -36,6 +36,10 @@
             android:title="@string/pref_on_demand_location_streaming" />
 
         <Preference
+            android:key="pref_plugins"
+            android:title="@string/plugins" />
+
+        <Preference
             android:key="pref_webxdc_store_url"
             android:title="@string/webxdc_store_url"
             android:summary="@string/none" />
