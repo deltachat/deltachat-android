@@ -192,18 +192,18 @@ spotless {
 }
 
 dependencies {
-    def media3_version = "1.8.0"   // up. requires minSdkVersion 23
-    def lifecycle_version = "2.9.4" // up. requires minSdk>=23
-    def glide_version = "5.0.5" // up. requires minSdk>=23
+    def media3_version = "1.8.0"   // up. requires minSdkVersion>=23
+    def lifecycle_version = "2.9.4" // up. requires minSdkVersion>=23
+    def glide_version = "5.0.5" // up. requires minSdkVersion>=23
 
     implementation 'androidx.concurrent:concurrent-futures:1.3.0'
-    implementation 'androidx.core:core:1.17.0' // up. requires minSdk>=23
+    implementation 'androidx.core:core:1.17.0' // up. requires minSdkVersion>=23
     implementation 'androidx.core:core-telecom:1.0.1'
     implementation 'im.conversations.webrtc:webrtc-android:129.0.0'
     implementation 'androidx.sharetarget:sharetarget:1.2.0'
-    implementation 'androidx.webkit:webkit:1.14.0' // up. requires minSdk>=23
-    implementation 'androidx.appcompat:appcompat:1.7.1' // up. requires minSdk>=23
-    implementation 'com.google.android.material:material:1.13.0'  // up. requires minSdk>=23
+    implementation 'androidx.webkit:webkit:1.14.0' // up. requires minSdkVersion>=23
+    implementation 'androidx.appcompat:appcompat:1.7.1' // up. requires minSdkVersion>=23
+    implementation 'com.google.android.material:material:1.13.0'  // up. requires minSdkVersion>=23
     implementation ('androidx.preference:preference:1.2.1') {
         exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel'
         exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel-ktx'
@@ -215,8 +215,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    implementation 'androidx.work:work-runtime:2.10.5' // up. requires minSdk>=23
-    implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0' // up. requires minSdk>=23
+    implementation 'androidx.work:work-runtime:2.10.5' // up. requires minSdkVersion>=23
+    implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0' // up. requires minSdkVersion>=23
     implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // FIXME: exoplayer dependencies kept for Video, but we shall migrate them at some point
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation "androidx.media3:media3-exoplayer:$media3_version"
@@ -226,7 +226,7 @@ dependencies {
 
     // QR Code scanner
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
-    // desugaring can be removed when minSdk>=24, see:
+    // desugaring can be removed when minSdkVersion>=24, see:
     // https://github.com/journeyapps/zxing-android-embedded#option-2-desugaring-advanced
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
 
@@ -252,7 +252,7 @@ dependencies {
     // <https://github.com/cketti/SafeContentResolver>
     implementation 'de.cketti.safecontentresolver:safe-content-resolver-v21:1.0.0'
 
-    // PUSH notifications, up. requires minSdk>=23
+    // PUSH notifications, up. requires minSdkVersion>=23
     gplayImplementation('com.google.firebase:firebase-messaging:24.1.2') {
         exclude group: 'com.google.firebase', module: 'firebase-core'
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
