@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
@@ -245,7 +244,10 @@ public class PluginPackager {
     }
   }
 
-  /** Returns true when the archive is a backup package (its root contains an {@code extension/} folder). */
+  /**
+   * Returns true when the archive is a backup package (its root contains an {@code extension/}
+   * folder).
+   */
   public static boolean isBackupZip(File zip) {
     if (zip == null || !zip.exists()) return false;
     try (java.util.zip.ZipInputStream zis =
