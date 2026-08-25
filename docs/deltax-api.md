@@ -75,7 +75,9 @@ DeltaX (单例引擎)
 | `ENGINE_NAME` | `String` | 常量 `"DeltaX"` |
 | `ENGINE_VERSION` | `String` | 常量 `"1.0"` |
 | `getInstance(Context)` | `static synchronized DeltaX` | 获取（并惰性创建）单例，传入 `Context` |
-| `DeltaX(Context)` | 构造 | 内部使用 `context.getApplicationContext()`；初始化 `baseDir`、`pluginsDir`、`ConfigManager`、`LuaEngine`、`PluginLoader`、`PluginPackager` |
+| `DeltaX(Context, int)` | 构造 | 第二个参数为账号 id；内部使用 `context.getApplicationContext()`；根据当前账号目录解析 `extensionDir = <账号目录>/extension`，并初始化 `pluginsDir = <extensionDir>/plugin`、`ConfigManager(<extensionDir>)`、`LuaEngine`、`PluginLoader`、`PluginPackager` |
+| `getInstance(Context)` | `DeltaX` | 自动取当前选中账号 id，返回该账号对应的 `DeltaX` 实例（按账号缓存） |
+| `getInstance(Context, int)` | `DeltaX` | 取指定账号对应的 `DeltaX` 实例（按账号缓存，互不干扰） |
 | `isInitialised()` | `boolean` | 是否已 `init()` |
 | `init()` | `void` | 创建目录并 `loadPlugins()`；重复调用安全（幂等） |
 | `shutdown()` | `void` | 调用 `PluginLoader.shutdown()`，触发各插件 `onDisable` |
@@ -87,15 +89,33 @@ DeltaX (单例引擎)
 | `getPluginLoader()` | `PluginLoader` | 加载器 |
 | `getPluginPackager()` | `PluginPackager` | 打包器 |
 | `getContext()` | `Context` | 应用上下文 |
-| `getBaseDir()` | `File` | `.../DeltaX` |
-| `getPluginsDir()` | `File` | `.../DeltaX/plugins` |
+| `getAccountId()` | `int` | 当前实例所属的账号 id |
+| `getExtensionDir()` | `File` | `<账号目录>/extension`（本账号的插件空间根目录） |
+| `getBaseDir()` | `File` | 同 `getExtensionDir()`，兼容旧名 |
+| `getPluginsDir()` | `File` | `<账号目录>/extension/plugin` |
 | `getInstalledPlugins()` | `List<PluginInfo>` | 所有**已安装**（不论是否启用）的插件 |
-| `installPluginFromZip(File)` | `int` | 从 zip 包安装，返回安装的插件数量，并 `reloadPlugins()` |
-| `uninstallPlugin(String)` | `boolean` | 按包名卸载，并 `reloadPlugins()` |
+| `installPluginFromZip(File)` | `int` | 从 zip 包安装（仅作用于当前账号空间），返回安装的插件数量，并 `reloadPlugins()` |
+| `uninstallPlugin(String)` | `boolean` | 按包名卸载（仅当前账号空间），并 `reloadPlugins()` |
 | `setPluginEnabled(String, boolean)` | `void` | `true`→`enablePlugin`，`false`→`disablePlugin`，随后 `reloadPlugins()` |
 | `isPluginDisabled(String)` | `boolean` | 是否在被停用列表中 |
 
 > 注意：启用/停用并不会立即热加载，而是写入 `disabled.txt` 后重新加载（`reloadPlugins`）。
+
+## 账号隔离（per-account）
+
+每个 DeltaChat 账号拥有**独立**的插件空间，互不共享：
+
+```
+<账号目录>/extension/
+├── plugin/      # 已安装插件（每个插件一个目录，含 manifest.json）
+└── config/     # 各插件的配置（<插件名>/config.json 及 resources 拷贝）
+```
+
+- 账号目录取自当前选中账号 `DcContext.getBlobdir()` 的父目录；无账号时回退到 `filesDir/DeltaX`。
+- `DeltaX` 按账号 id 缓存实例，`getInstance(context)` 自动绑定当前账号，因此插件列表、安装、卸载、配置都只影响当前账号。
+- 切换账号后，插件页面对应账号的 `extension/` 空间，彼此不互通。
+- 旧版全局目录 `filesDir/DeltaX/{plugins,config}` 不会被自动迁移；如需把已有插件带入某账号，请在该账号下重新安装。
+
 
 ### 2.2 LuaEngine
 

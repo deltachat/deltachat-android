@@ -2,10 +2,14 @@ package org.thoughtcrime.securesms.deltax;
 
 import android.content.Context;
 import android.util.Log;
+import com.b44t.messenger.DcContext;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.luaj.vm2.LuaValue;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.deltax.module.ConfigManager;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 import org.thoughtcrime.securesms.deltax.module.PluginLoader;
@@ -18,7 +22,8 @@ public class DeltaX {
   public static final String ENGINE_VERSION = "1.0";
 
   private final Context context;
-  private final File baseDir;
+  private final int accountId;
+  private final File extensionDir;
   private final File pluginsDir;
 
   private final LuaEngine luaEngine;
@@ -29,24 +34,56 @@ public class DeltaX {
   private List<PluginInfo> loadedPlugins = new ArrayList<>();
   private boolean initialised = false;
 
-  private static DeltaX instance;
+  private static final Map<Integer, DeltaX> instances = new HashMap<>();
 
   public static synchronized DeltaX getInstance(Context context) {
-    if (instance == null) {
-      instance = new DeltaX(context);
-    }
-    return instance;
+    return getInstance(context, getSelectedAccountId(context));
   }
 
-  public DeltaX(Context context) {
-    this.context = context.getApplicationContext();
-    this.baseDir = new File(this.context.getFilesDir(), "DeltaX");
-    this.pluginsDir = new File(baseDir, "plugins");
+  public static synchronized DeltaX getInstance(Context context, int accountId) {
+    DeltaX inst = instances.get(accountId);
+    if (inst == null) {
+      inst = new DeltaX(context, accountId);
+      instances.put(accountId, inst);
+    }
+    return inst;
+  }
 
-    this.configManager = new ConfigManager(baseDir);
+  private static int getSelectedAccountId(Context context) {
+    try {
+      DcContext dc = DcHelper.getContext(context);
+      if (dc != null) return dc.getAccountId();
+    } catch (Exception ignored) {
+    }
+    return -1;
+  }
+
+  public DeltaX(Context context, int accountId) {
+    this.context = context.getApplicationContext();
+    this.accountId = accountId;
+    File accountDir = resolveAccountDir(context);
+    this.extensionDir = new File(accountDir, "extension");
+    this.pluginsDir = new File(extensionDir, "plugin");
+
+    this.configManager = new ConfigManager(extensionDir);
     this.luaEngine = new LuaEngine(this.context, this);
     this.evaluator = new PluginLoader(this, pluginsDir, configManager, luaEngine);
     this.pluginPackager = new PluginPackager(pluginsDir);
+  }
+
+  private static File resolveAccountDir(Context context) {
+    try {
+      DcContext dc = DcHelper.getContext(context);
+      if (dc != null) {
+        String blobdir = dc.getBlobdir();
+        if (blobdir != null && !blobdir.isEmpty()) {
+          File dir = new File(blobdir).getParentFile();
+          if (dir != null && dir.isDirectory()) return dir;
+        }
+      }
+    } catch (Exception ignored) {
+    }
+    return new File(context.getFilesDir(), "DeltaX");
   }
 
   public boolean isInitialised() {
@@ -55,11 +92,11 @@ public class DeltaX {
 
   public void init() {
     if (initialised) return;
-    baseDir.mkdirs();
+    extensionDir.mkdirs();
     pluginsDir.mkdirs();
     loadedPlugins = evaluator.loadPlugins();
     initialised = true;
-    Log.i(TAG, "DeltaX initialised with " + loadedPlugins.size() + " plugin(s)");
+    Log.i(TAG, "DeltaX initialised with " + loadedPlugins.size() + " plugin(s) for account " + accountId);
   }
 
   public void shutdown() {
@@ -103,8 +140,16 @@ public class DeltaX {
     return context;
   }
 
+  public int getAccountId() {
+    return accountId;
+  }
+
+  public File getExtensionDir() {
+    return extensionDir;
+  }
+
   public File getBaseDir() {
-    return baseDir;
+    return extensionDir;
   }
 
   public File getPluginsDir() {
