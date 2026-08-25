@@ -1276,4 +1276,17 @@
     <string name="deltax_export_success">插件已导出：%s</string>
     <string name="deltax_export_failed">导出插件失败</string>
     <string name="deltax_no_plugins_export">没有插件可供导出</string>
+    <!-- DeltaX 插件选择 / 批量操作 -->
+    <string name="deltax_export_selected">导出所选</string>
+    <string name="deltax_enable_selected">开启所选</string>
+    <string name="deltax_disable_selected">关闭所选</string>
+    <string name="deltax_delete_selected">删除所选</string>
+    <string name="deltax_enable_all">全部开启</string>
+    <string name="deltax_disable_all">全部关闭</string>
+    <string name="deltax_selected">已选 %1$d 项</string>
+    <string name="deltax_confirm_delete_selected">删除选中的 %1$d 个插件？</string>
+    <string name="deltax_enabled_selected">所选插件已开启</string>
+    <string name="deltax_disabled_selected">所选插件已关闭</string>
+    <string name="deltax_enabled_all">已开启全部插件</string>
+    <string name="deltax_disabled_all">已关闭全部插件</string>
 </resources>

@@ -157,13 +157,12 @@ public class PluginPackager {
   }
 
   /**
-   * Packages every installed plugin into a single archive, mirroring the import format (a zip that
+   * Packages the given plugins into a single archive, mirroring the import format (a zip that
    * contains one directory per plugin, each with its own {@code manifest.json}). Returns false when
-   * there are no plugins to export.
+   * there are no plugins to package.
    */
-  public boolean exportAll(File targetZip) {
-    List<PluginInfo> plugins = getInstalledPlugins();
-    if (plugins.isEmpty()) return false;
+  public boolean exportPlugins(File targetZip, List<PluginInfo> plugins) {
+    if (plugins == null || plugins.isEmpty()) return false;
     File parent = targetZip.getParentFile();
     if (parent != null) parent.mkdirs();
     if (targetZip.exists() && !targetZip.delete()) {
@@ -180,6 +179,15 @@ public class PluginPackager {
       Log.w(TAG, "Failed to export plugins: " + e.getMessage());
       return false;
     }
+  }
+
+  /**
+   * Packages every installed plugin into a single archive, mirroring the import format (a zip that
+   * contains one directory per plugin, each with its own {@code manifest.json}). Returns false when
+   * there are no plugins to export.
+   */
+  public boolean exportAll(File targetZip) {
+    return exportPlugins(targetZip, getInstalledPlugins());
   }
 
   /**

@@ -4,13 +4,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ActionMode;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.b44t.messenger.DcContext;
@@ -19,9 +25,12 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -33,7 +42,12 @@ public class DeltaXActivity extends BaseActionBarActivity
   private DeltaX deltaX;
   private RecyclerView recycler;
   private TextView emptyView;
+  private PluginAdapter adapter;
   private ActivityResultLauncher<Intent> pickerLauncher;
+
+  private boolean selectionActive = false;
+  private final Set<String> selectedIds = new HashSet<>();
+  private ActionMode actionMode;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +68,20 @@ public class DeltaXActivity extends BaseActionBarActivity
     recycler.setLayoutManager(new LinearLayoutManager(this));
     emptyView = findViewById(R.id.deltax_empty);
 
-    findViewById(R.id.deltax_fab).setOnClickListener(v -> openFilePicker());
+    View fab = findViewById(R.id.deltax_fab);
+    fab.setOnClickListener(v -> openFilePicker());
+    ViewCompat.setOnApplyWindowInsetsListener(
+        fab,
+        (v, insets) -> {
+          Insets nav = insets.getInsets(WindowInsetsCompat.Type.navigationBars());
+          ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+          int base = (int) (16 * v.getResources().getDisplayMetrics().density);
+          lp.bottomMargin = base + nav.bottom;
+          lp.leftMargin = base + nav.left;
+          lp.rightMargin = base + nav.right;
+          v.setLayoutParams(lp);
+          return insets;
+        });
 
     pickerLauncher =
         registerForActivityResult(
@@ -109,7 +136,15 @@ public class DeltaXActivity extends BaseActionBarActivity
     boolean empty = plugins.isEmpty();
     recycler.setVisibility(empty ? View.GONE : View.VISIBLE);
     emptyView.setVisibility(empty ? View.VISIBLE : View.GONE);
-    recycler.setAdapter(new PluginAdapter(plugins, this));
+    if (adapter == null) {
+      adapter = new PluginAdapter(plugins, this);
+      recycler.setAdapter(adapter);
+    } else {
+      adapter.setPlugins(plugins);
+      adapter.setSelectionMode(selectionActive);
+      adapter.setSelected(selectedIds);
+      adapter.notifyDataSetChanged();
+    }
   }
 
   @Override
@@ -141,19 +176,153 @@ public class DeltaXActivity extends BaseActionBarActivity
   }
 
   @Override
+  public void onItemClick(PluginInfo plugin) {
+    if (selectionActive) {
+      toggleSelection(plugin);
+    } else {
+      onOpen(plugin);
+    }
+  }
+
+  @Override
+  public void onItemLongClick(PluginInfo plugin) {
+    if (!selectionActive) {
+      enterSelectionMode();
+    }
+    toggleSelection(plugin);
+  }
+
+  private void enterSelectionMode() {
+    if (selectionActive) return;
+    selectionActive = true;
+    if (adapter != null) adapter.setSelectionMode(true);
+    actionMode = startSupportActionMode(selectionCallback);
+    updateSelectionTitle();
+  }
+
+  private void exitSelectionMode() {
+    selectionActive = false;
+    selectedIds.clear();
+    if (actionMode != null) {
+      actionMode.finish();
+      actionMode = null;
+    }
+    if (adapter != null) {
+      adapter.setSelectionMode(false);
+      adapter.setSelected(selectedIds);
+    }
+  }
+
+  private void toggleSelection(PluginInfo plugin) {
+    String id = plugin.getPackageName();
+    if (selectedIds.contains(id)) selectedIds.remove(id);
+    else selectedIds.add(id);
+    if (adapter != null) adapter.setSelected(selectedIds);
+    updateSelectionTitle();
+  }
+
+  private void updateSelectionTitle() {
+    if (actionMode != null) {
+      actionMode.setTitle(getString(R.string.deltax_selected, selectedIds.size()));
+    }
+  }
+
+  private List<PluginInfo> collectSelected() {
+    List<PluginInfo> all = deltaX.getInstalledPlugins();
+    List<PluginInfo> out = new ArrayList<>();
+    for (PluginInfo p : all) {
+      if (selectedIds.contains(p.getPackageName())) out.add(p);
+    }
+    return out;
+  }
+
+  private void exportSelectedPlugins() {
+    List<PluginInfo> selected = collectSelected();
+    if (selected.isEmpty()) {
+      Toast.makeText(this, R.string.deltax_no_plugins_export, Toast.LENGTH_SHORT).show();
+      exitSelectionMode();
+      return;
+    }
+    File dir = DcHelper.getImexDir();
+    dir.mkdirs();
+    File target = new File(dir, buildExportFileName(true));
+    boolean ok = deltaX.getPluginPackager().exportPlugins(target, selected);
+    exitSelectionMode();
+    if (ok) {
+      Toast.makeText(
+              this, getString(R.string.deltax_export_success, target.getName()), Toast.LENGTH_LONG)
+          .show();
+    } else {
+      Toast.makeText(this, R.string.deltax_export_failed, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  private void setSelectedEnabled(boolean enabled) {
+    for (String id : new HashSet<>(selectedIds)) {
+      deltaX.setPluginEnabled(id, enabled);
+    }
+    exitSelectionMode();
+    refresh();
+    Toast.makeText(
+            this,
+            enabled ? R.string.deltax_enabled_selected : R.string.deltax_disabled_selected,
+            Toast.LENGTH_SHORT)
+        .show();
+  }
+
+  private void deleteSelectedPlugins() {
+    new AlertDialog.Builder(this)
+        .setTitle(R.string.deltax_delete_selected)
+        .setMessage(getString(R.string.deltax_confirm_delete_selected, selectedIds.size()))
+        .setPositiveButton(
+            android.R.string.ok,
+            (dialog, which) -> {
+              for (String id : new HashSet<>(selectedIds)) {
+                deltaX.uninstallPlugin(id);
+              }
+              exitSelectionMode();
+              refresh();
+            })
+        .setNegativeButton(android.R.string.cancel, null)
+        .show();
+  }
+
+  private void enableAll(boolean enabled) {
+    List<PluginInfo> all = deltaX.getInstalledPlugins();
+    if (all.isEmpty()) return;
+    for (PluginInfo p : all) {
+      deltaX.setPluginEnabled(p.getPackageName(), enabled);
+    }
+    refresh();
+    Toast.makeText(
+            this,
+            enabled ? R.string.deltax_enabled_all : R.string.deltax_disabled_all,
+            Toast.LENGTH_SHORT)
+        .show();
+  }
+
+  @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.deltax_activity_menu, menu);
     return super.onCreateOptionsMenu(menu);
   }
 
   @Override
-  public boolean onOptionsItemSelected(android.view.MenuItem item) {
+  public boolean onOptionsItemSelected(MenuItem item) {
     if (item.getItemId() == android.R.id.home) {
       finish();
       return true;
     }
     if (item.getItemId() == R.id.action_export_all) {
       exportAllPlugins();
+      return true;
+    }
+    if (item.getItemId() == R.id.action_enable_all) {
+      enableAll(true);
+      return true;
+    }
+    if (item.getItemId() == R.id.action_disable_all) {
+      enableAll(false);
       return true;
     }
     return super.onOptionsItemSelected(item);
@@ -166,6 +335,21 @@ public class DeltaXActivity extends BaseActionBarActivity
       return;
     }
 
+    File dir = DcHelper.getImexDir();
+    dir.mkdirs();
+    File target = new File(dir, buildExportFileName(false));
+
+    boolean ok = deltaX.getPluginPackager().exportAll(target);
+    if (ok) {
+      Toast.makeText(
+              this, getString(R.string.deltax_export_success, target.getName()), Toast.LENGTH_LONG)
+          .show();
+    } else {
+      Toast.makeText(this, R.string.deltax_export_failed, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  private String buildExportFileName(boolean selected) {
     String name = "user";
     String email = "unknown";
     try {
@@ -180,24 +364,64 @@ public class DeltaXActivity extends BaseActionBarActivity
     }
 
     String stamp = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(new Date());
-    String fileName = sanitize(name) + "-" + stamp + "-" + sanitize(email) + ".zip";
-
-    File dir = DcHelper.getImexDir();
-    dir.mkdirs();
-    File target = new File(dir, fileName);
-
-    boolean ok = deltaX.getPluginPackager().exportAll(target);
-    if (ok) {
-      Toast.makeText(
-              this, getString(R.string.deltax_export_success, target.getName()), Toast.LENGTH_LONG)
-          .show();
-    } else {
-      Toast.makeText(this, R.string.deltax_export_failed, Toast.LENGTH_SHORT).show();
-    }
+    return sanitize(name)
+        + "-"
+        + stamp
+        + "-"
+        + sanitize(email)
+        + (selected ? "-selected" : "")
+        + ".zip";
   }
 
   private static String sanitize(String s) {
     if (s == null) return "";
     return s.replaceAll("[\\\\/:*?\"<>|]", "_").trim();
   }
+
+  private final ActionMode.Callback selectionCallback =
+      new ActionMode.Callback() {
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+          mode.getMenuInflater().inflate(R.menu.deltax_selection_menu, menu);
+          return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+          return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+          int id = item.getItemId();
+          if (id == R.id.action_export_selected) {
+            exportSelectedPlugins();
+            return true;
+          }
+          if (id == R.id.action_enable_selected) {
+            setSelectedEnabled(true);
+            return true;
+          }
+          if (id == R.id.action_disable_selected) {
+            setSelectedEnabled(false);
+            return true;
+          }
+          if (id == R.id.action_delete_selected) {
+            deleteSelectedPlugins();
+            return true;
+          }
+          return false;
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+          selectionActive = false;
+          selectedIds.clear();
+          if (adapter != null) {
+            adapter.setSelectionMode(false);
+            adapter.setSelected(selectedIds);
+          }
+          actionMode = null;
+        }
+      };
 }

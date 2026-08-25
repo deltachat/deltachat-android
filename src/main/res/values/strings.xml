@@ -1301,4 +1301,17 @@
     <string name="deltax_export_success">Plugins exported: %s</string>
     <string name="deltax_export_failed">Failed to export plugins</string>
     <string name="deltax_no_plugins_export">No plugins available to export</string>
+    <!-- DeltaX plugin selection / batch actions -->
+    <string name="deltax_export_selected">Export selected</string>
+    <string name="deltax_enable_selected">Enable selected</string>
+    <string name="deltax_disable_selected">Disable selected</string>
+    <string name="deltax_delete_selected">Delete selected</string>
+    <string name="deltax_enable_all">Enable all</string>
+    <string name="deltax_disable_all">Disable all</string>
+    <string name="deltax_selected">%1$d selected</string>
+    <string name="deltax_confirm_delete_selected">Delete %1$d selected plugin(s)?</string>
+    <string name="deltax_enabled_selected">Selected plugins enabled</string>
+    <string name="deltax_disabled_selected">Selected plugins disabled</string>
+    <string name="deltax_enabled_all">All plugins enabled</string>
+    <string name="deltax_disabled_all">All plugins disabled</string>
 </resources>

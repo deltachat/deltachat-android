@@ -1196,4 +1196,17 @@
     <string name="deltax_export_success">外掛已匯出：%s</string>
     <string name="deltax_export_failed">匯出外掛失敗</string>
     <string name="deltax_no_plugins_export">沒有外掛可供匯出</string>
+    <!-- DeltaX 外掛選取 / 批次操作 -->
+    <string name="deltax_export_selected">匯出所選</string>
+    <string name="deltax_enable_selected">開啟所選</string>
+    <string name="deltax_disable_selected">關閉所選</string>
+    <string name="deltax_delete_selected">刪除所選</string>
+    <string name="deltax_enable_all">全部開啟</string>
+    <string name="deltax_disable_all">全部關閉</string>
+    <string name="deltax_selected">已選 %1$d 項</string>
+    <string name="deltax_confirm_delete_selected">刪除選取的 %1$d 個外掛？</string>
+    <string name="deltax_enabled_selected">所選外掛已開啟</string>
+    <string name="deltax_disabled_selected">所選外掛已關閉</string>
+    <string name="deltax_enabled_all">已開啟全部外掛</string>
+    <string name="deltax_disabled_all">已關閉全部外掛</string>
 </resources>

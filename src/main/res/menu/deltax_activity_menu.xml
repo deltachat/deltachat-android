@@ -8,4 +8,14 @@
         android:title="@string/deltax_export_all"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_enable_all"
+        android:title="@string/deltax_enable_all"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_disable_all"
+        android:title="@string/deltax_disable_all"
+        app:showAsAction="never" />
+
 </menu>
