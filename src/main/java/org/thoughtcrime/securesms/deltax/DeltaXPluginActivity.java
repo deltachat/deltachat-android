@@ -9,15 +9,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
-import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.SwitchCompat;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
@@ -81,31 +81,16 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
 
   // ---------------------------------------------------------------- rendering
 
+  private LinearLayout.LayoutParams fullWidth() {
+    return new LinearLayout.LayoutParams(
+        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+  }
+
   private void addText(String text) {
     TextView t = new TextView(this);
     t.setText(text);
-    t.setPadding(8, 8, 8, 8);
+    t.setPadding(0, 8, 0, 8);
     container.addView(t);
-  }
-
-  private CardView newCard() {
-    CardView card = new CardView(this);
-    LinearLayout.LayoutParams cp =
-        new LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-    cp.setMargins(6, 6, 6, 6);
-    card.setLayoutParams(cp);
-    card.setRadius(8);
-    card.setCardElevation(2);
-    return card;
-  }
-
-  private LinearLayout newCardInner(CardView card) {
-    LinearLayout inner = new LinearLayout(this);
-    inner.setOrientation(LinearLayout.VERTICAL);
-    inner.setPadding(12, 12, 12, 12);
-    card.addView(inner);
-    return inner;
   }
 
   private void buildWidget(DeltaXPage.Widget w) {
@@ -115,7 +100,7 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
           TextView t = new TextView(this);
           t.setText(w.label);
           t.setTextSize(20);
-          t.setPadding(8, 12, 8, 8);
+          t.setPadding(0, 8, 0, 8);
           container.addView(t);
           break;
         }
@@ -123,7 +108,7 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
         {
           TextView t = new TextView(this);
           t.setText(w.label);
-          t.setPadding(8, 8, 8, 8);
+          t.setPadding(0, 8, 0, 8);
           container.addView(t);
           break;
         }
@@ -131,23 +116,19 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
         {
           TextView t = new TextView(this);
           t.setText(w.label);
-          t.setTextSize(12);
-          t.setPadding(8, 16, 8, 4);
-          t.setAllCaps(true);
-          t.setTextColor(getResources().getColor(android.R.color.darker_gray));
+          t.setTextSize(16);
+          t.setTextColor(getResources().getColor(R.color.delta_accent));
+          t.setPadding(0, 16, 0, 4);
           container.addView(t);
           break;
         }
       case INPUT:
       case PASSWORD:
         {
-          CardView card = newCard();
-          LinearLayout inner = newCardInner(card);
-          TextView label = new TextView(this);
-          label.setText(w.label);
-          inner.addView(label);
-          EditText et = new EditText(this);
-          et.setHint(w.hint);
+          TextInputLayout til = new TextInputLayout(this);
+          til.setLayoutParams(fullWidth());
+          TextInputEditText et = new TextInputEditText(this);
+          et.setHint(w.hint != null && !w.hint.isEmpty() ? w.hint : w.label);
           et.setText(getStr(w));
           if (w.type == DeltaXPage.Type.PASSWORD) {
             et.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -166,31 +147,30 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
                   page.set(key, LuaValue.valueOf(s.toString()));
                 }
               });
-          inner.addView(et);
-          container.addView(card);
+          til.addView(et);
+          container.addView(til);
           break;
         }
       case SWITCH:
         {
-          CardView card = newCard();
-          LinearLayout inner = newCardInner(card);
-          Switch sw = new Switch(this);
+          SwitchCompat sw = new SwitchCompat(this);
+          sw.setLayoutParams(fullWidth());
+          sw.setPadding(0, 16, 0, 16);
           sw.setText(w.label);
           sw.setChecked(getBool(w));
           final String key = w.key;
           sw.setOnCheckedChangeListener((v, checked) -> page.set(key, LuaValue.valueOf(checked)));
-          inner.addView(sw);
-          container.addView(card);
+          container.addView(sw);
           break;
         }
       case SLIDER:
         {
-          CardView card = newCard();
-          LinearLayout inner = newCardInner(card);
           TextView label = new TextView(this);
           label.setText(w.label);
-          inner.addView(label);
+          label.setPadding(0, 16, 0, 4);
+          container.addView(label);
           SeekBar sb = new SeekBar(this);
+          sb.setLayoutParams(fullWidth());
           int steps = (int) Math.round((w.max - w.min) / w.step);
           sb.setMax(Math.max(steps, 1));
           sb.setProgress((int) Math.round((getNum(w) - w.min) / w.step));
@@ -213,19 +193,18 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {}
               });
-          inner.addView(sb);
-          inner.addView(val);
-          container.addView(card);
+          container.addView(sb);
+          container.addView(val);
           break;
         }
       case SELECT:
         {
-          CardView card = newCard();
-          LinearLayout inner = newCardInner(card);
           TextView label = new TextView(this);
           label.setText(w.label);
-          inner.addView(label);
+          label.setPadding(0, 16, 0, 4);
+          container.addView(label);
           Spinner sp = new Spinner(this);
+          sp.setLayoutParams(fullWidth());
           ArrayAdapter<String> adapter =
               new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, w.options);
           adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -251,19 +230,18 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
                 @Override
                 public void onNothingSelected(android.widget.AdapterView<?> parent) {}
               });
-          inner.addView(sp);
-          container.addView(card);
+          container.addView(sp);
           break;
         }
       case BUTTON:
         {
-          Button b = new Button(this);
+          MaterialButton b = new MaterialButton(this);
           b.setText(w.label);
           LinearLayout.LayoutParams bp =
               new LinearLayout.LayoutParams(
                   ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
           bp.gravity = Gravity.END;
-          bp.setMargins(6, 6, 6, 6);
+          bp.setMargins(0, 8, 0, 8);
           b.setLayoutParams(bp);
           if (w.fn != null) {
             b.setOnClickListener(
@@ -282,12 +260,12 @@ public class DeltaXPluginActivity extends BaseActionBarActivity {
   }
 
   private void addSaveButton() {
-    Button save = new Button(this, null, android.R.attr.buttonStyle);
+    MaterialButton save = new MaterialButton(this);
     save.setText(R.string.deltax_save);
     LinearLayout.LayoutParams bp =
         new LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-    bp.setMargins(6, 12, 6, 6);
+    bp.setMargins(0, 16, 0, 0);
     save.setLayoutParams(bp);
     save.setOnClickListener(v -> page.save());
     container.addView(save);
