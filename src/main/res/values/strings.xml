@@ -1284,4 +1284,11 @@
 <string name="deltax_open_folder">Plugins folder</string>
 <string name="deltax_reloaded">Plugins reloaded</string>
 <string name="deltax_plugins_dir">Plugins directory</string>
+    <!-- DeltaX plugin manager (graphical) -->
+    <string name="deltax_install">Install plugin</string>
+    <string name="deltax_install_success">Installed %1$d plugin(s)</string>
+    <string name="deltax_install_failed">Installation failed: invalid plugin package</string>
+    <string name="deltax_uninstall">Uninstall</string>
+    <string name="deltax_confirm_uninstall">Uninstall plugin "%1$s"?</string>
+    <string name="deltax_empty">No plugins installed</string>
 </resources>

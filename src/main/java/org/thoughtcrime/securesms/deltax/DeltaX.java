@@ -58,7 +58,6 @@ public class DeltaX {
     if (initialised) return;
     baseDir.mkdirs();
     pluginsDir.mkdirs();
-    installBundledSampleIfEmpty();
     loadedPlugins = evaluator.loadPlugins();
     initialised = true;
     Log.i(TAG, "DeltaX initialised with " + loadedPlugins.size() + " plugin(s)");
@@ -113,33 +112,32 @@ public class DeltaX {
     return pluginsDir;
   }
 
-  private void installBundledSampleIfEmpty() {
-    File[] existing = pluginsDir.listFiles();
-    if (existing != null && existing.length > 0) return;
-    try {
-      String[] entries = context.getAssets().list("deltax");
-      if (entries == null || entries.length == 0) return;
-      for (String entry : entries) {
-        copyAssets("deltax/" + entry, new File(pluginsDir, entry));
-      }
-    } catch (IOException e) {
-      Log.w(TAG, "Failed to install bundled sample plugin: " + e.getMessage());
-    }
+  public List<PluginInfo> getInstalledPlugins() {
+    return pluginPackager.getInstalledPlugins();
   }
 
-  private void copyAssets(String assetPath, File outFile) throws IOException {
-    String[] children = context.getAssets().list(assetPath);
-    if (children != null && children.length > 0) {
-      outFile.mkdirs();
-      for (String child : children) {
-        copyAssets(assetPath + "/" + child, new File(outFile, child));
-      }
+  public int installPluginFromZip(File zip) {
+    int n = pluginPackager.installFromZip(zip);
+    reloadPlugins();
+    return n;
+  }
+
+  public boolean uninstallPlugin(String packageName) {
+    boolean ok = pluginPackager.uninstall(packageName);
+    reloadPlugins();
+    return ok;
+  }
+
+  public void setPluginEnabled(String packageName, boolean enabled) {
+    if (enabled) {
+      evaluator.enablePlugin(packageName);
     } else {
-      outFile.getParentFile().mkdirs();
-      try (InputStream in = context.getAssets().open(assetPath)) {
-        java.nio.file.Files.copy(
-            in, outFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-      }
+      evaluator.disablePlugin(packageName);
     }
+    reloadPlugins();
+  }
+
+  public boolean isPluginDisabled(String packageName) {
+    return evaluator.isDisabled(packageName);
   }
 }

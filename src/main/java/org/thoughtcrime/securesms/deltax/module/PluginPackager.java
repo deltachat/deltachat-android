@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
@@ -148,6 +150,74 @@ public class PluginPackager {
       return false;
     }
     return true;
+  }
+
+  public List<PluginInfo> getInstalledPlugins() {
+    return new ArrayList<>(modules.values());
+  }
+
+  /**
+   * Installs plugins from a MinecraftX/DeltaX module package (a .zip that contains one or more
+   * plugin directories, each with its own manifest.json). Returns the number of plugins installed.
+   */
+  public int installFromZip(File zip) {
+    if (zip == null || !zip.exists() || !zip.getName().toLowerCase().endsWith(".zip")) {
+      return 0;
+    }
+    File tmp = new File(pluginsDir, ".install_" + System.currentTimeMillis());
+    tmp.mkdirs();
+    int count = 0;
+    try {
+      unzip(zip, tmp);
+      List<File> candidates = new ArrayList<>();
+      if (new File(tmp, "manifest.json").exists()) {
+        candidates.add(tmp);
+      } else {
+        File[] top = tmp.listFiles();
+        if (top != null) {
+          for (File f : top) {
+            if (f.isDirectory() && new File(f, "manifest.json").exists()) {
+              candidates.add(f);
+            }
+          }
+        }
+      }
+      for (File c : candidates) {
+        if (install(c)) count++;
+      }
+    } catch (IOException e) {
+      Log.w(TAG, "Failed to install plugin package: " + e.getMessage());
+    } finally {
+      deleteRecursive(tmp);
+    }
+    return count;
+  }
+
+  private void unzip(File zip, File dest) throws IOException {
+    dest.mkdirs();
+    byte[] buffer = new byte[8192];
+    try (java.util.zip.ZipInputStream zis =
+        new java.util.zip.ZipInputStream(new java.io.FileInputStream(zip))) {
+      java.util.zip.ZipEntry entry;
+      while ((entry = zis.getNextEntry()) != null) {
+        File target = new File(dest, entry.getName());
+        String destPath = dest.getCanonicalPath() + File.separator;
+        if (!target.getCanonicalPath().startsWith(destPath)) {
+          zis.closeEntry();
+          continue;
+        }
+        if (entry.isDirectory()) {
+          target.mkdirs();
+        } else {
+          target.getParentFile().mkdirs();
+          try (java.io.FileOutputStream out = new java.io.FileOutputStream(target)) {
+            int len;
+            while ((len = zis.read(buffer)) != -1) out.write(buffer, 0, len);
+          }
+        }
+        zis.closeEntry();
+      }
+    }
   }
 
   private void addDirToZip(File dir, String base, ZipOutputStream zos) throws IOException {

@@ -1179,4 +1179,11 @@
     <string name="deltax_open_folder">外掛目錄</string>
     <string name="deltax_reloaded">外掛已重新載入</string>
     <string name="deltax_plugins_dir">外掛目錄</string>
+    <!-- DeltaX 外掛管理器（圖形化） -->
+    <string name="deltax_install">安裝外掛</string>
+    <string name="deltax_install_success">成功安裝 %1$d 個外掛</string>
+    <string name="deltax_install_failed">安裝失敗：外掛包無效</string>
+    <string name="deltax_uninstall">解除安裝</string>
+    <string name="deltax_confirm_uninstall">確定解除安裝外掛「%1$s」嗎？</string>
+    <string name="deltax_empty">尚未安裝任何外掛</string>
 </resources>

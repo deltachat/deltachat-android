@@ -212,6 +212,12 @@ public class PluginLoader {
     return true;
   }
 
+  public boolean isDisabled(String nameOrPkg) {
+    PluginInfo plugin = findPlugin(nameOrPkg);
+    if (plugin == null) return false;
+    return loadDisabledList().contains(plugin.getPackageName());
+  }
+
   private PluginInfo findPlugin(String nameOrPkg) {
     if (registry.containsKey(nameOrPkg)) return registry.get(nameOrPkg);
     List<PluginInfo> byName = nameIndex.get(nameOrPkg);

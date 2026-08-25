@@ -1259,4 +1259,11 @@
     <string name="deltax_open_folder">插件目录</string>
     <string name="deltax_reloaded">插件已重新加载</string>
     <string name="deltax_plugins_dir">插件目录</string>
+    <!-- DeltaX 插件管理器（图形化） -->
+    <string name="deltax_install">安装插件</string>
+    <string name="deltax_install_success">成功安装 %1$d 个插件</string>
+    <string name="deltax_install_failed">安装失败：插件包无效</string>
+    <string name="deltax_uninstall">卸载</string>
+    <string name="deltax_confirm_uninstall">确定卸载插件“%1$s”吗？</string>
+    <string name="deltax_empty">未安装任何插件</string>
 </resources>
