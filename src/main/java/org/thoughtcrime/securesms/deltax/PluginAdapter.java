@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.deltax;
 
 import android.content.Context;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,9 +84,11 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     if (selectionMode) {
       h.sw.setVisibility(View.GONE);
       h.uninstall.setVisibility(View.GONE);
-      h.open.setVisibility(View.GONE);
+      h.desc.setVisibility(View.GONE);
       h.check.setVisibility(View.VISIBLE);
       h.check.setChecked(isSelected);
+      h.text.setGravity(Gravity.CENTER_HORIZONTAL);
+      h.text.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
       if (isSelected) {
         h.root.setBackgroundColor(highlightColor(ctx));
       } else {
@@ -93,13 +96,14 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
       }
     } else {
       h.check.setVisibility(View.GONE);
+      h.desc.setVisibility(View.VISIBLE);
+      h.text.setGravity(Gravity.START);
+      h.text.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
       h.sw.setVisibility(View.VISIBLE);
       h.uninstall.setVisibility(View.VISIBLE);
       boolean disabled = dx.isPluginDisabled(p.getPackageName());
       h.sw.setChecked(!disabled);
       h.sw.setOnCheckedChangeListener((buttonView, isChecked) -> listener.onToggle(p, isChecked));
-      boolean hasPage = dx.hasInteractivePage(p.getPackageName());
-      h.open.setVisibility(hasPage ? View.VISIBLE : View.GONE);
       h.root.setBackgroundResource(selectableBackground(ctx));
     }
 
@@ -110,7 +114,6 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
           return true;
         });
     h.uninstall.setOnClickListener(v -> listener.onUninstall(p));
-    h.open.setOnClickListener(v -> listener.onOpen(p));
   }
 
   @Override
@@ -132,23 +135,23 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
 
   static class ViewHolder extends RecyclerView.ViewHolder {
     View root;
+    View text;
     TextView name;
     TextView meta;
     TextView desc;
     SwitchCompat sw;
     Button uninstall;
-    Button open;
     CheckBox check;
 
     ViewHolder(View v) {
       super(v);
       root = v;
+      text = v.findViewById(R.id.plugin_text);
       name = v.findViewById(R.id.plugin_name);
       meta = v.findViewById(R.id.plugin_meta);
       desc = v.findViewById(R.id.plugin_desc);
       sw = v.findViewById(R.id.plugin_switch);
       uninstall = v.findViewById(R.id.plugin_uninstall);
-      open = v.findViewById(R.id.plugin_open);
       check = v.findViewById(R.id.plugin_check);
     }
   }
