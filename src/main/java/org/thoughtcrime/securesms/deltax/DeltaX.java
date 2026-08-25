@@ -68,7 +68,7 @@ public class DeltaX {
     this.configManager = new ConfigManager(extensionDir);
     this.luaEngine = new LuaEngine(this.context, this);
     this.evaluator = new PluginLoader(this, pluginsDir, configManager, luaEngine);
-    this.pluginPackager = new PluginPackager(pluginsDir);
+    this.pluginPackager = new PluginPackager(extensionDir);
   }
 
   private static File resolveAccountDir(Context context) {
@@ -170,6 +170,18 @@ public class DeltaX {
 
   public boolean uninstallPlugin(String packageName) {
     boolean ok = pluginPackager.uninstall(packageName);
+    reloadPlugins();
+    return ok;
+  }
+
+  public boolean isBackupPackage(File zip) {
+    return PluginPackager.isBackupZip(zip);
+  }
+
+  /** Restores a backup package into this account's extension directory. */
+  public boolean restoreBackupFromZip(File zip) {
+    boolean ok = pluginPackager.restoreBackup(zip);
+    pluginPackager.reload();
     reloadPlugins();
     return ok;
   }

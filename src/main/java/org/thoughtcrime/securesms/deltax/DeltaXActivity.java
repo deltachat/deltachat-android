@@ -120,14 +120,25 @@ public class DeltaXActivity extends BaseActionBarActivity
       Toast.makeText(this, R.string.deltax_install_failed, Toast.LENGTH_SHORT).show();
       return;
     }
-    int n = deltaX.installPluginFromZip(tmp);
-    if (tmp.exists()) tmp.delete();
-    refresh();
-    if (n > 0) {
-      Toast.makeText(this, getString(R.string.deltax_install_success, n), Toast.LENGTH_SHORT)
-          .show();
+    if (deltaX.isBackupPackage(tmp)) {
+      boolean ok = deltaX.restoreBackupFromZip(tmp);
+      if (tmp.exists()) tmp.delete();
+      refresh();
+      if (ok) {
+        Toast.makeText(this, R.string.deltax_restore_success, Toast.LENGTH_SHORT).show();
+      } else {
+        Toast.makeText(this, R.string.deltax_restore_failed, Toast.LENGTH_SHORT).show();
+      }
     } else {
-      Toast.makeText(this, R.string.deltax_install_failed, Toast.LENGTH_SHORT).show();
+      int n = deltaX.installPluginFromZip(tmp);
+      if (tmp.exists()) tmp.delete();
+      refresh();
+      if (n > 0) {
+        Toast.makeText(this, getString(R.string.deltax_install_success, n), Toast.LENGTH_SHORT)
+            .show();
+      } else {
+        Toast.makeText(this, R.string.deltax_install_failed, Toast.LENGTH_SHORT).show();
+      }
     }
   }
 
@@ -245,7 +256,7 @@ public class DeltaXActivity extends BaseActionBarActivity
     }
     File dir = DcHelper.getImexDir();
     dir.mkdirs();
-    File target = new File(dir, buildExportFileName(true));
+    File target = new File(dir, buildExportFileName("selected-plugins"));
     boolean ok = deltaX.getPluginPackager().exportPlugins(target, selected);
     exitSelectionMode();
     if (ok) {
@@ -317,6 +328,10 @@ public class DeltaXActivity extends BaseActionBarActivity
       exportAllPlugins();
       return true;
     }
+    if (item.getItemId() == R.id.action_export_backup) {
+      exportBackupAll();
+      return true;
+    }
     if (item.getItemId() == R.id.action_enable_all) {
       enableAll(true);
       return true;
@@ -337,7 +352,7 @@ public class DeltaXActivity extends BaseActionBarActivity
 
     File dir = DcHelper.getImexDir();
     dir.mkdirs();
-    File target = new File(dir, buildExportFileName(false));
+    File target = new File(dir, buildExportFileName("plugins"));
 
     boolean ok = deltaX.getPluginPackager().exportAll(target);
     if (ok) {
@@ -349,7 +364,27 @@ public class DeltaXActivity extends BaseActionBarActivity
     }
   }
 
-  private String buildExportFileName(boolean selected) {
+  private void exportBackupAll() {
+    if (deltaX.getInstalledPlugins().isEmpty()) {
+      Toast.makeText(this, R.string.deltax_no_plugins_export, Toast.LENGTH_SHORT).show();
+      return;
+    }
+
+    File dir = DcHelper.getImexDir();
+    dir.mkdirs();
+    File target = new File(dir, buildExportFileName("backup"));
+
+    boolean ok = deltaX.getPluginPackager().exportBackup(target);
+    if (ok) {
+      Toast.makeText(
+              this, getString(R.string.deltax_backup_success, target.getName()), Toast.LENGTH_LONG)
+          .show();
+    } else {
+      Toast.makeText(this, R.string.deltax_backup_failed, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  private String buildExportFileName(String kind) {
     String name = "user";
     String email = "unknown";
     try {
@@ -364,13 +399,7 @@ public class DeltaXActivity extends BaseActionBarActivity
     }
 
     String stamp = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(new Date());
-    return sanitize(name)
-        + "-"
-        + stamp
-        + "-"
-        + sanitize(email)
-        + (selected ? "-selected" : "")
-        + ".zip";
+    return sanitize(name) + "-" + stamp + "-" + sanitize(email) + "-" + kind + ".zip";
   }
 
   private static String sanitize(String s) {

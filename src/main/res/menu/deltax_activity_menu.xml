@@ -9,6 +9,11 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_export_backup"
+        android:title="@string/deltax_export_backup"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_enable_all"
         android:title="@string/deltax_enable_all"
         app:showAsAction="never" />

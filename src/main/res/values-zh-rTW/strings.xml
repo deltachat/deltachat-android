@@ -1192,10 +1192,15 @@
     <string name="deltax_saved">已儲存</string>
     <string name="deltax_no_page">該外掛未提供互動頁面。</string>
     <!-- DeltaX 外掛匯出 -->
-    <string name="deltax_export_all">匯出全部外掛</string>
+    <string name="deltax_export_all">匯出外掛包</string>
     <string name="deltax_export_success">外掛已匯出：%s</string>
     <string name="deltax_export_failed">匯出外掛失敗</string>
     <string name="deltax_no_plugins_export">沒有外掛可供匯出</string>
+    <string name="deltax_export_backup">匯出備份包</string>
+    <string name="deltax_backup_success">備份已匯出：%s</string>
+    <string name="deltax_backup_failed">匯出備份失敗</string>
+    <string name="deltax_restore_success">備份已還原</string>
+    <string name="deltax_restore_failed">備份還原失敗</string>
     <!-- DeltaX 外掛選取 / 批次操作 -->
     <string name="deltax_export_selected">匯出所選</string>
     <string name="deltax_enable_selected">開啟所選</string>

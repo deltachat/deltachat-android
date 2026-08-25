@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 /**
@@ -22,12 +23,14 @@ import java.util.zip.ZipOutputStream;
 public class PluginPackager {
 
   private static final String TAG = "DeltaX";
+  private final File extensionDir;
   private final File pluginsDir;
   private final ObjectMapper mapper = new ObjectMapper();
   private final Map<String, PluginInfo> modules = new HashMap<>();
 
-  public PluginPackager(File pluginsDir) {
-    this.pluginsDir = pluginsDir;
+  public PluginPackager(File extensionDir) {
+    this.extensionDir = extensionDir;
+    this.pluginsDir = new File(extensionDir, "plugin");
     loadAllPlugins();
   }
 
@@ -42,6 +45,12 @@ public class PluginPackager {
       PluginInfo info = new PluginInfo(manifest, moduleDir);
       modules.put(info.getPackageName(), info);
     }
+  }
+
+  /** Re-reads the plugin directory; used after a backup restore. */
+  public void reload() {
+    modules.clear();
+    loadAllPlugins();
   }
 
   public PluginInfo getPluginInfo(String packageName) {
@@ -191,6 +200,68 @@ public class PluginPackager {
   }
 
   /**
+   * Creates a backup package: a zip whose root is the {@code extension} folder, containing the
+   * account's {@code plugin/} directory and any existing {@code config/} directories. Plugins that
+   * have an associated config are therefore backed up together with their configuration.
+   */
+  public boolean exportBackup(File targetZip) {
+    File parent = targetZip.getParentFile();
+    if (parent != null) parent.mkdirs();
+    if (targetZip.exists() && !targetZip.delete()) {
+      Log.w(TAG, "Failed to remove existing export file: " + targetZip.getAbsolutePath());
+    }
+    try (ZipOutputStream zos = new ZipOutputStream(new java.io.FileOutputStream(targetZip))) {
+      if (extensionDir.isDirectory()) {
+        addDirToZip(extensionDir, extensionDir.getName(), zos);
+      }
+      return true;
+    } catch (IOException e) {
+      Log.w(TAG, "Failed to export backup: " + e.getMessage());
+      return false;
+    }
+  }
+
+  /**
+   * Restores a backup package produced by {@link #exportBackup(File)} into the account's extension
+   * directory, merging its {@code plugin/} and {@code config/} contents.
+   */
+  public boolean restoreBackup(File zip) {
+    if (zip == null || !zip.exists() || !zip.getName().toLowerCase().endsWith(".zip")) {
+      return false;
+    }
+    File tmp = new File(pluginsDir, ".restore_" + System.currentTimeMillis());
+    tmp.mkdirs();
+    try {
+      unzip(zip, tmp);
+      File ext = new File(tmp, "extension");
+      if (!ext.isDirectory()) return false;
+      copyDir(ext, extensionDir);
+      return true;
+    } catch (IOException e) {
+      Log.w(TAG, "Failed to restore backup: " + e.getMessage());
+      return false;
+    } finally {
+      deleteRecursive(tmp);
+    }
+  }
+
+  /** Returns true when the archive is a backup package (its root contains an {@code extension/} folder). */
+  public static boolean isBackupZip(File zip) {
+    if (zip == null || !zip.exists()) return false;
+    try (java.util.zip.ZipInputStream zis =
+        new java.util.zip.ZipInputStream(new java.io.FileInputStream(zip))) {
+      java.util.zip.ZipEntry entry;
+      while ((entry = zis.getNextEntry()) != null) {
+        String name = entry.getName();
+        if (name.equals("extension/") || name.startsWith("extension/")) return true;
+      }
+    } catch (IOException e) {
+      return false;
+    }
+    return false;
+  }
+
+  /**
    * Installs plugins from a MinecraftX/DeltaX module package (a .zip that contains one or more
    * plugin directories, each with its own manifest.json). Returns the number of plugins installed.
    */
@@ -258,6 +329,7 @@ public class PluginPackager {
     File[] files = dir.listFiles();
     if (files == null) return;
     for (File f : files) {
+      if (f.getName().startsWith(".")) continue;
       String entryName = base.isEmpty() ? f.getName() : base + "/" + f.getName();
       if (f.isDirectory()) {
         addDirToZip(f, entryName, zos);

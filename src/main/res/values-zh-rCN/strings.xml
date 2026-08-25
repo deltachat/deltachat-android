@@ -1272,10 +1272,15 @@
     <string name="deltax_saved">已保存</string>
     <string name="deltax_no_page">该插件未提供交互页面。</string>
     <!-- DeltaX 插件导出 -->
-    <string name="deltax_export_all">导出全部插件</string>
+    <string name="deltax_export_all">导出插件包</string>
     <string name="deltax_export_success">插件已导出：%s</string>
     <string name="deltax_export_failed">导出插件失败</string>
     <string name="deltax_no_plugins_export">没有插件可供导出</string>
+    <string name="deltax_export_backup">导出备份包</string>
+    <string name="deltax_backup_success">备份已导出：%s</string>
+    <string name="deltax_backup_failed">导出备份失败</string>
+    <string name="deltax_restore_success">备份已还原</string>
+    <string name="deltax_restore_failed">备份还原失败</string>
     <!-- DeltaX 插件选择 / 批量操作 -->
     <string name="deltax_export_selected">导出所选</string>
     <string name="deltax_enable_selected">开启所选</string>
