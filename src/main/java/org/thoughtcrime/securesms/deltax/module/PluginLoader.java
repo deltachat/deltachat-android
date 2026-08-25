@@ -248,6 +248,10 @@ public class PluginLoader {
     return findPlugin(nameOrPkg);
   }
 
+  public ConfigManager getConfigManager() {
+    return configManager;
+  }
+
   public void registerPlugin(PluginInfo plugin) {
     registry.put(plugin.getPackageName(), plugin);
     nameIndex.computeIfAbsent(plugin.manifest.name, k -> new ArrayList<>()).add(plugin);

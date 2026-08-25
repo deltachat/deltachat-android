@@ -1186,4 +1186,9 @@
     <string name="deltax_uninstall">解除安裝</string>
     <string name="deltax_confirm_uninstall">確定解除安裝外掛「%1$s」嗎？</string>
     <string name="deltax_empty">尚未安裝任何外掛</string>
+    <!-- DeltaX 外掛頁面 -->
+    <string name="deltax_open">開啟</string>
+    <string name="deltax_save">儲存</string>
+    <string name="deltax_saved">已儲存</string>
+    <string name="deltax_no_page">該外掛未提供互動頁面。</string>
 </resources>

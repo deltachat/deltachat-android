@@ -120,4 +120,11 @@ public class DeltaXActivity extends AppCompatActivity
         .setNegativeButton(android.R.string.cancel, null)
         .show();
   }
+
+  @Override
+  public void onOpen(PluginInfo plugin) {
+    Intent intent = new Intent(this, DeltaXPluginActivity.class);
+    intent.putExtra(DeltaXPluginActivity.EXTRA_PACKAGE, plugin.getPackageName());
+    startActivity(intent);
+  }
 }

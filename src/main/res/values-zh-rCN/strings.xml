@@ -1266,4 +1266,9 @@
     <string name="deltax_uninstall">卸载</string>
     <string name="deltax_confirm_uninstall">确定卸载插件“%1$s”吗？</string>
     <string name="deltax_empty">未安装任何插件</string>
+    <!-- DeltaX 插件页面 -->
+    <string name="deltax_open">打开</string>
+    <string name="deltax_save">保存</string>
+    <string name="deltax_saved">已保存</string>
+    <string name="deltax_no_page">该插件未提供交互页面。</string>
 </resources>

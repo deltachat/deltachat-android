@@ -1291,4 +1291,9 @@
     <string name="deltax_uninstall">Uninstall</string>
     <string name="deltax_confirm_uninstall">Uninstall plugin "%1$s"?</string>
     <string name="deltax_empty">No plugins installed</string>
+    <!-- DeltaX plugin page -->
+    <string name="deltax_open">Open</string>
+    <string name="deltax_save">Save</string>
+    <string name="deltax_saved">Saved</string>
+    <string name="deltax_no_page">This plugin does not provide an interactive page.</string>
 </resources>

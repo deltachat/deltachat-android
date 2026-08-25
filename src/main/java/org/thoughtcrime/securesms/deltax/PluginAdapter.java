@@ -18,6 +18,8 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     void onToggle(PluginInfo plugin, boolean enabled);
 
     void onUninstall(PluginInfo plugin);
+
+    void onOpen(PluginInfo plugin);
   }
 
   private final List<PluginInfo> plugins;
@@ -46,6 +48,7 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     h.sw.setChecked(!disabled);
     h.sw.setOnCheckedChangeListener((buttonView, isChecked) -> listener.onToggle(p, isChecked));
     h.uninstall.setOnClickListener(v -> listener.onUninstall(p));
+    h.open.setOnClickListener(v -> listener.onOpen(p));
   }
 
   @Override
@@ -59,6 +62,7 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     TextView desc;
     Switch sw;
     Button uninstall;
+    Button open;
 
     ViewHolder(View v) {
       super(v);
@@ -67,6 +71,7 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
       desc = v.findViewById(R.id.plugin_desc);
       sw = v.findViewById(R.id.plugin_switch);
       uninstall = v.findViewById(R.id.plugin_uninstall);
+      open = v.findViewById(R.id.plugin_open);
     }
   }
 }
