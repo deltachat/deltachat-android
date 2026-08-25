@@ -207,8 +207,7 @@ public class DeltaXPage {
       } catch (Exception ignored) {
       }
     }
-    if (context != null)
-      Toast.makeText(context, R.string.deltax_saved, Toast.LENGTH_SHORT).show();
+    if (context != null) Toast.makeText(context, R.string.deltax_saved, Toast.LENGTH_SHORT).show();
   }
 
   public void close() {

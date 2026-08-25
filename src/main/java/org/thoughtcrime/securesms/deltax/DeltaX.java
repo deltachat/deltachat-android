@@ -5,11 +5,11 @@ import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import org.luaj.vm2.LuaValue;
 import org.thoughtcrime.securesms.deltax.module.ConfigManager;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 import org.thoughtcrime.securesms.deltax.module.PluginLoader;
 import org.thoughtcrime.securesms.deltax.module.PluginPackager;
-import org.luaj.vm2.LuaValue;
 
 public class DeltaX {
 
