@@ -1173,10 +1173,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">新版變化？ 💯 端對端加密現在可靠且永久有效。鎖頭圖標🔒已經消失！\n\n✉️ 沒有端對端加密的傳統電子郵件會以信件符號✉️標示\n\n😻 為你的所有聯絡人提供全新增強的個人資料頁面\n\n🔲 新按鈕可快速存取聊天中使用的應用程式\n\n❤️ 請捐款以幫助我們保持獨立並持續提供改進：%1$s</string>
-<string name="plugins">外掛</string>
-    <string name="deltax_title">鎻掍欢</string>
-<string name="deltax_reload">重新載入</string>
-<string name="deltax_open_folder">外掛目錄</string>
-<string name="deltax_reloaded">外掛已重新載入</string>
-<string name="deltax_plugins_dir">外掛目錄</string>
+    <string name="plugins">外掛</string>
+    <string name="deltax_title">外掛</string>
+    <string name="deltax_reload">重新載入</string>
+    <string name="deltax_open_folder">外掛目錄</string>
+    <string name="deltax_reloaded">外掛已重新載入</string>
+    <string name="deltax_plugins_dir">外掛目錄</string>
 </resources>
