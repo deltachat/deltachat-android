@@ -252,8 +252,8 @@ dependencies {
     // <https://github.com/cketti/SafeContentResolver>
     implementation 'de.cketti.safecontentresolver:safe-content-resolver-v21:1.0.0'
 
-    // PUSH notifications
-    gplayImplementation('com.google.firebase:firebase-messaging:24.1.2') {  // up. requires minSdk>=23
+    // PUSH notifications, up. requires minSdk>=23
+    gplayImplementation('com.google.firebase:firebase-messaging:24.1.2') {
         exclude group: 'com.google.firebase', module: 'firebase-core'
         exclude group: 'com.google.firebase', module: 'firebase-analytics'
         exclude group: 'com.google.firebase', module: 'firebase-measurement-connector'
