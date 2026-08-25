@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -26,7 +25,7 @@ public class DeltaXActivity extends BaseActionBarActivity
 
   private DeltaX deltaX;
   private RecyclerView recycler;
-  private TextView emptyView;
+  private View emptyState;
   private ActivityResultLauncher<Intent> pickerLauncher;
 
   @Override
@@ -46,7 +45,7 @@ public class DeltaXActivity extends BaseActionBarActivity
 
     recycler = findViewById(R.id.deltax_recycler);
     recycler.setLayoutManager(new LinearLayoutManager(this));
-    emptyView = findViewById(R.id.deltax_empty);
+    emptyState = findViewById(R.id.empty_state);
 
     findViewById(R.id.deltax_fab).setOnClickListener(v -> openFilePicker());
 
@@ -102,7 +101,7 @@ public class DeltaXActivity extends BaseActionBarActivity
     List<PluginInfo> plugins = deltaX.getInstalledPlugins();
     boolean empty = plugins.isEmpty();
     recycler.setVisibility(empty ? View.GONE : View.VISIBLE);
-    emptyView.setVisibility(empty ? View.VISIBLE : View.GONE);
+    emptyState.setVisibility(empty ? View.VISIBLE : View.GONE);
     recycler.setAdapter(new PluginAdapter(plugins, this));
   }
 
