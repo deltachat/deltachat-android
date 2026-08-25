@@ -1271,4 +1271,9 @@
     <string name="deltax_save">保存</string>
     <string name="deltax_saved">已保存</string>
     <string name="deltax_no_page">该插件未提供交互页面。</string>
+    <!-- DeltaX 插件导出 -->
+    <string name="deltax_export_all">导出全部插件</string>
+    <string name="deltax_export_success">插件已导出：%s</string>
+    <string name="deltax_export_failed">导出插件失败</string>
+    <string name="deltax_no_plugins_export">没有插件可供导出</string>
 </resources>

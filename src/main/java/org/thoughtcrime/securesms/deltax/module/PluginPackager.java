@@ -157,6 +157,32 @@ public class PluginPackager {
   }
 
   /**
+   * Packages every installed plugin into a single archive, mirroring the import format (a zip that
+   * contains one directory per plugin, each with its own {@code manifest.json}). Returns false when
+   * there are no plugins to export.
+   */
+  public boolean exportAll(File targetZip) {
+    List<PluginInfo> plugins = getInstalledPlugins();
+    if (plugins.isEmpty()) return false;
+    File parent = targetZip.getParentFile();
+    if (parent != null) parent.mkdirs();
+    if (targetZip.exists() && !targetZip.delete()) {
+      Log.w(TAG, "Failed to remove existing export file: " + targetZip.getAbsolutePath());
+    }
+    try (ZipOutputStream zos = new ZipOutputStream(new java.io.FileOutputStream(targetZip))) {
+      for (PluginInfo plugin : plugins) {
+        if (plugin.pluginDir != null && plugin.pluginDir.isDirectory()) {
+          addDirToZip(plugin.pluginDir, plugin.pluginDir.getName(), zos);
+        }
+      }
+      return true;
+    } catch (IOException e) {
+      Log.w(TAG, "Failed to export plugins: " + e.getMessage());
+      return false;
+    }
+  }
+
+  /**
    * Installs plugins from a MinecraftX/DeltaX module package (a .zip that contains one or more
    * plugin directories, each with its own manifest.json). Returns the number of plugins installed.
    */

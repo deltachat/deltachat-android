@@ -1191,4 +1191,9 @@
     <string name="deltax_save">儲存</string>
     <string name="deltax_saved">已儲存</string>
     <string name="deltax_no_page">該外掛未提供互動頁面。</string>
+    <!-- DeltaX 外掛匯出 -->
+    <string name="deltax_export_all">匯出全部外掛</string>
+    <string name="deltax_export_success">外掛已匯出：%s</string>
+    <string name="deltax_export_failed">匯出外掛失敗</string>
+    <string name="deltax_no_plugins_export">沒有外掛可供匯出</string>
 </resources>

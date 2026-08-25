@@ -3,8 +3,8 @@ package org.thoughtcrime.securesms.deltax;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -12,13 +12,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.b44t.messenger.DcContext;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
 
 public class DeltaXActivity extends BaseActionBarActivity
@@ -135,11 +140,63 @@ public class DeltaXActivity extends BaseActionBarActivity
   }
 
   @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.deltax_activity_menu, menu);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override
   public boolean onOptionsItemSelected(android.view.MenuItem item) {
     if (item.getItemId() == android.R.id.home) {
       finish();
       return true;
     }
+    if (item.getItemId() == R.id.action_export_all) {
+      exportAllPlugins();
+      return true;
+    }
     return super.onOptionsItemSelected(item);
+  }
+
+  private void exportAllPlugins() {
+    List<PluginInfo> plugins = deltaX.getInstalledPlugins();
+    if (plugins.isEmpty()) {
+      Toast.makeText(this, R.string.deltax_no_plugins_export, Toast.LENGTH_SHORT).show();
+      return;
+    }
+
+    String name = "user";
+    String email = "unknown";
+    try {
+      DcContext dc = DcHelper.getContext(this);
+      if (dc != null) {
+        String displayName = dc.getConfig("displayname");
+        if (displayName != null && !displayName.isEmpty()) name = displayName;
+        String addr = dc.getConfig("addr");
+        if (addr != null && !addr.isEmpty()) email = addr;
+      }
+    } catch (Exception ignored) {
+    }
+
+    String stamp = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.US).format(new Date());
+    String fileName = sanitize(name) + "-" + stamp + "-" + sanitize(email) + ".zip";
+
+    File dir = DcHelper.getImexDir();
+    dir.mkdirs();
+    File target = new File(dir, fileName);
+
+    boolean ok = deltaX.getPluginPackager().exportAll(target);
+    if (ok) {
+      Toast.makeText(
+              this, getString(R.string.deltax_export_success, target.getName()), Toast.LENGTH_LONG)
+          .show();
+    } else {
+      Toast.makeText(this, R.string.deltax_export_failed, Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  private static String sanitize(String s) {
+    if (s == null) return "";
+    return s.replaceAll("[\\\\/:*?\"<>|]", "_").trim();
   }
 }

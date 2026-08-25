@@ -1296,4 +1296,9 @@
     <string name="deltax_save">Save</string>
     <string name="deltax_saved">Saved</string>
     <string name="deltax_no_page">This plugin does not provide an interactive page.</string>
+    <!-- DeltaX plugin export -->
+    <string name="deltax_export_all">Export all plugins</string>
+    <string name="deltax_export_success">Plugins exported: %s</string>
+    <string name="deltax_export_failed">Failed to export plugins</string>
+    <string name="deltax_no_plugins_export">No plugins available to export</string>
 </resources>
