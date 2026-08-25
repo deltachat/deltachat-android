@@ -96,7 +96,9 @@ public class DeltaX {
     pluginsDir.mkdirs();
     loadedPlugins = evaluator.loadPlugins();
     initialised = true;
-    Log.i(TAG, "DeltaX initialised with " + loadedPlugins.size() + " plugin(s) for account " + accountId);
+    Log.i(
+        TAG,
+        "DeltaX initialised with " + loadedPlugins.size() + " plugin(s) for account " + accountId);
   }
 
   public void shutdown() {
