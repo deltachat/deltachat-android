@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
@@ -135,7 +136,7 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
 
   static class ViewHolder extends RecyclerView.ViewHolder {
     View root;
-    View text;
+    LinearLayout text;
     TextView name;
     TextView meta;
     TextView desc;
@@ -146,7 +147,7 @@ public class PluginAdapter extends RecyclerView.Adapter<PluginAdapter.ViewHolder
     ViewHolder(View v) {
       super(v);
       root = v;
-      text = v.findViewById(R.id.plugin_text);
+      text = (LinearLayout) v.findViewById(R.id.plugin_text);
       name = v.findViewById(R.id.plugin_name);
       meta = v.findViewById(R.id.plugin_meta);
       desc = v.findViewById(R.id.plugin_desc);
