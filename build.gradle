@@ -278,6 +278,10 @@ dependencies {
     androidTestImplementation ('org.assertj:assertj-core:3.27.3') {
         exclude group: 'org.hamcrest', module: 'hamcrest-core'
     }
+
+    constraints {
+        implementation 'androidx.activity:activity:1.11.0'  // 1.13.0 requires minSdk=23
+    }
 }
 
 String buildConfigProperty(String name) {
