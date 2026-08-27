@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/container"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,7 +18,66 @@
         app:contentInsetStart="0dp"
         app:contentInsetLeft="0dp"
         android:elevation="4dp"
-        android:theme="?attr/actionBarStyle" />
+        android:theme="?attr/actionBarStyle">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/avatar_and_title"
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingStart="14dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    style="@style/TextSecure.TitleTextStyle"
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deltax_title"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:paddingRight="10dp"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/field_action"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_more_vert_white_24dp"
+                android:paddingRight="4dp"
+                android:paddingEnd="4dp"
+                android:paddingLeft="12dp"
+                android:paddingStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/deltax_search_field" />
+
+            <ImageView
+                android:id="@+id/search_action"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_search_white_24dp"
+                android:paddingRight="12dp"
+                android:paddingEnd="12dp"
+                android:paddingLeft="12dp"
+                android:paddingStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/search" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -56,7 +115,7 @@
 
     </FrameLayout>
 
-    <org.thoughtcrime.securesms.deltax.DeltaXSearchToolbar
+    <org.thoughtcrime.securesms.components.SearchToolbar
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

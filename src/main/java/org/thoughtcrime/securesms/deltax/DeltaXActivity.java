@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
@@ -14,7 +17,9 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.TooltipCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -34,12 +39,20 @@ import java.util.Locale;
 import java.util.Set;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.SearchToolbar;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
-import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 
 public class DeltaXActivity extends BaseActionBarActivity
     implements PluginAdapter.PluginActionListener {
+
+  private enum SearchField {
+    NAME,
+    AUTHOR,
+    VERSION,
+    PACKAGE
+  }
 
   private DeltaX deltaX;
   private RecyclerView recycler;
@@ -50,21 +63,35 @@ public class DeltaXActivity extends BaseActionBarActivity
   private boolean selectionActive = false;
   private final Set<String> selectedIds = new HashSet<>();
   private ActionMode actionMode;
-  private Toolbar toolbar;
-  private DeltaXSearchToolbar searchToolbar;
+  private TextView title;
+  private SearchToolbar searchToolbar;
+  private ImageView searchAction;
+  private ImageView fieldAction;
+  private SearchField currentField = SearchField.NAME;
   private String currentQuery = "";
+
+  @Override
+  protected void onPreCreate() {
+    dynamicTheme = new DynamicNoActionBarTheme();
+    super.onPreCreate();
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_deltax);
 
-    toolbar = findViewById(R.id.toolbar);
+    Toolbar toolbar = findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+    title = findViewById(R.id.toolbar_title);
+    searchToolbar = findViewById(R.id.search_toolbar);
+    searchAction = findViewById(R.id.search_action);
+    fieldAction = findViewById(R.id.field_action);
     ActionBar ab = getSupportActionBar();
     if (ab != null) {
       ab.setDisplayHomeAsUpEnabled(true);
     }
+    title.setText(R.string.deltax_title);
 
     deltaX = DeltaX.getInstance(this);
     if (!deltaX.isInitialised()) {
@@ -90,9 +117,19 @@ public class DeltaXActivity extends BaseActionBarActivity
           return insets;
         });
 
-    searchToolbar = findViewById(R.id.search_toolbar);
+    TooltipCompat.setTooltipText(searchAction, getText(R.string.search));
+    TooltipCompat.setTooltipText(fieldAction, getText(R.string.deltax_search_field));
+
+    searchAction.setOnClickListener(
+        v ->
+            searchToolbar.display(
+                searchAction.getX() + (searchAction.getWidth() / 2),
+                searchAction.getY() + (searchAction.getHeight() / 2)));
+
+    fieldAction.setOnClickListener(this::showFieldMenu);
+
     searchToolbar.setListener(
-        new DeltaXSearchToolbar.SearchListener() {
+        new SearchToolbar.SearchListener() {
           @Override
           public void onSearchTextChange(String text) {
             currentQuery = text == null ? "" : text;
@@ -102,13 +139,8 @@ public class DeltaXActivity extends BaseActionBarActivity
           @Override
           public void onSearchClosed() {
             currentQuery = "";
-            searchToolbar.clearQuery();
             refresh();
           }
-        });
-    searchToolbar.setFieldListener(
-        field -> {
-          if (!currentQuery.trim().isEmpty()) refresh();
         });
 
     pickerLauncher =
@@ -123,6 +155,50 @@ public class DeltaXActivity extends BaseActionBarActivity
             });
 
     refresh();
+  }
+
+  private void showFieldMenu(View anchor) {
+    PopupMenu popup = new PopupMenu(this, anchor);
+    popup.getMenuInflater().inflate(R.menu.deltax_search_field, popup.getMenu());
+    popup.setOnMenuItemClickListener(
+        item -> {
+          int id = item.getItemId();
+          if (id == R.id.search_field_name) currentField = SearchField.NAME;
+          else if (id == R.id.search_field_author) currentField = SearchField.AUTHOR;
+          else if (id == R.id.search_field_version) currentField = SearchField.VERSION;
+          else if (id == R.id.search_field_package) currentField = SearchField.PACKAGE;
+          else return false;
+          updateSearchHint();
+          if (!currentQuery.trim().isEmpty()) refresh();
+          return true;
+        });
+    popup.show();
+  }
+
+  private void updateSearchHint() {
+    if (!searchToolbar.isVisible()) return;
+    Toolbar inner = searchToolbar.findViewById(R.id.toolbar);
+    if (inner == null) return;
+    MenuItem item = inner.getMenu().findItem(R.id.action_filter_search);
+    if (item == null) return;
+    SearchView searchView = (SearchView) item.getActionView();
+    if (searchView == null) return;
+    EditText editText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+    if (editText == null) return;
+    switch (currentField) {
+      case AUTHOR:
+        editText.setHint(R.string.deltax_search_by_author);
+        break;
+      case VERSION:
+        editText.setHint(R.string.deltax_search_by_version);
+        break;
+      case PACKAGE:
+        editText.setHint(R.string.deltax_search_by_package);
+        break;
+      default:
+        editText.setHint(R.string.deltax_search_by_name);
+        break;
+    }
   }
 
   private void openFilePicker() {
@@ -348,10 +424,6 @@ public class DeltaXActivity extends BaseActionBarActivity
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    if (item.getItemId() == R.id.action_search) {
-      openSearch();
-      return true;
-    }
     if (item.getItemId() == android.R.id.home) {
       finish();
       return true;
@@ -446,7 +518,7 @@ public class DeltaXActivity extends BaseActionBarActivity
     List<PluginInfo> out = new ArrayList<>();
     for (PluginInfo p : all) {
       String value;
-      switch (searchToolbar.getSearchField()) {
+      switch (currentField) {
         case AUTHOR:
           value = p.manifest.author;
           break;
@@ -465,13 +537,6 @@ public class DeltaXActivity extends BaseActionBarActivity
       }
     }
     return out;
-  }
-
-  private void openSearch() {
-    if (searchToolbar.isVisible()) return;
-    int cx = toolbar.getWidth() - ViewUtil.dpToPx(this, 28);
-    int cy = toolbar.getHeight() / 2;
-    searchToolbar.display(cx, cy);
   }
 
   private final ActionMode.Callback selectionCallback =
