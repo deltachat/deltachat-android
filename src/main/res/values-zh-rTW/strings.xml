@@ -1221,4 +1221,9 @@
     <string name="deltax_search_by_author">作者</string>
     <string name="deltax_search_by_version">版本</string>
     <string name="deltax_search_by_package">完整包名 (author@name:version)</string>
+    <!-- DeltaX 搜尋欄位選項 -->
+    <string name="deltax_search_option_name">搜尋外掛</string>
+    <string name="deltax_search_option_author">搜尋作者</string>
+    <string name="deltax_search_option_version">搜尋版本</string>
+    <string name="deltax_search_option_package">搜尋包名</string>
 </resources>

@@ -48,20 +48,6 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/field_action"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_more_vert_white_24dp"
-                android:paddingRight="4dp"
-                android:paddingEnd="4dp"
-                android:paddingLeft="12dp"
-                android:paddingStart="12dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/deltax_search_field" />
-
-            <ImageView
                 android:id="@+id/search_action"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

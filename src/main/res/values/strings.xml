@@ -1326,4 +1326,9 @@
     <string name="deltax_search_by_author">Author</string>
     <string name="deltax_search_by_version">Version</string>
     <string name="deltax_search_by_package">Package (author@name:version)</string>
+    <!-- DeltaX 搜索字段选项 -->
+    <string name="deltax_search_option_name">Search plugins</string>
+    <string name="deltax_search_option_author">Search author</string>
+    <string name="deltax_search_option_version">Search version</string>
+    <string name="deltax_search_option_package">Search package</string>
 </resources>

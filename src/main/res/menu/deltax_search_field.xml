@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/search_field_name"
-        android:title="@string/deltax_search_by_name" />
+        android:title="@string/deltax_search_option_name" />
 
     <item
         android:id="@+id/search_field_author"
-        android:title="@string/deltax_search_by_author" />
+        android:title="@string/deltax_search_option_author" />
 
     <item
         android:id="@+id/search_field_version"
-        android:title="@string/deltax_search_by_version" />
+        android:title="@string/deltax_search_option_version" />
 
     <item
         android:id="@+id/search_field_package"
-        android:title="@string/deltax_search_by_package" />
+        android:title="@string/deltax_search_option_package" />
 </menu>
