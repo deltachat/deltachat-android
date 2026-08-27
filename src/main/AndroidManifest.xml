@@ -313,6 +313,7 @@
         <activity
             android:name=".deltax.DeltaXActivity"
             android:label="@string/deltax_title"
+            android:theme="@style/TextSecure.Splash"
             android:windowSoftInputMode="stateHidden"
             android:exported="false"
             android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
