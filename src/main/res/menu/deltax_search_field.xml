@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/search_field_name"
+        android:title="@string/deltax_search_by_name" />
+
+    <item
+        android:id="@+id/search_field_author"
+        android:title="@string/deltax_search_by_author" />
+
+    <item
+        android:id="@+id/search_field_version"
+        android:title="@string/deltax_search_by_version" />
+
+    <item
+        android:id="@+id/search_field_package"
+        android:title="@string/deltax_search_by_package" />
+
+</menu>

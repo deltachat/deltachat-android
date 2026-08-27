@@ -1319,4 +1319,11 @@
     <string name="deltax_disabled_selected">Selected plugins disabled</string>
     <string name="deltax_enabled_all">All plugins enabled</string>
     <string name="deltax_disabled_all">All plugins disabled</string>
+    <!-- DeltaX plugin search -->
+    <string name="deltax_search_hint">Search plugins</string>
+    <string name="deltax_search_field">Search by</string>
+    <string name="deltax_search_by_name">Name</string>
+    <string name="deltax_search_by_author">Author</string>
+    <string name="deltax_search_by_version">Version</string>
+    <string name="deltax_search_by_package">Package (author@name:version)</string>
 </resources>

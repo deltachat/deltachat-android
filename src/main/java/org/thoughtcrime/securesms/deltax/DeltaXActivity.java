@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.ActionBar;
@@ -31,7 +32,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.Locale;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
+import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.deltax.module.PluginInfo;
@@ -48,12 +51,17 @@ public class DeltaXActivity extends BaseActionBarActivity
   private boolean selectionActive = false;
   private final Set<String> selectedIds = new HashSet<>();
   private ActionMode actionMode;
+  private Toolbar toolbar;
+  private DeltaXSearchToolbar searchToolbar;
+  private String currentQuery = "";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_deltax);
 
+    toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
     ActionBar ab = getSupportActionBar();
     if (ab != null) {
       ab.setDisplayHomeAsUpEnabled(true);
@@ -81,6 +89,27 @@ public class DeltaXActivity extends BaseActionBarActivity
           lp.rightMargin = base + nav.right;
           v.setLayoutParams(lp);
           return insets;
+        });
+
+    searchToolbar = findViewById(R.id.search_toolbar);
+    searchToolbar.setListener(
+        new DeltaXSearchToolbar.SearchListener() {
+          @Override
+          public void onSearchTextChange(String text) {
+            currentQuery = text == null ? "" : text;
+            refresh();
+          }
+
+          @Override
+          public void onSearchClosed() {
+            currentQuery = "";
+            searchToolbar.clearQuery();
+            refresh();
+          }
+        });
+    searchToolbar.setFieldListener(
+        field -> {
+          if (!currentQuery.trim().isEmpty()) refresh();
         });
 
     pickerLauncher =
@@ -143,7 +172,7 @@ public class DeltaXActivity extends BaseActionBarActivity
   }
 
   private void refresh() {
-    List<PluginInfo> plugins = deltaX.getInstalledPlugins();
+    List<PluginInfo> plugins = getDisplayPlugins();
     boolean empty = plugins.isEmpty();
     recycler.setVisibility(empty ? View.GONE : View.VISIBLE);
     emptyView.setVisibility(empty ? View.VISIBLE : View.GONE);
@@ -320,6 +349,10 @@ public class DeltaXActivity extends BaseActionBarActivity
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
+    if (item.getItemId() == R.id.action_search) {
+      openSearch();
+      return true;
+    }
     if (item.getItemId() == android.R.id.home) {
       finish();
       return true;
@@ -405,6 +438,41 @@ public class DeltaXActivity extends BaseActionBarActivity
   private static String sanitize(String s) {
     if (s == null) return "";
     return s.replaceAll("[\\\\/:*?\"<>|]", "_").trim();
+  }
+
+  private List<PluginInfo> getDisplayPlugins() {
+    List<PluginInfo> all = deltaX.getInstalledPlugins();
+    if (currentQuery == null || currentQuery.trim().isEmpty()) return all;
+    String q = currentQuery.trim().toLowerCase(Locale.ROOT);
+    List<PluginInfo> out = new ArrayList<>();
+    for (PluginInfo p : all) {
+      String value;
+      switch (searchToolbar.getSearchField()) {
+        case AUTHOR:
+          value = p.manifest.author;
+          break;
+        case VERSION:
+          value = p.manifest.version;
+          break;
+        case PACKAGE:
+          value = p.getPackageName();
+          break;
+        default:
+          value = p.manifest.name;
+          break;
+      }
+      if (value != null && value.toLowerCase(Locale.ROOT).contains(q)) {
+        out.add(p);
+      }
+    }
+    return out;
+  }
+
+  private void openSearch() {
+    if (searchToolbar.isVisible()) return;
+    int cx = toolbar.getWidth() - ViewUtil.dpToPx(this, 28);
+    int cy = toolbar.getHeight() / 2;
+    searchToolbar.display(cx, cy);
   }
 
   private final ActionMode.Callback selectionCallback =

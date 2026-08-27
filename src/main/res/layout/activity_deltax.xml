@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/status_bar_background" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarStyle" />
 
     <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -42,4 +56,13 @@
 
     </FrameLayout>
 
-</LinearLayout>
+    <org.thoughtcrime.securesms.deltax.DeltaXSearchToolbar
+        android:id="@+id/search_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+</RelativeLayout>

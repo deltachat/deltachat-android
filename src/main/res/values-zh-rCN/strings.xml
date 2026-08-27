@@ -1294,4 +1294,11 @@
     <string name="deltax_disabled_selected">所选插件已关闭</string>
     <string name="deltax_enabled_all">已开启全部插件</string>
     <string name="deltax_disabled_all">已关闭全部插件</string>
+    <!-- DeltaX 插件搜索 -->
+    <string name="deltax_search_hint">搜索插件</string>
+    <string name="deltax_search_field">搜索方式</string>
+    <string name="deltax_search_by_name">名称</string>
+    <string name="deltax_search_by_author">作者</string>
+    <string name="deltax_search_by_version">版本</string>
+    <string name="deltax_search_by_package">完整包名 (author@name:version)</string>
 </resources>

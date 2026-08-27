@@ -1214,4 +1214,11 @@
     <string name="deltax_disabled_selected">所選外掛已關閉</string>
     <string name="deltax_enabled_all">已開啟全部外掛</string>
     <string name="deltax_disabled_all">已關閉全部外掛</string>
+    <!-- DeltaX 外掛搜尋 -->
+    <string name="deltax_search_hint">搜尋外掛</string>
+    <string name="deltax_search_field">搜尋方式</string>
+    <string name="deltax_search_by_name">名稱</string>
+    <string name="deltax_search_by_author">作者</string>
+    <string name="deltax_search_by_version">版本</string>
+    <string name="deltax_search_by_package">完整包名 (author@name:version)</string>
 </resources>
