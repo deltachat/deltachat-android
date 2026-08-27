@@ -291,8 +291,8 @@ public class ConversationItem extends BaseConversationItem {
     try (TypedArray attrs = context.obtainStyledAttributes(attributes)) {
       incomingBubbleColor = attrs.getColor(0, Color.WHITE);
       outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
-      incomingTextSecondaryColor = attrs.getColor(2, Color.WHITE);
-      outgoingTextSecondaryColor = attrs.getColor(3, Color.WHITE);
+      incomingTextSecondaryColor = attrs.getColor(2, Color.BLACK);
+      outgoingTextSecondaryColor = attrs.getColor(3, Color.BLACK);
     }
   }
 
