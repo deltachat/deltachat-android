@@ -75,7 +75,8 @@ public class DeltaXSearchToolbar extends android.widget.LinearLayout {
     searchInput = findViewById(R.id.search_input);
     fieldButton = findViewById(R.id.search_field);
 
-    Drawable drawable = getContext().getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+    Drawable drawable =
+        getContext().getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
     drawable.mutate();
     drawable.setColorFilter(
         getContext().getResources().getColor(R.color.grey_700), PorterDuff.Mode.SRC_IN);
