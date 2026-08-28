@@ -114,28 +114,31 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
   private void showConfirmDialog(
       String rawQr, @NonNull Runnable okCallback, @Nullable Runnable cancelCallback) {
     DcLot qrParsed = dcContext.checkQr(rawQr);
+    boolean isContactInvite = qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYCONTACT;
+    boolean isJoinInvite =
+        qrParsed.getState() == DcContext.DC_QR_ASK_JOIN_BROADCAST
+            || qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYGROUP;
 
     String dialogMsg = "";
-    if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYCONTACT) {
+    if (isContactInvite) {
       String name = dcContext.getContact(qrParsed.getId()).getDisplayName();
       dialogMsg = getString(R.string.instant_onboarding_confirm_contact, name);
-    } else if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYGROUP) {
+    } else if (isJoinInvite) {
       String groupName = qrParsed.getText1();
       dialogMsg = getString(R.string.instant_onboarding_confirm_group, groupName);
     }
 
-    if (qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYCONTACT
-        || qrParsed.getState() == DcContext.DC_QR_ASK_VERIFYGROUP) {
+    if (isContactInvite || isJoinInvite) {
       AlertDialog confirmDialog =
           new AlertDialog.Builder(this)
               .setMessage(dialogMsg)
               .setPositiveButton(
-                  "OK",
+                  R.string.ok,
                   (dialog, which) -> {
                     okCallback.run();
                   })
               .setNegativeButton(
-                  "Cancel",
+                  R.string.cancel,
                   (dialog, which) -> {
                     if (cancelCallback != null) {
                       cancelCallback.run();
