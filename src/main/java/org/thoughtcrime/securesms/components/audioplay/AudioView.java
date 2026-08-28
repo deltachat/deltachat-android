@@ -18,6 +18,7 @@ import androidx.vectordrawable.graphics.drawable.Animatable2Compat;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
 import java.util.Map;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.components.ConversationItemFooter;
 import org.thoughtcrime.securesms.mms.AudioSlide;
 import org.thoughtcrime.securesms.util.DateUtils;
 
@@ -34,6 +35,8 @@ public class AudioView extends FrameLayout {
   private final @NonNull SeekBar seekBar;
   private final @NonNull TextView timestamp;
   private final @NonNull TextView title;
+  private final @NonNull TextView speedButton;
+  private final ConversationItemFooter footer;
   private final @NonNull View mask;
   private final Observer<Boolean> recordingObserver = this::onRecordingChanged;
   private OnActionListener listener;
@@ -45,6 +48,8 @@ public class AudioView extends FrameLayout {
   private AudioPlaybackViewModel viewModel;
   private final Observer<AudioPlaybackState> stateObserver = this::onPlaybackStateChanged;
   private final Observer<Map<Integer, Long>> durationObserver = this::onDurationsChanged;
+  private final Observer<Float> speedObserver = this::onSpeedChanged;
+  private AudioPlaybackState.PlaybackStatus status = AudioPlaybackState.PlaybackStatus.IDLE;
   private boolean isPlaying;
 
   public AudioView(Context context) {
@@ -63,6 +68,8 @@ public class AudioView extends FrameLayout {
     this.seekBar = findViewById(R.id.seek);
     this.timestamp = findViewById(R.id.timestamp);
     this.title = findViewById(R.id.title);
+    this.speedButton = findViewById(R.id.speed);
+    this.footer = findViewById(R.id.footer);
     this.mask = findViewById(R.id.interception_mask);
 
     updateTimestampsAndSeekBar();
@@ -103,6 +110,9 @@ public class AudioView extends FrameLayout {
 
       viewModel.isRecording().removeObserver(recordingObserver);
       viewModel.isRecording().observeForever(recordingObserver);
+
+      viewModel.getPlaybackSpeed().removeObserver(speedObserver);
+      viewModel.getPlaybackSpeed().observeForever(speedObserver);
     }
 
     playPauseButton.setOnClickListener(
@@ -135,13 +145,20 @@ public class AudioView extends FrameLayout {
           }
         });
 
+    speedButton.setOnClickListener(
+        v -> {
+          if (viewModel != null) {
+            viewModel.cyclePlaybackSpeed();
+          }
+        });
+
     seekBar.setOnSeekBarChangeListener(
         new SeekBar.OnSeekBarChangeListener() {
           @Override
           public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (fromUser) {
               AudioView.this.progress = progress;
-              updateTimestampsAndSeekBar();
+              timestamp.setText(DateUtils.getFormatedDuration(progress));
             }
           }
 
@@ -171,6 +188,7 @@ public class AudioView extends FrameLayout {
       viewModel.getPlaybackState().removeObserver(stateObserver);
       viewModel.getDurations().removeObserver(durationObserver);
       viewModel.isRecording().removeObserver(recordingObserver);
+      viewModel.getPlaybackSpeed().removeObserver(speedObserver);
     }
     if (playToPauseDrawable != null) {
       playToPauseDrawable.clearAnimationCallbacks();
@@ -186,6 +204,7 @@ public class AudioView extends FrameLayout {
       this.viewModel.getPlaybackState().removeObserver(stateObserver);
       this.viewModel.getDurations().removeObserver(durationObserver);
       this.viewModel.isRecording().removeObserver(recordingObserver);
+      this.viewModel.getPlaybackSpeed().removeObserver(speedObserver);
     }
 
     // ViewModel is used directly for simplicity, since there is no reuse yet
@@ -195,6 +214,7 @@ public class AudioView extends FrameLayout {
       viewModel.getPlaybackState().observeForever(stateObserver);
       viewModel.getDurations().observeForever(durationObserver);
       viewModel.isRecording().observeForever(recordingObserver);
+      viewModel.getPlaybackSpeed().observeForever(speedObserver);
     }
   }
 
@@ -207,6 +227,8 @@ public class AudioView extends FrameLayout {
 
     this.progress = 0;
     this.duration = 0;
+    this.status = AudioPlaybackState.PlaybackStatus.IDLE;
+    speedButton.setVisibility(View.INVISIBLE);
 
     viewModel.ensureDurationLoaded(getContext(), msgId, audioUri);
 
@@ -223,6 +245,8 @@ public class AudioView extends FrameLayout {
       title.setText(audio.getFileName().get());
       title.setVisibility(View.VISIBLE);
     }
+
+    onPlaybackStateChanged(viewModel.getPlaybackState().getValue());
   }
 
   @Override
@@ -236,6 +260,7 @@ public class AudioView extends FrameLayout {
     super.setOnLongClickListener(listener);
     this.mask.setOnLongClickListener(listener);
     this.playPauseButton.setOnLongClickListener(listener);
+    this.speedButton.setOnLongClickListener(listener);
   }
 
   public int getMsgId() {
@@ -244,6 +269,10 @@ public class AudioView extends FrameLayout {
 
   public Uri getAudioUri() {
     return audioUri;
+  }
+
+  public ConversationItemFooter getFooter() {
+    return footer;
   }
 
   public interface OnActionListener {
@@ -303,6 +332,22 @@ public class AudioView extends FrameLayout {
     }
   }
 
+  private void onSpeedChanged(Float speed) {
+    if (speed == null) return;
+    String label;
+    if (speed == 1.0f) {
+      label = "1x";
+    } else if (speed == 1.5f) {
+      label = "1.5x";
+    } else if (speed == 2.0f) {
+      label = "2x";
+    } else {
+      label = speed + "x";
+    }
+    speedButton.setText(label);
+    speedButton.setContentDescription(label);
+  }
+
   public void getSeekBarGlobalVisibleRect(@NonNull Rect rect) {
     seekBar.getGlobalVisibleRect(rect);
   }
@@ -341,6 +386,8 @@ public class AudioView extends FrameLayout {
       updateUIForPlaybackState(state);
     } else {
       togglePlayPause(false);
+      status = AudioPlaybackState.PlaybackStatus.IDLE;
+      speedButton.setVisibility(View.INVISIBLE);
 
       // Also clear progress to avoid confusion
       this.progress = 0;
@@ -349,6 +396,12 @@ public class AudioView extends FrameLayout {
   }
 
   private void updateUIForPlaybackState(AudioPlaybackState state) {
+    status = state.getStatus();
+    boolean active =
+        status == AudioPlaybackState.PlaybackStatus.PLAYING
+            || status == AudioPlaybackState.PlaybackStatus.PAUSED;
+    speedButton.setVisibility(active ? View.VISIBLE : View.INVISIBLE);
+
     switch (state.getStatus()) {
       case PLAYING:
         togglePlayPause(true);
@@ -386,9 +439,11 @@ public class AudioView extends FrameLayout {
   }
 
   private void updateTimestampsAndSeekBar() {
-    String progressText = DateUtils.getFormatedDuration(progress);
-    String durationText = DateUtils.getFormatedDuration(duration);
-    timestamp.setText(String.format("%s / %s", progressText, durationText));
+    boolean showProgress =
+        status == AudioPlaybackState.PlaybackStatus.PLAYING
+            || (status == AudioPlaybackState.PlaybackStatus.PAUSED && progress > 0);
+    int time = showProgress ? progress : duration;
+    timestamp.setText(DateUtils.getFormatedDuration(time));
     seekBar.setProgress(progress);
     seekBar.setMax(duration);
   }
