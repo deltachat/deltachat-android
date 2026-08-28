@@ -44,7 +44,7 @@ window.webxdc = (() => {
       setListener: (li) => listener = li,
       leave: () => InternalJSApi.leaveRealtimeChannel(),
       send: (data) => {
-        if ((!data) instanceof Uint8Array) {
+        if (!(data instanceof Uint8Array)) {
           throw new Error('realtime listener data must be a Uint8Array')
         }
         InternalJSApi.sendRealtimeData(JSON.stringify(Array.from(data)));
