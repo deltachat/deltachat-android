@@ -139,7 +139,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/message_bubble_top_padding"
                     android:layout_marginLeft="@dimen/message_bubble_horizontal_padding"
-                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding" />
+                    android:layout_marginRight="@dimen/message_bubble_horizontal_padding"
+                    android:layout_marginBottom="@dimen/message_bubble_bottom_padding" />
 
                 <ViewStub
                     android:id="@+id/document_view_stub"

@@ -131,6 +131,8 @@ public class ConversationItem extends BaseConversationItem {
 
   private int incomingBubbleColor;
   private int outgoingBubbleColor;
+  private int incomingTextSecondaryColor;
+  private int outgoingTextSecondaryColor;
 
   public ConversationItem(Context context) {
     this(context, null);
@@ -283,10 +285,14 @@ public class ConversationItem extends BaseConversationItem {
         new int[] {
           R.attr.conversation_item_incoming_bubble_color,
           R.attr.conversation_item_outgoing_bubble_color,
+          R.attr.conversation_item_incoming_text_secondary_color,
+          R.attr.conversation_item_outgoing_text_secondary_color,
         };
     try (TypedArray attrs = context.obtainStyledAttributes(attributes)) {
       incomingBubbleColor = attrs.getColor(0, Color.WHITE);
       outgoingBubbleColor = attrs.getColor(1, Color.WHITE);
+      incomingTextSecondaryColor = attrs.getColor(2, Color.BLACK);
+      outgoingTextSecondaryColor = attrs.getColor(3, Color.BLACK);
     }
   }
 
@@ -556,6 +562,10 @@ public class ConversationItem extends BaseConversationItem {
       audioViewStub.get().setPlaybackViewModel(playbackViewModel);
       audioViewStub.get().setOnActionListener(audioPlayPauseListener);
       audioViewStub.get().setAudio(new AudioSlide(context, messageRecord));
+      ConversationItemFooter audioFooter = audioViewStub.get().getFooter();
+      boolean outgoing = messageRecord.isOutgoing();
+      audioFooter.setTextColor(outgoing ? outgoingTextSecondaryColor : incomingTextSecondaryColor);
+      audioFooter.setAlpha(outgoing ? 1f : 0.7f);
       audioViewStub.get().setOnClickListener(passthroughClickListener);
       audioViewStub.get().setOnLongClickListener(passthroughClickListener);
       audioViewStub
@@ -876,6 +886,7 @@ public class ConversationItem extends BaseConversationItem {
 
     footer.setVisibility(GONE);
     if (mediaThumbnailStub.resolved()) mediaThumbnailStub.get().getFooter().setVisibility(GONE);
+    if (audioViewStub.resolved()) audioViewStub.get().getFooter().setVisibility(GONE);
 
     ConversationItemFooter activeFooter = getActiveFooter(current);
     activeFooter.setVisibility(VISIBLE);
@@ -908,6 +919,8 @@ public class ConversationItem extends BaseConversationItem {
       return stickerStub.get().getFooter();
     } else if (hasOnlyThumbnail(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
       return mediaThumbnailStub.get().getFooter();
+    } else if (hasAudio(messageRecord) && TextUtils.isEmpty(messageRecord.getText())) {
+      return audioViewStub.get().getFooter();
     } else {
       return footer;
     }
