@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Pin messages in chats
 * Add support for reactions in channels
 * Improve reactions details overview
 * Allow channel owners to mute their channel

@@ -99,8 +99,14 @@ public class ConversationFragment extends MessageSelectorFragment {
   private View scrollToBottomButton;
   private View floatingLocationButton;
   private View bottomDivider;
+  private View pinnedMessageBanner;
   private AddReactionView addReactionView;
   private TextView noMessageTextView;
+  private TextView pinnedMessageText;
+  private TextView pinnedMessageCount;
+  private int listBasePaddingTop;
+  private final List<Integer> pinnedMessageIds = new ArrayList<>();
+  private int pinnedMessageIndex = -1;
   private Timer reloadTimer;
   private ConversationScrollListener scrollListener;
 
@@ -145,8 +151,13 @@ public class ConversationFragment extends MessageSelectorFragment {
     addReactionView = ViewUtil.findById(view, R.id.add_reaction_view);
     noMessageTextView = ViewUtil.findById(view, R.id.no_messages_text_view);
     bottomDivider = ViewUtil.findById(view, R.id.bottom_divider);
+    pinnedMessageBanner = ViewUtil.findById(view, R.id.pinned_message_banner);
+    pinnedMessageText = ViewUtil.findById(view, R.id.pinned_message_text);
+    pinnedMessageCount = ViewUtil.findById(view, R.id.pinned_message_count);
+    listBasePaddingTop = list.getPaddingTop();
 
     scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
+    pinnedMessageBanner.setOnClickListener(v -> showCurrentPinnedMessage());
 
     final SetStartingPositionLinearLayoutManager layoutManager =
         new SetStartingPositionLinearLayoutManager(
@@ -317,8 +328,14 @@ public class ConversationFragment extends MessageSelectorFragment {
   }
 
   private void initializeResources() {
-    this.chatId =
+    long requestedChatId =
         this.getActivity().getIntent().getIntExtra(ConversationActivity.CHAT_ID_EXTRA, -1);
+    if (this.chatId != requestedChatId) {
+      pinnedMessageIds.clear();
+      pinnedMessageIndex = -1;
+      hidePinnedMessageBanner();
+    }
+    this.chatId = requestedChatId;
     this.recipient = Recipient.from(getActivity(), Address.fromChat((int) this.chatId));
 
     if (chatId > 0) {
@@ -683,6 +700,100 @@ public class ConversationFragment extends MessageSelectorFragment {
     }
   }
 
+  private void reloadPinnedMessages() {
+    Integer displayedMessageId =
+        pinnedMessageIndex >= 0 && pinnedMessageIndex < pinnedMessageIds.size()
+            ? pinnedMessageIds.get(pinnedMessageIndex)
+            : null;
+
+    try {
+      List<Integer> newPinnedMessageIds =
+          rpc.getPinnedMessages(rpc.getSelectedAccountId(), (int) chatId);
+      boolean messageWasAdded = false;
+      for (Integer messageId : newPinnedMessageIds) {
+        if (!pinnedMessageIds.contains(messageId)) {
+          messageWasAdded = true;
+          break;
+        }
+      }
+
+      pinnedMessageIds.clear();
+      pinnedMessageIds.addAll(newPinnedMessageIds);
+
+      if (pinnedMessageIds.isEmpty()) {
+        pinnedMessageIndex = -1;
+        hidePinnedMessageBanner();
+        return;
+      }
+
+      int preservedIndex =
+          displayedMessageId == null ? -1 : pinnedMessageIds.indexOf(displayedMessageId);
+      pinnedMessageIndex =
+          messageWasAdded || preservedIndex < 0 ? pinnedMessageIds.size() - 1 : preservedIndex;
+      bindPinnedMessageBanner();
+    } catch (RpcException e) {
+      Log.e(TAG, "Could not load pinned messages", e);
+    }
+  }
+
+  private void bindPinnedMessageBanner() {
+    if (pinnedMessageIndex < 0 || pinnedMessageIndex >= pinnedMessageIds.size()) {
+      hidePinnedMessageBanner();
+      return;
+    }
+
+    int messageId = pinnedMessageIds.get(pinnedMessageIndex);
+    DcMsg message = DcHelper.getContext(getContext()).getMsg(messageId);
+    if (message == null || !message.isOk()) {
+      hidePinnedMessageBanner();
+      return;
+    }
+
+    String summary = message.getSummarytext(200);
+    String position =
+        getString(
+            R.string.pinned_message_position, pinnedMessageIndex + 1, pinnedMessageIds.size());
+    pinnedMessageText.setText(summary);
+    pinnedMessageCount.setText(position);
+    pinnedMessageBanner.setContentDescription(
+        getString(R.string.pinned_message) + ": " + summary + ", " + position);
+    pinnedMessageBanner.setVisibility(View.VISIBLE);
+    pinnedMessageBanner.post(this::updatePinnedMessageBannerInsets);
+  }
+
+  private void hidePinnedMessageBanner() {
+    if (pinnedMessageBanner == null || list == null) {
+      return;
+    }
+    pinnedMessageBanner.setVisibility(View.GONE);
+    list.setPadding(
+        list.getPaddingLeft(), listBasePaddingTop, list.getPaddingRight(), list.getPaddingBottom());
+    floatingLocationButton.setTranslationY(0);
+  }
+
+  private void updatePinnedMessageBannerInsets() {
+    if (pinnedMessageBanner.getVisibility() != View.VISIBLE) {
+      return;
+    }
+    int bannerHeight = pinnedMessageBanner.getHeight();
+    list.setPadding(
+        list.getPaddingLeft(),
+        listBasePaddingTop + bannerHeight,
+        list.getPaddingRight(),
+        list.getPaddingBottom());
+    floatingLocationButton.setTranslationY(bannerHeight);
+  }
+
+  private void showCurrentPinnedMessage() {
+    if (pinnedMessageIndex < 0 || pinnedMessageIndex >= pinnedMessageIds.size()) {
+      return;
+    }
+    scrollMaybeSmoothToMsgId(pinnedMessageIds.get(pinnedMessageIndex));
+    pinnedMessageIndex =
+        pinnedMessageIndex == 0 ? pinnedMessageIds.size() - 1 : pinnedMessageIndex - 1;
+    bindPinnedMessageBanner();
+  }
+
   private void reloadList() {
     reloadList(false);
   }
@@ -724,6 +835,7 @@ public class ConversationFragment extends MessageSelectorFragment {
     int[] msgs = dcContext.getChatMsgs((int) chatId, 0, 0);
     Log.i(TAG, "⏰ getChatMsgs(" + chatId + "): " + (System.currentTimeMillis() - startMs) + "ms");
 
+    reloadPinnedMessages();
     adapter.changeData(msgs);
 
     if (firstLoad) {

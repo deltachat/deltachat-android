@@ -376,6 +376,12 @@
     <string name="pin">Pin</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Unpin</string>
+    <!-- A message that stays accessible from a banner at the top of a chat. -->
+    <string name="pinned_message">Pinned message</string>
+    <!-- Position of the shown pinned message within all pinned messages. -->
+    <string name="pinned_message_position">%1$d/%2$d</string>
+    <string name="message_pinned_by_you">You pinned a message.</string>
+    <string name="message_pinned_by_other">Message pinned by %1$s.</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
     <string name="source_code">Source Code</string>

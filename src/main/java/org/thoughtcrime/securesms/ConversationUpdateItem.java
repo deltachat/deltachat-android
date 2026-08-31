@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import com.b44t.messenger.DcChat;
+import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcMsg;
 import java.io.ByteArrayInputStream;
 import java.util.Set;
@@ -110,7 +111,16 @@ public class ConversationUpdateItem extends BaseConversationItem {
       appIcon.setVisibility(GONE);
     }
 
-    bodyText.setText(messageRecord.getDisplayBody());
+    if (infoType == DcMsg.DC_INFO_MESSAGE_PINNED) {
+      if (messageRecord.getFromId() == DcContact.DC_CONTACT_ID_SELF) {
+        bodyText.setText(R.string.message_pinned_by_you);
+      } else {
+        String senderName = dcContext.getContact(messageRecord.getFromId()).getDisplayName();
+        bodyText.setText(context.getString(R.string.message_pinned_by_other, senderName));
+      }
+    } else {
+      bodyText.setText(messageRecord.getDisplayBody());
+    }
     bodyText.setVisibility(VISIBLE);
 
     if (messageRecord.isFailed()) deliveryStatusView.setFailed();
