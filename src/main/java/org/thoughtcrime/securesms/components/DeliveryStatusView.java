@@ -130,4 +130,8 @@ public class DeliveryStatusView {
     }
     return "";
   }
+
+  public void setDescription(String description) {
+    deliveryIndicator.setContentDescription(description);
+  }
 }
