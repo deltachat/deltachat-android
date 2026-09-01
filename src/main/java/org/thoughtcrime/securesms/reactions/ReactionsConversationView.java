@@ -16,6 +16,7 @@ import chat.delta.rpc.types.Reaction;
 import java.util.ArrayList;
 import java.util.List;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.util.AccessibilityUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ReactionsConversationView extends LinearLayout {
@@ -49,6 +50,9 @@ public class ReactionsConversationView extends LinearLayout {
   public void clear() {
     this.reactions.clear();
     removeAllViews();
+    setOnClickListener(null);
+    setContentDescription(null);
+    setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
   }
 
   public void setReactions(List<Reaction> reactions) {
@@ -59,8 +63,11 @@ public class ReactionsConversationView extends LinearLayout {
     clear();
     this.reactions.addAll(reactions);
 
-    for (Reaction reaction : buildShortenedReactionsList(this.reactions)) {
+    List<Reaction> shortened = buildShortenedReactionsList(this.reactions);
+
+    for (Reaction reaction : shortened) {
       View pill = buildPill(getContext(), this, reaction);
+      pill.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
       addView(pill);
     }
 
@@ -68,6 +75,26 @@ public class ReactionsConversationView extends LinearLayout {
       ViewUtil.setLeftMargin(this, OUTER_MARGIN);
     } else {
       ViewUtil.setRightMargin(this, OUTER_MARGIN);
+    }
+
+    StringBuilder parts = new StringBuilder();
+    for (Reaction reaction : shortened) {
+      if (reaction.emoji == null) {
+        AccessibilityUtil.append(
+            parts, getContext().getString(R.string.a11y_reactions_more, reaction.count));
+      } else if (reaction.count > 1) {
+        AccessibilityUtil.append(parts, reaction.emoji + " " + reaction.count);
+      } else {
+        AccessibilityUtil.append(parts, reaction.emoji);
+      }
+    }
+
+    if (parts.length() > 0) {
+      setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);
+      setContentDescription(getContext().getString(R.string.a11y_reactions, parts.toString()));
+    } else {
+      setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
+      setContentDescription(null);
     }
   }
 

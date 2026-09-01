@@ -98,7 +98,7 @@ public class CallItemView extends FrameLayout {
 
   public String getDescription() {
     return title.getText()
-        + (duration.getVisibility() == VISIBLE ? ("\n" + duration.getText()) : "");
+        + (duration.getVisibility() == VISIBLE ? (", " + duration.getText()) : "");
   }
 
   public interface CallClickListener {

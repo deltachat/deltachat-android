@@ -56,8 +56,8 @@ public class DocumentView extends FrameLayout {
 
   public String getDescription() {
     String desc = getContext().getString(R.string.file);
-    desc += "\n" + fileName.getText();
-    desc += "\n" + fileSize.getText();
+    desc += ", " + fileName.getText();
+    desc += ", " + fileSize.getText();
     return desc;
   }
 
