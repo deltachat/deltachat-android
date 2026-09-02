@@ -81,13 +81,19 @@ public final class WebRtcHolder {
     return state;
   }
 
-  private boolean isSettled() {
+  /**
+   * Whether the fill has finished. Callers rely on this meaning exactly CONFIRMED or EMPTY.
+   *
+   * <p>Callers treat "settled but not CONFIRMED" as EMPTY, i.e. as permission to fill the budget
+   * themselves. A state where the holder has partial budget must not be settled.
+   */
+  public boolean isSettled() {
     return state == State.CONFIRMED || state == State.EMPTY;
   }
 
   public void awaitSettled(final Runnable callback) {
     if (!Util.isMainThread()) {
-      Util.runOnMain(this::start);
+      Util.runOnMain(() -> awaitSettled(callback));
       return;
     }
     if (isSettled()) {
@@ -115,7 +121,7 @@ public final class WebRtcHolder {
 
   public void onRendererGone() {
     if (!Util.isMainThread()) {
-      Util.runOnMain(this::start);
+      Util.runOnMain(this::onRendererGone);
       return;
     }
     Log.w(TAG, "Renderer gone");

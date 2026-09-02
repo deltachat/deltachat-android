@@ -29,7 +29,14 @@
       console.log("WEBRTC-WG: allocating");
       while (window.__connections.length < 500) {
         try {
-          window.__connections.push(new RTCPeerConnection(cert));
+          const pc = new RTCPeerConnection(cert);
+            // Closing frees most of the memory (~46 KB instead of ~84 KB per connection) but does
+            // not free the slot. The process-wide counter is decremented in the destructor, not in
+            // close(). Note that an unclosed connection is kept alive by the engine, but a closed one
+            // is kept alive only by our reference to it. The `connections` array must not be cleared
+            // or go out of scope.
+          pc.close();
+          window.__connections.push(pc);
           if (window.__connections.length%50 == 0) {
             await new Promise((res) => setTimeout(res));
           }
@@ -45,15 +52,6 @@
     (async () => {
       try {
         await fill500();
-
-        // Closing frees most of the memory (~46 KB instead of ~84 KB per connection) but does
-        // not free the slot. The process-wide counter is decremented in the destructor, not in
-        // close(). Note that an unclosed connection is kept alive by the engine, but a closed one
-        // is kept alive only by our reference to it. The `connections` array must not be cleared
-        // or go out of scope.
-        for (const pc of window.__connections) {
-          pc.close();
-        }
 
         try {
           window.__connections.push(new RTCPeerConnection());

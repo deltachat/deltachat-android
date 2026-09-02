@@ -293,14 +293,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
             if (isFinishing() || isDestroyed() || webView == null) {
               return;
             }
-            WebRtcHolder.State holderState = holder.getState();
             if (!holder.isSettled()) {
-              Log.e(TAG, "Cannot block WebRTC (" + holderState + "), refusing to load");
+              Log.e(TAG, "Cannot block WebRTC (" + holder.getState() + "), refusing to load");
               finish();
               return;
             }
             webView.loadUrl(
-                buildBootstrapUrl(holderState == WebRtcHolder.State.CONFIRMED, finalEncodedHref));
+                buildBootstrapUrl(
+                    holder.getState() == WebRtcHolder.State.CONFIRMED, finalEncodedHref));
           });
     }
 
