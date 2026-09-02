@@ -18,6 +18,7 @@
 package org.thoughtcrime.securesms;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ import org.thoughtcrime.securesms.util.ShareUtil;
 public class ShareActivity extends PassphraseRequiredActionBarActivity
     implements ResolveMediaTask.OnMediaResolvedListener {
   private static final String TAG = "ShareActivity";
+  private static final String TAG_DEBUG = "DEBUG_4490";
 
   public static final String EXTRA_ACC_ID = "acc_id";
   public static final String EXTRA_CHAT_ID = "chat_id";
@@ -97,6 +99,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void initializeMedia() {
+    logIncomingIntent(getIntent());
     resolvedExtras = new ArrayList<>();
 
     List<Uri> streamExtras = new ArrayList<>();
@@ -127,6 +130,42 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
       }
     } else {
       resolveUris(streamExtras);
+    }
+  }
+
+  private void logIncomingIntent(Intent intent) {
+    if (intent == null) {
+      Log.w(TAG_DEBUG, "intent is null");
+      return;
+    }
+    try {
+      Log.w(
+          TAG_DEBUG,
+          "action="
+              + intent.getAction()
+              + " type="
+              + intent.getType()
+              + " flags=0x"
+              + Integer.toHexString(intent.getFlags())
+              + " data="
+              + intent.getDataString());
+      Uri stream = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+      Log.w(TAG_DEBUG, "EXTRA_STREAM=" + stream);
+      ArrayList<Uri> streams = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+      Log.w(TAG_DEBUG, "EXTRA_STREAM list=" + streams);
+      ClipData clip = intent.getClipData();
+      if (clip == null) {
+        Log.w(TAG_DEBUG, "clipData=null");
+      } else {
+        Log.w(TAG_DEBUG, "clipData items=" + clip.getItemCount());
+        for (int i = 0; i < clip.getItemCount(); i++) {
+          Log.w(TAG_DEBUG, "clipData[" + i + "]=" + clip.getItemAt(i).getUri());
+        }
+      }
+      Bundle extras = intent.getExtras();
+      Log.w(TAG_DEBUG, "extras=" + (extras == null ? "null" : extras.keySet().toString()));
+    } catch (Exception e) {
+      Log.w(TAG_DEBUG, "logIncomingIntent failed", e);
     }
   }
 
@@ -202,6 +241,7 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
   }
 
   private void handleResolvedMedia(Intent intent) {
+    Log.w(TAG_DEBUG, "handleResolvedMedia: resolvedExtras=" + resolvedExtras);
     int accId = intent.getIntExtra(EXTRA_ACC_ID, -1);
     int chatId = intent.getIntExtra(EXTRA_CHAT_ID, -1);
 

@@ -14,6 +14,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.OpenableColumns;
+import android.util.Log;
 import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import com.b44t.messenger.DcContext;
@@ -30,6 +31,8 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.video.recode.VideoRecoder;
 
 public class SendRelayedMessageUtil {
+
+  private static final String TAG_DEBUG = "DEBUG_4490";
 
   public static void immediatelyRelay(Activity activity, int chatId) {
     immediatelyRelay(activity, new Long[] {(long) chatId});
@@ -123,6 +126,7 @@ public class SendRelayedMessageUtil {
     DcContext dcContext = DcHelper.getContext(context);
     DcMsg message;
     String mimeType = MediaUtil.getMimeType(context, uri);
+    Log.w(TAG_DEBUG, "createMessage: uri=" + uri + " mimeType=" + mimeType);
     if (uri == null) {
       message = new DcMsg(dcContext, DcMsg.DC_MSG_TEXT);
     } else if (MediaUtil.isImageType(mimeType)) {
@@ -151,25 +155,38 @@ public class SendRelayedMessageUtil {
         "cannot-resolve.jpg"; // best guess, this still leads to most images being workable if OS
     // does weird things
     try {
+      Log.w(
+          TAG_DEBUG,
+          "setFileFromUri: uri="
+              + uri
+              + " segments="
+              + uri.getPathSegments()
+              + " isLocalUri="
+              + PartAuthority.isLocalUri(uri));
 
       if (PartAuthority.isLocalUri(uri)) {
         filename = uri.getPathSegments().get(PersistentBlobProvider.FILENAME_PATH_SEGMENT);
+        Log.w(TAG_DEBUG, "filename from blob URI segment=" + filename);
       } else if (uri.getScheme().equals("content")) {
+        Log.w(TAG_DEBUG, "taking non-local content:// branch");
         final ContentResolver contentResolver = context.getContentResolver();
         final Cursor cursor = contentResolver.query(uri, null, null, null, null);
         try {
           if (cursor != null && cursor.moveToFirst()) {
             final int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+            Log.w(TAG_DEBUG, "content branch: nameIndex=" + nameIndex);
             if (nameIndex >= 0) {
               filename = cursor.getString(nameIndex);
             }
           }
         } finally {
-          cursor.close();
+          if (cursor != null) cursor.close();
         }
       }
 
+      Log.w(TAG_DEBUG, "final filename=" + filename);
       path = DcHelper.getBlobdirFile(dcContext, filename, "temp");
+      Log.w(TAG_DEBUG, "blob path=" + path);
 
       // copy content to this file
       if (path != null) {
@@ -178,9 +195,18 @@ public class SendRelayedMessageUtil {
         Util.copy(inputStream, outputStream);
       }
     } catch (Exception e) {
-      e.printStackTrace();
+      Log.w(TAG_DEBUG, "setFileFromUri failed", e);
       path = null;
     }
+    Log.w(
+        TAG_DEBUG,
+        "setFileAndDeduplicate(path="
+            + path
+            + ", filename="
+            + filename
+            + ", mimeType="
+            + mimeType
+            + ")");
     message.setFileAndDeduplicate(path, filename, mimeType);
   }
 }

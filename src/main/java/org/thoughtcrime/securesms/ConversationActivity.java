@@ -151,6 +151,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         InputPanel.MediaListener,
         AudioView.OnActionListener {
   private static final String TAG = "ConversationActivity";
+  private static final String TAG_DEBUG = "DEBUG_4490";
 
   public static final String ACCOUNT_ID_EXTRA = "account_id";
   public static final String CHAT_ID_EXTRA = "chat_id";
@@ -894,6 +895,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   private void handleSharing() {
     ArrayList<Uri> uriList = ShareUtil.getSharedUris(this);
+    Log.w(TAG_DEBUG, "handleSharing: uriList=" + uriList);
     if (uriList.size() > 1) {
       askSendingFiles(uriList, () -> SendRelayedMessageUtil.immediatelyRelay(this, chatId));
     } else {
