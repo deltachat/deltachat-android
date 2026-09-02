@@ -294,8 +294,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               return;
             }
             WebRtcHolder.State holderState = holder.getState();
-            if (holderState != WebRtcHolder.State.CONFIRMED
-                && holderState != WebRtcHolder.State.EMPTY) {
+            if (!holder.isSettled()) {
               Log.e(TAG, "Cannot block WebRTC (" + holderState + "), refusing to load");
               finish();
               return;
