@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<script>
+    // Allocates the whole per-renderer RTCPeerConnection budget so no other document in
+    // this app process can create one. See WebRtcHolder.java for additional info.
+    window.__connections = [];
+
+    const release = () => {
+      for (const pc of window.__connections) {
+        pc.close();
+      }
+      window.__connections = [];
+    };
+
+    const fill500 = async () => {
+      const cert = {
+        certificates: [
+          await RTCPeerConnection.generateCertificate({
+            name: "ECDSA",
+            namedCurve: "P-256",
+          }),
+        ],
+      };
+
+      console.log("WEBRTC-WG: allocating");
+      while (window.__connections.length < 500) {
+        try {
+          const pc = new RTCPeerConnection(cert);
+            // Closing frees most of the memory (~46 KB instead of ~84 KB per connection) but does
+            // not free the slot. The process-wide counter is decremented in the destructor, not in
+            // close(). Note that an unclosed connection is kept alive by the engine, but a closed one
+            // is kept alive only by our reference to it. The `connections` array must not be cleared
+            // or go out of scope.
+          pc.close();
+          window.__connections.push(pc);
+          if (window.__connections.length%50 == 0) {
+            await new Promise((res) => setTimeout(res));
+          }
+        } catch (error) {
+          new Array(1024*1024).fill(0);
+          await new Promise((res) => setTimeout(res, 500));
+          console.log("WEBRTC-WG: waiting for gc");
+        }
+      }
+      console.log("WEBRTC-WG: done");
+    };
+
+    (async () => {
+      try {
+        await fill500();
+
+        try {
+          window.__connections.push(new RTCPeerConnection());
+          console.log("Error: was able to create more than 500 connections");
+          release();
+          HolderJSApi.onFillFinished("empty", "was able to create more than 500 connections");
+        } catch (error) {
+          HolderJSApi.onFillFinished("confirmed", null);
+        }
+      } catch (error) {
+        release();
+        HolderJSApi.onFillFinished("empty", "" + error);
+      }
+    })();
+</script>
+</body>
+</html>

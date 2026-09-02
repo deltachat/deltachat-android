@@ -2,7 +2,15 @@
 
 ## Unreleased
 
+* Add speed button for voice message playback
+* Fix: support scanning a channel-invite while creating a new profile
+* Fix: random long delay when reopening a WebXDC app
+
+## v2.59.1
+2026-08
+
 * Fix potential crashes under certain conditions when placing a call
+* Update translations
 
 ## v2.59.0
 2026-08

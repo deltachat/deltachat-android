@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms;
 
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +13,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.multidex.MultiDexApplication;
 import androidx.work.Constraints;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.NetworkType;
@@ -51,7 +51,7 @@ import org.thoughtcrime.securesms.util.SignalProtocolLoggerProvider;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.webxdc.WebxdcGarbageCollectionWorker;
 
-public class ApplicationContext extends MultiDexApplication {
+public class ApplicationContext extends Application {
   private static final String TAG = "ApplicationContext";
   private static final Object initLock = new Object();
   private static volatile boolean isInitialized = false;
