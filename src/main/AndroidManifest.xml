@@ -412,6 +412,14 @@
             android:theme="@style/TextSecure.LightTheme"
             android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize" />
 
+        <!-- zxing-android-embedded declares CaptureActivity with screenOrientation="sensorLandscape",
+            which triggers Play Console's warning about the attribute is ignored on large screens when targeting
+            API 36+. Because the default capture activity is never used, and we always pass our own activities, we
+            can safely remove the declaration from the merged manifest. -->
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            tools:node="remove" />
+
         <activity
             android:name=".preferences.ChatBackgroundActivity"
             android:theme="@style/TextSecure.LightTheme"
