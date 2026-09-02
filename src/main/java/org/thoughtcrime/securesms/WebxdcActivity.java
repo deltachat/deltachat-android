@@ -66,7 +66,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final String EXTRA_HREF = "href";
   private static final int REQUEST_CODE_FILE_PICKER = 51426;
-  private static long lastOpenTime = 0;
 
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
@@ -150,6 +149,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         .addNextIntentWithParentStack(chatIntent)
         .addNextIntent(webxdcIntent)
         .getIntents();
+  }
+
+  private String buildBootstrapUrl(boolean blockedByHolder, String encodedHref) {
+    return this.baseURL
+        + "/webxdc_bootstrap324567869.html?i="
+        + (internetAccess ? "1" : "0")
+        + "&h="
+        + (blockedByHolder ? "1" : "0")
+        + "&href="
+        + encodedHref;
   }
 
   @Override
@@ -272,23 +281,28 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
+    final String finalEncodedHref = encodedHref;
 
-    long timeDelta = System.currentTimeMillis() - lastOpenTime;
-    final String url =
-        this.baseURL
-            + "/webxdc_bootstrap324567869.html?i="
-            + (internetAccess ? "1" : "0")
-            + "&href="
-            + encodedHref;
-    Util.runOnAnyBackgroundThread(
-        () -> {
-          if (timeDelta < 2000) {
-            // this is to avoid getting stuck in the FILL500 in some devices if the
-            // previous webview was not destroyed yet and a new app is opened too soon
-            Util.sleep(1000);
-          }
-          Util.runOnMain(() -> webView.loadUrl(url));
-        });
+    if (internetAccess) {
+      webView.loadUrl(buildBootstrapUrl(false, finalEncodedHref));
+    } else {
+      // Wait until the state of the RTCPeerConnection budget is settled.
+      final WebRtcHolder holder = WebRtcHolder.getInstance(this);
+      holder.awaitSettled(
+          () -> {
+            if (isFinishing() || isDestroyed() || webView == null) {
+              return;
+            }
+            if (!holder.isSettled()) {
+              Log.e(TAG, "Cannot block WebRTC (" + holder.getState() + "), refusing to load");
+              finish();
+              return;
+            }
+            webView.loadUrl(
+                buildBootstrapUrl(
+                    holder.getState() == WebRtcHolder.State.CONFIRMED, finalEncodedHref));
+          });
+    }
 
     Util.runOnAnyBackgroundThread(
         () -> {
@@ -315,7 +329,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @Override
   protected void onDestroy() {
-    lastOpenTime = System.currentTimeMillis();
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
     leaveRealtimeChannel();
     tts.shutdown();
@@ -629,13 +642,17 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   private void leaveRealtimeChannel() {
-    int accountId = dcContext.getAccountId();
-    int msgId = dcAppMsg.getId();
-    try {
-      rpc.leaveWebxdcRealtime(accountId, msgId);
-    } catch (RpcException e) {
-      e.printStackTrace();
-    }
+    final Rpc rpc = this.rpc;
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    Util.runOnAnyBackgroundThread(
+        () -> {
+          try {
+            rpc.leaveWebxdcRealtime(accountId, msgId);
+          } catch (RpcException e) {
+            e.printStackTrace();
+          }
+        });
   }
 
   class InternalJSApi {
