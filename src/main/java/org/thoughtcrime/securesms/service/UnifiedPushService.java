@@ -50,7 +50,7 @@ public class UnifiedPushService extends PushService {
   @Override
   public void onMessage(@NonNull PushMessage _pushMessage, @NonNull String _s) {
     Log.d(TAG, "New push message received");
-    if (Build.VERSION.SDK_INT < 31) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
       onMessageLegacy();
     } else {
       onMessage31();

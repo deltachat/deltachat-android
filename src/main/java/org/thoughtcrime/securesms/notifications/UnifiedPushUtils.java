@@ -182,7 +182,7 @@ public class UnifiedPushUtils {
     if (distributor == null) return null;
     try {
       ApplicationInfo ai;
-      if (Build.VERSION.SDK_INT >= 33) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         ai =
             context
                 .getPackageManager()
