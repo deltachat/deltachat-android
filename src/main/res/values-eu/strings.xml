@@ -668,7 +668,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Erabili beste zerbitzari bat</string>
     <string name="instant_onboarding_other_server">Zerrendatu txatmail zerbitzariak</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Sortu kontu bat \"%1$s\" taldean sartzeko.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Sortu profil bat %1$s-(r)ekin txateatzeko.</string>
@@ -729,6 +729,8 @@
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Gehitu errelea?</string>
     <string name="invalid_transport_qr">Eskaneatutako QR kodeak ez dauka baliozko errelerik.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">Kendu \"%1$s\"?\n\nEzabatu aurretik, pixkanaka-pixkanaka kenduko da, zure kontaktuak arin alda daitezen.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Ezabatu \"%1$s\" errelea?\n\nErrele hau bakarrik ezagutzen duten kontaktuak ezin izango dira zurekin harremanetan jarri zuk mezu bat berriro bidali arte.\n\nZalantzarik baduzu, hobe da ezkutatzea ezabatzea baino.</string>
     <string name="login_certificate_checks">Ziurtagiri-egiaztaketak</string>
@@ -767,6 +769,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Bidali %1$d fitxategiak \"%2$s\"(e)ra?</string>
     <string name="ask_send_files_to_selected_chats">Bidali %1$d fitxategia(k) %2$d txatetara?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Bideoak jatorrizko fitxategi handi gisa bidaltzen dira. Bideoak fitxategi txikiago gisa bidaltzeko, erantsi itzazu bereizita)</string>
     <string name="share_text_multiple_chats">Bidali testua hau %1$d txatetara?\n\n\"%2$s\"</string>
     <string name="share_abort">Partekatzea eten da baimenak falta direlako.</string>
@@ -958,16 +961,22 @@
     <string name="chat_description_changed_by_other">%1$s(e)k txataren deskribapena aldatu du</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s kidea gehitu da.</string>
+    <string name="member_you_added">Gehitu zaituzte.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">%1$s kidea gehitu duzu.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s(e)k: %1$s kidea gehitu du</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">%1$s-k gehitu zaitu.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">%1$s kidea kendu duzu.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s(e)k: %1$s kidea kenduta</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">%1$s-k kendu zaitu.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">%1$s kidea kenduta.</string>
+    <string name="member_you_removed">Kendu zaituzte.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Taldetik atera zara</string>
     <!-- "left" in the meaning of "exited". -->

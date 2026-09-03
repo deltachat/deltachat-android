@@ -82,11 +82,11 @@
     <string name="loading">加载中…</string>
     <string name="hide">隐藏</string>
     <string name="activate">激活</string>
-    <string name="load_remote_content">加载远程图像</string>
+    <string name="load_remote_content">加载远程图片</string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">远程图像可以跟踪您。\n\n此设置可能还会加载字体以及其他内容。禁用状态下，您仍可能会看到嵌入的图像和缓存中的图像。\n\n是否加载远程图像？</string>
+    <string name="load_remote_content_ask">远程图片可以跟踪您。\n\n此设置还可能会加载字体和其他内容。如果禁用此设置，嵌入或缓存的图片仍可能会显示。\n\n是否加载远程图片？</string>
     <string name="always">总是</string>
-    <string name="always_load_remote_images">始终加载远程图像</string>
+    <string name="always_load_remote_images">始终加载远程图片</string>
     <string name="once">仅一次</string>
     <!-- deprecated -->
     <string name="show_warning">显示警告</string>
@@ -281,7 +281,7 @@
     <string name="menu_toggle_keyboard">切换表情符号键盘</string>
     <string name="menu_edit_group">编辑群组</string>
     <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">群组名称和图像</string>
+    <string name="menu_group_name_and_image">群组名称和头像</string>
     <string name="menu_show_global_map">显示所有位置</string>
     <string name="menu_archive_chat">归档聊天</string>
     <string name="menu_unarchive_chat">取消归档聊天</string>
@@ -297,7 +297,7 @@
     <string name="menu_message_details">消息详情</string>
     <string name="menu_copy_to_clipboard">复制到剪贴板</string>
     <string name="share_invite_link">分享邀请链接</string>
-    <string name="share_invite_link_explain">任何有此链接的人都可查看您的个人资料并开始与您聊天。请仅与您信任的人分享。</string>
+    <string name="share_invite_link_explain">任何有此链接的人都可查看您的账号并开始与您聊天。请仅与您信任的人分享。</string>
     <string name="invite_friends">邀请好友</string>
     <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
     <string name="invite_friends_text">在 Delta Chat 上联系我：\n%1$s</string>
@@ -552,8 +552,8 @@
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">群组名称</string>
     <string name="group_avatar">群组图像</string>
-    <string name="remove_group_image">移除群组图像</string>
-    <string name="change_group_image">更改群组图像</string>
+    <string name="remove_group_image">移除群组头像</string>
+    <string name="change_group_image">更改群组头像</string>
     <string name="group_create_button">创建群组</string>
     <!-- deprecated, use please_enter_chat_name -->
     <string name="group_please_enter_group_name">请输入群组名称。</string>
@@ -590,7 +590,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">添加第二台设备</string>
     <string name="multidevice_same_network_hint">让两台设备连接相同的 Wi-Fi 或网络</string>
-    <string name="multidevice_this_creates_a_qr_code">这将创建一个二维码，第二台设备可以扫描该二维码来复制配置文件。\n\n请确保没有不必要的观察者或摄像机可以看到以下屏幕。</string>
+    <string name="multidevice_this_creates_a_qr_code">这将创建一个二维码，第二台设备可以扫描该二维码来复制账号。\n\n请确保没有不必要的观察者或摄像机可以看到以下屏幕。</string>
     <string name="multidevice_install_dc_on_other_device">在你的其他设备上安装 Delta Chat (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">启动 Delta Chat，点按“我已有账号/添加为第二台设备”，然后扫描此处显示的二维码</string>
@@ -599,7 +599,7 @@
     <string name="multidevice_receiver_title">添加为第二台设备</string>
     <string name="multidevice_open_settings_on_other_device">在第一台设备上，启动 Delta Chat，转到“设置/添加第二台设备”，然后扫描显示的二维码</string>
     <string name="multidevice_receiver_scanning_ask">是否将账号从其他设备复制到此设备？</string>
-    <string name="multidevice_receiver_needs_update">您要导入的配置文件来自较新的 Delta Chat 版本。\n\n要继续设置第二台设备，请更新此设备上的 Delta Chat 到最新版。</string>
+    <string name="multidevice_receiver_needs_update">您要导入的账号来自较新的 Delta Chat 版本。\n\n要继续设置第二台设备，请更新此设备上的 Delta Chat 到最新版。</string>
     <string name="multidevice_abort">中止第二台设备的设置吗？</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">这会让复制到剪贴板的二维码失效。</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ 账号已传输到您的第二台设备。</string>
@@ -640,30 +640,30 @@
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">使用传统电子邮件作为中继</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
-    <string name="instant_onboarding_title">个人资料</string>
+    <string name="instant_onboarding_title">您的账号</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
     <string name="instant_onboarding_agree_default2">%1$s 的隐私政策</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
-    <string name="instant_onboarding_agree_instance">关于 %1$s 上的个人资料</string>
+    <string name="instant_onboarding_agree_instance">关于 %1$s 上的账号</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">同意并创建账号</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">使用其他服务器</string>
     <string name="instant_onboarding_other_server">列出聊天邮件服务器</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
-    <string name="instant_onboarding_group_info">创建个人资料加入“%1$s” 群。</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
+    <string name="instant_onboarding_group_info">创建账号加入“%1$s”。</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
-    <string name="instant_onboarding_contact_info">创建个人资料和 %1$s 聊天</string>
+    <string name="instant_onboarding_contact_info">创建账号即可与 %1$s 聊天。</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_contact">你想新建个人资料并开始和 %1$s 聊天吗？</string>
+    <string name="instant_onboarding_confirm_contact">创建新账号，开始与 %1$s 聊天吗？</string>
     <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
-    <string name="instant_onboarding_confirm_group">你想新建个人资料并加入 \"%1$s\" 聊天群吗？</string>
+    <string name="instant_onboarding_confirm_group">创建新账号并加入“%1$s”吗？</string>
 
     <string name="team">团队</string>
-    <string name="team_profile">团队配置</string>
-    <string name="team_profile_explain">“团队配置”由一群人或一个组织共同管理。\n\n⚠️ 团队配置目前处于实验阶段，可能会有所更改。</string>
+    <string name="team_profile">团队账号</string>
+    <string name="team_profile_explain">“团队账号”由一群人或一个组织共同管理。\n\n⚠️ 团队账号目前处于实验阶段，可能会有所更改。</string>
     <string name="team_name">团队名称</string>
-    <string name="create_team_profile">创建团队配置</string>
+    <string name="create_team_profile">创建团队账号</string>
 
     <string name="welcome_chat_over_email">安全的去中心化聊天</string>
     <string name="scan_invitation_code">扫描邀请码</string>
@@ -751,19 +751,20 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">发送 %1$d 个文件到“%2$s”？</string>
     <string name="ask_send_files_to_selected_chats">发送 %1$d 个文件到 %2$d 个聊天？</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">（发送多个视频将按原样发送，文件可能很大。为了减小文件体积并节省流量，您可以将每个视频单独发送一条消息。）</string>
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 
     <!-- preferences -->
-    <string name="pref_profile_info_headline">您的个人资料</string>
-    <string name="pref_profile_photo">个人资料图片</string>
-    <string name="pref_blocked_contacts">已屏蔽的联系人</string>
-    <string name="blocked_empty_hint">被您屏蔽的联系人将显示于此。</string>
-    <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的个人资料图片、名称和个人简介将与您的消息一起发送。</string>
+    <string name="pref_profile_info_headline">您的账号</string>
+    <string name="pref_profile_photo">头像</string>
+    <string name="pref_blocked_contacts">已屏蔽联系人</string>
+    <string name="blocked_empty_hint">已屏蔽的联系人将显示在此处。</string>
+    <string name="pref_who_can_see_profile_explain">在与其他用户交流时，您的头像、名称和个人简介将与您的消息一起发送。</string>
     <string name="pref_your_name">您的名称</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
-    <string name="pref_default_status_label">签名档</string>
+    <string name="pref_default_status_label">个人简介</string>
     <string name="chat_description">描述</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
     <string name="pref_enter_sends">Enter 键发送</string>
@@ -863,11 +864,11 @@
     <string name="up_to_x_most_worse_quality_images">%1$s 以下，最差的图像质量</string>
     <string name="up_to_x_most_balanced_quality_images">%1$s 以下，均衡的图像质量</string>
     <string name="download_failed">下载失败</string>
-    <string name="profile_image_select">选择个人资料图片</string>
-    <string name="select_your_new_profile_image">选择新的个人资料图片</string>
-    <string name="profile_image_delete">删除个人资料图片</string>
+    <string name="profile_image_select">选择头像</string>
+    <string name="select_your_new_profile_image">选择新头像</string>
+    <string name="profile_image_delete">删除头像</string>
     <string name="pref_show_tray_icon">显示托盘图标</string>
-    <string name="pref_edit_profile">编辑个人资料</string>
+    <string name="pref_edit_profile">编辑账号</string>
     <string name="send_stats_to_devs">发送统计数据给 Delta Chat 开发者</string>
     <string name="stats_device_message">您是否愿意通过每周发送匿名使用统计数据来帮助改进 Delta Chat 并支持相关研究？\n\n👉 点击此处… 👈</string>
     <string name="stats_confirmation_dialog">您是否愿意通过每周发送匿名使用统计数据来帮助改进 Delta Chat 并支持相关研究？</string>
@@ -913,7 +914,7 @@
     <!-- deprecated -->
     <string name="autodel_server_warn_multi_device_title">开启一次性删除</string>
     <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device">如果您启用一次删除，则无法在此配置文件中使用多台设备。</string>
+    <string name="autodel_server_warn_multi_device">如果您启用一次性删除，则无法在此账号上使用多台设备。</string>
     <string name="autodel_confirm">我了解，将这些消息全部删除</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">下载后立即</string>
@@ -926,32 +927,38 @@
 
     <!-- system messages -->
     <string name="systemmsg_subject_for_new_contact">来自 %1$s 的消息</string>
-    <string name="systemmsg_failed_sending_to">发送消息给 %1$s 失败。</string>
+    <string name="systemmsg_failed_sending_to">无法向 %1$s 发送消息。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
-    <string name="group_name_changed_by_you">你已将群组名称从“%1$s”更改为“%2$s”</string>
+    <string name="group_name_changed_by_you">您已将群组名称从“%1$s”更改为“%2$s”。</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
-    <string name="group_name_changed_by_other">%3$s已将群组名称从“%1$s”更改为“%2$s”</string>
+    <string name="group_name_changed_by_other">%3$s 已将群组名称从“%1$s”更改为“%2$s”。</string>
     <!-- %1$s will be replaced by the old channel name, %2$s will be replaced by the new channel name -->
     <string name="channel_name_changed">频道名称已从“%1$s”更改为“%2$s”。</string>
-    <string name="group_image_changed_by_you">你更改了群组图像</string>
+    <string name="group_image_changed_by_you">您更改了群组头像。</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
-    <string name="group_image_changed_by_other">%1$s 更改了群组图像</string>
-    <string name="channel_image_changed">频道图像已更改。</string>
+    <string name="group_image_changed_by_other">%1$s 更改了群组头像。</string>
+    <string name="channel_image_changed">频道头像已更改。</string>
     <string name="chat_description_changed_by_you">您更改了聊天描述。</string>
     <!-- %1$s will be replaced by name of the contact who did the action -->
-    <string name="chat_description_changed_by_other">聊天描述已由 %1$s 更改。</string>
+    <string name="chat_description_changed_by_other">%1$s 更改了聊天描述。</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
-    <string name="member_x_added">添加了成员 %1$s 。</string>
+    <string name="member_x_added">添加了成员 %1$s。</string>
+    <string name="member_you_added">您已被添加。</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
-    <string name="add_member_by_you">你添加了成员 %1$s</string>
+    <string name="add_member_by_you">您添加了成员 %1$s。</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
-    <string name="add_member_by_other">%2$s 添加了成员 %1$s</string>
+    <string name="add_member_by_other">%2$s 添加了成员 %1$s。</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">%1$s 添加了您。</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
-    <string name="remove_member_by_you">你移除了成员 %1$s</string>
+    <string name="remove_member_by_you">您移除了成员 %1$s。</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s 移除了成员 %1$s</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">%1$s 移除了您。</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
-    <string name="member_x_removed">已移除成员 %1$s </string>
+    <string name="member_x_removed">移除了成员 %1$s。</string>
+    <string name="member_you_removed">您已被移除。</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">您已离开群组。</string>
     <!-- "left" in the meaning of "exited". -->
@@ -959,9 +966,9 @@
     <string name="you_joined_the_channel">您已加入频道。</string>
     <!-- "left" in the meaning of "exited"; %1$s will be replaced by name of the contact leaving the group -->
     <string name="group_left_by_other">%1$s 退出了群组</string>
-    <string name="group_image_deleted_by_you">你删除了群组图像</string>
+    <string name="group_image_deleted_by_you">您删除了群组头像。</string>
     <!-- %1$s will be replaced by name of the contact -->
-    <string name="group_image_deleted_by_other">%1$s 删除了群组图像</string>
+    <string name="group_image_deleted_by_other">%1$s 删除了群组头像。</string>
     <string name="location_enabled_by_you">你开启了位置流</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="location_enabled_by_other">%1$s 开启了位置流</string>
@@ -1020,7 +1027,7 @@
 
     <!-- qr code stuff -->
     <string name="qr_code">二维码</string>
-    <string name="load_qr_code_as_image">从图像加载二维码</string>
+    <string name="load_qr_code_as_image">将二维码加载为图片</string>
     <string name="qrscan_title">扫描二维码</string>
     <string name="qrscan_hint">将摄像头对准二维码。</string>
     <string name="qrscan_hint_desktop">将二维码移动到摄像头</string>
@@ -1050,8 +1057,8 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">扫描即可与 %1$s 聊天</string>
     <string name="qrshow_join_contact_no_connection_toast">没有互联网连接，无法进行二维码设置。</string>
-    <string name="qraccount_ask_create_and_login">在“%1$s”创建新的电子邮件地址并登录？</string>
-    <string name="set_name_and_avatar_explain">设置联系人可以识别的名称，您还可以设置个人资料图片。</string>
+    <string name="qraccount_ask_create_and_login">在“%1$s”上创建新账号并登录？</string>
+    <string name="set_name_and_avatar_explain">设置联系人可以识别的名称，您还可以设置头像。</string>
     <string name="please_enter_name">请输入名称。</string>
     <string name="qraccount_qr_code_cannot_be_used">扫描的二维码不能用于创建新账号。</string>
     <!-- the placeholder will be replaced by the address of the profile -->
@@ -1137,7 +1144,7 @@
     <string name="global_menu_help_about_desktop">关于 Delta Chat</string>
     <string name="global_menu_file_open_desktop">打开 Delta Chat</string>
     <string name="global_menu_minimize_to_tray">最小化</string>
-    <string name="no_account_selected">选择配置文件或创建新配置文件</string>
+    <string name="no_account_selected">选择账号或创建新账号</string>
     <string name="no_chat_selected_suggestion_desktop">选择聊天或创建新聊天</string>
     <string name="write_message_desktop">输入消息…</string>
     <string name="encryption_info_title_desktop">加密信息</string>
@@ -1229,7 +1236,7 @@
     <string name="InfoPlist_NSLocationWhenInUseUsageDescription">Delta Chat 需要位置权限，以便在您启用位置共享的时间范围内共享您的位置。</string>
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat 使用麦克风来录制、发送语音消息和带有声音的视频。</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat 将让您选择要从图库中发送哪些照片。</string>
-    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想将图像保存到图库。</string>
+    <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat 想要将图片保存到您的照片库中。</string>
     <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat 可以使用 Face ID 保护您的本地配置文件，备份创建和第二台设备设置。</string>
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->

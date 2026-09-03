@@ -43,6 +43,8 @@ public class Prefs {
   private static final String ENTER_SENDS_PREF = "pref_enter_sends";
   private static final String PROMPTED_DOZE_MSG_ID_PREF = "pref_prompted_doze_msg_id";
   private static final String STATS_DEVICE_MSG_ID_PREF = "pref_stats_device_msg_id";
+  private static final String UPDATE_MSG_PREF = "pref_update_msg";
+  private static final String UPDATE_LAST_CHECK_PREF = "pref_update_last_check";
   public static final String DOZE_ASKED_DIRECTLY = "pref_doze_asked_directly";
   public static final String ASKED_FOR_NOTIFICATION_PERMISSION =
       "pref_asked_for_notification_permission";
@@ -179,6 +181,22 @@ public class Prefs {
 
   public static int getStatsDeviceMsgId(Context context) {
     return getIntegerPreference(context, STATS_DEVICE_MSG_ID_PREF, 0);
+  }
+
+  public static void setUpdateMsg(Context context, String value) {
+    setStringPreference(context, UPDATE_MSG_PREF, value);
+  }
+
+  public static String getUpdateMsg(Context context) {
+    return getStringPreference(context, UPDATE_MSG_PREF, "");
+  }
+
+  public static void setUpdateLastCheck(Context context, long timestamp) {
+    setLongPreference(context, UPDATE_LAST_CHECK_PREF, timestamp);
+  }
+
+  public static long getUpdateLastCheck(Context context) {
+    return getLongPreference(context, UPDATE_LAST_CHECK_PREF, 0);
   }
 
   public static boolean isPushEnabled(Context context) {

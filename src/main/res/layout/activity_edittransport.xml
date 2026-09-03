@@ -41,7 +41,7 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="16dp" />
 
-            <androidx.legacy.widget.Space
+            <android.widget.Space
                 android:id="@+id/fab_spacer"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp" />
@@ -226,7 +226,7 @@
                 app:layout_constraintStart_toStartOf="@id/guideline_root_start"
                 app:layout_constraintTop_toBottomOf="@id/imap_security_label" />
 
-            <androidx.legacy.widget.Space
+            <android.widget.Space
                 android:id="@+id/outbox_view_spacer_top"
                 android:layout_width="wrap_content"
                 android:layout_height="16dp"

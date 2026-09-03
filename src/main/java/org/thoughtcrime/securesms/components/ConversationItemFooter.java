@@ -114,7 +114,7 @@ public class ConversationItemFooter extends LinearLayout {
     presentDeliveryStatus(messageRecord, isOutChannel);
   }
 
-  private void setTextColor(int color) {
+  public void setTextColor(int color) {
     textColor = color;
     dateView.setTextColor(color);
     editedView.setTextColor(color);

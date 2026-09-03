@@ -614,7 +614,7 @@
     <string name="onboarding_create_instant_account">Criar novo perfil</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Concordar &amp; Criar perfil</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Crie um perfil para participar do grupo \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Crie um perfil para conversa com %1$s.</string>

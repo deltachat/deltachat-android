@@ -697,7 +697,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Інший сервер</string>
     <string name="instant_onboarding_other_server">Список серверів Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Створіть профіль, щоб приєднатися до групи \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Створіть профіль для спілкування з %1$s.</string>
@@ -790,6 +790,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Послати %1$d файл·и·ів у «%2$s»?</string>
     <string name="ask_send_files_to_selected_chats">Послати %1$d файл·и·ів у %2$d чати?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Надсилання кількох відео одночасно залишить їх у вихідному розмірі, що може призвести до великого обсягу даних. Щоб зменшити їхній розмір і заощадити трафік, ви можете надсилати кожне відео окремим повідомленням)</string>
     <string name="share_text_multiple_chats">Надіслати це́й текст у %1$d чат·и·ів?\n\n«%2$s»</string>
     <string name="share_abort">Надсилання обірване через відсутність дозволів.</string>

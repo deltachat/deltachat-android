@@ -686,7 +686,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">השתמש בשרת אחר</string>
     <string name="instant_onboarding_other_server">רשימת שרתים של Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">צרו פרופיל כדי להצטרף לקבוצה \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">צרו פרופיל כדי לשוחח עם %1$s.</string>
@@ -787,6 +787,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">לשלוח %1$d קבצים ל \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">לשלוח %1$d קובצ(ים) ל %2$d צ\'אטים?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(שליחת מספר סרטונים תשלח אותם כפי שהם, והם עלולים להיות גדולים. כדי להקטין את גודלם ולחסוך בנפח נתונים, ניתן לשלוח כל סרטון בהודעה נפרדת)</string>
     <string name="share_text_multiple_chats">שלח את הטקסט ל-%1$d צ\'אטים?\n\n\"%2$s\"</string>
     <string name="share_abort">השיתוף הופסק בשל היעדר הרשאות.</string>
@@ -978,16 +979,22 @@
     <string name="chat_description_changed_by_other">תיאור הצ\'אט שונה על ידי %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">נוסף חבר: %1$s.</string>
+    <string name="member_you_added">הצטרפת.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">הוספת את החבר %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">החבר %1$s נוסף על ידי %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">צורפת על-ידי %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">הסרת את החבר %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">החבר %1$s הוסר על ידי %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">הוסרת על-ידי %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">החבר \" %1$s \" הוסר.</string>
+    <string name="member_you_removed">הוסרת.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">עזבת את הקבוצה.</string>
     <!-- "left" in the meaning of "exited". -->

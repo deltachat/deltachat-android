@@ -25,6 +25,8 @@
     <string name="downloading">در حال بارگیری…</string>
     <string name="open_attachment">بازکردن پیوست</string>
     <string name="join">پیوستن</string>
+    <string name="join_group">پیوستن به گروه</string>
+    <string name="join_channel">پیوستن به کانال</string>
     <string name="rejoin">پیوستن مجدد</string>
     <string name="delete">حذف</string>
     <string name="delete_for_me">حذف برای من</string>
@@ -92,6 +94,7 @@
     <string name="offline">آفلاین</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">بعدی</string>
+    <string name="warning">هشدار</string>
     <string name="error">خطا</string>
     <string name="error_x">خطا: %1$s</string>
     <string name="no_app_to_handle_data">نرم‌افزاری برای باز کردن این نوع داده یافت نشد</string>
@@ -186,6 +189,7 @@
     <string name="contact">مخاطب</string>
     <string name="bot">ربات</string>
     <string name="camera">دوربین</string>
+    <string name="front_camera">دوربین جلو</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">گرفتن</string>
     <!-- Switch eg. from front to back camera -->
@@ -384,6 +388,10 @@
     <string name="answer_call">جواب دادن</string>
     <!-- the action "to decline" a call, not: "the decline" -->
     <string name="end_call">رد کردن</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">تماس صوتی</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">تماس تصویری</string>
     <!-- deprecated, use "Audio call" instead -->
     <string name="outgoing_audio_call">تماس صوتی خروجی</string>
     <!-- deprecated, use "Video call" instead -->
@@ -603,7 +611,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">استفاده از یک کارساز دیگر</string>
     <string name="instant_onboarding_other_server">فهرست کارسازهای Chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">ایجاد نمایه برای وارد شدن به گپ «%1$s».</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">برای گفتگو با %1$s یک حساب کاربری ایجاد کنید.</string>
@@ -685,6 +693,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">ارسال %1$dپرونده به «%2$s»؟</string>
     <string name="ask_send_files_to_selected_chats">ارسال %1$dپرونده به %2$d گپ؟</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(فیلم‌ها به صورت پرونده‌های بزرگ بدون تغییر ارسال می‌شوند. برای ارسال فیلم‌ها به عنوان پرونده‌های کوچک‌تر، آن‌ها را به صورت جدا پیوست کنید)</string>
     <string name="share_text_multiple_chats">ارسال این متن به %1$d گپ؟n/n/«%2$s»</string>
     <string name="share_abort">اشتراک گذاری به دلیل نبود مجوز‌ها متوقف شد.</string>

@@ -1,19 +1,19 @@
-Delta Chat to zdecentralizowany i bezpieczny komunikator, który jest całkowicie
-kompatybilny z istniejącą infrastrukturą poczty e-mail.
+Delta Chat to niezawodny, zdecentralizowany komunikator, z którego korzystanie jest łatwe i przyjemne – zarówno dla przyjaciół, rodziny, jak i grup oraz organizacji. Delta Chat jest tworzony przez zaangażowaną społeczność współpracowników FOSS, która wspólnie kilka razy w roku udostępnia ulepszenia i nowe funkcje w wielu sklepach i na różnych platformach na całym świecie.
 
-Dzięki Delta Chat zyskujesz możliwość łatwego i wygodnego komunikowania się ze swoimi kontaktami
-e-mail.
+Najważniejsze cechy:
 
-Niektóre funkcje w skrócie:
+• Prywatność. Natychmiastowa rejestracja bez podawania numeru telefonu ani innych danych osobowych.
 
-💬 Niezawodne wiadomości błyskawiczne z obsługą wielu profili i urządzeń.
+• Przyjaciele i rodzina: Rozmawiaj wyłącznie z osobami, które znasz. Nieznani użytkownicy nie mogą wysyłać Ci wiadomości ani obserwować Cię bez obopólnej zgody.
 
-⚡️ Łatwa rejestracja przy użyciu bezpiecznych i szybkich serwerów chatmail. Nie wymaga to numeru telefonu ani żadnych prywatnych danych.
+• Elastyczność. Obsługuje wiele profili czatu i jest łatwy w konfiguracji na wielu urządzeniach.
 
-📧 Możesz również użyć istniejącego adresu e-mail, aby odtworzyć swoją skrzynkę odbiorczą jako czaty.
+• Rozszerzalność. Możliwość dodawania narzędzi, takich jak listy zakupów, kalendarze czy aplikacje do gier, do dowolnego czatu.
 
-🎮 Interaktywne mini-aplikacje w czatach do gier i współpracy.
+• Niezawodność. Działa nawet w trudnych i nieprzyjaznych warunkach sieciowych.
 
-🔒 Sprawdzone szyfrowanie end-to-end chroniące przed atakami sieciowymi i serwerowymi.
+• Bezpieczeństwo. Sprawdzone szyfrowanie typu end-to-end, chroniące przed atakami sieciowymi i serwerowymi.
 
-🆓 W pełni otwarte oprogramowanie, oparte na standardach internetowych.
+• Niezależność. Możliwość uruchamiania przy użyciu własnego adresu e-mail lub serwera.
+
+• Oprogramowanie wolne i otwarte (FOSS). W pełni otwarte i bezpłatne oprogramowanie, oparte na standardach internetowych.

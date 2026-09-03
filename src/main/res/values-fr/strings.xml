@@ -677,7 +677,7 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Utiliser un autre serveur</string>
     <string name="instant_onboarding_other_server">Liste des serveurs chatmail</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
     <string name="instant_onboarding_group_info">Créez un profil pour rejoindre le groupe « %1$s ».</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Créez un profil pour discuter avec %1$s.</string>
@@ -769,6 +769,7 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Envoyer %1$d fichiers à « %2$s » ?</string>
     <string name="ask_send_files_to_selected_chats">Envoyer %1$d fichier(s) à %2$d discussions ?</string>
+    <!-- deprecated -->
     <string name="videos_sent_without_recoding">(Lorsque vous joignez plusieurs vidéos à un même message, elles sont envoyées dans leur taille originale, qui peut être conséquente. Joindre une seule vidéo par message vous permettra de l\'envoyer en taille réduite et d\'économiser vos données.)</string>
     <string name="share_text_multiple_chats">Envoyer ce texte à %1$d discussions ?\n\n« %2$s »</string>
     <string name="share_abort">Partage annulé en raison de permissions manquantes.</string>

@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+* Add speed button for voice message playback
+* Fix: support scanning a channel-invite while creating a new profile
+* Fix: random long delay when reopening a WebXDC app
+
+## v2.59.1
+2026-08
+
+* Fix potential crashes under certain conditions when placing a call
+* Update translations
+
+## v2.59.0
+2026-08
+
+* Fix multi-device synchronization of read messages even if "Read Receipts" are disabled
+* Add self-updater for installations that are *not* installed from either Google Play or F-Droid
+* Update translations
+* Update to core 2.59.0
+
+## v2.58.0
+2026-08
+
 * Add support for reactions in channels
 * Improve reactions details overview
 * Allow channel owners to mute their channel

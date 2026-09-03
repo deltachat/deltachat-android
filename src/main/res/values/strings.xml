@@ -251,6 +251,8 @@
     <string name="magenta">Magenta</string>
     <string name="white">White</string>
 
+    <string name="progress_percent">%1$d%%</string>
+
     <string name="zoom">Zoom</string>
     <string name="extra_small">Extra small</string>
     <string name="small">Small</string>
@@ -668,8 +670,8 @@
     <!-- Secondary, link-like button to open a page with other possible instances -->
     <string name="instant_onboarding_show_more_instances">Use Other Server</string>
     <string name="instant_onboarding_other_server">List Chatmail Servers</string>
-    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group name -->
-    <string name="instant_onboarding_group_info">Create a profile to join the group \"%1$s\".</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
+    <string name="instant_onboarding_group_info">Create a profile to join \"%1$s\".</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Create a profile to chat with %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
@@ -961,16 +963,22 @@
     <string name="chat_description_changed_by_other">Chat description changed by %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Member %1$s added.</string>
+    <string name="member_you_added">You were added.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">You added member %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Member %1$s added by %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">You were added by %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">You removed member %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Member %1$s removed by %2$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">You were removed by %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Member %1$s removed.</string>
+    <string name="member_you_removed">You were removed.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">You left the group.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1265,4 +1273,9 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
+    <string name="update_available_msg">🎉 New version %1$s available. Tap this message to update and enjoy the new features</string>
+    <string name="update_downloading">Downloading %1$s …</string>
+    <string name="update_apk_mismatch">The downloaded apk does not match this app and will not be installed</string>
+    <string name="update_now">Update Now</string>
+    <string name="update_install_permission_explain">To install the update, please first allow Delta Chat to install apps in the system settings.</string>
 </resources>
