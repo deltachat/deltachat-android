@@ -268,6 +268,9 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setStatusIcons(ThreadRecord thread, int state) {
+    int unreadCount = thread.getUnreadCount();
+    boolean showUnreadBadge = unreadCount > 0 && !thread.isContactRequest();
+
     if (thread.getVisibility() == DcChat.DC_CHAT_VISIBILITY_ARCHIVED) {
       archivedBadgeView.setVisibility(View.VISIBLE);
       requestBadgeView.setVisibility(thread.isContactRequest() ? View.VISIBLE : View.GONE);
@@ -280,7 +283,9 @@ public class ConversationListItem extends RelativeLayout
       requestBadgeView.setVisibility(View.GONE);
       archivedBadgeView.setVisibility(View.GONE);
 
-      if (state == DcMsg.DC_STATE_OUT_FAILED) {
+      if (showUnreadBadge) {
+        deliveryStatusIndicator.setNone();
+      } else if (state == DcMsg.DC_STATE_OUT_FAILED) {
         deliveryStatusIndicator.setFailed();
       } else if (state == DcMsg.DC_STATE_OUT_PREPARING) {
         deliveryStatusIndicator.setPreparing();
@@ -297,8 +302,7 @@ public class ConversationListItem extends RelativeLayout
       }
     }
 
-    int unreadCount = thread.getUnreadCount();
-    if (unreadCount == 0 || thread.isContactRequest()) {
+    if (!showUnreadBadge) {
       unreadIndicator.setVisibility(View.GONE);
     } else {
       boolean isMuted = thread.isMuted() || chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK;
