@@ -1,10 +1,14 @@
 package org.thoughtcrime.securesms.preferences;
 
 import static android.app.Activity.RESULT_OK;
+import static org.thoughtcrime.securesms.notifications.UnifiedPushUtils.PUSH_ERROR_ACTION;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -29,6 +33,8 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
+import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.Prefs;
 
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment
@@ -38,10 +44,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
 
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
+  private Preference selectDistributor;
   private CheckBoxPreference mentionNotifEnabled;
   private CheckBoxPreference notifyCalls;
   private CheckBoxPreference reliableService;
   private ActivityResultLauncher<Intent> ringtonePickerLauncher;
+
+  private BroadcastReceiver pushEventReceiver =
+      new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+          resumeUi();
+        }
+      };
 
   @Override
   public void onCreate(Bundle paramBundle) {
@@ -125,6 +140,25 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
             boolean enabled = (Boolean) newValue;
             dcContext.setMuted(!enabled);
             notificationsEnabled.setSummary(getSummary(getContext(), false));
+            setUnifiedPushDistributorPref(getContext());
+            return true;
+          });
+    }
+
+    selectDistributor = this.findPreference("pref_unifiedpush_distrib");
+    if (selectDistributor != null) {
+      selectDistributor.setOnPreferenceClickListener(
+          (preference) -> {
+            Activity activity = getActivity();
+            if (activity != null) {
+              UnifiedPushUtils.tryPickUnifiedPushDistributor(
+                  activity,
+                  res -> {
+                    if (res) {
+                      setUnifiedPushDistributorPref(getContext());
+                    }
+                  });
+            }
             return true;
           });
     }
@@ -162,10 +196,24 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         .getSupportActionBar()
         .setTitle(R.string.pref_notifications);
 
+    try {
+      ContextCompat.registerReceiver(
+          requireContext(),
+          pushEventReceiver,
+          new IntentFilter(PUSH_ERROR_ACTION),
+          ContextCompat.RECEIVER_NOT_EXPORTED);
+    } catch (IllegalStateException e) {
+      Log.e(TAG, "Could not access context", e);
+    }
+    resumeUi();
+  }
+
+  private void resumeUi() {
     // update ignoreBattery in onResume() to reflects changes done in the system settings
     ignoreBattery.setChecked(isIgnoringBatteryOptimizations());
     notificationsEnabled.setChecked(!dcContext.isMuted());
     notificationsEnabled.setSummary(getSummary(getContext(), false));
+    setUnifiedPushDistributorPref(getContext());
     mentionNotifEnabled.setChecked(dcContext.isMentionsEnabled());
     notifyCalls.setChecked(!"2".equals(dcContext.getConfig("who_can_call_me")));
 
@@ -176,16 +224,47 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
   }
 
   @Override
+  public void onPause() {
+    super.onPause();
+    try {
+      requireContext().unregisterReceiver(pushEventReceiver);
+    } catch (IllegalStateException e) {
+      Log.e(TAG, "Could not access context", e);
+    }
+  }
+
+  @Override
   public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
     Context context = getContext();
+    if (context == null) {
+      Log.w(TAG, "onPreferenceChange called without context");
+      return true;
+    }
     boolean enabled = (Boolean) newValue;
     Prefs.setReliableService(context, enabled);
     if (enabled) {
       KeepAliveService.startSelf(context);
+      if (UnifiedPushUtils.countAvailableDistributors(context) != 0) {
+        // If reliable service is set when the system has an UnifiedPush distributor:
+        // we disable UnifiedPush.
+        Prefs.disableUnifiedPush(context);
+        UnifiedPushService.unregister(context);
+      }
     } else {
       context.stopService(new Intent(context, KeepAliveService.class));
+      // Re-enable UnifiedPush when the user disable the foreground service.
+      // This also allow users who have disabled UnifiedPush by mistake to reset it.
+      Prefs.enableUnifiedPush(context);
+      // If the build supports UnifiedPush, we init it
+      UnifiedPushUtils.mayInitUnifiedPush(
+          getActivity(),
+          s -> {
+            notificationsEnabled.setSummary(getSummary(context, false));
+            setUnifiedPushDistributorPref(getContext());
+          });
     }
     notificationsEnabled.setSummary(getSummary(context, false));
+    setUnifiedPushDistributorPref(getContext());
     return true;
   }
 
@@ -215,6 +294,22 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
       }
 
       return true;
+    }
+  }
+
+  private void setUnifiedPushDistributorPref(Context context) {
+    if (selectDistributor != null) {
+      String currentDistributor = UnifiedPushUtils.getDistributorName(context);
+      if (!dcContext.isMuted()
+          && !Prefs.reliableService(context)
+          && currentDistributor != null
+          && UnifiedPushUtils.countAvailableDistributors(context) > 1) {
+        selectDistributor.setVisible(true);
+        selectDistributor.setSummary(currentDistributor);
+      } else {
+        selectDistributor.setVisible(false);
+        selectDistributor.setSummary("");
+      }
     }
   }
 
@@ -282,11 +377,19 @@ public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragme
         || notificationManager.areNotificationsEnabled()) {
       if (DcHelper.getContext(context).isMuted()) {
         return detailed ? context.getString(R.string.off) : "";
-      }
-      if (FcmReceiveService.getToken() == null && !Prefs.reliableService(context)) {
+      } else if (Prefs.reliableService(context)) {
+        return detailed ? context.getString(R.string.on) : "";
+      } else if (FcmReceiveService.getToken() != null) {
+        return detailed ? context.getString(R.string.on) : "";
+        // The summary may be updated as soon as we toggle off
+        // the "unreliable bg service": we may have not yet received
+        // the push endpoint => we rely on savedDistributor to know.
+      } else if (UnifiedPushUtils.hasPushDistributor(context, false)) {
+        // Always show
+        return context.getString(R.string.pref_notification_desc_using_unifiedpush);
+      } else {
         return "⚠️ " + context.getString(R.string.unreliable_bg_notifications);
       }
-      return detailed ? context.getString(R.string.on) : "";
     } else {
       return "⚠️ " + context.getString(R.string.disabled_in_system_settings);
     }
