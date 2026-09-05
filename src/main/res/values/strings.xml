@@ -376,8 +376,10 @@
     <string name="unpin_chat">Unpin Chat</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Pin</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Verb "to unpin", undoing the pinned state of something. -->
     <string name="unpin">Unpin</string>
+    <string name="message_pinned_by_you">You pinned a message.</string>
+    <string name="message_pinned_by_other">Message pinned by %1$s.</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
     <string name="source_code">Source Code</string>
