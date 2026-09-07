@@ -32,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -144,12 +145,8 @@ public class ConversationListItem extends RelativeLayout
       dateView.setText("");
     }
 
-    dateView.setCompoundDrawablesWithIntrinsicBounds(
-        thread.isSendingLocations() ? R.drawable.ic_location_chatlist : 0, 0,
-        thread.getVisibility() == DcChat.DC_CHAT_VISIBILITY_PINNED
-                ? R.drawable.ic_pinned_chatlist
-                : 0,
-            0);
+    setContentState(
+        thread.getVisibility() == DcChat.DC_CHAT_VISIBILITY_PINNED, thread.isSendingLocations());
 
     setStatusIcons(thread, state);
     setBatchState(batchMode);
@@ -160,8 +157,7 @@ public class ConversationListItem extends RelativeLayout
     DcContact contact = recipient.getDcContact();
     avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
-    fromView.setCompoundDrawablesWithIntrinsicBounds(
-        thread.isMuted() ? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
+    setMutedState(thread.isMuted());
   }
 
   public void bind(
@@ -172,10 +168,10 @@ public class ConversationListItem extends RelativeLayout
     Recipient recipient = new Recipient(getContext(), contact);
 
     fromView.setText(getHighlightedSpan(contact.getDisplayName(), highlightSubstring));
-    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    setMutedState(false);
     subjectView.setVisibility(GONE);
     dateView.setText("");
-    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    setContentState(false, false);
     archivedBadgeView.setVisibility(GONE);
     requestBadgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
@@ -196,7 +192,7 @@ public class ConversationListItem extends RelativeLayout
     Recipient recipient = new Recipient(getContext(), sender);
 
     fromView.setText(recipient, true);
-    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    setMutedState(false);
     subjectView.setVisibility(VISIBLE);
     subjectView.setText(getHighlightedSpan(messageResult.getSummarytext(512), highlightSubstring));
 
@@ -207,7 +203,7 @@ public class ConversationListItem extends RelativeLayout
     } else {
       dateView.setText("");
     }
-    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    setContentState(false, false);
     archivedBadgeView.setVisibility(GONE);
     requestBadgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
@@ -222,7 +218,7 @@ public class ConversationListItem extends RelativeLayout
     this.selectedThreads = Collections.emptySet();
 
     fromView.setText(inviteData.getDisplayTitle());
-    fromView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    setMutedState(false);
     subjectView.setVisibility(VISIBLE);
     subjectView.setText(inviteData.getDisplaySubtitle());
     subjectView.setTypeface(LIGHT_TYPEFACE);
@@ -230,7 +226,7 @@ public class ConversationListItem extends RelativeLayout
         ThemeUtil.getThemedColor(getContext(), R.attr.conversation_list_item_subject_color));
 
     dateView.setText("");
-    dateView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    setContentState(false, false);
     archivedBadgeView.setVisibility(GONE);
     requestBadgeView.setVisibility(GONE);
     unreadIndicator.setVisibility(GONE);
@@ -295,6 +291,8 @@ public class ConversationListItem extends RelativeLayout
         deliveryStatusIndicator.setNone();
       } else if (state == DcMsg.DC_STATE_OUT_MDN_RCVD) {
         deliveryStatusIndicator.setRead();
+        deliveryStatusIndicator.setDescription(
+            getContext().getString(R.string.a11y_delivery_status_read));
       } else if (state == DcMsg.DC_STATE_OUT_DELIVERED) {
         deliveryStatusIndicator.setSent();
       } else {
@@ -304,6 +302,7 @@ public class ConversationListItem extends RelativeLayout
 
     if (!showUnreadBadge) {
       unreadIndicator.setVisibility(View.GONE);
+      unreadIndicator.setContentDescription(null);
     } else {
       boolean isMuted = thread.isMuted() || chatId == DcChat.DC_CHAT_ID_ARCHIVED_LINK;
       final int color =
@@ -325,6 +324,9 @@ public class ConversationListItem extends RelativeLayout
               .endConfig()
               .buildRound(badgeText, color));
       unreadIndicator.setVisibility(View.VISIBLE);
+      unreadIndicator.setContentDescription(
+          getResources()
+              .getQuantityString(R.plurals.chat_n_unread_messages, unreadCount, unreadCount));
     }
   }
 
@@ -336,6 +338,38 @@ public class ConversationListItem extends RelativeLayout
     try (TypedArray ta = getContext().obtainStyledAttributes(new int[] {bg})) {
       ViewUtil.setBackground(this, ta.getDrawable(0));
     }
+  }
+
+  private void setMutedState(boolean muted) {
+    fromView.setCompoundDrawablesWithIntrinsicBounds(
+        muted ? R.drawable.ic_volume_off_grey600_18dp : 0, 0, 0, 0);
+    fromView.setContentDescription(muted ? withStatus(fromView.getText(), R.string.muted) : null);
+  }
+
+  private void setContentState(boolean pinned, boolean sendingLocations) {
+    dateView.setCompoundDrawablesWithIntrinsicBounds(
+        sendingLocations ? R.drawable.ic_location_chatlist : 0,
+        0,
+        pinned ? R.drawable.ic_pinned_chatlist : 0,
+        0);
+
+    if (!pinned && !sendingLocations) {
+      dateView.setContentDescription(null);
+      return;
+    }
+    CharSequence description = dateView.getText();
+    if (pinned) {
+      description = withStatus(description, R.string.pinned);
+    }
+    if (sendingLocations) {
+      description = withStatus(description, R.string.pref_on_demand_location_streaming);
+    }
+    dateView.setContentDescription(description);
+  }
+
+  private CharSequence withStatus(CharSequence base, @StringRes int statusRes) {
+    String status = getContext().getString(statusRes);
+    return TextUtils.isEmpty(base) ? status : base + ", " + status;
   }
 
   private Spanned getHighlightedSpan(@Nullable String value, @Nullable String highlight) {
