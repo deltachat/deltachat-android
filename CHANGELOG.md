@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add speed button for voice message playback
+* Improve a11y on Conversation List
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
 
