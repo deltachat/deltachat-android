@@ -2,8 +2,10 @@ package org.thoughtcrime.securesms.relay;
 
 import static org.thoughtcrime.securesms.connect.DcHelper.getContext;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.Group;
@@ -37,6 +40,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.permissions.LocalNetworkPermission;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -333,6 +337,50 @@ public class EditRelayActivity extends BaseActionBarActivity
       return;
     }
 
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN
+        && !LocalNetworkPermission.hasPermission(this)) {
+      maybeAskLocalNetworkThenLogin();
+      return;
+    }
+
+    startLogin();
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.CINNAMON_BUN)
+  private void maybeAskLocalNetworkThenLogin() {
+    final String imapServer = getParam(R.id.imap_server_text, true);
+    final String smtpServer = getParam(R.id.smtp_server_text, true);
+    Util.runOnAnyBackgroundThread(
+        () -> {
+          final boolean imapIsLocal = LocalNetworkPermission.isLocalAddress(imapServer);
+          final boolean smtpIsLocal = LocalNetworkPermission.isLocalAddress(smtpServer);
+          Util.runOnMain(
+              () -> {
+                if (isFinishing() || isDestroyed()) return;
+                if (!imapIsLocal && !smtpIsLocal) {
+                  startLogin();
+                  return;
+                }
+                final int errorViewId = imapIsLocal ? R.id.imap_server_text : R.id.smtp_server_text;
+                Permissions.with(this)
+                    .request(Manifest.permission.ACCESS_LOCAL_NETWORK)
+                    .ifNecessary()
+                    .onAllGranted(this::startLogin)
+                    .onAnyDenied(
+                        () -> {
+                          TextInputEditText view = findViewById(errorViewId);
+                          if (view != null) {
+                            view.setError(getString(R.string.perm_explain_local_network_denied));
+                          }
+                        })
+                    .withPermanentDenialDialog(
+                        getString(R.string.perm_explain_local_network_denied))
+                    .execute();
+              });
+        });
+  }
+
+  private void startLogin() {
     cancelled = false;
     setupConfig();
 
