@@ -6,6 +6,7 @@
 * Improve a11y on Conversation List
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
+* Fix: apply maximum file size limit to videos as is, without 5/4 factor.
 
 ## v2.59.1
 2026-08
