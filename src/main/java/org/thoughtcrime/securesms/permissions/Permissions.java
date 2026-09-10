@@ -412,4 +412,8 @@ public class Permissions {
       }
     }
   }
+
+  public static void showSettingsDialog(Context context, String message) {
+    new SettingsDialogListener(context, message).run();
+  }
 }

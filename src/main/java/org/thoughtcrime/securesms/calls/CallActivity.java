@@ -48,6 +48,8 @@ import java.util.List;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.EglUtils;
 import org.thoughtcrime.securesms.R;
+import org.thoughtcrime.securesms.permissions.LocalNetworkPermission;
+import org.thoughtcrime.securesms.util.Prefs;
 import org.webrtc.RendererCommon;
 import org.webrtc.SurfaceViewRenderer;
 import org.webrtc.VideoTrack;
@@ -60,6 +62,7 @@ public class CallActivity extends AppCompatActivity {
   private static final int MIC_PERMISSION_REQUEST_CODE = 1001;
   private static final int CAMERA_PERMISSION_REQUEST_CODE = 1002;
   private static final int CAMERA_MID_CALL_PERMISSION_REQUEST_CODE = 1003;
+  private static final int LOCAL_NETWORK_PERMISSION_REQUEST_CODE = 1004;
 
   public static final String ACTION_ANSWER_CALL = BuildConfig.APPLICATION_ID + ".ANSWER_CALL";
   public static final String ACTION_DECLINE_CALL = BuildConfig.APPLICATION_ID + ".DECLINE_CALL";
@@ -108,6 +111,7 @@ public class CallActivity extends AppCompatActivity {
   private boolean pausedWhileAwaitingPermission = false;
   private boolean intentHandled = false;
   private boolean doNotAutoFinish = false;
+  private boolean localNetworkAsked = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +176,11 @@ public class CallActivity extends AppCompatActivity {
       awaitingPermissionResult = true;
       ActivityCompat.requestPermissions(
           this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+      return;
+    }
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN
+        && maybeAskLocalNetworkPermission()) {
       return;
     }
 
@@ -913,8 +922,38 @@ public class CallActivity extends AppCompatActivity {
       return;
     }
 
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN
+        && maybeAskLocalNetworkPermission()) {
+      return;
+    }
+
     handleIntents(getIntent());
     intentHandled = true;
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.CINNAMON_BUN)
+  private boolean maybeAskLocalNetworkPermission() {
+    if (localNetworkAsked
+        || LocalNetworkPermission.hasPermission(this)
+        || Prefs.getBooleanPreference(this, Prefs.ASKED_FOR_LOCAL_NETWORK_PERMISSION, false)) {
+      return false;
+    }
+    localNetworkAsked = true;
+    Prefs.setBooleanPreference(this, Prefs.ASKED_FOR_LOCAL_NETWORK_PERMISSION, true);
+    new AlertDialog.Builder(this)
+        .setMessage(R.string.perm_explain_local_network_denied)
+        .setPositiveButton(R.string.perm_continue, null)
+        .setOnDismissListener(
+            dialog -> {
+              if (isFinishing() || isDestroyed()) return;
+              awaitingPermissionResult = true;
+              ActivityCompat.requestPermissions(
+                  this,
+                  new String[] {Manifest.permission.ACCESS_LOCAL_NETWORK},
+                  LOCAL_NETWORK_PERMISSION_REQUEST_CODE);
+            })
+        .show();
+    return true;
   }
 
   @Override
@@ -940,6 +979,11 @@ public class CallActivity extends AppCompatActivity {
           Toast.makeText(this, R.string.call_requires_camera_permission, Toast.LENGTH_SHORT).show();
         }
       }
+      return;
+    }
+
+    if (requestCode == LOCAL_NETWORK_PERMISSION_REQUEST_CODE) {
+      proceedAfterPermissions();
       return;
     }
 
