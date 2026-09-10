@@ -48,6 +48,8 @@ public class Prefs {
   public static final String DOZE_ASKED_DIRECTLY = "pref_doze_asked_directly";
   public static final String ASKED_FOR_NOTIFICATION_PERMISSION =
       "pref_asked_for_notification_permission";
+  public static final String ASKED_FOR_LOCAL_NETWORK_PERMISSION =
+      "asked_for_local_network_permission";
   private static final String IN_THREAD_NOTIFICATION_PREF = "pref_key_inthread_notifications";
 
   public static final String NOTIFICATION_PRIVACY_PREF = "pref_notification_privacy";

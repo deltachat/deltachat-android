@@ -17,6 +17,7 @@
  */
 package org.thoughtcrime.securesms;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -25,6 +26,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
@@ -107,6 +109,31 @@ public class ApplicationPreferencesActivity extends PassphraseRequiredActionBarA
   }
 
   public void showBackupProvider() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN) {
+      requestLocalNetworkForBackupProvider();
+    } else {
+      startBackupProvider();
+    }
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.CINNAMON_BUN)
+  public void requestLocalNetworkForBackupProvider() {
+    Permissions.with(this)
+        .request(Manifest.permission.ACCESS_LOCAL_NETWORK)
+        .ifNecessary()
+        .onAllGranted(this::startBackupProvider)
+        .onAnyDenied(
+            () ->
+                new AlertDialog.Builder(this)
+                    .setTitle(R.string.perm_required_title)
+                    .setMessage(R.string.perm_explain_local_network_denied)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show())
+        .withPermanentDenialDialog(getString(R.string.perm_explain_local_network_denied))
+        .execute();
+  }
+
+  private void startBackupProvider() {
     Intent intent = new Intent(this, BackupTransferActivity.class);
     intent.putExtra(
         BackupTransferActivity.TRANSFER_MODE,
