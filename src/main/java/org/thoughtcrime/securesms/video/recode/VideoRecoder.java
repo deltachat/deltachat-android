@@ -590,7 +590,7 @@ public class VideoRecoder {
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
         Log.w(TAG, String.format("Recoding failed for %s: cannot get info", inPath));
-        if (msg.getFilebytes() > MAX_BYTES + MAX_BYTES / 4) {
+        if (msg.getFilebytes() > MAX_BYTES) {
           alert(context, TOO_BIG_FILE);
           return false;
         }
@@ -673,6 +673,7 @@ public class VideoRecoder {
               vei.originalDurationMs,
               vei.originalAudioBytes);
 
+      // If estimated size is higher than the limit by 25%, don't even try to reencode.
       if (vei.estimatedBytes > MAX_BYTES + MAX_BYTES / 4) {
         alert(context, TOO_BIG_FILE);
         return false;
@@ -682,15 +683,27 @@ public class VideoRecoder {
       String tempPath = DcHelper.getBlobdirFile(DcHelper.getContext(context), inPath);
       VideoRecoder videoRecoder = new VideoRecoder();
       if (!videoRecoder.convertVideo(vei, tempPath)) {
-        alert(
-            context,
-            String.format("Could not recode %s; sending it at its original size.", inPath));
-        return true;
+        if (msg.getFilebytes() <= MAX_BYTES) {
+          alert(
+              context,
+              String.format("Could not recode %s; sending it at its original size.", inPath));
+          return true;
+        } else {
+          // The file is too large and we failed to reencode the video.
+          alert(context, TOO_BIG_FILE);
+          return false;
+        }
       }
+      Log.i(TAG, String.format("recoding for %s done", inPath));
 
       msg.setFileAndDeduplicate(tempPath, msg.getFilename(), msg.getFilemime());
 
-      Log.i(TAG, String.format("recoding for %s done", inPath));
+      // Do not send the message if it turned out to be too large even after reencoding.
+      if (msg.getFilebytes() > MAX_BYTES) {
+        alert(context, TOO_BIG_FILE);
+        return false;
+      }
+
     } catch (Exception e) {
       e.printStackTrace();
     }
