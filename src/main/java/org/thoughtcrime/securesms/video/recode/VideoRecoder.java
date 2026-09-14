@@ -29,8 +29,20 @@ public class VideoRecoder {
   private static final String TAG = "VideoRecoder";
 
   private static final String MIME_TYPE = "video/avc";
-  private final boolean cancelCurrentVideoConversion = false;
+  private boolean cancelCurrentVideoConversion = false;
   private final Object videoConvertSync = new Object();
+
+  public void cancelConversion() {
+    synchronized (videoConvertSync) {
+      cancelCurrentVideoConversion = true;
+    }
+  }
+
+  private boolean isCanceled() {
+    synchronized (videoConvertSync) {
+      return cancelCurrentVideoConversion;
+    }
+  }
 
   private void checkConversionCanceled() throws Exception {
     boolean cancelConversion;
@@ -445,6 +457,8 @@ public class VideoRecoder {
         if (!error) {
           readAndWriteTrack(extractor, mediaMuxer, info, videoStartTime, endTime, cacheFile, true);
         }
+
+        checkConversionCanceled();
       } catch (Exception e) {
         Log.w(TAG, "Recoding video failed unexpectedly/2", e);
         error = true;
@@ -578,7 +592,7 @@ public class VideoRecoder {
   // prepareVideo() assumes the msg object is set up properly to being sent;
   // the function fills out missing information and also recodes the video as needed.
   // return: true=video might be prepared, can be sent, false=error
-  public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
+  public boolean prepareVideo(Context context, int chatId, DcMsg msg) {
     final long MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
     final String TOO_BIG_FILE =
         "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.";
@@ -680,8 +694,8 @@ public class VideoRecoder {
 
       // recode
       String tempPath = DcHelper.getBlobdirFile(DcHelper.getContext(context), inPath);
-      VideoRecoder videoRecoder = new VideoRecoder();
-      if (!videoRecoder.convertVideo(vei, tempPath)) {
+      if (!convertVideo(vei, tempPath)) {
+        if (isCanceled()) return false;
         alert(
             context,
             String.format("Could not recode %s; sending it at its original size.", inPath));
