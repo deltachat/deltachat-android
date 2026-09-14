@@ -424,7 +424,7 @@ public abstract class EventType {
  * <p>
  * UI should update the list.
  * <p>
- * This event is emitted when transport synchronization messages arrives, but not when the UI modifies the transport list by itself.
+ * The event is emitted on the device modifying the transports as well as on other devices applying the synced change.
  */
   public static class TransportsModified extends EventType {
   }
