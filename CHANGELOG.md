@@ -4,8 +4,10 @@
 
 * Add speed button for voice message playback
 * Improve a11y on Conversation List
+* Target SDK 37
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
+* Update to core 2.60.0
 
 ## v2.59.1
 2026-08
