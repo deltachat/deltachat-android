@@ -203,11 +203,8 @@ public class RelayListActivity extends BaseActionBarActivity
     super.onCreateContextMenu(menu, v, menuInfo);
     getMenuInflater().inflate(R.menu.relay_item_context, menu);
 
-    boolean nonNullAddr = contextMenuRelay != null && contextMenuRelay.addr != null;
-    boolean isMain = nonNullAddr && contextMenuRelay.addr.equals(adapter.getMainRelay());
-
     Util.redMenuItem(menu, R.id.menu_delete_relay);
-    menu.findItem(R.id.menu_delete_relay).setVisible(!isMain);
+    menu.findItem(R.id.menu_delete_relay).setVisible(adapter.getItemCount() > 1);
   }
 
   @Override
@@ -248,7 +245,7 @@ public class RelayListActivity extends BaseActionBarActivity
                 R.string.remove_transport,
                 (d, which) -> {
                   try {
-                    rpc.setTransportUnpublished(accId, relay.addr, true);
+                    rpc.deleteTransport(accId, relay.addr);
                     loadRelays();
                   } catch (RpcException e) {
                     Log.e(TAG, "RPC.deleteTransport() failed", e);
