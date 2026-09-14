@@ -29,6 +29,8 @@
     <string name="join_channel">Liity kanavalle</string>
     <string name="rejoin">Liity uudelleen</string>
     <string name="delete">Poista</string>
+    <string name="delete_for_me">Poista minulta</string>
+    <string name="delete_for_everyone">Poista kaikilta</string>
     <string name="info">Lisätietoja</string>
     <string name="update">Päivitä</string>
     <string name="emoji">Emoji</string>
@@ -187,6 +189,7 @@
     <string name="open_sticker_folder">Avaa tarrakansio</string>
     <string name="ask_add_sticker_to_collection">Lisätäänkö tämä tarra kokoelmaan?</string>
     <string name="ask_delete_sticker">Poistetaanko tämä tarra?</string>
+    <string name="sticker_picker_empty_hint">Napauta tarraa lisätäksesi sen tänne.</string>
     <string name="images">Kuvat</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Äänite</string>
@@ -531,6 +534,7 @@
     <string name="search_in_chat">Hae keskustelussa</string>
     <string name="search_files">Hae tiedostoja</string>
     <string name="search_explain">Etsi keskusteluja, yhteystietoja ja viestejä</string>
+    <string name="search_result_for_x">Tulos haulle \"%1$s\"</string>
     <string name="search_no_result_for_x">Ei tuloksia haulle \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Lukematon</string>
@@ -675,8 +679,17 @@
     <string name="proxy_delete_explain">Poistetaanko välityspalvelin \"%1$s\"?</string>
     <string name="proxy_use_proxy_confirm">Haluatko käyttää välityspalvelinta \"%1$s\"?</string>
     <string name="proxy_share_explain">Kaverisi voivat lisätä tämän välityspalvelimen skannaamalla QR-koodin.</string>
+    <string name="proxy_share_link">Jaa linkki</string>
     <string name="proxy_enabled">Välityspalvelin otettu käyttöön</string>
     <string name="proxy_enabled_hint">Käytät välityspalvelinta. Jos sinulla on yhdistämisongelmia, kokeile käyttää toista välityspalvelinta.</string>
+    <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
+    <string name="transports">Releet</string>
+    <string name="add_transport">Lisää rele</string>
+    <string name="remove_transport">Poista rele</string>
+    <string name="edit_transport">Muokkaa relettä</string>
+    <string name="enforce_e2ee">Pakota salaus kaikkiin releisiin</string>
+    <!-- shown if a QR code was scanned that can be used as a relay -->
+    <string name="confirm_add_transport">Lisätäänkö tämä rele?</string>
     <string name="login_certificate_checks">Varmenteiden tarkastus</string>
     <string name="login_error_mail">Anna kelvollinen sähköpostiosoite</string>
     <string name="login_error_server">Anna kelvollinen palvelin tai IP-osoite</string>
@@ -819,6 +832,9 @@
     <string name="pref_show_tray_icon">Näytä työkalupalkin kuvake</string>
     <string name="pref_edit_profile">Muokkaa profiilia</string>
     <string name="send_stats_to_devs">Lähetä tilastotietoja Delta Chatin kehittäjille</string>
+    <string name="stats_keep_sending">Jatka lähettämistä</string>
+    <string name="stats_msg_body">Liite sisältää anonyymeja käyttötilastoja; ne auttavat parantamaan Delta Chatin toimintaa.. Lue https://delta.chat/help#statssending saadaksesi lisätietoja.</string>
+
     <!-- Emoji picker and categories -->
     <string name="emoji_search_results">Hakutulokset</string>
     <string name="emoji_not_found">Emojeja ei löytynyt</string>
@@ -878,16 +894,22 @@
     <string name="chat_description_changed_by_you">Muutit keskustelun kuvausta.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s lisätty.</string>
+    <string name="member_you_added">Sinut lisättiin</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Jäsen %1$s lisätty minun toimestani.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">Jäsen %1$s lisätty käyttäjän %2$s toimesta.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">%1$s lisäsi sinut.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Jäsen %1$s poistettu minun toimestani.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">Jäsen %1$s poistettu käyttäjän %2$s toimesta.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">%1$s poisti sinut.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Jäsen %1$s poistettu</string>
+    <string name="member_you_removed">Sinut poistettiin</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Lähdit ryhmästä.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -933,6 +955,7 @@
     <string name="ephemeral_timer_weeks_by_you">Katoavien viestien ajastin asetettu %1$s viikkoon minun toimestani.</string>
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Katoavien viestien ajastin asetettu %1$s viikkoon käyttäjän %2$s toimesta.</string>
+    <string name="messages_are_e2ee">Viestit ovat päästä päähän -salattuja.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Tästä eteenpäin viestit on taatusti päästä-päähän salattuja. Lisätietoja napauttamalla.</string>
     <string name="chat_protection_enabled_explanation">Kaikki viestit tässä keskustelussa ovat taatusti päästä-päähän salattuja.\n\nPäästä-päähän -salaus pitää viestisi sinun ja keskustelukumppanisi välillä. Edes sähköpostipalveluntarjoaja ei pysty niitä lukemaan.</string>
     <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s vaatii päästä-päähän -salausta joka ei enää ole käytössä tässä keskustelussa. Lue lisää napauttamalla.</string>

@@ -51,6 +51,7 @@ public abstract class MessageLoadResult {
     public Integer parentId;
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public MessageQuote quote;
+    /** `None` when there are no reactions. */
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Reactions reactions;
     public Integer receivedTimestamp;
