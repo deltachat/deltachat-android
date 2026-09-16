@@ -39,7 +39,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
   public static final int ITEM_SEND_MESSAGE_BUTTON = 35;
   public static final int ITEM_LAST_SEEN = 40;
   public static final int ITEM_BLOCKED = 43;
-  public static final int ITEM_INTRODUCED_BY = 45;
   public static final int ITEM_HEADER = 53;
   public static final int ITEM_MEMBERS = 55;
   public static final int ITEM_SHARED_CHATS = 60;
@@ -153,9 +152,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
           (ProfileTextItem)
               layoutInflater.inflate(R.layout.profile_text_item_button, parent, false);
       return new ViewHolder(item);
-    } else if (viewType == ITEM_LAST_SEEN
-        || viewType == ITEM_INTRODUCED_BY
-        || viewType == ITEM_BLOCKED) {
+    } else if (viewType == ITEM_LAST_SEEN || viewType == ITEM_BLOCKED) {
       final ProfileTextItem item =
           (ProfileTextItem) layoutInflater.inflate(R.layout.profile_text_item_small, parent, false);
       return new ViewHolder(item);
@@ -229,7 +226,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
     } else if (holder.itemView instanceof ProfileTextItem) {
       ProfileTextItem item = (ProfileTextItem) holder.itemView;
       item.setOnClickListener(view -> clickListener.onSettingsClicked(data.viewType));
-      boolean tintIcon = data.viewType != ITEM_INTRODUCED_BY && data.viewType != ITEM_BLOCKED;
+      boolean tintIcon = data.viewType != ITEM_BLOCKED;
       item.set(data.label, data.icon, tintIcon);
       if (data.viewType == ITEM_BLOCKED) {
         int padding =
@@ -241,11 +238,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
                     * 1.2);
         item.setPadding(
             item.getPaddingLeft(), item.getPaddingTop(), item.getPaddingRight(), padding);
-      } else if (data.viewType == ITEM_INTRODUCED_BY) {
-        int padding =
-            context.getResources().getDimensionPixelSize(R.dimen.contact_list_normal_padding);
-        item.setPadding(
-            item.getPaddingLeft(), padding, item.getPaddingRight(), item.getPaddingBottom());
       } else if (data.viewType == ITEM_ALL_MEDIA_BUTTON && dcChat != null) {
         Util.runOnAnyBackgroundThread(
             () -> {
@@ -396,28 +388,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
       itemData.add(new ItemData(ITEM_HEADER, context.getString(R.string.profile_shared_chats), 0));
       for (int i = 0; i < sharedChats.getCnt(); i++) {
         itemData.add(new ItemData(ITEM_SHARED_CHATS, 0, i));
-      }
-    }
-
-    if (dcContact != null && !isDeviceTalk && !isSelfTalk) {
-      int verifierId = dcContact.getVerifierId();
-      if (verifierId != 0) {
-        String introducedBy;
-        if (verifierId == DcContact.DC_CONTACT_ID_SELF) {
-          introducedBy = context.getString(R.string.verified_by_you);
-        } else {
-          introducedBy =
-              context.getString(
-                  R.string.verified_by, dcContext.getContact(verifierId).getDisplayName());
-        }
-        itemData.add(
-            new ItemData(
-                ITEM_INTRODUCED_BY,
-                introducedBy,
-                dcContact.isVerified() ? R.drawable.ic_verified : 0));
-      } else if (dcContact.isVerified()) {
-        String introducedBy = context.getString(R.string.verified_by_unknown);
-        itemData.add(new ItemData(ITEM_INTRODUCED_BY, introducedBy, R.drawable.ic_verified));
       }
     }
 

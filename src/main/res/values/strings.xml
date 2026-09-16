@@ -1099,8 +1099,11 @@
     <string name="contact_verified">%1$s introduced.</string>
     <string name="contact_blocked">You blocked the contact</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Introduced by %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Introduced by me</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Introduced</string>
     <string name="mailto_dialog_header_select_chat">Select chat to send the message to</string>
     <!-- first placeholder is the name of the chat -->
