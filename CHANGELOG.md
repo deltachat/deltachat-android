@@ -9,6 +9,7 @@
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
 * Update to core 2.60.0
+* Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
 
 ## v2.59.1
 2026-08
