@@ -57,6 +57,7 @@ import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.contacts.NewContactActivity;
 import org.thoughtcrime.securesms.mms.GlideApp;
 import org.thoughtcrime.securesms.permissions.Permissions;
+import org.thoughtcrime.securesms.search.QrInviteData;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -72,6 +73,7 @@ public class ContactSelectionListFragment extends Fragment
   public static final String MULTI_SELECT = "multi_select";
   public static final String SELECT_UNENCRYPTED_EXTRA = "select_unencrypted_extra";
   public static final String ALLOW_CREATION = "allow_creation";
+  public static final String DETECT_INVITE_LINK = "detect_invite_link";
   public static final String PRESELECTED_CONTACTS = "preselected_contacts";
 
   private DcContext dcContext;
@@ -288,6 +290,8 @@ public class ContactSelectionListFragment extends Fragment
   @Override
   public Loader<DcContactsLoader.Ret> onCreateLoader(int id, Bundle args) {
     final boolean allowCreation = getActivity().getIntent().getBooleanExtra(ALLOW_CREATION, true);
+    final boolean detectInviteLink =
+        getActivity().getIntent().getBooleanExtra(DETECT_INVITE_LINK, false);
     final boolean addCreateContactLink = allowCreation && isUnencrypted();
     final boolean addCreateGroupLinks =
         allowCreation && !isRelayingMessageContent(getActivity()) && !isMulti();
@@ -299,6 +303,7 @@ public class ContactSelectionListFragment extends Fragment
         getActivity(),
         listflags,
         cursorFilter,
+        detectInviteLink,
         addCreateGroupLinks,
         addCreateContactLink,
         addScanQRLink,
@@ -334,7 +339,12 @@ public class ContactSelectionListFragment extends Fragment
         return;
       }
       int contactId = contact.getSpecialId();
-      if (!isMulti() || !selectedContacts.contains(contactId)) {
+      if (contactId == DcContact.DC_CONTACT_ID_INVITE_LINK) {
+        if (onContactSelectedListener != null) {
+          onContactSelectedListener.onInviteLinkSelected(
+              getContactSelectionListAdapter().getQrInviteData());
+        }
+      } else if (!isMulti() || !selectedContacts.contains(contactId)) {
         if (contactId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
           Intent intent = new Intent(getContext(), NewContactActivity.class);
           if (dcContext.mayBeValidAddr(cursorFilter)) {
@@ -380,6 +390,8 @@ public class ContactSelectionListFragment extends Fragment
 
   public interface OnContactSelectedListener {
     void onContactSelected(int contactId);
+
+    void onInviteLinkSelected(QrInviteData inviteData);
 
     void onContactDeselected(int contactId);
   }

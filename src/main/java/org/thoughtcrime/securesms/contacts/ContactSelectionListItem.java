@@ -9,12 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.b44t.messenger.DcContact;
+import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AvatarView;
+import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.avatars.ResourceContactPhoto;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
+import org.thoughtcrime.securesms.search.QrInviteData;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -22,15 +25,14 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 public class ContactSelectionListItem extends LinearLayout implements RecipientModifiedListener {
 
   private AvatarView avatar;
-  private View numberContainer;
-  private TextView numberView;
+  private View subtitleContainer;
+  private TextView subtitleView;
   private TextView nameView;
   private TextView labelView;
   private CheckBox checkBox;
 
   private int specialId;
   private String name;
-  private String number;
   private Recipient recipient;
   private GlideRequests glideRequests;
 
@@ -46,8 +48,8 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   protected void onFinishInflate() {
     super.onFinishInflate();
     this.avatar = findViewById(R.id.avatar);
-    this.numberContainer = findViewById(R.id.number_container);
-    this.numberView = findViewById(R.id.number);
+    this.subtitleContainer = findViewById(R.id.subtitle_container);
+    this.subtitleView = findViewById(R.id.subtitle);
     this.labelView = findViewById(R.id.label);
     this.nameView = findViewById(R.id.name);
     this.checkBox = findViewById(R.id.check_box);
@@ -60,14 +62,13 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       int specialId,
       DcContact contact,
       String name,
-      String number,
+      String subtitle,
       String label,
       boolean multiSelect,
       boolean enabled) {
     this.glideRequests = glideRequests;
     this.specialId = specialId;
     this.name = name;
-    this.number = number;
 
     if (specialId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT
         || specialId == DcContact.DC_CONTACT_ID_NEW_GROUP
@@ -93,11 +94,32 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     }
     this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
-    setText(name, number, label, contact);
+    setText(name, subtitle, label);
     setEnabled(enabled);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else this.checkBox.setVisibility(View.GONE);
+  }
+
+  public void setQrInviteData(
+      @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {
+    this.glideRequests = glideRequests;
+    this.specialId = specialId;
+    name = inviteData.getDisplayTitle();
+
+    if (inviteData.getContactId() > 0) {
+      DcContext dcContext = DcHelper.getContext(getContext());
+      DcContact dcContact = dcContext.getContact(inviteData.getContactId());
+      this.recipient = new Recipient(getContext(), dcContact);
+    } else {
+      this.recipient = null;
+    }
+    this.avatar.setAvatar(glideRequests, recipient, false);
+    this.avatar.setSeenRecently(false);
+
+    this.nameView.setTypeface(null, Typeface.NORMAL);
+    setText(name, inviteData.getDisplaySubtitle(), null);
+    this.checkBox.setVisibility(View.GONE);
   }
 
   public void setChecked(boolean selected) {
@@ -113,33 +135,21 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     avatar.clear(glideRequests);
   }
 
-  private void setText(String name, String number, String label, DcContact contact) {
+  private void setText(String name, String subtitle, String label) {
     this.nameView.setEnabled(true);
     this.nameView.setText(name == null ? "#" : name);
 
-    if (contact != null && contact.isKeyContact()) {
-      number = null;
-    }
-
-    if (number != null) {
-      this.numberView.setText(number);
+    if (subtitle != null) {
+      this.subtitleView.setText(subtitle);
       this.labelView.setText(label == null ? "" : label);
-      this.numberContainer.setVisibility(View.VISIBLE);
+      this.subtitleContainer.setVisibility(View.VISIBLE);
     } else {
-      this.numberContainer.setVisibility(View.GONE);
+      this.subtitleContainer.setVisibility(View.GONE);
     }
   }
 
   public int getSpecialId() {
     return specialId;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getNumber() {
-    return number;
   }
 
   public DcContact getDcContact() {

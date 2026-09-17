@@ -90,6 +90,7 @@ public abstract class BaseConversationListFragment extends Fragment implements A
 
   protected void initializeFabClickListener(boolean isActionMode) {
     Intent intent = new Intent(getActivity(), NewConversationActivity.class);
+    intent.putExtra(ContactSelectionListFragment.DETECT_INVITE_LINK, true);
     if (isRelayingMessageContent(getActivity())) {
       if (isActionMode) {
         fab.setOnClickListener(
