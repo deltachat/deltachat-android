@@ -8,8 +8,9 @@
 * Allow to cancel sending video while it is re-encoding/compressing
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
-* Update to core 2.60.0
 * Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
+* Allow to open invitation links pasted in the search bar in "New Chat" screen
+* Update to core 2.60.0
 
 ## v2.59.1
 2026-08
