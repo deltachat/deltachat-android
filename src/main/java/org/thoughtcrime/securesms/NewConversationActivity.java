@@ -48,7 +48,7 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   /**
    * qrData is used to store temporarily the raw QR data to pass it back to QrCodeHandler after the
-   * user autorized with fingerprint/PIN
+   * user authorized with fingerprint/PIN
    */
   private String qrData = null;
 
