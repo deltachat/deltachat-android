@@ -51,7 +51,6 @@ public class DcHelper {
 
   private static final String TAG = "DcHelper";
 
-  public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
   public static final String CONFIG_DISPLAY_NAME = "displayname";
   public static final String CONFIG_SELF_STATUS = "selfstatus";
   public static final String CONFIG_SELF_AVATAR = "selfavatar";
