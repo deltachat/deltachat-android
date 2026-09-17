@@ -1779,22 +1779,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobj
     return (jboolean)(dc_contact_is_blocked(get_dc_contact(env, obj))!=0);
 }
 
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, jobject obj)
-{
-    return dc_contact_is_verified(get_dc_contact(env, obj))==2;
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isKeyContact(JNIEnv *env, jobject obj)
 {
     return dc_contact_is_key_contact(get_dc_contact(env, obj))==1;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContact_getVerifierId(JNIEnv *env, jobject obj)
-{
-    return dc_contact_get_verifier_id(get_dc_contact(env, obj));
 }
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBot(JNIEnv *env, jobject obj)
