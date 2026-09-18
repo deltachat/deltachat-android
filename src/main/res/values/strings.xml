@@ -728,6 +728,7 @@
     <string name="add_transport">Add Relay</string>
     <string name="remove_transport">Remove Relay</string>
     <string name="edit_transport">Edit Relay</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Used for sending</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Hide from Contacts</string>
