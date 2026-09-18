@@ -98,16 +98,6 @@ public class DcHelper {
     return dcContext.getConfig(key);
   }
 
-  @Deprecated
-  public static int getInt(Context context, String key, int defaultValue) {
-    return getInt(context, key);
-  }
-
-  @Deprecated
-  public static String get(Context context, String key, String defaultValue) {
-    return get(context, key);
-  }
-
   public static void set(Context context, String key, String value) {
     DcContext dcContext = getContext(context);
     dcContext.setConfig(key, value);
