@@ -354,7 +354,7 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
 
       String authName = dcContact.getAuthName();
       if (TextUtils.isEmpty(authName)) {
-        authName = dcContact.getAddr();
+        authName = getString(R.string.unnamed);
       }
 
       View gl = View.inflate(this, R.layout.single_line_input, null);
