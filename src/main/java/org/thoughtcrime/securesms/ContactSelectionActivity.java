@@ -19,6 +19,7 @@ package org.thoughtcrime.securesms;
 import android.os.Bundle;
 import android.view.MenuItem;
 import org.thoughtcrime.securesms.components.ContactFilterToolbar;
+import org.thoughtcrime.securesms.search.QrInviteData;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -90,6 +91,9 @@ public abstract class ContactSelectionActivity extends PassphraseRequiredActionB
 
   @Override
   public void onContactSelected(int contactId) {}
+
+  @Override
+  public void onInviteLinkSelected(QrInviteData inviteData) {}
 
   @Override
   public void onContactDeselected(int contactId) {}
