@@ -60,6 +60,8 @@ public class NewConversationActivity extends ContactSelectionActivity {
     assert getSupportActionBar() != null;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    getIntent().putExtra(ContactSelectionListFragment.DETECT_INVITE_LINK, true);
+
     relayLockLauncher =
         registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
