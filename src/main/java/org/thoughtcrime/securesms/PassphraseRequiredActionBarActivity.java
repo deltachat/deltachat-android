@@ -7,7 +7,7 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.GenericForegroundService;
 
 public abstract class PassphraseRequiredActionBarActivity extends BaseActionBarActivity {
-  private static final String TAG = "PassphraseRequiredActionBarActivity";
+  private static final String TAG = "PassReqBarActivity";
 
   @Override
   protected final void onCreate(Bundle savedInstanceState) {
