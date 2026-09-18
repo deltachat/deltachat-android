@@ -11,6 +11,7 @@
 * Fix: random long delay when reopening a WebXDC app
 * Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
 * Update to core 2.60.0
+* Fix: apply maximum file size limit to videos as is, without 5/4 factor, and enforce file size limit after encoding the video.
 
 ## v2.59.1
 2026-08
