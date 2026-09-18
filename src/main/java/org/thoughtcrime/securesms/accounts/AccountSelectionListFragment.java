@@ -221,10 +221,10 @@ public class AccountSelectionListFragment extends DialogFragment
     TextView sizeView = dialogView.findViewById(R.id.size_label);
     TextView description = dialogView.findViewById(R.id.description);
     DcContext dcContext = accounts.getAccount(accountId);
-    String name = dcContext.getConfig("displayname");
     DcContact contact = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
+    String name = dcContext.getConfig(DcHelper.CONFIG_DISPLAY_NAME);
     if (TextUtils.isEmpty(name)) {
-      name = contact.getAddr();
+      name = activity.getString(R.string.unnamed);
     }
     Recipient recipient = new Recipient(requireContext(), contact, name);
     avatar.setAvatar(GlideApp.with(activity), recipient, false);

@@ -241,6 +241,7 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Browse</string>
     <string name="unknown">Unknown</string>
+    <string name="unnamed">Unnamed</string>
 
     <string name="green">Green</string>
     <string name="red">Red</string>
