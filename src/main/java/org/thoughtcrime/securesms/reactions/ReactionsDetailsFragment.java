@@ -43,7 +43,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ReactionsDetailsFragment extends BottomSheetDialogFragment
     implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = "ReactionsDetailsFragment";
+  private static final String TAG = "ReactionsDetailsFrag";
   private static final String ARG_MSG_ID = "msg_id";
   private static final String ARG_IS_BROADCAST = "is_broadcast";
 
