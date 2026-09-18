@@ -41,11 +41,6 @@ public class DcContact {
     return this.getId();
   }
 
-  @Override
-  public String toString() {
-    return getAddr();
-  }
-
   public native int getId();
 
   public native String getName();
