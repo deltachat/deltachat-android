@@ -217,7 +217,6 @@ public class AccountSelectionListFragment extends DialogFragment
     View dialogView = View.inflate(activity, R.layout.dialog_delete_profile, null);
     AvatarView avatar = dialogView.findViewById(R.id.avatar);
     TextView nameView = dialogView.findViewById(R.id.name);
-    TextView addrView = dialogView.findViewById(R.id.address);
     TextView sizeView = dialogView.findViewById(R.id.size_label);
     TextView description = dialogView.findViewById(R.id.description);
     DcContext dcContext = accounts.getAccount(accountId);
@@ -229,7 +228,6 @@ public class AccountSelectionListFragment extends DialogFragment
     Recipient recipient = new Recipient(requireContext(), contact, name);
     avatar.setAvatar(GlideApp.with(activity), recipient, false);
     nameView.setText(name);
-    addrView.setText(contact.getAddr());
     Util.runOnAnyBackgroundThread(
         () -> {
           try {
