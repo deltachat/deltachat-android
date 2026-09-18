@@ -332,14 +332,6 @@ public class DcContext {
     setConfigInt(CONFIG_MUTE_MENTIONS_IF_MUTED, enabled ? 0 : 1);
   }
 
-  public String getName() {
-    String displayname = getConfig("displayname");
-    if (displayname.isEmpty()) {
-      displayname = getConfig("addr");
-    }
-    return displayname;
-  }
-
   public boolean isTeamProfile() {
     return getConfigInt("team_profile") == 1;
   }

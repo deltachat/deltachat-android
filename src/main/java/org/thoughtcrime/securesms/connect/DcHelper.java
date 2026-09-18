@@ -51,7 +51,6 @@ public class DcHelper {
 
   private static final String TAG = "DcHelper";
 
-  public static final String CONFIG_CONFIGURED_ADDRESS = "configured_addr";
   public static final String CONFIG_DISPLAY_NAME = "displayname";
   public static final String CONFIG_SELF_STATUS = "selfstatus";
   public static final String CONFIG_SELF_AVATAR = "selfavatar";
@@ -97,16 +96,6 @@ public class DcHelper {
   public static String get(Context context, String key) {
     DcContext dcContext = getContext(context);
     return dcContext.getConfig(key);
-  }
-
-  @Deprecated
-  public static int getInt(Context context, String key, int defaultValue) {
-    return getInt(context, key);
-  }
-
-  @Deprecated
-  public static String get(Context context, String key, String defaultValue) {
-    return get(context, key);
   }
 
   public static void set(Context context, String key, String value) {
