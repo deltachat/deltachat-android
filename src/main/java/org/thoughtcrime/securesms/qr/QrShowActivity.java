@@ -54,7 +54,7 @@ public class QrShowActivity extends BaseActionBarActivity {
       // we cannot use contact.getDisplayName() as this would result in "Me" instead of actual name
       String selfName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
       if (selfName.isEmpty()) {
-        selfName = getString(R.string.unknown);
+        selfName = getString(R.string.unnamed);
       }
       supportActionBar.setTitle(selfName);
       supportActionBar.setSubtitle(R.string.qrshow_join_contact_title);
