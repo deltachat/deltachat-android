@@ -40,7 +40,7 @@ import org.thoughtcrime.securesms.util.StreamUtil;
 
 public class AdvancedPreferenceFragment extends ListSummaryPreferenceFragment
     implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = "AdvancedPreferenceFragment";
+  private static final String TAG = "AdvancedPreferenceFrag";
 
   CheckBoxPreference selfReportingCheckbox;
   CheckBoxPreference multiDeviceCheckbox;
