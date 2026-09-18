@@ -28,7 +28,7 @@ import org.thoughtcrime.securesms.util.IntentUtils;
 
 public final class GenericForegroundService extends Service {
 
-  private static final String TAG = "GenericForegroundService";
+  private static final String TAG = "GenericFGS";
 
   private final IBinder binder = new LocalBinder();
 
