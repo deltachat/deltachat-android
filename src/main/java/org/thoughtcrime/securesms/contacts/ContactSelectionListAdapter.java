@@ -34,6 +34,7 @@ import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.DcContactsLoader;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
+import org.thoughtcrime.securesms.search.QrInviteData;
 import org.thoughtcrime.securesms.util.LRUCache;
 
 /**
@@ -52,6 +53,7 @@ public class ContactSelectionListAdapter
   private final @NonNull Context context;
   private final @NonNull DcContext dcContext;
   private @NonNull int[] dcContactList = new int[0];
+  private @Nullable QrInviteData qrInviteData = null;
   private final boolean multiSelect;
   private final boolean longPressSelect;
   private final LayoutInflater li;
@@ -118,6 +120,9 @@ public class ContactSelectionListAdapter
         String label,
         boolean multiSelect,
         boolean enabled);
+
+    public abstract void bindQrInvite(
+        @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests);
 
     public abstract void unbind(@NonNull GlideRequests glideRequests);
 
@@ -194,6 +199,12 @@ public class ContactSelectionListAdapter
     }
 
     @Override
+    public void bindQrInvite(
+        @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {
+      getView().setQrInviteData(inviteData, specialId, glideRequests);
+    }
+
+    @Override
     public void unbind(@NonNull GlideRequests glideRequests) {
       getView().unbind(glideRequests);
     }
@@ -235,6 +246,10 @@ public class ContactSelectionListAdapter
         boolean enabled) {
       this.label.setText(name);
     }
+
+    @Override
+    public void bindQrInvite(
+        @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {}
 
     @Override
     public void unbind(@NonNull GlideRequests glideRequests) {}
@@ -280,11 +295,19 @@ public class ContactSelectionListAdapter
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
+    viewHolder.unbind(glideRequests);
     int id = dcContactList[i];
+
+    if (id == DcContact.DC_CONTACT_ID_INVITE_LINK) {
+      viewHolder.setSelected(false);
+      viewHolder.setEnabled(!isActionModeEnabled());
+      viewHolder.bindQrInvite(qrInviteData, DcContact.DC_CONTACT_ID_INVITE_LINK, glideRequests);
+      return;
+    }
+
     DcContact dcContact = null;
     String name;
-    String addr = null;
+    String subtitle = null;
     boolean itemMultiSelect = multiSelect;
 
     if (id == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
@@ -302,10 +325,11 @@ public class ContactSelectionListAdapter
     } else {
       dcContact = getContact(i);
       name = dcContact.getDisplayName();
-      addr = dcContact.getAddr();
+      if (!dcContact.isKeyContact()) {
+        subtitle = dcContact.getAddr();
+      }
     }
 
-    viewHolder.unbind(glideRequests);
     boolean enabled = true;
     if (dcContact == null) {
       viewHolder.setSelected(false);
@@ -318,7 +342,7 @@ public class ContactSelectionListAdapter
       viewHolder.setSelected(selected);
       enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
-    viewHolder.bind(glideRequests, id, dcContact, name, addr, null, itemMultiSelect, enabled);
+    viewHolder.bind(glideRequests, id, dcContact, name, subtitle, null, itemMultiSelect, enabled);
     viewHolder.setChecked(selectedContacts.contains(id));
   }
 
@@ -335,6 +359,10 @@ public class ContactSelectionListAdapter
     return actionModeSelection;
   }
 
+  public @Nullable QrInviteData getQrInviteData() {
+    return qrInviteData;
+  }
+
   public interface ItemClickListener {
     void onItemClick(ContactSelectionListItem item, boolean handleActionMode);
 
@@ -343,6 +371,7 @@ public class ContactSelectionListAdapter
 
   public void changeData(DcContactsLoader.Ret loaderRet) {
     this.dcContactList = loaderRet == null ? new int[0] : loaderRet.ids;
+    this.qrInviteData = loaderRet == null ? null : loaderRet.qrInviteData;
     recordCache.clear();
     notifyDataSetChanged();
   }

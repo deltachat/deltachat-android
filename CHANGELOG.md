@@ -7,6 +7,7 @@
 * Target SDK 37
 * Allow to cancel sending video while it is re-encoding/compressing
 * Improve resilience: pick random relay for sending and try others if sending with one fails, no need for manually selecting a relay "used for sending"
+* Allow to open invitation links pasted in the search bar in "New Chat" screen
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
 * Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
