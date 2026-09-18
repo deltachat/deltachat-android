@@ -62,7 +62,7 @@ public class ProfilePreference extends Preference {
   public void refresh() {
     if (profileNameView == null) return;
 
-    final String address = String.valueOf(DcHelper.getContext(getContext()).getAccountId());
+    final String address = "acc-" + DcHelper.getContext(getContext()).getAccountId();
     final MyProfileContactPhoto profileImage =
         new MyProfileContactPhoto(address, String.valueOf(Prefs.getProfileAvatarId(getContext())));
 
