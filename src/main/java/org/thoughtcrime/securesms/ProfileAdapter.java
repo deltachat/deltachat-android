@@ -183,7 +183,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
       } else {
         dcContact = dcContext.getContact(contactId);
         name = dcContact.getDisplayName();
-        if (!contact.isKeyContact()) subtitle = dcContact.getAddr();
+        if (!dcContact.isKeyContact()) subtitle = dcContact.getAddr();
       }
 
       contactItem.unbind(glideRequests);
