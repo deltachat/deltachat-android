@@ -1,20 +1,15 @@
 package org.thoughtcrime.securesms.util;
 
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import com.b44t.messenger.DcContext;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import org.thoughtcrime.securesms.BuildConfig;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -57,8 +52,6 @@ public class Prefs {
 
   private static final String PROFILE_AVATAR_ID_PREF = "pref_profile_avatar_id";
   public static final String INCOGNITO_KEYBORAD_PREF = "pref_incognito_keyboard";
-
-  private static final String PREF_CONTACT_PHOTO_IDENTIFIERS = "pref_contact_photo_identifiers";
 
   public static final String ALWAYS_LOAD_REMOTE_CONTENT = "pref_always_load_remote_content";
   public static final boolean ALWAYS_LOAD_REMOTE_CONTENT_DEFAULT = false;
@@ -355,26 +348,5 @@ public class Prefs {
     } else {
       return defaultValues;
     }
-  }
-
-  public static void setSystemContactPhotos(Context context, Set<String> contactPhotoIdentifiers) {
-    PreferenceManager.getDefaultSharedPreferences(context)
-        .edit()
-        .putStringSet(PREF_CONTACT_PHOTO_IDENTIFIERS, contactPhotoIdentifiers)
-        .apply();
-  }
-
-  public static Uri getSystemContactPhoto(Context context, String identifier) {
-    List<String> contactPhotoIdentifiers =
-        new ArrayList<>(
-            getStringSetPreference(context, PREF_CONTACT_PHOTO_IDENTIFIERS, new HashSet<>()));
-    for (String contactPhotoIdentifier : contactPhotoIdentifiers) {
-      if (contactPhotoIdentifier.contains(identifier)) {
-        String[] parts = contactPhotoIdentifier.split("\\|");
-        long contactId = Long.valueOf(parts[1]);
-        return ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
-      }
-    }
-    return null;
   }
 }
