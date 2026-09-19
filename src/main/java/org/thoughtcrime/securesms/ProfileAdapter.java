@@ -174,7 +174,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
       DcContact dcContact = null;
       String label = null;
       String name;
-      String addr = null;
+      String subtitle = null;
 
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
         name = context.getString(R.string.group_add_members);
@@ -183,11 +183,13 @@ public class ProfileAdapter extends RecyclerView.Adapter {
       } else {
         dcContact = dcContext.getContact(contactId);
         name = dcContact.getDisplayName();
-        addr = dcContact.getAddr();
+        if (!dcContact.isKeyContact()) {
+          subtitle = dcContact.getAddr();
+        }
       }
 
       contactItem.unbind(glideRequests);
-      contactItem.set(glideRequests, contactId, dcContact, name, addr, label, false, true);
+      contactItem.set(glideRequests, contactId, dcContact, name, subtitle, label, false, true);
       contactItem.setSelected(selectedMembers.contains(contactId));
       contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
       contactItem.setOnLongClickListener(
