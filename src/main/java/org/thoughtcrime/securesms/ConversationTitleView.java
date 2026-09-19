@@ -118,7 +118,9 @@ public class ConversationTitleView extends RelativeLayout {
     avatar.setSeenRecently(contact.wasSeenRecently());
 
     title.setText(contact.getDisplayName());
-    if (!contact.isKeyContact()) subtitle.setText(contact.getAddr());
+    if (!contact.isKeyContact()) {
+      subtitle.setText(contact.getAddr());
+    }
     subtitle.setVisibility(View.VISIBLE);
   }
 
