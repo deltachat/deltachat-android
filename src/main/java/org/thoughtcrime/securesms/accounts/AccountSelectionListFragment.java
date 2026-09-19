@@ -39,7 +39,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AccountSelectionListFragment extends DialogFragment
     implements DcEventCenter.DcEventDelegate {
-  private static final String TAG = "AccountSelectionListFragment";
+  private static final String TAG = "AcctSelectionListFrag";
   private static final String ARG_SELECT_ONLY = "select_only";
   private RecyclerView recyclerView;
   private AccountSelectionListAdapter adapter;
@@ -217,19 +217,17 @@ public class AccountSelectionListFragment extends DialogFragment
     View dialogView = View.inflate(activity, R.layout.dialog_delete_profile, null);
     AvatarView avatar = dialogView.findViewById(R.id.avatar);
     TextView nameView = dialogView.findViewById(R.id.name);
-    TextView addrView = dialogView.findViewById(R.id.address);
     TextView sizeView = dialogView.findViewById(R.id.size_label);
     TextView description = dialogView.findViewById(R.id.description);
     DcContext dcContext = accounts.getAccount(accountId);
-    String name = dcContext.getConfig("displayname");
     DcContact contact = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
+    String name = dcContext.getConfig(DcHelper.CONFIG_DISPLAY_NAME);
     if (TextUtils.isEmpty(name)) {
-      name = contact.getAddr();
+      name = activity.getString(R.string.unnamed);
     }
     Recipient recipient = new Recipient(requireContext(), contact, name);
     avatar.setAvatar(GlideApp.with(activity), recipient, false);
     nameView.setText(name);
-    addrView.setText(contact.getAddr());
     Util.runOnAnyBackgroundThread(
         () -> {
           try {

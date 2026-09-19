@@ -38,7 +38,7 @@ android {
         multiDexEnabled true
 
         minSdkVersion 21
-        targetSdkVersion 36
+        targetSdkVersion 37
 
         vectorDrawables.useSupportLibrary = true
 

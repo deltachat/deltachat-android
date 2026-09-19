@@ -63,11 +63,12 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 public class InstantOnboardingActivity extends BaseActionBarActivity
     implements DcEventCenter.DcEventDelegate {
 
-  private static final String TAG = "InstantOnboardingActivity";
+  private static final String TAG = "InstantOnboardingActv";
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://chatmail.at/relays";
   private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
+  public static final String GDPR_URL = "https://delta.chat/gdpr";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
@@ -375,7 +376,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     privacyPolicyBtn.setOnClickListener(
         view -> {
           if (!isDcLogin) {
-            IntentUtils.showInBrowser(this, "https://" + providerHost + "/privacy.html");
+            IntentUtils.showInBrowser(this, GDPR_URL);
           }
         });
 
@@ -432,15 +433,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
       signUpBtn.setText(R.string.instant_onboarding_create);
       privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
 
-      if (DEFAULT_CHATMAIL_HOST.equals(providerHost)) {
-        privacyPolicyBtn.setText(
-            TextUtil.markAsExternal(
-                getString(R.string.instant_onboarding_agree_default2, providerHost)));
-      } else {
-        privacyPolicyBtn.setText(
-            TextUtil.markAsExternal(
-                getString(R.string.instant_onboarding_agree_instance, providerHost)));
-      }
+      privacyPolicyBtn.setText(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
 
       if (parsedQrData != null) {
         if (isContactInvitation) {

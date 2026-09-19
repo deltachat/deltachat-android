@@ -730,7 +730,7 @@ public class NotificationCenter {
 
       String accountTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
       if (accountTag.isEmpty() && ApplicationContext.getDcAccounts().getAll().length > 1) {
-        accountTag = dcContext.getName();
+        accountTag = dcContext.getConfig(DcHelper.CONFIG_DISPLAY_NAME);
       }
 
       if (privacy.isDisplayContact()) {

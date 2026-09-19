@@ -3,8 +3,16 @@
 ## Unreleased
 
 * Add speed button for voice message playback
+* Improve a11y on Conversation List
+* Target SDK 37
+* Allow to cancel sending video while it is re-encoding/compressing
+* Improve resilience: pick random relay for sending and try others if sending with one fails, no need for manually selecting a relay "used for sending"
+* Allow to open invitation links pasted in the search bar in "New Chat" screen
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
+* Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
+* Update to core 2.60.0
+* Fix: apply maximum file size limit to videos as is, without 5/4 factor, and enforce file size limit after encoding the video.
 
 ## v2.59.1
 2026-08

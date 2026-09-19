@@ -155,39 +155,19 @@ public class RelayListActivity extends BaseActionBarActivity
   private void loadRelays() {
     Util.runOnAnyBackgroundThread(
         () -> {
-          String mainRelayAddr = "";
-          try {
-            mainRelayAddr = rpc.getConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS);
-          } catch (RpcException e) {
-            Log.e(TAG, "RPC.getConfig() failed", e);
-          }
-          String finalMainRelayAddr = mainRelayAddr;
-
           try {
             List<EnteredLoginParam> relays = rpc.listTransports(accId);
-
-            Util.runOnMain(() -> adapter.setRelays(relays, finalMainRelayAddr));
+            Util.runOnMain(() -> adapter.setRelays(relays));
           } catch (RpcException e) {
             Log.e(TAG, "RPC.listTransports() failed", e);
-            Util.runOnMain(() -> adapter.setRelays(null, finalMainRelayAddr));
+            Util.runOnMain(() -> adapter.setRelays(null));
           }
         });
   }
 
   @Override
-  public void onRelayClick(EnteredLoginParam relay) {
-    if (relay.addr != null && !relay.addr.equals(adapter.getMainRelay())) {
-      Util.runOnAnyBackgroundThread(
-          () -> {
-            try {
-              rpc.setConfig(accId, DcHelper.CONFIG_CONFIGURED_ADDRESS, relay.addr);
-            } catch (RpcException e) {
-              Log.e(TAG, "RPC.setConfig() failed", e);
-            }
-
-            loadRelays();
-          });
-    }
+  public void onRelayClick(View view, EnteredLoginParam relay) {
+    onRelayLongClick(view, relay);
   }
 
   @Override
@@ -203,11 +183,8 @@ public class RelayListActivity extends BaseActionBarActivity
     super.onCreateContextMenu(menu, v, menuInfo);
     getMenuInflater().inflate(R.menu.relay_item_context, menu);
 
-    boolean nonNullAddr = contextMenuRelay != null && contextMenuRelay.addr != null;
-    boolean isMain = nonNullAddr && contextMenuRelay.addr.equals(adapter.getMainRelay());
-
     Util.redMenuItem(menu, R.id.menu_delete_relay);
-    menu.findItem(R.id.menu_delete_relay).setVisible(!isMain);
+    menu.findItem(R.id.menu_delete_relay).setVisible(adapter.getItemCount() > 1);
   }
 
   @Override
@@ -248,7 +225,7 @@ public class RelayListActivity extends BaseActionBarActivity
                 R.string.remove_transport,
                 (d, which) -> {
                   try {
-                    rpc.setTransportUnpublished(accId, relay.addr, true);
+                    rpc.deleteTransport(accId, relay.addr);
                     loadRelays();
                   } catch (RpcException e) {
                     Log.e(TAG, "RPC.deleteTransport() failed", e);

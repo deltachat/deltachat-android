@@ -40,7 +40,7 @@ import org.thoughtcrime.securesms.util.Prefs;
 public class NotificationsPreferenceFragment extends ListSummaryPreferenceFragment
     implements Preference.OnPreferenceChangeListener {
 
-  private static final String TAG = "NotificationsPreferenceFragment";
+  private static final String TAG = "NotificationsPrefFrag";
 
   private CheckBoxPreference ignoreBattery;
   private CheckBoxPreference notificationsEnabled;
