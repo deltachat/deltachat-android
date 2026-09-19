@@ -397,11 +397,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else {
       selfAvatarContainer.setVisibility(View.VISIBLE);
       DcContext dcContext = DcHelper.getContext(this);
-      DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
-      String name = dcContext.getConfig("displayname");
+      String name = dcContext.getConfig(DcHelper.CONFIG_DISPLAY_NAME);
       if (TextUtils.isEmpty(name)) {
-        name = self.getAddr();
+        name = getString(R.string.unnamed);
       }
+      DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       selfAvatar.setAvatar(GlideApp.with(this), new Recipient(this, self, name), false);
     }
   }
