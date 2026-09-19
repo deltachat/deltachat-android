@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
@@ -32,7 +31,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
   private static final String ARG_VERSION = "version";
   private static final String KEY_STATE = "state";
   private static final String KEY_DOWNLOAD_ID = "download_id";
-  private static final String KEY_ERROR_RES = "error_res";
+  private static final String KEY_ERROR_STRING = "error_string";
 
   private enum State {
     CHECK_PERMISSION,
@@ -52,7 +51,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
   private State state = State.CHECK_PERMISSION;
   private long downloadId = -1;
   private int pollFailures;
-  private @StringRes int errorRes;
+  private String errorString = "";
 
   private TextView messageText;
   private View progressContainer;
@@ -81,7 +80,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
     if (savedInstanceState != null) {
       state = stateFromName(savedInstanceState.getString(KEY_STATE));
       downloadId = savedInstanceState.getLong(KEY_DOWNLOAD_ID, -1);
-      errorRes = savedInstanceState.getInt(KEY_ERROR_RES, 0);
+      errorString = savedInstanceState.getString(KEY_ERROR_STRING, "");
     }
   }
 
@@ -126,7 +125,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
     super.onSaveInstanceState(outState);
     outState.putString(KEY_STATE, state.name());
     outState.putLong(KEY_DOWNLOAD_ID, downloadId);
-    outState.putInt(KEY_ERROR_RES, errorRes);
+    outState.putString(KEY_ERROR_STRING, errorString);
   }
 
   @Override
@@ -155,7 +154,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
     Context appContext = requireContext().getApplicationContext();
     File dir = AppUpdate.getApkDir(appContext);
     if (dir == null || downloadManager == null) {
-      showError(R.string.download_failed);
+      showError("Cannot get download directory or download manager");
       return;
     }
 
@@ -173,7 +172,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
       downloadId = downloadManager.enqueue(request);
     } catch (Exception e) {
       Log.e(TAG, "failed to start download", e);
-      showError(R.string.download_failed);
+      showError(getString(R.string.download_failed));
     }
   }
 
@@ -221,7 +220,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
 
       case ERROR:
         messageText.setVisibility(View.VISIBLE);
-        messageText.setText(errorRes != 0 ? errorRes : R.string.error);
+        messageText.setText(errorString.isEmpty() ? getString(R.string.error) : errorString);
         progressContainer.setVisibility(View.GONE);
         positive.setVisibility(View.VISIBLE);
         positive.setText(R.string.ok);
@@ -238,16 +237,16 @@ public class AppUpdateDialogFragment extends DialogFragment {
     }
   }
 
-  private void showError(@StringRes int messageRes) {
+  private void showError(String str) {
     stopPolling();
     state = State.ERROR;
-    errorRes = messageRes;
+    errorString = str;
     render();
   }
 
-  private void failDownload(@StringRes int messageRes) {
+  private void failDownload() {
     cancelDownload();
-    showError(messageRes);
+    showError(getString(R.string.download_failed));
   }
 
   private void startPolling() {
@@ -271,7 +270,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
     try {
       cursor = downloadManager.query(new DownloadManager.Query().setFilterById(downloadId));
       if (cursor == null || !cursor.moveToFirst()) {
-        failDownload(R.string.download_failed);
+        failDownload();
         return;
       }
       pollFailures = 0;
@@ -281,14 +280,14 @@ public class AppUpdateDialogFragment extends DialogFragment {
             cursor.getString(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_LOCAL_URI));
         String localPath = localUri != null ? Uri.parse(localUri).getPath() : null;
         if (localPath == null) {
-          failDownload(R.string.download_failed);
+          failDownload();
         } else {
           onDownloadSucceeded(localPath);
         }
         return;
       } else if (status == DownloadManager.STATUS_FAILED
           || status == DownloadManager.STATUS_PAUSED) {
-        failDownload(R.string.download_failed);
+        failDownload();
         return;
       }
       updateProgress(
@@ -299,7 +298,7 @@ public class AppUpdateDialogFragment extends DialogFragment {
       Log.e(TAG, "poll failed", e);
       pollFailures++;
       if (pollFailures >= MAX_POLL_FAILURES) {
-        failDownload(R.string.download_failed);
+        failDownload();
         return;
       }
     } finally {
@@ -335,13 +334,13 @@ public class AppUpdateDialogFragment extends DialogFragment {
     PackageInfo info = context.getPackageManager().getPackageArchiveInfo(localPath, 0);
     if (info == null || !context.getPackageName().equals(info.packageName)) {
       new File(localPath).delete();
-      showError(R.string.update_apk_mismatch);
+      showError("The downloaded apk does not match this app and will not be installed");
       return;
     }
 
     Uri apkUri = downloadManager.getUriForDownloadedFile(downloadId);
     if (apkUri == null) {
-      showError(R.string.download_failed);
+      showError("Cannot get URI for downloaded file");
       return;
     }
     DcHelper.installApk(activity, apkUri);
