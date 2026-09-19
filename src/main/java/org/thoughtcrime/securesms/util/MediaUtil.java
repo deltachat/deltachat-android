@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -262,14 +263,36 @@ public class MediaUtil {
       File thumbnailFile = new File(thumbnailUri.getPath());
       File dataFile = new File(dataUri.getPath());
       if (!thumbnailFile.exists() || dataFile.lastModified() > thumbnailFile.lastModified()) {
-        Bitmap bitmap = null;
-
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         retriever.setDataSource(context, dataUri);
-        bitmap = retriever.getFrameAtTime(-1);
+        Bitmap bitmap = retriever.getFrameAtTime(-1);
+
+        int rotation =
+            getMetadataInt(retriever, MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
+        int width = getMetadataInt(retriever, MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH);
+        int height = getMetadataInt(retriever, MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT);
+        boolean swapDims = rotation == 90 || rotation == 270;
+
+        if (bitmap != null && swapDims && width > 0 && height > 0) {
+          boolean bitmapLandscape = bitmap.getWidth() >= bitmap.getHeight();
+          boolean codedLandscape = width >= height;
+          if (bitmapLandscape == codedLandscape) {
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotation);
+            bitmap =
+                Bitmap.createBitmap(
+                    bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+          }
+        }
+
         if (retWh != null) {
-          retWh.width = bitmap.getWidth();
-          retWh.height = bitmap.getHeight();
+          if (width > 0 && height > 0) {
+            retWh.width = swapDims ? height : width;
+            retWh.height = swapDims ? width : height;
+          } else if (bitmap != null) {
+            retWh.width = bitmap.getWidth();
+            retWh.height = bitmap.getHeight();
+          }
         }
         retriever.release();
 
@@ -283,6 +306,18 @@ public class MediaUtil {
       e.printStackTrace();
     }
     return success;
+  }
+
+  private static int getMetadataInt(MediaMetadataRetriever retriever, int key) {
+    String value = retriever.extractMetadata(key);
+    if (value != null) {
+      try {
+        return Integer.parseInt(value);
+      } catch (NumberFormatException e) {
+        Log.w(TAG, "Could not parse metadata " + key + ": " + value);
+      }
+    }
+    return 0;
   }
 
   public static String getExtensionFromMimeType(String contentType) {
