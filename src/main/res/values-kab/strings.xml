@@ -231,7 +231,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Snirem</string>
     <string name="unknown">Arussin</string>
-
     <string name="green">Adal</string>
     <string name="red">Azeggaɣ</string>
     <string name="blue">Azegzaw</string>
@@ -623,8 +622,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Amaɣnu-ik·im</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Tsertit tabaḍnit i %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Ɣef yimaɣnuten deg %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Qebleɣ &amp; Rnu amaɣnu</string>
@@ -674,6 +675,7 @@
     <string name="add_transport">Rnu amedwel</string>
     <string name="remove_transport">Kkes amedwel</string>
     <string name="edit_transport">Ẓreg amedwel</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Yettwaseqdec i tuzzna</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Ffer-it ɣef inermisen</string>
@@ -1031,8 +1033,11 @@
     <string name="contact_verified">%1$s ittwasenked.</string>
     <string name="contact_blocked">Tesweḥleḍ anermis</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Yettwasenked sɣur %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Yettwasenked sɣur nekk</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Yettwasenked</string>
     <string name="mailto_dialog_header_select_chat">Fren adiwenni i tuzna n yizen ɣer</string>
     <!-- first placeholder is the name of the chat -->
@@ -1063,7 +1068,6 @@
     <string name="perm_explain_access_to_storage_denied">Akken ad tremseḍ neɣ ad tazneḍ ifuyla, ddu ɣer iɣewwaṛen n usnas, fren \" tisirag \", sakin rmed \" takatut \".</string>
     <string name="perm_explain_access_to_location_denied">Akken ad teqqneḍ adig, ddu ɣer iɣewwaṛen n usnas, fren \" tisirag \", sakin rmed \" adig \". </string>
     <string name="perm_explain_access_to_notifications_denied">Akken ad d-remseḍ ilɣa, ddu ɣer \"Iɣewwaṛen n Unagraw / Isnas / Delta Chat\" akken ad tremdeḍ \"Ilɣa\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Suneɣ-d anda tebɣiḍ i wakken ad tesluɣeḍ</string>
     <string name="ImageEditorHud_add_text">Rnu aḍris</string>
@@ -1192,4 +1196,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">D acu i d amaynut?\n\n💯Awgelhen n yixef ɣer yixef d ayen iɣef ara tettekleḍ u i lebda. Inekcaman 🔒 ruḥen!\n\n✉️ Imayl aklasik war awgelhen yettwacreḍ s usekkil azamulan.\n\n 😻 Agdil amaynut yettwasneflin n umaɣnu i akk inermisen-ik·im\n\n🔲 Taqeffalt tamaynutt i unekcum uzrib ɣer yisnasen yettwasqedcen deg udiwenni usrid\n\n❤️ Ma ulac aɣilif mudd-aɣ-d afus akken ad neqqim d imunanen, daɣen ad nkemmel ad d-nawi asnerni: %1$s</string>
-</resources>
+    </resources>

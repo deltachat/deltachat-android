@@ -228,7 +228,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Bläddra</string>
     <string name="unknown">Okänd</string>
-
     <string name="green">Grön</string>
     <string name="red">Röd</string>
     <string name="blue">Blå</string>
@@ -615,8 +614,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Din profil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Integritetspolicy för %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Om profiler på %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Godkänn &amp; Skapa profil</string>
@@ -1015,8 +1016,11 @@
     <string name="contact_verified">%1$s verifierad.</string>
     <string name="contact_blocked">Du blockerade kontakten</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Introducerad av %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Introducerad av mig</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Introducerad</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
     <!-- first placeholder is the name of the chat -->
@@ -1047,7 +1051,6 @@
     <string name="perm_explain_access_to_storage_denied">Gå till programinställningarna och aktivera \"Lagring\" under \"Behörighet\", för att ta emot eller skicka filer.</string>
     <string name="perm_explain_access_to_location_denied">Gå till programinställningarna och aktivera \"Plats\" under \"Behörighet\", för att bifoga en plats.</string>
     <string name="perm_explain_access_to_notifications_denied">För att få meddelanden, gå till \"Systeminställningar / Appar / Delta Chat\" och aktivera \"Meddelanden\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rita var som helst för att smeta ut</string>
     <string name="ImageEditorHud_add_text">Lägg till text</string>
@@ -1176,4 +1179,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Vad är nytt?\n\n💯 Totalsträckskryptering är pålitlig och för alltid nu. Hänglås 🔒 är borta!\n\n✉️ Klassisk e-post utan Totalsträckskryptering är markerad med en bokstavssymbol\n\n😻 Ny förbättrad profilskärm för alla dina kontakter\n\n🔲 Ny knapp för snabb åtkomst till appar som används i en chatt\n\n❤️ Vänligen donera för att hjälpa oss att förbli oberoende och fortsätta att göra förbättringar: %1$s</string>
-</resources>
+    </resources>

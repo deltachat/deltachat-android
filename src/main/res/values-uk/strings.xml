@@ -258,7 +258,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Перегляд</string>
     <string name="unknown">Невідомо</string>
-
     <string name="green">Зелений</string>
     <string name="red">Червоний</string>
     <string name="blue">Синій</string>
@@ -689,8 +688,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Ваш профіль</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Політика конфіденційності для %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Про профілі на %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Погодитися та створити профіль</string>
@@ -741,14 +742,13 @@
     <string name="add_transport">Додати ретранслятор</string>
     <string name="remove_transport">Видалити ретранслятор</string>
     <string name="edit_transport">Редагувати ретранслятор</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Використовується для відправки</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Приховати від контактів</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Приховано від контактів</string>
     <string name="enforce_e2ee">Застосувати політику шифрування для всіх ретрансляторів</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Повідомлення приймаються на всіх ретрансляторах.\n\n⚠️ Якщо ви щось змінюєте тут, переконайтеся, що всі ваші пристрої працюють принаймні з версією 2.47.0. Інакше старіші пристрої можуть пропустити повідомлення.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Додати цей ретранслятор?</string>
     <string name="invalid_transport_qr">Відсканований QR-код не містить дійсного ретранслятора.</string>
@@ -806,8 +806,8 @@
     <string name="pref_default_status_label">Текст підпису</string>
     <string name="chat_description">Опис</string>
     <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
-    <string name="pref_enter_sends">Відправляти клявішею   Enter</string>
-    <string name="pref_enter_sends_explain">Натискаючи клявішу   Enter відправлятимете текстові повідомлення</string>
+    <string name="pref_enter_sends">Enter для надсилання</string>
+    <string name="pref_enter_sends_explain">Натискання клавіші Enter призведе до надсилання текстових повідомлень</string>
     <string name="pref_outgoing_media_quality">Якість вихідних медіа файлів</string>
     <string name="pref_outgoing_media_quality_hint">Щоб надіслати в оригінальній якості, прикріпіть медіа як \"Файл\". При цьому використовується значно більше даних для вас і ваших одержувачів.</string>
     <string name="pref_outgoing_balanced">Збалансована якість</string>
@@ -1106,8 +1106,11 @@
     <string name="contact_verified">%1$s представлено!</string>
     <string name="contact_blocked">Ви заблокували контакт</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Представни·ця: %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Представлено мною</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Представлено</string>
     <string name="mailto_dialog_header_select_chat">Виберіть чат, куди потрібно надіслати повідомлення</string>
     <!-- first placeholder is the name of the chat -->
@@ -1145,7 +1148,6 @@
     <string name="perm_explain_access_to_storage_denied">Для збереження або передавання фотографій перейдіть до налаштувань додатку, оберіть \"Дозволи\" та ввімкніть \"Сховище\"</string>
     <string name="perm_explain_access_to_location_denied">Щоб прикріпити місцеперебування, перейдіть до налаштувань програми, оберіть \"Дозволи\" та увімкніть \"місцеперебування\".</string>
     <string name="perm_explain_access_to_notifications_denied">Щоб отримувати сповіщення зайдіть у \"Налаштування системи / Застосунки / Delta Chat\" і увімкніть \"Сповіщення\"</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Малюйте будь-де для розмиття</string>
     <string name="ImageEditorHud_add_text">Додати текст</string>
@@ -1286,4 +1288,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Що нового?\n\n💯 Наскрізне шифрування тепер надійне і завжди. Навісні замки 🔒 зникли!\n\n✉️ Класична електронна пошта без наскрізного шифрування позначається символом листа\n\n😻 Новий покращений екран профілю для всіх ваших контактів\n\n🔲 Нова кнопка для швидкого доступу до додатків, що використовуються в чаті\n\n❤️ Будь ласка, пожертвуйте, щоб допомогти нам залишатися незалежними та продовжувати вдосконалюватися: %1$s</string>
-</resources>
+    </resources>

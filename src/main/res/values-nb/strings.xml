@@ -236,7 +236,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Utforsk</string>
     <string name="unknown">Ukjent</string>
-
     <string name="green">Grønn</string>
     <string name="red">Rød</string>
     <string name="blue">Blå</string>

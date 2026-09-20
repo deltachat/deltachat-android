@@ -241,7 +241,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Explorar</string>
     <string name="unknown">Descoñecido</string>
-
     <string name="green">Verde</string>
     <string name="red">Vermello</string>
     <string name="blue">Azul</string>
@@ -660,8 +659,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">O teu perfil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Política de Privacidade de %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Sobre os perfís en %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Aceptar e Crear perfil</string>
@@ -718,19 +719,16 @@
     <string name="add_transport">Engadir repetidor</string>
     <string name="remove_transport">Eliminar repetidor</string>
     <string name="edit_transport">Editar repetidor</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Usado para enviar</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Ocultar dos contactos</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Oculto dos contactos</string>
     <string name="enforce_e2ee">Aplicar o cifrado para todos os repetidores</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">As mensaxes recíbense en todos os repetidores.\n\n⚠️ Se cambias algo aquí, asegúrate de que todos os teus dispositivos executen polo menos a versión 2.47.0. Se non, os dispositivos máis antigos poden perder mensaxes.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Engadir este repetidor?</string>
     <string name="invalid_transport_qr">O código QR escaneado non contén un repetidor válido.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Eliminar repetidor \"%1$s\"?\n\nAntes da eliminación, será retirado gradualmente de modo que os seus contactos podan mudarse mainamente</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Eliminar o repetidor \"%1$s\"?\n\nOs contactos que só coñecen este retransmisor poden non contactar contigo ata que lles envíes unha nova mensaxe.\n\nEn caso de dúbida, ocúltao en lugar de eliminalo.</string>
     <string name="login_certificate_checks">Comprobacións do certificado</string>
@@ -1091,8 +1089,11 @@
     <string name="contact_verified">Introducíronse %1$s.-</string>
     <string name="contact_blocked">Bloqueaches o contacto</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Contacto introducido por %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Contacto introducido por min</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Contacto introducido</string>
     <string name="mailto_dialog_header_select_chat">Escoller conversa á que enviar a mensaxe</string>
     <!-- first placeholder is the name of the chat -->
@@ -1130,7 +1131,6 @@
     <string name="perm_explain_access_to_storage_denied">Para recibir ou enviar ficheiros, vai aos axustes da aplicación, escolle \"Permisos\" e activa \"Almacenaxe\".</string>
     <string name="perm_explain_access_to_location_denied">Para engadir a localización, vai aos axustes da aplicación, escolle \"Permisos\" e activa \"Localización\".</string>
     <string name="perm_explain_access_to_notifications_denied">Para recibir notificacións, vai a \"Axustes de Sistema / Apps / Delta Chat\" e activa as \"Notificacións\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Debuxa en calquera lugar para desenfocar</string>
     <string name="ImageEditorHud_add_text">Engadir texto</string>
@@ -1271,4 +1271,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Que hai de novo?\n\n💯 Agora a cifraxe de extremo-a-extremo é de fiar e para sempre. Non hai máis cadeados 🔒!\n\n✉️ O enderezos de correo clásicos sen cifraxe de extremo-a-extremo están marcados cunha carta\n\n😻 Nova páxina de perfil mellorada para todos os teus contactos\n\n🔲 Novo botón de acceso rápido a apps usadas nunha conversa\n\n❤️ Por favor doa para continuarmos independentes e a mellorar: %1$s</string>
-</resources>
+    </resources>

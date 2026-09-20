@@ -150,7 +150,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">개인 앱</string>
     <string name="unknown">알 수 없음</string>
-
     <string name="green">초록</string>
     <string name="red">빨강</string>
     <string name="blue">파랑</string>

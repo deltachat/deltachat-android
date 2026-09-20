@@ -225,7 +225,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Naršyti</string>
     <string name="unknown">Nežinoma</string>
-
     <string name="green">Žalia</string>
     <string name="red">Raudona</string>
     <string name="blue">Mėlyna</string>
@@ -594,6 +593,7 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Jūsų profilis</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">%1$s privatumo politika</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Sutinku ir sukurti profilį</string>
@@ -1085,4 +1085,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Kas naujo?\n\n💯 Ištisinis šifravimas yra patikimas ir visą laiką. Pakabinamųjų spynų 🔒 nebėra!\n\n✉️ Klasikiniai el. laiškai be ištisinio šifravimo yra pažymėti voko simboliu\n\n😻 Naujas, pagerintas profilio langas visiems jūsų adresatams\n\n🔲 Naujas mygtukas, skirtas greitai pasiekti pokalbyje naudojamas programėles\n\n❤️ Prašome paaukoti, kad padėtumėte mums išlikti nepriklausomiems ir galėtume toliau teikti patobulinimus: %1$s</string>
-</resources>
+    </resources>
