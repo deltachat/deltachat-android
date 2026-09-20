@@ -581,7 +581,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
 
     DcHelper.getEventCenter(this).captureNextError();
 
-    String qrCode = TextUtils.isEmpty(providerQrData)? inviteQr : providerQrData;
+    String qrCode = TextUtils.isEmpty(providerQrData) ? inviteQr : providerQrData;
     new Thread(
             () -> {
               Rpc rpc = DcHelper.getRpc(this);
