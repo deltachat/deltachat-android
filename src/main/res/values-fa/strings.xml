@@ -222,7 +222,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">جستجو</string>
     <string name="unknown">ناشناس</string>
-
     <string name="green">سبز</string>
     <string name="red">قرمز</string>
     <string name="blue">آبی</string>
@@ -603,8 +602,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">نمایه شما</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">سیاست حریم خصوصی برای %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">دربارهٔ نمایه‌ها در %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">قبول کردن و ایجاد نمایه</string>
@@ -994,8 +995,11 @@
     <string name="contact_verified">%1$s تأیید شد.</string>
     <string name="contact_blocked">شما این مخاطب را مسدود کردید.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">احراز هویت شده توسط %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">تأیید شده توسط من</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">معرفی شده</string>
     <string name="mailto_dialog_header_select_chat">گپ را برای ارسال پیام انتخاب کنید</string>
     <!-- first placeholder is the name of the chat -->
@@ -1026,7 +1030,6 @@
     <string name="perm_explain_access_to_storage_denied">برای دریافت یا ارسال پرونده به تنظیم‌های برنامه بروید، «اجازه‌ها» را برگزینید و «ذخیره‌گاه» را به کار بیندازید.</string>
     <string name="perm_explain_access_to_location_denied">برای افزودن موقعیت مکانی به تنظیم‌های نرم‌افزار رفته و از «دسترسی‌ها» گزینه «موقعیت مکانی» را فعال نمایید.</string>
     <string name="perm_explain_access_to_notifications_denied">برای دریافت اعلان‌ها به «تنظیمات دستگاه > برنامه‌ها > دلتاچت» بروید و «اعلان‌ها» را فعال کنید.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">هر کجا مایلید شروع به رسم کردن کنید تا مات شود.</string>
     <string name="ImageEditorHud_add_text">افزودن متن</string>
@@ -1155,4 +1158,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">چه خبر هست؟\n\n💯 رمزنگاری سراسری اکنون قابل اعتماد و دائمی هست. قفل‌ها 🔒 دیگر نیستند!\n\n✉️ رایانامه معمولی بدون رمزنگاری سراسری هم‌اکنون با یک نشان حرفی نشان‌گذاری شده‌اند!\n\n🔲 دکمهٔ جدید برای دسترسی سریع به مینی برنامه‌های استفاده شده در چت\n\nلطفا برای مستقل ماندن ما و ادامه دادن بهبود‌ها کمک مالی کنید: %1$sدر صورتی که ساکن ایران هستید، رمزارز نیز می‌توانید بفرستید.</string>
-</resources>
+    </resources>

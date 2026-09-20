@@ -230,7 +230,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Shfletoni</string>
     <string name="unknown">E panjohur</string>
-
     <string name="green">E gjelbër</string>
     <string name="red">E kuqe</string>
     <string name="blue">Blu</string>
@@ -645,8 +644,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profili Juaj</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Rregulla Privatësie për %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Rreth profilesh në %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Pranojeni &amp; Krijoni Profil</string>
@@ -697,14 +698,13 @@
     <string name="add_transport">Shtoni Rele</string>
     <string name="remove_transport">Hiqni Rele</string>
     <string name="edit_transport">Përpunoni Rele</string>
+    <!-- deprecated -->
     <string name="used_for_sending">E përdorur për dërgim</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Fshihe prej Kontaktesh</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Fshehur prej kontakteve</string>
     <string name="enforce_e2ee">Detyro Fshehtëzim për Krejt Reletë</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Mesazhet merren në të tëra reletë.\n\n⚠️ Nëse ndryshoni diçka këtu, sigurohuni se krejt pajisjet tuaja xhirojnë të paktën versionin 2.47.0. Përndryshe, pajisje më të vjetra mund të humbin mesazhe.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Të shtohet kjo rele?</string>
     <string name="invalid_transport_qr">Kodi QR i skanuar s’përmban një rele të vlefshme.</string>
@@ -1062,8 +1062,11 @@
     <string name="contact_verified">%1$s u soll.</string>
     <string name="contact_blocked">E bllokuat kontaktin</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Sjellë nga %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Sjellë nga unë</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Sjellë nga</string>
     <string name="mailto_dialog_header_select_chat">Përzgjidhni fjalosje ku të dërgohet mesazhi</string>
     <!-- first placeholder is the name of the chat -->
@@ -1101,7 +1104,6 @@
     <string name="perm_explain_access_to_storage_denied">Që të merren apo dërgohen kartela, kaloni te rregullime aplikacioni, përzgjidhni “Leje” dhe aktivizoni “Depozitimin”.</string>
     <string name="perm_explain_access_to_location_denied">Që të mund të bashkëngjitet një vendndodhje, kaloni te rregullimet e aplikacionit, përzgjidhni “Leje” dhe aktivizoni “Vendndodhjen”.</string>
     <string name="perm_explain_access_to_notifications_denied">Që të merrni njoftime, kaloni te “Rregullime Sistemi / Aplikacione / Delta Chat” dhe aktivizoni “Njoftime”.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Që të turbullohet, vizatoni kudo qoftë</string>
     <string name="ImageEditorHud_add_text">Shtoni Tekst</string>
@@ -1242,4 +1244,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Ç’ka të re?\n\n💯 Fshehtëzimi skaj-më-skaj është i qëndrueshëm dhe përgjithmonë tanimë. Drynat 🔒 na lanë shëndenë!\n\n✉️ Emaile-t klasikë pa fshehtëzim skaj-më-skajtregohen me një simbol shkronjë\n\n😻 Skenë e re e zgjeruar profili për krejt kontaktet tuaj\n\n🔲 Buton i ri për hyrje të shpejtë në aplikacionet e përdorur në një fjalosje\n\n❤️ Ju lutemi, dhuroni, që të na ndihmoni të mbesim të pavarur dhe të vazhdojmë të sjellim përmirësime: %1$s</string>
-</resources>
+    </resources>

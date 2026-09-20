@@ -236,7 +236,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Gözat</string>
     <string name="unknown">Bilinmeyen</string>
-
     <string name="green">Yeşil</string>
     <string name="red">Kırmızı</string>
     <string name="blue">Mavi</string>
@@ -636,8 +635,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profiliniz</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">%1$s için Gizlilik İlkesi</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">%1$s üzerindeki profiller hakkında</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Kabul Et &amp; Profil Oluştur</string>
@@ -687,13 +688,12 @@
     <string name="add_transport">Aktarıcı Ekle</string>
     <string name="remove_transport">Aktarıcıyı Kaldır</string>
     <string name="edit_transport">Aktarıcıyı Düzenle</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Gönderim için kullanıldı</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Kişilerden Gizle</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Kişilerden gizlendi</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">İletiler tüm aktarıcılardan alınır.\n\n⚠️ Burada herhangi bir şeyi değiştirirseniz, tüm aygıtlarınızın en azından 2.47.0 sürümünü çalıştırdığından emin olun. Yoksa daha eski aygıtlar iletileri kaçırabilir.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Bu aktarıcı eklensin mi?</string>
     <string name="invalid_transport_qr">Taranan QR kodu, geçerli bir aktarıcı içermiyor.</string>
@@ -1051,8 +1051,11 @@
     <string name="contact_verified">%1$s tanıtıldı.</string>
     <string name="contact_blocked">Kişiyi engellediniz</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">%1$s tarafından tanıtıldı</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Benim tarafımdan tanıtıldı</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Tanıtıldı</string>
     <string name="mailto_dialog_header_select_chat">İletiyi göndermek için sohbet seçin</string>
     <!-- first placeholder is the name of the chat -->
@@ -1090,7 +1093,6 @@
     <string name="perm_explain_access_to_storage_denied">Dosyalar almak ya da göndermek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Depolama”yı etkinleştirin.</string>
     <string name="perm_explain_access_to_location_denied">Bir konum iliştirmek için uygulama ayarlarına gidin, “İzinler”i seçin ve “Konum”u etkinleştirin.</string>
     <string name="perm_explain_access_to_notifications_denied">Bildirimler almak için “Sistem Ayarları / Uygulamalar / Delta Chat”e gidin ve “Bildirimler”i etkinleştirin.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Bulanıklaştırmak için herhangi bir yere çizin</string>
     <string name="ImageEditorHud_add_text">Metin Ekle</string>
@@ -1228,4 +1230,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Ne yeni?\n\n💯 Uçtan uca şifreleme artık güvenilir ve sonsuza kadar geçerli. Asma kilitlerle 🔒 anlaşılabilir!\n\n✉️ Uçtan uca şifrelemeli olmayan klasik e-posta bir mektup sembolü olarak işaretlenir\n\n😻 Tüm kişileriniz için yeni geliştirilen profil ekranı\n\n🔲 Bir sohbette kullanılan uygulamalara hızlı erişim için yeni düğme\n\n❤️ Bağımsız kalmamız ve yeni geliştirmeler getirmemiz için lütfen bize yardım edin: %1$s</string>
-</resources>
+    </resources>

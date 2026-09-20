@@ -241,7 +241,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Explora</string>
     <string name="unknown">Desconegut</string>
-
     <string name="green">Verd</string>
     <string name="red">Vermell</string>
     <string name="blue">Blau</string>
@@ -660,8 +659,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">El vostre perfil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Política de privadesa de %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Quant als perfils en %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">D\'acord i crea el perfil</string>
@@ -718,19 +719,16 @@
     <string name="add_transport">Afegir Retransmissor</string>
     <string name="remove_transport">Elimina Retransmissors</string>
     <string name="edit_transport">Edita Retransmissor</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Utilitzat per enviar</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Amagar als contactes</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Amagat als contactes</string>
     <string name="enforce_e2ee">Força el xifrat per tots els Retransmissors</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Els missatges es reben en tots els retransmissors.  ⚠️ Si canvies qualsevol cosa aquí, assegura\'t que tots els teus dispositius funcionin com a mínim amb la versió 2.47.0. Sinó, els dispositius més antics podrien no rebre els missatges.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Afegir aquest retransmissor?</string>
     <string name="invalid_transport_qr">El codi QR escanejat no conté un retransmissor vàlid.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Esborrar retransmissor \"%1$s\"?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Esborrar el retransmissor \"%1$s\"?\n\nEls contactes que només coneixen aquest retransmissor no et podran contactar fins que els escriguis de nou.\n\nSi no ho tens clar, amaga\'l enlloc d\'esborrar-lo.</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
@@ -1091,8 +1089,11 @@
     <string name="contact_verified">%1$s afegit.</string>
     <string name="contact_blocked">Heu blocat el contacte</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Afegit per %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Afegit per mi</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Afegit</string>
     <string name="mailto_dialog_header_select_chat">Trieu el xat on enviar el missatge</string>
     <!-- first placeholder is the name of the chat -->
@@ -1130,7 +1131,6 @@
     <string name="perm_explain_access_to_storage_denied">Per a rebre o enviar fitxers, aneu a la configuració de l\'aplicació, seleccioneu «Permisos» i activeu «Emmagatzematge».</string>
     <string name="perm_explain_access_to_location_denied">Per a adjuntar la ubicació, aneu a la configuració de l\'aplicació, trieu «Permisos» i activeu la «Ubicació».</string>
     <string name="perm_explain_access_to_notifications_denied">Per a rebre les notificacions, aneu a «Configuració del sistema / Aplicacions / Delta Chat» i activeu «Notificacions»</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dibuixeu a qualsevol lloc per a difuminar-lo</string>
     <string name="ImageEditorHud_add_text">Afegeix text</string>
@@ -1271,4 +1271,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Què hi ha de nou?\n\n💯 El xifrat d\'extrem a extrem és fiable i permanent. Els candaus 🔒 han desaparegut!\n\n✉️ El correu electrònic clàssic sense xifrar d\'extrem a extrem es mostra amb el símbol d\'un sobre.\n\n😻 Nova pantalla de perfil millorada per a tots els teus contactes.\n\n🔲 Nou botó per accedir ràpidament a les aplicacions utilitzades als xats.\n\n❤️ Si us plau, fes una donació per ajudar-nos a continuar independents i seguir aportant millores: %1$s</string>
-</resources>
+    </resources>
