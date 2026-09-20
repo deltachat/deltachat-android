@@ -84,7 +84,7 @@
       <li><a href="#welche-standards-werden-für-die-ende-zu-ende-verschlüsselung-verwendet">Welche Standards werden für die Ende-zu-Ende-Verschlüsselung verwendet?</a></li>
       <li><a href="#whene2e">Wie kann ich wissen, ob Nachrichten Ende-zu-Ende-verschlüsselt sind?</a></li>
       <li><a href="#kann-ich-nachrichten-ohne-ende-zu-ende-verschlüsselung-empfangen-oder-senden">Kann ich Nachrichten ohne Ende-zu-Ende-Verschlüsselung empfangen oder senden?</a></li>
-      <li><a href="#e2eeguarantee">Was bedeutet das grüne Häkchen in einem Kontaktprofil?</a></li>
+      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#sind-anhänge-bilder-dateien-audio-usw-ende-zu-ende-verschlüsselt">Sind Anhänge (Bilder, Dateien, Audio usw.) Ende-zu-Ende-verschlüsselt?</a></li>
       <li><a href="#openpgp-secure">Ist OpenPGP sicher?</a></li>
       <li><a href="#openpgp-alternatives">Wurden Alternativen zu OpenPGP für die Ende-zu-Ende-Verschlüsselung in Betracht gezogen?</a></li>
@@ -470,9 +470,9 @@ oder über die Seitenleiste (Desktop, Rechtsklick) entfernen.
 Chat-Profile werden nur auf dem Gerät entfernt, auf dem “Löschen” ausgewählt wurde. 
 Chat-Profile auf anderen Geräten funktionieren uneingeschränkt weiter.</p>
 
-<p>Wenn du ein einzelnes Standard-Chat-Profil verwendest, kannst du die App einfach deinstallieren.
-Dadurch werden automatisch alle zugehörigen Daten gelöscht.
-Weitere Informationen findest du auf der Seite des ausgewählten <a href="https://chatmail.at/relays">Relay</a>.</p>
+<p>If you use a single default chat profile you can simply uninstall the app.
+This will still automatically trigger deletion of all associated address data on the chatmail server.
+For more info, please refer to the respective page from your <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
     
       <h2 id="groups">
         
@@ -1163,30 +1163,33 @@ kannst du unfertige Features ausprobieren, an denen gearbeitet wird.</p>
         
       </h3>
 
-<p>Relays werden verwendet, um Nachrichten vorübergehend zu speichern, falls dein Gerät offline ist.
-Relays sind billige und einfache Server,
-die keine Daten wie Gruppenstatus, deinen Namen oder deinen Avatar speichern –
-all das existiert nur auf deinem Gerät.
-Relays werden von verschiedenen Gruppen und Personen betrieben.</p>
+<p>Relays are used to temporarily hold messages in case your device is offline.
+Relays are cheap and dumb servers,
+that do not store any user data as group states, your name or avatar -
+all those exist only on your device.
+Relays are operated by different groups and people,
+not under the control of Delta Chat developers.</p>
 
-<p>Standardmäßig wird nach der Installation ein Relay <strong>automatisch</strong> hinzugefügt;
-darum musst du dich nicht kümmern.
-Wenn du möchtest,
-kannst du jedoch unter <strong>Einstellungen → Erweitert → Relays</strong> Änderungen vornehmen:</p>
+<p>By default, relays are <strong>automatically set up</strong>,
+so you do not need to care about that.
+However, if you want to,
+you can configure relays at <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
   <li>
-    <p>Du kannst ein Relay <strong>hinzufügen</strong>, indem du einen QR-Code scannst, z.B. von <a href="https://chatmail.at/relays">chatmail.at/relays</a>. Bei mehreren Relays, empfängst du die Nachrichten von allen Relays. Deine Kontakte lernen deine Relays automatisch, sobald du ihnen schreibst.</p>
+    <p>You can <strong>remove</strong> a relay from the relay list (by long-tapping on it)
+and choosing the remove action. Before you remove your last relay,
+you will need to add another relay first.</p>
   </li>
   <li>
-    <p>Tippe ein Relay an, um es <strong>Zum Senden zu verwenden</strong></p>
-  </li>
-  <li>
-    <p>Wenn ein Relay nicht mehr funktioniert, kann es <strong>entfernt</strong> werden.</p>
+    <p>You can <strong>add</strong> a relay by scanning its QR code or pasting its invite link;
+<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some publically known ones.
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
 </ul>
 
-<p>Weitere Details und zukünftige Möglichkeiten findest du im <a href="https://support.delta.chat">Forum</a>.</p>
+<p>Adding or removing a relay will automatically inform your chat partners
+so they start or stop using a relay for chatting with you, respectively.</p>
     
       <h3 id="kann-ich-eine-klassische-e-mail-adresse-mit-delta-chat-verwenden">
         
@@ -1202,12 +1205,12 @@ kannst du jedoch unter <strong>Einstellungen → Erweitert → Relays</strong> �
 
 <ul>
   <li>
-    <p>Nicht-Chatmail-Apps bieten ihren Nutzern größtenteils keine automatische End-to-End-Verschlüsselung,
-während Chatmail-Apps und Relays durchgängig End-to-End-Verschlüsselung und Sicherheitsstandards durchsetzen.</p>
+    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
+while chatmail apps and relays pervasively enforce end-to-end encryption and other security standards.</p>
   </li>
   <li>
-    <p>Nicht-Chatmail-Anwendungen nutzen E-Mail-Server als langfristiges Nachrichtenarchiv,
-während Chatmail-Clients E-Mail-Server für die kurzlebige Weiterleitung von Nachrichten verwenden.</p>
+    <p>Non-chatmail apps use email servers as a long-term message archive
+while chatmail clients use email servers for ephemeral instant message forwarding.</p>
   </li>
   <li>
     <p>Die Unterstützung der gesamten Bandbreite klassischer E-Mail-Konfigurationen
@@ -1272,7 +1275,7 @@ werden wöchentlich Statistiken automatisch an einen Bot gesendet.</p>
 
 <ul>
   <li>
-    <p>Wie viele Kontakte werden durch das persönliche Scannen eines QR-Codes hergestellt?</p>
+    <p>How many contacts are added by scanning a QR code or opening an invite link?</p>
   </li>
   <li>
     <p>Welche Versionen von Delta Chat werden verwendet?</p>
@@ -1358,25 +1361,28 @@ Seit der Veröffentlichung von Delta Chat Version 2 (Juli 2025) gibt es keine Sc
       <h3 id="e2eeguarantee">
         
         
-          Was bedeutet das grüne Häkchen in einem Kontaktprofil? <a href="#e2eeguarantee" class="anchor"></a>
+          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>Ein Kontaktprofile kann ein grünes Häkchen 
+<p>Older Delta Chat versions showed a green checkmark
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-und “Eingeführt von” enthalten. 
-Jeder so markierte Kontakt hat entweder einen direkten <a href="#howtoe2ee">QR-Scan</a> mit Ihnen durchgeführt
-oder wurde von einem anderen Kontakt mit grünem Häkchen eingeführt.
-Das Einführen geschieht automatisch, wenn Sie Mitglieder zu Gruppen hinzufügen. 
-Wer einen Kontakt mit grünem Häkchen zu einer Gruppe hinzufügt, wird zum Einführenden.
-In einem Kontaktprofil können Sie wiederholt auf den Text “Eingeführt von” tippen
-bis Sie zu demjenigen gelangen, mit dem Sie einen direkten <a href="#howtoe2ee">QR-Scan</a> gemacht haben.</p>
+and an “Introduced by” line in some contact profiles.</p>
 
-<p>Für eine ausführlichere Diskussion der “Garantierten Ende-zu-Ende-Verschlüsselung”,
-siehe <a href="https://securejoin.delta.chat/en/latest/new.html">Secure-Join-Protokolle</a>
-und dort speziell den Abschnitt zu “Verified Groups”, dem technischen Begriff
-für “Chats mit grünem Häkchen” oder “Garantierter Ende-zu-Ende-Verschlüsselung”.</p>
+<p>This line is no longer present.
+Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
+contacts are identified by their cryptographic key (“public key”),
+and there is never any possibility for the relay operator
+to exchange a key in order to execute a man-in-the-middle (MitM) attack
+(in fact, the operator does not even see the key at any point).</p>
+
+<p>It is still possible for an attacker to give you an invite link
+that impersonates someone else, and an attacker who has your Delta Chat contact
+(because they are in a group chat with you)
+could try to start a chat with you under a wrong name.
+These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
+and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="sind-anhänge-bilder-dateien-audio-usw-ende-zu-ende-verschlüsselt">
         
@@ -1695,7 +1701,7 @@ Es wurden keine kritischen Probleme gefunden, aber zwei Probleme mit hohem Schwe
 <p>Einige Features erfordern bestimmte Berechtigungen.
 So muss z.B. der Kamerazugriff gewährt werden, wenn du einen <a href="#howtoe2ee">QR-Code scannen</a> möchtest.</p>
 
-<p>Siehe <a href="https://delta.chat/de/gdpr#24-berechtigungen-der-app">Datenschutzhinweise</a> für eine detaillierte Übersicht.</p>
+<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
     
       <h3 id="wo-können-meine-freunde-delta-chat-finden">
         
