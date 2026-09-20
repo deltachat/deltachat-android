@@ -67,7 +67,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://chatmail.at/relays";
-  private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
   public static final String GDPR_URL = "https://delta.chat/gdpr";
 
   private static final int REQUEST_CODE_AVATAR = 1;
@@ -83,7 +82,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private boolean imageLoaded;
   private String providerHost;
   private String providerQrData;
-  private String rawQrData;
+  private String inviteQr;
   private DcLot parsedQrData;
   private boolean isDcLogin;
   private boolean isContactInvitation;
@@ -121,9 +120,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
       return;
     }
 
-    isDcLogin = false;
-    providerHost = DEFAULT_CHATMAIL_HOST;
-    providerQrData = DCACCOUNT + ":" + providerHost;
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();
@@ -247,14 +243,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
         break;
       case DcContext.DC_QR_ASK_VERIFYCONTACT:
         isContactInvitation = true;
-        rawQrData = rawQr;
+        inviteQr = rawQr;
         parsedQrData = qrParsed;
         updateProvider();
         break;
       case DcContext.DC_QR_ASK_JOIN_BROADCAST:
       case DcContext.DC_QR_ASK_VERIFYGROUP:
         isJoinInvitation = true;
-        rawQrData = rawQr;
+        inviteQr = rawQr;
         parsedQrData = qrParsed;
         updateProvider();
         break;
@@ -517,7 +513,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
     if (isContactInvitation || isJoinInvitation) {
-      intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, rawQrData);
+      intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, inviteQr);
     }
 
     startActivity(intent);
@@ -553,7 +549,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
               () -> {
                 if (finalResult) {
                   attachmentManager.cleanup();
-                  startQrAccountCreation(providerQrData);
+                  startQrAccountCreation();
                 } else {
                   Toast.makeText(InstantOnboardingActivity.this, R.string.error, Toast.LENGTH_LONG)
                       .show();
@@ -562,7 +558,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
         });
   }
 
-  private void startQrAccountCreation(String qrCode) {
+  private void startQrAccountCreation() {
     if (progressDialog != null) {
       progressDialog.dismiss();
       progressDialog = null;
@@ -585,11 +581,12 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
 
     DcHelper.getEventCenter(this).captureNextError();
 
+    String qrCode = TextUtils.isEmpty(providerQrData)? inviteQr : providerQrData;
     new Thread(
             () -> {
               Rpc rpc = DcHelper.getRpc(this);
               try {
-                rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
+                rpc.initTransports(dcContext.getAccountId(), qrCode);
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressSuccess();
               } catch (RpcException e) {
