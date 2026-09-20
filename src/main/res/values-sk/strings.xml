@@ -261,7 +261,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Prehľadávať</string>
     <string name="unknown">Neznáme</string>
-
     <string name="green">Zelená</string>
     <string name="red">Červená</string>
     <string name="blue">Modrá</string>
@@ -695,8 +694,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Váš účet</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Zásady ochrany osobných údajov na %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">O účtoch na %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Súhlasím, vytvoriť účet</string>
@@ -753,19 +754,16 @@
     <string name="add_transport">Pridať relay</string>
     <string name="remove_transport">Odstrániť Relay</string>
     <string name="edit_transport">Upraviť Relay</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Používa sa na odosielanie správ</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Skryť pre kontakty</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Skrytý pre kontakty</string>
     <string name="enforce_e2ee">Vynútiť šifrovanie pre všetky relay servery</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Správy sú doručované cez všetky nastavené relay servery.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Pridať tento relay server?</string>
     <string name="invalid_transport_qr">Naskenovaný QR kód neobsahuje platný odkaz na relay server.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Odstrániť relay server „%1$s“?\n\nRelay server bude pred odstránením postupne vyradený z prevádzky, aby vaše kontakty mohli plynule prejsť na spojenie cez nový relay.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Odstrániť relé „%1$s “?\n\nKontakty, ktoré poznajú iba toto relé, sa s vami nemusia dostať do kontaktu, kým im znovu nepošlete správu.\n\nAk si nie ste istí, radšej ho skryte, ako aby ste ho odstránili.</string>
     <string name="login_certificate_checks">Kontrola certifikátov</string>
@@ -1126,7 +1124,9 @@
     <string name="contact_verified">%1$s overený.</string>
     <string name="contact_blocked">Zablokovali ste kontakt</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Kontakt od %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Kontakt odo mňa</string>
     <string name="mailto_dialog_header_select_chat">Vyberte konverzáciu, kam bude správa odoslaná</string>
     <!-- first placeholder is the name of the chat -->
@@ -1164,7 +1164,6 @@
     <string name="perm_explain_access_to_storage_denied">Ak chcete prijímať alebo odosielať súbory, prejdite do nastavení aplikácie, klepnite na „Povolenia“ a začiarknite „Úložisko“.</string>
     <string name="perm_explain_access_to_location_denied">Ak chcete zdieľať polohu, prejdite do nastavení aplikácie, klepnite na „Povolenia“ a začiarknite „Poloha“.</string>
     <string name="perm_explain_access_to_notifications_denied">Ak chcete dostávať upozornenia, prejdite do aplikácie Nastavenia / Aplikácie / Delta Chat“ a povoľte „Upozornenia“.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rozmazať môžete kreslením kamkoľvek</string>
     <string name="ImageEditorHud_add_text">Pridať text</string>
@@ -1299,4 +1298,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Čo je nové?\n\n💯 Šifrovanie od zariadenia k zariadeniu je dostatočne spoľahlivé a od teraz predvolene natrvalo zapnuté. Zámky 🔒 znázorňujúce šifrovanie sa viac nezobrazujú!\n\n✉️ Správy doručované bežným e-mailom bez šifrovania od zariadenia k zariadeniu sú označené symbolom obálky\n\n😻 Nová vylepšená obrazovka profilu pre všetky kontakty\n\n🔲 Nové tlačidlo pre rýchly prístup k súkromným aplikáciám v konverzáciách\n\n❤️ Prosím, prispejte nám na vývoj, aby sme mohli zostať nezávislí a naďalej mohli prinášať vylepšenia: %1$s</string>
-</resources>
+    </resources>

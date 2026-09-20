@@ -241,6 +241,7 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Sirvi</string>
     <string name="unknown">Teadmata</string>
+    <string name="unnamed">Ilma nimeta</string>
 
     <string name="green">Roheline</string>
     <string name="red">Punane</string>
@@ -250,6 +251,9 @@
     <string name="purple">Purpurpunane</string>
     <string name="magenta">Fuksiapunane</string>
     <string name="white">Valge</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Suumitase</string>
     <string name="extra_small">Eriti väike</string>
@@ -374,6 +378,8 @@
     <string name="unpin_chat">Lõpeta vestluse esiletõstmine</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Tõste esile</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Esiletõstetud</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Lõpeta esiletõstmine</string>
     <string name="ConversationFragment_quoted_message_not_found">Algset sõnumit ei leidu</string>
@@ -504,6 +510,10 @@
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d uus sõnum</item>
         <item quantity="other">%d uut sõnumit</item>
+    </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d lugemata sõnum</item>
+        <item quantity="other">%1$d lugemata sõnumit</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Saada sõnum kasutajale %1$s.</string>
@@ -660,8 +670,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Sinu profiil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">%1$s teenuse privaatsusreeglid</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Teave %1$s teenuse profiilide kohta</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Nõustun ja alustan profiili loomist</string>
@@ -718,6 +730,7 @@
     <string name="add_transport">Lisa alusühendus</string>
     <string name="remove_transport">Eemalda alusühendus</string>
     <string name="edit_transport">Muuda alusühendust</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Kasutatud saatmiseks</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Peida kontaktidest</string>
@@ -725,12 +738,12 @@
     <string name="hidden_from_contacts">Peidetud kontaktidest</string>
     <string name="enforce_e2ee">Kasuta kõikide alusühenduste (edastusserverite) puhul krüptimist</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Sõnumid saavad kõik alusühendused (edastusserverid).</string>
+    <string name="transport_list_hint">Alusühendused (edastusserverid) on kasutusel sõnumite saatmiseks ja vastuvõtmiseks. Sinu ühendus on töökindlam, kui neid on enam, kui üks.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Kas lisad selle alusühenduse (edastusserveri)?</string>
     <string name="invalid_transport_qr">Skaneeritud QR-koodis pole korrektset alusühendust (edastusserverid)</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Kas eemaldad „%1$s“ alusühenduse (edastusserveri)?Enne lõplikku kustutamist toimub vaikne üleminek, kus kõik sinu kontaktid saavad muudatusega arvestada.</string>
+    <string name="confirm_remove_relay_x">Kas eemaldad alusühenduse (edastusserveri) „%1$s“?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Kas eemaldad alusühenduse (edastusserveri) „%1$s“?\n\nKui mõni kontakt teab vaid seda ühendusviisi, siis ta ei pruugi sind kätte saada enne, kui oled talle uuesti kirjutanud.\n\nKui kahtled, siis eemakdamise asemel pigem peida see alusühendus (edastusserver).</string>
     <string name="login_certificate_checks">Sertifikaadikontrollid</string>
@@ -1091,8 +1104,11 @@
     <string name="contact_verified">%1$s lisas vestlusesse.</string>
     <string name="contact_blocked">Sina blokeerisid selle kontakti</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">%1$s lisas kontakti vestlusesse</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Mina lisasin kontakti vestlusesse</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Vestlusesse lisatud</string>
     <string name="mailto_dialog_header_select_chat">Vali vestlus, kuhu soovid sõnumi saata</string>
     <!-- first placeholder is the name of the chat -->
@@ -1130,6 +1146,7 @@
     <string name="perm_explain_access_to_storage_denied">Failide saatmiseks ja vastuvõtmiseks ava rakenduse seadistused, sealt „Õigused“ / „Load“ ning luba „Mäluruum“.</string>
     <string name="perm_explain_access_to_location_denied">Asukoha tuvastamiseks ava rakenduse seadistused, sealt „Õigused“ / „Load“ ning luba „Asukoht“.</string>
     <string name="perm_explain_access_to_notifications_denied">Teavituste saamiseks ava rakenduse seadistused, sealt „Õigused“ / „Load“ ning luba „Märguanded“.</string>
+    <string name="perm_explain_local_network_denied">Ühendamaks seadmetega kohtvõrgus vajab Delta Chat õigust „Seadmed läheduses“. Saad seda seadistada siit: „Rakendused“ → „Delta Chat“ → „Õigused“.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Hägustamiseks joonista kusagil</string>
@@ -1271,4 +1288,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Mida on meil uut?\n\n💯 Läbiv krüptimine on töökindel ja seda nüüd igaveseks. Tabalukud 🔒 on läinud!\n\n✉️ Klassikalised e-kirjad, kus läbiv krüptimine on puudu, on märgitud ümbriku ikooniga\n\n😻 Uus ja tõhusam profiilivaade kõikide sinu kontaktide jaoks\n\n🔲 Uus nupp kiireks ligipääsuks vestluses kasutatavate rakendusteni\n\n❤️ Palun toeta meie arendust rahaliselt - nii saame jääda sõltumatuteks ja jätkata selle rakenduse täiustamist: %1$s</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 Saadaval on uus versioon %1$s. Uuendamiseks klõpsa seda sõnumit ja naudi uuenenud rakendust</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">%1$s on allalaadimisel…</string>
+    <string name="update_now">Uuenda kohe</string>
+    <string name="update_install_permission_explain">Et uuenduse paigaldamine oleks võimalik, luba palun esmalt süsteemi seadistustest Delta Chatil pakendusi paigaldada.</string>
 </resources>

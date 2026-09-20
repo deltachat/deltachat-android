@@ -212,7 +212,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">پیتینیڌن</string>
     <string name="unknown">ناشناس</string>
-
     <string name="green">سوز</string>
     <string name="red">سوئر</string>
     <string name="blue">کوۊ</string>
@@ -435,6 +434,7 @@
     <string name="qrshow_x_verified">%1$s تاییڌ وابی.</string>
     <string name="contact_verified">%1$s تاییڌ وابی.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">تاییڌ وابیڌه و دس %1$s</string>
     <!-- notifications -->
     <string name="notify_reply_button">ولوم</string>

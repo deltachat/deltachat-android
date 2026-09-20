@@ -169,7 +169,6 @@
     <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Publicada</string>
     <string name="unknown">Desconhecido</string>
-
     <string name="green">Verde</string>
     <string name="red">Vermelho</string>
     <string name="blue">Azul</string>
@@ -405,8 +404,6 @@
     <string name="login_smtp_server">SMTP servidor</string>
     <string name="login_smtp_port">SMTP porto</string>
     <string name="login_smtp_security">SMTP segurança</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Mensagens são recebidas em todos os relays.\n\n⚠️ Se alterares alguma coisa aqui, confirma que todos os teus dispositivos estão pelo menos na versão 2.47.0. Caso contrário, dispositivos mais desactualizados podem perder mensagens.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Remover relay \"%1$s\"?\n\nContactos que conheçam apenas este relay não serão capazes de te contactar até lhes enviares uma nova mensagem.\n\nEm caso de dúvida, oculta-o em vez de o remover.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
@@ -618,4 +615,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Que há de novo?\n\n💯 Criptografia de ponta-a-ponta é fiável e para sempre. Os cadeados 🔒 foram-se!\n\n✉️ Email clássico sem criptografia de ponta-a-ponta é marcado com o símbolo duma carta\n\n😻 Novo e melhorado ecrã de perfil para todos os teus contactos\n\n🔲 Novo botão de acesso rápido a apps usadas numa conversa\n\n❤️ Por favor doa para ajudar a mantermo-nos independentes e continuar a trazer-te melhorias: %1$s</string>
-</resources>
+    </resources>

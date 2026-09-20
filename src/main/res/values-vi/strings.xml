@@ -168,7 +168,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Ứng dụng</string>
     <string name="unknown">Không rõ</string>
-
     <string name="green">Xanh</string>
     <string name="red">Đỏ</string>
     <string name="blue">Lam</string>
@@ -743,7 +742,9 @@
     <string name="secure_join_replies">%1$s đã trả lời, đang chờ được thêm vào nhóm…</string>
     <string name="contact_verified">%1$s đã được giới thiệu.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Được giới thiệu bởi %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Được tôi giới thiệu</string>
     <string name="mailto_dialog_header_select_chat">Chọn trò chuyện để gửi tin nhắn tới</string>
     <!-- first placeholder is the name of the chat -->
@@ -771,7 +772,6 @@
     <string name="perm_explain_access_to_storage_denied">Để nhận hoặc gửi tệp, hãy đi tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Bộ nhớ\".</string>
     <string name="perm_explain_access_to_location_denied">Để đính kèm một vị trí, hãy đi tới cài đặt ứng dụng, chọn \"Quyền\" và bật \"Vị trí\".</string>
     <string name="perm_explain_access_to_notifications_denied">Để nhận thông báo, hãy đi tới \"Cài đặt hệ thống / Ứng dụng / Delta Chat\" và bật \"Thông báo\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Vẽ bất cứ nơi nào để làm mờ</string>
     <string name="ImageEditorHud_add_text">Thêm văn bản</string>

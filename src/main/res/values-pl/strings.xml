@@ -261,7 +261,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Przeglądaj</string>
     <string name="unknown">Nieznany</string>
-
     <string name="green">Zielony</string>
     <string name="red">Czerwony</string>
     <string name="blue">Niebieski</string>
@@ -696,8 +695,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Twój profil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Polityka prywatności na %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">O profilach na %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Zgadzam się i Utwórz profil</string>
@@ -754,19 +755,16 @@
     <string name="add_transport">Dodaj serwer przekaźnikowy</string>
     <string name="remove_transport">Usuń serwer przekaźnikowy</string>
     <string name="edit_transport">Edytuj serwer przekaźnikowy</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Służy do wysyłania</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Ukryj w kontaktach</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Ukryty w kontaktach</string>
     <string name="enforce_e2ee">Wymuś szyfrowanie dla wszystkich przekaźników</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Wiadomości są odbierane na wszystkich przekaźnikach.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Dodać ten serwer przekaźnikowy?</string>
     <string name="invalid_transport_qr">Zeskanowany kod QR zawiera nieprawidłowy serwer przekaźnikowy.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Usunąć przekaźnik „%1$s”?\n\nPrzed usunięciem dane będą stopniowo wycofywane, aby umożliwić płynne przełączenie kontaktów.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Usuń przekaźnik „%1$s”?\n\nKontakty, które znają tylko ten przekaźnik, mogą nie dotrzeć do ciebie, dopóki nie wyślesz do nich ponownej wiadomości.\n\nW razie wątpliwości ukryj go, zamiast usuwać.</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>
@@ -1127,8 +1125,11 @@
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_blocked">Zablokowano kontakt</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Kontakt zweryfikowany przez %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Kontakt zweryfikowany przez ciebie</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Zweryfikowano</string>
     <string name="mailto_dialog_header_select_chat">Wybierz czat, do którego chcesz wysłać wiadomość</string>
     <!-- first placeholder is the name of the chat -->
@@ -1166,7 +1167,6 @@
     <string name="perm_explain_access_to_storage_denied">Aby odbierać lub wysyłać pliki, przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Pamięć”.</string>
     <string name="perm_explain_access_to_location_denied">Aby dołączyć lokalizację, przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Lokalizacja”.</string>
     <string name="perm_explain_access_to_notifications_denied">Aby odbierać powiadomienia, przejdź do ustawień systemu „Ustawienia » Aplikacje » Delta Chat” i włącz „Powiadomienia”.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rysuj gdziekolwiek, aby rozmyć</string>
     <string name="ImageEditorHud_add_text">Dodaj tekst</string>
@@ -1307,4 +1307,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Co nowego?\n\n💯 Szyfrowanie end-to-end jest niezawodne i na zawsze. Kłódki 🔒 odchodzą w zapomnienie!\n\n✉️ Klasyczna poczta e-mail bez szyfrowania end-to-end jest oznaczona symbolem litery.\n\n😻 Nowy, ulepszony ekran profilu dla wszystkich kontaktów.\n\n🔲 Nowy przycisk szybkiego dostępu do aplikacji używanych na czacie.\n\n❤️ Prosimy o darowizny, które pomogą nam zachować niezależność i stale wprowadzać ulepszenia: %1$s</string>
-</resources>
+    </resources>
