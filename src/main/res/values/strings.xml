@@ -126,6 +126,18 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Last seen %1$s</string>
     <string name="last_seen_unknown">Last seen: Unknown</string>
+    <!-- This is about a contact that was not seen for one or more months -->
+    <plurals name="seen_n_months_ago">
+        <item quantity="one">Seen %d month ago</item>
+        <item quantity="other">Seen %d months ago</item>
+    </plurals>
+    <!-- This is about a contact that was not seen for one or more years -->
+    <plurals name="seen_n_years_ago">
+        <item quantity="one">Seen %d year ago</item>
+        <item quantity="other">Seen %d years ago</item>
+    </plurals>
+    <!-- This is about a contact that was never seen (as added by others to a group or created by a vcard) -->
+    <string name="never_seen">Never seen</string>
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">%d minute duration</item>
