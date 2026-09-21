@@ -75,6 +75,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private EditText name;
   private TextInputLayout nameInputLayout;
   private TextView invitationText;
+  private TextView providerText;
   private TextView privacyPolicyBtn;
   private Button signUpBtn;
 
@@ -363,18 +364,15 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     this.name = findViewById(R.id.name_text);
     this.nameInputLayout = findViewById(R.id.name);
     this.invitationText = findViewById(R.id.invitation_label);
+    this.providerText = findViewById(R.id.provider_label);
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
     this.signUpBtn = findViewById(R.id.signup_button);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(findViewById(R.id.container));
 
-    privacyPolicyBtn.setOnClickListener(
-        view -> {
-          if (!isDcLogin) {
-            IntentUtils.showInBrowser(this, GDPR_URL);
-          }
-        });
+    privacyPolicyBtn.setText(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
+    privacyPolicyBtn.setOnClickListener(view -> IntentUtils.showInBrowser(this, GDPR_URL));
 
     signUpBtn.setOnClickListener(view -> createProfile());
 
@@ -421,26 +419,23 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   }
 
   private void updateProvider() {
-    if (isDcLogin) {
-      signUpBtn.setText(R.string.login_title);
-      privacyPolicyBtn.setTextColor(getResources().getColor(R.color.gray50));
-      privacyPolicyBtn.setText(getString(R.string.qrlogin_ask_login, providerHost));
+    signUpBtn.setText(isDcLogin ? R.string.login_title : R.string.instant_onboarding_create);
+    if (TextUtils.isEmpty(providerHost)) {
+      providerText.setVisibility(View.GONE);
     } else {
-      signUpBtn.setText(R.string.instant_onboarding_create);
-      privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
+      providerText.setVisibility(View.VISIBLE);
+      providerText.setText(getString(R.string.provider_login_hint, providerHost));
+    }
 
-      privacyPolicyBtn.setText(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
-
-      if (parsedQrData != null) {
-        if (isContactInvitation) {
-          String name = dcContext.getContact(parsedQrData.getId()).getDisplayName();
-          invitationText.setText(this.getString(R.string.instant_onboarding_contact_info, name));
-          invitationText.setVisibility(View.VISIBLE);
-        } else if (isJoinInvitation) {
-          String groupName = parsedQrData.getText1();
-          invitationText.setText(this.getString(R.string.instant_onboarding_group_info, groupName));
-          invitationText.setVisibility(View.VISIBLE);
-        }
+    if (parsedQrData != null) {
+      if (isContactInvitation) {
+        String name = dcContext.getContact(parsedQrData.getId()).getDisplayName();
+        invitationText.setText(this.getString(R.string.instant_onboarding_contact_info, name));
+        invitationText.setVisibility(View.VISIBLE);
+      } else if (isJoinInvitation) {
+        String groupName = parsedQrData.getText1();
+        invitationText.setText(this.getString(R.string.instant_onboarding_group_info, groupName));
+        invitationText.setVisibility(View.VISIBLE);
       }
     }
   }
