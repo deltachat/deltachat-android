@@ -219,7 +219,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">瀏覽</string>
     <string name="unknown">未知</string>
-
     <string name="green">綠色</string>
     <string name="red">紅色</string>
     <string name="blue">藍色</string>
@@ -605,8 +604,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">你的個人檔案</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">%1$s的隱私政策</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">關於%1$s上的個人資料</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">同意並創建賬戶</string>
@@ -656,6 +657,7 @@
     <string name="add_transport">新增中繼伺服器</string>
     <string name="remove_transport">移除中繼伺服器</string>
     <string name="edit_transport">編輯中繼伺服器</string>
+    <!-- deprecated -->
     <string name="used_for_sending">用于发送</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">对联系人隐藏</string>
@@ -1012,8 +1014,11 @@
     <string name="contact_verified">%1$s已介紹。</string>
     <string name="contact_blocked">你已封鎖該聯絡人</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">由%1$s介紹</string>
+    <!-- deprecated -->
     <string name="verified_by_you">由我介紹</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">已驗證</string>
     <string name="mailto_dialog_header_select_chat">選擇要將消息發送到的聊天</string>
     <!-- first placeholder is the name of the chat -->
@@ -1044,7 +1049,6 @@
     <string name="perm_explain_access_to_storage_denied">要接收或發送文件，請轉到應用程式設定，選擇「存取權」，然後啟用「存儲」。</string>
     <string name="perm_explain_access_to_location_denied">要附加位置，請轉到應用程式設定，選擇「存取權」，然後啟用「位置」。</string>
     <string name="perm_explain_access_to_notifications_denied">要接收通知，請轉到「系統設定/應用程式/Delta Chat」並啟用「通知」。</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">在任意位置繪製以進行模糊處理</string>
     <string name="ImageEditorHud_add_text">新增文字</string>
@@ -1173,4 +1177,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">新版變化？ 💯 端對端加密現在可靠且永久有效。鎖頭圖標🔒已經消失！\n\n✉️ 沒有端對端加密的傳統電子郵件會以信件符號✉️標示\n\n😻 為你的所有聯絡人提供全新增強的個人資料頁面\n\n🔲 新按鈕可快速存取聊天中使用的應用程式\n\n❤️ 請捐款以幫助我們保持獨立並持續提供改進：%1$s</string>
-</resources>
+    </resources>

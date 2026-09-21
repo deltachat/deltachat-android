@@ -231,7 +231,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">浏览</string>
     <string name="unknown">未知</string>
-
     <string name="green">绿色</string>
     <string name="red">红色</string>
     <string name="blue">蓝色</string>
@@ -642,8 +641,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">您的账号</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">%1$s 的隐私政策</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">关于 %1$s 上的账号</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">同意并创建账号</string>
@@ -700,19 +701,16 @@
     <string name="add_transport">添加中继</string>
     <string name="remove_transport">移除中继</string>
     <string name="edit_transport">编辑中继</string>
+    <!-- deprecated -->
     <string name="used_for_sending">用于发送</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">对联系人隐藏</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">已对联系人隐藏</string>
     <string name="enforce_e2ee">对所有中继强制加密</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">在所有中继上均已收到消息。</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">添加此中继？</string>
     <string name="invalid_transport_qr">扫描的二维码不包含有效的中继。</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">移除中继“%1$s”？在删除之前，它将逐步停用，以便您的联系人可以平稳过渡。</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">移除中继“%1$s”？\n\n仅知道此中继的联系人可能无法联系到您，直到您再次发送消息。\n\n如有疑问，请将其隐藏而非移除。</string>
     <string name="login_certificate_checks">证书检查</string>
@@ -1073,8 +1071,11 @@
     <string name="contact_verified">%1$s 已验证。</string>
     <string name="contact_blocked">您已屏蔽该联系人</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">验证人 %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">由您验证</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">已验证</string>
     <string name="mailto_dialog_header_select_chat">选择要发送消息的聊天</string>
     <!-- first placeholder is the name of the chat -->
@@ -1112,7 +1113,6 @@
     <string name="perm_explain_access_to_storage_denied">要发送或接收文件，请转到应用设置，选择“权限”，然后启用“存储”。</string>
     <string name="perm_explain_access_to_location_denied">要附加位置，请转到应用设置，选择“权限”，然后启用“位置”。</string>
     <string name="perm_explain_access_to_notifications_denied">要接收通知，请转到“系统设置/应用/Delta Chat\"并开启”通知“。</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">对任意地方涂抹以进行模糊</string>
     <string name="ImageEditorHud_add_text">添加文字</string>
@@ -1253,4 +1253,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">新版变化？\n\n💯 端到端加密现在可靠且永久。挂锁图标 🔒 没有了！\n\n✉️ 没有端到端加密的经典电子邮件用字母符号标记\n\n😻 所有联系人的新的增强的个人资料屏\n\n🔲 新增快速访问聊天中所用应用的按钮\n\n❤️ 请捐赠帮助我们保持独立并继续带来改进：%1$s</string>
-</resources>
+    </resources>

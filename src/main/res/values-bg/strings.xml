@@ -176,7 +176,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Приложения</string>
     <string name="unknown">Непознат</string>
-
     <string name="green">Зелено</string>
     <string name="red">Червено</string>
     <string name="blue">Синьо</string>
@@ -479,8 +478,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Вашият профил</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Политика за поверителност за %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Относно профилите на %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Съгласявам се, профилът да бъде създаден</string>
@@ -799,7 +800,9 @@
     <string name="secure_join_wait">Установява се гарантирано криптиране от край до край, моля изчакайте…</string>
     <string name="contact_verified">%1$s е проверен.</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Проверен от%1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Представен от мен</string>
     <string name="mailto_dialog_header_select_chat">Изберете чат, към който да бъде пратено съобщението</string>
     <!-- first placeholder is the name of the chat -->
@@ -829,7 +832,6 @@
     <string name="perm_explain_access_to_storage_denied">За да получавате или изпращате файлове, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Съхранение\".</string>
     <string name="perm_explain_access_to_location_denied">За да прикрепите информация за местоположението, отидете в настройките на приложението, изберете \"Позволения\" и разрешете \"Местоположение\".</string>
     <string name="perm_explain_access_to_notifications_denied">За да получавате уведомления, отидете в \"Системни настройки / Приложения / Delta Chat\" и разрешете \"Уведомления\"</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Рисувайте на произволно място, за да замъглите</string>
     <string name="ImageEditorHud_add_text">Добавяне на текст</string>

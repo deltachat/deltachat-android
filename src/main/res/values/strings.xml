@@ -252,6 +252,7 @@
     <string name="magenta">Magenta</string>
     <string name="white">White</string>
 
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
     <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Zoom</string>
@@ -571,6 +572,7 @@
     <string name="search_in">Search in %1$s</string>
     <string name="search_files">Search Files</string>
     <string name="search_explain">Search for chats, contacts, and messages</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Result for \"%1$s\"</string>
     <string name="search_no_result_for_x">No results found for \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -753,7 +755,7 @@
     <string name="import_backup_title">Restore from Backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
     <string name="import_backup_no_backup_found">No backups found.\n\nCopy the backup to \"%1$s\" and try again.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Cannot login as \"%1$s\". Please check if the address and the password are correct.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accept invalid certificates</string>
@@ -1299,9 +1301,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 New version %1$s available. Tap this message to update and enjoy the new features</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
     <string name="update_downloading">Downloading %1$s …</string>
-    <string name="update_apk_mismatch">The downloaded apk does not match this app and will not be installed</string>
     <string name="update_now">Update Now</string>
     <string name="update_install_permission_explain">To install the update, please first allow Delta Chat to install apps in the system settings.</string>
 </resources>

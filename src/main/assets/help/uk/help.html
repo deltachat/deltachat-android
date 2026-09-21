@@ -83,7 +83,7 @@
       <li><a href="#які-стандарти-використовуються-для-наскрізного-шифрування">Які стандарти використовуються для наскрізного шифрування?</a></li>
       <li><a href="#whene2e">Як дізнатися, чи повідомлення зашифровано наскрізним шифруванням?</a></li>
       <li><a href="#чи-можу-я-отримувати-та-надсилати-пошту-без-наскрізного-шифрування">Чи можу я отримувати та надсилати пошту без наскрізного шифрування?</a></li>
-      <li><a href="#e2eeguarantee">Що означає зелена галочка в профілі контакту?</a></li>
+      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#чи-зашифровані-наскрізно-вкладення-зображення-файли-аудіо-тощо">Чи зашифровані наскрізно вкладення (зображення, файли, аудіо тощо)?</a></li>
       <li><a href="#openpgp-secure">Чи безпечний OpenPGP?</a></li>
       <li><a href="#openpgp-alternatives">Чи розглядали ви можливість використання альтернатив OpenPGP для наскрізного шифрування?</a></li>
@@ -424,7 +424,9 @@
 
 <p>Якщо ви використовуєте більше одного профілю чату, ви можете видалити окремі профілі у верхньому меню перемикання профілів (на Android та iOS) або у бічній панелі, клацнувши правою кнопкою миші (у десктопній версії застосунку). Профілі чату видаляються лише на тому пристрої, на якому було ініційовано видалення. Профілі чату на інших пристроях продовжуватимуть повноцінно функціонувати.</p>
 
-<p>Якщо ви використовуєте єдиний профіль чату за замовчуванням, ви можете просто видалити застосунок. Це автоматично призведе до видалення всіх пов’язаних даних про адреси на сервері chatmail. Для отримання додаткової інформації, будь ласка, зверніться до <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org address-deletion</a> або до відповідної сторінки обраного вами <a href="https://chatmail.at/relays">стороннього сервера чат-пошти</a>.</p>
+<p>If you use a single default chat profile you can simply uninstall the app.
+This will still automatically trigger deletion of all associated address data on the chatmail server.
+For more info, please refer to the respective page from your <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
     
       <h2 id="groups">
         
@@ -1035,24 +1037,33 @@ Push-сповіщення автоматично активуються для �
         
       </h3>
 
-<p>Ретранслятори використовуються для тимчасового зберігання повідомлень на випадок, якщо ваш пристрій перебуває в режимі офлайн. Ретранслятори — це недорогі «прості» сервери, які не зберігають дані, як ваше ім’я чи аватар, усе це зберігається виключно на вашому пристрої. Ретранслятори управляються різними групами та особами.</p>
+<p>Relays are used to temporarily hold messages in case your device is offline.
+Relays are cheap and dumb servers,
+that do not store any user data as group states, your name or avatar -
+all those exist only on your device.
+Relays are operated by different groups and people,
+not under the control of Delta Chat developers.</p>
 
-<p>За замовчуванням після встановлення ретранслятор <strong>налаштовується автоматично</strong>, тож вам не потрібно про це турбуватися. Однак, якщо ви бажаєте, ви можете налаштувати реле в розділі <strong>Налаштування → Додатково → Транспортні сервери</strong>:</p>
+<p>By default, relays are <strong>automatically set up</strong>,
+so you do not need to care about that.
+However, if you want to,
+you can configure relays at <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
   <li>
-    <p>Ви можете <strong>додати</strong> ретранслятор, відсканувавши його QR-код;
-<a href="https://chatmail.at/relays">chatmail.at/relays</a> містить перелік деяких відомих ретрансляторів. Якщо у вас є кілька ретрансляторів, ви отримуватимете повідомлення на всіх них. Контакти автоматично дізнаються про ваші поточні ретранслятори, коли ви надсилаєте їм повідомлення.</p>
+    <p>You can <strong>remove</strong> a relay from the relay list (by long-tapping on it)
+and choosing the remove action. Before you remove your last relay,
+you will need to add another relay first.</p>
   </li>
   <li>
-    <p>Натисніть на ретраслятор, щоб встановити його як <strong>використовується для відправлення</strong>.</p>
-  </li>
-  <li>
-    <p>If a relay is no longer working, you can <strong>remove</strong> it.</p>
+    <p>You can <strong>add</strong> a relay by scanning its QR code or pasting its invite link;
+<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some publically known ones.
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
 </ul>
 
-<p>Щоб дізнатися більше про ретранслятори та їхні майбутні можливості, ви можете стежити за обговореннями на <a href="https://support.delta.chat">форумі</a>.</p>
+<p>Adding or removing a relay will automatically inform your chat partners
+so they start or stop using a relay for chatting with you, respectively.</p>
     
       <h3 id="чи-можна-використовувати-звичайну-адресу-електронної-пошти-в-delta-chat">
         
@@ -1068,10 +1079,12 @@ Push-сповіщення автоматично активуються для �
 
 <ul>
   <li>
-    <p>Не chatmail-додатки, здебільшого не забезпечують автоматичного наскрізного шифрування електронної пошти для своїх користувачі, тоді як chatmail-додатки та ретранслятори повсюдно застосовують наскрізне шифрування та стандарти безпеки.</p>
+    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
+while chatmail apps and relays pervasively enforce end-to-end encryption and other security standards.</p>
   </li>
   <li>
-    <p>Не chatmail-додатки, використовують поштові сервери як довгостроковий архів повідомлень, тоді як chatmail клієнти використовують поштові сервери для передачі короткочасних миттєвих повідомлень.</p>
+    <p>Non-chatmail apps use email servers as a long-term message archive
+while chatmail clients use email servers for ephemeral instant message forwarding.</p>
   </li>
   <li>
     <p>Підтримка всього спектру класичних налаштувань електронної пошти вимагатиме значних зусиль з розробки та обслуговування, а також ускладнить забезпечення більшої стійкості, надійності та швидкості обміну повідомленнями на основі chatmail.</p>
@@ -1122,7 +1135,7 @@ Push-сповіщення автоматично активуються для �
 
 <ul>
   <li>
-    <p>Скільки контактів додається шляхом особистого сканування QR-коду?</p>
+    <p>How many contacts are added by scanning a QR code or opening an invite link?</p>
   </li>
   <li>
     <p>Які версії Delta Chat використовуються?</p>
@@ -1204,14 +1217,28 @@ Push-сповіщення автоматично активуються для �
       <h3 id="e2eeguarantee">
         
         
-          Що означає зелена галочка в профілі контакту? <a href="#e2eeguarantee" class="anchor"></a>
+          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>У профілі контакту може відображатися зелена галочка <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" /> і рядок “Представлений”. Кожен контакт із зеленою галочкою або зробив пряме <a href="#howtoe2ee">QR-сканування</a> з вами або був представлений іншим контактом, позначеним зеленою галочкою. Знайомство відбувається автоматично під час додавання учасників до груп. Той, хто додає контакт із зеленою галочкою до групи, в якій є лише учасники із зеленою галочкою стає представником. У профілі контакту ви можете кілька разів натиснути на текст “Представлений …” поки не потрапите до того, з ким ви безпосередньо зробили <a href="#howtoe2ee">QR-сканування</a>.</p>
+<p>Older Delta Chat versions showed a green checkmark
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
+and an “Introduced by” line in some contact profiles.</p>
 
-<p>Для більш детального обговорення “гарантованого наскрізного шифрування” будь ласка, перегляньте <a href="https://securejoin.delta.chat/en/latest/new.html">Протоколи безпечного приєднання</a> і, зокрема, прочитайте про “Перевірені групи”, технічний термін того, що тут називається чатами з “зеленою галочкою” або “гарантованим наскрізним шифруванням”.</p>
+<p>This line is no longer present.
+Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
+contacts are identified by their cryptographic key (“public key”),
+and there is never any possibility for the relay operator
+to exchange a key in order to execute a man-in-the-middle (MitM) attack
+(in fact, the operator does not even see the key at any point).</p>
+
+<p>It is still possible for an attacker to give you an invite link
+that impersonates someone else, and an attacker who has your Delta Chat contact
+(because they are in a group chat with you)
+could try to start a chat with you under a wrong name.
+These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
+and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="чи-зашифровані-наскрізно-вкладення-зображення-файли-аудіо-тощо">
         
@@ -1441,7 +1468,7 @@ Delta Chat скоріше використовує реалізацію OpenPGP 
 
 <p>Для використання деяких функцій потрібні певні дозволи, наприклад, якщо ви хочете <a href="#howtoe2ee">відсканувати QR-код запрошення</a>, вам потрібно надати дозвіл на використання камери.</p>
 
-<p>Дивіться <a href="https://delta.chat/en/gdpr#24-app-permissions">політику конфіденційності</a> для детального огляду.</p>
+<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
     
       <h3 id="де-мої-друзі-можуть-знайти-delta-chat">
         

@@ -241,6 +241,7 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Ontdekken</string>
     <string name="unknown">Onbekend</string>
+    <string name="unnamed">Naamloos</string>
 
     <string name="green">Groen</string>
     <string name="red">Rood</string>
@@ -250,6 +251,9 @@
     <string name="purple">Paars</string>
     <string name="magenta">Magenta</string>
     <string name="white">Wit</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Zoomen</string>
     <string name="extra_small">Extra klein</string>
@@ -374,6 +378,8 @@
     <string name="unpin_chat">Gesprek losmaken</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Vastmaken</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Vastgemaakt</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Losmaken</string>
     <string name="ConversationFragment_quoted_message_not_found">Het oorspronkelijke bericht is niet aangetroffen</string>
@@ -504,6 +510,10 @@
     <plurals name="chat_n_new_messages">
         <item quantity="one">%d nieuw bericht</item>
         <item quantity="other">%d nieuwe berichten</item>
+    </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d ongelezen bericht</item>
+        <item quantity="other">%1$d ongelezen berichten</item>
     </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Stuur een bericht aan %1$s .</string>
@@ -660,8 +670,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Mijn profiel</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Privacybeleid van %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Over profielen op %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Akkoord gaan en profiel aanmaken</string>
@@ -718,6 +730,7 @@
     <string name="add_transport">Server toevoegen</string>
     <string name="remove_transport">Server verwijderen</string>
     <string name="edit_transport">Server bewerken</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Wordt gebruikt voor versturen</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Verbergen op contactpersonenlijst</string>
@@ -725,12 +738,12 @@
     <string name="hidden_from_contacts">Verborgen op contactpersonenlijst</string>
     <string name="enforce_e2ee">Versleuteling afdwingen op alle relays</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Berichten worden op alle relays ontvangen.</string>
+    <string name="transport_list_hint">Relays worden gebruikt voor het versturen en ontvangen van berichten. Door meer dan een relay toe te voegen, zorg je voor een stabielere verbinding.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Wil je deze server toevoegen?</string>
     <string name="invalid_transport_qr">De gescande QR-code bevat geen geldige overdrachtsserver.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Wil je ‘%1$s’ verwijderen?\n\nHet verwijderproces vindt in stappen plaats, zodat je contactpersonen keurig overgezet worden.</string>
+    <string name="confirm_remove_relay_x">Wil je ‘%1$s’ verwijderen?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Wil je ‘%1$s’ verwijderen?\n\nContactpersonen die deze relay niet kennen, kunnen je zo niet bereiken.\n\nBij twijfel verbergen in plaats van verwijderen.</string>
     <string name="login_certificate_checks">Certificaatcontrole</string>
@@ -1091,8 +1104,11 @@
     <string name="contact_verified">%1$s is goedgekeurd.</string>
     <string name="contact_blocked">Je hebt deze contactpersoon geblokkeerd</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Geïntroduceerd door %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Geïntroduceerd door mij</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Geïntroduceerd</string>
     <string name="mailto_dialog_header_select_chat">Kies in welk gesprek je dit bericht wilt delen</string>
     <!-- first placeholder is the name of the chat -->
@@ -1130,6 +1146,7 @@
     <string name="perm_explain_access_to_storage_denied">Delta Chat wil bestanden kunnen ontvangen en versturen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Opslag’ in.</string>
     <string name="perm_explain_access_to_location_denied">Delta Chat wil je locatie kunnen delen. Ga naar de app-instellingen, kies ‘Rechten’ en schakel ‘Locatie’ in.</string>
     <string name="perm_explain_access_to_notifications_denied">Open Systeeminstellingen → Apps → Delta Chat en schakel meldingen in.</string>
+    <string name="perm_explain_local_network_denied">Delta Chat heeft toegang tot nabije apparaten nodig om verbinding te maken met apparaten op het lokale netwerk. Je kunt deze toegang verlenen via Apps → Delta Chat → Rechten.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Teken met je vinger om vervaging toe te passen</string>
@@ -1271,4 +1288,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Wijzigingslog:\n\n💯 Eind-tot-eindversleuteling is voortaan betrouwbaarder én standaard. Slotjes 🔒 zijn verleden tijd!\n\n✉️ Klassieke e-mails zonder eind-tot-eindversleuteling worden voortaan gemarkeerd met een letter\n\n😻 Nieuwe, mooiere profielpagina\'s van al je contactpersonen\n\n🔲 Nieuwe knop voor snelle toegang tot apps in gesprekken\n\n❤️ Overweeg een donatie, zodat we onafhankelijk kunnen blijven en verbeteringen kunnen blijven aanbrengen: %1$s</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 Er is een nieuwe versie beschikbaar: %1$s. Druk op dit bericht om de update te installeren en gebruik te maken van alle nieuwe snufjes.</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">Bezig met downloaden van %1$s…</string>
+    <string name="update_now">Nu bijwerken</string>
+    <string name="update_install_permission_explain">Sta eerst in de systeeminstellingen toe dat Delta Chat apps mag installeren.</string>
 </resources>

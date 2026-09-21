@@ -158,7 +158,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Aplikasi</string>
     <string name="unknown">Tak dikenal</string>
-
     <string name="green">Hijau</string>
     <string name="red">Merah</string>
     <string name="blue">Biru</string>
