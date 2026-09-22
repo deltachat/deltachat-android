@@ -88,7 +88,12 @@ public class FcmReceiveService extends FirebaseMessagingService {
   @WorkerThread
   @Override
   public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
-    Log.i(TAG, "FCM push notification received");
+    Log.i(
+        TAG,
+        "FCM push notification received, priority="
+            + remoteMessage.getPriority()
+            + ", originalPriority="
+            + remoteMessage.getOriginalPriority());
     // Note: The system can downgrade the high priority messages to normal priority
     // if the app is not using the high priority messages for surfacing time sensitive
     // content to the user. If the message's priority is downgraded, your app cannot
@@ -101,7 +106,7 @@ public class FcmReceiveService extends FirebaseMessagingService {
     if (remoteMessage.getPriority() == RemoteMessage.PRIORITY_HIGH) {
       FetchForegroundService.start(this);
     } else {
-      FetchForegroundService.fetchSynchronously();
+      FetchForegroundService.fetchSynchronously(this);
     }
   }
 
