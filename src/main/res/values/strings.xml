@@ -1301,7 +1301,12 @@
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">What\'s new?\n\n💯 End-to-end encryption is reliable and forever now. Padlocks 🔒 are gone!\n\n✉️ Classic email without end-to-end encryption is marked with a letter symbol\n\n😻 New enhanced profile screen for all your contacts\n\n🔲 New button for quick access to apps used in a chat\n\n❤️ Please donate to help us remain independent and continue to bring improvements: %1$s</string>
+    <string name="update_2_6">Guess what\'s new!\n\n🌐 Your messages now travel smarter: With multiple relays, one going down won\'t stop them\n\n📞 Calls grew up and are no longer experimental\n\n📢 Channels are here to stay - now even with reactions\n\n✍️ Add a chat description, so no one\'s left wondering\n\n👌 Sent images now look sharper\n\n🔵 Mark chats as unread, so you won\'t forget</string>
+    <string name="update_2_6_android_additions">🐇 Speed-up and auto-play voice messages\n\nFinally: We got a basic sticker picker!</string>
+    <string name="update_2_6_desktop_additions">🐇 Speed-up and auto-play voice messages\n\n⏯️ New audio player\n\n✅ Select multiple messages for forwarding and deleting\n\nFinally: We got a basic sticker picker!</string>
+    <string name="update_2_6_ios_additions">🎤 Play voice messages in background</string>
+    <string name="update_2_6_end">Please donate to help us remain independent and continue to bring improvements ❤️ https://delta.chat/donate</string>
+
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 New version %1$s available. Tap this message to update and enjoy the new features</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
