@@ -67,7 +67,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://chatmail.at/relays";
-  private static final String DEFAULT_CHATMAIL_HOST = "nine.testrun.org";
   public static final String GDPR_URL = "https://delta.chat/gdpr";
 
   private static final int REQUEST_CODE_AVATAR = 1;
@@ -76,6 +75,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private EditText name;
   private TextInputLayout nameInputLayout;
   private TextView invitationText;
+  private TextView providerText;
   private TextView privacyPolicyBtn;
   private Button signUpBtn;
 
@@ -83,7 +83,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private boolean imageLoaded;
   private String providerHost;
   private String providerQrData;
-  private String rawQrData;
+  private String inviteQr;
   private DcLot parsedQrData;
   private boolean isDcLogin;
   private boolean isContactInvitation;
@@ -121,9 +121,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
       return;
     }
 
-    isDcLogin = false;
-    providerHost = DEFAULT_CHATMAIL_HOST;
-    providerQrData = DCACCOUNT + ":" + providerHost;
     attachmentManager = new AttachmentManager(this, () -> {});
     avatarChanged = false;
     registerForEvents();
@@ -247,14 +244,14 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
         break;
       case DcContext.DC_QR_ASK_VERIFYCONTACT:
         isContactInvitation = true;
-        rawQrData = rawQr;
+        inviteQr = rawQr;
         parsedQrData = qrParsed;
         updateProvider();
         break;
       case DcContext.DC_QR_ASK_JOIN_BROADCAST:
       case DcContext.DC_QR_ASK_VERIFYGROUP:
         isJoinInvitation = true;
-        rawQrData = rawQr;
+        inviteQr = rawQr;
         parsedQrData = qrParsed;
         updateProvider();
         break;
@@ -367,18 +364,15 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     this.name = findViewById(R.id.name_text);
     this.nameInputLayout = findViewById(R.id.name);
     this.invitationText = findViewById(R.id.invitation_label);
+    this.providerText = findViewById(R.id.provider_label);
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
     this.signUpBtn = findViewById(R.id.signup_button);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(findViewById(R.id.container));
 
-    privacyPolicyBtn.setOnClickListener(
-        view -> {
-          if (!isDcLogin) {
-            IntentUtils.showInBrowser(this, GDPR_URL);
-          }
-        });
+    privacyPolicyBtn.setText(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
+    privacyPolicyBtn.setOnClickListener(view -> IntentUtils.showInBrowser(this, GDPR_URL));
 
     signUpBtn.setOnClickListener(view -> createProfile());
 
@@ -425,26 +419,23 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   }
 
   private void updateProvider() {
-    if (isDcLogin) {
-      signUpBtn.setText(R.string.login_title);
-      privacyPolicyBtn.setTextColor(getResources().getColor(R.color.gray50));
-      privacyPolicyBtn.setText(getString(R.string.qrlogin_ask_login, providerHost));
+    signUpBtn.setText(isDcLogin ? R.string.login_title : R.string.instant_onboarding_create);
+    if (TextUtils.isEmpty(providerHost)) {
+      providerText.setVisibility(View.GONE);
     } else {
-      signUpBtn.setText(R.string.instant_onboarding_create);
-      privacyPolicyBtn.setTextColor(getResources().getColor(R.color.delta_accent));
+      providerText.setVisibility(View.VISIBLE);
+      providerText.setText(getString(R.string.relay_login_hint, providerHost));
+    }
 
-      privacyPolicyBtn.setText(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
-
-      if (parsedQrData != null) {
-        if (isContactInvitation) {
-          String name = dcContext.getContact(parsedQrData.getId()).getDisplayName();
-          invitationText.setText(this.getString(R.string.instant_onboarding_contact_info, name));
-          invitationText.setVisibility(View.VISIBLE);
-        } else if (isJoinInvitation) {
-          String groupName = parsedQrData.getText1();
-          invitationText.setText(this.getString(R.string.instant_onboarding_group_info, groupName));
-          invitationText.setVisibility(View.VISIBLE);
-        }
+    if (parsedQrData != null) {
+      if (isContactInvitation) {
+        String name = dcContext.getContact(parsedQrData.getId()).getDisplayName();
+        invitationText.setText(this.getString(R.string.instant_onboarding_contact_info, name));
+        invitationText.setVisibility(View.VISIBLE);
+      } else if (isJoinInvitation) {
+        String groupName = parsedQrData.getText1();
+        invitationText.setText(this.getString(R.string.instant_onboarding_group_info, groupName));
+        invitationText.setVisibility(View.VISIBLE);
       }
     }
   }
@@ -517,7 +508,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     Intent intent = new Intent(getApplicationContext(), ConversationListActivity.class);
     intent.putExtra(ConversationListActivity.FROM_WELCOME, true);
     if (isContactInvitation || isJoinInvitation) {
-      intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, rawQrData);
+      intent.putExtra(ConversationListActivity.FROM_WELCOME_RAW_QR, inviteQr);
     }
 
     startActivity(intent);
@@ -553,7 +544,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
               () -> {
                 if (finalResult) {
                   attachmentManager.cleanup();
-                  startQrAccountCreation(providerQrData);
+                  startQrAccountCreation();
                 } else {
                   Toast.makeText(InstantOnboardingActivity.this, R.string.error, Toast.LENGTH_LONG)
                       .show();
@@ -562,7 +553,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
         });
   }
 
-  private void startQrAccountCreation(String qrCode) {
+  private void startQrAccountCreation() {
     if (progressDialog != null) {
       progressDialog.dismiss();
       progressDialog = null;
@@ -585,11 +576,12 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
 
     DcHelper.getEventCenter(this).captureNextError();
 
+    String qrCode = TextUtils.isEmpty(providerQrData) ? inviteQr : providerQrData;
     new Thread(
             () -> {
               Rpc rpc = DcHelper.getRpc(this);
               try {
-                rpc.addTransportFromQr(dcContext.getAccountId(), qrCode);
+                rpc.initTransports(dcContext.getAccountId(), qrCode);
                 DcHelper.getEventCenter(this).endCaptureNextError();
                 progressSuccess();
               } catch (RpcException e) {
