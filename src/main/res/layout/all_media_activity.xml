@@ -53,6 +53,6 @@
         android:src="@drawable/ic_add_white_24dp"
         android:visibility="gone"
         android:focusable="true"
-        android:contentDescription="@string/webxdc_apps" />
+        android:contentDescription="@string/webxdc_add" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

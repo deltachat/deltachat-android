@@ -106,6 +106,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
                   DcMsg msg = SendRelayedMessageUtil.createMessage(this, intent.getData(), null);
                   dcContext.setDraft(chatId, msg);
                   Intent newIntent = new Intent(this, ConversationActivity.class);
+                  newIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                   newIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
                   startActivity(newIntent);
                   finish();
