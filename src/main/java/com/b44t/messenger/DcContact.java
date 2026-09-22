@@ -16,6 +16,10 @@ public class DcContact {
   public static final int DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP = -7; //      - " -
   public static final int DC_CONTACT_ID_INVITE_LINK = -8;
 
+  public static final int DC_FRESHNESS_NORMAL = 0;
+  public static final int DC_FRESHNESS_RECENTLY_SEEN = 1;
+  public static final int DC_FRESHNESS_OLD = 2;
+
   public DcContact(long contactCPtr) {
     this.contactCPtr = contactCPtr;
   }
@@ -38,7 +42,7 @@ public class DcContact {
   }
 
   public boolean wasSeenRecently() {
-    return getFreshness() == 1;
+    return getFreshness() == DC_FRESHNESS_RECENTLY_SEEN;
   }
 
   @Override

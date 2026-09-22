@@ -19,6 +19,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
 import org.thoughtcrime.securesms.search.QrInviteData;
+import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
@@ -84,6 +85,8 @@ public class ContactSelectionListItem extends LinearLayout {
     String subtitle = null;
     if (!contact.isKeyContact()) {
       subtitle = contact.getAddr();
+    } else if (contact.getFreshness() == DcContact.DC_FRESHNESS_OLD) {
+      subtitle = DateUtils.getFormattedFreshness(getContext(), contact.getLastSeen());
     }
 
     this.nameView.setTypeface(null, Typeface.NORMAL);
