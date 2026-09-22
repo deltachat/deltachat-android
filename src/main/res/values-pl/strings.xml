@@ -261,6 +261,7 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Przeglądaj</string>
     <string name="unknown">Nieznany</string>
+    <string name="unnamed">Nienazwany</string>
 
     <string name="green">Zielony</string>
     <string name="red">Czerwony</string>
@@ -270,6 +271,9 @@
     <string name="purple">Fioletowy</string>
     <string name="magenta">Magenta</string>
     <string name="white">Biały</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Powiększenie</string>
     <string name="extra_small">Bardzo małe</string>
@@ -396,6 +400,8 @@
     <string name="unpin_chat">Odepnij czat</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Przypnij</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Przypięty</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Odepnij</string>
     <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
@@ -541,6 +547,12 @@
         <item quantity="many">%d nowe wiadomości</item>
         <item quantity="other">%d nowych wiadomości</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d nieprzeczytana wiadomość</item>
+        <item quantity="few">%1$d nieprzeczytane wiadomości</item>
+        <item quantity="many">%1$d nieprzeczytanych wiadomości</item>
+        <item quantity="other">%1$d nieprzeczytanej wiadomości</item>
+    </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Wyślij wiadomość do %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -598,6 +610,7 @@
     <string name="search_in">Wyszukaj w %1$s</string>
     <string name="search_files">Szukaj plików</string>
     <string name="search_explain">Wyszukaj czaty, kontakty i wiadomości</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Wynik dla „%1$s”</string>
     <string name="search_no_result_for_x">Nie znaleziono wyników dla „%s</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -696,8 +709,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Twój profil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Polityka prywatności na %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">O profilach na %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Zgadzam się i Utwórz profil</string>
@@ -754,6 +769,7 @@
     <string name="add_transport">Dodaj serwer przekaźnikowy</string>
     <string name="remove_transport">Usuń serwer przekaźnikowy</string>
     <string name="edit_transport">Edytuj serwer przekaźnikowy</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Służy do wysyłania</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Ukryj w kontaktach</string>
@@ -761,14 +777,14 @@
     <string name="hidden_from_contacts">Ukryty w kontaktach</string>
     <string name="enforce_e2ee">Wymuś szyfrowanie dla wszystkich przekaźników</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Wiadomości są odbierane na wszystkich przekaźnikach.</string>
+    <string name="transport_list_hint">Przekaźniki służą do wysyłania i odbierania wiadomości. Korzystanie z więcej niż jednego z nich zapewnia niezawodność połączenia.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Dodać ten serwer przekaźnikowy?</string>
     <string name="invalid_transport_qr">Zeskanowany kod QR zawiera nieprawidłowy serwer przekaźnikowy.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Usunąć przekaźnik „%1$s”?\n\nPrzed usunięciem dane będą stopniowo wycofywane, aby umożliwić płynne przełączenie kontaktów.</string>
+    <string name="confirm_remove_relay_x">Usunąć przekaźnik „%1$s”?</string>
     <!-- deprecated -->
-    <string name="confirm_remove_or_hide_transport_x">Usuń przekaźnik „%1$s”?\n\nKontakty, które znają tylko ten przekaźnik, mogą nie dotrzeć do ciebie, dopóki nie wyślesz do nich ponownej wiadomości.\n\nW razie wątpliwości ukryj go, zamiast usuwać.</string>
+    <string name="confirm_remove_or_hide_transport_x">Usunąć przekaźnik „%1$s”?\n\nKontakty, które znają tylko ten przekaźnik, mogą nie dotrzeć do ciebie, dopóki nie wyślesz do nich ponownej wiadomości.\n\nW razie wątpliwości ukryj go, zamiast usuwać.</string>
     <string name="login_certificate_checks">Sprawdzanie certyfikatów</string>
     <string name="login_error_mail">Podaj ważny adres e-mail</string>
     <string name="login_error_server">Wprowadź poprawny adres serwera / IP</string>
@@ -777,7 +793,7 @@
     <string name="import_backup_title">Przywróć z kopii zapasowej</string>
     <string name="import_backup_ask">Znaleziono kopię zapasową w katalogu „%1$s”.\n\nChcesz zaimportować i używać wszystkich danych i ustawień z tej kopii?</string>
     <string name="import_backup_no_backup_found">Nie znaleziono kopii zapasowej.\n\nSkopiuj kopię zapasową do katalogu „%1$s” i spróbuj ponownie.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nie można się zalogować jako „%1$s. Sprawdź, czy adres i hasło są poprawne.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Zaakceptuj nieprawidłowe certyfikaty</string>
@@ -1127,8 +1143,11 @@
     <string name="contact_verified">Kontakt %1$s zweryfikowany.</string>
     <string name="contact_blocked">Zablokowano kontakt</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Kontakt zweryfikowany przez %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Kontakt zweryfikowany przez ciebie</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Zweryfikowano</string>
     <string name="mailto_dialog_header_select_chat">Wybierz czat, do którego chcesz wysłać wiadomość</string>
     <!-- first placeholder is the name of the chat -->
@@ -1166,6 +1185,7 @@
     <string name="perm_explain_access_to_storage_denied">Aby odbierać lub wysyłać pliki, przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Pamięć”.</string>
     <string name="perm_explain_access_to_location_denied">Aby dołączyć lokalizację, przejdź do ustawień aplikacji, wybierz „Uprawnienia” i włącz „Lokalizacja”.</string>
     <string name="perm_explain_access_to_notifications_denied">Aby odbierać powiadomienia, przejdź do ustawień systemu „Ustawienia » Aplikacje » Delta Chat” i włącz „Powiadomienia”.</string>
+    <string name="perm_explain_local_network_denied">Delta Chat wymaga uprawnienia „Urządzenia w pobliżu”, aby łączyć się z urządzeniami w sieci lokalnej. Możesz je skonfigurować w sekcji Aplikacje » Delta Chat » Uprawnienia.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rysuj gdziekolwiek, aby rozmyć</string>
@@ -1307,4 +1327,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Co nowego?\n\n💯 Szyfrowanie end-to-end jest niezawodne i na zawsze. Kłódki 🔒 odchodzą w zapomnienie!\n\n✉️ Klasyczna poczta e-mail bez szyfrowania end-to-end jest oznaczona symbolem litery.\n\n😻 Nowy, ulepszony ekran profilu dla wszystkich kontaktów.\n\n🔲 Nowy przycisk szybkiego dostępu do aplikacji używanych na czacie.\n\n❤️ Prosimy o darowizny, które pomogą nam zachować niezależność i stale wprowadzać ulepszenia: %1$s</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 Dostępna jest nowa wersja %1$s. Dotknij tę wiadomość, aby zaktualizować aplikację i korzystać z nowych funkcji.</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">Pobieranie %1$s …</string>
+    <string name="update_now">Zaktualizuj teraz</string>
+    <string name="update_install_permission_explain">Aby zainstalować aktualizację, najpierw zezwól aplikacji Delta Chat na instalowanie aplikacji w ustawieniach systemu.</string>
 </resources>

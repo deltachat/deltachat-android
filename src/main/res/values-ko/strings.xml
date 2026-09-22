@@ -150,7 +150,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">개인 앱</string>
     <string name="unknown">알 수 없음</string>
-
     <string name="green">초록</string>
     <string name="red">빨강</string>
     <string name="blue">파랑</string>
@@ -413,7 +412,7 @@
     <string name="import_backup_title">백업 불러오기</string>
     <string name="import_backup_ask">\"%1$s\"에서 백업을 찾았습니다.\n\n모든 데이터와 설정을 가져오시겠습니까?</string>
     <string name="import_backup_no_backup_found">백업을 찾을 수 없습니다.\n\n\"%1$s\"에 백업을 복사하고 다시 시도하십시오. 또는 \"메시징 시작\"을 눌러 일반 설정을 계속하십시오.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">\"%1$s\"에 로그인 할 수 없음. 이메일 주소와 비밀번호가 맞는지 확인하시오.</string>
     <string name="switch_account">계정 전환</string>
     <string name="add_account">계정 추가</string>

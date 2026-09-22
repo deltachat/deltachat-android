@@ -126,6 +126,18 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Zuletzt gesehen %1$s</string>
     <string name="last_seen_unknown">Zuletzt gesehen: Unbekannt</string>
+    <!-- This is about a contact that was not seen for one or more months -->
+    <plurals name="seen_n_months_ago">
+        <item quantity="one">Vor %d Monat gesehen</item>
+        <item quantity="other">Vor %d Monaten gesehen</item>
+    </plurals>
+    <!-- This is about a contact that was not seen for one or more years -->
+    <plurals name="seen_n_years_ago">
+        <item quantity="one">Vor %d Jahr gesehen</item>
+        <item quantity="other">Vor %d Jahren gesehen</item>
+    </plurals>
+    <!-- This is about a contact that was never seen (as added by others to a group or created by a vcard) -->
+    <string name="never_seen">Nie gesehen</string>
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">Dauer: %d Minute</item>
@@ -241,6 +253,7 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Entdecken</string>
     <string name="unknown">Unbekannt</string>
+    <string name="unnamed">Unbenannt</string>
 
     <string name="green">Grün</string>
     <string name="red">Rot</string>
@@ -250,6 +263,9 @@
     <string name="purple">Lila</string>
     <string name="magenta">Magenta</string>
     <string name="white">Weiß</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Zoom</string>
     <string name="extra_small">Extraklein</string>
@@ -374,6 +390,8 @@
     <string name="unpin_chat">Chat loslösen</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Anheften</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Angeheftet</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Loslösen</string>
     <string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
@@ -505,6 +523,10 @@
         <item quantity="one">%d neue Nachricht</item>
         <item quantity="other">%d neue Nachrichten</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d ungelesene Nachricht</item>
+        <item quantity="other">%1$d ungelesene Nachrichten</item>
+    </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Sende eine Nachricht an %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -562,6 +584,7 @@
     <string name="search_in">In \"%1$s\" suchen</string>
     <string name="search_files">Dateien suchen</string>
     <string name="search_explain">Suche nach Chats, Kontakten und Nachrichten</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Ergebnis für \"%1$s\"</string>
     <string name="search_no_result_for_x">Keine Ergebnisse für \"%s\" gefunden.</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -660,8 +683,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Dein Profil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Datenschutzerklärung für %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Infos zu Profilen auf %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Einverstanden &amp; Profil erstellen</string>
@@ -718,6 +743,7 @@
     <string name="add_transport">Relay hinzufügen</string>
     <string name="remove_transport">Relay entfernen</string>
     <string name="edit_transport">Relay bearbeiten</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Zum Senden verwendet</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Vor Kontakten verstecken</string>
@@ -725,12 +751,12 @@
     <string name="hidden_from_contacts">Vor Kontakten versteckt</string>
     <string name="enforce_e2ee">Verschlüsselung für alle Relays erzwingen</string>
     <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Nachrichten werden auf allen Relays empfangen.</string>
+    <string name="transport_list_hint">Relais werden zum Senden und Empfangen von Nachrichten verwendet. Mehrere Relays erhöhen die Zuverlässigkeit.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Relay hinzufügen?</string>
     <string name="invalid_transport_qr">Der gescannte QR-Code enthält keine gültiges Relay.</string>
     <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Relay \"%1$s\" entfernen?\n\nVor dem endgültigen Löschen wird es schrittweise deaktiviert, um deinen Kontakten einen nahtlosen Übergang zu ermöglichen.</string>
+    <string name="confirm_remove_relay_x">Relay \"%1$s\" entfernen?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Relay \"%1$s\" entfernen?\n\nKontakte, die nur dieses Relay kennen, erreichen dich möglicherweise erst wieder, wenn du ihnen erneut eine Nachricht schickst.\n\nIm Zweifelsfall, verstecke das Relay anstelle es zu löschen.</string>
     <string name="login_certificate_checks">Zertifikatsüberprüfung</string>
@@ -741,7 +767,7 @@
     <string name="import_backup_title">Wiederherstellen aus Backup</string>
     <string name="import_backup_ask">Backup \"%1$s\" gefunden.\n\nDieses einlesen und alle Daten und Einstellungen daraus verwenden?</string>
     <string name="import_backup_no_backup_found">Kein Backup gefunden.\n\nKopiere das Backup nach \"%1$s\" und versuche es erneut.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Login als \"%1$s\" nicht möglich. Bitte Adresse und Passwort auf Richtigkeit überprüfen.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ungültige Zertifikate akzeptieren</string>
@@ -1091,8 +1117,11 @@
     <string name="contact_verified">%1$s eingeführt.</string>
     <string name="contact_blocked">Du hast den Kontakt blockiert</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Eingeführt von %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Durch mich eingeführt</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Eingeführt</string>
     <string name="mailto_dialog_header_select_chat">Wähle den Chat, an den die Nachricht gesendet werden soll</string>
     <!-- first placeholder is the name of the chat -->
@@ -1130,6 +1159,7 @@
     <string name="perm_explain_access_to_storage_denied">Um Dateien zu empfangen oder zu versenden, bitte in den System-Einstellungen Delta Chat den Zugriff auf den Speicher erlauben.</string>
     <string name="perm_explain_access_to_location_denied">Um einen Standort anzuhängen, bitte in den Systemeinstellungen DeltaChat den Zugriff auf \"Standort\" erlauben.</string>
     <string name="perm_explain_access_to_notifications_denied">Um Benachrichtigungen zu erhalten, öffne \"Systemeinstellungen / Apps / Delta Chat\" und aktiviere \"Benachrichtigungen\".</string>
+    <string name="perm_explain_local_network_denied">Delta Chat benötigt die \"Geräte in der Nähe\"-Berechtigung, um eine Verbindung zu Geräten im lokalen Netzwerk herzustellen. Sie können diese unter \"Apps /  Delta Chat / Berechtigungen\" vergeben.</string>
 
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Zeichne zum Verwischen in beliebige Bereiche</string>
@@ -1271,4 +1301,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Was ist neu?\n\n💯 Die Ende-zu-Ende-Verschlüsselung ist jetzt dauerhaft. Vorhängeschlösser 🔒 gibt es nicht mehr!\n\n✉️ Klassische E-Mails ohne Ende-zu-Ende-Verschlüsselung sind mit einem Umschlag-Symbol gekennzeichnet\n\n😻 Neues, verbessertes Profil für alle Kontakte\n\n🔲 Neue Schaltfläche für den schnellen Zugriff auf Apps, die in einem Chat verwendet werden\n\n❤️ Bitte spende und hilf uns, unabhängig zu bleiben und weiterhin Verbesserungen zu bringen: %1$s</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 Neue Version %1$s verfügbar. Tippe auf diese Nachricht, um das Update zu installieren und die neuen Funktionen zu nutzen.</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">Lade %1$s herunter …</string>
+    <string name="update_now">Jetzt aktualisieren</string>
+    <string name="update_install_permission_explain">Um das Update zu installieren, erlaube Delta Chat bitte zunächst in den Systemeinstellungen, Apps zu installieren.</string>
 </resources>

@@ -246,7 +246,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Explorer</string>
     <string name="unknown">Inconnu</string>
-
     <string name="green">Vert</string>
     <string name="red">Rouge</string>
     <string name="blue">Bleu</string>
@@ -571,6 +570,7 @@
     <string name="search_in">Rechercher dans %1$s</string>
     <string name="search_files">Chercher dans les fichiers</string>
     <string name="search_explain">Rechercher des discussions, des contacts ou des messages</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Résultats de recherche pour \"%1$s\"</string>
     <string name="search_no_result_for_x">Aucun résultat trouvé pour \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -669,8 +669,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Votre profil</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Politique de confidentialité pour %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">Informations concernant les profils sur %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Accepter et créer le profil</string>
@@ -720,14 +722,13 @@
     <string name="add_transport">Ajouter un relais</string>
     <string name="remove_transport">Supprimer un relais</string>
     <string name="edit_transport">Modifier le relais</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Utilisé pour les envois</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Masquer pour les contacts</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Masqué pour les contacts</string>
     <string name="enforce_e2ee">Forcer le chiffrement pour tous les relais</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Les messages sont reçus sur tous les relais.\n\n⚠️ Si vous changez un paramètre ici, assurez vous que tous vos appareils utilisent la version 2.47.0 ou ultérieure. Autrement vos appareils pourraient rater des messages.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Ajouter le relais ?</string>
     <string name="invalid_transport_qr">Le code QR scanné ne renvoie pas vers un relais valide.</string>
@@ -741,7 +742,7 @@
     <string name="import_backup_title">Rétablir une sauvegarde</string>
     <string name="import_backup_ask">Sauvegarde trouvée dans « %1$s ».\n\nVoulez-vous l\'importer et en utiliser toutes les données et paramètres ?</string>
     <string name="import_backup_no_backup_found">Aucune sauvegarde trouvée.\n\nCopiez le fichier de sauvegarde vers « %1$s » et essayez à nouveau.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Connexion en tant que « %1$s » impossible. Vérifiez que votre adresse courriel et votre mot de passe sont corrects.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepter les certificats non valides</string>
@@ -1085,8 +1086,11 @@
     <string name="contact_verified">%1$s connu.</string>
     <string name="contact_blocked">Vous avez bloqué le contact</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Connu de %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Connu de vous</string>
+    <!-- deprecated -->
     <string name="verified_by_unknown">Connu</string>
     <string name="mailto_dialog_header_select_chat">Sélectionnez une discussion où envoyer le message</string>
     <!-- first placeholder is the name of the chat -->
@@ -1122,7 +1126,6 @@
     <string name="perm_explain_access_to_storage_denied">Pour recevoir ou envoyer des fichiers, aller dans les Paramètres de l\'application, sélectionner \"Autorisations\" et autoriser \"Stockage\".</string>
     <string name="perm_explain_access_to_location_denied">Pour joindre une position, aller au menu paramètres de l\'application, sélectionnez \"Autorisations\" et activez \"Position\".</string>
     <string name="perm_explain_access_to_notifications_denied">Pour recevoir les notifications, accédez à \"Paramètres système / Applications / Delta Chat\" et activez les \"Notifications\".</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dessinez n\'importe où pour flouter</string>
     <string name="ImageEditorHud_add_text">Ajouter du texte</string>
@@ -1259,4 +1262,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Quoi de neuf ?\n\n💯 Le chiffrement de bout en bout est maintenant fiable et pérenne. 🔒Fini les cadenas !\n\n✉️ Les courriels sans chiffrement de bout en bout sont maintenant marqués par une icône enveloppe \n\n😻 Nouvelle fenêtre de profil améliorée pour tous les contacts \n\n🔲 Nouveau bouton pour l\'accès rapide aux applis utilisées dans une discussion\n\n❤️ Merci d\'envisager de faire un don afin que nous restions indépendants et continuions à améliorer Delta Chat : %1$s</string>
-</resources>
+    </resources>

@@ -8,11 +8,15 @@
 * Allow to cancel sending video while it is re-encoding/compressing
 * Improve resilience: pick random relay for sending and try others if sending with one fails, no need for manually selecting a relay "used for sending"
 * Allow to open invitation links pasted in the search bar in "New Chat" screen
+* Improve image quality of sent images
+* No more error sign for messages in group if the message was delivered to some of the members
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
 * Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
-* Update to core 2.60.0
 * Fix: apply maximum file size limit to videos as is, without 5/4 factor, and enforce file size limit after encoding the video.
+* Add Belarusian translation
+* Update translations and local help
+* Update to core 2.61.0
 
 ## v2.59.1
 2026-08
