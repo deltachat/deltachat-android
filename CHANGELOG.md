@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Improved resilience & decentralization: new users onboard by default in more than one relay, randomly selected, instead of using the hardcoded nine.testrun.org relay
+* Improved resilience: if one of your relays fails to send a message, others are tried, automatically recovering from downtime and server failures
 * Add speed button for voice message playback
 * Improve a11y on Conversation List
 * Target SDK 37

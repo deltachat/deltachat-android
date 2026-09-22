@@ -424,7 +424,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
       providerText.setVisibility(View.GONE);
     } else {
       providerText.setVisibility(View.VISIBLE);
-      providerText.setText(getString(R.string.provider_login_hint, providerHost));
+      providerText.setText(getString(R.string.relay_login_hint, providerHost));
     }
 
     if (parsedQrData != null) {
