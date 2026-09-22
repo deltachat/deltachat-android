@@ -169,7 +169,6 @@
     <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
     <string name="app_date_published">Publicada</string>
     <string name="unknown">Desconhecido</string>
-
     <string name="green">Verde</string>
     <string name="red">Vermelho</string>
     <string name="blue">Azul</string>
@@ -360,6 +359,7 @@
     <!-- Placeholder will be replaced by the chat name -->
     <string name="search_in">Procurar em %1$s</string>
     <string name="search_explain">Pesquisar chats, contactos, emensagens</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Resultado para \"%1$s\"</string>
     <string name="search_no_result_for_x">Nenhum resultado encontrado para \"%s\"</string>
     <!-- create/edit groups, contact/group profile -->
@@ -405,8 +405,6 @@
     <string name="login_smtp_server">SMTP servidor</string>
     <string name="login_smtp_port">SMTP porto</string>
     <string name="login_smtp_security">SMTP segurança</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Mensagens são recebidas em todos os relays.\n\n⚠️ Se alterares alguma coisa aqui, confirma que todos os teus dispositivos estão pelo menos na versão 2.47.0. Caso contrário, dispositivos mais desactualizados podem perder mensagens.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Remover relay \"%1$s\"?\n\nContactos que conheçam apenas este relay não serão capazes de te contactar até lhes enviares uma nova mensagem.\n\nEm caso de dúvida, oculta-o em vez de o remover.</string>
     <string name="login_error_mail">Por favor insira um endereço de e-mail válido</string>
@@ -416,7 +414,7 @@
     <string name="import_backup_title">Importar backup</string>
     <string name="import_backup_ask">Backup encontrado em \"%1$s\".\n\nQuer importar e usar todos os dados e respectivas configurações?</string>
     <string name="import_backup_no_backup_found">Nenhum backup encontrado. \n\nCopie o backup para \"%1$s\" e tente novamente.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <string name="switch_account">Trocar Perfil</string>
     <string name="add_account">Adicionar Perfil</string>
@@ -618,4 +616,4 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Que há de novo?\n\n💯 Criptografia de ponta-a-ponta é fiável e para sempre. Os cadeados 🔒 foram-se!\n\n✉️ Email clássico sem criptografia de ponta-a-ponta é marcado com o símbolo duma carta\n\n😻 Novo e melhorado ecrã de perfil para todos os teus contactos\n\n🔲 Novo botão de acesso rápido a apps usadas numa conversa\n\n❤️ Por favor doa para ajudar a mantermo-nos independentes e continuar a trazer-te melhorias: %1$s</string>
-</resources>
+    </resources>

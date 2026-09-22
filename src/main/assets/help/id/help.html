@@ -84,7 +84,7 @@
       <li><a href="#which-standards-are-used-for-end-to-end-encryption">Which standards are used for end-to-end encryption?</a></li>
       <li><a href="#whene2e">How can I know if messages are end-to-end encrypted?</a></li>
       <li><a href="#can-i-still-receive-or-send-messages-without-end-to-end-encryption">Can I still receive or send messages without end-to-end encryption?</a></li>
-      <li><a href="#e2eeguarantee">What does the green checkmark in a contact profile mean?</a></li>
+      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#are-attachments-pictures-files-audio-etc-end-to-end-encrypted">Are attachments (pictures, files, audio etc.) end-to-end encrypted?</a></li>
       <li><a href="#openpgp-secure">Is OpenPGP secure?</a></li>
       <li><a href="#openpgp-alternatives">Did you consider using alternatives to OpenPGP for end-to-end-encryption?</a></li>
@@ -504,8 +504,7 @@ Chat profiles on other devices will continue to fully function.</p>
 
 <p>If you use a single default chat profile you can simply uninstall the app.
 This will still automatically trigger deletion of all associated address data on the chatmail server.
-For more info, please refer to <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org address-deletion</a> 
-or the respective page from your chosen <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
+For more info, please refer to the respective page from your <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
     
       <h2 id="groups">
         
@@ -1242,32 +1241,31 @@ and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
 
 <p>Relays are used to temporarily hold messages in case your device is offline.
 Relays are cheap and dumb servers,
-that do not store data as group states, your name or avatar -
-all that exist only on your device.
-Relays are operated by different groups and people.</p>
+that do not store any user data as group states, your name or avatar -
+all those exist only on your device.
+Relays are operated by different groups and people,
+not under the control of Delta Chat developers.</p>
 
-<p>By default, after installation, a relay is <strong>automatically set up</strong>,
+<p>By default, relays are <strong>automatically set up</strong>,
 so you do not need to care about that.
 However, if you want to,
 you can configure relays at <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
   <li>
-    <p>You can <strong>add</strong> a relay by scanning its QR code;
-<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some known ones.
-If you have multiple relays, you will receive messages on all of them.
-Contacts learn your current relays automatically when you message them.</p>
+    <p>You can <strong>remove</strong> a relay from the relay list (by long-tapping on it)
+and choosing the remove action. Before you remove your last relay,
+you will need to add another relay first.</p>
   </li>
   <li>
-    <p>Tap on a relay to set it as <strong>used for sending</strong>.</p>
-  </li>
-  <li>
-    <p>If a relay is no longer working, you can <strong>remove</strong> it.</p>
+    <p>You can <strong>add</strong> a relay by scanning its QR code or pasting its invite link;
+<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some publically known ones.
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
 </ul>
 
-<p>For more details and future possibilities of relays,
-you can follow discussions in the <a href="https://support.delta.chat">Forum</a>.</p>
+<p>Adding or removing a relay will automatically inform your chat partners
+so they start or stop using a relay for chatting with you, respectively.</p>
     
       <h3 id="can-i-use-a-classic-email-address-with-delta-chat">
         
@@ -1285,11 +1283,11 @@ for the following reasons:</p>
 <ul>
   <li>
     <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
-while chatmail apps and relays pervasively enforce end-to-end encryption and security standards.</p>
+while chatmail apps and relays pervasively enforce end-to-end encryption and other security standards.</p>
   </li>
   <li>
     <p>Non-chatmail apps use email servers as a long-term message archive
-while chatmail clients use email servers for ephemeral instant message relay.</p>
+while chatmail clients use email servers for ephemeral instant message forwarding.</p>
   </li>
   <li>
     <p>Supporting the full variety of classic email setups
@@ -1356,7 +1354,7 @@ weekly statistics will be automatically sent to a bot.</p>
 
 <ul>
   <li>
-    <p>How many contacts are introduced by personally scanning a QR code?</p>
+    <p>How many contacts are added by scanning a QR code or opening an invite link?</p>
   </li>
   <li>
     <p>Which versions of Delta Chat are being used?</p>
@@ -1450,26 +1448,28 @@ Messages lacking end-to-end encryption are marked with an email icon
       <h3 id="e2eeguarantee">
         
         
-          What does the green checkmark in a contact profile mean? <a href="#e2eeguarantee" class="anchor"></a>
+          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>A contact profile might show a green checkmark
+<p>Older Delta Chat versions showed a green checkmark
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line.
-Every green-checkmarked contact either did a direct <a href="#howtoe2ee">QR-scan</a> with you
-or was introduced by a another green-checkmarked contact.
-Introductions happen automatically when adding members to groups. 
-Whoever adds a green-checkmarked contact to a group with only green-checkmarked members 
-becomes an introducer. 
-In a contact profile you can tap on the “Introduced by …” text repeatedly
-until you get to the one with whom you directly did a <a href="#howtoe2ee">QR-scan</a>.</p>
+and an “Introduced by” line in some contact profiles.</p>
 
-<p>For more in-depth discussion of “guaranteed end-to-end encryption”
-please see <a href="https://securejoin.delta.chat/en/latest/new.html">Secure-Join protocols</a>
-and specifically read about “Verified Groups”, the technical term
-of what is called here “green-checkmarked” or “guaranteed end-to-end encrypted” chats.</p>
+<p>This line is no longer present.
+Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
+contacts are identified by their cryptographic key (“public key”),
+and there is never any possibility for the relay operator
+to exchange a key in order to execute a man-in-the-middle (MitM) attack
+(in fact, the operator does not even see the key at any point).</p>
+
+<p>It is still possible for an attacker to give you an invite link
+that impersonates someone else, and an attacker who has your Delta Chat contact
+(because they are in a group chat with you)
+could try to start a chat with you under a wrong name.
+These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
+and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="are-attachments-pictures-files-audio-etc-end-to-end-encrypted">
         
@@ -1826,7 +1826,7 @@ You can read the <a href="https://delta.chat/assets/blog/2019-first-security-rev
 <p>Some features require certain permissions,
 e.g. you need to grant camera permission if you want to <a href="#howtoe2ee">scan an invite QR code</a>.</p>
 
-<p>See <a href="https://delta.chat/en/gdpr#24-app-permissions">Privacy Policy</a> for a detailed overview.</p>
+<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
     
       <h3 id="where-can-my-friends-find-delta-chat">
         
