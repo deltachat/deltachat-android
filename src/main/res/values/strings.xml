@@ -1302,9 +1302,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_6">Guess what\'s new!\n\n🌐 Your messages now travel smarter: With multiple relays, one going down won\'t stop them\n\n📞 Calls grew up and are no longer experimental\n\n📢 Channels are here to stay - now even with reactions\n\n✍️ Add a chat description, so no one\'s left wondering\n\n👌 Sent images now look sharper\n\n🔵 Mark chats as unread, so you won\'t forget</string>
-    <string name="update_2_6_android_additions">🐇 Speed-up and auto-play voice messages\n\nFinally: We got a basic sticker picker! Please donate to help us remain independent and continue to bring improvements ❤️ https://delta.chat/donate</string>
-    <string name="update_2_6_desktop_additions">🐇 Speed-up and auto-play voice messages\n\n⏯️ New media player\n\n✅ Select multiple messages for forwarding and deleting\n\nFinally: We got a basic sticker picker! Please donate to help us remain independent and continue to bring improvements ❤️ https://delta.chat/donate</string>
-    <string name="update_2_6_ios_additions">🎤 Play voice messages in background\n\nPlease donate to help us remain independent and continue to bring improvements ❤️ https://delta.chat/donate</string>
+    <string name="update_2_6_android_additions">🐇 Speed-up and auto-play voice messages\n\nFinally: We got a basic sticker picker!</string>
+    <string name="update_2_6_desktop_additions">🐇 Speed-up and auto-play voice messages\n\n⏯️ New audio player\n\n✅ Select multiple messages for forwarding and deleting\n\nFinally: We got a basic sticker picker!</string>
+    <string name="update_2_6_ios_additions">🎤 Play voice messages in background</string>
+    <string name="update_2_6_end">Please donate to help us remain independent and continue to bring improvements ❤️ https://delta.chat/donate</string>
 
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 New version %1$s available. Tap this message to update and enjoy the new features</string>
