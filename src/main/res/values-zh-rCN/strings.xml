@@ -543,6 +543,7 @@
     <string name="search_in">在 %1$s 中搜索</string>
     <string name="search_files">搜索文件</string>
     <string name="search_explain">搜索聊天、联系人和消息</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">“%1$s”的结果</string>
     <string name="search_no_result_for_x">没有找到有关\"%s\"的结果</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -721,7 +722,7 @@
     <string name="import_backup_title">从备份恢复</string>
     <string name="import_backup_ask">在“%1$s”找到备份。\n\n是否要导入并使用其中的所有数据和设置？</string>
     <string name="import_backup_no_backup_found">未找到备份。\n\n请将备份复制到“%1$s”，然后重试。</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">无法作为“%1$s”登录。请检查电子邮件地址和密码是否正确。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">接受无效的证书</string>

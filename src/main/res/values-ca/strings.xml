@@ -126,6 +126,18 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Vist per darrer cop: %1$s</string>
     <string name="last_seen_unknown">Vist per darrer cop: desconegut</string>
+    <!-- This is about a contact that was not seen for one or more months -->
+    <plurals name="seen_n_months_ago">
+        <item quantity="one">Vist %d mesos enrere</item>
+        <item quantity="other">Vist fa %d mesos</item>
+    </plurals>
+    <!-- This is about a contact that was not seen for one or more years -->
+    <plurals name="seen_n_years_ago">
+        <item quantity="one">Vist %d anys enrere</item>
+        <item quantity="other">Vist fa %d anys</item>
+    </plurals>
+    <!-- This is about a contact that was never seen (as added by others to a group or created by a vcard) -->
+    <string name="never_seen">Mai vist</string>
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">%d durada d\'un minut</item>
@@ -241,6 +253,8 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Explora</string>
     <string name="unknown">Desconegut</string>
+    <string name="unnamed">Sense nom</string>
+
     <string name="green">Verd</string>
     <string name="red">Vermell</string>
     <string name="blue">Blau</string>
@@ -249,6 +263,9 @@
     <string name="purple">Morat</string>
     <string name="magenta">Magenta</string>
     <string name="white">Blanc</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Zoom</string>
     <string name="extra_small">Molt petit</string>
@@ -373,6 +390,8 @@
     <string name="unpin_chat">Desfixa el xat</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fixa</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Fixa\'t</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Desfixa</string>
     <string name="ConversationFragment_quoted_message_not_found">No s\'ha trobat el missatge original</string>
@@ -504,6 +523,10 @@
         <item quantity="one">%d nou missatge</item>
         <item quantity="other">%d missatges nous</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d missatge no llegit</item>
+        <item quantity="other">%1$d missatges no llegits</item>
+    </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Envia un missatge a %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -561,6 +584,7 @@
     <string name="search_in">Busca a %1$s</string>
     <string name="search_files">Busca els fitxers</string>
     <string name="search_explain">Busca als xats, contactes i missatges</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Resultat per \"%1$s\"</string>
     <string name="search_no_result_for_x">No s\'han trobat resultats per \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -726,9 +750,13 @@
     <!-- deprecated -->
     <string name="hidden_from_contacts">Amagat als contactes</string>
     <string name="enforce_e2ee">Força el xifrat per tots els Retransmissors</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Els retransmissors s\'utilitzen per enviar i rebre missatges electrònics. Disposar de més d\'un retransmissor manté la connexió fiable.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Afegir aquest retransmissor?</string>
     <string name="invalid_transport_qr">El codi QR escanejat no conté un retransmissor vàlid.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">Eliminar el retransmissor \"%1$s\"?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Esborrar el retransmissor \"%1$s\"?\n\nEls contactes que només coneixen aquest retransmissor no et podran contactar fins que els escriguis de nou.\n\nSi no ho tens clar, amaga\'l enlloc d\'esborrar-lo.</string>
     <string name="login_certificate_checks">El certificat coincideix</string>
@@ -739,7 +767,7 @@
     <string name="import_backup_title">Importa una còpia de seguretat</string>
     <string name="import_backup_ask">S\'ha trobat una còpia de seguretat a \"%1$s\".\n\nVoleu importar-la i fer-ne servir les dades i els paràmetres de configuració?</string>
     <string name="import_backup_no_backup_found">No s\'han trobat còpies de seguretat.\n\nCol·loca la còpia de seguretat a \"%1$s\" i torneu-ho a provar.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">No es pot iniciar la sessió com a \"%1$s\". Comproveu que l\'adreça electrònica i la contrasenya són correctes.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accepta certificats no vàlids</string>
@@ -1131,6 +1159,8 @@
     <string name="perm_explain_access_to_storage_denied">Per a rebre o enviar fitxers, aneu a la configuració de l\'aplicació, seleccioneu «Permisos» i activeu «Emmagatzematge».</string>
     <string name="perm_explain_access_to_location_denied">Per a adjuntar la ubicació, aneu a la configuració de l\'aplicació, trieu «Permisos» i activeu la «Ubicació».</string>
     <string name="perm_explain_access_to_notifications_denied">Per a rebre les notificacions, aneu a «Configuració del sistema / Aplicacions / Delta Chat» i activeu «Notificacions»</string>
+    <string name="perm_explain_local_network_denied">Delta Chat necessita el permís \"Dispositius propers\" per connectar-se a dispositius de la xarxa local. Pots configurar-lo a Aplicacions / Delta Chat / Permisos.</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Dibuixeu a qualsevol lloc per a difuminar-lo</string>
     <string name="ImageEditorHud_add_text">Afegeix text</string>
@@ -1271,4 +1301,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Què hi ha de nou?\n\n💯 El xifrat d\'extrem a extrem és fiable i permanent. Els candaus 🔒 han desaparegut!\n\n✉️ El correu electrònic clàssic sense xifrar d\'extrem a extrem es mostra amb el símbol d\'un sobre.\n\n😻 Nova pantalla de perfil millorada per a tots els teus contactes.\n\n🔲 Nou botó per accedir ràpidament a les aplicacions utilitzades als xats.\n\n❤️ Si us plau, fes una donació per ajudar-nos a continuar independents i seguir aportant millores: %1$s</string>
-    </resources>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 Nova versió %1$s disponible. Prem aquest missatge per actualitzar i gaudir de les noves funcions.</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">Descarregant %1$s …</string>
+    <string name="update_now">Actualitza ara</string>
+    <string name="update_install_permission_explain">Per instal·lar l\'actualització, primer permet que Delta Chat instal·li aplicacions a la configuració del sistema.</string>
+</resources>

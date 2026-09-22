@@ -289,7 +289,7 @@ public abstract class EventType {
   public static class SecurejoinJoinerProgress extends EventType {
     /** ID of the inviting contact. */
     public Integer contactId;
-    /** Progress as: 400=vg-/vc-request-with-auth sent, typically shown as "alice@addr verified, introducing myself." (Bob has verified alice and waits until Alice does the same for him) 1000=vg-member-added/vc-contact-confirm received */
+    /** Progress as: 400=vg-/vc-request-with-auth sent, typically shown as "introducing myself." 1000=vg-member-added/vc-contact-confirm received */
     public Integer progress;
   }
 
@@ -335,9 +335,11 @@ public abstract class EventType {
   }
 
 /**
- * Tells that the Background fetch was completed (or timed out). This event acts as a marker, when you reach this event you can be sure that all events emitted during the background fetch were processed.
+ * Tells that a background fetch call is done: the fetch completed, timed out, was stopped or was not started.
  * <p>
- * This event is only emitted by the account manager
+ * For the call that started the fetch, this event acts as a marker: all events emitted during the fetch were processed once it is reached. A call made while another background fetch is running gets the event immediately, and the running fetch keeps emitting events until its own marker.
+ * <p>
+ * This event is only emitted by the account manager.
  */
   public static class AccountsBackgroundFetchDone extends EventType {
   }

@@ -473,7 +473,7 @@
     <string name="import_backup_title">Restaurarea din copia de rezervă</string>
     <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
     <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>

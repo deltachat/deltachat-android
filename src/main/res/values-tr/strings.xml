@@ -537,6 +537,7 @@
     <string name="search_in">%1$s içinde ara</string>
     <string name="search_files">Dosyalar Ara</string>
     <string name="search_explain">Sohbetleri, kişileri ve iletileri ara</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">“%1$s” için sonuç</string>
     <string name="search_no_result_for_x">“%s” için sonuç bulunamadı</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -707,7 +708,7 @@
     <string name="import_backup_title">Yedekten Geri Yükle</string>
     <string name="import_backup_ask">“%1$s” üzerinde yedek bulundu.\n\nİçe aktarmak ve ondan gelen tüm verileri ve ayarları kullanmak istiyor musunuz?</string>
     <string name="import_backup_no_backup_found">Yedek bulunamadı.\n\nYedeği “%1$s” konumuna kopyalayın ve yeniden deneyin.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">“%1$s” olarak giriş yapılamıyor. Lütfen adresin ve parolanın doğru olup olmadığını denetleyin.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Geçersiz sertifikaları kabul et</string>

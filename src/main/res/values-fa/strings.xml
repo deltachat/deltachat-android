@@ -666,7 +666,7 @@
     <string name="import_backup_title">وارد کردن نسخه پشتیبانی</string>
     <string name="import_backup_ask">نسخه پشتیبانی در\"%1$s\" پیدا شد.\n\n آیا می‌خواهید همه داده‌ها و تنظیم‌ها از آن وارد شود؟</string>
     <string name="import_backup_no_backup_found">نسخهٔ پشتیبانی پیدا نشد.\n\n نسخهٔ پشتیبان را در«%1$s» کپی کرده و دوباره امتحان کنید.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">نمی‌توانیم به عنوان «%1$s» وارد شویم. لطفاً درستی نشانی رایانامه و گذرواژه را بررسی کنید. </string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">پذیرش گواهینامه‌های نامعتبر</string>

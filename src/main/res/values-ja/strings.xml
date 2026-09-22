@@ -350,7 +350,7 @@
     <string name="import_backup_title">バックアップをインポート</string>
     <string name="import_backup_ask">%1$sでバックアップがあります。\n\nすべての設定やデータを取り込んで使用しましょうか？</string>
     <string name="import_backup_no_backup_found">バックアップが見つかりません。\n\n%1$sにバックアップをコピーして、再試行してください。又は、「メッセージの開始」を押して通常のセットアップを続行します。</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">%1$sとしてログインできません。メールアドレスとパスワードを確認してください。</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">無効な証明書を受け入れます</string>
