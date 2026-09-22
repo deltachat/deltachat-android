@@ -643,7 +643,7 @@
     <string name="import_backup_title">Importar da Cópia de Segurança</string>
     <string name="import_backup_ask">Becape localizado em \"%1$s\".\n\nVocê quer importá-lo e usar seus dados e configurações?</string>
     <string name="import_backup_no_backup_found">Becapes não localizados.\n\nCopie o becape para \"%1$s\" e tente de novo.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossível acessar \"%1$s\". Por favor, verifique o e-mail e senha.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceitar certificados inválidos</string>

@@ -546,6 +546,7 @@
     <string name="search_in">Kërko në %1$s</string>
     <string name="search_files">Kërko në Kartela</string>
     <string name="search_explain">Kërkoni për fjalosje, kontakte dhe mesazhe.</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Përfundim për “%1$s</string>
     <string name="search_no_result_for_x">S\’u gjetën përfundime për “%s”</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -718,7 +719,7 @@
     <string name="import_backup_title">Rikthe prej Kopjeruajtje</string>
     <string name="import_backup_ask">U gjet kopjeruajtje te “%1$s”.\n\nDoni të importohen dhe përdoren krejt të dhënat dhe rregullimet prej atij?</string>
     <string name="import_backup_no_backup_found">S\’u gjetën kopjeruajtje.\n\nKopjojeni kopjeruajtjen te “%1$s” dhe riprovoni.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">S\’bëhet dot hyrja si “%1$s”. Ju lutemi, shihni nëse adresa email dhe fjalëkalimi janë të saktë.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prano dëshmi të pavlefshme</string>

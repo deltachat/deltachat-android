@@ -696,7 +696,7 @@
     <string name="import_backup_title">Obnovit ze zálohy</string>
     <string name="import_backup_ask">Záloha nalezena v \"%1$s\"\n\nPřejete si soubor načíst a použít všechna jeho data a nastavení?</string>
     <string name="import_backup_no_backup_found">Žádná záloha nebyla nalezena. \n\nZkopírujte zálohu do \"%1$s\" a zkuste to znovu.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Přihlášení jako \"%1$s\" selhalo. Zkontrolujte si prosím ještě jednou e-mail a heslo.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Přijmout neplatné certifikáty</string>

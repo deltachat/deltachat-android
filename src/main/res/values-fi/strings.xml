@@ -235,6 +235,8 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Selaa</string>
     <string name="unknown">Tuntematon</string>
+    <string name="unnamed">Nimetön</string>
+
     <string name="green">Vihreä</string>
     <string name="red">Punainen</string>
     <string name="blue">Sininen</string>
@@ -243,6 +245,9 @@
     <string name="purple">Violetti</string>
     <string name="magenta">Magenta</string>
     <string name="white">Valkoinen</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Suurennos</string>
     <string name="extra_small">Erittäin pieni</string>
@@ -292,6 +297,7 @@
     <string name="menu_add_attachment">Lisää liite</string>
     <string name="menu_leave_group">Poistu ryhmästä</string>
     <string name="menu_leave_channel">Poistu kanavalta</string>
+    <string name="menu_leave_and_delete">Poistu ja poista minulta</string>
     <string name="menu_delete_chat">Poista keskustelu</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Tyhjennä keskustelu</string>
@@ -361,6 +367,8 @@
     <string name="unpin_chat">Irrota keskustelu</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Kiinnitä</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Kiinnitetty</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Irrota</string>
     <string name="ConversationFragment_quoted_message_not_found">Alkuperäistä viestiä ei löydy</string>
@@ -481,6 +489,10 @@
         <item quantity="one">%d uusi viesti</item>
         <item quantity="other">%d uutta viestiä</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d lukematon viesti</item>
+        <item quantity="other">%1$d lukematonta viestiä</item>
+    </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Lähetä viesti. Ei haittaa, vaikka %1$s ei käyttäisi Delta Chatia.</string>
     <string name="chat_new_group_hint">Muut näkevät ryhmän vasta, kun lähetät ensimmäisen viestin.</string>
@@ -533,6 +545,7 @@
     <string name="search_in_chat">Hae keskustelussa</string>
     <string name="search_files">Hae tiedostoja</string>
     <string name="search_explain">Etsi keskusteluja, yhteystietoja ja viestejä</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Tulos haulle \"%1$s\"</string>
     <string name="search_no_result_for_x">Ei tuloksia haulle \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -688,6 +701,10 @@
     <string name="add_transport">Lisää rele</string>
     <string name="remove_transport">Poista rele</string>
     <string name="edit_transport">Muokkaa relettä</string>
+    <!-- deprecated -->
+    <string name="hide_from_contacts">Piilota yhteystiedoista</string>
+    <!-- deprecated -->
+    <string name="hidden_from_contacts">Piilotettu yhteystiedoista</string>
     <string name="enforce_e2ee">Pakota salaus kaikkiin releisiin</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Lisätäänkö tämä rele?</string>
@@ -699,7 +716,7 @@
     <string name="import_backup_title">Palauta varmuuskopiosta</string>
     <string name="import_backup_ask">Varmuuskopio löydetty sijainnista \"%1$s\".\n\nHaluatko tuoda sen ja käyttää sen asetuksia?</string>
     <string name="import_backup_no_backup_found">Varmuuskopioita ei löytynyt.\n\nKopioi varmuuskopio kohteeseen \"%1$s\" ja yritä uudelleen.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Osoitteella \"%1$s\" kirjautuminen epäonnistui. Tarkistathan että sähköpostiosoite ja salasana ovat oikeinkirjoitettuja.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Hyväksy rikkinäiset varmenteet</string>
@@ -802,6 +819,7 @@
     <string name="pref_background_btn_gallery">Valitse galleriasta</string>
     <!-- deprecated -->
     <string name="pref_imap_folder_warn_disable_defaults">Jos muutat tätä asetusta, varmista että palvelimesi ja muut päätelaitteesi ovat määritetty vastaavasti.\n\nMuutoin ne eivät ehkä toimi lainkaan.</string>
+    <string name="pref_multidevice_explain">Synkronoi viestit muiden laitteiden kanssa. Otetaan automaattisesti käyttöön, kun toinen  laite lisätään</string>
     <!-- deprecated -->
     <string name="pref_auto_folder_moves">Siirrä automaattisesti DeltaChat -kansioon</string>
     <!-- deprecated -->
@@ -815,6 +833,7 @@
     <!-- deprecated -->
     <string name="pref_show_emails_all">Kaikki</string>
     <string name="pref_experimental_features">Kokeelliset ominaisuudet</string>
+    <string name="pref_experimental_features_explain">Nämä ominaisuudet eivät välttämättä ole vakaita, ja ne saattavat muuttua tai poistua</string>
     <string name="pref_on_demand_location_streaming">Tarvittaessa sijainnin jatkuva jakaminen</string>
     <string name="pref_background_default">Oletuskuva</string>
     <string name="pref_background_default_color">Oletusväri</string>
@@ -833,6 +852,10 @@
     <string name="pref_show_tray_icon">Näytä työkalupalkin kuvake</string>
     <string name="pref_edit_profile">Muokkaa profiilia</string>
     <string name="send_stats_to_devs">Lähetä tilastotietoja Delta Chatin kehittäjille</string>
+    <string name="stats_device_message">Haluatko auttaa parantamaan Delta Chatia ja tukea tutkimusta lähettämällä viikottaiset, anonyymit käyttötilastot?\n\n👉 Napauta tästä… 👈</string>
+    <string name="stats_confirmation_dialog">Haluatko auttaa parantamaan Delta Chatia ja tukea tutkimusta lähettämällä viikottaiset, anonyymit käyttötilastot?</string>
+    <string name="stats_disable_dialog">Tilastojen lähettäminen on jo käytössä.\n\nHaluatko poistaa sen käytöstä?</string>
+    <string name="disable">Poista käytöstä</string>
     <string name="stats_keep_sending">Jatka lähettämistä</string>
     <string name="stats_msg_body">Liite sisältää anonyymeja käyttötilastoja; ne auttavat parantamaan Delta Chatin toimintaa.. Lue https://delta.chat/help#statssending saadaksesi lisätietoja.</string>
 
@@ -893,6 +916,8 @@
     <string name="group_image_changed_by_other">Ryhmän kuva vaihdettu käyttäjän %1$s toimesta.</string>
     <string name="channel_image_changed">Kanavan kuva vaihdettu.</string>
     <string name="chat_description_changed_by_you">Muutit keskustelun kuvausta.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="chat_description_changed_by_other">Keskustelun kuvausta muuttanut %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">%1$s lisätty.</string>
     <string name="member_you_added">Sinut lisättiin</string>
@@ -940,6 +965,7 @@
     <string name="ephemeral_timer_1_week_by_you">Katoavien viestien ajastin asetettu 1 viikkoon minun toimestani.</string>
     <!-- %1$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_1_week_by_other">Katoavien viestien ajastin asetettu 1 viikkoon käyttäjän %1$s toimesta.</string>
+    <string name="ephemeral_timer_1_year_by_you">Asetit katoavien viestien ajastimeksi yhden vuoden.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to -->
     <string name="ephemeral_timer_minutes_by_you">Katoavien viestien ajastin asetettu %1$s minuuttiin minun toimestani.</string>
     <!-- %1$s will be replaced by the number of minutes (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
@@ -1016,6 +1042,7 @@
     <string name="secure_join_replies">Vastaus saatu käyttäjältä %1$s, odotetaan lisäystä ryhmään...</string>
     <string name="secure_join_wait">Otetaan taattua päästä-päähän salausta käyttöön, odota...</string>
     <string name="contact_verified">%1$s varmistettu.</string>
+    <string name="contact_blocked">Estit yhteystiedon</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
     <!-- deprecated -->
     <string name="verified_by">%1$s lisäsi</string>
@@ -1175,4 +1202,10 @@
     <string name="perm_enable_bg_reminder_title">Napauta vastaanottaaksesi viestejä, kun Delta Chat on taustalla.</string>
     <string name="perm_enable_bg_already_done">Annoit jo luvan viestien vastaanottamiselle taustalla.\n\nJos et saa viestejä taustalla, tarkista myös järjestelmäasetukset.</string>
 
-    </resources>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 Uusi versio %1$s on saatavilla. Napauta tätä viestiä päivittääksesi ja nauttiaksesi uusista ominaisuuksista</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">Ladataan %1$s …</string>
+    <string name="update_now">Päivitä nyt</string>
+    <string name="update_install_permission_explain">Jotta voit asentaa päivityksen, salli ensin Delta Chatin asentaa sovelluksia järjestelmän asetuksista.</string>
+</resources>

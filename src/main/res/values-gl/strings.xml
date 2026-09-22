@@ -561,6 +561,7 @@
     <string name="search_in">Buscar en %1$s</string>
     <string name="search_files">Buscar ficheiros</string>
     <string name="search_explain">Buscar conversas, contactos e mensaxes</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Resultado para \"%1$s\"</string>
     <string name="search_no_result_for_x">Non hai resultados para \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -739,7 +740,7 @@
     <string name="import_backup_title">Importar respaldo</string>
     <string name="import_backup_ask">Atopouse un respaldo en \"%1$s\".\n\nQueres importar e utilizar os seus datos e configuracións?</string>
     <string name="import_backup_no_backup_found">Non se atoparon respaldos.\n\nCopia o respaldo a \"%1$s\" e inténtao outra vez.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Non se puido acceder como \"%1$s\". Comproba o enderezo e o contrasinal.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados non válidos</string>

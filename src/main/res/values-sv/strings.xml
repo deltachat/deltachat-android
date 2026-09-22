@@ -678,7 +678,7 @@
     <string name="import_backup_title">Importera säkerhetskopia</string>
     <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
     <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
