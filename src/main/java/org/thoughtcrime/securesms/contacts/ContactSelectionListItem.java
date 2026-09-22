@@ -96,6 +96,8 @@ public class ContactSelectionListItem extends LinearLayout {
   public void setSpecial(
       @NonNull GlideRequests glideRequests, int specialId, @NonNull String title) {
     this.specialId = specialId;
+    this.recipientListener = null;
+    this.recipient = null;
 
     if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
       this.avatar.setImageDrawable(
@@ -123,6 +125,7 @@ public class ContactSelectionListItem extends LinearLayout {
     } else {
       this.recipient = null;
     }
+    this.recipientListener = null;
     this.avatar.setAvatar(glideRequests, recipient, false);
     this.avatar.setSeenRecently(false);
 
@@ -138,8 +141,6 @@ public class ContactSelectionListItem extends LinearLayout {
   public void unbind(GlideRequests glideRequests) {
     if (recipientListener != null && recipient != null) {
       recipient.removeListener(recipientListener);
-      recipientListener = null;
-      recipient = null;
     }
 
     avatar.clear(glideRequests);
