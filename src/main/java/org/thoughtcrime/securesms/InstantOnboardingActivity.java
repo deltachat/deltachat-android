@@ -67,7 +67,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
   private static final String INSTANCES_URL = "https://chatmail.at/relays";
-  public static final String PRIVACY_URL = "https://delta.chat/privacy";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
@@ -372,7 +371,8 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     ViewUtil.applyWindowInsets(findViewById(R.id.container));
 
     privacyPolicyBtn.setText(TextUtil.markAsExternal(getString(R.string.privacy_policy)));
-    privacyPolicyBtn.setOnClickListener(view -> IntentUtils.showInBrowser(this, PRIVACY_URL));
+    final String URL = "https://delta.chat/privacy";
+    privacyPolicyBtn.setOnClickListener(view -> IntentUtils.showInBrowser(this, URL));
 
     signUpBtn.setOnClickListener(view -> createProfile());
 
