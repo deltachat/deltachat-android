@@ -112,7 +112,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.avatar.setSeenRecently(false);
 
     this.nameView.setTypeface(null, Typeface.NORMAL);
-    setText(name, inviteData.getDisplaySubtitle());
+    setText(inviteData.getDisplayTitle(), inviteData.getDisplaySubtitle());
     this.checkBox.setVisibility(View.GONE);
   }
 
