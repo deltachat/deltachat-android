@@ -19,7 +19,6 @@ import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -105,38 +104,9 @@ public class ContactSelectionListAdapter
     return actionModeSelection.size() != 0;
   }
 
-  public abstract static class ViewHolder extends RecyclerView.ViewHolder {
+  public class ViewHolder extends RecyclerView.ViewHolder {
 
-    public ViewHolder(View itemView) {
-      super(itemView);
-    }
-
-    public abstract void bind(
-        @NonNull GlideRequests glideRequests,
-        int type,
-        DcContact contact,
-        String name,
-        String number,
-        String label,
-        boolean multiSelect,
-        boolean enabled);
-
-    public abstract void bindQrInvite(
-        @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests);
-
-    public abstract void unbind(@NonNull GlideRequests glideRequests);
-
-    public abstract void setChecked(boolean checked);
-
-    public abstract void setSelected(boolean enabled);
-
-    public abstract void setEnabled(boolean enabled);
-  }
-
-  public class ContactViewHolder extends ViewHolder {
-
-    ContactViewHolder(
-        @NonNull final View itemView, @Nullable final ItemClickListener clickListener) {
+    ViewHolder(@NonNull final View itemView, @Nullable final ItemClickListener clickListener) {
       super(itemView);
       itemView.setOnClickListener(
           view -> {
@@ -185,83 +155,6 @@ public class ContactSelectionListAdapter
     public ContactSelectionListItem getView() {
       return (ContactSelectionListItem) itemView;
     }
-
-    public void bind(
-        @NonNull GlideRequests glideRequests,
-        int type,
-        DcContact contact,
-        String name,
-        String addr,
-        String label,
-        boolean multiSelect,
-        boolean enabled) {
-      getView().set(glideRequests, type, contact, name, addr, label, multiSelect, enabled);
-    }
-
-    @Override
-    public void bindQrInvite(
-        @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {
-      getView().setQrInviteData(inviteData, specialId, glideRequests);
-    }
-
-    @Override
-    public void unbind(@NonNull GlideRequests glideRequests) {
-      getView().unbind(glideRequests);
-    }
-
-    @Override
-    public void setChecked(boolean checked) {
-      getView().setChecked(checked);
-    }
-
-    @Override
-    public void setSelected(boolean enabled) {
-      getView().setSelected(enabled);
-    }
-
-    @Override
-    public void setEnabled(boolean enabled) {
-      getView().setEnabled(enabled);
-    }
-  }
-
-  public static class DividerViewHolder extends ViewHolder {
-
-    private final TextView label;
-
-    DividerViewHolder(View itemView) {
-      super(itemView);
-      this.label = itemView.findViewById(R.id.label);
-    }
-
-    @Override
-    public void bind(
-        @NonNull GlideRequests glideRequests,
-        int type,
-        DcContact contact,
-        String name,
-        String number,
-        String label,
-        boolean multiSelect,
-        boolean enabled) {
-      this.label.setText(name);
-    }
-
-    @Override
-    public void bindQrInvite(
-        @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {}
-
-    @Override
-    public void unbind(@NonNull GlideRequests glideRequests) {}
-
-    @Override
-    public void setChecked(boolean checked) {}
-
-    @Override
-    public void setSelected(boolean enabled) {}
-
-    @Override
-    public void setEnabled(boolean enabled) {}
   }
 
   public ContactSelectionListAdapter(
@@ -284,66 +177,49 @@ public class ContactSelectionListAdapter
   @Override
   public ContactSelectionListAdapter.ViewHolder onCreateViewHolder(
       @NonNull ViewGroup parent, int viewType) {
-    if (viewType == VIEW_TYPE_CONTACT) {
-      return new ContactViewHolder(
-          li.inflate(R.layout.contact_selection_list_item, parent, false), clickListener);
-    } else {
-      return new DividerViewHolder(
-          li.inflate(R.layout.contact_selection_list_divider, parent, false));
-    }
+    return new ViewHolder(
+        li.inflate(R.layout.contact_selection_list_item, parent, false), clickListener);
   }
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-    viewHolder.unbind(glideRequests);
+    ContactSelectionListItem item = viewHolder.getView();
+    item.unbind(glideRequests);
     int id = dcContactList[i];
 
-    if (id == DcContact.DC_CONTACT_ID_INVITE_LINK) {
-      viewHolder.setSelected(false);
-      viewHolder.setEnabled(!isActionModeEnabled());
-      viewHolder.bindQrInvite(qrInviteData, DcContact.DC_CONTACT_ID_INVITE_LINK, glideRequests);
+    if (id == DcContact.DC_CONTACT_ID_INVITE_LINK && qrInviteData != null) {
+      item.setSelected(false);
+      item.setEnabled(!isActionModeEnabled());
+      item.setQrInviteData(qrInviteData, DcContact.DC_CONTACT_ID_INVITE_LINK, glideRequests);
       return;
     }
 
-    DcContact dcContact = null;
-    String name;
-    String subtitle = null;
-    boolean itemMultiSelect = multiSelect;
-
+    String title = null;
     if (id == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT) {
-      name = context.getString(R.string.menu_new_classic_contact);
-      itemMultiSelect =
-          false; // the item creates a new contact in the list that will be selected instead
+      title = context.getString(R.string.menu_new_classic_contact);
     } else if (id == DcContact.DC_CONTACT_ID_NEW_GROUP) {
-      name = context.getString(R.string.menu_new_group);
+      title = context.getString(R.string.menu_new_group);
     } else if (id == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP) {
-      name = context.getString(R.string.new_email);
+      title = context.getString(R.string.new_email);
     } else if (id == DcContact.DC_CONTACT_ID_NEW_BROADCAST) {
-      name = context.getString(R.string.new_channel);
+      title = context.getString(R.string.new_channel);
     } else if (id == DcContact.DC_CONTACT_ID_QR_INVITE) {
-      name = context.getString(R.string.menu_new_contact);
-    } else {
-      dcContact = getContact(i);
-      name = dcContact.getDisplayName();
-      if (!dcContact.isKeyContact()) {
-        subtitle = dcContact.getAddr();
-      }
+      title = context.getString(R.string.menu_new_contact);
     }
 
-    boolean enabled = true;
-    if (dcContact == null) {
-      viewHolder.setSelected(false);
-      viewHolder.setEnabled(!isActionModeEnabled());
-      if (isActionModeEnabled()) {
-        enabled = false;
-      }
-    } else {
-      boolean selected = actionModeSelection.indexOfValue(id) > -1;
-      viewHolder.setSelected(selected);
-      enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
+    if (title == null) { // normal contact
+      DcContact dcContact = getContact(i);
+      item.setSelected(actionModeSelection.indexOfValue(id) >= 0);
+      item.setChecked(selectedContacts.contains(id));
+      boolean enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && multiSelect);
+      item.setEnabled(enabled);
+      item.setContact(glideRequests, dcContact, multiSelect);
+    } else { // special action/button
+      item.setSelected(false);
+      item.setChecked(false);
+      item.setEnabled(!isActionModeEnabled());
+      item.setSpecial(glideRequests, id, title);
     }
-    viewHolder.bind(glideRequests, id, dcContact, name, subtitle, null, itemMultiSelect, enabled);
-    viewHolder.setChecked(selectedContacts.contains(id));
   }
 
   @Override

@@ -57,18 +57,6 @@
                 android:fontFamily="sans-serif-light"
                 tools:text="example subtitle" />
 
-            <TextView
-                android:id="@+id/label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dip"
-                android:paddingStart="10dip"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:fontFamily="sans-serif-light"
-                tools:text="Mobile" />
-
         </LinearLayout>
 
 
