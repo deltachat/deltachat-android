@@ -561,6 +561,7 @@
     <string name="search_in">Bilatu %1$s</string>
     <string name="search_files">Bilatu fitxategiak</string>
     <string name="search_explain">Bilatu txatak, kontaktuak, eta mezuak.</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">\"%1$s\" emaitzak</string>
     <string name="search_no_result_for_x">Ez da emaitzarik aurkitu \"%s\" bilaketarentzat</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -739,7 +740,7 @@
     <string name="import_backup_title">Inportatu babeskopia</string>
     <string name="import_backup_ask">Babeskopia aurkitu da: \"%1$s\".\n\nInportatu nahi duzu eta bertako datu eta ezarpenak erabili?</string>
     <string name="import_backup_no_backup_found">Ez da babeskopiarik aurkitu.\n\nKopiatu babeskopia \"%1$s\" karpetan eta saiatu berriro.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Ezin da \"%1$s\" bezala saioa hasi. Egiaztatu E-mail helbidea eta pasahitza zuzenak diren.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Onartu ziurtagiri baliogabeak</string>

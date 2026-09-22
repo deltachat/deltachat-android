@@ -37,6 +37,10 @@ public class DcContact {
     return this.getId() == that.getId();
   }
 
+  public boolean wasSeenRecently() {
+    return getFreshness() == 1;
+  }
+
   @Override
   public int hashCode() {
     return this.getId();
@@ -60,7 +64,7 @@ public class DcContact {
 
   public native long getLastSeen();
 
-  public native boolean wasSeenRecently();
+  public native int getFreshness();
 
   public native boolean isBlocked();
 

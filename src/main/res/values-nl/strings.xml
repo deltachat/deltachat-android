@@ -126,6 +126,18 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative">Laatst gezien: %1$s</string>
     <string name="last_seen_unknown">Laatst gezien: onbekend</string>
+    <!-- This is about a contact that was not seen for one or more months -->
+    <plurals name="seen_n_months_ago">
+        <item quantity="one">Laatst gezien: %d maand geleden</item>
+        <item quantity="other">Laatst gezien: %d maanden geleden</item>
+    </plurals>
+    <!-- This is about a contact that was not seen for one or more years -->
+    <plurals name="seen_n_years_ago">
+        <item quantity="one">Laatst gezien: %d jaar geleden</item>
+        <item quantity="other">Laatst gezien: %d jaar geleden</item>
+    </plurals>
+    <!-- This is about a contact that was never seen (as added by others to a group or created by a vcard) -->
+    <string name="never_seen">Nooit gezien</string>
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">Duur: %d minuut</item>
@@ -572,6 +584,7 @@
     <string name="search_in">‘%1$s’ doorzoeken</string>
     <string name="search_files">Bestanden doorzoeken</string>
     <string name="search_explain">Zoek naar gesprekken, contactpersonen en berichten</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Zoekresultaten voor “%1$s”</string>
     <string name="search_no_result_for_x">Er zijn geen resultaten voor “%s”</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -754,7 +767,7 @@
     <string name="import_backup_title">Reservekopie importeren</string>
     <string name="import_backup_ask">Er is een reservekopie aangetroffen in ‘%1$s’.\n\nWil je de instellingen en gegevens daaruit importeren?</string>
     <string name="import_backup_no_backup_found">Er zijn geen reservekopieën aangetroffen.\n\nKopieer de reservekopie naar ‘%1$s’ en probeer het opnieuw.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Het inloggen als ‘%1$s’ is mislukt. Controleer je e-mailadres en wachtwoord.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Ongeldige certificaten accepteren</string>

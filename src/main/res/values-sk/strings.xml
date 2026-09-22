@@ -596,6 +596,7 @@
     <string name="search_in">Hľadať v konverzácii %1$s</string>
     <string name="search_files">Hľadať súbory</string>
     <string name="search_explain">Vyhľadajte konverzácie, kontakty a správy</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Výsledky pre „%1$s“</string>
     <string name="search_no_result_for_x">Neboli nájdené žiadne výsledky pre „%s“</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -774,7 +775,7 @@
     <string name="import_backup_title">Importovať zálohu</string>
     <string name="import_backup_ask">Záloha sa našla v umiestnení „%1$s“.\n\nChcete z nej importovať a použiť všetky dáta a nastavenia?</string>
     <string name="import_backup_no_backup_found">Neboli nájdené žiadne zálohy.\n\nSkopírujte zálohu do priečinka „%1$s“ a skúste to znova.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nie je možné prihlásiť sa ako „%1$s“. Skontrolujte správnosť e-mailovej adresy a hesla.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prijať neplatné certifikáty</string>
