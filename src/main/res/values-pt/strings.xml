@@ -359,6 +359,7 @@
     <!-- Placeholder will be replaced by the chat name -->
     <string name="search_in">Procurar em %1$s</string>
     <string name="search_explain">Pesquisar chats, contactos, emensagens</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Resultado para \"%1$s\"</string>
     <string name="search_no_result_for_x">Nenhum resultado encontrado para \"%s\"</string>
     <!-- create/edit groups, contact/group profile -->
@@ -413,7 +414,7 @@
     <string name="import_backup_title">Importar backup</string>
     <string name="import_backup_ask">Backup encontrado em \"%1$s\".\n\nQuer importar e usar todos os dados e respectivas configurações?</string>
     <string name="import_backup_no_backup_found">Nenhum backup encontrado. \n\nCopie o backup para \"%1$s\" e tente novamente.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Não é possível fazer o login como \"%1$s\". Por favor, verifique se o endereço de email e a palavra-chave estão corretos.</string>
     <string name="switch_account">Trocar Perfil</string>
     <string name="add_account">Adicionar Perfil</string>

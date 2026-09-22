@@ -694,7 +694,7 @@
     <string name="import_backup_title">Err-d seg uḥraz</string>
     <string name="import_backup_ask">Aḥraz yettwaf di \"%1$s\".\n\nTebɣiḍ ad d-tketreḍ u ad tesqedceḍ akk isefka d yiɣewwaren seg-s?</string>
     <string name="import_backup_no_backup_found">Ulac Iḥrazen yettwafen.\n\nNɣel aḥraz ɣer \"%1$s\" sakin ɛreḍ tikelt nniḍen.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Ur izmir ara ad yeqqen am \"%1$s\". Ma ulac aɣilif, senqed ma yella tansa d wawal uffir d tameɣtut.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Qbel iselkan arameɣtu</string>

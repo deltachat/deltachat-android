@@ -323,7 +323,7 @@
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
     <string name="import_backup_ask">یەدەکەکە لە \"%1$s\"دا دۆزرایەوە.\n\n دەتەوێت هەموو داتا و ڕێکخستنەکانی هاوردە بکەیت و بەکاریان بێنیت؟</string>
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>

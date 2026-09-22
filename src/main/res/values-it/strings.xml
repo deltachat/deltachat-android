@@ -251,6 +251,8 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Sfoglia</string>
     <string name="unknown">Sconosciuto</string>
+    <string name="unnamed">Senza nome</string>
+
     <string name="green">Verde</string>
     <string name="red">Rosso</string>
     <string name="blue">Blu</string>
@@ -259,6 +261,9 @@
     <string name="purple">Viola</string>
     <string name="magenta">Magenta</string>
     <string name="white">Bianco</string>
+
+    <!-- Used to display some progress in percent. Placeholder will be replaced by a number, resulting in eg. "50%", which may be translated to "50 %" in French or "%50" in Turkish.  -->
+    <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Ingrandimento</string>
     <string name="extra_small">Extra piccolo</string>
@@ -384,6 +389,8 @@
     <string name="unpin_chat">Non fissare</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Blocca</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Fissato</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
     <string name="unpin">Sblocca</string>
     <string name="ConversationFragment_quoted_message_not_found">Messaggio originale non trovato</string>
@@ -522,6 +529,11 @@
         <item quantity="many">%d nuovi messaggi</item>
         <item quantity="other">%d nuovi messaggi</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d messaggio non letto</item>
+        <item quantity="many">%1$d messaggi non letti</item>
+        <item quantity="other">%1$d messaggi non letti</item>
+    </plurals>
     <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
     <string name="chat_new_one_to_one_hint">Invia un messaggio a %1$s.</string>
     <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
@@ -579,6 +591,7 @@
     <string name="search_in">Cerca in %1$s</string>
     <string name="search_files">Cerca File</string>
     <string name="search_explain">Cerca chat, contatti e messaggi</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Risultato per \"%1$s\"</string>
     <string name="search_no_result_for_x">Nessun risultato trovato per \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -744,9 +757,13 @@
     <!-- deprecated -->
     <string name="hidden_from_contacts">Nascosto dai contatti</string>
     <string name="enforce_e2ee">Applica Crittografia a Tutti i Ripetitori</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">I ripetitori vengono utilizzati per inviare e ricevere messaggi. Averne più di uno rende la connessione affidabile.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Aggiungere questo trasporto?</string>
     <string name="invalid_transport_qr">Il codice QR scansionato non contiene un mezzo di trasporto valido.</string>
+    <!-- placeholder will be replaced by a relay server name -->
+    <string name="confirm_remove_relay_x">Rimuovere il ripetitore \"%1$s\"?</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Rimuovo ripetitore \"%1$s\"?\n\nI contatti che conoscono solo questo relay potrebbero non raggiungerti finché non invierai loro un altro messaggio. In caso di dubbio, nascondilo invece di rimuoverlo.</string>
     <string name="login_certificate_checks">Controlli Certificato</string>
@@ -757,7 +774,7 @@
     <string name="import_backup_title">Ripristina da Backup</string>
     <string name="import_backup_ask">Backup trovato in \"%1$s\".\n\nVuoi importarlo e usare tutti i dati e le impostazioni salvate?</string>
     <string name="import_backup_no_backup_found">Nessun backup trovato\n\nCopia il backup in \"%1$s\" e riprova.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Impossibile accedere come \"%1$s\". Per favore verifica che l\'indirizzo e-mail e la password siano corretti.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Accetta certificati non validi</string>
@@ -1149,6 +1166,8 @@
     <string name="perm_explain_access_to_storage_denied">Per ricevere o inviare file, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Archiviazione\".</string>
     <string name="perm_explain_access_to_location_denied">Per allegare una posizione, vai alle impostazioni dell\'app, seleziona \"Autorizzazioni\" e abilita \"Posizione\".</string>
     <string name="perm_explain_access_to_notifications_denied">Per ricevere le notifiche, vai su \"Impostazioni di Sistema / App / Delta Chat\" e attiva \"Notifiche\".</string>
+    <string name="perm_explain_local_network_denied">Delta Chat necessita dell\'autorizzazione \"Dispositivi nelle vicinanze\" per connettersi ai dispositivi sulla rete locale. Puoi configurarla in App / Delta Chat / Autorizzazioni.</string>
+
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Disegna ovunque per sfocare</string>
     <string name="ImageEditorHud_add_text">Aggiungi Testo</string>
@@ -1289,4 +1308,10 @@
 
     <!-- device messages for updates -->
     <string name="update_2_0">Novità?\n\n💯 La crittografia end-to-end è ora affidabile e definitiva. I lucchetti 🔒 sono spariti!\n\n✉️ Le email classiche senza crittografia end-to-end sono contrassegnate dal simbolo di una lettera\n\n😻 Nuova schermata del profilo migliorata per tutti i tuoi contatti\n\n🔲 Nuovo pulsante per l\'accesso rapido alle app utilizzate in una chat\n\n❤️ Dona per aiutarci a rimanere indipendenti e continuare a migliorare: %1$s</string>
-    </resources>
+    <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
+    <string name="update_available_msg">🎉 È disponibile la nuova versione %1$s . Tocca questo messaggio per aggiornare e scoprire le nuove funzionalità</string>
+    <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
+    <string name="update_downloading">Scaricamento %1$s …</string>
+    <string name="update_now">Aggiorna Ora</string>
+    <string name="update_install_permission_explain">Per installare l\'aggiornamento, consenti innanzitutto a Delta Chat di installare app nelle impostazioni di sistema.</string>
+</resources>
