@@ -31,7 +31,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   private CheckBox checkBox;
 
   private int specialId;
-  private String name;
   private Recipient recipient;
   private GlideRequests glideRequests;
 
@@ -65,7 +64,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       boolean enabled) {
     this.glideRequests = glideRequests;
     this.specialId = specialId;
-    this.name = name;
 
     if (specialId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT
         || specialId == DcContact.DC_CONTACT_ID_NEW_GROUP
@@ -102,7 +100,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {
     this.glideRequests = glideRequests;
     this.specialId = specialId;
-    name = inviteData.getDisplayTitle();
 
     if (inviteData.getContactId() > 0) {
       DcContext dcContext = DcHelper.getContext(getContext());
