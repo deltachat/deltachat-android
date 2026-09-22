@@ -28,7 +28,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   private View subtitleContainer;
   private TextView subtitleView;
   private TextView nameView;
-  private TextView labelView;
   private CheckBox checkBox;
 
   private int specialId;
@@ -50,7 +49,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.avatar = findViewById(R.id.avatar);
     this.subtitleContainer = findViewById(R.id.subtitle_container);
     this.subtitleView = findViewById(R.id.subtitle);
-    this.labelView = findViewById(R.id.label);
     this.nameView = findViewById(R.id.name);
     this.checkBox = findViewById(R.id.check_box);
 
@@ -63,7 +61,6 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
       DcContact contact,
       String name,
       String subtitle,
-      String label,
       boolean multiSelect,
       boolean enabled) {
     this.glideRequests = glideRequests;
@@ -94,7 +91,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     }
     this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
-    setText(name, subtitle, label);
+    setText(name, subtitle);
     setEnabled(enabled);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
@@ -118,7 +115,7 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.avatar.setSeenRecently(false);
 
     this.nameView.setTypeface(null, Typeface.NORMAL);
-    setText(name, inviteData.getDisplaySubtitle(), null);
+    setText(name, inviteData.getDisplaySubtitle());
     this.checkBox.setVisibility(View.GONE);
   }
 
@@ -135,13 +132,12 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     avatar.clear(glideRequests);
   }
 
-  private void setText(String name, String subtitle, String label) {
+  private void setText(String name, String subtitle) {
     this.nameView.setEnabled(true);
     this.nameView.setText(name == null ? "#" : name);
 
     if (subtitle != null) {
       this.subtitleView.setText(subtitle);
-      this.labelView.setText(label == null ? "" : label);
       this.subtitleContainer.setVisibility(View.VISIBLE);
     } else {
       this.subtitleContainer.setVisibility(View.GONE);

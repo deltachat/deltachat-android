@@ -172,7 +172,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
 
       int contactId = data.contactId;
       DcContact dcContact = null;
-      String label = null;
       String name;
       String subtitle = null;
 
@@ -189,7 +188,7 @@ public class ProfileAdapter extends RecyclerView.Adapter {
       }
 
       contactItem.unbind(glideRequests);
-      contactItem.set(glideRequests, contactId, dcContact, name, subtitle, label, false, true);
+      contactItem.set(glideRequests, contactId, dcContact, name, subtitle, false, true);
       contactItem.setSelected(selectedMembers.contains(contactId));
       contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
       contactItem.setOnLongClickListener(

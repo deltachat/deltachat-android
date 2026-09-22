@@ -117,7 +117,6 @@ public class ContactSelectionListAdapter
         DcContact contact,
         String name,
         String number,
-        String label,
         boolean multiSelect,
         boolean enabled);
 
@@ -192,10 +191,9 @@ public class ContactSelectionListAdapter
         DcContact contact,
         String name,
         String addr,
-        String label,
         boolean multiSelect,
         boolean enabled) {
-      getView().set(glideRequests, type, contact, name, addr, label, multiSelect, enabled);
+      getView().set(glideRequests, type, contact, name, addr, multiSelect, enabled);
     }
 
     @Override
@@ -241,7 +239,6 @@ public class ContactSelectionListAdapter
         DcContact contact,
         String name,
         String number,
-        String label,
         boolean multiSelect,
         boolean enabled) {
       this.label.setText(name);
@@ -342,7 +339,7 @@ public class ContactSelectionListAdapter
       viewHolder.setSelected(selected);
       enabled = !(dcContact.getId() == DcContact.DC_CONTACT_ID_SELF && itemMultiSelect);
     }
-    viewHolder.bind(glideRequests, id, dcContact, name, subtitle, null, itemMultiSelect, enabled);
+    viewHolder.bind(glideRequests, id, dcContact, name, subtitle, itemMultiSelect, enabled);
     viewHolder.setChecked(selectedContacts.contains(id));
   }
 
