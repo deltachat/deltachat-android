@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import org.thoughtcrime.securesms.R;
@@ -22,19 +23,17 @@ import org.thoughtcrime.securesms.util.ThemeUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class ContactSelectionListItem extends LinearLayout implements RecipientModifiedListener {
+public class ContactSelectionListItem extends LinearLayout {
 
   private AvatarView avatar;
   private View subtitleContainer;
   private TextView subtitleView;
   private TextView nameView;
-  private TextView labelView;
   private CheckBox checkBox;
 
   private int specialId;
-  private String name;
-  private Recipient recipient;
-  private GlideRequests glideRequests;
+  private @Nullable Recipient recipient;
+  private @Nullable RecipientModifiedListener recipientListener;
 
   public ContactSelectionListItem(Context context) {
     super(context);
@@ -50,62 +49,74 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     this.avatar = findViewById(R.id.avatar);
     this.subtitleContainer = findViewById(R.id.subtitle_container);
     this.subtitleView = findViewById(R.id.subtitle);
-    this.labelView = findViewById(R.id.label);
     this.nameView = findViewById(R.id.name);
     this.checkBox = findViewById(R.id.check_box);
 
     ViewUtil.setTextViewGravityStart(this.nameView, getContext());
   }
 
-  public void set(
-      @NonNull GlideRequests glideRequests,
-      int specialId,
-      DcContact contact,
-      String name,
-      String subtitle,
-      String label,
-      boolean multiSelect,
-      boolean enabled) {
-    this.glideRequests = glideRequests;
-    this.specialId = specialId;
-    this.name = name;
+  public void setContact(
+      @NonNull GlideRequests glideRequests, @NonNull DcContact contact, boolean multiSelect) {
+    this.specialId = contact.getId();
+    String name = contact.getDisplayName();
 
-    if (specialId == DcContact.DC_CONTACT_ID_NEW_CLASSIC_CONTACT
-        || specialId == DcContact.DC_CONTACT_ID_NEW_GROUP
-        || specialId == DcContact.DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP
-        || specialId == DcContact.DC_CONTACT_ID_NEW_BROADCAST
-        || specialId == DcContact.DC_CONTACT_ID_ADD_MEMBER
-        || specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
-      this.nameView.setTypeface(null, Typeface.BOLD);
-    } else {
-      this.recipient = new Recipient(getContext(), contact);
-      this.recipient.addListener(this);
-      if (this.recipient.getName() != null) {
-        name = this.recipient.getName();
-      }
-      this.nameView.setTypeface(null, Typeface.NORMAL);
+    this.recipient = new Recipient(getContext(), contact);
+    this.recipientListener =
+        (recipient) -> {
+          if (this.recipient == recipient) {
+            Util.runOnMain(
+                () -> {
+                  avatar.setAvatar(glideRequests, recipient, false);
+                  DcContact dcContact = recipient.getDcContact();
+                  avatar.setSeenRecently(dcContact != null && dcContact.wasSeenRecently());
+                  nameView.setText(recipient.toShortString());
+                });
+          }
+        };
+    this.recipient.addListener(recipientListener);
+    if (this.recipient.getName() != null) {
+      name = this.recipient.getName();
     }
-    if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
-      this.avatar.setImageDrawable(
-          new ResourceContactPhoto(R.drawable.ic_qr_code_24)
-              .asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
-    } else {
-      this.avatar.setAvatar(glideRequests, recipient, false);
-    }
-    this.avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
 
-    setText(name, subtitle, label);
-    setEnabled(enabled);
+    this.avatar.setAvatar(glideRequests, recipient, false);
+    this.avatar.setSeenRecently(contact.wasSeenRecently());
+
+    String subtitle = null;
+    if (!contact.isKeyContact()) {
+      subtitle = contact.getAddr();
+    }
+
+    this.nameView.setTypeface(null, Typeface.NORMAL);
+    setText(name, subtitle);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
     else this.checkBox.setVisibility(View.GONE);
   }
 
+  public void setSpecial(
+      @NonNull GlideRequests glideRequests, int specialId, @NonNull String title) {
+    this.specialId = specialId;
+    this.recipientListener = null;
+    this.recipient = null;
+
+    if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
+      this.avatar.setImageDrawable(
+          new ResourceContactPhoto(R.drawable.ic_qr_code_24)
+              .asDrawable(getContext(), ThemeUtil.getDummyContactColor(getContext())));
+    } else {
+      this.avatar.setAvatar(glideRequests, null, false);
+    }
+    this.avatar.setSeenRecently(false);
+
+    this.nameView.setTypeface(null, Typeface.BOLD);
+    setText(title, null);
+
+    this.checkBox.setVisibility(View.GONE);
+  }
+
   public void setQrInviteData(
       @NonNull QrInviteData inviteData, int specialId, @NonNull GlideRequests glideRequests) {
-    this.glideRequests = glideRequests;
     this.specialId = specialId;
-    name = inviteData.getDisplayTitle();
 
     if (inviteData.getContactId() > 0) {
       DcContext dcContext = DcHelper.getContext(getContext());
@@ -114,11 +125,12 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
     } else {
       this.recipient = null;
     }
+    this.recipientListener = null;
     this.avatar.setAvatar(glideRequests, recipient, false);
     this.avatar.setSeenRecently(false);
 
     this.nameView.setTypeface(null, Typeface.NORMAL);
-    setText(name, inviteData.getDisplaySubtitle(), null);
+    setText(inviteData.getDisplayTitle(), inviteData.getDisplaySubtitle());
     this.checkBox.setVisibility(View.GONE);
   }
 
@@ -127,21 +139,19 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   }
 
   public void unbind(GlideRequests glideRequests) {
-    if (recipient != null) {
-      recipient.removeListener(this);
-      recipient = null;
+    if (recipientListener != null && recipient != null) {
+      recipient.removeListener(recipientListener);
     }
 
     avatar.clear(glideRequests);
   }
 
-  private void setText(String name, String subtitle, String label) {
+  private void setText(String name, String subtitle) {
     this.nameView.setEnabled(true);
     this.nameView.setText(name == null ? "#" : name);
 
     if (subtitle != null) {
       this.subtitleView.setText(subtitle);
-      this.labelView.setText(label == null ? "" : label);
       this.subtitleContainer.setVisibility(View.VISIBLE);
     } else {
       this.subtitleContainer.setVisibility(View.GONE);
@@ -153,27 +163,14 @@ public class ContactSelectionListItem extends LinearLayout implements RecipientM
   }
 
   public DcContact getDcContact() {
-    return recipient.getDcContact();
+    return recipient == null ? null : recipient.getDcContact();
   }
 
   public int getContactId() {
-    if (recipient.getAddress().isDcContact()) {
+    if (recipient != null && recipient.getAddress().isDcContact()) {
       return recipient.getAddress().getDcContactId();
     } else {
       return -1;
-    }
-  }
-
-  @Override
-  public void onModified(final Recipient recipient) {
-    if (this.recipient == recipient) {
-      Util.runOnMain(
-          () -> {
-            avatar.setAvatar(glideRequests, recipient, false);
-            DcContact contact = recipient.getDcContact();
-            avatar.setSeenRecently(contact != null && contact.wasSeenRecently());
-            nameView.setText(recipient.toShortString());
-          });
     }
   }
 }
