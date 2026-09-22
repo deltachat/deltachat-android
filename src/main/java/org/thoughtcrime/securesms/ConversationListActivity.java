@@ -694,7 +694,10 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_2_6) + "\n\n" + getString(R.string.update_2_6_android_additions));
+          msg.setText(
+              getString(R.string.update_2_6)
+                  + "\n\n"
+                  + getString(R.string.update_2_6_android_additions));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
