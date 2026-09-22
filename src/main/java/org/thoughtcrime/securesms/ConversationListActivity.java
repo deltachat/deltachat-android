@@ -682,7 +682,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_2_0_0_android-h";
+      final String deviceMsgLabel = "update_2_6_0_android-b";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!fromWelcome) {
@@ -694,7 +694,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
+          msg.setText(
+              getString(R.string.update_2_6)
+                  + "\n\n"
+                  + getString(R.string.update_2_6_android_additions)
+                  + " "
+                  + getString(R.string.update_2_6_end));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 
