@@ -56,9 +56,7 @@ public class ContactSelectionListItem extends LinearLayout {
   }
 
   public void setContact(
-      @NonNull GlideRequests glideRequests,
-      @NonNull DcContact contact,
-      boolean multiSelect) {
+      @NonNull GlideRequests glideRequests, @NonNull DcContact contact, boolean multiSelect) {
     this.specialId = contact.getId();
     String name = contact.getDisplayName();
 
@@ -95,7 +93,8 @@ public class ContactSelectionListItem extends LinearLayout {
     else this.checkBox.setVisibility(View.GONE);
   }
 
-  public void setSpecial(@NonNull GlideRequests glideRequests, int specialId, @NonNull String title) {
+  public void setSpecial(
+      @NonNull GlideRequests glideRequests, int specialId, @NonNull String title) {
     this.specialId = specialId;
 
     if (specialId == DcContact.DC_CONTACT_ID_QR_INVITE) {
