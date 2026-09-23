@@ -1047,10 +1047,13 @@
     <string name="qrscan_failed">Le code QR n\'a pas pu être décodé</string>
     <string name="qrscan_ask_join_group">Voulez-vous rejoindre le groupe \"%1$s\" ?</string>
     <string name="qrscan_ask_join_channel">Voulez-vous rejoindre le canal \"%1$s\" ?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">L\'empreinte digitale numérisée ne correspond pas à la dernière empreinte digitale vue depuis %1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Ce code QR contient une empreinte numérique mais pas d\'adresse de courriel.\n\nPour une vérification externe, veuillez d\'abord établir une connexion chiffrée avec le destinataire.</string>
     <string name="qrscan_contains_text">Texte du QR code numérisé:\n\n%1$s</string>
     <string name="qrscan_contains_url">Url du QR code numérisé :\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Empreinte digitale</string>
     <string name="withdraw_verifycontact_explain">Ce code QR peut être scanné par d\'autres personnes pour vous contacter.\n\nVous pouvez le réinitialiser pour désactiver le code QR ou le lien d\'invitation existants.</string>
     <string name="withdraw_verifygroup_explain">Partagez ce QR code à d\'autres personnes pour rejoindre le groupe « %1$s ».\n\nIl peut être désactivé ou réinitialisé à tout moment.</string>
@@ -1260,6 +1263,4 @@
     <string name="perm_enable_bg_reminder_title">Cliquez ici pour recevoir des messages lorsque Delta Chat est en arrière-plan.</string>
     <string name="perm_enable_bg_already_done">Vous avez déjà autorisé Delta Chat à recevoir des messages en arrière plan.\n\nSi vous ne les recevez toujours pas, vérifiez les paramètres de votre système.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Quoi de neuf ?\n\n💯 Le chiffrement de bout en bout est maintenant fiable et pérenne. 🔒Fini les cadenas !\n\n✉️ Les courriels sans chiffrement de bout en bout sont maintenant marqués par une icône enveloppe \n\n😻 Nouvelle fenêtre de profil améliorée pour tous les contacts \n\n🔲 Nouveau bouton pour l\'accès rapide aux applis utilisées dans une discussion\n\n❤️ Merci d\'envisager de faire un don afin que nous restions indépendants et continuions à améliorer Delta Chat : %1$s</string>
     </resources>

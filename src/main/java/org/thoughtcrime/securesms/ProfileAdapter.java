@@ -169,28 +169,25 @@ public class ProfileAdapter extends RecyclerView.Adapter {
     ItemData data = itemData.get(i);
     if (holder.itemView instanceof ContactSelectionListItem) {
       ContactSelectionListItem contactItem = (ContactSelectionListItem) holder.itemView;
+      contactItem.unbind(glideRequests);
 
       int contactId = data.contactId;
-      DcContact dcContact = null;
-      String label = null;
-      String name;
-      String subtitle = null;
-
+      String title = null;
       if (contactId == DcContact.DC_CONTACT_ID_ADD_MEMBER) {
-        name = context.getString(R.string.group_add_members);
+        title = context.getString(R.string.group_add_members);
       } else if (contactId == DcContact.DC_CONTACT_ID_QR_INVITE) {
-        name = context.getString(R.string.qrshow_title);
-      } else {
-        dcContact = dcContext.getContact(contactId);
-        name = dcContact.getDisplayName();
-        if (!dcContact.isKeyContact()) {
-          subtitle = dcContact.getAddr();
-        }
+        title = context.getString(R.string.qrshow_title);
       }
 
-      contactItem.unbind(glideRequests);
-      contactItem.set(glideRequests, contactId, dcContact, name, subtitle, label, false, true);
-      contactItem.setSelected(selectedMembers.contains(contactId));
+      if (title == null) { // normal contact
+        DcContact dcContact = dcContext.getContact(contactId);
+        contactItem.setContact(glideRequests, dcContact, false);
+        contactItem.setSelected(selectedMembers.contains(contactId));
+      } else { // special action/button
+        contactItem.setSpecial(glideRequests, contactId, title);
+        contactItem.setSelected(false);
+      }
+
       contactItem.setOnClickListener(view -> clickListener.onMemberClicked(contactId));
       contactItem.setOnLongClickListener(
           view -> {

@@ -977,10 +977,13 @@
     <string name="qrscan_failed">QR-koden kunde inte avkodas</string>
     <string name="qrscan_ask_join_group">Vill du ansluta till gruppen \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Vill du ansluta till kanalen \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Det skannade fingeravtrycket stämmer inte med senast sedda för %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">QR-koden innehåller ett fingeravtryck men ingen e-postadress.\n\nUpprätta först en krypterad anslutning till mottagaren, för en utanför-bandet-verifiering.</string>
     <string name="qrscan_contains_text">Skannad QR-kod-text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannad QR-kod-URL:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Fingeravtryck</string>
     <string name="withdraw_verifycontact_explain">Denna QR-kod kan skannas av andra för att kontakta dig.\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
     <string name="withdraw_verifygroup_explain">Denna QR-kod kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
@@ -1177,6 +1180,4 @@
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Vad är nytt?\n\n💯 Totalsträckskryptering är pålitlig och för alltid nu. Hänglås 🔒 är borta!\n\n✉️ Klassisk e-post utan Totalsträckskryptering är markerad med en bokstavssymbol\n\n😻 Ny förbättrad profilskärm för alla dina kontakter\n\n🔲 Ny knapp för snabb åtkomst till appar som används i en chatt\n\n❤️ Vänligen donera för att hjälpa oss att förbli oberoende och fortsätta att göra förbättringar: %1$s</string>
     </resources>

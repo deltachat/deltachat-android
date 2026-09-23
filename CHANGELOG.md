@@ -2,23 +2,25 @@
 
 ## Unreleased
 
-* Improved resilience & decentralization: new users onboard by default in more than one relay, randomly selected, instead of using the hardcoded nine.testrun.org relay
-* Improved resilience: if one of your relays fails to send a message, others are tried, automatically recovering from downtime and server failures
-* Add speed button for voice message playback
-* Improve a11y on Conversation List
-* Target SDK 37
-* Allow to cancel sending video while it is re-encoding/compressing
+* Improve resilience & decentralization: new users onboard by default in more than one relay, randomly selected, instead of using the hardcoded nine.testrun.org relay
 * Improve resilience: pick random relay for sending and try others if sending with one fails, no need for manually selecting a relay "used for sending"
-* Allow to open invitation links pasted in the search bar in "New Chat" screen
+* Add speed button for voice message playback
 * Improve image quality of sent images
+* New language supported: Belarusian
+* Target Android 17 (SDK 37)
+* Allow to cancel sending video while it is re-encoding/compressing
+* Allow to open invitation links pasted in the search bar in "New Chat" screen
 * No more error sign for messages in group if the message was delivered to some of the members
+* Improve a11y on Conversation List
+* When a contact has not been seen for a long time, show a hint in the contact list, chat members list and 1:1 chat subtitle
+* Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
-* Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
-* Fix: apply maximum file size limit to videos as is, without 5/4 factor, and enforce file size limit after encoding the video.
-* Add Belarusian translation
+* Fix: apply maximum file size limit to videos as is, without 5/4 factor, and enforce file size limit after encoding the video
+* Fix: don't notify about a reaction emoji sent by a blocked contact
+* Fix: don't notify missed call from blocked contact
 * Update translations and local help
-* Update to core 2.61.0
+* Update to core 2.62.0
 
 ## v2.59.1
 2026-08

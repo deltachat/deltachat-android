@@ -711,10 +711,13 @@
     <string name="qrscan_hint">Giữ máy ảnh của bạn phía trên mã QR.</string>
     <string name="qrscan_failed">Mã QR không thể giải mã được</string>
     <string name="qrscan_ask_join_group">Bạn có muốn tham gia nhóm \"%1$s\" không?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Dấu vân tay được quét không khớp với dấu vân tay được nhìn thấy lần cuối trong %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Mã QR này chứa dấu vân tay nhưng không có địa chỉ email.\n\nĐể xác minh ngoài băng tần, trước tiên vui lòng thiết lập kết nối được mã hóa với người nhận.</string>
     <string name="qrscan_contains_text">Văn bản mã QR được quét:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL mã QR được quét:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Dấu vân tay</string>
     <string name="withdraw_verifycontact_explain">Người khác có thể quét mã QR này để liên hệ với bạn.\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>

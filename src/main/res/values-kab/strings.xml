@@ -994,10 +994,13 @@
     <string name="qrscan_failed">Tangalt QR ur tezmir ara ad ttwakestengel</string>
     <string name="qrscan_ask_join_group">Tebɣiḍ ad tettekkiḍ deg ugraw \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Tebɣiḍ ad tettekkiḍ deg ubadu \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Adsil umḍin yettwaḍummen ur imṣada ara akked win yettwaẓerren i tikelt taneggarut i %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Tangalt-a QR tegber adsil umḍin maca ulac tansa.\n\nI usenqed beṛṛa n tasfift, ttxil-k-im eg tuqqna tawgelhant akked uɣerwaḍ. </string>
     <string name="qrscan_contains_text">Aḍris n tengalt QR yettwaḍummen:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL n tangalt QR yettwaḍummen:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Adsil umḍin</string>
     <string name="withdraw_verifycontact_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad k·m-id-nermsen.\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
     <string name="withdraw_verifygroup_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad kecmen ɣer ugraw \"%1$s\".\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
@@ -1194,6 +1197,4 @@
     <string name="perm_enable_bg_reminder_title">Sit dagi akken ad tremseḍ iznan ticki Delta Chat yella deg ugilal.</string>
     <string name="perm_enable_bg_already_done">Tsirgeḍ yakan Delta Chat i wakken ad d-remseḍ iznan deg ugilal.\n\nMa yella iznan ur d-ttawḍen ara deg ugilal, ttxil-k·m senqed daɣen iɣewwaṛen n unagraw.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">D acu i d amaynut?\n\n💯Awgelhen n yixef ɣer yixef d ayen iɣef ara tettekleḍ u i lebda. Inekcaman 🔒 ruḥen!\n\n✉️ Imayl aklasik war awgelhen yettwacreḍ s usekkil azamulan.\n\n 😻 Agdil amaynut yettwasneflin n umaɣnu i akk inermisen-ik·im\n\n🔲 Taqeffalt tamaynutt i unekcum uzrib ɣer yisnasen yettwasqedcen deg udiwenni usrid\n\n❤️ Ma ulac aɣilif mudd-aɣ-d afus akken ad neqqim d imunanen, daɣen ad nkemmel ad d-nawi asnerni: %1$s</string>
     </resources>

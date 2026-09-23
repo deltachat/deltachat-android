@@ -1051,10 +1051,13 @@
     <string name="qrscan_failed">Non se puido descodificar o código QR</string>
     <string name="qrscan_ask_join_group">Queres unirte ao grupo \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Queres unirte á canle \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">A pegada dixital escaneada non coincide coa última vista para %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Este código QR contén unha pegada dixital pero non un enderezo de correo.\n\nPara unha verificación fóra de liña, por favor establece unha conexión cifrada co persoa correspondente.</string>
     <string name="qrscan_contains_text">Texto escaneado no código QR:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL escaneado no código QR:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Pegada dactilar</string>
     <string name="withdraw_verifycontact_explain">Este código QR permite que outras persoas contacten contigo.\n\nPodes desactivar o código QR aquí e reactivalo volvéndoo a escanear.</string>
     <string name="withdraw_verifygroup_explain">Este código QR permite que outras persoas se unan ao grupo \"%1$s\".\n\nPodes desactivar aquí o código QR e reactivalo volvéndoo a escanear.</string>
@@ -1270,6 +1273,4 @@
     <string name="perm_enable_bg_reminder_title">Preme aquí para recibir mensaxes mentres Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Xa permitiches que Delta Chat reciba mensaxes en segundo plano\n\nSe aínda así non recibes as mensaxes, por favor comproba a configuración do sistema.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Que hai de novo?\n\n💯 Agora a cifraxe de extremo-a-extremo é de fiar e para sempre. Non hai máis cadeados 🔒!\n\n✉️ O enderezos de correo clásicos sen cifraxe de extremo-a-extremo están marcados cunha carta\n\n😻 Nova páxina de perfil mellorada para todos os teus contactos\n\n🔲 Novo botón de acceso rápido a apps usadas nunha conversa\n\n❤️ Por favor doa para continuarmos independentes e a mellorar: %1$s</string>
     </resources>

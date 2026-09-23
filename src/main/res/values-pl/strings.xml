@@ -1104,10 +1104,13 @@
     <string name="qrscan_failed">Nie udało się zdekodować kodu QR</string>
     <string name="qrscan_ask_join_group">Czy chcesz dołączyć do grupy „%1$s?</string>
     <string name="qrscan_ask_join_channel">Czy chcesz dołączyć do kanału „%1$s”?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Zeskanowany odcisk palca nie pasuje do ostatnio widzianego u %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Ten kod QR zawiera odcisk palca, ale nie zawiera adresu.\n\nW celu weryfikacji poza zasadniczym pasmem należy najpierw nawiązać szyfrowane połączenie z odbiorcą.</string>
     <string name="qrscan_contains_text">Zeskanowany kod QR zawiera następujący tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Zeskanowany kod QR zawiera następujący adres:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Odciski palca</string>
     <string name="withdraw_verifycontact_explain">Inni użytkownicy mogą zeskanować ten kod QR, aby się z tobą skontaktować.\n\nMożesz go zresetować, aby istniejący kod QR lub link zaproszenia przestał działać.</string>
     <string name="withdraw_verifygroup_explain">Inni użytkownicy mogą zeskanować ten kod QR, aby dołączyć do grupy „%1$s”.\n\nMożesz go zresetować, aby istniejący kod QR lub link zaproszenia przestał działać.</string>
@@ -1325,8 +1328,6 @@
     <string name="perm_enable_bg_reminder_title">Dotknij tutaj, aby odbierać wiadomości, podczas gdy Delta Chat działa w tle.</string>
     <string name="perm_enable_bg_already_done">Pozwolono już Delta Chat na odbieranie wiadomości w tle.\n\nJeśli wiadomości nadal nie docierają w tle, sprawdź też ustawienia systemu.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Co nowego?\n\n💯 Szyfrowanie end-to-end jest niezawodne i na zawsze. Kłódki 🔒 odchodzą w zapomnienie!\n\n✉️ Klasyczna poczta e-mail bez szyfrowania end-to-end jest oznaczona symbolem litery.\n\n😻 Nowy, ulepszony ekran profilu dla wszystkich kontaktów.\n\n🔲 Nowy przycisk szybkiego dostępu do aplikacji używanych na czacie.\n\n❤️ Prosimy o darowizny, które pomogą nam zachować niezależność i stale wprowadzać ulepszenia: %1$s</string>
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 Dostępna jest nowa wersja %1$s. Dotknij tę wiadomość, aby zaktualizować aplikację i korzystać z nowych funkcji.</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->

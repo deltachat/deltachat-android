@@ -1033,10 +1033,13 @@
     <string name="qrscan_failed">二维码无法被解码</string>
     <string name="qrscan_ask_join_group">是否要加入群组“%1$s”？</string>
     <string name="qrscan_ask_join_channel">是否要加入频道“%1$s”？</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">扫描到的指纹与上次见到的 %1$s 的指纹不匹配。</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">此二维码包含指纹，但没有电子邮件地址。\n\n对于带外验证，请先与接收者建立加密连接。</string>
     <string name="qrscan_contains_text">已扫描到的二维码文本：\n\n%1$s</string>
     <string name="qrscan_contains_url">已扫描到的二维码 URL：\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">指纹</string>
     <string name="withdraw_verifycontact_explain">其他人可以扫描此二维码与您联系。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
     <string name="withdraw_verifygroup_explain">其他人可以扫描此二维码以加入群组“%1$s”。\n\n您可以重置它，这样现有的二维码或邀请链接将不再有效。</string>
@@ -1252,6 +1255,4 @@
     <string name="perm_enable_bg_reminder_title">点按此处即可在 Delta Chat 处于后台时接收消息。</string>
     <string name="perm_enable_bg_already_done">您已允许 Delta Chat 在后台接收消息。\n\n若 Delta Chat 在后台时消息仍未到达，请检查系统设置。</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">新版变化？\n\n💯 端到端加密现在可靠且永久。挂锁图标 🔒 没有了！\n\n✉️ 没有端到端加密的经典电子邮件用字母符号标记\n\n😻 所有联系人的新的增强的个人资料屏\n\n🔲 新增快速访问聊天中所用应用的按钮\n\n❤️ 请捐赠帮助我们保持独立并继续带来改进：%1$s</string>
     </resources>

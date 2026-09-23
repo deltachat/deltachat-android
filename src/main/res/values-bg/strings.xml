@@ -766,10 +766,13 @@
     <string name="qrscan_hint_desktop">Преместване на QR кода в камерата</string>
     <string name="qrscan_failed">Неуспешно декодиране на QR код</string>
     <string name="qrscan_ask_join_group">Искате ли да се присъедините към групата \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Сканираният цифров отпечатък не съответства на последния известен за%1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Този QR код съдържа цифров отпечатък, но не и e-mail адрес.\n\nЗа верификация през външен канал, моля най-напред установете криптирана връзка към получателя.</string>
     <string name="qrscan_contains_text">Текст на сканирания QR код:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL адрес на сканирания QR код:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Цифров отпечатък</string>
     <string name="withdraw_verifycontact_explain">Чрез сканиране на този QR код други хора могат да се свързват с Вас.\n\nМожете да деактивирате QR кода тук и повторно да го активирате, като го сканирате отново.</string>
     <string name="withdraw_verifygroup_explain">Чрез сканиране на този QR код други хора могат да се присъединяват към крупата \"%1$s\".\n\nМожете да деактивирате QR кода тук и повторно да го активирате, като го сканирате отново.</string>

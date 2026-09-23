@@ -1024,10 +1024,13 @@
     <string name="qrscan_failed">Kodi QR s’u shkodua dot</string>
     <string name="qrscan_ask_join_group">Doni të bëheni pjesë e grupit “%1$s”?</string>
     <string name="qrscan_ask_join_channel">Doni të hyni te kanali “%1$s”?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Shenjat e gishtave të skanuar nuk përputhen me shenjat e gishtave parë së fundi për %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Ky kod QR përmban shenja gishtash, por jo adresë.\n\nPër një verifikim “out-of-band”, ju lutemi, së pari vendosni me marrësin një lidhje të fshehtëzuar.</string>
     <string name="qrscan_contains_text">Tekst kodi QR të skanuar:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL kodi QR të skanuar:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Shenja gishtash</string>
     <string name="withdraw_verifycontact_explain">Ky kod QR mund të skanohet nga të tjerë për t’u lidhur me ju.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
     <string name="withdraw_verifygroup_explain">Ky kod QR mund të skanohet nga të tjerë për t’u bërë pjesë e grupit “%1$s”.\n\nMund ta riprodhoni, në mënyrë që kodi QR ekzistues, ose ftesa, s’do të funksionojnë më.</string>
@@ -1243,6 +1246,4 @@
     <string name="perm_enable_bg_reminder_title">Prekeni këtu që të merrni mesazhe, teksa Delta Chat rri në prapaskenë.</string>
     <string name="perm_enable_bg_already_done">E keni lejuar tashmë Delta Chat-in të marrë mesazhe në prapaskenë.\n\nNëse mesazhet prapë nuk mbërrijnë në prapaskenë, ju lutemi, kontrolloni edhe rregullimet e sistemit tuaj.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Ç’ka të re?\n\n💯 Fshehtëzimi skaj-më-skaj është i qëndrueshëm dhe përgjithmonë tanimë. Drynat 🔒 na lanë shëndenë!\n\n✉️ Emaile-t klasikë pa fshehtëzim skaj-më-skajtregohen me një simbol shkronjë\n\n😻 Skenë e re e zgjeruar profili për krejt kontaktet tuaj\n\n🔲 Buton i ri për hyrje të shpejtë në aplikacionet e përdorur në një fjalosje\n\n❤️ Ju lutemi, dhuroni, që të na ndihmoni të mbesim të pavarur dhe të vazhdojmë të sjellim përmirësime: %1$s</string>
     </resources>
