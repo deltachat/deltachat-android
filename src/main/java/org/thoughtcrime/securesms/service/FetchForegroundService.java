@@ -92,6 +92,15 @@ public final class FetchForegroundService extends Service {
       if (sending) {
         return true;
       }
+    }
+    ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+    if (foregroundDetector != null && foregroundDetector.isForeground()) {
+      return false;
+    }
+    synchronized (SERVICE_LOCK) {
+      if (!SendingWaiter.tryStartSession()) {
+        return false;
+      }
       sending = true;
     }
     Context appContext = context.getApplicationContext();
@@ -111,6 +120,9 @@ public final class FetchForegroundService extends Service {
               } finally {
                 synchronized (SERVICE_LOCK) {
                   sending = false;
+                }
+                SendingWaiter.endSession();
+                synchronized (SERVICE_LOCK) {
                   if (service != null && fetchCount == 0) {
                     appContext.stopService(service);
                     service = null;
