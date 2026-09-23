@@ -653,10 +653,13 @@
     <string name="qrscan_hint">Κρατήστε την κάμερά σας πάνω από τον κωδικό QR.</string>
     <string name="qrscan_failed">Αδυναμια αποκωδικοποίησης του κωδικού QR</string>
     <string name="qrscan_ask_join_group">Θέλετε να συμμετέχετε στην ομάδα \"%1$s\";</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Το δακτυλικό αποτύπωμα δεν ταιριάζει με το τελευταίο που είδαμε για %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Αυτός ο κωδικός QR περιέχει δακτυλικό αποτύπωμα αλλά όχι διεύθυνση e-mail.\n\nΓια επαλήθευση εκτός ζώνης, δημιουργήστε πρώτα μια κρυπτογραφημένη σύνδεση με τον παραλήπτη.</string>
     <string name="qrscan_contains_text">Σαρωμένο κείμενο κωδικού QR:\n\n%1$s</string>
     <string name="qrscan_contains_url">Διεύθυνση URL σαρωμένου κωδικού QR:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Δακτυλικό αποτύπωμα</string>
     <string name="withdraw_verifycontact_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_verifygroup_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>

@@ -186,6 +186,7 @@
     <string name="pref_background">الخلفية</string>
     <!-- deprecated -->
     <string name="pref_show_emails_all">كلها</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">البصمة</string>
     <!-- notifications -->
     <string name="notify_reply_button">رد</string>

@@ -216,6 +216,7 @@
     <string name="member_x_removed">Član %1$s uklonjen.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Otisak prsta</string>
     <!-- notifications -->
     <string name="notify_reply_button">Odgovori</string>

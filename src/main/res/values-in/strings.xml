@@ -510,6 +510,7 @@
     <string name="qrscan_ask_join_group">Apakah anda ingin bergabung dengan grup \"%1$s\"?</string>
     <string name="qrscan_contains_text">Kode QR yang dipindai text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Kode QR yang dipindai URL:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Sidik jari</string>
     <string name="qrshow_title">Kode undangan QR</string>
     <string name="qrshow_x_joining">%1$sbergabung.</string>
