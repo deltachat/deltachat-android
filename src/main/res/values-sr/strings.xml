@@ -714,10 +714,13 @@
     <string name="qrscan_hint">Поставите камеру изнад бар-кôда</string>
     <string name="qrscan_failed">Бар-кôд не може бити декодиран</string>
     <string name="qrscan_ask_join_group">Да ли желите да се придружите групи „%1$s“?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Очитани отисак не одговара последње виђеном отиску за %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Овај бар-кôд садржи отисак али нема е-адресу.\n\nЗа потврду преко других канала, најпре установите шифровану везу са примаоцем.</string>
     <string name="qrscan_contains_text">Очитани текст бар-кôда:\n\n%1$s</string>
     <string name="qrscan_contains_url">Очитани бар-кôда везе:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Отисак</string>
     <string name="withdraw_verifycontact_explain">Други могу да очитају овај бар-кôд да би вас контактирали.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>
     <string name="withdraw_verifygroup_explain">Други могу да очитају овај бар-кôд да би приступили групи „%1$s“.\n\nОвде можете да деактивирате бар-кôд и поново га активирате тако што ћете га поново oчитати.</string>

@@ -1085,10 +1085,13 @@
     <string name="qrscan_failed">El código QR no pudo ser decodificado</string>
     <string name="qrscan_ask_join_group">¿Quieres unirte al grupo \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">¿Quieres unirte al canal \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">La huella digital escaneada no coincide con la última huella vista para \"%1$s\".</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Este código QR contiene una huella digital pero no una dirección de correo electrónico.\n\nPara una verificación fuera de banda, establezca primero una conexión cifrada con el destinatario.</string>
     <string name="qrscan_contains_text">Texto del código QR escaneado:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del código QR escaneado:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Huella digital</string>
     <string name="withdraw_verifycontact_explain">Este código QR puede ser escaneado por otras personas para contactarlo.\n\nPuede desactivar el código QR aquí y reactivarlo escaneándolo de nuevo.</string>
     <string name="withdraw_verifygroup_explain">Este código QR puede ser escaneado por otros para unirse al grupo \"%1$s\".\n\nPuede desactivar el código QR aquí y reactivarlo escaneándolo de nuevo.</string>
@@ -1306,8 +1309,6 @@
     <string name="perm_enable_bg_reminder_title">Toque aquí para recibir mensajes mientras Delta Chat está en segundo plano.</string>
     <string name="perm_enable_bg_already_done">Ya has permitido que Delta Chat reciba mensajes en segundo plano.\n\nSi los mensajes aún no llegan en segundo plano, compruebe también la configuración de su sistema.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">¿Qué hay de nuevo?\n\n💯 El cifrado de extremo a extremo es fiable y para siempre. ¡Se acabaron los candados 🔒!\n\n✉️ El correo electrónico clásico sin cifrado de extremo a extremo es marcado con un símbolo de carta.\n\n😻 Nueva pantalla de perfil mejorada para todos tus contactos.\n\n🔲 Nuevo botón para acceder rápidamente a las apps usadas en el chat.\n\n❤️ Dona para ayudarnos a mantener nuestra independencia y seguir mejorando: %1$s</string>
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 Ya está disponible la nueva versión %1$s. Toca este mensaje para actualizar la aplicación y disfrutar de las nuevas funciones.</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->

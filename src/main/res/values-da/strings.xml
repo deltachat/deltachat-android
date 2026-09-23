@@ -562,10 +562,13 @@
     <string name="qrscan_hint">Placer kamera over QR kode</string>
     <string name="qrscan_failed">QR-kode kunne ikke blive afkodet</string>
     <string name="qrscan_ask_join_group">Vil du deltage i gruppen \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Det aflæste fingeraftryk passer ikke til sidst set fingeraftryk for %1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Denne QR kode indeholder et fingeraftryk men ingen e-mail adresse.\n\nFor en uden for område efterprøvning opret først en krypteret forbindelse til modtager.</string>
     <string name="qrscan_contains_text">Skannet QR kode tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannet QR kode URL:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Fingeraftryk</string>
     <string name="withdraw_qr_code">Deaktiver QR kode</string>
     <string name="revive_qr_code">Aktiver QR kode</string>

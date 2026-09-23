@@ -182,6 +182,7 @@
     <string name="pref_backup">బ్యాకప్</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">చాట్ నేపధ్యం</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
     <!-- notifications -->
     <string name="notify_reply_button">జవాబు</string>

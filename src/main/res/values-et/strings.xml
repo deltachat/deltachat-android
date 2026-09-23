@@ -1078,10 +1078,13 @@
     <string name="qrscan_failed">QR-koodi dekodeerimine ei õnnestunud</string>
     <string name="qrscan_ask_join_group">Kas soovid liituda „%1$s“ grupiga?</string>
     <string name="qrscan_ask_join_channel">Kas sa soovid liituda „%1$s“ kanaliga?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Skaneeritud sõrmejälg ei vasta %1$s viimati nähtud sõrmejäljele.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Selles QR-koois on sõrmejälg, kuid pole aadressi.\n\nTavakanalivälise verifitseerimise jaoks palun esmalt loo teise osapoolega krüptitud ühendus.</string>
     <string name="qrscan_contains_text">Skaneeritud QR-koodi tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skaneeritud QR-koodi võrguaadress:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Sõrmejälg</string>
     <string name="withdraw_verifycontact_explain">Seda QR-koodi saavad teised skaneerida nii sinuga suhtlema hakata\n\nKui sa ta lähtestad, siis ei QR-kood ega kutse link pole enam kasutatavad.</string>
     <string name="withdraw_verifygroup_explain">Seda QR-koodi saab kasutada „%1$s“ grupiga liitumiseks.\n\nKui sa ta lähtestad, siis ei QR-kood ega kutse link pole enam kasutatavad.</string>
@@ -1107,6 +1110,8 @@
     <string name="qraccount_qr_code_cannot_be_used">Selle skaneeritud QR-koodi abil ei saa uut profiili kasutusele võtta.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Kas logid sisse „%1$s“ profiili?</string>
+    <!-- the placeholder will be replaced by a domain that is preferred for relaying messages. smth as "Using foo.example.org" -->
+    <string name="relay_login_hint">Kasutusel on: %1$s</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s kutsus sind liituma selle grupiga.\n\nOotan vastust kasutaja %2$s seadmest…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
@@ -1300,7 +1305,12 @@
     <string name="perm_enable_bg_already_done">Sa juba oled Delta Chatil lubanud laadida sõnumeid taustal.\n\nKui see siiski ei toimi, siis palun kontrolli rakenduse õigusi süsteemi seadistustest.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Mida on meil uut?\n\n💯 Läbiv krüptimine on töökindel ja seda nüüd igaveseks. Tabalukud 🔒 on läinud!\n\n✉️ Klassikalised e-kirjad, kus läbiv krüptimine on puudu, on märgitud ümbriku ikooniga\n\n😻 Uus ja tõhusam profiilivaade kõikide sinu kontaktide jaoks\n\n🔲 Uus nupp kiireks ligipääsuks vestluses kasutatavate rakendusteni\n\n❤️ Palun toeta meie arendust rahaliselt - nii saame jääda sõltumatuteks ja jätkata selle rakenduse täiustamist: %1$s</string>
+    <string name="update_2_6">Vaata, mida meil on uut!\n\n🌐 Sinu sõnumid liiguvad nutikamalt: kui kasutusel on mitu edastusserverit, siis ühe kadumine ei peata liiklust\n\n📞 Kõned pole enam katselised\n\n📢 Kanalid on siin ja edaspidi - sealhulgas reageerimise võimalusega\n\n✍️ Vestlustele saad lisada kirjelduse ja kõigil on pilt selgem\n\n👌 Saadetud pildid näevad nüüd välja selgemad\n\n🔵 Saad vestlusi märkida mitteloetuks ja see aitab sul asju meelde jätta</string>
+    <string name="update_2_6_android_additions">🐇 Häälsõnumite kiirkuulamine ja automaatne esitus\n\nLõpuks ometi: meil on nüüd kasutusel lihtne kleepsuvalija!</string>
+    <string name="update_2_6_desktop_additions">🐇 Häälsõnumite kiirkuulamine ja automaatne esitus\n\n⏯️ Uus pleier\n\n✅ Mitme sõnumi valimise võimalus edastamiseks või kustutamiseks\n\nLõpuks ometi: meil on nüüd kasutusel lihtne kleepsuvalija!</string>
+    <string name="update_2_6_ios_additions">🎤 Esita häälsõnumeid taustal</string>
+    <string name="update_2_6_end">Palun aita meil jääda sõltuvatuks ning jätkata rakenduse arendamist ja täiendamist ❤️ https://delta.chat/donate</string>
+
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 Saadaval on uus versioon %1$s. Uuendamiseks klõpsa seda sõnumit ja naudi uuenenud rakendust</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->

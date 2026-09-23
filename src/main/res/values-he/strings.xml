@@ -1069,10 +1069,13 @@
     <string name="qrscan_failed">לא ניתן לפענח את קוד ה-QR</string>
     <string name="qrscan_ask_join_group">האם ברצונך להצטרף לקבוצה \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">האם ברצונך להצטרף לערוץ \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">טביעת האצבע שנסרקה אינה תואמת את זו שנראתה לאחרונה עבור %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">קוד ה-QR הזה מכיל טביעת אצבע אך לא כתובת.\n\nלצורך אימות מחוץ לתחום התדר, אנא הקם תחילה חיבור מוצפן עם הנמען.</string>
     <string name="qrscan_contains_text">טקסט של קוד QR שנסרק:\n\n%1$s</string>
     <string name="qrscan_contains_url">כתובת ה-URL של קוד ה-QR שנסרק:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">טביעת אצבע</string>
     <string name="withdraw_verifycontact_explain">אנשים אחרים יכולים לסרוק את קוד ה-QR הזה כדי ליצור איתך קשר.\n\nניתן לאפס אותו, כך שקוד ה-QR או קישור ההזמנה הקיימים כבר לא יפעלו.</string>
     <string name="withdraw_verifygroup_explain">אנשים אחרים יכולים לסרוק את קוד ה-QR הזה כדי להצטרף לקבוצה \"%1$s\".\n\nניתן לאפס אותו, כך שקוד ה-QR או קישור ההזמנה הקיימים כבר לא יפעלו.</string>
@@ -1288,6 +1291,4 @@
     <string name="perm_enable_bg_reminder_title">לחץ כאן כדי לקבל הודעות בזמן ש- Delta Chat פועל ברקע.</string>
     <string name="perm_enable_bg_already_done">כבר אישרת ל- Delta Chat לקבל הודעות ברקע.\n\nאם ההודעות עדיין לא מגיעות ברקע, אנא בדוק גם את הגדרות המערכת שלך.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">מה חדש?\n\n💯 ההצפנה מקצה לקצה אמינה וכעת היא קבועה. מנעולים 🔒 נעלמו!\n\n✉️ דוא\"ל קלאסי ללא הצפנה מקצה לקצה מסומן בסמל של אות\n\n😻 מסך פרופיל משופר חדש לכל אנשי הקשר שלכם\n\n🔲 כפתור חדש לגישה מהירה לאפליקציות המשמשות בצ\'אט\n\n❤️ אנא תרמו כדי לעזור לנו להישאר עצמאיים ולהמשיך להביא שיפורים: %1$s</string>
     </resources>

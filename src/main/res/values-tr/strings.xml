@@ -1013,10 +1013,13 @@
     <string name="qrscan_failed">QR kodu çözülemedi</string>
     <string name="qrscan_ask_join_group">“%1$s” grubuna katılmak istiyor musunuz?</string>
     <string name="qrscan_ask_join_channel">“%1$s” kanalına katılmak istiyor musunuz?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Taranan parmak izi, %1$s için son görülenle eşleşmiyor.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Bu QR kodu bir parmak izi içeriyor ama adres yok.\n\nBir bant dışı doğrulama için lütfen önce alıcıya şifrelenen bir bağlantı kurun.</string>
     <string name="qrscan_contains_text">Taranan QR kodu metni:\n\n%1$s</string>
     <string name="qrscan_contains_url">Taranan QR kodu URL\'si:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Parmak izi</string>
     <string name="withdraw_verifycontact_explain">Bu QR kodu, size ulaşmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
     <string name="withdraw_verifygroup_explain">Bu QR kodu, “%1$s” grubuna katılmak için diğerleri tarafından taranabilir.\n\nOnu sıfırlayabilirsiniz; böylece varolan QR kodu ya da çağırma bağlantısı artık çalışmayacaktır.</string>
@@ -1229,6 +1232,4 @@
     <string name="perm_enable_bg_reminder_title">Delta Chat arka plandayken iletileri almak için buraya dokunun.</string>
     <string name="perm_enable_bg_already_done">Delta Chat\'in arka planda iletileri almasına zaten izin verdiniz.\n\nİletiler arka planda hâlâ gelmiyorsa, lütfen sistem ayarlarınızı da denetleyin.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Ne yeni?\n\n💯 Uçtan uca şifreleme artık güvenilir ve sonsuza kadar geçerli. Asma kilitlerle 🔒 anlaşılabilir!\n\n✉️ Uçtan uca şifrelemeli olmayan klasik e-posta bir mektup sembolü olarak işaretlenir\n\n😻 Tüm kişileriniz için yeni geliştirilen profil ekranı\n\n🔲 Bir sohbette kullanılan uygulamalara hızlı erişim için yeni düğme\n\n❤️ Bağımsız kalmamız ve yeni geliştirmeler getirmemiz için lütfen bize yardım edin: %1$s</string>
     </resources>
