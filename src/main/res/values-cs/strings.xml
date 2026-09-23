@@ -980,10 +980,13 @@
     <string name="qrscan_failed">QR kód nelze přečíst</string>
     <string name="qrscan_ask_join_group">Přejete si přidat ke skupině \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Chcete se připojit ke kanálu \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Rozpoznaný otisk uživatele %1$s neodpovídá jeho poslednímu otisku.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Tento QR kód obsahuje otisk, ale žádný e-mail.\n\nK ověření nezávislou cestou nejprve vytvořte šifrované připojení k příjemci.</string>
     <string name="qrscan_contains_text">Text z QR kódu:\n\n%1$s</string>
     <string name="qrscan_contains_url">Adresa URL z QR kódu:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Otisk</string>
     <string name="withdraw_verifycontact_explain">Tento QR kód mohou ostatní uživatelé použít, aby vás kontaktovali.\n\nMůžete také vygenerovat nový, čímž dosavadní QR kód či odkaz s pozvánkou zneplatníte.</string>
     <string name="withdraw_verifygroup_explain">Tento QR kód mohou ostatní uživatelé použít k připojení ke skupině \"%1$s\".\n\nMůžete také vygenerovat nový, čímž dosavadní QR kód či odkaz s pozvánkou zneplatníte.</string>
@@ -1179,6 +1182,4 @@
     <string name="perm_enable_bg_reminder_title">Stiskem nastavíte přijímání zpráv, když je aplikace Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Přijímání zpráv na pozadí jste již aplikaci Delta Chat povolili.\n\nV případě, že vám zprávy na pozadí stále nechodí, prosím zkontrolujte svá systémová nastavení.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Co je nového? \n\n💯 Koncové šifrování je nyní spolehlivé a navždy. Visací zámky 🔒 jsou pryč! \n\n✉️ Klasické e-maily bez koncového šifrování jsou označeny symbolem písmene \n\n😻 Nová vylepšená profilová obrazovka pro všechny kontakty \n\n🔲 Nové tlačítko pro rychlý přístup k aplikacím používaným v chatu \n\n❤️ Přispějte nám, abychom zůstali nezávislí a mohli pokračovat ve vylepšování: %1$s</string>
     </resources>

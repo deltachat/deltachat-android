@@ -670,10 +670,13 @@
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>
     <string name="qrscan_hint">Beveg kameraet over QR-koden.</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Det skannede fingeravtrykket stemmer ikke overens med sist sette fingeravtrukk for %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
     <string name="qrscan_contains_text">Den skannede QR-koden inneholder følgende tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Den skannede QR-koden inneholder følgende lenke:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Fingeravtrykk</string>
     <string name="qrshow_title">QR-invitasjonskode</string>
     <string name="qrshow_x_joining">%1$s tar del.</string>

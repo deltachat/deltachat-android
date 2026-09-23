@@ -1078,10 +1078,13 @@
     <string name="qrscan_failed">No s\'ha pogut descodificar el codi QR</string>
     <string name="qrscan_ask_join_group">Voleu unir-vos al grup «%1$s»?</string>
     <string name="qrscan_ask_join_channel">Voleu unir-vos al canal \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">L\'empremta escanejada no coincideix amb l\'última empremta de %1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Aquest codi QR conté una empremta digital, però no hi ha cap adreça de correu electrònic.\n\nPer a una verificació fora de banda, establiu primer una connexió xifrada amb el destinatari.</string>
     <string name="qrscan_contains_text">Text del codi QR escanejat:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codi QR escanejat:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Empremta</string>
     <string name="withdraw_verifycontact_explain">Altres persones que vulguin contactar amb vós poden escanejar aquest codi QR.\n\nPodeu reinicialitzar-lo, de manera que el codi QR o enllaç d\'invitació existent ja no servirà.</string>
     <string name="withdraw_verifygroup_explain">Altres poden escanejar aquest codi QR per a unir-se al grup «%1$s».\n\nPodeu reinicialitzar-lo, de manera que el codi QR existent, o l\'enllaç d\'invitació, deixarà de funcionar.</string>
@@ -1299,8 +1302,6 @@
     <string name="perm_enable_bg_reminder_title">Prem aquí per rebre missatges mentre Delta Chat és en segon pla.</string>
     <string name="perm_enable_bg_already_done">Ja heu autoritzat Delta Chat a rebre missatges en segon pla.\n\nSi encara no us arriben els missatge, reviseu els paràmetres de sistema.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Què hi ha de nou?\n\n💯 El xifrat d\'extrem a extrem és fiable i permanent. Els candaus 🔒 han desaparegut!\n\n✉️ El correu electrònic clàssic sense xifrar d\'extrem a extrem es mostra amb el símbol d\'un sobre.\n\n😻 Nova pantalla de perfil millorada per a tots els teus contactes.\n\n🔲 Nou botó per accedir ràpidament a les aplicacions utilitzades als xats.\n\n❤️ Si us plau, fes una donació per ajudar-nos a continuar independents i seguir aportant millores: %1$s</string>
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 Nova versió %1$s disponible. Prem aquest missatge per actualitzar i gaudir de les noves funcions.</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->

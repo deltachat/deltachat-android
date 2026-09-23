@@ -111,14 +111,6 @@ public class QrCodeHandler {
         builder.setPositiveButton(R.string.ok, null);
         break;
 
-      case DcContext.DC_QR_FPR_WITHOUT_ADDR:
-        showVerifyFingerprintWithoutAddress(builder, qrParsed);
-        break;
-
-      case DcContext.DC_QR_FPR_MISMATCH:
-        showFingerPrintError(builder, name);
-        break;
-
       case DcContext.DC_QR_FPR_OK:
       case DcContext.DC_QR_ADDR:
         showFingerprintOrQrSuccess(builder, qrParsed, name);
@@ -388,27 +380,6 @@ public class QrCodeHandler {
           activity.startActivity(intent);
         });
     builder.setNegativeButton(android.R.string.cancel, null);
-  }
-
-  private void showFingerPrintError(AlertDialog.Builder builder, String name) {
-    builder.setMessage(activity.getString(R.string.qrscan_fingerprint_mismatch, name));
-    builder.setPositiveButton(android.R.string.ok, null);
-  }
-
-  private void showVerifyFingerprintWithoutAddress(AlertDialog.Builder builder, DcLot qrParsed) {
-    builder.setMessage(
-        activity.getString(R.string.qrscan_no_addr_found)
-            + "\n\n"
-            + activity.getString(R.string.qrscan_fingerprint_label)
-            + ":\n"
-            + qrParsed.getText1());
-    builder.setPositiveButton(android.R.string.ok, null);
-    builder.setNeutralButton(
-        R.string.menu_copy_to_clipboard,
-        (dialog, which) -> {
-          Util.writeTextToClipboard(activity, qrParsed.getText1());
-          showDoneToast();
-        });
   }
 
   private void showVerifyContactOrGroup(

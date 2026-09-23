@@ -448,6 +448,7 @@
     <string name="qrscan_ask_join_group">دەتوێت بەشداری کۆڕی \"%1$s\" ببیت؟</string>
     <string name="qrscan_contains_text">دەقی کۆدی QRە سکانکراوەکە:\n\n%1$s</string>
     <string name="qrscan_contains_url">ناونیشانی وێبی کۆدی QRە سکانکراوەکە:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">پەنجەمۆر</string>
     <string name="qrshow_title">کۆدی QRی بانگهێشت کردن</string>
     <string name="qrshow_x_joining">%1$s بەشداربوو</string>

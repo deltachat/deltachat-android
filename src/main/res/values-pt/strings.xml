@@ -523,10 +523,13 @@
     <string name="qrscan_title">Fazer scan do código QR</string>
     <string name="qrscan_hint">Coloque sua câmera sobre o código QR</string>
     <string name="qrscan_ask_join_group">Quer se juntar-se ao grupo \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">A impressão digital digitalizada não corresponde à impressão digital usada pela última vez em %1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Este código QR contém uma impressão digital, mas nenhum endereço de e-mail. \n\nPara uma verificação fora da banda, estabeleça primeiro uma encriptada criptografada com o destinatário.</string>
     <string name="qrscan_contains_text">Texto de código QR digitalizado: \n\n%1$s</string>
     <string name="qrscan_contains_url">URL do código QR digitalizado: \n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Impressão digital</string>
     <string name="qrshow_title">Código de convite do QR</string>
     <string name="qrshow_x_joining">%1$s junta-se.</string>
@@ -614,6 +617,4 @@
     <string name="perm_enable_bg_reminder_title">Toque aqui para receber mensagens mesmo que o Delta Chat esteja em segundo plano.</string>
     <string name="perm_enable_bg_already_done">Já deste permissão para que o Delta Chat receba mensagens em segundo plano.\n\nSe continuas a não receber mensagens em segundo plano, confirma as definições de sistema também.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Que há de novo?\n\n💯 Criptografia de ponta-a-ponta é fiável e para sempre. Os cadeados 🔒 foram-se!\n\n✉️ Email clássico sem criptografia de ponta-a-ponta é marcado com o símbolo duma carta\n\n😻 Novo e melhorado ecrã de perfil para todos os teus contactos\n\n🔲 Novo botão de acesso rápido a apps usadas numa conversa\n\n❤️ Por favor doa para ajudar a mantermo-nos independentes e continuar a trazer-te melhorias: %1$s</string>
     </resources>

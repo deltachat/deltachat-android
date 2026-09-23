@@ -913,10 +913,13 @@
     <string name="qrscan_hint_desktop">Mozgassa a QR-kódot a kamera elé</string>
     <string name="qrscan_failed">A QR-kódot nem sikerült értelmezni</string>
     <string name="qrscan_ask_join_group">Biztosan csatlakozik a(z) „%1$s” nevű szobához?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">A beolvasott ujjlenyomat nem egyezik „%1$s” utoljára ismert ujjlenyomatával.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Ez a QR-kód tartalmaz egy ujjlenyomatot, de nem tartalmaz e-mail-címet.\n\nA sávon kívüli hitelesítéshez először hozzon létre egy titkosított kapcsolatot a címzettel.</string>
     <string name="qrscan_contains_text">A beolvasott QR-kód-szöveg:\n\n%1$s</string>
     <string name="qrscan_contains_url">A beolvasott QR-kód-webcím:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Ujjlenyomat</string>
     <string name="withdraw_verifycontact_explain">Ezt a QR-kódot mások is beolvashatják, hogy felvegyék önnel a kapcsolatot.\n\nA QR-kódot itt kikapcsolhatja, és újból bekapcsolhatja, ha újra beolvassa.</string>
     <string name="withdraw_verifygroup_explain">Ezt a QR-kódot mások is beolvashatják, hogy csatlakozhassanak a(z) „%1$s” nevű csoporthoz.\n\nA QR-kódot itt kikapcsolhatja, és újra bekapcsolhatja, ha újra beolvassa.</string>
@@ -1109,6 +1112,4 @@
     <string name="perm_enable_bg_reminder_title">Koppintson ide az üzenetek fogadásához, miközben a Delta Chat a háttérben fut.</string>
     <string name="perm_enable_bg_already_done">Már engedélyezve van a Delta Chat számára, hogy a háttérben üzeneteket fogadjon.\n\nHa az üzenetek még mindig nem érkeznek meg a háttérben, ellenőrizze a rendszerbeállításokat is.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Újdonságok:\n\n💯 A végpontok közötti titkosítás most már megbízható és örökre megmarad. A lakatok 🔒 eltűntek!\n\n✉️ A végpontok közötti titkosítás nélküli klasszikus e-mailek betűszimbólummal vannak jelölve\n\n😻 Új, továbbfejlesztett profilképernyő az összes névjegyhez\n\n🔲 Új gomb a csevegésben használt alkalmazások gyors eléréséhez\n\n❤️ Ha teheti, adományozzon nekünk, hogy függetlenek maradhassunk és továbbra is fejlesztéseket tudjunk végrehajtani: %1$s</string>
     </resources>

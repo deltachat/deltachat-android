@@ -1078,10 +1078,13 @@
     <string name="qrscan_failed">QR-Code kann nicht dekodiert werden.</string>
     <string name="qrscan_ask_join_group">Der Gruppe \"%1$s\" beitreten?</string>
     <string name="qrscan_ask_join_channel">Dem Kanal \"%1$s\" beitreten?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Der gescannte Fingerabdruck stimmt nicht mit dem zuletzt für %1$s gesehenen Fingerabdruck überein.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Dieser QR-Code enthält einen Fingerabdruck, aber keine Adresse.\n\nFür eine Out-of-Band-Verifizierung bitte zuerst eine verschlüsselte Verbindung zur EmpfängerIn herstellen.</string>
     <string name="qrscan_contains_text">Gescannter QR-Code text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Gescannter QR-Code URL:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Fingerabdruck</string>
     <string name="withdraw_verifycontact_explain">Dieser QR-Code kann von anderen gescannt werden, um dich zu kontaktieren.\n\nDu kannst den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
     <string name="withdraw_verifygroup_explain">Dieser QR-Code kann von anderen gescannt werden, um der Gruppe \"%1$s\" beizutreten.\n\nDu kannst den QR-Code zurücksetzen; der bestehende QR-Code oder Einladungslink wird dann nicht mehr funktionieren.</string>
@@ -1107,6 +1110,8 @@
     <string name="qraccount_qr_code_cannot_be_used">Der eingescannte QR-Code kann nicht dazu verwendet werden, eine neues Profil zu erstellen.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Bei \"%1$s\" anmelden?</string>
+    <!-- the placeholder will be replaced by a domain that is preferred for relaying messages. smth as "Using foo.example.org" -->
+    <string name="relay_login_hint">%1$s verwenden</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s hat dich zu dieser Gruppe eingeladen.\n\nWarte auf die Antwort des Gerätes von %2$s…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
@@ -1300,7 +1305,12 @@
     <string name="perm_enable_bg_already_done">Du hast Delta Chat bereits erlaubt, Nachrichten im Hintergrund zu empfangen.\n\nFalls keine Nachrichten eingehen, überprüfe bitte auch die Systemeinstellungen.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Was ist neu?\n\n💯 Die Ende-zu-Ende-Verschlüsselung ist jetzt dauerhaft. Vorhängeschlösser 🔒 gibt es nicht mehr!\n\n✉️ Klassische E-Mails ohne Ende-zu-Ende-Verschlüsselung sind mit einem Umschlag-Symbol gekennzeichnet\n\n😻 Neues, verbessertes Profil für alle Kontakte\n\n🔲 Neue Schaltfläche für den schnellen Zugriff auf Apps, die in einem Chat verwendet werden\n\n❤️ Bitte spende und hilf uns, unabhängig zu bleiben und weiterhin Verbesserungen zu bringen: %1$s</string>
+    <string name="update_2_6">Was gibt es neues?\n\n🌐 Nachrichten werden jetzt intelligenter übertragen: Dank mehrerer Relais hält der Ausfall eines Relais deine Nachrichten nicht mehr auf\n\n📞 Anrufe sind nicht mehr im Testmodus\n\n📢 Kanäle sind gekommen, um zu bleiben - jetzt sogar mit Reaktionen\n\n ✍️ Füge eine Chat-Beschreibung hinzu, damit niemand im Unklaren bleibt\n\n👌 Gesendete Bilder sehen jetzt besser aus\n\n🔵 Markiere Chats als ungelesen, damit du sie nicht vergisst</string>
+    <string name="update_2_6_android_additions">🐇 Sprachmitteilungen schneller und automatisch abspielen\n\nEndlich: Wir haben einen einfachen Sticker-Picker!</string>
+    <string name="update_2_6_desktop_additions">🐇 Sprachmitteilungen schneller und automatisch abspielen\n\n✅ Mehrere Nachrichten zum Weiterleiten oder Löschen auswählen\n\nEndlich: Wir haben einen einfachen Sticker-Picker!</string>
+    <string name="update_2_6_ios_additions">🎤 Sprachmitteilungen im Hintergrund abspielen</string>
+    <string name="update_2_6_end">Spende, damit wir unabhängig bleiben und weiterhin Verbesserungen vornehmen können ❤️ https://delta.chat/donate</string>
+
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 Neue Version %1$s verfügbar. Tippe auf diese Nachricht, um das Update zu installieren und die neuen Funktionen zu nutzen.</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->

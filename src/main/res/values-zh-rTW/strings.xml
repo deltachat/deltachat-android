@@ -975,10 +975,13 @@
     <string name="qrscan_failed">QR 碼無法識別</string>
     <string name="qrscan_ask_join_group">你要參加群組 「%1$s」嗎?</string>
     <string name="qrscan_ask_join_channel">是否加入頻道“%1$s”？</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">掃描的指紋與的最後一次看到%1$s的指紋不匹配。</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">此 QR 碼包含指紋，但不包含電子郵件位址。\n\n要進行帶外驗證，請先與收件者建立加密連接。</string>
     <string name="qrscan_contains_text">掃描的 QR 碼文本：\n\n%1$s</string>
     <string name="qrscan_contains_url">掃描的 QR 碼 URL：\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">指紋</string>
     <string name="withdraw_verifycontact_explain">其他人可以掃描此QR碼與您聯絡。您可以在此處停用QR碼，然後再次掃描以重新啟動它。</string>
     <string name="withdraw_verifygroup_explain">其他人可以掃描此 QR 碼以加入群組「%1$s」。\n\n您可以在此處停用 QR 碼，然後再次掃描以重新啟動它。</string>
@@ -1175,6 +1178,4 @@
     <string name="perm_enable_bg_reminder_title">點擊此處可在 Delta Chat 處於後台時接收訊息。</string>
     <string name="perm_enable_bg_already_done">您已經允許 Delta Chat 在後台接收訊息。\n\n如果消息仍未在後台到達，請同時檢查您的系統設定。</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">新版變化？ 💯 端對端加密現在可靠且永久有效。鎖頭圖標🔒已經消失！\n\n✉️ 沒有端對端加密的傳統電子郵件會以信件符號✉️標示\n\n😻 為你的所有聯絡人提供全新增強的個人資料頁面\n\n🔲 新按鈕可快速存取聊天中使用的應用程式\n\n❤️ 請捐款以幫助我們保持獨立並持續提供改進：%1$s</string>
     </resources>
