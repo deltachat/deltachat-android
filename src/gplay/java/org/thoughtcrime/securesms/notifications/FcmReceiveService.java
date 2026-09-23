@@ -6,6 +6,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
+import androidx.work.Constraints;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.OutOfQuotaPolicy;
+import androidx.work.WorkManager;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -13,6 +19,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.BuildConfig;
+import org.thoughtcrime.securesms.connect.FetchWorker;
 import org.thoughtcrime.securesms.service.FetchForegroundService;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -106,6 +113,27 @@ public class FcmReceiveService extends FirebaseMessagingService {
     if (remoteMessage.getPriority() == RemoteMessage.PRIORITY_HIGH) {
       FetchForegroundService.start(this);
     } else {
+      enqueueExpeditedFetch();
+    }
+  }
+
+  // Normal-priority do not allow starting a foreground service and the
+  // process is killable on onMessageReceived() returns, so the fetch
+  // goes to an expedited job. If the expedited quota is exhausted, WorkManager
+  // degrades it to a regular one.
+  private void enqueueExpeditedFetch() {
+    try {
+      Constraints constraints =
+          new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
+      OneTimeWorkRequest fetchWorkRequest =
+          new OneTimeWorkRequest.Builder(FetchWorker.class)
+              .setConstraints(constraints)
+              .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
+              .build();
+      WorkManager.getInstance(this)
+          .enqueueUniqueWork("PushFetchWorker", ExistingWorkPolicy.KEEP, fetchWorkRequest);
+    } catch (Exception e) {
+      Log.w(TAG, "cannot enqueue expedited fetch, falling back to synchronous fetch", e);
       FetchForegroundService.fetchSynchronously(this);
     }
   }
