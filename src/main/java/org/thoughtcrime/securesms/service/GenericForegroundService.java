@@ -77,6 +77,13 @@ public final class GenericForegroundService extends Service {
     }
   }
 
+  @Override
+  public void onTimeout(int startId, int fgsType) {
+    Log.w(TAG, "onTimeout stopping");
+    stopForeground(true);
+    stopSelf();
+  }
+
   private synchronized void updateNotification() {
     Iterator<Entry> iterator = allActiveMessages.values().iterator();
 

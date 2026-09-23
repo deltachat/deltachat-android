@@ -21,3 +21,6 @@
 
 # WorkManager-related rules
 -keep class * extends androidx.room.RoomDatabase { *; }
+
+# Firebase
+-keep class * extends com.google.firebase.messaging.FirebaseMessagingService { *; }

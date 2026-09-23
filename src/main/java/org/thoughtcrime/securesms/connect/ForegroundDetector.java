@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.service.SendingNotifier;
+import org.thoughtcrime.securesms.util.Util;
 
 @SuppressLint("NewApi")
 public class ForegroundDetector implements Application.ActivityLifecycleCallbacks {
@@ -67,6 +69,15 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
       Log.i(
           "DeltaChat",
           "++++++++++++++++++ last ForegroundDetector.onActivityStopped() ++++++++++++++++++");
+      // Check if the app has to keep running for unfinished sending;
+      // delay for activity restarts on configuration changes.
+      Util.runOnMainDelayed(
+          () -> {
+            if (isBackground()) {
+              SendingNotifier.onAppBackgrounded(application);
+            }
+          },
+          1000);
     }
   }
 

@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
@@ -22,6 +23,8 @@ public final class FetchForegroundService extends Service {
   private static volatile boolean fetchingSynchronously = false;
   private static Intent service;
   private static int fetchCount = 0;
+  static FetchForegroundService s_this = null;
+  private static volatile boolean sending = false;
 
   public static void start(Context context) {
     ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
@@ -49,6 +52,10 @@ public final class FetchForegroundService extends Service {
     }
   }
 
+  public @Nullable static FetchForegroundService getInstance() {
+    return s_this;
+  }
+
   public static void stop(Context context) {
     synchronized (SERVICE_LOCK) {
       if (fetchCount > 0) {
@@ -68,16 +75,68 @@ public final class FetchForegroundService extends Service {
 
     synchronized (SERVICE_LOCK) {
       if (service != null) {
+        // If the outgoing queue is not empty, stopping the service
+        // will interrupt the ongoing upload, so the service transforms into
+        // a sending notification instead.
+        if (continueAsSendingService(context)) {
+          return;
+        }
         context.stopService(service);
         service = null;
       }
     }
   }
 
+  private static boolean continueAsSendingService(Context context) {
+    synchronized (SERVICE_LOCK) {
+      if (sending) {
+        return true;
+      }
+      sending = true;
+    }
+    Context appContext = context.getApplicationContext();
+    new Thread(
+            () -> {
+              try {
+                if (SendingWaiter.isSendingFinished(appContext)) {
+                  return;
+                }
+                FetchForegroundService instance = s_this;
+                if (instance == null) {
+                  return;
+                }
+                instance.updateNotificationToSending();
+                SendingWaiter.awaitQueueEmpty(
+                    appContext, SendingWaiter.SENDING_MAX_RUNTIME_MS, () -> s_this == null);
+              } finally {
+                synchronized (SERVICE_LOCK) {
+                  sending = false;
+                  if (service != null && fetchCount == 0) {
+                    appContext.stopService(service);
+                    service = null;
+                  }
+                }
+              }
+            },
+            "sending")
+        .start();
+    return true;
+  }
+
+  private void updateNotificationToSending() {
+    Notification notification =
+        new NotificationCompat.Builder(this, NotificationCenter.CH_GENERIC)
+            .setContentTitle(getString(R.string.sending))
+            .setSmallIcon(R.drawable.notification_permanent)
+            .build();
+    NotificationManagerCompat.from(this).notify(NotificationCenter.ID_FETCH, notification);
+  }
+
   @Override
   public void onCreate() {
     Log.i(TAG, "Creating fetch service");
     super.onCreate();
+    s_this = this;
 
     Notification notification =
         new NotificationCompat.Builder(this, NotificationCenter.CH_GENERIC)
@@ -143,6 +202,7 @@ public final class FetchForegroundService extends Service {
 
   @Override
   public void onDestroy() {
+    s_this = null;
     stopForeground(true);
   }
 
