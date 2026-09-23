@@ -12,6 +12,7 @@
 * Allow to open invitation links pasted in the search bar in "New Chat" screen
 * No more error sign for messages in group if the message was delivered to some of the members
 * Improve a11y on Conversation List
+* When a contact has not been seen for a long time, show a hint in the contact list, chat members list and 1:1 chat subtitle
 * Remove verification icon and "Introduced By" from profile. They are no longer needed (See [FAQ](https://delta.chat/en/help#e2eeguarantee))
 * Fix: support scanning a channel-invite while creating a new profile
 * Fix: random long delay when reopening a WebXDC app
