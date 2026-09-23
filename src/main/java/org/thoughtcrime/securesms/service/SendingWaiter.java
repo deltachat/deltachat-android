@@ -10,6 +10,8 @@ public final class SendingWaiter {
   private static final String TAG = "SendingWaiter";
 
   public static final long SENDING_MAX_RUNTIME_MS = 30 * 60 * 1000;
+  private static final Object SESSION_LOCK = new Object();
+  private static boolean sessionActive = false;
 
   public interface AbortCheck {
     boolean shouldAbort();
@@ -26,8 +28,25 @@ public final class SendingWaiter {
     }
   }
 
+  public static boolean tryStartSession() {
+    synchronized (SESSION_LOCK) {
+      if (sessionActive) {
+        return false;
+      }
+      sessionActive = true;
+      return true;
+    }
+  }
+
+  public static void endSession() {
+    synchronized (SESSION_LOCK) {
+      sessionActive = false;
+    }
+  }
+
   public static boolean awaitQueueEmpty(Context context, long timeoutMs, AbortCheck abortCheck) {
     long deadline = System.currentTimeMillis() + timeoutMs;
+    int polls = 0;
     while (System.currentTimeMillis() < deadline) {
       if (isSendingFinished(context)) {
         return true;
@@ -40,6 +59,10 @@ public final class SendingWaiter {
         return false;
       }
       Util.sleep(1000);
+      polls++;
+      if (polls % 30 == 0) {
+        Log.i(TAG, "still sending after " + polls + " polls");
+      }
     }
     return false;
   }

@@ -43,14 +43,16 @@ public class FetchWorker extends Worker {
 
     // If there are still outgoing messages, keep running until the queue is drained.
     // Workers are stopped after 10 minutes, the next run resumes the queue.
-    try {
-      if (!SendingWaiter.isSendingFinished(context)) {
+    if (!SendingWaiter.isSendingFinished(context) && SendingWaiter.tryStartSession()) {
+      try {
         Log.i(TAG, "doWork(): sending not finished, continuing in foreground");
         setForegroundAsync(createSendingForegroundInfo()).get();
         SendingWaiter.awaitQueueEmpty(context, SENDING_MAX_RUNTIME_MS, null);
+      } catch (Exception e) {
+        Log.w(TAG, "Could not continue sending in foreground", e);
+      } finally {
+        SendingWaiter.endSession();
       }
-    } catch (Exception e) {
-      Log.w(TAG, "Could not continue sending in foreground", e);
     }
 
     Log.i(TAG, "++++++++++++++++++ doWork() will return ++++++++++++++++++");
@@ -65,6 +67,6 @@ public class FetchWorker extends Worker {
             .setSmallIcon(R.drawable.notification_permanent)
             .build();
     return new ForegroundInfo(
-        NotificationCenter.ID_GENERIC, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
+        NotificationCenter.ID_SENDING, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
   }
 }
