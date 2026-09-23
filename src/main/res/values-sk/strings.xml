@@ -1086,10 +1086,13 @@
     <string name="qrscan_failed">QR kód sa nepodarilo dekódovať</string>
     <string name="qrscan_ask_join_group">Chcete sa pridať k skupine „%1$s“?</string>
     <string name="qrscan_ask_join_channel">Chcete sa pridať ku kanálu \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Naskenovaný odtlačok prsta sa nezhoduje s posledným zaznamenaným pre %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Tento QR kód obsahuje odtlačok prsta bez e-mailovej adresy.\n\nANa nezávislé overenie najskôr prosím vytvorte šifrované pripojenie k príjemcovi.</string>
     <string name="qrscan_contains_text">Naskenovaný text QR kódu: \n\n%1$s</string>
     <string name="qrscan_contains_url">URL adresa z naskenovaného QR kódu:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Odtlačok prsta</string>
     <string name="withdraw_verifycontact_explain">Tento QR kód môžu naskenovať iní, aby vás mohli kontaktovať.\n\nKód môžete tiež obnoviť, ak chcete zneplatniť pôvodný QR kód alebo pozývací odkaz.</string>
     <string name="withdraw_verifygroup_explain">Tento QR kód môžu naskenovať ostatní, aby sa pridali ku skupine „%1$s“.\n\nKód môžete tiež obnoviť, ak chcete zneplatniť pôvodný QR kód alebo pozývací odkaz.</string>
@@ -1297,6 +1300,4 @@
     <string name="perm_enable_bg_reminder_title">Klepnutím sem prijmete správy, zatiaľ čo je Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Aplikácii Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež nastavenia systému.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Čo je nové?\n\n💯 Šifrovanie od zariadenia k zariadeniu je dostatočne spoľahlivé a od teraz predvolene natrvalo zapnuté. Zámky 🔒 znázorňujúce šifrovanie sa viac nezobrazujú!\n\n✉️ Správy doručované bežným e-mailom bez šifrovania od zariadenia k zariadeniu sú označené symbolom obálky\n\n😻 Nová vylepšená obrazovka profilu pre všetky kontakty\n\n🔲 Nové tlačidlo pre rýchly prístup k súkromným aplikáciám v konverzáciách\n\n❤️ Prosím, prispejte nám na vývoj, aby sme mohli zostať nezávislí a naďalej mohli prinášať vylepšenia: %1$s</string>
     </resources>

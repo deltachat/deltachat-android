@@ -925,6 +925,7 @@
     <string name="qrscan_ask_join_channel">Ar norite prisijungti prie kanalo „%1$s“?</string>
     <string name="qrscan_contains_text">Nuskenuoto QR kodo tekstas:\n\n%1$s</string>
     <string name="qrscan_contains_url">Nuskenuoto QR kodo URL:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Kontrolinis kodas</string>
     <string name="withdraw_verifycontact_explain">Kiti žmonės gali nuskenuoti šį QR kodą, kad su jumis susisiektų.\n\nJūs galite jį atstatyti, kad esamas QR kodas ar pakvietimo nuoroda daugiau nebeveiktų.</string>
     <string name="withdraw_qr_code">Pasyvinti QR kodą</string>
@@ -1083,6 +1084,4 @@
     <string name="perm_enable_bg_reminder_title">Bakstelėkite čia, norėdami gauti žinutes, kol Delta Chat veikia fone.</string>
     <string name="perm_enable_bg_already_done">Jūs jau leidote Delta Chat gauti žinutes fone.\n\nJei žinutės vis tiek nepristatomos fone, patikrinkite taip pat savo sistemos nustatymus.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Kas naujo?\n\n💯 Ištisinis šifravimas yra patikimas ir visą laiką. Pakabinamųjų spynų 🔒 nebėra!\n\n✉️ Klasikiniai el. laiškai be ištisinio šifravimo yra pažymėti voko simboliu\n\n😻 Naujas, pagerintas profilio langas visiems jūsų adresatams\n\n🔲 Naujas mygtukas, skirtas greitai pasiekti pokalbyje naudojamas programėles\n\n❤️ Prašome paaukoti, kad padėtumėte mums išlikti nepriklausomiems ir galėtume toliau teikti patobulinimus: %1$s</string>
     </resources>

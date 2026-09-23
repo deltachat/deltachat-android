@@ -126,6 +126,20 @@
     <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
     <string name="last_seen_relative"> Ultimo accesso %1$s</string>
     <string name="last_seen_unknown">Ultimo accesso: sconosciuto</string>
+    <!-- This is about a contact that was not seen for one or more months -->
+    <plurals name="seen_n_months_ago">
+        <item quantity="one">Visto %d mese fa</item>
+        <item quantity="many">Visto %d mesi fa</item>
+        <item quantity="other">Visto %d mesi fa</item>
+    </plurals>
+    <!-- This is about a contact that was not seen for one or more years -->
+    <plurals name="seen_n_years_ago">
+        <item quantity="one">Visto %d anno fa</item>
+        <item quantity="many">Visto %d anni fa</item>
+        <item quantity="other">Visto %d anni fa</item>
+    </plurals>
+    <!-- This is about a contact that was never seen (as added by others to a group or created by a vcard) -->
+    <string name="never_seen">Mai visto</string>
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">%d minuto di durata</item>
@@ -1085,10 +1099,13 @@
     <string name="qrscan_failed">Impossibile decodificare il codice QR</string>
     <string name="qrscan_ask_join_group">Vuoi entrare nel gruppo \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Vuoi unirti al canale \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">L\'impronta digitale scansionata non corrisponde all\'ultima visualizzata per %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Questo codice QR contiene un\'impronta ma non un indirizzo email.\n\nPer una verifica efficace, per favore prima stabilisci una connessione cifrata col destinatario.</string>
     <string name="qrscan_contains_text">Testo codice QR scansionato:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL del codice QR scansionato:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Impronta digitale</string>
     <string name="withdraw_verifycontact_explain">Questo codice QR può essere scansionato da altri per contattarti.\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
     <string name="withdraw_verifygroup_explain">Questo codice QR può essere scansionato da altri per unirsi al gruppo \"%1$s\".\n\nPuoi reimpostarlo, in modo che il codice QR o il link di invito esistente non funzionino più.</string>
@@ -1114,6 +1131,8 @@
     <string name="qraccount_qr_code_cannot_be_used">Il codice QR scansionato non può essere utilizzato per creare un nuovo profilo.</string>
     <!-- the placeholder will be replaced by the address of the profile -->
     <string name="qrlogin_ask_login">Accedere a \"%1$s\"?</string>
+    <!-- the placeholder will be replaced by a domain that is preferred for relaying messages. smth as "Using foo.example.org" -->
+    <string name="relay_login_hint">Utilizzando %1$s</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s ti ha invitato ad unirti a questo gruppo.\n\nIn attesa che il dispositivo di %2$s risponda…</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
@@ -1307,7 +1326,12 @@
     <string name="perm_enable_bg_already_done">Hai già autorizzato Delta Chat a ricevere messaggi in secondo piano.\n\nSe i messaggi non arrivano in secondo piano, per piacere controlla anche le impostazioni di sistema.</string>
 
     <!-- device messages for updates -->
-    <string name="update_2_0">Novità?\n\n💯 La crittografia end-to-end è ora affidabile e definitiva. I lucchetti 🔒 sono spariti!\n\n✉️ Le email classiche senza crittografia end-to-end sono contrassegnate dal simbolo di una lettera\n\n😻 Nuova schermata del profilo migliorata per tutti i tuoi contatti\n\n🔲 Nuovo pulsante per l\'accesso rapido alle app utilizzate in una chat\n\n❤️ Dona per aiutarci a rimanere indipendenti e continuare a migliorare: %1$s</string>
+    <string name="update_2_6">Scopri le novità!\n\n🌐 I tuoi messaggi viaggiano in modo più intelligente: grazie ai ripetitori multipli, il guasto di uno di essi non ne bloccherà l\'invio\n\n📞 Le chiamate sono diventate mature e non sono più in fase sperimentale\n\n📢 I canali sono qui per restare: ora anche con le reazioni\n\n✍️ Aggiungi una descrizione alla chat, così nessuno avrà dubbi\n\n👌 Le immagini inviate ora sono più nitide\n\n🔵 Contrassegna le chat come non lette, così non te ne dimenticherai</string>
+    <string name="update_2_6_android_additions">🐇 Accelerazione e riproduzione automatica dei messaggi vocali\n\ne finalmente: abbiamo un selettore di sticker di base!</string>
+    <string name="update_2_6_desktop_additions">🐇 Velocizzazione e riproduzione automatica dei messaggi vocali\n\n⏯️ nuovo lettore audio\n\n✅ selezione di più messaggi per inoltro ed eliminazione\n\nfinalmente: abbiamo un selettore di sticker di base!</string>
+    <string name="update_2_6_ios_additions">🎤 Riproduci i messaggi vocali in sottofondo</string>
+    <string name="update_2_6_end">Ti preghiamo di donare per aiutarci a rimanere indipendenti e continuare ad apportare miglioramenti ❤️ https://delta.chat/donate</string>
+
     <!-- The placeholder will be replaced by a version name, e.g. "v2.50.0" -->
     <string name="update_available_msg">🎉 È disponibile la nuova versione %1$s . Tocca questo messaggio per aggiornare e scoprire le nuove funzionalità</string>
     <!-- The placeholder will be replaced by a version name, e.g. "Downloading v2.50.0 …" -->
