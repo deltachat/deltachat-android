@@ -92,7 +92,7 @@ public class ConversationTitleView extends RelativeLayout {
           subtitleStr = dcContact.getAddr();
         } else if (dcContact.isBot()) {
           subtitleStr = context.getString(R.string.bot);
-        } else if (dcContact.getFreshness() == DcContact.DC_FRESHNESS_OLD) {
+        } else if (dcChat.canSend() && dcContact.getFreshness() == DcContact.DC_FRESHNESS_OLD) {
           subtitleStr = DateUtils.getFormattedFreshness(getContext(), dcContact.getLastSeen());
         }
         isOnline = dcContact.wasSeenRecently();
