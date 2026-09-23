@@ -43,6 +43,12 @@ public final class FetchForegroundService extends Service {
     }
   }
 
+  public static void fetchStarted() {
+    synchronized (SERVICE_LOCK) {
+      fetchCount++;
+    }
+  }
+
   public static void stop(Context context) {
     synchronized (SERVICE_LOCK) {
       if (fetchCount > 0) {
