@@ -279,7 +279,10 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
       }
       currentPosition = newPosition;
 
-      boolean showFab = chatId > 0 && tabs.get(newPosition).type1 == DcMsg.DC_MSG_WEBXDC;
+      boolean showFab =
+          tabs.get(newPosition).type1 == DcMsg.DC_MSG_WEBXDC
+              && chatId > 0
+              && dcContext.getChat(chatId).canSend();
       addAppFab.setVisibility(showFab ? View.VISIBLE : View.GONE);
     }
   }
