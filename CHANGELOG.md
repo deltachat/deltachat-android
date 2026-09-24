@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.62.0
+2026-09
 
 * Improve resilience & decentralization: new users onboard by default in more than one relay, randomly selected, instead of using the hardcoded nine.testrun.org relay
 * Improve resilience: pick random relay for sending and try others if sending with one fails, no need for manually selecting a relay "used for sending"
