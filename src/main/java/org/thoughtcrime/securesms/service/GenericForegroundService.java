@@ -205,7 +205,6 @@ public final class GenericForegroundService extends Service {
     updateNotification();
   }
 
-  @TargetApi(Build.VERSION_CODES.O)
   public static void createFgNotificationChannel(Context context) {
     if (!CHANNEL_CREATED.get() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       CHANNEL_CREATED.set(true);
