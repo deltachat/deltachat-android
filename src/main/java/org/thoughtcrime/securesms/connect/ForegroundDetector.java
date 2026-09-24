@@ -67,8 +67,11 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
       // delay for activity restarts on configuration changes.
       Util.runOnMainDelayed(
           () -> {
+            Log.d(TAG, "background sending check");
             if (isBackground()) {
               SendingNotifier.onAppBackgrounded(application);
+            } else {
+              Log.d(TAG, "background sending check skipped, app in foreground again");
             }
           },
           1000);

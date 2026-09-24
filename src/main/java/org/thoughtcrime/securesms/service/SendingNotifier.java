@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms.service;
 
 import android.content.Context;
 import android.util.Log;
-import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.KeepAliveService;
 import org.thoughtcrime.securesms.util.Util;
 
@@ -13,44 +12,40 @@ public class SendingNotifier {
   public static void onAppBackgrounded(final Context context) {
     Util.runOnAnyBackgroundThread(
         () -> {
+          long started = System.currentTimeMillis();
+          Log.i(TAG, "onAppBackgrounded()");
+
           if (KeepAliveService.getInstance() != null) {
             return;
           }
           if (FetchForegroundService.getInstance() != null) {
             return;
           }
-          if (SendingWaiter.isSendingFinished(context)) {
+          boolean sendingFinished = SendingWaiter.isSendingFinished(context);
+          Log.d(
+              TAG,
+              "isSendingFinished()="
+                  + sendingFinished
+                  + " after "
+                  + (System.currentTimeMillis() - started)
+                  + "ms");
+          if (sendingFinished) {
             return;
           }
           if (!SendingWaiter.tryStartSession()) {
             return;
           }
-          try {
-            poll(context.getApplicationContext());
-          } finally {
+          boolean serviceStarted = SendingForegroundService.start(context);
+          Log.d(
+              TAG,
+              "SendingForegroundService.start()="
+                  + serviceStarted
+                  + " after "
+                  + (System.currentTimeMillis() - started)
+                  + "ms");
+          if (!serviceStarted) {
             SendingWaiter.endSession();
           }
         });
-  }
-
-  private static void poll(Context context) {
-    NotificationController controller;
-    try {
-      controller =
-          GenericForegroundService.startForegroundTask(
-              context, context.getString(R.string.sending));
-    } catch (Exception e) {
-      Log.w(TAG, "cannot start sending notification", e);
-      return;
-    }
-    try {
-      SendingWaiter.awaitQueueEmpty(context, SendingWaiter.SENDING_MAX_RUNTIME_MS, null);
-    } finally {
-      try {
-        controller.close();
-      } catch (Exception e) {
-        Log.w(TAG, "cannot remove sending notification", e);
-      }
-    }
   }
 }
