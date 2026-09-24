@@ -121,23 +121,37 @@
     <string name="this_month">This month</string>
     <string name="last_week">Last week</string>
     <string name="last_month">Last month</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Last seen at %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Last seen %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Last seen: Unknown</string>
-    <!-- This is about a contact that was not seen for one or more months -->
+
+    <!-- A contact was seen recently. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_recently">Seen recently</string>
+    <!-- A contact was seen today. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_today">Seen today</string>
+    <!-- A contact was seen within a week. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_within_week">Seen within a week</string>
+    <!-- A contact was seen within a month. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_within_month">Seen within a month</string>
+    <!-- A contact was seen a number of month ago. The string is at places with few space, so stay as short as possible. -->
     <plurals name="seen_n_months_ago">
         <item quantity="one">Seen %d month ago</item>
         <item quantity="other">Seen %d months ago</item>
     </plurals>
-    <!-- This is about a contact that was not seen for one or more years -->
+    <!-- A contact was seen a long time ago, more than a year. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_long_ago">Seen a long time ago</string>
+    <!-- A contact was never seen (as added by others to a group or created by a vcard). The string is at places with few space, so stay as short as possible. -->
+    <string name="never_seen">Never seen</string>
+
+    <!-- deprecated -->
     <plurals name="seen_n_years_ago">
         <item quantity="one">Seen %d year ago</item>
         <item quantity="other">Seen %d years ago</item>
     </plurals>
-    <!-- This is about a contact that was never seen (as added by others to a group or created by a vcard) -->
-    <string name="never_seen">Never seen</string>
+
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">%d minute duration</item>

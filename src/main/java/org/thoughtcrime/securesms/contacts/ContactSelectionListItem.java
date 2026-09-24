@@ -82,14 +82,8 @@ public class ContactSelectionListItem extends LinearLayout {
     this.avatar.setAvatar(glideRequests, recipient, false);
     this.avatar.setSeenRecently(contact.wasSeenRecently());
 
-    String subtitle = null;
-    if (!contact.isKeyContact()) {
-      subtitle = contact.getAddr();
-    } else if (contact.getFreshness() == DcContact.DC_FRESHNESS_OLD) {
-      subtitle = DateUtils.getFormattedFreshness(getContext(), contact.getLastSeen());
-    }
-
     this.nameView.setTypeface(null, Typeface.NORMAL);
+    String subtitle = DateUtils.getStatusLine(getContext(), contact, true);
     setText(name, subtitle);
 
     if (multiSelect) this.checkBox.setVisibility(View.VISIBLE);
