@@ -73,7 +73,7 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
                   .getQuantityString(R.plurals.n_members, memberCount, memberCount);
         }
       } else if (dcContact != null && !dcChat.isSelfTalk() && !dcChat.isDeviceTalk()) {
-          subtitle = DateUtils.getStatusLine(getContext(), dcContact, false);
+        subtitle = DateUtils.getStatusLine(getContext(), dcContact, false);
       }
     } else if (dcContact != null) {
       recipient = new Recipient(getContext(), dcContact);

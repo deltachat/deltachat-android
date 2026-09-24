@@ -26,7 +26,6 @@ import java.util.Set;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.contacts.ContactSelectionListItem;
 import org.thoughtcrime.securesms.mms.GlideRequests;
-import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.Util;
 
 public class ProfileAdapter extends RecyclerView.Adapter {

@@ -20,9 +20,7 @@ import android.content.Context;
 import android.text.format.DateFormat;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.b44t.messenger.DcContact;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -156,7 +154,8 @@ public class DateUtils extends android.text.format.DateUtils {
     return context.getResources().getQuantityString(R.plurals.seen_n_years_ago, years, years);
   }
 
-  public static @Nullable String getStatusLine(final Context context, final DcContact contact, boolean simple) {
+  public static @Nullable String getStatusLine(
+      final Context context, final DcContact contact, boolean simple) {
     if (contact.getId() == DcContact.DC_CONTACT_ID_SELF) {
       return null;
     } else if (contact.isBlocked()) {
