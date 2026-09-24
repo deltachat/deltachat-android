@@ -194,9 +194,7 @@ public class DateUtils extends android.text.format.DateUtils {
     }
     if (age < oneYear) {
       final int months = (int) (age / oneMonth);
-      return context
-          .getResources()
-          .getQuantityString(R.plurals.seen_n_months_ago, months, months);
+      return context.getResources().getQuantityString(R.plurals.seen_n_months_ago, months, months);
     }
 
     return context.getString(R.string.seen_long_ago);
