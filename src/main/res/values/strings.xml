@@ -1303,6 +1303,18 @@
     <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tap here to receive messages while Delta Chat is in the background.</string>
     <string name="perm_enable_bg_already_done">You already allowed Delta Chat to receive messages in the background.\n\nIf messages still do not arrive in background, please also check your system settings.</string>
+    <string name="dialog_introduce_unifiedpush_selection">You are about to select your UnifiedPush service.</string>
+    <string name="notification_title_push_disabled">Push disabled</string>
+    <string name="notification_unifiedpush_reconfigure">The application has been unregistered for notifications. Open the app to
+        reconfigure.</string>
+    <string name="notification_unifiedpush_internal_error">The UnifiedPush service indicates that it cannot process registrations at this time.\n
+        You may need to take some action there, such as logging in again.</string>
+    <string name="notification_unifiedpush_network_error">The UnifiedPush service indicates that it cannot process registrations at this time, because of lack of connection.\n
+        Please retry later.</string>
+    <string name="notification_unifiedpush_timeout_error">The UnifiedPush service is not responding.\n
+        Please try again later.</string>
+    <string name="pref_notification_desc_using_unifiedpush">Using UnifiedPush</string>
+    <string name="pref_select_distributor">Receive notifications with</string>
 
     <!-- device messages for updates -->
     <string name="update_2_6">Guess what\'s new!\n\n🌐 Your messages now travel smarter: With multiple relays, one going down won\'t stop them\n\n📞 Calls grew up and are no longer experimental\n\n📢 Channels become interactive with reactions\n\n✍️ Add a chat description, so no one\'s left wondering\n\n👌 Sent images now look sharper\n\n🔵 Mark chats as unread, so you won\'t forget</string>
