@@ -165,7 +165,7 @@ public class DateUtils extends android.text.format.DateUtils {
     } else if (contact.isBot()) {
       return context.getString(R.string.bot);
     } else if (contact.wasSeenRecently()) {
-      return context.getString(R.string.last_seen_recently);
+      return context.getString(R.string.seen_recently);
     } else if (simple && contact.getFreshness() != DcContact.DC_FRESHNESS_OLD) {
       return null;
     }
@@ -183,22 +183,22 @@ public class DateUtils extends android.text.format.DateUtils {
     final int oneMonth = 31 * oneDay;
     final int oneYear = 365 * oneDay;
 
-    if (age < oneDay) {
-      return context.getString(R.string.last_seen_today);
+    if (DateUtils.isToday(timestamp)) {
+      return context.getString(R.string.seen_today);
     }
     if (age < oneWeek) {
-      return context.getString(R.string.last_seen_within_week);
+      return context.getString(R.string.seen_within_week);
     }
     if (age <= oneMonth) {
-      return context.getString(R.string.last_seen_within_month);
+      return context.getString(R.string.seen_within_month);
     }
     if (age < oneYear) {
       final int months = (int) (age / oneMonth);
       return context
           .getResources()
-          .getQuantityString(R.plurals.last_seen_n_months_ago, months, months);
+          .getQuantityString(R.plurals.seen_n_months_ago, months, months);
     }
 
-    return context.getString(R.string.last_seen_long_ago);
+    return context.getString(R.string.seen_long_ago);
   }
 }
