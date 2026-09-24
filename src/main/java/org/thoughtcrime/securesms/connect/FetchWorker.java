@@ -67,6 +67,8 @@ public class FetchWorker extends Worker {
             .setSmallIcon(R.drawable.notification_permanent)
             .build();
     return new ForegroundInfo(
-        NotificationCenter.ID_SENDING, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
+        NotificationCenter.ID_SENDING_WORKER,
+        notification,
+        ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
   }
 }
