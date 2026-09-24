@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.service.FetchForegroundService;
 
 public class FetchWorker extends Worker {
   private final @NonNull Context context;
@@ -22,14 +22,15 @@ public class FetchWorker extends Worker {
   @Override
   public @NonNull Result doWork() {
     Log.i("DeltaChat", "++++++++++++++++++ FetchWorker.doWork() started ++++++++++++++++++");
-    DcHelper.getAccounts(context).startIo();
 
-    // as we do not know when startIo() has done it's work or if is even doable in one step,
-    // we go the easy way and just wait for some amount of time.
-    // the core has to handle interrupts at any point anyway,
-    // and work also maybe continued when doWork() returns.
-    // however, we should not wait too long here to avoid getting bad battery ratings.
-    Util.sleep(60 * 1000);
+    // getAccounts() blocks until ApplicationContext.onCreate() has finished,
+    // which also started I/O. backgroundFetch() returns when fetching is done or timeout,
+    // so there is no need to sleep here.
+    FetchForegroundService.fetchStarted();
+    // stop() on DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE
+    if (!DcHelper.getAccounts(context).backgroundFetch(60)) {
+      FetchForegroundService.stop(context);
+    }
 
     Log.i("DeltaChat", "++++++++++++++++++ FetchWorker.doWork() will return ++++++++++++++++++");
     return Result.success();

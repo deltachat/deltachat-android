@@ -21,6 +21,7 @@ public final class FetchForegroundService extends Service {
   private static final Object STOP_NOTIFIER = new Object();
   private static volatile boolean fetchingSynchronously = false;
   private static Intent service;
+  private static int fetchCount = 0;
 
   public static void start(Context context) {
     ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
@@ -38,11 +39,26 @@ public final class FetchForegroundService extends Service {
       }
     } catch (Exception e) {
       Log.w(TAG, "Failed to start foreground service: " + e + ", fetching in background.");
-      fetchSynchronously();
+      fetchSynchronously(context);
+    }
+  }
+
+  public static void fetchStarted() {
+    synchronized (SERVICE_LOCK) {
+      fetchCount++;
     }
   }
 
   public static void stop(Context context) {
+    synchronized (SERVICE_LOCK) {
+      if (fetchCount > 0) {
+        fetchCount--;
+        if (fetchCount > 0) {
+          return;
+        }
+      }
+    }
+
     if (fetchingSynchronously) {
       fetchingSynchronously = false;
       synchronized (STOP_NOTIFIER) {
@@ -75,6 +91,9 @@ public final class FetchForegroundService extends Service {
       Util.runOnAnyBackgroundThread(
           () -> {
             Log.i(TAG, "Starting fetch");
+            synchronized (SERVICE_LOCK) {
+              fetchCount++;
+            }
             if (!ApplicationContext.getDcAccounts()
                 .backgroundFetch(300)) { // as startForeground() was called, there is time
               FetchForegroundService.stop(this);
@@ -85,27 +104,40 @@ public final class FetchForegroundService extends Service {
     }
   }
 
-  public static void fetchSynchronously() {
+  public static void fetchSynchronously(Context context) {
     // According to the documentation
     // https://firebase.google.com/docs/cloud-messaging/android/receive,
     // we need to handle the message within 20s, and the time window may be even shorter than 20s,
     // so, use 10s to be safe.
+    synchronized (SERVICE_LOCK) {
+      fetchCount++;
+    }
     fetchingSynchronously = true;
     if (ApplicationContext.getDcAccounts().backgroundFetch(10)) {
       // The background fetch was successful, but we need to wait until all events were processed.
       // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
       // and stop() will be called.
       synchronized (STOP_NOTIFIER) {
+        long deadline = System.currentTimeMillis() + 10_000; // 10s
         while (fetchingSynchronously) {
           try {
             // The `wait()` needs to be enclosed in a while loop because there may be
             // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't
             // called.
-            STOP_NOTIFIER.wait();
-          } catch (InterruptedException ex) {
+            long remaining = deadline - System.currentTimeMillis();
+            if (remaining <= 0) {
+              // If another fetch was already running, this call's own done event does not
+              // wake us; do not wait longer.
+              break;
+            }
+            STOP_NOTIFIER.wait(remaining);
+          } catch (InterruptedException ignored) {
           }
         }
       }
+    } else {
+      // No DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE will arrive, balance fetchCount.
+      FetchForegroundService.stop(context);
     }
   }
 
