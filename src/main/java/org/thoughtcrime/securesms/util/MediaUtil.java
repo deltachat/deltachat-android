@@ -1,8 +1,11 @@
 package org.thoughtcrime.securesms.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.text.TextUtils;
@@ -256,6 +259,7 @@ public class MediaUtil {
     public int height;
   }
 
+  @SuppressLint("InlinedApi")
   public static boolean createVideoThumbnailIfNeeded(
       Context context, Uri dataUri, Uri thumbnailUri, ThumbnailSize retWh) {
     boolean success = false;
@@ -266,17 +270,58 @@ public class MediaUtil {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         retriever.setDataSource(context, dataUri);
         Bitmap bitmap = retriever.getFrameAtTime(-1);
+        retriever.release();
 
-        int rotation =
-            getMetadataInt(retriever, MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
-        int width = getMetadataInt(retriever, MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH);
-        int height = getMetadataInt(retriever, MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT);
-        boolean swapDims = rotation == 90 || rotation == 270;
+        // Extractor reports the coded dimensions and the rotation as separate values;
+        // this seems to be the only well-defined way (MediaMetadataRetriever is unreliable.)
+        // KEY_ROTATION is also what MediaCodec uses during recoding.
+        int rotation = 0;
+        int videoWidth = 0;
+        int videoHeight = 0;
+        MediaExtractor extractor = new MediaExtractor();
+        try {
+          extractor.setDataSource(context, dataUri, null);
+          for (int i = 0; i < extractor.getTrackCount(); i++) {
+            MediaFormat format = extractor.getTrackFormat(i);
+            String mime = format.getString(MediaFormat.KEY_MIME);
+            if (mime != null && mime.startsWith("video/")) {
+              if (format.containsKey(MediaFormat.KEY_ROTATION)) {
+                rotation = format.getInteger(MediaFormat.KEY_ROTATION);
+                rotation = ((rotation % 360) + 360) % 360;
+              }
+              if (format.containsKey(MediaFormat.KEY_WIDTH)
+                  && format.containsKey(MediaFormat.KEY_HEIGHT)) {
+                videoWidth = format.getInteger(MediaFormat.KEY_WIDTH);
+                videoHeight = format.getInteger(MediaFormat.KEY_HEIGHT);
+              }
+              break;
+            }
+          }
+        } catch (Exception e) {
+          Log.w(TAG, "Reading video dimensions failed", e);
+        } finally {
+          extractor.release();
+        }
 
-        if (bitmap != null && swapDims && width > 0 && height > 0) {
-          boolean bitmapLandscape = bitmap.getWidth() >= bitmap.getHeight();
-          boolean codedLandscape = width >= height;
-          if (bitmapLandscape == codedLandscape) {
+        boolean swapDimensions = rotation == 90 || rotation == 270;
+        if (retWh != null) {
+          if (videoWidth > 0 && videoHeight > 0) {
+            retWh.width = swapDimensions ? videoHeight : videoWidth;
+            retWh.height = swapDimensions ? videoWidth : videoHeight;
+          } else if (bitmap != null) {
+            // Extractor failed, falling back to best effort using the dimensions of
+            // the decoded frame
+            retWh.width = bitmap.getWidth();
+            retWh.height = bitmap.getHeight();
+          }
+        }
+
+        if (bitmap != null && swapDimensions && videoWidth > 0 && videoHeight > 0) {
+          // Some devices return the frame rotated, some do not. If the frame matches
+          // the coded orientation, the device did not rotate it, so rotate here.
+          boolean bitmapMatchesCodedOrientation =
+              (bitmap.getWidth() >= bitmap.getHeight()) == (videoWidth >= videoHeight);
+          if (bitmapMatchesCodedOrientation) {
             Matrix matrix = new Matrix();
             matrix.postRotate(rotation);
             bitmap =
@@ -285,39 +330,17 @@ public class MediaUtil {
           }
         }
 
-        if (retWh != null) {
-          if (width > 0 && height > 0) {
-            retWh.width = swapDims ? height : width;
-            retWh.height = swapDims ? width : height;
-          } else if (bitmap != null) {
-            retWh.width = bitmap.getWidth();
-            retWh.height = bitmap.getHeight();
-          }
-        }
-        retriever.release();
-
         if (bitmap != null) {
-          FileOutputStream out = new FileOutputStream(thumbnailFile);
-          bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-          success = true;
+          try (FileOutputStream out = new FileOutputStream(thumbnailFile)) {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            success = true;
+          }
         }
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
     return success;
-  }
-
-  private static int getMetadataInt(MediaMetadataRetriever retriever, int key) {
-    String value = retriever.extractMetadata(key);
-    if (value != null) {
-      try {
-        return Integer.parseInt(value);
-      } catch (NumberFormatException e) {
-        Log.w(TAG, "Could not parse metadata " + key + ": " + value);
-      }
-    }
-    return 0;
   }
 
   public static String getExtensionFromMimeType(String contentType) {
