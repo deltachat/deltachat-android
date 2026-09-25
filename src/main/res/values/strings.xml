@@ -132,6 +132,8 @@
     <string name="seen_recently">Seen recently</string>
     <!-- A contact was seen today. The string is at places with few space, so stay as short as possible. -->
     <string name="seen_today">Seen today</string>
+    <!-- A contact was seen yesterday. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_yesterday">Seen yesterday</string>
     <!-- A contact was seen within a week. The string is at places with few space, so stay as short as possible. -->
     <string name="seen_within_week">Seen within a week</string>
     <!-- A contact was seen within a month. The string is at places with few space, so stay as short as possible. -->

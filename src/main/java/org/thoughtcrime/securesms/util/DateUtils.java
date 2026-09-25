@@ -186,6 +186,9 @@ public class DateUtils extends android.text.format.DateUtils {
     if (DateUtils.isToday(timestamp)) {
       return context.getString(R.string.seen_today);
     }
+    if (DateUtils.isYesterday(timestamp)) {
+      return context.getString(R.string.seen_yesterday);
+    }
     if (age < oneWeek) {
       return context.getString(R.string.seen_within_week);
     }
