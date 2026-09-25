@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix: rotated videos are now displayed with correct aspect ratios
+
 ## v2.62.0
 2026-09
 

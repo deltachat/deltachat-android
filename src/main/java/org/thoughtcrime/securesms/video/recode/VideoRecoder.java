@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.video.recode;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
@@ -15,7 +16,6 @@ import com.coremedia.iso.boxes.MediaHeaderBox;
 import com.coremedia.iso.boxes.SampleSizeBox;
 import com.coremedia.iso.boxes.TrackBox;
 import com.coremedia.iso.boxes.TrackHeaderBox;
-import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -552,14 +552,10 @@ public class VideoRecoder {
         return null;
       }
 
-      Matrix matrix = trackHeaderBox.getMatrix();
-      if (matrix.equals(Matrix.ROTATE_90)) {
-        vei.originalRotationValue = 90;
-      } else if (matrix.equals(Matrix.ROTATE_180)) {
-        vei.originalRotationValue = 180;
-      } else if (matrix.equals(Matrix.ROTATE_270)) {
-        vei.originalRotationValue = 270;
-      }
+      // Do not use the matrix directly. Matrix.equals() compares all nine
+      // fields and fails for many real-world files, like videos recorded
+      // on some iPhones.
+      vei.originalRotationValue = getVideoRotation(videoPath);
       vei.originalWidth = (int) trackHeaderBox.getWidth();
       vei.originalHeight = (int) trackHeaderBox.getHeight();
 
@@ -569,6 +565,30 @@ public class VideoRecoder {
     }
 
     return vei;
+  }
+
+  @SuppressLint("InlinedApi")
+  private static int getVideoRotation(String videoPath) {
+    MediaExtractor extractor = new MediaExtractor();
+    try {
+      extractor.setDataSource(videoPath);
+      for (int i = 0; i < extractor.getTrackCount(); i++) {
+        MediaFormat format = extractor.getTrackFormat(i);
+        String mime = format.getString(MediaFormat.KEY_MIME);
+        if (mime != null && mime.startsWith("video/")) {
+          if (format.containsKey(MediaFormat.KEY_ROTATION)) {
+            int rotation = format.getInteger(MediaFormat.KEY_ROTATION);
+            return ((rotation % 360) + 360) % 360;
+          }
+          return 0;
+        }
+      }
+    } catch (Exception e) {
+      Log.w(TAG, "Get video info: Reading rotation failed", e);
+    } finally {
+      extractor.release();
+    }
+    return 0;
   }
 
   private static int calculateEstimatedSize(
