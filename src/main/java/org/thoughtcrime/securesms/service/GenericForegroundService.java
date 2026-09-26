@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.service;
 
-import android.annotation.TargetApi;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -75,6 +74,13 @@ public final class GenericForegroundService extends Service {
 
       return START_NOT_STICKY;
     }
+  }
+
+  @Override
+  public void onTimeout(int startId, int fgsType) {
+    Log.w(TAG, "onTimeout stopping");
+    stopForeground(true);
+    stopSelf();
   }
 
   private synchronized void updateNotification() {
@@ -198,7 +204,6 @@ public final class GenericForegroundService extends Service {
     updateNotification();
   }
 
-  @TargetApi(Build.VERSION_CODES.O)
   public static void createFgNotificationChannel(Context context) {
     if (!CHANNEL_CREATED.get() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       CHANNEL_CREATED.set(true);
