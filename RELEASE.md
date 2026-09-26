@@ -118,6 +118,12 @@ This may take some days.
 	c) tap "Publish release"
 
 
+## Release on chatmail relays
+
+Create a PR in https://github.com/chatmail/relay updating
+`chatmaild/src/chatmaild/defaults/appversions.json` with the latest app version metadata
+
+
 ## Release on Huawei AppGallery
 
 on <https://developer.huawei.com/consumer/en/appgallery>:
@@ -126,12 +132,6 @@ on <https://developer.huawei.com/consumer/en/appgallery>:
     b) "Manage Packages / Upload", upload the APK from above, hit "Save"
     c) Update "App Information / New Features", hit "Save", then "Next"
     d) Hit "Submit"; on the next page, confirm version and language
-
-
-## Releases on other stores (ex. Passkoocheh)
-
-These stores are not under our control.
-On important updates **ping store maintainers** and ask to update.
 
 
 ## Testing checklist
