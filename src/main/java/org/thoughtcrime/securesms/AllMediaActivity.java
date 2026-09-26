@@ -1,9 +1,13 @@
 package org.thoughtcrime.securesms;
 
 import android.content.ComponentName;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -22,6 +26,7 @@ import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -32,6 +37,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
+import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AllMediaActivity extends PassphraseRequiredActionBarActivity
@@ -64,6 +70,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
   private Toolbar toolbar;
   private TabLayout tabLayout;
   private ViewPager2 viewPager;
+  private FloatingActionButton addAppFab;
 
   private @Nullable MediaController mediaController;
   private ListenableFuture<MediaController> mediaControllerFuture;
@@ -88,6 +95,29 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     setContentView(R.layout.all_media_activity);
 
     initializeResources();
+
+    ActivityResultLauncher<Intent> appPickerLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK) {
+                Intent intent = result.getData();
+                if (intent != null) {
+                  DcMsg msg = SendRelayedMessageUtil.createMessage(this, intent.getData(), null);
+                  dcContext.setDraft(chatId, msg);
+                  Intent newIntent = new Intent(this, ConversationActivity.class);
+                  newIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  newIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                  startActivity(newIntent);
+                  finish();
+                }
+              }
+            });
+
+    addAppFab.setOnClickListener(
+        v -> appPickerLauncher.launch(new Intent(this, WebxdcStoreActivity.class)));
+    // Apply insets to prevent fab from being covered by system bars
+    ViewUtil.applyWindowInsetsAsMargin(addAppFab);
 
     setSupportActionBar(this.toolbar);
     ActionBar supportActionBar = getSupportActionBar();
@@ -159,6 +189,7 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
     this.viewPager = ViewUtil.findById(this, R.id.pager);
     this.toolbar = ViewUtil.findById(this, R.id.toolbar);
     this.tabLayout = ViewUtil.findById(this, R.id.tab_layout);
+    addAppFab = findViewById(R.id.fab_add_app);
   }
 
   private void initializeMediaController() {
@@ -247,6 +278,12 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
         }
       }
       currentPosition = newPosition;
+
+      boolean showFab =
+          tabs.get(newPosition).type1 == DcMsg.DC_MSG_WEBXDC
+              && chatId > 0
+              && dcContext.getChat(chatId).canSend();
+      addAppFab.setVisibility(showFab ? View.VISIBLE : View.GONE);
     }
   }
 
