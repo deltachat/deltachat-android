@@ -246,6 +246,7 @@ public class NotificationCenter {
   public static final String CH_MSG_VERSION = "5";
   public static final String CH_PERMANENT = "dc_fg_notification_ch";
   public static final String CH_GENERIC = "ch_generic";
+  public static final String CH_SENDING = "ch_sending";
   public static final String CH_CALLS_PREFIX = "call_chan";
 
   private boolean notificationChannelsSupported() {

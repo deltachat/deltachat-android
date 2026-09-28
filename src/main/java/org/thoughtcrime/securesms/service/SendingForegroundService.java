@@ -1,14 +1,18 @@
 package org.thoughtcrime.securesms.service;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.util.Util;
@@ -19,6 +23,7 @@ public final class SendingForegroundService extends Service {
 
   private static final Object SERVICE_LOCK = new Object();
   private static Intent service;
+  private static final AtomicBoolean CHANNEL_CREATED = new AtomicBoolean(false);
 
   static SendingForegroundService s_this = null;
 
@@ -56,11 +61,13 @@ public final class SendingForegroundService extends Service {
     super.onCreate();
     s_this = this;
 
-    GenericForegroundService.createFgNotificationChannel(this);
+    createNotificationChannel(this);
     Notification notification =
-        new NotificationCompat.Builder(this, NotificationCenter.CH_GENERIC)
+        new NotificationCompat.Builder(this, NotificationCenter.CH_SENDING)
             .setContentTitle(getString(R.string.sending))
             .setSmallIcon(R.drawable.notification_permanent)
+            // post immediately instead of being deferred by up to 10s on Android 12+
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
             .build();
 
     try {
@@ -102,5 +109,20 @@ public final class SendingForegroundService extends Service {
   @Override
   public void onTimeout(int startId, int fgsType) {
     stop(this);
+  }
+
+  public static void createNotificationChannel(Context context) {
+    if (!CHANNEL_CREATED.get() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      CHANNEL_CREATED.set(true);
+      NotificationChannel channel =
+          new NotificationChannel(
+              NotificationCenter.CH_SENDING,
+              "Sending Messages",
+              NotificationManager.IMPORTANCE_LOW);
+      channel.setShowBadge(false);
+      channel.setDescription("Ensure messages are sent while app is in background.");
+      NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+      notificationManager.createNotificationChannel(channel);
+    }
   }
 }

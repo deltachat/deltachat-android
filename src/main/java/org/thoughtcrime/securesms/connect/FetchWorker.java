@@ -6,13 +6,18 @@ import android.content.pm.ServiceInfo;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.work.Constraints;
+import androidx.work.ExistingWorkPolicy;
 import androidx.work.ForegroundInfo;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
 import org.thoughtcrime.securesms.service.FetchForegroundService;
-import org.thoughtcrime.securesms.service.GenericForegroundService;
+import org.thoughtcrime.securesms.service.SendingForegroundService;
 import org.thoughtcrime.securesms.service.SendingWaiter;
 
 public class FetchWorker extends Worker {
@@ -43,7 +48,10 @@ public class FetchWorker extends Worker {
 
     // If there are still outgoing messages, keep running until the queue is drained.
     // Workers are stopped after 10 minutes, the next run resumes the queue.
-    if (!SendingWaiter.isSendingFinished(context) && SendingWaiter.tryStartSession()) {
+    ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+    if ((foregroundDetector == null || foregroundDetector.isBackground())
+        && !SendingWaiter.isSendingFinished(context)
+        && SendingWaiter.tryStartSession()) {
       try {
         Log.i(TAG, "doWork(): sending not finished, continuing in foreground");
         setForegroundAsync(createSendingForegroundInfo()).get();
@@ -60,15 +68,26 @@ public class FetchWorker extends Worker {
   }
 
   private ForegroundInfo createSendingForegroundInfo() {
-    GenericForegroundService.createFgNotificationChannel(context);
+    SendingForegroundService.createNotificationChannel(context);
     Notification notification =
-        new NotificationCompat.Builder(context, NotificationCenter.CH_GENERIC)
+        new NotificationCompat.Builder(context, NotificationCenter.CH_SENDING)
             .setContentTitle(context.getString(R.string.sending))
             .setSmallIcon(R.drawable.notification_permanent)
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
             .build();
     return new ForegroundInfo(
         NotificationCenter.ID_SENDING_WORKER,
         notification,
         ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
+  }
+
+  // Enqueues a one-time job that sends pending messages once the network is available again.
+  public static void enqueueFlushJob(Context context) {
+    Constraints constraints =
+        new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
+    OneTimeWorkRequest flushWorkRequest =
+        new OneTimeWorkRequest.Builder(FetchWorker.class).setConstraints(constraints).build();
+    WorkManager.getInstance(context)
+        .enqueueUniqueWork("SendFlushWorker", ExistingWorkPolicy.KEEP, flushWorkRequest);
   }
 }

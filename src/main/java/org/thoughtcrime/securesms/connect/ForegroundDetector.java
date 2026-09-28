@@ -7,7 +7,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.service.SendingNotifier;
-import org.thoughtcrime.securesms.util.Util;
 
 public class ForegroundDetector implements Application.ActivityLifecycleCallbacks {
   private static final String TAG = "ForegroundDetector";
@@ -63,18 +62,11 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
 
     if (refs == 0) {
       Log.i(TAG, "++++++++++++++++++ last onActivityStopped() ++++++++++++++++++");
-      // Check if the app has to keep running for unfinished sending;
-      // delay for activity restarts on configuration changes.
-      Util.runOnMainDelayed(
-          () -> {
-            Log.d(TAG, "background sending check");
-            if (isBackground()) {
-              SendingNotifier.onAppBackgrounded(application);
-            } else {
-              Log.d(TAG, "background sending check skipped, app in foreground again");
-            }
-          },
-          1000);
+      if (!activity.isChangingConfigurations()) {
+        // Activity restarts on configuration changes are excluded by isChangingConfigurations().
+        Log.d(TAG, "background sending check");
+        SendingNotifier.onAppBackgrounded(application);
+      }
     }
   }
 

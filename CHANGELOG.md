@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Add "Sending..." notification so large messages can continue being sent in background
+
 ## v2.62.0
 2026-09
 

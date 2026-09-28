@@ -198,6 +198,12 @@ public class DcEventCenter {
             .notifyMessage(accountId, event.getData1Int(), event.getData2Int());
         break;
 
+      case DcContext.DC_EVENT_MSGS_CHANGED:
+        if (!DcHelper.isNetworkConnected(context)) {
+          FetchWorker.enqueueFlushJob(context);
+        }
+        break;
+
       case DcContext.DC_EVENT_INCOMING_REACTION:
         DcHelper.getNotificationCenter(context)
             .notifyReaction(

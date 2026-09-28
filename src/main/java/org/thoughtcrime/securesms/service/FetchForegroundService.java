@@ -136,10 +136,12 @@ public final class FetchForegroundService extends Service {
   }
 
   private void updateNotificationToSending() {
+    SendingForegroundService.createNotificationChannel(this);
     Notification notification =
-        new NotificationCompat.Builder(this, NotificationCenter.CH_GENERIC)
+        new NotificationCompat.Builder(this, NotificationCenter.CH_SENDING)
             .setContentTitle(getString(R.string.sending))
             .setSmallIcon(R.drawable.notification_permanent)
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
             .build();
     NotificationManagerCompat.from(this).notify(NotificationCenter.ID_FETCH, notification);
   }
