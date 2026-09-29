@@ -1277,8 +1277,9 @@
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">To take photos, capture videos or use the QR-Code scanner, open the system settings and enable \"Camera\".</string>
     <string name="open_settings">Open Settings</string>
-    <!-- iOS device contact alert -->
+    <!-- deprecated -->
     <string name="import_device_contacts">Import device contacts</string>
+    <!-- deprecated -->
     <string name="import_device_contacts_hint">To chat with contacts from your device open Settings and enable \"Contacts\".</string>
     <!-- iOS notification settings -->
     <string name="disabled_in_dc">Disabled in Delta Chat</string>
