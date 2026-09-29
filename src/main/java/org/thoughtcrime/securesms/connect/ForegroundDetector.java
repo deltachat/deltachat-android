@@ -1,16 +1,15 @@
 package org.thoughtcrime.securesms.connect;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import org.thoughtcrime.securesms.ApplicationContext;
+import org.thoughtcrime.securesms.service.SendingNotifier;
 
-@SuppressLint("NewApi")
 public class ForegroundDetector implements Application.ActivityLifecycleCallbacks {
-
+  private static final String TAG = "ForegroundDetector";
   private int refs = 0;
   private static ForegroundDetector Instance = null;
   private final ApplicationContext application;
@@ -36,16 +35,14 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
   @Override
   public void onActivityStarted(@NonNull Activity activity) {
     if (refs == 0) {
-      Log.i(
-          "DeltaChat",
-          "++++++++++++++++++ first ForegroundDetector.onActivityStarted() ++++++++++++++++++");
+      Log.i(TAG, "++++++++++++++++++ first onActivityStarted() ++++++++++++++++++");
       DcHelper.getAccounts(application).startIo();
       if (DcHelper.isNetworkConnected(application)) {
         new Thread(
                 () -> {
-                  Log.i("DeltaChat", "calling maybeNetwork()");
+                  Log.i(TAG, "calling maybeNetwork()");
                   DcHelper.getAccounts(application).maybeNetwork();
-                  Log.i("DeltaChat", "maybeNetwork() returned");
+                  Log.i(TAG, "maybeNetwork() returned");
                 })
             .start();
       }
@@ -57,16 +54,19 @@ public class ForegroundDetector implements Application.ActivityLifecycleCallback
   @Override
   public void onActivityStopped(@NonNull Activity activity) {
     if (refs <= 0) {
-      Log.w("DeltaChat", "invalid call to ForegroundDetector.onActivityStopped()");
+      Log.w(TAG, "invalid call to onActivityStopped()");
       return;
     }
 
     refs--;
 
     if (refs == 0) {
-      Log.i(
-          "DeltaChat",
-          "++++++++++++++++++ last ForegroundDetector.onActivityStopped() ++++++++++++++++++");
+      Log.i(TAG, "++++++++++++++++++ last onActivityStopped() ++++++++++++++++++");
+      if (!activity.isChangingConfigurations()) {
+        // Activity restarts on configuration changes are excluded by isChangingConfigurations().
+        Log.d(TAG, "background sending check");
+        SendingNotifier.onAppBackgrounded(application);
+      }
     }
   }
 
