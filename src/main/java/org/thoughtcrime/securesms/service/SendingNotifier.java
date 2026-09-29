@@ -16,6 +16,7 @@ public class SendingNotifier {
   private static final long LINGER_MS = 5000;
 
   public static void onAppBackgrounded(final Context context) {
+    // called either when the last activity stops, or while the app is in the background
     Util.runOnAnyBackgroundThread(
         () -> {
           long started = System.currentTimeMillis();
