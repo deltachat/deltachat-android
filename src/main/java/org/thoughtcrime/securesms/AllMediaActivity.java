@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,7 +38,7 @@ import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.AudioPlaybackService;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.SendRelayedMessageUtil;
+import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class AllMediaActivity extends PassphraseRequiredActionBarActivity
@@ -103,11 +104,12 @@ public class AllMediaActivity extends PassphraseRequiredActionBarActivity
               if (result.getResultCode() == RESULT_OK) {
                 Intent intent = result.getData();
                 if (intent != null) {
-                  DcMsg msg = SendRelayedMessageUtil.createMessage(this, intent.getData(), null);
-                  dcContext.setDraft(chatId, msg);
                   Intent newIntent = new Intent(this, ConversationActivity.class);
                   newIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                   newIntent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+                  ArrayList<Uri> uris = new ArrayList<>();
+                  uris.add(intent.getData());
+                  ShareUtil.setSharedUris(newIntent, uris);
                   startActivity(newIntent);
                   finish();
                 }
