@@ -11,6 +11,7 @@ import java.util.Hashtable;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.service.FetchForegroundService;
+import org.thoughtcrime.securesms.service.SendingNotifier;
 import org.thoughtcrime.securesms.util.Util;
 
 public class DcEventCenter {
@@ -196,6 +197,21 @@ public class DcEventCenter {
       case DcContext.DC_EVENT_INCOMING_MSG:
         DcHelper.getNotificationCenter(context)
             .notifyMessage(accountId, event.getData1Int(), event.getData2Int());
+        break;
+
+      case DcContext.DC_EVENT_MSGS_CHANGED:
+        if (!DcHelper.isNetworkConnected(context)) {
+          FetchWorker.enqueueFlushJob(context);
+        }
+        // if the message is queued while the network is down and the app is in
+        // the background, there is no ForegroundDetector callback; this covers
+        // e.g. replies directly from notification.
+        ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+        if (foregroundDetector == null || foregroundDetector.isBackground()) {
+          // dispatch to the executor and not inline: onAppBackgrounded()
+          // lingers for some seconds on empty queues, and this must not block the event thread.
+          Util.runOnBackground(() -> SendingNotifier.onAppBackgrounded(context));
+        }
         break;
 
       case DcContext.DC_EVENT_INCOMING_REACTION:

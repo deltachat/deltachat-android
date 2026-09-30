@@ -13,6 +13,7 @@ import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.recipients.RecipientModifiedListener;
+import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -71,10 +72,13 @@ public class ProfileAvatarItem extends LinearLayout implements RecipientModified
                   .getResources()
                   .getQuantityString(R.plurals.n_members, memberCount, memberCount);
         }
+      } else if (dcContact != null && !dcChat.isSelfTalk() && !dcChat.isDeviceTalk()) {
+        subtitle = DateUtils.getStatusLine(getContext(), dcContact, false);
       }
     } else if (dcContact != null) {
       recipient = new Recipient(getContext(), dcContact);
       name = dcContact.getDisplayName();
+      subtitle = DateUtils.getStatusLine(getContext(), dcContact, false);
     }
 
     recipient.addListener(this);

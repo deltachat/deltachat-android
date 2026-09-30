@@ -180,6 +180,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     rpc = DcHelper.getRpc(this);
     initTTS();
 
+    getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+
     // enter fullscreen mode if necessary,
     // this is needed here because if the app is opened while already in landscape mode,
     // onConfigurationChanged() is not triggered
