@@ -84,7 +84,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private String providerQrData;
   private String inviteQr;
   private DcLot parsedQrData;
-  private boolean isDcLogin;
   private boolean isContactInvitation;
   private boolean isJoinInvitation;
 
@@ -235,7 +234,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     DcLot qrParsed = dcContext.checkQr(rawQr);
     switch (qrParsed.getState()) {
       case DcContext.DC_QR_LOGIN:
-        isDcLogin = true; // Intentional fall-through
       case DcContext.DC_QR_ACCOUNT:
         providerHost = qrParsed.getText1();
         providerQrData = rawQr;
@@ -419,7 +417,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   }
 
   private void updateProvider() {
-    signUpBtn.setText(isDcLogin ? R.string.login_title : R.string.instant_onboarding_create);
+    signUpBtn.setText(R.string.instant_onboarding_create);
     if (TextUtils.isEmpty(providerHost)) {
       providerText.setVisibility(View.GONE);
     } else {

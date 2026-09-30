@@ -690,7 +690,7 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
 
-    <!-- welcome and login -->
+    <!-- welcome and profile creation -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Create New Profile</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
@@ -727,6 +727,7 @@
 
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
+    <!-- deprecated -->
     <string name="login_title">Log In</string>
     <string name="login_advanced_hint">This login is for advanced users.\n\nDo not use an address you\'re using in another app.</string>
     <string name="login_inbox">Inbox</string>
@@ -1121,11 +1122,12 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
+    <!-- deprecated -->
     <string name="qraccount_ask_create_and_login">Create new profile on \"%1$s\" and log in there?</string>
     <string name="set_name_and_avatar_explain">Set a name that your contacts will recognize. You can also set a profile image.</string>
     <string name="please_enter_name">Please enter a name.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new profile.</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated -->
     <string name="qrlogin_ask_login">Log into \"%1$s\"?</string>
     <!-- the placeholder will be replaced by a domain that is preferred for relaying messages. smth as "Using foo.example.org" -->
     <string name="relay_login_hint">Using %1$s</string>
