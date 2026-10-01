@@ -646,22 +646,22 @@
     <string name="send_message">Send Message</string>
 
     <!-- Multi Device -->
-    <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
-    <string name="multidevice_title">Add Second Device</string>
+    <!-- "Another Device" can also be translated as "Additional Device", if that is catchier in the destination language. Make sure to use the term consistently. -->
+    <string name="multidevice_title">Add Another Device</string>
     <string name="multidevice_same_network_hint">Make sure both devices are on the same Wi-Fi or network</string>
-    <string name="multidevice_this_creates_a_qr_code">This creates a QR code that the second device can scan to copy the profile.\n\nMake sure no unwanted observer or camera can see the following screen.</string>
+    <string name="multidevice_this_creates_a_qr_code">This creates a QR code that the other device can scan to copy the profile.\n\nMake sure no unwanted observer or camera can see the following screen.</string>
     <string name="multidevice_install_dc_on_other_device">Install Delta Chat on your other device (https://get.delta.chat)</string>
-    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
-    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “I Already Have a Profile / Add as Second Device” and scan the code shown here</string>
-    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
-    <string name="multidevice_qr_subtitle">Scan to set up second device for %1$s</string>
-    <string name="multidevice_receiver_title">Add as Second Device</string>
-    <string name="multidevice_open_settings_on_other_device">On the first device, start Delta Chat, go to “Settings / Add Second Device“ and scan the code shown there</string>
+    <!-- "I Already Have a Profile / Copy from Another Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Start Delta Chat, tap “I Already Have a Profile / Copy from Another Device” and scan the code shown here</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up another device for Alice" -->
+    <string name="multidevice_qr_subtitle">Scan to set up another device for %1$s</string>
+    <string name="multidevice_receiver_title">Copy from Another Device</string>
+    <string name="multidevice_open_settings_on_other_device">On the first device, start Delta Chat, go to “Settings / Add Another Device“ and scan the code shown there</string>
     <string name="multidevice_receiver_scanning_ask">Copy the profile from the other device to this device?</string>
-    <string name="multidevice_receiver_needs_update">The profile you want to import is from a newer Delta Chat version.\n\nTo continue setting up second device, please update this device to the latest version of Delta Chat.</string>
-    <string name="multidevice_abort">Abort setting up second device?</string>
+    <string name="multidevice_receiver_needs_update">The profile you want to import is from a newer Delta Chat version.\n\nTo continue setting up another device, please update this device to the latest version of Delta Chat.</string>
+    <string name="multidevice_abort">Abort setting up another device?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">This will invalidate the QR code copied to clipboard.</string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ Profile transferred to your second device.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Profile transferred to your other device.</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="preparing_account">Preparing profile…</string>
     <!-- Shown beside progress bar, stay short -->
@@ -694,7 +694,7 @@
     <!-- welcome and profile creation -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Create New Profile</string>
-    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
+    <!-- Secondary button on the welcome screen, allows to "Copy from Another Device", "Restore from Backup" -->
     <string name="onboarding_alternative_logins">I Already Have a Profile</string>
     <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
     <string name="manual_account_setup_option">Use Classic Email as Relay</string>
@@ -899,7 +899,7 @@
     <string name="pref_imap_folder_warn_disable_defaults">If you change this option, make sure, your server and your other clients are configured accordingly.\n\nOtherwise things may not work at all.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Multi-Device Mode</string>
-    <string name="pref_multidevice_explain">Synchronize your messages with your other devices. Automatically enabled on adding a second device</string>
+    <string name="pref_multidevice_explain">Synchronize your messages with your other devices. Automatically enabled on adding another device</string>
     <string name="pref_multidevice_change_warn">Multi-Device Mode must be enabled when using the same profile on multiple devices. Only disable this setting if you have removed this profile from all your other devices.\n\nDisabling Multi-Device Mode while using the profile on multiple devices will result in missed messages and other problems.</string>
     <!-- deprecated -->
     <string name="pref_auto_folder_moves">Move automatically to DeltaChat Folder</string>
@@ -1085,7 +1085,7 @@
     <string name="devicemsg_bad_time">⚠️ Date or time on your device seems to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
     <string name="devicemsg_update_reminder">⚠️ Your Delta Chat version might be outdated.\n\nThis may cause problems because your chat partners use newer versions - and you are missing the latest features 😳\nPlease check https://get.delta.chat or your app store for updates.</string>
 
-    <!-- Some options as "Add Second Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Second Device" or "Backup". -->
+    <!-- Some options as "Add Another Device" or "Backup" may require the system PIN/Fingerprint/Gesture/Etc. to be entered in a system dialog. This hint is added to the system dialog, below a title as "Add Another Device" or "Backup". -->
     <string name="enter_system_secret_to_continue">Unlock to continue</string>
 
     <!-- qr code stuff -->
@@ -1311,7 +1311,7 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">Delta Chat uses your microphone to record and send voice messages and videos with sound.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat will let you choose which photos from your library to send.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat wants to save images to your photo library.</string>
-    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat can use Face ID to protect your local profile, backup creation and second device setup.</string>
+    <string name="InfoPlist_NSFaceIDUsageDescription">Delta Chat can use Face ID to protect your local profile, backup creation and multi-device setup.</string>
 
     <!-- android specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="pref_instant_delivery">Instant Delivery</string>
