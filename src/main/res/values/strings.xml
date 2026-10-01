@@ -232,6 +232,7 @@
     <string name="contact">Contact</string>
     <string name="bot">Bot</string>
     <string name="camera">Camera</string>
+    <string name="take_photo">Take Photo</string>
     <string name="front_camera">Front camera</string>
     <string name="back_camera">Back camera</string>
     <string name="microphone">Microphone</string>
@@ -256,6 +257,7 @@
     <string name="webxdc_app">App</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apps</string>
+    <string name="webxdc_add">Add App</string>
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">If set, the URL will be used as the App Picker instead of the default one</string>
     <string name="webxdc_draft_hint">Tap \"Send\" to share</string>
@@ -408,7 +410,7 @@
     <string name="pin">Pin</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Pinned</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Unpin</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
@@ -689,7 +691,7 @@
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s of %2$s used</string>
 
-    <!-- welcome and login -->
+    <!-- welcome and profile creation -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Create New Profile</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
@@ -726,6 +728,7 @@
 
     <string name="welcome_chat_over_email">Secure Decentralized Chat</string>
     <string name="scan_invitation_code">Scan Invitation Code</string>
+    <!-- deprecated -->
     <string name="login_title">Log In</string>
     <string name="login_advanced_hint">This login is for advanced users.\n\nDo not use an address you\'re using in another app.</string>
     <string name="login_inbox">Inbox</string>
@@ -1124,11 +1127,12 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Scan to chat with %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">No internet connection, can\'t perform QR code setup.</string>
+    <!-- deprecated -->
     <string name="qraccount_ask_create_and_login">Create new profile on \"%1$s\" and log in there?</string>
     <string name="set_name_and_avatar_explain">Set a name that your contacts will recognize. You can also set a profile image.</string>
     <string name="please_enter_name">Please enter a name.</string>
     <string name="qraccount_qr_code_cannot_be_used">The scanned QR code cannot be used to set up a new profile.</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
+    <!-- deprecated -->
     <string name="qrlogin_ask_login">Log into \"%1$s\"?</string>
     <!-- the placeholder will be replaced by a domain that is preferred for relaying messages. smth as "Using foo.example.org" -->
     <string name="relay_login_hint">Using %1$s</string>
