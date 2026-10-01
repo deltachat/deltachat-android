@@ -14,6 +14,11 @@ public class DcContact {
   public static final int DC_CONTACT_ID_NEW_BROADCAST = -5; //   - " -
   public static final int DC_CONTACT_ID_ADD_ACCOUNT = -6; //      - " -
   public static final int DC_CONTACT_ID_NEW_UNENCRYPTED_GROUP = -7; //      - " -
+  public static final int DC_CONTACT_ID_INVITE_LINK = -8;
+
+  public static final int DC_FRESHNESS_NORMAL = 0;
+  public static final int DC_FRESHNESS_RECENTLY_SEEN = 1;
+  public static final int DC_FRESHNESS_OLD = 2;
 
   public DcContact(long contactCPtr) {
     this.contactCPtr = contactCPtr;
@@ -36,14 +41,13 @@ public class DcContact {
     return this.getId() == that.getId();
   }
 
-  @Override
-  public int hashCode() {
-    return this.getId();
+  public boolean wasSeenRecently() {
+    return getFreshness() == DC_FRESHNESS_RECENTLY_SEEN;
   }
 
   @Override
-  public String toString() {
-    return getAddr();
+  public int hashCode() {
+    return this.getId();
   }
 
   public native int getId();
@@ -64,15 +68,11 @@ public class DcContact {
 
   public native long getLastSeen();
 
-  public native boolean wasSeenRecently();
+  public native int getFreshness();
 
   public native boolean isBlocked();
 
-  public native boolean isVerified();
-
   public native boolean isKeyContact();
-
-  public native int getVerifierId();
 
   public native boolean isBot();
 

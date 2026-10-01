@@ -41,9 +41,6 @@ import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.SystemContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.VcardContactPhoto;
 import org.thoughtcrime.securesms.database.Address;
-import org.thoughtcrime.securesms.util.Hash;
-import org.thoughtcrime.securesms.util.Prefs;
-import org.thoughtcrime.securesms.util.Util;
 
 public class Recipient {
 
@@ -120,7 +117,6 @@ public class Recipient {
 
     if (dcContact != null) {
       this.address = Address.fromContact(dcContact.getId());
-      maybeSetSystemContactPhoto(context, dcContact);
       if (dcContact.getId() == DcContact.DC_CONTACT_ID_SELF) {
         setProfileAvatar("SELF");
       }
@@ -132,7 +128,6 @@ public class Recipient {
         int[] contacts = dcContext.getChatContacts(chatId);
         if (contacts.length >= 1) {
           this.dcContact = dcContext.getContact(contacts[0]);
-          maybeSetSystemContactPhoto(context, this.dcContact);
         }
       }
     } else {
@@ -239,27 +234,6 @@ public class Recipient {
     }
 
     return null;
-  }
-
-  private void maybeSetSystemContactPhoto(@NonNull Context context, DcContact contact) {
-    String identifier = Hash.sha256(contact.getDisplayName() + contact.getAddr());
-    Uri systemContactPhoto = Prefs.getSystemContactPhoto(context, identifier);
-    if (systemContactPhoto != null) {
-      setSystemContactPhoto(systemContactPhoto);
-    }
-  }
-
-  private void setSystemContactPhoto(@Nullable Uri systemContactPhoto) {
-    boolean notify = false;
-
-    synchronized (this) {
-      if (!Util.equals(systemContactPhoto, this.systemContactPhoto)) {
-        this.systemContactPhoto = systemContactPhoto;
-        notify = true;
-      }
-    }
-
-    if (notify) notifyListeners();
   }
 
   @Override

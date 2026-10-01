@@ -23,6 +23,8 @@ import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import chat.delta.rpc.types.SecurejoinSource;
 import chat.delta.rpc.types.SecurejoinUiPath;
@@ -33,6 +35,7 @@ import com.google.zxing.integration.android.IntentResult;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrActivity;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
+import org.thoughtcrime.securesms.search.QrInviteData;
 
 /**
  * Activity container for starting a new conversation.
@@ -43,11 +46,43 @@ public class NewConversationActivity extends ContactSelectionActivity {
 
   private static final String TAG = "NewConversationActivity";
 
+  /**
+   * qrData is used to store temporarily the raw QR data to pass it back to QrCodeHandler after the
+   * user authorized with fingerprint/PIN
+   */
+  private String qrData = null;
+
+  private ActivityResultLauncher<Intent> relayLockLauncher;
+
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
     super.onCreate(bundle, ready);
     assert getSupportActionBar() != null;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    getIntent().putExtra(ContactSelectionListFragment.DETECT_INVITE_LINK, true);
+
+    relayLockLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == RESULT_OK) {
+                // QrCodeHandler requested user authorization before adding a relay
+                // and it was granted, so proceed to add the relay
+                if (qrData != null) {
+                  new QrCodeHandler(this).addRelay(qrData);
+                  qrData = null;
+                }
+              }
+            });
+  }
+
+  @Override
+  public void onInviteLinkSelected(QrInviteData inviteData) {
+    qrData = inviteData.getRawQrString();
+    new QrCodeHandler(this)
+        .handleQrData(
+            qrData, SecurejoinSource.Unknown, SecurejoinUiPath.Unknown, relayLockLauncher);
   }
 
   @Override

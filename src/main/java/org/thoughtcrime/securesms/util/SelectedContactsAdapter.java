@@ -116,8 +116,12 @@ public class SelectedContactsAdapter extends BaseAdapter {
       recipient = new Recipient(context, dcContact);
       name.setText(dcContact.getDisplayName());
       name.setTypeface(null, Typeface.NORMAL);
-      phone.setText(dcContact.getAddr());
-      phone.setVisibility(View.VISIBLE);
+      if (dcContact.isKeyContact()) {
+        phone.setVisibility(View.GONE);
+      } else {
+        phone.setText(dcContact.getAddr());
+        phone.setVisibility(View.VISIBLE);
+      }
     }
 
     avatar.clear(glideRequests);

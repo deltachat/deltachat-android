@@ -15,10 +15,10 @@
         pkgs = import nixpkgs { inherit system overlays; };
         android-sdk = android.sdk.${system} (sdkPkgs:
           with sdkPkgs; [
-            build-tools-35-0-0
+            build-tools-36-0-0
             cmdline-tools-latest
             platform-tools
-            platforms-android-36
+            platforms-android-37-0
             ndk-27-2-12479018
           ]);
         rust-version = pkgs.lib.removeSuffix "\n"
@@ -31,7 +31,7 @@
           ANDROID_SDK_ROOT = "${android-sdk}/share/android-sdk";
           ANDROID_NDK_ROOT =
             "${android-sdk}/share/android-sdk/ndk/27.2.12479018";
-          GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_SDK_ROOT}/build-tools/35.0.0/aapt2";
+          GRADLE_OPTS = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_SDK_ROOT}/build-tools/36.0.0/aapt2";
           buildInputs = [
             android-sdk
             pkgs.openjdk17

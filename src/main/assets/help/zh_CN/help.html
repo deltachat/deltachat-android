@@ -93,7 +93,7 @@
         </ul>
       </li>
       <li><a href="#没有端到端加密-我还能接收或发送信息吗">没有端到端加密 ，我还能接收或发送信息吗？</a></li>
-      <li><a href="#e2eeguarantee">联系人资料中的绿色复选标记是什么意思？</a></li>
+      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#附件图片文件音频等是否已端到端加密">附件（图片、文件、音频等）是否已端到端加密？</a></li>
       <li><a href="#openpgp-secure">OpenPGP 安全吗？</a>
         <ul>
@@ -501,10 +501,9 @@ Please use this method sparingly, as sending original files will significantly i
 聊天配置文件只会在本设备上删除。 
 其他设备上的聊天配置文件将继续完整运行。</p>
 
-<p>如果您只使用一个默认聊天配置文件，可以直接卸载应用程序。
-这将自动触发删除 Chatmail 服务器上的所有关联帐户数据。
-有关更多信息，请参阅 <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org address-deletion</a> 
-或您选择的 <a href="https://chatmail.at/relays">第三方 Chatmail 服务器</a> 的相关页面。</p>
+<p>If you use a single default chat profile you can simply uninstall the app.
+This will still automatically trigger deletion of all associated address data on the chatmail server.
+For more info, please refer to the respective page from your <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
     
       <h2 id="groups">
         
@@ -1220,41 +1219,33 @@ you can still pick up the call by tapping the incoming call message bubble in it
         
       </h3>
 
-<p>中继服务器用于在您的设备离线时临时保存消息。</p>
+<p>Relays are used to temporarily hold messages in case your device is offline.
+Relays are cheap and dumb servers,
+that do not store any user data as group states, your name or avatar -
+all those exist only on your device.
+Relays are operated by different groups and people,
+not under the control of Delta Chat developers.</p>
 
-<p>中继服务器是廉价且功能简单的服务器，</p>
-
-<p>它们不会存储群组状态、您的姓名或头像等数据——</p>
-
-<p>这些数据仅存在于您的设备上。</p>
-
-<p>中继服务器由不同的团队和个人运营。</p>
-
-<p>默认情况下，安装完成后会自动设置中继服务器，</p>
-
-<p>因此您无需担心。</p>
-
-<p>但是，如果您需要，</p>
-
-<p>可以在“设置 → 高级 → 中继服务器”中配置：</p>
+<p>By default, relays are <strong>automatically set up</strong>,
+so you do not need to care about that.
+However, if you want to,
+you can configure relays at <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
   <li>
-    <p>You can <strong>add</strong> a relay by scanning its QR code;
-<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some known ones.
-If you have multiple relays, you will receive messages on all of them.
-Contacts learn your current relays automatically when you message them.</p>
+    <p>You can <strong>remove</strong> a relay from the relay list (by long-tapping on it)
+and choosing the remove action. Before you remove your last relay,
+you will need to add another relay first.</p>
   </li>
   <li>
-    <p>Tap on a relay to set it as <strong>used for sending</strong>.</p>
-  </li>
-  <li>
-    <p>If a relay is no longer working, you can <strong>remove</strong> it.</p>
+    <p>You can <strong>add</strong> a relay by scanning its QR code or pasting its invite link;
+<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some publically known ones.
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
 </ul>
 
-<p>有关中继服务器的更多细节和未来可能性、
-您可以关注 <a href="https://support.delta.chat">论坛</a> 中的讨论。</p>
+<p>Adding or removing a relay will automatically inform your chat partners
+so they start or stop using a relay for chatting with you, respectively.</p>
     
       <h4 id="我可以在delta-chat-中使用传统电子邮件吗">
         
@@ -1271,12 +1262,12 @@ Contacts learn your current relays automatically when you message them.</p>
 
 <ul>
   <li>
-    <p>非聊天邮件应用程序在很大程度上无法为用户实现自动端到端电子邮件加密 、
-而 Chatmail 则普遍执行端到端加密 和安全标准。</p>
+    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
+while chatmail apps and relays pervasively enforce end-to-end encryption and other security standards.</p>
   </li>
   <li>
-    <p>非聊天邮件应用程序使用电子邮件服务器作为长期信息存档
-而聊天邮件客户端使用电子邮件服务器作为短暂的即时信息中继。</p>
+    <p>Non-chatmail apps use email servers as a long-term message archive
+while chatmail clients use email servers for ephemeral instant message forwarding.</p>
   </li>
   <li>
     <p>支持各种经典的电子邮件设置
@@ -1346,7 +1337,7 @@ Chatmail 使用默认的 INBOX 进行中继；请确保提供商的设置也是�
 
 <ul>
   <li>
-    <p>通过亲自扫描二维码，有多少人被介绍认识？</p>
+    <p>How many contacts are added by scanning a QR code or opening an invite link?</p>
   </li>
   <li>
     <p>使用的是Delta Chat 的哪些版本？</p>
@@ -1440,26 +1431,28 @@ Chatmail 使用默认的 INBOX 进行中继；请确保提供商的设置也是�
       <h3 id="e2eeguarantee">
         
         
-          联系人资料中的绿色复选标记是什么意思？ <a href="#e2eeguarantee" class="anchor"></a>
+          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>带有绿色复选标记的联系人配置文件
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="绿色复选标记" />
-表示当前保证与联系人的消息传递是端到端加密的。
-每个带有绿色复选标记的联系人要么直接与你进行了 <a href="#howtoe2ee">二维码扫描</a>，
-要么由另一个带有绿色复选标记的联系人介绍。
-当向群组添加成员时，介绍会自动发生。
-任何将联系人添加到带有绿色复选标记的群组的人都成为
-那些还不认识添加的联系人的成员的介绍人。
-在联系人配置文件中，你可以反复点击“由…介绍”文本
-，直到你到达直接与你进行 <a href="#howtoe2ee">二维码扫描</a> 的那个人。</p>
+<p>Older Delta Chat versions showed a green checkmark
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
+and an “Introduced by” line in some contact profiles.</p>
 
-<p>有关“保证的端到端加密”的更深入讨论，
-请参阅 <a href="https://securejoin.delta.chat/en/latest/new.html">安全加入协议</a>，
-并专门阅读有关“已验证群组”的内容，这是
-此处所谓的“带有绿色复选标记”或“保证的端到端加密”聊天的技术术语。</p>
+<p>This line is no longer present.
+Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
+contacts are identified by their cryptographic key (“public key”),
+and there is never any possibility for the relay operator
+to exchange a key in order to execute a man-in-the-middle (MitM) attack
+(in fact, the operator does not even see the key at any point).</p>
+
+<p>It is still possible for an attacker to give you an invite link
+that impersonates someone else, and an attacker who has your Delta Chat contact
+(because they are in a group chat with you)
+could try to start a chat with you under a wrong name.
+These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
+and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="附件图片文件音频等是否已端到端加密">
         
@@ -1805,7 +1798,7 @@ Chat 的 <a href="https://github.com/rpgp/rpgp">PGP</a> 和
 <p>某些功能需要特定权限、
 例如，如果您想[扫描邀请二维码]（#howtoe2ee），则需要授予相机权限。</p>
 
-<p>详见 <a href="https://delta.chat/en/gdpr#24-app-permissions">隐私政策</a>。</p>
+<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
     
       <h3 id="我的朋友在哪里可以找到-delta-chat">
         

@@ -116,14 +116,38 @@ public class Rpc {
   /**
    * Performs a background fetch for all accounts in parallel with a timeout.
    * <p>
-   * The `AccountsBackgroundFetchDone` event is emitted at the end even in case of timeout.
+   * For an account with IO stopped, the scheduler is paused
+   * and every transport is fetched concurrently on a dedicated connection.
+   * The account is done as soon as one transport received messages, the others stop.
+   * Only one batch of messages is fetched per transport this way,
+   * so a larger backlog is left to the next call or to started IO.
+   * <p>
+   * For an account with IO running, IMAP IDLE is interrupted on every transport
+   * and the account is done once every transport is.
+   * <p>
+   * The call never waits for outgoing messages and never triggers sending them itself.
+   * Received messages may still queue replies, securejoin handshakes for example,
+   * which go out only while IO is running.
+   * Use `is_sending_finished()` to tell whether the outgoing queue is empty.
+   * <p>
+   * The `AccountsBackgroundFetchDone` event is emitted at the end even in case of timeout,
+   * and immediately if another background fetch is already running.
    * Process all events until you get this one and you can safely return to the background
-   * without forgetting to create notifications caused by timing race conditions.
+   * without forgetting to create a generic notification if no message was fetched.
+   * The event carries no data identifying the call it belongs to,
+   * so it marks your own call only if no concurrent background fetch is happening.
    */
   public void backgroundFetch(Float timeoutInSeconds) throws RpcException {
     transport.call("background_fetch", mapper.valueToTree(timeoutInSeconds));
   }
 
+  /**
+   * Stops an ongoing `background_fetch()` call, making it return early
+   * without waiting for the remaining transports or for the timeout.
+   * <p>
+   * The `AccountsBackgroundFetchDone` event is emitted as usual.
+   * Does nothing if no background fetch is running.
+   */
   public void stopBackgroundFetch() throws RpcException {
     transport.call("stop_background_fetch");
   }
@@ -271,8 +295,7 @@ public class Rpc {
    * - [Self::add_transport_from_qr()] to add a transport
    * from a server encoded in a QR code.
    * - [Self::list_transports()] to get a list of all configured transports.
-   * - [Self::set_transport_unpublished()] to remove a transport.
-   * - [Self::set_transport_unpublished()] to set whether contacts see this transport.
+   * - [Self::delete_transport()] to remove a transport.
    */
   public void addOrUpdateTransport(Integer accountId, EnteredLoginParam param) throws RpcException {
     transport.call("add_or_update_transport", mapper.valueToTree(accountId), mapper.valueToTree(param));
@@ -293,62 +316,37 @@ public class Rpc {
   }
 
   /**
+   * Adds an initial transport on the chatmail relay that answers fastest
+   * and lets the profile add further ones in the background.
+   * <p>
+   * A `DCACCOUNT:` or `DCLOGIN:` `qr` code adds a single transport
+   * while securejoin codes add the inviter's relays to the candidates.
+   * <p>
+   * Does nothing if the profile already has a transport.
+   */
+  public void initTransports(Integer accountId, String qr) throws RpcException {
+    transport.call("init_transports", mapper.valueToTree(accountId), mapper.valueToTree(qr));
+  }
+
+  /**
    * Returns the list of all email accounts that are used as a transport in the current profile.
    * Use [Self::add_or_update_transport()] to add or change a transport
-   * and [Self::set_transport_unpublished()] to remove a transport.
+   * and [Self::delete_transport()] to remove a transport.
    */
   public java.util.List<EnteredLoginParam> listTransports(Integer accountId) throws RpcException {
     return transport.callForResult(new TypeReference<java.util.List<EnteredLoginParam>>(){}, "list_transports", mapper.valueToTree(accountId));
   }
 
   /**
-   * Deprecated 2026-06: This is not needed by UI implementations anymore,
-   * because unpublished relays now count as removed from the user point of view,
-   * and must not be shown in the list of relays.
-   * This means that UIs should use `list_transports()` instead of this function.
+   * Removes a transport.
+   * UIs should call this function when the user removes a relay.
    * <p>
-   * Returns the list of all email accounts that are used as a transport in the current profile.
-   * <p>
-   * As opposed to `list_transports()`, this function also returns unpublished transports,
-   * and for each returned transport it returns the information whether or not is `unpublished`.
-   * <p>
-   * Use [Self::add_or_update_transport()] to add or change a transport
-   * and [Self::set_transport_unpublished()] to change whether a transport is 'published'.
-   */
-  public java.util.List<TransportListEntry> listTransportsEx(Integer accountId) throws RpcException {
-    return transport.callForResult(new TypeReference<java.util.List<TransportListEntry>>(){}, "list_transports_ex", mapper.valueToTree(accountId));
-  }
-
-  /**
-   * Immediately deletes a transport, potentially causing messages not to arrive.
-   * This must ONLY be used by the automated tests.
-   * UI implementations must use [`Self::set_transport_unpublished`] instead.
+   * The last transport cannot be removed.
+   * If the removed transport was the one used for sending,
+   * another one is chosen automatically.
    */
   public void deleteTransport(Integer accountId, String addr) throws RpcException {
     transport.call("delete_transport", mapper.valueToTree(accountId), mapper.valueToTree(addr));
-  }
-
-  /**
-   * Change whether the transport is unpublished.
-   * UIs should call this function when the user clicks on "Remove".
-   * Core will keep listening on this transport for some time,
-   * and automatically remove it once it is no longer needed.
-   * <p>
-   * Unpublished transports are not advertised to contacts,
-   * and self-sent messages are not sent there,
-   * so that we don't cause extra messages to the corresponding inbox,
-   * but can still receive messages from contacts who don't know our new transport addresses yet.
-   * <p>
-   * When more transports are added by [`Self::add_or_update_transport()`] or [`Self::add_transport_from_qr`],
-   * the least recently needed unpublished transport is automatically removed
-   * if this is necessary in order to stay below the maximum number of allowed relays.
-   * Also, unpublished transports that are not used to receive any new messages for a time defined by
-   * [`UNPUBLISHED_TRANSPORT_KEEP_TIME`] are automatically removed.
-   * <p>
-   * [`UNPUBLISHED_TRANSPORT_KEEP_TIME`]: deltachat::sql::UNPUBLISHED_TRANSPORT_KEEP_TIME
-   */
-  public void setTransportUnpublished(Integer accountId, String addr, Boolean unpublished) throws RpcException {
-    transport.call("set_transport_unpublished", mapper.valueToTree(accountId), mapper.valueToTree(addr), mapper.valueToTree(unpublished));
   }
 
   /** Signal an ongoing process to stop. */
@@ -534,6 +532,8 @@ public class Rpc {
   /**
    * Get QR code text that will offer a [SecureJoin](https://securejoin.delta.chat/) invitation.
    * <p>
+   * To reset invitations, pass the link to `set_config_from_qr()`.
+   * <p>
    * If `chat_id` is a group chat ID, SecureJoin QR code for the group is returned.
    * If `chat_id` is unset, setup contact QR code is returned.
    */
@@ -542,20 +542,19 @@ public class Rpc {
   }
 
   /**
-   * Get QR code (text and SVG) that will offer a Setup-Contact or Verified-Group invitation.
+   * Get QR code (text and SVG) that will offer a SecureJoin invitation.
    * The QR code is compatible to the OPENPGP4FPR format
    * so that a basic fingerprint comparison also works e.g. with OpenKeychain.
    * <p>
    * The scanning device will pass the scanned content to `checkQr()` then;
    * if `checkQr()` returns `askVerifyContact` or `askVerifyGroup`
-   * an out-of-band-verification can be joined using `secure_join()`
+   * the securejoin protocol can be started using `secure_join()`
    * <p>
    * @deprecated as of 2026-03; use create_qr_svg(get_chat_securejoin_qr_code()) instead.
    * <p>
    * chat_id: If set to a group-chat-id,
-   * the Verified-Group-Invite protocol is offered in the QR code;
-   * works for protected groups as well as for normal groups.
-   * If not set, the Setup-Contact protocol is offered in the QR code.
+   * the SecureJoin QR code for the group is returned.
+   * If not set, the setup contact QR code is returned.
    * See https://securejoin.delta.chat/ for details about both protocols.
    * <p>
    * return format: `[code, svg]`
@@ -565,7 +564,7 @@ public class Rpc {
   }
 
   /**
-   * Continue a Setup-Contact or Verified-Group-Invite protocol
+   * Continue the SecureJoin protocol
    * started on another device with `get_chat_securejoin_qr_code_svg()`.
    * This function is typically called when `check_qr()` returns
    * type=AskVerifyContact or type=AskVerifyGroup.
@@ -630,8 +629,6 @@ public class Rpc {
    * <p>
    * If the group is already _promoted_ (any message was sent to the group),
    * all group members are informed by a special status message that is sent automatically by this function.
-   * <p>
-   * If the group has group protection enabled, only verified contacts can be added to the group.
    * <p>
    * Sends out #DC_EVENT_CHAT_MODIFIED and #DC_EVENT_MSGS_CHANGED if a status message was sent.
    */
@@ -934,7 +931,7 @@ public class Rpc {
    * <p>
    * * chat_id The chat ID of which the messages IDs should be queried.
    * * _info_only: Deprecated, pass `false` here.
-   * * `add_daymarker` - If `true`, add day markers as `DC_MSG_ID_DAYMARKER` to the result,
+   * * `add_daymarker` - If `true`, add day markers as `MsgId::DAYMARKER` to the result,
    * e.g. [1234, 1237, 9, 1239]. The day marker timestamp is the midnight one for the
    * corresponding (following) day in the local timezone.
    */
@@ -1163,7 +1160,7 @@ public class Rpc {
   /**
    * Get encryption info for a contact.
    * Get a multi-line encryption info, containing your fingerprint and the
-   * fingerprint of the contact, used e.g. to compare the fingerprints for a simple out-of-band verification.
+   * fingerprint of the contact, used e.g. to compare the fingerprints out-of-band.
    */
   public String getContactEncryptionInfo(Integer accountId, Integer contactId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_contact_encryption_info", mapper.valueToTree(accountId), mapper.valueToTree(contactId));
@@ -1326,6 +1323,14 @@ public class Rpc {
   }
 
   /**
+   * Waits until all transports are idle or failed and no background work is left.
+   * Never returns unless I/O is started. Must ONLY be used by tests.
+   */
+  public void waitForAllWorkDone(Integer accountId) throws RpcException {
+    transport.call("wait_for_all_work_done", mapper.valueToTree(accountId));
+  }
+
+  /**
    * Get the current connectivity, i.e. whether the device is connected to the IMAP server.
    * One of:
    * - DC_CONNECTIVITY_NOT_CONNECTED (1000): Show e.g. the string "Not connected" or a red dot
@@ -1442,6 +1447,9 @@ public class Rpc {
    * Get blob encoded as base64 from a webxdc message
    * <p>
    * path is the path of the file within webxdc archive
+   * <p>
+   * If the file is `icon.png` or `icon.jpg`,
+   * loading it may fail if dimensions are unexpectedly large.
    */
   public String getWebxdcBlob(Integer accountId, Integer instanceMsgId, String path) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_webxdc_blob", mapper.valueToTree(accountId), mapper.valueToTree(instanceMsgId), mapper.valueToTree(path));
@@ -1550,7 +1558,10 @@ public class Rpc {
     return transport.callForResult(new TypeReference<Integer>(){}, "send_reaction", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(reaction));
   }
 
-  /** Returns reactions to the message. */
+  /**
+   * Returns reactions to the message.
+   * `None` when there are no reactions.
+   */
   public Reactions getMessageReactions(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<Reactions>(){}, "get_message_reactions", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
   }
@@ -1677,6 +1688,17 @@ public class Rpc {
    */
   public AppSource getAppVersion(String clientId, String sourceId) throws RpcException {
     return transport.callForResult(new TypeReference<AppSource>(){}, "get_app_version", mapper.valueToTree(clientId), mapper.valueToTree(sourceId));
+  }
+
+  /**
+   * Returns true if all accounts have empty outgoing message queue.
+   * <p>
+   * This API is intended to be used by UIs
+   * to request that operating system does not put the application in background
+   * while there are still outgoing messages that are not sent out.
+   */
+  public Boolean isSendingFinished() throws RpcException {
+    return transport.callForResult(new TypeReference<Boolean>(){}, "is_sending_finished");
   }
 
 }

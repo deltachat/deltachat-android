@@ -1,12 +1,16 @@
 package org.thoughtcrime.securesms.qr;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 import chat.delta.rpc.Rpc;
@@ -19,6 +23,7 @@ import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.relay.RelayListActivity;
 import org.thoughtcrime.securesms.util.IntentUtils;
 import org.thoughtcrime.securesms.util.ScreenLockUtil;
@@ -41,6 +46,7 @@ public class QrCodeHandler {
   private final DcContext dcContext;
   private final Rpc rpc;
   private final int accId;
+  private boolean localNetworkHintShown = false;
 
   public QrCodeHandler(Activity activity) {
     this.activity = activity;
@@ -103,14 +109,6 @@ public class QrCodeHandler {
               dcContext.setConfigFromQr(rawString);
             });
         builder.setPositiveButton(R.string.ok, null);
-        break;
-
-      case DcContext.DC_QR_FPR_WITHOUT_ADDR:
-        showVerifyFingerprintWithoutAddress(builder, qrParsed);
-        break;
-
-      case DcContext.DC_QR_FPR_MISMATCH:
-        showFingerPrintError(builder, name);
         break;
 
       case DcContext.DC_QR_FPR_OK:
@@ -215,17 +213,24 @@ public class QrCodeHandler {
             activity.getString(R.string.multidevice_receiver_scanning_ask)
                 + "\n\n"
                 + activity.getString(R.string.multidevice_same_network_hint));
-        builder.setPositiveButton(
-            R.string.perm_continue,
-            (dialog, which) -> {
-              AccountManager.getInstance().addAccountFromSecondDevice(activity, rawString);
-            });
+        // `null` is intentionally to disable auto-dismiss
+        builder.setPositiveButton(R.string.perm_continue, null);
         builder.setNegativeButton(R.string.cancel, null);
         builder.setCancelable(false);
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
         BackupTransferActivity.appendSSID(activity, alertDialog.findViewById(android.R.id.message));
+        alertDialog
+            .getButton(AlertDialog.BUTTON_POSITIVE)
+            .setOnClickListener(
+                v -> {
+                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN) {
+                    receiveBackupWithPermission(alertDialog, rawString);
+                  } else {
+                    proceedWithBackupTransfer(alertDialog, rawString);
+                  }
+                });
         return true;
 
       case DcContext.DC_QR_BACKUP_TOO_NEW:
@@ -239,6 +244,43 @@ public class QrCodeHandler {
 
       default:
         return false;
+    }
+  }
+
+  private void proceedWithBackupTransfer(AlertDialog alertDialog, String rawString) {
+    alertDialog.dismiss();
+    AccountManager.getInstance().addAccountFromSecondDevice(activity, rawString);
+  }
+
+  @RequiresApi(api = Build.VERSION_CODES.CINNAMON_BUN)
+  private void receiveBackupWithPermission(AlertDialog alertDialog, String rawString) {
+    Permissions.with(activity)
+        .request(Manifest.permission.ACCESS_LOCAL_NETWORK)
+        .ifNecessary()
+        .onAllGranted(
+            () -> {
+              alertDialog.dismiss();
+              AccountManager.getInstance().addAccountFromSecondDevice(activity, rawString);
+            })
+        .onAnyDenied(() -> appendLocalNetworkDeniedHint(alertDialog))
+        .onAnyPermanentlyDenied(
+            () -> {
+              alertDialog.dismiss();
+              Permissions.showSettingsDialog(
+                  activity, activity.getString(R.string.perm_explain_local_network_denied));
+            })
+        .execute();
+  }
+
+  private void appendLocalNetworkDeniedHint(AlertDialog alertDialog) {
+    if (localNetworkHintShown) return;
+    localNetworkHintShown = true;
+    TextView textView = alertDialog.findViewById(android.R.id.message);
+    if (textView != null) {
+      textView.setText(
+          textView.getText()
+              + "\n\n"
+              + activity.getString(R.string.perm_explain_local_network_denied));
     }
   }
 
@@ -338,27 +380,6 @@ public class QrCodeHandler {
           activity.startActivity(intent);
         });
     builder.setNegativeButton(android.R.string.cancel, null);
-  }
-
-  private void showFingerPrintError(AlertDialog.Builder builder, String name) {
-    builder.setMessage(activity.getString(R.string.qrscan_fingerprint_mismatch, name));
-    builder.setPositiveButton(android.R.string.ok, null);
-  }
-
-  private void showVerifyFingerprintWithoutAddress(AlertDialog.Builder builder, DcLot qrParsed) {
-    builder.setMessage(
-        activity.getString(R.string.qrscan_no_addr_found)
-            + "\n\n"
-            + activity.getString(R.string.qrscan_fingerprint_label)
-            + ":\n"
-            + qrParsed.getText1());
-    builder.setPositiveButton(android.R.string.ok, null);
-    builder.setNeutralButton(
-        R.string.menu_copy_to_clipboard,
-        (dialog, which) -> {
-          Util.writeTextToClipboard(activity, qrParsed.getText1());
-          showDoneToast();
-        });
   }
 
   private void showVerifyContactOrGroup(

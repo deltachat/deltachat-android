@@ -261,7 +261,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Prehľadávať</string>
     <string name="unknown">Neznáme</string>
-
     <string name="green">Zelená</string>
     <string name="red">Červená</string>
     <string name="blue">Modrá</string>
@@ -597,6 +596,7 @@
     <string name="search_in">Hľadať v konverzácii %1$s</string>
     <string name="search_files">Hľadať súbory</string>
     <string name="search_explain">Vyhľadajte konverzácie, kontakty a správy</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Výsledky pre „%1$s“</string>
     <string name="search_no_result_for_x">Neboli nájdené žiadne výsledky pre „%s“</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -695,8 +695,10 @@
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Váš účet</string>
     <!-- The placeholder will be replaced by the default onboarding server -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_default2">Zásady ochrany osobných údajov na %1$s</string>
     <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
+    <!-- deprecated -->
     <string name="instant_onboarding_agree_instance">O účtoch na %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Súhlasím, vytvoriť účet</string>
@@ -704,7 +706,7 @@
     <string name="instant_onboarding_show_more_instances">Použiť iný server</string>
     <string name="instant_onboarding_other_server">Zoznam serverov Chatmail</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
-    <string name="instant_onboarding_group_info">Vytvoriť účet na pridanie sa ku skupine „%1$s“.</string>
+    <string name="instant_onboarding_group_info">Vytvoriť účet, aby ste sa mohli pridať ku „%1$s“.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Vytvoriť účet aby ste mohli konverzovať s používateľom %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
@@ -753,19 +755,16 @@
     <string name="add_transport">Pridať relay</string>
     <string name="remove_transport">Odstrániť Relay</string>
     <string name="edit_transport">Upraviť Relay</string>
+    <!-- deprecated -->
     <string name="used_for_sending">Používa sa na odosielanie správ</string>
     <!-- deprecated -->
     <string name="hide_from_contacts">Skryť pre kontakty</string>
     <!-- deprecated -->
     <string name="hidden_from_contacts">Skrytý pre kontakty</string>
     <string name="enforce_e2ee">Vynútiť šifrovanie pre všetky relay servery</string>
-    <!-- Hint for the list of relays -->
-    <string name="transport_list_hint">Správy sú doručované cez všetky nastavené relay servery.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Pridať tento relay server?</string>
     <string name="invalid_transport_qr">Naskenovaný QR kód neobsahuje platný odkaz na relay server.</string>
-    <!-- placeholder will be replaced by a relay server name -->
-    <string name="confirm_remove_relay_x">Odstrániť relay server „%1$s“?\n\nRelay server bude pred odstránením postupne vyradený z prevádzky, aby vaše kontakty mohli plynule prejsť na spojenie cez nový relay.</string>
     <!-- deprecated -->
     <string name="confirm_remove_or_hide_transport_x">Odstrániť relé „%1$s “?\n\nKontakty, ktoré poznajú iba toto relé, sa s vami nemusia dostať do kontaktu, kým im znovu nepošlete správu.\n\nAk si nie ste istí, radšej ho skryte, ako aby ste ho odstránili.</string>
     <string name="login_certificate_checks">Kontrola certifikátov</string>
@@ -776,7 +775,7 @@
     <string name="import_backup_title">Importovať zálohu</string>
     <string name="import_backup_ask">Záloha sa našla v umiestnení „%1$s“.\n\nChcete z nej importovať a použiť všetky dáta a nastavenia?</string>
     <string name="import_backup_no_backup_found">Neboli nájdené žiadne zálohy.\n\nSkopírujte zálohu do priečinka „%1$s“ a skúste to znova.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">Nie je možné prihlásiť sa ako „%1$s“. Skontrolujte správnosť e-mailovej adresy a hesla.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Prijať neplatné certifikáty</string>
@@ -996,16 +995,22 @@
     <string name="chat_description_changed_by_other">%1$s zmenil(a) popis konverzácie.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="member_x_added">Pridaný člen %1$s.</string>
+    <string name="member_you_added">Boli ste pridaní.</string>
     <!-- %1$s will be replaced by name of the contact added to the group -->
     <string name="add_member_by_you">Pridali ste člena %1$s.</string>
     <!-- %1$s will be replaced by name of the contact added to the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="add_member_by_other">%2$s pridal(a) člena %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="add_you_by_other">Boli ste pridaní členom %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group -->
     <string name="remove_member_by_you">Odstránili ste člena %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group, %2$s will be replaced by name of the contact who did the action -->
     <string name="remove_member_by_other">%2$s odstránil(a) člena %1$s.</string>
+    <!-- %1$s will be replaced by name of the contact who did the action -->
+    <string name="remove_you_by_other">Boli ste odstránení členom %1$s.</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Člen %1$s bol odstránený.</string>
+    <string name="member_you_removed">Boli ste odstránení.</string>
     <!-- "left" in the meaning of "exited". -->
     <string name="group_left_by_you">Opustili ste skupinu.</string>
     <!-- "left" in the meaning of "exited". -->
@@ -1081,10 +1086,13 @@
     <string name="qrscan_failed">QR kód sa nepodarilo dekódovať</string>
     <string name="qrscan_ask_join_group">Chcete sa pridať k skupine „%1$s“?</string>
     <string name="qrscan_ask_join_channel">Chcete sa pridať ku kanálu \"%1$s\"?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Naskenovaný odtlačok prsta sa nezhoduje s posledným zaznamenaným pre %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">Tento QR kód obsahuje odtlačok prsta bez e-mailovej adresy.\n\nANa nezávislé overenie najskôr prosím vytvorte šifrované pripojenie k príjemcovi.</string>
     <string name="qrscan_contains_text">Naskenovaný text QR kódu: \n\n%1$s</string>
     <string name="qrscan_contains_url">URL adresa z naskenovaného QR kódu:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Odtlačok prsta</string>
     <string name="withdraw_verifycontact_explain">Tento QR kód môžu naskenovať iní, aby vás mohli kontaktovať.\n\nKód môžete tiež obnoviť, ak chcete zneplatniť pôvodný QR kód alebo pozývací odkaz.</string>
     <string name="withdraw_verifygroup_explain">Tento QR kód môžu naskenovať ostatní, aby sa pridali ku skupine „%1$s“.\n\nKód môžete tiež obnoviť, ak chcete zneplatniť pôvodný QR kód alebo pozývací odkaz.</string>
@@ -1120,7 +1128,9 @@
     <string name="contact_verified">%1$s overený.</string>
     <string name="contact_blocked">Zablokovali ste kontakt</string>
     <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
+    <!-- deprecated -->
     <string name="verified_by">Kontakt od %1$s</string>
+    <!-- deprecated -->
     <string name="verified_by_you">Kontakt odo mňa</string>
     <string name="mailto_dialog_header_select_chat">Vyberte konverzáciu, kam bude správa odoslaná</string>
     <!-- first placeholder is the name of the chat -->
@@ -1158,7 +1168,6 @@
     <string name="perm_explain_access_to_storage_denied">Ak chcete prijímať alebo odosielať súbory, prejdite do nastavení aplikácie, klepnite na „Povolenia“ a začiarknite „Úložisko“.</string>
     <string name="perm_explain_access_to_location_denied">Ak chcete zdieľať polohu, prejdite do nastavení aplikácie, klepnite na „Povolenia“ a začiarknite „Poloha“.</string>
     <string name="perm_explain_access_to_notifications_denied">Ak chcete dostávať upozornenia, prejdite do aplikácie Nastavenia / Aplikácie / Delta Chat“ a povoľte „Upozornenia“.</string>
-
     <!-- ImageEditorHud -->
     <string name="ImageEditorHud_draw_anywhere_to_blur">Rozmazať môžete kreslením kamkoľvek</string>
     <string name="ImageEditorHud_add_text">Pridať text</string>
@@ -1291,6 +1300,4 @@
     <string name="perm_enable_bg_reminder_title">Klepnutím sem prijmete správy, zatiaľ čo je Delta Chat na pozadí.</string>
     <string name="perm_enable_bg_already_done">Aplikácii Delta Chat ste už povolili príjem správ na pozadí.\n\nAk správy stále neprichádzajú na pozadí, skontrolujte tiež nastavenia systému.</string>
 
-    <!-- device messages for updates -->
-    <string name="update_2_0">Čo je nové?\n\n💯 Šifrovanie od zariadenia k zariadeniu je dostatočne spoľahlivé a od teraz predvolene natrvalo zapnuté. Zámky 🔒 znázorňujúce šifrovanie sa viac nezobrazujú!\n\n✉️ Správy doručované bežným e-mailom bez šifrovania od zariadenia k zariadeniu sú označené symbolom obálky\n\n😻 Nová vylepšená obrazovka profilu pre všetky kontakty\n\n🔲 Nové tlačidlo pre rýchly prístup k súkromným aplikáciám v konverzáciách\n\n❤️ Prosím, prispejte nám na vývoj, aby sme mohli zostať nezávislí a naďalej mohli prinášať vylepšenia: %1$s</string>
-</resources>
+    </resources>

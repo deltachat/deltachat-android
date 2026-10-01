@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 public abstract class Qr {
 
 /**
- * Ask the user whether to verify the contact.
+ * Ask the user whether to start chatting with the contact.
  * <p>
  * If the user agrees, pass this QR code to [`crate::securejoin::join_securejoin`].
  */
@@ -66,7 +66,7 @@ public abstract class Qr {
   }
 
 /**
- * Contact fingerprint is verified.
+ * Contact fingerprint matches.
  * <p>
  * Ask the user if they want to start chatting.
  */

@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.video.recode;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
@@ -15,7 +16,6 @@ import com.coremedia.iso.boxes.MediaHeaderBox;
 import com.coremedia.iso.boxes.SampleSizeBox;
 import com.coremedia.iso.boxes.TrackBox;
 import com.coremedia.iso.boxes.TrackHeaderBox;
-import com.googlecode.mp4parser.util.Matrix;
 import com.googlecode.mp4parser.util.Path;
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -29,8 +29,20 @@ public class VideoRecoder {
   private static final String TAG = "VideoRecoder";
 
   private static final String MIME_TYPE = "video/avc";
-  private final boolean cancelCurrentVideoConversion = false;
+  private boolean cancelCurrentVideoConversion = false;
   private final Object videoConvertSync = new Object();
+
+  public void cancelConversion() {
+    synchronized (videoConvertSync) {
+      cancelCurrentVideoConversion = true;
+    }
+  }
+
+  private boolean isCanceled() {
+    synchronized (videoConvertSync) {
+      return cancelCurrentVideoConversion;
+    }
+  }
 
   private void checkConversionCanceled() throws Exception {
     boolean cancelConversion;
@@ -445,6 +457,8 @@ public class VideoRecoder {
         if (!error) {
           readAndWriteTrack(extractor, mediaMuxer, info, videoStartTime, endTime, cacheFile, true);
         }
+
+        checkConversionCanceled();
       } catch (Exception e) {
         Log.w(TAG, "Recoding video failed unexpectedly/2", e);
         error = true;
@@ -538,14 +552,10 @@ public class VideoRecoder {
         return null;
       }
 
-      Matrix matrix = trackHeaderBox.getMatrix();
-      if (matrix.equals(Matrix.ROTATE_90)) {
-        vei.originalRotationValue = 90;
-      } else if (matrix.equals(Matrix.ROTATE_180)) {
-        vei.originalRotationValue = 180;
-      } else if (matrix.equals(Matrix.ROTATE_270)) {
-        vei.originalRotationValue = 270;
-      }
+      // Do not use the matrix directly. Matrix.equals() compares all nine
+      // fields and fails for many real-world files, like videos recorded
+      // on some iPhones.
+      vei.originalRotationValue = getVideoRotation(videoPath);
       vei.originalWidth = (int) trackHeaderBox.getWidth();
       vei.originalHeight = (int) trackHeaderBox.getHeight();
 
@@ -555,6 +565,30 @@ public class VideoRecoder {
     }
 
     return vei;
+  }
+
+  @SuppressLint("InlinedApi")
+  private static int getVideoRotation(String videoPath) {
+    MediaExtractor extractor = new MediaExtractor();
+    try {
+      extractor.setDataSource(videoPath);
+      for (int i = 0; i < extractor.getTrackCount(); i++) {
+        MediaFormat format = extractor.getTrackFormat(i);
+        String mime = format.getString(MediaFormat.KEY_MIME);
+        if (mime != null && mime.startsWith("video/")) {
+          if (format.containsKey(MediaFormat.KEY_ROTATION)) {
+            int rotation = format.getInteger(MediaFormat.KEY_ROTATION);
+            return ((rotation % 360) + 360) % 360;
+          }
+          return 0;
+        }
+      }
+    } catch (Exception e) {
+      Log.w(TAG, "Get video info: Reading rotation failed", e);
+    } finally {
+      extractor.release();
+    }
+    return 0;
   }
 
   private static int calculateEstimatedSize(
@@ -578,7 +612,7 @@ public class VideoRecoder {
   // prepareVideo() assumes the msg object is set up properly to being sent;
   // the function fills out missing information and also recodes the video as needed.
   // return: true=video might be prepared, can be sent, false=error
-  public static boolean prepareVideo(Context context, int chatId, DcMsg msg) {
+  public boolean prepareVideo(Context context, int chatId, DcMsg msg) {
     final long MAX_BYTES = DcHelper.getInt(context, "sys.msgsize_max_recommended");
     final String TOO_BIG_FILE =
         "Video cannot be compressed to a reasonable size. Try a shorter video or a lower quality.";
@@ -590,7 +624,7 @@ public class VideoRecoder {
       VideoEditedInfo vei = getVideoEditInfoFromFile(inPath);
       if (vei == null) {
         Log.w(TAG, String.format("Recoding failed for %s: cannot get info", inPath));
-        if (msg.getFilebytes() > MAX_BYTES + MAX_BYTES / 4) {
+        if (msg.getFilebytes() > MAX_BYTES) {
           alert(context, TOO_BIG_FILE);
           return false;
         }
@@ -673,6 +707,7 @@ public class VideoRecoder {
               vei.originalDurationMs,
               vei.originalAudioBytes);
 
+      // If estimated size is higher than the limit by 25%, don't even try to reencode.
       if (vei.estimatedBytes > MAX_BYTES + MAX_BYTES / 4) {
         alert(context, TOO_BIG_FILE);
         return false;
@@ -680,17 +715,29 @@ public class VideoRecoder {
 
       // recode
       String tempPath = DcHelper.getBlobdirFile(DcHelper.getContext(context), inPath);
-      VideoRecoder videoRecoder = new VideoRecoder();
-      if (!videoRecoder.convertVideo(vei, tempPath)) {
-        alert(
-            context,
-            String.format("Could not recode %s; sending it at its original size.", inPath));
-        return true;
+      if (!convertVideo(vei, tempPath)) {
+        if (isCanceled()) return false;
+        if (msg.getFilebytes() <= MAX_BYTES) {
+          alert(
+              context,
+              String.format("Could not recode %s; sending it at its original size.", inPath));
+          return true;
+        } else {
+          // The file is too large and we failed to reencode the video.
+          alert(context, TOO_BIG_FILE);
+          return false;
+        }
       }
+      Log.i(TAG, String.format("recoding for %s done", inPath));
 
       msg.setFileAndDeduplicate(tempPath, msg.getFilename(), msg.getFilemime());
 
-      Log.i(TAG, String.format("recoding for %s done", inPath));
+      // Do not send the message if it turned out to be too large even after reencoding.
+      if (msg.getFilebytes() > MAX_BYTES) {
+        alert(context, TOO_BIG_FILE);
+        return false;
+      }
+
     } catch (Exception e) {
       e.printStackTrace();
     }

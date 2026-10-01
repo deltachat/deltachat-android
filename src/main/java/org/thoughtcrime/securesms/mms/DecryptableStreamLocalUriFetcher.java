@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 class DecryptableStreamLocalUriFetcher extends StreamLocalUriFetcher {
 
-  private static final String TAG = "DecryptableStreamLocalUriFetcher";
+  private static final String TAG = "DecryptStreamUriFetcher";
 
   private final Context context;
 

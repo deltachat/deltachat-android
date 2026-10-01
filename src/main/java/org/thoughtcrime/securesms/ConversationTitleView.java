@@ -16,6 +16,7 @@ import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -87,10 +88,9 @@ public class ConversationTitleView extends RelativeLayout {
         subtitleStr = context.getString(R.string.device_talk_subtitle);
       } else {
         DcContact dcContact = dcContext.getContact(chatContacts[0]);
-        if (dcContact.isBot()) {
-          subtitleStr = context.getString(R.string.bot);
-        } else if (!dcChat.isEncrypted()) {
-          subtitleStr = dcContact.getAddr();
+        boolean pendingInvite = !dcChat.canSend() && !dcChat.isContactRequest();
+        if (!pendingInvite) {
+          subtitleStr = DateUtils.getStatusLine(getContext(), dcContact, true);
         }
         isOnline = dcContact.wasSeenRecently();
       }
@@ -108,18 +108,6 @@ public class ConversationTitleView extends RelativeLayout {
     }
     boolean isEphemeral = dcContext.getChatEphemeralTimer(chatId) != 0;
     ephemeralIcon.setVisibility(isEphemeral ? View.VISIBLE : View.GONE);
-  }
-
-  public void setTitle(@NonNull GlideRequests glideRequests, @NonNull DcContact contact) {
-    // This function is only called for contacts without a corresponding 1:1 chat.
-    // If there is a 1:1 chat, then the overloaded function
-    // setTitle(GlideRequests, DcChat, boolean) is called.
-    avatar.setAvatar(glideRequests, new Recipient(getContext(), contact), false);
-    avatar.setSeenRecently(contact.wasSeenRecently());
-
-    title.setText(contact.getDisplayName());
-    subtitle.setText(contact.getAddr());
-    subtitle.setVisibility(View.VISIBLE);
   }
 
   public void setSeenRecently(boolean seenRecently) {

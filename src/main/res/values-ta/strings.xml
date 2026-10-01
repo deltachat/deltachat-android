@@ -91,7 +91,6 @@
     <string name="gallery">காட்சி கூடம்</string>
     <string name="file">கோப்பு</string>
     <string name="unknown">முன் தெரிந்திராத</string>
-
     <string name="green">பச்சை</string>
     <string name="red">சிவப்பு</string>
     <string name="blue">நீலம்</string>
@@ -217,6 +216,7 @@
     <string name="pref_background">அரட்டை பின்புலம்</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
     <!-- notifications -->
     <string name="notify_reply_button">மறுமொழி</string>

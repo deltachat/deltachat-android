@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import org.thoughtcrime.securesms.ApplicationContext;
 import org.thoughtcrime.securesms.R;
@@ -21,6 +22,9 @@ public final class FetchForegroundService extends Service {
   private static final Object STOP_NOTIFIER = new Object();
   private static volatile boolean fetchingSynchronously = false;
   private static Intent service;
+  private static int fetchCount = 0;
+  static FetchForegroundService s_this = null;
+  private static volatile boolean sending = false;
 
   public static void start(Context context) {
     ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
@@ -38,11 +42,30 @@ public final class FetchForegroundService extends Service {
       }
     } catch (Exception e) {
       Log.w(TAG, "Failed to start foreground service: " + e + ", fetching in background.");
-      fetchSynchronously();
+      fetchSynchronously(context);
     }
   }
 
+  public static void fetchStarted() {
+    synchronized (SERVICE_LOCK) {
+      fetchCount++;
+    }
+  }
+
+  public @Nullable static FetchForegroundService getInstance() {
+    return s_this;
+  }
+
   public static void stop(Context context) {
+    synchronized (SERVICE_LOCK) {
+      if (fetchCount > 0) {
+        fetchCount--;
+        if (fetchCount > 0) {
+          return;
+        }
+      }
+    }
+
     if (fetchingSynchronously) {
       fetchingSynchronously = false;
       synchronized (STOP_NOTIFIER) {
@@ -52,16 +75,82 @@ public final class FetchForegroundService extends Service {
 
     synchronized (SERVICE_LOCK) {
       if (service != null) {
+        // If the outgoing queue is not empty, stopping the service
+        // will interrupt the ongoing upload, so the service transforms into
+        // a sending notification instead.
+        if (continueAsSendingService(context)) {
+          return;
+        }
         context.stopService(service);
         service = null;
       }
     }
   }
 
+  private static boolean continueAsSendingService(Context context) {
+    synchronized (SERVICE_LOCK) {
+      if (sending) {
+        return true;
+      }
+    }
+    ForegroundDetector foregroundDetector = ForegroundDetector.getInstance();
+    if (foregroundDetector != null && foregroundDetector.isForeground()) {
+      return false;
+    }
+    synchronized (SERVICE_LOCK) {
+      if (!SendingWaiter.tryStartSession()) {
+        return false;
+      }
+      sending = true;
+    }
+    Context appContext = context.getApplicationContext();
+    new Thread(
+            () -> {
+              try {
+                if (SendingWaiter.isSendingFinished(appContext)) {
+                  return;
+                }
+                FetchForegroundService instance = s_this;
+                if (instance == null) {
+                  return;
+                }
+                instance.updateNotificationToSending();
+                SendingWaiter.awaitQueueEmpty(
+                    appContext, SendingWaiter.SENDING_MAX_RUNTIME_MS, () -> s_this == null);
+              } finally {
+                synchronized (SERVICE_LOCK) {
+                  sending = false;
+                }
+                SendingWaiter.endSession();
+                synchronized (SERVICE_LOCK) {
+                  if (service != null && fetchCount == 0) {
+                    appContext.stopService(service);
+                    service = null;
+                  }
+                }
+              }
+            },
+            "sending")
+        .start();
+    return true;
+  }
+
+  private void updateNotificationToSending() {
+    SendingForegroundService.createNotificationChannel(this);
+    Notification notification =
+        new NotificationCompat.Builder(this, NotificationCenter.CH_SENDING)
+            .setContentTitle(getString(R.string.sending))
+            .setSmallIcon(R.drawable.notification_permanent)
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
+            .build();
+    NotificationManagerCompat.from(this).notify(NotificationCenter.ID_FETCH, notification);
+  }
+
   @Override
   public void onCreate() {
     Log.i(TAG, "Creating fetch service");
     super.onCreate();
+    s_this = this;
 
     Notification notification =
         new NotificationCompat.Builder(this, NotificationCenter.CH_GENERIC)
@@ -75,6 +164,9 @@ public final class FetchForegroundService extends Service {
       Util.runOnAnyBackgroundThread(
           () -> {
             Log.i(TAG, "Starting fetch");
+            synchronized (SERVICE_LOCK) {
+              fetchCount++;
+            }
             if (!ApplicationContext.getDcAccounts()
                 .backgroundFetch(300)) { // as startForeground() was called, there is time
               FetchForegroundService.stop(this);
@@ -85,32 +177,46 @@ public final class FetchForegroundService extends Service {
     }
   }
 
-  public static void fetchSynchronously() {
+  public static void fetchSynchronously(Context context) {
     // According to the documentation
     // https://firebase.google.com/docs/cloud-messaging/android/receive,
     // we need to handle the message within 20s, and the time window may be even shorter than 20s,
     // so, use 10s to be safe.
+    synchronized (SERVICE_LOCK) {
+      fetchCount++;
+    }
     fetchingSynchronously = true;
     if (ApplicationContext.getDcAccounts().backgroundFetch(10)) {
       // The background fetch was successful, but we need to wait until all events were processed.
       // After all events were processed, we will get DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE,
       // and stop() will be called.
       synchronized (STOP_NOTIFIER) {
+        long deadline = System.currentTimeMillis() + 10_000; // 10s
         while (fetchingSynchronously) {
           try {
             // The `wait()` needs to be enclosed in a while loop because there may be
             // "spurious wake-ups", i.e. `wait()` may return even though `notifyAll()` wasn't
             // called.
-            STOP_NOTIFIER.wait();
-          } catch (InterruptedException ex) {
+            long remaining = deadline - System.currentTimeMillis();
+            if (remaining <= 0) {
+              // If another fetch was already running, this call's own done event does not
+              // wake us; do not wait longer.
+              break;
+            }
+            STOP_NOTIFIER.wait(remaining);
+          } catch (InterruptedException ignored) {
           }
         }
       }
+    } else {
+      // No DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE will arrive, balance fetchCount.
+      FetchForegroundService.stop(context);
     }
   }
 
   @Override
   public void onDestroy() {
+    s_this = null;
     stopForeground(true);
   }
 

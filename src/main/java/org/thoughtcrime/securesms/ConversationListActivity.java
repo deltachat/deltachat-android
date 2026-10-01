@@ -89,7 +89,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener {
-  private static final String TAG = "ConversationListActivity";
+  private static final String TAG = "ConversationListActv";
   private static final String OPENPGP4FPR = "openpgp4fpr";
   private static final String NDK_ARCH_WARNED = "ndk_arch_warned";
   public static final String CLEAR_NOTIFICATIONS = "clear_notifications";
@@ -378,8 +378,9 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } else {
       boolean multiProfile = DcHelper.getAccounts(this).getAll().length > 1;
-      String defText =
-          multiProfile ? DcHelper.getContext(this).getName() : getString(R.string.app_name);
+      String name = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
+      if (name.isEmpty()) name = getString(R.string.unnamed);
+      String defText = multiProfile ? name : getString(R.string.app_name);
       title.setText(DcHelper.getConnectivitySummary(this, defText));
       // refreshTitle is called by ConversationListFragment when connectivity changes so update
       // connectivity dot here
@@ -396,11 +397,11 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     } else {
       selfAvatarContainer.setVisibility(View.VISIBLE);
       DcContext dcContext = DcHelper.getContext(this);
-      DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
-      String name = dcContext.getConfig("displayname");
+      String name = dcContext.getConfig(DcHelper.CONFIG_DISPLAY_NAME);
       if (TextUtils.isEmpty(name)) {
-        name = self.getAddr();
+        name = getString(R.string.unnamed);
       }
+      DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       selfAvatar.setAvatar(GlideApp.with(this), new Recipient(this, self, name), false);
     }
   }
@@ -681,7 +682,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     // should be deleted.
     try {
       DcContext dcContext = DcHelper.getContext(this);
-      final String deviceMsgLabel = "update_2_0_0_android-h";
+      final String deviceMsgLabel = "update_2_6_0_android-b";
       if (!dcContext.wasDeviceMsgEverAdded(deviceMsgLabel)) {
         DcMsg msg = null;
         if (!fromWelcome) {
@@ -693,7 +694,12 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
           // Util.copy(inputStream, new FileOutputStream(outputFile));
           // msg.setFile(outputFile, "image/jpeg");
 
-          msg.setText(getString(R.string.update_2_0, "https://delta.chat/donate"));
+          msg.setText(
+              getString(R.string.update_2_6)
+                  + "\n\n"
+                  + getString(R.string.update_2_6_android_additions)
+                  + " "
+                  + getString(R.string.update_2_6_end));
         }
         dcContext.addDeviceMsg(deviceMsgLabel, msg);
 

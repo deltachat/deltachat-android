@@ -68,7 +68,6 @@
     <string name="file">ملف</string>
     <string name="files">الملفات</string>
     <string name="unknown">مجهول</string>
-
     <string name="green">أخضر</string>
     <string name="red">أحمر</string>
     <string name="blue">أزرق</string>
@@ -187,6 +186,7 @@
     <string name="pref_background">الخلفية</string>
     <!-- deprecated -->
     <string name="pref_show_emails_all">كلها</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">البصمة</string>
     <!-- notifications -->
     <string name="notify_reply_button">رد</string>

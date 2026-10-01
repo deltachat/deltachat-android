@@ -190,7 +190,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apoj</string>
     <string name="unknown">Nekonata</string>
-
     <string name="green">Verda</string>
     <string name="red">Ruĝa</string>
     <string name="blue">Blua</string>

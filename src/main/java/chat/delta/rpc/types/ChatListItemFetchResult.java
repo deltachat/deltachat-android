@@ -20,6 +20,7 @@ public abstract class ChatListItemFetchResult {
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer dmChatContact;
     public Integer freshMessageCounter;
+    public ContactFreshness freshness;
     public Integer id;
     public Boolean isArchived;
     public Boolean isContactRequest;
@@ -56,7 +57,6 @@ public abstract class ChatListItemFetchResult {
     public Integer summaryStatus;
     public String summaryText1;
     public String summaryText2;
-    public Boolean wasSeenRecently;
   }
 
   public static class ArchiveLink extends ChatListItemFetchResult {

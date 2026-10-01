@@ -7,6 +7,6 @@ public class AppSource {
   public String downloadUrl;
   /** Always increasing version number. */
   public Integer versionInteger;
-  /** Any version string. */
+  /** Version string that should be shown to the user. UI must not linkify the string as it may be interpreted like a phone number or an IP address. */
   public String versionString;
 }

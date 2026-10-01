@@ -106,7 +106,7 @@ public class LocalHelpActivity extends WebViewActivity {
       openOnlineUrl("https://delta.chat");
       return true;
     } else if (itemId == R.id.privacy_policy) {
-      openOnlineUrl("https://delta.chat/gdpr");
+      openOnlineUrl("https://delta.chat/privacy");
       return true;
     } else if (itemId == R.id.contribute) {
       openOnlineUrl("https://delta.chat/contribute");

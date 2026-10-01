@@ -57,17 +57,6 @@
                     tools:text="Frieeeeeeedrich Nieeeeeeeeeetzsche" />
 
                 <TextView
-                    android:id="@+id/address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-
-                    android:textSize="14sp"
-                    android:fontFamily="sans-serif-light"
-                    tools:text="me@example.com" />
-
-                <TextView
                     android:id="@+id/size_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

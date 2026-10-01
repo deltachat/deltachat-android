@@ -76,7 +76,7 @@ public class AccountSelectionListItem extends LinearLayout {
       self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       name = dcContext.getConfig(CONFIG_DISPLAY_NAME);
       if (TextUtils.isEmpty(name)) {
-        name = self.getAddr();
+        name = getContext().getString(R.string.unnamed);
       }
       addrOrTag = dcContext.getConfig(CONFIG_PRIVATE_TAG);
       if (TextUtils.isEmpty(addrOrTag) && dcContext.isTeamProfile()) {

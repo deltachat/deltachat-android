@@ -46,7 +46,7 @@ import org.thoughtcrime.securesms.util.task.SnackbarAsyncTask;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public abstract class BaseConversationListFragment extends Fragment implements ActionMode.Callback {
-  private static final String TAG = "BaseConversationListFragment";
+  private static final String TAG = "BaseConvListFrag";
   protected ActionMode actionMode;
   protected PulsingFloatingActionButton fab;
 

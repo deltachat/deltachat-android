@@ -84,7 +84,7 @@
       <li><a href="#چه-استانداردهایی-برای-رمزنگاری-سراسری-استفاده-شدهاند">چه استاندارد‌هایی برای رمزنگاری سراسری استفاده شده‌اند؟</a></li>
       <li><a href="#whene2e">چگونه می‌توانم بدانم پیام‌ها رمزنگاری سراسری هستند؟</a></li>
       <li><a href="#آیا-هنوز-میتوانم-پیامهایی-بدون-رمزنگاری-سراسری-دریافت-یا-بفرستم">آیا هنوز می‌توانم پیام‌هایی بدون رمزنگاری سراسری دریافت یا بفرستم؟</a></li>
-      <li><a href="#e2eeguarantee">علامت تیک سبز در نمایهٔ مخاطب به چه معناست؟</a></li>
+      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#آیا-پیوستها-تصاویر-پروندهها-صدا-و-غیره-رمزنگاری-سراسری-میشوند">آیا پیوست‌ها (تصاویر، پرونده‌ها، صدا و غیره) رمزنگاری سراسری می‌شوند</a></li>
       <li><a href="#openpgp-secure">آیا OpenPGP امن است؟</a></li>
       <li><a href="#openpgp-alternatives">آیا جایگزین‌هایی برای OpenPGP برای رمزنگاری سراسری در نظر گرفته‌اید؟</a></li>
@@ -492,10 +492,9 @@
 نمایه‌های گپ تنها روی دستگاهی که پاک کردن از آنجا آغاز شده، پاک می‌شوند. 
 نمایه‌های گپ روی دستگاه‌های دیگر به‌طور کامل به کار خود ادامه خواهند داد.</p>
 
-<p>اگر از یک نمایهٔ گپ پیش‌فرض تک استفاده می‌کنید می‌توانید به‌سادگی برنامه را uninstall کنید.
-این کار همچنان به‌طور خودکار پاک کردن همهٔ داده‌های نشانی مرتبط روی کارساز چت‌میل را آغاز خواهد کرد.
-برای اطلاعات بیشتر، لطفاً به <a href="https://nine.testrun.org/info.html#account-deletion">nine.testrun.org address-deletion</a> 
-یا صفحهٔ مربوطه از <a href="https://chatmail.at/relays">کارساز چت‌میل شخص ثالث انتخابی‌تان</a> مراجعه کنید.</p>
+<p>If you use a single default chat profile you can simply uninstall the app.
+This will still automatically trigger deletion of all associated address data on the chatmail server.
+For more info, please refer to the respective page from your <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
     
       <h2 id="groups">
         
@@ -1226,34 +1225,33 @@
         
       </h3>
 
-<p>گذرگاه‌ها برای نگه‌داری موقت پیام‌ها در صورتی که دستگاهتان آفلاین است استفاده می‌شوند.
-گذرگاه‌ها کارسازهای ارزان و ساده هستند،
-که داده‌هایی مانند وضعیت گروه، نام یا نمایهتان را ذخیره نمی‌کنند -
-همهٔ آنها تنها روی دستگاه شما وجود دارند.
-گذرگاه‌ها توسط گروه‌ها و افراد مختلف اداره می‌شوند.</p>
+<p>Relays are used to temporarily hold messages in case your device is offline.
+Relays are cheap and dumb servers,
+that do not store any user data as group states, your name or avatar -
+all those exist only on your device.
+Relays are operated by different groups and people,
+not under the control of Delta Chat developers.</p>
 
-<p>به‌طور پیش‌فرض، پس از نصب، یک گذرگاه <strong>به‌طور خودکار راه‌اندازی می‌شود</strong>،
-پس نیازی به مراقبت از آن ندارید.
-با این حال، اگر بخواهید،
-می‌توانید گذرگاه‌ها را در <strong>تنظیمات → پیشرفته → گذرگاه‌ها</strong> پیکربندی کنید:</p>
+<p>By default, relays are <strong>automatically set up</strong>,
+so you do not need to care about that.
+However, if you want to,
+you can configure relays at <strong>Settings → Advanced → Relays</strong>:</p>
 
 <ul>
   <li>
-    <p>می‌توانید یک گذرگاه را با اسکن کد QR آن <strong>بیفزایید</strong>؛
-<a href="https://chatmail.at/relays">chatmail.at/relays</a> برخی از شناخته‌شده‌ها را نشان می‌دهد.
-اگر چندین گذرگاه داشته باشید، پیام‌ها را روی همهٔ آنها دریافت خواهید کرد.
-مخاطبان به‌طور خودکار گذرگاه‌های فعلی شما را وقتی برایشان پیام می‌فرستید یاد می‌گیرند.</p>
+    <p>You can <strong>remove</strong> a relay from the relay list (by long-tapping on it)
+and choosing the remove action. Before you remove your last relay,
+you will need to add another relay first.</p>
   </li>
   <li>
-    <p>روی یک گذرگاه ضربه بزنید تا آن را به‌عنوان <strong>استفاده‌شده برای فرستادن</strong> تنظیم کنید.</p>
-  </li>
-  <li>
-    <p>اگر یک گذرگاه دیگر کار نمی‌کند، می‌توانید آن را <strong>بردارید</strong>.</p>
+    <p>You can <strong>add</strong> a relay by scanning its QR code or pasting its invite link;
+<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some publically known ones.
+If you have multiple relays, you will receive messages on all of them.</p>
   </li>
 </ul>
 
-<p>برای جزئیات بیشتر و امکانات آیندهٔ گذرگاه‌ها،
-می‌توانید بحث‌ها را در <a href="https://support.delta.chat">انجمن</a> دنبال کنید.</p>
+<p>Adding or removing a relay will automatically inform your chat partners
+so they start or stop using a relay for chatting with you, respectively.</p>
     
       <h3 id="آیا-میتوانم-از-نشانی-رایانامهٔ-کلاسیک-با-دلتاچت-استفاده-کنم">
         
@@ -1270,12 +1268,12 @@
 
 <ul>
   <li>
-    <p>برنامه‌های غیرچت‌میل عمدتاً رمزنگاری سراسری رایانامهٔ خودکار را برای کاربرانشان انجام نمی‌دهند،
-در حالی که برنامه‌ها و گذرگاه‌های چت‌میل به‌طور گسترده رمزنگاری سراسری و استانداردهای امنیتی را اعمال می‌کنند.</p>
+    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
+while chatmail apps and relays pervasively enforce end-to-end encryption and other security standards.</p>
   </li>
   <li>
-    <p>برنامه‌های غیرچت‌میل از کارسازهای رایانامه به‌عنوان بایگانی پیام بلندمدت استفاده می‌کنند
-در حالی که کلاینت‌های چت‌میل از کارسازهای رایانامه برای انتقال پیام فوری گذرا استفاده می‌کنند.</p>
+    <p>Non-chatmail apps use email servers as a long-term message archive
+while chatmail clients use email servers for ephemeral instant message forwarding.</p>
   </li>
   <li>
     <p>پشتیبانی از تنوع کامل تنظیمات رایانامهٔ کلاسیک
@@ -1342,7 +1340,7 @@
 
 <ul>
   <li>
-    <p>چند مخاطب با اسکن شخصی کد QR معرفی می‌شوند؟</p>
+    <p>How many contacts are added by scanning a QR code or opening an invite link?</p>
   </li>
   <li>
     <p>کدام نگارش‌های دلتاچت استفاده می‌شوند؟</p>
@@ -1436,26 +1434,28 @@
       <h3 id="e2eeguarantee">
         
         
-          علامت تیک سبز در نمایهٔ مخاطب به چه معناست؟ <a href="#e2eeguarantee" class="anchor"></a>
+          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>نمایهٔ یک مخاطب ممکن است علامت تیک سبز
+<p>Older Delta Chat versions showed a green checkmark
 <img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-و خط «معرفی‌شده توسط» را نشان دهد.
-هر مخاطب تیک‌دار سبز یا <a href="#howtoe2ee">اسکن QR</a> مستقیم با شما انجام داده
-یا توسط مخاطب تیک‌دار دیگری معرفی شده است.
-معرفی‌ها هنگام افزودن اعضا به گروه‌ها به‌طور خودکار رخ می‌دهند. 
-هر کسی که مخاطب تیک‌دار را به گروهی با تنها اعضای تیک‌دار بیفزاید 
-معرفی‌کننده می‌شود. 
-در نمایهٔ مخاطب می‌توانید روی متن «معرفی‌شده توسط …» بارها ضربه بزنید
-تا به کسی برسید که با او مستقیم <a href="#howtoe2ee">اسکن QR</a> انجام داده‌اید.</p>
+and an “Introduced by” line in some contact profiles.</p>
 
-<p>برای بحث عمیق‌تر دربارهٔ «رمزنگاری سراسری تضمین‌شده»
-لطفاً به <a href="https://securejoin.delta.chat/en/latest/new.html">شیوه‌نامه‌های Secure-Join</a> مراجعه کنید
-و به‌طور خاص دربارهٔ «گروه‌های تأییدشده»، اصطلاح فنی
-آنچه اینجا «تیک‌دار سبز» یا «گپ‌های رمزنگاری سراسری تضمین‌شده» نامیده می‌شود بخوانید.</p>
+<p>This line is no longer present.
+Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
+contacts are identified by their cryptographic key (“public key”),
+and there is never any possibility for the relay operator
+to exchange a key in order to execute a man-in-the-middle (MitM) attack
+(in fact, the operator does not even see the key at any point).</p>
+
+<p>It is still possible for an attacker to give you an invite link
+that impersonates someone else, and an attacker who has your Delta Chat contact
+(because they are in a group chat with you)
+could try to start a chat with you under a wrong name.
+These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
+and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="آیا-پیوستها-تصاویر-پروندهها-صدا-و-غیره-رمزنگاری-سراسری-میشوند">
         
@@ -1806,7 +1806,7 @@ rPGP به‌عنوان موتور رمزنگاری سراسری <a href="https:/
 <p>برخی ویژگی‌ها به دسترسی‌های خاصی نیاز دارند،
 مثلاً اگر بخواهید <a href="#howtoe2ee">کد QR دعوت را اسکن کنید</a> باید دسترسی به دوربین بدهید.</p>
 
-<p>برای بررسی دقیق به <a href="https://delta.chat/en/gdpr#24-app-permissions">سیاست حریم خصوصی</a> مراجعه کنید.</p>
+<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
     
       <h3 id="دوستانم-دلتاچت-را-کجا-پیدا-کنند">
         

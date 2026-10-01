@@ -47,20 +47,14 @@ public class QrShowActivity extends BaseActionBarActivity {
     supportActionBar.setElevation(0); // edge-to-edge: avoid top shadow
 
     if (chatId != 0) {
-      // verified-group
       String groupName = dcContext.getChat(chatId).getName();
       supportActionBar.setTitle(groupName);
       supportActionBar.setSubtitle(R.string.qrshow_join_group_title);
     } else {
-      // verify-contact
-      String selfName =
-          DcHelper.get(
-              this,
-              DcHelper
-                  .CONFIG_DISPLAY_NAME); // we cannot use MrContact.getDisplayName() as this would
-      // result in "Me" instead of
+      // we cannot use contact.getDisplayName() as this would result in "Me" instead of actual name
+      String selfName = DcHelper.get(this, DcHelper.CONFIG_DISPLAY_NAME);
       if (selfName.isEmpty()) {
-        selfName = DcHelper.get(this, DcHelper.CONFIG_CONFIGURED_ADDRESS, "unknown");
+        selfName = getString(R.string.unnamed);
       }
       supportActionBar.setTitle(selfName);
       supportActionBar.setSubtitle(R.string.qrshow_join_contact_title);

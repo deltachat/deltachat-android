@@ -236,7 +236,6 @@
     <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
     <string name="browse">Utforsk</string>
     <string name="unknown">Ukjent</string>
-
     <string name="green">Grønn</string>
     <string name="red">Rød</string>
     <string name="blue">Blå</string>
@@ -541,6 +540,7 @@
     <string name="search_in">Søk i %1$s </string>
     <string name="search_files">Søk i filer</string>
     <string name="search_explain">Søk etter chatter, kontakter, og meldinger</string>
+    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
     <string name="search_result_for_x">Resultat for \"%1$s\"</string>
     <string name="search_no_result_for_x">Ingen resultater funnet for \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
@@ -670,10 +670,13 @@
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>
     <string name="qrscan_hint">Beveg kameraet over QR-koden.</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">Det skannede fingeravtrykket stemmer ikke overens med sist sette fingeravtrukk for %1$s.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
     <string name="qrscan_contains_text">Den skannede QR-koden inneholder følgende tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Den skannede QR-koden inneholder følgende lenke:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">Fingeravtrykk</string>
     <string name="qrshow_title">QR-invitasjonskode</string>
     <string name="qrshow_x_joining">%1$s tar del.</string>

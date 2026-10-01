@@ -329,25 +329,42 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       return;
     }
 
+    ListenableFuture<Integer> future = null;
     if (!Util.isEmpty(composeText) || attachmentManager.isAttachmentPresent()) {
-      processComposeControls(ACTION_SAVE_DRAFT);
+      future = processComposeControls(ACTION_SAVE_DRAFT);
       attachmentManager.clear(glideRequests, false);
       composeText.setText("");
     }
 
     setIntent(intent);
     initializeResources();
-    initializeSecurity(false, isDefaultSms)
-        .addListener(
-            new AssertedSuccessListener<Boolean>() {
-              @Override
-              public void onSuccess(Boolean result) {
-                initializeDraft();
-              }
-            });
+    initializeSecurity(false, isDefaultSms);
+
+    AssertedSuccessListener<Integer> futureListener =
+        new AssertedSuccessListener<Integer>() {
+          @Override
+          public void onSuccess(Integer result) {
+            Util.runOnMain(
+                () -> {
+                  initializeDraft()
+                      .addListener(
+                          new AssertedSuccessListener<Boolean>() {
+                            @Override
+                            public void onSuccess(Boolean result) {
+                              Util.runOnMain(() -> handleRelaying());
+                            }
+                          });
+                });
+          }
+        };
+
+    if (future != null) {
+      future.addListener(futureListener);
+    } else {
+      futureListener.onSuccess(0);
+    }
 
     setDcEventListener(); // reset event listener
-    handleRelaying();
     invalidateOptionsMenu(); // set correct menu visibility in case of chat changes
 
     if (fragment != null) {
@@ -1326,7 +1343,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                         new DcMsg(
                             dcContext,
                             MediaUtil.isGif(contentType) ? DcMsg.DC_MSG_GIF : DcMsg.DC_MSG_IMAGE);
-                    msg.setDimension(attachment.getWidth(), attachment.getHeight());
                   } else if (MediaUtil.isAudioType(contentType)) {
                     msg =
                         new DcMsg(
@@ -1369,6 +1385,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
             if (msg != null) {
               boolean doSend = true;
+              VideoRecoder videoRecoder = new VideoRecoder();
               if (recompress == DcMsg.DC_MSG_VIDEO) {
                 Util.runOnMain(
                     () -> {
@@ -1379,9 +1396,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                               "",
                               getString(R.string.one_moment),
                               true,
-                              false);
+                              true,
+                              (d) -> videoRecoder.cancelConversion());
                     });
-                doSend = VideoRecoder.prepareVideo(ConversationActivity.this, currentChatId, msg);
+                doSend = videoRecoder.prepareVideo(ConversationActivity.this, currentChatId, msg);
                 Util.runOnMain(
                     () -> {
                       try {

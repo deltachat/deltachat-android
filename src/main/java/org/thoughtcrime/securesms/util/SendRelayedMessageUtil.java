@@ -112,7 +112,8 @@ public class SendRelayedMessageUtil {
   }
 
   private static void sendMsgRecodingVideo(Context context, int chatId, DcMsg msg) {
-    if (msg.getType() == DcMsg.DC_MSG_VIDEO && !VideoRecoder.prepareVideo(context, chatId, msg)) {
+    VideoRecoder videoRecoder = new VideoRecoder();
+    if (msg.getType() == DcMsg.DC_MSG_VIDEO && !videoRecoder.prepareVideo(context, chatId, msg)) {
       return;
     }
     DcHelper.getContext(context).sendMsg(chatId, msg);

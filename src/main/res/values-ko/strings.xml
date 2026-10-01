@@ -150,7 +150,6 @@
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">개인 앱</string>
     <string name="unknown">알 수 없음</string>
-
     <string name="green">초록</string>
     <string name="red">빨강</string>
     <string name="blue">파랑</string>
@@ -413,7 +412,7 @@
     <string name="import_backup_title">백업 불러오기</string>
     <string name="import_backup_ask">\"%1$s\"에서 백업을 찾았습니다.\n\n모든 데이터와 설정을 가져오시겠습니까?</string>
     <string name="import_backup_no_backup_found">백업을 찾을 수 없습니다.\n\n\"%1$s\"에 백업을 복사하고 다시 시도하십시오. 또는 \"메시징 시작\"을 눌러 일반 설정을 계속하십시오.</string>
-    <!-- %1$s will be replaced by the failing address -->
+    <!-- deprecated, %1$s will be replaced by the failing address -->
     <string name="login_error_cannot_login">\"%1$s\"에 로그인 할 수 없음. 이메일 주소와 비밀번호가 맞는지 확인하시오.</string>
     <string name="switch_account">계정 전환</string>
     <string name="add_account">계정 추가</string>
@@ -621,10 +620,13 @@
     <string name="qrscan_hint">QR 코드 위에 카메라를 갖다 대시오.</string>
     <string name="qrscan_failed">QR 코드를 디코딩할 수 없습니다.</string>
     <string name="qrscan_ask_join_group">\"%1$s\" 그룹에 참여하시겠습니까?</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_mismatch">스캔한 지문이 %1$s에 대해 마지막으로 표시된 지문과 일치하지 않습니다.</string>
+    <!-- deprecated -->
     <string name="qrscan_no_addr_found">이 QR 코드에는 지문이 포함되어 있지만 이메일 주소는 없습니다.\n\n대역 외 확인의 경우 먼저 수신자에 대한 암호화된 연결을 설정하십시오.</string>
     <string name="qrscan_contains_text">스캔한 QR 코드 텍스트:\n\n%1$s</string>
     <string name="qrscan_contains_url">스캔한 QR 코드 URL:\n\n%1$s</string>
+    <!-- deprecated -->
     <string name="qrscan_fingerprint_label">지문</string>
     <string name="withdraw_verifycontact_explain">이 QR 코드는 다른 사용자가 스캔하여 사용자에게 연락할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>
     <string name="withdraw_verifygroup_explain">이 QR 코드는 다른 사용자가 스캔하여 \"%1$s\" 그룹에 가입할 수 있습니다.\n\n여기서 QR 코드를 비활성화하고 다시 스캔하여 다시 활성화할 수 있습니다.</string>

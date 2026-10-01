@@ -1775,9 +1775,9 @@ JNIEXPORT jlong Java_com_b44t_messenger_DcContact_getLastSeen(JNIEnv *env, jobje
 }
 
 
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_wasSeenRecently(JNIEnv *env, jobject obj)
+JNIEXPORT jint Java_com_b44t_messenger_DcContact_getFreshness(JNIEnv *env, jobject obj)
 {
-    return (jboolean)(dc_contact_was_seen_recently(get_dc_contact(env, obj))!=0);
+    return dc_contact_get_freshness(get_dc_contact(env, obj));
 }
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobject obj)
@@ -1785,22 +1785,9 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBlocked(JNIEnv *env, jobj
     return (jboolean)(dc_contact_is_blocked(get_dc_contact(env, obj))!=0);
 }
 
-
-JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isVerified(JNIEnv *env, jobject obj)
-{
-    return dc_contact_is_verified(get_dc_contact(env, obj))==2;
-}
-
-
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isKeyContact(JNIEnv *env, jobject obj)
 {
     return dc_contact_is_key_contact(get_dc_contact(env, obj))==1;
-}
-
-
-JNIEXPORT jint Java_com_b44t_messenger_DcContact_getVerifierId(JNIEnv *env, jobject obj)
-{
-    return dc_contact_get_verifier_id(get_dc_contact(env, obj));
 }
 
 JNIEXPORT jboolean Java_com_b44t_messenger_DcContact_isBot(JNIEnv *env, jobject obj)
