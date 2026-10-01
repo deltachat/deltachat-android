@@ -232,6 +232,7 @@
     <string name="contact">Contact</string>
     <string name="bot">Bot</string>
     <string name="camera">Camera</string>
+    <string name="take_photo">Take Photo</string>
     <string name="front_camera">Front camera</string>
     <string name="back_camera">Back camera</string>
     <string name="microphone">Microphone</string>
