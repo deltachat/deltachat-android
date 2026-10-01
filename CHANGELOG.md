@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add "Sending..." notification so large messages can continue being sent in background
+* Allow to attach new apps from the chat's apps gallery
 
 ## v2.62.0
 2026-09
