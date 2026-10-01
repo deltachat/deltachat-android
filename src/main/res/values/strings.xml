@@ -408,7 +408,7 @@
     <string name="pin">Pin</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Pinned</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Unpin</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
