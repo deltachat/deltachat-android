@@ -42,6 +42,8 @@
       style="display: none"
     ></iframe>
     <script>
+      console.log = (t) => InternalJSApi.log(t);
+
       const loadingDiv = document.getElementById("loading");
       const iframe = document.getElementById("frame");
 
