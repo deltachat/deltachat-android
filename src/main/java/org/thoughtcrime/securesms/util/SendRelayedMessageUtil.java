@@ -27,7 +27,7 @@ import org.thoughtcrime.securesms.ConversationListRelayingActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
-import org.thoughtcrime.securesms.video.recode.VideoRecoder;
+import org.thoughtcrime.securesms.video.VideoRecodeManager;
 
 public class SendRelayedMessageUtil {
 
@@ -112,9 +112,18 @@ public class SendRelayedMessageUtil {
   }
 
   private static void sendMsgRecodingVideo(Context context, int chatId, DcMsg msg) {
-    VideoRecoder videoRecoder = new VideoRecoder();
-    if (msg.getType() == DcMsg.DC_MSG_VIDEO && !videoRecoder.prepareVideo(context, chatId, msg)) {
-      return;
+    if (msg.getType() == DcMsg.DC_MSG_VIDEO) {
+      VideoRecodeManager manager = VideoRecodeManager.getInstance(context);
+      int accountId = DcHelper.getContext(context).getAccountId();
+      int jobId = manager.submitForSend(context, accountId, chatId, msg);
+      if (jobId > 0) {
+        // block this background thread to keep the batch's message order;
+        // the service does the recode and send, with notification progress
+        manager.awaitFinished(jobId);
+        return;
+      } else if (jobId < 0) {
+        return;
+      }
     }
     DcHelper.getContext(context).sendMsg(chatId, msg);
   }
