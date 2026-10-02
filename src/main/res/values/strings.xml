@@ -15,6 +15,7 @@
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="def">Default</string>
+    <!-- deprecated -->
     <string name="default_value">Default (%1$s)</string>
     <string name="custom">Custom</string>
     <string name="none">None</string>
@@ -27,6 +28,7 @@
     <string name="join">Join</string>
     <string name="join_group">Join Group</string>
     <string name="join_channel">Join Channel</string>
+    <!-- deprecated -->
     <string name="rejoin">Rejoin</string>
     <string name="delete">Delete</string>
     <string name="delete_for_me">Delete for Me</string>
@@ -86,6 +88,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Remote images can track you.\n\nThis setting also may load fonts and other content. If disabled, embedded or cached images may appear.\n\nLoad remote images?</string>
     <string name="always">Always</string>
+    <!-- deprecated -->
     <string name="always_load_remote_images">Always Load Remote Images</string>
     <string name="once">Once</string>
     <!-- deprecated -->
@@ -104,11 +107,12 @@
     <string name="no_app_to_handle_data">Can\'t find an app to handle this type of data.</string>
     <string name="no_browser_installed">No browser installed.</string>
     <string name="file_not_found">Could not find %1$s.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
+    <!-- deprecated -->
     <string name="cannot_save_file">Cannot save %1$s.</string>
     <string name="copied_to_clipboard">Copied to clipboard.</string>
     <string name="contacts_headline">Contacts</string>
     <string name="email_address">Email Address</string>
+    <!-- deprecated -->
     <string name="bad_email_address">Bad email address.</string>
     <string name="password">Password</string>
     <string name="existing_password">Existing Password</string>
@@ -201,6 +205,7 @@
         <item quantity="one">%d Selected</item>
         <item quantity="other">%d Selected</item>
     </plurals>
+    <!-- deprecated -->
     <string name="selected_colon">Selected:</string>
     <string name="selected">Selected</string>
     <string name="self">Me</string>
@@ -242,6 +247,7 @@
     <string name="switch_camera">Switch Camera</string>
     <!-- Toggle camera on/off eg. during an video call -->
     <string name="toggle_camera">Toggle Camera</string>
+    <!-- deprecated -->
     <string name="toggle_fullscreen">Toggle Full Screen Mode</string>
     <string name="location">Location</string>
     <string name="locations">Locations</string>
@@ -286,10 +292,12 @@
     <string name="progress_percent">%1$d%%</string>
 
     <string name="zoom">Zoom</string>
+    <!-- deprecated -->
     <string name="extra_small">Extra small</string>
     <string name="small">Small</string>
     <string name="normal">Normal</string>
     <string name="large">Large</string>
+    <!-- deprecated -->
     <string name="extra_large">Extra large</string>
 
     <string name="fast">Fast</string>
@@ -338,6 +346,7 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Clear Chat</string>
     <string name="delete_contact">Delete Contact</string>
+    <!-- deprecated -->
     <string name="menu_delete_location">Delete this Location?</string>
     <string name="menu_message_details">Message Info</string>
     <string name="menu_copy_to_clipboard">Copy to Clipboard</string>
@@ -380,6 +389,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="menu_select_all">Select All</string>
     <string name="select_chat">Select Chat</string>
+    <!-- deprecated -->
     <string name="select_more">Select more</string>
     <string name="menu_edit_name">Edit Name</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
@@ -393,6 +403,7 @@
     <string name="menu_zoom_out">Zoom Out</string>
     <string name="menu_save_log">Save Log</string>
     <string name="menu_more_options">More Options</string>
+    <!-- deprecated -->
     <string name="menu_learn_spelling">Learn Spelling</string>
     <string name="jump_to_message">Jump to Message</string>
     <string name="replace_draft">Replace Draft</string>
@@ -558,6 +569,7 @@
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
+    <!-- deprecated -->
     <string name="chat_request_label_explain">Include requests in counters and notifications</string>
     <string name="chat_no_messages">No messages.</string>
     <string name="chat_self_talk_subtitle">Messages to Self</string>
@@ -568,8 +580,11 @@
     <string name="saved_messages_explain">• Forward messages here for easy access\n\n• Take notes or voice memos\n\n• Attach media to save them</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Saved</string>
+    <!-- deprecated -->
     <string name="save_as">Save As</string>
+    <!-- deprecated -->
     <string name="retry_send">Retry to send message</string>
+    <!-- deprecated -->
     <string name="cannot_display_unsuported_file_type">Cannot display this file type: %s</string>
     <string name="attachment_failed_to_load">Failed to load attachment</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
@@ -626,12 +641,14 @@
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Group</string>
     <string name="tab_gallery">Gallery</string>
+    <!-- deprecated -->
     <string name="tab_docs">Docs</string>
     <string name="tab_links">Links</string>
     <string name="tab_map">Map</string>
     <string name="tab_gallery_empty_hint">Images and videos attached to this chat will appear here.</string>
     <string name="tab_docs_empty_hint">Documents and other files attached to this chat will appear here.</string>
     <string name="tab_image_empty_hint">Images attached to this chat will appear here.</string>
+    <!-- deprecated -->
     <string name="tab_video_empty_hint">Videos attached to this chat will appear here.</string>
     <string name="tab_audio_empty_hint">Audio files and voice messages attached to this chat will appear here.</string>
     <string name="tab_webxdc_empty_hint">Apps attached to this chat will appear here.</string>
@@ -639,9 +656,9 @@
     <string name="all_files_empty_hint">Documents and other files attached to any chat will appear here.</string>
     <string name="all_apps_empty_hint">Apps attached to any chat will appear here.</string>
     <string name="media_preview">Media Preview</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
+    <!-- deprecated -->
     <string name="aspect_ratio_grid">Aspect Ratio Grid</string>
-    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
+    <!-- deprecated -->
     <string name="square_grid">Square Grid</string>
     <string name="send_message">Send Message</string>
 
@@ -861,6 +878,7 @@
     <string name="pref_led_color">LED Color</string>
     <string name="pref_sound">Sound</string>
     <string name="pref_silent">Silent</string>
+    <!-- deprecated -->
     <string name="pref_privacy">Privacy</string>
     <string name="pref_system_default">System default</string>
     <!-- Translators: as in "opposite of dark" -->
@@ -878,7 +896,9 @@
     <!-- Title above a list of contacts who read a message -->
     <string name="read_by">Read by</string>
     <string name="pref_server">Server</string>
+    <!-- deprecated -->
     <string name="pref_encryption">Encryption</string>
+    <!-- deprecated -->
     <string name="pref_manage_keys">Manage Keys</string>
     <string name="pref_chats">Chats</string>
     <string name="pref_in_chat_sounds">In-Chat Sounds</string>
@@ -915,7 +935,7 @@
     <string name="pref_show_emails_no">No, chats only</string>
     <!-- deprecated -->
     <string name="pref_show_emails_accepted_contacts">For accepted contacts</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">All</string>
     <string name="pref_experimental_features">Experimental Features</string>
     <string name="pref_experimental_features_explain">These features may be unstable and may be changed or removed</string>
@@ -926,6 +946,8 @@
     <string name="pref_background_custom_color">Custom color</string>
     <string name="export_aborted">Export aborted.</string>
     <string name="auto_download_messages">Auto-Download Messages</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">All</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Up to %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Up to %1$s, most worse quality images</string>
@@ -1240,7 +1262,7 @@
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
+    <!-- deprecated -->
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
     <string name="data_found_other_installation_message">Your profiles from another Delta Chat installation are not accessible - different installations store their data in separate locations.\n\nTo keep existing profiles:\n1. Quit now\n2. Open the other Delta Chat - if needed, reinstall it from %1$s\n3. Back up each profile at \"Settings/Chats\"\n4. Relaunch this version\n5. Restore the backups using \"I already have a profile\"\n\nContinue without your previous profiles?</string>
@@ -1277,9 +1299,11 @@
 
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Stop sharing location</string>
+    <!-- deprecated -->
     <string name="a11y_voice_message_hint_ios">After recording, double-tap to send. To discard the recording, scrub with two fingers.</string>
     <string name="a11y_connectivity_hint">Double tap to view connectivity details.</string>
     <string name="login_error_no_internet_connection">No internet connection, login failed.</string>
+    <!-- deprecated -->
     <string name="share_account_not_configured">Profile is not configured.</string>
     <string name="cannot_play_audio_file">The audio file cannot be played.</string>
     <!-- iOS camera permission alert -->
@@ -1289,12 +1313,16 @@
     <string name="import_device_contacts">Import device contacts</string>
     <!-- deprecated -->
     <string name="import_device_contacts_hint">To chat with contacts from your device open Settings and enable \"Contacts\".</string>
-    <!-- iOS notification settings -->
+    <!-- deprecated -->
     <string name="disabled_in_dc">Disabled in Delta Chat</string>
+    <!-- Notifications, that are disabled in the system settings -->
     <string name="disabled_in_system_settings">Disabled in system settings</string>
     <string name="bg_app_refresh_disabled">\"Background App Refresh\" disabled in system settings</string>
+    <!-- deprecated -->
     <string name="notifications_avg_minutes">On average every %1$d minutes</string>
+    <!-- deprecated -->
     <string name="notifications_avg_hours">On average every %1$d hours</string>
+    <!-- deprecated -->
     <string name="last_check_at">Checked at %1$s</string>
     <string name="system_settings">System Settings</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
