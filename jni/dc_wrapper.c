@@ -1583,6 +1583,12 @@ JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_hasHtml(JNIEnv *env, jobject ob
 }
 
 
+JNIEXPORT jboolean Java_com_b44t_messenger_DcMsg_isPinned(JNIEnv *env, jobject obj)
+{
+    return dc_msg_is_pinned(get_dc_msg(env, obj))!=0;
+}
+
+
 JNIEXPORT void Java_com_b44t_messenger_DcMsg_setText(JNIEnv *env, jobject obj, jstring text)
 {
     CHAR_REF(text);

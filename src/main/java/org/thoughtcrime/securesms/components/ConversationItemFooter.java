@@ -23,6 +23,7 @@ public class ConversationItemFooter extends LinearLayout {
   private TextView viewsLabel;
   private ImageView viewsIcon;
   private ImageView bookmarkIndicatorView;
+  private ImageView pinIndicatorView;
   private ImageView emailIndicatorView;
   private ImageView locationIndicatorView;
   private DeliveryStatusView deliveryStatusView;
@@ -55,6 +56,7 @@ public class ConversationItemFooter extends LinearLayout {
     viewsLabel = findViewById(R.id.footer_views);
     viewsIcon = findViewById(R.id.footer_views_icon);
     bookmarkIndicatorView = findViewById(R.id.footer_bookmark_indicator);
+    pinIndicatorView = findViewById(R.id.footer_pin_indicator);
     emailIndicatorView = findViewById(R.id.footer_email_indicator);
     locationIndicatorView = findViewById(R.id.footer_location_indicator);
     deliveryStatusView = new DeliveryStatusView(findViewById(R.id.delivery_indicator));
@@ -76,6 +78,7 @@ public class ConversationItemFooter extends LinearLayout {
     presentDate(messageRecord);
     boolean bookmark = messageRecord.getOriginalMsgId() != 0 || messageRecord.getSavedMsgId() != 0;
     bookmarkIndicatorView.setVisibility(bookmark ? View.VISIBLE : View.GONE);
+    pinIndicatorView.setVisibility(messageRecord.isPinned() ? View.VISIBLE : View.GONE);
     editedView.setVisibility(messageRecord.isEdited() ? View.VISIBLE : View.GONE);
 
     int downloadState = messageRecord.getDownloadState();
@@ -118,6 +121,7 @@ public class ConversationItemFooter extends LinearLayout {
     viewsLabel.setTextColor(color);
     viewsIcon.setColorFilter(color);
     bookmarkIndicatorView.setColorFilter(color);
+    pinIndicatorView.setColorFilter(color);
     emailIndicatorView.setColorFilter(color);
     locationIndicatorView.setColorFilter(color);
     deliveryStatusView.setTint(color);
