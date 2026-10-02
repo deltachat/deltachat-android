@@ -196,7 +196,7 @@
     </string-array>
 
     <string-array name="pref_download_limit_entries">
-        <item>@string/pref_show_emails_all</item>
+        <item>@string/all</item>
         <item>160 KiB</item>
         <item>640 KiB</item>
         <item>5 MiB</item>
