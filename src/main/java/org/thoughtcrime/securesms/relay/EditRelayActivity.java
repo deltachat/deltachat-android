@@ -9,7 +9,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -48,12 +46,6 @@ import org.thoughtcrime.securesms.util.views.ProgressDialog;
 
 public class EditRelayActivity extends BaseActionBarActivity
     implements DcEventCenter.DcEventDelegate {
-
-  private enum VerificationType {
-    EMAIL,
-    SERVER,
-    PORT,
-  }
 
   private static final String TAG = "EditRelayActivity";
   public static final String EXTRA_ADDR = "extra_addr";
@@ -138,16 +130,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     }
 
     if (config != null) emailInput.setEnabled(false);
-    emailInput.setOnFocusChangeListener(
-        (view, focused) -> focusListener(view, focused, VerificationType.EMAIL));
-    imapServerInput.setOnFocusChangeListener(
-        (view, focused) -> focusListener(view, focused, VerificationType.SERVER));
-    imapPortInput.setOnFocusChangeListener(
-        (view, focused) -> focusListener(view, focused, VerificationType.PORT));
-    smtpServerInput.setOnFocusChangeListener(
-        (view, focused) -> focusListener(view, focused, VerificationType.SERVER));
-    smtpPortInput.setOnFocusChangeListener(
-        (view, focused) -> focusListener(view, focused, VerificationType.PORT));
     advancedTextView.setOnClickListener(l -> onAdvancedSettings());
     advancedIcon.setOnClickListener(l -> onAdvancedSettings());
     advancedIcon.setRotation(45);
@@ -265,59 +247,6 @@ public class EditRelayActivity extends BaseActionBarActivity
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
   }
 
-  private void focusListener(View view, boolean focused, VerificationType type) {
-
-    if (!focused) {
-      TextInputEditText inputEditText = (TextInputEditText) view;
-      switch (type) {
-        case EMAIL:
-          verifyEmail(inputEditText);
-          break;
-        case SERVER:
-          verifyServer(inputEditText);
-          break;
-        case PORT:
-          verifyPort(inputEditText);
-          break;
-      }
-    }
-  }
-
-  private void verifyEmail(TextInputEditText view) {
-    String error = getString(R.string.login_error_mail);
-    String email = view.getText().toString();
-    if (!DcHelper.getContext(this).mayBeValidAddr(email)) {
-      view.setError(error);
-    }
-  }
-
-  private void verifyServer(TextInputEditText view) {
-    String error = getString(R.string.login_error_server);
-    String server = view.getText().toString();
-    if (!TextUtils.isEmpty(server)
-        && !Patterns.DOMAIN_NAME.matcher(server).matches()
-        && !Patterns.IP_ADDRESS.matcher(server).matches()
-        && !Patterns.WEB_URL.matcher(server).matches()
-        && !"localhost".equals(server)) {
-      view.setError(error);
-    }
-  }
-
-  private void verifyPort(TextInputEditText view) {
-    String error = getString(R.string.login_error_port);
-    String portString = view.getText().toString();
-    if (!portString.isEmpty()) {
-      try {
-        int port = Integer.valueOf(portString);
-        if (port < 1 || port > 65535) {
-          view.setError(error);
-        }
-      } catch (NumberFormatException exception) {
-        view.setError(error);
-      }
-    }
-  }
-
   private void onAdvancedSettings() {
     boolean advancedViewVisible = advancedGroup.getVisibility() == View.VISIBLE;
     if (advancedViewVisible) {
@@ -332,11 +261,6 @@ public class EditRelayActivity extends BaseActionBarActivity
   }
 
   private void onLogin() {
-    if (!verifyRequiredFields()) {
-      Toast.makeText(this, R.string.login_error_required_fields, Toast.LENGTH_LONG).show();
-      return;
-    }
-
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN
         && !LocalNetworkPermission.hasPermission(this)) {
       maybeAskLocalNetworkThenLogin();
@@ -401,12 +325,6 @@ public class EditRelayActivity extends BaseActionBarActivity
           DcHelper.getContext(this).stopOngoingProcess();
         });
     progressDialog.show();
-  }
-
-  private boolean verifyRequiredFields() {
-    String email = emailInput.getText().toString();
-    return DcHelper.getContext(this).mayBeValidAddr(email)
-        && !passwordInput.getText().toString().isEmpty();
   }
 
   private EnteredCertificateChecks certificateChecksFromInt(int position) {
