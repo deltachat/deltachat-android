@@ -802,7 +802,7 @@
     <string name="login_error_server">Please enter a valid server / IP address</string>
     <!-- deprecated -->
     <string name="login_error_port">Please enter a valid port (1–65535)</string>
-    <!-- deprecated --
+    <!-- deprecated -->
     <string name="login_error_required_fields">Please enter a valid email address and a password</string>
     <string name="import_backup_title">Restore from Backup</string>
     <string name="import_backup_ask">Backup found at \"%1$s\".\n\nDo you want to import and use all data and settings from it?</string>
