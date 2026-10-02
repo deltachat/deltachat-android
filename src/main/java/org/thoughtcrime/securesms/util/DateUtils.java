@@ -137,23 +137,6 @@ public class DateUtils extends android.text.format.DateUtils {
     return c.getResources().getQuantityString(R.plurals.n_hours, hours, hours);
   }
 
-  public static String getFormattedFreshness(final Context context, final long timestamp) {
-    if (timestamp == 0) {
-      return context.getString(R.string.never_seen);
-    }
-
-    final long age = (System.currentTimeMillis() - timestamp) / 1000;
-    final int oneYear = 365 * 24 * 60 * 60;
-
-    if (age < oneYear) {
-      final int months = (int) (age / (31 * 24 * 60 * 60));
-      return context.getResources().getQuantityString(R.plurals.seen_n_months_ago, months, months);
-    }
-
-    final int years = (int) (age / oneYear);
-    return context.getResources().getQuantityString(R.plurals.seen_n_years_ago, years, years);
-  }
-
   public static @Nullable String getStatusLine(
       final Context context, final DcContact contact, boolean simple) {
     if (contact.getId() == DcContact.DC_CONTACT_ID_SELF) {
