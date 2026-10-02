@@ -403,6 +403,7 @@
     <string name="menu_zoom_out">Zoom Out</string>
     <string name="menu_save_log">Save Log</string>
     <string name="menu_more_options">More Options</string>
+    <!-- deprecated -->
     <string name="menu_learn_spelling">Learn Spelling</string>
     <string name="jump_to_message">Jump to Message</string>
     <string name="replace_draft">Replace Draft</string>
@@ -1257,7 +1258,7 @@
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
+    <!-- deprecated -->
     <string name="no_spellcheck_suggestions_found">No spelling suggestions found.</string>
     <string name="show_window">Show Window</string>
     <string name="data_found_other_installation_message">Your profiles from another Delta Chat installation are not accessible - different installations store their data in separate locations.\n\nTo keep existing profiles:\n1. Quit now\n2. Open the other Delta Chat - if needed, reinstall it from %1$s\n3. Back up each profile at \"Settings/Chats\"\n4. Relaunch this version\n5. Restore the backups using \"I already have a profile\"\n\nContinue without your previous profiles?</string>
