@@ -60,6 +60,7 @@ import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import org.thoughtcrime.securesms.ConversationAdapter.ItemClickListener;
+import org.thoughtcrime.securesms.components.PinnedMessagesBanner;
 import org.thoughtcrime.securesms.components.audioplay.AudioPlaybackViewModel;
 import org.thoughtcrime.securesms.components.reminder.DozeReminder;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -101,6 +102,7 @@ public class ConversationFragment extends MessageSelectorFragment {
   private View floatingLocationButton;
   private View bottomDivider;
   private AddReactionView addReactionView;
+  private PinnedMessagesBanner pinnedMessagesBanner;
   private TextView noMessageTextView;
   private Timer reloadTimer;
   private ConversationScrollListener scrollListener;
@@ -144,6 +146,7 @@ public class ConversationFragment extends MessageSelectorFragment {
     scrollToBottomButton = ViewUtil.findById(view, R.id.scroll_to_bottom_button);
     floatingLocationButton = ViewUtil.findById(view, R.id.floating_location_button);
     addReactionView = ViewUtil.findById(view, R.id.add_reaction_view);
+    pinnedMessagesBanner = ViewUtil.findById(view, R.id.pinned_messages_banner);
     noMessageTextView = ViewUtil.findById(view, R.id.no_messages_text_view);
     bottomDivider = ViewUtil.findById(view, R.id.bottom_divider);
 
@@ -159,6 +162,22 @@ public class ConversationFragment extends MessageSelectorFragment {
 
     new ConversationItemSwipeCallback(msg -> actionMode == null, this::handleReplyMessage)
         .attachToRecyclerView(list);
+
+    pinnedMessagesBanner.setListener(
+        new PinnedMessagesBanner.PinnedMessagesBannerListener() {
+          @Override
+          public void onAppButtonClicked(int msgId) {
+            DcContext dcContext = DcHelper.getContext(getContext());
+            WebxdcActivity.openWebxdcActivity(getContext(), dcContext.getMsg(msgId));
+          }
+
+          @Override
+          public void onMessageClicked(int msgId) {
+            scrollMaybeSmoothToMsgId(msgId);
+            pinnedMessagesBanner.displayNextMessage();
+          }
+        });
+    pinnedMessagesBanner.setGlideRequests(GlideApp.with(this));
 
     // setLayerType() is needed to allow larger items (long texts in our case)
     // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be
@@ -188,6 +207,24 @@ public class ConversationFragment extends MessageSelectorFragment {
 
     initializeResources();
     initializeListAdapter();
+  }
+
+  private void loadPinnedMessages() {
+    Util.runOnBackground(
+        () -> {
+          try {
+            List<Integer> pinnedIds =
+                rpc.getPinnedMessages(rpc.getSelectedAccountId(), (int) chatId);
+            if (pinnedIds != null) {
+              Collections.reverse(pinnedIds);
+              Util.runOnMain(() -> pinnedMessagesBanner.setMessages(pinnedIds));
+            } else {
+              Util.runOnMain(() -> pinnedMessagesBanner.dismiss());
+            }
+          } catch (RpcException e) {
+            Log.e(TAG, "RPC error loading pinned messages", e);
+          }
+        });
   }
 
   private void setNoMessageText() {
@@ -292,6 +329,7 @@ public class ConversationFragment extends MessageSelectorFragment {
     if (chatId == -1) {
       reloadList();
       updateLocationButton();
+      loadPinnedMessages();
     }
   }
 
@@ -383,6 +421,7 @@ public class ConversationFragment extends MessageSelectorFragment {
 
       reloadList();
       updateLocationButton();
+      loadPinnedMessages();
 
       if (lastSeenDecoration != null) {
         list.removeItemDecoration(lastSeenDecoration);
@@ -1196,6 +1235,7 @@ public class ConversationFragment extends MessageSelectorFragment {
         if (event.getData1Int() == 0 // deleted messages or batch insert
             || event.getData1Int() == chatId) {
           reloadList();
+          loadPinnedMessages();
         }
         break;
 

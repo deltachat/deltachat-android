@@ -7,15 +7,31 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@android:id/list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="8dp"
-        android:scrollbars="vertical"
-        android:cacheColorHint="?conversation_background"
-        android:clipChildren="false"
-        android:clipToPadding="false" />
+        android:orientation="vertical">
+
+        <org.thoughtcrime.securesms.components.PinnedMessagesBanner
+            android:id="@+id/pinned_messages_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/conversation_item_incoming_bubble_color"
+            android:elevation="4dp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingBottom="8dp"
+            android:scrollbars="vertical"
+            android:cacheColorHint="?conversation_background"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/no_messages_text_view"
