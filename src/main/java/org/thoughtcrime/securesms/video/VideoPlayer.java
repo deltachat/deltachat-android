@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2017 Whisper Systems
+ * Copyright (C) 2026 DeltaChat Android Authors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,42 +18,40 @@
 package org.thoughtcrime.securesms.video;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.LoadControl;
-import com.google.android.exoplayer2.MediaItem;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.extractor.ExtractorsFactory;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.ProgressiveMediaSource;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.ui.StyledPlayerView;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import androidx.annotation.OptIn;
+import androidx.media3.common.AudioAttributes;
+import androidx.media3.common.C;
+import androidx.media3.common.MediaItem;
+import androidx.media3.common.PlaybackException;
+import androidx.media3.common.Player;
+import androidx.media3.common.util.UnstableApi;
+import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.ui.PlayerView;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.mms.VideoSlide;
 import org.thoughtcrime.securesms.util.ViewUtil;
-import org.thoughtcrime.securesms.video.exo.AttachmentDataSourceFactory;
 
+@OptIn(markerClass = UnstableApi.class)
 public class VideoPlayer extends FrameLayout {
 
   public interface ControlsVisibilityListener {
     void onControlsVisibilityChanged(boolean visible);
   }
 
-  @Nullable private final StyledPlayerView exoView;
+  private static final String TAG = "VideoPlayer";
 
-  @Nullable private SimpleExoPlayer exoPlayer;
+  private final PlayerView exoView;
+
+  @Nullable private ExoPlayer exoPlayer;
   @Nullable private Window window;
   @Nullable private ControlsVisibilityListener controlsVisibilityListener;
 
@@ -72,7 +71,7 @@ public class VideoPlayer extends FrameLayout {
     this.exoView = ViewUtil.findById(this, R.id.video_view);
 
     exoView.setControllerVisibilityListener(
-        (StyledPlayerView.ControllerVisibilityListener)
+        (PlayerView.ControllerVisibilityListener)
             visibility -> {
               if (controlsVisibilityListener != null) {
                 controlsVisibilityListener.onControlsVisibilityChanged(visibility == View.VISIBLE);
@@ -83,7 +82,15 @@ public class VideoPlayer extends FrameLayout {
   }
 
   public void setVideoSource(@NonNull VideoSlide videoSource, boolean autoplay) {
-    setExoViewSource(videoSource, autoplay);
+    ExoPlayer player = ensurePlayer();
+    Uri uri = videoSource.getUri();
+    if (uri == null) {
+      Log.w(TAG, "setVideoSource: Slide has no uri, ignoring");
+      return;
+    }
+    player.setMediaItem(MediaItem.fromUri(uri));
+    player.prepare();
+    player.setPlayWhenReady(autoplay);
   }
 
   public void setControlsVisibilityListener(@Nullable ControlsVisibilityListener listener) {
@@ -91,9 +98,11 @@ public class VideoPlayer extends FrameLayout {
   }
 
   public void setControlsVisible(boolean visible) {
-    if (exoView == null) return;
-    if (visible) exoView.showController();
-    else exoView.hideController();
+    if (visible) {
+      exoView.showController();
+    } else {
+      exoView.hideController();
+    }
   }
 
   public void pause() {
@@ -104,7 +113,9 @@ public class VideoPlayer extends FrameLayout {
 
   public void cleanup() {
     if (this.exoPlayer != null) {
+      exoView.setPlayer(null);
       this.exoPlayer.release();
+      this.exoPlayer = null;
     }
   }
 
@@ -112,60 +123,43 @@ public class VideoPlayer extends FrameLayout {
     this.window = window;
   }
 
-  private void setExoViewSource(@NonNull VideoSlide videoSource, boolean autoplay) {
-    BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter.Builder(getContext()).build();
-    TrackSelector trackSelector = new DefaultTrackSelector(getContext());
-    LoadControl loadControl = new DefaultLoadControl();
+  // reused across rebinds
+  private @NonNull ExoPlayer ensurePlayer() {
+    if (exoPlayer == null) {
+      AudioAttributes audioAttributes =
+          new AudioAttributes.Builder()
+              .setUsage(C.USAGE_MEDIA)
+              .setContentType(C.AUDIO_CONTENT_TYPE_MOVIE)
+              .build();
 
-    exoPlayer =
-        new SimpleExoPlayer.Builder(getContext())
-            .setTrackSelector(trackSelector)
-            .setBandwidthMeter(bandwidthMeter)
-            .setLoadControl(loadControl)
-            .build();
-    exoPlayer.addListener(new ExoPlayerListener(window));
-    //noinspection ConstantConditions
-    exoView.setPlayer(exoPlayer);
-
-    DefaultDataSourceFactory defaultDataSourceFactory =
-        new DefaultDataSourceFactory(getContext(), "GenericUserAgent", null);
-    AttachmentDataSourceFactory attachmentDataSourceFactory =
-        new AttachmentDataSourceFactory(defaultDataSourceFactory);
-    ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-
-    MediaSource mediaSource =
-        new ProgressiveMediaSource.Factory(attachmentDataSourceFactory, extractorsFactory)
-            .createMediaSource(MediaItem.fromUri(videoSource.getUri()));
-
-    exoPlayer.prepare(mediaSource);
-    exoPlayer.setPlayWhenReady(autoplay);
+      exoPlayer =
+          new ExoPlayer.Builder(getContext())
+              .setAudioAttributes(audioAttributes, true)
+              .setHandleAudioBecomingNoisy(true)
+              .build();
+      exoPlayer.addListener(new ExoPlayerListener());
+      exoView.setPlayer(exoPlayer);
+    }
+    return exoPlayer;
   }
 
-  private static class ExoPlayerListener implements Player.Listener {
-    private final Window window;
-
-    ExoPlayerListener(Window window) {
-      this.window = window;
+  private class ExoPlayerListener implements Player.Listener {
+    @Override
+    public void onIsPlayingChanged(boolean isPlaying) {
+      Window w = window;
+      if (w == null) {
+        return;
+      }
+      if (isPlaying) {
+        w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+      } else {
+        w.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+      }
     }
 
     @Override
-    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-      switch (playbackState) {
-        case Player.STATE_IDLE:
-        case Player.STATE_BUFFERING:
-        case Player.STATE_ENDED:
-          window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-          break;
-        case Player.STATE_READY:
-          if (playWhenReady) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-          } else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-          }
-          break;
-        default:
-          break;
-      }
+    public void onPlayerError(@NonNull PlaybackException error) {
+      Log.w(TAG, "Video playback failed", error);
     }
   }
 }
