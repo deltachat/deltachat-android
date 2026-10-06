@@ -64,7 +64,7 @@ public class VideoRecodeManager {
   public interface Listener {
     void onProgress(int jobId, int progress);
 
-    void onFinished(int jobId, Result result);
+    void onFinished(int jobId, boolean fromComposer, Result result);
   }
 
   private static VideoRecodeManager instance;
@@ -110,7 +110,8 @@ public class VideoRecodeManager {
    *     needed, the caller should send the message directly; -1: aborted, the user alerted
    */
   @WorkerThread
-  public synchronized int submitForSend(Context uiContext, int accountId, int chatId, DcMsg msg) {
+  public synchronized int submitForSend(
+      Context uiContext, int accountId, int chatId, DcMsg msg, boolean fromComposer) {
     String inPath = msg.getFile();
     if (inPath == null || inPath.isEmpty() || !new File(inPath).canRead()) {
       return 0;
@@ -160,6 +161,7 @@ public class VideoRecodeManager {
     job.hasAudio = meta.hasAudio;
     job.dispW = meta.dispW;
     job.dispH = meta.dispH;
+    job.fromComposer = fromComposer;
     queue.add(job);
     VideoRecodeService.enqueueWork(context);
     Log.i(TAG, "Enqueued recode job " + job.id + " for chat " + chatId);
@@ -299,10 +301,11 @@ public class VideoRecodeManager {
     if (latch != null) {
       latch.countDown();
     }
+    boolean fromComposer = job.fromComposer;
     mainHandler.post(
         () -> {
           for (Listener l : listeners) {
-            l.onFinished(job.id, result);
+            l.onFinished(job.id, fromComposer, result);
           }
         });
   }

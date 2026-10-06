@@ -1403,7 +1403,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                 VideoRecodeManager recodeManager = VideoRecodeManager.getInstance(context);
                 int jobId =
                     recodeManager.submitForSend(
-                        ConversationActivity.this, dcContext.getAccountId(), currentChatId, msg);
+                        ConversationActivity.this,
+                        dcContext.getAccountId(),
+                        currentChatId,
+                        msg,
+                        true);
                 if (jobId > 0) {
                   int progress = recodeManager.progressFor(jobId);
                   Util.runOnMain(() -> showRecodeDialog(jobId, progress));
@@ -2088,13 +2092,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       new VideoRecodeManager.Listener() {
         @Override
         public void onProgress(int jobId, int progress) {
-          if (jobId == pendingRecodeJobId && recodeDialog != null) {
-            recodeDialog.setProgress(progress);
+          if (jobId == pendingRecodeJobId) {
+            if (recodeDialog != null) {
+              recodeDialog.setProgress(progress);
+            }
+          } else if (pendingRecodeJobId == 0) {
+            if (VideoRecodeManager.getInstance(context)
+                    .findJob(DcHelper.getContext(context).getAccountId(), chatId)
+                == jobId) {
+              showRecodeDialog(jobId, progress);
+            }
           }
         }
 
         @Override
-        public void onFinished(int jobId, VideoRecodeManager.Result result) {
+        public void onFinished(int jobId, boolean fromComposer, VideoRecodeManager.Result result) {
           if (jobId != pendingRecodeJobId) {
             return;
           }
@@ -2102,15 +2114,19 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           dismissRecodeDialog();
           switch (result) {
             case SENT:
-              sendComplete();
-              break;
             case SENT_ORIGINAL:
-              sendComplete();
-              new AlertDialog.Builder(ConversationActivity.this)
-                  .setCancelable(false)
-                  .setMessage(VideoRecodeManager.SENT_ORIGINAL_MSG)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
+              if (fromComposer) {
+                sendComplete();
+              } else if (fragment != null && fragment.isVisible()) {
+                fragment.scrollToBottom();
+              }
+              if (result == VideoRecodeManager.Result.SENT_ORIGINAL) {
+                new AlertDialog.Builder(ConversationActivity.this)
+                    .setCancelable(false)
+                    .setMessage(VideoRecodeManager.SENT_ORIGINAL_MSG)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+              }
               break;
             case FAILED_TOO_BIG:
               new AlertDialog.Builder(ConversationActivity.this)

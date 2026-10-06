@@ -19,6 +19,7 @@ public class RecodeJob {
   public int dispH;
   public int lastProgress;
   public boolean cancelRequested;
+  public boolean fromComposer;
 
   public int[] sizeForTier(boolean low) {
     int maxSide = low ? VideoRecodeManager.LOW_MAX_SIDE : VideoRecodeManager.MEDIUM_MAX_SIDE;

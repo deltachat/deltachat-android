@@ -115,7 +115,7 @@ public class SendRelayedMessageUtil {
     if (msg.getType() == DcMsg.DC_MSG_VIDEO) {
       VideoRecodeManager manager = VideoRecodeManager.getInstance(context);
       int accountId = DcHelper.getContext(context).getAccountId();
-      int jobId = manager.submitForSend(context, accountId, chatId, msg);
+      int jobId = manager.submitForSend(context, accountId, chatId, msg, false);
       if (jobId > 0) {
         // block this background thread to keep the batch's message order;
         // the service does the recode and send, with notification progress
