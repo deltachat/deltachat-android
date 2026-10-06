@@ -173,6 +173,7 @@ public class ConversationFragment extends MessageSelectorFragment {
 
           @Override
           public void onMessageClicked(int msgId) {
+            hideAddReactionView();
             scrollMaybeSmoothToMsgId(msgId);
             pinnedMessagesBanner.displayNextMessage();
           }
