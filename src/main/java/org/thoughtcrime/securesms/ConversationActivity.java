@@ -404,12 +404,11 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     VideoRecodeManager recodeManager = VideoRecodeManager.getInstance(context);
     recodeManager.addListener(recodeListener);
     // re-attach the dialog to a job that is still running
-    if (pendingRecodeJobId == 0) {
-      pendingRecodeJobId =
-          recodeManager.findJob(DcHelper.getContext(context).getAccountId(), chatId);
-    }
+    pendingRecodeJobId = recodeManager.findJob(DcHelper.getContext(context).getAccountId(), chatId);
     if (pendingRecodeJobId != 0) {
       showRecodeDialog(pendingRecodeJobId, recodeManager.progressFor(pendingRecodeJobId));
+    } else {
+      dismissRecodeDialog();
     }
   }
 
@@ -428,6 +427,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     inputPanel.onPause();
 
     VideoRecodeManager.getInstance(context).removeListener(recodeListener);
+    pendingRecodeJobId = 0;
     dismissRecodeDialog();
   }
 
