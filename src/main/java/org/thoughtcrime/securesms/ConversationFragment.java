@@ -495,7 +495,7 @@ public class ConversationFragment extends MessageSelectorFragment {
       if (canSave && !messageRecord.hasFile()) {
         canSave = false;
       }
-      if (canResend && !messageRecord.isOutgoing()) {
+      if (canResend && (!messageRecord.isOutgoing() || messageRecord.isInfo())) {
         canResend = false;
       }
       if (!canSave && !canResend) {
