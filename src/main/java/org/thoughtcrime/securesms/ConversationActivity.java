@@ -26,6 +26,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -132,6 +133,7 @@ import org.thoughtcrime.securesms.util.ViewUtil;
 import org.thoughtcrime.securesms.util.concurrent.AssertedSuccessListener;
 import org.thoughtcrime.securesms.util.guava.Optional;
 import org.thoughtcrime.securesms.util.views.ProgressDialog;
+import org.thoughtcrime.securesms.video.RecodeState;
 import org.thoughtcrime.securesms.video.VideoRecodeManager;
 
 /**
@@ -179,8 +181,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private ScaleStableImageView backgroundView;
   private MessageRequestsBottomView messageRequestBottomView;
   private ProgressDialog recodeDialog;
-  private volatile int pendingRecodeJobId = 0;
-
   private AttachmentTypeSelector attachmentTypeSelector;
   private AttachmentManager attachmentManager;
   private AudioRecorder audioRecorder;
@@ -403,13 +403,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
     VideoRecodeManager recodeManager = VideoRecodeManager.getInstance(context);
     recodeManager.addListener(recodeListener);
-    // re-attach the dialog to a job that is still running
-    pendingRecodeJobId = recodeManager.findJob(DcHelper.getContext(context).getAccountId(), chatId);
-    if (pendingRecodeJobId != 0) {
-      showRecodeDialog(pendingRecodeJobId, recodeManager.progressFor(pendingRecodeJobId));
-    } else {
-      dismissRecodeDialog();
-    }
+    recodeManager.cancelIfPending();
+    renderRecodeState(recodeManager.getState());
   }
 
   @Override
@@ -427,7 +422,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     inputPanel.onPause();
 
     VideoRecodeManager.getInstance(context).removeListener(recodeListener);
-    pendingRecodeJobId = 0;
     dismissRecodeDialog();
   }
 
@@ -543,10 +537,8 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         }
         askSendingFiles(
             uriList,
-            () -> {
-              Util.runOnAnyBackgroundThread(
-                  () -> SendRelayedMessageUtil.sendMultipleMsgs(this, chatId, uriList, null));
-            });
+            () ->
+                SendRelayedMessageUtil.relayFiles(this, new Long[] {(long) chatId}, uriList, null));
       }
     }
   }
@@ -1307,6 +1299,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Optional<QuoteModel> quote = inputPanel.getQuote();
     boolean editing = isEditing;
 
+    if (action == ACTION_SEND_OUT && !editing) {
+      Attachment video = getRecodableVideo(slideDeck);
+      if (video != null) {
+        return sendVideo(future, body, video, quote);
+      }
+    }
+
     // for a quick ui feedback, we clear the related controls immediately on sending messages.
     // for drafts, however, we do not change the controls, the activity may be resumed.
     if (action == ACTION_SEND_OUT) {
@@ -1328,7 +1327,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     Util.runOnAnyBackgroundThread(
         () -> {
           DcMsg msg = null;
-          int recompress = 0;
 
           if (editing) {
             int msgId = quote.get().getQuotedMsg().getId();
@@ -1366,7 +1364,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
                   } else if (MediaUtil.isVideoType(contentType)
                       && slideDeck.getDocumentSlide() == null) {
                     msg = new DcMsg(dcContext, DcMsg.DC_MSG_VIDEO);
-                    recompress = DcMsg.DC_MSG_VIDEO;
                   } else {
                     msg = new DcMsg(dcContext, DcMsg.DC_MSG_FILE);
                   }
@@ -1399,22 +1396,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             }
 
             if (msg != null) {
-              if (recompress == DcMsg.DC_MSG_VIDEO) {
-                VideoRecodeManager recodeManager = VideoRecodeManager.getInstance(context);
-                int jobId =
-                    recodeManager.submitForSend(
-                        ConversationActivity.this, dcContext.getAccountId(), currentChatId, msg);
-                if (jobId > 0) {
-                  int progress = recodeManager.progressFor(jobId);
-                  Util.runOnMain(() -> showRecodeDialog(jobId, progress));
-                  future.set(currentChatId);
-                  return;
-                } else if (jobId < 0) {
-                  future.set(currentChatId);
-                  return;
-                }
-              }
-
               if (dcContext.sendMsg(currentChatId, msg) == 0) {
                 String lastError = dcContext.getLastError();
                 if (!"".equals(lastError)) {
@@ -1438,6 +1419,38 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           future.set(currentChatId);
         });
 
+    return future;
+  }
+
+  private @Nullable Attachment getRecodableVideo(@Nullable SlideDeck slideDeck) {
+    if (slideDeck == null
+        || slideDeck.getWebxdctDraftId() != 0
+        || slideDeck.getDocumentSlide() != null) {
+      return null;
+    }
+    List<Attachment> attachments = slideDeck.asAttachments();
+    if (attachments.isEmpty()) {
+      return null;
+    }
+    Attachment last = attachments.get(attachments.size() - 1);
+    return MediaUtil.isVideoType(last.getContentType()) ? last : null;
+  }
+
+  private ListenableFuture<Integer> sendVideo(
+      SettableFuture<Integer> future, String body, Attachment video, Optional<QuoteModel> quote) {
+    VideoRecodeManager recodeManager = VideoRecodeManager.getInstance(context);
+    DcContext dcContext = DcHelper.getContext(context);
+    int currentChatId = dcChat.getId();
+    DcMsg quoteMsg = quote.isPresent() ? quote.get().getQuotedMsg() : null;
+    if (!recodeManager.startComposerOperation(dcContext, currentChatId, video, body, quoteMsg)) {
+      VideoRecodeManager.showBusyDialog(this);
+      future.set(currentChatId);
+      return future;
+    }
+    composeText.setText("");
+    inputPanel.clearQuote();
+    attachmentManager.detach(glideRequests);
+    future.set(currentChatId);
     return future;
   }
 
@@ -2087,59 +2100,108 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   private final VideoRecodeManager.Listener recodeListener =
       new VideoRecodeManager.Listener() {
         @Override
-        public void onProgress(int jobId, int progress) {
-          if (jobId == pendingRecodeJobId && recodeDialog != null) {
-            recodeDialog.setProgress(progress);
-          }
+        public void onStateChanged(RecodeState state) {
+          renderRecodeState(state);
         }
 
         @Override
-        public void onFinished(int jobId, VideoRecodeManager.Result result) {
-          if (jobId != pendingRecodeJobId) {
-            return;
+        public boolean onFinished(
+            int accountId, int jobChatId, boolean fromComposer, VideoRecodeManager.Result result) {
+          if (accountId != DcHelper.getContext(context).getAccountId() || jobChatId != chatId) {
+            return false;
           }
-          pendingRecodeJobId = 0;
-          dismissRecodeDialog();
-          switch (result) {
-            case SENT:
-              sendComplete();
-              break;
-            case SENT_ORIGINAL:
-              sendComplete();
-              new AlertDialog.Builder(ConversationActivity.this)
-                  .setCancelable(false)
-                  .setMessage(VideoRecodeManager.SENT_ORIGINAL_MSG)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
-              break;
-            case FAILED_TOO_BIG:
-              new AlertDialog.Builder(ConversationActivity.this)
-                  .setCancelable(false)
-                  .setMessage(VideoRecodeManager.TOO_BIG_MSG)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
-              break;
-            case FAILED_ERROR:
-              Toast.makeText(ConversationActivity.this, R.string.error, Toast.LENGTH_LONG).show();
-              break;
-            case CANCELLED:
-              break;
-          }
+          handleRecodeResult(fromComposer, result);
+          return true;
         }
       };
 
-  private void showRecodeDialog(int jobId, int progress) {
-    pendingRecodeJobId = jobId;
+  private void renderRecodeState(RecodeState state) {
+    int accId = DcHelper.getContext(context).getAccountId();
+    if (isFinishing() || !state.sendsTo(accId, chatId)) {
+      dismissRecodeDialog();
+      return;
+    }
+    showRecodeDialog();
+    String message =
+        getString(
+            state.phase == RecodeState.Phase.INGEST
+                ? R.string.video_preparing
+                : R.string.video_compressing);
+    if (state.total > 1) {
+      message += " (" + state.position() + "/" + state.total + ")";
+    }
+    recodeDialog.setMessage(message);
+    recodeDialog.setProgress(state.progress);
+  }
+
+  private void handleRecodeResult(boolean fromComposer, VideoRecodeManager.Result result) {
+    switch (result) {
+      case SENT:
+      case SENT_ORIGINAL:
+        if (fromComposer) {
+          sendComplete();
+        } else if (fragment != null && fragment.isVisible()) {
+          fragment.scrollToBottom();
+        }
+        if (result == VideoRecodeManager.Result.SENT_ORIGINAL) {
+          new AlertDialog.Builder(ConversationActivity.this)
+              .setCancelable(false)
+              .setMessage(VideoRecodeManager.SENT_ORIGINAL_MSG)
+              .setPositiveButton(android.R.string.ok, null)
+              .show();
+        }
+        break;
+      case FAILED_TOO_BIG:
+        new AlertDialog.Builder(ConversationActivity.this)
+            .setCancelable(false)
+            .setMessage(VideoRecodeManager.TOO_BIG_MSG)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+        break;
+      case FAILED_ERROR:
+        Toast.makeText(ConversationActivity.this, R.string.error, Toast.LENGTH_LONG).show();
+        break;
+      case FAILED_READ:
+        new AlertDialog.Builder(ConversationActivity.this)
+            .setCancelable(false)
+            .setMessage(VideoRecodeManager.READ_FAILED_MSG)
+            .setPositiveButton(android.R.string.ok, null)
+            .show();
+        break;
+      case CANCELLED:
+        break;
+    }
+  }
+
+  private void showRecodeDialog() {
+    if (recodeDialog != null && recodeDialog.isShowing()) {
+      return;
+    }
     dismissRecodeDialog();
-    recodeDialog =
-        ProgressDialog.show(
-            this,
-            "",
-            getString(R.string.video_compressing),
-            false,
-            true,
-            d -> VideoRecodeManager.getInstance(context).cancel(jobId));
-    recodeDialog.setProgress(progress);
+    recodeDialog = new ProgressDialog(this);
+    recodeDialog.setMessage(getString(R.string.video_compressing)); // updated by render
+    recodeDialog.setCancelable(false);
+    recodeDialog.setCanceledOnTouchOutside(false);
+    recodeDialog.setButton(
+        DialogInterface.BUTTON_NEGATIVE,
+        getString(R.string.cancel),
+        (d, which) -> VideoRecodeManager.getInstance(context).cancelOperation());
+    recodeDialog
+        .getOnBackPressedDispatcher()
+        .addCallback(
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                if (VideoRecodeManager.getInstance(context).getState().phase
+                    == RecodeState.Phase.INGEST) {
+                  Toast.makeText(ConversationActivity.this, R.string.one_moment, Toast.LENGTH_SHORT)
+                      .show();
+                  return;
+                }
+                handleReturnToConversationList();
+              }
+            });
+    recodeDialog.show();
   }
 
   private void dismissRecodeDialog() {
