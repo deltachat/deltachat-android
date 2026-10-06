@@ -166,7 +166,8 @@ public class VideoTranscoder {
         // encode portrait videos upright, with no rotation metadata
         .setPortraitEncodingEnabled(true)
         // give very slow devices more time than default
-        .setMaxDelayBetweenMuxerSamplesMs(30_000)
+        .setMaxDelayBetweenMuxerSamplesMs(60_000)
+        .experimentalSetMaxFramesInEncoder(2)
         .addListener(transformerListener)
         .build();
   }
@@ -195,7 +196,9 @@ public class VideoTranscoder {
           }
           stopPolling();
           transformer = null;
-          if (hdrAttempt + 1 < HDR_MODES.length) {
+          // Muxing timeout means the pipeline stalled, retrying will destroy the salvageable output
+          if (exception.errorCode != ExportException.ERROR_CODE_MUXING_TIMEOUT
+              && hdrAttempt + 1 < HDR_MODES.length) {
             Log.w(
                 TAG,
                 "Export failed with HDR mode " + HDR_MODES[hdrAttempt] + ", retrying",
