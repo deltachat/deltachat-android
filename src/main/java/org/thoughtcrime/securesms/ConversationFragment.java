@@ -864,9 +864,6 @@ public class ConversationFragment extends MessageSelectorFragment {
     private final Animation scrollButtonInAnimation;
     private final Animation scrollButtonOutAnimation;
 
-    private boolean wasAtBottom = true;
-    private boolean wasAtZoomScrollHeight = false;
-
     // private long    lastPositionId        = -1;
 
     ConversationScrollListener(@NonNull Context context) {
@@ -883,18 +880,16 @@ public class ConversationFragment extends MessageSelectorFragment {
       boolean currentlyAtZoomScrollHeight = isAtZoomScrollHeight();
       //            int     positionId                  = getHeaderPositionId();
 
-      if (currentlyAtZoomScrollHeight && !wasAtZoomScrollHeight) {
-        ViewUtil.animateIn(scrollToBottomButton, scrollButtonInAnimation);
-      } else if (currentlyAtBottom && !wasAtBottom) {
+      if (currentlyAtBottom) {
         ViewUtil.animateOut(scrollToBottomButton, scrollButtonOutAnimation, View.INVISIBLE);
+      } else if (currentlyAtZoomScrollHeight) {
+        ViewUtil.animateIn(scrollToBottomButton, scrollButtonInAnimation);
       }
 
       //      if (positionId != lastPositionId) {
       //        bindScrollHeader(conversationDateHeader, positionId);
       //      }
 
-      wasAtBottom = currentlyAtBottom;
-      wasAtZoomScrollHeight = currentlyAtZoomScrollHeight;
       //            lastPositionId        = positionId;
 
       markseenDebouncer.publish(() -> manageMessageSeenState());
