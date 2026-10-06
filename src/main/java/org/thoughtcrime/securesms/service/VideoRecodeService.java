@@ -1,7 +1,6 @@
 package org.thoughtcrime.securesms.service;
 
-import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC;
-import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROCESSING;
+import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_MANIFEST;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -9,6 +8,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.text.TextUtils;
@@ -69,6 +69,16 @@ public class VideoRecodeService extends Service {
   @Override
   public void onCreate() {
     super.onCreate();
+    try {
+      android.content.pm.ServiceInfo info =
+          getPackageManager()
+              .getServiceInfo(new android.content.ComponentName(this, VideoRecodeService.class), 0);
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        Log.d(TAG, "installed FGS type = " + info.getForegroundServiceType());
+      }
+    } catch (PackageManager.NameNotFoundException e) {
+      Log.w(TAG, "service info not found", e);
+    }
     manager = VideoRecodeManager.getInstance(this);
     GenericForegroundService.createFgNotificationChannel(this);
   }
@@ -282,10 +292,10 @@ public class VideoRecodeService extends Service {
   @SuppressLint("InlinedApi")
   private void startForegroundWithNotification(int progress) {
     try {
-      int type =
-          Build.VERSION.SDK_INT >= 35
-              ? FOREGROUND_SERVICE_TYPE_MEDIA_PROCESSING
-              : FOREGROUND_SERVICE_TYPE_DATA_SYNC;
+      int type = FOREGROUND_SERVICE_TYPE_MANIFEST;
+      Log.d(
+          TAG,
+          "startForeground: sdk=" + Build.VERSION.SDK_INT + " type=0x" + Integer.toHexString(type));
       ServiceCompat.startForeground(this, NOTIFICATION_ID, buildNotification(progress), type);
     } catch (Exception e) {
       Log.w(TAG, "startForeground failed", e);
