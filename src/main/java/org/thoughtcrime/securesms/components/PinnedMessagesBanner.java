@@ -40,7 +40,6 @@ public class PinnedMessagesBanner extends FrameLayout {
   private PinnedMessagesBannerListener listener;
   private @NonNull Integer currentIndex = 0;
   private @NonNull List<Integer> msgIds = new ArrayList<>();
-  private GlideRequests glideRequests;
 
   public interface PinnedMessagesBannerListener {
     void onAppButtonClicked(int msgId);
@@ -89,25 +88,21 @@ public class PinnedMessagesBanner extends FrameLayout {
             });
   }
 
-  public void goToStart() {
+  public void goToStart(@NonNull GlideRequests glideRequests) {
     if (currentIndex != 0 && !msgIds.isEmpty()) {
       currentIndex = 0;
-      renderCurrentPinnedMessage();
+      renderCurrentPinnedMessage(glideRequests);
     }
   }
 
-  public void goToNextMessage() {
+  public void goToNextMessage(@NonNull GlideRequests glideRequests) {
     if (!msgIds.isEmpty()) {
       currentIndex = (currentIndex + 1) % msgIds.size();
-      renderCurrentPinnedMessage();
+      renderCurrentPinnedMessage(glideRequests);
     }
   }
 
-  public void setGlideRequests(@NonNull GlideRequests glideRequests) {
-    this.glideRequests = glideRequests;
-  }
-
-  public void setMessages(@NonNull List<Integer> msgIds) {
+  public void setMessages(@NonNull GlideRequests glideRequests, @NonNull List<Integer> msgIds) {
     if (currentIndex > 0 && !msgIds.isEmpty()) {
       int index = msgIds.indexOf(this.msgIds.get(currentIndex));
       currentIndex = index >= 0 ? index : currentIndex % msgIds.size();
@@ -118,12 +113,12 @@ public class PinnedMessagesBanner extends FrameLayout {
     if (msgIds.isEmpty()) {
       dismiss();
     } else {
-      renderCurrentPinnedMessage();
+      renderCurrentPinnedMessage(glideRequests);
       setVisibility(VISIBLE);
     }
   }
 
-  private void renderCurrentPinnedMessage() {
+  private void renderCurrentPinnedMessage(@NonNull GlideRequests glideRequests) {
     DcContext dcContext = DcHelper.getContext(getContext());
     DcMsg pinnedMsg = dcContext.getMsg(msgIds.get(currentIndex));
     if (pinnedMsg == null) return;

@@ -152,7 +152,7 @@ public class ConversationFragment extends MessageSelectorFragment {
 
     scrollToBottomButton.setOnClickListener(
         v -> {
-          pinnedMessagesBanner.goToStart();
+          pinnedMessagesBanner.goToStart(GlideApp.with(this));
           scrollToBottom();
         });
 
@@ -179,10 +179,9 @@ public class ConversationFragment extends MessageSelectorFragment {
           public void onMessageClicked(int msgId) {
             hideAddReactionView();
             scrollMaybeSmoothToMsgId(msgId);
-            pinnedMessagesBanner.goToNextMessage();
+            pinnedMessagesBanner.goToNextMessage(GlideApp.with(ConversationFragment.this));
           }
         });
-    pinnedMessagesBanner.setGlideRequests(GlideApp.with(this));
 
     // setLayerType() is needed to allow larger items (long texts in our case)
     // with hardware layers, drawing may result in errors as "OpenGLRenderer: Path too large to be
@@ -222,7 +221,8 @@ public class ConversationFragment extends MessageSelectorFragment {
                 rpc.getPinnedMessages(rpc.getSelectedAccountId(), (int) chatId);
             if (pinnedIds != null) {
               Collections.reverse(pinnedIds);
-              Util.runOnMain(() -> pinnedMessagesBanner.setMessages(pinnedIds));
+              Util.runOnMain(
+                  () -> pinnedMessagesBanner.setMessages(GlideApp.with(this), pinnedIds));
             } else {
               Util.runOnMain(() -> pinnedMessagesBanner.dismiss());
             }
