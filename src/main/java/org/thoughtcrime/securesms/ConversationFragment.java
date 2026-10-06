@@ -222,7 +222,11 @@ public class ConversationFragment extends MessageSelectorFragment {
             if (pinnedIds != null) {
               Collections.reverse(pinnedIds);
               Util.runOnMain(
-                  () -> pinnedMessagesBanner.setMessages(GlideApp.with(this), pinnedIds));
+                  () -> {
+                    if (getActivity() != null) {
+                      pinnedMessagesBanner.setMessages(GlideApp.with(this), pinnedIds);
+                    }
+                  });
             } else {
               Util.runOnMain(() -> pinnedMessagesBanner.dismiss());
             }
