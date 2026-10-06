@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcContext;
@@ -39,8 +38,8 @@ public class PinnedMessagesBanner extends FrameLayout {
   private Button openAppBtn;
 
   private PinnedMessagesBannerListener listener;
-  private Integer currentMsgId;
-  private List<Integer> msgIds = new ArrayList<>();
+  private @NonNull Integer currentIndex = 0;
+  private @NonNull List<Integer> msgIds = new ArrayList<>();
   private GlideRequests glideRequests;
 
   public interface PinnedMessagesBannerListener {
@@ -51,20 +50,20 @@ public class PinnedMessagesBanner extends FrameLayout {
 
   public PinnedMessagesBanner(Context context) {
     super(context);
-    initialize(null);
+    initialize();
   }
 
   public PinnedMessagesBanner(Context context, AttributeSet attrs) {
     super(context, attrs);
-    initialize(attrs);
+    initialize();
   }
 
   public PinnedMessagesBanner(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
-    initialize(attrs);
+    initialize();
   }
 
-  private void initialize(@Nullable AttributeSet attrs) {
+  private void initialize() {
     inflate(getContext(), R.layout.pinned_messages_banner, this);
 
     textView = findViewById(R.id.msg_text);
@@ -77,7 +76,7 @@ public class PinnedMessagesBanner extends FrameLayout {
     openAppBtn.setOnClickListener(
         view -> {
           if (listener != null) {
-            listener.onAppButtonClicked(currentMsgId);
+            listener.onAppButtonClicked(msgIds.get(currentIndex));
           }
         });
 
@@ -85,20 +84,16 @@ public class PinnedMessagesBanner extends FrameLayout {
         .setOnClickListener(
             v -> {
               if (listener != null) {
-                listener.onMessageClicked(currentMsgId);
+                listener.onMessageClicked(msgIds.get(currentIndex));
               }
             });
   }
 
   public void displayNextMessage() {
-    int currentIndex = msgIds.indexOf(currentMsgId);
-    if (currentIndex < 0) {
-      currentIndex = 0;
-    } else {
+    if (!msgIds.isEmpty()) {
       currentIndex = (currentIndex + 1) % msgIds.size();
+      renderCurrentPinnedMessage();
     }
-    currentMsgId = msgIds.get(currentIndex);
-    renderCurrentPinnedMessage();
   }
 
   public void setGlideRequests(@NonNull GlideRequests glideRequests) {
@@ -106,21 +101,24 @@ public class PinnedMessagesBanner extends FrameLayout {
   }
 
   public void setMessages(@NonNull List<Integer> msgIds) {
+    if (currentIndex > 0 && !msgIds.isEmpty()) {
+      int index = msgIds.indexOf(this.msgIds.get(currentIndex));
+      currentIndex = index >= 0 ? index : currentIndex % msgIds.size();
+    } else {
+      currentIndex = 0;
+    }
     this.msgIds = msgIds;
     if (msgIds.isEmpty()) {
       dismiss();
-      return;
+    } else {
+      renderCurrentPinnedMessage();
+      setVisibility(VISIBLE);
     }
-    if (currentMsgId == null || !msgIds.contains(currentMsgId)) {
-      currentMsgId = msgIds.get(0);
-    }
-    setVisibility(VISIBLE);
-    renderCurrentPinnedMessage();
   }
 
   private void renderCurrentPinnedMessage() {
     DcContext dcContext = DcHelper.getContext(getContext());
-    DcMsg pinnedMsg = dcContext.getMsg(currentMsgId);
+    DcMsg pinnedMsg = dcContext.getMsg(msgIds.get(currentIndex));
     if (pinnedMsg == null) return;
 
     textView.setText(pinnedMsg.getSummarytext(500));
@@ -199,7 +197,7 @@ public class PinnedMessagesBanner extends FrameLayout {
 
   public void dismiss() {
     this.msgIds = new ArrayList<>();
-    this.currentMsgId = null;
+    this.currentIndex = 0;
     setVisibility(GONE);
   }
 
