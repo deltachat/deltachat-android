@@ -150,7 +150,11 @@ public class ConversationFragment extends MessageSelectorFragment {
     noMessageTextView = ViewUtil.findById(view, R.id.no_messages_text_view);
     bottomDivider = ViewUtil.findById(view, R.id.bottom_divider);
 
-    scrollToBottomButton.setOnClickListener(v -> scrollToBottom());
+    scrollToBottomButton.setOnClickListener(
+        v -> {
+          pinnedMessagesBanner.goToStart();
+          scrollToBottom();
+        });
 
     final SetStartingPositionLinearLayoutManager layoutManager =
         new SetStartingPositionLinearLayoutManager(
@@ -175,7 +179,7 @@ public class ConversationFragment extends MessageSelectorFragment {
           public void onMessageClicked(int msgId) {
             hideAddReactionView();
             scrollMaybeSmoothToMsgId(msgId);
-            pinnedMessagesBanner.displayNextMessage();
+            pinnedMessagesBanner.goToNextMessage();
           }
         });
     pinnedMessagesBanner.setGlideRequests(GlideApp.with(this));

@@ -89,7 +89,14 @@ public class PinnedMessagesBanner extends FrameLayout {
             });
   }
 
-  public void displayNextMessage() {
+  public void goToStart() {
+    if (currentIndex != 0 && !msgIds.isEmpty()) {
+      currentIndex = 0;
+      renderCurrentPinnedMessage();
+    }
+  }
+
+  public void goToNextMessage() {
     if (!msgIds.isEmpty()) {
       currentIndex = (currentIndex + 1) % msgIds.size();
       renderCurrentPinnedMessage();
