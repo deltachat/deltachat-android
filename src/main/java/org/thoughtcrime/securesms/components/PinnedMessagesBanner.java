@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcContext;
@@ -26,10 +28,12 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.MediaUtil;
+import org.thoughtcrime.securesms.util.ViewUtil;
 
 public class PinnedMessagesBanner extends FrameLayout {
   private static final String TAG = "PinnedMessagesBanner";
 
+  private LinearLayout positionIndicatorContainer;
   private TextView textView;
   private ViewGroup thumbnailContainer;
   private ImageView thumbnailView;
@@ -65,6 +69,7 @@ public class PinnedMessagesBanner extends FrameLayout {
   private void initialize() {
     inflate(getContext(), R.layout.pinned_messages_banner, this);
 
+    positionIndicatorContainer = findViewById(R.id.position_indicator_container);
     textView = findViewById(R.id.msg_text);
     thumbnailContainer = findViewById(R.id.thumbnail_container);
     thumbnailView = findViewById(R.id.thumbnail);
@@ -88,10 +93,51 @@ public class PinnedMessagesBanner extends FrameLayout {
             });
   }
 
+  private void updatePositionIndicator() {
+    positionIndicatorContainer.removeAllViews();
+    int totalCount = msgIds.size();
+    final int maxBarsCount = 4;
+
+    if (totalCount <= 1) {
+      positionIndicatorContainer.setVisibility(GONE);
+      return;
+    }
+
+    positionIndicatorContainer.setVisibility(VISIBLE);
+
+    int activeColor = ContextCompat.getColor(getContext(), R.color.delta_accent);
+    int inactiveColor = ContextCompat.getColor(getContext(), R.color.delta_accent_alpha);
+    int marginPx = ViewUtil.dpToPx(getContext(), 2);
+
+    int activeIndex = totalCount - 1 - currentIndex;
+    if (totalCount > maxBarsCount) {
+      float ratio = (float) activeIndex / (totalCount - 1);
+      activeIndex = Math.round(ratio * (maxBarsCount - 1));
+      totalCount = maxBarsCount;
+    }
+
+    for (int i = 0; i < totalCount; i++) {
+      View bar = new View(getContext());
+
+      LinearLayout.LayoutParams params =
+          new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f);
+
+      if (i > 0) {
+        params.setMargins(0, marginPx, 0, 0);
+      }
+
+      bar.setLayoutParams(params);
+      bar.setBackgroundColor(i == activeIndex ? activeColor : inactiveColor);
+
+      positionIndicatorContainer.addView(bar);
+    }
+  }
+
   public void goToStart(@NonNull GlideRequests glideRequests) {
     if (currentIndex != 0 && !msgIds.isEmpty()) {
       currentIndex = 0;
       renderCurrentPinnedMessage(glideRequests);
+      updatePositionIndicator();
     }
   }
 
@@ -99,6 +145,7 @@ public class PinnedMessagesBanner extends FrameLayout {
     if (!msgIds.isEmpty()) {
       currentIndex = (currentIndex + 1) % msgIds.size();
       renderCurrentPinnedMessage(glideRequests);
+      updatePositionIndicator();
     }
   }
 
@@ -114,6 +161,7 @@ public class PinnedMessagesBanner extends FrameLayout {
       dismiss();
     } else {
       renderCurrentPinnedMessage(glideRequests);
+      updatePositionIndicator();
       setVisibility(VISIBLE);
     }
   }

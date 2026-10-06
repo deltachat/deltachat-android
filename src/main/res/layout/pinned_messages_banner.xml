@@ -12,6 +12,18 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <LinearLayout
+        android:id="@+id/position_indicator_container"
+        android:layout_width="3dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+    </LinearLayout>
+
     <org.thoughtcrime.securesms.components.CircleColorImageView
         android:id="@+id/file_icon"
         android:layout_width="35dp"
