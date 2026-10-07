@@ -99,15 +99,19 @@ public class SendRelayedMessageUtil {
     ArrayList<Uri> uris = sharedUris;
     String text = sharedText;
 
+    List<DcMsg> msgs = new ArrayList<>();
     if (uris.size() == 1) {
-      sendMsgRecodingVideo(context, chatId, createMessage(context, uris.get(0), text));
+      msgs.add(createMessage(context, uris.get(0), text));
     } else {
       if (text != null) {
-        sendMsgRecodingVideo(context, chatId, createMessage(context, null, text));
+        msgs.add(createMessage(context, null, text));
       }
       for (Uri uri : uris) {
-        sendMsgRecodingVideo(context, chatId, createMessage(context, uri, null));
+        msgs.add(createMessage(context, uri, null));
       }
+    }
+    for (DcMsg msg : msgs) {
+      sendMsgRecodingVideo(context, chatId, msg);
     }
   }
 
@@ -116,12 +120,7 @@ public class SendRelayedMessageUtil {
       VideoRecodeManager manager = VideoRecodeManager.getInstance(context);
       int accountId = DcHelper.getContext(context).getAccountId();
       int jobId = manager.submitForSend(context, accountId, chatId, msg, false);
-      if (jobId > 0) {
-        // block this background thread to keep the batch's message order;
-        // the service does the recode and send, with notification progress
-        manager.awaitFinished(jobId);
-        return;
-      } else if (jobId < 0) {
+      if (jobId != 0) {
         return;
       }
     }

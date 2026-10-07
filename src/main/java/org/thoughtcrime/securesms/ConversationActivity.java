@@ -2110,8 +2110,23 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
           if (jobId != pendingRecodeJobId) {
             return;
           }
+          handleRecodeResult(fromComposer, result);
           pendingRecodeJobId = 0;
-          dismissRecodeDialog();
+          VideoRecodeManager manager = VideoRecodeManager.getInstance(context);
+          int next = manager.findJob(DcHelper.getContext(context).getAccountId(), chatId);
+          if (next != 0) {
+            pendingRecodeJobId = next;
+            if (recodeDialog != null) {
+              recodeDialog.setProgress(0);
+            } else {
+              showRecodeDialog(next, 0);
+            }
+          } else {
+            dismissRecodeDialog();
+          }
+        }
+
+        private void handleRecodeResult(boolean fromComposer, VideoRecodeManager.Result result) {
           switch (result) {
             case SENT:
             case SENT_ORIGINAL:
@@ -2154,7 +2169,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             getString(R.string.video_compressing),
             false,
             true,
-            d -> VideoRecodeManager.getInstance(context).cancel(jobId));
+            d -> VideoRecodeManager.getInstance(context).cancelAllForJob(jobId));
     recodeDialog.setProgress(progress);
   }
 

@@ -89,12 +89,11 @@ public class VideoRecodeService extends Service {
       return START_NOT_STICKY;
     }
     if (ACTION_CANCEL.equals(intent.getAction())) {
-      manager.cancel(intent.getIntExtra(EXTRA_JOB_ID, 0));
+      manager.cancelAllForJob(intent.getIntExtra(EXTRA_JOB_ID, 0));
       return START_NOT_STICKY;
     }
     if (!foreground) {
-      foreground = true;
-      startForegroundWithNotification(0);
+      foreground = startForegroundWithNotification(0);
     }
     processNext();
     return START_NOT_STICKY;
@@ -112,6 +111,7 @@ public class VideoRecodeService extends Service {
     }
     job = manager.nextJob();
     if (job == null) {
+      jobsDone = 0;
       shutdown();
       return;
     }
@@ -286,19 +286,22 @@ public class VideoRecodeService extends Service {
       foreground = false;
       ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE);
     }
+    NotificationManagerCompat.from(this).cancel(NOTIFICATION_ID);
     stopSelf();
   }
 
   @SuppressLint("InlinedApi")
-  private void startForegroundWithNotification(int progress) {
+  private boolean startForegroundWithNotification(int progress) {
     try {
       int type = FOREGROUND_SERVICE_TYPE_MANIFEST;
       Log.d(
           TAG,
           "startForeground: sdk=" + Build.VERSION.SDK_INT + " type=0x" + Integer.toHexString(type));
       ServiceCompat.startForeground(this, NOTIFICATION_ID, buildNotification(progress), type);
+      return true;
     } catch (Exception e) {
       Log.w(TAG, "startForeground failed", e);
+      return false;
     }
   }
 

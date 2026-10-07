@@ -16,11 +16,8 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcMsg;
 import java.io.File;
 import java.util.ArrayDeque;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.service.VideoRecodeService;
@@ -80,8 +77,6 @@ public class VideoRecodeManager {
   private final Handler mainHandler = new Handler(Looper.getMainLooper());
   private final ArrayDeque<RecodeJob> queue = new ArrayDeque<>();
   private final CopyOnWriteArrayList<Listener> listeners = new CopyOnWriteArrayList<>();
-  private final HashMap<Integer, Result> finishedResults = new HashMap<>();
-  private final HashMap<Integer, CountDownLatch> finishLatches = new HashMap<>();
   private final AtomicInteger jobIds = new AtomicInteger(1);
   private RecodeJob activeJob;
   private VideoTranscoder activeTranscoder;
@@ -168,58 +163,55 @@ public class VideoRecodeManager {
     return job.id;
   }
 
-  /**
-   * Blocks the calling thread until the job reaches a terminal state. Used by the batch/share path
-   * to preserve message order. Returns the result, or null on timeout/interrupt. The service still
-   * sends the message in that case.
-   */
-  @WorkerThread
-  public @Nullable Result awaitFinished(int jobId) {
-    CountDownLatch latch;
-    synchronized (this) {
-      Result done = finishedResults.remove(jobId);
-      if (done != null) {
-        return done;
-      }
-      latch = finishLatches.get(jobId);
-      if (latch == null) {
-        latch = new CountDownLatch(1);
-        finishLatches.put(jobId, latch);
-      }
-    }
-    try {
-      latch.await(60, TimeUnit.MINUTES);
-    } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-    }
-    synchronized (this) {
-      finishLatches.remove(jobId);
-      return finishedResults.remove(jobId);
-    }
-  }
-
-  public void cancel(int jobId) {
+  public void cancelAllForChat(int accountId, int chatId) {
     mainHandler.post(
         () -> {
           synchronized (this) {
-            if (activeJob != null && activeJob.id == jobId) {
+            Iterator<RecodeJob> it = queue.iterator();
+            while (it.hasNext()) {
+              RecodeJob j = it.next();
+              if (j.accountId == accountId && j.chatId == chatId) {
+                it.remove();
+                notifyFinished(j, Result.CANCELLED);
+              }
+            }
+            if (activeJob != null
+                && activeJob.accountId == accountId
+                && activeJob.chatId == chatId) {
               if (activeTranscoder != null) {
                 activeTranscoder.cancel();
               } else {
                 activeJob.cancelRequested = true;
               }
-              return;
-            }
-            Iterator<RecodeJob> it = queue.iterator();
-            while (it.hasNext()) {
-              RecodeJob j = it.next();
-              if (j.id == jobId) {
-                it.remove();
-                notifyFinished(j, Result.CANCELLED);
-                return;
-              }
             }
           }
+        });
+  }
+
+  public void cancelAllForJob(int jobId) {
+    mainHandler.post(
+        () -> {
+          int accountId;
+          int chatId;
+          synchronized (this) {
+            RecodeJob target = null;
+            if (activeJob != null && activeJob.id == jobId) {
+              target = activeJob;
+            } else {
+              for (RecodeJob j : queue) {
+                if (j.id == jobId) {
+                  target = j;
+                  break;
+                }
+              }
+            }
+            if (target == null) {
+              return;
+            }
+            accountId = target.accountId;
+            chatId = target.chatId;
+          }
+          cancelAllForChat(accountId, chatId);
         });
   }
 
@@ -290,17 +282,6 @@ public class VideoRecodeManager {
   }
 
   public void notifyFinished(RecodeJob job, Result result) {
-    CountDownLatch latch;
-    synchronized (this) {
-      if (finishedResults.size() > 32) {
-        finishedResults.remove(finishedResults.keySet().iterator().next());
-      }
-      finishedResults.put(job.id, result);
-      latch = finishLatches.remove(job.id);
-    }
-    if (latch != null) {
-      latch.countDown();
-    }
     boolean fromComposer = job.fromComposer;
     mainHandler.post(
         () -> {
