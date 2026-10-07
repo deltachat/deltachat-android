@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
+
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcContext;
@@ -106,7 +108,7 @@ public class PinnedMessagesBanner extends FrameLayout {
     positionIndicatorContainer.setVisibility(VISIBLE);
 
     int activeColor = ContextCompat.getColor(getContext(), R.color.delta_accent);
-    int inactiveColor = ContextCompat.getColor(getContext(), R.color.delta_accent_alpha);
+    int inactiveColor = ColorUtils.setAlphaComponent(activeColor, 102);
     int marginPx = ViewUtil.dpToPx(getContext(), 2);
 
     int activeIndex = totalCount - 1 - currentIndex;
