@@ -14,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
-
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.VcardContact;
 import com.b44t.messenger.DcContext;
