@@ -208,8 +208,8 @@ public class PinnedMessagesBanner extends FrameLayout {
           Recipient recipient = new Recipient(getContext(), vcardContact);
           glideRequests
               .load(recipient.getContactPhoto(getContext()))
-              .error(recipient.getFallbackAvatarDrawable(getContext(), false))
-              .centerCrop()
+              .error(recipient.getFallbackAvatarDrawable(getContext()))
+              .circleCrop()
               .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
               .diskCacheStrategy(DiskCacheStrategy.NONE)
               .into(thumbnailView);
