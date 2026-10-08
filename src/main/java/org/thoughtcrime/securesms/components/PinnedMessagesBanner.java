@@ -170,7 +170,7 @@ public class PinnedMessagesBanner extends FrameLayout {
   private void renderCurrentPinnedMessage(@NonNull GlideRequests glideRequests) {
     DcContext dcContext = DcHelper.getContext(getContext());
     DcMsg pinnedMsg = dcContext.getMsg(msgIds.get(currentIndex));
-    if (pinnedMsg == null) return;
+    if (!pinnedMsg.isOk()) return;
 
     textView.setText(pinnedMsg.getSummarytext(500));
 
