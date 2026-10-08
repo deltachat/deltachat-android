@@ -213,7 +213,7 @@ public class PinnedMessagesBanner extends FrameLayout {
               .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
               .diskCacheStrategy(DiskCacheStrategy.NONE)
               .into(thumbnailView);
-        } catch (RpcException e) {
+        } catch (RpcException | IndexOutOfBoundsException e) {
           Log.e(TAG, "failed to parse vCard", e);
           thumbnailContainer.setVisibility(GONE);
         }
