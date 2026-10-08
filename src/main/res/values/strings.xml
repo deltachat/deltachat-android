@@ -594,8 +594,8 @@
     <string name="mailing_list">Mailing List</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Start…</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Start</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Please accept the chat request first.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
