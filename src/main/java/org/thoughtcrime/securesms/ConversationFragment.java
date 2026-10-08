@@ -211,9 +211,15 @@ public class ConversationFragment extends MessageSelectorFragment {
 
     initializeResources();
     initializeListAdapter();
+    loadPinnedMessages(true);
   }
 
-  private void loadPinnedMessages() {
+  private void loadPinnedMessages(boolean reset) {
+    if (chatId == -1) {
+      pinnedMessagesBanner.dismiss();
+      return;
+    }
+
     Util.runOnBackground(
         () -> {
           try {
@@ -224,7 +230,7 @@ public class ConversationFragment extends MessageSelectorFragment {
               Util.runOnMain(
                   () -> {
                     if (getActivity() != null) {
-                      pinnedMessagesBanner.setMessages(GlideApp.with(this), pinnedIds);
+                      pinnedMessagesBanner.setMessages(GlideApp.with(this), pinnedIds, reset);
                     }
                   });
             } else {
@@ -232,6 +238,7 @@ public class ConversationFragment extends MessageSelectorFragment {
             }
           } catch (RpcException e) {
             Log.e(TAG, "RPC error loading pinned messages", e);
+            Util.runOnMain(() -> pinnedMessagesBanner.dismiss());
           }
         });
   }
@@ -334,11 +341,11 @@ public class ConversationFragment extends MessageSelectorFragment {
 
     initializeResources();
     initializeListAdapter();
+    loadPinnedMessages(true);
 
     if (chatId == -1) {
       reloadList();
       updateLocationButton();
-      loadPinnedMessages();
     }
   }
 
@@ -430,7 +437,6 @@ public class ConversationFragment extends MessageSelectorFragment {
 
       reloadList();
       updateLocationButton();
-      loadPinnedMessages();
 
       if (lastSeenDecoration != null) {
         list.removeItemDecoration(lastSeenDecoration);
@@ -539,6 +545,7 @@ public class ConversationFragment extends MessageSelectorFragment {
     if (this.chatId != chatId) {
       this.chatId = chatId;
       initializeListAdapter();
+      loadPinnedMessages(true);
     }
   }
 
@@ -1239,7 +1246,7 @@ public class ConversationFragment extends MessageSelectorFragment {
         if (event.getData1Int() == 0 // deleted messages or batch insert
             || event.getData1Int() == chatId) {
           reloadList();
-          loadPinnedMessages();
+          loadPinnedMessages(false);
         }
         break;
 

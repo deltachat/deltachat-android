@@ -150,8 +150,9 @@ public class PinnedMessagesBanner extends FrameLayout {
     }
   }
 
-  public void setMessages(@NonNull GlideRequests glideRequests, @NonNull List<Integer> msgIds) {
-    if (currentIndex > 0 && !msgIds.isEmpty()) {
+  public void setMessages(
+      @NonNull GlideRequests glideRequests, @NonNull List<Integer> msgIds, boolean reset) {
+    if (!reset && currentIndex > 0 && !msgIds.isEmpty()) {
       int index = msgIds.indexOf(this.msgIds.get(currentIndex));
       currentIndex = index >= 0 ? index : currentIndex % msgIds.size();
     } else {
