@@ -5,7 +5,12 @@
 * New feature: allow to pin messages in the chat
 * Add "Sending..." notification so large messages can continue being sent in background
 * Allow to attach new apps from the chat's apps gallery
+* Improve auto-selection of relay for sending messages
+* Re-add "second device added" message if deleted soon after transfer
 * Fix: rotated videos are now displayed with correct aspect ratios
+* Fix: do not convert animated WebPs into static images
+* Update translations and local help
+* Update to core 2.63.0
 
 ## v2.62.0
 2026-09
