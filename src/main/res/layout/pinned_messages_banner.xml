@@ -95,7 +95,7 @@
         android:layout_marginStart="8dp"
         android:padding="@dimen/message_bubble_showmore_padding"
         android:minHeight="1dp"
-        android:minWidth="0dp"
+        android:minWidth="64dp"
         android:text="@string/start_app"
         android:textAllCaps="false" />
 
