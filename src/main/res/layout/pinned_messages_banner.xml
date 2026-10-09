@@ -30,47 +30,21 @@
         android:layout_height="35dp"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/file"
         android:scaleType="center"
         android:src="@drawable/ic_insert_drive_file_white_24dp"
+        android:importantForAccessibility="no"
         android:visibility="gone"
         tools:visibility="visible"
         app:circleColor="@color/document_icon" />
 
-    <FrameLayout
-        android:id="@+id/thumbnail_container"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_gravity="center_vertical"
         android:layout_marginEnd="8dp"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/thumbnail"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:scaleType="centerCrop" />
-
-        <FrameLayout
-            android:id="@+id/video_overlay"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/circle_universal_overlay"
-            android:layout_gravity="center"
-            android:longClickable="false"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="13dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/triangle_right" />
-
-        </FrameLayout>
-
-    </FrameLayout>
+        android:scaleType="centerCrop"
+        android:importantForAccessibility="no"
+        android:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/msg_text"
@@ -80,9 +54,9 @@
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         android:ellipsize="end"
-        android:maxLines="2"
+        android:maxLines="1"
         android:minHeight="35dp"
-        style="@style/Signal.Text.Quote"
+        style="@style/Signal.Text.Preview"
         tools:text="With great power comes great responsibility." />
 
     <Button

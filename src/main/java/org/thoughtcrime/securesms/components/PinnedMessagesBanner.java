@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -36,9 +35,7 @@ public class PinnedMessagesBanner extends FrameLayout {
 
   private LinearLayout positionIndicatorContainer;
   private TextView textView;
-  private ViewGroup thumbnailContainer;
   private ImageView thumbnailView;
-  private View videoOverlayView;
   private ImageView fileIconView;
   private Button openAppBtn;
 
@@ -72,9 +69,7 @@ public class PinnedMessagesBanner extends FrameLayout {
 
     positionIndicatorContainer = findViewById(R.id.position_indicator_container);
     textView = findViewById(R.id.msg_text);
-    thumbnailContainer = findViewById(R.id.thumbnail_container);
     thumbnailView = findViewById(R.id.thumbnail);
-    videoOverlayView = findViewById(R.id.video_overlay);
     fileIconView = findViewById(R.id.file_icon);
     openAppBtn = findViewById(R.id.open_app_btn);
 
@@ -180,11 +175,10 @@ public class PinnedMessagesBanner extends FrameLayout {
       slide = MediaUtil.getSlideForMsg(getContext(), pinnedMsg);
     }
 
-    videoOverlayView.setVisibility(GONE);
     openAppBtn.setVisibility(GONE);
 
     if (slide != null && slide.hasQuoteThumbnail()) {
-      thumbnailContainer.setVisibility(VISIBLE);
+      thumbnailView.setVisibility(VISIBLE);
       fileIconView.setVisibility(GONE);
 
       if (slide.isWebxdcDocument()) {
@@ -200,7 +194,7 @@ public class PinnedMessagesBanner extends FrameLayout {
               .into(thumbnailView);
         } catch (Exception e) {
           Log.e(TAG, "failed to get webxdc icon", e);
-          thumbnailContainer.setVisibility(GONE);
+          thumbnailView.setVisibility(GONE);
         }
       } else if (slide.isVcard()) {
         try {
@@ -216,12 +210,11 @@ public class PinnedMessagesBanner extends FrameLayout {
               .into(thumbnailView);
         } catch (RpcException | IndexOutOfBoundsException e) {
           Log.e(TAG, "failed to parse vCard", e);
-          thumbnailContainer.setVisibility(GONE);
+          thumbnailView.setVisibility(GONE);
         }
       } else {
         Uri thumbnailUri = slide.getUri();
         if (slide.hasVideo()) {
-          videoOverlayView.setVisibility(VISIBLE);
           MediaUtil.createVideoThumbnailIfNeeded(
               getContext(), slide.getUri(), slide.getThumbnailUri(), null);
           thumbnailUri = slide.getThumbnailUri();
@@ -236,13 +229,13 @@ public class PinnedMessagesBanner extends FrameLayout {
         }
       }
     } else if (slide != null && slide.hasAudio()) {
-      thumbnailContainer.setVisibility(GONE);
+      thumbnailView.setVisibility(GONE);
       fileIconView.setVisibility(GONE);
     } else if (slide != null && slide.hasDocument()) {
-      thumbnailContainer.setVisibility(GONE);
+      thumbnailView.setVisibility(GONE);
       fileIconView.setVisibility(VISIBLE);
     } else {
-      thumbnailContainer.setVisibility(GONE);
+      thumbnailView.setVisibility(GONE);
       fileIconView.setVisibility(GONE);
     }
   }
