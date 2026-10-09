@@ -11,7 +11,6 @@
     <string name="on">Nyala</string>
     <string name="off">Mati</string>
     <string name="def">Default</string>
-    <string name="default_value">Default (%1$s)</string>
     <string name="custom">Menurut pesanan</string>
     <string name="none">Tidak ada</string>
     <string name="automatic">Otomatis</string>
@@ -21,7 +20,6 @@
     <string name="downloading">Sedang Mengunduh</string>
     <string name="open_attachment">Buka lampiran</string>
     <string name="join">Gabung</string>
-    <string name="rejoin">Gabung kembali</string>
     <string name="delete">Hapus</string>
     <string name="info">Info</string>
     <string name="update">Memperbarui</string>
@@ -59,8 +57,6 @@
     <string name="load_remote_content">Memuat Gambar Jarak Jauh</string>
     <string name="always">Selalu</string>
     <string name="once">Sekali</string>
-    <!-- deprecated -->
-    <string name="show_warning">Tampilkan Peringatan</string>
     <string name="not_now">Tidak sekarang</string>
     <string name="never">Tidak pernah</string>
     <string name="one_moment">Sebentar...</string>
@@ -77,7 +73,6 @@
     <string name="copied_to_clipboard">Sudah dikopi di papan klip.</string>
     <string name="contacts_headline">Kontak</string>
     <string name="email_address">Alamat email</string>
-    <string name="bad_email_address">Alamat surel jelek.</string>
     <string name="password">Kata kunci</string>
     <string name="existing_password">Kata sandi sudah pernah</string>
     <string name="now">Sekarang</string>
@@ -89,11 +84,13 @@
     <string name="this_month">Bulan ini</string>
     <string name="last_week">Minggu lalu</string>
     <string name="last_month">Bulan lalu</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Terakhir terlihat di %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Terakhir terlihat %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Terakhir terlihat: Tidak diketahui</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d menit</item>
@@ -146,7 +143,6 @@
     <string name="capture">Tangkap</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Ganti kamera</string>
-    <string name="toggle_fullscreen">Beralih ke Mode Layar Penuh</string>
     <string name="location">Lokasi</string>
     <string name="locations">Lokasi</string>
     <string name="gallery">Galeri</string>
@@ -168,11 +164,9 @@
     <string name="white">Putih</string>
 
     <string name="zoom">Perbesar</string>
-    <string name="extra_small">Sangat kecil</string>
     <string name="small">Kecil</string>
     <string name="normal">Normal</string>
     <string name="large">Besar</string>
-    <string name="extra_large">Sangat besar</string>
 
     <string name="fast">Cepat</string>
     <string name="slow">Lambat</string>
@@ -184,8 +178,6 @@
     <string name="menu_send">Terkirim</string>
     <string name="menu_toggle_keyboard">Tekan tombol emoji keyboard</string>
     <string name="menu_edit_group">Edit grup</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Nama dan gambar grup</string>
     <string name="menu_show_global_map">Tunjukkan semua lokasi</string>
     <string name="menu_archive_chat">Arsip obrolan</string>
     <string name="menu_unarchive_chat">Obrolan Tak Terarsip</string>
@@ -195,7 +187,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Hapus Obrolan</string>
     <string name="delete_contact">Hapus kontak</string>
-    <string name="menu_delete_location">Hapus lokasi ini?</string>
     <string name="menu_message_details">Detail pesan</string>
     <string name="menu_copy_to_clipboard">Kopi ke papan klip</string>
     <string name="menu_copy_selection_to_clipboard">Salin yang dipilih</string>
@@ -226,7 +217,6 @@
     <string name="privacy_policy">Kebijakan Privasi</string>
     <string name="menu_select_all">Pilih semua</string>
     <string name="select_chat">Pilih Obrolan</string>
-    <string name="select_more">Pilih lebih banyak</string>
     <string name="menu_edit_name">Edit nama</string>
     <string name="menu_settings">Setelan</string>
     <string name="menu_advanced">Lanjutan</string>
@@ -235,7 +225,6 @@
     <string name="menu_zoom_out">Zoom perkecil</string>
     <string name="menu_save_log">Simpan log</string>
     <string name="menu_more_options">Opsi Lainnya</string>
-    <string name="menu_learn_spelling">Belajar Ejaan</string>
     <string name="jump_to_message">Lompat ke Pesan</string>
     <string name="title_share_location">Bagikan lokasi kepada seluruh anggota grup</string>
     <string name="device_talk">Pesan perangkat</string>
@@ -248,7 +237,7 @@
     <string name="unpin_chat">Lepas pin obrolan</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Sematkan</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Lepas pin</string>
     <string name="ConversationFragment_quoted_message_not_found">Pesan orisinil tidak ditemukan</string>
     <string name="reply_privately">Balas secara privat</string>
@@ -257,10 +246,8 @@
     <string name="mute_for_one_day">Diamkan untuk 1 hari</string>
     <string name="mute_for_seven_days">Diamkan untuk 7 hari</string>
     <string name="mute_forever">Diamkan seterusnya</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">untuk 5 menit</string>
-
     <string name="share_location_for_30_minutes">untuk 30 menit</string>
     <string name="share_location_for_one_hour">untuk 1 jam</string>
     <string name="share_location_for_two_hours">untuk 2 jam</string>
@@ -273,8 +260,6 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">Menghapus pesan %d?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Teruskan pesan ke %1$s?</string>
     <string name="ask_export_attachment">Ekspor lampiran? Mengekspor lampiran akan membuat aplikasi lain di perangkat anda terakses.\n\nLanjut?</string>
     <string name="ask_block_contact">Blokir kontak ini? Anda tak akan lagi menerima pesan dari kontak ini.</string>
     <string name="ask_unblock_contact">Buka blokir kontak ini? Anda akan bisa kembali menerima pesan dari kontak ini.</string>
@@ -319,8 +304,6 @@
     <string name="saved_messages_explain">• Teruskan pesan di sini untuk akses yang mudah\n\n• Buat catatan atau memo suara\n\n• Lampirkan media untuk menyimpannya</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sudah disimpan</string>
-    <string name="retry_send">Coba lagi mengirim pesan</string>
-    <string name="cannot_display_unsuported_file_type">Tidak dapat menampilkan tipe berkas ini: %s</string>
     <string name="attachment_failed_to_load">Gagal memuat lampiran</string>
     <!-- search -->
     <string name="search">Cari</string>
@@ -332,8 +315,6 @@
     <string name="remove_group_image">Hapus gambar grup</string>
     <string name="change_group_image">Ubah gambar grup</string>
     <string name="group_create_button">Buat grup</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Silakan masukkan nama untuk grup.</string>
     <string name="group_add_members">Tambah anggota</string>
     <string name="group_self_not_in_group">Anda harus menjadi anggota grup untuk melakukan tindakan ini.</string>
     <string name="profile_encryption">Enkripsi</string>
@@ -341,7 +322,6 @@
     <string name="tab_contact">Kontak</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
-    <string name="tab_docs">Dokumen</string>
     <string name="tab_links">Tautan</string>
     <string name="tab_map">Peta</string>
     <string name="tab_gallery_empty_hint">Gambar dan video yang dibagikan di obrolan ini akan ditampilkan disini.</string>
@@ -349,7 +329,6 @@
     <string name="media_preview">Tampilan media</string>
     <string name="send_message">Kirim pesan</string>
 
-    <string name="login_title">Masuk</string>
     <string name="login_inbox">Surel masuk</string>
     <string name="login_imap_login">Nama login IMAP</string>
     <string name="login_imap_server">Server IMAP</string>
@@ -362,15 +341,11 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">Keamanan SMTP</string>
     <string name="login_certificate_checks">Cek sertifikat</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Masukkan alamat surel yang sahih</string>
-    <string name="login_error_server">Tolong masukan server / alamat IP yang sah</string>
-    <string name="login_error_port">Silakan masukkan port yang sah (1–65535)</string>
-    <string name="login_error_required_fields">Silakan masukkan alamat email dan kata sandi yang sah</string>
     <string name="import_backup_title">Impor cadangan</string>
     <string name="import_backup_ask">Cadangan ditemukan di \"%1$s\".\n\n Apakah Anda ingin mengimpor dan menggunakan semua data dan pengaturan darinya?</string>
     <string name="import_backup_no_backup_found">Cadangan tidak ketemu.\n\nKopi cadangan ke \"%1$s\" dan coba lagi.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Tidak bisa login sebagai \"%1$s\". Mohon cek apakah alamat surel dan kata sandi benar.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Terima sertifikat yang tidak sah</string>
     <string name="switch_account">Alihkan akun</string>
@@ -408,12 +383,9 @@
     <string name="pref_notifications">Notifikasi</string>
     <string name="pref_notifications_show">Menunjukkan</string>
     <string name="pref_notifications_priority">Prioritas</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Tampilkan pengirim dan kata-kata awal dari pesan di dalam notifikasi</string>
     <string name="pref_led_color">Warna LED</string>
     <string name="pref_sound">Suara</string>
     <string name="pref_silent">Sunyi</string>
-    <string name="pref_privacy">Privasi</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Cahaya</string>
     <string name="pref_dark_theme">Gelap</string>
@@ -423,7 +395,6 @@
     <string name="pref_incognito_keyboard">Keyboard penyamaran</string>
     <string name="pref_read_receipts">Baca tanda terima</string>
     <string name="pref_read_receipts_explain">Jika tanda terima baca dinonaktifkan, Anda tidak akan dapat melihat tanda terima baca dari orang lain.</string>
-    <string name="pref_manage_keys">Kelola kunci</string>
     <string name="pref_chats">Obrolan</string>
     <string name="pref_in_chat_sounds">Suara dalam obrolan</string>
     <string name="pref_view_log">Lihat catatan</string>
@@ -440,19 +411,13 @@
     <string name="pref_background">Latar belakang</string>
     <string name="pref_background_btn_default">Menggunakan gambar default</string>
     <string name="pref_background_btn_gallery">Pilih dari galeri</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">Perpindahan otomatis ke berkas DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Tampilkan email klasik</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Tidak, hanya obrolan saja</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">Untuk kontak yang telah diterima</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Semua</string>
     <string name="pref_experimental_features">Fitur yang masih bersifat eksperimen</string>
     <string name="pref_background_default">Latar belakang default</string>
     <string name="pref_background_default_color">Warna default</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Semua</string>
     <string name="profile_image_select">Pilih gambar profil</string>
     <string name="select_your_new_profile_image">Pilih gambar profil baru</string>
     <string name="profile_image_delete">Hapus gambar profil</string>
@@ -467,8 +432,6 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Hapus pesan-pesan lama</string>
     <string name="autodel_device_title">Hapus pesarn dari perangkat</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">Hapus pesan dari server</string>
     <string name="autodel_confirm">Saya mengerti, hapus semua pesan ini</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Segera</string>
@@ -510,8 +473,6 @@
     <string name="qrscan_ask_join_group">Apakah anda ingin bergabung dengan grup \"%1$s\"?</string>
     <string name="qrscan_contains_text">Kode QR yang dipindai text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Kode QR yang dipindai URL:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Sidik jari</string>
     <string name="qrshow_title">Kode undangan QR</string>
     <string name="qrshow_x_joining">%1$sbergabung.</string>
     <string name="qrshow_x_verified">%1$sdiverifikasi.</string>
@@ -523,7 +484,6 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Pindai ini untuk mengatur kontak dengan%1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Tidak ada koneksi internet, tidak bisa menjalankan kode pengaturan QR.</string>
-    <string name="qraccount_ask_create_and_login">Buat alamat email baru di \"%1$s\" dan login di sana?</string>
     <string name="qraccount_qr_code_cannot_be_used">Kode QR yang dipindai tidak dapat digunakan untuk mengatur akun baru.</string>
     <string name="contact_verified">%1$sdiverifikasi.</string>
     <!-- notifications -->

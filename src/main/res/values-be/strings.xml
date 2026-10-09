@@ -15,7 +15,6 @@
     <string name="on">Укл.</string>
     <string name="off">Выкл.</string>
     <string name="def">Па змаўчанні</string>
-    <string name="default_value">Па змаўчанні (%1$s)</string>
     <string name="custom">Свой варыянт</string>
     <string name="none">Не зададзена</string>
     <string name="automatic">Аўтаматычна</string>
@@ -27,7 +26,6 @@
     <string name="join">Далучыцца</string>
     <string name="join_group">Уступіць у групу</string>
     <string name="join_channel">Далучыцца да канала</string>
-    <string name="rejoin">Далучыцца зноў</string>
     <string name="delete">Выдаліць</string>
     <string name="delete_for_me">Выдаліць для мяне</string>
     <string name="delete_for_everyone">Выдаліць для ўсіх</string>
@@ -61,10 +59,6 @@
     <string name="media">Медыя</string>
     <string name="apps_and_media">Праграмы і медыя</string>
     <string name="profile">Профіль</string>
-    <!-- deprecated -->
-    <string name="all_profiles">Усе профілі</string>
-    <!-- deprecated -->
-    <string name="current_profile">Бягучы профіль</string>
     <string name="main_menu">Галоўнае меню</string>
     <string name="start_chat">Напісаць</string>
     <string name="show_full_message">Паказаць паведамленне цалкам…</string>
@@ -84,10 +78,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Выявы, размешчаныя на знешніх крыніцах, могуць быць выкарыстаны для сачэння за вамі.\n\nГэтая налада таксама дазваляе загружаць шрыфты і іншае змесціва. Калі яна адключана, могуць адлюстроўвацца ўбудаваныя або кэшаваныя выявы.\n\nДазволіць загрузку з знешніх крыніц?</string>
     <string name="always">Заўсёды</string>
-    <string name="always_load_remote_images">Заўсёды загружаць выявы з знешніх крыніц</string>
     <string name="once">Толькі цяпер</string>
-    <!-- deprecated -->
-    <string name="show_warning">Паказаць папярэджанне</string>
     <string name="not_now">Не цяпер</string>
     <string name="never">Ніколі</string>
     <string name="one_moment">Хвілінку…</string>
@@ -102,12 +93,9 @@
     <string name="no_app_to_handle_data">Не ўдалося знайсці праграму для апрацоўкі гэтага тыпу даных.</string>
     <string name="no_browser_installed">Аглядальнік не ўсталяваны.</string>
     <string name="file_not_found">Не ўдалося знайсці %1$s.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Не ўдалося захаваць %1$s.</string>
     <string name="copied_to_clipboard">Скапіявана ў буфер абмену.</string>
     <string name="contacts_headline">Кантакты</string>
     <string name="email_address">Адрас электроннай пошты</string>
-    <string name="bad_email_address">Няправільны адрас электроннай пошты.</string>
     <string name="password">Пароль</string>
     <string name="existing_password">Бягучы пароль</string>
     <string name="now">Цяпер</string>
@@ -119,11 +107,13 @@
     <string name="this_month">У гэтым месяцы</string>
     <string name="last_week">На мінулым тыдні</string>
     <string name="last_month">У мінулым месяцы</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Быў(-ла) %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Быў(-ла) %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Быў(-ла): невядома</string>
+
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">Працягласць: %d хвіліна</item>
@@ -191,7 +181,6 @@
         <item quantity="many">%d выбрана</item>
         <item quantity="other">%d выбрана</item>
     </plurals>
-    <string name="selected_colon">Выбрана:</string>
     <string name="selected">Выбрана</string>
     <string name="self">Я</string>
     <string name="draft">Чарнавік</string>
@@ -202,10 +191,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Стыкер</string>
     <string name="add_to_sticker_collection">Дадаць у калекцыю стыкераў</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">Для дадання стыкераў, націсніце «Адкрыць тэчку стыкераў», стварыце ў ёй падтэчку для вашага набору стыкераў і перацягніце туды файлы выяў і стыкераў</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">Адкрыць тэчку стыкераў</string>
     <string name="ask_add_sticker_to_collection">Дадаць гэты стыкер у калекцыю?</string>
     <string name="ask_delete_sticker">Выдаліць гэты стыкер?</string>
     <string name="sticker_picker_empty_hint">Націсніце на стыкер, каб дадаць яго сюды.</string>
@@ -228,7 +213,6 @@
     <string name="switch_camera">Пераключыць камеру</string>
     <!-- Toggle camera on/off eg. during an video call -->
     <string name="toggle_camera">Перамкнуць камеру</string>
-    <string name="toggle_fullscreen">Перамкнуць поўнаэкранны рэжым</string>
     <string name="location">Месцазнаходжанне</string>
     <string name="locations">Месцазнаходжанні</string>
     <string name="gallery">Галерэя</string>
@@ -266,11 +250,9 @@
     <string name="white">Белы</string>
 
     <string name="zoom">Маштаб</string>
-    <string name="extra_small">Вельмі маленькі</string>
     <string name="small">Маленькі</string>
     <string name="normal">Звычайны</string>
     <string name="large">Вялікі</string>
-    <string name="extra_large">Вельмі вялікі</string>
 
     <string name="fast">Хуткі</string>
     <string name="slow">Павольны</string>
@@ -307,8 +289,6 @@
     <string name="menu_send">Адправіць</string>
     <string name="menu_toggle_keyboard">Перамкнуць клавіятуру эмодзі</string>
     <string name="menu_edit_group">Рэдагаваць групу</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Назва і выява групы</string>
     <string name="menu_show_global_map">Усе месцазнаходжанні</string>
     <string name="menu_archive_chat">Архіваваць чат</string>
     <string name="menu_unarchive_chat">Вярнуць чат з архіва</string>
@@ -320,7 +300,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Ачысціць чат</string>
     <string name="delete_contact">Выдаліць кантакт</string>
-    <string name="menu_delete_location">Выдаліць гэтае месцазнаходжанне?</string>
     <string name="menu_message_details">Інфармацыя пра паведамленне</string>
     <string name="menu_copy_to_clipboard">Капіяваць у буфер абмену</string>
     <string name="share_invite_link">Падзяліцца спасылкай-запрашэннем</string>
@@ -362,7 +341,6 @@
     <string name="privacy_policy">Палітыка прыватнасці</string>
     <string name="menu_select_all">Выбраць усё</string>
     <string name="select_chat">Выбраць чат</string>
-    <string name="select_more">Выбраць больш</string>
     <string name="menu_edit_name">Рэдагаваць імя</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Усталюйце псеўданім, які будзе паказвацца вам замест «%1$s». Пакіньце пустым, каб выкарыстоўваць імя, выбранае кантактам.</string>
@@ -375,7 +353,6 @@
     <string name="menu_zoom_out">Паменшыць маштаб</string>
     <string name="menu_save_log">Захаваць журнал</string>
     <string name="menu_more_options">Яшчэ</string>
-    <string name="menu_learn_spelling">Запамінаць правапіс</string>
     <string name="jump_to_message">Перайсці да паведамлення</string>
     <string name="replace_draft">Замяніць чарнавік</string>
     <string name="title_share_location">Дзяліцца месцазнаходжаннем з усімі ўдзельнікамі групы</string>
@@ -390,7 +367,7 @@
     <string name="unpin_chat">Адмацаваць чат</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Замацаваць</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Адмацаваць</string>
     <string name="ConversationFragment_quoted_message_not_found">Зыходнае паведамленне не знойдзена</string>
     <string name="reply_privately">Адказаць асабіста</string>
@@ -405,10 +382,8 @@
     <string name="mute_for_one_day">Не апавяшчаць 1 дзень</string>
     <string name="mute_for_seven_days">Не апавяшчаць 7 дзён</string>
     <string name="mute_forever">Ніколі не апавяшчаць</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">5 хвілін</string>
-
     <string name="share_location_for_30_minutes">30 хвілін</string>
     <string name="share_location_for_one_hour">1 гадзіну</string>
     <string name="share_location_for_two_hours">2 гадзіны</string>
@@ -445,14 +420,6 @@
     <string name="call_reconnecting">Перападлучэнне...</string>
     <string name="call_ended">Выклік скончаны</string>
     <string name="call_failed">Выклік не атрымаўся</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="outgoing_audio_call">Выходны аўдыявыклік</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="outgoing_video_call">Выходны відэавыклік</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="incoming_audio_call">Уваходны аўдыявыклік</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="incoming_video_call">Уваходны відэавыклік</string>
     <string name="declined_call">Адхілены выклік</string>
     <string name="canceled_call">Скасаваны выклік</string>
     <string name="missed_call">Прапушчаны выклік</string>
@@ -489,8 +456,6 @@
         <item quantity="many">Пераслаць %1$d паведамленняў у чат %2$s?</item>
         <item quantity="other">Пераслаць %1$d паведамленняў у чат %2$s?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Пераслаць паведамленні ў чат %1$s?</string>
     <string name="ask_forward_multiple">Пераслаць паведамленні ў %1$d чаты(-аў)?</string>
     <string name="ask_export_attachment">Экспартаванне ўкладанняў дазволіць іншым праграмам на вашай прыладзе атрымаць да іх доступ.\n\nПрацягнуць?</string>
     <string name="ask_block_contact">Заблакаваць гэты кантакт?\n\nАсабістыя паведамленні або групы, створаныя заблакаванымі кантактамі, не будуць паказвацца.\n\nУ іншых групах, дзе ёсць заблакаваныя кантакты, іх паведамленні па-ранейшаму будуць бачныя.</string>
@@ -544,7 +509,6 @@
     <string name="chat_input_placeholder">Напісаць</string>
     <string name="chat_archived_label">Архівавана</string>
     <string name="chat_request_label">Запыт</string>
-    <string name="chat_request_label_explain">Уключаць запыты ў лічыльнікі і апавяшчэнні</string>
     <string name="chat_no_messages">Няма паведамленняў.</string>
     <string name="chat_self_talk_subtitle">Паведамленні сабе</string>
     <string name="archive_empty_hint">Архіўныя чаты з\'явяцца тут.</string>
@@ -554,9 +518,6 @@
     <string name="saved_messages_explain">— Перасылайце паведамленні сюды для хуткага доступу\n\n— Рабіце нататкі ці запісвайце галасавыя паведамленні\n\n— Далучайце медыя, каб захаваць іх</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Захавана</string>
-    <string name="save_as">Захаваць як…</string>
-    <string name="retry_send">Паўтарыць адпраўку паведамлення</string>
-    <string name="cannot_display_unsuported_file_type">Немагчыма адлюстраваць гэты тып файла: %s</string>
     <string name="attachment_failed_to_load">Не ўдалося загрузіць укладанне</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Працягваць запіс</string>
@@ -565,8 +526,8 @@
     <string name="mailing_list">Спіс рассылання</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Запусціць...</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Запусціць</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Спачатку прыміце запыт.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->

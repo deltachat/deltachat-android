@@ -83,7 +83,6 @@
     <string name="small">చిన్న</string>
     <string name="normal">సాధారణంగా</string>
     <string name="large">పెద్ద</string>
-    <string name="extra_large">చాలా పెద్దది</string>
 
     <string name="fast">త్వరగా</string>
     <string name="slow">మెల్లిగా</string>
@@ -121,8 +120,6 @@
     <string name="mute_for_eight_hours">8 గంటలు నిశబ్దంగా ఉంచు</string>
     <string name="mute_for_one_day">1 రోజు నిశబ్దంగా ఉంచు</string>
     <string name="mute_for_seven_days">7 రోజులు నిశబ్దంగా ఉంచు</string>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">సందేశాలు %1$s ఫార్వర్డ్ చేయాలా?</string>
     <string name="ask_block_contact">మీరు ఈ పరిచయాన్ని రద్దుచేయాలని నిర్ణయించుకున్నారా?</string>
     <!-- contact list -->
     <string name="contacts_title">కాంటాక్ట్స్</string>
@@ -138,8 +135,6 @@
     <string name="search">వెతుకు</string>
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">సమూహం పేరు</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">సమూహానికి పేరు పెట్టు</string>
     <string name="group_add_members">సభ్యుడిని జత చేయి</string>
     <string name="profile_encryption">ఎన్క్రిప్షన్</string>
     <string name="profile_shared_chats">భాగస్వామ్య చాట్‌లు</string>
@@ -164,7 +159,6 @@
     <string name="pref_led_color">LED రంగు</string>
     <string name="pref_sound">శబ్ధం</string>
     <string name="pref_silent">మౌనం</string>
-    <string name="pref_privacy">గోప్యత</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">లైటు</string>
     <string name="pref_dark_theme">గుప్తమైన</string>
@@ -182,8 +176,6 @@
     <string name="pref_backup">బ్యాకప్</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">చాట్ నేపధ్యం</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">ఫింగర్‌ప్రింట్స్</string>
     <!-- notifications -->
     <string name="notify_reply_button">జవాబు</string>
     <string name="notify_new_message">కొత్త సందేశం</string>

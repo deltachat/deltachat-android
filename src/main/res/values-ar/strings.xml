@@ -80,7 +80,6 @@
     <string name="small">صغير</string>
     <string name="normal">عادي</string>
     <string name="large">كبيرة</string>
-    <string name="extra_large">كبيرة جداً</string>
 
     <string name="fast">سريع</string>
     <string name="slow">بطيء</string>
@@ -90,8 +89,6 @@
     <string name="menu_send">إرسال</string>
     <string name="menu_toggle_keyboard">تبديل لوحة مفاتيح إيموجي</string>
     <string name="menu_edit_group">تعديل الفريق</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">اسم الفريق وصورته</string>
     <string name="menu_add_attachment">إضافة مرفقات</string>
     <string name="menu_leave_group">غادر الفريق</string>
     <string name="menu_delete_chat">احدف المحادثة</string>
@@ -137,11 +134,9 @@
     <string name="tab_contact">للاتصال</string>
     <string name="tab_group">الفريق</string>
     <string name="tab_gallery">المعرض</string>
-    <string name="tab_docs">المستندات</string>
     <string name="tab_links">الروابط</string>
     <string name="tab_map">الخريطة</string>
     <string name="media_preview">معاينة الصورة</string>
-    <string name="login_title">الولوج</string>
     <string name="login_inbox">صندوق الوارد</string>
     <string name="login_imap_login">مستخدم IMAP</string>
     <string name="login_imap_server">خادم IMAP</string>
@@ -153,6 +148,7 @@
     <string name="login_smtp_port">منفذ SMTP</string>
     <string name="login_smtp_security">أمان SMTP</string>
     <string name="login_certificate_checks">التحقق مِن الشهادة</string>
+    <!-- deprecated -->
     <string name="login_error_mail">يرجى إدخال عنوان بريد إلكتروني صالح</string>
     <string name="import_backup_title">استيراد نسخة احتياطية</string>
     <string name="delete_account">حذف الحساب</string>
@@ -171,7 +167,6 @@
     <string name="pref_notifications_show">عرض</string>
     <string name="pref_led_color">لون ضوء التنبيه LED</string>
     <string name="pref_sound">الصوت</string>
-    <string name="pref_privacy">الخصوصية</string>
     <string name="pref_system_default">افتراضيات النظام</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">فاتح</string>
@@ -184,10 +179,10 @@
     <string name="pref_other">أخرى</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">الخلفية</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">كلها</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">البصمة</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">كلها</string>
     <!-- notifications -->
     <string name="notify_reply_button">رد</string>
     <string name="notify_new_message">رسالة جديدة</string>

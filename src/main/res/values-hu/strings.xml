@@ -15,7 +15,6 @@
     <string name="on">Bekapcsolva</string>
     <string name="off">Kikapcsolva</string>
     <string name="def">Alapértelmezett</string>
-    <string name="default_value">Alapértelmezett (%1$s)</string>
     <string name="custom">Egyéni</string>
     <string name="none">Semmi</string>
     <string name="automatic">Automatikus</string>
@@ -25,7 +24,6 @@
     <string name="downloading">Letöltés…</string>
     <string name="open_attachment">Melléklet megnyitása</string>
     <string name="join">Csatlakozás</string>
-    <string name="rejoin">Újracsatlakozás</string>
     <string name="delete">Törlés</string>
     <string name="delete_for_me">Törlés számomra</string>
     <string name="delete_for_everyone">Törlés mindenki számára</string>
@@ -59,10 +57,6 @@
     <string name="media">Média</string>
     <string name="apps_and_media">Alkalmazások &amp; média</string>
     <string name="profile">Profil</string>
-    <!-- deprecated -->
-    <string name="all_profiles">Összes profil</string>
-    <!-- deprecated -->
-    <string name="current_profile">Jelenlegi profil</string>
     <string name="main_menu">Főmenü</string>
     <string name="start_chat">Csevegés indítása</string>
     <string name="show_full_message">Teljes üzenet megjelenítése…</string>
@@ -80,10 +74,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">A távoli képek követhetik Önt.\n\nEz a beállítás betűtípusokat és egyéb tartalmakat is betölthet. Ha letiltja, beágyazott vagy gyorsítótárazott képek jelenhetnek meg.\n\nBetölti a távoli képeket?</string>
     <string name="always">Mindig</string>
-    <string name="always_load_remote_images">Mindig töltse be a távoli képeket</string>
     <string name="once">Azonnal</string>
-    <!-- deprecated -->
-    <string name="show_warning">Figyelmeztetés megjelenítése</string>
     <string name="not_now">Most nem</string>
     <string name="never">Soha</string>
     <string name="one_moment">Egy pillanat…</string>
@@ -97,12 +88,9 @@
     <string name="no_app_to_handle_data">Nem található alkalmazást az ilyen típusú adatok kezeléséhez.</string>
     <string name="no_browser_installed">Nincs telepítve böngésző.</string>
     <string name="file_not_found">%1$s nem található.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Nem lehet menteni a következőt: %1$s.</string>
     <string name="copied_to_clipboard">Vágólapra másolva.</string>
     <string name="contacts_headline">Névjegyek</string>
     <string name="email_address">E-mail-cím</string>
-    <string name="bad_email_address">Hibás e-mail-cím.</string>
     <string name="password">Jelszó</string>
     <string name="existing_password">Jelenlegi jelszó</string>
     <string name="now">Most</string>
@@ -114,11 +102,13 @@
     <string name="this_month">Ebben a hónapban</string>
     <string name="last_week">Múlt héten</string>
     <string name="last_month">Múlt hónapban</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Utoljára látta: %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Utoljára látta: %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Utoljára látta: - (ismeretlen)</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d perce</item>
@@ -159,7 +149,6 @@
         <item quantity="one">%d kiválasztva</item>
         <item quantity="other">%d kiválasztva</item>
     </plurals>
-    <string name="selected_colon">Kiválasztva:</string>
     <string name="self">Ön</string>
     <string name="draft">Piszkozat</string>
     <string name="image">Kép</string>
@@ -169,10 +158,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Matrica</string>
     <string name="add_to_sticker_collection">Hozzáadás a matricagyűjteményhez</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">A matricák hozzáadásához koppintson a „Matricamappa megnyitása” lehetőségre, hozzon létre egy almappát a matricacsomagnak, és húzza oda a kép- és matricafájlokat.</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">Matricamappa megnyitása</string>
     <string name="images">Képek</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Hang</string>
@@ -190,7 +175,6 @@
     <string name="capture">Rögzítés</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Kameraváltás</string>
-    <string name="toggle_fullscreen">Váltás teljes képernyős módra</string>
     <string name="location">Hely</string>
     <string name="locations">Helyek</string>
     <string name="gallery">Galéria</string>
@@ -228,11 +212,9 @@
     <string name="white">Fehér</string>
 
     <string name="zoom">Nagyítás</string>
-    <string name="extra_small">Extra kicsi</string>
     <string name="small">Kicsi</string>
     <string name="normal">Normál</string>
     <string name="large">Nagy</string>
-    <string name="extra_large">Nagyon nagy</string>
 
     <string name="fast">Gyors</string>
     <string name="slow">Lassú</string>
@@ -262,8 +244,6 @@
     <string name="menu_send">Küldés</string>
     <string name="menu_toggle_keyboard">Váltás emodzsibillentyűzetre</string>
     <string name="menu_edit_group">Csoport szerkesztése</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Csoportnév és -kép</string>
     <string name="menu_show_global_map">Az összes hely megjelenítése</string>
     <string name="menu_archive_chat">Csevegés archiválása</string>
     <string name="menu_unarchive_chat">Archiválás visszavonása</string>
@@ -274,7 +254,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Csevegés kiürítése</string>
     <string name="delete_contact">Névjegy törlése</string>
-    <string name="menu_delete_location">Biztosan törli ezt a helyet?</string>
     <string name="menu_message_details">Üzenetinformáció</string>
     <string name="menu_copy_to_clipboard">Másolás a vágólapra</string>
     <string name="share_invite_link">Meghívási hivatkozás megosztása</string>
@@ -316,7 +295,6 @@
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="menu_select_all">Összes kiválasztása</string>
     <string name="select_chat">Csevegés kiválasztása</string>
-    <string name="select_more">Továbbiak kiválasztása</string>
     <string name="menu_edit_name">Név szerkesztése</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Állítson be egy becenevet a(z) „%1$s” nevű partnerének. Hagyja üresen a partnere által választott név megjelenítéséhez.</string>
@@ -329,7 +307,6 @@
     <string name="menu_zoom_out">Kicsinyítés</string>
     <string name="menu_save_log">Naplófájl mentése</string>
     <string name="menu_more_options">További beállítások</string>
-    <string name="menu_learn_spelling">Helyesírás tanulása</string>
     <string name="jump_to_message">Ugrás az üzenetre</string>
     <string name="replace_draft">Piszkozat cseréje</string>
     <string name="title_share_location">Hely megosztása a csoport összes tagjával</string>
@@ -344,7 +321,7 @@
     <string name="unpin_chat">Csevegés kitűzésének megszüntetése</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Kitűzés</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Kitűzés megszüntetése</string>
     <string name="ConversationFragment_quoted_message_not_found">Nem található az eredeti üzenet</string>
     <string name="reply_privately">Válasz privátban</string>
@@ -359,10 +336,8 @@
     <string name="mute_for_one_day">Némítás 1 napra</string>
     <string name="mute_for_seven_days">Némítás 7 napra</string>
     <string name="mute_forever">Némítás örökre</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">5 percre</string>
-
     <string name="share_location_for_30_minutes">30 percre</string>
     <string name="share_location_for_one_hour">1 órára</string>
     <string name="share_location_for_two_hours">2 órára</string>
@@ -395,8 +370,6 @@
         <item quantity="one">Töröl %d üzenetet az összes eszközén?</item>
         <item quantity="other">Töröl %d üzenetet az összes eszközén?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Továbbítja az üzenetet „%1$s” számára?</string>
     <string name="ask_forward_multiple">Továbbítja az üzenetet a következő csevegésbe: %1$d?</string>
     <string name="ask_export_attachment">A mellékletek exportálása lehetővé teszi, hogy más alkalmazások is hozzáférjenek azokhoz az eszközön.\n\nFolytatja?</string>
     <string name="ask_block_contact">Letiltja ezt a partnerét? Többé nem fog üzeneteket kapni tőle.</string>
@@ -444,7 +417,6 @@
     <string name="chat_input_placeholder">Üzenet…</string>
     <string name="chat_archived_label">Archivált</string>
     <string name="chat_request_label">Kérés</string>
-    <string name="chat_request_label_explain">Kérések felvétele a számlálókba és értesítésekbe</string>
     <string name="chat_no_messages">Nincsenek üzenetek.</string>
     <string name="chat_self_talk_subtitle">Önmagamnak küldött üzenetek</string>
     <string name="archive_empty_hint">Az archivált csevegések itt fognak megjelenni.</string>
@@ -454,9 +426,6 @@
     <string name="saved_messages_explain">• Üzenetek továbbítása az egyszerű hozzáférés érdekében\n\n• Jegyzetek vagy hangjegyzetek készítése\n\n• Médiaanyagok mellékelése a mentéshez</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Mentett</string>
-    <string name="save_as">Mentés mint</string>
-    <string name="retry_send">Üzenet újraküldése</string>
-    <string name="cannot_display_unsuported_file_type">Ezt a fájltípust nem lehet megjeleníteni: %s</string>
     <string name="attachment_failed_to_load">Nem sikerült betölteni a mellékletet</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Felvétel zárolása</string>
@@ -465,8 +434,8 @@
     <string name="mailing_list">Levelezőlista</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Indítás…</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Indítás</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Először fogadja el a csevegéskérést.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
@@ -496,8 +465,6 @@
     <string name="remove_group_image">Csoport profilképének eltávolítása</string>
     <string name="change_group_image">Csoport profilképének megváltoztatása</string>
     <string name="group_create_button">Csoport készítése</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Csoport nevének magadása.</string>
     <string name="group_add_members">Tagok hozzáadása</string>
     <string name="group_self_not_in_group">A csoport tagjának kell lennie, ahhoz, hogy ezt megtehesse.</string>
     <string name="profile_encryption">Titkosítás</string>
@@ -507,23 +474,17 @@
     <string name="tab_contact">Névjegy</string>
     <string name="tab_group">Csoport</string>
     <string name="tab_gallery">Galéria</string>
-    <string name="tab_docs">Dokumentumok</string>
     <string name="tab_links">Hivatkozások</string>
     <string name="tab_map">Térkép</string>
     <string name="tab_gallery_empty_hint">Az ebben a csevegésben megosztott képek és videók itt fognak megjelenni.</string>
     <string name="tab_docs_empty_hint">Az ebben a csevegésben megosztott dokumentumok és egyéb fájlok itt fognak megjelenni.</string>
     <string name="tab_image_empty_hint">Az ebben a csevegésben megosztott képek itt fognak megjelenni.</string>
-    <string name="tab_video_empty_hint">Az ebben a csevegésben megosztott videók itt fognak megjelenni.</string>
     <string name="tab_audio_empty_hint">Az ebben a csevegésben megosztott hangfájlok és hangüzenetek itt fognak megjelenni.</string>
     <string name="tab_webxdc_empty_hint">Az ebben a csevegésben megosztott alkalmazások itt fognak megjelenni.</string>
     <string name="tab_all_media_empty_hint">A bármelyik csevegésben megosztott média itt fog megjelenni.</string>
     <string name="all_files_empty_hint">A csevegésekben megosztott dokumentumok és egyéb fájlok itt jelennek meg.</string>
     <string name="all_apps_empty_hint">A bármelyik csevegésben kapott vagy küldött alkalmazások itt fognak megjelenni.</string>
     <string name="media_preview">Médiaelőnézet</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
-    <string name="aspect_ratio_grid">Tengelyarányrács</string>
-    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
-    <string name="square_grid">Négyzetrács</string>
     <string name="send_message">Üzenet küldése</string>
 
     <!-- Multi Device -->
@@ -565,14 +526,12 @@
     <string name="connectivity_connected">Kapcsolódott</string>
     <string name="sending">Küldés…</string>
     <string name="last_msg_sent_successfully">Utolsó üzenet sikeresen elküldve.</string>
-    <!-- deprecated -->
-    <string name="not_supported_by_provider">Az Ön szolgáltatója nem támogatja.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Üzenetek</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s/%2$s használatban</string>
 
-    <!-- welcome and login -->
+    <!-- welcome and profile creation -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Új profil létrehozása</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
@@ -581,12 +540,6 @@
     <string name="manual_account_setup_option">Klasszikus e-mail bejelentkezés</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Profil</string>
-    <!-- The placeholder will be replaced by the default onboarding server -->
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default2">Adatvédelmi irányelvek ehhez: %1$s</string>
-    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_instance">További információ a profilokról itt: %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Elfogadás és profil létrehozása</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
@@ -603,7 +556,6 @@
 
     <string name="welcome_chat_over_email">Biztonságos decentralizált csevegés</string>
     <string name="scan_invitation_code">QR-kód-meghívó beolvasása</string>
-    <string name="login_title">Bejelentkezés</string>
     <string name="login_inbox">Bejövő</string>
     <string name="login_imap_login">IMAP bejelentkezési név</string>
     <string name="login_imap_server">IMAP-kiszolgáló</string>
@@ -631,15 +583,11 @@
     <string name="proxy_enabled">Proxy engedélyezve</string>
     <string name="proxy_enabled_hint">Ön jelenleg proxyt használ. Ha problémája van a kapcsolódással, próbáljon ki egy másik proxyt.</string>
     <string name="login_certificate_checks">Tanúsítvány ellenőrzése</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Adjon meg egy érvényes e-mail-címet</string>
-    <string name="login_error_server">Adjon meg egy érvényes kiszolgáló- vagy IP-címet</string>
-    <string name="login_error_port">Adjon meg egy érvényes portot (1-65535)</string>
-    <string name="login_error_required_fields">Adjon meg egy érvényes e-mail-címet és egy jelszót</string>
     <string name="import_backup_title">Biztonsági mentés visszaállítása</string>
     <string name="import_backup_ask">A biztonsági mentés itt található: „%1$s”.\n\nAz összes adatot és beállítást szeretné importálni és használni belőle?</string>
     <string name="import_backup_no_backup_found">A biztonsági mentés nem található.\n\nMásolja a biztonsági mentést ide: „%1$s” és próbálja újra.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Nem lehetett bejelentkezni ide: „%1$s”. Ellenőrizze, hogy a megadott e-mail-cím és a jelszó helyes-e.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Érvénytelen tanúsítványok elfogadása</string>
     <string name="switch_account">Profilváltás</string>
@@ -666,8 +614,6 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">%1$d fájl elküldése „%2$s” számára?</string>
     <string name="ask_send_files_to_selected_chats">%1$d fájl megosztása a vele való csevegésben: %2$d?</string>
-    <!-- deprecated -->
-    <string name="videos_sent_without_recoding">(A videók eredeti, nagyméretű fájlként kerülnek elküldésre. Amennyiben azt szeretné, hogy a videók kisebb fájlként kerüljenek elküldésre, mellékelje őket külön-külön)</string>
     <string name="share_text_multiple_chats">Megosztja ezt a szöveget a vele való csevegésben: %1$d?\n\n„%2$s”</string>
     <string name="share_abort">A megosztás megszakadt a hiányzó engedélyek miatt.</string>
 
@@ -698,12 +644,9 @@
     <string name="pref_notifications_priority">Prioritás</string>
     <string name="pref_notifications_explain">Rendszerértesítések engedélyezése az új üzenetekről</string>
     <string name="pref_show_notification_content">Üzenet tartalmának megjelenítése az értesítésben</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Az értesítésekben megjelenik az üzenet feladója és első szavai</string>
     <string name="pref_led_color">Értesítésjelző-fény színe</string>
     <string name="pref_sound">Hang</string>
     <string name="pref_silent">Csendes</string>
-    <string name="pref_privacy">Adatvédelem</string>
     <string name="pref_system_default">Rendszer alapértelmezett</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Világos</string>
@@ -718,8 +661,6 @@
     <string name="pref_read_receipts">Olvasási visszaigazolások</string>
     <string name="pref_read_receipts_explain">Ha az olvasási visszaigazolásokat letiltja, akkor Ön sem fogja látni mások olvasási visszaigazolásait.</string>
     <string name="pref_server">Kiszolgáló</string>
-    <string name="pref_encryption">Titkosítás</string>
-    <string name="pref_manage_keys">Kulcsok kezelése</string>
     <string name="pref_chats">Csevegések</string>
     <string name="pref_in_chat_sounds">Csevegésen belüli hangok</string>
     <string name="pref_view_log">Naplófájl megtekintése</string>
@@ -739,19 +680,7 @@
     <string name="pref_background">Háttérkép</string>
     <string name="pref_background_btn_default">Alapértelemezett kép használata</string>
     <string name="pref_background_btn_gallery">Kiválasztás a galériából</string>
-    <!-- deprecated -->
-    <string name="pref_imap_folder_warn_disable_defaults">Ha megváltoztatja ezt a beállítást, győződjön meg arról, hogy a kiszolgálója és a többi kliense is ennek megfelelően van beállítva.\n\nMáskülönben előfordulhat, hogy a dolgok egyáltalán nem fognak működni.</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">Automatikus áthelyezés a DeltaChat nevű mappába</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_title">Csak a DeltaChat nevű mappából történjen lekérdezés</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Klasszikus e-mailek megjelenítése</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Nem, csak csevegések</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">Elfogadott partnerek számára</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Összes</string>
     <string name="pref_experimental_features">Kísérleti funkciók</string>
     <string name="pref_on_demand_location_streaming">On-Demand folyamatos helymegosztás</string>
@@ -761,6 +690,8 @@
     <string name="pref_background_custom_color">Egyéni szín</string>
     <string name="export_aborted">Exportálás megszakítva.</string>
     <string name="auto_download_messages">Üzenetek automatikus letöltése</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Összes</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Legfeljebb %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Legfeljebb %1$s, leginkább rosszabb minőségű kép</string>
@@ -797,18 +728,8 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Régi üzenetek törlése</string>
     <string name="autodel_device_title">Üzenetek törlése az eszközről a letöltést követően</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">Üzenetek törlése a kiszolgálóról a letöltést követően</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Szeretné törölni a %1$d üzenetet most és az összes újonnan érkező üzenetet a jövőben ekkor: „%2$s”?\n\n• Ez magában foglalja az összes médiát is\n\n• Az üzenetek törlésre kerülnek, akár látták őket, akár nem\n\n• A „Mentett üzenetek” nem kerülnek törlésre a helyi törlésből.</string>
-    <!-- deprecated -->
-    <string name="autodel_server_ask">Biztosan törölni szeretne %1$d üzenetet most, és a jövőben minden újonnan lekérdezett „%2$s” üzenetet?\n\n⚠️ Ez magába foglalja az e-maileket, a médiatartalmakat és a „Mentett üzeneteket” az összes kiszolgálómappában.\n\n⚠️ Ne használja ezt a funkciót, ha meg akarja tartani az adatokat a kiszolgálón, vagy ha klasszikus e-mail-klienseket is használ.</string>
-    <!-- deprecated -->
-    <string name="autodel_server_enabled_hint">Ez magába foglalja az e-maileket, a médiatartalmakat és a „Mentett üzeneteket” az összes kiszolgálómappában. Ne használja ezt a funkciót, ha meg akarja tartani az adatokat a kiszolgálón, vagy ha klasszikus e-mail-klienseket is használ.</string>
-    <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device_title">A „Törlés a letöltés után azonnal” bekapcsolása</string>
-    <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device">Ha a „Törlés a letöltés után azonnal” engedélyezve van, akkor nem használhatja ezt a profilt több eszközről.</string>
     <string name="autodel_confirm">Értem, törölje ezeket az üzeneteket</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">A letöltés után azonnal</string>
@@ -896,8 +817,6 @@
     <string name="learn_more">Tudjon meg többet</string>
 
     <string name="devicemsg_self_deleted">Ön törölte a „Mentett üzenetek” csevegést.\n\nℹ️ A „Mentett üzenetek” funkció újbóli használatához hozzon létre egy új csevegést önmagával.</string>
-    <!-- deprecated -->
-    <string name="devicemsg_storage_exceeding">⚠️ Az e-mail-szolgáltatójától kapott tárhelye hamarosan megtelik: %1$s%% már felhasználásra került.\n\n\nElképzelhető, hogy nem tud üzeneteket fogadni, ha a tárhelye megtelt.\n\n👉 Ellenőrizze, hogy a szolgáltatója webes felületén tudja-e törölni a DeltaChat-mappából az üzeneteket, és fontolja meg a „Beállítások / Csevegések és média / Üzenetek törlése a kiszolgálóról” engedélyezését. Az aktuális tárhelyhasználatot bármikor ellenőrizheti a „Beállítások / Tárhely” menüpontban.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Az eszközén lévő dátum vagy idő pontatlannak tűnik (%1$s).\n\nJavítsa meg az órát ⏰🔧 az üzenetek helyes fogadásának biztosítása érdekében.</string>
     <string name="devicemsg_update_reminder">⚠️ Lehet, hogy a Delta Chat verziója elavult.\n\nEz problémákat okozhat, mivel a partnerei újabb verziókat használnak - továbbá hiányoznak a legújabb funkciók 😳\nEllenőrizze a https://get.delta.chat oldalon vagy az alkalmazásboltban a frissítéseket.</string>
@@ -913,14 +832,8 @@
     <string name="qrscan_hint_desktop">Mozgassa a QR-kódot a kamera elé</string>
     <string name="qrscan_failed">A QR-kódot nem sikerült értelmezni</string>
     <string name="qrscan_ask_join_group">Biztosan csatlakozik a(z) „%1$s” nevű szobához?</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">A beolvasott ujjlenyomat nem egyezik „%1$s” utoljára ismert ujjlenyomatával.</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">Ez a QR-kód tartalmaz egy ujjlenyomatot, de nem tartalmaz e-mail-címet.\n\nA sávon kívüli hitelesítéshez először hozzon létre egy titkosított kapcsolatot a címzettel.</string>
     <string name="qrscan_contains_text">A beolvasott QR-kód-szöveg:\n\n%1$s</string>
     <string name="qrscan_contains_url">A beolvasott QR-kód-webcím:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Ujjlenyomat</string>
     <string name="withdraw_verifycontact_explain">Ezt a QR-kódot mások is beolvashatják, hogy felvegyék önnel a kapcsolatot.\n\nA QR-kódot itt kikapcsolhatja, és újból bekapcsolhatja, ha újra beolvassa.</string>
     <string name="withdraw_verifygroup_explain">Ezt a QR-kódot mások is beolvashatják, hogy csatlakozhassanak a(z) „%1$s” nevű csoporthoz.\n\nA QR-kódot itt kikapcsolhatja, és újra bekapcsolhatja, ha újra beolvassa.</string>
     <string name="withdraw_qr_code">QR-kód kikapcsolása</string>
@@ -938,25 +851,15 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">QR-kód beolvasása a csevegéshez vele: „%1$s”</string>
     <string name="qrshow_join_contact_no_connection_toast">Nincs internetkapcsolat, nem lehet elvégezni a QR-kód beállítását.</string>
-    <string name="qraccount_ask_create_and_login">Új profil létrehozása a(z) „%1$s” oldalon és bejelentkezés ott?</string>
     <string name="set_name_and_avatar_explain">Adjon meg egy olyan nevet, amelyet a partnerei felismernek. Beállíthat egy profilképet is.</string>
     <string name="please_enter_name">Adjon meg egy nevet.</string>
     <string name="qraccount_qr_code_cannot_be_used">A beolvasott QR-kód nem használható új profil beállítására.</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
-    <string name="qrlogin_ask_login">Bejelentkezés ide: „%1$s”?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s meghívta önt, hogy csatlakozzon ehhez a csoporthoz.\n\n%2$s eszközére várakozás a válaszhoz…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s válaszolt, várakozik, hogy fölvegyék a csoportba…</string>
     <string name="secure_join_wait">Garantált végpontok közötti titkosítás létrehozása, várjon…</string>
     <string name="contact_verified">%1$s bemutatva.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <!-- deprecated -->
-    <string name="verified_by">%1$s által bemutatva</string>
-    <!-- deprecated -->
-    <string name="verified_by_you">Ön által bemutatva</string>
-    <!-- deprecated -->
-    <string name="verified_by_unknown">Bemutatva</string>
     <string name="mailto_dialog_header_select_chat">Válassza ki a csevegést az üzenet elküldéséhez</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">Már létezik egy piszkozat a következő szöveggel: %1$s, biztosan le akarja cserélni?</string>
@@ -1035,8 +938,6 @@
     <string name="menu.view.developer.open.log.folder">Naplófájlok mappájának megnyitása</string>
     <string name="menu.view.developer.open.current.log.file">Jelenlegi naplófájl megnyitása</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">A tálca ikonja nem kapcsolható ki, mivel a Delta Chat a --minimized kapcsolóval indult.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
-    <string name="no_spellcheck_suggestions_found">Nem találhatók helyesírási javaslatok.</string>
     <string name="show_window">Ablak megjelenítése</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Billentyűkötések</string>
@@ -1061,24 +962,15 @@
     <string name="a11y_disappearing_messages_activated">Eltűnő üzenetek bekapcsolva</string>
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Helymegosztás kikapcsolása.</string>
-    <string name="a11y_voice_message_hint_ios">A felvétel rögzítése után duplán koppintson a küldéshez. A felvétel elvetéséhez csúsztassa két ujjával.</string>
     <string name="a11y_connectivity_hint">Dupla koppintás a tárhely részleteinek megtekintéséhez.</string>
     <string name="login_error_no_internet_connection">Nincs internetkapcsolat, nem sikerült bejelentkezni.</string>
-    <string name="share_account_not_configured">A profil nincs konfigurálva.</string>
     <string name="cannot_play_audio_file">A hangfájl nem játszható le.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">A fényképek-, videók- vagy QR-kódok rögzítéséhez lépjen a rendszer beállításaiba, válassza ki a „Alkalmazások és értesítések” menüpontot, válassza ki az DeltaChat alkalmazást, majd koppintson az „Engedélyek” menüpontra, és engedélyezze a hozzáférést a „Kamerához”.</string>
     <string name="open_settings">Beállítások megnyitása</string>
-    <!-- iOS device contact alert -->
-    <string name="import_device_contacts">Eszköz névjegyeinek importálása</string>
-    <string name="import_device_contacts_hint">Az eszközén lévő névjegyekkel való csevegéshez lépjen a rendszer beállításaiba, válassza ki az „Alkalmazások és értesítések” menüpontot, válassza ki a DeltaChat alkalmazást, majd koppintson az „Engedélyek” menüpontra, és engedélyezze a hozzáférést a „Névjegyekhez”.</string>
-    <!-- iOS notification settings -->
-    <string name="disabled_in_dc">Letiltva a Delta Chatben</string>
+    <!-- Notifications, that are disabled in the system settings -->
     <string name="disabled_in_system_settings">Letilva a rendszerbeállításokban</string>
     <string name="bg_app_refresh_disabled">„Háttérfrissítések” letiltva a rendszerbeállításokban</string>
-    <string name="notifications_avg_minutes">Átlagosan %1$d percenként</string>
-    <string name="notifications_avg_hours">Átlagosan %1$d óránként</string>
-    <string name="last_check_at">Ellenőrizés ideje: %1$s</string>
     <string name="system_settings">Rendszer-beállítások</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Típus-, kitűzők-, előnézet- és egyebek szerkesztése</string>
@@ -1108,7 +1000,7 @@
     <string name="pref_reliable_service_explain">Egy állandó értesítést jelenít meg</string>
 
     <string name="pref_background_notifications_rationale">Az e-mail-kiszolgálóval való kapcsolat fenntartásához és az üzenetek háttérben történő fogadásához mellőzze az akkumulátor-optimalizálást a következő lépésben.\n\nA Delta Chat kevés erőforrást használ, és ügyel arra, hogy ne merítse az akkumulátort.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Koppintson ide az üzenetek fogadásához, miközben a Delta Chat a háttérben fut.</string>
     <string name="perm_enable_bg_already_done">Már engedélyezve van a Delta Chat számára, hogy a háttérben üzeneteket fogadjon.\n\nHa az üzenetek még mindig nem érkeznek meg a háttérben, ellenőrizze a rendszerbeállításokat is.</string>
 

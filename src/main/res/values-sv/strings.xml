@@ -15,7 +15,6 @@
     <string name="on">På</string>
     <string name="off">Av</string>
     <string name="def">Standard</string>
-    <string name="default_value">Standard (%1$s)</string>
     <string name="custom">Anpassat</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatiskt</string>
@@ -25,7 +24,6 @@
     <string name="downloading">Laddar ner...</string>
     <string name="open_attachment">Öppna bilaga</string>
     <string name="join">Anslut</string>
-    <string name="rejoin">Återanslut</string>
     <string name="delete">Ta bort</string>
     <string name="delete_for_me">Ta bort för mig</string>
     <string name="delete_for_everyone">Ta bort för alla</string>
@@ -59,10 +57,6 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Appar &amp; Media</string>
     <string name="profile">Profil</string>
-    <!-- deprecated -->
-    <string name="all_profiles">Alla profiler</string>
-    <!-- deprecated -->
-    <string name="current_profile">Aktuell profil</string>
     <string name="main_menu">Huvudmeny</string>
     <string name="start_chat">Starta chatt</string>
     <string name="show_full_message">Visa hela meddelandet...</string>
@@ -80,10 +74,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Fjärrbilder kan användas för att spåra dig.\n\nInställningen att fonter och annat innehåll laddas in. Även om inställningen är inaktiverad kan eventuellt inbäddade eller cachade fjärrbilder visas.\n\nVill du läsa in fjärrbilder?</string>
     <string name="always">Alltid</string>
-    <string name="always_load_remote_images">Läs alltid in fjärrbilder</string>
     <string name="once">en gång</string>
-    <!-- deprecated -->
-    <string name="show_warning">Visa varning</string>
     <string name="not_now">Inte nu</string>
     <string name="never">Aldrig</string>
     <string name="one_moment">Ett ögonblick...</string>
@@ -97,12 +88,9 @@
     <string name="no_app_to_handle_data">Kan inte hitta någon app som hanterar denna typ av data.</string>
     <string name="no_browser_installed">Ingen webbläsare installerad.</string>
     <string name="file_not_found">Kunde inte hitta %1$s.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Kan inte spara %1$s.</string>
     <string name="copied_to_clipboard">Kopierad till urklipp.</string>
     <string name="contacts_headline">Kontakter</string>
     <string name="email_address">E-postadress</string>
-    <string name="bad_email_address">Felaktig e-postadress.</string>
     <string name="password">Lösenord</string>
     <string name="existing_password">Befintligt lösenord</string>
     <string name="now">Nu</string>
@@ -114,11 +102,13 @@
     <string name="this_month">Denna månad</string>
     <string name="last_week">Förra veckan</string>
     <string name="last_month">Förra månaden</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Sågs senast %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Sågs senast %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Sågs senast: Okänt</string>
+
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">%d minuts fördröjning</item>
@@ -166,7 +156,6 @@
         <item quantity="one">%dmarkerade</item>
         <item quantity="other">%d markerad</item>
     </plurals>
-    <string name="selected_colon">Markerat:</string>
     <string name="self">Jag</string>
     <string name="draft">Utkast</string>
     <string name="image">Bild</string>
@@ -176,10 +165,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Dekal</string>
     <string name="add_to_sticker_collection">Lägg till i dekalsamling</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">För att lägga till dekaler trycker du på \"Öppna dekalmapp\", skapar en undermapp för ditt dekalpaket och drar bild- och dekalfiler dit.</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">Öppna dekalmapp</string>
     <string name="ask_add_sticker_to_collection">Vill du lägga till denna dekal till din samling?</string>
     <string name="ask_delete_sticker">Vill du ta bort denna dekal?</string>
     <string name="sticker_picker_empty_hint">Tryck på en dekal för att lägga till den här.</string>
@@ -200,7 +185,6 @@
     <string name="capture">Fånga</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Växla kamera</string>
-    <string name="toggle_fullscreen">Växla fullskärm</string>
     <string name="location">Plats</string>
     <string name="locations">Platser</string>
     <string name="gallery">Galleri</string>
@@ -238,11 +222,9 @@
     <string name="white">Vit</string>
 
     <string name="zoom">Zoom</string>
-    <string name="extra_small">Extra liten</string>
     <string name="small">Liten</string>
     <string name="normal">Normal</string>
     <string name="large">Stor</string>
-    <string name="extra_large">Extra stor</string>
 
     <string name="fast">Snabb</string>
     <string name="slow">Långsam</string>
@@ -277,8 +259,6 @@
     <string name="menu_send">Skicka</string>
     <string name="menu_toggle_keyboard">Byt emoji-tangentbord</string>
     <string name="menu_edit_group">Redigera grupp</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Gruppnamn och bild</string>
     <string name="menu_show_global_map">Visa alla platser</string>
     <string name="menu_archive_chat">Arkivera chatt</string>
     <string name="menu_unarchive_chat">Avarkivera chatt</string>
@@ -290,7 +270,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Rensa chatt</string>
     <string name="delete_contact">Ta bort kontakt</string>
-    <string name="menu_delete_location">Vill du ta bort denna plats?</string>
     <string name="menu_message_details">Meddelandedetaljer</string>
     <string name="menu_copy_to_clipboard">Kopiera till urklipp</string>
     <string name="share_invite_link">Dela inbjudningslänk</string>
@@ -332,7 +311,6 @@
     <string name="privacy_policy">Integritetspolicy</string>
     <string name="menu_select_all">Markera alla</string>
     <string name="select_chat">Välj chatt</string>
-    <string name="select_more">Välj flera</string>
     <string name="menu_edit_name">Redigera namn</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Ange ett chattnamn som kommer att visas för dig istället för \"%1$s\". Lämnas tomt om du vill använda kontaktens valda namn.</string>
@@ -345,7 +323,6 @@
     <string name="menu_zoom_out">Zooma ut</string>
     <string name="menu_save_log">Spara logg</string>
     <string name="menu_more_options">Mer alternativ</string>
-    <string name="menu_learn_spelling">Lär stavning</string>
     <string name="jump_to_message">Hoppa till meddelande</string>
     <string name="replace_draft">Ersätt utkast</string>
     <string name="title_share_location">Dela plats med alla gruppmedlemmar</string>
@@ -360,7 +337,7 @@
     <string name="unpin_chat">Lösgör chatten</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fäst</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Lösgör</string>
     <string name="ConversationFragment_quoted_message_not_found">Original meddelandet hittas inte</string>
     <string name="reply_privately">Svara säkert</string>
@@ -375,10 +352,8 @@
     <string name="mute_for_one_day">Tysta 1 dag</string>
     <string name="mute_for_seven_days">Tysta 7 dagar</string>
     <string name="mute_forever">Tysta för evigt</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">i 5 minuter</string>
-
     <string name="share_location_for_30_minutes">i 30 minuter</string>
     <string name="share_location_for_one_hour">i 1 timma</string>
     <string name="share_location_for_two_hours">i 2 timmar</string>
@@ -403,14 +378,6 @@
     <string name="audio_call">Ljudsamtal</string>
     <!-- Used in call bubbles, summaries, notifications -->
     <string name="video_call">Videosamtal</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="outgoing_audio_call">Utgående ljudsamtal</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="outgoing_video_call">Utgående videosamtal</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="incoming_audio_call">Inkommande ljudsamtal</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="incoming_video_call">Inkommande videosamtal</string>
     <string name="declined_call">Nekade samtal</string>
     <string name="canceled_call">Avbrutna samtal</string>
     <string name="missed_call">Missade samtal</string>
@@ -427,8 +394,6 @@
         <item quantity="one">Vill du ta bort %d meddelande?</item>
         <item quantity="other">Vill du ta bort %d meddelanden?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Vill du vidarebefordra meddelanden till %1$s?</string>
     <string name="ask_forward_multiple">Vill du vidarebefordra meddelanden till %1$d chattar?</string>
     <string name="ask_export_attachment">Vill du exportera bilagor? Exporterade bilagor tillåter andra appar på din enhet att komma åt dem.\n\nVill du fortsätta?</string>
     <string name="ask_block_contact">Vill du blockera den här kontakten? Du kommer inte att få fler meddelanden från den här kontakten.</string>
@@ -476,7 +441,6 @@
     <string name="chat_input_placeholder">Meddelande</string>
     <string name="chat_archived_label">Arkiverat</string>
     <string name="chat_request_label">Efterfråga</string>
-    <string name="chat_request_label_explain">Inkludera förfrågningar i räknare och meddelanden</string>
     <string name="chat_no_messages">Inga meddelanden.</string>
     <string name="chat_self_talk_subtitle">Meddelanden jag skickat till mig själv</string>
     <string name="archive_empty_hint">Arkiverde chattar kommer att visas här.</string>
@@ -486,9 +450,6 @@
     <string name="saved_messages_explain">• Vidarebefordra meddelanden här för enkel åtkomst\n\n• Spara anteckningar eller röstmemon\n\n• Bifoga mediafiler för att spara dom</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Sparad</string>
-    <string name="save_as">Spara som</string>
-    <string name="retry_send">Skicka om meddelandet</string>
-    <string name="cannot_display_unsuported_file_type">Denna filtyp kan inte visas: %s</string>
     <string name="attachment_failed_to_load">Bilagan kunde inte visas</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Lås inspelning</string>
@@ -497,8 +458,8 @@
     <string name="mailing_list">Mejllista</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Start...</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Start</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Acceptera chattbegäran först.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
@@ -528,8 +489,6 @@
     <string name="remove_group_image">Ta bort gruppbild</string>
     <string name="change_group_image">Ändra gruppbild</string>
     <string name="group_create_button">Skapa grupp</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Ange ett namn för gruppen.</string>
     <string name="group_add_members">Lägg till medlemmar</string>
     <string name="group_self_not_in_group">Du måste vara medlem i gruppen för att utföra denna åtgärd.</string>
     <string name="profile_encryption">Kryptering</string>
@@ -539,23 +498,17 @@
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
     <string name="tab_gallery">Galleri</string>
-    <string name="tab_docs">Dokument</string>
     <string name="tab_links">Länkar</string>
     <string name="tab_map">Karta</string>
     <string name="tab_gallery_empty_hint">Bilder och videor delade i denna chatt kommer att visas här.</string>
     <string name="tab_docs_empty_hint">Dokument, musik och andra filer som delas i denna chatt kommer att visas här.</string>
     <string name="tab_image_empty_hint">Bilder delade i denna chatt kommer att visas här.</string>
-    <string name="tab_video_empty_hint">Videor delade i denna chatt kommer att visas här.</string>
     <string name="tab_audio_empty_hint">Ljudfiler och röstmeddelanden delade i denna chatt kommer att visas här.</string>
     <string name="tab_webxdc_empty_hint">Appar delade i denna chatt kommer att visas här.</string>
     <string name="tab_all_media_empty_hint">Media delad i någon chatt kommer att visas här.</string>
     <string name="all_files_empty_hint">Dokument och andra filer som bifogas en chatt visas här.</string>
     <string name="all_apps_empty_hint">Appar som tas emot eller skickas i en chatt visas här.</string>
     <string name="media_preview">Förhandsvisning av media</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
-    <string name="aspect_ratio_grid">Rutnät för bildförhållande</string>
-    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
-    <string name="square_grid">Kvadratiskt rutnät</string>
     <string name="send_message">Skicka meddelande</string>
 
     <!-- Multi Device -->
@@ -597,14 +550,12 @@
     <string name="connectivity_connected">Ansluten</string>
     <string name="sending">Skickar...</string>
     <string name="last_msg_sent_successfully">Senaste meddelandet skickat felfritt.</string>
-    <!-- deprecated -->
-    <string name="not_supported_by_provider">Stöds ej av din leverantör.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Meddelanden</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s av %2$s används</string>
 
-    <!-- welcome and login -->
+    <!-- welcome and profile creation -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Skapa ny profil</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
@@ -613,12 +564,6 @@
     <string name="manual_account_setup_option">Klassisk e-postinloggning</string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Din profil</string>
-    <!-- The placeholder will be replaced by the default onboarding server -->
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default2">Integritetspolicy för %1$s</string>
-    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_instance">Om profiler på %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Godkänn &amp; Skapa profil</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
@@ -635,7 +580,6 @@
 
     <string name="welcome_chat_over_email">Säker decentraliserad chatt</string>
     <string name="scan_invitation_code">Skanna inbjudningskod</string>
-    <string name="login_title">Logga in</string>
     <string name="login_inbox">Inkorg</string>
     <string name="login_imap_login">IMAP inloggningsnamn</string>
     <string name="login_imap_server">IMAP server</string>
@@ -671,15 +615,11 @@
     <string name="confirm_add_transport">Vill du lägga till detta relä?</string>
     <string name="invalid_transport_qr">Den skannade QR-koden innehåller inget giltigt relä.</string>
     <string name="login_certificate_checks">Certifikatkontroller</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Ange en giltig e-postadress</string>
-    <string name="login_error_server">Ange en giltig server/IP-adress</string>
-    <string name="login_error_port">Ange en giltig port (1–65535)</string>
-    <string name="login_error_required_fields">Ange en giltig e-postadress och ett lösenord</string>
     <string name="import_backup_title">Importera säkerhetskopia</string>
     <string name="import_backup_ask">Säkerhetskopia hittades på %1$s.\n\n Vill du importera och använda all data och alla inställningar från den?</string>
     <string name="import_backup_no_backup_found">Inga säkerhetskopior hittades.\n\nKopiera säkerhetskopian till \"%1$s\" och försök igen.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Kan inte logga in som \"%1$s\". Kontrollera om e-postadressen och lösenordet är korrekt.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptera ogiltiga certifikat</string>
     <string name="switch_account">Byt konto</string>
@@ -706,8 +646,6 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Vill du skicka %1$d filer till \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Vill du skicka %1$d fil(er) till %2$d chattar?</string>
-    <!-- deprecated -->
-    <string name="videos_sent_without_recoding">(Om du skickar flera videor skickas de i befintligt skick, vilket kan vara stort. Om du vill göra dem mindre och spara data kan du skicka varje video i ett eget meddelande)</string>
     <string name="share_text_multiple_chats">Vill du skicka denna text till %1$d chattar?\n\n\"%2$s\"</string>
     <string name="share_abort">Delningen avbröts på grund av saknad behörighet.</string>
 
@@ -744,12 +682,9 @@
     <string name="pref_notifications_priority">Prioritet</string>
     <string name="pref_notifications_explain">Aktivera systemavisering för nya meddelanden</string>
     <string name="pref_show_notification_content">Visa meddelandeinnehåll i avisering</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Visar avsändare och de första orden i meddelandet, i aviseringen.</string>
     <string name="pref_led_color">Färg på ljusindikator</string>
     <string name="pref_sound">Ljud</string>
     <string name="pref_silent">Tyst</string>
-    <string name="pref_privacy">Integritet</string>
     <string name="pref_system_default">Systemets standardinställning</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Ljust</string>
@@ -764,8 +699,6 @@
     <string name="pref_read_receipts">Returkvitto</string>
     <string name="pref_read_receipts_explain">Om läskvittenser är avstängda kan du inte se läskvittenser från andra.</string>
     <string name="pref_server">Server</string>
-    <string name="pref_encryption">Kryptering</string>
-    <string name="pref_manage_keys">Hantera nycklar</string>
     <string name="pref_chats">Chattar</string>
     <string name="pref_in_chat_sounds">Ljud i konversationer</string>
     <string name="pref_view_log">Visa logg</string>
@@ -785,23 +718,11 @@
     <string name="pref_background">Bakgrund</string>
     <string name="pref_background_btn_default">Använd standardbild</string>
     <string name="pref_background_btn_gallery">Välj från galleriet</string>
-    <!-- deprecated -->
-    <string name="pref_imap_folder_warn_disable_defaults">Om du inaktiverar det här alternativet, tillse att servern och dina andra klienter är konfigurerade i enlighet med detta.\n\nAnnars kanske saker och ting inte fungerar alls.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Flerenhetsläge</string>
     <string name="pref_multidevice_explain">Synkronisera dina meddelanden med dina andra enheter. Aktiveras automatiskt när du lägger till en andra enhet</string>
     <string name="pref_multidevice_change_warn">Flerenhetsläge måste vara aktiverat när du använder samma profil på flera enheter. Inaktivera endast den här inställningen om du har tagit bort profilen från alla andra enheter.\n\nInaktiverar du flerenhetsläget när du använder profilen på flera enheter kommer du att missa meddelanden och få andra problem.</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">Flyttas automatiskt till DeltaChat-mappen</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_title">Hämta endast från DeltaChat-mappen</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Visa vanliga e-postmeddelanden</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Nej, bara chattar</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">För godkända kontakter</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Alla</string>
     <string name="pref_experimental_features">Experimentella funktioner</string>
     <string name="pref_experimental_features_explain">Dessa funktioner kan vara instabila och kan ändras eller tas bort</string>
@@ -812,6 +733,8 @@
     <string name="pref_background_custom_color">Anpassad färg</string>
     <string name="export_aborted">Exporten avbruten</string>
     <string name="auto_download_messages">Ladda ner meddelanden automatiskt</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Alla</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Upp till %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Upp till %1$s, sämst bildkvalitet</string>
@@ -856,18 +779,8 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Ta bort gamla meddelanden</string>
     <string name="autodel_device_title">Ta bort meddelanden från enheten</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">Ta bort meddelanden från servern</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Vill du ta bort %1$d meddelanden nu och alla kommande meddelanden \"%2$s\" i framtiden?\n\n• Detta inkluderar all mediafiler.\n\n• Meddelanden kommer att tas bort oavsett om de har lästs eller inte.\n\n• \"Sparade meddelanden\" undantas från lokal borttagning.</string>
-    <!-- deprecated -->
-    <string name="autodel_server_ask">Vill du ta bort %1$d meddelanden nu och alla nyligen hämtade meddelanden \"%2$s\" i framtiden?\n\n⚠️ Detta inkluderar e-post, media och \"Sparade meddelanden\" i alla servermappar\n\n⚠️ Använd inte den här funktionen om du vill behålla data på servern\n\n⚠️ Använd inte den här funktionen om du använder andra e-postklienter än Delta Chat</string>
-    <!-- deprecated -->
-    <string name="autodel_server_enabled_hint">Detta inkluderar e-post, media och \"Sparade meddelanden\" i alla servermappar. Använd inte den här funktionen om du vill spara data på servern eller om du använder andra e-postklienter än Delta Chat.</string>
-    <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device_title">Slå på direktborttagning</string>
-    <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device">Om du aktiverar direktborttagning kan du inte använda flera enheter på den här profilen.</string>
     <string name="autodel_confirm">Jag förstår! Ta bort alla dessa meddelanden.</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Nu genast</string>
@@ -959,8 +872,6 @@
     <string name="learn_more">Lär dig mer</string>
 
     <string name="devicemsg_self_deleted">Du har tagit bort chatten \"Sparade meddelanden\".\n\nℹ️ Om du vill använda funktionen \"Sparade meddelanden\" igen skapar du en ny chatt med dig själv.</string>
-    <!-- deprecated -->
-    <string name="devicemsg_storage_exceeding">⚠️ Din leverantörs lagringsutrymme är snart slut: %1$s%% är redan använt.\n\nDu kanske inte kan ta emot meddelanden om lagringsutrymmet är fullt.\n\n👉 Kontrollera om du kan radera gammal data i leverantörens webbgränssnitt och överväg att aktivera \"Inställningar / Chattar och media / Ta bort gamla meddelanden\". Du kan kontrollera din aktuella lagringsanvändning när som helst under \"Inställningar / Anslutning\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Datum eller tid på din enhet verkar vara felaktigt (%1$s).\n\nJustera din klocka ⏰🔧 för att säkerställa att dina meddelanden tas emot korrekt.</string>
     <string name="devicemsg_update_reminder">⚠️ Din Delta Chat-version kan vara föråldrad.\n\nDetta kan orsaka problem eftersom dina chattpartners använder nyare versioner - och du saknar de senaste funktionerna 😳\nSök efter uppdateringar på https://get.delta.chat eller i din appbutik.</string>
@@ -977,14 +888,8 @@
     <string name="qrscan_failed">QR-koden kunde inte avkodas</string>
     <string name="qrscan_ask_join_group">Vill du ansluta till gruppen \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Vill du ansluta till kanalen \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">Det skannade fingeravtrycket stämmer inte med senast sedda för %1$s.</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">QR-koden innehåller ett fingeravtryck men ingen e-postadress.\n\nUpprätta först en krypterad anslutning till mottagaren, för en utanför-bandet-verifiering.</string>
     <string name="qrscan_contains_text">Skannad QR-kod-text:\n\n%1$s</string>
     <string name="qrscan_contains_url">Skannad QR-kod-URL:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Fingeravtryck</string>
     <string name="withdraw_verifycontact_explain">Denna QR-kod kan skannas av andra för att kontakta dig.\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
     <string name="withdraw_verifygroup_explain">Denna QR-kod kan skannas av andra för att gå med i gruppen \"%1$s\".\n\nDu kan avaktivera QR-koden här och återaktivera den genom att skanna den igen.</string>
     <string name="withdraw_joinbroadcast_explain">Denna QR-kod kan skannas av andra för att ansluta till kanalen \"%1$s\".\n\nDu kan återställa den, så att den befintliga QR-koden eller inbjudningslänken inte längre fungerar.</string>
@@ -1003,12 +908,9 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Skanna det här för att få kontakt med %1$s.</string>
     <string name="qrshow_join_contact_no_connection_toast">Ingen internetanslutning, kan inte utföra QR-kod-inställning.</string>
-    <string name="qraccount_ask_create_and_login">Vill du skapa ny profil på \"%1$s\" och logga in där?</string>
     <string name="set_name_and_avatar_explain">Ange ett namn som dina kontakter kommer att känna igen. Du kan också ange en profilbild.</string>
     <string name="please_enter_name">Ange ett namn.</string>
     <string name="qraccount_qr_code_cannot_be_used">Den skannade QR-koden kan inte användas för att konfigurera ett nytt konto.</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
-    <string name="qrlogin_ask_login">Vill du logga in på \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s bjöd in dig att gå med i den här gruppen.\n\nVäntar på att enheten hos %2$s ska svara...</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
@@ -1018,13 +920,6 @@
     <string name="secure_join_wait">Upprättar garanterad totalsträckskryptering, vänligen vänta...</string>
     <string name="contact_verified">%1$s verifierad.</string>
     <string name="contact_blocked">Du blockerade kontakten</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <!-- deprecated -->
-    <string name="verified_by">Introducerad av %1$s</string>
-    <!-- deprecated -->
-    <string name="verified_by_you">Introducerad av mig</string>
-    <!-- deprecated -->
-    <string name="verified_by_unknown">Introducerad</string>
     <string name="mailto_dialog_header_select_chat">Välj chatt för att skicka meddelandet till</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s har redan ett utkast till meddelande, vill du ersätta det?</string>
@@ -1103,8 +998,6 @@
     <string name="menu.view.developer.open.log.folder">Öppna loggmappen</string>
     <string name="menu.view.developer.open.current.log.file">Öppna aktuell loggfil</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Systemfältsikonen kan inte inaktiveras eftersom Delta Chat startades med alternativet --minimized.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
-    <string name="no_spellcheck_suggestions_found">Inga stavningsförslag hittades.</string>
     <string name="show_window">Visa fönster</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tangentbindningar</string>
@@ -1129,24 +1022,15 @@
     <string name="a11y_disappearing_messages_activated">Försvinnande meddelanden aktiverat</string>
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Sluta dela plats</string>
-    <string name="a11y_voice_message_hint_ios">Efter inspelningen dubbelklickar du för att skicka. För att förkasta inspelningen, skrubba med två fingrar.</string>
     <string name="a11y_connectivity_hint">Dubbeltryck för att visa anslutningsdetaljer.</string>
     <string name="login_error_no_internet_connection">Ingen internetanslutning, inloggning misslyckades.</string>
-    <string name="share_account_not_configured">Profilen är inte konfigurerad.</string>
     <string name="cannot_play_audio_file">Ljudfilen kan inte spelas upp.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">För att ta bilder, spela in videor eller använda QR-kodläsaren, öppna systeminställningarna och aktivera \"Kamera\".</string>
     <string name="open_settings">Öppna inställningar</string>
-    <!-- iOS device contact alert -->
-    <string name="import_device_contacts">Importera enhetens kontakter</string>
-    <string name="import_device_contacts_hint">Om du vill chatta med kontakter från din enhet öppnar du Inställningar och aktiverar \"Kontakter\".</string>
-    <!-- iOS notification settings -->
-    <string name="disabled_in_dc">Inaktiverad i Delta Chat</string>
+    <!-- Notifications, that are disabled in the system settings -->
     <string name="disabled_in_system_settings">Inaktiverad i systeminställningarna</string>
     <string name="bg_app_refresh_disabled">\"Appuppdatering i bakgrunden\" inaktiverad i systeminställningarna</string>
-    <string name="notifications_avg_minutes">I genomsnitt var %1$d minut</string>
-    <string name="notifications_avg_hours">I genomsnitt var %1$d:e timma</string>
-    <string name="last_check_at">Kontrollerad %1$s</string>
     <string name="system_settings">Systeminställningar</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Redigera typ, märken, förhandsgranskning och mer</string>
@@ -1176,7 +1060,7 @@
     <string name="pref_reliable_service_explain">Orsakar en permanent avisering</string>
 
     <string name="pref_background_notifications_rationale">För att behålla anslutningen till din e-postserver och fortsätta ta emot meddelanden i bakgrunden, behöver du skippa batterioptimeringen i nästa steg.\n\nDelta Chat använder små resurser och ser till att inte dra ur ditt batteri.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Tryck här för att ta emot meddelanden medan Delta Chat är i bakgrunden.</string>
     <string name="perm_enable_bg_already_done">Du har redan gett Delta Chatt tillstånd att ta emot meddelanden i bakgrunden.\n\nKontrollera dina systeminställningar också, om det fortfarande inte kommer några meddelanden i bakgrunden.</string>
 

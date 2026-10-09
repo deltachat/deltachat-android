@@ -15,7 +15,6 @@
     <string name="on">På</string>
     <string name="off">Av</string>
     <string name="def">Forvalg</string>
-    <string name="default_value">Standardverdi (%1$s)</string>
     <string name="custom">Egendefinert</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatisk</string>
@@ -27,7 +26,6 @@
     <string name="join">Bli med</string>
     <string name="join_group">Bli med i gruppe</string>
     <string name="join_channel">Bli med i kanal</string>
-    <string name="rejoin">Bli med igjen</string>
     <string name="delete">Slett</string>
     <string name="delete_for_me">Slett for meg</string>
     <string name="delete_for_everyone">Slett for alle</string>
@@ -61,10 +59,6 @@
     <string name="media">Media</string>
     <string name="apps_and_media">Apper &amp; Media</string>
     <string name="profile">Profil</string>
-    <!-- deprecated -->
-    <string name="all_profiles">Alle profiler</string>
-    <!-- deprecated -->
-    <string name="current_profile">Gjeldende profil</string>
     <string name="main_menu">Hovedmeny</string>
     <string name="start_chat">Start chat</string>
     <string name="show_full_message">Vis hele meldingen</string>
@@ -86,10 +80,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Eksterne bilder kan spore deg.\n\nDenne innstillingen kan også laste skrifttyper og annet innhold. Hvis avslått vil innkapslede og mellomlagrede bilder kunne vises.\n\nLast eksternt innhold?</string>
     <string name="always">Alltid</string>
-    <string name="always_load_remote_images">Last alltid eksterne bilder</string>
     <string name="once">Én gang</string>
-    <!-- deprecated -->
-    <string name="show_warning">Vis advarsel</string>
     <string name="not_now">Ikke nå</string>
     <string name="never">Aldri</string>
     <string name="one_moment">Et øyeblikk…</string>
@@ -104,12 +95,9 @@
     <string name="no_app_to_handle_data">Kan ikke finne en app som kan handtere denne typen data.</string>
     <string name="no_browser_installed">Ingen nettleser installert</string>
     <string name="file_not_found">Filen %1$s ble ikke funnet.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Kan ikke lagre fil %1$s</string>
     <string name="copied_to_clipboard">Kopiert til utklippstavle</string>
     <string name="contacts_headline">Kontakter</string>
     <string name="email_address">E-postadresse</string>
-    <string name="bad_email_address">Feilaktig e-postadresse.</string>
     <string name="password">Passord</string>
     <string name="existing_password">Eksisterende passord</string>
     <string name="now">Nå</string>
@@ -121,11 +109,13 @@
     <string name="this_month">Denne måneden</string>
     <string name="last_week">Forrige uken</string>
     <string name="last_month">Forrige måneden</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Sist sett %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Sist sett %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Sist sett: uvisst</string>
+
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">%d minutters varighet</item>
@@ -173,7 +163,6 @@
         <item quantity="one">%d valgt</item>
         <item quantity="other">%d valgte</item>
     </plurals>
-    <string name="selected_colon">Valgt:</string>
     <string name="selected">Valgt</string>
     <string name="self">Meg</string>
     <string name="draft">Kladd</string>
@@ -184,10 +173,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Merke</string>
     <string name="add_to_sticker_collection">Legg til merkesamling</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">For å legge til merker, trykk på "Åpne merkemappe", lag en undermappe for merkepakken, og dra bilder og merkefiler dit</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">Åpne merkemappe</string>
     <string name="ask_add_sticker_to_collection">Legg dette merket til samlingen din?</string>
     <string name="ask_delete_sticker">Slett dette merket?</string>
     <string name="sticker_picker_empty_hint">Trykk på et merke for å legge det til her.</string>
@@ -208,7 +193,6 @@
     <string name="capture">Ta opp</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Bytt kamera</string>
-    <string name="toggle_fullscreen">Vis fullskjerm</string>
     <string name="location">Posisjon</string>
     <string name="locations">Posisjoner</string>
     <string name="gallery">Galleri</string>
@@ -246,11 +230,9 @@
     <string name="white">Hvit</string>
 
     <string name="zoom">Zoom</string>
-    <string name="extra_small">Ekstra liten</string>
     <string name="small">Liten</string>
     <string name="normal">Normal</string>
     <string name="large">Stor</string>
-    <string name="extra_large">Ekstra stor</string>
 
     <string name="fast">Raskt</string>
     <string name="slow">Langsomt</string>
@@ -285,8 +267,6 @@
     <string name="menu_send">Send</string>
     <string name="menu_toggle_keyboard">Slå på/av emoji-tastatur</string>
     <string name="menu_edit_group">Rediger gruppe</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Gruppenavn og bilde</string>
     <string name="menu_show_global_map">Vis alle posisjoner</string>
     <string name="menu_archive_chat">Arkiver chat</string>
     <string name="menu_unarchive_chat">Fjern chat fra arkiv</string>
@@ -298,7 +278,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Tøm chat</string>
     <string name="delete_contact">Slett kontakt</string>
-    <string name="menu_delete_location">Slett på dette stedet?</string>
     <string name="menu_message_details">Meldingsdetaljer</string>
     <string name="menu_copy_to_clipboard">Kopier til utklippstavle</string>
     <string name="share_invite_link">Del invitasjonslenke</string>
@@ -340,7 +319,6 @@
     <string name="privacy_policy">Personvernerklæring</string>
     <string name="menu_select_all">Velg alle</string>
     <string name="select_chat">Velg chat</string>
-    <string name="select_more">Velg mer</string>
     <string name="menu_edit_name">Rediger navn</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Sett et kallenavn som vil bli brukt istedenfor \"%1$s\". La det være tomt for å bruke kontaktens valgte navn.</string>
@@ -353,7 +331,6 @@
     <string name="menu_zoom_out">Zoome ut</string>
     <string name="menu_save_log">Lagre logg</string>
     <string name="menu_more_options">Flere valg</string>
-    <string name="menu_learn_spelling">Lær staving</string>
     <string name="jump_to_message">Gå til melding</string>
     <string name="replace_draft">Erstatt kladd</string>
     <string name="title_share_location">Del posisjon med alle gruppemedlemmer</string>
@@ -368,7 +345,7 @@
     <string name="unpin_chat">Løsne chat</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fest</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Løsn</string>
     <string name="ConversationFragment_quoted_message_not_found">Fant ikke opprinnelig melding</string>
     <string name="reply_privately">Svar privat</string>
@@ -383,10 +360,8 @@
     <string name="mute_for_one_day">Demp i 1 dag</string>
     <string name="mute_for_seven_days">Demp i 7 dager</string>
     <string name="mute_forever">Alltid dempet</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">i 5 minutter</string>
-
     <string name="share_location_for_30_minutes">i 30 minutter</string>
     <string name="share_location_for_one_hour">i 1 time</string>
     <string name="share_location_for_two_hours">i 2 timer</string>
@@ -419,14 +394,6 @@
     <string name="call_reconnecting">Gjenoppretter forbindelsen...</string>
     <string name="call_ended">Samtale avsluttet</string>
     <string name="call_failed">Samtale feilet</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="outgoing_audio_call">Utgående lydsamtale</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="outgoing_video_call">Utgående videosamtale</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="incoming_audio_call">Inkommende lydsamtale</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="incoming_video_call">Inkommende videosamtale</string>
     <string name="declined_call">Avvist anrop</string>
     <string name="canceled_call">Avbrutt anrop</string>
     <string name="missed_call">Ubesvart anrop</string>
@@ -450,8 +417,6 @@
         <item quantity="one">Slett %d melding fra alle dine enheter?</item>
         <item quantity="other">Slett %d meldinger fra alle dine enheter?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Videresend meldinger til %1$s?</string>
     <string name="ask_forward_multiple">Videresend meldinger til %1$d chatter?</string>
     <string name="ask_export_attachment">Eksporter vedlegg? Eksport av vedlegg vil gi andre apper på din enhet tilgang til dem\n\nFortsett?</string>
     <string name="ask_block_contact">Blokkere denne kontakten? Du vil ikke lenger motta meldinger fra kontakten.</string>
@@ -499,7 +464,6 @@
     <string name="chat_input_placeholder">Melding</string>
     <string name="chat_archived_label">Arkivert</string>
     <string name="chat_request_label">Forespørsel</string>
-    <string name="chat_request_label_explain">Inkluder forespørsler i tellere og varsler</string>
     <string name="chat_no_messages">Ingen meldinger.</string>
     <string name="chat_self_talk_subtitle">Meldinger jeg har sendt til meg selv</string>
     <string name="archive_empty_hint">Arkiverte chatter vil havne her.</string>
@@ -509,9 +473,6 @@
     <string name="saved_messages_explain">• Videresend meldinger hit for enkel tilgang\n\n• Ta tekst- eller tale-notater\n\n• Legg ved media for å lagre dem</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Lagret</string>
-    <string name="save_as">Lagre som</string>
-    <string name="retry_send">Forsøk å sende på nytt</string>
-    <string name="cannot_display_unsuported_file_type">Kan ikke vise denne filtypen: %s</string>
     <string name="attachment_failed_to_load">Kunne ikke laste vedlegg</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Lås opptak</string>
@@ -519,9 +480,6 @@
     <!-- mailing lists -->
     <string name="mailing_list">E-postliste</string>
 
-    <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Start…</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Du må akseptere chatte-forespørselen før du kan sende.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
@@ -540,8 +498,6 @@
     <string name="search_in">Søk i %1$s </string>
     <string name="search_files">Søk i filer</string>
     <string name="search_explain">Søk etter chatter, kontakter, og meldinger</string>
-    <!-- deprecated, there is not much point to repeat the query, use emoji_search_results, or no headline at all -->
-    <string name="search_result_for_x">Resultat for \"%1$s\"</string>
     <string name="search_no_result_for_x">Ingen resultater funnet for \"%s\"</string>
     <!-- Adjective, as in "Show Unread Messages" -->
     <string name="search_unread">Ulest</string>
@@ -552,8 +508,6 @@
     <string name="remove_group_image">Fjern gruppebilde</string>
     <string name="change_group_image">Endre gruppebilde</string>
     <string name="group_create_button">Lag gruppe</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Skriv inn et navn på gruppen.</string>
     <string name="please_enter_chat_name">Skriv inn et navn.</string>
     <string name="group_add_members">Legg til medlem</string>
     <string name="group_self_not_in_group">Du må være medlem av gruppen for å utføre denne handlingen.</string>
@@ -564,30 +518,23 @@
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galleri</string>
-    <string name="tab_docs">Dokumenter</string>
     <string name="tab_links">Lenker</string>
     <string name="tab_map">Kart</string>
     <string name="tab_gallery_empty_hint">Bilder og videor tilknyttet denne chatten vil vises her.</string>
     <string name="tab_docs_empty_hint">Dokumenter og andre filer tilknyttet denne chatten vil vises her.</string>
     <string name="tab_image_empty_hint">Bilder tilknyttet denne chatten vil vises her.</string>
-    <string name="tab_video_empty_hint">Videoer tilknyttet denne chatten vil vises her.</string>
     <string name="tab_audio_empty_hint">Lydfiler og talebeskjeder tilknyttet denne chatten vil vises her.</string>
     <string name="tab_webxdc_empty_hint">Apper tilknyttet denne chatten vil vises her.</string>
     <string name="tab_all_media_empty_hint">Media tilknyttet denne chatten vil vises her.</string>
     <string name="all_files_empty_hint">Dokumenter og andre filer tilknyttet alle chatter vil vises her.</string>
     <string name="all_apps_empty_hint">Apper tilknyttet alle chatter vil vises her.</string>
     <string name="media_preview">Forhåndsvisning av medier</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
-    <string name="aspect_ratio_grid">Rutenett for størrelsesforhold</string>
-    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
-    <string name="square_grid">Kvadratisk rutenett</string>
     <string name="send_message">Send melding</string>
 
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Legg til annen enhet</string>
     <string name="multidevice_same_network_hint">Sørg for at begge enhetene er tilkoblet samme Wi-Fi eller nettverk</string>
-    <string name="login_title">Logg inn</string>
     <string name="login_inbox">Innboks</string>
     <string name="login_imap_login">IMAP-innloggingsnavn</string>
     <string name="login_imap_server">IMAP-tjener</string>
@@ -624,7 +571,6 @@
     <string name="pref_led_color">LED-farge</string>
     <string name="pref_sound">Lyd</string>
     <string name="pref_silent">Stille</string>
-    <string name="pref_privacy">Personvern</string>
     <string name="pref_system_default">System standard</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lys</string>
@@ -637,7 +583,6 @@
     <string name="pref_incognito_keyboard_explain">Be tastatur om å slå av lærefunksjon</string>
     <string name="pref_read_receipts">Meldingskvitteringer</string>
     <string name="pref_read_receipts_explain">Hvis du slår av lesebekreftelser, får du heller ikke se lesebekreftelser fra andre.</string>
-    <string name="pref_manage_keys">Behandle nøkler</string>
     <string name="pref_chats">Chatter</string>
     <string name="pref_in_chat_sounds">Merknader i programmet</string>
     <string name="pref_view_log">Vis logg</string>
@@ -670,14 +615,8 @@
     <string name="qr_code">QR-kode</string>
     <string name="qrscan_title">Skann QR-kode</string>
     <string name="qrscan_hint">Beveg kameraet over QR-koden.</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">Det skannede fingeravtrykket stemmer ikke overens med sist sette fingeravtrukk for %1$s.</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">QR-koden inneholder et fingeravtrykk, men ingen e-postadresse.\n\nFor bekreftelse utenfor programmet, etabler en kryptert tilkobling til mottakeren først.</string>
     <string name="qrscan_contains_text">Den skannede QR-koden inneholder følgende tekst:\n\n%1$s</string>
     <string name="qrscan_contains_url">Den skannede QR-koden inneholder følgende lenke:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Fingeravtrykk</string>
     <string name="qrshow_title">QR-invitasjonskode</string>
     <string name="qrshow_x_joining">%1$s tar del.</string>
     <string name="qrshow_x_verified">%1$s bekreftet.</string>

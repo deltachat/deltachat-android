@@ -15,7 +15,6 @@
     <string name="on">رۊشن</string>
     <string name="off">کۊر</string>
     <string name="def">پؽش فرز</string>
-    <string name="default_value">پؽش فرز (%1$s)</string>
     <string name="custom">سفارشی</string>
     <string name="none">هیچکویکی</string>
     <string name="automatic">خوتکار</string>
@@ -25,7 +24,6 @@
     <string name="downloading">هونی دانلود ابۊ...</string>
     <string name="open_attachment">گۊشیڌن پیوست</string>
     <string name="join">ٱووڌن</string>
-    <string name="rejoin">ز نۊ ٱووڌن</string>
     <string name="delete">پاک کردن</string>
     <string name="delete_for_me">پاک کردن سی مو</string>
     <string name="delete_for_everyone">پاک کردن سی پوی</string>
@@ -59,10 +57,6 @@
     <string name="media">وارسگر</string>
     <string name="apps_and_media">برنومه یل وو وارسگرا</string>
     <string name="profile">پوروفایل</string>
-    <!-- deprecated -->
-    <string name="all_profiles">پوی پوروفایلا</string>
-    <!-- deprecated -->
-    <string name="current_profile">پوروفایل هیم سکویی</string>
     <string name="main_menu">نومگه ٱسلی</string>
     <string name="start_chat">ناڌن پا گوفت وو لوفت</string>
     <string name="show_full_message">نشووݩ داڌن پیوم کامل...</string>
@@ -78,10 +72,7 @@
     <string name="activate">فعال کردن</string>
     <string name="load_remote_content">بار ونی شؽواتا ز در</string>
     <string name="always">همیشه</string>
-    <string name="always_load_remote_images">شؽواتا دیر ز دسرس هی بوگوئشن</string>
     <string name="once">هیم ی کرت</string>
-    <!-- deprecated -->
-    <string name="show_warning">نشووݩ داڌن هوشدار</string>
     <string name="not_now">سکو ن</string>
     <string name="never">هیچ</string>
     <string name="one_moment">ی دمووݩ...</string>
@@ -95,12 +86,9 @@
     <string name="no_app_to_handle_data">برنومه ای سی ای نوع داده نجۊرست.</string>
     <string name="no_browser_installed">هیچ گشت گری نپۊرسته.</string>
     <string name="file_not_found">%1$s ن نجوست.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">نتره %1$s ن زفت کونه.</string>
     <string name="copied_to_clipboard">من ویرگه لف گیری وابی.</string>
     <string name="contacts_headline">هومدنگووݩ</string>
     <string name="email_address">نشۊوی ایمیل</string>
-    <string name="bad_email_address">نشۊوی ایمیل موشکل داره.</string>
     <string name="password">رزم</string>
     <string name="existing_password">رزم مووجۊد</string>
     <string name="now">سکو</string>
@@ -112,11 +100,13 @@
     <string name="this_month">ای ما</string>
     <string name="last_week">هفته زیتری</string>
     <string name="last_month">ما زیتری</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">ریتور دیندایی من %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">ریتور دیندایی %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">ریتور دیندایی: دیار نؽ</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d دؽقه</item>
@@ -153,7 +143,6 @@
         <item quantity="one">%d تا پسند وابی</item>
         <item quantity="other">%d تا پسند وابی</item>
     </plurals>
-    <string name="selected_colon">پسند وابیڌه:</string>
     <string name="self">مو</string>
     <string name="draft">پؽش هؽل</string>
     <string name="image">شؽوات</string>
@@ -163,10 +152,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">استیکر</string>
     <string name="add_to_sticker_collection">ٱووردن و مجمۊعه استیکر</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">سی ٱووردن برچسب ری «گۊشیڌن دوبلگه برچسب» بزنین، ی لم دوبلگه ای سی کتن برچسب خوتووݩ وورکل کۊنین وو برچسبا ن و اوچو بکشین</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">گۊشیڌن دوبلگه استیکر</string>
     <string name="images">شؽواتا</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">دونگ</string>
@@ -184,7 +169,6 @@
     <string name="capture">گرؽڌن</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">آلشت شؽواتگر</string>
-    <string name="toggle_fullscreen">آلشت وزیت پوی بلگه</string>
     <string name="location">جاگه</string>
     <string name="locations">جاگه یل</string>
     <string name="gallery">شؽوات مال</string>
@@ -222,11 +206,9 @@
     <string name="white">اسبؽڌ</string>
 
     <string name="zoom">گپ کردن</string>
-    <string name="extra_small">قلوه کۊچیر</string>
     <string name="small">کۊچیر</string>
     <string name="normal">عادی</string>
     <string name="large">گپ</string>
-    <string name="extra_large">قلوه گپ</string>
 
     <string name="fast">زل</string>
     <string name="slow">هووار</string>
@@ -255,8 +237,6 @@
     <string name="menu_send">فشناڌن</string>
     <string name="menu_toggle_keyboard">آلشت تخته کیلیت ایموجی یل</string>
     <string name="menu_edit_group">آلشت جرگه</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">نوم وو شؽوات جرگه</string>
     <string name="menu_show_global_map">نشووݩ داڌن پوی جاگه یل</string>
     <string name="menu_archive_chat">بایگۊوی گوفت وو لوفت</string>
     <string name="menu_unarchive_chat">و در زیڌن گوفت وو لوفت ز بایگۊوی</string>
@@ -267,7 +247,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">روفتن ویرگار گوفت وو لوفت</string>
     <string name="delete_contact">پاک کردن هومدنگ</string>
-    <string name="menu_delete_location">ای جاگه پاک بۊ؟</string>
     <string name="menu_message_details">جۊزیات پیوم</string>
     <string name="menu_copy_to_clipboard">لف گیری من ویرگه</string>
     <string name="share_invite_link">یک رسۊوی لینگ موکش</string>
@@ -294,7 +273,6 @@
     <string name="menu_help">هیاری</string>
     <string name="menu_select_all">پسند پوی</string>
     <string name="select_chat">پسند گوفت وو لوفت</string>
-    <string name="select_more">پسند بیشتر</string>
     <string name="menu_edit_name">آلشت نوم</string>
     <string name="menu_settings">سامووا</string>
     <string name="menu_advanced">پؽش رئڌه</string>
@@ -317,10 +295,8 @@
     <string name="mute_for_one_day">بؽ دونگ کردن سی 1 رۊ</string>
     <string name="mute_for_seven_days">بؽ دونگ کردن سی 7 رۊ</string>
     <string name="mute_forever">بؽ دونگ کردن سی همیشه</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">سی 5 دؽقه</string>
-
     <string name="share_location_for_30_minutes">سی 30 دؽقه</string>
     <string name="share_location_for_one_hour">سی 1 ساعت</string>
     <string name="share_location_for_two_hours">سی 2 ساعت</string>
@@ -354,8 +330,6 @@
     <string name="saved_messages">پیوما زفت بیڌه</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">زفت وابی</string>
-    <string name="save_as">زفت و عونوان</string>
-    <string name="retry_send">ز نۊ سی فشناڌن پیوم تقلا کوݩ</string>
     <!-- mailing lists -->
     <string name="mailing_list">نومگه پوستی</string>
 
@@ -376,7 +350,6 @@
     <string name="tab_contact">هومدنگ</string>
     <string name="tab_group">جرگه</string>
     <string name="tab_gallery">شؽوات مال</string>
-    <string name="tab_docs">سندا</string>
     <string name="tab_links">لینگا</string>
     <string name="tab_map">نقشه</string>
     <string name="media_preview">نشووݩ داڌن وارسگر</string>
@@ -402,8 +375,10 @@
     <string name="pref_chats">گوفت وو لوفتا</string>
     <string name="pref_log_header">گوزارش</string>
     <string name="pref_background_btn_gallery">پسند ز شؽوات مال</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">پوی</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">پوی</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">تا سقف %1$s</string>
     <string name="profile_image_select">پسند شؽوات پوروفایل</string>
@@ -417,8 +392,6 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">پاک کردن پیوما قڌیمی</string>
     <string name="autodel_device_title">پاک کردن پیوما ز دسگا</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">پاک کردن پیوما ز سرور</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">ی کرت دیندا دانلود</string>
     <string name="after_5_minutes">دیندا 5 دؽقه</string>
@@ -433,9 +406,6 @@
     <string name="qrshow_x_joining">%1$s ٱووڌ.</string>
     <string name="qrshow_x_verified">%1$s تاییڌ وابی.</string>
     <string name="contact_verified">%1$s تاییڌ وابی.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <!-- deprecated -->
-    <string name="verified_by">تاییڌ وابیڌه و دس %1$s</string>
     <!-- notifications -->
     <string name="notify_reply_button">ولوم</string>
     <string name="notify_new_message">پیوم نۊ</string>

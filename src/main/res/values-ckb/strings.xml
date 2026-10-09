@@ -10,14 +10,12 @@
     <string name="on">چالاک</string>
     <string name="off">ناچالاک</string>
     <string name="def">بنەڕەتی</string>
-    <string name="default_value">بنەڕەتی (%1$s)</string>
     <string name="custom">دڵخواز</string>
     <string name="none">هیچیان</string>
     <string name="automatic">خۆکار</string>
     <string name="open">کردنەوە</string>
     <string name="open_attachment">کردنەوەی پێوەلکاو</string>
     <string name="join">بەشداربوون</string>
-    <string name="rejoin">دیسان بەشداربوونەوە</string>
     <string name="delete">بیسڕەوە</string>
     <string name="info">زانیاری</string>
     <string name="update">نوێ کردنەوە</string>
@@ -58,7 +56,6 @@
     <string name="copied_to_clipboard">ڕوونووس کرا</string>
     <string name="contacts_headline">بەردەنگەکان</string>
     <string name="email_address">پۆستی ئەلیکترۆنی</string>
-    <string name="bad_email_address">پۆستی ئەلیکترۆنی بێکەڵک</string>
     <string name="password">تێپەڕوشە</string>
     <string name="existing_password">دووپات کردنەوەی تێپەڕوشە</string>
     <string name="now">ئێستا</string>
@@ -130,11 +127,9 @@
     <string name="white">سپی</string>
 
     <string name="zoom">نزیک کردنەوە</string>
-    <string name="extra_small">زۆر بچووک</string>
     <string name="small">بچووک</string>
     <string name="normal">ئاسایی</string>
     <string name="large">گەورە</string>
-    <string name="extra_large">زۆر گەورە</string>
 
     <string name="fast">خێرا</string>
     <string name="slow">خاو</string>
@@ -145,8 +140,6 @@
     <string name="menu_new_group">کۆڕی نوێ</string>
     <string name="menu_send">بینێرە</string>
     <string name="menu_edit_group">دەستکاری کۆڕ</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">ناو و وێنەی کۆڕ</string>
     <string name="menu_show_global_map">پیشاندانی هەموو شوێنەکان</string>
     <string name="menu_archive_chat">ئەرشیڤ کردنی وتووێژ</string>
     <string name="menu_unarchive_chat">دەرهێنانی وتووێژ لە ئەرشیڤ</string>
@@ -154,7 +147,6 @@
     <string name="menu_leave_group">بەجێهێشتنی کۆڕ</string>
     <string name="menu_delete_chat">سڕینەوەی وتووێژ</string>
     <string name="delete_contact">سڕینەوەی بەردەنگ</string>
-    <string name="menu_delete_location">ئەم شوێنە دەسڕیتەوە؟</string>
     <string name="menu_message_details">وردەکارییەکانی پەیامەکە</string>
     <string name="menu_copy_to_clipboard">ڕوونووس کردن</string>
     <string name="menu_copy_selection_to_clipboard">هەڵبژێردراوەکان ڕوونووس بکە</string>
@@ -179,7 +171,6 @@
     <string name="menu_scroll_to_top">ڕۆیشتن بەرەو ژوور</string>
     <string name="menu_help">یارمەتی</string>
     <string name="menu_select_all">هەمووی هەڵبژێرە</string>
-    <string name="select_more">هەڵبژاردنی زۆرتر</string>
     <string name="menu_edit_name">دەستکاری ناو</string>
     <string name="menu_settings">ڕێکخستنەکان</string>
     <string name="menu_advanced">پێشکەوتوو</string>
@@ -198,7 +189,7 @@
     <string name="unpin_chat">لابردنی دەرزیلە</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">دەرزیلە بکە</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">دەرزیلە لابە</string>
     <string name="ConversationFragment_quoted_message_not_found">پەیامە ڕەسەنەکە نەدۆزرایەوە</string>
     <string name="reply_privately">وەڵامدانەوەی نهێنی</string>
@@ -207,10 +198,8 @@
     <string name="mute_for_one_day">بێدەنگ کردن بۆ ماوەی 1 ڕۆژ</string>
     <string name="mute_for_seven_days">بێدەنگ کردن بۆ ماوەی 7 ڕۆژ</string>
     <string name="mute_forever">بێدەنگ کردن بۆ هەمیشە</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">بۆ ماوەی 5 خولەک</string>
-
     <string name="share_location_for_30_minutes">بۆ ماوەی 30 خولەک</string>
     <string name="share_location_for_one_hour">بۆ ماوەی 1 کاتژمێر</string>
     <string name="share_location_for_two_hours">بۆ ماوەی 2 کاتژمێر</string>
@@ -221,8 +210,6 @@
     </plurals>
     <string name="file_saved_to">پەڕگەکە پاشەکەوت کرا لە \"%1$s\".</string>
 
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">ئەو پەیامانە دەنێریت بۆ %1$s؟</string>
     <string name="ask_forward_multiple">ئەو پەیامانە دەنێریت بۆ نێو %1$dوتووێژ؟</string>
     <string name="ask_export_attachment">پێوەلکاوەکە هەناردە دەکەیت؟ هەناردەکردنی پێوەلکاوەکان وادەکات نەرمامێرەکانی دیکەی سەر مۆبایلەکەت بتوانن دەستیان بەو بەڵگە هەناردەکراوە بگات.\n\n بەردەوام دەبیت؟</string>
     <string name="ask_block_contact">ئەم بەردەنگە ئاستەنگ دەکەیت؟ ئیدی هیچ پەیامێک لەلایەن ئەم بەردەنگەوە بە تۆ ناگات.</string>
@@ -271,8 +258,6 @@
     <string name="saved_messages_explain">• پەیامەکان بنێرە ئێرە تاکوو بەئاسانی لەبەردەست بن\n\n• ڕەشنووسی دەق یان دەنگی دابنە\n\n• ڕەنگاڵە پەیوەست بکە تاکوو پاشەکەوت بکرێن</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">پاشەکەوت کرا</string>
-    <string name="retry_send">دیسان هەوڵ بدەوە بۆ هەناردنی پەیامەکە</string>
-    <string name="cannot_display_unsuported_file_type">ئەم چەشنە پەڕگەیە پیشان نادرێت: %s</string>
     <string name="attachment_failed_to_load">پێوەلکاوەکە دانەگیرا</string>
     <!-- mailing lists -->
     <string name="mailing_list">لیستەی ئیمەیلەکان</string>
@@ -287,8 +272,6 @@
     <string name="remove_group_image">سڕینەوەی وێنەی کۆڕ</string>
     <string name="change_group_image">گۆڕینی ناوی کۆڕ</string>
     <string name="group_create_button">کۆڕێک درووست بکە</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">تکایە ناوێک بنووسە بۆ کۆڕەکە.</string>
     <string name="group_add_members">ئەندام زیاد بکە</string>
     <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>
     <string name="profile_encryption">شفرەکردن</string>
@@ -296,7 +279,6 @@
     <string name="tab_contact">بەردەنگ</string>
     <string name="tab_group">کۆڕ</string>
     <string name="tab_gallery">پیشانگە</string>
-    <string name="tab_docs">بەڵگەکان</string>
     <string name="tab_links">بەستەرەکان</string>
     <string name="tab_map">نەخشە</string>
     <string name="tab_gallery_empty_hint">وێنە و ڤیدیۆ هاوبەشکراوەکانی نێو ئەم وتووێژە، لێرەدا پیشان دەدرێن.</string>
@@ -304,7 +286,6 @@
     <string name="media_preview">پێشدیتنی ڕەنگاڵە</string>
     <string name="send_message">پەیام بنێرە</string>
 
-    <string name="login_title">بچۆ ژوورەوە</string>
     <string name="login_inbox">هاتنگە</string>
     <string name="login_imap_login">ناوی چوونەژوورەوەی IMAP</string>
     <string name="login_imap_server">سێرڤەری IMAP</string>
@@ -316,15 +297,11 @@
     <string name="login_smtp_server">سێرڤەری SMTP</string>
     <string name="login_smtp_port">پۆرتی SMTP</string>
     <string name="login_smtp_security">ئاسایشی SMTP</string>
+    <!-- deprecated -->
     <string name="login_error_mail">تکایە ئیمەیلێکی ڕاست بنووسە</string>
-    <string name="login_error_server">تکایە سێرڤەرێکی / شوێنەواری ئای پی ڕەوا بنووسە.</string>
-    <string name="login_error_port">تکایە پۆرتێکی (1-65535) درووست بنووسە</string>
-    <string name="login_error_required_fields">تکایە ئیمەیلێکی درووست و تێپەڕوشەیەک بنووسە</string>
     <string name="import_backup_title">هاوردەکردنی یەدەک</string>
     <string name="import_backup_ask">یەدەکەکە لە \"%1$s\"دا دۆزرایەوە.\n\n دەتەوێت هەموو داتا و ڕێکخستنەکانی هاوردە بکەیت و بەکاریان بێنیت؟</string>
     <string name="import_backup_no_backup_found">هیچ یەدەکێک نەدۆزرایەوە.\n\n یەدەکەکە کۆپی بکە بۆ\"%1$s\" و دیسان هەوڵبدەوە. یان بۆ بەردەوامبوون لەسەر پرۆسەی ئاسایی دامەزراندنەکە، دەستبنە بە \"دەستپێکی نامەنووسین\"دا .</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">\"%1$s\" ناتوانێت بچێتە ژوورەوە. سەرنج بدە بزانە ئیمەیل و تێپەڕوشەکە درووستە.</string>
     <string name="switch_account">گۆڕینی هەژمار</string>
     <string name="add_account">زیادکردنی هەژمار</string>
     <string name="delete_account">سڕینەوەی هەژمار</string>
@@ -356,12 +333,9 @@
     <string name="pref_notifications_priority">پێشترێتی</string>
     <string name="pref_notifications_explain">وریاکەرەوەکانی سیستەم بۆ پەیامە نوێکان چالاک بکە</string>
     <string name="pref_show_notification_content">دەقی پەیامەکە لەنێو وریاکەرەوەکاندا پیشان بدە</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">ناوی پەیامنێرەکە و وشە سەرەتاییەکانی دەقی پەیامەکە لەناو وریاکەرەوەکەدا پیشان بدە</string>
     <string name="pref_led_color">ڕەنگی چرای LED</string>
     <string name="pref_sound">دەنگ</string>
     <string name="pref_silent">بێدەنگ</string>
-    <string name="pref_privacy">پاراستنی تاکەکەسی</string>
     <string name="pref_system_default">بنەڕەتی سیستەم</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">ڕووناک</string>
@@ -374,7 +348,6 @@
     <string name="pref_incognito_keyboard_explain">داخوازی بۆ ئەوەی کە تەختەکلیلەکە فێربوون و لەبەرگرتنەوەی نووسراوەکانت ناچالاک بکات.</string>
     <string name="pref_read_receipts">وەرگرنامەی خوێندنەوە</string>
     <string name="pref_read_receipts_explain">ئەگەر \"وەرگرنامەی خوێندن\" ناچالاک بێت، ئیدی تۆش نایبینیت کە ئاخۆ کەسانی دی پەیامەکەتیان خوێندووەتەوە یان نا.</string>
-    <string name="pref_manage_keys">بەڕێوەبردنی کلیلەکان</string>
     <string name="pref_chats">وتووێژەکان</string>
     <string name="pref_in_chat_sounds">دەنگەکانی نێو-وتووێژی</string>
     <string name="pref_other">کەسانی دی</string>
@@ -387,15 +360,7 @@
     <string name="pref_background">پشتخان</string>
     <string name="pref_background_btn_default">بەکارهێنانی وێنەی بنەڕەتی</string>
     <string name="pref_background_btn_gallery">هەڵبژاردن لە پیشانگا</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">هەناردنی خۆکار بۆ بوخچەی دێڵتاچات</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">پیشاندانی ئیمەیلە کلاسیکەکان</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">نا، بەس چاتەکان</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">بۆ بەردەنگە پەسندکراوەکان</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">هەموو</string>
     <string name="pref_experimental_features">ئەو تایبەتمەندییانەی بۆ تاقی کردنەوەن</string>
     <string name="pref_background_default">پشتخانی بنەڕەتی</string>
@@ -403,6 +368,8 @@
     <string name="pref_background_custom_image">وێنەی دڵخواز</string>
     <string name="pref_background_custom_color">ڕەنگی دڵخواز</string>
     <string name="export_aborted">هەناردەکردن ڕاوەستا</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">هەموو</string>
     <string name="profile_image_select">هەڵبژاردنی وێنەی لادیمەن</string>
     <string name="select_your_new_profile_image">وێنەی لادیمەنە نوێکەت هەڵبژێرە</string>
     <string name="profile_image_delete">سڕینەوەی وێنەی لادیمەن</string>
@@ -422,8 +389,6 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">سڕینەوەی پەیامە کۆنەکان</string>
     <string name="autodel_device_title">سڕینەوەی پەیامەکان لەسەر مۆبایەلەکت</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">سڕینەوەی پەیامەکان لەسەر سێرڤەر</string>
     <string name="autodel_confirm">تێگەیشتم، هەموو ئەم پەیامانە بسڕەوە</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">بەیەکجاری</string>
@@ -448,8 +413,6 @@
     <string name="qrscan_ask_join_group">دەتوێت بەشداری کۆڕی \"%1$s\" ببیت؟</string>
     <string name="qrscan_contains_text">دەقی کۆدی QRە سکانکراوەکە:\n\n%1$s</string>
     <string name="qrscan_contains_url">ناونیشانی وێبی کۆدی QRە سکانکراوەکە:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">پەنجەمۆر</string>
     <string name="qrshow_title">کۆدی QRی بانگهێشت کردن</string>
     <string name="qrshow_x_joining">%1$s بەشداربوو</string>
     <string name="qrshow_x_verified">%1$s پشتڕاست کرایەوە</string>
@@ -461,7 +424,6 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">بۆ ڕێکخستنی پێوەندی لەگەڵ %1$s، ئەم کۆدە سکان بکە. </string>
     <string name="qrshow_join_contact_no_connection_toast">هێڵی ئینتەرنێت بەردەست نییە، ڕێکخستنی کۆدی QR جێبەجێ ناکرێ.</string>
-    <string name="qraccount_ask_create_and_login">دەتەوێت ناونیشانی ئیمەیلێکی نوێ لەسەر \"%1$s\" درووست بکەیت و لەوێ بچیتە ژوورەوە؟</string>
     <string name="qraccount_qr_code_cannot_be_used">ناتوانی لە کۆدی QRە سکان کراوەکە کەڵک بگریت بۆ پێکهێنانی هەژمارێکی نوێ.</string>
     <string name="contact_verified">%1$s پشتڕاست کرایەوە</string>
     <!-- notifications -->
@@ -521,7 +483,7 @@
     <string name="InfoPlist_NSMicrophoneUsageDescription">دێڵتا چات بۆ تۆمار کردن و هەناردنی دەنگ و هەروەها ڤیدیۆی دەنگدار، مایکەکەت بەکاردەهێنێت.</string>
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">دێڵتا چات ڕێگە دەدات خۆت هەڵیبژێری کە کام وێنە لە پیشانگاکەتەوە بنێردرێت.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">دێڵتا چات دەیەوێت وێنە پاشەکەوت بکاتە نێو پیشانگاکەت.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">بۆ وەرگرتنی پەیامەکان لەو کاتانەدا کە دێڵتا چات لە پشتخانەوەیە، لێرە کرتە بکە.</string>
     <string name="perm_enable_bg_already_done">تۆ ئێستا ڕێگەت بە دێڵتا چات دا کە لە پشتخانەوە پەیامەکان وەربگرێت.\n\n ئەگەر هێشتا لە پشخاندا پەیامەکان نایەن، سەرنجێکیش لە ڕێکخستنەکانی سیستەم بدەوە.</string>
 

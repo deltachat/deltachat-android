@@ -103,7 +103,6 @@
     <string name="small">Mala</string>
     <string name="normal">Normalna</string>
     <string name="large">Velika</string>
-    <string name="extra_large">Ekstra velika</string>
 
     <string name="fast">Brzo</string>
     <string name="slow">Sporo</string>
@@ -116,7 +115,6 @@
     <string name="menu_show_global_map">Prikaži sve lokacije</string>
     <string name="menu_add_attachment">Dodaj privitak</string>
     <string name="menu_leave_group">Napusti grupu</string>
-    <string name="menu_delete_location">Obrisati ovu lokaciju?</string>
     <string name="menu_message_details">Detalji poruke</string>
     <string name="menu_copy_to_clipboard">Kopiraj u međuspremnik</string>
     <string name="menu_forward">Proslijedi poruku</string>
@@ -167,7 +165,6 @@
     <string name="login_imap_server">IMAP server</string>
     <string name="login_smtp_password">SMTP lozinka</string>
     <string name="login_smtp_server">SMTP server</string>
-    <string name="login_error_server">Molimo unesite valjan server / IP adresu</string>
     <string name="delete_account">Obriši račun</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
@@ -188,7 +185,6 @@
     <string name="pref_led_color">Boja LED</string>
     <string name="pref_sound">Zvuk</string>
     <string name="pref_silent">Tiho</string>
-    <string name="pref_privacy">Privatnost</string>
     <string name="pref_system_default">Sustavno zadano</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Svijetlo</string>
@@ -208,16 +204,16 @@
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
     <string name="pref_background">Pozadina</string>
     <string name="pref_background_btn_gallery">Odaberi iz galerije</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Sve</string>
     <string name="pref_background_default">Zadana pozadina</string>
     <string name="pref_background_default_color">Zadana boja</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Sve</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">Član %1$s uklonjen.</string>
     <!-- qr code stuff -->
     <string name="qr_code">QR kod</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Otisak prsta</string>
     <!-- notifications -->
     <string name="notify_reply_button">Odgovori</string>
     <string name="notify_new_message">Nova poruka</string>

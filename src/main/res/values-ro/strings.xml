@@ -11,7 +11,6 @@
     <string name="on">Deschis</string>
     <string name="off">Închideți</string>
     <string name="def">Implicit</string>
-    <string name="default_value">Implicit (%1$s)</string>
     <string name="custom">Personalizat</string>
     <string name="none">Nici unul</string>
     <string name="automatic">Automat</string>
@@ -21,7 +20,6 @@
     <string name="downloading">Descărcarea…</string>
     <string name="open_attachment">Deschideți Atașamentul</string>
     <string name="join">Alăturați-vă</string>
-    <string name="rejoin">Reînscrieți-vă la</string>
     <string name="delete">Ștergeți</string>
     <string name="info">Informații</string>
     <string name="update">Actualizare</string>
@@ -59,10 +57,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Imaginile de la distanță vă pot urmări.\n\nAceastă setare poate, de asemenea, să încarce fonturi și alt conținut. Dacă este dezactivată, pot apărea imagini încorporate sau în cache.\n\nÎncărcare imagini la distanță?</string>
     <string name="always">Întotdeauna</string>
-    <string name="always_load_remote_images">Încărcați întotdeauna imagini la distanță</string>
     <string name="once">Odată ce</string>
-    <!-- deprecated -->
-    <string name="show_warning">Afișați avertismentul</string>
     <string name="not_now">Nu acum</string>
     <string name="never">Niciodata</string>
     <string name="one_moment">Un moment...</string>
@@ -79,7 +74,6 @@
     <string name="copied_to_clipboard">Copiat în clipboard.</string>
     <string name="contacts_headline">Contacte</string>
     <string name="email_address">Adresă de e-mail</string>
-    <string name="bad_email_address">Adresă de e-mail greșită.</string>
     <string name="password">Parolă</string>
     <string name="existing_password">Parolă existentă</string>
     <string name="now">Acum</string>
@@ -91,9 +85,11 @@
     <string name="this_month">Luna aceasta</string>
     <string name="last_week">Săptămâna trecută</string>
     <string name="last_month">Luna trecută</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Ultima dată văzut la %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Ultima dată a fost văzut: Necunoscut</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d minut</item>
@@ -162,7 +158,6 @@
     <string name="capture">Captură</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Comutați camera</string>
-    <string name="toggle_fullscreen">Comutarea modului ecran complet</string>
     <string name="location">Locație</string>
     <string name="gallery">Galerie</string>
     <string name="images_and_videos">Imagini și videoclipuri</string>
@@ -183,11 +178,9 @@
     <string name="white">Alb</string>
 
     <string name="zoom">Zoom</string>
-    <string name="extra_small">Foarte mic</string>
     <string name="small">Mic</string>
     <string name="normal">Normal</string>
     <string name="large">Mare</string>
-    <string name="extra_large">Foarte mare</string>
 
     <string name="fast">Rapid</string>
     <string name="slow">Lent</string>
@@ -199,8 +192,6 @@
     <string name="menu_send">Trimiteți</string>
     <string name="menu_toggle_keyboard">Comutați Tastatura Emoji</string>
     <string name="menu_edit_group">Editați grupul</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Numele și imaginea grupului</string>
     <string name="menu_show_global_map">Afișați toate locațiile</string>
     <string name="menu_archive_chat">Arhivă Chat</string>
     <string name="menu_unarchive_chat">Chat Dezarhivat</string>
@@ -210,7 +201,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Curăță Chat-ul</string>
     <string name="delete_contact">Ștergeți Contactul</string>
-    <string name="menu_delete_location">Ștergeți această locație?</string>
     <string name="menu_message_details">Detalii Mesaj</string>
     <string name="menu_copy_to_clipboard">Copiați în clipboard</string>
     <string name="menu_copy_selection_to_clipboard">Selecție de copiere</string>
@@ -241,7 +231,6 @@
     <string name="menu_help">Ajutor</string>
     <string name="privacy_policy">Politica de confidențialitate</string>
     <string name="menu_select_all">Selectați toate</string>
-    <string name="select_more">Selectați mai mult</string>
     <string name="menu_edit_name">Editați Numele</string>
     <string name="menu_settings">Setări</string>
     <string name="menu_advanced">Avansată</string>
@@ -250,7 +239,6 @@
     <string name="menu_zoom_out">Zoom Exterior</string>
     <string name="menu_save_log">Salvați Jurnalul</string>
     <string name="menu_more_options">Mai multe opțiuni</string>
-    <string name="menu_learn_spelling">Învățați Ortografia</string>
     <string name="jump_to_message">Sari la Mesaj</string>
     <string name="replace_draft">Înlocuiți proiectul</string>
     <string name="title_share_location">Partajați locația cu toți membrii grupului</string>
@@ -264,7 +252,7 @@
     <string name="unpin_chat">Desprindeți Chat-ul</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Fixați</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Desprindeți</string>
     <string name="ConversationFragment_quoted_message_not_found">Mesajul original nu a fost găsit</string>
     <string name="reply_privately">Răspundeți în Privat</string>
@@ -276,10 +264,8 @@
     <string name="mute_for_one_day">Silențios pentru 1 zi</string>
     <string name="mute_for_seven_days">Silențios timp de 7 zile</string>
     <string name="mute_forever">Silențios pentru totdeauna</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">Timp de 5 minute</string>
-
     <string name="share_location_for_30_minutes">Timp de 30 de minute</string>
     <string name="share_location_for_one_hour">Timp de 1 oră</string>
     <string name="share_location_for_two_hours">Timp de 2 ore</string>
@@ -296,8 +282,6 @@
         <item quantity="few">Ștergeți %d mesaje?</item>
         <item quantity="other">Ștergeți %d de mesaje?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Transmiteți mesajele către %1$s?</string>
     <string name="ask_forward_multiple">Transmiteți mesajele către %1$d chat-uri?</string>
     <string name="ask_export_attachment">Exportul atașamentelor va permite altor aplicații de pe dispozitivul dumneavoastră să le acceseze them.\n\nContinue?</string>
     <string name="ask_block_contact">Să blochez acest contact? Nu veți mai primi mesaje de la această persoană.</string>
@@ -353,9 +337,6 @@
     <string name="saved_messages_explain">• Redirecționați mesajele aici pentru acces ușor\n\n• Luați notițe sau notițe vocale\n\n\n• Atașați fișiere media pentru a le salva</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Salvat</string>
-    <string name="save_as">Salvați ca</string>
-    <string name="retry_send">Reîncercarea de a trimite mesajul</string>
-    <string name="cannot_display_unsuported_file_type">Nu se poate afișa acest tip de fișier: %s</string>
     <string name="attachment_failed_to_load">Nu s-a reușit încărcarea atașamentului</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Blocarea înregistrării</string>
@@ -364,8 +345,8 @@
     <string name="mailing_list">Lista de corespondență</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Start…</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Start</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Vă rugăm să acceptați mai întâi cererea de chat.</string>
     <!-- punycode warning / labeled links -->
@@ -385,8 +366,6 @@
     <string name="remove_group_image">Eliminați Imaginea Grupului</string>
     <string name="change_group_image">Schimbarea Imaginii Grupului</string>
     <string name="group_create_button">Creați un Grup</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Vă rugăm să introduceți un nume pentru grup.</string>
     <string name="group_add_members">Adăugați Membri</string>
     <string name="group_self_not_in_group">Trebuie să fiți membru al grupului pentru a efectua această acțiune.</string>
     <string name="profile_encryption">Criptare</string>
@@ -394,13 +373,11 @@
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galerie</string>
-    <string name="tab_docs">Documente</string>
     <string name="tab_links">Link-uri</string>
     <string name="tab_map">Hartă</string>
     <string name="tab_gallery_empty_hint">Imaginile și videoclipurile partajate în acest chat vor apărea aici.</string>
     <string name="tab_docs_empty_hint">Documentele și alte fișiere partajate în acest chat vor apărea aici.</string>
     <string name="tab_image_empty_hint">Imaginile partajate în acest chat vor apărea aici.</string>
-    <string name="tab_video_empty_hint">Videoclipurile partajate în acest chat vor apărea aici.</string>
     <string name="tab_audio_empty_hint">Fișierele audio și mesajele vocale partajate în acest chat vor apărea aici.</string>
     <string name="tab_webxdc_empty_hint">App-urile partajate în acest chat vor apărea aici.</string>
     <string name="tab_all_media_empty_hint">Materialele media partajate în orice chat vor apărea aici.</string>
@@ -445,15 +422,12 @@
     <string name="connectivity_connected">Conectat</string>
     <string name="sending">Trimitere…</string>
     <string name="last_msg_sent_successfully">Ultimul mesaj a fost trimis cu succes.</string>
-    <!-- deprecated -->
-    <string name="not_supported_by_provider">Nu este suportat de furnizorul dumneavoastră.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Mesaje</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s de %2$s folosit</string>
 
     <string name="scan_invitation_code">Scanați Codul Invitației</string>
-    <string name="login_title">Autentificare</string>
     <string name="login_inbox">Inbox</string>
     <string name="login_imap_login">Nume de autentificare IMAP</string>
     <string name="login_imap_server">Serverul IMAP</string>
@@ -466,15 +440,11 @@
     <string name="login_smtp_port">Portul SMTP </string>
     <string name="login_smtp_security">Securitate SMTP</string>
     <string name="login_certificate_checks">Verificări de certificate</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Vă rugăm să introduceți o adresă de e-mail validă</string>
-    <string name="login_error_server">Vă rugăm să introduceți un server / o adresă IP validă</string>
-    <string name="login_error_port">Vă rugăm să introduceți un port valid (1-65535)</string>
-    <string name="login_error_required_fields">Vă rugăm să introduceți o adresă de e-mail validă și o parolă</string>
     <string name="import_backup_title">Restaurarea din copia de rezervă</string>
     <string name="import_backup_ask">Backup găsit la \"%1$s\".\n\nDoriți să importați și să utilizați toate datele și setările din acesta?</string>
     <string name="import_backup_no_backup_found">Nu s-au găsit copii de rezervă.\n\nCopiază copia de rezervă pe \"%1$s\" și încercați din nou.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Nu se poate autentifica ca \"%1$s\". Vă rugăm să verificați dacă adresa de e-mail și parola sunt corecte.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Acceptarea certificatelor nevalabile</string>
     <string name="switch_account">Schimbați contul</string>
@@ -521,12 +491,9 @@
     <string name="pref_notifications_priority">Prioritate</string>
     <string name="pref_notifications_explain">Activați notificările de sistem pentru mesajele noi</string>
     <string name="pref_show_notification_content">Afișați conținutul mesajului în notificare</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Afișează expeditorul și primele cuvinte ale mesajului în notificări</string>
     <string name="pref_led_color">Culoare LED</string>
     <string name="pref_sound">Sunet</string>
     <string name="pref_silent">Silențios</string>
-    <string name="pref_privacy">Confidențialitate</string>
     <string name="pref_system_default">Sistem implicit</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Lumină</string>
@@ -539,5 +506,4 @@
     <string name="pref_incognito_keyboard_explain">Solicitați tastatura pentru a dezactiva învățarea personalizată</string>
     <string name="pref_read_receipts">Citiți Chitanțele</string>
     <string name="pref_read_receipts_explain">Dacă sunt dezactivate chitanțele de citire, nu veți putea vedea chitanțele de citire de la alte persoane.</string>
-    <string name="pref_manage_keys">Gestionați Cheile</string>
     </resources>
