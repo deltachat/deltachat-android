@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.Menu;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ActionMode;
@@ -20,6 +18,7 @@ import com.b44t.messenger.DcMsg;
 import java.util.Set;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
+import org.thoughtcrime.securesms.messagedetails.MessageInfoDialogFragment;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.SaveAttachmentTask;
 import org.thoughtcrime.securesms.util.StorageUtil;
@@ -41,16 +40,8 @@ public abstract class MessageSelectorFragment extends Fragment
   }
 
   protected void handleDisplayDetails(DcMsg dcMsg) {
-    View view = View.inflate(getActivity(), R.layout.message_details_view, null);
-    TextView detailsText = view.findViewById(R.id.details_text);
-    detailsText.setText(DcHelper.getContext(getContext()).getMsgInfo(dcMsg.getId()));
-
-    AlertDialog d =
-        new AlertDialog.Builder(getActivity())
-            .setView(view)
-            .setPositiveButton(android.R.string.ok, null)
-            .create();
-    d.show();
+    MessageInfoDialogFragment.newInstance(dcMsg.getId())
+        .show(requireActivity().getSupportFragmentManager(), null);
   }
 
   protected void handleDeleteMessages(int chatId, final Set<DcMsg> messageRecords) {

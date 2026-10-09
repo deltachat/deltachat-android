@@ -11,6 +11,7 @@
 * Fix: do not convert animated WebPs into static images
 * Update translations and local help
 * Update to core 2.63.0
+* Make Message Info more user-friendly to read
 
 ## v2.62.0
 2026-09

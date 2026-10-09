@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.thoughtcrime.securesms.messagedetails.ReadReceiptItem
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:focusable="true"
+    android:background="?attr/conversation_list_item_background">
+
+    <org.thoughtcrime.securesms.components.AvatarImageView
+        android:id="@+id/contact_photo_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:foreground="@drawable/contact_photo_background"
+        android:cropToPadding="true"
+        android:contentDescription="@null" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="11dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="16sp"
+        tools:text="Hannes Kröger" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/read_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="4dp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="14sp"
+        tools:text="Sep 26, 2026 9:54 PM" />
+
+</org.thoughtcrime.securesms.messagedetails.ReadReceiptItem>
