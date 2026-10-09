@@ -766,7 +766,7 @@ public class ConversationFragment extends MessageSelectorFragment {
       pixelOffset =
           (firstView == null)
               ? 0
-              : list.getBottom() - firstView.getBottom() - list.getPaddingBottom();
+              : list.getHeight() - firstView.getBottom() - list.getPaddingBottom();
     }
 
     if (getContext() == null) {
