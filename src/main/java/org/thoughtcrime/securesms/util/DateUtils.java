@@ -97,6 +97,11 @@ public class DateUtils extends android.text.format.DateUtils {
     }
   }
 
+  public static String getAbsoluteDateTime(final Context c, final long timestamp) {
+    String timePattern = DateFormat.is24HourFormat(c) ? "HH:mm" : "hh:mm a";
+    return getFormattedDateTime(timestamp, "MMM d, yyyy, " + timePattern);
+  }
+
   public static String getRelativeDate(@NonNull Context context, long timestamp) {
     if (isToday(timestamp)) {
       return context.getString(R.string.today);
