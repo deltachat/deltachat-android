@@ -606,7 +606,7 @@ public class ConversationFragment extends MessageSelectorFragment {
       if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
         result.append(msg.getText());
       } else {
-        result.append(msg.getSummarytext(10000000));
+        result.append(msg.getSummaryText(true, true, 10000000));
       }
 
       prevMsg = msg;

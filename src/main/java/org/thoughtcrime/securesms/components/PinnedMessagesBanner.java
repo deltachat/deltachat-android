@@ -170,8 +170,6 @@ public class PinnedMessagesBanner extends FrameLayout {
     DcMsg pinnedMsg = dcContext.getMsg(msgIds.get(currentIndex));
     if (!pinnedMsg.isOk()) return;
 
-    textView.setText(pinnedMsg.getSummarytext(500));
-
     Slide slide = null;
     if (pinnedMsg.getType() != DcMsg.DC_MSG_TEXT) {
       slide = MediaUtil.getSlideForMsg(getContext(), pinnedMsg);
@@ -242,6 +240,10 @@ public class PinnedMessagesBanner extends FrameLayout {
       thumbnailView.setVisibility(GONE);
       fileIconView.setVisibility(GONE);
     }
+
+    boolean addEmoji =
+        thumbnailView.getVisibility() == GONE && fileIconView.getVisibility() == GONE;
+    textView.setText(pinnedMsg.getSummaryText(false, addEmoji, 500));
   }
 
   public void dismiss() {

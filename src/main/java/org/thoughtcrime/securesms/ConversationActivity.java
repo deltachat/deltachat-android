@@ -1865,7 +1865,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
       slideDeck.addSlide(MediaUtil.getSlideForMsg(this, msg));
     }
 
-    String text = msg.getSummarytext(500);
+    String text = msg.getSummaryText(true, true, 500);
 
     inputPanel.setQuote(
         GlideApp.with(this), msg, msg.getTimestamp(), author, text, slideDeck, false);
@@ -1880,7 +1880,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         new Recipient(this, DcHelper.getContext(context).getContact(msg.getFromId()));
 
     SlideDeck slideDeck = new SlideDeck();
-    String text = msg.getSummarytext(500);
+    String text = msg.getSummaryText(true, true, 500);
 
     inputPanel.setQuote(
         GlideApp.with(this), msg, msg.getTimestamp(), author, text, slideDeck, true);

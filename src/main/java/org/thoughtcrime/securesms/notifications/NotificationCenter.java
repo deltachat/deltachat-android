@@ -460,7 +460,7 @@ public class NotificationCenter {
           }
           String text =
               privacy.isDisplayMessage()
-                  ? dcMsg.getSummarytext(2000)
+                  ? dcMsg.getSummaryText(true, true, 2000)
                   : context.getString(R.string.notify_new_message);
           String shortLine = text;
           if (dcChat.isMultiUser() && privacy.isDisplayContact()) {
@@ -508,7 +508,7 @@ public class NotificationCenter {
                   R.string.reaction_by_other,
                   contact.getDisplayName(),
                   reaction,
-                  dcMsg.getSummarytext(2000));
+                  dcMsg.getSummaryText(true, true, 2000));
           DcChat dcChat = dcContext.getChat(dcMsg.getChatId());
 
           NotifData notifData =
