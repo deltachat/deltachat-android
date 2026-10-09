@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @JsonTypeInfo(use=Id.NAME, include=As.PROPERTY, property="kind")
-@JsonSubTypes({@Type(value = Qr.AskVerifyContact.class, name="AskVerifyContact"), @Type(value = Qr.AskVerifyGroup.class, name="AskVerifyGroup"), @Type(value = Qr.AskJoinBroadcast.class, name="AskJoinBroadcast"), @Type(value = Qr.FprOk.class, name="FprOk"), @Type(value = Qr.FprMismatch.class, name="FprMismatch"), @Type(value = Qr.FprWithoutAddr.class, name="FprWithoutAddr"), @Type(value = Qr.Account.class, name="Account"), @Type(value = Qr.Backup2.class, name="Backup2"), @Type(value = Qr.BackupTooNew.class, name="BackupTooNew"), @Type(value = Qr.WebrtcInstance.class, name="WebrtcInstance"), @Type(value = Qr.Proxy.class, name="Proxy"), @Type(value = Qr.Addr.class, name="Addr"), @Type(value = Qr.Url.class, name="Url"), @Type(value = Qr.Text.class, name="Text"), @Type(value = Qr.WithdrawVerifyContact.class, name="WithdrawVerifyContact"), @Type(value = Qr.WithdrawVerifyGroup.class, name="WithdrawVerifyGroup"), @Type(value = Qr.WithdrawJoinBroadcast.class, name="WithdrawJoinBroadcast"), @Type(value = Qr.ReviveVerifyContact.class, name="ReviveVerifyContact"), @Type(value = Qr.ReviveVerifyGroup.class, name="ReviveVerifyGroup"), @Type(value = Qr.ReviveJoinBroadcast.class, name="ReviveJoinBroadcast"), @Type(value = Qr.Login.class, name="Login")})
+@JsonSubTypes({@Type(value = Qr.AskVerifyContact.class, name="AskVerifyContact"), @Type(value = Qr.AskVerifyGroup.class, name="AskVerifyGroup"), @Type(value = Qr.AskJoinBroadcast.class, name="AskJoinBroadcast"), @Type(value = Qr.FprOk.class, name="FprOk"), @Type(value = Qr.Account.class, name="Account"), @Type(value = Qr.Backup2.class, name="Backup2"), @Type(value = Qr.BackupTooNew.class, name="BackupTooNew"), @Type(value = Qr.WebrtcInstance.class, name="WebrtcInstance"), @Type(value = Qr.Proxy.class, name="Proxy"), @Type(value = Qr.Addr.class, name="Addr"), @Type(value = Qr.Url.class, name="Url"), @Type(value = Qr.Text.class, name="Text"), @Type(value = Qr.WithdrawVerifyContact.class, name="WithdrawVerifyContact"), @Type(value = Qr.WithdrawVerifyGroup.class, name="WithdrawVerifyGroup"), @Type(value = Qr.WithdrawJoinBroadcast.class, name="WithdrawJoinBroadcast"), @Type(value = Qr.ReviveVerifyContact.class, name="ReviveVerifyContact"), @Type(value = Qr.ReviveVerifyGroup.class, name="ReviveVerifyGroup"), @Type(value = Qr.ReviveJoinBroadcast.class, name="ReviveJoinBroadcast"), @Type(value = Qr.Login.class, name="Login")})
 public abstract class Qr {
 
 /**
@@ -73,19 +73,6 @@ public abstract class Qr {
   public static class FprOk extends Qr {
     /** Contact ID. */
     public Integer contact_id;
-  }
-
-/** Scanned fingerprint does not match the last seen fingerprint. */
-  public static class FprMismatch extends Qr {
-    /** Contact ID. */
-    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
-    public Integer contact_id;
-  }
-
-/** The scanned QR code contains a fingerprint but no e-mail address. */
-  public static class FprWithoutAddr extends Qr {
-    /** Key fingerprint. */
-    public String fingerprint;
   }
 
 /** Ask the user if they want to create an account on the given domain. */
