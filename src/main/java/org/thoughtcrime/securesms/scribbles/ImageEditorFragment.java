@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -264,37 +265,40 @@ public final class ImageEditorFragment extends Fragment
           if (activity == null) {
             return;
           }
-          Bitmap bitmap = imageEditorView.getModel().render(activity);
-          PersistentBlobProvider provider = PersistentBlobProvider.getInstance();
-          ByteArrayOutputStream baos = new ByteArrayOutputStream();
-          bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
 
-          byte[] data = baos.toByteArray();
-          baos = null;
-          bitmap = null;
+          try {
+            Uri uri = exportImage(activity);
 
-          Uri uri = null;
-          if (cropAvatar) {
-            File file = new File(activity.getCacheDir(), "cropped");
-            try {
-              FileOutputStream stream = new FileOutputStream(file);
-              stream.write(data);
-              stream.flush();
-              stream.close();
-              uri = Uri.fromFile(file);
-            } catch (IOException e) {
-              e.printStackTrace();
-              return;
-            }
-          } else {
-            uri = provider.create(activity, data, MediaUtil.IMAGE_JPEG, null);
+            Intent intent = new Intent();
+            intent.setData(uri);
+            activity.setResult(RESULT_OK, intent);
+            activity.finish();
+          } catch (Exception e) {
+            Log.e(TAG, "Failed to save edited image", e);
           }
-
-          Intent intent = new Intent();
-          intent.setData(uri);
-          activity.setResult(RESULT_OK, intent);
-          activity.finish();
         });
+  }
+
+  private @NonNull Uri exportImage(@NonNull Activity activity) throws IOException {
+    Bitmap bitmap = imageEditorView.getModel().render(activity);
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
+
+    byte[] data = baos.toByteArray();
+    baos = null;
+    bitmap = null;
+
+    if (cropAvatar) {
+      File file = new File(activity.getCacheDir(), "cropped");
+      FileOutputStream stream = new FileOutputStream(file);
+      stream.write(data);
+      stream.flush();
+      stream.close();
+      return Uri.fromFile(file);
+    } else {
+      PersistentBlobProvider provider = PersistentBlobProvider.getInstance();
+      return provider.create(activity, data, MediaUtil.IMAGE_JPEG, null);
+    }
   }
 
   @Override
