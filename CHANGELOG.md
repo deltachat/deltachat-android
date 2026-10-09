@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* New feature: allow to pin messages in the chat
 * Add "Sending..." notification so large messages can continue being sent in background
 * Allow to attach new apps from the chat's apps gallery
 * Fix: rotated videos are now displayed with correct aspect ratios

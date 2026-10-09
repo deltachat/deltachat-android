@@ -34,6 +34,7 @@ public class DcMsg {
   public static final int DC_INFO_WEBXDC_INFO_MESSAGE = 32;
   public static final int DC_INFO_CHAT_E2EE = 50;
   public static final int DC_INFO_CHAT_DESCRIPTION_CHANGED = 70;
+  public static final int DC_INFO_MESSAGE_PINNED = 71;
 
   public static final int DC_STATE_UNDEFINED = 0;
   public static final int DC_STATE_IN_FRESH = 10;
@@ -183,6 +184,8 @@ public class DcMsg {
   public native boolean isInfo();
 
   public native boolean hasHtml();
+
+  public native boolean isPinned();
 
   public native void setText(String text);
 

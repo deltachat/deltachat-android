@@ -33,6 +33,11 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/menu_toggle_pin"
+        android:title="@string/pin"
+        app:showAsAction="never" />
+
+    <item
         android:title="@string/add_to_home_screen"
         android:id="@+id/menu_add_to_home_screen"
         android:visible="false"
