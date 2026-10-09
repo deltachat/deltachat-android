@@ -37,6 +37,7 @@ public class PinnedMessagesBanner extends FrameLayout {
   private TextView textView;
   private ImageView thumbnailView;
   private ImageView fileIconView;
+  private ImageView pinIconView;
   private Button openAppBtn;
 
   private PinnedMessagesBannerListener listener;
@@ -71,6 +72,7 @@ public class PinnedMessagesBanner extends FrameLayout {
     textView = findViewById(R.id.msg_text);
     thumbnailView = findViewById(R.id.thumbnail);
     fileIconView = findViewById(R.id.file_icon);
+    pinIconView = findViewById(R.id.pin_icon);
     openAppBtn = findViewById(R.id.open_app_btn);
 
     openAppBtn.setOnClickListener(
@@ -176,6 +178,7 @@ public class PinnedMessagesBanner extends FrameLayout {
     }
 
     openAppBtn.setVisibility(GONE);
+    pinIconView.setVisibility(VISIBLE);
 
     if (slide != null && slide.hasQuoteThumbnail()) {
       thumbnailView.setVisibility(VISIBLE);
@@ -183,6 +186,7 @@ public class PinnedMessagesBanner extends FrameLayout {
 
       if (slide.isWebxdcDocument()) {
         openAppBtn.setVisibility(VISIBLE);
+        pinIconView.setVisibility(GONE);
         try {
           JSONObject info = pinnedMsg.getWebxdcInfo();
           byte[] blob = pinnedMsg.getWebxdcBlob(info.getString("icon"));
