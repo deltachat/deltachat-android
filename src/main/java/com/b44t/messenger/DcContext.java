@@ -20,6 +20,7 @@ public class DcContext {
   public static final int DC_EVENT_CHAT_MODIFIED = 2020;
   public static final int DC_EVENT_CHAT_EPHEMERAL_TIMER_MODIFIED = 2021;
   public static final int DC_EVENT_CHAT_DELETED = 2023;
+  public static final int DC_EVENT_PINNED_MESSAGES_CHANGED = 2024;
   public static final int DC_EVENT_CONTACTS_CHANGED = 2030;
   public static final int DC_EVENT_LOCATION_CHANGED = 2035;
   public static final int DC_EVENT_CONFIGURE_PROGRESS = 2041;
