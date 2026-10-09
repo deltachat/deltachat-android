@@ -165,6 +165,12 @@ public class PinnedMessagesBanner extends FrameLayout {
     }
   }
 
+  public void refresh(@NonNull GlideRequests glideRequests) {
+    if (!msgIds.isEmpty()) {
+      renderCurrentPinnedMessage(glideRequests);
+    }
+  }
+
   private void renderCurrentPinnedMessage(@NonNull GlideRequests glideRequests) {
     DcContext dcContext = DcHelper.getContext(getContext());
     DcMsg pinnedMsg = dcContext.getMsg(msgIds.get(currentIndex));
