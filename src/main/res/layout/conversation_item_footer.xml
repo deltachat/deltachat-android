@@ -20,8 +20,9 @@
 
     <ImageView
         android:id="@+id/footer_pin_indicator"
-        android:layout_width="12sp"
+        android:layout_width="11sp"
         android:layout_height="11sp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/ic_pin_24"
         android:layout_gravity="center_vertical|end"
         android:importantForAccessibility="no"
