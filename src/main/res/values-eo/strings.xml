@@ -20,7 +20,6 @@
     <string name="downloading">Elŝutado...</string>
     <string name="open_attachment">Malfermu aldonaĵon</string>
     <string name="join">Aliĝi</string>
-    <string name="rejoin">Realiĝi</string>
     <string name="delete">Forigi</string>
     <string name="delete_for_me">Forigi por mi</string>
     <string name="delete_for_everyone">Forigi por ĉiuj</string>
@@ -54,10 +53,6 @@
     <string name="media">Aŭdovidaĵoj</string>
     <string name="apps_and_media">Apoj kaj vidaĵoj</string>
     <string name="profile">Profilo</string>
-    <!-- deprecated -->
-    <string name="all_profiles">Ĉiuj profiloj</string>
-    <!-- deprecated -->
-    <string name="current_profile">Aktuala profilo</string>
     <string name="main_menu">Ĉefa menuo</string>
     <string name="start_chat">Komenci Babiladon</string>
     <string name="show_full_message">Afiŝu la tutan mesaĝon...</string>
@@ -75,10 +70,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu forajn bildojn? </string>
     <string name="always">Ĉiam</string>
-    <string name="always_load_remote_images">Ĉiam ŝargu forajn bildojn</string>
     <string name="once">Unufoje</string>
-    <!-- deprecated -->
-    <string name="show_warning">Afiŝu averton</string>
     <string name="not_now">Ne nun</string>
     <string name="never">Neniam</string>
     <string name="one_moment">Unu momenton…</string>
@@ -92,12 +84,9 @@
     <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tiun ĉi tipon de datumo.</string>
     <string name="no_browser_installed">Neniu retumilo instalita.</string>
     <string name="file_not_found">Ne povis trovi %1$s.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Ne eblas konservi la dosieron %1$s.</string>
     <string name="copied_to_clipboard">Kopiita al tondujo</string>
     <string name="contacts_headline">Kontaktoj</string>
     <string name="email_address">Retadreso</string>
-    <string name="bad_email_address">Malbona retadreso.</string>
     <string name="password">Pasvorto</string>
     <string name="existing_password">Estanta Pasvorto</string>
     <string name="now">Nun</string>
@@ -109,11 +98,13 @@
     <string name="this_month">Ĉi-monate</string>
     <string name="last_week">Pasint-semajne</string>
     <string name="last_month">Pasint-monate</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Laste vidita je%1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Laste vidita %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Laste vidita: nedisponebla informo</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -178,7 +169,6 @@
     <string name="capture">Kapti</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Elektu alian kameraon</string>
-    <string name="toggle_fullscreen">Baskulu el/al la plena ekrano</string>
     <string name="location">Loko</string>
     <string name="locations">Lokoj</string>
     <string name="gallery">Galerio</string>
@@ -200,11 +190,9 @@
     <string name="white">Blanka</string>
 
     <string name="zoom">Grandeco</string>
-    <string name="extra_small">Ege malgranda</string>
     <string name="small">Malgranda</string>
     <string name="normal">Normala</string>
     <string name="large">Granda</string>
-    <string name="extra_large">Tre granda</string>
 
     <string name="fast">Rapida</string>
     <string name="slow">Malrapida</string>
@@ -216,8 +204,6 @@
     <string name="menu_send">Sendi</string>
     <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
     <string name="menu_edit_group">Redakti grupon</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Grup-nomo kaj bildo</string>
     <string name="menu_show_global_map">Montri ĉiujn lokojn</string>
     <string name="menu_archive_chat">Enarĥivigi babilon</string>
     <string name="menu_unarchive_chat">Elarĥivigi babilon</string>
@@ -227,7 +213,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Viŝi la babilejon</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
-    <string name="menu_delete_location">Ĉu forigi tiun ĉi lokon?</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
     <string name="menu_copy_to_clipboard">Kopii al tondujo</string>
     <string name="menu_copy_selection_to_clipboard">Kopii tion, kion vi elstarigis</string>
@@ -259,7 +244,6 @@
     <string name="privacy_policy">Politiko pri privateco</string>
     <string name="menu_select_all">Elekti ĉion</string>
     <string name="select_chat">Elektu babilejon</string>
-    <string name="select_more">Elekti pli</string>
     <string name="menu_edit_name">Redakti nomon</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_advanced">Speciala</string>
@@ -268,7 +252,6 @@
     <string name="menu_zoom_out">Malzomi</string>
     <string name="menu_save_log">Konservi protokolon</string>
     <string name="menu_more_options">Pli da ebloj</string>
-    <string name="menu_learn_spelling">Lernu la ortografion</string>
     <string name="jump_to_message">Iru al mesaĝo</string>
     <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
     <string name="device_talk">Aparataj mesaĝoj</string>
@@ -281,25 +264,21 @@
     <string name="unpin_chat">Depingli babilon</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Alpingli</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Depingli</string>
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
     <string name="mute_for_eight_hours">Silentigi por 8 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>
     <string name="mute_for_seven_days">Silentigi por 7 tagoj</string>
     <string name="mute_forever">Silentigi por ĉiam</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">por 5 minutoj</string>
-
     <string name="share_location_for_30_minutes">por 30 minutoj</string>
     <string name="share_location_for_one_hour">por 1 horo</string>
     <string name="share_location_for_two_hours">por 2 horoj</string>
     <string name="share_location_for_six_hours">por 6 horoj</string>
     <string name="file_saved_to">Dosiero konservita kiel \"%1$s\".</string>
 
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Plusendi mesaĝojn al %1$s?</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
@@ -335,7 +314,6 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Konservi</string>
     <string name="saved_messages">Konservitaj mesaĝoj</string>
-    <string name="retry_send">Reprovi sendi mesaĝon</string>
     <!-- search -->
     <string name="search">Serĉi</string>
     <string name="search_explain">Serĉi babilojn, kontaktojn, kaj mesaĝojn</string>
@@ -344,8 +322,6 @@
     <string name="group_name">Grup-nomo</string>
     <string name="group_avatar">Bildo de la grupo</string>
     <string name="group_create_button">Krei grupon</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Bonvolu enigi nomon por la grupo.</string>
     <string name="group_add_members">Aldoni anojn</string>
     <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>
     <string name="profile_encryption">Ĉifrado</string>
@@ -353,13 +329,11 @@
     <string name="tab_contact">Kontakto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galerio</string>
-    <string name="tab_docs">Dokumentoj</string>
     <string name="tab_links">Ligiloj</string>
     <string name="tab_map">Mapo</string>
     <string name="media_preview">Aŭdvida antaŭrigardo</string>
     <string name="send_message">Sendi mesaĝon</string>
 
-    <string name="login_title">Ensaluti</string>
     <string name="login_inbox">Ricevujo</string>
     <string name="login_imap_login">IMAP salutnomo</string>
     <string name="login_imap_server">IMAP servilo</string>
@@ -372,10 +346,8 @@
     <string name="login_smtp_port">SMTP pordo</string>
     <string name="login_smtp_security">SMTP sekureco</string>
     <string name="login_certificate_checks">Atestilaj kontroloj</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Bonvolu enigi validan retadreson</string>
-    <string name="login_error_server">Bonvolu enigi validan servilon / IP adreson</string>
-    <string name="login_error_port">Bonvolu enigi validan pordon (1-65535)</string>
-    <string name="login_error_required_fields">Bonvolu enigi validan retadreson kaj pasvorton</string>
     <string name="import_backup_title">Importi savkopion</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Akcepti nevalidajn atestilojn</string>
@@ -402,7 +374,6 @@
     <string name="pref_led_color">LED-a koloro</string>
     <string name="pref_sound">Sono</string>
     <string name="pref_silent">Silenta</string>
-    <string name="pref_privacy">Privateco</string>
     <string name="pref_system_default">Sistema defaŭlto</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Hela</string>
@@ -415,7 +386,6 @@
     <string name="pref_incognito_keyboard_explain">Peti al la klavaro malŝalti personan lernadon</string>
     <string name="pref_read_receipts">Legokonfirmoj</string>
     <string name="pref_read_receipts_explain">Se legokonfirmoj ne estas ŝaltitaj, vi ne vidos aliulajn legokonfirmojn.</string>
-    <string name="pref_manage_keys">Administri ŝlosilojn</string>
     <string name="pref_chats">Interparoloj</string>
     <string name="pref_in_chat_sounds">Sonoj dum interparolado</string>
     <string name="pref_view_log">Vidi protokolon</string>
@@ -431,8 +401,10 @@
     <string name="pref_background">Fono</string>
     <string name="pref_background_btn_default">Uzi defaŭltan bildon</string>
     <string name="pref_background_btn_gallery">Elekti el galerio</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Ĉiuj</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Ĉiuj</string>
     <!-- notifications -->
     <string name="notify_reply_button">Respondi</string>
     <string name="notify_new_message">Nova mesaĝo</string>

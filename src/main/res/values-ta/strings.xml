@@ -44,7 +44,6 @@
     <string name="error_x">பிழை: %1$s</string>
     <string name="contacts_headline">தொடர்புகள்</string>
     <string name="email_address">மின் அஞ்சல் முகவரி</string>
-    <string name="bad_email_address">தவறான மின் அஞ்சல் முகவரி</string>
     <string name="password">கடவுச்சொல்</string>
     <string name="now">இப்போது</string>
     <!-- Headline for destructive actions with no undo. Could also be "Caution" or "Warning". -->
@@ -103,7 +102,6 @@
     <string name="small">சிறிய</string>
     <string name="normal">சாதாரணமாக</string>
     <string name="large">பெரிய</string>
-    <string name="extra_large">கூடுதல் பெரியது</string>
 
     <string name="fast">வேகமாக</string>
     <string name="slow">மெதுவாக</string>
@@ -138,16 +136,12 @@
     <string name="mute_for_one_day">1 நாள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_for_seven_days">7 நாட்கள் இதற்காக ஊமையாக்கு</string>
     <string name="mute_forever">எப்போதுமே ஊமையாக்கு</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">5 நிமிடங்கள் </string>
-
     <string name="share_location_for_30_minutes">30 நிமிடங்கள் </string>
     <string name="share_location_for_one_hour">1 மணி</string>
     <string name="share_location_for_two_hours">2 மணிகள்</string>
     <string name="share_location_for_six_hours">6 மணிகள்</string>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">தேர்வு செய்யப்பட்ட செய்திகளை இவற்றுக்கு %1$s முன்னோக்கி அனுப்பவா ?</string>
     <string name="ask_block_contact">இந்த தொடர்பை முடக்கவா ?</string>
     <!-- contact list -->
     <string name="contacts_title">தொடர்புகள்</string>
@@ -167,8 +161,6 @@
     <string name="search">தேடு</string>
     <!-- create/edit groups, contact/group profile -->
     <string name="group_name">குழுவின் பெயர்</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">குழுவிற்கு ஒரு பெயரை சூட்டவும்</string>
     <string name="group_add_members">உறுப்பினர்களை சேர்க்க</string>
     <string name="profile_encryption">மறைகுறியாக்கம்</string>
     <string name="tab_contact">தொடர்பு</string>
@@ -195,7 +187,6 @@
     <string name="pref_led_color">LED நிறம்</string>
     <string name="pref_sound">ஓசை</string>
     <string name="pref_silent">அமைதி</string>
-    <string name="pref_privacy">தனியுரிமை</string>
     <string name="pref_system_default">கருவி இயல்புநிலை</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">வெளிச்சமிக்க</string>
@@ -216,8 +207,6 @@
     <string name="pref_background">அரட்டை பின்புலம்</string>
     <!-- %1$s will be replaced by name of the contact removed from the group; this string is used when it's unclear who did the action -->
     <string name="member_x_removed">உறுப்பினர் %1$s நீக்கப்பட்டார்</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">கைரேகைகள்</string>
     <!-- notifications -->
     <string name="notify_reply_button">மறுமொழி</string>
     <string name="notify_new_message">புதிய செய்தி</string>

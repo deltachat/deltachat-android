@@ -11,7 +11,6 @@
     <string name="on">Bật</string>
     <string name="off">Tắt</string>
     <string name="def">Mặc định</string>
-    <string name="default_value">Mặc định (%1$s)</string>
     <string name="custom">Tùy chỉnh</string>
     <string name="none">Không</string>
     <string name="automatic">Tự động</string>
@@ -21,7 +20,6 @@
     <string name="downloading">Đang tải xuống…</string>
     <string name="open_attachment">Mở tệp đính kèm</string>
     <string name="join">Tham gia</string>
-    <string name="rejoin">Tham gia lại</string>
     <string name="delete">Xóa</string>
     <string name="info">Thông tin</string>
     <string name="update">Cập nhật</string>
@@ -62,10 +60,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Hình ảnh từ xa có thể theo dõi bạn.\n\nThiết đặt này cũng có thể tải phông chữ và nội dung khác. Nếu bị tắt, hình ảnh được nhúng hoặc được lưu vào bộ nhớ đệm có thể xuất hiện.\n\nTải hình ảnh từ xa?</string>
     <string name="always">Luôn luôn</string>
-    <string name="always_load_remote_images">Luôn tải hình ảnh từ xa</string>
     <string name="once">Một lần</string>
-    <!-- deprecated -->
-    <string name="show_warning">Hiển thị cảnh báo</string>
     <string name="not_now">Không phải bây giờ</string>
     <string name="never">Không bao giờ</string>
     <string name="one_moment">Một lát…</string>
@@ -82,7 +77,6 @@
     <string name="copied_to_clipboard">Đã chép vào clipboard.</string>
     <string name="contacts_headline">Danh bạ</string>
     <string name="email_address">Địa chỉ E-mail</string>
-    <string name="bad_email_address">Địa chỉ e-mail xấu.</string>
     <string name="password">Mật khẩu</string>
     <string name="existing_password">Mật khẩu hiện tại</string>
     <string name="now">Bây giờ</string>
@@ -94,11 +88,13 @@
     <string name="this_month">Tháng này</string>
     <string name="last_week">Tuần trước</string>
     <string name="last_month">Tháng trước</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Nhìn thấy lần cuối lúc %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">Nhìn thấy lần cuối %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Nhìn thấy lần cuối: Không rõ</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="other">%d phút</item>
@@ -136,10 +132,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Hình dán</string>
     <string name="add_to_sticker_collection">Thêm vào Bộ sưu tập Hình dán</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">Để thêm nhãn dán, hãy nhấn vào "Mở thư mục nhãn dán", tạo thư mục con cho gói nhãn dán của bạn rồi kéo tệp hình ảnh và nhãn dán vào đó</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">Mở thư mục nhãn dán</string>
     <string name="images">Hình ảnh</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Âm thanh</string>
@@ -156,7 +148,6 @@
     <string name="capture">Chụp</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Chuyển đổi máy ảnh</string>
-    <string name="toggle_fullscreen">Chuyển đổi Chế độ toàn màn hình</string>
     <string name="location">Vị trí</string>
     <string name="locations">Vị trí</string>
     <string name="gallery">Phòng trưng bày</string>
@@ -178,11 +169,9 @@
     <string name="white">Trắng</string>
 
     <string name="zoom">Thu phóng</string>
-    <string name="extra_small">Cực nhỏ</string>
     <string name="small">Nhỏ</string>
     <string name="normal">Bình thường</string>
     <string name="large">Lớn</string>
-    <string name="extra_large">Cực lớn</string>
 
     <string name="fast">Nhanh</string>
     <string name="slow">Chậm</string>
@@ -195,8 +184,6 @@
     <string name="menu_send">Gửi</string>
     <string name="menu_toggle_keyboard">Chuyển đổi Bàn phím Emoji</string>
     <string name="menu_edit_group">Chỉnh sửa nhóm</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Tên nhóm và hình ảnh</string>
     <string name="menu_show_global_map">Tất cả vị trí</string>
     <string name="menu_archive_chat">Lưu trữ cuộc trò chuyện</string>
     <string name="menu_unarchive_chat">Hủy lưu trữ cuộc trò chuyện</string>
@@ -206,7 +193,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Xóa cuộc trò chuyện</string>
     <string name="delete_contact">Xóa liên hệ</string>
-    <string name="menu_delete_location">Xóa vị trí này?</string>
     <string name="menu_message_details">Chi tiết tin nhắn</string>
     <string name="menu_copy_to_clipboard">Sao chép vào Clipboard</string>
     <string name="menu_copy_selection_to_clipboard">Sao chép lựa chọn</string>
@@ -242,7 +228,6 @@
     <string name="privacy_policy">Chính sách quyền riêng tư</string>
     <string name="menu_select_all">Chọn tất cả</string>
     <string name="select_chat">Chọn Trò chuyện</string>
-    <string name="select_more">Chọn thêm</string>
     <string name="menu_edit_name">Chỉnh sửa tên</string>
     <string name="menu_settings">Cài đặt</string>
     <string name="menu_advanced">Nâng cao</string>
@@ -251,7 +236,6 @@
     <string name="menu_zoom_out">Thu nhỏ</string>
     <string name="menu_save_log">Lưu nhật ký</string>
     <string name="menu_more_options">Tùy chọn khác</string>
-    <string name="menu_learn_spelling">Học đánh vần</string>
     <string name="jump_to_message">Chuyển tới tin nhắn</string>
     <string name="replace_draft">Thay thế bản nháp</string>
     <string name="title_share_location">Chia sẻ vị trí với tất cả thành viên nhóm</string>
@@ -265,7 +249,7 @@
     <string name="unpin_chat">Bỏ ghim cuộc trò chuyện</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Ghim</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Bỏ ghim</string>
     <string name="ConversationFragment_quoted_message_not_found">Không tìm thấy tin nhắn gốc</string>
     <string name="reply_privately">Trả lời riêng</string>
@@ -278,10 +262,8 @@
     <string name="mute_for_one_day">Tắt tiếng trong 1 ngày</string>
     <string name="mute_for_seven_days">Tắt tiếng trong 7 ngày</string>
     <string name="mute_forever">Tắt tiếng vĩnh viễn</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">Trong 5 phút</string>
-
     <string name="share_location_for_30_minutes">Trong 30 phút</string>
     <string name="share_location_for_one_hour">Trong 1 giờ</string>
     <string name="share_location_for_two_hours">Trong 2 giờ</string>
@@ -294,8 +276,6 @@
     <plurals name="ask_delete_messages">
         <item quantity="other">Xóa %d tin nhắn?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Chuyển tiếp tin nhắn tới %1$s?</string>
     <string name="ask_forward_multiple">Chuyển tiếp tin nhắn tới %1$d cuộc trò chuyện?</string>
     <string name="ask_export_attachment">Xuất tệp đính kèm sẽ cho phép các ứng dụng khác trên thiết bị của bạn truy cập chúng.\n\nTiếp tục?</string>
     <string name="ask_block_contact">Chặn liên hệ này? Bạn sẽ không còn nhận được tin nhắn từ họ nữa.</string>
@@ -345,9 +325,6 @@
     <string name="saved_messages_explain">• Chuyển tiếp tin nhắn tại đây để dễ dàng truy cập\n\n• Ghi chú hoặc ghi nhớ giọng nói\n\n• Đính kèm phương tiện để lưu chúng</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Đã lưu</string>
-    <string name="save_as">Lưu dưới dạng</string>
-    <string name="retry_send">Thử gửi lại tin nhắn</string>
-    <string name="cannot_display_unsuported_file_type">Không thể hiển thị loại tệp này: %s</string>
     <string name="attachment_failed_to_load">Không tải được tệp đính kèm</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Khóa ghi âm</string>
@@ -356,8 +333,8 @@
     <string name="mailing_list">Danh sách gửi thư</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Bắt đầu…</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Bắt đầu</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Vui lòng chấp nhận yêu cầu trò chuyện trước.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
@@ -384,8 +361,6 @@
     <string name="remove_group_image">Xóa hình ảnh nhóm</string>
     <string name="change_group_image">Thay đổi hình ảnh nhóm</string>
     <string name="group_create_button">Tạo nhóm</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Vui lòng nhập tên cho nhóm.</string>
     <string name="group_add_members">Thêm thành viên</string>
     <string name="group_self_not_in_group">Bạn phải là thành viên của nhóm để thực hiện hành động này.</string>
     <string name="profile_encryption">Mã hóa</string>
@@ -393,22 +368,16 @@
     <string name="tab_contact">Liên hệ</string>
     <string name="tab_group">Nhóm</string>
     <string name="tab_gallery">Thư viện</string>
-    <string name="tab_docs">Tài liệu</string>
     <string name="tab_links">Liên kết</string>
     <string name="tab_map">Bản đồ</string>
     <string name="tab_gallery_empty_hint">Hình ảnh và video được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_docs_empty_hint">Tài liệu và các tệp khác được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_image_empty_hint">Hình ảnh được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
-    <string name="tab_video_empty_hint">Video được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_audio_empty_hint">Các tệp âm thanh và tin nhắn thoại được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_webxdc_empty_hint">Các ứng dụng được chia sẻ trong cuộc trò chuyện này sẽ xuất hiện ở đây.</string>
     <string name="tab_all_media_empty_hint">Phương tiện được chia sẻ trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây.</string>
     <string name="all_apps_empty_hint">Các ứng dụng được nhận hoặc gửi trong bất kỳ cuộc trò chuyện nào sẽ xuất hiện ở đây.</string>
     <string name="media_preview">Xem trước phương tiện</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
-    <string name="aspect_ratio_grid">Lưới tỷ lệ khung hình</string>
-    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
-    <string name="square_grid">Lưới vuông</string>
     <string name="send_message">Gửi tin nhắn</string>
 
     <!-- Multi Device -->
@@ -449,15 +418,12 @@
     <string name="connectivity_connected">Đã kết nối</string>
     <string name="sending">Đang gửi…</string>
     <string name="last_msg_sent_successfully">Tin nhắn cuối cùng được gửi thành công.</string>
-    <!-- deprecated -->
-    <string name="not_supported_by_provider">Không được nhà cung cấp của bạn hỗ trợ.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Tin nhắn</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s trong tổng số %2$s đã được sử dụng</string>
 
     <string name="scan_invitation_code">Quét mã mời</string>
-    <string name="login_title">Đăng nhập</string>
     <string name="login_inbox">Hộp thư đến</string>
     <string name="login_imap_login">Tên đăng nhập IMAP</string>
     <string name="login_imap_server">Máy chủ IMAP</string>
@@ -470,15 +436,11 @@
     <string name="login_smtp_port">Cổng SMTP</string>
     <string name="login_smtp_security">Bảo mật SMTP</string>
     <string name="login_certificate_checks">Kiểm tra chứng chỉ</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Vui lòng nhập địa chỉ e-mail hợp lệ</string>
-    <string name="login_error_server">Vui lòng nhập địa chỉ máy chủ / IP hợp lệ</string>
-    <string name="login_error_port">Vui lòng nhập cổng hợp lệ (1–65535)</string>
-    <string name="login_error_required_fields">Vui lòng nhập địa chỉ email hợp lệ và mật khẩu</string>
     <string name="import_backup_title">Khôi phục từ bản sao lưu</string>
     <string name="import_backup_ask">Đã tìm thấy bản sao lưu tại \"%1$s\".\n\nBạn có muốn nhập và sử dụng tất cả dữ liệu cũng như cài đặt từ nó không?</string>
     <string name="import_backup_no_backup_found">Không tìm thấy bản sao lưu nào.\n\nSao chép bản sao lưu vào \"%1$s\" và thử lại.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Không thể đăng nhập với tên \"%1$s\". Vui lòng kiểm tra xem địa chỉ e-mail và mật khẩu có đúng không.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Chấp nhận chứng chỉ không hợp lệ</string>
     <string name="switch_account">Chuyển đổi tài khoản</string>
@@ -525,12 +487,9 @@
     <string name="pref_notifications_priority">Ưu tiên</string>
     <string name="pref_notifications_explain">Bật thông báo hệ thống cho tin nhắn mới</string>
     <string name="pref_show_notification_content">Hiển thị nội dung tin nhắn trong thông báo</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Hiển thị người gửi và từ đầu tiên của tin nhắn trong thông báo</string>
     <string name="pref_led_color">Màu LED</string>
     <string name="pref_sound">Âm thanh</string>
     <string name="pref_silent">Im lặng</string>
-    <string name="pref_privacy">Quyền riêng tư</string>
     <string name="pref_system_default">Mặc định hệ thống</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Ánh sáng</string>
@@ -543,7 +502,6 @@
     <string name="pref_incognito_keyboard_explain">Yêu cầu bàn phím tắt tính năng học tập được cá nhân hóa</string>
     <string name="pref_read_receipts">Đã đọc Biên lai</string>
     <string name="pref_read_receipts_explain">Nếu thông báo xác nhận đã đọc bị tắt, bạn sẽ không thể xem thông báo xác nhận đã đọc từ người khác.</string>
-    <string name="pref_manage_keys">Quản lý khóa</string>
     <string name="pref_chats">Trò chuyện</string>
     <string name="pref_in_chat_sounds">Âm thanh trong cuộc trò chuyện</string>
     <string name="pref_view_log">Xem nhật ký</string>
@@ -562,19 +520,7 @@
     <string name="pref_background">Hình nền</string>
     <string name="pref_background_btn_default">Sử dụng hình ảnh mặc định</string>
     <string name="pref_background_btn_gallery">Chọn từ thư viện</string>
-    <!-- deprecated -->
-    <string name="pref_imap_folder_warn_disable_defaults">Nếu bạn thay đổi tùy chọn này, hãy đảm bảo rằng máy chủ và các máy khách khác của bạn được cấu hình tương ứng.\n\nNếu không, mọi thứ có thể không hoạt động.</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">Tự động di chuyển đến Thư mục DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_title">Chỉ tìm nạp từ thư mục DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Hiển thị E-mail cổ điển</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Không, chỉ trò chuyện</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">Đối với các liên hệ được chấp nhận</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Tất cả</string>
     <string name="pref_experimental_features">Tính năng thử nghiệm</string>
     <string name="pref_on_demand_location_streaming">Truyền phát vị trí theo yêu cầu</string>
@@ -584,6 +530,8 @@
     <string name="pref_background_custom_color">Màu tùy chỉnh</string>
     <string name="export_aborted">Quá trình xuất bị hủy bỏ.</string>
     <string name="auto_download_messages">Tự động tải xuống tin nhắn</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Tất cả</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Lên tới %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Lên đến %1$s, hầu hết các hình ảnh có chất lượng kém hơn</string>
@@ -612,14 +560,8 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Xóa tin nhắn cũ</string>
     <string name="autodel_device_title">Xóa tin nhắn khỏi thiết bị</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">Xóa tin nhắn khỏi máy chủ</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Bạn có muốn xóa %1$d tin nhắn ngay bây giờ và tất cả các tin nhắn mới được tìm nạp \"%2$s\" trong tương lai không?\n\n• Điều này bao gồm tất cả phương tiện\n\n• Tin nhắn sẽ bị xóa dù chúng có được nhìn thấy hay không\n\n• \"Tin nhắn đã lưu\" sẽ bị bỏ qua khỏi quá trình xóa cục bộ</string>
-    <!-- deprecated -->
-    <string name="autodel_server_ask">Bạn có muốn xóa %1$d tin nhắn ngay bây giờ và tất cả các tin nhắn mới được tìm nạp \"%2$s\" trong tương lai không?\n\n⚠️ Điều này bao gồm e-mail, phương tiện và \"Tin nhắn đã lưu\" trong tất cả máy chủ thư mục\n\n⚠️ Không sử dụng chức năng này nếu bạn muốn giữ dữ liệu trên máy chủ\n\n⚠️ Không sử dụng chức năng này nếu bạn đang sử dụng các ứng dụng e-mail khác ngoài Delta Chat</string>
-    <!-- deprecated -->
-    <string name="autodel_server_enabled_hint">Điều này bao gồm e-mail, phương tiện và \"Tin nhắn đã lưu\" trong tất cả các thư mục máy chủ. Không sử dụng chức năng này nếu bạn muốn giữ dữ liệu trên máy chủ hoặc nếu bạn đang sử dụng các ứng dụng e-mail khác ngoài Delta Chat.</string>
     <string name="autodel_confirm">Tôi hiểu, hãy xóa tất cả những tin nhắn này</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Ngay lập tức</string>
@@ -695,8 +637,6 @@
     <string name="learn_more">Tìm hiểu thêm</string>
 
     <string name="devicemsg_self_deleted">Bạn đã xóa cuộc trò chuyện \"Tin nhắn đã lưu\".\n\nℹ️ Để sử dụng lại tính năng \"Tin nhắn đã lưu\", hãy tạo một cuộc trò chuyện mới với chính bạn.</string>
-    <!-- deprecated -->
-    <string name="devicemsg_storage_exceeding">⚠️ Bộ nhớ nhà cung cấp của bạn sắp hết: %1$s%% đã được sử dụng.\n\nBạn có thể không nhận được tin nhắn nếu bộ nhớ đầy.\n\n 👉 Vui lòng kiểm tra xem bạn có thể xóa không dữ liệu cũ trong giao diện web của nhà cung cấp và cân nhắc bật \"Cài đặt / Xóa tin nhắn cũ\". Bạn có thể kiểm tra mức sử dụng bộ nhớ hiện tại của mình bất kỳ lúc nào tại \"Cài đặt / Kết nối\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Ngày hoặc giờ trên thiết bị của bạn có vẻ không chính xác (%1$s).\n\nĐiều chỉnh đồng hồ của bạn ⏰🔧 để đảm bảo tin nhắn của bạn được nhận chính xác.</string>
     <string name="devicemsg_update_reminder">⚠️ Phiên bản Delta Chat của bạn có thể đã lỗi thời.\n\nĐiều này có thể gây ra sự cố vì đối tác trò chuyện của bạn sử dụng các phiên bản mới hơn - và bạn đang thiếu các tính năng mới nhất 😳\nVui lòng kiểm tra https://get.delta.chat hoặc cửa hàng ứng dụng của bạn để biết thông tin cập nhật .</string>
@@ -711,14 +651,8 @@
     <string name="qrscan_hint">Giữ máy ảnh của bạn phía trên mã QR.</string>
     <string name="qrscan_failed">Mã QR không thể giải mã được</string>
     <string name="qrscan_ask_join_group">Bạn có muốn tham gia nhóm \"%1$s\" không?</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">Dấu vân tay được quét không khớp với dấu vân tay được nhìn thấy lần cuối trong %1$s.</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">Mã QR này chứa dấu vân tay nhưng không có địa chỉ email.\n\nĐể xác minh ngoài băng tần, trước tiên vui lòng thiết lập kết nối được mã hóa với người nhận.</string>
     <string name="qrscan_contains_text">Văn bản mã QR được quét:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL mã QR được quét:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Dấu vân tay</string>
     <string name="withdraw_verifycontact_explain">Người khác có thể quét mã QR này để liên hệ với bạn.\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_verifygroup_explain">Những người khác có thể quét mã QR này để tham gia nhóm \"%1$s\".\n\nBạn có thể tắt mã QR tại đây và kích hoạt lại bằng cách quét lại.</string>
     <string name="withdraw_qr_code">Vô hiệu hóa mã QR</string>
@@ -735,20 +669,12 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Quét để trò chuyện với %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Không có kết nối internet, không thể thực hiện thiết lập mã QR.</string>
-    <string name="qraccount_ask_create_and_login">Tạo địa chỉ email mới trên \"%1$s\" và đăng nhập vào đó?</string>
     <string name="qraccount_qr_code_cannot_be_used">Mã QR được quét không thể được sử dụng để thiết lập tài khoản mới.</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
-    <string name="qrlogin_ask_login">Đăng nhập vào \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s đã mời bạn tham gia nhóm này.\n\nĐang chờ thiết bị của %2$s trả lời…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_replies">%1$s đã trả lời, đang chờ được thêm vào nhóm…</string>
     <string name="contact_verified">%1$s đã được giới thiệu.</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <!-- deprecated -->
-    <string name="verified_by">Được giới thiệu bởi %1$s</string>
-    <!-- deprecated -->
-    <string name="verified_by_you">Được tôi giới thiệu</string>
     <string name="mailto_dialog_header_select_chat">Chọn trò chuyện để gửi tin nhắn tới</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s đã có tin nhắn nháp, bạn có muốn thay thế nó không?</string>
@@ -820,8 +746,6 @@
     <string name="menu.view.developer.open.log.folder">Mở thư mục nhật ký</string>
     <string name="menu.view.developer.open.current.log.file">Mở tệp nhật ký hiện tại</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Không thể tắt biểu tượng khay vì Delta Chat đã được bắt đầu bằng tùy chọn --giảm-thiểu.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
-    <string name="no_spellcheck_suggestions_found">Không tìm thấy gợi ý chính tả.</string>
     <string name="show_window">Hiển thị cửa sổ</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Tổ hợp phím</string>
@@ -846,24 +770,15 @@
     <string name="a11y_disappearing_messages_activated">Đã kích hoạt tin nhắn biến mất</string>
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Dừng chia sẻ vị trí</string>
-    <string name="a11y_voice_message_hint_ios">Sau khi ghi, nhấn đúp để gửi. Để loại bỏ bản ghi, hãy chà bằng hai ngón tay.</string>
     <string name="a11y_connectivity_hint">Nhấn đúp để xem chi tiết kết nối.</string>
     <string name="login_error_no_internet_connection">Không có kết nối internet, đăng nhập không thành công.</string>
-    <string name="share_account_not_configured">Tài khoản chưa được định cấu hình.</string>
     <string name="cannot_play_audio_file">Không thể phát tệp âm thanh.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">Để chụp ảnh, quay video hoặc sử dụng trình quét Mã QR, hãy mở cài đặt hệ thống và bật \"Camera\".</string>
     <string name="open_settings">Mở Cài đặt</string>
-    <!-- iOS device contact alert -->
-    <string name="import_device_contacts">Nhập danh bạ thiết bị</string>
-    <string name="import_device_contacts_hint">Để trò chuyện với các liên hệ từ thiết bị của bạn, hãy mở Cài đặt và bật \"Danh bạ\".</string>
-    <!-- iOS notification settings -->
-    <string name="disabled_in_dc">Đã tắt trong Delta Chat</string>
+    <!-- Notifications, that are disabled in the system settings -->
     <string name="disabled_in_system_settings">Đã tắt trong cài đặt hệ thống</string>
     <string name="bg_app_refresh_disabled">\"Làm mới ứng dụng nền\" bị tắt trong cài đặt hệ thống</string>
-    <string name="notifications_avg_minutes">Trung bình cứ sau %1$d phút</string>
-    <string name="notifications_avg_hours">Trung bình cứ sau %1$d giờ</string>
-    <string name="last_check_at">Đã kiểm tra lúc %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Delta Chat sử dụng máy ảnh của bạn để chụp và gửi ảnh cũng như video cũng như quét mã QR.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Delta Chat cần có quyền chia sẻ vị trí của bạn trong khoảng thời gian bạn đã bật tính năng chia sẻ vị trí.</string>
@@ -872,7 +787,7 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Delta Chat sẽ cho phép bạn chọn ảnh từ thư viện để gửi.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Delta Chat muốn lưu hình ảnh vào thư viện ảnh của bạn.</string>
     <string name="pref_background_notifications_rationale">Để duy trì kết nối với máy chủ e-mail của bạn và nhận tin nhắn ở chế độ nền, hãy bỏ qua tối ưu hóa pin trong bước tiếp theo.\n\nDelta Chat sử dụng ít tài nguyên và chú ý không làm tiêu hao pin của bạn.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Nhấn vào đây để nhận tin nhắn khi Delta Chat ở chế độ nền.</string>
     <string name="perm_enable_bg_already_done">Bạn đã cho phép Delta Chat nhận tin nhắn trong nền.\n\nNếu tin nhắn vẫn không đến trong nền, vui lòng kiểm tra cài đặt hệ thống của bạn.</string>
 

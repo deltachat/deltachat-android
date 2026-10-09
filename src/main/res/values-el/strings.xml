@@ -11,7 +11,6 @@
     <string name="on">Ενεργοποιημένο</string>
     <string name="off">Απενεργοποιημένο</string>
     <string name="def">Προεπιλογή</string>
-    <string name="default_value">Προεπιλογή(%1$s)</string>
     <string name="custom">Προσαρμογή</string>
     <string name="none">Κανένα</string>
     <string name="automatic">Αυτόματα</string>
@@ -21,7 +20,6 @@
     <string name="downloading">Λήψη...</string>
     <string name="open_attachment">Άνοιγμα Συνημένου</string>
     <string name="join">Μπες</string>
-    <string name="rejoin">Επανασύνδεση</string>
     <string name="delete">Διαγραφή</string>
     <string name="info">Πληροφορίες</string>
     <string name="update">Ενημέρωση</string>
@@ -72,7 +70,6 @@
     <string name="copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
     <string name="contacts_headline">Επαφές</string>
     <string name="email_address">Διεύθυνση E-mail</string>
-    <string name="bad_email_address">Κακή διεύθυνση e-mail.</string>
     <string name="password">Συνθηματικό</string>
     <string name="existing_password">Υπάρχον Κωδικός</string>
     <string name="now">Τώρα</string>
@@ -84,9 +81,11 @@
     <string name="this_month">Αυτόν το μήνα</string>
     <string name="last_week">Προηγούμενη εβδομάδα</string>
     <string name="last_month">Προηγούμενος μήνας</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">Τελευταία προβολή στις %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">Τελευταία προβολή: Άγνωστο</string>
+
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d λεπτό</item>
@@ -147,7 +146,6 @@
     <string name="capture">Λήψη</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Αλλαγή κάμερας</string>
-    <string name="toggle_fullscreen">Εναλλαγή Λειτουργίας Πλήρους Οθόνης</string>
     <string name="location">Τοποθεσία</string>
     <string name="gallery">Πινακοθήκη</string>
     <string name="images_and_videos">Εικόνες και Βίντεο</string>
@@ -168,11 +166,9 @@
     <string name="white">Λευκό</string>
 
     <string name="zoom">Μεγέθυνση</string>
-    <string name="extra_small">Πολύ μικρό</string>
     <string name="small">Μικρό</string>
     <string name="normal">Κανονικό</string>
     <string name="large">Μεγάλο</string>
-    <string name="extra_large">Πολύ μεγάλο</string>
 
     <string name="fast">Γρήγορο</string>
     <string name="slow">Αργό</string>
@@ -184,8 +180,6 @@
     <string name="menu_send">Αποστολή</string>
     <string name="menu_toggle_keyboard">Εναλλαγή πληκτρολογίου emoji</string>
     <string name="menu_edit_group">Επεξεργασία ομάδας</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Όνομα Ομάδας και Εικόνα</string>
     <string name="menu_show_global_map">Εμφάνιση όλων των Τοποθεσιών</string>
     <string name="menu_archive_chat">Αρχείο Συνομιλίας</string>
     <string name="menu_unarchive_chat">Κατάργηση Αρχειοθέτησης Συνομιλίας</string>
@@ -193,7 +187,6 @@
     <string name="menu_leave_group">Αποχώρηση απ\' την ομάδα</string>
     <string name="menu_delete_chat">Διαγραφή Συνομιλίας</string>
     <string name="delete_contact">Διαγραφή Επαφής</string>
-    <string name="menu_delete_location">Διαγραφή αυτής της τοποθεσίας;</string>
     <string name="menu_message_details">Στοιχεία μηνύματος</string>
     <string name="menu_copy_to_clipboard">Αντιγραφή στο πρόχειρο</string>
     <string name="menu_copy_selection_to_clipboard">Αντιγραφή Επιλεγμένων</string>
@@ -224,7 +217,6 @@
     <string name="menu_help">Βοήθεια</string>
     <string name="privacy_policy">Πολιτική Απορρήτου</string>
     <string name="menu_select_all">Επιλογή όλων</string>
-    <string name="select_more">Επιλογή Περισσότερων</string>
     <string name="menu_edit_name">Επεξεργασία Ονόματος</string>
     <string name="menu_settings">Ρυθμίσεις</string>
     <string name="menu_advanced">Για προχωρημένους</string>
@@ -233,7 +225,6 @@
     <string name="menu_zoom_out">Σμίκρυνση</string>
     <string name="menu_save_log">Αποθήκευση</string>
     <string name="menu_more_options">Περισσότερες Επιλογές</string>
-    <string name="menu_learn_spelling">Μάθε Ορθογραφία</string>
     <string name="jump_to_message">Μετακίνηση στη Συνομιλία</string>
     <string name="replace_draft">Αντικατάσταση Σχεδίου</string>
     <string name="title_share_location">Διαμοιρασμός τοποθεσίας με όλα τα μέλη της ομάδας</string>
@@ -247,7 +238,7 @@
     <string name="unpin_chat">Ξεκαρφίτσωμα Συνομιλίας</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Καρφίτσωμα</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Ξεκαρφίτσωμα</string>
     <string name="ConversationFragment_quoted_message_not_found">Το αρχικό μήνυμα δεν βρέθηκε</string>
     <string name="reply_privately">Ιδιωτική Απάντηση</string>
@@ -259,10 +250,8 @@
     <string name="mute_for_one_day">Σίγαση για 1 ημέρα</string>
     <string name="mute_for_seven_days">Σίγαση για 7 ημέρες</string>
     <string name="mute_forever">Μόνιμη Σίγαση</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">Για 5 λεπτά</string>
-
     <string name="share_location_for_30_minutes">Για 30 λεπτά</string>
     <string name="share_location_for_one_hour">Για 1 ώρα</string>
     <string name="share_location_for_two_hours">Για 2 ώρες</string>
@@ -277,8 +266,6 @@
         <item quantity="one">Διαγραφή %d μηνύματος;</item>
         <item quantity="other">Διαγραφή %d μηνυμάτων;</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Κοινοποίηση μηνύματος στο %1$s;</string>
     <string name="ask_forward_multiple">Κοινοποίηση μηνύματος σε %1$d συνομιλίες;</string>
     <string name="ask_export_attachment">Η εξαγωγή συνημμένων θα επιτρέψει σε άλλες εφαρμογές της συσκευής σας να έχουν πρόσβαση σε αυτά.\n\nΣυνέχεια;</string>
     <string name="ask_block_contact">Αποκλεισμός αυτής της επαφής; Δεν θα λαμβάνετε πλέον μηνύματα από αυτούς.</string>
@@ -331,9 +318,6 @@
     <string name="saved_messages_explain">• Προώθηση μηνυμάτων εδώ για εύκολη πρόσβαση\n\n• Κρατήστε σημειώσεις ή φωνητικά σημειώματα\n\n• Επισυνάψτε μέσα για να τα αποθηκεύσετε</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Αποθηκεύτηκε</string>
-    <string name="save_as">Αποθήκευση ως</string>
-    <string name="retry_send">Ξαναπροσπαθήστε να στείλετε μήνυμα</string>
-    <string name="cannot_display_unsuported_file_type">Δεν είναι δυνατή η εμφάνιση αυτού του τύπου αρχείου: %s</string>
     <string name="attachment_failed_to_load">Αποτυχία φόρτωσης συνημμένου</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Κλείδωμα Εγγραφής</string>
@@ -342,8 +326,8 @@
     <string name="mailing_list">Λίστα Αλληλογραφίας</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Εκκίνηση…</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Εκκίνηση</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Αποδεχτείτε πρώτα το αίτημα συνομιλίας.</string>
     <!-- punycode warning / labeled links -->
@@ -363,8 +347,6 @@
     <string name="remove_group_image">Αφαίρεση φωτογραφίας ομάδας;</string>
     <string name="change_group_image">Αλλαγή Εικόνας Ομάδας</string>
     <string name="group_create_button">Δημιουργία ομάδας</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Εισάγετε ένα όνομα για αυτή την ομάδα.</string>
     <string name="group_add_members">Προσθήκη μελών</string>
     <string name="group_self_not_in_group">Πρέπει να είστε μέλος της ομάδας για να εκτελέσετε αυτήν την ενέργεια.</string>
     <string name="profile_encryption">Κρυπτογράφηση</string>
@@ -372,13 +354,11 @@
     <string name="tab_contact">Επαφή</string>
     <string name="tab_group">Ομάδα</string>
     <string name="tab_gallery">Εικόνα ή βίντεο</string>
-    <string name="tab_docs">Έγγραφα</string>
     <string name="tab_links">Σύνδεσμοι</string>
     <string name="tab_map">Χάρτης</string>
     <string name="tab_gallery_empty_hint">Οι εικόνες και τα βίντεο που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="tab_docs_empty_hint">Έγγραφα και άλλα αρχεία που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="tab_image_empty_hint">Οι εικόνες που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
-    <string name="tab_video_empty_hint">Τα βίντεο που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="tab_audio_empty_hint">Τα αρχεία ήχου και τα φωνητικά μηνύματα που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="tab_webxdc_empty_hint">Οι ιδιωτικές εφαρμογές που κοινοποιούνται σε αυτήν τη συνομιλία θα εμφανίζονται εδώ.</string>
     <string name="all_apps_empty_hint">Οι ιδιωτικές εφαρμογές που λαμβάνονται ή αποστέλλονται σε οποιαδήποτε συνομιλία θα εμφανίζονται εδώ.</string>
@@ -401,15 +381,12 @@
     <string name="connectivity_connected">Συνδεδεμένο</string>
     <string name="sending">Στέλνεται…</string>
     <string name="last_msg_sent_successfully">Το τελευταίο μήνυμα στάλθηκε με επιτυχία.</string>
-    <!-- deprecated -->
-    <string name="not_supported_by_provider">Δεν υποστηρίζεται από τον πάροχο σας.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Μηνύματα</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s από %2$s χρησιμοποιείται</string>
 
     <string name="scan_invitation_code">Σάρωση Κωδικού Πρόσκλησης</string>
-    <string name="login_title">Σύνδεση</string>
     <string name="login_inbox">Εισερχόμενα</string>
     <string name="login_imap_login">Όνομα Σύνδεσης IMAP</string>
     <string name="login_imap_server">Διακομιστής IMAP</string>
@@ -422,15 +399,11 @@
     <string name="login_smtp_port">Θύρα SMTP</string>
     <string name="login_smtp_security">Ασφάλεια SMTP</string>
     <string name="login_certificate_checks">Έλεγχοι Πιστοποιητικών</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Παρακαλώ εισάγετε μια έγκυρη διεύθυνση e-mail</string>
-    <string name="login_error_server">Εισαγάγετε έναν έγκυρο διακομιστή / διεύθυνση IP</string>
-    <string name="login_error_port">Εισαγάγετε μια έγκυρη θύρα (1–65535)</string>
-    <string name="login_error_required_fields">Εισαγάγετε μια έγκυρη διεύθυνση e-mail και έναν κωδικό πρόσβασης</string>
     <string name="import_backup_title">Επαναφορά από το Aντίγραφο Aσφαλείας</string>
     <string name="import_backup_ask">Το αντίγραφο ασφαλείας βρέθηκε στο \"%1$s\".\n\nΘέλετε να εισαγάγετε και να χρησιμοποιήσετε όλα τα δεδομένα και τις ρυθμίσεις από αυτό;</string>
     <string name="import_backup_no_backup_found">Δεν βρέθηκαν αντίγραφα ασφαλείας.\n\nΑντιγράψτε το αντίγραφο ασφαλείας στο \"%1$s\" και δοκιμάστε ξανά.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Δεν είναι δυνατή η είσοδος ως \"%1$s\". Ελέγξτε εάν η διεύθυνση e-mail και ο κωδικός πρόσβασης είναι σωστά.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Αποδοχή μη έγκυρων πιστοποιητικών</string>
     <string name="switch_account">Αλλαγή λογαριασμού</string>
@@ -477,12 +450,9 @@
     <string name="pref_notifications_priority">Προτεραιότητα</string>
     <string name="pref_notifications_explain">Ενεργοποιήστε τις ειδοποιήσεις συστήματος για νέα μηνύματα</string>
     <string name="pref_show_notification_content">Εμφάνιση περιεχομένου μηνύματος στην ειδοποίηση</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Εμφανίζει τον αποστολέα και τις πρώτες λέξεις του μηνύματος στις ειδοποιήσεις</string>
     <string name="pref_led_color">Χρώμα LED</string>
     <string name="pref_sound">Ήχος</string>
     <string name="pref_silent">Σε σίγαση</string>
-    <string name="pref_privacy">Ιδιωτικότητα</string>
     <string name="pref_system_default">Προκαθορισμένο του συστήματος</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Φωτεινό</string>
@@ -495,7 +465,6 @@
     <string name="pref_incognito_keyboard_explain">Αίτηση πληκτρολογίου για να απενεργοποιηθεί η προσωποποιημένη εκμάθηση</string>
     <string name="pref_read_receipts">Αποδεικτικά ανάγνωσης</string>
     <string name="pref_read_receipts_explain">Αν τα αποδεικτικά ανάγνωσης είναι απενεργοποιημένα, δε θα μπορείς να δεις αποδεικτικά ανάγνωσης από άλλους/ες.</string>
-    <string name="pref_manage_keys">Διαχείριση Κλειδιών</string>
     <string name="pref_chats">Συνομιλίες</string>
     <string name="pref_in_chat_sounds">Ήχοι μέσα στη συνομιλία</string>
     <string name="pref_view_log">Προβολή Αρχείου Καταγραφής</string>
@@ -512,19 +481,7 @@
     <string name="pref_background">Ταπετσαρία συνομιλίας</string>
     <string name="pref_background_btn_default">Χρήση προκαθορισμένου</string>
     <string name="pref_background_btn_gallery">Επιλογή</string>
-    <!-- deprecated -->
-    <string name="pref_imap_folder_warn_disable_defaults">Εάν αλλάξετε αυτήν την επιλογή, βεβαιωθείτε ότι ο διακομιστής σας και οι άλλοι πελάτες σας έχουν διαμορφωθεί ανάλογα.\n\nΔιαφορετικά, τα πράγματα ενδέχεται να μην λειτουργούν καθόλου.</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">Μετακίνηση αυτόματα στον φάκελο DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_title">Λήψη μόνο από τον φάκελο DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Εμφάνιση κλασικών E-Mails</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Όχι, μόνο συνομιλίες</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">Για αποδεκτές επαφές</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Όλα</string>
     <string name="pref_experimental_features">Πειραματικά Χαρακτηριστικά</string>
     <string name="pref_on_demand_location_streaming">Ροή τοποθεσίας κατ\' απαίτηση</string>
@@ -534,6 +491,8 @@
     <string name="pref_background_custom_color">Προσαρμοσμένο χρώμα</string>
     <string name="export_aborted">Η εξαγωγή ματαιώθηκε.</string>
     <string name="auto_download_messages">Αυτόματη Λήψη Μηνυμάτων</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Όλα</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Μέχρι και %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Έως και %1$s, τις περισσότερες εικόνες χειρότερης ποιότητας</string>
@@ -560,14 +519,8 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Διαγραφή Παλιών Μηνυμάτων</string>
     <string name="autodel_device_title">Διαγραφή Μηνυμάτων από Συσκευή</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">Διαγραφή Μηνυμάτων από Διακομιστή</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Θέλετε να διαγράψετε %1$d μηνύματα τώρα και όλα τα πρόσφατα ληφθέντα μηνύματα \"%2$s\" στο μέλλον;\n\n• Αυτό περιλαμβάνει όλα τα μέσα\n\n• Τα μηνύματα θα διαγραφούν είτε εμφανίστηκαν είτε όχι\n\n• \"Αποθηκευμένα μηνύματα \" θα παραλειφθεί από την τοπική διαγραφή</string>
-    <!-- deprecated -->
-    <string name="autodel_server_ask">Θέλετε να διαγράψετε %1$d μηνύματα τώρα και όλα τα πρόσφατα ληφθέντα μηνύματα \"%2$s\" στο μέλλον;\n\n⚠️ Αυτό περιλαμβάνει μηνύματα ηλεκτρονικού ταχυδρομείου, πολυμέσα και τα \"Αποθηκευμένα μηνύματα\" σε όλους τους φακέλους διακομιστή\n\n⚠️ Μην χρησιμοποιείτε αυτήν τη λειτουργία εάν θέλετε να διατηρήσετε δεδομένα στο διακομιστή\n\n⚠️ Μην χρησιμοποιείτε αυτήν τη λειτουργία εάν χρησιμοποιείτε άλλους πελάτες ηλεκτρονικού ταχυδρομείου εκτός από το Delta Chat</string>
-    <!-- deprecated -->
-    <string name="autodel_server_enabled_hint">Αυτό περιλαμβάνει e-mail, πολυμέσα και \"Αποθηκευμένα μηνύματα\" σε όλους τους φακέλους διακομιστή. Μην χρησιμοποιείτε αυτήν τη λειτουργία εάν θέλετε να διατηρήσετε δεδομένα στο διακομιστή ή εάν χρησιμοποιείτε άλλα προγράμματα-πελάτες ηλεκτρονικού ταχυδρομείου εκτός από το Delta Chat.</string>
     <string name="autodel_confirm">Καταλαβαίνω, διαγράψτε όλα αυτά τα μηνύματα</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Με τη μία</string>
@@ -637,8 +590,6 @@
     <!-- %1$s will be replaced by the number of weeks (always >1) the timer is set to, %2$s will be replaced by name of the contact -->
     <string name="ephemeral_timer_weeks_by_other">Ο/Η %2$s όρισε το χρόνο εξαφάνισης των μηνυμάτων σε %1$s εβδομάδες.</string>
     <string name="devicemsg_self_deleted">Διαγράψατε τη συνομιλία \"Αποθηκευμένα μηνύματα\".\n\nℹ️ Για να χρησιμοποιήσετε ξανά τη λειτουργία \"Αποθηκευμένα μηνύματα\", δημιουργήστε μια νέα συνομιλία με τον εαυτό σας.</string>
-    <!-- deprecated -->
-    <string name="devicemsg_storage_exceeding">⚠️ Ο αποθηκευτικός χώρος του παρόχου σας πρόκειται να εξαντληθεί: %1$s %% χρησιμοποιούνται ήδη.\n\nΕνδέχεται να μην μπορείτε να λαμβάνετε μηνύματα εάν ο χώρος αποθήκευσης είναι πλήρης.\n\n👉 Ελέγξτε εάν μπορείτε να διαγράψετε παλιά δεδομένα στη διεπαφή ιστού του παρόχου και εξετάστε το ενδεχόμενο ενεργοποίηση \"Ρυθμίσεις / Διαγραφή παλαιών μηνυμάτων\". Μπορείτε να ελέγξετε την τρέχουσα χρήση αποθηκευτικού χώρου ανά πάσα στιγμή στις \"Ρυθμίσεις / Συνδεσιμότητα\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Η ημερομηνία ή η ώρα στη συσκευή σας φαίνεται να είναι μην είναι ακριβής (%1$s).\n\nΠροσαρμόστε το ρολόι σας ⏰🔧 για να βεβαιωθείτε ότι τα μηνύματά σας λαμβάνονται σωστά.</string>
     <string name="devicemsg_update_reminder">⚠️ Η έκδοση Delta Chat μπορεί να είναι παλιά.\n\nΑυτό μπορεί να προκαλέσει προβλήματα επειδή οι συνεργάτες συνομιλίας σας χρησιμοποιούν νεότερες εκδόσεις - και δεν έχετε τις πιο πρόσφατες λειτουργίες 😳\nΕλέγξτε τη https://get.delta.chat ή το κατάστημα εφαρμογών σας για ενημερώσεις .</string>
@@ -653,14 +604,8 @@
     <string name="qrscan_hint">Κρατήστε την κάμερά σας πάνω από τον κωδικό QR.</string>
     <string name="qrscan_failed">Αδυναμια αποκωδικοποίησης του κωδικού QR</string>
     <string name="qrscan_ask_join_group">Θέλετε να συμμετέχετε στην ομάδα \"%1$s\";</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">Το δακτυλικό αποτύπωμα δεν ταιριάζει με το τελευταίο που είδαμε για %1$s.</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">Αυτός ο κωδικός QR περιέχει δακτυλικό αποτύπωμα αλλά όχι διεύθυνση e-mail.\n\nΓια επαλήθευση εκτός ζώνης, δημιουργήστε πρώτα μια κρυπτογραφημένη σύνδεση με τον παραλήπτη.</string>
     <string name="qrscan_contains_text">Σαρωμένο κείμενο κωδικού QR:\n\n%1$s</string>
     <string name="qrscan_contains_url">Διεύθυνση URL σαρωμένου κωδικού QR:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Δακτυλικό αποτύπωμα</string>
     <string name="withdraw_verifycontact_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να επικοινωνήσουν μαζί σας.\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_verifygroup_explain">Αυτός ο κωδικός QR μπορεί να σαρωθεί από άλλους για να συμμετάσχουν στην ομάδα \"%1$s\".\n\nΜπορείτε να απενεργοποιήσετε τον κωδικό QR εδώ και να τον ξαναενεργοποιήσετε ξανασαρώνοντάς τον.</string>
     <string name="withdraw_qr_code">Απενεργοποίηση του κωδικού QR</string>
@@ -677,10 +622,7 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Σάρωση για συνομιλία με %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Δεν υπάρχει σύνδεση στο διαδίκτυο, δεν είναι δυνατή η ρύθμιση κωδικού QR.</string>
-    <string name="qraccount_ask_create_and_login">Δημιουργήστε νέα διεύθυνση e-mail στο \"%1$s\" και συνδεθείτε εκεί;</string>
     <string name="qraccount_qr_code_cannot_be_used">Ο σαρωμένος κωδικός QR δεν μπορεί να χρησιμοποιηθεί για τη δημιουργία νέου λογαριασμού.</string>
-    <!-- the placeholder will be replaced by the address of the profile -->
-    <string name="qrlogin_ask_login">Σύνδεση στο \"%1$s\";</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s σας προσκάλεσε να συμμετάσχετε σε αυτήν την ομάδα.\n\nΑναμονή για απάντηση από τη συσκευή του %2$s…</string>
     <!-- placeholder will be replaced by the name of the inviter. -->
@@ -752,8 +694,6 @@
     <string name="menu.view.developer.open.log.folder">Άνοιγμα του φακέλου καταγραφής</string>
     <string name="menu.view.developer.open.current.log.file">Άνοιγμα του τρέχον αρχείου καταγραφής</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Το εικονίδιο του δίσκου δεν μπορεί να απενεργοποιηθεί καθώς το Delta Chat ξεκίνησε με την επιλογή --ελαχιστοποιημένη.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
-    <string name="no_spellcheck_suggestions_found">Δεν βρέθηκαν προτάσεις ορθογραφίας.</string>
     <string name="show_window">Εμφάνιση παραθύρου</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Keybindings</string>
@@ -778,24 +718,15 @@
     <string name="a11y_disappearing_messages_activated">Τα εξαφανιζόμενα μηνύματα ενεργοποιήθηκαν</string>
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Διακοπή κοινής χρήσης τοποθεσίας</string>
-    <string name="a11y_voice_message_hint_ios">Μετά την εγγραφή, πατήστε δύο φορές για αποστολή. Για να απορρίψετε την εγγραφή, τρίψτε με δύο δάχτυλα.</string>
     <string name="a11y_connectivity_hint">Πατήστε δύο φορές για να δείτε λεπτομέρειες συνδεσιμότητας.</string>
     <string name="login_error_no_internet_connection">Δεν υπάρχει σύνδεση στο Διαδίκτυο, η σύνδεση απέτυχε.</string>
-    <string name="share_account_not_configured">Ο λογαριασμός δεν έχει ρυθμιστεί.</string>
     <string name="cannot_play_audio_file">Δεν είναι δυνατή η αναπαραγωγή του αρχείου ήχου.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">Για να τραβήξετε φωτογραφίες, να τραβήξετε βίντεο ή να χρησιμοποιήσετε το σαρωτή QR-Code, ανοίξτε τις ρυθμίσεις συστήματος και ενεργοποιήστε την \"Κάμερα\".</string>
     <string name="open_settings">Άνοιγμα Ρυθμίσεων</string>
-    <!-- iOS device contact alert -->
-    <string name="import_device_contacts">Εισαγωγή επαφών από συσκευή</string>
-    <string name="import_device_contacts_hint">Για να συνομιλήσετε με επαφές από τη συσκευή σας, ανοίξτε τις Ρυθμίσεις και ενεργοποιήστε τις \"Επαφές\".</string>
-    <!-- iOS notification settings -->
-    <string name="disabled_in_dc">Απενεργοποιήθηκε στο Delta Chat</string>
+    <!-- Notifications, that are disabled in the system settings -->
     <string name="disabled_in_system_settings">Απενεργοποιήθηκε στις ρυθμίσεις συστήματος</string>
     <string name="bg_app_refresh_disabled">Η \"Ανανέωση εφαρμογών στο παρασκήνιο\" απενεργοποιήθηκε στις ρυθμίσεις συστήματος</string>
-    <string name="notifications_avg_minutes">Κατά μέσο όρο κάθε %1$d λεπτά</string>
-    <string name="notifications_avg_hours">Κατά μέσο όρο κάθε %1$d ώρες</string>
-    <string name="last_check_at">Έλεγχος στις %1$s</string>
     <!-- iOS permissions, copy from "deltachat-ios/Info.plist", which is used on missing translations in "deltachat-ios/LANG.lproj/InfoPlist.strings" -->
     <string name="InfoPlist_NSCameraUsageDescription">Το Delta Chat χρησιμοποιεί την κάμερά σας για λήψη και αποστολή φωτογραφιών και βίντεο και για σάρωση κωδικών QR.</string>
     <string name="InfoPlist_NSLocationAlwaysAndWhenInUseUsageDescription">Το Delta Chat χρειάζεται άδεια για να μοιραστεί την τοποθεσία σας για το χρονικό διάστημα που έχετε ενεργοποιήσει την κοινή χρήση τοποθεσίας.</string>
@@ -804,7 +735,7 @@
     <string name="InfoPlist_NSPhotoLibraryUsageDescription">Το Delta Chat θα σας επιτρέψει να επιλέξετε ποιες φωτογραφίες από τη βιβλιοθήκη σας θα στείλετε.</string>
     <string name="InfoPlist_NSPhotoLibraryAddUsageDescription">Το Delta Chat θέλει να αποθηκεύσει εικόνες στη συλλογή φωτογραφιών σας.</string>
     <string name="pref_background_notifications_rationale">Για να διατηρήσετε τη σύνδεση με τον διακομιστή e-mail σας και να λαμβάνετε μηνύματα στο παρασκήνιο, αγνοήστε τις βελτιστοποιήσεις μπαταρίας στο επόμενο βήμα.\n\nΤο Delta Chat χρησιμοποιεί λίγους πόρους και φροντίζει να μην εξαντλήσει την μπαταρία σας.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Πατήστε εδώ για να λαμβάνετε μηνύματα ενώ το Delta Chat είναι στο παρασκήνιο.</string>
     <string name="perm_enable_bg_already_done">Επιτρέψατε ήδη στο Delta Chat να λαμβάνει μηνύματα στο παρασκήνιο.\n\nΕάν τα μηνύματα εξακολουθούν να μην φτάνουν στο παρασκήνιο, ελέγξτε τις ρυθμίσεις του συστήματός σας.</string>
 

@@ -47,7 +47,6 @@
     <string name="copied_to_clipboard">Panoya kopyalandı.</string>
     <string name="contacts_headline">Kontaktlar</string>
     <string name="email_address">Email ünvanı</string>
-    <string name="bad_email_address">Səhv e-mail ünvanı.</string>
     <string name="password">Parol</string>
     <string name="now">Indi</string>
     <string name="today">Bugün</string>
@@ -112,7 +111,6 @@
     <string name="small">Kiçik</string>
     <string name="normal">Normal</string>
     <string name="large">Böyük</string>
-    <string name="extra_large">Çox böyük</string>
 
     <string name="fast">Sürətli</string>
     <string name="slow">Ləng</string>
@@ -124,15 +122,12 @@
     <string name="menu_send">Göndər</string>
     <string name="menu_toggle_keyboard">Emoji klaviatura keçidi</string>
     <string name="menu_edit_group">Qrupu dəyiş</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Qrupun adı və şəkili</string>
     <string name="menu_show_global_map">Bütün yerləşmə yerləri göstər</string>
     <string name="menu_archive_chat">Çatın xəzinəsi</string>
     <string name="menu_unarchive_chat">Çat xəzinəsini aç</string>
     <string name="menu_add_attachment">Fayl əlavə et</string>
     <string name="menu_leave_group">Qrupu tərk et</string>
     <string name="menu_delete_chat">Çatı sil</string>
-    <string name="menu_delete_location">Bu yerləşməni silmək? </string>
     <string name="menu_message_details">Mesaj məlumatları</string>
     <string name="menu_copy_to_clipboard">Panoya kopyalamaq</string>
     <string name="menu_forward">Növbəti mesaj</string>
@@ -164,16 +159,12 @@
     <string name="mute_for_one_day">1 günlük söndür</string>
     <string name="mute_for_seven_days">7 günlük söndür</string>
     <string name="mute_forever">Həmişə səssiz</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">5 dəqiqə üçün</string>
-
     <string name="share_location_for_30_minutes">30 qəqiqə üçün</string>
     <string name="share_location_for_one_hour">1 saat üçün</string>
     <string name="share_location_for_two_hours">2 saat üçün </string>
     <string name="share_location_for_six_hours">6 saat üçün</string>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Mesajları yönləndirin %1$sə-?</string>
     <string name="ask_export_attachment">Faylı ixrac etmək? Faylların ixracı cihazınızdakı hər hansı digər tətbiqlərə daxil olmağa imkan verəcəkdir. \n\n Razısan?</string>
     <string name="ask_block_contact">Bu kontaktı bloklamaq? Bu kontaktdan artıq mesaj qəbul etməyəcəksiniz.</string>
     <string name="ask_unblock_contact">Bu kontaktı blokdan çıxarmaq istəyirsiniz? Nəticədə kontaktdan mesajlar ala bilərsiniz.</string>
@@ -215,7 +206,6 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Saxla</string>
     <string name="saved_messages">Saxlanılmış mesajlar</string>
-    <string name="retry_send">Mesaji yenidən göndərməyə cəht et</string>
     <!-- search -->
     <string name="search">Axtarış</string>
     <string name="search_explain">Çatlar, kontaktlar və mesajlar axtar</string>
@@ -224,8 +214,6 @@
     <string name="group_name">Qrup adı</string>
     <string name="group_avatar">Qrupun şəkili</string>
     <string name="group_create_button">Qrup yarat</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Xahiş edirik qrup üçün bir ad daxil et.</string>
     <string name="group_add_members">Üzv elavə et</string>
     <string name="group_self_not_in_group">Bunu etmək üçün qrupun üzvü olmalısan.</string>
     <string name="profile_encryption">Şifrələmə</string>
@@ -233,13 +221,11 @@
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Qrup</string>
     <string name="tab_gallery">Şəkillər</string>
-    <string name="tab_docs">Sənədlər</string>
     <string name="tab_links">Linklər</string>
     <string name="tab_map">Xəritə</string>
     <string name="tab_gallery_empty_hint">Bu çatda paylaşılan şəkillər və videolar burada nümayiş olunacaq.</string>
     <string name="tab_docs_empty_hint">Bu söhbətdə paylaşılan sənədlər, musiqi və digər fayllar burada göstəriləcək.</string>
     <string name="media_preview">Fayllara baxmaq</string>
-    <string name="login_title">Daxil ol</string>
     <string name="login_inbox">Gələn</string>
     <string name="login_imap_login">IMAP logini</string>
     <string name="login_imap_server">IMAP server</string>
@@ -252,14 +238,10 @@
     <string name="login_smtp_port">SMTP port</string>
     <string name="login_smtp_security">SMTP təhlükəsizliyi</string>
     <string name="login_certificate_checks">Sertifikat yoxlanmaları</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Xahiş edirik düzgün bir e-poçt ünvanı daxil et</string>
-    <string name="login_error_server">Xahiş edirik, düzgün bir server / IP ünvanı daxil et</string>
-    <string name="login_error_port">Xahiş edirik, düzgün bir port (1-65535) daxil et</string>
-    <string name="login_error_required_fields">Xahiş edirik düzgün bir e-poçt ünvanı və parol daxil et</string>
     <string name="import_backup_title">Nüsxənin importu</string>
     <string name="import_backup_ask">\"%1$s\" - də ehtiyat nüsxəsi tapıldı.\n\nİndi bütün məlumatları və parametrləri idxal etmək və istifadə etmək istəyirsiniz?</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login"> \"%1$s\" kimi giriş alınmadı. E-poçt ünvanı və parolun düzgün olub olmadığını yoxlayın.</string>
     <!-- share and forward messages -->
     <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
     <string name="forward_to">İrəli ...</string>
@@ -290,7 +272,6 @@
     <string name="pref_led_color">LED rəng</string>
     <string name="pref_sound">Səs</string>
     <string name="pref_silent">Səssiz</string>
-    <string name="pref_privacy">Gizlilik</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Açıq</string>
     <string name="pref_dark_theme">Tünd</string>
@@ -302,7 +283,6 @@
     <string name="pref_incognito_keyboard_explain">Klaviaturanın personal öyrənməyini söndürmək</string>
     <string name="pref_read_receipts">Qəbul olunanları oxuyun</string>
     <string name="pref_read_receipts_explain">Bildirişlər aradan qaldırılırsa, başqalarının oxuduğu bildirişləri görə bilməyəcəksiniz.</string>
-    <string name="pref_manage_keys">Açar edarəetməsi</string>
     <string name="pref_chats">Çatlar</string>
     <string name="pref_in_chat_sounds">Çatda olan səslər</string>
     <string name="pref_view_log">Log-a bax</string>
@@ -319,22 +299,14 @@
     <string name="pref_background">Fon</string>
     <string name="pref_background_btn_default">Hal hazırdaki şəkili istifadə edin</string>
     <string name="pref_background_btn_gallery">Fotoalbomdan götürün</string>
-    <!-- deprecated -->
-    <string name="pref_imap_folder_warn_disable_defaults">Bu seçimi ləğv etsəniz, serverinizin və digər müştərilərinizin müvafiq olaraq konfiqurasiya olunduğundan əmin olun. \n\nAyrıca şeylər işləməyəcəkdir.</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">DeltaChat qovluğuna avtomatik keçid</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Klassik e-poçtları göstər</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Xeyir, ancaq çatlar</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">Qəbul edilən kontaktlar üçün</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Hamısı</string>
     <string name="pref_background_default">Özünəməxsus arxa fon</string>
     <string name="pref_background_default_color">Özünəməxsus rəng</string>
     <string name="pref_background_custom_image">Şəkil</string>
     <string name="pref_background_custom_color">Rəng</string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Hamısı</string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name -->
     <string name="group_name_changed_by_you">Qrupun adı \"%1$s\" - dən \"%2$s\" - yə deyişildi məndən. </string>
     <!-- %1$s will be replaced by the old group name, %2$s will be replaced by the new group name, %3$s will be replaced by name and address of the contact who did the action. -->
@@ -356,14 +328,8 @@
     <string name="qrscan_title">Qr kodu skan edin</string>
     <string name="qrscan_hint">QR kodu kamera ilə izləyin</string>
     <string name="qrscan_ask_join_group">\"%1$s\" qrupa qoşulmaq istəyirsinizmi?</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">%1$süçün skan olunan barmaq izi son görüldüyü barmaq izinə uyğun deyil</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">QR kodu iz ehtiva edir, lakin heç bir e-poçt ünvanı yoxdur.\n\nƏlaqə qurmaq üçün əvvəlcə abonentlə şifrəli bir əlaqə qurun.</string>
     <string name="qrscan_contains_text">QR kod mətni skan olundu:\n\n%1$s</string>
     <string name="qrscan_contains_url">QR kod linki skan olundu:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">İz</string>
     <string name="qrshow_title">QR dəvət kodu</string>
     <string name="qrshow_x_joining">%1$s qoşulur.</string>
     <string name="qrshow_x_verified">%1$s yoxlanıldı.</string>
@@ -423,6 +389,6 @@
     <string name="message_detail_received_desktop">qəbul olundu</string>
     <string name="menu.view.developer.open.log.folder">Loq mələfini açın</string>
     <string name="menu.view.developer.open.current.log.file">Loq-faylı açın</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Delta Chat arxa fonda mesajları almaq üçün bura toxunun.</string>
     </resources>

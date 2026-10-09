@@ -51,9 +51,6 @@ public abstract class ChatListItemFetchResult {
     @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
     public Integer lastUpdated;
     public String name;
-    /** showing preview if last chat message is image */
-    @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SET)
-    public String summaryPreviewImage;
     public Integer summaryStatus;
     public String summaryText1;
     public String summaryText2;

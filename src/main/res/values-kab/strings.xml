@@ -15,7 +15,6 @@
     <string name="on">Sermed</string>
     <string name="off">Sens</string>
     <string name="def">Amezwer</string>
-    <string name="default_value">Amezwer (%1$s)</string>
     <string name="custom">Admawan</string>
     <string name="none">Ulac</string>
     <string name="automatic">Awurman</string>
@@ -25,7 +24,6 @@
     <string name="downloading">Asider...</string>
     <string name="open_attachment"> Ldi amedday</string>
     <string name="join">Ddu ɣer</string>
-    <string name="rejoin">kcem ɣer</string>
     <string name="delete">Kkes</string>
     <string name="delete_for_me">Kkes i nekk</string>
     <string name="delete_for_everyone">Kkes i yal yiwen</string>
@@ -59,10 +57,6 @@
     <string name="media">Amidya</string>
     <string name="apps_and_media">Isnasen &amp; Amidya</string>
     <string name="profile">Amaɣnu</string>
-    <!-- deprecated -->
-    <string name="all_profiles">Akk imeɣna</string>
-    <!-- deprecated -->
-    <string name="current_profile">Amaɣnu amiran</string>
     <string name="main_menu">Umuɣ agejdan</string>
     <string name="start_chat">Bdu adiwinni</string>
     <string name="show_full_message">Sken izen ummid...</string>
@@ -82,10 +76,7 @@
     <!-- Possible answers to the question are: Never, Always, Once -->
     <string name="load_remote_content_ask">Tugniwin n unmeggag zemrent ad k-ḍefrent.\n\nAɣewwaṛ-agi yezmer ad yessali daɣen tisefsiyin akked ugbur-nniḍen. Ma yella yensa, tugniwin yettwaffren neɣ tusliɣin zemrent ad d-banent.\n\nSali-d tugniwin n unmeggag?</string>
     <string name="always">Dima</string>
-    <string name="always_load_remote_images">Sali-d yal tikelt tugniwin n unmeggag</string>
     <string name="once">Tikkelt</string>
-    <!-- deprecated -->
-    <string name="show_warning">Sken ulɣu</string>
     <string name="not_now">Mačči tura</string>
     <string name="never">Werǧin</string>
     <string name="one_moment">arǧu ciṭ...</string>
@@ -99,12 +90,9 @@
     <string name="no_app_to_handle_data">Ur izmir ara ad d-yaf asnas i usefrek n wanaw-a n yisefka.</string>
     <string name="no_browser_installed">Ulac iminig ibedden.</string>
     <string name="file_not_found">Ur yezmir ara ad yaf %1$s.</string>
-    <!-- the placeholder will be replaced by the name of a file -->
-    <string name="cannot_save_file">Ur izmir ara ad isellek %1$s.</string>
     <string name="copied_to_clipboard">Nɣel ɣer tecfawt.</string>
     <string name="contacts_headline">Inermisen</string>
     <string name="email_address">Tansa imayl</string>
-    <string name="bad_email_address">Yir tansa imayl</string>
     <string name="password">Awal n uɛeddi</string>
     <string name="existing_password">Awal n uɛeddi yellan</string>
     <string name="now">Tura</string>
@@ -116,11 +104,13 @@
     <string name="this_month">Aggur-a </string>
     <string name="last_week">Dduṛt yezrin</string>
     <string name="last_month">Aggur yezrin</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by date or time, resulting in "Last seen at 12:13 AM" or "Last seen Nov 12" -->
+    <!-- deprecated -->
     <string name="last_seen_at">yettwaẓer i tikkelt taneggarut ɣef %1$s</string>
-    <!-- Refers to the time a contact was last seen. Shown below contact name in the profile. The placeholder will be replaced by a relative point in time as "3 minutes ago" (see https://momentjs.com for more examples and languages) -->
+    <!-- deprecated -->
     <string name="last_seen_relative">yettwaẓer i tikkelt taneggarut %1$s</string>
+    <!-- deprecated -->
     <string name="last_seen_unknown">yettwaẓer i tikkelt taneggarut: Arussin</string>
+
     <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
     <plurals name="call_duration_minutes">
         <item quantity="one">tanzagt n %d n tesdat</item>
@@ -168,7 +158,6 @@
         <item quantity="one">%d yettwafren</item>
         <item quantity="other">%d ttwafernen</item>
     </plurals>
-    <string name="selected_colon">Yettwafran:</string>
     <string name="selected">Yettwafren</string>
     <string name="self">Nekk</string>
     <string name="draft">Arewway</string>
@@ -179,10 +168,6 @@
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Tamenṭaḍt</string>
     <string name="add_to_sticker_collection">Rnu ɣer tegrumma n tamenṭaḍt</string>
-    <!-- deprecated, use sticker_picker_empty_hint instead -->
-    <string name="add_stickers_instructions">Akken ad ternuḍ tamenṭaḍt, sit ɣef \" ldi akaram n tmenṭaḍt \", snulfu-d akaram anaddaw i ukemmus-ik·im n tmenṭaḍt, zuɣer tugna akked ifuyla n tmenṭaḍt din</string>
-    <!-- deprecated -->
-    <string name="open_sticker_folder">Ldi akaran n tmenṭaḍt</string>
     <string name="ask_add_sticker_to_collection">Arni ticṛeṭ-agi n tesfift ɣer tegrumma-inek·inem?</string>
     <string name="ask_delete_sticker">Kkes ticṛet-agi n tesfift?</string>
     <string name="sticker_picker_empty_hint">Tekki ɣer ticṛet n tesfift akken ad t-id-ternuḍ ɣer da.</string>
@@ -203,7 +188,6 @@
     <string name="capture">Tuṭṭfa </string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Beddel takamiṛat </string>
-    <string name="toggle_fullscreen">Ldi/Mdel askar n ugdil ačuran</string>
     <string name="location">Adig</string>
     <string name="locations"> Idgan</string>
     <string name="gallery"> Timidelt</string>
@@ -241,11 +225,9 @@
     <string name="white">Amellal</string>
 
     <string name="zoom">Asemɣer/asimẓi</string>
-    <string name="extra_small">Amecṭuḥ ugar</string>
     <string name="small">Amecṭuḥ</string>
     <string name="normal">Amagnu</string>
     <string name="large">meqqer</string>
-    <string name="extra_large">meqqer ugar</string>
 
     <string name="fast">arurad</string>
     <string name="slow"> Ẓẓay</string>
@@ -280,8 +262,6 @@
     <string name="menu_send">Azen</string>
     <string name="menu_toggle_keyboard">Ldi/Fer anasiw n yimujit </string>
     <string name="menu_edit_group">Ẓreg agraw</string>
-    <!-- deprecated: "Edit Group" dialog usually also contains the "Group Description" field, use global_menu_edit_desktop instead -->
-    <string name="menu_group_name_and_image">Isem n ugraw d tugna</string>
     <string name="menu_show_global_map">Akk adigen </string>
     <string name="menu_archive_chat">Ɣber adiwenni usrid</string>
     <string name="menu_unarchive_chat">Kkes aɣbar ɣef udiwenni usrid</string>
@@ -292,7 +272,6 @@
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Sfeḍ adiwenni usrid</string>
     <string name="delete_contact">Kkes anermis</string>
-    <string name="menu_delete_location">Kkes adig-agi?</string>
     <string name="menu_message_details">Talɣut n yizen</string>
     <string name="menu_copy_to_clipboard">Nɣel ɣer tecfawt</string>
     <string name="share_invite_link">Bḍu aseɣwen n tinnubga</string>
@@ -334,7 +313,6 @@
     <string name="privacy_policy">Tsertit tabaḍnit</string>
     <string name="menu_select_all">Fren meṛṛa </string>
     <string name="select_chat">Fren Adiwenni</string>
-    <string name="select_more">Fren ugar</string>
     <string name="menu_edit_name">Ẓreg isem</string>
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_explain">Sbadu isem n useqdac ara k-d-yettwaseknen deg umkan n \"%1$s\". Eǧǧ ilem akken ad tesqedceḍ isem ufrin n unermis.</string>
@@ -347,7 +325,6 @@
     <string name="menu_zoom_out">Semẓi</string>
     <string name="menu_save_log">Sekles aɣmis</string>
     <string name="menu_more_options">Ugar n tnefrunin</string>
-    <string name="menu_learn_spelling">Lmed taɣdirawt</string>
     <string name="jump_to_message">Neggez ɣer yizen</string>
     <string name="replace_draft">Semselsi arewway</string>
     <string name="title_share_location">Bḍu adeg akked iɛeggalen n ugraw meṛṛa</string>
@@ -361,7 +338,7 @@
     <string name="unpin_chat">Kkes asenteḍ n udiwenni</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Senṭeḍ</string>
-    <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
+    <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Kkes asenteḍ</string>
     <string name="ConversationFragment_quoted_message_not_found">Izen aneṣli ulac-it</string>
     <string name="reply_privately">Err s wudem uslig</string>
@@ -376,10 +353,8 @@
     <string name="mute_for_one_day">Sgugem i 1 wass</string>
     <string name="mute_for_seven_days">Sgugem i 7 wussan</string>
     <string name="mute_forever">Sgugem i lebda</string>
-
-    <!-- deprecated -->
+    
     <string name="share_location_for_5_minutes">I 5 n tisdatin</string>
-
     <string name="share_location_for_30_minutes">I 30 n tisdatin</string>
     <string name="share_location_for_one_hour">I 1 usrag</string>
     <string name="share_location_for_two_hours">I 2 yisragen</string>
@@ -410,14 +385,6 @@
     <string name="call_reconnecting">Tulsa n tuqqna...</string>
     <string name="call_ended">Yekfa usiwel</string>
     <string name="call_failed">Asiwel ur yeddi ara</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="outgoing_audio_call">Asiwel n umeslaw uffiɣ</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="outgoing_video_call">Asiwel n uvidyu uffiɣ</string>
-    <!-- deprecated, use "Audio call" instead -->
-    <string name="incoming_audio_call">Asiwel n umeslaw ukcim</string>
-    <!-- deprecated, use "Video call" instead -->
-    <string name="incoming_video_call">Asiwel n uvidyu ukcim</string>
     <string name="declined_call">Tiɣri tettwagi</string>
     <string name="canceled_call">Tiɣri tettwasefsex</string>
     <string name="missed_call">Tiɣri ittwazeglen</string>
@@ -435,8 +402,6 @@
         <item quantity="one">Kkes %d n yizen?</item>
         <item quantity="other">Kkes %d n yiznan?</item>
     </plurals>
-    <!-- deprecated, use ask_forward_messages -->
-    <string name="ask_forward">Welleh iznan ɣer %1$s?</string>
     <string name="ask_forward_multiple">Welleh iznan ɣer %1$d n yidiwenniyen?</string>
     <string name="ask_export_attachment">Asifeḍ n imeddayen ad yeǧǧ isnasen-nniḍen deg yibenk-ik·im ad kecmen ɣur-sen.\n\nad tkemmleḍ?</string>
     <string name="ask_block_contact">Sewḥel anermis-agi?\n\nUr d-ttbanen ara yiznan usriden neɣ igrawen i d-yettwaxelqen s yinermisen iweḥlen.\n\nIgrawen-nniḍen yesεan inermisen iweḥlen mazal ad d-sseknen iznan-nsen.</string>
@@ -484,7 +449,6 @@
     <string name="chat_input_placeholder">Izen</string>
     <string name="chat_archived_label">yettwaɣber</string>
     <string name="chat_request_label">Asuter</string>
-    <string name="chat_request_label_explain">Seddu isuturen deg yimsiḍnen akked deg ilɣa</string>
     <string name="chat_no_messages">Ulac iznan. </string>
     <string name="chat_self_talk_subtitle">Iznan i yiman-nsen</string>
     <string name="archive_empty_hint"> Idiwenniyen yettwaɣber ad d-iban da.</string>
@@ -494,9 +458,6 @@
     <string name="saved_messages_explain">• Welleh iznan dagi i unekcum fessusen\n\n•Aru tizmilin neɣ takatut n taɣect\n\n• Seddu amidya akken ad ten-teskelseḍ</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Yettwasekles</string>
-    <string name="save_as">Yettwasekles Am</string>
-    <string name="retry_send">Ales ad tazned izen</string>
-    <string name="cannot_display_unsuported_file_type">Ur izmir ara ad d-yesken anaw-agi n ufaylu: %s</string>
     <string name="attachment_failed_to_load">Asali n imeddayen ur yeddi ara</string>
     <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
     <string name="lock_recording">Sekkeṛ asekles</string>
@@ -505,8 +466,8 @@
     <string name="mailing_list">Tabdart n tnezwit</string>
 
     <!-- webxdc -->
-    <!-- "Start..." button for an app -->
-    <string name="start_app">Bdu...</string>
+    <!-- "Start" button for an app -->
+    <string name="start_app">Bdu</string>
     <!-- this is a warning that is shown when one tries to send something to a chat that is not yet accepted. -->
     <string name="accept_request_first">Ttxil-k-m tazwara qbel asuter n udiwenni.</string>
     <!-- title shown above a list of chats where one should be selected (eg. when sharing files from a webxdc). the placeholder will be replaced by a file name -->
@@ -536,8 +497,6 @@
     <string name="remove_group_image">Kkes tugna n unagraw</string>
     <string name="change_group_image">Beddel tugna n ugraw</string>
     <string name="group_create_button">Rnu agraw</string>
-    <!-- deprecated, use please_enter_chat_name -->
-    <string name="group_please_enter_group_name">Ma ulac aɣilif, sekcem isem n ugraw.</string>
     <string name="group_add_members">Rnu imttekkiyen</string>
     <string name="group_self_not_in_group">Issefk ad tiliḍ d aɛeggal deg ugraw akken ad tgeḍ tigawt-a.</string>
     <string name="profile_encryption">Awgelhen </string>
@@ -547,23 +506,17 @@
     <string name="tab_contact">Anermis</string>
     <string name="tab_group">Agraw</string>
     <string name="tab_gallery">Tamidelt </string>
-    <string name="tab_docs">Isemliyen</string>
     <string name="tab_links">Iseɣwan</string>
     <string name="tab_map">Takarḍa</string>
     <string name="tab_gallery_empty_hint">Tugniwin akked tvidyutin icudden ɣer udiwenni-agi ad d-banen dagi.</string>
     <string name="tab_docs_empty_hint">Isemliyen akked ifuyla-nniḍen icudden ɣer udiwenni-agi ad d-banen dagi. </string>
     <string name="tab_image_empty_hint">Tugniwin icudden ɣer udiwenni-agi ad d-banent dagi. </string>
-    <string name="tab_video_empty_hint">Tividyutin icudden ɣer udiwenni-agi ad d-banent dagi.</string>
     <string name="tab_audio_empty_hint">Ifuyla imeslawen akked iznan n taɣect icudden ɣer udiwenni-agi ad d-banen dagi.</string>
     <string name="tab_webxdc_empty_hint">Isnasen icudden ɣer udiwenni-a ad d-banen dagi. </string>
     <string name="tab_all_media_empty_hint">Imidyaten yeqqnen ɣer yal adiwenni ad d-banen da.</string>
     <string name="all_files_empty_hint">Isemliyen akked ifuyla-nniḍen icudden ɣer yal adiwenni ad d-banen dagi. </string>
     <string name="all_apps_empty_hint">Isnasen icudden ɣer yal adiwenni ad d-banen dagi. </string>
     <string name="media_preview">Taskant n umidya</string>
-    <!-- option to show images in the gallery with the correct width/height aspect (instead of square); other gallery apps may be a source of inspiration for translation :) -->
-    <string name="aspect_ratio_grid">Iẓiki n uktassaɣ n tmẓriwit</string>
-    <!-- option to show images in the gallery as square (instead of using correct width/height) -->
-    <string name="square_grid">Iẓiki n umkuẓ</string>
     <string name="send_message">Azen izen</string>
 
     <!-- Multi Device -->
@@ -605,14 +558,12 @@
     <string name="connectivity_connected">Yettwaqqen</string>
     <string name="sending">Tuzna...</string>
     <string name="last_msg_sent_successfully">Izen aneggaru yettwazen akken iwata. </string>
-    <!-- deprecated -->
-    <string name="not_supported_by_provider">ur yettusefrak ara ɣer usaǧǧaw-ik·im.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Iznan</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
     <string name="part_of_total_used">%1$s seg %2$s yettwaseqdac</string>
 
-    <!-- welcome and login -->
+    <!-- welcome and profile creation -->
     <!-- Primary button on the welcome screen, allows to create an instant profile -->
     <string name="onboarding_create_instant_account">Rnu amaɣnu amaynut</string>
     <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
@@ -621,12 +572,6 @@
     <string name="manual_account_setup_option">Seqdec imayl aklasiki am Umedwel </string>
     <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
     <string name="instant_onboarding_title">Amaɣnu-ik·im</string>
-    <!-- The placeholder will be replaced by the default onboarding server -->
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_default2">Tsertit tabaḍnit i %1$s</string>
-    <!-- The placeholder will be replaced by instance name, the whole text will link to the instance page -->
-    <!-- deprecated -->
-    <string name="instant_onboarding_agree_instance">Ɣef yimaɣnuten deg %1$s</string>
     <!-- Confirmation button on the instant onboarding screen -->
     <string name="instant_onboarding_create">Qebleɣ &amp; Rnu amaɣnu</string>
     <!-- Secondary, link-like button to open a page with other possible instances -->
@@ -643,7 +588,6 @@
 
     <string name="welcome_chat_over_email">Adiwenni Aɣelsan Aruslemmas</string>
     <string name="scan_invitation_code">Ḍumm tangalt n tinnubga</string>
-    <string name="login_title">Kcem</string>
     <string name="login_inbox">Tanaka n urmas</string>
     <string name="login_imap_login">Isem n tuqqna IMAP. </string>
     <string name="login_imap_server">Aqeddac IMAP</string>
@@ -675,27 +619,15 @@
     <string name="add_transport">Rnu amedwel</string>
     <string name="remove_transport">Kkes amedwel</string>
     <string name="edit_transport">Ẓreg amedwel</string>
-    <!-- deprecated -->
-    <string name="used_for_sending">Yettwaseqdec i tuzzna</string>
-    <!-- deprecated -->
-    <string name="hide_from_contacts">Ffer-it ɣef inermisen</string>
-    <!-- deprecated -->
-    <string name="hidden_from_contacts">Uffir ɣef inermisen</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Rnu amedwel-agi?</string>
     <string name="invalid_transport_qr">Tangalt QR ittusemḍen ur tesɛi ara amedwel ameɣtu</string>
-    <!-- deprecated -->
-    <string name="confirm_remove_or_hide_transport_x">Kkes amedwel \"%1$s\"?\n\nInermasen i yessnen kan amedwel-a, ahat ur d-ttawḍen ara ɣur-k·m alarma tuzneḍ-asen izen tikkelt nniḍen.\n\nMa yella ccek, ffer-it axir n tukksa-ines.</string>
     <string name="login_certificate_checks">Asenqed n uselkin</string>
+    <!-- deprecated -->
     <string name="login_error_mail">Ma ulac aɣilif, sekcem tansa imayl tameɣtut</string>
-    <string name="login_error_server">Ma ulac aɣilif, sekcem aqeddac ameɣtu / tansa IP.</string>
-    <string name="login_error_port">Ma ulac aɣilif, sekcem asagen ameɣtu (1-65535)</string>
-    <string name="login_error_required_fields">Ma ulac aɣilif, sekcem tansa imayl tameɣtut akked wawal uffir</string>
     <string name="import_backup_title">Err-d seg uḥraz</string>
     <string name="import_backup_ask">Aḥraz yettwaf di \"%1$s\".\n\nTebɣiḍ ad d-tketreḍ u ad tesqedceḍ akk isefka d yiɣewwaren seg-s?</string>
     <string name="import_backup_no_backup_found">Ulac Iḥrazen yettwafen.\n\nNɣel aḥraz ɣer \"%1$s\" sakin ɛreḍ tikelt nniḍen.</string>
-    <!-- deprecated, %1$s will be replaced by the failing address -->
-    <string name="login_error_cannot_login">Ur izmir ara ad yeqqen am \"%1$s\". Ma ulac aɣilif, senqed ma yella tansa d wawal uffir d tameɣtut.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Qbel iselkan arameɣtu</string>
     <string name="switch_account">Beddel amaɣnu</string>
@@ -722,8 +654,6 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Azen %1$d ifuyla ɣer \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Azen %1$d afaylu(ifuyla) ɣer %2$d idiwenniyen?</string>
-    <!-- deprecated -->
-    <string name="videos_sent_without_recoding">(Tividyutin ttwaznent d akken d ifuyla meqqren. Akken ad tazneḍ tividyutin d ifuyla meẓẓiyen, qqen-itent yal yiwet i yiman-is)</string>
     <string name="share_text_multiple_chats">Azen aḍris-a ɣer %1$d idwenniyin?\n\n\"%2$s\"</string>
     <string name="share_abort">Beṭṭu ur yedda ara ɣef sebba n tsirag ixuṣṣen.</string>
 
@@ -760,12 +690,9 @@
     <string name="pref_notifications_priority">Tazwart</string>
     <string name="pref_notifications_explain">Rmed ilɣa n unagraw i yiznan imaynuten</string>
     <string name="pref_show_notification_content">Sken agbur n yizen deg ulɣu</string>
-    <!-- deprecated -->
-    <string name="pref_show_notification_content_explain">Sken-d amazan akked wawalen imezwura n yizen deg yilɣa</string>
     <string name="pref_led_color">Ini LED</string>
     <string name="pref_sound">Imesli</string>
     <string name="pref_silent">Asusam</string>
-    <string name="pref_privacy">Tabaḍnit</string>
     <string name="pref_system_default">Anagraw amezwer</string>
     <!-- Translators: as in "opposite of dark" -->
     <string name="pref_light_theme">Aceɛlal </string>
@@ -780,8 +707,6 @@
     <string name="pref_read_receipts">Ɣeṛ armas</string>
     <string name="pref_read_receipts_explain">Ma yella taɣuri n urmas tensa, ur tettizmireḍ ara ad twaliḍ iremsen n tɣuri sɣur wiyaḍ. Ɣeṛ armas.</string>
     <string name="pref_server">Aqeddac</string>
-    <string name="pref_encryption">Awgelhen</string>
-    <string name="pref_manage_keys">Sefrek tisura</string>
     <string name="pref_chats">Idiwenniyen</string>
     <string name="pref_in_chat_sounds">Imeslan n idiwenniyen</string>
     <string name="pref_view_log">Sken aɣmis</string>
@@ -801,23 +726,11 @@
     <string name="pref_background">Tugniwin n ugilal</string>
     <string name="pref_background_btn_default">Seqdec tugna tamezwert</string>
     <string name="pref_background_btn_gallery">Fren seg timidelt</string>
-    <!-- deprecated -->
-    <string name="pref_imap_folder_warn_disable_defaults">Ma tbeddleḍ aɣewwaṛ-a, senqed aqeddac-ik·im d yimsaɣen-ik·im-nniḍen ad ttuswelen akken iwata.\n\nMa ulac, yezmer lḥal ur tteddunt ara akk tɣawsiwin.</string>
     <!-- No need to be literal here, you can also use "Use Multiple Devices", "Support Multiple Devices" or other fitting terms. However, it should fit to the wording or your language at https://delta.chat/help -->
     <string name="pref_multidevice">Askar n tugett n yibenk</string>
     <string name="pref_multidevice_explain">Mtawi iznan-ik·im akked ibenkan-nniḍen. Irmed s wudem awurman deg tmerna n yibenk wis sin</string>
     <string name="pref_multidevice_change_warn">Askar aget-ibenk yessefk ad yettwarmed mi ara tesqedceḍ yiwen n umaɣnu deg ddeqs n yibenkan. Sens kan aɣewwaṛ-agi ma yella tekkseḍ amaɣnu-yagi seg yibenkan-ik·im nniḍen.\n\nAsens n usakar n waget-ibenk mi ara tesqedceḍ amaɣnu ɣef ddeqs n yibenkan ad d-yeglu s yiznan yettwazeglen akked wuguren-nniḍen.</string>
-    <!-- deprecated -->
-    <string name="pref_auto_folder_moves">Ddu s wudem awurman ɣer ukaram n DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_only_fetch_mvbox_title">Awi-d kan seg akaram n DeltaChat</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails">Sken imaylen iklasanen</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_no">Ala, idiwenniyen kan</string>
-    <!-- deprecated -->
-    <string name="pref_show_emails_accepted_contacts">I yinermisen yettwaqeblen</string>
-    <!-- deprecated -->
+    <!-- deprecated, use "All" -->
     <string name="pref_show_emails_all">Akk</string>
     <string name="pref_experimental_features">Timahilin tirmitanin</string>
     <string name="pref_experimental_features_explain">Timahilin-agi zemrent ad ilint ur rkident ara, daɣen zemrent ad ttwabeddlent neɣ ad ttwakksent</string>
@@ -828,6 +741,8 @@
     <string name="pref_background_custom_color">Ini yugnen</string>
     <string name="export_aborted">Asifeḍ ur yeddi ara.</string>
     <string name="auto_download_messages">Sider iznan s wudem awurman </string>
+    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
+    <string name="all">Akk</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Arma d %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Arma d %1$s, tugniwin n tɣara n diri maḍi</string>
@@ -872,18 +787,8 @@
     <!-- automatically delete message -->
     <string name="delete_old_messages">Kkes iznan iqbuṛen</string>
     <string name="autodel_device_title">Kkes iznan seg yibenk</string>
-    <!-- deprecated -->
-    <string name="autodel_server_title">Kkes iznan seg uqeddac</string>
     <!-- %1$d will be replaced by the number of messages, you can assume plural/lots here. %2$s will be replaced by a timespan option. -->
     <string name="autodel_device_ask">Tebɣiḍ ad tekkseḍ %1$d n iznan tura akk d yiznan imaynuten \"%2$s\" ɣer zdat?\n\n• Deg-s akk imidyaten\n\n• Iznan ad ttwakksen ma yella ttwalan neɣ ala\n\n• \"Iznan yettwaskelsen\" ad ttwazeglen seg tukksa tadigant</string>
-    <!-- deprecated -->
-    <string name="autodel_server_ask">Tebɣiḍ ad tekkseḍ %1$d n iznan tura akk d yiznan imaynuten \"%2$s\" ɣer zdat?\n\n⚠️ Ayagi yegber imaylen, imidyaten akked \" iznan yettwakelsen \" deg ikaramen meṛṛa n uqeddac\n\n⚠️ Ur sseqdac ara tawuri-a ma tebɣiḍ ad teǧǧeḍ isefka ɣef uqeddac neɣ ma tesqedceḍ imsaɣen n yimaylen iklasikiyen daɣen</string>
-    <!-- deprecated -->
-    <string name="autodel_server_enabled_hint">Ayagi yegber imaylen, imidyaten akked \" iznan yettwakelsen \" deg ikaramen meṛṛa n uqeddac. Ur sseqdac ara tawuri-a ma tebɣiḍ ad teǧǧeḍ isefka ɣef uqeddac neɣ ma tesqedceḍ imsaɣen n yimaylen iklasikiyen daɣen</string>
-    <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device_title">Rmed tukksa n dindin</string>
-    <!-- deprecated -->
-    <string name="autodel_server_warn_multi_device">Ma tremdeḍ tukksa n dindin ur tezmireḍ ara ad tesqedceḍ aṭas n yibenkan deg umaɣnu-a. </string>
     <string name="autodel_confirm">Fehmeɣ, kkes akk iznan-agi</string>
     <!-- "At once" in the meaning of "Immediately", without any intervening time. -->
     <string name="autodel_at_once">Dindin kan deffir usader</string>
@@ -976,8 +881,6 @@
     <string name="learn_more">Issin ugar</string>
 
     <string name="devicemsg_self_deleted">Tekkseḍ adiwenni n \" iznan yettwakelsen \".\n\nℹ️ Akken ad tesqedceḍ tamahilt \" iznan yettwakelsen \", rnu adiwenni amaynut akked yiman-ik·im. </string>
-    <!-- deprecated -->
-    <string name="devicemsg_storage_exceeding">⚠️Asaǧǧaw-ik·im n usekles qrib ad yaččar: %1$s%% yettwaseqdec yakan.\n\nAhat ur tezmireḍ ara ad d-remseḍ iznan ma yella asekles yeččur.\n\n 👉 Ttxil-k·m senqed ma yella tzemreḍ ad tekkseḍ isefka iqburen deg ugrudem n web n isaǧǧawen syin rmed \"Iɣewwaṛen / Idiwenniyen / Kkes iznan iqbuṛen\". Tzemreḍ ad tesneqdeḍ aseqdec n usekles-inek·inem amiran deg \"Iɣewwaṛen / tuqqna\".</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Azemz neɣ akud deg yibenk-ik·im yettban-d ur iṣeḥḥa ara (%1$s).\n\nṢeggem tamasragt-ik·im ⏰🔧Akken ad neḍmen d akken iznan-ik·im ad ttwaremsen akken iwata. </string>
     <string name="devicemsg_update_reminder">⚠️Yezmer lḥal alqem-ik·im n Delta Chat d aqbur.\n\nAya yezmer ad d-yeglu s wuguren acku imendiden-ik·im n udiwenni sseqdacen ileqman imaynuten - yerna txuṣṣeḍ timahilin tineggura 😳\nTtxil-k·m, ssefqed https://get.delta.chat neɣ taḥanut-nnek·nnem n usnas i uleqqem.</string>
@@ -994,14 +897,8 @@
     <string name="qrscan_failed">Tangalt QR ur tezmir ara ad ttwakestengel</string>
     <string name="qrscan_ask_join_group">Tebɣiḍ ad tettekkiḍ deg ugraw \"%1$s\"?</string>
     <string name="qrscan_ask_join_channel">Tebɣiḍ ad tettekkiḍ deg ubadu \"%1$s\"?</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_mismatch">Adsil umḍin yettwaḍummen ur imṣada ara akked win yettwaẓerren i tikelt taneggarut i %1$s.</string>
-    <!-- deprecated -->
-    <string name="qrscan_no_addr_found">Tangalt-a QR tegber adsil umḍin maca ulac tansa.\n\nI usenqed beṛṛa n tasfift, ttxil-k-im eg tuqqna tawgelhant akked uɣerwaḍ. </string>
     <string name="qrscan_contains_text">Aḍris n tengalt QR yettwaḍummen:\n\n%1$s</string>
     <string name="qrscan_contains_url">URL n tangalt QR yettwaḍummen:\n\n%1$s</string>
-    <!-- deprecated -->
-    <string name="qrscan_fingerprint_label">Adsil umḍin</string>
     <string name="withdraw_verifycontact_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad k·m-id-nermsen.\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
     <string name="withdraw_verifygroup_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad kecmen ɣer ugraw \"%1$s\".\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
     <string name="withdraw_joinbroadcast_explain">Tangalt-a QR tezmer ad tt-id-ḍummen wiyaḍ akken ad ddun ɣer ubadu \"%1$s\".\n\nTzemreḍ ad talseḍ awennez, akken tangalt QR yellan neɣ aseɣwen n uεraḍ ur iteddu ara.</string>
@@ -1020,12 +917,9 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Ḍumm iwakken ad tmeslayeḍ d %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">Ulac tuqqna internet, ur izmir ara ad isebded tangalt QR.</string>
-    <string name="qraccount_ask_create_and_login">Rnu amaɣnu amaynut di \"%1$s\" sakin tkecmeḍ dinna?</string>
     <string name="set_name_and_avatar_explain">Sbadu isem ara ɛeqlen inermisen-ik·im. Tzemreḍ daɣen ad tesbaduḍ tugna n umaɣnu.</string>
     <string name="please_enter_name">Ma ulac aɣilif, sekcem isem.</string>
     <string name="qraccount_qr_code_cannot_be_used">Tangalt QR tettwaḍummen ur tezmir ara ad tettwaseqdec i usebded n umaɣnu amaynut. </string>
-    <!-- the placeholder will be replaced by the address of the profile -->
-    <string name="qrlogin_ask_login">Kcem ɣer \"%1$s\"?</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
     <string name="secure_join_started">%1$s yeɛreḍ-ik·im-id ad d-ternud ɣer ugraw-a.\n\nRǧu ibenk n %2$s ad d-yerr...</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->
@@ -1035,13 +929,6 @@
     <string name="secure_join_wait">Asbeddi n tuqqna, ttxil-k·m rǧu...</string>
     <string name="contact_verified">%1$s ittwasenked.</string>
     <string name="contact_blocked">Tesweḥleḍ anermis</string>
-    <!-- Shown in contact profile. The placeholder will be replaced by the name of the contact that introduced the contact. -->
-    <!-- deprecated -->
-    <string name="verified_by">Yettwasenked sɣur %1$s</string>
-    <!-- deprecated -->
-    <string name="verified_by_you">Yettwasenked sɣur nekk</string>
-    <!-- deprecated -->
-    <string name="verified_by_unknown">Yettwasenked</string>
     <string name="mailto_dialog_header_select_chat">Fren adiwenni i tuzna n yizen ɣer</string>
     <!-- first placeholder is the name of the chat -->
     <string name="confirm_replace_draft">%1$s ɣur-s yakkan izen n urewway, tebɣiḍ ad t-tbeddleḍ?</string>
@@ -1120,8 +1007,6 @@
     <string name="menu.view.developer.open.log.folder">Ldi akaram n uɣmis</string>
     <string name="menu.view.developer.open.current.log.file">Ldi afaylu n uɣmis amiran</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tignit n tfeggagt n tmahilin ur tezmir ara ad tsens mi ara d-yebdu Delta Chat s --Uɣewwaṛ adday.</string>
-    <!-- deprecated, used on desktop although there is not spell checker -->
-    <string name="no_spellcheck_suggestions_found">Ulac isumar n teɣdirawt yettwafen.</string>
     <string name="show_window">Sken asfaylu</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->
     <string name="keybindings">Inegzumen n unasiw</string>
@@ -1146,24 +1031,15 @@
     <string name="a11y_disappearing_messages_activated">Iznan ur nettdum ara yettwarmed</string>
     <!-- iOS specific strings, developers: please take care to remove strings that are no longer used! -->
     <string name="stop_sharing_location">Ḥbes beṭṭu n wadig</string>
-    <string name="a11y_voice_message_hint_ios">Seld asekles, sit snat n tikkal i tuzna. Akken ad tekkseḍ asekles, sfeḍ s sin yiḍarren.</string>
     <string name="a11y_connectivity_hint">Sit snat n tikkal akken ad twaliḍ talqayt n tuqqna.</string>
     <string name="login_error_no_internet_connection">Ulac tuqqna internet, tuqqna ur teddi ara.</string>
-    <string name="share_account_not_configured">Amaɣnu ur ittuswel ara. </string>
     <string name="cannot_play_audio_file">Afaylu ameslaw ulamek ara yettwaɣer.</string>
     <!-- iOS camera permission alert -->
     <string name="perm_ios_explain_access_to_camera_denied">Akken ad d-teṭṭfeḍ tiwlafin, tuṭṭfa n tvidyutin neɣ ad tesqedceḍ aḍummu n tengalt QR, ldi iɣewwaṛen n unagraw u rmed \" takamirat \".</string>
     <string name="open_settings">Ldi iɣewwaṛen</string>
-    <!-- iOS device contact alert -->
-    <string name="import_device_contacts">Kter inermisen n yibenk</string>
-    <string name="import_device_contacts_hint">Iwakken ad tmeslayeḍ akked inermisen seg yibenk-ik·im, ldi Iɣewwaṛen sakkin rmed \"Iinermisen\".</string>
-    <!-- iOS notification settings -->
-    <string name="disabled_in_dc">Ittwasens deg Delta Chat</string>
+    <!-- Notifications, that are disabled in the system settings -->
     <string name="disabled_in_system_settings">Ittwasens deg iɣewwaren n unagraw</string>
     <string name="bg_app_refresh_disabled">\"Asmiren n usnas n ugilal\" yensa deg yiɣewwaren n unagraw</string>
-    <string name="notifications_avg_minutes">Deg tlemmast yal %1$d n tesdatin</string>
-    <string name="notifications_avg_hours">Deg tlemmast yal %1$d isragen</string>
-    <string name="last_check_at">Ittwasenqed di %1$s</string>
     <string name="system_settings">Iɣewwaṛen n unagraw</string>
     <!-- shown below the button "System Settings" on the notification screen. this is a hint about what can be edited on System Settings' Notification page - eg. the notification type (banner, lock screen, notification centre), sound, badges and so on. no need to be exhaustive here, it is only to give the user an idea. -->
     <string name="system_settings_notify_explain_ios">Ẓreg tawsit, ibaddaren, taskant d wayen-nniḍen</string>
@@ -1193,7 +1069,7 @@
     <string name="pref_reliable_service_explain">ad d-yeglu s telɣut timezgit</string>
 
     <string name="pref_background_notifications_rationale">Akken ad tḥerzeḍ tuqqna daɣen ad d-remseḍ iznan deg ugilal, zgel aseggem n udɣaɣ deg usurif ay d-itteddun.\n\nDelta Chat yesseqdac kra n teɣbula u yernu ur ttḥewwil ara akken ad yečč aṭas deg udɣaɣ-ik·im.</string>
-    <!-- disabling "Reliable service" will hide a the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
+    <!-- disabling "Reliable service" will hide the maybe annoying permanent-notification with the drawback that new-message-notifications get potentially unreliable -->
     <string name="perm_enable_bg_reminder_title">Sit dagi akken ad tremseḍ iznan ticki Delta Chat yella deg ugilal.</string>
     <string name="perm_enable_bg_already_done">Tsirgeḍ yakan Delta Chat i wakken ad d-remseḍ iznan deg ugilal.\n\nMa yella iznan ur d-ttawḍen ara deg ugilal, ttxil-k·m senqed daɣen iɣewwaṛen n unagraw.</string>
 
