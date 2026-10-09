@@ -27,7 +27,7 @@ import org.thoughtcrime.securesms.ConversationListRelayingActivity;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
-import org.thoughtcrime.securesms.video.recode.VideoRecoder;
+import org.thoughtcrime.securesms.video.VideoRecodeManager;
 
 public class SendRelayedMessageUtil {
 
@@ -99,22 +99,30 @@ public class SendRelayedMessageUtil {
     ArrayList<Uri> uris = sharedUris;
     String text = sharedText;
 
+    List<DcMsg> msgs = new ArrayList<>();
     if (uris.size() == 1) {
-      sendMsgRecodingVideo(context, chatId, createMessage(context, uris.get(0), text));
+      msgs.add(createMessage(context, uris.get(0), text));
     } else {
       if (text != null) {
-        sendMsgRecodingVideo(context, chatId, createMessage(context, null, text));
+        msgs.add(createMessage(context, null, text));
       }
       for (Uri uri : uris) {
-        sendMsgRecodingVideo(context, chatId, createMessage(context, uri, null));
+        msgs.add(createMessage(context, uri, null));
       }
+    }
+    for (DcMsg msg : msgs) {
+      sendMsgRecodingVideo(context, chatId, msg);
     }
   }
 
   private static void sendMsgRecodingVideo(Context context, int chatId, DcMsg msg) {
-    VideoRecoder videoRecoder = new VideoRecoder();
-    if (msg.getType() == DcMsg.DC_MSG_VIDEO && !videoRecoder.prepareVideo(context, chatId, msg)) {
-      return;
+    if (msg.getType() == DcMsg.DC_MSG_VIDEO) {
+      VideoRecodeManager manager = VideoRecodeManager.getInstance(context);
+      int accountId = DcHelper.getContext(context).getAccountId();
+      int jobId = manager.submitForSend(context, accountId, chatId, msg, false);
+      if (jobId != 0) {
+        return;
+      }
     }
     DcHelper.getContext(context).sendMsg(chatId, msg);
   }
