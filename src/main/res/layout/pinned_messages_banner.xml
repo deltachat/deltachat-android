@@ -61,13 +61,13 @@
 
     <ImageView
         android:id="@+id/pin_icon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="16dp"
         android:importantForAccessibility="no"
         android:src="@drawable/ic_pin_24"
-        android:tint="?icon_tint"
+        android:tint="@color/pinned_icon"
         android:visibility="visible" />
 
     <Button
