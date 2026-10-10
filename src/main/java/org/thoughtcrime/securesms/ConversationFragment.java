@@ -125,6 +125,7 @@ public class ConversationFragment extends MessageSelectorFragment {
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_DELIVERED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_FAILED, this);
     eventCenter.addObserver(DcContext.DC_EVENT_CHAT_MODIFIED, this);
+    eventCenter.addObserver(DcContext.DC_EVENT_PINNED_MESSAGES_CHANGED, this);
 
     markseenDebouncer = new Debouncer(800);
     reloadTimer = new Timer("reloadTimer", false);
@@ -606,7 +607,7 @@ public class ConversationFragment extends MessageSelectorFragment {
       if (msg.getType() == DcMsg.DC_MSG_TEXT || (singleMsg && !msg.getText().isEmpty())) {
         result.append(msg.getText());
       } else {
-        result.append(msg.getSummarytext(10000000));
+        result.append(msg.getSummaryText(true, true, 10000000));
       }
 
       prevMsg = msg;
@@ -1246,7 +1247,7 @@ public class ConversationFragment extends MessageSelectorFragment {
         if (event.getData1Int() == 0 // deleted messages or batch insert
             || event.getData1Int() == chatId) {
           reloadList();
-          loadPinnedMessages(false);
+          Util.runOnMain(() -> pinnedMessagesBanner.refresh(GlideApp.with(this)));
         }
         break;
 
@@ -1266,6 +1267,10 @@ public class ConversationFragment extends MessageSelectorFragment {
           updateLocationButton();
           reloadList(true);
         }
+        break;
+
+      case DcContext.DC_EVENT_PINNED_MESSAGES_CHANGED:
+        loadPinnedMessages(false);
         break;
     }
 

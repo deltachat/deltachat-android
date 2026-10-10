@@ -148,10 +148,6 @@ public class DcMsg {
     return new DcLot(getSummaryCPtr(chat.getChatCPtr()));
   }
 
-  public String getSummarytext(int approxChars) {
-    return getSummaryText(true, true, approxChars);
-  }
-
   public native String getSummaryText(boolean addForwarded, boolean addTypeEmoji, int approxChars);
 
   public native int showPadlock();

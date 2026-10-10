@@ -194,7 +194,8 @@ public class ConversationListItem extends RelativeLayout
     fromView.setText(recipient, true);
     setMutedState(false);
     subjectView.setVisibility(VISIBLE);
-    subjectView.setText(getHighlightedSpan(messageResult.getSummarytext(512), highlightSubstring));
+    subjectView.setText(
+        getHighlightedSpan(messageResult.getSummaryText(true, true, 512), highlightSubstring));
 
     long timestamp = messageResult.getTimestamp();
     if (timestamp > 0) {
