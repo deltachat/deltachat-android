@@ -6,7 +6,7 @@
     <item
         android:title="@string/pin_chat"
         android:id="@+id/menu_pin_selected"
-        android:icon="@drawable/ic_pin_white"
+        android:icon="@drawable/ic_pin_24"
         app:showAsAction="always" />
 
     <item

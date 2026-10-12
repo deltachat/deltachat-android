@@ -351,7 +351,7 @@ public class ConversationListItem extends RelativeLayout
     dateView.setCompoundDrawablesWithIntrinsicBounds(
         sendingLocations ? R.drawable.ic_location_chatlist : 0,
         0,
-        pinned ? R.drawable.ic_pinned_chatlist : 0,
+        pinned ? R.drawable.ic_pin_24 : 0,
         0);
 
     if (!pinned && !sendingLocations) {
