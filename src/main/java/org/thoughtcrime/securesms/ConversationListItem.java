@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -33,6 +34,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.b44t.messenger.DcChat;
 import com.b44t.messenger.DcContact;
@@ -348,11 +351,24 @@ public class ConversationListItem extends RelativeLayout
   }
 
   private void setContentState(boolean pinned, boolean sendingLocations) {
-    dateView.setCompoundDrawablesWithIntrinsicBounds(
-        sendingLocations ? R.drawable.ic_location_chatlist : 0,
-        0,
-        pinned ? R.drawable.ic_pin_24 : 0,
-        0);
+    Drawable leftDrawable = null;
+    Drawable rightDrawable = null;
+    int iconSize = (int) dateView.getTextSize();
+    if (sendingLocations) {
+      leftDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_location_chatlist);
+      if (leftDrawable != null) {
+        leftDrawable.setBounds(0, 0, iconSize, iconSize);
+      }
+    }
+    if (pinned) {
+      rightDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_pin_24);
+      if (rightDrawable != null) {
+        rightDrawable.setBounds(0, 0, iconSize, iconSize);
+        rightDrawable = DrawableCompat.wrap(rightDrawable.mutate());
+        DrawableCompat.setTint(rightDrawable, dateView.getCurrentTextColor());
+      }
+    }
+    dateView.setCompoundDrawables(leftDrawable, null, rightDrawable, null);
 
     if (!pinned && !sendingLocations) {
       dateView.setContentDescription(null);
