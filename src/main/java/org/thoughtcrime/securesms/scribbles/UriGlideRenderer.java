@@ -75,8 +75,11 @@ final class UriGlideRenderer implements Renderer {
         try {
           Bitmap bitmap = getBitmapGlideRequest(rendererContext.context, false).submit().get();
           setBitmap(rendererContext, bitmap);
-        } catch (ExecutionException | InterruptedException e) {
-          throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+          Thread.currentThread().interrupt();
+          throw new RuntimeException("Interrupted while loading " + imageUri, e);
+        } catch (ExecutionException e) {
+          throw new RuntimeException("Failed to load " + imageUri + " for export", e);
         }
       } else {
         getBitmapGlideRequest(rendererContext.context, true)
