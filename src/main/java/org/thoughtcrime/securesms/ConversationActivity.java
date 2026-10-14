@@ -2179,7 +2179,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     }
     dismissRecodeDialog();
     recodeDialog = new ProgressDialog(this);
-    recodeDialog.setMessage(getString(R.string.video_compressing)); // updated by render
+    recodeDialog.setMessage(getString(R.string.video_compressing));
     recodeDialog.setCancelable(false);
     recodeDialog.setCanceledOnTouchOutside(false);
     recodeDialog.setButton(
