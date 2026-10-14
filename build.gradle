@@ -217,8 +217,6 @@ dependencies {
 
     implementation 'androidx.work:work-runtime:2.10.5' // up. requires minSdkVersion>=23
     implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0' // up. requires minSdkVersion>=23
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // FIXME: exoplayer dependencies kept for Video, but we shall migrate them at some point
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation "androidx.media3:media3-exoplayer:$media3_version"
     implementation "androidx.media3:media3-session:$media3_version"
     implementation "androidx.media3:media3-ui:$media3_version"
