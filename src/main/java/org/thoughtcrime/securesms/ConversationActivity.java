@@ -2186,6 +2186,21 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
         DialogInterface.BUTTON_NEGATIVE,
         getString(R.string.cancel),
         (d, which) -> VideoRecodeManager.getInstance(context).cancelOperation());
+    recodeDialog
+        .getOnBackPressedDispatcher()
+        .addCallback(
+            new OnBackPressedCallback(true) {
+              @Override
+              public void handleOnBackPressed() {
+                if (VideoRecodeManager.getInstance(context).getState().phase
+                    == RecodeState.Phase.INGEST) {
+                  Toast.makeText(ConversationActivity.this, R.string.one_moment, Toast.LENGTH_SHORT)
+                      .show();
+                  return;
+                }
+                handleReturnToConversationList();
+              }
+            });
     recodeDialog.show();
   }
 
