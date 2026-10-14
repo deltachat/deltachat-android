@@ -46,6 +46,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -179,6 +180,29 @@ public class Util {
     out.close();
 
     return total;
+  }
+
+  /**
+   * Like copy(), but stops with an InterruptedIOException when the thread is interrupted. Partially
+   * written file is deleted
+   */
+  public static void copyCancellable(InputStream in, OutputStream out, String path)
+      throws IOException {
+    try (InputStream input = in;
+        OutputStream output = out) {
+      byte[] buffer = new byte[64 * 1024];
+      int read;
+      while ((read = input.read(buffer)) != -1) {
+        if (Thread.currentThread().isInterrupted()) {
+          throw new InterruptedIOException("Copy cancelled");
+        }
+        output.write(buffer, 0, read);
+      }
+    } catch (IOException e) {
+      //noinspection ResultOfMethodCallIgnored
+      new File(path).delete();
+      throw e;
+    }
   }
 
   public static boolean moveFile(String fromPath, String toPath) {

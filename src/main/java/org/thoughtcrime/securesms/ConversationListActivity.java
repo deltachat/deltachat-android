@@ -86,6 +86,7 @@ import org.thoughtcrime.securesms.util.ShareUtil;
 import org.thoughtcrime.securesms.util.StorageUtil;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
+import org.thoughtcrime.securesms.video.VideoRecodeManager;
 
 public class ConversationListActivity extends PassphraseRequiredActionBarActivity
     implements ConversationListFragment.ConversationSelectedListener {
@@ -445,6 +446,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     if (DcHelper.getContext(this).isSendingLocationsToChat(0)) {
       LocationStreamingService.ensureRunning(this);
     }
+    VideoRecodeManager.getInstance(this).cancelIfPending();
   }
 
   @Override
@@ -744,6 +746,7 @@ public class ConversationListActivity extends PassphraseRequiredActionBarActivit
     DcAccounts accounts = DcHelper.getAccounts(this);
     boolean selected = profileId == accounts.getSelectedAccount().getAccountId();
     DcHelper.getNotificationCenter(this).removeAllNotifications(profileId);
+    VideoRecodeManager.getInstance(this).cancelForAccount(profileId);
     accounts.removeAccount(profileId);
     if (selected) {
       DcContext selAcc = accounts.getSelectedAccount();

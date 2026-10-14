@@ -20,6 +20,9 @@ public class ProgressDialog extends AlertDialog {
   private String message;
   private TextView textView;
   private ProgressBar progressBar;
+  private ProgressBar progressBarHorizontal;
+  private int progress;
+  private int max = 100;
 
   public ProgressDialog(@NonNull Context context) {
     super(context);
@@ -59,6 +62,7 @@ public class ProgressDialog extends AlertDialog {
     }
 
     progressBar = findViewById(R.id.progressBar);
+    progressBarHorizontal = findViewById(R.id.progressBarHorizontal);
     textView = findViewById(R.id.text);
     setupProgressBar();
     setupTextView();
@@ -70,7 +74,15 @@ public class ProgressDialog extends AlertDialog {
           .getIndeterminateDrawable()
           .setColorFilter(
               ContextCompat.getColor(getContext(), R.color.delta_accent), PorterDuff.Mode.SRC_IN);
-      progressBar.setIndeterminate(indeterminate);
+      // the circular style is indeterminate-only, setIndeterminate() would be ignored;
+      progressBar.setVisibility(indeterminate ? View.VISIBLE : View.GONE);
+    }
+    if (progressBarHorizontal != null) {
+      progressBarHorizontal.setVisibility(indeterminate ? View.GONE : View.VISIBLE);
+      if (!indeterminate) {
+        progressBarHorizontal.setMax(max);
+        progressBarHorizontal.setProgress(progress);
+      }
     }
   }
 
@@ -84,6 +96,20 @@ public class ProgressDialog extends AlertDialog {
     this.indeterminate = indeterminate;
     if (progressBar != null) {
       progressBar.setIndeterminate(indeterminate);
+    }
+  }
+
+  public void setProgress(int progress) {
+    this.progress = progress;
+    if (progressBarHorizontal != null) {
+      progressBarHorizontal.setProgress(progress);
+    }
+  }
+
+  public void setMax(int max) {
+    this.max = max;
+    if (progressBarHorizontal != null) {
+      progressBarHorizontal.setMax(max);
     }
   }
 

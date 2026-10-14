@@ -6,9 +6,6 @@
 -keepattributes *Annotation*,EnclosingMethod,Signature
 -keepnames class com.fasterxml.jackson.** { *; }
 
-# bug with video recoder
--keep class com.coremedia.iso.** { *; }
-
 # unused SealedData constructor needed by JsonUtils
 -keep class org.thoughtcrime.securesms.crypto.KeyStoreHelper* { *; }
 
