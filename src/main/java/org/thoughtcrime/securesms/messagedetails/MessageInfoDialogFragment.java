@@ -71,7 +71,6 @@ public class MessageInfoDialogFragment extends DialogFragment
   private TextView receivedTimeView;
   private View readBySection;
   private TextView readByLabelView;
-  private TextView viewsRow;
   private RecyclerView receiptsList;
   private ReadReceiptsAdapter receiptsAdapter;
   private int msgId;
@@ -95,7 +94,6 @@ public class MessageInfoDialogFragment extends DialogFragment
     receivedTimeView = view.findViewById(R.id.message_info_received_time);
     readBySection = view.findViewById(R.id.message_info_read_by_section);
     readByLabelView = view.findViewById(R.id.message_info_read_by_label);
-    viewsRow = view.findViewById(R.id.message_info_views_row);
     receiptsList = view.findViewById(R.id.message_info_receipts);
 
     receiptsAdapter = new ReadReceiptsAdapter(GlideApp.with(this));
@@ -115,10 +113,6 @@ public class MessageInfoDialogFragment extends DialogFragment
         readByLabelView,
         R.drawable.ic_delivery_status_read,
         ContextCompat.getColor(requireActivity(), R.color.green_500));
-    setCompoundIcon(
-        viewsRow,
-        R.drawable.ic_baseline_eye,
-        MaterialColors.getColor(view, android.R.attr.textColorSecondary));
 
     DcEventCenter eventCenter = DcHelper.getEventCenter(requireContext());
     eventCenter.addObserver(DcContext.DC_EVENT_MSG_READ, this);
@@ -200,26 +194,19 @@ public class MessageInfoDialogFragment extends DialogFragment
             DateUtils.getAbsoluteDateTime(requireContext(), message.receivedTimestamp * 1000L));
       }
 
-      List<MessageReadReceipt> receipts;
+      List<MessageReadReceipt> receipts = Collections.emptyList();
+      boolean showReadBy = false;
       if (outgoing) {
-        receipts = rpc.getMessageReadReceipts(accId, msgId);
-        Collections.sort(receipts, (lhs, rhs) -> Long.compare(readTime(rhs), readTime(lhs)));
-      } else {
-        receipts = Collections.emptyList();
+        boolean isOutBroadcast =
+            message.chatId != null && dcContext.getChat(message.chatId).isOutBroadcast();
+        if (!isOutBroadcast) {
+          receipts = rpc.getMessageReadReceipts(accId, msgId);
+          Collections.sort(receipts, (lhs, rhs) -> Long.compare(readTime(rhs), readTime(lhs)));
+          showReadBy = !receipts.isEmpty();
+        }
       }
       receiptsAdapter.submitList(receipts);
-
-      boolean isOutBroadcast =
-          outgoing && message.chatId != null && dcContext.getChat(message.chatId).isOutBroadcast();
-      if (isOutBroadcast) {
-        // In channels, receipts is counter only; individual readers are not listed.
-        readBySection.setVisibility(View.GONE);
-        viewsRow.setVisibility(View.VISIBLE);
-        viewsRow.setText(String.valueOf(receipts.size()));
-      } else {
-        viewsRow.setVisibility(View.GONE);
-        readBySection.setVisibility(outgoing && !receipts.isEmpty() ? View.VISIBLE : View.GONE);
-      }
+      readBySection.setVisibility(showReadBy ? View.VISIBLE : View.GONE);
     } catch (RpcException e) {
       Log.i(TAG, "Message " + msgId + " no longer available: " + e);
       dismiss();

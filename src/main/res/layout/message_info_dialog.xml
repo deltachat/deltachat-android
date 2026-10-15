@@ -134,17 +134,6 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/message_info_views_row"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="6dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="16sp"
-                android:visibility="gone"
-                tools:text="128" />
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
