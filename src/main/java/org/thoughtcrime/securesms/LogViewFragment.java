@@ -175,7 +175,6 @@ public class LogViewFragment extends Fragment {
     @Override
     protected void onPreExecute() {
       super.onPreExecute();
-      if (getActivity() == null) return;
 
       progressDialog = new ProgressDialog(getActivity());
       progressDialog.setMessage(getString(R.string.one_moment));
