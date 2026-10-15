@@ -9,6 +9,7 @@
 * Re-add "second device added" message if deleted soon after transfer
 * Make Message Info more user-friendly to read
 * Show a waiting dialog when the log is still loading in "View Log" screen
+* Don't register app for mailto links handling
 * Fix: rotated videos are now displayed with correct aspect ratios
 * Fix: do not convert animated WebPs into static images
 * Update translations and local help

@@ -18,8 +18,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.qr.QrCodeHandler;
 
 public class LongClickCopySpan extends ClickableSpan {
-  private static final String PREFIX_MAILTO = "mailto:";
-  private static final String PREFIX_TEL = "tel:";
   private static final String PREFIX_CMD = "cmd:";
 
   private boolean isHighlighted;
@@ -47,40 +45,6 @@ public class LongClickCopySpan extends ClickableSpan {
         String cmd = url.substring(PREFIX_CMD.length());
         ConversationActivity activity = (ConversationActivity) widget.getContext();
         activity.setDraftText(cmd + " ");
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    } else if (url.startsWith(PREFIX_MAILTO)) {
-      try {
-        String addr = prepareUrl(url);
-        Activity activity = (Activity) widget.getContext();
-        DcContext dcContext = DcHelper.getContext(activity);
-
-        int contactId = dcContext.lookupContactIdByAddr(addr);
-        DcContact contact = (contactId != 0) ? dcContext.getContact(contactId) : null;
-        if (contact != null
-            && !contact.isBlocked()
-            && dcContext.getChatIdByContactId(contact.getId()) != 0) {
-          openChat(activity, contact);
-        } else if (contact == null
-            && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 1) {
-          DcHelper.showInvalidUnencryptedDialog(activity);
-        } else {
-          String name = contact != null ? contact.getDisplayName() : addr;
-          new AlertDialog.Builder(activity)
-              .setMessage(activity.getString(R.string.ask_start_chat_with, name))
-              .setPositiveButton(
-                  android.R.string.ok,
-                  (dialog, which) -> {
-                    openChat(
-                        activity,
-                        contact == null
-                            ? dcContext.getContact(dcContext.createContact(null, addr))
-                            : contact);
-                  })
-              .setNegativeButton(R.string.cancel, null)
-              .show();
-        }
       } catch (Exception e) {
         e.printStackTrace();
       }
@@ -134,6 +98,8 @@ public class LongClickCopySpan extends ClickableSpan {
   }
 
   private String prepareUrl(String url) {
+    final String PREFIX_TEL = "tel:";
+    final String PREFIX_MAILTO = "mailto:";
     if (url.startsWith(PREFIX_MAILTO)) {
       return url.substring(PREFIX_MAILTO.length());
     } else if (url.startsWith(PREFIX_TEL)) {

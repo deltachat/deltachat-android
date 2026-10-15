@@ -937,11 +937,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
 
   ///// Initializers
 
-  /**
-   * Drafts can be initialized by click on a mailto: link or from the database
-   *
-   * @return
-   */
   private ListenableFuture<Boolean> initializeDraft() {
     isEditing = false;
     final SettableFuture<Boolean> future = new SettableFuture<>();
