@@ -217,11 +217,11 @@ dependencies {
 
     implementation 'androidx.work:work-runtime:2.10.5' // up. requires minSdkVersion>=23
     implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0' // up. requires minSdkVersion>=23
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1' // FIXME: exoplayer dependencies kept for Video, but we shall migrate them at some point
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation "androidx.media3:media3-exoplayer:$media3_version"
     implementation "androidx.media3:media3-session:$media3_version"
     implementation "androidx.media3:media3-ui:$media3_version"
+    implementation "androidx.media3:media3-transformer:$media3_version"
+    implementation "androidx.media3:media3-effect:$media3_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
 
     // QR Code scanner
@@ -241,7 +241,6 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0' // crops the avatars to circles
     implementation 'com.github.amulyakhare:TextDrawable:558677ea316e60346948b381e5e274f49b00d370' // number of unread messages,
     // the one-letter circle for the contacts (when there is not avatar) and a white background.
-    implementation 'com.googlecode.mp4parser:isoparser:1.0.6' // MP4 recoding; upgrading eg. to 1.1.22 breaks recoding, however, i have not investigated further, just reset to 1.0.6
     implementation('com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0') {
         // for the zooming on photos / media
         exclude group: 'com.android.support', module: 'support-annotations'
