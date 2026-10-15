@@ -128,71 +128,6 @@ public class SharingTest {
     onView(withId(R.id.fab)).check(matches(isClickable()));
   }
 
-  /**
-   * Tests
-   * https://github.com/deltachat/interface/blob/master/user-testing/mailto-links.md#mailto-links:
-   *
-   * <ul dir="auto">
-   *   <li><a href="mailto:abc@example.org">Just an email address</a> - should open a chat with
-   *       <code>abc@example.org</code> (and maybe ask whether a chat should be created if it does
-   *       not exist already)
-   *   <li><a href="mailto:abc@example.org?subject=testing%20mailto%20uris">email address with
-   *       subject</a> - should open a chat with <code>abc@example.org</code> and fill <code>
-   *       testing mailto uris</code>; as we created the chat in the previous step, it should not
-   *       ask <code>Chat with …</code> but directly open the chat
-   *   <li><a href="mailto:abc@example.org?body=this%20is%20a%20test">email address with body</a> -
-   *       should open a chat with <code>abc@example.org</code>, draft <code>this is a test</code>
-   *   <li><a
-   *       href="mailto:abc@example.org?subject=testing%20mailto%20uris&amp;body=this%20is%20a%20test">email
-   *       address with subject and body</a> - should open a chat with <code>abc@example.org</code>,
-   *       draft <code>testing mailto uris</code> &lt;newline&gt; <code>this is a test</code>
-   *   <li><a href="mailto:%20info@example.org">HTML encoding</a> - should open a chat with <code>
-   *       info@example.org</code>
-   *   <li><a
-   *       href="mailto:simplebot@example.org?body=!web%20https%3A%2F%2Fduckduckgo.com%2Flite%3Fq%3Dduck%2520it">more
-   *       HTML encoding</a> - should open a chat with <code>simplebot@example.org</code>, draft
-   *       <code>!web https://duckduckgo.com/lite?q=duck%20it</code>
-   *   <li><a href="mailto:?subject=bla&amp;body=blub">no email, just subject&amp;body</a> - this
-   *       should let you choose a chat and create a draft <code>bla</code> &lt;newline&gt; <code>
-   *       blub</code> there
-   * </ul>
-   */
-  @Test
-  public void testShareFromLink() {
-    openLink("mailto:abc@example.org");
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-
-    openLink("mailto:abc@example.org?subject=testing%20mailto%20uris");
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-    onView(withHint(R.string.chat_input_placeholder))
-        .check(matches(withText("testing mailto uris")));
-
-    openLink("mailto:abc@example.org?body=this%20is%20a%20test");
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("this is a test")));
-
-    openLink("mailto:abc@example.org?subject=testing%20mailto%20uris&body=this%20is%20a%20test");
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-    onView(withHint(R.string.chat_input_placeholder))
-        .check(matches(withText("testing mailto uris\nthis is a test")));
-
-    openLink("mailto:%20abc@example.org");
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-
-    openLink(
-        "mailto:abc@example.org?body=!web%20https%3A%2F%2Fduckduckgo.com%2Flite%3Fq%3Dduck%2520it");
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-    onView(withHint(R.string.chat_input_placeholder))
-        .check(matches(withText("!web https://duckduckgo.com/lite?q=duck%20it")));
-
-    openLink("mailto:?subject=bla&body=blub");
-    onView(withId(R.id.list))
-        .perform(
-            RecyclerViewActions.actionOnItem(hasDescendant(withText("abc@example.org")), click()));
-    onView(withId(R.id.subtitle)).check(matches(withText("abc@example.org")));
-    onView(withHint(R.string.chat_input_placeholder)).check(matches(withText("bla\nblub")));
-  }
-
   private void openLink(String link) {
     Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
     i.setPackage(getInstrumentation().getTargetContext().getPackageName());
@@ -245,25 +180,6 @@ public class SharingTest {
     // Util.sleep(2000);  // Uncomment for debugging
     onView(withHint(R.string.chat_input_placeholder))
         .check(matches(withText("Veeery important draft")));
-  }
-
-  /**
-   * Regression test:
-   *
-   * <p>If you save your contacts's emails in the contacts app of the phone, there are buttons to
-   * call them and also to write an email to them.
-   *
-   * <p>If you click the email button, Delta Chat opened but instead of opening a chat with that
-   * contact, the chat list was show and "share with" was displayed at the top
-   */
-  @Test
-  public void testOpenChatFromContacts() {
-    Intent i = new Intent(Intent.ACTION_SENDTO);
-    i.setData(Uri.parse("mailto:bob%40example.org"));
-    i.setPackage(getInstrumentation().getTargetContext().getPackageName());
-    activityRule.getScenario().onActivity(a -> a.startActivity(i));
-
-    onView(withId(R.id.subtitle)).check(matches(withText("bob@example.org")));
   }
 
   @After

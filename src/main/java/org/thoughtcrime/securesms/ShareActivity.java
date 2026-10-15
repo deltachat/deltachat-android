@@ -36,7 +36,6 @@ import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.PartAuthority;
 import org.thoughtcrime.securesms.permissions.Permissions;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
-import org.thoughtcrime.securesms.util.MailtoUtil;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ShareUtil;
 
@@ -100,16 +99,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     resolvedExtras = new ArrayList<>();
 
     List<Uri> streamExtras = new ArrayList<>();
-    if (MailtoUtil.isMailto(getIntent().getData())) {
-      String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
-      if (extraEmail == null || extraEmail.length == 0) {
-        getIntent().putExtra(Intent.EXTRA_EMAIL, MailtoUtil.getRecipients(getIntent().getData()));
-      }
-      String text = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-      if (text == null || text.isEmpty()) {
-        getIntent().putExtra(Intent.EXTRA_TEXT, MailtoUtil.getText(getIntent().getData()));
-      }
-    }
 
     if (Intent.ACTION_SEND.equals(getIntent().getAction())
         && getIntent().getParcelableExtra(Intent.EXTRA_STREAM) != null) {
@@ -217,42 +206,6 @@ public class ShareActivity extends PassphraseRequiredActionBarActivity
     }
 
     String[] extraEmail = getIntent().getStringArrayExtra(Intent.EXTRA_EMAIL);
-    /*
-      usually, external app will try to start "e-mail sharing" intent, providing it:
-      1. address(s), packed in array, marked as Intent.EXTRA_EMAIL - mandatory
-      2. shared content (files, pics, video), packed in Intent.EXTRA_STREAM - optional
-
-      here is a sample code to trigger this routine from within external app:
-
-      try {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto", "someone@example.com", null));
-        File f = new File(getFilesDir() + "/somebinaryfile.bin");
-        f.createNewFile();
-        f.setReadable(true, false);
-        byte[] b = new byte[1024];
-        new Random().nextBytes(b);
-        FileOutputStream fOut = new FileOutputStream(f);
-        DataOutputStream dataStream = new DataOutputStream(fOut);
-        dataStream.write(b);
-        dataStream.close();
-
-        Uri sharedURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", f);
-        emailIntent.setAction(Intent.ACTION_SEND);
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"someone@example.com"});
-        emailIntent.setType("text/plain");
-        emailIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        emailIntent.putExtra(Intent.EXTRA_STREAM, sharedURI);
-
-        // to EXPLICITLY fire DC's sharing activity:
-        // emailIntent.setComponent(new ComponentName("com.b44t.messenger.beta", "org.thoughtcrime.securesms.ShareActivity"));
-
-        startActivity(emailIntent);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }catch (ActivityNotFoundException e) {
-      }
-    */
 
     if (chatId == -1 && extraEmail != null && extraEmail.length > 0) {
       final String addr = extraEmail[0];
