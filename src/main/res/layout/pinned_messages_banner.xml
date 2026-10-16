@@ -56,6 +56,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:minHeight="35dp"
+        android:alpha="0.8"
         style="@style/Signal.Text.Preview"
         tools:text="With great power comes great responsibility." />
 
