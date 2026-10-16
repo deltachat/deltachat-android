@@ -223,6 +223,7 @@ dependencies {
     implementation "androidx.media3:media3-transformer:$media3_version"
     implementation "androidx.media3:media3-effect:$media3_version"
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation "androidx.documentfile:documentfile:1.1.0"
 
     // QR Code scanner
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'

@@ -94,7 +94,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
     webView.setWebViewClient(
         new WebViewClient() {
-          // IMPORTANT: this is will likely not be called inside iframes unless target=_blank is
+          // IMPORTANT: this will likely not be called inside iframes unless target=_blank is
           // used in the anchor/link tag.
           // `shouldOverrideUrlLoading()` is called when the user clicks a URL,
           // returning `true` causes the WebView to abort loading the URL,
@@ -138,7 +138,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
           @Override
           public WebResourceResponse shouldInterceptRequest(
               WebView view, WebResourceRequest request) {
-            WebResourceResponse res = interceptRequest(request.getUrl().toString());
+            WebResourceResponse res = interceptRequest(request);
             if (res != null) {
               return res;
             }
@@ -375,5 +375,9 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebResourceResponse interceptRequest(String url) {
     return null;
+  }
+
+  protected WebResourceResponse interceptRequest(WebResourceRequest request) {
+    return interceptRequest(request.getUrl().toString());
   }
 }

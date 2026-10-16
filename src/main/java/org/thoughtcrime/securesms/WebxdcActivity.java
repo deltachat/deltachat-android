@@ -6,11 +6,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -18,16 +20,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.pm.ShortcutInfoCompat;
@@ -47,10 +54,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -62,6 +74,7 @@ import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.webxdc.WebxdcPermissions;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "WebxdcActivity";
@@ -70,7 +83,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String EXTRA_APP_MSG_ID = "appMessageId";
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final String EXTRA_HREF = "href";
-  private static final int REQUEST_CODE_FILE_PICKER = 51426;
+  private static final String SHARED_FILES_PREFIX = "/__webxdc_shared__/";
+
+  private final ActivityResultLauncher<Intent> filePickerLauncher =
+      registerForActivityResult(
+          new ActivityResultContracts.StartActivityForResult(), this::onFilePickerResult);
+  private final ActivityResultLauncher<Uri> folderPickerLauncher =
+      registerForActivityResult(
+          new ActivityResultContracts.OpenDocumentTree(), this::onFolderPicked);
 
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
@@ -86,6 +106,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private int sendUpdateInterval;
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
+  private String appName = "";
+  private boolean sensorsAllowed = false;
+  private final ArrayDeque<PermissionRequest> permissionRequestQueue = new ArrayDeque<>();
+  private PermissionRequest currentPermissionRequest;
+  private GeolocationPermissions.Callback pendingGeoCallback;
+  private String pendingGeoOrigin;
+  private AlertDialog permissionDialog;
 
   private TextToSpeech tts;
 
@@ -190,7 +217,6 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webView.setWebChromeClient(
         new WebChromeClient() {
           @Override
-          @RequiresApi(21)
           public boolean onShowFileChooser(
               WebView webView,
               ValueCallback<Uri[]> filePathCallback,
@@ -205,9 +231,30 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
             intent.putExtra(
                 Intent.EXTRA_ALLOW_MULTIPLE,
                 fileChooserParams.getMode() == FileChooserParams.MODE_OPEN_MULTIPLE);
-            WebxdcActivity.this.startActivityForResult(
-                Intent.createChooser(intent, getString(R.string.select)), REQUEST_CODE_FILE_PICKER);
+            WebxdcActivity.this.filePickerLauncher.launch(
+                Intent.createChooser(intent, getString(R.string.select)));
             return true;
+          }
+
+          @Override
+          public void onPermissionRequest(PermissionRequest request) {
+            WebxdcActivity.this.onWebPermissionRequest(request);
+          }
+
+          @Override
+          public void onPermissionRequestCanceled(PermissionRequest request) {
+            WebxdcActivity.this.onWebPermissionRequestCanceled(request);
+          }
+
+          @Override
+          public void onGeolocationPermissionsShowPrompt(
+              String origin, GeolocationPermissions.Callback callback) {
+            WebxdcActivity.this.onGeolocationShowPrompt(origin, callback);
+          }
+
+          @Override
+          public void onGeolocationPermissionsHidePrompt() {
+            WebxdcActivity.this.onGeolocationHidePrompt();
           }
         });
 
@@ -252,6 +299,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       isBroadcast = info.isBroadcast;
       sendUpdateMaxSize = info.sendUpdateMaxSize;
       sendUpdateInterval = info.sendUpdateInterval;
+      appName = info.name;
+      sensorsAllowed =
+          WebxdcPermissions.get(
+                  this, accountId, appMessageId, WebxdcPermissions.Capability.MOTION_SENSORS)
+              == WebxdcPermissions.State.ALLOWED;
     } catch (RpcException e) { // unexpected error, log it and finish
       Log.e(TAG, "RPC Error", e);
       finish();
@@ -313,6 +365,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     Util.runOnAnyBackgroundThread(
         () -> {
+          WebxdcPermissions.pruneStaleOnce(getApplicationContext(), rpc);
           final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
           Util.runOnMain(
               () -> {
@@ -337,6 +390,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
+    dismissPermissionDialog();
+    for (PermissionRequest request : permissionRequestQueue) {
+      request.deny();
+    }
+    permissionRequestQueue.clear();
+    currentPermissionRequest = null;
+    answerGeoCallback(false);
     leaveRealtimeChannel();
     tts.shutdown();
     super.onDestroy();
@@ -368,6 +428,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return true;
     } else if (itemId == R.id.show_in_chat) {
       showInChat();
+      return true;
+    } else if (itemId == R.id.webxdc_reset_permissions) {
+      WebxdcPermissions.clear(this, dcContext.getAccountId(), dcAppMsg.getId());
+      sensorsAllowed = false;
+      Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT).show();
+      webView.reload();
       return true;
     }
     return false;
@@ -487,8 +553,17 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
+    Map<String, String> headers = createHeaders();
+    if (!headers.isEmpty()) {
+      res.setResponseHeaders(headers);
+    }
+    return res;
+  }
+
+  @NonNull
+  private Map<String, String> createHeaders() {
+    Map<String, String> headers = new HashMap<>();
     if (!internetAccess) {
-      Map<String, String> headers = new HashMap<>();
       headers.put(
           "Content-Security-Policy",
           "default-src 'self'; "
@@ -500,9 +575,620 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               + "media-src 'self' data: blob: ;"
               + "webrtc 'block' ; ");
       headers.put("X-DNS-Prefetch-Control", "off");
-      res.setResponseHeaders(headers);
     }
-    return res;
+    if (!sensorsAllowed) {
+      headers.put(
+          "Permissions-Policy",
+          "accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=()");
+    }
+    return headers;
+  }
+
+  @Override
+  protected WebResourceResponse interceptRequest(WebResourceRequest request) {
+    String path = Uri.parse(request.getUrl().toString()).getPath();
+    if (path != null && path.startsWith(SHARED_FILES_PREFIX)) {
+      return serveSharedFile(path, request.getRequestHeaders());
+    }
+    return super.interceptRequest(request);
+  }
+
+  private void dismissPermissionDialog() {
+    if (permissionDialog != null) {
+      permissionDialog.dismiss();
+      permissionDialog = null;
+    }
+  }
+
+  private void showPermissionDialog(
+      int messageRes, Runnable onAllow, Runnable onBlock, Runnable onCancel) {
+    permissionDialog =
+        new AlertDialog.Builder(this)
+            .setMessage(getString(messageRes, appName))
+            .setPositiveButton(R.string.allow, (dialog, which) -> onAllow.run())
+            .setNegativeButton(R.string.block, (dialog, which) -> onBlock.run())
+            .setOnCancelListener(dialog -> onCancel.run())
+            .show();
+  }
+
+  private boolean isAppOrigin(String origin) {
+    if (origin == null) {
+      return false;
+    }
+    String normalized = origin.endsWith("/") ? origin.substring(0, origin.length() - 1) : origin;
+    return baseURL.equals(normalized);
+  }
+
+  private void onWebPermissionRequest(PermissionRequest request) {
+    permissionRequestQueue.add(request);
+    if (currentPermissionRequest == null) {
+      processNextPermissionRequest();
+    }
+  }
+
+  private void onWebPermissionRequestCanceled(PermissionRequest request) {
+    if (currentPermissionRequest == request) {
+      dismissPermissionDialog();
+      finishCurrentPermissionRequest();
+    } else {
+      permissionRequestQueue.remove(request);
+    }
+  }
+
+  private void finishCurrentPermissionRequest() {
+    permissionRequestQueue.poll();
+    currentPermissionRequest = null;
+    if (!permissionRequestQueue.isEmpty()) {
+      processNextPermissionRequest();
+    }
+  }
+
+  private void processNextPermissionRequest() {
+    final PermissionRequest request = permissionRequestQueue.peek();
+    currentPermissionRequest = request;
+    if (request == null) {
+      return;
+    }
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+
+    Uri origin = request.getOrigin();
+    if (!isAppOrigin(origin == null ? null : origin.toString())) {
+      Log.w(TAG, "Denying permission request from unexpected origin: " + origin);
+      request.deny();
+      finishCurrentPermissionRequest();
+      return;
+    }
+
+    boolean wantsAudio = false;
+    boolean wantsVideo = false;
+    for (String resource : request.getResources()) {
+      if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource)) {
+        wantsAudio = true;
+      } else if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resource)) {
+        wantsVideo = true;
+      } else {
+        // DRM, MIDI, WebXR, etc. are denied by default
+        Log.w(TAG, "Denying unsupported permission resource: " + resource);
+        request.deny();
+        finishCurrentPermissionRequest();
+        return;
+      }
+    }
+
+    final boolean audio = wantsAudio;
+    final boolean video = wantsVideo;
+    WebxdcPermissions.State micState =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE);
+    WebxdcPermissions.State camState =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.CAMERA);
+    boolean micDenied = audio && micState == WebxdcPermissions.State.DENIED;
+    boolean camDenied = video && camState == WebxdcPermissions.State.DENIED;
+    if (micDenied || camDenied) {
+      request.deny();
+      finishCurrentPermissionRequest();
+      return;
+    }
+    boolean micOk = !audio || micState == WebxdcPermissions.State.ALLOWED;
+    boolean camOk = !video || camState == WebxdcPermissions.State.ALLOWED;
+    if (micOk && camOk) {
+      grantCaptureRequest(request, audio, video);
+      return;
+    }
+
+    int messageRes;
+    if (audio && video) {
+      messageRes = R.string.webxdc_perm_ask_camera_microphone;
+    } else if (audio) {
+      messageRes = R.string.webxdc_perm_ask_microphone;
+    } else {
+      messageRes = R.string.webxdc_perm_ask_camera;
+    }
+    showPermissionDialog(
+        messageRes,
+        () -> {
+          if (audio) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.MICROPHONE,
+                WebxdcPermissions.State.ALLOWED);
+          }
+          if (video) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.CAMERA,
+                WebxdcPermissions.State.ALLOWED);
+          }
+          grantCaptureRequest(request, audio, video);
+        },
+        () -> {
+          if (audio) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.MICROPHONE,
+                WebxdcPermissions.State.DENIED);
+          }
+          if (video) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.CAMERA,
+                WebxdcPermissions.State.DENIED);
+          }
+          request.deny();
+          finishCurrentPermissionRequest();
+        },
+        () -> {
+          request.deny();
+          finishCurrentPermissionRequest();
+        });
+  }
+
+  private void grantCaptureRequest(
+      final PermissionRequest request, final boolean audio, final boolean video) {
+    List<String> permissions = new ArrayList<>();
+    if (audio) {
+      permissions.add(Manifest.permission.RECORD_AUDIO);
+    }
+    if (video) {
+      permissions.add(Manifest.permission.CAMERA);
+    }
+    Permissions.with(this)
+        .request(permissions.toArray(new String[0]))
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
+        .onAnyResult(
+            () -> {
+              if (isFinishing() || isDestroyed()) {
+                request.deny();
+                finishCurrentPermissionRequest();
+                return;
+              }
+              int accountId = dcContext.getAccountId();
+              int msgId = dcAppMsg.getId();
+              List<String> granted = new ArrayList<>();
+              if (audio) {
+                if (Permissions.hasAll(this, Manifest.permission.RECORD_AUDIO)) {
+                  granted.add(PermissionRequest.RESOURCE_AUDIO_CAPTURE);
+                } else {
+                  WebxdcPermissions.set(
+                      this,
+                      accountId,
+                      msgId,
+                      WebxdcPermissions.Capability.MICROPHONE,
+                      WebxdcPermissions.State.ASK);
+                }
+              }
+              if (video) {
+                if (Permissions.hasAll(this, Manifest.permission.CAMERA)) {
+                  granted.add(PermissionRequest.RESOURCE_VIDEO_CAPTURE);
+                } else {
+                  WebxdcPermissions.set(
+                      this,
+                      accountId,
+                      msgId,
+                      WebxdcPermissions.Capability.CAMERA,
+                      WebxdcPermissions.State.ASK);
+                }
+              }
+              if (granted.isEmpty()) {
+                request.deny();
+              } else {
+                request.grant(granted.toArray(new String[0]));
+              }
+              finishCurrentPermissionRequest();
+            })
+        .execute();
+  }
+
+  private void onGeolocationShowPrompt(
+      final String origin, final GeolocationPermissions.Callback callback) {
+    if (!isAppOrigin(origin)) {
+      callback.invoke(origin, false, false);
+      return;
+    }
+    if (pendingGeoCallback != null) {
+      callback.invoke(origin, false, false);
+      return;
+    }
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    WebxdcPermissions.State state =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.LOCATION);
+    if (state == WebxdcPermissions.State.DENIED) {
+      callback.invoke(origin, false, false);
+      return;
+    }
+    if (state == WebxdcPermissions.State.ALLOWED) {
+      requestLocationPermission(origin, callback);
+      return;
+    }
+    pendingGeoCallback = callback;
+    pendingGeoOrigin = origin;
+    showPermissionDialog(
+        R.string.webxdc_perm_ask_location,
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.LOCATION,
+              WebxdcPermissions.State.ALLOWED);
+          requestLocationPermission(origin, callback);
+        },
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.LOCATION,
+              WebxdcPermissions.State.DENIED);
+          answerGeoCallback(false);
+        },
+        () -> answerGeoCallback(false));
+  }
+
+  private void requestLocationPermission(
+      final String origin, final GeolocationPermissions.Callback callback) {
+    pendingGeoCallback = callback;
+    pendingGeoOrigin = origin;
+    Permissions.with(this)
+        .request(
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
+        .onAnyResult(
+            () -> {
+              boolean granted =
+                  Permissions.hasAny(
+                      this,
+                      Manifest.permission.ACCESS_FINE_LOCATION,
+                      Manifest.permission.ACCESS_COARSE_LOCATION);
+              if (!granted) {
+                WebxdcPermissions.set(
+                    this,
+                    dcContext.getAccountId(),
+                    dcAppMsg.getId(),
+                    WebxdcPermissions.Capability.LOCATION,
+                    WebxdcPermissions.State.ASK);
+              }
+              answerGeoCallback(granted);
+            })
+        .execute();
+  }
+
+  private void answerGeoCallback(boolean granted) {
+    if (pendingGeoCallback != null) {
+      pendingGeoCallback.invoke(pendingGeoOrigin, granted, false);
+      pendingGeoCallback = null;
+      pendingGeoOrigin = null;
+    }
+  }
+
+  private void onGeolocationHidePrompt() {
+    dismissPermissionDialog();
+    answerGeoCallback(false);
+  }
+
+  private void onSensorPermissionRequested() {
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    WebxdcPermissions.State state =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MOTION_SENSORS);
+    if (state == WebxdcPermissions.State.ALLOWED) {
+      sensorsAllowed = true;
+      callJavaScriptFunction("__webxdcSensorPermission(true)");
+      return;
+    }
+    if (state == WebxdcPermissions.State.DENIED) {
+      callJavaScriptFunction("__webxdcSensorPermission(false)");
+      return;
+    }
+    showPermissionDialog(
+        R.string.webxdc_perm_ask_sensors,
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.MOTION_SENSORS,
+              WebxdcPermissions.State.ALLOWED);
+          sensorsAllowed = true;
+          callJavaScriptFunction("__webxdcSensorPermission(true)");
+        },
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.MOTION_SENSORS,
+              WebxdcPermissions.State.DENIED);
+          callJavaScriptFunction("__webxdcSensorPermission(false)");
+        },
+        () -> callJavaScriptFunction("__webxdcSensorPermission(false)"));
+  }
+
+  private void onFolderAccessRequested() {
+    if (isFinishing() || isDestroyed()) {
+      folderResult(-1, "");
+      return;
+    }
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    final List<WebxdcPermissions.FolderGrant> own =
+        WebxdcPermissions.getFolders(this, accountId, msgId);
+    final List<WebxdcPermissions.FolderGrant> reusable =
+        WebxdcPermissions.getReusableFolders(this, accountId, msgId);
+    if (own.isEmpty() && reusable.isEmpty()) {
+      permissionDialog =
+          new AlertDialog.Builder(this)
+              .setMessage(getString(R.string.webxdc_perm_ask_folder, appName))
+              .setPositiveButton(R.string.choose_folder, (dialog, which) -> launchFolderPicker())
+              .setNegativeButton(R.string.cancel, (dialog, which) -> folderResult(-1, ""))
+              .setOnCancelListener(dialog -> folderResult(-1, ""))
+              .show();
+      return;
+    }
+    final int ownCount = own.size();
+    final String[] names = new String[ownCount + reusable.size() + 1];
+    for (int i = 0; i < ownCount; i++) {
+      names[i] = own.get(i).name;
+    }
+    for (int i = 0; i < reusable.size(); i++) {
+      names[ownCount + i] = reusable.get(i).name;
+    }
+    names[names.length - 1] = getString(R.string.choose_folder);
+    permissionDialog =
+        new AlertDialog.Builder(this)
+            .setTitle(getString(R.string.webxdc_perm_ask_folder, appName))
+            .setItems(
+                names,
+                (dialog, which) -> {
+                  if (which < ownCount) {
+                    folderResult(which, own.get(which).name);
+                  } else if (which < ownCount + reusable.size()) {
+                    WebxdcPermissions.FolderGrant grant = reusable.get(which - ownCount);
+                    int index =
+                        WebxdcPermissions.addFolder(
+                            this, accountId, msgId, grant.treeUri, grant.name);
+                    if (index >= 0) {
+                      folderResult(index, grant.name);
+                    } else {
+                      folderResult(-1, "");
+                    }
+                  } else {
+                    launchFolderPicker();
+                  }
+                })
+            .setOnCancelListener(dialog -> folderResult(-1, ""))
+            .show();
+  }
+
+  private void launchFolderPicker() {
+    try {
+      folderPickerLauncher.launch(null);
+    } catch (Exception e) {
+      Log.w(TAG, "Cannot open folder picker", e);
+      folderResult(-1, "");
+    }
+  }
+
+  private void folderResult(int index, String name) {
+    callJavaScriptFunction("__webxdcFolderResult(" + index + ", " + JSONObject.quote(name) + ")");
+  }
+
+  private void listSharedDir(Uri treeUri, String parentDocId, String prefix, JSONArray out) {
+    Uri childrenUri = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, parentDocId);
+    try (Cursor c =
+        getContentResolver()
+            .query(
+                childrenUri,
+                new String[] {
+                  DocumentsContract.Document.COLUMN_DISPLAY_NAME,
+                  DocumentsContract.Document.COLUMN_MIME_TYPE,
+                  DocumentsContract.Document.COLUMN_SIZE,
+                  DocumentsContract.Document.COLUMN_LAST_MODIFIED
+                },
+                null,
+                null,
+                null)) {
+      if (c == null) {
+        return;
+      }
+      while (c.moveToNext()) {
+        String name = c.getString(0);
+        if (name == null) {
+          continue;
+        }
+        boolean isDirectory = DocumentsContract.Document.MIME_TYPE_DIR.equals(c.getString(1));
+        try {
+          JSONObject entry = new JSONObject();
+          entry.put("name", name);
+          entry.put("path", prefix.isEmpty() ? name : prefix + "/" + name);
+          entry.put("isDirectory", isDirectory);
+          if (!isDirectory) {
+            entry.put("size", c.isNull(2) ? 0 : c.getLong(2));
+            entry.put("lastModified", c.isNull(3) ? 0 : c.getLong(3));
+          }
+          out.put(entry);
+        } catch (JSONException ignored) {
+        }
+      }
+    } catch (Exception e) {
+      Log.d(TAG, "Cannot list shared dir: " + e.getMessage());
+    }
+  }
+
+  private WebResourceResponse serveSharedFile(String path, Map<String, String> requestHeaders) {
+    try {
+      String rest = path.substring(SHARED_FILES_PREFIX.length());
+      int slash = rest.indexOf('/');
+      int index = Integer.parseInt(slash < 0 ? rest : rest.substring(0, slash));
+      String relPath = slash < 0 ? "" : rest.substring(slash + 1);
+
+      List<WebxdcPermissions.FolderGrant> folders =
+          WebxdcPermissions.getFolders(this, dcContext.getAccountId(), dcAppMsg.getId());
+      WebxdcPermissions.FolderGrant grant = folders.get(index);
+      Uri treeUri = Uri.parse(grant.treeUri);
+      String docId = DocumentsContract.getTreeDocumentId(treeUri);
+      for (String segment : relPath.split("/")) {
+        if (segment.isEmpty() || segment.equals(".")) {
+          throw new Exception("invalid path");
+        }
+        docId = findChildDocId(treeUri, docId, segment);
+        if (docId == null) {
+          throw new Exception("not found: " + relPath);
+        }
+      }
+      Uri docUri = DocumentsContract.buildDocumentUriUsingTree(treeUri, docId);
+      long size = -1;
+      String docMime = null;
+      try (Cursor c =
+          getContentResolver()
+              .query(
+                  docUri,
+                  new String[] {
+                    DocumentsContract.Document.COLUMN_MIME_TYPE,
+                    DocumentsContract.Document.COLUMN_SIZE
+                  },
+                  null,
+                  null,
+                  null)) {
+        if (c != null && c.moveToFirst()) {
+          docMime = c.getString(0);
+          if (!c.isNull(1)) {
+            size = c.getLong(1);
+          }
+        }
+      }
+      if (DocumentsContract.Document.MIME_TYPE_DIR.equals(docMime)) {
+        throw new Exception("not a file: " + relPath);
+      }
+
+      String ext = MediaUtil.getFileExtensionFromUrl(path);
+      String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+      if (mimeType == null) {
+        mimeType = docMime != null ? docMime : "application/octet-stream";
+      }
+      InputStream stream = getContentResolver().openInputStream(docUri);
+
+      Map<String, String> headers = new HashMap<>();
+      headers.put("Accept-Ranges", "bytes");
+      WebResourceResponse res = new WebResourceResponse(mimeType, null, stream);
+      Long[] range = requestHeaders == null ? null : parseRangeHeader(requestHeaders, size);
+      if (range != null) {
+        skipFully(stream, range[0]);
+        headers.put("Content-Range", "bytes " + range[0] + "-" + range[1] + "/" + size);
+        headers.put("Content-Length", String.valueOf(range[1] - range[0] + 1));
+        res.setStatusCodeAndReasonPhrase(206, "Partial Content");
+      } else if (size >= 0) {
+        headers.put("Content-Length", String.valueOf(size));
+      }
+      res.setResponseHeaders(headers);
+      return res;
+    } catch (Exception e) {
+      e.printStackTrace();
+      InputStream stream =
+          new ByteArrayInputStream(("Webxdc Shared File Error: " + e.getMessage()).getBytes());
+      return new WebResourceResponse("text/plain", "UTF-8", stream);
+    }
+  }
+
+  private String findChildDocId(Uri treeUri, String parentDocId, String name) {
+    Uri childrenUri = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, parentDocId);
+    try (Cursor c =
+        getContentResolver()
+            .query(
+                childrenUri,
+                new String[] {
+                  DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+                  DocumentsContract.Document.COLUMN_DISPLAY_NAME
+                },
+                null,
+                null,
+                null)) {
+      if (c == null) {
+        return null;
+      }
+      while (c.moveToNext()) {
+        if (name.equals(c.getString(1))) {
+          return c.getString(0);
+        }
+      }
+    }
+    return null;
+  }
+
+  private static Long[] parseRangeHeader(Map<String, String> headers, long size) {
+    String range = null;
+    for (Map.Entry<String, String> entry : headers.entrySet()) {
+      if ("range".equalsIgnoreCase(entry.getKey())) {
+        range = entry.getValue();
+        break;
+      }
+    }
+    if (range == null || !range.startsWith("bytes=") || size <= 0) {
+      return null;
+    }
+    try {
+      String[] parts = range.substring("bytes=".length()).split("-", 2);
+      long start;
+      long end;
+      if (parts[0].isEmpty()) {
+        start = Math.max(0, size - Long.parseLong(parts[1]));
+        end = size - 1;
+      } else {
+        start = Long.parseLong(parts[0]);
+        end = parts.length < 2 || parts[1].isEmpty() ? size - 1 : Long.parseLong(parts[1]);
+      }
+      if (start > end || start >= size) {
+        return null;
+      }
+      return new Long[] {start, Math.min(end, size - 1)};
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  private static void skipFully(InputStream stream, long bytes) throws IOException {
+    long remaining = bytes;
+    while (remaining > 0) {
+      long skipped = stream.skip(remaining);
+      if (skipped <= 0) {
+        if (stream.read() == -1) {
+          throw new IOException("unexpected EOF while skipping");
+        }
+        skipped = 1;
+      }
+      remaining -= skipped;
+    }
   }
 
   private void callJavaScriptFunction(String func) {
@@ -543,6 +1229,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     } else if ((eventId == DcContext.DC_EVENT_MSG_DELETED
             && event.getData2Int() == dcAppMsg.getId())
         || (eventId == DcContext.DC_EVENT_CHAT_DELETED && event.getData1Int() == chatId)) {
+      WebxdcPermissions.clear(this, dcContext.getAccountId(), dcAppMsg.getId());
       finish();
     }
   }
@@ -623,29 +1310,72 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
   }
 
-  @Override
-  public void onActivityResult(int reqCode, int resultCode, final Intent data) {
-    if (reqCode == REQUEST_CODE_FILE_PICKER && filePathCallback != null) {
-      Uri[] dataUris = null;
-      if (resultCode == Activity.RESULT_OK && data != null) {
-        try {
-          if (data.getDataString() != null) {
-            dataUris = new Uri[] {Uri.parse(data.getDataString())};
-          } else if (data.getClipData() != null) {
-            final int numSelectedFiles = data.getClipData().getItemCount();
-            dataUris = new Uri[numSelectedFiles];
-            for (int i = 0; i < numSelectedFiles; i++) {
-              dataUris[i] = data.getClipData().getItemAt(i).getUri();
-            }
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-      filePathCallback.onReceiveValue(dataUris);
-      filePathCallback = null;
+  private void onFilePickerResult(ActivityResult result) {
+    if (filePathCallback == null) {
+      return;
     }
-    super.onActivityResult(reqCode, resultCode, data);
+    Uri[] dataUris = null;
+    Intent data = result.getData();
+    if (result.getResultCode() == Activity.RESULT_OK && data != null) {
+      try {
+        if (data.getDataString() != null) {
+          dataUris = new Uri[] {Uri.parse(data.getDataString())};
+        } else if (data.getClipData() != null) {
+          final int numSelectedFiles = data.getClipData().getItemCount();
+          dataUris = new Uri[numSelectedFiles];
+          for (int i = 0; i < numSelectedFiles; i++) {
+            dataUris[i] = data.getClipData().getItemAt(i).getUri();
+          }
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    filePathCallback.onReceiveValue(dataUris);
+    filePathCallback = null;
+  }
+
+  private void onFolderPicked(Uri treeUri) {
+    if (treeUri == null) {
+      folderResult(-1, "");
+      return;
+    }
+    try {
+      getContentResolver()
+          .takePersistableUriPermission(treeUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+      String name = getTreeName(treeUri);
+      int index =
+          WebxdcPermissions.addFolder(
+              this, dcContext.getAccountId(), dcAppMsg.getId(), treeUri.toString(), name);
+      if (index >= 0) {
+        folderResult(index, name);
+      } else {
+        folderResult(-1, "");
+      }
+    } catch (Exception e) {
+      Log.d(TAG, "Cannot add folder permission", e);
+      folderResult(-1, "");
+    }
+  }
+
+  private String getTreeName(Uri treeUri) {
+    String name = treeUri.getLastPathSegment();
+    try (Cursor c =
+        getContentResolver()
+            .query(
+                DocumentsContract.buildDocumentUriUsingTree(
+                    treeUri, DocumentsContract.getTreeDocumentId(treeUri)),
+                new String[] {DocumentsContract.Document.COLUMN_DISPLAY_NAME},
+                null,
+                null,
+                null)) {
+      if (c != null && c.moveToFirst() && !c.isNull(0)) {
+        name = c.getString(0);
+      }
+    } catch (Exception e) {
+      Log.d(TAG, "Failed to get tree name");
+    }
+    return name;
   }
 
   private void leaveRealtimeChannel() {
@@ -843,6 +1573,55 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     public void ttsSpeak(String text, String lang) {
       if (lang != null && !lang.isEmpty()) tts.setLanguage(Locale.forLanguageTag(lang));
       tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+
+    @JavascriptInterface
+    public String getSensorPermissionState() {
+      return WebxdcPermissions.get(
+              WebxdcActivity.this,
+              WebxdcActivity.this.dcContext.getAccountId(),
+              WebxdcActivity.this.dcAppMsg.getId(),
+              WebxdcPermissions.Capability.MOTION_SENSORS)
+          .name()
+          .toLowerCase(Locale.US);
+    }
+
+    @JavascriptInterface
+    public void requestSensorPermission() {
+      Util.runOnMain(WebxdcActivity.this::onSensorPermissionRequested);
+    }
+
+    @JavascriptInterface
+    public void requestFolderAccess() {
+      Util.runOnMain(WebxdcActivity.this::onFolderAccessRequested);
+    }
+
+    @JavascriptInterface
+    public String listSharedDir(int index, String path) {
+      JSONArray result = new JSONArray();
+      List<WebxdcPermissions.FolderGrant> folders =
+          WebxdcPermissions.getFolders(
+              WebxdcActivity.this,
+              WebxdcActivity.this.dcContext.getAccountId(),
+              WebxdcActivity.this.dcAppMsg.getId());
+      if (index < 0 || index >= folders.size()) {
+        return result.toString();
+      }
+      Uri treeUri = Uri.parse(folders.get(index).treeUri);
+      String docId = DocumentsContract.getTreeDocumentId(treeUri);
+      if (path != null && !path.isEmpty()) {
+        for (String segment : path.split("/")) {
+          if (segment.isEmpty() || segment.equals(".")) {
+            return result.toString();
+          }
+          docId = WebxdcActivity.this.findChildDocId(treeUri, docId, segment);
+          if (docId == null) {
+            return result.toString();
+          }
+        }
+      }
+      WebxdcActivity.this.listSharedDir(treeUri, docId, path == null ? "" : path, result);
+      return result.toString();
     }
 
     @JavascriptInterface

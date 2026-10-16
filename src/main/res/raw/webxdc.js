@@ -15,6 +15,157 @@ window.webxdc = (() => {
     };
   };
 
+  // Motion sensor permission prompt.
+  if (InternalJSApi.getSensorPermissionState() === "ask") {
+    let sensorPermissionResolver = null;
+    let sensorAskPending = false;
+    const askSensorPermission = () => {
+      if (!sensorAskPending) {
+        sensorAskPending = true;
+        InternalJSApi.requestSensorPermission();
+      }
+    };
+    const SENSOR_EVENTS = ["deviceorientation", "devicemotion", "deviceorientationabsolute"];
+    const origAddEventListener = EventTarget.prototype.addEventListener;
+    EventTarget.prototype.addEventListener = function (type, ...args) {
+      if (SENSOR_EVENTS.includes(type)) {
+        askSensorPermission();
+      }
+      return origAddEventListener.call(this, type, ...args);
+    };
+    for (const property of ["ondeviceorientation", "ondevicemotion", "ondeviceorientationabsolute"]) {
+      let handler = null;
+      Object.defineProperty(window, property, {
+        get: () => handler,
+        set: (h) => {
+          askSensorPermission();
+          handler = h;
+        },
+        configurable: true,
+      });
+    }
+    window.__webxdcSensorPermission = (granted) => {
+      sensorAskPending = false;
+      if (sensorPermissionResolver) {
+        sensorPermissionResolver(granted ? "granted" : "denied");
+        sensorPermissionResolver = null;
+      }
+      if (granted) {
+        location.reload();
+      }
+    };
+    const requestSensorPermission = () =>
+      new Promise((resolve) => {
+        sensorPermissionResolver = resolve;
+        askSensorPermission();
+      });
+    if (window.DeviceOrientationEvent && !DeviceOrientationEvent.requestPermission) {
+      DeviceOrientationEvent.requestPermission = requestSensorPermission;
+    }
+    if (window.DeviceMotionEvent && !DeviceMotionEvent.requestPermission) {
+      DeviceMotionEvent.requestPermission = requestSensorPermission;
+    }
+  }
+
+  // File System Access API subset with permission grants. Polyfilled. Read-only.
+  // File handles additionally carry a non-standard `url` for streaming:
+  // getFile() loads the whole file into memory, audio or images shall use `url`.
+  let folderAccessResolver = null;
+  window.__webxdcFolderResult = (index, name) => {
+    if (folderAccessResolver) {
+      folderAccessResolver(index < 0 ? null : { index: index, name: name });
+      folderAccessResolver = null;
+    }
+  };
+
+  const fileAccessDenied = (message) => new DOMException(message, "NotAllowedError");
+
+  const sharedFileUrl = (index, path) =>
+    "/__webxdc_shared__/" + index + "/" + path.split("/").map(encodeURIComponent).join("/");
+
+  const makeFileHandle = (index, path, name, lastModified) => {
+    const url = sharedFileUrl(index, path);
+    return {
+      kind: "file",
+      name: name,
+      url: url,
+      getFile: async () => {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new DOMException("File not found", "NotFoundError");
+        }
+        return new File([await response.blob()], name, { lastModified: lastModified });
+      },
+      createWritable: async () => {
+        throw fileAccessDenied("Read-only");
+      },
+      queryPermission: () => "granted",
+      requestPermission: () => "granted",
+    };
+  };
+
+  const makeDirectoryHandle = (index, path, name) => {
+    const handle = {
+      kind: "directory",
+      name: name,
+      values: async function* () {
+        const entries = JSON.parse(InternalJSApi.listSharedDir(index, path));
+        for (const entry of entries) {
+          yield entry.isDirectory
+            ? makeDirectoryHandle(index, entry.path, entry.name)
+            : makeFileHandle(index, entry.path, entry.name, entry.lastModified);
+        }
+      },
+      getDirectoryHandle: async (dirName, options = {}) => {
+        if (options.create) {
+          throw fileAccessDenied("Read-only");
+        }
+        for await (const child of handle.values()) {
+          if (child.kind === "directory" && child.name === dirName) {
+            return child;
+          }
+        }
+        throw new DOMException("Directory not found", "NotFoundError");
+      },
+      getFileHandle: async (fileName, options = {}) => {
+        if (options.create) {
+          throw fileAccessDenied("Read-only");
+        }
+        for await (const child of handle.values()) {
+          if (child.kind === "file" && child.name === fileName) {
+            return child;
+          }
+        }
+        throw new DOMException("file not found", "NotFoundError");
+      },
+      removeEntry: async () => {
+        throw fileAccessDenied("Read-only");
+      },
+      queryPermission: () => "granted",
+      requestPermission: () => "granted",
+    };
+    return handle;
+  };
+
+  window.showDirectoryPicker = (options = {}) => {
+    if (options.mode === "readwrite") {
+      return Promise.reject(fileAccessDenied("Read-only"));
+    }
+    if (folderAccessResolver) {
+      return Promise.reject(new DOMException("Picker is already open", "AbortError"));
+    }
+    return new Promise((resolve, reject) => {
+      folderAccessResolver = (folder) => {
+        if (folder) {
+          resolve(makeDirectoryHandle(folder.index, "", folder.name));
+        } else {
+          reject(new DOMException("the user aborted a request", "AbortError"));
+        }
+      };
+      InternalJSApi.requestFolderAccess();
+    });
+  };
+
   let setUpdateListenerPromise = null;
   let update_listener = () => {};
   let last_serial = 0;
