@@ -227,7 +227,7 @@ public class MessageInfoDialogFragment extends DialogFragment
 
   private void showDeveloperMenu(View anchor) {
     PopupMenu popup = new PopupMenu(anchor.getContext(), anchor);
-    popup.getMenu().add(R.string.global_menu_view_developer_tools_desktop);
+    popup.getMenu().add(R.string.global_menu_view_developer_desktop);
     popup.setOnMenuItemClickListener(
         item -> {
           showDeveloperView();
