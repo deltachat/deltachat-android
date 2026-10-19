@@ -318,7 +318,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(!internetAccess);
     webSettings.setAllowContentAccess(false);
-    webSettings.setGeolocationEnabled(false);
+    webSettings.setGeolocationEnabled(true);
     webSettings.setAllowFileAccessFromFileURLs(false);
     webSettings.setAllowUniversalAccessFromFileURLs(false);
     webSettings.setDatabaseEnabled(true);
@@ -811,6 +811,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private void onGeolocationShowPrompt(
       final String origin, final GeolocationPermissions.Callback callback) {
     if (!isAppOrigin(origin)) {
+      Log.w(TAG, "Denying geolocation request from unknown origin: " + origin);
       callback.invoke(origin, false, false);
       return;
     }
@@ -859,6 +860,15 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       final String origin, final GeolocationPermissions.Callback callback) {
     pendingGeoCallback = callback;
     pendingGeoOrigin = origin;
+
+    if (Permissions.hasAny(
+        this,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+      answerGeoCallback(true);
+      return;
+    }
+
     Permissions.with(this)
         .request(
             Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -886,9 +896,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   private void answerGeoCallback(boolean granted) {
     if (pendingGeoCallback != null) {
-      pendingGeoCallback.invoke(pendingGeoOrigin, granted, false);
+      final GeolocationPermissions.Callback callback = pendingGeoCallback;
+      final String origin = pendingGeoOrigin;
       pendingGeoCallback = null;
       pendingGeoOrigin = null;
+      // Needs to defer, synchronized call is too fast in pre-granted case
+      webView.post(() -> callback.invoke(origin, granted, false));
     }
   }
 
