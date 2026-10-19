@@ -272,7 +272,10 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
             });
 
     setDcEventListener();
-    handleRelaying();
+    if (state == null) {
+      // Handle relaying only the first time, skipping on activity recreation
+      handleRelaying();
+    }
   }
 
   private void setDcEventListener() {
