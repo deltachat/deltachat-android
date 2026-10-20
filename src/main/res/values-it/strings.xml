@@ -241,7 +241,9 @@
     <string name="locations">Posizioni</string>
     <string name="gallery">Galleria</string>
     <string name="images_and_videos">Immagini e Video</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">File</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">File</string>
     <string name="files_attach_hint">Manda file originali e immagini non compresse</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
@@ -391,15 +393,17 @@
     <string name="device_talk_welcome_message2">Mettiti in contatto!\n\n🙌 Tocca \"Codice QR\" sulla schermata principale di entrambi i dispositivi. Scegli \"Scansiona codice QR\" su un dispositivo e puntalo verso l\'altro\n\n🌍 Se non siete nella stessa stanza, esegui la scansione tramite videochiamata o condividi un collegamento di invito da \"Scansiona codice QR\"\n\nQuindi: goditi la ​​tua esperienza di messaggistica sulla più grande rete decentralizzata mai esistita: l\'E-mail. E a differenza di altre app popolari, senza controllo centrale né monitoraggio o vendita dei tuoi dati, ne dei tuoi amici, colleghi o familiari a grandi organizzazioni.</string>
     <string name="edit_contact">Modifica Contatto</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
-    <string name="pin_chat">Fissa in alto</string>
+    <string name="pin_chat">Fissa Chat</string>
     <!-- Opposite of "Pin chat", removing the sticky-state from a chat. -->
-    <string name="unpin_chat">Non fissare</string>
+    <string name="unpin_chat">Sblocca Chat</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
-    <string name="pin">Blocca</string>
+    <string name="pin">Fissa</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Fissato</string>
+    <string name="pin_for_everyone">Fissa per Tutti</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Sblocca</string>
+    <string name="unpin_for_everyone">Sblocca per Tutti</string>
     <string name="message_pinned_by_you">Hai fissato un messaggio</string>
     <string name="message_pinned_by_other">Messaggio fissato da %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Messaggio originale non trovato</string>
@@ -764,6 +768,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Inviare %1$d file a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Invia %1$d file(s) a %2$d chat?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Preparazione contenuti multimediali…</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Compressione video…</string>
+    <string name="video_recode_busy">Un altro video è ancora in fase di elaborazione, si prega di attendere.</string>
     <string name="share_text_multiple_chats">Invia questo testo a %1$d chat?\n\n\"%2$s\"</string>
     <string name="share_abort">Condivisione annullata per permessi mancanti.</string>
 
@@ -1102,6 +1111,7 @@
 
     <string name="welcome_desktop">Benvenuto in Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Lingua</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">File</string>
     <string name="global_menu_file_quit_desktop">Esci</string>
     <string name="global_menu_edit_desktop">Modifica</string>

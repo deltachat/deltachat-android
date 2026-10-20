@@ -179,7 +179,9 @@
     <string name="locations">Helyek</string>
     <string name="gallery">Galéria</string>
     <string name="images_and_videos">Képek és videók</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Fájl</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Fájlok</string>
     <string name="files_attach_hint">Eredeti fájlok és tömörítetlen képek küldése</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
@@ -901,6 +903,7 @@
 
     <string name="welcome_desktop">Üdvözöljük a Delta Chatben!</string>
     <string name="global_menu_preferences_language_desktop">Válasszon nyelvet…</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Fájl</string>
     <string name="global_menu_file_quit_desktop">Kilépés</string>
     <string name="global_menu_edit_desktop">Szerkesztés</string>

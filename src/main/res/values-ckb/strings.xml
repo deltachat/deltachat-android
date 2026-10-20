@@ -114,7 +114,9 @@
     <string name="location">شوێن</string>
     <string name="gallery">پیشانگا</string>
     <string name="images_and_videos">وێنە و ڤیدیۆکان</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">پەڕگە</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">پەڕگەکان</string>
     <string name="unknown">نەناسراو</string>
     <string name="green">سەوز</string>
@@ -445,6 +447,7 @@
     <string name="perm_explain_access_to_location_denied">بۆ لکاندنی شوێنێک، بچۆ بەشی ڕێکخستنەکانی نەرمامێرەکە، لە بەشی \"ڕێگەپێدان\"دا، \"شوێن\" چالاک بکەوە.</string>
     <string name="welcome_desktop">بەخێر بێن بۆ دێڵتا چات</string>
     <string name="global_menu_preferences_language_desktop">زمان</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">پەڕگە</string>
     <string name="global_menu_file_quit_desktop">چوونەدەرەوە</string>
     <string name="global_menu_edit_desktop">دەستکاری کردن</string>

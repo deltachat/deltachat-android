@@ -229,7 +229,9 @@
     <string name="locations">Locaties</string>
     <string name="gallery">Galerij</string>
     <string name="images_and_videos">Foto\'s en video\'s</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Bestand</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Bestanden</string>
     <string name="files_attach_hint">Bestanden en foto\'s in oorspronkelijke kwaliteit versturen</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
@@ -1081,6 +1083,7 @@
 
     <string name="welcome_desktop">Welkom bij Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Taal</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Bestand</string>
     <string name="global_menu_file_quit_desktop">Afsluiten</string>
     <string name="global_menu_edit_desktop">Bewerken</string>

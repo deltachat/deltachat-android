@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">What are profiles? How can I switch between them?</a></li>
       <li><a href="#who-sees-my-profile-picture">Who sees my profile picture?</a></li>
       <li><a href="#signature">Can I set a Bio/Status with Delta Chat?</a></li>
-      <li><a href="#what-do-pinning-muting-and-archiving-mean">What do Pinning, Muting and Archiving mean?</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">How do “Saved Messages” work?</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#what-does-the-green-dot-mean">What does the green dot mean?</a></li>
       <li><a href="#what-do-the-ticks-shown-beside-outgoing-messages-mean">What do the ticks shown beside outgoing messages mean?</a></li>
       <li><a href="#edit">Correct typos and delete messages after sending</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#which-standards-are-used-for-end-to-end-encryption">Which standards are used for end-to-end encryption?</a></li>
       <li><a href="#whene2e">How can I know if messages are end-to-end encrypted?</a></li>
       <li><a href="#can-i-still-receive-or-send-messages-without-end-to-end-encryption">Can I still receive or send messages without end-to-end encryption?</a></li>
-      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#are-attachments-pictures-files-audio-etc-end-to-end-encrypted">Are attachments (pictures, files, audio etc.) end-to-end encrypted?</a></li>
       <li><a href="#openpgp-secure">Is OpenPGP secure?</a></li>
       <li><a href="#openpgp-alternatives">Did you consider using alternatives to OpenPGP for end-to-end-encryption?</a></li>
@@ -281,10 +281,10 @@ you can do so under <strong>Settings → Profile → Bio</strong>.
 Once you sent a message to a contact,
 they will see it when they view your contact details.</p>
     
-      <h3 id="what-do-pinning-muting-and-archiving-mean">
+      <h3 id="pin-chats">
         
         
-          What do Pinning, Muting and Archiving mean? <a href="#what-do-pinning-muting-and-archiving-mean" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -345,6 +345,41 @@ you can go back to the original message in the original chat</p>
 
 <p>Messages stay saved even if they are edited or deleted -
 may it be by <a href="#edit">sender</a>, by <a href="#delold">device cleanup</a> or by <a href="#ephemeralmsgs">disappearing messages of other chats</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="what-does-the-green-dot-mean">
         
@@ -908,7 +943,7 @@ to get started.</p>
   </li>
   <li>
     <p>If you have question, you can ask others with experience
-in the <a href="https://support.delta.chat/c/webxdc/20">Delta Chat Forum</a>.</p>
+in the <a href="https://forum.delta.chat/c/webxdc/20">Forum</a>.</p>
   </li>
 </ul>
     
@@ -1181,7 +1216,7 @@ it to the other device somehow.</p>
   <li>
     <p>On the new device, select <strong>I Already Have a Profile → Restore from Backup</strong>.
 If you use iOS and encounter difficulties,
-<a href="https://support.delta.chat/t/import-backup-to-ios/1628">this guide</a> might help you.</p>
+<a href="https://forum.delta.chat/t/import-backup-to-ios/1628">this guide</a> might help you.</p>
   </li>
 </ul>
 
@@ -1229,7 +1264,7 @@ you can try out features we are working on.</p>
 <p>The features may be <strong>unstable</strong> and may be <strong>changed or removed</strong>.</p>
 
 <p>You can find more information
-and give feedback in the <a href="https://support.delta.chat">Forum</a>.</p>
+and give feedback in the <a href="https://forum.delta.chat">Forum</a>.</p>
     
       <h3 id="relays">
         
@@ -1444,32 +1479,6 @@ it is impossible to receive or send messages without end-to-end encryption.</p>
 you can send and receive messages with or without end-to-end encryption.
 Messages lacking end-to-end encryption are marked with an email icon
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Older Delta Chat versions showed a green checkmark
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line in some contact profiles.</p>
-
-<p>This line is no longer present.
-Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
-contacts are identified by their cryptographic key (“public key”),
-and there is never any possibility for the relay operator
-to exchange a key in order to execute a man-in-the-middle (MitM) attack
-(in fact, the operator does not even see the key at any point).</p>
-
-<p>It is still possible for an attacker to give you an invite link
-that impersonates someone else, and an attacker who has your Delta Chat contact
-(because they are in a group chat with you)
-could try to start a chat with you under a wrong name.
-These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
-and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="are-attachments-pictures-files-audio-etc-end-to-end-encrypted">
         
@@ -1781,7 +1790,7 @@ or read the <a href="https://delta.chat/assets/blog/MER-01-report.pdf">full repo
   </li>
   <li>
     <p>2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
+Chat’s Rust <a href="https://github.com/chatmail/core/">core</a>,
 <a href="https://github.com/async-email/async-imap">IMAP</a>,
 <a href="https://github.com/async-email/async-smtp">SMTP</a>, and
 <a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.

@@ -13,7 +13,7 @@
 * Fix: rotated videos are now displayed with correct aspect ratios
 * Fix: do not convert animated WebPs into static images
 * Update translations and local help
-* Update to core 2.63.0
+* Update to core 2.64.0
 
 ## v2.62.0
 2026-09

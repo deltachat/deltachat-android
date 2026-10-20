@@ -229,7 +229,9 @@
     <string name="locations">Asukohad</string>
     <string name="gallery">Galerii</string>
     <string name="images_and_videos">Pildid ja videod</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Fail</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Failid</string>
     <string name="files_attach_hint">Saada faile algsetena ja pilte pakkimata</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
@@ -385,8 +387,10 @@
     <string name="pin">Tõste esile</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Esiletõstetud</string>
+    <string name="pin_for_everyone">Tõsta esile kõigi jaoks</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Lõpeta esiletõstmine</string>
+    <string name="unpin_for_everyone">Lõpeta esiletõstmine kõigi jaoks</string>
     <string name="message_pinned_by_you">Sina tõstsid sõnumi esile</string>
     <string name="message_pinned_by_other">%1$s tõstis sõnumi esile</string>
     <string name="ConversationFragment_quoted_message_not_found">Algset sõnumit ei leidu</string>
@@ -743,6 +747,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Kas saadad %1$d faili „%2$s“ vestlusesse?</string>
     <string name="ask_send_files_to_selected_chats">Kas saadad %1$d faili „%2$d“ vestlusesse?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Valmistan meediumi ette…</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Pakin videot kokku…</string>
+    <string name="video_recode_busy">Üks teine video on veel töötlemisel, palun oota hetke.</string>
     <string name="share_text_multiple_chats">Kas saadad selle teksti %1$d vestlusesse?\n\n„%2$s“</string>
     <string name="share_abort">Puuduvate õiguste tõttu on jagamine katkestatud.</string>
 
@@ -1081,6 +1090,7 @@
 
     <string name="welcome_desktop">Tere tulemast, see on Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Keel</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Fail</string>
     <string name="global_menu_file_quit_desktop">Välju</string>
     <string name="global_menu_edit_desktop">Muuda</string>

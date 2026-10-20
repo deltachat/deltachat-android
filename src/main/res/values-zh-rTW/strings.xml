@@ -180,7 +180,9 @@
     <string name="locations">地點</string>
     <string name="gallery">相簿</string>
     <string name="images_and_videos">圖片和影片</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">檔案</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">檔案</string>
     <string name="files_attach_hint">傳送原始檔和未壓縮的圖像</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
@@ -951,6 +953,7 @@
 
     <string name="welcome_desktop">歡迎來到 Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">語言</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">檔案</string>
     <string name="global_menu_file_quit_desktop">退出</string>
     <string name="global_menu_edit_desktop">編輯</string>
