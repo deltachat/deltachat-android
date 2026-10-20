@@ -597,9 +597,7 @@
 
     <string name="welcome_chat_over_email">အီးမေးလ်မှတစ်ဆင့် ချတ်လုပ်ပါ</string>
     <string name="scan_invitation_code">ဖိတ်ကြားချက်ကုဒ်ကို စကင်ဖတ်ပါ</string>
-    <string name="login_advanced_hint">ဤလော့ဂ်အင်သည် အဆင့်မြင့်
-အသုံးပြုသူများအတွက်ဖြစ်သည်။\n\nအခြားအက်ပ်တွင် 
-သင်အသုံးပြုနေသောလိပ်စာကို မသုံးပါနှင့်။</string>
+    <string name="login_advanced_hint">ဤလော့ဂ်အင်သည် အဆင့်မြင့် အသုံးပြုသူများအတွက်ဖြစ်သည်။\n\nအခြားအက်ပ်တွင် သင်အသုံးပြုနေသောလိပ်စာကို မသုံးပါနှင့်။</string>
     <string name="login_inbox">ဝင်စာ</string>
     <string name="login_imap_login">IMAP လော့ဂ်အင်</string>
     <string name="login_imap_server">IMAP ဆာဗာ</string>

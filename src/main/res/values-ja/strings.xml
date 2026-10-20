@@ -124,7 +124,9 @@
     <string name="location">場所</string>
     <string name="gallery">画像</string>
     <string name="images_and_videos">画像・映像</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">ファイル</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">ファイル</string>
     <string name="unknown">不明</string>
     <string name="green">緑</string>
@@ -539,6 +541,7 @@
 
     <string name="welcome_desktop">Delta Chatにようこそ</string>
     <string name="global_menu_preferences_language_desktop">言語を選択して下さい</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">ファイル</string>
     <string name="global_menu_file_quit_desktop">終了</string>
     <string name="global_menu_edit_desktop">編集</string>

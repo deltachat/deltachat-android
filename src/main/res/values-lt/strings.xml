@@ -199,7 +199,9 @@
     <string name="locations">Vietovės</string>
     <string name="gallery">Galerija</string>
     <string name="images_and_videos">Paveikslai ir vaizdo įrašai</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Failas</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Failai</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Privati programėlė</string>
@@ -406,7 +408,7 @@
         <item quantity="other">Ištrinti %d pokalbį?</item>
     </plurals>
     <string name="ask_delete_named_chat">Ištrinti pokalbį „%1$s“?</string>
-    <string name="ask_delete_message">Ištrinti šią žinutę visuose jūsų įrenginiuose?</string>
+    <string name="ask_delete_message">Ištrinti šią žinutę?</string>
     <plurals name="ask_delete_messages">
         <item quantity="one">Ištrinti %d žinutę visuose jūsų įrenginiuose?</item>
         <item quantity="few">Ištrinti %d žinutes visuose jūsų įrenginiuose?</item>
@@ -415,7 +417,7 @@
     </plurals>
     <string name="ask_export_attachment">Eksportuoti priedą? Priedų eksportavimas leis bet kurioms kitoms programėlėms jūsų įrenginyje turėti prieigą prie šių priedų.\n\nTęsti?</string>
     <string name="ask_block_contact">Užblokuoti šį adresatą? Jūs daugiau nebegausite žinučių nuo šio adresato.</string>
-    <string name="ask_unblock_contact">Atblokuoti šį adresatą? Jūs ir vėl galėsite gauti žinutes nuo šio adresato.</string>
+    <string name="ask_unblock_contact">Atblokuoti šį adresatą?</string>
     <string name="ask_start_chat_with">Pradėti pokalbį su %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Pašalinti %1$s iš grupės?</string>
@@ -463,7 +465,7 @@
     <string name="chat_request_label">Užklausa</string>
     <string name="chat_no_messages">Žinučių nėra.</string>
     <string name="chat_self_talk_subtitle">Žinutės, kurias siunčiu asmeniškai sau</string>
-    <string name="archive_empty_hint">Jei archyvuosite pokalbius, jie bus rodomi čia.</string>
+    <string name="archive_empty_hint">Čia bus rodomi archyvuoti pokalbiai.</string>
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Įrašyti</string>
     <string name="saved_messages">Įrašytos žinutės</string>
@@ -508,11 +510,14 @@
     <string name="tab_gallery">Galerija</string>
     <string name="tab_links">Nuorodos</string>
     <string name="tab_map">Žemėlapis</string>
-    <string name="tab_gallery_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami paveikslai ir vaizdo įrašai.</string>
-    <string name="tab_docs_empty_hint">Čia bus rodomi šiame pokalbyje bendrinami dokumentai, muzika ir kiti failai.</string>
-    <string name="tab_image_empty_hint">Čia bus rodomi šiame pokalbyje bendrinti paveikslai.</string>
-    <string name="tab_audio_empty_hint">Čia bus rodomi šiame pokalbyje bendrinti garso įrašų failai ir balso žinutės.</string>
-    <string name="tab_all_media_empty_hint">Čia bus rodoma bet kuriame pokalbyje bendrinama medija.</string>
+    <string name="tab_gallery_empty_hint">Čia bus rodomi į šį pokalbį pridėti paveikslai ir vaizdo įrašai.</string>
+    <string name="tab_docs_empty_hint">Čia bus rodomi į šį pokalbį pridėti dokumentai ir kiti failai.</string>
+    <string name="tab_image_empty_hint">Čia bus rodomi į šį pokalbį pridėti paveikslai.</string>
+    <string name="tab_audio_empty_hint">Čia bus rodomi į šį pokalbį pridėti garso įrašo failai ir balso žinutės.</string>
+    <string name="tab_webxdc_empty_hint">Čia bus rodomos į šį pokalbį pridėtos programėlės.</string>
+    <string name="tab_all_media_empty_hint">Čia bus rodoma į bet kurį pokalbį pridėta medija.</string>
+    <string name="all_files_empty_hint">Čia bus rodomi į bet kurį pokalbį pridėti dokumentai ir kiti failai.</string>
+    <string name="all_apps_empty_hint">Čia bus rodomos į bet kurį pokalbį pridėtos programėlės.</string>
     <string name="media_preview">Medijos peržiūra</string>
     <string name="send_message">Siųsti žinutę</string>
 
@@ -534,7 +539,7 @@
     <string name="multidevice_abort_will_invalidate_copied_qr">Tai padarys į iškarpinę nukopijuotą QR kodą negaliojantį.</string>
     <string name="multidevice_transfer_done_devicemsg">ℹ️ Profilis perduotas į jūsų antrąjį įrenginį.</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="preparing_account">Ruošiama paskyra…</string>
+    <string name="preparing_account">Ruošiamas profilis…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Perduodama…</string>
     <string name="troubleshooting">Nesklandumų šalinimas</string>
@@ -575,7 +580,7 @@
     <string name="instant_onboarding_show_more_instances">Naudoti kitą serverį</string>
     <string name="instant_onboarding_other_server">Išvardyti retransliavimo serverius</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
-    <string name="instant_onboarding_group_info">Sukurti profilį, kad būtų prisijungta prie grupės „%1$s“.</string>
+    <string name="instant_onboarding_group_info">Sukurti profilį, kad būtų prisijungta prie „%1$s“.</string>
     <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
     <string name="instant_onboarding_contact_info">Sukurti profilį, kad būtų pradėtas pokalbis su %1$s.</string>
     <!-- Question shown when another user's QR code is scanned from onboarding screen -->
@@ -632,8 +637,8 @@
     <string name="import_backup_no_backup_found">Nerasta jokių atsarginių kopijų.\n\nNukopijuokite atsarginę kopiją į \"%1$s\" ir bandykite dar kartą.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Priimti negaliojančius liudijimus</string>
-    <string name="switch_account">Perjungti paskyrą</string>
-    <string name="add_account">Pridėti paskyrą</string>
+    <string name="switch_account">Perjungti profilį</string>
+    <string name="add_account">Pridėti profilį</string>
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Profilio etiketė</string>
     <string name="profile_tag_hint">pvz., Darbas, Šeima</string>
@@ -641,10 +646,10 @@
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Perkelti į viršų</string>
     <string name="delete_account">Ištrinti profilį</string>
-    <string name="delete_account_ask">Ar tikrai norite ištrinti savo paskyros duomenis?</string>
+    <string name="delete_account_ask">Ar tikrai norite ištrinti savo profilio duomenis?</string>
     <string name="delete_account_explain_with_name">Visi „%s“ paskyros duomenys šiame įrenginyje bus ištrinti, įskaitant jūsų ištisinio šifravimo sąranką, adresatus, pokalbius, žinutes ir mediją. Šį veiksmą nebeįmanoma bus atšaukti.</string>
-    <string name="unconfigured_account">Nesukonfigūruota paskyra</string>
-    <string name="unconfigured_account_hint">Atverkite paskyrą norėdami ją konfigūruoti.</string>
+    <string name="unconfigured_account">Nesukonfigūruotas profilis</string>
+    <string name="unconfigured_account_hint">Atverkite profilį norėdami jį konfigūruoti.</string>
     <string name="try_connect_now">Bandyti prisijungti dabar</string>
     <string name="sync_all">Sinchronizuoti visas</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -659,7 +664,7 @@
     <string name="pref_profile_info_headline">Jūsų profilis</string>
     <string name="pref_profile_photo">Profilio nuotrauka</string>
     <string name="pref_blocked_contacts">Užblokuoti adresatai</string>
-    <string name="blocked_empty_hint">Jei užblokuosite adresatus, jie bus rodomi čia.</string>
+    <string name="blocked_empty_hint">Čia bus rodomi užblokuoti adresatai.</string>
     <string name="pref_who_can_see_profile_explain">Bendraujant su kitais naudotojais, jūsų profilio paveikslas ir vardas bus rodomi kartu su jūsų žinutėmis. Jau išsiųsta informacija negalės būti ištrinta ar pašalinta.</string>
     <string name="pref_your_name">Jūsų vardas</string>
     <!-- Label of the Bio/Signature/Status/Motto field -->
@@ -716,7 +721,7 @@
     <string name="pref_backup_export_explain">Atsarginė kopija padeda jums nusistatyti naują diegimą šiame ar kitame įrenginyje.\n\nAtsarginėje kopijoje bus visos žinutės, adresatai ir pokalbiai bei jūsų ištisinio perdavimo „Autocrypt“ sąranka. Atsarginės kopijos failą laikykite saugioje vietoje arba kaip įmanoma greičiau jį ištrinkite.</string>
     <string name="pref_backup_export_this">Eksportuoti šį profilį</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">Eksportuoti visas %1$d paskyras</string>
+    <string name="pref_backup_export_all">Eksportuoti visus %1$d profilius</string>
     <string name="pref_backup_export_start_button">Pradėti daryti atsarginę kopiją</string>
     <string name="pref_backup_written_to_x">Atsarginė kopija sėkmingai įrašyta į %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
@@ -736,8 +741,6 @@
     <string name="pref_background_custom_color">Tinkinta spalva</string>
     <string name="export_aborted">Eksportavimas nutrauktas.</string>
     <string name="auto_download_messages">Automatinis žinučių atsiuntimas</string>
-    <!-- "All" as an option for "Auto-Download Messages", meaning that "all messages will be downloaded" -->
-    <string name="all">Iš visų</string>
     <!-- %1$s will be replaced by a human-readable number of bytes, eg. 32 KiB, 1 MiB -->
     <string name="up_to_x">Iki %1$s</string>
     <string name="up_to_x_most_worse_quality_images">Iki %1$s, iš esmės, blogos kokybės paveikslus</string>
@@ -936,7 +939,8 @@
     <string name="ImageEditorHud_rotate">Pasukti</string>
 
     <string name="welcome_desktop">Sveiki atvykę į Delta Chat</string>
-    <string name="global_menu_preferences_language_desktop">Pasirinkti kalbą...</string>
+    <string name="global_menu_preferences_language_desktop">Kalba</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Failas</string>
     <string name="global_menu_file_quit_desktop">Išjungti</string>
     <string name="global_menu_edit_desktop">Taisyti</string>
@@ -956,6 +960,7 @@
     <string name="global_menu_help_about_desktop">Apie Delta Chat</string>
     <string name="global_menu_file_open_desktop">Atverti Delta Chat</string>
     <string name="global_menu_minimize_to_tray">Suskleisti</string>
+    <string name="no_account_selected">Pasirinkite arba susikurkite naują profilį</string>
     <string name="no_chat_selected_suggestion_desktop">Pasirinkite arba sukurkite naują pokalbį</string>
     <string name="write_message_desktop">Rašykite žinutę</string>
     <string name="encryption_info_title_desktop">Šifravimo informacija</string>
@@ -970,7 +975,7 @@
     <string name="message_detail_sent_desktop">Išsiųsta</string>
     <string name="message_detail_received_desktop">Gauta</string>
     <string name="menu.view.developer.open.log.folder">Atverti žurnalų aplanką</string>
-    <string name="menu.view.developer.open.current.log.file">Atverti dabartinio žurnalo failą</string>
+    <string name="menu.view.developer.open.current.log.file">Atverti dabartinį žurnalo failą</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Dėklo piktograma negali būti išjungta, nes Delta Chat buvo paleista naudojant --minimized parinktį.</string>
     <string name="show_window">Rodyti langą</string>
     <!-- title of the "keybindings" dialog (for the keybindings names as such, where possible the normal command strings are used) -->

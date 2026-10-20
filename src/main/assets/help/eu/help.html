@@ -84,11 +84,11 @@
       <li><a href="#zer-estandar-darabiltza-muturretik-muturrera-zifratzeko">Zer estandar darabiltza muturretik muturrera zifratzeko?</a></li>
       <li><a href="#whene2e">Nola jakin dezaket mezuak muturretik muturrera zifratuta dauden?</a></li>
       <li><a href="#jarraitu-dezaket-muturretik-muturrera-zifratu-gabeko-mezuak-bidaltzen">Jarraitu dezaket muturretik muturrera zifratu gabeko mezuak bidaltzen?</a></li>
-      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
+      <li><a href="#e2eeguarantee">Zer gertatu da kontaktuen profilean zegoen egiaztapen-marka berdearekin?</a></li>
       <li><a href="#muturretik-muturrera-zifratuta-al-daude-eranskinak-argazkiak-fitxategiak-audioak-etab">Muturretik muturrera zifratuta al daude eranskinak (argazkiak, fitxategiak, audioak, etab.)?</a></li>
       <li><a href="#openpgp-secure">Segurua al da OpenPGP?</a></li>
       <li><a href="#openpgp-alternatives">Hartu al duzue kontuan muturretik muturrera zifratzeko beste aukeraren bat erabiltzea OpenPGP-ren ordez?</a></li>
-      <li><a href="#is-delta-chat-vulnerable-to-efail">Is Delta Chat vulnerable to EFAIL?</a></li>
+      <li><a href="#ba-al-du-delta-chatek-efail-segurtasun-ahulezia">Ba al du Delta Chatek EFAIL segurtasun-ahulezia?</a></li>
       <li><a href="#tls">Epostaren ikonoaz markatuta dauden mezuak Interneten agerian geratzen dira?</a></li>
       <li><a href="#message-metadata">Nola babesten ditu Delta Chatek mezuen metadatuak?</a></li>
       <li><a href="#device-seizure">Zer egin dezaket metadatuak eta kontaktuak babesteko gailua besteren batek bereganatzeko arriskutik?</a></li>
@@ -499,9 +499,9 @@ edo alboko barran eskuineko botoiarekin klik eginda (mahaigaineko aplikazioan).
 Txat-profilak ezabatu diren gailuan bertan bakarrik ezabatzen dira. 
 Beste gailuetan normal funtzionatzen jarraituko dute.</p>
 
-<p>If you use a single default chat profile you can simply uninstall the app.
-This will still automatically trigger deletion of all associated address data on the chatmail server.
-For more info, please refer to the respective page from your <a href="https://chatmail.at/relays">3rd party chatmail server</a>.</p>
+<p>Lehenetsitako txat-profil bakarra erabiltzen baduzu, aski duzu aplikazioa desinstalatuta.
+Hori eginda, txateko zerbitzarian profil horri lotuta dauden kontaktuko datu guztiak automatikoki ezabatuko dira.
+Informazio gehiago nahi baduzu, kontsultatu zure <a href="https://chatmail.at/relays">3.en txat-zerbitzariaren orria</a>.</p>
     
       <h2 id="groups">
         
@@ -905,7 +905,7 @@ zabaldu dezakezu.</p>
   </li>
   <li>
     <p>Zalantzarik baduzu, galdetu eskarmentua duten beste erabiltzaile batzuei
-<a href="https://support.delta.chat/c/webxdc/20">Delta Chat-en foroan</a>.</p>
+<a href="https://forum.delta.chat/c/webxdc/20">Delta Chat-en foroan</a>.</p>
   </li>
 </ul>
     
@@ -1181,7 +1181,7 @@ beste gailura eraman behar duzu.</p>
   <li>
     <p>Bigarren gailuan, hautatu <strong>Badut profila → Berrezarri babeskopiatik</strong>.
 iOS badarabilzu eta arazoak badituzu,
-<a href="https://support.delta.chat/t/import-backup-to-ios/1628">gida hau</a> baliagarria izango zaizu.</p>
+<a href="https://forum.delta.chat/t/import-backup-to-ios/1628">gida hau</a> baliagarria izango zaizu.</p>
   </li>
 </ul>
 
@@ -1230,7 +1230,7 @@ oraintxe lantzen ari garen funtzioak probatzeko aukera izango duzu.</p>
 <p>Baliteke ezaugarri horiek <strong>ezegonkorrak</strong> izatea eta gerora <strong>aldatzea edo kentzea</strong>.</p>
 
 <p>Informazio gehiago lortu edo iruzkinak egin nahi badituzu,
-sartu <a href="https://support.delta.chat">foroan</a>.</p>
+sartu <a href="https://forum.delta.chat">foroan</a>.</p>
     
       <h3 id="relays">
         
@@ -1240,33 +1240,33 @@ sartu <a href="https://support.delta.chat">foroan</a>.</p>
         
       </h3>
 
-<p>Relays are used to temporarily hold messages in case your device is offline.
-Relays are cheap and dumb servers,
-that do not store any user data as group states, your name or avatar -
-all those exist only on your device.
-Relays are operated by different groups and people,
-not under the control of Delta Chat developers.</p>
+<p>Zure gailua konexiorik gabe dagoela-eta mezuak aldi baterako gordetzeko erabiltzen dira erreleak. 
+Zerbitzari txiki eta merkeak dira, eta
+ez dute gordetzen taldeen egoera, zure izena eta abatarra edo era horretako daturik; 
+hori guztia zure gailuan bakarrik dago. Erreleak hainbat talde eta pertsonak
+kudeatzen dituzte, eta ez daude Delta Chaten garatzaileen kontrolpean.</p>
 
-<p>By default, relays are <strong>automatically set up</strong>,
-so you do not need to care about that.
-However, if you want to,
-you can configure relays at <strong>Settings → Advanced → Relays</strong>:</p>
+<p>Besterik adierazi ezean, erreleak <strong>automatikoki konfiguratzen dira</strong>;
+beraz, ez duzu horretaz kezkatu beharrik.
+Dena den, nahi baduzu, hemen konfigura ditzakezu erreleak:
+<strong>Ezarpenak → Aurreratua → Erreleak</strong>.</p>
 
 <ul>
   <li>
-    <p>You can <strong>remove</strong> a relay from the relay list (by long-tapping on it)
-and choosing the remove action. Before you remove your last relay,
-you will need to add another relay first.</p>
+    <p>Erreleen zerrendan dituzunetako bat <strong>kendu</strong> nahi baduzu, sakatu errele horren
+gainean eta hautatu ezabatzeko aukera. Azken errelea kendu aurretik,
+lehenik beste errele bat gehitu beharko duzu.</p>
   </li>
   <li>
-    <p>You can <strong>add</strong> a relay by scanning its QR code or pasting its invite link;
-<a href="https://chatmail.at/relays">chatmail.at/relays</a> shows some publically known ones.
-If you have multiple relays, you will receive messages on all of them.</p>
+    <p>Errele bat <strong>gehitu</strong> nahi baduzu, eskaneatu haren QR kodea edo itsatsi gonbidapen-esteka;
+zerrenda honetan publikoki ezagunak diren batzuk daude: <a href="https://chatmail.at/relays">chatmail.at/relays</a>.
+Errele bat baino gehiago badituzu, mezuak guztietatik jasoko dituzu.</p>
   </li>
 </ul>
 
-<p>Adding or removing a relay will automatically inform your chat partners
-so they start or stop using a relay for chatting with you, respectively.</p>
+<p>Zuk errele bat gehitutakoan (edo kendutakoan), zure txat-kideei automatikoki
+jakinaraziko zaie hori, eta zurekin txateatu behar dutenean errele hori
+erabiltzen hasiko dira (edo erabiltzeari utziko diote) automatikoki.</p>
     
       <h3 id="erabil-dezaket-posta-elektronikoko-helbide-klasiko-bat-delta-chaten">
         
@@ -1283,12 +1283,14 @@ ezta web bidezko posta-bezeroetan ere, arrazoi hauengatik:</p>
 
 <ul>
   <li>
-    <p>Non-chatmail apps are largely not accomplishing automatic end-to-end email encryption for their users,
-while chatmail apps and relays pervasively enforce end-to-end encryption and other security standards.</p>
+    <p>Txatmailekoak ez diren aplikazioek, gehien-gehienek, erabiltzaileei ez diete automatikoki
+muturretik muturrerako zifratzea eskaintzen epostan; txatmail-aplikazioek eta erreleek,
+aldiz, modu orokortuan aplikatzen dituzte muturretik muturrerako zifratzea eta
+bestelako segurtasun-estandarrak.</p>
   </li>
   <li>
-    <p>Non-chatmail apps use email servers as a long-term message archive
-while chatmail clients use email servers for ephemeral instant message forwarding.</p>
+    <p>Txatmailekoak ez diren aplikazioek mezuak luzaroan gordetzeko erabiltzen dituzte
+eposta-zerbitzariak; txatmail-bezeroek, aldiz, mezuak modu iragankorrean berehala helarazteko.</p>
   </li>
   <li>
     <p>Posta elektronikoko konfigurazio klasiko askotarikoei euskarria emateko,
@@ -1358,7 +1360,7 @@ estatistikak bidaliko zaizkio bot bati.</p>
 
 <ul>
   <li>
-    <p>How many contacts are added by scanning a QR code or opening an invite link?</p>
+    <p>Zenbat kontaktu gehitzen dira QR kode bat eskaneatuz edo gonbidapen-esteka bat irekiz?</p>
   </li>
   <li>
     <p>Delta Chaten zer bertsio ari dira erabiltzen?</p>
@@ -1452,28 +1454,28 @@ Muturretik muturrera zifratu gabeko mezuek epostaren ikonoaren marka izaten dute
       <h3 id="e2eeguarantee">
         
         
-          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
+          Zer gertatu da kontaktuen profilean zegoen egiaztapen-marka berdearekin? <a href="#e2eeguarantee" class="anchor"></a>
         
         
       </h3>
 
-<p>Older Delta Chat versions showed a green checkmark
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line in some contact profiles.</p>
+<p>Delta Chaten aurreko bertsioetan, kontaktu batzuen profilek egiaztapen-marka berdea
+<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" />
+zeukaten, eta testu hau idatzita: “Halakok egiaztatuta”.</p>
 
-<p>This line is no longer present.
-Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
-contacts are identified by their cryptographic key (“public key”),
-and there is never any possibility for the relay operator
-to exchange a key in order to execute a man-in-the-middle (MitM) attack
-(in fact, the operator does not even see the key at any point).</p>
+<p>Testu hori jada ez dago.
+Izan ere, <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a> bertsiotik aurrera,
+kontaktuak beren gako kriptografikoaren bidez identifikatzen dira (“gako publikoa“),
+eta ez dago modurik errele-zerbitzariaren operadoreak
+man-in-the-middle (MitM) erasoa eginez inoren gakoa trukatzeko
+(hain zuzen, operadoreak ez du inoiz gakorik ikusi ere egiten).</p>
 
-<p>It is still possible for an attacker to give you an invite link
-that impersonates someone else, and an attacker who has your Delta Chat contact
-(because they are in a group chat with you)
-could try to start a chat with you under a wrong name.
-These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
-and we are planning future improvements in order to mitigate them.</p>
+<p>Oraindik ere posible da erasotzaileren batek beste norbaiten identitatea ordeztuz
+zuri gonbidapen-esteka bat bidaltzea; bestalde, posible da zure Delta Chateko kontaktua duen norbait
+(talde-txat berean zaudetelako, adibidez)
+izen faltsu bat erabiliz zurekin hitz egiten saiatzea.
+Horrelako erasoak <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">mezularitza-aplikazio guztietan</a> gerta daitezke,
+eta etorkizunean halakoak murrizteko hobekuntzak egiteko asmotan gara.</p>
     
       <h3 id="muturretik-muturrera-zifratuta-al-daude-eranskinak-argazkiak-fitxategiak-audioak-etab">
         
@@ -1539,24 +1541,24 @@ horren zati bat besterik ez da;
 ikus <a href="#device-seizure">gailua besteren batek bereganatzeaz</a>
 eta <a href="#message-metadata">mezuen metadatuez</a> egindako galderen erantzunak.</p>
     
-      <h3 id="is-delta-chat-vulnerable-to-efail">
+      <h3 id="ba-al-du-delta-chatek-efail-segurtasun-ahulezia">
         
         
-          Is Delta Chat vulnerable to EFAIL? <a href="#is-delta-chat-vulnerable-to-efail" class="anchor"></a>
+          Ba al du Delta Chatek EFAIL segurtasun-ahulezia? <a href="#ba-al-du-delta-chatek-efail-segurtasun-ahulezia" class="anchor"></a>
         
         
       </h3>
 
-<p>No, <a href="https://delta.chat/en/2018-05-15-delta-chat-not-vulnerable-to-efail">Delta Chat never was vulnerable to EFAIL</a>
-because its OpenPGP implementation <a href="https://github.com/rpgp/rpgp">rPGP</a> 
-uses Modification Detection Code when encrypting messages
-and returns <a href="https://docs.rs/pgp/latest/pgp/errors/enum.Error.html#variant.MdcError">an error</a>
-if the Modification Detection Code is incorrect.</p>
+<p>Ez, <a href="https://delta.chat/en/2018-05-15-delta-chat-not-vulnerable-to-efail">Delta Chatek ez du inoiz EFAIL segurtasun-ahuleziarik izan</a>;
+izan ere, Delta Chatek darabilen OpenPGP-ren inplementazioak, <a href="https://github.com/rpgp/rpgp">rPGP-k</a>,
+mezuak enkriptatzean Aldaketak Detektatzeko Kodea erabiltzen du,
+eta <a href="https://docs.rs/pgp/latest/pgp/errors/enum.Error.html#variant.MdcError">errore bat</a>
+bueltatzen du kode hori okerra bada.</p>
 
-<p>Delta Chat also never was vulnerable to the “Direct Exfiltration” EFAIL attack
-because it only decrypts <code class="language-plaintext highlighter-rouge">multipart/encrypted</code> messages
-which contain exactly one encrypted and signed part,
-as defined by the Autocrypt Level 1 specification.</p>
+<p>Bestalde, “Direct Exfiltration” moduko EFAIL segurtasun-ahuleziarik ere ez du izan inoiz Delta Chatek;
+izan ere, <code class="language-plaintext highlighter-rouge">multipart/encrypted</code> erako mezuak bakarrik deszifratzen ditu,
+eta halakoek hain zuzen alde bat zifratua eta sinatua dute,
+Autocrypt Level 1 espezifikazioan definitu bezala.</p>
     
       <h3 id="tls">
         
@@ -1789,7 +1791,7 @@ or read the <a href="https://delta.chat/assets/blog/MER-01-report.pdf">full repo
   </li>
   <li>
     <p>2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s Rust <a href="https://github.com/deltachat/deltachat-core-rust/">core</a>,
+Chat’s Rust <a href="https://github.com/chatmail/core/">core</a>,
 <a href="https://github.com/async-email/async-imap">IMAP</a>,
 <a href="https://github.com/async-email/async-smtp">SMTP</a>, and
 <a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.

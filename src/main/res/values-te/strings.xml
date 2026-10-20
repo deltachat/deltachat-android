@@ -69,6 +69,7 @@
     <string name="camera">కెమేరా</string>
     <string name="location">స్థానం</string>
     <string name="gallery">గ్యాలరీ</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">ఫైల్</string>
     <string name="unknown">తెలియని</string>
     <string name="green">ఆకు పచ్చ</string>
@@ -188,6 +189,7 @@
     <string name="perm_required_title">అనుమతి అవసరం</string>
     <string name="perm_continue">కొనసాగించు</string>
     <string name="welcome_desktop">Delta Chat కి స్వాగతం.</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">ఫైల్</string>
     <string name="global_menu_edit_desktop">మార్చు</string>
     <string name="global_menu_view_desktop">చూడు</string>

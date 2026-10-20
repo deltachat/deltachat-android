@@ -90,6 +90,7 @@
     <string name="camera">Kamera</string>
     <string name="location">Lokacija</string>
     <string name="gallery">Galerija</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Datoteka</string>
     <string name="unknown">Nepoznato</string>
     <string name="green">Zeleno</string>
@@ -227,6 +228,7 @@
     <string name="perm_continue">Nastavi</string>
     <string name="welcome_desktop">Dobro došli u Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Jezik</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Datoteka</string>
     <string name="global_menu_file_quit_desktop">Izlaz</string>
     <string name="global_menu_edit_desktop">Uredi</string>

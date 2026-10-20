@@ -253,7 +253,9 @@
     <string name="locations">Lokalizacje</string>
     <string name="gallery">Galeria</string>
     <string name="images_and_videos">Obrazy i wideo</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Plik</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Pliki</string>
     <string name="files_attach_hint">Wyślij oryginalne pliki i nieskompresowane obrazy</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
@@ -413,6 +415,8 @@
     <string name="pinned">Przypięty</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Odepnij</string>
+    <string name="message_pinned_by_you">Przypięto wiadomość</string>
+    <string name="message_pinned_by_other">Wiadomość przypięta przez %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Nie znaleziono oryginalnej wiadomości</string>
     <string name="reply_privately">Odpowiedz prywatnie </string>
     <string name="source_code">Kod źródłowy</string>
@@ -1121,6 +1125,7 @@
 
     <string name="welcome_desktop">Witaj w Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Wybierz język</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Plik</string>
     <string name="global_menu_file_quit_desktop">Zamknij</string>
     <string name="global_menu_edit_desktop">Edycja</string>

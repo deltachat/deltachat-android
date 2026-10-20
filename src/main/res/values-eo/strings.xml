@@ -5,6 +5,10 @@
     <string name="ok">Bone</string>
     <string name="cancel">Nuligi</string>
     <string name="clear_search">Forviŝi Serĉon</string>
+    <!-- a noun, used on a button, short for "show link" -->
+    <string name="link">Ligilo</string>
+    <!-- "scan" in the meaning of "scan QR code" -->
+    <string name="scan">Skani</string>
     <string name="yes">Jes</string>
     <string name="no">Ne</string>
     <string name="select">Elekti</string>
@@ -20,6 +24,8 @@
     <string name="downloading">Elŝutado...</string>
     <string name="open_attachment">Malfermu aldonaĵon</string>
     <string name="join">Aliĝi</string>
+    <string name="join_group">Aliĝu grupon</string>
+    <string name="join_channel">Aliĝu kanalon</string>
     <string name="delete">Forigi</string>
     <string name="delete_for_me">Forigi por mi</string>
     <string name="delete_for_everyone">Forigi por ĉiuj</string>
@@ -47,7 +53,7 @@
     <!-- Adjective "smth is muted". used to describe a muted or silenced chat, that e.g. does not make noise or cause notifications -->
     <string name="muted">Silentigita</string>
     <string name="ephemeral_messages">Memviŝontaj mesaĝoj</string>
-    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo kiuj uzas Delta Chat; ili ankoraŭ povas kopii, konservi kaj plusendi mesaĝojn, kaj uzi aliajn retpoŝtajn klientojn.</string>
+    <string name="ephemeral_messages_hint">Aplikebla al ĉiuj anoj de tiu ĉi babilejo; ili ajnkaze povas kopii, konservi kaj plusendi mesaĝojn.</string>
     <string name="save">Konservi</string>
     <string name="chat">Babilo</string>
     <string name="media">Aŭdovidaĵoj</string>
@@ -62,26 +68,31 @@
     <string name="mark_as_read">Marki kiel legita</string>
     <!-- Used beside an icon with very few space. Shortest text for "Mark as being read". In english, this could be "Read" (past tense of "to read"), in german, this could be "Gelesen". -->
     <string name="mark_as_read_short">Legi</string>
+    <!-- Used as an menu entry or button -->
+    <string name="mark_as_unread">Marku nelegita</string>
+    <!-- Used beside an icon with very few space. Shortest text for "Mark as being unread". In english, this could be "Unread" (past tense of "to unread"), in german, this could be "Ungelesen". -->
+    <string name="mark_as_unread_short">Nelegita</string>
     <!-- Placeholder text when something is loading -->
     <string name="loading">Ŝarĝado...</string>
     <string name="hide">Kaŝi</string>
     <string name="activate">Aktivigi</string>
     <string name="load_remote_content">Ŝargu forajn bildojn </string>
     <!-- Possible answers to the question are: Never, Always, Once -->
-    <string name="load_remote_content_ask">La foraj bildoj povas spuri vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu forajn bildojn? </string>
+    <string name="load_remote_content_ask">La foraj bildoj povas ŝanĝospuradi vin.\n\nTiu ĉi agordo povas ankaŭ ŝargi tiparojn kaj aliajn enhavojn. Malŝaltite, enkorpigitaj aŭ kaŝmemorigitaj bildoj povas aperi.\n\nŜargu forajn bildojn? </string>
     <string name="always">Ĉiam</string>
     <string name="once">Unufoje</string>
     <string name="not_now">Ne nun</string>
     <string name="never">Neniam</string>
-    <string name="one_moment">Unu momenton…</string>
+    <string name="one_moment">Momenteton…</string>
     <string name="done">Farita</string>
     <string name="undo">Malfari</string>
     <string name="offline">Nekonektite</string>
     <!-- For the next view or as "continue". Should be as short as possible. -->
     <string name="next">Sekva</string>
+    <string name="warning">Avertmesaĝo</string>
     <string name="error">Eraro</string>
     <string name="error_x">Eraro: %1$s</string>
-    <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tiun ĉi tipon de datumo.</string>
+    <string name="no_app_to_handle_data">Ne povas trovi aplikaĵon por trakti tian ĉi datumo.</string>
     <string name="no_browser_installed">Neniu retumilo instalita.</string>
     <string name="file_not_found">Ne povis trovi %1$s.</string>
     <string name="copied_to_clipboard">Kopiita al tondujo</string>
@@ -105,6 +116,39 @@
     <!-- deprecated -->
     <string name="last_seen_unknown">Laste vidita: nedisponebla informo</string>
 
+    <!-- A contact was seen recently. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_recently">Lastatempe vidita</string>
+    <!-- A contact was seen today. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_today">Hodiaŭ vidita</string>
+    <!-- A contact was seen yesterday. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_yesterday">Hieraŭ vidita</string>
+    <!-- A contact was seen within a week. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_within_week">Ĉi-semajne vidita</string>
+    <!-- A contact was seen within a month. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_within_month">Ĉi-monate vidita</string>
+    <!-- A contact was seen a number of month ago. The string is at places with few space, so stay as short as possible. -->
+    <plurals name="seen_n_months_ago">
+        <item quantity="one">Vidita %d monato antaŭe</item>
+        <item quantity="other">Vidita %d monatoj antaŭe</item>
+    </plurals>
+    <!-- A contact was seen a long time ago, more than a year. The string is at places with few space, so stay as short as possible. -->
+    <string name="seen_long_ago">Vidita longatempe antaŭe</string>
+    <!-- A contact was never seen (as added by others to a group or created by a vcard). The string is at places with few space, so stay as short as possible. -->
+    <string name="never_seen">Neniam vidita</string>
+
+    <!-- deprecated -->
+    <plurals name="seen_n_years_ago">
+        <item quantity="one">Vidita %d jaro antaŭe</item>
+        <item quantity="other">Vidita %d jaroj antaŭe</item>
+    </plurals>
+
+    <!-- Call duration as shown in the call bubbles. There is some risk to mix with the sending time, so the word "Duration" may be helpful. Might also be "Duration: %d minutes", "%d-minute duration", "%d-minute length" or "%d-minute call" -->
+    <plurals name="call_duration_minutes">
+        <item quantity="one">Daŭro de %d minuto</item>
+        <item quantity="other">Daŭro de %d minutoj</item>
+    </plurals>
+    <!-- Call duration as shown in the call bubbles in case the call is less than one minute. If the context is not clear enough, one may want to add the word "Duration". -->
+    <string name="call_duration_less_than_a_minute">Malpli ol 1 minuto</string>
     <!-- Shown beside messages that are "N minutes old". Prefer short strings, or well-known abbreviations. -->
     <plurals name="n_minutes">
         <item quantity="one">%d min</item>
@@ -145,14 +189,19 @@
         <item quantity="one">%delektitaj</item>
         <item quantity="other">%delektita</item>
     </plurals>
+    <string name="selected">Elektita</string>
     <string name="self">Mi</string>
     <string name="draft">Malneto</string>
     <string name="image">Bildo</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
     <string name="reply_noun">Respondi</string>
-    <string name="gif">Gif</string>
+    <string name="gif">GIF</string>
     <!-- "Stickers" as known from other messengers; in some languages, the English "Sticker" is fine. -->
     <string name="sticker">Glumarko</string>
+    <string name="add_to_sticker_collection">Aldonu al la glumarkaro</string>
+    <string name="ask_add_sticker_to_collection">Ĉu aldoni tiun ĉi glumarkon al via kolekto?</string>
+    <string name="ask_delete_sticker">Ĉu forviŝi tiun ĉi glumarkon?</string>
+    <string name="sticker_picker_empty_hint">Tuŝeti glumarkon por aldoni ĝin ĉi tie.</string>
     <string name="images">Bildoj</string>
     <!-- a noun, used for "Music" and other "Audio" files -->
     <string name="audio">Sonaĵo</string>
@@ -164,22 +213,50 @@
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
     <string name="contact">Kontakto</string>
+    <string name="bot">Roboto</string>
     <string name="camera">Fotilo</string>
+    <string name="take_photo">Kaptu foton</string>
+    <string name="front_camera">Fronta fotilo</string>
+    <string name="back_camera">Dorsa fotilo</string>
+    <string name="microphone">Mikrofono</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
     <string name="capture">Kapti</string>
     <!-- Switch eg. from front to back camera -->
     <string name="switch_camera">Elektu alian kameraon</string>
+    <!-- Toggle camera on/off eg. during an video call -->
+    <string name="toggle_camera">Baskuligu fotilon</string>
     <string name="location">Loko</string>
     <string name="locations">Lokoj</string>
     <string name="gallery">Galerio</string>
     <string name="images_and_videos">Bildoj kaj videoj</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Dosiero</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Dosieroj</string>
+    <string name="files_attach_hint">Sendu originalajn dosierojn kaj nekompaktigitajn bildojn</string>
+    <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->
+    <string name="choose_from_files">Elektu el la dosieresplorilo</string>
+    <string name="choose_from_gallery">Elektu el la galerio</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Apo</string>
     <!-- plural of "App"; used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_apps">Apoj</string>
+    <string name="webxdc_add">Aldonu apon</string>
+    <string name="webxdc_store_url">Apelektila URL</string>
+    <string name="webxdc_store_url_explain">Se agordata, la URL estos uzata kiel apelektilo anstataŭ la defaŭlta</string>
+    <string name="webxdc_draft_hint">Tuŝeti \"Sendu\" por kunhavigi</string>
+    <string name="home">Hejmo</string>
+    <string name="games">Ludoj</string>
+    <string name="tools">Iloj</string>
+    <string name="app_size">Grando</string>
+    <!-- Used as a headline for a date. E.g. in the details of a mini app in the app picker -->
+    <string name="app_date_published">Publikita</string>
+    <string name="add_to_chat">Aldonu al la babilejo</string>
+    <!-- short for "Browse through the App Picker/Store/Catalogue"; could also be translated as "Discover" or "Search" -->
+    <string name="browse">Foliumu</string>
     <string name="unknown">Nekonata</string>
+    <string name="unnamed">Sennoma</string>
+
     <string name="green">Verda</string>
     <string name="red">Ruĝa</string>
     <string name="blue">Blua</string>
@@ -199,8 +276,30 @@
 
     <!-- menu labels (or icon, buttons...) -->
     <string name="menu_new_contact">Nova kontakto</string>
+    <string name="menu_new_classic_contact">Aldonu kontakton mane</string>
+    <string name="new_classic_contact_explain">Mane aldonitaj kontaktoj povas esti uzataj por alteksti klasikajn retpoŝtajn adresojn kaj ili ne estas garantiataj je tutvoja cifrado.  </string>
     <string name="menu_new_chat">Nova babilo</string>
     <string name="menu_new_group">Nova grupo</string>
+    <!-- "Chat" is a verb here, "Message to" would also fit. the string might be used in the "New Chat" screen above the contact list -->
+    <string name="chat_with">Babilo kun..</string>
+    <string name="clone_chat">Klonu babiladon</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel">Kanalo</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channels">Kanaloj</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="new_channel">Nova kanalo</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="channel_name">Kanala nomo</string>
+    <!-- The number of times a message is shown in channels. Use what other messengers are using here, smth. as "N-times seen" or "1 Aufruf" (german) work as well, where "1 impression" or "1 hit" may sound too formal and may be more marketing slang. -->
+    <plurals name="n_views">
+        <item quantity="one">%d vido</item>
+        <item quantity="other">%d vidoj</item>
+    </plurals>
+    <!-- "New" as in "Create New Email"; shown together with "New Group" and "New Channel" -->
+    <string name="new_email">Nova retpoŝtmesaĝo </string>
+    <!-- the "Subject" of an email, use the term common in classic email apps -->
+    <string name="subject">Temo</string>
     <string name="menu_send">Sendi</string>
     <string name="menu_toggle_keyboard">Baskuligi emoĝian klavaron</string>
     <string name="menu_edit_group">Redakti grupon</string>
@@ -209,18 +308,26 @@
     <string name="menu_unarchive_chat">Elarĥivigi babilon</string>
     <string name="menu_add_attachment">Aldoni kunsendaĵon</string>
     <string name="menu_leave_group">Forlasi grupon</string>
+    <string name="menu_leave_channel">Foriru kanalon</string>
+    <string name="menu_leave_and_delete">Lasu &amp; forigi por mi</string>
     <string name="menu_delete_chat">Forigi babilon</string>
     <!-- Command to delete all messages in a chat. The chat itself will not be deleted but will be empty afterwards, so make sure to be different from "Delete Chat" here. "Clear" is a verb here, "Empty Chat" would also be fine (eg. in German "Chat leeren") -->
     <string name="clear_chat">Viŝi la babilejon</string>
     <string name="delete_contact">Forviŝi Kontakton</string>
     <string name="menu_message_details">Mesaĝ-detaloj</string>
     <string name="menu_copy_to_clipboard">Kopii al tondujo</string>
+    <string name="share_invite_link">Kunhavigu invitigilon</string>
+    <string name="share_invite_link_explain">Ajnulo per tiu ligilo povas rigardi vian profilon kaj eki babiladon kun vi. Kunhavigu nur kun fidindaj homoj.</string>
+    <string name="invite_friends">Invitu amikojn</string>
+    <!-- %1$s is replaced by the user's invitation link ("https://i.delta.chat/...") -->
+    <string name="invite_friends_text">Kontaktu min per Delta Chat:\n%1$s</string>
     <string name="menu_copy_selection_to_clipboard">Kopii tion, kion vi elstarigis</string>
     <string name="menu_copy_link_to_clipboard">Kopii Ligilon</string>
     <string name="menu_copy_text_to_clipboard">Kopii Tekston</string>
     <string name="menu_copy_image_to_clipboard">Kopii Bildon</string>
     <string name="menu_copy_email_to_clipboard">Kopii retpoŝtaĵon</string>
     <string name="paste_from_clipboard">Alglui el la tondujo</string>
+    <string name="ask_copy_unopenable_link_to_clipboard">La ligilo \"%1$d\" ne malfermeblas en la retumilo. Ĉu vi volas anstataŭ kopii la ligilon en la tondujon?</string>
     <string name="menu_forward">Plusendi mesaĝon</string>
     <string name="menu_reply">Respondi al mesaĝo</string>
     <string name="menu_mute">Silentigi sciigojn</string>
@@ -228,8 +335,10 @@
     <string name="menu_export_attachment">Eksporti aldonaĵon</string>
     <string name="menu_export_attachments">Eksporti aldonaĵojn</string>
     <string name="menu_all_media">Ĉiuj aŭvidaĵoj</string>
+    <string name="all_apps_and_media">Ĉiuj apoj &amp; aŭdvidaĵoj</string>
     <!-- Command to jump to the original message corresponding to a gallery image or document -->
     <string name="show_in_chat">Afiŝu en la babilejo</string>
+    <string name="show_app_in_chat">Montru apon en la babilejo</string>
     <string name="menu_share">Kunhavigi</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloki</string>
@@ -241,10 +350,16 @@
     <string name="menu_scroll_to_bottom">Rulumi al la malsupro</string>
     <string name="menu_scroll_to_top">Rulumi al la supro</string>
     <string name="menu_help">Helpo</string>
+    <!-- use the same term for "Apps" as elsewhere -->
+    <string name="what_is_webxdc">Pri apoj</string>
     <string name="privacy_policy">Politiko pri privateco</string>
     <string name="menu_select_all">Elekti ĉion</string>
     <string name="select_chat">Elektu babilejon</string>
     <string name="menu_edit_name">Redakti nomon</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_explain">Agordu kromnomon kiu estos montrata al vi anstataŭ \"%1$s\". Lasu ĝin malplena por uzi la nomo elektita de la kontakto.</string>
+    <!-- The placeholder will be replaced by the name the contact gave themself -->
+    <string name="edit_name_placeholder">Kromnomo por \"%1$s\"</string>
     <string name="menu_settings">Agordoj</string>
     <string name="menu_advanced">Speciala</string>
     <string name="menu_view_profile">Vidi profilon</string>
@@ -253,10 +368,12 @@
     <string name="menu_save_log">Konservi protokolon</string>
     <string name="menu_more_options">Pli da ebloj</string>
     <string name="jump_to_message">Iru al mesaĝo</string>
+    <string name="replace_draft">Anstataŭigi malneton</string>
     <string name="title_share_location">Konigi lokon al ĉiuj grupanoj</string>
     <string name="device_talk">Aparataj mesaĝoj</string>
     <string name="device_talk_subtitle">Loke generitaj mesaĝoj</string>
     <string name="device_talk_explain">Mesaĝoj en tiu ĉi babilo estas surloke generataj de via Delta Chat apo. Ĝiaj kreintoj uzas ilin por informi pri apaj ĝisdatigoj kaj problemoj dum uzado.</string>
+    <string name="device_talk_welcome_message2">Konektiĝu!\n\n🙌 Tuŝetu \"QR-kodo\" ĉe la ĉefa ekrano de ambaŭ la aparatoj. Elektu \"Skanu QR-Kodon\" sur la unua aparato, kaj celumu ĝin kontraŭ la alian\n\n🌍 Se ne en la sama ĉambro, skanu per videovoko aŭ kunhavigu invitilon el \"Skanu QR-kodon\"\n\nPoste: Ĝuu via malcentra babila sperto. Male ol alia populara apoj, sen centrigita kontrolo aŭ spuradon aŭ vendi vin, amikojn, kolegojn aŭ familion al grandaj organizoj.  </string>
     <string name="edit_contact">Redakti kontakton</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin_chat">Alpingli babilon</string>
@@ -264,8 +381,20 @@
     <string name="unpin_chat">Depingli babilon</string>
     <!-- Verb "to pin", making something sticky, not a noun or abbreviation for "pin number". -->
     <string name="pin">Alpingli</string>
+    <!-- Adj. of "pin", describing a state of being pinned. -->
+    <string name="pinned">Alpinglita</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Depingli</string>
+    <string name="message_pinned_by_you">Vi alpinglis mesaĝon</string>
+    <string name="message_pinned_by_other">Mesaĝo alpinglita de %1$s</string>
+    <string name="ConversationFragment_quoted_message_not_found">La originala mesaĝo ne troveblas</string>
+    <string name="reply_privately">Respondu private</string>
+    <string name="source_code">Fontkodo</string>
+    <!-- Menu item beside an app/chat that adds an icon to the system's home screen. If the user taps that icon, the app/chat is opened directly. -->
+    <string name="add_to_home_screen">Aldonu al la hejma ekrano</string>
+    <string name="donate">Donacu</string>
+    <string name="donate_device_msg">❤️ Ŝajnas ke vi ŝatas Delta Chat!\n\nBonvole pripensu donaci por helpi certigi ke Delta Chat restu libera por ĉiuj.\n\nDum Delta Chat estas libere uzebla kaj malfermitkoda, ĝia evoluado kostas monojn. Helpu nin pri la daŭrigado de la sendependecon de Delta Chat kaj igu ĝin eĉ pli bonega estontece.\n\nhttps://delta.chat/donate</string>
+
     <string name="mute_for_one_hour">Silentigi por 1 horo</string>
     <string name="mute_for_eight_hours">Silentigi por 8 horoj</string>
     <string name="mute_for_one_day">Silentigi por 1 tago</string>
@@ -277,8 +406,72 @@
     <string name="share_location_for_one_hour">por 1 horo</string>
     <string name="share_location_for_two_hours">por 2 horoj</string>
     <string name="share_location_for_six_hours">por 6 horoj</string>
+    <string name="share_location_for_24_hours">Por 24 horoj</string>
+
+    <plurals name="ask_send_following_n_files_to">
+        <item quantity="one">Ĉu sendi la sekvantan dosieron al %s?</item>
+        <item quantity="other">Ĉu sendi la sekvantajn %d dosierojn al %s?</item>
+    </plurals>
     <string name="file_saved_to">Dosiero konservita kiel \"%1$s\".</string>
 
+    <!-- the action "to call someone", used as a tooltip for the "phone" icon. not: "the call" -->
+    <string name="start_call">Alvoku</string>
+    <!-- Menu item to start an audio call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_audio_call">Sonvoko</string>
+    <!-- Menu item to start a video call; verbs as "start" are probably superfluous in many translations -->
+    <string name="start_video_call">Videovoko</string>
+    <!-- the action "to answer" or to "accept" or to "pick up" a call. not: "the answer" -->
+    <string name="answer_call">Respondu</string>
+    <!-- the action "to decline" a call, not: "the decline" -->
+    <string name="end_call">Rifuzu</string>
+    <!-- the action to end a call -->
+    <string name="end_call2">Ĉesu vokon</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="audio_call">Sonvoko</string>
+    <!-- Used in call bubbles, summaries, notifications -->
+    <string name="video_call">Videovoko</string>
+    <string name="call_initializing">Pravalorizanta...</string>
+    <string name="call_incoming">Envena voko</string>
+    <string name="call_ringing">Sonoranta...</string>
+    <string name="call_reconnecting">Rekonektiĝanta...</string>
+    <string name="call_ended">Voko ĉesigita</string>
+    <string name="call_failed">Voko malsukcesis</string>
+    <string name="declined_call">Rifuzu la vokon</string>
+    <string name="canceled_call">Nuligita voko</string>
+    <string name="missed_call">Maltrafita voko</string>
+    <string name="already_in_call">Jam en alia voko</string>
+    <string name="call_back">Revoku</string>
+    <string name="call_answered_elsewhere">Voko respondita ĉe alia aparato</string>
+    <string name="call_requires_camera_permission">Fotila permeso necesas por videovokoj</string>
+    <string name="call_requires_mic_permission">Mikrofona permeso necesas por sonvokoj</string>
+    <string name="call_grant_mic_permission">Tuŝetu por doni la mikrofonan permeson</string>
+    <string name="call_requires_connection">Ne eblas eki la voko. Certiĝu pri tio, ke via aparato estas interrete konektita kaj provu denove.</string>
+    <!-- Used e.g. in a notifications to describe an ongoing call. "Call" is a noun here, in the meaning of "This is the call with ..." where the placeholder is replaced by the name of the contact. -->
+    <string name="call_with">Voko kun %1$s</string>
+    <!-- Use e.g. in a notifications during ringing. Placeholder is relaced by the name of the contact being called. -->
+    <string name="calling_person">Vokante %1$s...</string>
+    <string name="audio_output">Aŭdaĵa eligo</string>
+
+    <!-- get confirmations -->
+    <!-- confirmation for leaving groups or channels. If a subject is needed, "Are you sure you want to leave the chat?" would work as well -->
+    <string name="ask_leave_group">Ĉu vi certas forigi?</string>
+    <plurals name="ask_delete_chat">
+        <item quantity="one">Ĉu forviŝi %d babilejon?</item>
+        <item quantity="other">Ĉu forviŝi %d babilejojn?</item>
+    </plurals>
+    <string name="ask_delete_named_chat">Ĉu forviŝi babilejon \"%1$s\"?</string>
+    <string name="ask_delete_message">Ĉu forviŝi tiun ĉi mesaĝon?</string>
+    <plurals name="ask_delete_messages">
+        <item quantity="one">Ĉu forviŝi %d mesaĝojn?</item>
+        <item quantity="other">Ĉu forviŝi %d mesaĝojn?</item>
+    </plurals>
+    <!-- First placeholder gets replaced by the number of messages to forward. Second placeholder gets replaced by the name of the destination chat -->
+    <plurals name="ask_forward_messages">
+        <item quantity="one">Ĉu plusendi la mesaĝon al %2$s?</item>
+        <item quantity="other">Ĉu plusendi %1$d mesaĝojn al %2$s?</item>
+    </plurals>
+    <string name="ask_forward_multiple">Ĉu plusendi la mesaĝojn al %1$d babilejoj?</string>
+    <string name="ask_export_attachment">Eksporti kunsendaĵojn permesos, ke aliaj apoj sur via aparato atingos ilin.\n\nĈu vi volas daŭrigi?</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
     <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
@@ -418,6 +611,7 @@
     <string name="perm_continue">Daŭrigi</string>
     <string name="welcome_desktop">Bonvenon al Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Lingvo</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Dosiero</string>
     <string name="global_menu_edit_desktop">Modifi</string>
     <string name="global_menu_edit_undo_desktop">Malfari</string>

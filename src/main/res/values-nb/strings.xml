@@ -197,7 +197,9 @@
     <string name="locations">Posisjoner</string>
     <string name="gallery">Galleri</string>
     <string name="images_and_videos">Bilder og videoer</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Fil</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Filer</string>
     <string name="files_attach_hint">Send originale filer og ukomprimerte bilder</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->

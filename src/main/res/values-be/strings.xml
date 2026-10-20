@@ -217,7 +217,9 @@
     <string name="locations">Месцазнаходжанні</string>
     <string name="gallery">Галерэя</string>
     <string name="images_and_videos">Выявы і відэа</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Файл</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Файлы</string>
     <string name="files_attach_hint">Адправіць арыгінальныя файлы і нясціснутыя выявы</string>
     <!-- "Files" here means the "Files Selector App" or "Files Manager App" -->

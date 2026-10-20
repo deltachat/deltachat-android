@@ -152,7 +152,9 @@
     <string name="locations">Vị trí</string>
     <string name="gallery">Phòng trưng bày</string>
     <string name="images_and_videos">Hình ảnh và Video</string>
+    <!-- A single file or document object (manual.pdf, readme.txt and so on). For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="file">Tập tin</string>
+    <!-- Title for an unknown number of files or document objects (manual.pdf, readme.txt and so on). Use e.g. as a tab in the gallery. For referring to the "File" menu in desktop apps, see the strings "global_menu_file_desktop" -->
     <string name="files">Tập tin</string>
     <!-- "App" is used to present "Webxdc App" (https://webxdc.org) in a user friendly way. Please stay close to the original term and keep it short (it is used in menus with few screen space). -->
     <string name="webxdc_app">Ứng dụng</string>
@@ -713,6 +715,7 @@
 
     <string name="welcome_desktop">Chào mừng đến với Delta Chat</string>
     <string name="global_menu_preferences_language_desktop">Ngôn ngữ</string>
+    <!-- The "File" menu in desktop apps. For referring to a file or document object (manual.pdf, readme.txt and so on), see the strings "file" or "files" -->
     <string name="global_menu_file_desktop">Tập tin</string>
     <string name="global_menu_file_quit_desktop">Thoát</string>
     <string name="global_menu_edit_desktop">Chỉnh sửa</string>
