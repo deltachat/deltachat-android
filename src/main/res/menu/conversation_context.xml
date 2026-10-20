@@ -34,7 +34,7 @@
 
     <item
         android:id="@+id/menu_toggle_pin"
-        android:title="@string/pin"
+        android:title="@string/pin_for_everyone"
         app:showAsAction="never" />
 
     <item
