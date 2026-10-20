@@ -267,6 +267,15 @@ public class Rpc {
   }
 
   /**
+   * Adds fake transport that cannot be used to connect.
+   * <p>
+   * Used for offline tests only.
+   */
+  public void addPseudoTransport(Integer accountId, String addr) throws RpcException {
+    transport.call("add_pseudo_transport", mapper.valueToTree(accountId), mapper.valueToTree(addr));
+  }
+
+  /**
    * Configures a new email account using the provided parameters
    * and adds it as a transport.
    * <p>
@@ -966,6 +975,27 @@ public class Rpc {
 
   public String getMessageHtml(Integer accountId, Integer messageId) throws RpcException {
     return transport.callForResult(new TypeReference<String>(){}, "get_message_html", mapper.valueToTree(accountId), mapper.valueToTree(messageId));
+  }
+
+  /**
+   * Returns a message summary.
+   * Used for notifications, pinned messages and for copying texts to clipboard.
+   * <p>
+   * - `add_forwarded`: `true`=add a hint if a message was forwarded.
+   * `false`=do not add the hint;
+   * this is allowed only if the message is shown without a username, e.g. for pinned messages.
+   * - `add_type_emoji`: `true`=add the type of the message as an emoji prefix.
+   * `false`=do not add type emoji;
+   * this is allowed only if the message type is visible otherwise,
+   * close to where the emoji would be displayed otherwise
+   * (eg. images in pinned messages preceding summary)
+   * - `approx_chars`: `>0`=convert linebreaks to spaces and truncate the line at about the given number of characters;
+   * for single-line UI elements such as pinned messages or notifications;
+   * additionally, UIs will most times clip the text to the available space.
+   * `0`=leave linebreaks as is and return the full text, useful e.g. for copying to clipboard.
+   */
+  public String getMessageSummaryText(Integer accountId, Integer messageId, Boolean addForwarded, Boolean addTypeEmoji, Integer approxChars) throws RpcException {
+    return transport.callForResult(new TypeReference<String>(){}, "get_message_summary_text", mapper.valueToTree(accountId), mapper.valueToTree(messageId), mapper.valueToTree(addForwarded), mapper.valueToTree(addTypeEmoji), mapper.valueToTree(approxChars));
   }
 
   /**
