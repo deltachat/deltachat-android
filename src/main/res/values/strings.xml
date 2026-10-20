@@ -387,8 +387,10 @@
     <string name="pin">Pin</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Pinned</string>
+    <string name="pin_for_everyone">Pin for Everyone</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Unpin</string>
+    <string name="unpin_for_everyone">Unpin for Everyone</string>
     <string name="message_pinned_by_you">You pinned a message</string>
     <string name="message_pinned_by_other">Message pinned by %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
