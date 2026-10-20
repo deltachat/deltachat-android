@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.64.0
+2026-10
 
 * New feature: allow to pin messages in the chat
 * Add "Sending..." notification so large messages can continue being sent in background
