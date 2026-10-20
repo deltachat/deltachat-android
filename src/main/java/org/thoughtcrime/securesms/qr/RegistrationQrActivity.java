@@ -46,11 +46,9 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
     }
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    // add padding to avoid content hidden behind system bars
-    ViewUtil.applyWindowInsets(findViewById(R.id.layout_container), true, false, true, true);
-
     barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
     barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
+    ViewUtil.applyWindowInsets(barcodeScannerView.getStatusView(), true, false, true, true);
 
     View sameNetworkHint = findViewById(R.id.same_network_hint);
     if (sameNetworkHint != null) {
