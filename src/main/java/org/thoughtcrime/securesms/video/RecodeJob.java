@@ -1,11 +1,21 @@
 package org.thoughtcrime.securesms.video;
 
 import com.b44t.messenger.DcMsg;
+import java.util.ArrayList;
 
 public class RecodeJob {
 
-  public int chatId;
-  public DcMsg msg;
+  public static final class Target {
+    public final int chatId;
+    public final DcMsg msg;
+
+    public Target(int chatId, DcMsg msg) {
+      this.chatId = chatId;
+      this.msg = msg;
+    }
+  }
+
+  public final ArrayList<Target> targets = new ArrayList<>();
   public String inputPath;
   public String outputPath;
   public long maxBytes;
