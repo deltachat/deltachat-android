@@ -6,7 +6,12 @@ import android.util.Log;
 import androidx.preference.PreferenceManager;
 import chat.delta.rpc.Rpc;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -96,6 +101,9 @@ public class WebxdcPermissions {
       return;
     }
     pruneDone = true;
+
+    // do batched rpc call per accountId
+    Map<Integer, Map<Integer, String>> records = new HashMap<>();
     for (String prefKey : new ArrayList<>(prefs(context).getAll().keySet())) {
       if (!prefKey.startsWith(KEY_PREFIX)) {
         continue;
@@ -105,20 +113,32 @@ public class WebxdcPermissions {
       if (dot <= 0) {
         continue;
       }
-      int accountId;
-      int msgId;
       try {
-        accountId = Integer.parseInt(ids.substring(0, dot));
-        msgId = Integer.parseInt(ids.substring(dot + 1));
+        int accountId = Integer.parseInt(ids.substring(0, dot));
+        int msgId = Integer.parseInt(ids.substring(dot + 1));
+        records.computeIfAbsent(accountId, k -> new HashMap<>()).put(msgId, prefKey);
       } catch (NumberFormatException e) {
         Log.w(TAG, "Cannot parse webxdc permissions key: " + prefKey);
+      }
+    }
+
+    for (Map.Entry<Integer, Map<Integer, String>> accountEntry : records.entrySet()) {
+      int accountId = accountEntry.getKey();
+      Set<Integer> existing;
+      try {
+        existing =
+          new HashSet<>(
+            rpc.getExistingMsgIds(
+              accountId, new ArrayList<>(accountEntry.getValue().keySet())));
+      } catch (Exception e) {
+        Log.w(TAG, "Cannot check webxdc messages for account " + accountId, e);
         continue;
       }
-      try {
-        rpc.getWebxdcInfo(accountId, msgId);
-      } catch (Exception e) {
-        Log.i(TAG, "Pruning webxdc permissions for " + prefKey + ": " + e.getMessage());
-        clear(context, accountId, msgId);
+      for (Map.Entry<Integer, String> record : accountEntry.getValue().entrySet()) {
+        if (!existing.contains(record.getKey())) {
+          Log.i(TAG, "Pruning webxdc permissions for " + record.getValue());
+          clear(context, accountId, record.getKey());
+        }
       }
     }
   }

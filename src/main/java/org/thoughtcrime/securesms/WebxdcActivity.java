@@ -333,12 +333,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
     Util.runOnAnyBackgroundThread(
         () -> {
-          WebxdcPermissions.pruneStaleOnce(getApplicationContext(), rpc);
           final DcChat chat = dcContext.getChat(dcAppMsg.getChatId());
           Util.runOnMain(
               () -> {
                 updateTitleAndMenu(info, chat);
               });
+          WebxdcPermissions.pruneStaleOnce(getApplicationContext(), rpc);
         });
   }
 
