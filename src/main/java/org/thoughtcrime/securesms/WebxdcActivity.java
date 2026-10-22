@@ -234,7 +234,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
           @Override
           public void onGeolocationPermissionsShowPrompt(
-            String origin, GeolocationPermissions.Callback callback) {
+              String origin, GeolocationPermissions.Callback callback) {
             WebxdcActivity.this.onGeolocationShowPrompt(origin, callback);
           }
 
@@ -773,7 +773,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   private void onGeolocationShowPrompt(
-    final String origin, final GeolocationPermissions.Callback callback) {
+      final String origin, final GeolocationPermissions.Callback callback) {
     if (!isAppOrigin(origin)) {
       Log.w(TAG, "Denying geolocation request from unexpected origin: " + origin);
       callback.invoke(origin, false, false);
@@ -786,7 +786,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     final int accountId = dcContext.getAccountId();
     final int msgId = dcAppMsg.getId();
     WebxdcPermissions.State state =
-      WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.LOCATION);
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.LOCATION);
     if (state == WebxdcPermissions.State.DENIED) {
       callback.invoke(origin, false, false);
       return;
@@ -798,48 +798,62 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     pendingGeoCallback = callback;
     pendingGeoOrigin = origin;
     showPermissionDialog(
-      R.string.webxdc_perm_ask_location,
-      () -> {
-        WebxdcPermissions.set(
-          this, accountId, msgId, WebxdcPermissions.Capability.LOCATION, WebxdcPermissions.State.ALLOWED);
-        requestLocationPermission(origin, callback);
-      },
-      () -> {
-        WebxdcPermissions.set(
-          this, accountId, msgId, WebxdcPermissions.Capability.LOCATION, WebxdcPermissions.State.DENIED);
-        answerGeoCallback(false);
-      },
-      () -> answerGeoCallback(false));
+        R.string.webxdc_perm_ask_location,
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.LOCATION,
+              WebxdcPermissions.State.ALLOWED);
+          requestLocationPermission(origin, callback);
+        },
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.LOCATION,
+              WebxdcPermissions.State.DENIED);
+          answerGeoCallback(false);
+        },
+        () -> answerGeoCallback(false));
   }
 
   private void requestLocationPermission(
-    final String origin, final GeolocationPermissions.Callback callback) {
+      final String origin, final GeolocationPermissions.Callback callback) {
     pendingGeoCallback = callback;
     pendingGeoOrigin = origin;
     if (Permissions.hasAny(
-      this,
-      Manifest.permission.ACCESS_FINE_LOCATION,
-      Manifest.permission.ACCESS_COARSE_LOCATION)) {
+        this,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION)) {
       answerGeoCallback(true);
       return;
     }
     Permissions.with(this)
-      .request(
-        Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
-      .ifNecessary()
-      .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
-      .onAnyResult(
-        () -> {
-          boolean granted =
-            Permissions.hasAny(
-              this, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION);
-          if (!granted) {
-            WebxdcPermissions.set(
-              this, dcContext.getAccountId(), dcAppMsg.getId(), WebxdcPermissions.Capability.LOCATION, WebxdcPermissions.State.ASK);
-          }
-          answerGeoCallback(granted);
-        })
-      .execute();
+        .request(
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
+        .onAnyResult(
+            () -> {
+              boolean granted =
+                  Permissions.hasAny(
+                      this,
+                      Manifest.permission.ACCESS_FINE_LOCATION,
+                      Manifest.permission.ACCESS_COARSE_LOCATION);
+              if (!granted) {
+                WebxdcPermissions.set(
+                    this,
+                    dcContext.getAccountId(),
+                    dcAppMsg.getId(),
+                    WebxdcPermissions.Capability.LOCATION,
+                    WebxdcPermissions.State.ASK);
+              }
+              answerGeoCallback(granted);
+            })
+        .execute();
   }
 
   private void answerGeoCallback(boolean granted) {
