@@ -288,9 +288,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       sendUpdateInterval = info.sendUpdateInterval;
       appName = info.name;
       sensorsAllowed =
-        WebxdcPermissions.get(
-          this, accountId, appMessageId, WebxdcPermissions.Capability.MOTION_SENSORS)
-          == WebxdcPermissions.State.ALLOWED;
+          WebxdcPermissions.get(
+                  this, accountId, appMessageId, WebxdcPermissions.Capability.MOTION_SENSORS)
+              == WebxdcPermissions.State.ALLOWED;
     } catch (RpcException e) { // unexpected error, log it and finish
       Log.e(TAG, "RPC Error", e);
       finish();
@@ -549,7 +549,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
 
   @NonNull
   private Map<String, String> createHeaders() {
-      Map<String, String> headers = new HashMap<>();
+    Map<String, String> headers = new HashMap<>();
     if (!internetAccess) {
       headers.put(
           "Content-Security-Policy",
@@ -565,8 +565,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
     if (!sensorsAllowed) {
       headers.put(
-        "Permissions-Policy",
-        "accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=()");
+          "Permissions-Policy",
+          "accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=()");
     }
     return headers;
   }
@@ -894,7 +894,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     final int accountId = dcContext.getAccountId();
     final int msgId = dcAppMsg.getId();
     WebxdcPermissions.State state =
-      WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MOTION_SENSORS);
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MOTION_SENSORS);
     if (state == WebxdcPermissions.State.ALLOWED) {
       sensorsAllowed = true;
       callJavaScriptFunction("__webxdcSensorPermission(true)");
@@ -905,19 +905,27 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return;
     }
     showPermissionDialog(
-      R.string.webxdc_perm_ask_sensors,
-      () -> {
-        WebxdcPermissions.set(
-          this, accountId, msgId, WebxdcPermissions.Capability.MOTION_SENSORS, WebxdcPermissions.State.ALLOWED);
-        sensorsAllowed = true;
-        callJavaScriptFunction("__webxdcSensorPermission(true)");
-      },
-      () -> {
-        WebxdcPermissions.set(
-          this, accountId, msgId, WebxdcPermissions.Capability.MOTION_SENSORS, WebxdcPermissions.State.DENIED);
-        callJavaScriptFunction("__webxdcSensorPermission(false)");
-      },
-      () -> callJavaScriptFunction("__webxdcSensorPermission(false)"));
+        R.string.webxdc_perm_ask_sensors,
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.MOTION_SENSORS,
+              WebxdcPermissions.State.ALLOWED);
+          sensorsAllowed = true;
+          callJavaScriptFunction("__webxdcSensorPermission(true)");
+        },
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.MOTION_SENSORS,
+              WebxdcPermissions.State.DENIED);
+          callJavaScriptFunction("__webxdcSensorPermission(false)");
+        },
+        () -> callJavaScriptFunction("__webxdcSensorPermission(false)"));
   }
 
   @Override
@@ -1259,10 +1267,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     @JavascriptInterface
     public String getSensorPermissionState() {
       return WebxdcPermissions.get(
-          WebxdcActivity.this, WebxdcActivity.this.dcContext.getAccountId(),
-          WebxdcActivity.this.dcAppMsg.getId(), WebxdcPermissions.Capability.MOTION_SENSORS)
-        .name()
-        .toLowerCase(Locale.US);
+              WebxdcActivity.this,
+              WebxdcActivity.this.dcContext.getAccountId(),
+              WebxdcActivity.this.dcAppMsg.getId(),
+              WebxdcPermissions.Capability.MOTION_SENSORS)
+          .name()
+          .toLowerCase(Locale.US);
     }
 
     @JavascriptInterface
