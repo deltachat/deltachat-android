@@ -491,8 +491,7 @@ public class ConversationFragment extends MessageSelectorFragment {
 
       MenuItem togglePin = menu.findItem(R.id.menu_toggle_pin);
       togglePin.setVisible(chat.isEncrypted() && chat.canSend() && !messageRecord.isInfo());
-      togglePin.setTitle(
-          messageRecord.isPinned() ? R.string.unpin : R.string.pin);
+      togglePin.setTitle(messageRecord.isPinned() ? R.string.unpin : R.string.pin);
     }
 
     // if one of the selected items cannot be saved, disable saving.
