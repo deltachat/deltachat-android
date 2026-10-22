@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* WebXDC: add per-app prompt for basic permissions (Camera, Microphone, Geolocation, Motion/Orientation Sensors)
+
 ## v2.64.0
 2026-10
 

@@ -93,6 +93,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
   private String appName = "";
+  private boolean sensorsAllowed = false;
   private final ArrayDeque<PermissionRequest> permissionRequestQueue = new ArrayDeque<>();
   private PermissionRequest currentPermissionRequest;
   private GeolocationPermissions.Callback pendingGeoCallback;
@@ -286,6 +287,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       sendUpdateMaxSize = info.sendUpdateMaxSize;
       sendUpdateInterval = info.sendUpdateInterval;
       appName = info.name;
+      sensorsAllowed =
+          WebxdcPermissions.get(
+                  this, accountId, appMessageId, WebxdcPermissions.Capability.MOTION_SENSORS)
+              == WebxdcPermissions.State.ALLOWED;
     } catch (RpcException e) { // unexpected error, log it and finish
       Log.e(TAG, "RPC Error", e);
       finish();
@@ -413,6 +418,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return true;
     } else if (itemId == R.id.webxdc_reset_permissions) {
       WebxdcPermissions.clear(this, dcContext.getAccountId(), dcAppMsg.getId());
+      sensorsAllowed = false;
       Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT).show();
       webView.reload();
       return true;
@@ -534,8 +540,17 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       res = new WebResourceResponse("text/plain", "UTF-8", targetStream);
     }
 
+    Map<String, String> headers = createHeaders();
+    if (!headers.isEmpty()) {
+      res.setResponseHeaders(headers);
+    }
+    return res;
+  }
+
+  @NonNull
+  private Map<String, String> createHeaders() {
+    Map<String, String> headers = new HashMap<>();
     if (!internetAccess) {
-      Map<String, String> headers = new HashMap<>();
       headers.put(
           "Content-Security-Policy",
           "default-src 'self'; "
@@ -547,9 +562,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               + "media-src 'self' data: blob: ;"
               + "webrtc 'block' ; ");
       headers.put("X-DNS-Prefetch-Control", "off");
-      res.setResponseHeaders(headers);
     }
-    return res;
+    if (!sensorsAllowed) {
+      headers.put(
+          "Permissions-Policy",
+          "accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=()");
+    }
+    return headers;
   }
 
   private void callJavaScriptFunction(String func) {
@@ -869,6 +888,44 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private void onGeolocationHidePrompt() {
     dismissPermissionDialog();
     answerGeoCallback(false);
+  }
+
+  private void onSensorPermissionRequested() {
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    WebxdcPermissions.State state =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MOTION_SENSORS);
+    if (state == WebxdcPermissions.State.ALLOWED) {
+      sensorsAllowed = true;
+      callJavaScriptFunction("__webxdcSensorPermission(true)");
+      return;
+    }
+    if (state == WebxdcPermissions.State.DENIED) {
+      callJavaScriptFunction("__webxdcSensorPermission(false)");
+      return;
+    }
+    showPermissionDialog(
+        R.string.webxdc_perm_ask_sensors,
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.MOTION_SENSORS,
+              WebxdcPermissions.State.ALLOWED);
+          sensorsAllowed = true;
+          callJavaScriptFunction("__webxdcSensorPermission(true)");
+        },
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.MOTION_SENSORS,
+              WebxdcPermissions.State.DENIED);
+          callJavaScriptFunction("__webxdcSensorPermission(false)");
+        },
+        () -> callJavaScriptFunction("__webxdcSensorPermission(false)"));
   }
 
   @Override
@@ -1205,6 +1262,22 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     public void ttsSpeak(String text, String lang) {
       if (lang != null && !lang.isEmpty()) tts.setLanguage(Locale.forLanguageTag(lang));
       tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+    }
+
+    @JavascriptInterface
+    public String getSensorPermissionState() {
+      return WebxdcPermissions.get(
+              WebxdcActivity.this,
+              WebxdcActivity.this.dcContext.getAccountId(),
+              WebxdcActivity.this.dcAppMsg.getId(),
+              WebxdcPermissions.Capability.MOTION_SENSORS)
+          .name()
+          .toLowerCase(Locale.US);
+    }
+
+    @JavascriptInterface
+    public void requestSensorPermission() {
+      Util.runOnMain(WebxdcActivity.this::onSensorPermissionRequested);
     }
 
     @JavascriptInterface

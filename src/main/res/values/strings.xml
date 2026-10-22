@@ -250,6 +250,7 @@
     <string name="webxdc_perm_ask_camera">Allow \"%1$s\" to use your camera?</string>
     <string name="webxdc_perm_ask_camera_microphone">Allow \"%1$s\" to use your camera and microphone?</string>
     <string name="webxdc_perm_ask_location">Allow \"%1$s\" to access your location?</string>
+    <string name="webxdc_perm_ask_sensors">Allow \"%1$s\" to access the device\'s motion and orientation sensors?</string>
     <string name="webxdc_perm_denied_settings">Permissions missing for DeltaChat. Please grant DeltaChat required permissions in Android settings.</string>
     <string name="webxdc_perm_reset">Reset permissions</string>
     <string name="home">Home</string>
