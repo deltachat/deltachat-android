@@ -43,18 +43,6 @@
         app:showAsAction="never" />
 
     <item
-        android:title="@string/add_to_home_screen"
-        android:id="@+id/menu_add_to_home_screen"
-        android:visible="false"
-        app:showAsAction="never" />
-
-    <item
-        android:title="@string/menu_export_attachments"
-        android:id="@+id/menu_context_save_attachment"
-        android:visible="false"
-        app:showAsAction="never" />
-
-    <item
         android:title="@string/notify_reply_button"
         android:id="@+id/menu_context_reply"
         app:showAsAction="never" />
@@ -67,6 +55,18 @@
     <item
         android:title="@string/resend"
         android:id="@+id/menu_resend"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/menu_export_attachments"
+        android:id="@+id/menu_context_save_attachment"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/add_to_home_screen"
+        android:id="@+id/menu_add_to_home_screen"
+        android:visible="false"
         app:showAsAction="never" />
 
     <item
