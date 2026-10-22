@@ -67,6 +67,181 @@ window.webxdc = (() => {
     }
   }
 
+  // File System Access API subset with per-app folder grants
+  //
+  // Important notes:
+  // - `getFile({streaming: true})` is a webxdc extension returning a file-like object,
+  //   which `URL.createObjectURL()` maps to a streamable URL.
+  // - The lazy object is **not** a Blob subclass.
+  // - Handles cannot be stored in IndexedDB. Use window.webxdc.getGrantedFolders() at
+  //   start up to restore remembered folders grants without UI; showDirectoryPicker() always asks.
+  // - Which app can read which folder is enforced from Java.
+  let folderAccessResolver = null;
+  window.__webxdcFolderResult = (index, name) => {
+    if (folderAccessResolver) {
+      folderAccessResolver(index < 0 ? null : { index: index, name: name });
+      folderAccessResolver = null;
+    }
+  };
+
+  const fileAccessDenied = (message) => new DOMException(message, "NotAllowedError");
+  const fileNotFound = () => new DOMException("File not found", "NotFoundError");
+  const readOnlyPermission = (desc) => (desc && desc.mode === "readwrite" ? "denied" : "granted");
+
+  const sharedFileUrl = (index, path) =>
+    "/__webxdc_shared__/" + index + "/" + path.split("/").map(encodeURIComponent).join("/");
+
+  const lazyFileUrls = new WeakMap();
+  const origCreateObjectURL = URL.createObjectURL.bind(URL);
+  // Sliced streaming file doesn't work with URL.createObjectURL()
+  URL.createObjectURL = (obj) => {
+    const url = lazyFileUrls.get(obj);
+    return url !== undefined ? url : origCreateObjectURL(obj);
+  };
+
+  const makeLazyFile = (index, path, name, size, type, lastModified, rangeStart, rangeEnd) => {
+    const start = rangeStart === undefined ? 0 : rangeStart;
+    const end = rangeEnd === undefined ? size : rangeEnd;
+    const fetchFile = () => {
+      if (start === 0 && end === size) {
+        return fetch(sharedFileUrl(index, path));
+      }
+      return fetch(sharedFileUrl(index, path), {
+        headers: { Range: "bytes=" + start + "-" + (end - 1) },
+      });
+    };
+    const file = {
+      name: name,
+      type: type,
+      lastModified: lastModified,
+      size: Math.max(end - start, 0),
+      slice: (sliceStart, sliceEnd, contentType) => {
+        const len = file.size;
+        const from =
+          sliceStart === undefined ? 0 : sliceStart < 0 ? Math.max(len + sliceStart, 0) : Math.min(sliceStart, len);
+        const to =
+          sliceEnd === undefined ? len : sliceEnd < 0 ? Math.max(len + sliceEnd, 0) : Math.min(sliceEnd, len);
+        return makeLazyFile(
+          index, path, name, size, contentType === undefined ? type : contentType,
+          lastModified, start + from, start + Math.max(from, to));
+      },
+      arrayBuffer: async () => {
+        if (file.size === 0) {
+          return new ArrayBuffer(0);
+        }
+        const response = await fetchFile();
+        if (!response.ok) {
+          throw fileNotFound();
+        }
+        return response.arrayBuffer();
+      },
+      text: async () => new TextDecoder().decode(await file.arrayBuffer()),
+      stream: () => {
+        let reader = null;
+        return new ReadableStream({
+          async pull(controller) {
+            if (file.size === 0) {
+              controller.close();
+              return;
+            }
+            if (!reader) {
+              const response = await fetchFile();
+              if (!response.ok || !response.body) {
+                controller.error(fileNotFound());
+                return;
+              }
+              reader = response.body.getReader();
+            }
+            const { done, value } = await reader.read();
+            if (done) {
+              controller.close();
+            } else {
+              controller.enqueue(value);
+            }
+          },
+          cancel: (reason) => (reader ? reader.cancel(reason) : undefined),
+        });
+      },
+    };
+    if (start === 0 && end === size) {
+      lazyFileUrls.set(file, sharedFileUrl(index, path));
+    }
+    return file;
+  };
+
+  const makeFileHandle = (index, path, name, size, lastModified, type) => ({
+    kind: "file",
+    name: name,
+    getFile: async (options = {}) => {
+      if (options.streaming) {
+        return makeLazyFile(index, path, name, size, type, lastModified);
+      }
+      const response = await fetch(sharedFileUrl(index, path));
+      if (!response.ok) {
+        throw fileNotFound();
+      }
+      return new File([await response.blob()], name, { type: type, lastModified: lastModified });
+    },
+    createWritable: async () => {
+      throw fileAccessDenied("Read-only access");
+    },
+    queryPermission: readOnlyPermission,
+    requestPermission: readOnlyPermission,
+  });
+
+  const makeDirectoryHandle = (index, path, name) => {
+    const findChild = async (kind, childName, options = {}) => {
+      if (options.create) {
+        throw fileAccessDenied("Read-only access");
+      }
+      for await (const child of handle.values()) {
+        if (child.kind === kind && child.name === childName) {
+          return child;
+        }
+      }
+      throw kind === "file" ? fileNotFound() : new DOMException("Directory not found", "NotFoundError");
+    };
+    const handle = {
+      kind: "directory",
+      name: name,
+      values: async function* () {
+        const entries = JSON.parse(InternalJSApi.listSharedDir(index, path));
+        for (const entry of entries) {
+          yield entry.isDirectory
+            ? makeDirectoryHandle(index, entry.path, entry.name)
+            : makeFileHandle(index, entry.path, entry.name, entry.size, entry.lastModified, entry.type);
+        }
+      },
+      getDirectoryHandle: (dirName, options) => findChild("directory", dirName, options),
+      getFileHandle: (fileName, options) => findChild("file", fileName, options),
+      removeEntry: async () => {
+        throw fileAccessDenied("Read-only access");
+      },
+      queryPermission: readOnlyPermission,
+      requestPermission: readOnlyPermission,
+    };
+    return handle;
+  };
+
+  window.showDirectoryPicker = (options = {}) => {
+    if (options.mode === "readwrite") {
+      return Promise.reject(fileAccessDenied("Read-only access"));
+    }
+    if (folderAccessResolver) {
+      return Promise.reject(new DOMException("Picker is already open", "AbortError"));
+    }
+    return new Promise((resolve, reject) => {
+      folderAccessResolver = (folder) => {
+        if (folder) {
+          resolve(makeDirectoryHandle(folder.index, "", folder.name));
+        } else {
+          reject(new DOMException("User aborted", "AbortError"));
+        }
+      };
+      InternalJSApi.requestFolderAccess();
+    });
+  };
+
   let setUpdateListenerPromise = null;
   let update_listener = () => {};
   let last_serial = 0;
@@ -224,5 +399,9 @@ window.webxdc = (() => {
         console.log(element);
         return promise;
     },
+
+    getGrantedFolders: async () =>
+          JSON.parse(InternalJSApi.listGrantedFolders()).map((folder) =>
+            makeDirectoryHandle(folder.index, "", folder.name)),
   };
 })();

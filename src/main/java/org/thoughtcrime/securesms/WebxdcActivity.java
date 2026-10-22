@@ -5,12 +5,15 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.UriPermission;
 import android.content.res.Configuration;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.speech.tts.TextToSpeech;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -24,6 +27,7 @@ import android.webkit.MimeTypeMap;
 import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -43,6 +47,7 @@ import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.b44t.messenger.DcMsg;
 import com.google.common.base.Charsets;
+import com.google.common.io.ByteStreams;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -53,9 +58,13 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.connect.AccountManager;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
@@ -77,6 +86,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private static final String EXTRA_HIDE_ACTION_BAR = "hideActionBar";
   private static final String EXTRA_HREF = "href";
   private static final int REQUEST_CODE_FILE_PICKER = 51426;
+  private static final int REQUEST_CODE_FOLDER_PICKER = 51427;
+  private static final String SHARED_FILES_PREFIX = "/__webxdc_shared__/";
 
   private ValueCallback<Uri[]> filePathCallback;
   private DcContext dcContext;
@@ -569,6 +580,325 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
           "accelerometer=(), gyroscope=(), magnetometer=(), ambient-light-sensor=()");
     }
     return headers;
+  }
+
+  @Override
+  protected WebResourceResponse interceptRequest(WebResourceRequest request) {
+    String path = request.getUrl().getPath();
+    if (path != null && path.startsWith(SHARED_FILES_PREFIX)) {
+      return serveSharedFile(path, request.getRequestHeaders());
+    }
+    return super.interceptRequest(request);
+  }
+
+  // Files are served by app origin under SHARED_FILES_PREFIX instead of being
+  // copied. Media can be streamed and range requests allow seeking.
+  // The SAF permission is held by Delta Chat; per-app grant is set here.
+  private void onFolderAccessRequested() {
+    if (isFinishing() || isDestroyed()) {
+      folderResult(-1, "");
+      return;
+    }
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    final List<WebxdcPermissions.FolderGrant> own =
+        WebxdcPermissions.getFolders(this, accountId, msgId);
+    final List<WebxdcPermissions.FolderGrant> reusable =
+        WebxdcPermissions.getReusableFolders(this, accountId, msgId);
+    if (own.isEmpty() && reusable.isEmpty()) {
+      permissionDialog =
+          new AlertDialog.Builder(this)
+              .setMessage(getString(R.string.webxdc_perm_ask_folder, appName))
+              .setPositiveButton(R.string.choose_folder, (dialog, which) -> launchFolderPicker())
+              .setNegativeButton(R.string.cancel, (dialog, which) -> folderResult(-1, ""))
+              .setOnCancelListener(dialog -> folderResult(-1, ""))
+              .show();
+      return;
+    }
+    final int ownCount = own.size();
+    final String[] names = new String[ownCount + reusable.size() + 1];
+    for (int i = 0; i < ownCount; i++) {
+      names[i] = own.get(i).name;
+    }
+    for (int i = 0; i < reusable.size(); i++) {
+      names[ownCount + i] = reusable.get(i).name;
+    }
+    names[names.length - 1] = getString(R.string.choose_folder);
+    permissionDialog =
+        new AlertDialog.Builder(this)
+            .setTitle(getString(R.string.webxdc_perm_ask_folder, appName))
+            .setItems(
+                names,
+                (dialog, which) -> {
+                  if (which < ownCount) {
+                    folderResult(which, own.get(which).name);
+                  } else if (which < ownCount + reusable.size()) {
+                    WebxdcPermissions.FolderGrant grant = reusable.get(which - ownCount);
+                    int index =
+                        WebxdcPermissions.addFolder(
+                            this, accountId, msgId, grant.treeUri, grant.name);
+                    if (index >= 0) {
+                      folderResult(index, grant.name);
+                    } else {
+                      folderResult(-1, "");
+                    }
+                  } else {
+                    launchFolderPicker();
+                  }
+                })
+            .setOnCancelListener(dialog -> folderResult(-1, ""))
+            .show();
+  }
+
+  private void launchFolderPicker() {
+    try {
+      startActivityForResult(
+          new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), REQUEST_CODE_FOLDER_PICKER);
+    } catch (Exception e) {
+      Log.w(TAG, "Cannot open folder picker", e);
+      folderResult(-1, "");
+    }
+  }
+
+  private void onFolderPicked(Uri treeUri) {
+    try {
+      getContentResolver()
+          .takePersistableUriPermission(treeUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+      String name = getTreeName(treeUri);
+      int index =
+          WebxdcPermissions.addFolder(
+              this, dcContext.getAccountId(), dcAppMsg.getId(), treeUri.toString(), name);
+      if (index >= 0) {
+        folderResult(index, name);
+      } else {
+        folderResult(-1, "");
+      }
+    } catch (Exception e) {
+      Log.d(TAG, "Cannot add folder permission", e);
+      folderResult(-1, "");
+    }
+  }
+
+  private void folderResult(int index, String name) {
+    callJavaScriptFunction("__webxdcFolderResult(" + index + ", " + JSONObject.quote(name) + ")");
+  }
+
+  private String getTreeName(Uri treeUri) {
+    String name = treeUri.getLastPathSegment();
+    try (Cursor c =
+        getContentResolver()
+            .query(
+                DocumentsContract.buildDocumentUriUsingTree(
+                    treeUri, DocumentsContract.getTreeDocumentId(treeUri)),
+                new String[] {DocumentsContract.Document.COLUMN_DISPLAY_NAME},
+                null,
+                null,
+                null)) {
+      if (c != null && c.moveToFirst() && !c.isNull(0)) {
+        name = c.getString(0);
+      }
+    } catch (Exception e) {
+      Log.d(TAG, "Failed to get tree name");
+    }
+    return name;
+  }
+
+  private void listSharedDir(Uri treeUri, String parentDocId, String prefix, JSONArray out) {
+    Uri childrenUri = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, parentDocId);
+    try (Cursor c =
+        getContentResolver()
+            .query(
+                childrenUri,
+                new String[] {
+                  DocumentsContract.Document.COLUMN_DISPLAY_NAME,
+                  DocumentsContract.Document.COLUMN_MIME_TYPE,
+                  DocumentsContract.Document.COLUMN_SIZE,
+                  DocumentsContract.Document.COLUMN_LAST_MODIFIED
+                },
+                null,
+                null,
+                null)) {
+      if (c == null) {
+        return;
+      }
+      while (c.moveToNext()) {
+        String name = c.getString(0);
+        if (name == null) {
+          continue;
+        }
+        boolean isDirectory = DocumentsContract.Document.MIME_TYPE_DIR.equals(c.getString(1));
+        try {
+          JSONObject entry = new JSONObject();
+          entry.put("name", name);
+          entry.put("path", prefix.isEmpty() ? name : prefix + "/" + name);
+          entry.put("isDirectory", isDirectory);
+          if (!isDirectory) {
+            entry.put("type", c.isNull(1) ? "" : c.getString(1));
+            entry.put("size", c.isNull(2) ? 0 : c.getLong(2));
+            entry.put("lastModified", c.isNull(3) ? 0 : c.getLong(3));
+          }
+          out.put(entry);
+        } catch (JSONException ignored) {
+        }
+      }
+    } catch (Exception e) {
+      Log.d(TAG, "Cannot list shared dir: " + e.getMessage());
+    }
+  }
+
+  private WebResourceResponse serveSharedFile(String path, Map<String, String> requestHeaders) {
+    try {
+      String rest = path.substring(SHARED_FILES_PREFIX.length());
+      int slash = rest.indexOf('/');
+      int index = Integer.parseInt(slash < 0 ? rest : rest.substring(0, slash));
+      String relPath = slash < 0 ? "" : rest.substring(slash + 1);
+
+      Uri treeUri = getSharedTreeUri(index);
+      String docId = treeUri == null ? null : findSharedDocId(treeUri, relPath);
+      if (docId == null) {
+        throw new Exception("Not found: " + relPath);
+      }
+      Uri docUri = DocumentsContract.buildDocumentUriUsingTree(treeUri, docId);
+      long size = -1;
+      String docMime = null;
+      try (Cursor c =
+          getContentResolver()
+              .query(
+                  docUri,
+                  new String[] {
+                    DocumentsContract.Document.COLUMN_MIME_TYPE,
+                    DocumentsContract.Document.COLUMN_SIZE
+                  },
+                  null,
+                  null,
+                  null)) {
+        if (c != null && c.moveToFirst()) {
+          docMime = c.getString(0);
+          if (!c.isNull(1)) {
+            size = c.getLong(1);
+          }
+        }
+      }
+      if (DocumentsContract.Document.MIME_TYPE_DIR.equals(docMime)) {
+        throw new Exception("Not a file: " + relPath);
+      }
+
+      String ext = MediaUtil.getFileExtensionFromUrl(path);
+      String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
+      if (mimeType == null) {
+        mimeType = docMime != null ? docMime : "application/octet-stream";
+      }
+      InputStream stream = getContentResolver().openInputStream(docUri);
+      if (stream == null) {
+        throw new Exception("Cannot open: " + relPath);
+      }
+
+      Map<String, String> headers = new HashMap<>();
+      headers.put("Accept-Ranges", "bytes");
+      Long[] range = requestHeaders == null ? null : parseRangeHeader(requestHeaders, size);
+      WebResourceResponse res;
+      if (range != null) {
+        // WebView itself skips to the first requested byte of every intercepted stream
+        // no matter status, but does not stop after the last one. The only working workaround is
+        // to serve the stream from file start, then cut after the last requested byte.
+        // See https://github.com/tauri-apps/wry/issues/1864,
+        // https://github.com/solardev-xyz/freedom-browser-android/pull/386
+        res = new WebResourceResponse(mimeType, null, ByteStreams.limit(stream, range[1] + 1));
+        headers.put("Content-Range", "bytes " + range[0] + "-" + range[1] + "/" + size);
+        headers.put("Content-Length", String.valueOf(range[1] - range[0] + 1));
+        res.setStatusCodeAndReasonPhrase(206, "Partial Content");
+      } else {
+        res = new WebResourceResponse(mimeType, null, stream);
+        if (size >= 0) {
+          headers.put("Content-Length", String.valueOf(size));
+        }
+      }
+      res.setResponseHeaders(headers);
+      return res;
+    } catch (Exception e) {
+      Log.w(TAG, "Failed to serve shared file", e);
+      InputStream stream =
+          new ByteArrayInputStream(("Webxdc Shared File Error: " + e.getMessage()).getBytes());
+      WebResourceResponse res = new WebResourceResponse("text/plain", "UTF-8", stream);
+      // getFile() in webxdc.js checks response.ok
+      res.setStatusCodeAndReasonPhrase(404, "Not Found");
+      return res;
+    }
+  }
+
+  private String findChildDocId(Uri treeUri, String parentDocId, String name) {
+    Uri childrenUri = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, parentDocId);
+    try (Cursor c =
+        getContentResolver()
+            .query(
+                childrenUri,
+                new String[] {
+                  DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+                  DocumentsContract.Document.COLUMN_DISPLAY_NAME
+                },
+                null,
+                null,
+                null)) {
+      if (c == null) {
+        return null;
+      }
+      while (c.moveToNext()) {
+        if (name.equals(c.getString(1))) {
+          return c.getString(0);
+        }
+      }
+    }
+    return null;
+  }
+
+  private Uri getSharedTreeUri(int index) {
+    List<WebxdcPermissions.FolderGrant> folders =
+        WebxdcPermissions.getFolders(this, dcContext.getAccountId(), dcAppMsg.getId());
+    return index >= 0 && index < folders.size() ? Uri.parse(folders.get(index).treeUri) : null;
+  }
+
+  private String findSharedDocId(Uri treeUri, String relPath) {
+    String docId = DocumentsContract.getTreeDocumentId(treeUri);
+    if (relPath.isEmpty()) {
+      return docId;
+    }
+    for (String segment : relPath.split("/")) {
+      if (segment.isEmpty() || segment.equals(".")) {
+        return null;
+      }
+      docId = findChildDocId(treeUri, docId, segment);
+      if (docId == null) {
+        return null;
+      }
+    }
+    return docId;
+  }
+
+  private static Long[] parseRangeHeader(Map<String, String> headers, long size) {
+    String range = null;
+    for (Map.Entry<String, String> entry : headers.entrySet()) {
+      if ("range".equalsIgnoreCase(entry.getKey())) {
+        range = entry.getValue();
+        break;
+      }
+    }
+    if (range == null || !range.startsWith("bytes=") || size <= 0) {
+      return null;
+    }
+    try {
+      String[] parts = range.substring("bytes=".length()).split("-", 2);
+      if (parts[0].isEmpty()) {
+        return null;
+      }
+      long start = Long.parseLong(parts[0]);
+      long end = parts.length < 2 || parts[1].isEmpty() ? size - 1 : Long.parseLong(parts[1]);
+      if (start > end || start >= size) {
+        return null;
+      }
+      return new Long[] {start, Math.min(end, size - 1)};
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   private void callJavaScriptFunction(String func) {
@@ -1064,6 +1394,13 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       filePathCallback.onReceiveValue(dataUris);
       filePathCallback = null;
     }
+    if (reqCode == REQUEST_CODE_FOLDER_PICKER) {
+      if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+        onFolderPicked(data.getData());
+      } else {
+        folderResult(-1, "");
+      }
+    }
     super.onActivityResult(reqCode, resultCode, data);
   }
 
@@ -1278,6 +1615,52 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     @JavascriptInterface
     public void requestSensorPermission() {
       Util.runOnMain(WebxdcActivity.this::onSensorPermissionRequested);
+    }
+
+    @JavascriptInterface
+    public void requestFolderAccess() {
+      Util.runOnMain(WebxdcActivity.this::onFolderAccessRequested);
+    }
+
+    @JavascriptInterface
+    public String listSharedDir(int index, String path) {
+      JSONArray result = new JSONArray();
+      String relPath = path == null ? "" : path;
+      Uri treeUri = WebxdcActivity.this.getSharedTreeUri(index);
+      String docId = treeUri == null ? null : WebxdcActivity.this.findSharedDocId(treeUri, relPath);
+      if (docId != null) {
+        WebxdcActivity.this.listSharedDir(treeUri, docId, relPath, result);
+      }
+      return result.toString();
+    }
+
+    @JavascriptInterface
+    public String listGrantedFolders() {
+      Set<String> persisted = new HashSet<>();
+      for (UriPermission p : getContentResolver().getPersistedUriPermissions()) {
+        if (p.isReadPermission()) {
+          persisted.add(p.getUri().toString());
+        }
+      }
+      JSONArray result = new JSONArray();
+      List<WebxdcPermissions.FolderGrant> folders =
+          WebxdcPermissions.getFolders(
+              WebxdcActivity.this,
+              WebxdcActivity.this.dcContext.getAccountId(),
+              WebxdcActivity.this.dcAppMsg.getId());
+      for (int i = 0; i < folders.size(); i++) {
+        if (!persisted.contains(folders.get(i).treeUri)) {
+          continue;
+        }
+        try {
+          JSONObject folder = new JSONObject();
+          folder.put("index", i);
+          folder.put("name", folders.get(i).name);
+          result.put(folder);
+        } catch (JSONException ignored) {
+        }
+      }
+      return result.toString();
     }
 
     @JavascriptInterface
