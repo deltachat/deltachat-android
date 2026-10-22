@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
 import android.webkit.PermissionRequest;
@@ -94,6 +95,8 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private String appName = "";
   private final ArrayDeque<PermissionRequest> permissionRequestQueue = new ArrayDeque<>();
   private PermissionRequest currentPermissionRequest;
+  private GeolocationPermissions.Callback pendingGeoCallback;
+  private String pendingGeoOrigin;
   private AlertDialog permissionDialog;
 
   private TextToSpeech tts;
@@ -228,6 +231,17 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
           public void onPermissionRequestCanceled(PermissionRequest request) {
             WebxdcActivity.this.onWebPermissionRequestCanceled(request);
           }
+
+          @Override
+          public void onGeolocationPermissionsShowPrompt(
+              String origin, GeolocationPermissions.Callback callback) {
+            WebxdcActivity.this.onGeolocationShowPrompt(origin, callback);
+          }
+
+          @Override
+          public void onGeolocationPermissionsHidePrompt() {
+            WebxdcActivity.this.onGeolocationHidePrompt();
+          }
         });
 
     int appMessageId = b.getInt(EXTRA_APP_MSG_ID);
@@ -286,7 +300,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     webSettings.setAllowFileAccess(false);
     webSettings.setBlockNetworkLoads(!internetAccess);
     webSettings.setAllowContentAccess(false);
-    webSettings.setGeolocationEnabled(false);
+    webSettings.setGeolocationEnabled(true);
     webSettings.setAllowFileAccessFromFileURLs(false);
     webSettings.setAllowUniversalAccessFromFileURLs(false);
     webSettings.setDatabaseEnabled(true);
@@ -364,6 +378,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     }
     permissionRequestQueue.clear();
     currentPermissionRequest = null;
+    answerGeoCallback(false);
     leaveRealtimeChannel();
     tts.shutdown();
     super.onDestroy();
@@ -755,6 +770,105 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               finishCurrentPermissionRequest();
             })
         .execute();
+  }
+
+  private void onGeolocationShowPrompt(
+      final String origin, final GeolocationPermissions.Callback callback) {
+    if (!isAppOrigin(origin)) {
+      Log.w(TAG, "Denying geolocation request from unexpected origin: " + origin);
+      callback.invoke(origin, false, false);
+      return;
+    }
+    if (pendingGeoCallback != null) {
+      callback.invoke(origin, false, false);
+      return;
+    }
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+    WebxdcPermissions.State state =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.LOCATION);
+    if (state == WebxdcPermissions.State.DENIED) {
+      callback.invoke(origin, false, false);
+      return;
+    }
+    if (state == WebxdcPermissions.State.ALLOWED) {
+      requestLocationPermission(origin, callback);
+      return;
+    }
+    pendingGeoCallback = callback;
+    pendingGeoOrigin = origin;
+    showPermissionDialog(
+        R.string.webxdc_perm_ask_location,
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.LOCATION,
+              WebxdcPermissions.State.ALLOWED);
+          requestLocationPermission(origin, callback);
+        },
+        () -> {
+          WebxdcPermissions.set(
+              this,
+              accountId,
+              msgId,
+              WebxdcPermissions.Capability.LOCATION,
+              WebxdcPermissions.State.DENIED);
+          answerGeoCallback(false);
+        },
+        () -> answerGeoCallback(false));
+  }
+
+  private void requestLocationPermission(
+      final String origin, final GeolocationPermissions.Callback callback) {
+    pendingGeoCallback = callback;
+    pendingGeoOrigin = origin;
+    if (Permissions.hasAny(
+        this,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION)) {
+      answerGeoCallback(true);
+      return;
+    }
+    Permissions.with(this)
+        .request(
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
+        .onAnyResult(
+            () -> {
+              boolean granted =
+                  Permissions.hasAny(
+                      this,
+                      Manifest.permission.ACCESS_FINE_LOCATION,
+                      Manifest.permission.ACCESS_COARSE_LOCATION);
+              if (!granted) {
+                WebxdcPermissions.set(
+                    this,
+                    dcContext.getAccountId(),
+                    dcAppMsg.getId(),
+                    WebxdcPermissions.Capability.LOCATION,
+                    WebxdcPermissions.State.ASK);
+              }
+              answerGeoCallback(granted);
+            })
+        .execute();
+  }
+
+  private void answerGeoCallback(boolean granted) {
+    if (pendingGeoCallback != null) {
+      final GeolocationPermissions.Callback callback = pendingGeoCallback;
+      final String origin = pendingGeoOrigin;
+      pendingGeoCallback = null;
+      pendingGeoOrigin = null;
+      webView.post(() -> callback.invoke(origin, granted, false));
+    }
+  }
+
+  private void onGeolocationHidePrompt() {
+    dismissPermissionDialog();
+    answerGeoCallback(false);
   }
 
   @Override
