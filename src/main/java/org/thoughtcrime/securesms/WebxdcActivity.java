@@ -550,14 +550,14 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   }
 
   private void showPermissionDialog(
-    int messageRes, Runnable onAllow, Runnable onBlock, Runnable onCancel) {
+      int messageRes, Runnable onAllow, Runnable onBlock, Runnable onCancel) {
     permissionDialog =
-      new AlertDialog.Builder(this)
-        .setMessage(getString(messageRes, appName))
-        .setPositiveButton(R.string.allow, (dialog, which) -> onAllow.run())
-        .setNegativeButton(R.string.block, (dialog, which) -> onBlock.run())
-        .setOnCancelListener(dialog -> onCancel.run())
-        .show();
+        new AlertDialog.Builder(this)
+            .setMessage(getString(messageRes, appName))
+            .setPositiveButton(R.string.allow, (dialog, which) -> onAllow.run())
+            .setNegativeButton(R.string.block, (dialog, which) -> onBlock.run())
+            .setOnCancelListener(dialog -> onCancel.run())
+            .show();
   }
 
   private boolean isAppOrigin(String origin) {
@@ -628,9 +628,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     final boolean audio = wantsAudio;
     final boolean video = wantsVideo;
     WebxdcPermissions.State micState =
-      WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE);
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE);
     WebxdcPermissions.State camState =
-      WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.CAMERA);
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.CAMERA);
     boolean micDenied = audio && micState == WebxdcPermissions.State.DENIED;
     boolean camDenied = video && camState == WebxdcPermissions.State.DENIED;
     if (micDenied || camDenied) {
@@ -654,38 +654,54 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       messageRes = R.string.webxdc_perm_ask_camera;
     }
     showPermissionDialog(
-      messageRes,
-      () -> {
-        if (audio) {
-          WebxdcPermissions.set(
-            this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE, WebxdcPermissions.State.ALLOWED);
-        }
-        if (video) {
-          WebxdcPermissions.set(
-            this, accountId, msgId, WebxdcPermissions.Capability.CAMERA, WebxdcPermissions.State.ALLOWED);
-        }
-        grantCaptureRequest(request, audio, video);
-      },
-      () -> {
-        if (audio) {
-          WebxdcPermissions.set(
-            this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE, WebxdcPermissions.State.DENIED);
-        }
-        if (video) {
-          WebxdcPermissions.set(
-            this, accountId, msgId, WebxdcPermissions.Capability.CAMERA, WebxdcPermissions.State.DENIED);
-        }
-        request.deny();
-        finishCurrentPermissionRequest();
-      },
-      () -> {
-        request.deny();
-        finishCurrentPermissionRequest();
-      });
+        messageRes,
+        () -> {
+          if (audio) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.MICROPHONE,
+                WebxdcPermissions.State.ALLOWED);
+          }
+          if (video) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.CAMERA,
+                WebxdcPermissions.State.ALLOWED);
+          }
+          grantCaptureRequest(request, audio, video);
+        },
+        () -> {
+          if (audio) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.MICROPHONE,
+                WebxdcPermissions.State.DENIED);
+          }
+          if (video) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.CAMERA,
+                WebxdcPermissions.State.DENIED);
+          }
+          request.deny();
+          finishCurrentPermissionRequest();
+        },
+        () -> {
+          request.deny();
+          finishCurrentPermissionRequest();
+        });
   }
 
   private void grantCaptureRequest(
-    final PermissionRequest request, final boolean audio, final boolean video) {
+      final PermissionRequest request, final boolean audio, final boolean video) {
     List<String> permissions = new ArrayList<>();
     if (audio) {
       permissions.add(Manifest.permission.RECORD_AUDIO);
@@ -694,43 +710,51 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       permissions.add(Manifest.permission.CAMERA);
     }
     Permissions.with(this)
-      .request(permissions.toArray(new String[0]))
-      .ifNecessary()
-      .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
-      .onAnyResult(
-        () -> {
-          if (isFinishing() || isDestroyed()) {
-            request.deny();
-            finishCurrentPermissionRequest();
-            return;
-          }
-          int accountId = dcContext.getAccountId();
-          int msgId = dcAppMsg.getId();
-          List<String> granted = new ArrayList<>();
-          if (audio) {
-            if (Permissions.hasAll(this, Manifest.permission.RECORD_AUDIO)) {
-              granted.add(PermissionRequest.RESOURCE_AUDIO_CAPTURE);
-            } else {
-              WebxdcPermissions.set(
-                this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE, WebxdcPermissions.State.ASK);
-            }
-          }
-          if (video) {
-            if (Permissions.hasAll(this, Manifest.permission.CAMERA)) {
-              granted.add(PermissionRequest.RESOURCE_VIDEO_CAPTURE);
-            } else {
-              WebxdcPermissions.set(
-                this, accountId, msgId, WebxdcPermissions.Capability.CAMERA, WebxdcPermissions.State.ASK);
-            }
-          }
-          if (granted.isEmpty()) {
-            request.deny();
-          } else {
-            request.grant(granted.toArray(new String[0]));
-          }
-          finishCurrentPermissionRequest();
-        })
-      .execute();
+        .request(permissions.toArray(new String[0]))
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
+        .onAnyResult(
+            () -> {
+              if (isFinishing() || isDestroyed()) {
+                request.deny();
+                finishCurrentPermissionRequest();
+                return;
+              }
+              int accountId = dcContext.getAccountId();
+              int msgId = dcAppMsg.getId();
+              List<String> granted = new ArrayList<>();
+              if (audio) {
+                if (Permissions.hasAll(this, Manifest.permission.RECORD_AUDIO)) {
+                  granted.add(PermissionRequest.RESOURCE_AUDIO_CAPTURE);
+                } else {
+                  WebxdcPermissions.set(
+                      this,
+                      accountId,
+                      msgId,
+                      WebxdcPermissions.Capability.MICROPHONE,
+                      WebxdcPermissions.State.ASK);
+                }
+              }
+              if (video) {
+                if (Permissions.hasAll(this, Manifest.permission.CAMERA)) {
+                  granted.add(PermissionRequest.RESOURCE_VIDEO_CAPTURE);
+                } else {
+                  WebxdcPermissions.set(
+                      this,
+                      accountId,
+                      msgId,
+                      WebxdcPermissions.Capability.CAMERA,
+                      WebxdcPermissions.State.ASK);
+                }
+              }
+              if (granted.isEmpty()) {
+                request.deny();
+              } else {
+                request.grant(granted.toArray(new String[0]));
+              }
+              finishCurrentPermissionRequest();
+            })
+        .execute();
   }
 
   @Override

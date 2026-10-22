@@ -11,7 +11,6 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -78,7 +77,7 @@ public class WebxdcPermissions {
   }
 
   public static void set(
-    Context context, int accountId, int msgId, Capability capability, State state) {
+      Context context, int accountId, int msgId, Capability capability, State state) {
     try {
       JSONObject record = read(context, accountId, msgId);
       if (state == State.ASK) {
@@ -127,9 +126,9 @@ public class WebxdcPermissions {
       Set<Integer> existing;
       try {
         existing =
-          new HashSet<>(
-            rpc.getExistingMsgIds(
-              accountId, new ArrayList<>(accountEntry.getValue().keySet())));
+            new HashSet<>(
+                rpc.getExistingMsgIds(
+                    accountId, new ArrayList<>(accountEntry.getValue().keySet())));
       } catch (Exception e) {
         Log.w(TAG, "Cannot check webxdc messages for account " + accountId, e);
         continue;
