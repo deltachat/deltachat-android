@@ -533,7 +533,8 @@ public class ConversationFragment extends MessageSelectorFragment {
         (int) chatId,
         getListAdapter().getMessageIds(),
         playbackViewModel::stopByIds,
-        playbackViewModel::stopByIds);
+        playbackViewModel::stopByIds,
+        getContext().getString(R.string.clear_chat));
   }
 
   private ConversationAdapter getListAdapter() {
