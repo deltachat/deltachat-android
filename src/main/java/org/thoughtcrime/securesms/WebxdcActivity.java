@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.MimeTypeMap;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
@@ -47,8 +48,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import org.json.JSONObject;
@@ -62,6 +66,7 @@ import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.Util;
+import org.thoughtcrime.securesms.webxdc.WebxdcPermissions;
 
 public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcEventDelegate {
   private static final String TAG = "WebxdcActivity";
@@ -86,6 +91,10 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   private int sendUpdateInterval;
   private boolean internetAccess = false;
   private boolean hideActionBar = false;
+  private String appName = "";
+  private final ArrayDeque<PermissionRequest> permissionRequestQueue = new ArrayDeque<>();
+  private PermissionRequest currentPermissionRequest;
+  private AlertDialog permissionDialog;
 
   private TextToSpeech tts;
 
@@ -209,6 +218,16 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
                 Intent.createChooser(intent, getString(R.string.select)), REQUEST_CODE_FILE_PICKER);
             return true;
           }
+
+          @Override
+          public void onPermissionRequest(PermissionRequest request) {
+            WebxdcActivity.this.onWebPermissionRequest(request);
+          }
+
+          @Override
+          public void onPermissionRequestCanceled(PermissionRequest request) {
+            WebxdcActivity.this.onWebPermissionRequestCanceled(request);
+          }
         });
 
     int appMessageId = b.getInt(EXTRA_APP_MSG_ID);
@@ -252,6 +271,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       isBroadcast = info.isBroadcast;
       sendUpdateMaxSize = info.sendUpdateMaxSize;
       sendUpdateInterval = info.sendUpdateInterval;
+      appName = info.name;
     } catch (RpcException e) { // unexpected error, log it and finish
       Log.e(TAG, "RPC Error", e);
       finish();
@@ -318,6 +338,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
               () -> {
                 updateTitleAndMenu(info, chat);
               });
+          WebxdcPermissions.pruneStaleOnce(getApplicationContext(), rpc);
         });
   }
 
@@ -337,6 +358,12 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
   @Override
   protected void onDestroy() {
     DcHelper.getEventCenter(this.getApplicationContext()).removeObservers(this);
+    dismissPermissionDialog();
+    for (PermissionRequest request : permissionRequestQueue) {
+      request.deny();
+    }
+    permissionRequestQueue.clear();
+    currentPermissionRequest = null;
     leaveRealtimeChannel();
     tts.shutdown();
     super.onDestroy();
@@ -368,6 +395,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
       return true;
     } else if (itemId == R.id.show_in_chat) {
       showInChat();
+      return true;
+    } else if (itemId == R.id.webxdc_reset_permissions) {
+      WebxdcPermissions.clear(this, dcContext.getAccountId(), dcAppMsg.getId());
+      Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT).show();
+      webView.reload();
       return true;
     }
     return false;
@@ -510,6 +542,221 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
         "document.getElementById('frame').contentWindow." + func + ";", null);
   }
 
+  private void dismissPermissionDialog() {
+    if (permissionDialog != null) {
+      permissionDialog.dismiss();
+      permissionDialog = null;
+    }
+  }
+
+  private void showPermissionDialog(
+      int messageRes, Runnable onAllow, Runnable onBlock, Runnable onCancel) {
+    permissionDialog =
+        new AlertDialog.Builder(this)
+            .setMessage(getString(messageRes, appName))
+            .setPositiveButton(R.string.allow, (dialog, which) -> onAllow.run())
+            .setNegativeButton(R.string.block, (dialog, which) -> onBlock.run())
+            .setOnCancelListener(dialog -> onCancel.run())
+            .show();
+  }
+
+  private boolean isAppOrigin(String origin) {
+    if (origin == null) {
+      return false;
+    }
+    String normalized = origin.endsWith("/") ? origin.substring(0, origin.length() - 1) : origin;
+    return baseURL.equals(normalized);
+  }
+
+  private void onWebPermissionRequest(PermissionRequest request) {
+    permissionRequestQueue.add(request);
+    if (currentPermissionRequest == null) {
+      processNextPermissionRequest();
+    }
+  }
+
+  private void onWebPermissionRequestCanceled(PermissionRequest request) {
+    if (currentPermissionRequest == request) {
+      dismissPermissionDialog();
+      finishCurrentPermissionRequest();
+    } else {
+      permissionRequestQueue.remove(request);
+    }
+  }
+
+  private void finishCurrentPermissionRequest() {
+    permissionRequestQueue.poll();
+    currentPermissionRequest = null;
+    if (!permissionRequestQueue.isEmpty()) {
+      processNextPermissionRequest();
+    }
+  }
+
+  private void processNextPermissionRequest() {
+    final PermissionRequest request = permissionRequestQueue.peek();
+    currentPermissionRequest = request;
+    if (request == null) {
+      return;
+    }
+    final int accountId = dcContext.getAccountId();
+    final int msgId = dcAppMsg.getId();
+
+    Uri origin = request.getOrigin();
+    if (!isAppOrigin(origin == null ? null : origin.toString())) {
+      Log.w(TAG, "Denying permission request from unexpected origin: " + origin);
+      request.deny();
+      finishCurrentPermissionRequest();
+      return;
+    }
+
+    boolean wantsAudio = false;
+    boolean wantsVideo = false;
+    for (String resource : request.getResources()) {
+      if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource)) {
+        wantsAudio = true;
+      } else if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resource)) {
+        wantsVideo = true;
+      } else {
+        // DRM identifiers, MIDI, WebXR are denied by default
+        Log.w(TAG, "Denying unsupported permission resource: " + resource);
+        request.deny();
+        finishCurrentPermissionRequest();
+        return;
+      }
+    }
+
+    final boolean audio = wantsAudio;
+    final boolean video = wantsVideo;
+    WebxdcPermissions.State micState =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.MICROPHONE);
+    WebxdcPermissions.State camState =
+        WebxdcPermissions.get(this, accountId, msgId, WebxdcPermissions.Capability.CAMERA);
+    boolean micDenied = audio && micState == WebxdcPermissions.State.DENIED;
+    boolean camDenied = video && camState == WebxdcPermissions.State.DENIED;
+    if (micDenied || camDenied) {
+      request.deny();
+      finishCurrentPermissionRequest();
+      return;
+    }
+    boolean micOk = !audio || micState == WebxdcPermissions.State.ALLOWED;
+    boolean camOk = !video || camState == WebxdcPermissions.State.ALLOWED;
+    if (micOk && camOk) {
+      grantCaptureRequest(request, audio, video);
+      return;
+    }
+
+    int messageRes;
+    if (audio && video) {
+      messageRes = R.string.webxdc_perm_ask_camera_microphone;
+    } else if (audio) {
+      messageRes = R.string.webxdc_perm_ask_microphone;
+    } else {
+      messageRes = R.string.webxdc_perm_ask_camera;
+    }
+    showPermissionDialog(
+        messageRes,
+        () -> {
+          if (audio) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.MICROPHONE,
+                WebxdcPermissions.State.ALLOWED);
+          }
+          if (video) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.CAMERA,
+                WebxdcPermissions.State.ALLOWED);
+          }
+          grantCaptureRequest(request, audio, video);
+        },
+        () -> {
+          if (audio) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.MICROPHONE,
+                WebxdcPermissions.State.DENIED);
+          }
+          if (video) {
+            WebxdcPermissions.set(
+                this,
+                accountId,
+                msgId,
+                WebxdcPermissions.Capability.CAMERA,
+                WebxdcPermissions.State.DENIED);
+          }
+          request.deny();
+          finishCurrentPermissionRequest();
+        },
+        () -> {
+          request.deny();
+          finishCurrentPermissionRequest();
+        });
+  }
+
+  private void grantCaptureRequest(
+      final PermissionRequest request, final boolean audio, final boolean video) {
+    List<String> permissions = new ArrayList<>();
+    if (audio) {
+      permissions.add(Manifest.permission.RECORD_AUDIO);
+    }
+    if (video) {
+      permissions.add(Manifest.permission.CAMERA);
+    }
+    Permissions.with(this)
+        .request(permissions.toArray(new String[0]))
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.webxdc_perm_denied_settings))
+        .onAnyResult(
+            () -> {
+              if (isFinishing() || isDestroyed()) {
+                request.deny();
+                finishCurrentPermissionRequest();
+                return;
+              }
+              int accountId = dcContext.getAccountId();
+              int msgId = dcAppMsg.getId();
+              List<String> granted = new ArrayList<>();
+              if (audio) {
+                if (Permissions.hasAll(this, Manifest.permission.RECORD_AUDIO)) {
+                  granted.add(PermissionRequest.RESOURCE_AUDIO_CAPTURE);
+                } else {
+                  WebxdcPermissions.set(
+                      this,
+                      accountId,
+                      msgId,
+                      WebxdcPermissions.Capability.MICROPHONE,
+                      WebxdcPermissions.State.ASK);
+                }
+              }
+              if (video) {
+                if (Permissions.hasAll(this, Manifest.permission.CAMERA)) {
+                  granted.add(PermissionRequest.RESOURCE_VIDEO_CAPTURE);
+                } else {
+                  WebxdcPermissions.set(
+                      this,
+                      accountId,
+                      msgId,
+                      WebxdcPermissions.Capability.CAMERA,
+                      WebxdcPermissions.State.ASK);
+                }
+              }
+              if (granted.isEmpty()) {
+                request.deny();
+              } else {
+                request.grant(granted.toArray(new String[0]));
+              }
+              finishCurrentPermissionRequest();
+            })
+        .execute();
+  }
+
   @Override
   public void handleEvent(@NonNull DcEvent event) {
     int eventId = event.getId();
@@ -543,6 +790,7 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     } else if ((eventId == DcContext.DC_EVENT_MSG_DELETED
             && event.getData2Int() == dcAppMsg.getId())
         || (eventId == DcContext.DC_EVENT_CHAT_DELETED && event.getData1Int() == chatId)) {
+      WebxdcPermissions.clear(this, dcContext.getAccountId(), dcAppMsg.getId());
       finish();
     }
   }
