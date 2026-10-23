@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
+import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
 import chat.delta.rpc.Rpc;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,10 +47,12 @@ public class WebxdcPermissions {
   }
 
   public static class FolderGrant {
+    public final String id;
     public final String treeUri;
     public final String name;
 
-    FolderGrant(String treeUri, String name) {
+    FolderGrant(String id, String treeUri, String name) {
+      this.id = id;
       this.treeUri = treeUri;
       this.name = name;
     }
@@ -174,13 +178,29 @@ public class WebxdcPermissions {
     for (int i = 0; i < folders.length(); i++) {
       JSONObject folder = folders.optJSONObject(i);
       if (folder != null) {
-        result.add(new FolderGrant(folder.optString("uri"), folder.optString("name")));
+        result.add(
+            new FolderGrant(
+                folder.optString("id"), folder.optString("uri"), folder.optString("name")));
       }
     }
     return result;
   }
 
-  public static int addFolder(
+  @Nullable
+  public static FolderGrant findFolder(Context context, int accountId, int msgId, String grantId) {
+    if (grantId == null || grantId.isEmpty()) {
+      return null;
+    }
+    for (FolderGrant folder : getFolders(context, accountId, msgId)) {
+      if (grantId.equals(folder.id)) {
+        return folder;
+      }
+    }
+    return null;
+  }
+
+  @Nullable
+  public static String addFolder(
       Context context, int accountId, int msgId, String treeUri, String name) {
     try {
       JSONObject record = read(context, accountId, msgId);
@@ -192,18 +212,20 @@ public class WebxdcPermissions {
       for (int i = 0; i < folders.length(); i++) {
         JSONObject folder = folders.optJSONObject(i);
         if (folder != null && treeUri.equals(folder.optString("uri"))) {
-          return i;
+          return folder.optString("id");
         }
       }
+      String id = UUID.randomUUID().toString();
       JSONObject folder = new JSONObject();
+      folder.put("id", id);
       folder.put("uri", treeUri);
       folder.put("name", name);
       folders.put(folder);
       write(context, accountId, msgId, record);
-      return folders.length() - 1;
+      return id;
     } catch (JSONException e) {
       // in-memory kv are valid JSON by construction
-      return -1;
+      return null;
     }
   }
 
@@ -231,7 +253,7 @@ public class WebxdcPermissions {
     }
     List<FolderGrant> result = new ArrayList<>();
     for (Map.Entry<String, String> e : reusable.entrySet()) {
-      result.add(new FolderGrant(e.getKey(), e.getValue()));
+      result.add(new FolderGrant(null, e.getKey(), e.getValue()));
     }
     return result;
   }
