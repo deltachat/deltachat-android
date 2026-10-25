@@ -3,6 +3,9 @@
 ## Unreleased
 
 * WebXDC: add per-app prompt for basic permissions (Camera, Microphone, Geolocation, Motion/Orientation Sensors)
+* Show system-message when someone unpins a message
+* Update translations and local help
+* Update to core 2.65.0
 
 ## v2.64.0
 2026-10
