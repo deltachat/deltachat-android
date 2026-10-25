@@ -387,12 +387,16 @@
     <string name="pin">Tõste esile</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Esiletõstetud</string>
+    <string name="pin_for_everyone_ask">Kas tõstad sõnumi selles vestluses kõigi jaoks esile?</string>
     <string name="pin_for_everyone">Tõsta esile kõigi jaoks</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Lõpeta esiletõstmine</string>
+    <string name="unpin_for_everyone_ask">Kas lõpetad selles vestluses sõnumi kõigi jaoks esiletõstmise?</string>
     <string name="unpin_for_everyone">Lõpeta esiletõstmine kõigi jaoks</string>
     <string name="message_pinned_by_you">Sina tõstsid sõnumi esile</string>
     <string name="message_pinned_by_other">%1$s tõstis sõnumi esile</string>
+    <string name="message_unpinned_by_you">Sa lõpetasid sõnumi esiletõstmise</string>
+    <string name="message_unpinned_by_other">%1$s lõpetas sõnumi esiletõstmise</string>
     <string name="ConversationFragment_quoted_message_not_found">Algset sõnumit ei leidu</string>
     <string name="reply_privately">Vasta privaatselt</string>
     <string name="source_code">Lähtekood</string>

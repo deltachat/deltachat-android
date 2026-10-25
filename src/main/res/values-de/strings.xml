@@ -387,12 +387,16 @@
     <string name="pin">Anheften</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Angeheftet</string>
+    <string name="pin_for_everyone_ask">Nachricht für alle in diesem Chat anheften?</string>
     <string name="pin_for_everyone">Für alle anheften</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Loslösen</string>
+    <string name="unpin_for_everyone_ask">Nachricht für alle in diesem Chat loslösen?</string>
     <string name="unpin_for_everyone">Für alle loslösen</string>
     <string name="message_pinned_by_you">Du hast eine Nachricht angeheftet</string>
     <string name="message_pinned_by_other">Nachricht angeheftet von %1$s</string>
+    <string name="message_unpinned_by_you">Du hast eine Nachricht losgelöst</string>
+    <string name="message_unpinned_by_other">Nachricht losgelöst von %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
     <string name="reply_privately">Privat antworten</string>
     <string name="source_code">Quelltext</string>

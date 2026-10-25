@@ -374,10 +374,16 @@
     <string name="pin">固定</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">已置顶</string>
+    <string name="pin_for_everyone_ask">为该聊天中的所有人置顶消息吗？</string>
+    <string name="pin_for_everyone">为所有人置顶</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">取消固定</string>
+    <string name="unpin_for_everyone_ask">为该聊天中的所有人取消置顶消息？</string>
+    <string name="unpin_for_everyone">为所有人取消置顶</string>
     <string name="message_pinned_by_you">你置顶了一条消息</string>
     <string name="message_pinned_by_other">%1$s 置顶的消息</string>
+    <string name="message_unpinned_by_you">你取消置顶了一条消息</string>
+    <string name="message_unpinned_by_other">%1$s 取消置顶了消息 </string>
     <string name="ConversationFragment_quoted_message_not_found">原消息未找到</string>
     <string name="reply_privately">私下回复</string>
     <string name="source_code">源代码</string>
@@ -724,6 +730,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">发送 %1$d 个文件到“%2$s”？</string>
     <string name="ask_send_files_to_selected_chats">发送 %1$d 个文件到 %2$d 个聊天？</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">正在准备媒体…</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">正在压缩视频…</string>
+    <string name="video_recode_busy">正在处理另一个视频，请等待。</string>
     <string name="share_text_multiple_chats">发送这段文字到 %1$d 个聊天？\n\n\"%2$s“</string>
     <string name="share_abort">由于缺少权限，分享中止。</string>
 

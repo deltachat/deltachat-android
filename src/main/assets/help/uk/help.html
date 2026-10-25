@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">Що таке профілі? Як я можу перемикатися між ними?</a></li>
       <li><a href="#хто-бачить-моє-зображення-профілю">Хто бачить моє зображення профілю?</a></li>
       <li><a href="#signature">Чи можу я встановити біографію/статус у Delta Chat?</a></li>
-      <li><a href="#що-значить-закріплення-приглушення-архівування">Що значить Закріплення, Приглушення, Архівування?</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">Як працюють “Збережені повідомлення”?</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#що-означає-зелена-точка">Що означає зелена точка?</a></li>
       <li><a href="#що-означають-галочки-біля-вихідних-повідомлень">Що означають галочки біля вихідних повідомлень?</a></li>
       <li><a href="#edit">Виправлення помилок та видалення повідомлень після надсилання</a></li>
@@ -83,7 +84,6 @@
       <li><a href="#які-стандарти-використовуються-для-наскрізного-шифрування">Які стандарти використовуються для наскрізного шифрування?</a></li>
       <li><a href="#whene2e">Як дізнатися, чи повідомлення зашифровано наскрізним шифруванням?</a></li>
       <li><a href="#чи-можу-я-отримувати-та-надсилати-пошту-без-наскрізного-шифрування">Чи можу я отримувати та надсилати пошту без наскрізного шифрування?</a></li>
-      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#чи-зашифровані-наскрізно-вкладення-зображення-файли-аудіо-тощо">Чи зашифровані наскрізно вкладення (зображення, файли, аудіо тощо)?</a></li>
       <li><a href="#openpgp-secure">Чи безпечний OpenPGP?</a></li>
       <li><a href="#openpgp-alternatives">Чи розглядали ви можливість використання альтернатив OpenPGP для наскрізного шифрування?</a></li>
@@ -253,10 +253,10 @@
 
 <p>Так, ви можете це зробити в розділі <strong>Налаштування → Профіль → Опис</strong>. Після того як ви надішлете повідомлення контакту, він побачить його, переглянувши ваші контактні дані.</p>
     
-      <h3 id="що-значить-закріплення-приглушення-архівування">
+      <h3 id="pin-chats">
         
         
-          Що значить Закріплення, Приглушення, Архівування? <a href="#що-значить-закріплення-приглушення-архівування" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -310,6 +310,41 @@
 </ul>
 
 <p>Повідомлення залишаються збереженими, навіть якщо вони були відредаговані або видалені - чи то через <a href="#edit">відправника</a>, чи то через <a href="#delold">очищення пристрою</a>, чи то через <a href="#ephemeralmsgs">зникнення повідомлень інших чатів</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="що-означає-зелена-точка">
         
@@ -1213,32 +1248,6 @@ while chatmail clients use email servers for ephemeral instant message forwardin
 <p>Якщо ви використовуєте стандартні <a href="https://chatmail.at/relays">ретранслятори чату</a>, неможливо отримувати або надсилати повідомлення без наскрізного шифрування.</p>
 
 <p>Якщо ж ви скористаєтеся <a href="#classic-email">класичним поштовим сервером</a>, ви зможете надсилати та отримувати повідомлення як із наскрізним шифруванням, так і без нього. Повідомлення без наскрізного шифрування позначаються піктограмою електронної пошти <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Older Delta Chat versions showed a green checkmark
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line in some contact profiles.</p>
-
-<p>This line is no longer present.
-Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
-contacts are identified by their cryptographic key (“public key”),
-and there is never any possibility for the relay operator
-to exchange a key in order to execute a man-in-the-middle (MitM) attack
-(in fact, the operator does not even see the key at any point).</p>
-
-<p>It is still possible for an attacker to give you an invite link
-that impersonates someone else, and an attacker who has your Delta Chat contact
-(because they are in a group chat with you)
-could try to start a chat with you under a wrong name.
-These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
-and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="чи-зашифровані-наскрізно-вкладення-зображення-файли-аудіо-тощо">
         

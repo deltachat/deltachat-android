@@ -383,10 +383,16 @@
     <string name="pin">Alpingli</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Alpinglita</string>
+    <string name="pin_for_everyone_ask">Ĉu alpingli la mesaĝon por ĉiuj en la babilo?</string>
+    <string name="pin_for_everyone">Alpingli por ĉiuj</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Depingli</string>
+    <string name="unpin_for_everyone_ask">Ĉu depingli por ĉiuj la mesaĝon en la babilo?</string>
+    <string name="unpin_for_everyone">Depingli por ĉiuj</string>
     <string name="message_pinned_by_you">Vi alpinglis mesaĝon</string>
     <string name="message_pinned_by_other">Mesaĝo alpinglita de %1$s</string>
+    <string name="message_unpinned_by_you">Vi depinglis mesaĝon</string>
+    <string name="message_unpinned_by_other">La mesaĝo estis depinglita de %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">La originala mesaĝo ne troveblas</string>
     <string name="reply_privately">Respondu private</string>
     <string name="source_code">Fontkodo</string>
@@ -472,9 +478,17 @@
     </plurals>
     <string name="ask_forward_multiple">Ĉu plusendi la mesaĝojn al %1$d babilejoj?</string>
     <string name="ask_export_attachment">Eksporti kunsendaĵojn permesos, ke aliaj apoj sur via aparato atingos ilin.\n\nĈu vi volas daŭrigi?</string>
+    <string name="ask_block_contact">Ĉu bloki ĉi tiun kontakton?\n\nLa rektaj mesaĝoj aŭ grupoj kreitaj de blokataj kontaktoj ne aperos.\n\nAliaj grupoj kun blokataj kontaktoj aperigos iliajn mesaĝojn.</string>
+    <string name="ask_unblock_contact">Ĉu malbloki ĉi tiun kontakton?</string>
+    <string name="ask_delete_contacts">Ĉu forviŝi la kontaktojn?\n\nKontaktoj kun okazanta babiloj ne povas esti forviŝitaj porĉiame.</string>
+    <string name="ask_delete_contact">Ĉu forviŝi la kontakton %1$s?\n\nKontaktoj kun okazantaj babiloj ne povas esti forviŝitaj porĉiame.</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
-    <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
+    <string name="ask_remove_members">Ĉu forigi %1$s el la grupo?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Ĉu forigi %1$s el la kanalo?</string>
+    <string name="open_url_confirmation">Ĉu vi volas sekvi ĉi tiun ligilon?</string>
+
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_type_email_above">Enigu retadreson supren</string>
@@ -496,6 +510,15 @@
         <item quantity="one">%d nova mesaĝo</item>
         <item quantity="other">%d novaj mesaĝoj</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d nelegita mesaĝo</item>
+        <item quantity="other">%1$d nelegitaj mesaĝoj</item>
+    </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Sendi mesaĝon al  %1$s.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanaloj estas unu-al-plura ilo por dissendi viajn mesaĝojn.</string>
+    <string name="chat_new_group_hint">Aliuloj vidos tiun ĉi grupon nur kiam vi estos sendita la unuan mesaĝon.</string>
     <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
     <string name="chat_all_archived">Ĉiuj babiloj enarĥivigitaj.\nPremu \"+\" por komenci novan babilon.</string>
