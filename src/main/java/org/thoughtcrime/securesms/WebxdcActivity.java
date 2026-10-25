@@ -334,8 +334,11 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     } else {
       // Wait until the state of the RTCPeerConnection budget is settled.
       final WebRtcHolder holder = WebRtcHolder.getInstance(this);
+      final View loadingProgress = findViewById(R.id.webxdc_loading_progress);
+      loadingProgress.setVisibility(holder.isSettled() ? View.GONE : View.VISIBLE);
       holder.awaitSettled(
           () -> {
+            loadingProgress.setVisibility(View.GONE);
             if (isFinishing() || isDestroyed() || webView == null) {
               return;
             }
