@@ -387,10 +387,16 @@
     <string name="pin">Vastmaken</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Vastgemaakt</string>
+    <string name="pin_for_everyone_ask">Wil je dit bericht vastmaken zodat iedereen het bovenaan kan zien?</string>
+    <string name="pin_for_everyone">Vastmaken voor iedereen</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Losmaken</string>
+    <string name="unpin_for_everyone_ask">Wil je dit bericht losmaken zodat iedereen het niet meer bovenaan kan zien?</string>
+    <string name="unpin_for_everyone">Losmaken voor iedereen</string>
     <string name="message_pinned_by_you">Je hebt een bericht vastgemaakt</string>
     <string name="message_pinned_by_other">Bericht vastgemaakt door %1$s</string>
+    <string name="message_unpinned_by_you">Je hebt een bericht losgemaakt</string>
+    <string name="message_unpinned_by_other">Bericht losgemaakt door %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Het oorspronkelijke bericht is niet aangetroffen</string>
     <string name="reply_privately">Privé beantwoorden</string>
     <string name="source_code">Broncode</string>
@@ -745,6 +751,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Wil je %1$d bestanden delen met %2$s?</string>
     <string name="ask_send_files_to_selected_chats">Wil je %1$d bestand(en) delen in %2$d gesprekken?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Bezig met voorbereiden…</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Bezig met comprimeren…</string>
+    <string name="video_recode_busy">Er wordt al een video verwerkt — even geduld.</string>
     <string name="share_text_multiple_chats">Wil je deze tekst versturen naar %1$d gesprekken?\n\n“%2$s”</string>
     <string name="share_abort">Het delen is afgebroken wegens ontbrekende rechten.</string>
 

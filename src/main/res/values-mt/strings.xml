@@ -412,8 +412,10 @@
     <string name="pin">Waħħal</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Imwaħħla</string>
+    <string name="pin_for_everyone">Waħħal għal kulħadd</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Aqla\'</string>
+    <string name="unpin_for_everyone">Aqla\' għal kulħadd</string>
     <string name="message_pinned_by_you">Waħħalt messaġġ</string>
     <string name="message_pinned_by_other">L-utent \"%1$s\" waħħal dal-messaġġ</string>
     <string name="ConversationFragment_quoted_message_not_found">Ma sibniex il-messaġġ oriġinali</string>
@@ -571,6 +573,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Erfa\' l-messaġġ</string>
     <string name="saved_messages">Messaġġi merfugħa</string>
+    <string name="saved_messages_explain">• Għaddi l-messaġġi hawn biex issibhom malajr\n\n• Ikteb in-noti jew irreġistra t-tfakkiriet bil-leħen\n\n• Ehmeż il-fajls tal-midja biex terfagħhom</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Merfugħa</string>
     <string name="attachment_failed_to_load">Ma setax itella\' l-hemża</string>
@@ -613,16 +616,37 @@
     <string name="group_create_button">Oħloq grupp</string>
     <string name="please_enter_chat_name">Jekk jogħġbok ikteb isem.</string>
     <string name="group_add_members">Żid il-membri</string>
+    <string name="group_self_not_in_group">Ma tistax twettaq dal-għemil jekk m\'intix membru tal-grupp.</string>
+    <string name="profile_shared_chats">Taħditiet li tinsabu fihom it-tnejn li intom</string>
+    <!-- Separator between the list of actual members and past members -->
+    <string name="past_members">Membri tal-imgħoddi</string>
     <string name="tab_group">Grupp</string>
     <string name="tab_gallery">Gallerija</string>
     <string name="tab_links">Ħoloq</string>
     <string name="tab_map">Mappa</string>
+    <string name="tab_gallery_empty_hint">Hawn se nuruk l-istampi u l-filmati mehmuża ma\' dit-taħdita.</string>
+    <string name="tab_docs_empty_hint">Hawn se nuruk id-dokumenti u l-fajls l-oħra mehmuża ma\' dit-taħdita.</string>
+    <string name="tab_image_empty_hint">Hawn se nuruk l-istampi mehmuża ma\' dit-taħdita.</string>
+    <string name="tab_audio_empty_hint">Hawn se nuruk il-fajls tal-ħoss u l-messaġġi bil-leħen mehmuża ma\' dit-taħdita.</string>
+    <string name="tab_webxdc_empty_hint">Hawn se nuruk il-messaġġi mehmuża ma\' dit-taħdita.</string>
+    <string name="tab_all_media_empty_hint">Hawn se nuruk il-fajls tal-midja mehmuża ma\' xi taħdita.</string>
+    <string name="all_files_empty_hint">Hawn se nuruk id-dokumenti u l-fajls l-oħra mehmuża ma\' xi taħdita.</string>
+    <string name="all_apps_empty_hint">Hawn se nuruk l-apps mehmuża ma\' xi taħdita.</string>
+    <string name="media_preview">Ħarsa minn qabel lejn il-fajls tal-midja</string>
+    <string name="send_message">Ibgħat il-messaġġ</string>
+
     <!-- Multi Device -->
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Żid it-tieni tagħmir</string>
     <string name="multidevice_same_network_hint">Ara li ż-żewġ tagħmir imqabbda mal-istess Wi-Fi jew netwerk</string>
+    <string name="multidevice_this_creates_a_qr_code">Dil-ħaġa toħloq kodiċi QR li tista\' tiftħu mit-tieni tagħmir biex tikkopja l-profil.\n\nAra li ma jkun hemm ħadd mhux mixtieq u lanqas xi kamera fil-qrib li jistgħu jaraw il-paġna li jmiss.</string>
     <string name="multidevice_install_dc_on_other_device">Installa Delta Chat fuq it-tagħmir l-ieħor (https://get.delta.chat)</string>
+    <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
+    <string name="multidevice_tap_scan_on_other_device">Iftaħ Delta Chat, agħfas fuq \"Diġà għandi profil / Żid bħata t-tieni tagħmir\" u aqra l-kodiċi li qed nuruk hawn taħt</string>
+    <!-- Shown inside a "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to set up second device for Alice" -->
+    <string name="multidevice_qr_subtitle">Aqra l-kodiċi QR biex tħejji t-tieni tagħmir għal %1$s</string>
     <string name="multidevice_receiver_title">Żid bħala t-tieni tagħmir</string>
+    <string name="multidevice_open_settings_on_other_device">Iftaħ Delta Chat, żur \"Għażliet / Żid it-tieni tagħmir\" u aqra l-kodiċi li qed nuruk hawn taħt mill-ewwel tagħmir</string>
     <string name="login_smtp_login">L-isem tal-utent tal-SMTP</string>
     <string name="login_smtp_password">Il-password tal-SMTP</string>
     <string name="login_smtp_server">Is-server tal-SMTP</string>

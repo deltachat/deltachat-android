@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">Czym są profile? Jak mogę przełączać się między nimi?</a></li>
       <li><a href="#kto-widzi-moje-zdjęcie-profilowe">Kto widzi moje zdjęcie profilowe?</a></li>
       <li><a href="#signature">Czy w Delta Chat mogę ustawić biografię/status?</a></li>
-      <li><a href="#co-oznacza-przypinanie-wyciszanie-i-archiwizowanie">Co oznacza przypinanie, wyciszanie i archiwizowanie?</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">Jak działają „Zapisane wiadomości”?</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#co-oznacza-zielona-kropka">Co oznacza zielona kropka?</a></li>
       <li><a href="#co-oznaczają-znaczniki-wyświetlane-obok-wiadomości-wychodzących">Co oznaczają znaczniki wyświetlane obok wiadomości wychodzących?</a></li>
       <li><a href="#edit">Poprawianie literówek i usuwanie wiadomości po wysłaniu</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#jakie-standardy-są-stosowane-do-szyfrowania-end-to-end">Jakie standardy są stosowane do szyfrowania end-to-end?</a></li>
       <li><a href="#whene2e">Jak mogę sprawdzić, czy wiadomości są szyfrowane metodą end-to-end?</a></li>
       <li><a href="#czy-nadal-mogę-odbierać-i-wysyłać-wiadomości-bez-szyfrowania-typu-end-to-end">Czy nadal mogę odbierać i wysyłać wiadomości bez szyfrowania typu end-to-end?</a></li>
-      <li><a href="#e2eeguarantee">Co stało się z zielonym znacznikiem w profilach kontaktów?</a></li>
       <li><a href="#czy-załączniki-zdjęcia-pliki-pliki-audio-itp-są-szyfrowane-metodą-end-to-end">Czy załączniki (zdjęcia, pliki, pliki audio itp.) są szyfrowane metodą end-to-end?</a></li>
       <li><a href="#openpgp-secure">Czy OpenPGP jest bezpieczny?</a></li>
       <li><a href="#openpgp-alternatives">Czy rozważałeś użycie alternatyw dla OpenPGP do szyfrowania typu end-to-end?</a></li>
@@ -248,10 +248,10 @@ Poproś partnera czatu o <strong>zeskanowanie</strong> obrazu QR za pomocą apli
 
 <p>Tak, możesz to zrobić w <strong>Ustawieniach → Profil → Biografia</strong>. Po wysłaniu wiadomości do kontaktu zostanie ona wyświetlona, ​​gdy będzie on przeglądał twoje dane kontaktowe.</p>
     
-      <h3 id="co-oznacza-przypinanie-wyciszanie-i-archiwizowanie">
+      <h3 id="pin-chats">
         
         
-          Co oznacza przypinanie, wyciszanie i archiwizowanie? <a href="#co-oznacza-przypinanie-wyciszanie-i-archiwizowanie" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -305,6 +305,41 @@ Poproś partnera czatu o <strong>zeskanowanie</strong> obrazu QR za pomocą apli
 </ul>
 
 <p>Wiadomości pozostają zapisane, nawet jeśli zostaną edytowane lub usunięte — może to być przez <a href="#edit">nadawcę</a>, <a href="#delold">czyszczenie urządzenia</a> lub <a href="#ephemeralmsgs">znikające wiadomości z innych czatów</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="co-oznacza-zielona-kropka">
         
@@ -1186,20 +1221,6 @@ Jeśli później będziesz chciał ponownie dołączyć do grupy, poproś innego
 <p>Jeśli korzystasz z domyślnych <a href="https://chatmail.at/relays">przekaźników chatmail</a>, odbieranie ani wysyłanie wiadomości bez szyfrowania end-to-end jest niemożliwe.</p>
 
 <p>Jeśli zamiast tego korzystasz z <a href="#classic-email">klasycznego serwera e-mail</a>, możesz wysyłać i odbierać wiadomości z szyfrowaniem typu end-to-end lub bez. Wiadomości bez szyfrowania typu end-to-end są oznaczone ikoną e-mail <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          Co stało się z zielonym znacznikiem w profilach kontaktów? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>W starszych wersjach aplikacji Delta Chat w niektórych profilach kontaktów widoczny był zielony znacznik <img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" /> oraz informacja „Kontakt zweryfikowany przez”.</p>
-
-<p>Element ten został usunięty. Wynika to z faktu, że w <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a> kontakty są identyfikowane za pomocą klucza kryptograficznego („klucza publicznego”), a operator przekaźnika nie ma możliwości podmienienia klucza w celu przeprowadzenia ataku typu „man-in-the-middle” (MitM) – co więcej, operator w ogóle nie widzi tego klucza.</p>
-
-<p>Nadal jednak istnieje ryzyko, że atakujący prześle ci link zaproszenia, podszywając się pod inną osobę, lub – jeśli znajduje się z tobą w tej samej grupie – spróbuje nawiązać rozmowę, używając fałszywej nazwy. Tego typu zagrożenia <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">występują we wszystkich komunikatorach</a>, a my planujemy wprowadzenie ulepszeń, które pozwolą je ograniczyć.</p>
     
       <h3 id="czy-załączniki-zdjęcia-pliki-pliki-audio-itp-są-szyfrowane-metodą-end-to-end">
         

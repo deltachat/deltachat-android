@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">什么是账户资料？如何在它们之间切换？</a></li>
       <li><a href="#谁会看见我的个人资料图片">谁会看见我的个人资料图片？</a></li>
       <li><a href="#signature">我可以用Delta Chat 设置个人介绍/个人照片/状态吗？</a></li>
-      <li><a href="#固定静音归档是什么意思">固定、静音、归档是什么意思？</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">“保存的消息”如何工作？</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#绿色圆点代表什么">绿色圆点代表什么？</a></li>
       <li><a href="#显示在发出消息旁边的对勾表示什么">显示在发出消息旁边的对勾表示什么？</a></li>
       <li><a href="#edit">发送后更正错别字并删除邮件</a></li>
@@ -93,7 +94,6 @@
         </ul>
       </li>
       <li><a href="#没有端到端加密-我还能接收或发送信息吗">没有端到端加密 ，我还能接收或发送信息吗？</a></li>
-      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#附件图片文件音频等是否已端到端加密">附件（图片、文件、音频等）是否已端到端加密？</a></li>
       <li><a href="#openpgp-secure">OpenPGP 安全吗？</a>
         <ul>
@@ -292,10 +292,10 @@
 向联系人发送信息后、
 他们在查看您的联系人详情时就会看到。</p>
     
-      <h3 id="固定静音归档是什么意思">
+      <h3 id="pin-chats">
         
         
-          固定、静音、归档是什么意思？ <a href="#固定静音归档是什么意思" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -356,6 +356,41 @@
 </ul>
 
 <p>即使消息遭到修改或删除 - 无论是<a href="#edit">发送者编辑</a>、<a href="#delold">设备清理操作</a>，还是<a href="#ephemeralmsgs">其他聊天中的临时消息功能</a>所触发 - 这些信息仍将保留在系统中。</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="绿色圆点代表什么">
         
@@ -1427,32 +1462,6 @@ Chatmail 使用默认的 INBOX 进行中继；请确保提供商的设置也是�
 您可以发送和接收带有或不带端到端加密 的邮件。
 没有端到端加密 的邮件会用电子邮件图标标出
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Older Delta Chat versions showed a green checkmark
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line in some contact profiles.</p>
-
-<p>This line is no longer present.
-Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
-contacts are identified by their cryptographic key (“public key”),
-and there is never any possibility for the relay operator
-to exchange a key in order to execute a man-in-the-middle (MitM) attack
-(in fact, the operator does not even see the key at any point).</p>
-
-<p>It is still possible for an attacker to give you an invite link
-that impersonates someone else, and an attacker who has your Delta Chat contact
-(because they are in a group chat with you)
-could try to start a chat with you under a wrong name.
-These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
-and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="附件图片文件音频等是否已端到端加密">
         

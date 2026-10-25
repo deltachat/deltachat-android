@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">Was sind Profile? Wie kann ich zwischen ihnen wechseln?</a></li>
       <li><a href="#wer-sieht-mein-profilbild">Wer sieht mein Profilbild?</a></li>
       <li><a href="#signature">Kann ich einen Status festlegen?</a></li>
-      <li><a href="#was-bedeutet-anheften-stummschalten-archivieren">Was bedeutet Anheften, Stummschalten, Archivieren?</a></li>
+      <li><a href="#pin-chats">Chats anheften, stummschalten und archivieren</a></li>
       <li><a href="#save">Wie funktionieren “Gespeicherte Nachrichten”?</a></li>
+      <li><a href="#pin-messages">Angeheftete Nachrichten</a></li>
       <li><a href="#was-bedeutet-der-grüne-punkt">Was bedeutet der grüne Punkt?</a></li>
       <li><a href="#was-bedeuten-die-häkchen-neben-den-ausgehenden-nachrichten">Was bedeuten die Häkchen neben den ausgehenden Nachrichten?</a></li>
       <li><a href="#edit">Schreibfehler korrigieren und Nachrichten nach dem Senden löschen</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#welche-standards-werden-für-die-ende-zu-ende-verschlüsselung-verwendet">Welche Standards werden für die Ende-zu-Ende-Verschlüsselung verwendet?</a></li>
       <li><a href="#whene2e">Wie kann ich wissen, ob Nachrichten Ende-zu-Ende-verschlüsselt sind?</a></li>
       <li><a href="#kann-ich-nachrichten-ohne-ende-zu-ende-verschlüsselung-empfangen-oder-senden">Kann ich Nachrichten ohne Ende-zu-Ende-Verschlüsselung empfangen oder senden?</a></li>
-      <li><a href="#e2eeguarantee">Was ist mit dem “Grünen Haken” in Kontaktprofilen passiert?</a></li>
       <li><a href="#sind-anhänge-bilder-dateien-audio-usw-ende-zu-ende-verschlüsselt">Sind Anhänge (Bilder, Dateien, Audio usw.) Ende-zu-Ende-verschlüsselt?</a></li>
       <li><a href="#openpgp-secure">Ist OpenPGP sicher?</a></li>
       <li><a href="#openpgp-alternatives">Wurden Alternativen zu OpenPGP für die Ende-zu-Ende-Verschlüsselung in Betracht gezogen?</a></li>
@@ -269,10 +269,10 @@ oder <strong>Profile zu wechseln</strong>.</p>
 Du kannst dies unter “Einstellungen → Profil → Signatur” tun.
 Sobald du eine Nachricht an einen Kontakt sendest, kann dieser deine Signatur in deinem Profil sehen.</p>
     
-      <h3 id="was-bedeutet-anheften-stummschalten-archivieren">
+      <h3 id="pin-chats">
         
         
-          Was bedeutet Anheften, Stummschalten, Archivieren? <a href="#was-bedeutet-anheften-stummschalten-archivieren" class="anchor"></a>
+          Chats anheften, stummschalten und archivieren <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -330,6 +330,41 @@ kannst du zu der ursprünglichen Nachricht im ursprünglichen Chat zurückkehren
 
 <p>Nachrichten bleiben gespeichert, auch wenn sie bearbeitet oder gelöscht werden -
 sei es durch den <a href="#edit">Absender</a>, durch <a href="#delold">Automatisches Löschen</a> oder durch <a href="#ephemeralmsgs">verschwindende Nachrichten anderer Chats</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          Angeheftete Nachrichten <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Hefte wichtige Nachrichten an</strong>, etwa eine Adresse, einen Termin oder die Regeln einer Gruppe,
+damit alle sie schnell finden.
+Anders als <a href="#pin-chats">angeheftete Chats</a>, die nur <em>deine</em> Chatliste ordnen,
+sind angeheftete Nachrichten für <strong>alle Chat-Mitglieder</strong> sichtbar.</p>
+
+<ul>
+  <li>
+    <p>Tippe im Chat lange auf eine Nachricht oder klicke mit der rechten Maustaste darauf und wähle <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Anheften</strong>.
+Zum Entfernen wähle im selben Menü <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Loslösen</strong>.
+Das Loslösen gilt ebenfalls für alle Chat-Mitglieder, nicht nur für dich.</p>
+  </li>
+  <li>
+    <p>Angeheftete Nachrichten werden in einer <strong>Leiste oben im Chat</strong> angezeigt.
+Tippe auf die Leiste, um zur angehefteten Nachricht zu springen.
+Sind es mehrere, kannst du sie durch antippen durchblättern.</p>
+  </li>
+  <li>
+    <p>Wenn du eine <a href="#webxdc">App</a> anheftest, erhält sie eine <strong>Start-Schaltfläche</strong>,
+damit alle ohne Scrollen oder Suchen leicht darauf zugreifen können.</p>
+  </li>
+  <li>
+    <p>Es gibt keine Begrenzung für die Anzahl angehefteter Nachrichten oder dafür, wie lange sie angeheftet bleiben.</p>
+  </li>
+</ul>
+
+<p>Um Nachrichten nur für dich zu behalten, verwende <a href="#save">Gespeicherte Nachrichten</a>.</p>
     
       <h3 id="was-bedeutet-der-grüne-punkt">
         
@@ -1321,20 +1356,6 @@ Seit der Veröffentlichung von Delta Chat Version 2 (Juli 2025) gibt es keine Sc
 <p>Wenn du die Standard-<a href="https://chatmail.at/relays">Chatmail-Relays</a> verwendest, ist es unmöglich, Nachrichten ohne End-to-End-Verschlüsselung zu empfangen oder zu senden.</p>
 
 <p>Wenn du stattdessen ein Profil mit einem <a href="#classic-email">klassischen E-Mail-Server</a> erstellst, kannst du Nachrichten mit und ohne Ende-zu-Ende-Verschlüsselung senden und empfangen.  Nachrichten ohne Ende-zu-Ende-Verschlüsselung werden mit einem E-Mail-Symbol gekennzeichnet  <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          Was ist mit dem “Grünen Haken” in Kontaktprofilen passiert? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Ältere Delta-Chat-Versionen zeigten in manchen Kontaktprofilen ein grünes Häkchen <img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="grünes Häkchen" /> und eine Zeile „Eingeführt von“ an.</p>
-
-<p>Diese Zeile gibt es nicht mehr. Seit <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a> werden Kontakte über ihren kryptografischen Schlüssel („öffentlicher Schlüssel“) identifiziert, und der Relay-Betreiber hat nie die Möglichkeit, einen Schlüssel auszutauschen, um einen Man-in-the-Middle-Angriff (MitM) durchzuführen (tatsächlich sieht der Betreiber den Schlüssel zu keinem Zeitpunkt).</p>
-
-<p>Ein Angreifer kann dir weiterhin einen Einladungslink geben, mit dem er sich als jemand anderes ausgibt, und ein Angreifer, der deinen Delta-Chat-Kontakt hat (weil ihr zusammen in einem Gruppenchat seid), könnte versuchen, unter falschem Namen einen Chat mit dir zu beginnen. Solche Angriffe <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">gibt es in allen Messengern</a>, und wir planen künftige Verbesserungen, um sie abzuschwächen.</p>
     
       <h3 id="sind-anhänge-bilder-dateien-audio-usw-ende-zu-ende-verschlüsselt">
         
