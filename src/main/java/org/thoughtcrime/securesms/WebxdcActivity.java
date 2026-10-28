@@ -1128,7 +1128,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     @JavascriptInterface
     public String selfName() {
       String name = dcContext.getConfig(DcHelper.CONFIG_DISPLAY_NAME);
-      return name.isEmpty() ? getString(R.string.unnamed) : name;
+      // Do not use a translated `unnamed`
+      // so as to not unintentionally leak the user's locale.
+      return name.isEmpty() ? "Unnamed" : name;
     }
 
     @JavascriptInterface
