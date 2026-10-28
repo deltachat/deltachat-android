@@ -1,9 +1,10 @@
-# Building and Testing
+# Building
 
-This document describes how to set up the build environment,
-build and test the app. Before diving into developing, please
-first read [CONTRIBUTING.md](./CONTRIBUTING.md) for general
-contribution hints and conventions.
+This document describes how to set up the build environment
+and build the app. For testing, see [TESTING.md](./TESTING.md).
+
+Before diving into developing, please first read [CONTRIBUTING.md](./CONTRIBUTING.md)
+for general contribution hints and conventions.
 
 Please follow all steps precisely.
 If you run into troubles,
@@ -150,7 +151,7 @@ export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bi
 ```
 
 After that, call `scripts/ndk-make.sh` in the root directory to build core-rust.
-Afterwards run the project in Android Studio. The project requires API 25.
+You can then run the project in Android Studio.
 
 With chance, that's it :) - if not, read on how to set up a proper development
 environment.
@@ -193,33 +194,6 @@ environment.
    export ANDROID_NDK_ROOT=${HOME}/android-ndk
    export PATH=${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/:${ANDROID_NDK_ROOT}
    ```
-
-## Run UI Tests and Benchmarks
-
-- You don't necessarily need a dedicated testing device.
-  Backup your current account first, maybe there are some bugs in switching accounts.
-
-- You can run benchmarks on either an emulated device or a real device.
-  You need at least Android 9. For better benchmark results,
-  you should run the benchmark on a real device and make sure that the core is compiled in release mode.
-
-- Disable animations on your device, otherwise the test may fail:
-  at "Developer options"
-  set all of "Window animation scale", "Transition animation scale" and "Animator duration scale" to 0x
-
-- In Android Studio: "File" / "Sync project with gradle files"
-
-- In Android Studio: "Run" / "Edit configurations" / "+" / "Android Instrumented test":
-  Either select a specific class or select "All in Module" / "OK" /
-  Select your configuration in the toolbar / Click on the green "run" button in the toolbar to run the tests
-
-### Get the benchmark results
-
-When the benchmark is done, you will get a result like
-`MEASURED RESULTS (Benchmark) - Going thorough all 10 chats: 11635,11207,11363,11352,11279,11183,11137,11145,11032,11057`.
-You can paste `11635,11207,11363,11352,11279,11183,11137,11145,11032,11057`
-into a cell in a LibreOffice spreadsheet, do "Data" / "Text to columns",
-choose `,` as a separator, hit "OK", and create a diagram.
 
 ## Decoding Symbols in Crash Reports
 
