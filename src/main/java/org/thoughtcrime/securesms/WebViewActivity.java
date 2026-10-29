@@ -138,7 +138,7 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
           @Override
           public WebResourceResponse shouldInterceptRequest(
               WebView view, WebResourceRequest request) {
-            WebResourceResponse res = interceptRequest(request.getUrl().toString());
+            WebResourceResponse res = interceptRequest(request);
             if (res != null) {
               return res;
             }
@@ -375,5 +375,10 @@ public class WebViewActivity extends PassphraseRequiredActionBarActivity
 
   protected WebResourceResponse interceptRequest(String url) {
     return null;
+  }
+
+  // For answering range requests when streaming files
+  protected WebResourceResponse interceptRequest(WebResourceRequest request) {
+    return interceptRequest(request.getUrl().toString());
   }
 }
