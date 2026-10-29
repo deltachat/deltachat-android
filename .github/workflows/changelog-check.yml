@@ -1,0 +1,30 @@
+name: Changelog Check
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions: {}
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Check CHANGELOG.md was updated
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SKIP: ${{ contains(github.event.pull_request.body, '#skip-changelog') }}
+        run: |
+          if [ "$SKIP" = "true" ]; then
+            echo "Skipped"; exit 0
+          fi
+          if gh api --paginate "repos/$GITHUB_REPOSITORY/pulls/$PR/files" \
+               --jq '.[] | select(.status != "removed") | .filename' \
+               | grep -qx 'CHANGELOG.md'; then
+            echo "Changelog updated"
+          else
+            echo "::error::Please either update CHANGELOG.md or add #skip-changelog to PR description"
+            exit 1
+          fi
