@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">Cosa sono i profili? Come posso passare dall’uno all’altro?</a></li>
       <li><a href="#chi-vede-la-mia-immagine-del-profilo">Chi vede la mia immagine del profilo?</a></li>
       <li><a href="#signature">Posso impostare una Biografia/Stato con Delta Chat?</a></li>
-      <li><a href="#cosa-significa-fissare-silenziare-archiviare">Cosa significa Fissare, Silenziare, Archiviare?</a></li>
+      <li><a href="#pin-chats">Fissa, disattiva e archivia una chat</a></li>
       <li><a href="#save">Come funziona “Messaggi Salvati”?</a></li>
+      <li><a href="#pin-messages">Come funzionano i messaggi fissati?</a></li>
       <li><a href="#cosa-significa-il-punto-verde">Cosa significa il punto verde?</a></li>
       <li><a href="#cosa-significano-i-segni-di-spunta-visualizzati-accanto-ai-messaggi-in-uscita">Cosa significano i segni di spunta visualizzati accanto ai messaggi in uscita?</a></li>
       <li><a href="#edit">Correggi gli errori e cancella i messaggi dopo averli inviati</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#quali-standards-vengono-utilizzati-per-la-crittografia-end-to-end">Quali standards vengono utilizzati per la crittografia end-to-end?</a></li>
       <li><a href="#whene2e">Come posso sapere se i messaggi sono crittografati end-to-end?</a></li>
       <li><a href="#posso-ancora-ricevere-o-inviare-messaggi-senza-crittografia-end-to-end">Posso ancora ricevere o inviare messaggi senza crittografia end-to-end?</a></li>
-      <li><a href="#e2eeguarantee">Che fine ha fatto la spunta verde nei profili dei contatti?</a></li>
       <li><a href="#gli-allegati-immagini-file-audio-ecc-sono-crittografati-end-to-end">Gli allegati (immagini, file, audio, ecc.) sono crittografati end-to-end?</a></li>
       <li><a href="#openpgp-secure">OpenPGP è sicuro?</a></li>
       <li><a href="#openpgp-alternatives">Avete considerato l’utilizzo di alternative a OpenPGP per la crittografia end-to-end?</a></li>
@@ -280,10 +280,10 @@ puoi farlo in <strong>Impostazioni → Profilo → Biografia</strong>.
 Una volta inviato un messaggio a un contatto,
 lo vedrà quando visualizzerà i tuoi dati di contatto.</p>
     
-      <h3 id="cosa-significa-fissare-silenziare-archiviare">
+      <h3 id="pin-chats">
         
         
-          Cosa significa Fissare, Silenziare, Archiviare? <a href="#cosa-significa-fissare-silenziare-archiviare" class="anchor"></a>
+          Fissa, disattiva e archivia una chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -343,6 +343,41 @@ puoi tornare al messaggio originale nella chat di provenienza.</p>
 
 <p>I messaggi restano salvati anche se vengono modificati o eliminati -
 che sia dal <a href="#edit">mittente</a>, <a href="#delold">ripulendo il dispositivo</a> o per i <a href="#ephemeralmsgs">messaggi a scomparsa di altre chat</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          Come funzionano i messaggi fissati? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Fissa i messaggi importanti</strong>, come un indirizzo, l’orario di un incontro o le regole di un gruppo,
+così che tutti possano ritrovarli rapidamente.
+A differenza delle <a href="#pin-chats">chat fissate</a>, che servono solo a organizzare il <em>tuo</em> elenco delle chat,
+i messaggi fissati sono visibili a <strong>tutti i membri della chat</strong>.</p>
+
+<ul>
+  <li>
+    <p>In qualsiasi chat, tieni premuto a lungo o fai clic con il tasto destro su un messaggio e seleziona <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Fissa</strong>.
+Per rimuoverlo, seleziona <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Sblocca</strong> dallo stesso menu.
+La rimozione del fissaggio ha effetto anche su tutti i membri della chat, non solo su di te.</p>
+  </li>
+  <li>
+    <p>I messaggi fissati vengono visualizzati in una <strong>barra nella parte superiore della chat</strong>.
+Tocca la barra per passare al messaggio fissato.
+Se ce ne sono diversi, puoi scorrerli uno dopo l’altro..</p>
+  </li>
+  <li>
+    <p>Se aggiungi un’ <a href="#webxdc">app</a>, ai preferiti, questa ottiene un <strong>pulsante di avvio</strong>,
+così che tutti possano accedervi facilmente senza dover scorrere o cercare.</p>
+  </li>
+  <li>
+    <p>Non c’è alcun limite al numero di messaggi fissati né alla durata per cui rimangono fissati.</p>
+  </li>
+</ul>
+
+<p>Per conservare i messaggi solo per te, usa <a href="#save">Messaggi Salvati</a>.</p>
     
       <h3 id="cosa-significa-il-punto-verde">
         
@@ -1430,32 +1465,6 @@ non ci sono più lucchetti o marcatori simili, sui messaggi crittografati end-to
 puoi inviare e ricevere messaggi con o senza crittografia end-to-end.
 I messaggi privi di crittografia end-to-end sono contrassegnati dall’icona di un’e-mail
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          Che fine ha fatto la spunta verde nei profili dei contatti? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Le versioni precedenti di Delta Chat mostravano un segno di spunta verde.
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" />
-e una riga “Presentato da” in alcuni profili di contatto.</p>
-
-<p>Questa riga non è più presente.
-A partire da <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat v2</a>,
-i contatti vengono identificati tramite la loro chiave crittografica (“chiave pubblica”)
-e non vi è alcuna possibilità per l’operatore del ripetitore
-di sostituire una chiave per eseguire un attacco man-in-the-middle (MitM)
-(di fatto, l’operatore non vede nemmeno la chiave in alcun momento).</p>
-
-<p>È comunque possibile che un malintenzionato ti invii un link di invito
-fingendosi qualcun altro; inoltre, un attaccante che possiede il tuo contatto Delta Chat
-(poiché partecipa a una chat di gruppo insieme a te)
-potrebbe tentare di avviare una conversazione usando un nome falso.
-Questo tipo di attacchi è <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">presente in tutte le app di messaggistica</a>
-e stiamo pianificando miglioramenti futuri per mitigarli.</p>
     
       <h3 id="gli-allegati-immagini-file-audio-ecc-sono-crittografati-end-to-end">
         

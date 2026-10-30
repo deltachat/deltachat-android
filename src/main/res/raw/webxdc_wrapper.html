@@ -30,7 +30,7 @@
   </head>
   <body>
     <div id="loading">
-      <progress id="progress" max="500" value="0"></progress>
+      <progress id="progress" max="500" value="0" style="display: none"></progress>
     </div>
     <div class="iframe-container">
       <iframe id="frame"></iframe>
@@ -65,6 +65,7 @@
 
         const allocate = async () => {
           console.log("WEBRTC-WG: allocating");
+          loadingProgress.style.display = "";
           loadingProgress.value = 0;
           while (connections.length < 500) {
             try {
@@ -83,7 +84,6 @@
         };
 
         if (blockedByHolder) {
-          loadingProgress.style.display = "none";
           // The holder reported success, but verify it actually applies to this document in case
           // WebView's process model ever changed.
           let applied = false;
@@ -94,7 +94,6 @@
           }
           if (!applied) {
             console.log("WEBRTC-WG: holder budget did not apply, filling locally");
-            loadingProgress.style.display = "";
             await allocate();
           }
         } else {

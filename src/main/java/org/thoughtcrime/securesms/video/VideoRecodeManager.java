@@ -470,12 +470,22 @@ public class VideoRecodeManager {
     }
     Decision decision = classify(op, chatId, msg, fromComposer);
     if (decision.job != null) {
-      jobs.add(decision.job);
+      addJobDedup(jobs, decision.job);
     } else if (decision == Decision.TOO_BIG) {
       postFinished(op, chatId, fromComposer, Result.FAILED_TOO_BIG);
     } else {
       sendDirect(op, chatId, msg, fromComposer);
     }
+  }
+
+  private static void addJobDedup(ArrayList<RecodeJob> jobs, RecodeJob job) {
+    for (RecodeJob existing : jobs) {
+      if (existing.inputPath.equals(job.inputPath)) {
+        existing.targets.addAll(job.targets);
+        return;
+      }
+    }
+    jobs.add(job);
   }
 
   @WorkerThread
@@ -522,8 +532,7 @@ public class VideoRecodeManager {
     }
 
     RecodeJob job = new RecodeJob();
-    job.chatId = chatId;
-    job.msg = msg;
+    job.targets.add(new RecodeJob.Target(chatId, msg));
     job.inputPath = inPath;
     job.outputPath = DcHelper.getBlobdirFile(op.dcContext, inPath);
     job.maxBytes = maxBytes;
@@ -637,10 +646,12 @@ public class VideoRecodeManager {
         if (!low) {
           startPass(op, job, true);
         } else {
-          finishJob(op, job, Result.FAILED_TOO_BIG);
+          dispatchGroup(op, job, Result.FAILED_TOO_BIG);
+          finishJob(op, job);
         }
       } else {
-        finishJob(op, job, sendRecoded(op, job, width, height) ? Result.SENT : Result.FAILED_ERROR);
+        sendRecoded(op, job, width, height);
+        finishJob(op, job);
       }
     }
 
@@ -656,7 +667,8 @@ public class VideoRecodeManager {
       //noinspection ResultOfMethodCallIgnored
       new File(job.outputPath).delete();
       if (isCurrent()) {
-        finishJob(op, job, Result.CANCELLED);
+        dispatchGroup(op, job, Result.CANCELLED);
+        finishJob(op, job);
       }
     }
   }
@@ -666,46 +678,65 @@ public class VideoRecodeManager {
     //noinspection ResultOfMethodCallIgnored
     new File(job.outputPath).delete();
     if (job.originalBytes <= job.maxBytes) {
-      job.msg.setDimension(job.dispW, job.dispH);
-      job.msg.setDuration((int) job.durationMs);
-      if (op.dcContext.sendMsg(job.chatId, job.msg) != 0) {
-        finishJob(op, job, Result.SENT_ORIGINAL);
-        return;
+      for (RecodeJob.Target target : job.targets) {
+        DcMsg msg = target.msg;
+        msg.setDimension(job.dispW, job.dispH);
+        msg.setDuration((int) job.durationMs);
+        boolean sent = op.dcContext.sendMsg(target.chatId, msg) != 0;
+        if (!sent) {
+          Log.w(TAG, "sendMsg failed: " + op.dcContext.getLastError());
+        }
+        dispatchFinished(
+            op.accId,
+            target.chatId,
+            job.fromComposer,
+            sent ? Result.SENT_ORIGINAL : Result.FAILED_ERROR);
       }
-      finishJob(op, job, Result.FAILED_ERROR);
-      return;
+    } else {
+      dispatchGroup(op, job, Result.FAILED_TOO_BIG);
     }
-    finishJob(op, job, Result.FAILED_TOO_BIG);
+    finishJob(op, job);
   }
 
-  private boolean sendRecoded(Operation op, RecodeJob job, int width, int height) {
+  private void sendRecoded(Operation op, RecodeJob job, int width, int height) {
     DcContext dc = op.dcContext;
-    // output is always MP4/H.264 now, fix file name and mime type.
-    // Also fixes https://github.com/deltachat/deltachat-android/issues/3928#issuecomment-4422383476
-    String name = job.msg.getFilename();
-    String base = TextUtils.isEmpty(name) ? "video" : name;
-    int dot = base.lastIndexOf('.');
-    if (dot > 0) {
-      base = base.substring(0, dot);
+    String path = job.outputPath;
+    for (RecodeJob.Target target : job.targets) {
+      DcMsg msg = target.msg;
+      // output is always MP4/H.264 now, fix file name and mime type.
+      // Also fixes
+      // https://github.com/deltachat/deltachat-android/issues/3928#issuecomment-4422383476
+      String name = msg.getFilename();
+      String base = TextUtils.isEmpty(name) ? "video" : name;
+      int dot = base.lastIndexOf('.');
+      if (dot > 0) {
+        base = base.substring(0, dot);
+      }
+      msg.setFileAndDeduplicate(path, base + ".mp4", "video/mp4");
+      msg.setDimension(width, height);
+      msg.setDuration((int) job.durationMs);
+      path = msg.getFile();
     }
-    job.msg.setFileAndDeduplicate(job.outputPath, base + ".mp4", "video/mp4");
-    job.msg.setDimension(width, height);
-    job.msg.setDuration((int) job.durationMs);
-    int msgId = dc.sendMsg(job.chatId, job.msg);
-    if (msgId == 0) {
-      Log.w(TAG, "sendMsg failed: " + dc.getLastError());
-      //noinspection ResultOfMethodCallIgnored
-      new File(job.outputPath).delete();
-      return false;
+    for (RecodeJob.Target target : job.targets) {
+      if (dc.sendMsg(target.chatId, target.msg) != 0) {
+        dispatchFinished(op.accId, target.chatId, job.fromComposer, Result.SENT);
+      } else {
+        Log.w(TAG, "sendMsg failed: " + dc.getLastError());
+        dispatchFinished(op.accId, target.chatId, job.fromComposer, Result.FAILED_ERROR);
+      }
     }
-    return true;
   }
 
-  private void finishJob(Operation op, RecodeJob done, Result result) {
+  private void dispatchGroup(Operation op, RecodeJob job, Result result) {
+    for (RecodeJob.Target target : job.targets) {
+      dispatchFinished(op.accId, target.chatId, job.fromComposer, result);
+    }
+  }
+
+  private void finishJob(Operation op, RecodeJob done) {
     job = null;
     transcoder = null;
     op.jobsFinished++;
-    dispatchFinished(op.accId, done.chatId, done.fromComposer, result);
     startNextJob();
   }
 

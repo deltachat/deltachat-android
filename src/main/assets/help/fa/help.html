@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">نمایه‌ها چیستند؟ چگونه می‌توانم بین آنها جابه‌جا شوم؟</a></li>
       <li><a href="#چه-کسی-میتوانید-تصویر-نمایه-من-را-ببیند">چه کسی می‌توانید تصویر نمایه من را ببیند؟</a></li>
       <li><a href="#signature">آیا می‌توانم با دلتاچت بیو/وضعیت تنظیم کنم؟</a></li>
-      <li><a href="#سنجاق-کردن-ساکت-کردن-و-بایگانی-کردن-به-چه-معناست">سنجاق کردن، ساکت کردن و بایگانی کردن به چه معناست؟</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">«پیام‌های ذخیره‌شده» چگونه کار می‌کنند؟</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#نقطه-سبز-به-چه-معناست">نقطه سبز به چه معناست؟</a></li>
       <li><a href="#تیکهای-نمایشداده-شده-کنار-پیامهای-ارسالی-به-چه-معناست">تیک‌های نمایش‌داده شده کنار پیام‌های ارسالی به چه معناست؟</a></li>
       <li><a href="#edit">اصلاح غلط‌های املایی و پاک کردن پیام‌ها پس از فرستادن</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#چه-استانداردهایی-برای-رمزنگاری-سراسری-استفاده-شدهاند">چه استاندارد‌هایی برای رمزنگاری سراسری استفاده شده‌اند؟</a></li>
       <li><a href="#whene2e">چگونه می‌توانم بدانم پیام‌ها رمزنگاری سراسری هستند؟</a></li>
       <li><a href="#آیا-هنوز-میتوانم-پیامهایی-بدون-رمزنگاری-سراسری-دریافت-یا-بفرستم">آیا هنوز می‌توانم پیام‌هایی بدون رمزنگاری سراسری دریافت یا بفرستم؟</a></li>
-      <li><a href="#e2eeguarantee">What happened to the green checkmark in contact profiles?</a></li>
       <li><a href="#آیا-پیوستها-تصاویر-پروندهها-صدا-و-غیره-رمزنگاری-سراسری-میشوند">آیا پیوست‌ها (تصاویر، پرونده‌ها، صدا و غیره) رمزنگاری سراسری می‌شوند</a></li>
       <li><a href="#openpgp-secure">آیا OpenPGP امن است؟</a></li>
       <li><a href="#openpgp-alternatives">آیا جایگزین‌هایی برای OpenPGP برای رمزنگاری سراسری در نظر گرفته‌اید؟</a></li>
@@ -276,10 +276,10 @@
 به محض اینکه پیامی برای مخاطبی بفرستید،
 وقتی جزئیات مخاطب شما را ببینند، آن را خواهند دید.</p>
     
-      <h3 id="سنجاق-کردن-ساکت-کردن-و-بایگانی-کردن-به-چه-معناست">
+      <h3 id="pin-chats">
         
         
-          سنجاق کردن، ساکت کردن و بایگانی کردن به چه معناست؟ <a href="#سنجاق-کردن-ساکت-کردن-و-بایگانی-کردن-به-چه-معناست" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -338,6 +338,41 @@
 
 <p>پیام‌ها حتی اگر ویرایش یا پاک شوند، ذخیره می‌مانند -
 چه توسط <a href="#edit">فرستنده</a>، چه توسط <a href="#delold">پاک‌سازی دستگاه</a> یا توسط <a href="#ephemeralmsgs">پیام‌های ناپدیدشوندهٔ گپ‌های دیگر</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="نقطه-سبز-به-چه-معناست">
         
@@ -1430,32 +1465,6 @@ while chatmail clients use email servers for ephemeral instant message forwardin
 می‌توانید پیام‌ها را با یا بدون رمزنگاری سراسری بفرستید و دریافت کنید.
 پیام‌هایی که فاقد رمزنگاری سراسری هستند با نماد رایانامه علامت‌گذاری می‌شوند
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          What happened to the green checkmark in contact profiles? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Older Delta Chat versions showed a green checkmark
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" />
-and an “Introduced by” line in some contact profiles.</p>
-
-<p>This line is no longer present.
-Since <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
-contacts are identified by their cryptographic key (“public key”),
-and there is never any possibility for the relay operator
-to exchange a key in order to execute a man-in-the-middle (MitM) attack
-(in fact, the operator does not even see the key at any point).</p>
-
-<p>It is still possible for an attacker to give you an invite link
-that impersonates someone else, and an attacker who has your Delta Chat contact
-(because they are in a group chat with you)
-could try to start a chat with you under a wrong name.
-These kinds of attacks are <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">present in all messengers</a>,
-and we are planning future improvements in order to mitigate them.</p>
     
       <h3 id="آیا-پیوستها-تصاویر-پروندهها-صدا-و-غیره-رمزنگاری-سراسری-میشوند">
         

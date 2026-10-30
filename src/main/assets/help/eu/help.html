@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">Zer dira profilak edo kontuak? Zer egin behar dut profil batetik beste batera aldatzeko?</a></li>
       <li><a href="#nork-ikus-dezake-nire-profileko-argazkia">Nork ikus dezake nire profileko argazkia?</a></li>
       <li><a href="#signature">Jar dezaket biografia/egoera Delta Chaten?</a></li>
-      <li><a href="#zer-da-txatak-finkatzea-mututzea-eta-artxibatzea">Zer da txatak finkatzea, mututzea eta artxibatzea?</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">Zer dira “Gordetako mezuak”?</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#zer-esan-nahi-du-puntu-berdeak">Zer esan nahi du puntu berdeak?</a></li>
       <li><a href="#zer-esan-nahi-dute-bidalitako-mezuen-alboko-egiaztapen-markek">Zer esan nahi dute bidalitako mezuen alboko egiaztapen-markek?</a></li>
       <li><a href="#edit">Mezuak bidali ondoren ezabatzea edo akatsak zuzentzea</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#zer-estandar-darabiltza-muturretik-muturrera-zifratzeko">Zer estandar darabiltza muturretik muturrera zifratzeko?</a></li>
       <li><a href="#whene2e">Nola jakin dezaket mezuak muturretik muturrera zifratuta dauden?</a></li>
       <li><a href="#jarraitu-dezaket-muturretik-muturrera-zifratu-gabeko-mezuak-bidaltzen">Jarraitu dezaket muturretik muturrera zifratu gabeko mezuak bidaltzen?</a></li>
-      <li><a href="#e2eeguarantee">Zer gertatu da kontaktuen profilean zegoen egiaztapen-marka berdearekin?</a></li>
       <li><a href="#muturretik-muturrera-zifratuta-al-daude-eranskinak-argazkiak-fitxategiak-audioak-etab">Muturretik muturrera zifratuta al daude eranskinak (argazkiak, fitxategiak, audioak, etab.)?</a></li>
       <li><a href="#openpgp-secure">Segurua al da OpenPGP?</a></li>
       <li><a href="#openpgp-alternatives">Hartu al duzue kontuan muturretik muturrera zifratzeko beste aukeraren bat erabiltzea OpenPGP-ren ordez?</a></li>
@@ -281,10 +281,10 @@ jar dezakezu, honela: <strong>Ezarpenak → Profila → Sinaduraren testua</stro
 Kontaktu bati mezu bat bidaltzen diozunean,
 hark zure kontaktuko datuak begiratutakoan ikusiko du.</p>
     
-      <h3 id="zer-da-txatak-finkatzea-mututzea-eta-artxibatzea">
+      <h3 id="pin-chats">
         
         
-          Zer da txatak finkatzea, mututzea eta artxibatzea? <a href="#zer-da-txatak-finkatzea-mututzea-eta-artxibatzea" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -345,6 +345,41 @@ jatorrizko mezura joango zara, jatorrizko txatera.</p>
 
 <p>Mezuak gordeta geratzen dira, baita gerora editatu edo ezabatuz gero ere,
 bai <a href="#edit">igorleak</a> hala egin duenean, bai <a href="#delold">gailutik mezuak ezabatzea</a> aukeratuta dagoenean, bai <a href="#ephemeralmsgs">beste txat batzuetatik mezuak desagertzea</a> aukeratuta dagoenean.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="zer-esan-nahi-du-puntu-berdeak">
         
@@ -1451,32 +1486,6 @@ muturretik muturrera zifratutako nahiz zifratu gabeko mezuak bidali eta jaso dit
 Muturretik muturrera zifratu gabeko mezuek epostaren ikonoaren marka izaten dute:
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
     
-      <h3 id="e2eeguarantee">
-        
-        
-          Zer gertatu da kontaktuen profilean zegoen egiaztapen-marka berdearekin? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Delta Chaten aurreko bertsioetan, kontaktu batzuen profilek egiaztapen-marka berdea
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="green checkmark" />
-zeukaten, eta testu hau idatzita: “Halakok egiaztatuta”.</p>
-
-<p>Testu hori jada ez dago.
-Izan ere, <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a> bertsiotik aurrera,
-kontaktuak beren gako kriptografikoaren bidez identifikatzen dira (“gako publikoa“),
-eta ez dago modurik errele-zerbitzariaren operadoreak
-man-in-the-middle (MitM) erasoa eginez inoren gakoa trukatzeko
-(hain zuzen, operadoreak ez du inoiz gakorik ikusi ere egiten).</p>
-
-<p>Oraindik ere posible da erasotzaileren batek beste norbaiten identitatea ordeztuz
-zuri gonbidapen-esteka bat bidaltzea; bestalde, posible da zure Delta Chateko kontaktua duen norbait
-(talde-txat berean zaudetelako, adibidez)
-izen faltsu bat erabiliz zurekin hitz egiten saiatzea.
-Horrelako erasoak <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">mezularitza-aplikazio guztietan</a> gerta daitezke,
-eta etorkizunean halakoak murrizteko hobekuntzak egiteko asmotan gara.</p>
-    
       <h3 id="muturretik-muturrera-zifratuta-al-daude-eranskinak-argazkiak-fitxategiak-audioak-etab">
         
         
@@ -1837,7 +1846,7 @@ You can read the <a href="https://delta.chat/assets/blog/2019-first-security-rev
 adibidez, <a href="#howtoe2ee">QR gonbidapen-kodea eskaneatu</a> nahi baduzu,
 kamera erabiltzeko baimena eman beharko duzu.</p>
 
-<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
+<p>Xehetasunak jakiteko, kontsultatu <a href="https://delta.chat/privacy#app-permissions">pribatutasun-politika</a>.</p>
     
       <h3 id="non-lortu-dezakete-delta-chat-nire-lagunek">
         

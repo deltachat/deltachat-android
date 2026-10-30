@@ -583,8 +583,6 @@ public class Rpc {
    * During the handshake, info messages are added to the chat,
    * showing progress, success or errors.
    * <p>
-   * Subsequent calls of `secure_join()` will abort previous, unfinished handshakes.
-   * <p>
    * See https://securejoin.delta.chat/ for details about both protocols.
    * <p>
    * **qr**: The text of the scanned QR code. Typically, the same string as given

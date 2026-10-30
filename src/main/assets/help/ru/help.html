@@ -8,8 +8,9 @@
       <li><a href="#multiple-accounts">Что такое профили? Как я могу переключатся между ними?</a></li>
       <li><a href="#кто-видит-изображение-моего-профиля">Кто видит изображение моего профиля?</a></li>
       <li><a href="#signature">Могу ли я установить статус/подпись в Delta Chat?</a></li>
-      <li><a href="#что-означают-закрепить-отключить-уведомления-и-отправить-в-архив">Что означают: Закрепить, Отключить уведомления и Отправить в архив?</a></li>
+      <li><a href="#pin-chats">Pin, mute and archive a chat</a></li>
       <li><a href="#save">Как работают “Сохраненные сообщения”?</a></li>
+      <li><a href="#pin-messages">How do pinned messages work?</a></li>
       <li><a href="#что-означает-зеленая-точка">Что означает зеленая точка?</a></li>
       <li><a href="#что-означают-галочки-рядом-с-исходящими-сообщениями">Что означают галочки рядом с исходящими сообщениями?</a></li>
       <li><a href="#edit">Исправление опечаток и удаление сообщений после отправки</a></li>
@@ -84,7 +85,6 @@
       <li><a href="#какие-стандарты-используются-для-сквозного-шифрования">Какие стандарты используются для сквозного шифрования?</a></li>
       <li><a href="#whene2e">Как узнать, зашифрованы ли сообщения с помощью сквозного шифрования?</a></li>
       <li><a href="#могу-ли-я-получать-или-отправлять-сообщения-без-сквозного-шифрования">Могу ли я получать или отправлять сообщения без сквозного шифрования?</a></li>
-      <li><a href="#e2eeguarantee">Что случилось с зеленой галочкой в профилях контактов?</a></li>
       <li><a href="#зашифрованы-ли-вложения-изображения-файлы-аудио-и-т-д-сквозным-шифрованием">Зашифрованы ли вложения (изображения, файлы, аудио и т. д.) сквозным шифрованием?</a></li>
       <li><a href="#openpgp-secure">OpenPGP безопасен?</a></li>
       <li><a href="#openpgp-alternatives">Рассматривали ли вы альтернативы OpenPGP для сквозного шифрования?</a></li>
@@ -277,10 +277,10 @@
 После отправки сообщения контакту,
 они увидят его при просмотре ваших контактных данных.</p>
     
-      <h3 id="что-означают-закрепить-отключить-уведомления-и-отправить-в-архив">
+      <h3 id="pin-chats">
         
         
-          Что означают: Закрепить, Отключить уведомления и Отправить в архив? <a href="#что-означают-закрепить-отключить-уведомления-и-отправить-в-архив" class="anchor"></a>
+          Pin, mute and archive a chat <a href="#pin-chats" class="anchor"></a>
         
         
       </h3>
@@ -341,6 +341,41 @@
 
 <p>Сообщения остаются сохраненными, даже если они были отредактированы или удалены -
 будь то <a href="#edit">отправителем</a>, <a href="#delold">очисткой устройства</a> или <a href="#ephemeralmsgs">исчезающими сообщениями из других чатов</a>.</p>
+    
+      <h3 id="pin-messages">
+        
+        
+          How do pinned messages work? <a href="#pin-messages" class="anchor"></a>
+        
+        
+      </h3>
+
+<p><strong>Pin important messages</strong> such as an address, a meeting time or the rules of a group,
+so everyone can find them quickly.
+Unlike <a href="#pin-chats">pinned chats</a> that only organize <em>your</em> chat list,
+pinned messages are visible to <strong>all chat members</strong>.</p>
+
+<ul>
+  <li>
+    <p>In any chat, long tap or right click a message and select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../pin-icon.png" alt="" /> <strong>Pin</strong>.
+To remove it, select <img style="vertical-align:middle; height:1.2em; margin:1px" src="../unpin-icon.png" alt="" /> <strong>Unpin</strong> from the same menu.
+Unpinning also affects all chat members, not only you.</p>
+  </li>
+  <li>
+    <p>Pinned messages are shown in a <strong>bar at the top of the chat</strong>.
+Tap the bar to jump to the pinned message.
+If there are several, you can step through them.</p>
+  </li>
+  <li>
+    <p>If you pin an <a href="#webxdc">app</a>, it gets a <strong>start button</strong>
+so that everyone has easy access to it without scrolling or searching around.</p>
+  </li>
+  <li>
+    <p>There is no limit on the number of pinned messages or on how long they stay pinned.</p>
+  </li>
+</ul>
+
+<p>To keep messages just for yourself, use <a href="#save">Saved Messages</a>.</p>
     
       <h3 id="что-означает-зеленая-точка">
         
@@ -1437,32 +1472,6 @@ Chatmail использует INBOX по умолчанию для ретран�
 вы можете отправлять и получать сообщения с использованием или без сквозного шифрования.
 Сообщения, не имеющие сквозного шифрования, отмечены значком электронной почты
 <img style="vertical-align:middle; width:1.2em; margin:1px" src="../email-icon.png" alt="email" />.</p>
-    
-      <h3 id="e2eeguarantee">
-        
-        
-          Что случилось с зеленой галочкой в профилях контактов? <a href="#e2eeguarantee" class="anchor"></a>
-        
-        
-      </h3>
-
-<p>Старые версии Delta Chat отображали зеленую галочку
-<img style="vertical-align:middle; width:1.5em; margin:1px" src="../assets/help/green-checkmark.png" alt="зеленая галочка" />
-и строку “Представлено” в некоторых профилях контактов.</p>
-
-<p>Этой строки больше нет.
-Поскольку в <a href="https://delta.chat/en/2025-08-04-encryption-v2">Delta Chat V2</a>
-контакты идентифицируются по их криптографическому ключу (“публичный ключ”),
-у оператора релея нет возможности подменить ключ
-для проведения атаки типа “человек посередине” (MitM)
-(на самом деле, оператор даже не видит этот ключ).</p>
-
-<p>Злоумышленник всё ещё может прислать вам пригласительную ссылку,
-выдавая себя за другого человека. Кроме того, если у злоумышленника есть ваш контакт в Delta Chat
-(например, из общего чата),
-он может попытаться начать диалог под чужим именем. 
-Подобные атаки встречаются <a href="https://support.signal.org/hc/en-us/articles/9932566320410-Staying-Safe-from-Phishing-Scams-and-Impersonation">во всех мессенджерах</a>,
-и мы планируем внедрить улучшения, чтобы минимизировать такие риски.</p>
     
       <h3 id="зашифрованы-ли-вложения-изображения-файлы-аудио-и-т-д-сквозным-шифрованием">
         
