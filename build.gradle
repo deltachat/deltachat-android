@@ -5,6 +5,11 @@ plugins {
 }
 
 repositories {
+    // TGDELTA: dl.google.com is sinkholed on this machine; use the mirror.
+    maven {
+        name = 'AliyunGoogle'
+        url = 'https://maven.aliyun.com/repository/google'
+    }
     google()
     mavenCentral()
     maven {

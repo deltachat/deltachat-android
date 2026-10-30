@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    // Must match the donor's namespace so that the generated R class is
+    // org.telegram.messenger.R, which is what all vendored code imports.
+    namespace 'org.telegram.messenger'
+    compileSdk 37
+    ndkVersion "27.0.12077973"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 37
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        resources {
+            excludes += [
+                'LICENSE.txt',
+                'LICENSE',
+                'NOTICE',
+                'META-INF/LICENSE',
+                'META-INF/NOTICE'
+            ]
+        }
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+// Report the full error surface instead of javac's default 100-error cap.
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xmaxerrs', '20000']
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.17.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0'
+    implementation 'androidx.media3:media3-exoplayer:1.8.0'
+    implementation 'androidx.media3:media3-ui:1.8.0'
+}

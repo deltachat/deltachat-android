@@ -1,6 +1,14 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        // TGDELTA: this machine's network sinkholes dl.google.com (DNS returns
+        // 198.18.0.81), so the Google Maven repo is unreachable. The Aliyun
+        // mirror serves the same artifacts. Keep google() as a fallback for
+        // machines where the real host works.
+        maven {
+            name = 'AliyunGoogle'
+            url = 'https://maven.aliyun.com/repository/google'
+        }
         google()
         mavenCentral()
     }
