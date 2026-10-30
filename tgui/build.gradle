@@ -6,11 +6,18 @@ android {
     // Must match the donor's namespace so that the generated R class is
     // org.telegram.messenger.R, which is what all vendored code imports.
     namespace 'org.telegram.messenger'
-    compileSdk 37
+    // TGDELTA: 36, not 37. The android-37.0 platform jar available here is a
+    // trimmed stub that omits android.hardware.fingerprint (and other APIs the
+    // donor tree uses). android-36 contains them.
+    compileSdk 36
     ndkVersion "27.0.12077973"
 
     defaultConfig {
-        minSdkVersion 21
+        // TGDELTA: 23 rather than 21. Telegram's tree uses
+        // android.hardware.fingerprint (API 23) and androidx.biometric, and the
+        // AndroidManifest merge needs the matching consumer minSdk. Delta Chat
+        // itself stays at 21; this module only needs 23 to compile.
+        minSdkVersion 23
         targetSdkVersion 37
     }
 
@@ -50,4 +57,61 @@ dependencies {
     implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0'
     implementation 'androidx.media3:media3-exoplayer:1.8.0'
     implementation 'androidx.media3:media3-ui:1.8.0'
+    implementation 'androidx.media3:media3-session:1.8.0'
+
+    // ---------------------------------------------------------------------
+    // TGDELTA: compile-only dependencies.
+    //
+    // The vendored Telegram tree references a large surface of out-of-scope
+    // libraries (payments, push, ML, video transcoding, cast, ...). Under the
+    // project brief none of these may ship. `compileOnly` puts them on the
+    // javac classpath so the donor source compiles unchanged, while
+    // contributing no classes and no native code to the APK.
+    //
+    // Verification that nothing leaks into the artifact:
+    //   ./gradlew :tgui:assembleDebug
+    //   unzip -l tgui/build/outputs/aar/tgui-debug.aar
+    // and for the app: apkanalyzer files list <apk> | grep -iE '<name>'
+    // ---------------------------------------------------------------------
+    compileOnly 'com.google.android.gms:play-services-base:18.5.0'
+    compileOnly 'com.google.android.gms:play-services-cast-framework:21.5.0'
+    compileOnly 'com.google.android.gms:play-services-vision:20.1.3'
+    compileOnly 'com.google.android.gms:play-services-location:21.3.0'
+    compileOnly 'com.google.android.gms:play-services-maps:19.0.0'
+    compileOnly 'com.google.android.gms:play-services-auth:21.2.0'
+    compileOnly 'com.google.android.play:integrity:1.4.0'
+    compileOnly 'com.android.billingclient:billing:7.1.1'
+    compileOnly 'com.google.firebase:firebase-messaging:24.1.2'
+    compileOnly 'com.googlecode.mp4parser:isoparser:1.1.22'
+    compileOnly 'org.commonmark:commonmark:0.21.0'
+    compileOnly 'org.checkerframework:checker-qual:3.42.0'
+    compileOnly 'org.aspectj:aspectjrt:1.9.21'
+    compileOnly 'androidx.media3:media3-exoplayer-hls:1.8.0'
+    compileOnly 'androidx.media3:media3-exoplayer-dash:1.8.0'
+    compileOnly 'androidx.mediarouter:mediarouter:1.7.0'
+    compileOnly 'androidx.webkit:webkit:1.14.0'
+    compileOnly 'androidx.car.app:app:1.4.0'
+    compileOnly 'androidx.credentials:credentials:1.3.0'
+    compileOnly 'io.noties.markwon:core:4.6.2'
+    compileOnly 'io.noties.markwon:ext-latex:4.6.2'
+    compileOnly 'io.noties.markwon:ext-tables:4.6.2'
+    compileOnly 'io.noties.markwon:html:4.6.2'
+    compileOnly 'io.noties.markwon:inline-parser:4.6.2'
+    compileOnly 'com.google.zxing:core:3.5.3'
+    compileOnly 'com.google.code.gson:gson:2.11.0'
+    compileOnly 'com.google.android.gms:play-services-wallet:19.4.0'
+    compileOnly 'com.google.android.recaptcha:recaptcha:18.6.1'
+    compileOnly 'androidx.biometric:biometric:1.1.0'
+    compileOnly 'androidx.palette:palette:1.0.0'
+    compileOnly 'com.neovisionaries:nv-websocket-client:2.14'
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+    compileOnly 'org.commonmark:commonmark-ext-gfm-tables:0.21.0'
+    compileOnly 'com.google.mlkit:common:17.3.0'
+    compileOnly 'com.google.mlkit:vision-common:17.3.0'
+    compileOnly 'com.google.mlkit:vision-interfaces:16.3.0'
+    compileOnly 'com.stripe:stripe-android:20.52.3'
+    compileOnly 'com.google.android.gms:play-services-wearable:18.1.0'
+    compileOnly 'org.commonmark:commonmark-ext-gfm-strikethrough:0.21.0'
+    compileOnly 'androidx.media3:media3-extractor:1.8.0'
+    compileOnly 'org.nanohttpd:nanohttpd:2.3.1'
 }
