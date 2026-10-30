@@ -401,6 +401,9 @@ public class WebxdcActivity extends WebViewActivity implements DcEventCenter.DcE
     boolean isDraft = dcAppMsg.getState() == DcMsg.DC_STATE_OUT_DRAFT;
     menu.findItem(R.id.menu_add_to_home_screen).setVisible(!isDraft);
     menu.findItem(R.id.show_in_chat).setVisible(!isDraft);
+    menu.findItem(R.id.webxdc_reset_permissions)
+        .setVisible(
+            WebxdcPermissions.hasDecision(this, dcContext.getAccountId(), dcAppMsg.getId()));
     return true;
   }
 

@@ -95,6 +95,10 @@ public class WebxdcPermissions {
     Prefs.removePreference(context, key(accountId, msgId));
   }
 
+  public static boolean hasDecision(Context context, int accountId, int msgId) {
+    return read(context, accountId, msgId).length() > 0;
+  }
+
   public static synchronized void pruneStaleOnce(Context context, Rpc rpc) {
     if (pruneDone) {
       return;
