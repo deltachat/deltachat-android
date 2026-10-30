@@ -5,3 +5,7 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+rootProject.name = 'DeltaCat'
+
+include ':tgui'
