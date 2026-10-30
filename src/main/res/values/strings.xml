@@ -260,7 +260,7 @@
     <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
     <string name="webxdc_perm_ask_location">Allow \"%1$s\" to access your location?</string>
     <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
-    <string name="webxdc_perm_ask_sensors">Allow \"%1$s\" to access the device\'s motion and orientation sensors?</string>
+    <string name="webxdc_perm_ask_sensors">Allow \"%1$s\" to access motion sensors?</string>
     <string name="webxdc_perm_denied_settings">Permissions missing for Delta Chat. Please grant Delta Chat required permissions in Android settings.</string>
     <string name="webxdc_perm_reset">Reset permissions</string>
     <string name="home">Home</string>
