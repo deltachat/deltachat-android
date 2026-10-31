@@ -42,6 +42,8 @@ import org.thoughtcrime.securesms.jobmanager.JobManager;
 import org.thoughtcrime.securesms.notifications.FcmReceiveService;
 import org.thoughtcrime.securesms.notifications.InChatSounds;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
+import org.thoughtcrime.securesms.notifications.UnifiedPushUtils;
+import org.thoughtcrime.securesms.service.UnifiedPushService;
 import org.thoughtcrime.securesms.util.AndroidSignalProtocolLogger;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -346,35 +348,7 @@ public class ApplicationContext extends Application {
 
     AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-    if (Prefs.isPushEnabled(this)) {
-      FcmReceiveService.register(this);
-    } else {
-      Log.i(TAG, "FCM disabled at build time");
-    }
-
-    // MAYBE TODO: i think the ApplicationContext is also created
-    // when the app is stated by FetchWorker timeouts.
-    // in this case, the normal threads shall not be started.
-    // The FetchWorker is scheduled on all builds, so that
-    // if the process is killed with queued messages or
-    // incoming messages, this guarantees a retry even when
-    // no further push message arrives.
-    Constraints constraints =
-        new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
-    PeriodicWorkRequest fetchWorkRequest =
-        new PeriodicWorkRequest.Builder(
-                FetchWorker.class,
-                PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS, // usually 15 minutes
-                TimeUnit.MILLISECONDS,
-                PeriodicWorkRequest
-                    .MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes,
-                // so we run every 10-15 minutes
-                TimeUnit.MILLISECONDS)
-            .setConstraints(constraints)
-            .build();
-    WorkManager.getInstance(this)
-        .enqueueUniquePeriodicWork(
-            "FetchWorker", ExistingPeriodicWorkPolicy.KEEP, fetchWorkRequest);
+    initializePush();
 
     PeriodicWorkRequest webxdcGarbageCollectionRequest =
         new PeriodicWorkRequest.Builder(
@@ -403,6 +377,52 @@ public class ApplicationContext extends Application {
 
   public JobManager getJobManager() {
     return jobManager;
+  }
+
+  public void initializePush() {
+    Log.d(TAG, "Initializing push");
+    long interval;
+    if (Prefs.isFcmPushEnabled(this)) {
+      FcmReceiveService.register(this);
+      // We use confirmed=false, because initializePush
+      // is called after saving the distributor, but register is called by this function
+      // We can't be acked before
+
+      // Fetch only once per hour
+      interval = PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS * 4;
+    } else if (UnifiedPushUtils.hasPushDistributor(this, false)) {
+      UnifiedPushService.register(this);
+
+      // Fetch only once per hour
+      interval = PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS * 4;
+    } else {
+      Log.i(TAG, "FCM disabled at build time");
+      interval = PeriodicWorkRequest.MIN_PERIODIC_INTERVAL_MILLIS;
+    }
+
+    // MAYBE TODO: i think the ApplicationContext is also created
+    // when the app is stated by FetchWorker timeouts.
+    // in this case, the normal threads shall not be started.
+    // The FetchWorker is scheduled on all builds, so that
+    // if the process is killed with queued messages or
+    // incoming messages, this guarantees a retry even when
+    // no further push message arrives.
+    Constraints constraints =
+        new Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build();
+    PeriodicWorkRequest fetchWorkRequest =
+        new PeriodicWorkRequest.Builder(
+                FetchWorker.class,
+                interval, // usually 15 minutes
+                TimeUnit.MILLISECONDS,
+                PeriodicWorkRequest
+                    .MIN_PERIODIC_FLEX_MILLIS, // the start may be preferred by up to 5 minutes,
+                // so we run every 10-15 minutes
+                TimeUnit.MILLISECONDS)
+            .setConstraints(constraints)
+            .build();
+    WorkManager.getInstance(this)
+        .enqueueUniquePeriodicWork(
+            FetchWorker.periodicWorkTag, ExistingPeriodicWorkPolicy.KEEP, fetchWorkRequest);
   }
 
   private void initializeLogging() {
