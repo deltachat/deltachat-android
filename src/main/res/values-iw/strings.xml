@@ -18,6 +18,7 @@
     <string name="custom">מותאם אישית</string>
     <string name="none">אין</string>
     <string name="automatic">אוטומטי</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">קפדני</string>
     <string name="open">פתח</string>
     <string name="download">הורדה</string>
@@ -34,6 +35,7 @@
     <string name="emoji">אמוג\'י</string>
     <string name="attachment">קובץ מצורף</string>
     <string name="back">אחורה</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">סגור</string>
     <string name="close_window">סגור חלון</string>
     <string name="forward">קדימה</string>
@@ -165,21 +167,25 @@
         <item quantity="two">%d שעות</item>
         <item quantity="other">%d שעות</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d צ\'אט</item>
         <item quantity="two">%d צ\'אטים</item>
         <item quantity="other">%d צ\'אטים</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d צור קשר</item>
         <item quantity="two">%d אנשי קשר</item>
         <item quantity="other">%d אנשי קשר</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d הודעה</item>
         <item quantity="two">%d הודעות</item>
         <item quantity="other">%d הודעות</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d תגובה</item>
         <item quantity="two">%d תגובות</item>
@@ -257,6 +263,18 @@
     <string name="webxdc_store_url">כתובת ה-URL של App Picker</string>
     <string name="webxdc_store_url_explain">אם מוגדר, כתובת ה-URL תשמש כ\"בוחר האפליקציות\" במקום זו המוגדרת כברירת מחדל</string>
     <string name="webxdc_draft_hint">לחץ על \"שלח\" כדי לשתף</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">לאפשר ל- \"%1$s\" להשתמש במיקרופון?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">לאפשר ל- \"%1$s\" להשתמש במצלמה?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">לאפשר ל- \"%1$s\" להשתמש במצלמה ובמיקרופון?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">לאפשר ל- \"%1$s\" גישה למיקום שלך?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">לאפשר ל- \"%1$s\" גישה לחיישני התנועה?</string>
+    <string name="webxdc_perm_denied_settings">הרשאות חסרות ל- Delta Chat. אנא אפשר ל- Delta Chat את ההרשאות הדרושות בהגדרות של אנדרויד.</string>
+    <string name="webxdc_perm_reset">איפוס הרשאות</string>
     <string name="home">בית</string>
     <string name="games">משחקים</string>
     <string name="tools">כלים</string>
@@ -357,6 +375,8 @@
     <string name="show_in_chat">הצג בצ\'אט</string>
     <string name="show_app_in_chat">הצג את האפליקציה בצ\'אט</string>
     <string name="menu_share">שתף</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">אפשר</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">חסום</string>
     <string name="menu_block_contact">חסימת איש קשר</string>
@@ -400,10 +420,16 @@
     <string name="pin">סיכה</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">מוצמד</string>
+    <string name="pin_for_everyone_ask">נעץ הודעה עבור כל המשתתפים בצ\'אט?</string>
+    <string name="pin_for_everyone">נעץ עבור כולם</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">הסר את הסימון</string>
+    <string name="unpin_for_everyone_ask">הסר נעץ מההודעה עבור כל המשתתפים בצ\'אט?</string>
+    <string name="unpin_for_everyone">הסר נעץ עבור כולם.</string>
     <string name="message_pinned_by_you">הצמדת הודעה</string>
     <string name="message_pinned_by_other">הודעה הוצמדה על-ידי %1$s</string>
+    <string name="message_unpinned_by_you">הסרת את הנעץ מההודעה</string>
+    <string name="message_unpinned_by_other">נעץ הוסר מההודעה על-ידי %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">לא נמצא ההודעה המקורית</string>
     <string name="reply_privately">השב באופן פרטי</string>
     <string name="source_code">קוד מקור</string>
@@ -543,6 +569,7 @@
     <string name="chat_no_chats_yet_title">אין צ\'אטים.\nלחץ על \"+\" כדי לפתוח צ\'אט חדש.</string>
     <string name="chat_all_archived">כל הצ\'אטים נשמרו בארכיון.\nלחץ על \"+\" כדי לפתוח צ\'אט חדש.</string>
     <string name="chat_share_with_title">שתף עם…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">הודעה</string>
     <string name="chat_archived_label">בארכיון</string>
     <string name="chat_request_label">בקשה</string>
@@ -766,6 +793,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">לשלוח %1$d קבצים ל \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">לשלוח %1$d קובצ(ים) ל %2$d צ\'אטים?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">מכין את המדיה...</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">מכווץ את הסרטון...</string>
+    <string name="video_recode_busy">סרטון נוסף עדין מעובד, אנא המתן.</string>
     <string name="share_text_multiple_chats">שלח את הטקסט ל-%1$d צ\'אטים?\n\n\"%2$s\"</string>
     <string name="share_abort">השיתוף הופסק בשל היעדר הרשאות.</string>
 

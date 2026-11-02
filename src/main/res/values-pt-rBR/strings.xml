@@ -18,6 +18,7 @@
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
     <string name="automatic">Automático</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Rigoroso</string>
     <string name="open">Abrir</string>
     <string name="download">Descarregar</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Fechar</string>
     <string name="close_window">Fechar Janela</string>
     <string name="forward">Encaminhar</string>
@@ -137,21 +139,25 @@
         <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d conversa</item>
         <item quantity="many">%d conversas</item>
         <item quantity="other">%d conversas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contatos</item>
         <item quantity="many">%d contatos</item>
         <item quantity="other">%d contatos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d message</item>
         <item quantity="many">%d mensagens</item>
         <item quantity="other">%d mensagens</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reação</item>
         <item quantity="many">%d reações</item>
@@ -467,6 +473,7 @@
     <string name="chat_no_chats_yet_title">Caixa vazia.\nPressione \"+\" para conversar com alguém.</string>
     <string name="chat_all_archived">Apenas conversas arquivadas.\nPressione \"+\" para uma nova conversa.</string>
     <string name="chat_share_with_title">Compartilhar com</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivado</string>
     <string name="chat_request_label">Solicitar</string>

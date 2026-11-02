@@ -18,6 +18,7 @@
     <string name="custom">Admawan</string>
     <string name="none">Ulac</string>
     <string name="automatic">Awurman</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Uḥris</string>
     <string name="open">Ldi</string>
     <string name="download">Sider</string>
@@ -32,6 +33,7 @@
     <string name="emoji">Imujit</string>
     <string name="attachment">Amedday</string>
     <string name="back">Uɣal</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Mdel</string>
     <string name="close_window">Mdel asfaylu</string>
     <string name="forward">Ɣer zdat</string>
@@ -129,18 +131,22 @@
         <item quantity="one">%d usrag</item>
         <item quantity="other">%d n isragen</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d udiwenni usrid</item>
         <item quantity="other">%d idiwenniyen usrid</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d unermis</item>
         <item quantity="other">%d Inermisen</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d n izen</item>
         <item quantity="other">%dn iznan</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d n tririt</item>
         <item quantity="other">%d n tririyin</item>
@@ -448,6 +454,7 @@
     <string name="chat_no_chats_yet_title">Ulac idiwenniyen.\nSit ɣef \"+\" akken ad tebduḍ adiwenni amaynut.</string>
     <string name="chat_all_archived">Akk idiwenniyen ttwaɣbren.\nSit ɣef \"+\" akken ad tebduḍ adiwenni amaynut.</string>
     <string name="chat_share_with_title">Bḍu d...</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Izen</string>
     <string name="chat_archived_label">yettwaɣber</string>
     <string name="chat_request_label">Asuter</string>

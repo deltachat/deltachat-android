@@ -18,6 +18,7 @@
     <string name="custom">Egyéni</string>
     <string name="none">Semmi</string>
     <string name="automatic">Automatikus</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Szigorú</string>
     <string name="open">Megnyitás</string>
     <string name="download">Letöltés</string>
@@ -32,6 +33,7 @@
     <string name="emoji">Emodzsi</string>
     <string name="attachment">Melléklet</string>
     <string name="back">Vissza</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Bezárás</string>
     <string name="close_window">Ablak bezárása</string>
     <string name="forward">Továbbítás</string>
@@ -120,18 +122,22 @@
         <item quantity="one">%d órája</item>
         <item quantity="other">%d órája</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d beszélgetés</item>
         <item quantity="other">%d csevegés</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d névjegy</item>
         <item quantity="other">%d névjegy</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d üzenet</item>
         <item quantity="other">%d üzenet</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reakció</item>
         <item quantity="other">%d reakció</item>
@@ -416,6 +422,7 @@
     <string name="chat_no_chats_yet_title">Nincsenek csevegések.\nÉrintse meg a „+” gombot egy új csevegés indításához.</string>
     <string name="chat_all_archived">Az összes csevegés archiválva van.\nÉrintse meg a „+” gombot egy új csevegés indításához.</string>
     <string name="chat_share_with_title">Megosztás vele:</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Üzenet…</string>
     <string name="chat_archived_label">Archivált</string>
     <string name="chat_request_label">Kérés</string>

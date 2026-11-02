@@ -18,6 +18,7 @@
     <string name="custom">Personalitzat</string>
     <string name="none">Cap</string>
     <string name="automatic">Automàtic</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Estricte</string>
     <string name="open">Obre</string>
     <string name="download">Baixa</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emojis</string>
     <string name="attachment">Adjunt</string>
     <string name="back">Enrere</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Tanca</string>
     <string name="close_window">Tanca la finestra</string>
     <string name="forward">Reenvia</string>
@@ -160,18 +162,22 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d hores</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d xat</item>
         <item quantity="other">%d xats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacte</item>
         <item quantity="other">%d contactes</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d missatge</item>
         <item quantity="other">%d missatges</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reacció</item>
         <item quantity="other">%d reaccions</item>
@@ -245,6 +251,18 @@
     <string name="webxdc_store_url">URL del selector d\'aplicacions</string>
     <string name="webxdc_store_url_explain">Si està definit, s\'usarà l\'URL com a selector d\'aplicacions en comptes del predeterminat</string>
     <string name="webxdc_draft_hint">Prem “Envia” per compartir </string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Vols que \"%1$s\" utilitzi el micròfon?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Vols que \"%1$s\" utilitzi la càmera?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Vols que \"%1$s\" utilitzi la càmera i el micròfon?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Vols que \"%1$s\" accedeixi a la teva ubicació?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Vols que \"%1$s\" accedeixi als sensors de moviment?</string>
+    <string name="webxdc_perm_denied_settings">Manquen permisos per a Delta Chat. Si us plau, dóna a Delta Chat els permisos necessaris a la configuració d\'Android.</string>
+    <string name="webxdc_perm_reset">Restablir permisos</string>
     <string name="home">Inici</string>
     <string name="games">Jocs</string>
     <string name="tools">Eines</string>
@@ -344,6 +362,8 @@
     <string name="show_in_chat">Mostra al xat</string>
     <string name="show_app_in_chat">Mostra l\'aplicació al xat</string>
     <string name="menu_share">Comparteix</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Permetre</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloca</string>
     <string name="menu_block_contact">Bloca el contacte</string>
@@ -528,6 +548,7 @@
     <string name="chat_no_chats_yet_title">No hi ha cap xat.\nPrem «+» per a començar un xat nou.</string>
     <string name="chat_all_archived">Tots els xats s\'han arxivat.\nPrem «+» per a començar-ne un de nou.</string>
     <string name="chat_share_with_title">Comparteix amb</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Missatge</string>
     <string name="chat_archived_label">Arxivat</string>
     <string name="chat_request_label">Sol·licitud</string>
