@@ -12,6 +12,7 @@
     <string name="custom">కస్టమ్</string>
     <string name="none">ఏదీ కాదు</string>
     <string name="automatic">స్వయంచాలక</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">కఠినమైన</string>
     <string name="open">తెరువు</string>
     <string name="delete">తొలగించు</string>
@@ -20,6 +21,7 @@
     <string name="emoji">ఎమోజి</string>
     <string name="attachment">అటాచ్మెంట్</string>
     <string name="back">తిరిగి</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">దగ్గరగా</string>
     <string name="forward">ఫార్వర్డ్</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -127,6 +129,7 @@
     <string name="chat_archived_chats_title">ఆర్కైవ్ చేసిన చాట్స్</string>
     <string name="chat_record_slide_to_cancel">రద్దు చేయడానికి స్లైడ్ చేయి</string>
     <string name="chat_share_with_title">తో పంచు</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">సందేశం</string>
     <string name="chat_archived_label">ఆర్చివ్ అయినది</string>
     <string name="chat_no_messages">సందేశాలు లేవు</string>

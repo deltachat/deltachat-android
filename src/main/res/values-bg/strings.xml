@@ -14,6 +14,7 @@
     <string name="custom">Дефиниран от потребителя</string>
     <string name="none">Без</string>
     <string name="automatic">Автоматично</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Стриктно</string>
     <string name="open">Отваряне</string>
     <string name="download">Сваляне</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Прикачен файл</string>
     <string name="back">Назад</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Затваряне</string>
     <string name="close_window">Затваряне на прозореца</string>
     <string name="forward">Напред</string>
@@ -106,14 +108,17 @@
         <item quantity="one">%d час</item>
         <item quantity="other">%d часа</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d чат</item>
         <item quantity="other">%d чата</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d контакт</item>
         <item quantity="other">%d контакта</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d съобщение</item>
         <item quantity="other">%d съобщения</item>
@@ -327,6 +332,7 @@
     <string name="chat_no_chats_yet_title">Празна входяща кутия.\nНатиснете \"+\", за да започнете нов чат</string>
     <string name="chat_all_archived">Всички чатове са архивирани.\nНатиснете \"+\", за да започнете нов чат</string>
     <string name="chat_share_with_title">Споделяне с</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Съобщение</string>
     <string name="chat_archived_label">Архивирано</string>
     <string name="chat_request_label">Заявка</string>

@@ -18,6 +18,7 @@
     <string name="custom">Propran</string>
     <string name="none">Neniu</string>
     <string name="automatic">Aŭtomata</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Strikta</string>
     <string name="open">Malferma</string>
     <string name="download">Elŝuti</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
     <string name="back">Reen</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Fermi</string>
     <string name="close_window">Fermi fenestron</string>
     <string name="forward">Plusendi</string>
@@ -160,18 +162,22 @@
         <item quantity="one">%d horo</item>
         <item quantity="other">%d horoj</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d Parolado</item>
         <item quantity="other">%d babiloj</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakto</item>
         <item quantity="other">%d kontaktoj</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%dmesaĝo</item>
         <item quantity="other">%d mesaĝoj</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reago</item>
         <item quantity="other">%d reagoj</item>
@@ -523,6 +529,7 @@
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
     <string name="chat_all_archived">Ĉiuj babiloj enarĥivigitaj.\nPremu \"+\" por komenci novan babilon.</string>
     <string name="chat_share_with_title">Kunhavigi kun</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mesaĝo</string>
     <string name="chat_archived_label">Enarĥivigitaj</string>
     <string name="chat_no_messages">Neniu mesaĝo.</string>

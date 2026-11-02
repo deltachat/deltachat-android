@@ -14,6 +14,7 @@
     <string name="custom">커스텀</string>
     <string name="none">없음</string>
     <string name="automatic">자동</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">엄격한</string>
     <string name="open">열기</string>
     <string name="download">다운로드</string>
@@ -26,6 +27,7 @@
     <string name="emoji">이모티콘</string>
     <string name="attachment">첨부 파일</string>
     <string name="back">뒤</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">닫기</string>
     <string name="forward">전달</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -95,12 +97,15 @@
     <plurals name="n_hours">
         <item quantity="other">%d시간</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d개의 채팅</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d명의 대화 상대</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">새 메시지 %d건</item>
     </plurals>
@@ -295,6 +300,7 @@
     <string name="chat_no_chats_yet_title">받은 편지함을 비웁니다.\n새 채팅을 시작하려면 \"+\"를 누르시오.</string>
     <string name="chat_all_archived">모든 대화가 보관되었습니다.\n새 채팅을 시작하려면 \"+\"를 누르시오.</string>
     <string name="chat_share_with_title">공유 대상</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">메시지</string>
     <string name="chat_archived_label">보관됨</string>
     <string name="chat_request_label">요청</string>

@@ -14,6 +14,7 @@
     <string name="custom">Personalizat</string>
     <string name="none">Nici unul</string>
     <string name="automatic">Automat</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Strict</string>
     <string name="open">Deschideți</string>
     <string name="download">Descărcați</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoticon</string>
     <string name="attachment">Atașament</string>
     <string name="back">Înapoi</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Închideți</string>
     <string name="forward">Redirecţionare</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -103,16 +105,19 @@
         <item quantity="few">%d ore</item>
         <item quantity="other">%d de ore</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d chat</item>
         <item quantity="few">%d chat-uri</item>
         <item quantity="other">%d de chat-uri</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contact</item>
         <item quantity="few">%d contacte</item>
         <item quantity="other">%d de contacte</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mesaj</item>
         <item quantity="few">%d mesaje</item>
@@ -327,6 +332,7 @@
     <string name="chat_no_chats_yet_title">Goliți inbox.\nPress \"+\" pentru a începe un nou chat.</string>
     <string name="chat_all_archived">Toate chat-urile sunt archived.\nPress \"+\" pentru a începe un nou chat.</string>
     <string name="chat_share_with_title">Împărtășiți cu</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mesaj</string>
     <string name="chat_archived_label">Arhivat</string>
     <string name="chat_request_label">Cerere</string>

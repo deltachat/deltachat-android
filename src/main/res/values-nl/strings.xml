@@ -18,6 +18,7 @@
     <string name="custom">Aangepast</string>
     <string name="none">Geen</string>
     <string name="automatic">Automatisch</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Strikt</string>
     <string name="open">Openen</string>
     <string name="download">Downloaden</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bijlage</string>
     <string name="back">Terug</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Sluiten</string>
     <string name="close_window">Venster sluiten</string>
     <string name="forward">Doorsturen</string>
@@ -160,18 +162,22 @@
         <item quantity="one">%d uur</item>
         <item quantity="other">%d uur</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d gesprek</item>
         <item quantity="other">%d gesprekken</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contactpersoon</item>
         <item quantity="other">%d contactpersonen</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d bericht</item>
         <item quantity="other">%d berichten</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reactie</item>
         <item quantity="other">%d reacties</item>
@@ -245,6 +251,22 @@
     <string name="webxdc_store_url">Appkiezer-url</string>
     <string name="webxdc_store_url_explain">Stel in om apps te kiezen vanaf een url in plaats van de standaard appkiezer</string>
     <string name="webxdc_draft_hint">Druk op ‘versturen’ om te delen</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Wil je ‘%1$s’ toestemming geven om je microfoon te gebruiken?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Wil je ‘%1$s’ toestemming geven om je camera te gebruiken?
+</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Wil je ‘%1$s’ toestemming geven om je camera en microfoon te gebruiken?
+</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Wil je ‘%1$s’ toestemming geven om je locatie op te vragen?
+</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Wil je ‘%1$s’ toestemming geven om je bewegingssensors te gebruiken?
+</string>
+    <string name="webxdc_perm_denied_settings">Delta Chat heeft geen toestemming. Open de Android-instellingen en verleen de benodigde rechten.</string>
+    <string name="webxdc_perm_reset">Rechten intrekken</string>
     <string name="home">Overzicht</string>
     <string name="games">Games</string>
     <string name="tools">Hulpmiddelen</string>
@@ -344,6 +366,8 @@
     <string name="show_in_chat">Tonen in bijbehorend gesprek</string>
     <string name="show_app_in_chat">App tonen in gesprek</string>
     <string name="menu_share">Delen</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Toestaan</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Blokkeren</string>
     <string name="menu_block_contact">Contactpersoon blokkeren</string>
@@ -528,6 +552,7 @@
     <string name="chat_no_chats_yet_title">Er zijn nog geen gesprekken.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_all_archived">Alle gesprekken zijn gearchiveerd.\nDruk op ‘+’ om een gesprek te beginnen.</string>
     <string name="chat_share_with_title">Delen met…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Bericht</string>
     <string name="chat_archived_label">Gearchiveerd</string>
     <string name="chat_request_label">Verzoek</string>

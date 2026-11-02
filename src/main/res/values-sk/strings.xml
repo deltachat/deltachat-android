@@ -18,6 +18,7 @@
     <string name="custom">Vlastné</string>
     <string name="none">Nenastavené</string>
     <string name="automatic">Automaticky</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Presne</string>
     <string name="open">Otvoriť</string>
     <string name="download">Stiahnuť</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Smajlíci</string>
     <string name="attachment">Príloha</string>
     <string name="back">Späť</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Zavrieť</string>
     <string name="close_window">Zavrieť okno</string>
     <string name="forward">Preposlať</string>
@@ -170,24 +172,28 @@
         <item quantity="many">%d hodín</item>
         <item quantity="other">%d hodín</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d konverzácia</item>
         <item quantity="few">%d konverzácie</item>
         <item quantity="many">%d konverzácií</item>
         <item quantity="other">%d konverzácií</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="few">%d kontakty</item>
         <item quantity="many">%d kontaktov</item>
         <item quantity="other">%d kontaktov</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d správa</item>
         <item quantity="few">%d správy</item>
         <item quantity="many">%d správ</item>
         <item quantity="other">%d správ</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reakcia</item>
         <item quantity="few">%d reakcie</item>
@@ -269,6 +275,18 @@
     <string name="webxdc_store_url">URL adresa na získanie súkromných aplikácií</string>
     <string name="webxdc_store_url_explain">Ak je nastavené, zadaná adresa URL sa použije na načítanie zoznamu aplikácií namiesto predvolenej</string>
     <string name="webxdc_draft_hint">Zdieľajte klepnutím na tlačidlo „Poslať“</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Povoliť aplikácii „%1$s“ používať mikrofón?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Povoliť aplikácii „%1$s“ používať fotoaparát?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Povoliť aplikácii „%1$s“ používať fotoaparát a mikrofón?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Povoliť aplikácii „%1$s“ pristupovať k údajom o vašej polohe?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Povoliť aplikácii „%1$s“ pristupovať k údajom zo senzorov pohybu?</string>
+    <string name="webxdc_perm_denied_settings">Chýbajúce oprávnenia pre aplikáciu Delta Chat. Prosím udeľte požadované oprávnenia aplikácii Delta Chat v aplikácii Nastavenia.</string>
+    <string name="webxdc_perm_reset">Obnoviť oprávnenia</string>
     <string name="home">Domov</string>
     <string name="games">Hry</string>
     <string name="tools">Nástroje</string>
@@ -370,6 +388,8 @@
     <string name="show_in_chat">Zobraziť v konverzácií</string>
     <string name="show_app_in_chat">Zobraziť aplikáciu v konverzácii</string>
     <string name="menu_share">Zdieľať</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Povoliť</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Blokovať</string>
     <string name="menu_block_contact">Blokovať kontakt</string>
@@ -570,6 +590,7 @@
     <string name="chat_no_chats_yet_title">Žiadne konverzácie.\nStlačením tlačidla „+“ začnete novú</string>
     <string name="chat_all_archived">Všetky konverzácie boli archivované.\nStlačením tlačidla „+“ začnete novú</string>
     <string name="chat_share_with_title">Zdieľať s…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Správa</string>
     <string name="chat_archived_label">Archivované</string>
     <string name="chat_request_label">Požiadavka</string>

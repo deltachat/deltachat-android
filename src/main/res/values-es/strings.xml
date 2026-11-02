@@ -18,6 +18,7 @@
     <string name="custom">Personalizado</string>
     <string name="none">Ninguno</string>
     <string name="automatic">Automático</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Estricto</string>
     <string name="open">Abrir</string>
     <string name="download">Descargar</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Adjunto</string>
     <string name="back">Atrás</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
     <string name="forward">Reenviar</string>
@@ -165,21 +167,25 @@
         <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d chat</item>
         <item quantity="many">%d chats</item>
         <item quantity="other">%d chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacto</item>
         <item quantity="many">%d contactos</item>
         <item quantity="other">%d contactos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mensaje</item>
         <item quantity="many">%d mensajes</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reacción</item>
         <item quantity="many">%d reacciones</item>
@@ -257,6 +263,18 @@
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">Si se establece, la URL se utilizará como App Picker en lugar de la predeterminada</string>
     <string name="webxdc_draft_hint">Pulsa \"Enviar\" para compartir</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">¿Permites que \"%1$s\" utilice tu micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">¿Permites que \"%1$s\" utilice tu cámara?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">¿Permites que \"%1$s\" utilice tu cámara y tu micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">¿Permites que \"%1$s\" acceda a tu ubicación?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">¿Permites que \"%1$s\" acceda a los sensores de movimiento?</string>
+    <string name="webxdc_perm_denied_settings">Faltan permisos para Delta Chat. Concede a Delta Chat los permisos necesarios en los ajustes de Android.</string>
+    <string name="webxdc_perm_reset">Restablecer permisos</string>
     <string name="home">Inicio</string>
     <string name="games">Juegos</string>
     <string name="tools">Herramientas</string>
@@ -357,6 +375,8 @@
     <string name="show_in_chat">Mostrar en el chat</string>
     <string name="show_app_in_chat">Mostrar en el chat</string>
     <string name="menu_share">Compartir</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Permitir</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
@@ -549,6 +569,7 @@
     <string name="chat_no_chats_yet_title">Bandeja de entrada vacía.\nPresiona \"+\" para iniciar un nuevo chat.</string>
     <string name="chat_all_archived">Todos los chats archivados.\nPresiona \"+\" para iniciar un nuevo chat.</string>
     <string name="chat_share_with_title">Compartir con</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensaje</string>
     <string name="chat_archived_label">Archivado</string>
     <string name="chat_request_label">Solicitud</string>

@@ -22,6 +22,7 @@
     <string name="emoji">وێنۆچکە</string>
     <string name="attachment">پێوەلکاو</string>
     <string name="back">گەڕانەوە</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">داخستن</string>
     <string name="forward">بڵاو کردنەوە</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -78,14 +79,17 @@
         <item quantity="one">%dکاتژمێر</item>
         <item quantity="other">%dکاتژمێر</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%dوتووێژ</item>
         <item quantity="other">%dوتووێژ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%dبەردەنگ</item>
         <item quantity="other">%dبەردەنگ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%dپەیام</item>
         <item quantity="other">%dپەیام</item>
@@ -250,6 +254,7 @@
     <string name="chat_no_chats_yet_title">هاتنگە بەتاڵە. \n \"+\" لێبدە بۆ دەستپێکی وتووێژێکی نوێ.</string>
     <string name="chat_all_archived">هەموو وتووێژەکان ئەرشیڤ کران. \n بۆ دەستپێکردنی وتووێژێکی نوێ، \"+\" لێبدە.</string>
     <string name="chat_share_with_title">هاوبەش کردن لەگەڵ</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">بنووسە</string>
     <string name="chat_archived_label">ئەرشیڤ کرا</string>
     <string name="chat_no_messages">هیچ پەیامێک نییە</string>

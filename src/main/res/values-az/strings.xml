@@ -12,6 +12,7 @@
     <string name="custom">Xüsusi</string>
     <string name="none">Yoxdur</string>
     <string name="automatic">Avtomatik</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Mıtin</string>
     <string name="open">Açıq</string>
     <string name="delete">Sil</string>
@@ -20,6 +21,7 @@
     <string name="emoji">Emojilər</string>
     <string name="attachment">Fayllar</string>
     <string name="back">Geri</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Bağla</string>
     <string name="forward">Başqasına göndərmə</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -66,14 +68,17 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d çat</item>
         <item quantity="other">%d çat</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakt</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mesaj</item>
         <item quantity="other">%d mesaj</item>
@@ -200,6 +205,7 @@
     <string name="chat_no_chats_yet_title">Qutu boşdur.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
     <string name="chat_all_archived">Bütün çatlar saxlanıldı.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
     <string name="chat_share_with_title">Göndər </string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mesaj</string>
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>

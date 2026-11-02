@@ -18,6 +18,7 @@
     <string name="custom">سفارشی</string>
     <string name="none">هیچکویکی</string>
     <string name="automatic">خوتکار</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">سختگر</string>
     <string name="open">گۊشیڌن</string>
     <string name="download">دانلود</string>
@@ -32,6 +33,7 @@
     <string name="emoji">ایموجی</string>
     <string name="attachment">پیوست</string>
     <string name="back">وورگشتن</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">بستن</string>
     <string name="close_window">بستن نیمدری</string>
     <string name="forward">فوروارد</string>
@@ -118,18 +120,22 @@
         <item quantity="one">%d ساعت</item>
         <item quantity="other">%d ساعت</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d چت</item>
         <item quantity="other">%d چت</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d هومدنگ</item>
         <item quantity="other">%d هومدنگ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d پیوم</item>
         <item quantity="other">%d پیوم</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d کار ولوم</item>
         <item quantity="other">%d کار ولوم</item>
@@ -323,6 +329,7 @@
     </plurals>
     <string name="chat_record_slide_to_cancel">سی رڌ کردن بکشس.</string>
     <string name="chat_share_with_title">یک رسۊوی وا...</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">پیوم</string>
     <string name="chat_request_label">درخاست</string>
     <string name="chat_no_messages">پیومؽ نؽ.</string>

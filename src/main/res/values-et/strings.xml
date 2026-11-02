@@ -18,6 +18,7 @@
     <string name="custom">Kohandatud</string>
     <string name="none">Puudub</string>
     <string name="automatic">Automaatne</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Range</string>
     <string name="open">Ava</string>
     <string name="download">Laadi alla</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Manus</string>
     <string name="back">Tagasi</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Sulge</string>
     <string name="close_window">Sulge aken</string>
     <string name="forward">Edasta</string>
@@ -160,18 +162,22 @@
         <item quantity="one">%d tund</item>
         <item quantity="other">%d tundi</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d vestlus</item>
         <item quantity="other">%d vestlust</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakti</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d sõnum</item>
         <item quantity="other">%d sõnumit</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reageerimine</item>
         <item quantity="other">%d reageerimist</item>
@@ -245,6 +251,18 @@
     <string name="webxdc_store_url">Rakendustevalija võrguaadress</string>
     <string name="webxdc_store_url_explain">Selle eelistusega saad sisestada rakendustevalija jaoks oma võrguaadressi, mida kasutatakse vaikimisi valiku asemel</string>
     <string name="webxdc_draft_hint">Jagamiseks klõpsi nuppu „Saada“</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Kas lubad „%1$s“ minirakendusel kasutada sinu seadme mikrofoni?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Kas lubad „%1$s“ minirakendusel kasutada sinu seadme kaamerat?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Kas lubad „%1$s“ minirakendusel kasutada sinu seadme mikrofoni ja kaamerat?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Kas lubad „%1$s“ minirakendusel tuvastada sinu seadme asukohta?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Kas lubad „%1$s“ minirakendusel kasutada sinu seadme liikumis- ja suunasensoreid?</string>
+    <string name="webxdc_perm_denied_settings">Delta Chatil on puudu õigusi. Palun luba Androidis seadistustes Delta Chatil kasutada vajalikke õigusi.</string>
+    <string name="webxdc_perm_reset">Lähtesta õigused</string>
     <string name="home">Avaleht</string>
     <string name="games">Mängud</string>
     <string name="tools">Tarvikud</string>
@@ -344,6 +362,8 @@
     <string name="show_in_chat">Näita vestluses</string>
     <string name="show_app_in_chat">Näita rakendust vestluses</string>
     <string name="menu_share">Jaga</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Luba</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Blokeeri</string>
     <string name="menu_block_contact">Blokeeri kontakt</string>
@@ -528,6 +548,7 @@
     <string name="chat_no_chats_yet_title">Vestlusi pole.\nUue vestluse loomiseks klõpsi + ikooni.</string>
     <string name="chat_all_archived">Kõik vestlused on arhiveeritud.\nUue vestluse algatamiseks klõpsi + ikooni.</string>
     <string name="chat_share_with_title">Jaga kasutajaga</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Sõnum</string>
     <string name="chat_archived_label">Arhiveeritud</string>
     <string name="chat_request_label">Päring</string>

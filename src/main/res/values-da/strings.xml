@@ -14,6 +14,7 @@
     <string name="custom">Tilpasset</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatisk</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Streng</string>
     <string name="open">Åben</string>
     <string name="download">Download</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Vedhæftning</string>
     <string name="back">Tilbage</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Luk</string>
     <string name="forward">Videresend</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -86,14 +88,17 @@
         <item quantity="one">%d time</item>
         <item quantity="other">%d timer</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d samtale</item>
         <item quantity="other">%d samtaler</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakter</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d besked</item>
         <item quantity="other">%d beskeder</item>
@@ -273,6 +278,7 @@
     <string name="chat_no_chats_yet_title">Tom indbakke.\nTryk \"+\" for at starte ny samtale.</string>
     <string name="chat_all_archived">Alle samtaler er arkiveret.\nTryk \"+\" for at starte ny samtale.</string>
     <string name="chat_share_with_title">Del med</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Besked</string>
     <string name="chat_archived_label">Arkiveret</string>
     <string name="chat_no_messages">Ingen beskeder</string>
