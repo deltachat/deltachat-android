@@ -20,7 +20,7 @@
     <string name="automatic">Automatique</string>
     <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Stricte</string>
-    <string name="open">Ouvert</string>
+    <string name="open">Ouvrir</string>
     <string name="download">Télécharger</string>
     <string name="downloading">Téléchargement en cours...</string>
     <string name="open_attachment">Ouvrir la pièce jointe</string>
