@@ -18,6 +18,7 @@
     <string name="custom">自訂</string>
     <string name="none">無</string>
     <string name="automatic">自動</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">嚴格</string>
     <string name="open">開啟</string>
     <string name="download">下載</string>
@@ -32,6 +33,7 @@
     <string name="emoji">表情符號</string>
     <string name="attachment">附件</string>
     <string name="back">返回</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">關閉</string>
     <string name="close_window">關閉視窗</string>
     <string name="forward">轉發</string>
@@ -124,15 +126,19 @@
     <plurals name="n_hours">
         <item quantity="other">%d小時前</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d個聊天</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d位聯絡人</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d條訊息</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="other">%d 個回應</item>
     </plurals>
@@ -430,6 +436,7 @@
     <string name="chat_no_chats_yet_title">目前沒有對話\n請按「+」開始新的對話</string>
     <string name="chat_all_archived">已封存所有的對話\n請按「+」開始新的對話</string>
     <string name="chat_share_with_title">分享給...</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">訊息</string>
     <string name="chat_archived_label">封存</string>
     <string name="chat_request_label">請求</string>

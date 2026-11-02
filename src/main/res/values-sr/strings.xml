@@ -14,6 +14,7 @@
     <string name="custom">Посебно</string>
     <string name="none">Ништа</string>
     <string name="automatic">Аутоматски</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Строг</string>
     <string name="open">Отвори</string>
     <string name="download">Преузми</string>
@@ -28,6 +29,7 @@
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Затвори</string>
     <string name="close_window">Затвори прозор</string>
     <string name="forward">Проследи</string>
@@ -115,16 +117,19 @@
         <item quantity="few">%d сата</item>
         <item quantity="other">%d сати</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d ћаскање</item>
         <item quantity="few">%d ћаскања</item>
         <item quantity="other">%d ћаскања</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d контакт</item>
         <item quantity="few">%d контакта</item>
         <item quantity="other">%d контаката</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d порука</item>
         <item quantity="few">%d поруке</item>
@@ -359,6 +364,7 @@
     <string name="chat_no_chats_yet_title">Сандуче је празно.\nПритисните „+“ да почнете ново ћаскање.</string>
     <string name="chat_all_archived">Сва ћаскања су архивирана.\nПритисните „+“ да почнете ново ћаскање.</string>
     <string name="chat_share_with_title">Подели са</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Порука</string>
     <string name="chat_archived_label">Архивирано</string>
     <string name="chat_request_label">Захтев</string>

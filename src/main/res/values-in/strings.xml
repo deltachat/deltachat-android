@@ -14,6 +14,7 @@
     <string name="custom">Menurut pesanan</string>
     <string name="none">Tidak ada</string>
     <string name="automatic">Otomatis</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Ketat</string>
     <string name="open">Buka</string>
     <string name="download">Unduh</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Lampiran</string>
     <string name="back">Kembali</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Tutup</string>
     <string name="close_window">Tutup Jendela</string>
     <string name="forward">Teruskan</string>
@@ -100,12 +102,15 @@
     <plurals name="n_hours">
         <item quantity="other">%d jam</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d obrolan</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d kontak</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d pesan</item>
     </plurals>
@@ -296,6 +301,7 @@
     <string name="chat_no_chats_yet_title">Kosongkan inbox.\nTekan \"+\" untuk memulai obrolan baru.</string>
     <string name="chat_all_archived">Semua obrolan terarsip.\nTekan \"+\" untuk mulai obrolan baru.</string>
     <string name="chat_share_with_title">Bagi kepada</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Pesan</string>
     <string name="chat_archived_label">Diarsipkan</string>
     <string name="chat_no_messages">Tak ada pesan.</string>

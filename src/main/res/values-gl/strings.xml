@@ -18,6 +18,7 @@
     <string name="custom">Personalizado</string>
     <string name="none">Ningún</string>
     <string name="automatic">Automático</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Estrito</string>
     <string name="open">Abrir</string>
     <string name="download">Descargar</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoticona</string>
     <string name="attachment">Anexo</string>
     <string name="back">Atrás</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Pechar</string>
     <string name="close_window">Fechar xanela</string>
     <string name="forward">Reenviar</string>
@@ -160,18 +162,22 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d conversa</item>
         <item quantity="other">%d conversas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacto</item>
         <item quantity="other">%d contactos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mensaxe</item>
         <item quantity="other">%d mensaxes</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reacción</item>
         <item quantity="other">%d reaccións</item>
@@ -245,6 +251,18 @@
     <string name="webxdc_store_url">URL do Selector de Apps</string>
     <string name="webxdc_store_url_explain">Se está establecido o URL vaise usar como Selector de aplicacións no lugar do predeterminado</string>
     <string name="webxdc_draft_hint">Preme \"Enviar\" para compartir</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Da permiso a \"%1$s\" para empregar o seu micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Da permiso a \"%1$s\" para empregar a súa cámara?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Da permiso a \"%1$s\" para empregar a súa cámara e micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Da permiso a \"%1$s\" para acceder á súa localización?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Da permiso a \"%1$s\" para acceder ós sensores de movemento?</string>
+    <string name="webxdc_perm_denied_settings">Permisos non abilitados para Delta Chat. Outorgue a Delta Chat os permisos requeridos nas preferencias de Android.</string>
+    <string name="webxdc_perm_reset">Restituír permisos</string>
     <string name="home">Inicio</string>
     <string name="games">Xogos</string>
     <string name="tools">Ferramentas</string>
@@ -344,6 +362,8 @@
     <string name="show_in_chat">Amosar na conversa</string>
     <string name="show_app_in_chat">Amosar aplicación na conversa</string>
     <string name="menu_share">Compartir</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Permitir</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
@@ -528,6 +548,7 @@
     <string name="chat_no_chats_yet_title">Sen conversas.\n Preme \"+\" para iniciar conversa.</string>
     <string name="chat_all_archived">Arquiváronse todas as conversas.\nPreme \"+\" para iniciar unha nova.</string>
     <string name="chat_share_with_title">Compartir con...</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensaxe</string>
     <string name="chat_archived_label">Arquivado</string>
     <string name="chat_request_label">Solicitar</string>
@@ -537,7 +558,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Gardar mensaxe</string>
     <string name="saved_messages">Mensaxes gardadas</string>
-    <string name="saved_messages_explain">• Reenvía aquí as mensaxes para un acceso rápido\n\n• Toma notas de texto ou voz\n\n• Anexa medios para gardalos</string>
+    <string name="saved_messages_explain">• Reenvíar aquí as mensaxes para un acceso rápido\n\n• Tomar notas de texto ou voz\n\n• Anexar medios para gardalos</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Gardado</string>
     <string name="attachment_failed_to_load">Erro ao cargar o anexo</string>

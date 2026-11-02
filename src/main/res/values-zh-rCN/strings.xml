@@ -18,6 +18,7 @@
     <string name="custom">自定义</string>
     <string name="none">无</string>
     <string name="automatic">自动</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">严格</string>
     <string name="open">打开</string>
     <string name="download">下载</string>
@@ -34,6 +35,7 @@
     <string name="emoji">表情符号</string>
     <string name="attachment">附件</string>
     <string name="back">返回</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">关闭</string>
     <string name="close_window">关闭窗口</string>
     <string name="forward">转发</string>
@@ -155,15 +157,19 @@
     <plurals name="n_hours">
         <item quantity="other">%d 小时</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d 个聊天</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d 位联系人</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d 条消息</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="other">%d 个回应</item>
     </plurals>
@@ -507,6 +513,7 @@
     <string name="chat_no_chats_yet_title">收件箱为空。\n按“+”来开始新聊天。</string>
     <string name="chat_all_archived">所有聊天已归档。\n按“+”来开始新聊天。</string>
     <string name="chat_share_with_title">分享…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">消息</string>
     <string name="chat_archived_label">已归档</string>
     <string name="chat_request_label">请求</string>

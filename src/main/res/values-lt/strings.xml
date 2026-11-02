@@ -17,6 +17,7 @@
     <string name="custom">Tinkintas</string>
     <string name="none">Nėra</string>
     <string name="automatic">Automatinis</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Griežtas</string>
     <string name="open">Atverti</string>
     <string name="download">Atsisiųsti</string>
@@ -33,6 +34,7 @@
     <string name="emoji">Šypsniukas</string>
     <string name="attachment">Priedas</string>
     <string name="back">Atgal</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Užverti</string>
     <string name="close_window">Užverti langą</string>
     <string name="forward">Persiųsti</string>
@@ -128,24 +130,28 @@
         <item quantity="many">%d val.</item>
         <item quantity="other">%d val.</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d pokalbis</item>
         <item quantity="few">%d pokalbiai</item>
         <item quantity="many">%d pokalbių</item>
         <item quantity="other">%d pokalbis</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d adresatas</item>
         <item quantity="few">%d adresatai</item>
         <item quantity="many">%d adresatų</item>
         <item quantity="other">%d adresatas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d žinutė</item>
         <item quantity="few">%d žinutės</item>
         <item quantity="many">%d žinučių</item>
         <item quantity="other">%d žinutė</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reakcija</item>
         <item quantity="few">%d reakcijos</item>
@@ -460,6 +466,7 @@
     <string name="chat_no_chats_yet_title">Nėra pokalbių.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_all_archived">Visi pokalbiai archyvuoti.\nPaspauskite „+“ norėdami pradėti naują pokalbį.</string>
     <string name="chat_share_with_title">Bendrinti su</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Žinutė</string>
     <string name="chat_archived_label">Archyvuotas</string>
     <string name="chat_request_label">Užklausa</string>

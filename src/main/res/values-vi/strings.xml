@@ -14,6 +14,7 @@
     <string name="custom">Tùy chỉnh</string>
     <string name="none">Không</string>
     <string name="automatic">Tự động</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Nghiêm ngặt</string>
     <string name="open">Mở</string>
     <string name="download">Tải xuống</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Tệp đính kèm</string>
     <string name="back">Quay lại</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Đóng</string>
     <string name="close_window">Đóng cửa sổ</string>
     <string name="forward">Chuyển tiếp</string>
@@ -104,12 +106,15 @@
     <plurals name="n_hours">
         <item quantity="other">%d giờ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d liên hệ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d tin nhắn</item>
     </plurals>
@@ -315,6 +320,7 @@
     <string name="chat_no_chats_yet_title">Hộp thư đến trống.\nNhấn \"+\" để bắt đầu cuộc trò chuyện mới.</string>
     <string name="chat_all_archived">Tất cả các cuộc trò chuyện đã được lưu trữ.\nNhấn \"+\" để bắt đầu cuộc trò chuyện mới.</string>
     <string name="chat_share_with_title">Chia sẻ với</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Tin nhắn</string>
     <string name="chat_archived_label">Đã lưu trữ</string>
     <string name="chat_request_label">Yêu cầu</string>

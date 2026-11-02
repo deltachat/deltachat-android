@@ -12,6 +12,7 @@
     <string name="custom">விருப்ப</string>
     <string name="none">எதுவும் இல்லை</string>
     <string name="automatic">தானியங்கி</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">கண்டிப்பான</string>
     <string name="open">திற</string>
     <string name="delete">நீக்கவும் </string>
@@ -20,6 +21,7 @@
     <string name="emoji">ஈமோஜியைப்</string>
     <string name="attachment">இணைப்பு</string>
     <string name="back">மீண்டும்</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">நெருக்கமான</string>
     <string name="forward">முன்னோக்கு</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -57,14 +59,17 @@
         <item quantity="one">%d மணி</item>
         <item quantity="other">%d மணிகள்</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d அரட்டை</item>
         <item quantity="other">%d அரட்டைகள்</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d தொடர்புகள்</item>
         <item quantity="other">%d தொடர்புகள்</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d செய்திகள்</item>
         <item quantity="other">%d செய்திகள்</item>
@@ -152,6 +157,7 @@
     </plurals>
     <string name="chat_record_slide_to_cancel">ரத்து செய்ய திரையில் சறுக்கவும்</string>
     <string name="chat_share_with_title">பகிர்</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">சேதி</string>
     <string name="chat_archived_label">ஆவண காக்கப்படுத்தப்பட்டது</string>
     <string name="chat_no_messages">சேதிகள் இல்லை</string>

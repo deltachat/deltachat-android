@@ -18,6 +18,7 @@
     <string name="custom">На користувацький вибір</string>
     <string name="none">Не задано</string>
     <string name="automatic">Автоматично</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Строго</string>
     <string name="open">Відчинити</string>
     <string name="download">Скачати</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Емодзі</string>
     <string name="attachment">Вкладення</string>
     <string name="back">Назад</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Закрити</string>
     <string name="close_window">Закрити вікно</string>
     <string name="forward">Переслати</string>
@@ -140,24 +142,28 @@
         <item quantity="many">%d годин</item>
         <item quantity="other">%d годин</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d чат</item>
         <item quantity="few">%d чати</item>
         <item quantity="many">%d чатів</item>
         <item quantity="other">%d чатів</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d контактна особа</item>
         <item quantity="few">%d контактні особи</item>
         <item quantity="many">%d контактних осіб</item>
         <item quantity="other">%d контактних осіб</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d повідомлення</item>
         <item quantity="few">%d повідомлення</item>
         <item quantity="many">%d повідомлень</item>
         <item quantity="other">%d повідомлень</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d реакція</item>
         <item quantity="few">%d реакції</item>
@@ -510,6 +516,7 @@
     <string name="chat_no_chats_yet_title">Немає вхідних повідомлень.\nНатисніть \"+\" щоб почати новий чат.</string>
     <string name="chat_all_archived">Всі чати заархівовано.\nНатисніть \"+\", щоб почати новий чат.</string>
     <string name="chat_share_with_title">Поділитися з...</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Повідомлення</string>
     <string name="chat_archived_label">Заархівовано</string>
     <string name="chat_request_label">Запит</string>

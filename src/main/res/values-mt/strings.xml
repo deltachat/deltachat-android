@@ -18,6 +18,8 @@
     <string name="custom">Personalizzata</string>
     <string name="none">L-ebda</string>
     <string name="automatic">Awtomatiċi</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
+    <string name="strict">Bir-reqqa</string>
     <string name="open">Iftaħ</string>
     <string name="download">Niżżel</string>
     <string name="downloading">Qed tniżżel…</string>
@@ -33,6 +35,7 @@
     <string name="emoji">Wiċċinu</string>
     <string name="attachment">Hemża</string>
     <string name="back">Lura</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Agħlaq</string>
     <string name="close_window">Agħlaq dit-tieqa</string>
     <string name="forward">Għaddi</string>
@@ -169,24 +172,28 @@
         <item quantity="many">%d-il siegħa</item>
         <item quantity="other">%d siegħa</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">taħdita</item>
         <item quantity="few">%d taħditiet</item>
         <item quantity="many">%d-il taħdita</item>
         <item quantity="other">%d taħdita</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">kuntatt</item>
         <item quantity="few">%d kuntatti</item>
         <item quantity="many">%d-il kuntatt</item>
         <item quantity="other">%d kuntatt</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">messaġġ</item>
         <item quantity="few">%d messaġġi</item>
         <item quantity="many">%d-il messaġġ</item>
         <item quantity="other">%d messaġġ</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">reazzjoni</item>
         <item quantity="few">%d reazzjonjiet</item>
@@ -268,6 +275,18 @@
     <string name="webxdc_store_url">Indirizz tal-internet tal-għażżiel tal-apps</string>
     <string name="webxdc_store_url_explain">Jekk tqiegħed dil-ħaġa, l-indirizz tal-internet se tintuża bħala l-Għażżiel tal-apps minflok dak standard</string>
     <string name="webxdc_draft_hint">Biex taqsam mal-oħrajn, agħfas fuq \"Ibgħat\"</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Tixtieq tħalli lil \"%1$s\" tuża l-mikrofonu tat-tagħmir tiegħek?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Tixtieq tħalli lil \"%1$s\" tuża l-kamera tat-tagħmir tiegħek?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Tixtieq tħalli lil \"%1$s\" tuża l-kamera u l-mikrofonu tat-tagħmir tiegħek?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Tixtieq tħalli lil \"%1$s\" issib il-post fejn jinsab it-tagħmir tiegħek?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Tixtieq tħalli lil \"%1$s\" tuża s-sensuri taċ-ċaqliq tat-tagħmir tiegħek?</string>
+    <string name="webxdc_perm_denied_settings">Delta Chat għandha xi permessi neqsin. Jekk jogħġbok agħti l-permessi meħtieġ lil Delta Chat mill-għażliet ta\' Android.</string>
+    <string name="webxdc_perm_reset">Reġġa\' l-permessi lura</string>
     <string name="home">Paġna ewlenija</string>
     <string name="games">Logħob</string>
     <string name="tools">Għodda</string>
@@ -369,6 +388,8 @@
     <string name="show_in_chat">Uri fit-taħdita</string>
     <string name="show_app_in_chat">Uri l-app fit-taħdita</string>
     <string name="menu_share">Aqsam</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Ħalli</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Imblokka</string>
     <string name="menu_block_contact">Imblokka l-kuntatt</string>
@@ -390,7 +411,7 @@
     <!-- The placeholder will be replaced by the name the contact gave themself -->
     <string name="edit_name_placeholder">Il-laqam ta\' \"%1$s\"</string>
     <string name="menu_settings">Għażliet</string>
-    <string name="menu_advanced">Ċempel lura</string>
+    <string name="menu_advanced">Iktar għażliet</string>
     <string name="menu_view_profile">Uri l-profil</string>
     <string name="menu_zoom_in">Kabbar</string>
     <string name="menu_zoom_out">Ċekken</string>
@@ -412,12 +433,16 @@
     <string name="pin">Waħħal</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Imwaħħla</string>
+    <string name="pin_for_everyone_ask">Tixtieq twaħħal il-messaġġ għal kull min jinsab f\'dit-taħdita?</string>
     <string name="pin_for_everyone">Waħħal għal kulħadd</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Aqla\'</string>
+    <string name="unpin_for_everyone_ask">Tixtieq taqla\' dal-messaġġ għal kull min jinsab f\'dit-taħdita?</string>
     <string name="unpin_for_everyone">Aqla\' għal kulħadd</string>
     <string name="message_pinned_by_you">Waħħalt messaġġ</string>
     <string name="message_pinned_by_other">L-utent \"%1$s\" waħħal dal-messaġġ</string>
+    <string name="message_unpinned_by_you">Qlajt messaġġ</string>
+    <string name="message_unpinned_by_other">Il-messaġġ inqala\' minn %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Ma sibniex il-messaġġ oriġinali</string>
     <string name="reply_privately">Wieġeb b\'messaġġ privat</string>
     <string name="source_code">Il-kodiċi tas-sors</string>
@@ -565,6 +590,8 @@
     <string name="chat_no_chats_yet_title">L-ebda taħdita.\nAgħfas fuq \"+\" biex tibda taħdita ġdida.</string>
     <string name="chat_all_archived">Qgħedt it-taħditiet kollha fl-arkivju.\nAgħfas fuq \"+\" biex tibda taħdita ġdida.</string>
     <string name="chat_share_with_title">Aqsam ma\'…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
+    <string name="chat_input_placeholder">Messaġġ</string>
     <string name="chat_archived_label">Arkivjata</string>
     <string name="chat_request_label">Talba</string>
     <string name="chat_no_messages">L-ebda messaġġ.</string>
@@ -577,6 +604,9 @@
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Merfugħa</string>
     <string name="attachment_failed_to_load">Ma setax itella\' l-hemża</string>
+    <!-- For recording Voice messages: Description for the "Lock" button allowing to lift the thumb from the record button while recording continues -->
+    <string name="lock_recording">Sakkar ir-reġistrazzjoni</string>
+
     <!-- mailing lists -->
     <string name="mailing_list">Lista tal-posta</string>
 
@@ -617,6 +647,7 @@
     <string name="please_enter_chat_name">Jekk jogħġbok ikteb isem.</string>
     <string name="group_add_members">Żid il-membri</string>
     <string name="group_self_not_in_group">Ma tistax twettaq dal-għemil jekk m\'intix membru tal-grupp.</string>
+    <string name="profile_encryption">Kodifikazzjoni</string>
     <string name="profile_shared_chats">Taħditiet li tinsabu fihom it-tnejn li intom</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri tal-imgħoddi</string>
@@ -647,6 +678,75 @@
     <string name="multidevice_qr_subtitle">Aqra l-kodiċi QR biex tħejji t-tieni tagħmir għal %1$s</string>
     <string name="multidevice_receiver_title">Żid bħala t-tieni tagħmir</string>
     <string name="multidevice_open_settings_on_other_device">Iftaħ Delta Chat, żur \"Għażliet / Żid it-tieni tagħmir\" u aqra l-kodiċi li qed nuruk hawn taħt mill-ewwel tagħmir</string>
+    <string name="multidevice_receiver_scanning_ask">Tixtieq tikkopja l-profil mit-tagħmir l-ieħor għal fuq dat-tagħmir?</string>
+    <string name="multidevice_receiver_needs_update">Il-profil li tixtieq iddaħħal ġej mnn verżjoni ta\' Delta Chat li hija iġded.\n\nJekk jogħġbok ġedded il-verżjoni ta\' Delta Chat għall-iġded waħda fuq dat-tagħmir biex tkompli tħejji t-tieni tagħmir.</string>
+    <string name="multidevice_abort">Tixtieq ittemm it-tħejjija tat-tieni tagħmir?</string>
+    <string name="multidevice_abort_will_invalidate_copied_qr">Dil-ħaġa se twassal biex il-kodiċi QR li għandek fil-memorja temporanja jieqaf jaħdem.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Mexxejt il-profil fuq it-tieni tagħmir tiegħek.</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="preparing_account">Qed tħejji l-profil…</string>
+    <!-- Shown beside progress bar, stay short -->
+    <string name="transferring">Qed tmexxi…</string>
+    <string name="troubleshooting">Tiswija tal-problemi</string>
+
+    <!-- Connectivity -->
+    <!-- Headline for the "Inbox" eg. in the "Connectivity" view -->
+    <string name="incoming_messages">Messaġġi deħlin</string>
+    <!-- Headline for the "Outbox" eg. in the "Connectivity" view -->
+    <string name="outgoing_messages">Messaġġi ħerġin</string>
+    <string name="connectivity">Konnettività</string>
+    <!-- Shown in the title bar if the app is "Not connected"; prefer short strings. -->
+    <string name="connectivity_not_connected">Mhux imqabbda</string>
+    <!-- Shown in the title bar if the app is "Connecting"; prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_connecting">Qed taqbad…</string>
+    <!-- Shown in the title bar if the app is "Updating" (eg. getting new/old message, sync things); prefer short strings. The ellipsis is a single character (…), not three (...) -->
+    <string name="connectivity_updating">Qed iġġedded…</string>
+    <!-- Shown in the setting if the app is "Connected" -->
+    <string name="connectivity_connected">Imqabbda</string>
+    <string name="sending">Qed tibgħat…</string>
+    <string name="last_msg_sent_successfully">L-aħħar messaġġ li ntbagħat.</string>
+    <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
+    <string name="messages">Messaġġi</string>
+    <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
+    <string name="part_of_total_used">Użajt %1$s minn %2$s</string>
+
+    <!-- welcome and profile creation -->
+    <!-- Primary button on the welcome screen, allows to create an instant profile -->
+    <string name="onboarding_create_instant_account">Oħloq profil ġdid</string>
+    <!-- Secondary button on the welcome screen, allows to "Add as Second Device", "Restore from Backup" -->
+    <string name="onboarding_alternative_logins">Diġà għandi profil</string>
+    <!-- This is a button and a title, allowing to use existing, classic email, setting ports, passwords and so on -->
+    <string name="manual_account_setup_option">Uża l-emails klassiċi bħala messaġġiera</string>
+    <!-- Instant onboarding title (there is not more to do than to set name and avatar) -->
+    <string name="instant_onboarding_title">Il-profil tiegħek</string>
+    <!-- Confirmation button on the instant onboarding screen -->
+    <string name="instant_onboarding_create">Aqbel u oħloq profil</string>
+    <!-- Secondary, link-like button to open a page with other possible instances -->
+    <string name="instant_onboarding_show_more_instances">Uża server ieħor</string>
+    <string name="instant_onboarding_other_server">Uri s-servers ta\' Chatmail</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by the group or channel name -->
+    <string name="instant_onboarding_group_info">L-ewwel oħloq profil biex tinkiteb ma\' \"%1$s\".</string>
+    <!-- Hint about what happens when "Create Profile" button in pressed; the placeholder will be replaced by contact name -->
+    <string name="instant_onboarding_contact_info">L-ewwel oħloq profil biex titħaddet ma\' %1$s.</string>
+    <!-- Question shown when another user's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_contact">Tixtieq toħloq profil ġdid u tibda titħaddet ma\' %1$s?</string>
+    <!-- Question shown when group's/channel's QR code is scanned from onboarding screen -->
+    <string name="instant_onboarding_confirm_group">Tixtieq toħloq profil ġdid u tinkiteb ma\' \"%1$s\"?</string>
+
+    <string name="team">Tim</string>
+    <string name="team_profile">Profil tat-tim</string>
+    <string name="team_profile_explain">\"Profil tat-tim\" huwa profil immexxi minn grupp ta\' nies jew minn xi għaqda.\n\n⚠️ Il-profili tat-tim huma biss esperiment u jistgħu jinbidlu.</string>
+    <string name="team_name">Isem it-tim</string>
+    <string name="create_team_profile">Oħloq profil tat-tim</string>
+
+    <string name="scan_invitation_code">Aqra l-kodiċi tal-istedina</string>
+    <string name="login_advanced_hint">Dawn id-dettalji qegħdin hemm biss għall-utenti li jafu x\'inhuma jagħmlu.\n\nTużax indirizz li qed tuża f\'xi app oħra.</string>
+    <string name="login_inbox">Kaxxa tal-ittri</string>
+    <string name="login_imap_login">Isem tal-utent tal-IMAP</string>
+    <string name="login_imap_server">Server tal-IMAP</string>
+    <string name="login_imap_port">Bokka tal-IMAP</string>
+    <string name="login_imap_security">Sigurtà tal-IMAP</string>
+    <string name="login_outbox">Ittri ħerġin</string>
     <string name="login_smtp_login">L-isem tal-utent tal-SMTP</string>
     <string name="login_smtp_password">Il-password tal-SMTP</string>
     <string name="login_smtp_server">Is-server tal-SMTP</string>
@@ -656,13 +756,25 @@
     <string name="proxy_settings">Proxy</string>
     <string name="proxy_use_proxy">Uża l-proxy</string>
     <string name="proxy_add">Żid proxy</string>
+    <string name="proxy_add_explain">Proxies li tista\' tuża: HTTP(S), SOCKS5 u Shadowsocks.</string>
+    <string name="proxy_add_url_hint">Ikteb il-ħolqa tal-proxy hawn</string>
+    <string name="proxy_invalid">Il-proxy mhux tajjeb jew ma tistax tużah</string>
     <string name="proxy_list_header">Proxies merfugħa</string>
     <string name="proxy_delete">Ħassar il-proxy</string>
+    <string name="proxy_delete_explain">Żgur li tixtieq tħassar \"%1$s\"?</string>
+    <string name="proxy_use_proxy_confirm">Tixtieq tuża l-proxy \"%1$s\"?</string>
+    <string name="proxy_share_explain">Sħabek jistgħu jaqraw il-kodiċi QR biex iżidu dal-proxy.</string>
+    <string name="proxy_share_link">Aqsam il-ħolqa</string>
+    <string name="proxy_enabled">Il-proxy mixgħul</string>
+    <string name="proxy_enabled_hint">Qed tuża proxy. Uża proxy ieħor jekk mhux jirnexxielek taqbad.</string>
     <!-- "Relay" refers to the relay servers used; please chose a common term in your language, no need to be literal. If in doubt, stay with "Relay" -->
     <string name="transports">Messaġġiera</string>
     <string name="add_transport">Żid messaġġier</string>
     <string name="remove_transport">Neħħi l-messaġġier</string>
     <string name="edit_transport">Ibdel il-messaġġier</string>
+    <string name="enforce_e2ee">Ġiegħel il-kodifika għall-messaġġiera kollha</string>
+    <!-- Hint for the list of relays -->
+    <string name="transport_list_hint">Nużaw il-messaġġiera biex tkun tista\' tibgħat u tikseb il-messaġġi. Il-konnessjoni tiegħek tkun iktar stabbli jekk tuża iktar minn messaġġier wieħed.</string>
     <!-- shown if a QR code was scanned that can be used as a relay -->
     <string name="confirm_add_transport">Tixtieq iżżid dal-messaġġier?</string>
     <string name="invalid_transport_qr">Il-kodiċi QR li qrajt ma fihx messaġġier tajjeb.</string>
@@ -671,14 +783,62 @@
     <string name="login_certificate_checks">Verifiki taċ-ċertifikati</string>
     <!-- deprecated -->
     <string name="login_error_mail">Jekk jogħġbok ikteb indirizz tal-email tajjeb</string>
+    <string name="import_backup_title">Irkupra minn kopja maħżuna</string>
+    <string name="import_backup_ask">Sibna kopja maħżuna hawn: %1$s.\n\nTixtieq iddaħħal id-dejta u l-għażliet kollha tagħha?</string>
+    <string name="import_backup_no_backup_found">Ma sibna l-ebda kopja maħżuna.\n\nErġa\' pprova wara li tqiegħed il-kopja maħżuna hawn: %1$s. </string>
+    <!-- TLS certificate checks -->
+    <string name="accept_invalid_certificates">Ilqa\' ċ-ċertifikati li mhux tajbin</string>
     <string name="switch_account">Ibdel il-profil</string>
     <string name="add_account">Żid profil</string>
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Tikketta tal-profil</string>
     <string name="profile_tag_hint">ngħidu aħna: \"Xogħol\", \"Familja\"</string>
+    <string name="profile_tag_explain">Oħloq tikketta li tintwera lilek biss; biex tgħinek tagħraf bejn profil u ieħor.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Mexxi \'l fuq nett</string>
     <string name="delete_account">Ħassar il-profil</string>
+    <string name="delete_account_ask">Żgur li tixtieq tħassar id-dejta tal-profil tiegħek?</string>
+    <string name="delete_account_explain_with_name">Se nħassru d-dejta kollha tal-profil \"%s\" minn dat-tagħmir, fosthom l-għażliet tal-kodifika minn tarf għall-ieħor, il-kuntatti, it-taħditiet, il-messaġġi u l-midja tiegħek. Dal-għemil ma jistax jitreġġa\' lura.</string>
+    <string name="unconfigured_account">Profil mhux imħejji</string>
+    <string name="unconfigured_account_hint">Iftaħ il-profil biex tħejjih.</string>
+    <string name="try_connect_now">Ipprova aqbad issa</string>
+    <string name="sync_all">Issinkronizza kollox</string>
+    <!-- Translations: %1$s will be replaced by a more detailed error message -->
+    <string name="configuration_failed_with_error">It-tħejjija ma rnexxietx. Żball: %1$s</string>
+
+    <!-- share and forward messages -->
+    <!-- Translators: shown above a chat/contact list when selecting recipients to forward messages -->
+    <string name="forward_to">Għaddi lil…</string>
+    <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
+    <string name="ask_send_files_to_chat">Tixtieq tibgħat dal-għadd ta\' fajls lil \"%2$s\": %1$d? </string>
+    <string name="ask_send_files_to_selected_chats">Tixtieq tibgħat dal-għadd ta\' fajls lil %2$d taħdidiet: %1$d?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Qed iħejji l-midja…</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Qed jikkumpressa l-filmat…</string>
+    <string name="video_recode_busy">Jekk jogħġbok stenna għax għadna qed naħdmu fuq filmat ieħor.</string>
+    <string name="share_text_multiple_chats">Tixtieq tibgħat dil-kitba lil dal-għadd ta\' taħditiet: %1$d?\n\n\"%2$s\"</string>
+    <string name="share_abort">Il-qsim ma seħħx għax m\'għandekx il-permessi meħtieġa.</string>
+
+    <!-- preferences -->
+    <string name="pref_profile_info_headline">Il-profil tiegħek</string>
+    <string name="pref_profile_photo">Ir-ritratt tal-profil</string>
+    <string name="pref_blocked_contacts">Il-kuntatti mblukkati</string>
+    <string name="blocked_empty_hint">Hawn se nuruk il-kuntatti li mblukkajt.</string>
+    <string name="pref_who_can_see_profile_explain">Int u tikkomunika mal-utenti l-oħra, mal-messaġġi tiegħek se nibagħtulhom ukoll ir-ritratt tal-profil, ismek u t-tagħrif li ktibt dwarek.</string>
+    <string name="pref_your_name">Ismek</string>
+    <!-- Label of the Bio/Signature/Status/Motto field -->
+    <string name="pref_default_status_label">Tagħrif dwarek</string>
+    <string name="chat_description">Deskrizzjoni</string>
+    <!-- Option name for changing behaviour of the "Enter key" to sending out a message directly (instead of adding new line). If in doubt, please refer to a similar option in other messengers. -->
+    <string name="pref_enter_sends">Il-buttuna \"Ibgħat\" tibgħat il-messaġġ</string>
+    <string name="pref_enter_sends_explain">Se tibgħat il-messaġġ meta tagħfas il-buttuna \"Ibgħat\" (Enter)</string>
+    <string name="pref_outgoing_media_quality">Il-kwalità tal-midja li tibgħat</string>
+    <string name="pref_outgoing_media_quality_hint">Ehmeż il-midja bħala \"Fajl\" biex ma titlef xejn mill-kwalità. Dil-ħaġa twassal biex il-midja tuża iktar internet, kemm għalik kif ukoll għal dawk li jiftħu l-fajl.</string>
+    <string name="pref_outgoing_balanced">Bilanċjata</string>
+    <string name="pref_outgoing_worse">Kwalità agħar, iffranka l-internet</string>
+    <string name="pref_vibrate">Ivvibra</string>
+    <string name="pref_screen_security">Sigurtà tal-iskrin</string>
     <string name="pref_notifications">Notifikazzjonijiet</string>
     <string name="pref_mention_notifications">Tismijiet</string>
     <!-- Title for the "Calls" notification setting. This is a plural noun, not a verb. -->
@@ -710,19 +870,32 @@
     <!-- This text is shown inside the "QR code card" with very limited space; please formulate the text as short as possible therefore. The placeholder will be replaced by the profile name eg. "Scan to chat with Alice" -->
     <string name="qrshow_join_contact_hint">Aqrah biex titħaddet ma\' %1$s</string>
     <string name="qrshow_join_contact_no_connection_toast">L-ebda konnessjoni mal-internet, ma tistax tħejji l-kodiċi QR.</string>
+    <string name="secure_join_wait">Qed jaqbad, jekk jogħġbok stenna…</string>
+    <string name="contact_blocked">Imblukkajt lill-kuntatt</string>
+    <string name="mailto_dialog_header_select_chat">Agħżel it-taħdita fejn tixtieq tibgħat il-messaġġ</string>
+    <!-- first placeholder is the name of the chat -->
+    <string name="confirm_replace_draft">Diġà għandek abbozz ta\' messaġġ fit-taħdita %1$s. Tixtieq tqiegħed dan minfloku? </string>
+    <string name="mailto_link_could_not_be_decoded">ma setax jifhem il-ħolqa mailto: %1$s</string>
     <string name="remove_quote">Neħħi l-kwotazzjoni</string>
     <string name="remove_attachment">Neħħi l-hemża</string>
 
     <!-- notifications -->
     <string name="notify_reply_button">Tweġiba</string>
     <string name="notify_new_message">Messaġġ ġdid</string>
+    <string name="notify_background_connection_enabled">Xgħelt il-konnessjoni fl-isfond</string>
     <string name="notify_name_and_message">L-isem u l-messaġġ</string>
     <string name="notify_name_only">L-isem biss</string>
     <string name="notify_no_name_or_message">Turix l-isem u lanqas il-messaġġ</string>
+    <string name="notifications_disabled">In-notifikazzjonijiet mitfija</string>
+    <string name="unreliable_bg_notifications">Ixgħel \"Ġiegħel il-konnessjoni fl-isfond\" biex in-notifikazzjonijiet ma jiddewmux</string>
     <string name="new_messages">Messaġġi ġodda</string>
     <!-- Body text for a generic "New messages" notification. Shown if we do not have more information about a new messages. Note, that the string is also referenced at https://github.com/deltachat/notifiers -->
     <string name="new_messages_body">Għandek xi messaġġi ġodda</string>
     <string name="n_messages_in_m_chats">Messaġġi: %1$d, taħditiet: %2$d</string>
+
+    <!-- location streaming -->
+    <string name="location_streaming_notification_text">Qed taqsam il-post fejn jinsab it-tagħmir</string>
+    <string name="location_rationale">Ħalli lil Delta Chat tuża t-tagħrif tal-post fejn jinsab it-tagħmir biex taqsam il-post fejn jinsab it-tagħmir mal-membri tat-taħdita.\n\nBiex il-faċilità tal-qsim tal-post fejn jinsab it-tagħmir taħdem kif suppost, it-tagħrif tal-post fejn jinsab it-tagħmir jintuża wkoll anki meta l-app tkun magħluqa jew ma tkunx qed tintuża.</string>
 
     <!-- permissions -->
     <string name="perm_required_title">Teħtieġ permess</string>
@@ -791,6 +964,16 @@
 
     <!-- subtitle in the "keybindings" dialog -->
     <string name="navigation_shortcut_section">Navigazzjoni</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_input_shortcut_section">Kitba tal-messaġġi</string>
+    <!-- subtitle in the "keybindings" dialog -->
+    <string name="message_selected_shortcut_section">Il-messaġġ magħżul</string>
+    <string name="switch_between_chats">Aqleb bejn taħdita u oħra</string>
+    <string name="scroll_messages">Niżżel il-messaġġi</string>
+    <!-- command to put the cursor to the search input field -->
+    <string name="focus_search_input">Tiftixa ffukata</string>
+    <!-- command to put the cursor to the message input field -->
+    <string name="focus_message_input">Kitba ffukata tal-messaġġ</string>
     <string name="force_refresh_network">Ġiegħel lin-netwerk tiġġedded</string>
     <string name="insert_newline">Daħħal linja ġdida</string>
 

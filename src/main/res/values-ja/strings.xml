@@ -14,6 +14,7 @@
     <string name="custom">カスタム</string>
     <string name="none">無し</string>
     <string name="automatic">自動</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">厳重</string>
     <string name="open">開く</string>
     <string name="download">ダウンロード</string>
@@ -26,6 +27,7 @@
     <string name="emoji">絵文字</string>
     <string name="attachment">添付ファイル</string>
     <string name="back">前へ</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">閉じる</string>
     <string name="forward">転送</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -87,12 +89,15 @@
     <plurals name="n_hours">
         <item quantity="other">%d時間</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d 個のチャット</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d個の連絡先</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d個のメッセージ</item>
     </plurals>
@@ -261,6 +266,7 @@
     <string name="chat_no_chats_yet_title">受信箱が空です。\n＋でチャットを開始します。</string>
     <string name="chat_all_archived">すべてのチャットがアーカイブされました。\n＋でチャットを開始します。</string>
     <string name="chat_share_with_title">共有</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">メッセージ</string>
     <string name="chat_archived_label">アーカイブ済み</string>
     <string name="chat_no_messages">メッセージ無し</string>

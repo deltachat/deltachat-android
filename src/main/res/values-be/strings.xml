@@ -18,6 +18,7 @@
     <string name="custom">Свой варыянт</string>
     <string name="none">Не зададзена</string>
     <string name="automatic">Аўтаматычна</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Строгі</string>
     <string name="open">Адкрыць</string>
     <string name="download">Спампаваць</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Эмодзі</string>
     <string name="attachment">Укладанне</string>
     <string name="back">Назад</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Закрыць</string>
     <string name="close_window">Закрыць акно</string>
     <string name="forward">Пераслаць</string>
@@ -138,24 +140,28 @@
         <item quantity="many">%d гадз.</item>
         <item quantity="other">%d гадз.</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d чат</item>
         <item quantity="few">%d чаты</item>
         <item quantity="many">%d чатаў</item>
         <item quantity="other">%d чатаў</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d кантакт</item>
         <item quantity="few">%d кантакты</item>
         <item quantity="many">%d кантактаў</item>
         <item quantity="other">%d кантактаў</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d паведамленне</item>
         <item quantity="few">%d паведамленні</item>
         <item quantity="many">%d паведамленняў</item>
         <item quantity="other">%d паведамленняў</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d рэакцыя</item>
         <item quantity="few">%d рэакцыі</item>
@@ -508,6 +514,7 @@
     <string name="chat_no_chats_yet_title">Няма чатаў.\nНацісніце на «+», каб пачаць новы чат.</string>
     <string name="chat_all_archived">Усе чаты архіваваны.\nНацісніце на «+», каб пачаць новы чат.</string>
     <string name="chat_share_with_title">Падзяліцца з…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Напісаць</string>
     <string name="chat_archived_label">Архівавана</string>
     <string name="chat_request_label">Запыт</string>

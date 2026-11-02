@@ -33,6 +33,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Fechar</string>
     <string name="close_window">Fechar Janela</string>
     <string name="forward">Reencaminhar</string>
@@ -111,16 +112,19 @@
         <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d conversas</item>
         <item quantity="many">%d chats</item>
         <item quantity="other">%d chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacto</item>
         <item quantity="many">%d contactos</item>
         <item quantity="other">%d contactos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mensagens</item>
         <item quantity="many">%d mensagens</item>
@@ -323,6 +327,7 @@
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz, solte para enviar</string>
     <string name="chat_share_with_title">Partilhar com</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivada</string>
     <string name="chat_no_messages">Sem mensagens</string>

@@ -18,6 +18,7 @@
     <string name="custom">Özel</string>
     <string name="none">Yok</string>
     <string name="automatic">Otomatik</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
     <string name="download">İndir</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
     <string name="back">Geri</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
     <string name="forward">İlet</string>
@@ -134,18 +136,22 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d sohbet</item>
         <item quantity="other">%d sohbet</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kişi</item>
         <item quantity="other">%d kişi</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d ileti</item>
         <item quantity="other">%d ileti</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d tepki</item>
         <item quantity="other">%d tepki</item>
@@ -457,6 +463,7 @@
     <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
     <string name="chat_share_with_title">Paylaş…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlenen</string>
     <string name="chat_request_label">İstek</string>
