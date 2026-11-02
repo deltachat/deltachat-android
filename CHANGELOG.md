@@ -6,7 +6,7 @@
 * Show system-message when someone unpins a message
 * Fix Hebrew translations not appearing
 * Update translations and local help
-* Update to core 2.66.0
+* Update to core 2.67.0
 
 ## v2.64.0
 2026-10
