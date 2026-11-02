@@ -1025,7 +1025,7 @@ public class ConversationFragment extends MessageSelectorFragment {
           WebxdcActivity.openWebxdcActivity(
               getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
         }
-      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_PINNED) {
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_PINNED || messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_UNPINNED) {
         if (messageRecord.getParent() != null) {
           scrollMaybeSmoothToMsgId(messageRecord.getParent().getId());
         }
