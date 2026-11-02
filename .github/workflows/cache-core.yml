@@ -9,7 +9,7 @@ on:
       - 'jni/Application.mk'
       - 'jni/dc_wrapper.c'
       - 'scripts/ndk-make.sh'
-      - '.github/workflows/core-cache.yml'   # make a change to this file rebuild the cache
+      - '.github/workflows/cache-core.yml'   # make a change to this file rebuild the cache
   workflow_dispatch:                          # manual rebuild
 
 permissions: {}
