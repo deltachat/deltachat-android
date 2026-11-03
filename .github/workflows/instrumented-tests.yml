@@ -19,6 +19,11 @@ jobs:
     timeout-minutes: 90
     permissions:
       contents: read
+    env:
+      EMU_API_LEVEL: 36
+      EMU_TARGET: google_apis
+      EMU_ARCH: x86_64
+      EMU_PROFILE: pixel_7
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -75,6 +80,37 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
+      - name: Restore AVD snapshot
+        id: avd-cache
+        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ env.EMU_API_LEVEL }}-${{ env.EMU_TARGET }}-${{ env.EMU_ARCH }}-${{ env.EMU_PROFILE }}-v1
+
+      - name: Create AVD and generate snapshot
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
+        with:
+          api-level: ${{ env.EMU_API_LEVEL }}
+          target: ${{ env.EMU_TARGET }}
+          arch: ${{ env.EMU_ARCH }}
+          profile: ${{ env.EMU_PROFILE }}
+          force-avd-creation: false
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching."
+
+      - name: Save AVD snapshot
+        if: steps.avd-cache.outputs.cache-hit != 'true' && github.ref == 'refs/heads/main'
+        uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: ${{ steps.avd-cache.outputs.cache-primary-key }}
+
       - name: Run instrumented tests
         uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2.38.0
         with:
@@ -83,7 +119,9 @@ jobs:
           arch: x86_64
           profile: pixel_7
           disable-animations: true
-          script: ./gradlew --no-daemon -PABI_FILTER=x86_64 -PnoMinify connectedFossDebugAndroidTest
+          script: |
+            bash scripts/ci-emulator-settle.sh
+             ./gradlew --no-daemon -PABI_FILTER=x86_64 -PnoMinify connectedFossDebugAndroidTest
 
       - name: Upload screenshots
         if: always()
@@ -101,97 +139,3 @@ jobs:
           path: |
             build/reports/androidTests/connected/
             build/outputs/androidTest-results/connected/
-
-  # FOR DEMO ONLY, will be removed
-  screenshot-comment:
-    name: Post screenshots to PR (demo)
-    needs: instrumented-tests
-    if: >-
-      always() && needs.instrumented-tests.result != 'cancelled' &&
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
-    concurrency:
-      group: ci-screenshots-branch
-      cancel-in-progress: false
-    permissions:
-      contents: write
-      pull-requests: write
-    env:
-      DEST: pr-${{ github.event.pull_request.number }}/${{ github.run_id }}-${{ github.run_attempt }}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          ref: ci-screenshots
-          path: ci-screenshots
-
-      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
-        with:
-          name: screenshots
-          path: shots
-
-      - name: Commit screenshots to ci-screenshots branch
-        run: |
-          mkdir -p "ci-screenshots/$DEST"
-          cp -r shots/. "ci-screenshots/$DEST/"
-          cd ci-screenshots
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add .
-          git commit -m "Screenshots for $DEST"
-          git push
-
-      - name: Comment on PR
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
-        env:
-          TEST_RESULT: ${{ needs.instrumented-tests.result }}
-        with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const root = 'shots';
-            const base = `https://raw.githubusercontent.com/${context.repo.owner}/${context.repo.repo}/ci-screenshots/${process.env.DEST}`;
-            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-
-            function walk(dir) {
-              return fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => {
-                const p = path.join(dir, e.name);
-                if (e.isDirectory()) return walk(p);
-                return e.name.endsWith('.png') ? [path.relative(root, p)] : [];
-              });
-            }
-
-            const groups = {};
-            for (const rel of walk(root)) {
-              const dir = path.dirname(rel);
-              (groups[dir] = groups[dir] || []).push(rel);
-            }
-
-            const url = rel => `${base}/${rel.split(path.sep).map(encodeURIComponent).join('/')}`;
-
-            const label = f => {
-              const name = path.basename(f, '.png');
-              const m = name.match(/^(\d+)_(.*)$/);
-              return m ? `${Number(m[1])}. ${m[2]}` : name;
-            };
-
-            let body = `### Screenshots\n\n`;
-            for (const dir of Object.keys(groups).sort()) {
-              const files = groups[dir].sort();
-              body += `#### ${path.basename(dir)}\n\n<table>\n`;
-              for (let i = 0; i < files.length; i += 2) {
-                const pair = files.slice(i, i + 2);
-                const names = pair.map(f => `<th>${label(f)}</th>`);
-                const imgs = pair.map(f => `<td><img src="${url(f)}" width="300"></td>`);
-                if (pair.length === 1) { names.push('<th></th>'); imgs.push('<td></td>'); }
-                body += `<tr>${names.join('')}</tr>\n<tr>${imgs.join('')}</tr>\n`;
-              }
-              body += `</table>\n\n`;
-            }
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body,
-            });

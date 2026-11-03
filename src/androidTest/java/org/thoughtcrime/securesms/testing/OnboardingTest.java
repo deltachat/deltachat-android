@@ -9,7 +9,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import android.os.Build;
-import android.os.SystemClock;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -23,6 +22,7 @@ import org.junit.runner.RunWith;
 import org.thoughtcrime.securesms.ConversationListActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WelcomeActivity;
+import org.thoughtcrime.securesms.testutil.Ime;
 import org.thoughtcrime.securesms.testutil.Screenshots;
 import org.thoughtcrime.securesms.testutil.Shell;
 import org.thoughtcrime.securesms.testutil.TestEnv;
@@ -41,7 +41,7 @@ public class OnboardingTest {
 
   private static final String NAME = "UI Test";
   private static final long ACCOUNT_CREATION_TIMEOUT_MS = 90_000;
-  private static final long KEYBOARD_SCREENSHOT_DELAY_MS = 2_000;
+  private static final long KEYBOARD_WAIT_LIMIT_MS = 10_000;
 
   @BeforeClass
   public static void grantNotificationPermission() {
@@ -63,7 +63,8 @@ public class OnboardingTest {
       shots.capture("InstantOnboarding_default");
 
       onView(withId(R.id.name_text)).perform(click(), replaceText(NAME));
-      SystemClock.sleep(KEYBOARD_SCREENSHOT_DELAY_MS);
+      Ime.requestFor(R.id.name_text);
+      Ime.waitUntilVisibleBestEffort(KEYBOARD_WAIT_LIMIT_MS);
       shots.capture("InstantOnboarding_keyboard");
 
       onView(withId(R.id.name_text)).perform(closeSoftKeyboard());
