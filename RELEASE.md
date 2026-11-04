@@ -134,6 +134,17 @@ on <https://developer.huawei.com/consumer/en/appgallery>:
     d) Hit "Submit"; on the next page, confirm version and language
 
 
+## Release on Amazon Appstore
+
+on <https://developer.amazon.com/dashboard>:
+
+14. a) click "App List", for "Delta Chat", select "Add upcoming version" on the left
+    b) at "Step 1 / Existing file(s)" hit "Replace", upload the APK from above
+    c) on the "Step 1" page, add "Release notes" from CHANGELOG.md, hit "Next"
+    d) on "Step 2" and "Step 3" pages, hit "Next"
+    e) on "Step 4" page: "Submit app"
+
+
 ## Testing checklist
 
 Only some rough ideas, ideally, this should result into a simple checklist
