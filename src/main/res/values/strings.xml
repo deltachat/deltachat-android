@@ -56,6 +56,8 @@
     <string name="muted">Muted</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
     <string name="ephemeral_messages_hint">Applies to all members of this chat; they can still copy, save, and forward messages.</string>
+    <!-- Apply as setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Set for Everyone</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>

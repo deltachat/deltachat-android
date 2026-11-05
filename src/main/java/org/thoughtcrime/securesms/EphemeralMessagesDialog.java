@@ -63,7 +63,7 @@ public class EphemeralMessagesDialog {
             .setView(dialogView)
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(
-                R.string.ok,
+                R.string.set_for_everyone,
                 (dialog, which) -> {
                   final long burnAfter;
                   switch (selectedChoice[0]) {
