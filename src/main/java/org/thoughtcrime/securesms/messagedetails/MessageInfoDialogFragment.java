@@ -26,6 +26,7 @@ import chat.delta.rpc.Rpc;
 import chat.delta.rpc.RpcException;
 import chat.delta.rpc.types.Message;
 import chat.delta.rpc.types.MessageReadReceipt;
+import chat.delta.rpc.types.Viewtype;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
@@ -68,6 +69,7 @@ public class MessageInfoDialogFragment extends DialogFragment
 
   private TextView sentTimeView;
   private View receivedRow;
+  private TextView receivedLabelView;
   private TextView receivedTimeView;
   private View readBySection;
   private TextView readByLabelView;
@@ -91,6 +93,7 @@ public class MessageInfoDialogFragment extends DialogFragment
     View view = View.inflate(requireActivity(), R.layout.message_info_dialog, null);
     sentTimeView = view.findViewById(R.id.message_info_sent_time);
     receivedRow = view.findViewById(R.id.message_info_received_row);
+    receivedLabelView = view.findViewById(R.id.message_info_received_label);
     receivedTimeView = view.findViewById(R.id.message_info_received_time);
     readBySection = view.findViewById(R.id.message_info_read_by_section);
     readByLabelView = view.findViewById(R.id.message_info_read_by_label);
@@ -182,14 +185,19 @@ public class MessageInfoDialogFragment extends DialogFragment
     try {
       Message message = rpc.getMessage(accId, msgId);
       boolean outgoing = message.fromId != null && message.fromId == DcContact.DC_CONTACT_ID_SELF;
+      boolean isWebxdc = message.viewType == Viewtype.Webxdc;
       boolean hasReceived =
-          !outgoing && message.receivedTimestamp != null && message.receivedTimestamp != 0;
+          (!outgoing || isWebxdc)
+              && message.receivedTimestamp != null
+              && message.receivedTimestamp != 0;
 
       sentTimeView.setText(
           DateUtils.getAbsoluteDateTime(
               requireContext(), (message.timestamp != null ? message.timestamp : 0) * 1000L));
       receivedRow.setVisibility(hasReceived ? View.VISIBLE : View.GONE);
       if (hasReceived) {
+        receivedLabelView.setText(
+            isWebxdc ? R.string.last_updated : R.string.message_detail_received_desktop);
         receivedTimeView.setText(
             DateUtils.getAbsoluteDateTime(requireContext(), message.receivedTimestamp * 1000L));
       }
