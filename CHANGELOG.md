@@ -1,5 +1,10 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Message Info: For Webxdc, show last update timestamp
+
+
 ## v2.67.0
 2026-11
 
