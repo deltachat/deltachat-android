@@ -92,6 +92,7 @@
                 android:visibility="gone">
 
                 <TextView
+                    android:id="@+id/message_info_received_label"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
