@@ -846,9 +846,10 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Back Up Chats to External Storage</string>
     <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
-    <string name="pref_backup_export_this">Export this profile</string>
+    <string name="pref_backup_export_this">Export This Profile</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">Export all %1$d profiles</string>
+    <string name="pref_backup_export_all">Export All %1$d Profiles</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Start Backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
