@@ -230,6 +230,7 @@
     <string name="forwarded_by">Inoltrato da %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documenti</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contatto</string>
     <string name="bot">Bot</string>
     <string name="camera">Fotocamera</string>
@@ -630,6 +631,7 @@
     <string name="profile_shared_chats">Chat in Comune</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Membri Passati</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contatto</string>
     <string name="tab_group">Gruppo</string>
     <string name="tab_gallery">Galleria</string>
@@ -866,6 +868,7 @@
     <string name="pref_backup_export_this">Esporta questo profilo</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Esporta tutti i %1$d profili</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Avvia Backup</string>
     <string name="pref_backup_written_to_x">Backup scritto con successo in %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

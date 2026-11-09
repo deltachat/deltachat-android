@@ -125,6 +125,7 @@
     <string name="forwarded_by">Videresendt af %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <!-- Switch eg. from front to back camera -->
@@ -304,6 +305,7 @@
     <string name="group_self_not_in_group">Man skal være medlem af gruppen for at udføre denne handling.</string>
     <string name="profile_encryption">Kryptering</string>
     <string name="profile_shared_chats">Delte samtaler</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galleri</string>
@@ -419,6 +421,7 @@
     <string name="pref_backup">Sikkerhedskopi</string>
     <string name="pref_backup_explain">Sikkerhedskopier samtaler til eksternt lager</string>
     <string name="pref_backup_export_explain">En sikkerhedskopi hjælper til at opsætte en ny installation på denne eller en anden enhed.\n\nSikkerhedskopien indeholder alle beskeder, kontakter og samtaler og end-to-end krypteringsopsætning. Gem sikkerhedskopien et sikkert sted eller slet den så hurtigt som muligt.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Start sikkerhedskopiering</string>
     <string name="pref_backup_written_to_x">Sikkerhedskopi skrevet til %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

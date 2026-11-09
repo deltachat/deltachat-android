@@ -212,6 +212,7 @@
     <string name="forwarded_by">Переслано від %1$s</string>
     <string name="video">Відео</string>
     <string name="documents">Документи</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Контактна особа</string>
     <string name="bot">Бот</string>
     <string name="camera">Камера</string>
@@ -577,6 +578,7 @@
     <string name="profile_shared_chats">Спільні з вами чати</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Колишнє учасництво</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Контактні відомості</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерея</string>
@@ -798,6 +800,7 @@
     <string name="pref_backup_export_this">Експортуйте цей профіль</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортувати всі %1$d профілі</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Почати резервне копіювання</string>
     <string name="pref_backup_written_to_x">Резервна копія успішно записана на %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

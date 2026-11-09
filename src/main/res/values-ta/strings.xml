@@ -89,6 +89,7 @@
     <string name="forwarded_message">மேல அனுப்பப்பட்ட சேதி</string>
     <string name="video">காணொளி</string>
     <string name="documents">ஆவணங்கள்</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">தொடர்பு</string>
     <string name="camera">புகைப்படக்கருவி</string>
     <string name="location">இடம்</string>
@@ -170,6 +171,7 @@
     <string name="group_name">குழுவின் பெயர்</string>
     <string name="group_add_members">உறுப்பினர்களை சேர்க்க</string>
     <string name="profile_encryption">மறைகுறியாக்கம்</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">தொடர்பு</string>
     <string name="tab_gallery">காட்சி கூடம்</string>
     <string name="login_inbox">உட்பெட்டி</string>

@@ -56,6 +56,8 @@
     <string name="muted">En sourdine</string>
     <string name="ephemeral_messages">Messages éphémères</string>
     <string name="ephemeral_messages_hint">S\'applique à tous les membres de cette discussion. Ils pourront toujours copier, enregistrer et transférer les messages.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Appliquer pour tout le monde</string>
     <string name="save">Enregistrer</string>
     <string name="chat">Discussion</string>
     <string name="media">Média</string>
@@ -230,6 +232,7 @@
     <string name="forwarded_by">Transféré par %1$s</string>
     <string name="video">Vidéo</string>
     <string name="documents">Documents</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contact</string>
     <string name="bot">Robot</string>
     <string name="camera">Caméra</string>
@@ -630,6 +633,7 @@
     <string name="profile_shared_chats">Discussions en commun</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Anciens membres</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Groupe</string>
     <string name="tab_gallery">Gallerie</string>
@@ -866,6 +870,7 @@
     <string name="pref_backup_export_this">Exporter ce profil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporter les %1$d profils</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Démarrer la sauvegarde</string>
     <string name="pref_backup_written_to_x">Sauvegarde effectuée avec succès sur %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

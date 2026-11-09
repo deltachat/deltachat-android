@@ -187,6 +187,7 @@
     <string name="forwarded_by">Yettuwelleh s %1$s</string>
     <string name="video">tavidyut</string>
     <string name="documents">Isemliyen</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Anermis</string>
     <string name="bot">Abuṭ</string>
     <string name="camera">Takamiṛat</string>
@@ -512,6 +513,7 @@
     <string name="profile_shared_chats">Idiwenniyen s wudem ucrik</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Imttekkiyen yezrin</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Anermis</string>
     <string name="tab_group">Agraw</string>
     <string name="tab_gallery">Tamidelt </string>
@@ -729,6 +731,7 @@
     <string name="pref_backup_export_this">Sifeḍ amaɣnu-agi</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Sifeḍ akk %1$d Imuɣna</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Bdu aḥraz</string>
     <string name="pref_backup_written_to_x">Aḥraz yura akken iwata ɣer \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

@@ -218,6 +218,7 @@
     <string name="forwarded_by">Plusendita de %1$s</string>
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakto</string>
     <string name="bot">Roboto</string>
     <string name="camera">Fotilo</string>
@@ -549,6 +550,7 @@
     <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>
     <string name="profile_encryption">Ĉifrado</string>
     <string name="profile_shared_chats">Kunhavigitaj babiloj</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galerio</string>
@@ -618,6 +620,7 @@
     <string name="pref_other">Alia</string>
     <string name="pref_backup">Savkopio</string>
     <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

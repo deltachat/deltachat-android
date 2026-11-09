@@ -644,8 +644,7 @@ o para excluir a miembros sin notificárselo.</p>
 
 <ul>
   <li>
-    <p>Abre el perfil del grupo y pulsa <strong>Clonar Chat</strong> (Android/iOS),
-o haz clic derecho en el grupo en la lista de chats (Escritorio).</p>
+    <p>Abre el perfil del grupo y pulsa en <strong>Clonar chat</strong>.</p>
   </li>
   <li>
     <p>Establece un nuevo nombre, elige un avatar y ajusta la lista de miembros si es necesario.</p>
@@ -1731,71 +1730,70 @@ debe buscarla en la tabla SQLite «keypairs» de un archivo tar de copia de segu
         
       </h3>
 
-<p>Yes, multiple times. 
-The Delta Chat project continuously undergoes independent security audits and analysis,
-from most recent to older:</p>
+<p>Sí, en varias ocasiones. 
+El proyecto Delta Chat se somete continuamente a auditorías y análisis de seguridad independientes,
+desde los más recientes hasta los más antiguos:</p>
 
 <ul>
   <li>
-    <p>2024 December, an <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">NLNET-commissioned Evaluation of
-rPGP</a> by <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a> took place.
-rPGP serves as the end-to-end encryption <a href="https://openpgp.org">OpenPGP</a> engine of Delta Chat. 
-Two advisories were released related to the findings of this audit:</p>
+    <p>Diciembre de 2024, una <a href="https://github.com/rpgp/docs/blob/main/audits/NGI%20Core%20rPGP%20penetration%20test%20report%202024%201.0.pdf">evaluación de
+rPGP encargada por NLNET</a> encargada por <a href="https://www.radicallyopensecurity.com/">Radically Open Security</a>.
+rPGP actúa como motor de cifrado de extremo a extremo <a href="https://openpgp.org">OpenPGP</a> de Delta Chat. 
+Se publicaron dos avisos relacionados con los resultados de esta auditoría:</p>
 
     <ul>
-      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Panics on Malformed Untrusted Input”</a> CVE-2024-53856</li>
-      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Potential Resource Exhaustion when handling Untrusted Messages”</a> CVE-2024-53857</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-9rmp-2568-59rv">“Errores de pánico ante entradas no fiables malformadas”</a> CVE-2024-53856</li>
+      <li><a href="https://github.com/rpgp/rpgp/security/advisories/GHSA-4grw-m28r-q285">“Posible agotamiento de recursos al gestionar mensajes no fiables”</a> CVE-2024-53857</li>
     </ul>
 
-    <p>The issues outlined in these advisories have been fixed and are part of Delta Chat 
-releases on all appstores since December 2024.</p>
+    <p>Los problemas descritos en estos avisos se han solucionado y forman parte de las versiones de Delta Chat 
+disponibles en todas las tiendas de aplicaciones desde diciembre de 2024.</p>
   </li>
   <li>
-    <p>2024 March, we received a deep security analysis from the Applied Cryptography
-research group at ETH Zuerich and addressed all raised issues. 
-See our blog post about <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Hardening Guaranteed End-to-End encryption</a> for more detailed information and the
-<a href="https://eprint.iacr.org/2024/918.pdf">Cryptographic Analysis of Delta Chat</a> 
-research paper published afterwards.</p>
+    <p>En marzo de 2024, recibimos un análisis de seguridad exhaustivo del grupo de investigación de Criptografía Aplicada
+de la ETH de Zúrich y resolvimos todos los problemas planteados. 
+Consulta nuestra entrada de blog sobre <a href="https://delta.chat/en/2024-03-25-crypto-analysis-securejoin">Reforzando el cifrado de extremo a extremo garantizado</a> para obtener información más detallada, así como el paper
+<a href="https://eprint.iacr.org/2024/918.pdf">Análisis criptográfico de Delta Chat</a> 
+, publicado posteriormente.</p>
   </li>
   <li>
-    <p>2023 April, we fixed security and privacy issues with the “web
-apps shared in a chat” feature, related to failures of sandboxing
-especially with Chromium. We subsequently got an independent security
-audit from Cure53 and all issues found were fixed in the 1.36 app series released in April 2023.
-See <a href="https://delta.chat/en/2023-05-22-webxdc-security">here for the full background story on end-to-end security in the web</a>.</p>
+    <p>En abril de 2023, solucionamos problemas de seguridad y privacidad relacionados con la funcionalidad 
+“aplicaciones web compartidas en un chat”, derivados de fallos en el entorno de aislamiento
+, especialmente con Chromium. Posteriormente, nos sometimos a una auditoría de seguridad
+independiente realizada por Cure53 y todos los problemas detectados se solucionaron en las versiones 1.36 de las aplicaciones, lanzada en abril de 2023.
+Consulta <a href="https://delta.chat/en/2023-05-22-webxdc-security">aquí la historia completa sobre la seguridad de extremo a extremo en la web</a>.</p>
   </li>
   <li>
-    <p>2023 March, <a href="https://cure53.de">Cure53</a> analyzed both the transport encryption of
-Delta Chat’s network connections and a reproducible mail server setup as
-<a href="https://delta.chat/serverguide">recommended on this site</a>.
-You can read more about the audit <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">on our blog</a>
-or read the <a href="https://delta.chat/assets/blog/MER-01-report.pdf">full report here</a>.</p>
+    <p>En marzo de 2023, <a href="https://cure53.de">Cure53</a> analizó tanto el cifrado de transporte de
+las conexiones de red de Delta Chat como una configuración reproducible del servidor de correo, tal y como
+<a href="https://delta.chat/serverguide">se recomienda en esta página web</a>.
+Puedes obtener más información sobre la auditoría <a href="https://delta.chat/en/2023-03-27-third-independent-security-audit">en nuestro blog</a>
+o consultar el <a href="https://delta.chat/assets/blog/MER-01-report.pdf">informe completo aquí</a>.</p>
   </li>
   <li>
-    <p>2020, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s Rust <a href="https://github.com/chatmail/core/">core</a>,
+    <p>En 2020, <a href="https://includesecurity.com">Include Security</a> analizó el <a href="https://github.com/chatmail/core/">core</a> en Rust de Delta Chat,
 <a href="https://github.com/async-email/async-imap">IMAP</a>,
-<a href="https://github.com/async-email/async-smtp">SMTP</a>, and
-<a href="https://github.com/async-email/async-native-tls">TLS</a> libraries.
-It did not find any critical or high-severity issues.
-The report raised a few medium-severity weaknesses -
-they are no threat to Delta Chat users on their own
-because they depend on the environment in which Delta Chat is used.
-For usability and compatibility reasons,
-we can not mitigate all of them
-and decided to provide security recommendations to threatened users.
-You can read the <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">full report here</a>.</p>
+<a href="https://github.com/async-email/async-smtp">SMTP</a> y
+<a href="https://github.com/async-email/async-native-tls">TLS</a> de DeltaChat.
+No se detectaron problemas críticos ni de gravedad alta.
+El informe señaló algunas vulnerabilidades de gravedad media;
+estas no suponen por sí solas una amenaza para los usuarios de Delta Chat,
+ya que dependen del entorno en el que se utilice Delta Chat.
+Por motivos de usabilidad y compatibilidad,
+no podemos mitigarlas todas
+y hemos decidido ofrecer recomendaciones de seguridad a los usuarios afectados.
+Puedes leer el <a href="https://delta.chat/assets/blog/2020-second-security-review.pdf">informe completo aquí</a>.</p>
   </li>
   <li>
-    <p>2019, <a href="https://includesecurity.com">Include Security</a> analyzed Delta
-Chat’s <a href="https://github.com/rpgp/rpgp">PGP</a> and
-<a href="https://github.com/RustCrypto/RSA">RSA</a> libraries.
-It found no critical issues,
-but two high-severity issues that we subsequently fixed.
-It also revealed one medium-severity and some less severe issues,
-but there was no way to exploit these vulnerabilities in the Delta Chat implementation.
-Some of them we nevertheless fixed since the audit was concluded.
-You can read the <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">full report here</a>.</p>
+    <p>En 2019, <a href="https://includesecurity.com">Include Security</a> analizó las bibliotecas
+Chat <a href="https://github.com/rpgp/rpgp">PGP</a> y
+<a href="https://github.com/RustCrypto/RSA">RSA</a>.
+No se detectaron problemas críticos,
+pero sí dos problemas de gravedad alta que posteriormente corregimos.
+También se detectó un problema de gravedad media y algunos de menor gravedad,
+pero no había forma de explotar estas vulnerabilidades en la implementación de Delta Chat.
+No obstante, hemos corregido algunos de ellos desde que concluyó la auditoría.
+Puedes leer el <a href="https://delta.chat/assets/blog/2019-first-security-review.pdf">informe completo aquí</a>.</p>
   </li>
 </ul>
     
@@ -1818,7 +1816,7 @@ You can read the <a href="https://delta.chat/assets/blog/2019-first-security-rev
 <p>Algunas características requieren ciertos permisos,
 p. ej., tienes que conceder permiso de acceso a la cámara si quieres <a href="#howtoe2ee">escanear un código QR de invitación</a>.</p>
 
-<p>See <a href="https://delta.chat/privacy#app-permissions">Privacy Policy</a> for a detailed overview.</p>
+<p>Consulta la <a href="https://delta.chat/privacy#app-permissions">Política de privacidad</a> para obtener información detallada.</p>
     
       <h3 id="dónde-pueden-encontrar-mis-amigos-delta-chat">
         
@@ -1857,44 +1855,44 @@ p. ej., tienes que conceder permiso de acceso a la cámara si quieres <a href="#
         
       </h3>
 
-<p>Delta Chat does not receive any Venture Capital and
-is not indebted, and under no pressure to produce huge profits, or to 
-sell users and their friends and family to advertisers (or worse). 
-We rather use public funding sources, so far from EU and US origins, to help
-our efforts in instigating a decentralized and diverse chat messaging eco-system
-based on Free and Open-Source community developments.</p>
+<p>Delta Chat no recibe capital de riesgo y
+no tiene deudas, ni se ve sometida a ninguna presión para generar enormes beneficios, ni para 
+vender a los usuarios, a sus amigos y familiares a los anunciantes (o algo peor). 
+Por el contrario, recurrimos a fuentes de financiación pública, hasta ahora procedentes de la UE y EE. UU., para respaldar
+nuestros esfuerzos por impulsar un ecosistema de mensajería y chat descentralizado y diverso,
+basado en desarrollos comunitarios libres y de código abierto.</p>
 
-<p>Concretely, Delta Chat developments have so far been funded from these sources,
-ordered chronologically:</p>
+<p>En concreto, hasta la fecha, los proyectos de Delta Chat se han financiado con estos fondos,
+ordenados cronológicamente:</p>
 
 <ul>
   <li>
-    <p>In 2023 and 2024 we got accepted in the Next Generation Internet (NGI)
-program for our work in <a href="https://nlnet.nl/project/WebXDC-Push/">webxdc PUSH</a>,
-along with collaboration partners working on
+    <p>En 2023 y 2024 fuimos seleccionados para participar en el programa Next Generation Internet (NGI)
+por nuestro trabajo en <a href="https://nlnet.nl/project/WebXDC-Push/">webxdc PUSH</a>,
+junto con socios colaboradores que trabajan en
 <a href="https://nlnet.nl/project/Webxdc-Evolve/">webxdc evolve</a>,
 <a href="https://nlnet.nl/project/WebXDC-XMPP/">webxdc XMPP</a>,
-<a href="https://nlnet.nl/project/DeltaTouch/">DeltaTouch</a> and
+<a href="https://nlnet.nl/project/DeltaTouch/">DeltaTouch</a> y
 <a href="https://nlnet.nl/project/DeltaTauri/">DeltaTauri</a>.
-All of these projects are partially completed or to be completed in early 2025.</p>
+Todos estos proyectos están parcialmente finalizados o se completarán a principios de 2025.</p>
   </li>
   <li>
-    <p>In 2021 we received further EU funding for two Next-Generation-Internet
-proposals, namely for <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - email provider portability directory</a> (~97K EUR) and <a href="https://nlnet.nl/project/EmailPorting/">AEAP - email address porting</a> (~90K EUR) which resulted in better multi-profile support, improved QR-code contact and group setups and many networking improvements on all platforms.</p>
+    <p>En 2021 recibimos más financiación de la UE para dos propuestas de Next-Generation-Internet,
+ concretamente para <a href="https://dapsi.ngi.eu/hall-of-fame/eppd/">EPPD - directorio de portabilidad de proveedores de correo electrónico</a> (~97 000 EUR) y <a href="https://nlnet.nl/project/EmailPorting/">AEAP - portabilidad de direcciones de correo electrónico</a> (~90 000 EUR), lo que se tradujo en una mejor compatibilidad con múltiples perfiles, mejoras en la configuración de contactos y grupos mediante códigos QR, y numerosas mejoras en las funciones de red en todas las plataformas.</p>
   </li>
   <li>
-    <p>The <a href="https://nlnet.nl/">NLnet foundation</a> granted in 2019/2020 EUR 46K for
-completing Rust/Python bindings and instigating a Chat-bot eco-system.</p>
+    <p>La <a href="https://nlnet.nl/">Fundación NLnet</a> concedió en 2019/2020 46 000 euros para
+completar las interfaces de Rust/Python y poner en marcha un ecosistema de chatbots.</p>
   </li>
   <li>
-    <p>The <a href="https://opentechfund.org">Open Technology Fund</a> gave us a
-first 2018/2019 grant (~$200K) during which we majorly improved the Android app
-and released a first Desktop app beta version, and which moreover
-moored our feature developments in UX research in human rights contexts,
-see our concluding <a href="https://delta.chat/en/2019-07-19-uxreport">Needfinding and UX report</a>.
-The second 2019/2020 grant (~$300K) helped us to
-release Delta/iOS versions, to convert our core library to Rust, and
-to provide new features for all platforms.</p>
+    <p>El <a href="https://opentechfund.org">Open Technology Fund</a> nos concedió una
+primera subvención para el periodo 2018/2019 (aprox. 200.000 dólares), durante la cual mejoramos considerablemente la aplicación para Android
+y lanzamos una primera versión beta de la aplicación de escritorio, y que, además,
+asentó el desarrollo de nuestras funcionalidades en la investigación sobre la experiencia de usuario en contextos de derechos humanos;
+véase nuestro <a href="https://delta.chat/en/2019-07-19-uxreport">informe final sobre la identificación de necesidades y la experiencia de usuario</a>.
+La segunda subvención para el periodo 2019/2020 (aproximadamente 300.000 dólares) nos ayudó a
+lanzar las versiones para Delta/iOS, a convertir nuestra biblioteca principal a Rust y
+a ofrecer nuevas funcionalidades para todas las plataformas.</p>
   </li>
   <li>
     <p>El proyecto de la UE <a href="https://nextleap.eu">NEXTLEAP</a> financió la investigación
@@ -1903,13 +1901,13 @@ en 2017 y 2018 y también ayudó a integrar el cifrado de extremo a extremo
 a través de <a href="https://autocrypt.org">Autocrypt</a>.</p>
   </li>
   <li>
-    <p>Sometimes we receive one-time donations from private individuals. 
-For example, in 2021 a generous individual bank-wired us 4K EUR 
-with the subject “keep up the good developments!”. 💜 
-We use such money to fund development gatherings or to care for ad-hoc expenses 
-that can not easily be predicted for, or reimbursed from, public funding grants. 
-Receiving more donations also helps us to become more independent and long-term viable
-as a contributor community.</p>
+    <p>A veces recibimos donaciones puntuales de particulares. 
+Por ejemplo, en 2021, una persona generosa nos transfirió por transferencia bancaria 4.000 EUR 
+con el asunto «¡Seguid con este buen trabajo!». 💜 
+Utilizamos ese dinero para financiar encuentros de desarrollo o para cubrir gastos puntuales 
+que no se pueden prever fácilmente ni reembolsar con subvenciones públicas. 
+Recibir más donaciones también nos ayuda a ser más independientes y viables a largo plazo
+como comunidad de colaboradores.</p>
 
     
   </li>

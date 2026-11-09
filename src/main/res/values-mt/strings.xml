@@ -242,6 +242,7 @@
     <string name="forwarded_by">Għaddihulek %1$s</string>
     <string name="video">Filmat</string>
     <string name="documents">Dokumenti</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kuntatt</string>
     <string name="bot">Robot</string>
     <string name="camera">Kamera</string>
@@ -704,7 +705,7 @@
     <!-- Shown in the setting if the app is "Connected" -->
     <string name="connectivity_connected">Imqabbda</string>
     <string name="sending">Qed tibgħat…</string>
-    <string name="last_msg_sent_successfully">L-aħħar messaġġ li ntbagħat.</string>
+    <string name="last_msg_sent_successfully">L-aħħar messaġġ intbagħat.</string>
     <!-- Subtitle in quota context of "Connectivity" view. Should be be plural always, no number is prefixed. -->
     <string name="messages">Messaġġi</string>
     <!-- Used for describing resource usage, resulting string will be eg. "1.2 GiB of 3 GiB used" -->
@@ -880,7 +881,7 @@
     <string name="remove_attachment">Neħħi l-hemża</string>
 
     <!-- notifications -->
-    <string name="notify_reply_button">Tweġiba</string>
+    <string name="notify_reply_button">Wieġeb</string>
     <string name="notify_new_message">Messaġġ ġdid</string>
     <string name="notify_background_connection_enabled">Xgħelt il-konnessjoni fl-isfond</string>
     <string name="notify_name_and_message">L-isem u l-messaġġ</string>

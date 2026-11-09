@@ -155,6 +155,7 @@
     <string name="forwarded_by">Препратен от %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -385,6 +386,7 @@
     <string name="group_self_not_in_group">Трябва да сте член на групата, за да изпълните това действие.</string>
     <string name="profile_encryption">Криптиране</string>
     <string name="profile_shared_chats">Споделени чатове</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерия</string>
@@ -559,6 +561,7 @@
     <string name="pref_backup_export_explain">Резервното копие помага да установите нова инсталация на това или друго устройство.\n\nТо ще съдържа всички съобщения, контакти и чатове и Вашата настройка \"от край до край\" на Autocrypt. Пазете файла на резервното копие на сигурно място или го изтрийте колкото е възможно по-скоро.</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортиране на всички %1$d профила</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Започване на създаването на резервно копие</string>
     <string name="pref_backup_written_to_x">Резервното копие е успешно записано в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

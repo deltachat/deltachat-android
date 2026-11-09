@@ -40,6 +40,7 @@
     <string name="close_window">Mbylle Dritaren</string>
     <string name="forward">Përpara</string>
     <string name="create">Krijoje</string>
+    <string name="reset">Riktheje te parazgjedhjet</string>
     <string name="later">Më vonë</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
     <string name="resend">Ridërgoje</string>
@@ -55,6 +56,8 @@
     <string name="muted">Heshtuar</string>
     <string name="ephemeral_messages">Mesazhe Që Zhduken</string>
     <string name="ephemeral_messages_hint">Këto rregullime zbatohen mbi krejt pjesëmarrësit që përdorin Delta Chat-in. Sidoqoftë, ata mund të kopjojnë, ruajnë dhe përcjellin mesazhe ose të përdorin klientë të tjerë email-i.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Vëre për Gjithkënd</string>
     <string name="save">Ruaje</string>
     <string name="chat">Fjalosje</string>
     <string name="media">Media</string>
@@ -216,6 +219,7 @@
     <string name="forwarded_by">Përcjellë nga %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Robot</string>
     <string name="camera">Kamerë</string>
@@ -605,6 +609,7 @@
     <string name="profile_shared_chats">Fjalosje të Përbashkëta</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Anëtarë të Dikurshëm</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
@@ -841,6 +846,7 @@
     <string name="pref_backup_export_this">Eksportojeni këtë profil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksporto krejt %1$d proflet</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Nis Kopjeruajtjen</string>
     <string name="pref_backup_written_to_x">Kopjeruajtje e shkruar me sukses te “%1$s”</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

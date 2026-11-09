@@ -177,6 +177,7 @@
     <string name="forwarded_by">توسط %1$s هدایت شده است</string>
     <string name="video">فیلم</string>
     <string name="documents">اسناد</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">مخاطب</string>
     <string name="bot">ربات</string>
     <string name="camera">دوربین</string>
@@ -492,6 +493,7 @@
     <string name="profile_shared_chats">گپ‌های هم‌رسانده</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">عضو‌های پیشین</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">مخاطب</string>
     <string name="tab_group">گروه</string>
     <string name="tab_gallery">گالری</string>
@@ -703,6 +705,7 @@
     <string name="pref_backup_export_this">برون‌ریزی این نمایه</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">برون‌ریزی همه%1$d حساب ها</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">شروع تهیه نسخه پشتیبان</string>
     <string name="pref_backup_written_to_x">نسخه پشتیبان با موفقیت در\"%1$s\" ذخیره شد.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

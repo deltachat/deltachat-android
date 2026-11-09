@@ -192,6 +192,7 @@
     <string name="forwarded_by">%1$s tarafından iletildi</string>
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kişi</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -524,6 +525,7 @@
     <string name="profile_shared_chats">Ortak\'taki Sohbetler</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Geçmişteki Üyeler</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kişi</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
@@ -743,6 +745,7 @@
     <string name="pref_backup_export_this">Bu profili dışa aktar</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
     <string name="pref_backup_written_to_x">Yedek “%1$s” üzerine başarıyla yazıldı.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

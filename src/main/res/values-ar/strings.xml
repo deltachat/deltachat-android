@@ -62,6 +62,7 @@
     <string name="voice_message">رسالة صوتية</string>
     <string name="video">فيديو</string>
     <string name="documents">المستندات</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">للاتصال</string>
     <string name="camera">آلة التصوير</string>
     <string name="location">المَوقع</string>
@@ -135,6 +136,7 @@
     <string name="group_create_button">إنشاء فريق</string>
     <string name="group_add_members">إضافة أعضاء</string>
     <string name="profile_encryption">التعمية</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">للاتصال</string>
     <string name="tab_group">الفريق</string>
     <string name="tab_gallery">المعرض</string>

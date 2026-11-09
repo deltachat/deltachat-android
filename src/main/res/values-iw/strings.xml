@@ -230,6 +230,7 @@
     <string name="forwarded_by">הועבר על ידי %1$s</string>
     <string name="video">סרטון</string>
     <string name="documents">מסמכים</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">איש קשר</string>
     <string name="bot">בוט</string>
     <string name="camera">מצלמה</string>
@@ -630,6 +631,7 @@
     <string name="profile_shared_chats">צ\'אטים משותפים</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">חברים לשעבר</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">צור קשר</string>
     <string name="tab_group">קבוצה</string>
     <string name="tab_gallery">גלריה</string>
@@ -866,6 +868,7 @@
     <string name="pref_backup_export_this">ייצא פרופיל זה</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">ייצא את כל הפרופילים של \" %1$d \"</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">התחל גיבוי</string>
     <string name="pref_backup_written_to_x">הגיבוי נכתב בהצלחה לקובץ \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

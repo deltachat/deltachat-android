@@ -206,6 +206,7 @@
     <string name="forwarded_by">转发人 %1$s</string>
     <string name="video">视频</string>
     <string name="documents">文档</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">联系人</string>
     <string name="bot">机器人</string>
     <string name="camera">相机</string>
@@ -239,6 +240,18 @@
     <string name="webxdc_store_url">应用选择器 URL</string>
     <string name="webxdc_store_url_explain">设置后，该 URL 而不是默认的 URL 将被用作“应用选择器”</string>
     <string name="webxdc_draft_hint">点按“发送”即可分享</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">允许 \"%1$s\" 使用你的麦克风？</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">允许 \"%1$s\" 使用你的相机？</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">允许 \"%1$s\" 使用你的相机和麦克风？</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">允许 \"%1$s\" 访问你的位置？</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">允许 \"%1$s\" 访问运动传感器？</string>
+    <string name="webxdc_perm_denied_settings">Delta Chat 没有权限。请在 Android 系统设置中授予它必需的权限。</string>
+    <string name="webxdc_perm_reset">重置权限</string>
     <string name="home">首页</string>
     <string name="games">游戏</string>
     <string name="tools">工具</string>
@@ -337,6 +350,8 @@
     <string name="show_in_chat">在聊天中显示</string>
     <string name="show_app_in_chat">在聊天中显示应用</string>
     <string name="menu_share">分享</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">允许</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">屏蔽</string>
     <string name="menu_block_contact">屏蔽联系人</string>
@@ -574,6 +589,7 @@
     <string name="profile_shared_chats">共有聊天</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">过去成员</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">联系人</string>
     <string name="tab_group">群组</string>
     <string name="tab_gallery">图库</string>
@@ -810,6 +826,7 @@
     <string name="pref_backup_export_this">导出此账号</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">导出全部 %1$d 个账号</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">开始备份</string>
     <string name="pref_backup_written_to_x">备份已成功写入到“%1$s”。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

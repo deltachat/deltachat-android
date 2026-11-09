@@ -56,6 +56,8 @@
     <string name="muted">Беззвучный</string>
     <string name="ephemeral_messages">Исчезающие сообщения</string>
     <string name="ephemeral_messages_hint">Настройка распространяется на всех участников; однако сообщения всё ещё можно копировать, сохранять и пересылать</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Установить для всех</string>
     <string name="save">Сохранить</string>
     <string name="chat">Чат</string>
     <string name="media">Медиафайлы</string>
@@ -242,6 +244,7 @@
     <string name="forwarded_by">Переслано от %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документы</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Контакт</string>
     <string name="bot">Бот</string>
     <string name="camera">Камера</string>
@@ -275,6 +278,18 @@
     <string name="webxdc_store_url">URL селектора приложений</string>
     <string name="webxdc_store_url_explain">Если установлено, URL будет использоваться в качестве селектора приложений вместо стандартного</string>
     <string name="webxdc_draft_hint">Нажмите \"Отправить\", чтобы поделиться</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Разрешить \"%1$s\" использовать микрофон?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Разрешить \"%1$s\" использовать камеру?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Разрешить \"%1$s\" использовать камеру и микрофон?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Разрешить \"%1$s\" определять местоположение?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Разрешить \"%1$s\" доступ к датчикам движения?</string>
+    <string name="webxdc_perm_denied_settings">Отсутствуют разрешения для Delta Chat. Пожалуйста, предоставьте Delta Chat необходимые разрешения в настройках Android.</string>
+    <string name="webxdc_perm_reset">Сбросить разрешения</string>
     <string name="home">Домой</string>
     <string name="games">Игры</string>
     <string name="tools">Инструменты</string>
@@ -376,6 +391,8 @@
     <string name="show_in_chat">Показать в чате</string>
     <string name="show_app_in_chat">Показать приложение в чате</string>
     <string name="menu_share">Поделиться</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Разрешить</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Заблокировать</string>
     <string name="menu_block_contact">Заблокировать контакт</string>
@@ -419,10 +436,16 @@
     <string name="pin">Закрепить</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Закреплено</string>
+    <string name="pin_for_everyone_ask">Закрепить сообщение для всех в чате?</string>
+    <string name="pin_for_everyone">Закрепить для всех</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Открепить</string>
+    <string name="unpin_for_everyone_ask">Открепить сообщение для всех в чате?</string>
+    <string name="unpin_for_everyone">Открепить для всех</string>
     <string name="message_pinned_by_you">Вы закрепили сообщение</string>
     <string name="message_pinned_by_other">Сообщение закреплено %1$s</string>
+    <string name="message_unpinned_by_you">Вы открепили сообщение</string>
+    <string name="message_unpinned_by_other">Сообщение откреплено %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Исходное сообщение не найдено</string>
     <string name="reply_privately">Ответить лично</string>
     <string name="source_code">Исходный код</string>
@@ -631,6 +654,7 @@
     <string name="profile_shared_chats">Общие чаты</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Прошлые участники</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Контакты</string>
     <string name="tab_group">Группа</string>
     <string name="tab_gallery">Галерея</string>
@@ -794,6 +818,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Отправить %1$d файла(ов) в \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Отправить %1$d файл(ов) в %2$d чата(ов)?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Подготовка медиа...</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Сжатие видео...</string>
+    <string name="video_recode_busy">Другое видео все еще обрабатывается, пожалуйста подождите.</string>
     <string name="share_text_multiple_chats">Отправить текст в %1$d чата(ов)?\n\n\"%2$s\"</string>
     <string name="share_abort">Общий доступ прерван из-за отсутствия необходимых разрешений.</string>
 
@@ -862,6 +891,7 @@
     <string name="pref_backup_export_this">Экспортировать профиль</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Экспорт всех %1$d профилей</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Начать резервное копирование</string>
     <string name="pref_backup_written_to_x">Резервная копия успешно записана в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

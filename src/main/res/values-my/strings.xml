@@ -182,6 +182,7 @@
     <string name="forwarded_by"> %1$s က ထပ်ဆင့်ပေးသည်</string>
     <string name="video">ဗီဒီယို</string>
     <string name="documents">စာရွက်စာတမ်းများ</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">အဆက်အသွယ်</string>
     <string name="bot">ဘော့တ်</string>
     <string name="camera">ကင်မရာ</string>
@@ -521,6 +522,7 @@
     <string name="profile_shared_chats">မျှဝေထားသော ချတ်များ</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">ယခင် အဖွဲ့ဝင်များ</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">အဆက်အသွယ်</string>
     <string name="tab_group">အဖွဲ့</string>
     <string name="tab_gallery">ပြခန်း</string>
@@ -740,6 +742,7 @@
     <string name="pref_backup_export_this">ဤအကောင့်ကို တင်ပို့ပါ</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">အကောင့် %1$d ခုကို တင်ပို့ပါ</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">တင်ပို့ခြင်းကို စတင်ပါ</string>
     <string name="pref_backup_written_to_x">%1$s သို့ မိတ္တူကူးပြီးပါပြီ</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

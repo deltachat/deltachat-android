@@ -192,6 +192,7 @@
     <string name="forwarded_by">Videresendt av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenter</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -524,6 +525,7 @@
     <string name="profile_shared_chats">Delte chatter</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Tidligere medlemmer</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galleri</string>

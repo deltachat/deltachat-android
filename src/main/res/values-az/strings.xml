@@ -98,6 +98,7 @@
     <string name="forwarded_message">Köçürülmüş mesaj</string>
     <string name="video">Video</string>
     <string name="documents">Sənədlər</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Yer</string>
@@ -225,6 +226,7 @@
     <string name="group_self_not_in_group">Bunu etmək üçün qrupun üzvü olmalısan.</string>
     <string name="profile_encryption">Şifrələmə</string>
     <string name="profile_shared_chats">Çatlar göndərildi</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Qrup</string>
     <string name="tab_gallery">Şəkillər</string>
@@ -300,6 +302,7 @@
     <string name="pref_backup">Nüsxə</string>
     <string name="pref_backup_explain">Daxili yaddaşa mesaj nüsxəsi</string>
     <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

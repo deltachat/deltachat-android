@@ -168,6 +168,7 @@
     <string name="forwarded_by">و دست %1$s فوروارد وابیڌه</string>
     <string name="video">فیلم</string>
     <string name="documents">سندا</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">هومدنگ</string>
     <string name="bot">روبات</string>
     <string name="camera">شؽواتگر</string>
@@ -356,6 +357,7 @@
     <string name="change_group_image">آلشت شؽوات جرگه</string>
     <string name="group_create_button">وورکل جرگه</string>
     <string name="group_add_members">ٱووردن منتور</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">هومدنگ</string>
     <string name="tab_group">جرگه</string>
     <string name="tab_gallery">شؽوات مال</string>
