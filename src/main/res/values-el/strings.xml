@@ -145,6 +145,7 @@
     <string name="forwarded_by">Κοινοποίηση από %1$s</string>
     <string name="video">Βίντεο</string>
     <string name="documents">Αρχεία</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Επαφή</string>
     <string name="camera">Κάμερα</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -359,6 +360,7 @@
     <string name="group_self_not_in_group">Πρέπει να είστε μέλος της ομάδας για να εκτελέσετε αυτήν την ενέργεια.</string>
     <string name="profile_encryption">Κρυπτογράφηση</string>
     <string name="profile_shared_chats">Κοινόχρηστες συνομιλίες</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Επαφή</string>
     <string name="tab_group">Ομάδα</string>
     <string name="tab_gallery">Εικόνα ή βίντεο</string>
@@ -483,6 +485,7 @@
     <string name="pref_backup">Αντίγραφο Ασφαλείας</string>
     <string name="pref_backup_explain">Δημιουργία αντίγραφου ασφαλείας συνομιλιών στην εξωτερική μνήμη</string>
     <string name="pref_backup_export_explain">Ένα αντίγραφο ασφαλείας σάς βοηθά να ρυθμίσετε μια νέα εγκατάσταση σε αυτήν ή σε άλλη συσκευή.\n\nΤο αντίγραφο ασφαλείας θα περιέχει όλα τα μηνύματα, τις επαφές και τις συνομιλίες και τη ρύθμιση αυτόματης κρυπτογράφησης από άκρο σε άκρο. Φυλάξτε το αρχείο αντιγράφου ασφαλείας σε ασφαλές μέρος ή διαγράψτε το το συντομότερο δυνατό.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Ξεκινήστε τη δημιουργία αντιγράφου ασφαλείας</string>
     <string name="pref_backup_written_to_x">Το αντίγραφο ασφαλείας γράφτηκε με επιτυχία στο \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

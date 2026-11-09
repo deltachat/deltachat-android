@@ -90,6 +90,7 @@
     <string name="images">Slike</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenti</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Lokacija</string>
@@ -163,6 +164,7 @@
     <string name="group_avatar">Grupni avatar</string>
     <string name="group_add_members">Dodaj članove</string>
     <string name="profile_encryption">Šifriranje</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
     <string name="tab_gallery">Galerija</string>

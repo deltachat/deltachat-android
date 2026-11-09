@@ -170,6 +170,7 @@
     <string name="forwarded_by">Проследи %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Особа</string>
     <string name="bot">Бот</string>
     <string name="camera">Камера</string>
@@ -412,6 +413,7 @@
     <string name="group_self_not_in_group">Морате бити члан групе да бисте извршили ову радњу.</string>
     <string name="profile_encryption">Шифровање</string>
     <string name="profile_shared_chats">Дељена ћаскања</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерија</string>
@@ -536,6 +538,7 @@
     <string name="pref_backup">Резервна копија</string>
     <string name="pref_backup_explain">Направи резервну копију ћаскања на спољашњем складишту меморије.</string>
     <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

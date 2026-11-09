@@ -3,7 +3,8 @@
 ## Unreleased
 
 * Message Info: For Webxdc, show last update timestamp
-
+* Fix: properly display mini-apps
+* Update to core 2.69.0
 
 ## v2.67.0
 2026-11

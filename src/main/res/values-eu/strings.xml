@@ -218,6 +218,7 @@
     <string name="forwarded_by">%1$s(e)k birbidalia</string>
     <string name="video">Bideoa</string>
     <string name="documents">Dokumentuak</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontaktua</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -251,6 +252,18 @@
     <string name="webxdc_store_url">Aplikazio-hautatzailearen URL-a</string>
     <string name="webxdc_store_url_explain">Ezarriz gero, URL hori erabiliko da aplikazio-hautatzaile gisa, lehenetsitakoaren ordez.</string>
     <string name="webxdc_draft_hint">Sakatu \"Bidali\" partekatzeko</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">\"%1$s\"ri zure mikrofonoa erabiltzeko baimena eman nahi diozu?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">\"%1$s\"ri zure kamera erabiltzeko baimena eman nahi diozu?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">\"%1$s\"ri zure kamera eta mikrofonoa erabiltzeko baimena eman nahi diozu?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">\"%1$s\"ri zure kokapena atzitzeko baimena eman nahi diozu?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">\"%1$s\"ri zure mugimendu-sentsoreak atzitzeko baimena eman nahi diozu?</string>
+    <string name="webxdc_perm_denied_settings">Delta Chat-erako baimenak falta dira. Eman Delta Chat-i beharrezko baimenak Android ezarpenetan.</string>
+    <string name="webxdc_perm_reset">Berrezarri baimenak</string>
     <string name="home">Hasiera</string>
     <string name="games">Jokoak</string>
     <string name="tools">Tresnak</string>
@@ -350,6 +363,8 @@
     <string name="show_in_chat">Erakutsi txatean</string>
     <string name="show_app_in_chat">Erakutsi aplikazioa txatean</string>
     <string name="menu_share">Partekatu</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Baimendu</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloketau</string>
     <string name="menu_block_contact">Blokeatu kontaktuak</string>
@@ -595,6 +610,7 @@
     <string name="profile_shared_chats">Partekatutako txatak</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Kide izandakoak</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontaktua</string>
     <string name="tab_group">Taldea</string>
     <string name="tab_gallery">Galeria</string>
@@ -831,6 +847,7 @@
     <string name="pref_backup_export_this">Esportatu kontu hau</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Esportatu %1$d kontu guztiak</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Hasi babeskopia</string>
     <string name="pref_backup_written_to_x">Babeskopia ongi idatzi da hemen: %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

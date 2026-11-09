@@ -242,6 +242,7 @@
     <string name="forwarded_by">Preposlal %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumenty</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Bot</string>
     <string name="camera">Fotoaparát</string>
@@ -651,6 +652,7 @@
     <string name="profile_shared_chats">Spoločné konverzácie</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Niekdajší členovia</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Skupina</string>
     <string name="tab_gallery">Galéria</string>
@@ -887,6 +889,7 @@
     <string name="pref_backup_export_this">Exportovať tento účet</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportovať %1$d účty/účtov</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Spustiť zálohovanie</string>
     <string name="pref_backup_written_to_x">Záloha bola úspešne zapísaná do priečinka „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

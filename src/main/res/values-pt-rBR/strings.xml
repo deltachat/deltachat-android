@@ -199,6 +199,7 @@
     <string name="forwarded_by">Encaminhado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contato</string>
     <string name="camera">Câmera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -525,6 +526,7 @@
     <string name="group_self_not_in_group">É preciso ser um participante do grupo para fazer isso.</string>
     <string name="profile_encryption">Criptografia</string>
     <string name="profile_shared_chats">Conversas compartilhadas</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contato</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galeria</string>
@@ -686,6 +688,7 @@
     <string name="pref_backup">Becape</string>
     <string name="pref_backup_explain">Fazer becape das conversas para o armazenamento externo</string>
     <string name="pref_backup_export_explain">Um becape ajudará a configurar uma nova instalação neste ou em outro dispositivo. \n\n O becape conterá todas as mensagens, contatos, conversas e a configuração de criptografia. Mantenha o arquivo de becape em um local seguro ou apague-o o mais rápido possível.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Fazer becape</string>
     <string name="pref_backup_written_to_x">Becape salvo em %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

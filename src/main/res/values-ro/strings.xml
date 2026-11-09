@@ -157,6 +157,7 @@
     <string name="forwarded_by">Redirecționat de %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documente</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contact</string>
     <string name="camera">Cameră</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -378,6 +379,7 @@
     <string name="group_self_not_in_group">Trebuie să fiți membru al grupului pentru a efectua această acțiune.</string>
     <string name="profile_encryption">Criptare</string>
     <string name="profile_shared_chats">Chat-uri Partajate</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galerie</string>

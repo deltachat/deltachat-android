@@ -113,6 +113,7 @@
     <string name="forwarded_by">هاوبەشکراو لە لایەن%1$s</string>
     <string name="video">ڤیدیۆ</string>
     <string name="documents">بەڵگەکان</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">بەردەنگ</string>
     <string name="camera">کامێرا</string>
     <string name="location">شوێن</string>
@@ -283,6 +284,7 @@
     <string name="group_self_not_in_group">بۆ ئەم کردارە دەبێت ئەندامی کۆڕەکە بیت.</string>
     <string name="profile_encryption">شفرەکردن</string>
     <string name="profile_shared_chats">وتووێژە هاوبەشکراوەکان</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">بەردەنگ</string>
     <string name="tab_group">کۆڕ</string>
     <string name="tab_gallery">پیشانگە</string>
@@ -361,6 +363,7 @@
     <string name="pref_backup">یەدەک</string>
     <string name="pref_backup_explain">یەدەک گرتن لە وتووێژەکان و دانانی لەسەر بیرگەی دەرەکی</string>
     <string name="pref_backup_export_explain">یەدەک یارمەتیت دەدات تاکوو نەرمامێرەکە لەسەر ئەم ئامێرە یان ئامێرێکی دیکە دەبمەزرێنیتەوە.\n\n یەدەکەکە بریتی دەبێت لە هەموو پەیامەکان و بەردەنگەکان و وتووێژەکان و ڕێکخستنی ئۆتۆکریپتی ئەمسەر-ئەوسەر. پەڕگەی یەدەکەکە لە شوێنێکی قایمدا بپارێزە یان بە زووترین کات بیسڕەوە.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">دەستپێبکە</string>
     <string name="pref_backup_written_to_x">یەدەک بە سەرکەوتوویی لە \"%1$s\"دا پاشەکەوت کرا.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

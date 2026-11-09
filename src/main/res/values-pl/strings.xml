@@ -56,6 +56,8 @@
     <string name="muted">Wyciszony</string>
     <string name="ephemeral_messages">Znikające wiadomości</string>
     <string name="ephemeral_messages_hint">Te ustawienia dotyczą wszystkich uczestników. Mogą jednak kopiować, zapisywać i przekazywać wiadomości.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Włącz dla wszystkich</string>
     <string name="save">Zapisz</string>
     <string name="chat">Czat</string>
     <string name="media">Multimedia</string>
@@ -242,6 +244,7 @@
     <string name="forwarded_by">Przekazana przez %1$s</string>
     <string name="video">Wideo</string>
     <string name="documents">Dokumenty</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -651,6 +654,7 @@
     <string name="profile_shared_chats">Wspólne czaty</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Byli członkowie</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupa</string>
     <string name="tab_gallery">Galeria</string>
@@ -887,6 +891,7 @@
     <string name="pref_backup_export_this">Eksportuj ten profil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Eksportuj wszystkie profile (%1$d)</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Utwórz kopię</string>
     <string name="pref_backup_written_to_x">Kopia zapasowa została pomyślnie zapisana do %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

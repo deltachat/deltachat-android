@@ -56,6 +56,8 @@
     <string name="muted">Summutatud</string>
     <string name="ephemeral_messages">Isekustuvad sõnumid</string>
     <string name="ephemeral_messages_hint">Kehtib kõikidele selles vestluses osalejatele - aga siiski saavad nad sõnumeid kopeerida, salvestada ja edastada.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Seadista kõigi jaoks</string>
     <string name="save">Salvesta</string>
     <string name="chat">Vestlus</string>
     <string name="media">Meedia</string>
@@ -218,6 +220,7 @@
     <string name="forwarded_by">Edastaja: %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumendid</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Robot</string>
     <string name="camera">Kaamera</string>
@@ -609,6 +612,7 @@
     <string name="profile_shared_chats">Ühised vestlused</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Varasemad liikmed</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
     <string name="tab_gallery">Galerii</string>
@@ -845,6 +849,7 @@
     <string name="pref_backup_export_this">Ekspordi see profiil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Ekspordi kõik %1$d profiili</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Alusta varundamist</string>
     <string name="pref_backup_written_to_x">Varukoopia tegemine asukohta „%1$s“ õnnestus.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

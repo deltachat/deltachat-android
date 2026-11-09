@@ -67,6 +67,7 @@
     <string name="forwarded_message">ఫార్వర్డ్ చేయబడిన సందేసం</string>
     <string name="video">వీడియో</string>
     <string name="documents">పత్రాలు</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">పరిచయం</string>
     <string name="camera">కెమేరా</string>
     <string name="location">స్థానం</string>
@@ -142,6 +143,7 @@
     <string name="group_add_members">సభ్యుడిని జత చేయి</string>
     <string name="profile_encryption">ఎన్క్రిప్షన్</string>
     <string name="profile_shared_chats">భాగస్వామ్య చాట్‌లు</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">పరిచయం</string>
     <string name="tab_group">సమూహము</string>
     <string name="tab_gallery">గ్యాలరీ</string>

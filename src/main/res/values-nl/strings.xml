@@ -56,6 +56,8 @@
     <string name="muted">Genegeerd</string>
     <string name="ephemeral_messages">Verdwijnende berichten</string>
     <string name="ephemeral_messages_hint">Deze instellingen zijn van toepassing op alle deelnemers. Ze kunnen berichten kopiëren, opslaan of doorsturen middels andere e-mailapps.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Instellen voor iedereen</string>
     <string name="save">Opslaan</string>
     <string name="chat">Gesprek</string>
     <string name="media">Media</string>
@@ -218,6 +220,7 @@
     <string name="forwarded_by">Doorgestuurd door %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documenten</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contactpersoon</string>
     <string name="bot">Bot</string>
     <string name="camera">Camera</string>
@@ -254,17 +257,13 @@
     <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
     <string name="webxdc_perm_ask_microphone">Wil je ‘%1$s’ toestemming geven om je microfoon te gebruiken?</string>
     <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
-    <string name="webxdc_perm_ask_camera">Wil je ‘%1$s’ toestemming geven om je camera te gebruiken?
-</string>
+    <string name="webxdc_perm_ask_camera">Wil je ‘%1$s’ toestemming geven om je camera te gebruiken?</string>
     <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
-    <string name="webxdc_perm_ask_camera_microphone">Wil je ‘%1$s’ toestemming geven om je camera en microfoon te gebruiken?
-</string>
+    <string name="webxdc_perm_ask_camera_microphone">Wil je ‘%1$s’ toestemming geven om je camera en microfoon te gebruiken?</string>
     <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
-    <string name="webxdc_perm_ask_location">Wil je ‘%1$s’ toestemming geven om je locatie op te vragen?
-</string>
+    <string name="webxdc_perm_ask_location">Wil je ‘%1$s’ toestemming geven om je locatie op te vragen?</string>
     <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
-    <string name="webxdc_perm_ask_sensors">Wil je ‘%1$s’ toestemming geven om je bewegingssensors te gebruiken?
-</string>
+    <string name="webxdc_perm_ask_sensors">Wil je ‘%1$s’ toestemming geven om je bewegingssensors te gebruiken?</string>
     <string name="webxdc_perm_denied_settings">Delta Chat heeft geen toestemming. Open de Android-instellingen en verleen de benodigde rechten.</string>
     <string name="webxdc_perm_reset">Rechten intrekken</string>
     <string name="home">Overzicht</string>
@@ -613,6 +612,7 @@
     <string name="profile_shared_chats">Gemeenschappelijke gesprekken</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Voormalige deelnemers</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contactpersoon</string>
     <string name="tab_group">Groep</string>
     <string name="tab_gallery">Galerij</string>
@@ -848,7 +848,8 @@
     <string name="pref_backup_export_explain">Met een reservekopie kun je een nieuwe installatie instellen op dit of een ander apparaat.\n\nEen reservekopie bevat alle berichten, contactpersonen, gesprekken en je eind-tot-eindversleuteling. Bewaar het reservekopiebestand op een veilige plaats of verwijder het zo snel mogelijk.</string>
     <string name="pref_backup_export_this">Profiel exporteren</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">%1$d accounts exporteren</string>
+    <string name="pref_backup_export_all">Alle %1$d profielen exporteren</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Reservekopie maken</string>
     <string name="pref_backup_written_to_x">De reservekopie is opgeslagen in ‘%1$s’.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

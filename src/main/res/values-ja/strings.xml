@@ -120,6 +120,7 @@
     <string name="forwarded_by">%1$sが転送しました</string>
     <string name="video">動画</string>
     <string name="documents">文章</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">連絡先</string>
     <string name="camera">カメラ</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -300,6 +301,7 @@
     <string name="group_self_not_in_group">グループのメンバーしかが実行されないアクションです。</string>
     <string name="profile_encryption">暗号化</string>
     <string name="profile_shared_chats">共有チャット</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">連絡先</string>
     <string name="tab_group">グループ</string>
     <string name="tab_gallery">画像</string>
@@ -404,6 +406,7 @@
     <string name="pref_backup">バックアップ</string>
     <string name="pref_backup_explain">外部記憶装置へチャットをバックアップする</string>
     <string name="pref_backup_export_explain">バックアップは、本デバイスまたは別のデバイスに新たにインストールする際に役立ちます。\n\nこのバックアップには、すべてのメッセージ、連絡先、チャット、およびエンドツーエンドの自動暗号化設定が含まれます。バックアップファイルは安全な場所に保管するか、できるだけ早く削除してください。</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">バックアップを開始する</string>
     <string name="pref_backup_written_to_x">バックアップは%1$sに正常に完了しました。</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

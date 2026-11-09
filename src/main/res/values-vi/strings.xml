@@ -147,6 +147,7 @@
     <string name="forwarded_by">Được chuyển tiếp bởi %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Tài liệu</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Liên hệ</string>
     <string name="camera">Máy ảnh</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -373,6 +374,7 @@
     <string name="group_self_not_in_group">Bạn phải là thành viên của nhóm để thực hiện hành động này.</string>
     <string name="profile_encryption">Mã hóa</string>
     <string name="profile_shared_chats">Cuộc trò chuyện được chia sẻ</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Liên hệ</string>
     <string name="tab_group">Nhóm</string>
     <string name="tab_gallery">Thư viện</string>
@@ -522,6 +524,7 @@
     <string name="pref_backup_export_explain">Bản sao lưu giúp bạn thiết lập cài đặt mới trên thiết bị này hoặc trên thiết bị khác.\n\nBản sao lưu sẽ chứa tất cả tin nhắn, danh bạ và cuộc trò chuyện cũng như thiết lập Autocrypt hai đầu của bạn. Giữ tập tin sao lưu ở nơi an toàn hoặc xóa nó càng sớm càng tốt.</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Xuất tất cả tài khoản %1$d</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Bắt đầu sao lưu</string>
     <string name="pref_backup_written_to_x">Sao lưu được ghi thành công vào \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
