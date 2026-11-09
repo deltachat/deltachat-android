@@ -1,6 +1,7 @@
 # Delta Chat Android Changelog
 
-## Unreleased
+## v2.69.0
+2026-11
 
 * Message Info: For Webxdc, show last update timestamp
 * Fix: properly display mini-apps
