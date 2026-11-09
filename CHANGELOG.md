@@ -1,5 +1,10 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix: properly display mini-apps
+* Update to core 2.69.0
+
 ## v2.67.0
 2026-11
 
