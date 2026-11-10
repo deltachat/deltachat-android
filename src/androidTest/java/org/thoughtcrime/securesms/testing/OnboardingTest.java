@@ -42,6 +42,7 @@ import org.thoughtcrime.securesms.testutil.Ime;
 import org.thoughtcrime.securesms.testutil.Screenshots;
 import org.thoughtcrime.securesms.testutil.Shell;
 import org.thoughtcrime.securesms.testutil.TestEnv;
+import org.thoughtcrime.securesms.testutil.TestRelaySet;
 import org.thoughtcrime.securesms.testutil.Wait;
 
 /** Creates a *real* account on the default relays. Must start from a fresh installation. */
@@ -52,6 +53,7 @@ public class OnboardingTest {
 
   @Rule public final IntentsRule intents = new IntentsRule();
   @Rule public final Screenshots shots = new Screenshots();
+  @Rule public final TestRelaySet testRelaySet = new TestRelaySet("ci-chatmail.testrun.org");
 
   private static final String NAME = "UI Test";
   private static final long ACCOUNT_CREATION_TIMEOUT_MS = 90_000;
