@@ -1,5 +1,9 @@
 # Delta Chat Android Changelog
 
+## Unreleased
+
+* Fix: avoid crashes for some notifications if the contact is unnamed
+
 ## v2.69.0
 2026-11
 
