@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.telecom.DisconnectCause;
+import android.text.TextUtils;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -265,18 +266,12 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
               if (!activeSession.isIncoming) {
                 // For outgoing call, show notification immediately
-                String calleeName = displayName.getValue();
-                if (calleeName == null) {
-                  calleeName = "Unknown";
-                }
+                String calleeName = getSafeName(displayName.getValue());
 
                 showOrUpdateOngoingNotification(
                     appContext.getString(R.string.calling_person, calleeName));
               } else if (activeSession.answerInProgress) {
-                String callerName = displayName.getValue();
-                if (callerName == null) {
-                  callerName = "Unknown";
-                }
+                String callerName = getSafeName(displayName.getValue());
                 showOrUpdateOngoingNotification(
                     appContext.getString(R.string.call_with, callerName));
               }
@@ -538,11 +533,8 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     if (!hasMicrophonePermission()) {
       Log.w(TAG, "Mic permission missing, prompting user with notification");
 
-      String callerName = displayName.getValue();
-      if (callerName == null) callerName = "Unknown";
-
       launchCallActivity();
-      showPermissionNeededNotification(callerName);
+      showPermissionNeededNotification(getSafeName(displayName.getValue()));
 
       return;
     }
@@ -999,7 +991,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
     DcContext dcContext = ApplicationContext.getDcAccounts().getAccount(accId);
     DcChat dcChat = dcContext.getChat(session.chatId);
-    String callerName = getNameFromChat(dcChat);
+    String callerName = getSafeName(getNameFromChat(dcChat));
     Icon callerIcon = getIconFromChat(this.appContext, dcChat);
 
     displayIcon.postValue(callerIcon);
@@ -1078,10 +1070,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       return;
     }
 
-    String callerName = displayName.getValue();
-    if (callerName == null) {
-      callerName = "Unknown";
-    }
+    String callerName = getSafeName(displayName.getValue());
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
   }
 
@@ -1140,10 +1129,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
           });
     }
 
-    String calleeName = displayName.getValue();
-    if (calleeName == null) {
-      calleeName = "Unknown";
-    }
+    String calleeName = getSafeName(displayName.getValue());
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, calleeName));
   }
 
@@ -1561,7 +1547,11 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
     startAndBindService();
   }
 
-  private void showIncomingCallNotification(String callerName, Icon callerIcon) {
+  private @NonNull String getSafeName(@Nullable String name) {
+    return TextUtils.isEmpty(name) ? appContext.getString(R.string.unnamed) : name;
+  }
+
+  private void showIncomingCallNotification(@NonNull String callerName, Icon callerIcon) {
     // Check notification permission
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
       if (!hasNotificationPermission()) {
@@ -1661,7 +1651,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   }
 
   private Notification buildOngoingCallNotification(
-      String statusText, String displayName, Icon icon) {
+      String statusText, @NonNull String displayName, Icon icon) {
     Intent activityIntent = new Intent(this.appContext, CallActivity.class);
     activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
@@ -1732,11 +1722,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
       }
     }
 
-    String name = displayName.getValue();
-    if (name == null) {
-      name = "Unknown";
-    }
-
+    String name = getSafeName(displayName.getValue());
     Icon icon = displayIcon.getValue();
 
     Notification notification = buildOngoingCallNotification(statusText, name, icon);
@@ -1867,8 +1853,7 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
   public void answerAfterPermissions() {
     Log.d(TAG, "answerAfterPermissions");
 
-    String callerName = displayName.getValue();
-    if (callerName == null) callerName = "Unknown";
+    String callerName = getSafeName(displayName.getValue());
     showOrUpdateOngoingNotification(appContext.getString(R.string.call_with, callerName));
 
     startMediaCapture();
