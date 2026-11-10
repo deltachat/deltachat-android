@@ -19,6 +19,7 @@ public class EphemeralMessagesDialog {
 
   public static void show(
       final Context context,
+      final boolean isSelfTalk,
       int currentSelectedTime,
       final @NonNull EphemeralMessagesInterface listener) {
     CharSequence[] choices =
@@ -63,7 +64,7 @@ public class EphemeralMessagesDialog {
             .setView(dialogView)
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(
-                R.string.set_for_everyone,
+                isSelfTalk ? R.string.ok : R.string.set_for_everyone,
                 (dialog, which) -> {
                   final long burnAfter;
                   switch (selectedChoice[0]) {
