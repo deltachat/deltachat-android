@@ -63,8 +63,8 @@ static char* char_ref__(JNIEnv* env, jstring a) {
     }
 
     /* we do not use the JNI functions GetStringUTFChars()/ReleaseStringUTFChars()
-    as they do not work on some older systems for code points >0xffff, eg. emojis.
-    as a workaround, we're calling back to java-land's String.getBytes() which works as expected */
+    as they return Modified UTF-8 as in JNI spec which differs from standard UTF-8 for code points >0xffff,
+    e.g. emojis. Instead, we're calling back to java-land's String.getBytes("UTF-8") which returns standard UTF-8 */
     const jbyteArray stringJbytes = (jbyteArray)(*env)->CallObjectMethod(env, a, s_getBytes, s_strEncode);
     const jsize length = (*env)->GetArrayLength(env, stringJbytes);
     jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL);
@@ -90,10 +90,11 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
         return (*env)->NewStringUTF(env, "");
     }
 
-    /* for non-empty strings, do not use NewStringUTF() as this is buggy on some Android versions.
-    Instead, create the string using `new String(ByteArray, "UTF-8);` which seems to be programmed more properly.
-    (eg. on KitKat a simple "SMILING FACE WITH SMILING EYES" (U+1F60A, UTF-8 F0 9F 98 8A) will let the app crash, reporting 0xF0 is a bad UTF-8 start,
-    see http://stackoverflow.com/questions/12127817/android-ics-4-0-ndk-newstringutf-is-crashing-down-the-app ) */
+    /* for non-empty strings, do not use NewStringUTF() as it expects Modified UTF-8 from JNI spec,
+    not standard UTF-8. Instead, create the string using `new String(ByteArray, "UTF-8");` which
+    decodes standard UTF-8 properly. E.g. a simple "SMILING FACE WITH SMILING EYES" (U+1F60A, UTF-8 F0 9F 98 8A)
+    is invalid Modified UTF-8 and lets CheckJNI abort, reporting 0xF0 is an illegal start byte.
+    see https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/types.html#modified_utf_8_strings */
     int a_bytes = strlen(a);
     jbyteArray array = (*env)->NewByteArray(env, a_bytes);
         (*env)->SetByteArrayRegion(env, array, 0, a_bytes, (const jbyte*)a);
