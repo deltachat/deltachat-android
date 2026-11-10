@@ -63,4 +63,9 @@ public final class Ime {
             });
     return visible[0];
   }
+
+  public static void disableStylusHandwriting() {
+    Shell.run("settings put secure stylus_handwriting_enabled 0");
+    Shell.run("am force-stop com.google.android.inputmethod.latin");
+  }
 }
