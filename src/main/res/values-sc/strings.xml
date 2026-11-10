@@ -13,6 +13,7 @@
     <string name="custom">Personalizadu</string>
     <string name="none">Perunu</string>
     <string name="automatic">Automàticu</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Astrintu</string>
     <string name="open">Aberi</string>
     <string name="join">Auni·ti</string>
@@ -22,6 +23,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Allegadu</string>
     <string name="back">In palas</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Serra</string>
     <string name="forward">Inoltra</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -76,14 +78,17 @@
         <item quantity="one">%d ora</item>
         <item quantity="other">%d oras</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d tzarrada</item>
         <item quantity="other">%d tzarradas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contatu</item>
         <item quantity="other">%d contatos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d messàgiu</item>
         <item quantity="other">%d messàgios</item>
@@ -105,6 +110,7 @@
     <string name="forwarded_message">Messàgiu inoltradu</string>
     <string name="video">Vìdeu</string>
     <string name="documents">Documentos editàbiles</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Cuntatu</string>
     <string name="camera">Fotocàmera</string>
     <string name="location">Positzione</string>
@@ -233,6 +239,7 @@
     <string name="chat_no_chats_yet_title">Cartella de intrada bòida.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_all_archived">Tzarradas archiviadas.\nIncarca \"+\" pro abèrrere una tzarrada noa.</string>
     <string name="chat_share_with_title">Cumpartzi cun</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Messàgiu</string>
     <string name="chat_archived_label">Archiviadu</string>
     <string name="chat_no_messages">Perunu messàgiu.</string>
@@ -257,6 +264,7 @@
     <string name="group_self_not_in_group">Depes èssre unu membru de su grupu pro fàghere cust\'atzione.</string>
     <string name="profile_encryption">Tzifradura</string>
     <string name="profile_shared_chats">Tzarradas cumpartzidas</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Cuntatu</string>
     <string name="tab_group">Grupu</string>
     <string name="tab_gallery">Galleria</string>
@@ -351,6 +359,7 @@
     <string name="pref_backup">Còpia de seguresa</string>
     <string name="pref_backup_explain">Faghe una còpia de seguresa in sa memòria esterna</string>
     <string name="pref_backup_export_explain">Una còpia de seguresa t\'agiudat a impostare un\'installatzione noa in custu o in un\'àteru dispositivu.\n\nSa còpia de seguresa ant a cuntènnere totu sos messàgios, sos cuntatos, sas tzarradas e s\'impostatzione de sa tzifradura a nodu terminale (end-to-end) de Autocrypt. Mantene su documentu in unu logu seguru o iscantzellalu in su primu momentu chi podes.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Incumintza sa còpia de seguresa</string>
     <string name="pref_backup_written_to_x">Còpia de seguresa sarvada in \"%1$s\"chene problemas.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

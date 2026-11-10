@@ -18,6 +18,7 @@
     <string name="custom">Anpassat</string>
     <string name="none">Ingen</string>
     <string name="automatic">Automatiskt</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Sträng</string>
     <string name="open">Öppna</string>
     <string name="download">Ladda ner</string>
@@ -32,6 +33,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Bilaga</string>
     <string name="back">Tillbaka</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Stäng</string>
     <string name="close_window">Stäng fönster</string>
     <string name="forward">Vidarebefordra</string>
@@ -127,18 +129,22 @@
         <item quantity="one">%d timme</item>
         <item quantity="other">%d timmar</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d chatt</item>
         <item quantity="other">%d chattar</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakter</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d meddelande</item>
         <item quantity="other">%d meddelanden</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reaktion</item>
         <item quantity="other">%d reaktioner</item>
@@ -178,6 +184,7 @@
     <string name="forwarded_by">Vidarebefordrad av %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokument</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -440,6 +447,7 @@
     <string name="chat_no_chats_yet_title">Tom inkorg.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_all_archived">Alla chattar arkiverade.\nTryck på \"+\" för att starta en ny chatt.</string>
     <string name="chat_share_with_title">Dela med</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Meddelande</string>
     <string name="chat_archived_label">Arkiverat</string>
     <string name="chat_request_label">Efterfråga</string>
@@ -497,6 +505,7 @@
     <string name="profile_shared_chats">Delade chattar</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Tidigare medlemmar</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Grupp</string>
     <string name="tab_gallery">Galleri</string>
@@ -714,6 +723,7 @@
     <string name="pref_backup_export_this">Exportera denna profil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportera all %1$d profiler</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Starta säkerhetskopiering</string>
     <string name="pref_backup_written_to_x">Säkerhetskopia korrekt skriven till \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

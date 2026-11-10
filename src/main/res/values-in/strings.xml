@@ -14,6 +14,7 @@
     <string name="custom">Menurut pesanan</string>
     <string name="none">Tidak ada</string>
     <string name="automatic">Otomatis</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Ketat</string>
     <string name="open">Buka</string>
     <string name="download">Unduh</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Lampiran</string>
     <string name="back">Kembali</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Tutup</string>
     <string name="close_window">Tutup Jendela</string>
     <string name="forward">Teruskan</string>
@@ -100,12 +102,15 @@
     <plurals name="n_hours">
         <item quantity="other">%d jam</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d obrolan</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d kontak</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d pesan</item>
     </plurals>
@@ -137,6 +142,7 @@
     <string name="forwarded_by">Diteruskan oleh %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumen</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontak</string>
     <string name="camera">Kamera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -296,6 +302,7 @@
     <string name="chat_no_chats_yet_title">Kosongkan inbox.\nTekan \"+\" untuk memulai obrolan baru.</string>
     <string name="chat_all_archived">Semua obrolan terarsip.\nTekan \"+\" untuk mulai obrolan baru.</string>
     <string name="chat_share_with_title">Bagi kepada</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Pesan</string>
     <string name="chat_archived_label">Diarsipkan</string>
     <string name="chat_no_messages">Tak ada pesan.</string>
@@ -321,6 +328,7 @@
     <string name="group_self_not_in_group">Anda harus menjadi anggota grup untuk melakukan tindakan ini.</string>
     <string name="profile_encryption">Enkripsi</string>
     <string name="profile_shared_chats">Obrolan terbagi</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontak</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
@@ -407,6 +415,7 @@
     <string name="pref_backup">Cadangkan</string>
     <string name="pref_backup_explain">Cadangkan obrolan di external storage</string>
     <string name="pref_backup_export_explain">Cadangan membantu Anda untuk membuat instalasi baru di perangkat ini atau perangkat lain.\n\nDalam cadangan terdapat semua pesan, kontak dan obrolan dan pengaturan Autocrypt ujung ke ujung Anda. Simpan berkas cadangan di tempat yang aman atau hapus secepatnya.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Mulai Cadangkan</string>
     <string name="pref_backup_written_to_x">Cadangan berhasil ditulis ke \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

@@ -18,6 +18,7 @@
     <string name="custom">Custom</string>
     <string name="none">None</string>
     <string name="automatic">Automatic</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Strict</string>
     <string name="open">Open</string>
     <string name="download">Download</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Attachment</string>
     <string name="back">Back</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Close</string>
     <string name="close_window">Close Window</string>
     <string name="forward">Forward</string>
@@ -54,6 +56,8 @@
     <string name="muted">Muted</string>
     <string name="ephemeral_messages">Disappearing Messages</string>
     <string name="ephemeral_messages_hint">Applies to all members of this chat; they can still copy, save, and forward messages.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Set for Everyone</string>
     <string name="save">Save</string>
     <string name="chat">Chat</string>
     <string name="media">Media</string>
@@ -160,21 +164,25 @@
         <item quantity="one">%d hour</item>
         <item quantity="other">%d hours</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
-        <item quantity="one">%d chat</item>
-        <item quantity="other">%d chats</item>
+        <item quantity="one">%d Chat</item>
+        <item quantity="other">%d Chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
-        <item quantity="one">%d contact</item>
-        <item quantity="other">%d contacts</item>
+        <item quantity="one">%d Contact</item>
+        <item quantity="other">%d Contacts</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
-        <item quantity="one">%d message</item>
-        <item quantity="other">%d messages</item>
+        <item quantity="one">%d Message</item>
+        <item quantity="other">%d Messages</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
-        <item quantity="one">%d reaction</item>
-        <item quantity="other">%d reactions</item>
+        <item quantity="one">%d Reaction</item>
+        <item quantity="other">%d Reactions</item>
     </plurals>
     <plurals name="n_members">
         <item quantity="one">%d member</item>
@@ -212,6 +220,7 @@
     <string name="forwarded_by">Forwarded by %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documents</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contact</string>
     <string name="bot">Bot</string>
     <string name="camera">Camera</string>
@@ -245,6 +254,18 @@
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">If set, the URL will be used as the App Picker instead of the default one</string>
     <string name="webxdc_draft_hint">Tap \"Send\" to share</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Allow \"%1$s\" to use your microphone?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Allow \"%1$s\" to use your camera?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Allow \"%1$s\" to use your camera and microphone?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Allow \"%1$s\" to access your location?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Allow \"%1$s\" to access motion sensors?</string>
+    <string name="webxdc_perm_denied_settings">Permissions missing for Delta Chat. Please grant Delta Chat required permissions in Android settings.</string>
+    <string name="webxdc_perm_reset">Reset permissions</string>
     <string name="home">Home</string>
     <string name="games">Games</string>
     <string name="tools">Tools</string>
@@ -344,6 +365,8 @@
     <string name="show_in_chat">Show in Chat</string>
     <string name="show_app_in_chat">Show App in Chat</string>
     <string name="menu_share">Share</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Allow</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Block</string>
     <string name="menu_block_contact">Block Contact</string>
@@ -387,12 +410,16 @@
     <string name="pin">Pin</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Pinned</string>
+    <string name="pin_for_everyone_ask">Pin message for everyone in the chat?</string>
     <string name="pin_for_everyone">Pin for Everyone</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Unpin</string>
+    <string name="unpin_for_everyone_ask">Unpin message for everyone in the chat?</string>
     <string name="unpin_for_everyone">Unpin for Everyone</string>
     <string name="message_pinned_by_you">You pinned a message</string>
     <string name="message_pinned_by_other">Message pinned by %1$s</string>
+    <string name="message_unpinned_by_you">You unpinned a message</string>
+    <string name="message_unpinned_by_other">Message unpinned by %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Original message not found</string>
     <string name="reply_privately">Reply Privately</string>
     <string name="source_code">Source Code</string>
@@ -524,6 +551,7 @@
     <string name="chat_no_chats_yet_title">No Chats.\nPress \"+\" to start a new chat.</string>
     <string name="chat_all_archived">All chats archived.\nPress \"+\" to start a new chat.</string>
     <string name="chat_share_with_title">Share with…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Message</string>
     <string name="chat_archived_label">Archived</string>
     <string name="chat_request_label">Request</string>
@@ -580,10 +608,12 @@
     <string name="please_enter_chat_name">Please enter a name.</string>
     <string name="group_add_members">Add Members</string>
     <string name="group_self_not_in_group">You must be a member of the group to perform this action.</string>
+    <!-- deprecated -->
     <string name="profile_encryption">Encryption</string>
     <string name="profile_shared_chats">Chats in Common</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Past Members</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contact</string>
     <string name="tab_group">Group</string>
     <string name="tab_gallery">Gallery</string>
@@ -817,9 +847,10 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Back Up Chats to External Storage</string>
     <string name="pref_backup_export_explain">A backup helps you to set up a new installation on this or on another device.\n\nThe backup will contain all messages, contacts and chats and your end-to-end Autocrypt setup. Keep the backup file in a safe place or delete it as soon as possible.</string>
-    <string name="pref_backup_export_this">Export this profile</string>
+    <string name="pref_backup_export_this">Export This Profile</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">Export all %1$d profiles</string>
+    <string name="pref_backup_export_all">Export All %1$d Profiles</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Start Backup</string>
     <string name="pref_backup_written_to_x">Backup written successfully to \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
@@ -1126,6 +1157,8 @@
     <string name="export_backup_desktop">Export Backup</string>
     <string name="message_detail_sent_desktop">Sent</string>
     <string name="message_detail_received_desktop">Received</string>
+    <!-- Title for the time, a mini-app has received its last update -->
+    <string name="last_updated">Last Updated</string>
     <string name="menu.view.developer.open.log.folder">Open the Log Folder</string>
     <string name="menu.view.developer.open.current.log.file">Open Current Logfile</string>
     <string name="explain_desktop_minimized_disabled_tray_pref" tools:ignore="TypographyDashes">Tray icon cannot be disabled as Delta Chat was started with the --minimized option.</string>

@@ -18,6 +18,7 @@
     <string name="custom">Personalizado</string>
     <string name="none">Nenhum</string>
     <string name="automatic">Automático</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Rigoroso</string>
     <string name="open">Abrir</string>
     <string name="download">Descarregar</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Fechar</string>
     <string name="close_window">Fechar Janela</string>
     <string name="forward">Encaminhar</string>
@@ -137,21 +139,25 @@
         <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d conversa</item>
         <item quantity="many">%d conversas</item>
         <item quantity="other">%d conversas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contatos</item>
         <item quantity="many">%d contatos</item>
         <item quantity="other">%d contatos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d message</item>
         <item quantity="many">%d mensagens</item>
         <item quantity="other">%d mensagens</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reação</item>
         <item quantity="many">%d reações</item>
@@ -193,6 +199,7 @@
     <string name="forwarded_by">Encaminhado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contato</string>
     <string name="camera">Câmera</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -467,6 +474,7 @@
     <string name="chat_no_chats_yet_title">Caixa vazia.\nPressione \"+\" para conversar com alguém.</string>
     <string name="chat_all_archived">Apenas conversas arquivadas.\nPressione \"+\" para uma nova conversa.</string>
     <string name="chat_share_with_title">Compartilhar com</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivado</string>
     <string name="chat_request_label">Solicitar</string>
@@ -518,6 +526,7 @@
     <string name="group_self_not_in_group">É preciso ser um participante do grupo para fazer isso.</string>
     <string name="profile_encryption">Criptografia</string>
     <string name="profile_shared_chats">Conversas compartilhadas</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contato</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galeria</string>
@@ -679,6 +688,7 @@
     <string name="pref_backup">Becape</string>
     <string name="pref_backup_explain">Fazer becape das conversas para o armazenamento externo</string>
     <string name="pref_backup_export_explain">Um becape ajudará a configurar uma nova instalação neste ou em outro dispositivo. \n\n O becape conterá todas as mensagens, contatos, conversas e a configuração de criptografia. Mantenha o arquivo de becape em um local seguro ou apague-o o mais rápido possível.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Fazer becape</string>
     <string name="pref_backup_written_to_x">Becape salvo em %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

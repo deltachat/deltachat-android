@@ -14,6 +14,7 @@
     <string name="custom">커스텀</string>
     <string name="none">없음</string>
     <string name="automatic">자동</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">엄격한</string>
     <string name="open">열기</string>
     <string name="download">다운로드</string>
@@ -26,6 +27,7 @@
     <string name="emoji">이모티콘</string>
     <string name="attachment">첨부 파일</string>
     <string name="back">뒤</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">닫기</string>
     <string name="forward">전달</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -95,12 +97,15 @@
     <plurals name="n_hours">
         <item quantity="other">%d시간</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d개의 채팅</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d명의 대화 상대</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">새 메시지 %d건</item>
     </plurals>
@@ -132,6 +137,7 @@
     <string name="forwarded_by">%1$s에 의해 전달됨</string>
     <string name="video">동영상</string>
     <string name="documents">문서</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">연락처</string>
     <string name="camera">카메라</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -295,6 +301,7 @@
     <string name="chat_no_chats_yet_title">받은 편지함을 비웁니다.\n새 채팅을 시작하려면 \"+\"를 누르시오.</string>
     <string name="chat_all_archived">모든 대화가 보관되었습니다.\n새 채팅을 시작하려면 \"+\"를 누르시오.</string>
     <string name="chat_share_with_title">공유 대상</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">메시지</string>
     <string name="chat_archived_label">보관됨</string>
     <string name="chat_request_label">요청</string>
@@ -337,6 +344,7 @@
     <string name="group_self_not_in_group">실행을 위해선 그룹의 멤버가 되어야 합니다.</string>
     <string name="profile_encryption">암호화</string>
     <string name="profile_shared_chats">공유 채팅</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">연락처</string>
     <string name="tab_group">그룹</string>
     <string name="tab_gallery">갤러리</string>
@@ -457,6 +465,7 @@
     <string name="pref_backup">백업</string>
     <string name="pref_backup_explain">외부 저장소에 채팅 백업</string>
     <string name="pref_backup_export_explain">백업을 사용하면 이 장치 또는 다른 장치에 새 설치를 설정할 수 있습니다.\n\n백업에는 모든 메시지, 연락처 및 채팅과 모든 자동 암호화 설정이 포함됩니다. 백업 파일을 안전한 장소에 보관하거나 가능한 한 빨리 삭제하십시오.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">백업 시작</string>
     <string name="pref_backup_written_to_x">백업이 \"%1$s\"에 기록되었습니다.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

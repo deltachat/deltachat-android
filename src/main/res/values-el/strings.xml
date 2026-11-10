@@ -14,6 +14,7 @@
     <string name="custom">Προσαρμογή</string>
     <string name="none">Κανένα</string>
     <string name="automatic">Αυτόματα</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Αυστηρός</string>
     <string name="open">Άνοιγμα</string>
     <string name="download">Λήψη</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Συνημένο</string>
     <string name="back">Πίσω</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Κλείσιμο</string>
     <string name="forward">Προώθηση</string>
     <!-- "Resend" means "Sending the selected message(s) again to the same chat". The string is used in a menu and should be as short as possible. Resending may be needed after failures or to repost old messages to new members. -->
@@ -97,14 +99,17 @@
         <item quantity="one">%d ώρα</item>
         <item quantity="other">%d ώρες</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d συνομιλία</item>
         <item quantity="other">%d συνομιλίες</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d επαφή</item>
         <item quantity="other">%d επαφές</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d μήνυμα</item>
         <item quantity="other">%d μηνύματα</item>
@@ -140,6 +145,7 @@
     <string name="forwarded_by">Κοινοποίηση από %1$s</string>
     <string name="video">Βίντεο</string>
     <string name="documents">Αρχεία</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Επαφή</string>
     <string name="camera">Κάμερα</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -308,6 +314,7 @@
     <string name="chat_no_chats_yet_title">Αδειάστε τα εισερχόμενα.\nΠατήστε \"+\" για να ξεκινήσετε μια νέα συνομιλία.</string>
     <string name="chat_all_archived">Όλες οι συνομιλίες αρχειοθετήθηκαν.\nΠατήστε \"+\" για να ξεκινήσετε μια νέα συνομιλία.</string>
     <string name="chat_share_with_title">Μοιράσου με</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Μήνυμα</string>
     <string name="chat_archived_label">Αρχειοθετημένα</string>
     <string name="chat_request_label">Αίτημα</string>
@@ -353,6 +360,7 @@
     <string name="group_self_not_in_group">Πρέπει να είστε μέλος της ομάδας για να εκτελέσετε αυτήν την ενέργεια.</string>
     <string name="profile_encryption">Κρυπτογράφηση</string>
     <string name="profile_shared_chats">Κοινόχρηστες συνομιλίες</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Επαφή</string>
     <string name="tab_group">Ομάδα</string>
     <string name="tab_gallery">Εικόνα ή βίντεο</string>
@@ -477,6 +485,7 @@
     <string name="pref_backup">Αντίγραφο Ασφαλείας</string>
     <string name="pref_backup_explain">Δημιουργία αντίγραφου ασφαλείας συνομιλιών στην εξωτερική μνήμη</string>
     <string name="pref_backup_export_explain">Ένα αντίγραφο ασφαλείας σάς βοηθά να ρυθμίσετε μια νέα εγκατάσταση σε αυτήν ή σε άλλη συσκευή.\n\nΤο αντίγραφο ασφαλείας θα περιέχει όλα τα μηνύματα, τις επαφές και τις συνομιλίες και τη ρύθμιση αυτόματης κρυπτογράφησης από άκρο σε άκρο. Φυλάξτε το αρχείο αντιγράφου ασφαλείας σε ασφαλές μέρος ή διαγράψτε το το συντομότερο δυνατό.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Ξεκινήστε τη δημιουργία αντιγράφου ασφαλείας</string>
     <string name="pref_backup_written_to_x">Το αντίγραφο ασφαλείας γράφτηκε με επιτυχία στο \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

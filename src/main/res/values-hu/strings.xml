@@ -18,6 +18,7 @@
     <string name="custom">Egyéni</string>
     <string name="none">Semmi</string>
     <string name="automatic">Automatikus</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Szigorú</string>
     <string name="open">Megnyitás</string>
     <string name="download">Letöltés</string>
@@ -32,6 +33,7 @@
     <string name="emoji">Emodzsi</string>
     <string name="attachment">Melléklet</string>
     <string name="back">Vissza</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Bezárás</string>
     <string name="close_window">Ablak bezárása</string>
     <string name="forward">Továbbítás</string>
@@ -120,18 +122,22 @@
         <item quantity="one">%d órája</item>
         <item quantity="other">%d órája</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d beszélgetés</item>
         <item quantity="other">%d csevegés</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d névjegy</item>
         <item quantity="other">%d névjegy</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d üzenet</item>
         <item quantity="other">%d üzenet</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reakció</item>
         <item quantity="other">%d reakció</item>
@@ -168,6 +174,7 @@
     <string name="forwarded_by">Továbbítva %1$s által</string>
     <string name="video">Videó</string>
     <string name="documents">Dokumentumok</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Névjegy</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -416,6 +423,7 @@
     <string name="chat_no_chats_yet_title">Nincsenek csevegések.\nÉrintse meg a „+” gombot egy új csevegés indításához.</string>
     <string name="chat_all_archived">Az összes csevegés archiválva van.\nÉrintse meg a „+” gombot egy új csevegés indításához.</string>
     <string name="chat_share_with_title">Megosztás vele:</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Üzenet…</string>
     <string name="chat_archived_label">Archivált</string>
     <string name="chat_request_label">Kérés</string>
@@ -473,6 +481,7 @@
     <string name="profile_shared_chats">Közös csevegések</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Már nem tagok</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Névjegy</string>
     <string name="tab_group">Csoport</string>
     <string name="tab_gallery">Galéria</string>
@@ -676,6 +685,7 @@
     <string name="pref_backup_export_this">Ezen profil exportálása</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Az összes (%1$d) profil exportálása</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Biztonsági mentés készítése</string>
     <string name="pref_backup_written_to_x">A biztonsági mentés sikeresen létrehozva itt: „%1$s”.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

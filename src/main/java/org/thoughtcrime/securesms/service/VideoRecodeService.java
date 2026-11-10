@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
@@ -17,8 +18,10 @@ import androidx.annotation.OptIn;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.ServiceCompat;
+import androidx.core.app.TaskStackBuilder;
 import androidx.core.content.ContextCompat;
 import androidx.media3.common.util.UnstableApi;
+import org.thoughtcrime.securesms.ConversationActivity;
 import org.thoughtcrime.securesms.DummyActivity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.notifications.NotificationCenter;
@@ -149,9 +152,7 @@ public class VideoRecodeService extends Service {
             .setContentTitle(title)
             .setProgress(100, state.progress, state.progress <= 0)
             .setOngoing(true)
-            .setContentIntent(
-                PendingIntent.getActivity(
-                    this, 0, new Intent(this, DummyActivity.class), IntentUtils.FLAG_MUTABLE()));
+            .setContentIntent(getContentIntent(state));
     if (state.total > 1) {
       builder.setContentText(state.position() + "/" + state.total);
     }
@@ -164,6 +165,22 @@ public class VideoRecodeService extends Service {
               this, 0, cancel, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE()));
     }
     return builder.build();
+  }
+
+  private PendingIntent getContentIntent(RecodeState state) {
+    if (state.chatIds.isEmpty()) {
+      return PendingIntent.getActivity(
+          this, 0, new Intent(this, DummyActivity.class), IntentUtils.FLAG_MUTABLE());
+    }
+    int chatId = state.chatIds.iterator().next();
+    // The same pattern as NotificationCenter
+    Intent intent = new Intent(this, ConversationActivity.class);
+    intent.putExtra(ConversationActivity.ACCOUNT_ID_EXTRA, state.accId);
+    intent.putExtra(ConversationActivity.CHAT_ID_EXTRA, chatId);
+    intent.setData(Uri.parse("custom://" + state.accId + "." + chatId));
+    return TaskStackBuilder.create(this)
+        .addNextIntentWithParentStack(intent)
+        .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT | IntentUtils.FLAG_MUTABLE());
   }
 
   private void shutdown() {

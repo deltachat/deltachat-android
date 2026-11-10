@@ -14,6 +14,7 @@
     <string name="custom">Посебно</string>
     <string name="none">Ништа</string>
     <string name="automatic">Аутоматски</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Строг</string>
     <string name="open">Отвори</string>
     <string name="download">Преузми</string>
@@ -28,6 +29,7 @@
     <string name="emoji">Емоџи</string>
     <string name="attachment">Прилог</string>
     <string name="back">Назад</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Затвори</string>
     <string name="close_window">Затвори прозор</string>
     <string name="forward">Проследи</string>
@@ -115,16 +117,19 @@
         <item quantity="few">%d сата</item>
         <item quantity="other">%d сати</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d ћаскање</item>
         <item quantity="few">%d ћаскања</item>
         <item quantity="other">%d ћаскања</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d контакт</item>
         <item quantity="few">%d контакта</item>
         <item quantity="other">%d контаката</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d порука</item>
         <item quantity="few">%d поруке</item>
@@ -165,6 +170,7 @@
     <string name="forwarded_by">Проследи %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Особа</string>
     <string name="bot">Бот</string>
     <string name="camera">Камера</string>
@@ -359,6 +365,7 @@
     <string name="chat_no_chats_yet_title">Сандуче је празно.\nПритисните „+“ да почнете ново ћаскање.</string>
     <string name="chat_all_archived">Сва ћаскања су архивирана.\nПритисните „+“ да почнете ново ћаскање.</string>
     <string name="chat_share_with_title">Подели са</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Порука</string>
     <string name="chat_archived_label">Архивирано</string>
     <string name="chat_request_label">Захтев</string>
@@ -406,6 +413,7 @@
     <string name="group_self_not_in_group">Морате бити члан групе да бисте извршили ову радњу.</string>
     <string name="profile_encryption">Шифровање</string>
     <string name="profile_shared_chats">Дељена ћаскања</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерија</string>
@@ -530,6 +538,7 @@
     <string name="pref_backup">Резервна копија</string>
     <string name="pref_backup_explain">Направи резервну копију ћаскања на спољашњем складишту меморије.</string>
     <string name="pref_backup_export_explain">Резервна копија вам помаже да подесите нову инсталацију на овом или другом уређају.\n\nРезервна копија ће садржати све поруке, контакте и ћаскања и ваше комплетно подешавање аутоматског шифровања. Чувајте резервну копију на безбедном месту или је избришите што је пре могуће.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Покрени складиштење резервне копије</string>
     <string name="pref_backup_written_to_x">Записивање резервне копије је успешно до „%1$s“.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

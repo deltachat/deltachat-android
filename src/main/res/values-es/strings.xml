@@ -18,6 +18,7 @@
     <string name="custom">Personalizado</string>
     <string name="none">Ninguno</string>
     <string name="automatic">Automático</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Estricto</string>
     <string name="open">Abrir</string>
     <string name="download">Descargar</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Adjunto</string>
     <string name="back">Atrás</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Cerrar</string>
     <string name="close_window">Cerrar ventana</string>
     <string name="forward">Reenviar</string>
@@ -54,6 +56,8 @@
     <string name="muted">Silenciar</string>
     <string name="ephemeral_messages">Desaparición de mensajes</string>
     <string name="ephemeral_messages_hint">Estos ajustes se aplican a todos los participantes que usan Delta Chat. Sin embargo, pueden copiar, guardar y reenviar mensajes o usar otros clientes de correo</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Establecido para todas</string>
     <string name="save">Guardar</string>
     <string name="chat">Chat</string>
     <string name="media">Multimedia</string>
@@ -165,21 +169,25 @@
         <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d chat</item>
         <item quantity="many">%d chats</item>
         <item quantity="other">%d chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacto</item>
         <item quantity="many">%d contactos</item>
         <item quantity="other">%d contactos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mensaje</item>
         <item quantity="many">%d mensajes</item>
         <item quantity="other">%d mensajes</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reacción</item>
         <item quantity="many">%d reacciones</item>
@@ -224,6 +232,7 @@
     <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Documentos</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contacto</string>
     <string name="bot">bot</string>
     <string name="camera">Cámara</string>
@@ -257,6 +266,18 @@
     <string name="webxdc_store_url">App Picker URL</string>
     <string name="webxdc_store_url_explain">Si se establece, la URL se utilizará como App Picker en lugar de la predeterminada</string>
     <string name="webxdc_draft_hint">Pulsa \"Enviar\" para compartir</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">¿Permites que \"%1$s\" utilice tu micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">¿Permites que \"%1$s\" utilice tu cámara?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">¿Permites que \"%1$s\" utilice tu cámara y tu micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">¿Permites que \"%1$s\" acceda a tu ubicación?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">¿Permites que \"%1$s\" acceda a los sensores de movimiento?</string>
+    <string name="webxdc_perm_denied_settings">Faltan permisos para Delta Chat. Concede a Delta Chat los permisos necesarios en los ajustes de Android.</string>
+    <string name="webxdc_perm_reset">Restablecer permisos</string>
     <string name="home">Inicio</string>
     <string name="games">Juegos</string>
     <string name="tools">Herramientas</string>
@@ -357,6 +378,8 @@
     <string name="show_in_chat">Mostrar en el chat</string>
     <string name="show_app_in_chat">Mostrar en el chat</string>
     <string name="menu_share">Compartir</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Permitir</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
@@ -400,10 +423,16 @@
     <string name="pin">Anclar</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Anclado</string>
+    <string name="pin_for_everyone_ask">Fijar un mensaje para todos en el chat?</string>
+    <string name="pin_for_everyone">Fijar para todos</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Desanclar</string>
+    <string name="unpin_for_everyone_ask">Desfijar el mensaje para todos en el chat?</string>
+    <string name="unpin_for_everyone">Desfijar para todos</string>
     <string name="message_pinned_by_you">Has anclado un mensaje</string>
     <string name="message_pinned_by_other">Mensaje anclado por %1$s</string>
+    <string name="message_unpinned_by_you">Has desfijado un mensaje</string>
+    <string name="message_unpinned_by_other">Mensaje desfijado por %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Mensaje original no encontrado</string>
     <string name="reply_privately">Responder en privado</string>
     <string name="source_code">Código fuente</string>
@@ -543,6 +572,7 @@
     <string name="chat_no_chats_yet_title">Bandeja de entrada vacía.\nPresiona \"+\" para iniciar un nuevo chat.</string>
     <string name="chat_all_archived">Todos los chats archivados.\nPresiona \"+\" para iniciar un nuevo chat.</string>
     <string name="chat_share_with_title">Compartir con</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensaje</string>
     <string name="chat_archived_label">Archivado</string>
     <string name="chat_request_label">Solicitud</string>
@@ -603,6 +633,7 @@
     <string name="profile_shared_chats">Chats en común</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Miembros anteriores</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contacto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galería</string>
@@ -623,7 +654,7 @@
     <!-- "Second Device" can also be translated as "Another Device", if that is catchier in the destination language. However, make sure to use the term consistently. -->
     <string name="multidevice_title">Añadir otro dispositivo</string>
     <string name="multidevice_same_network_hint">Asegúrate de que ambos dispositivos estén conectados en la misma red o Wi-Fi</string>
-    <string name="multidevice_this_creates_a_qr_code">Esto crea un código QR que el otro dispositivo puede escanear para copiar la cuenta.</string>
+    <string name="multidevice_this_creates_a_qr_code">Esto crea un código QR que el otro dispositivo puede escanear para copiar el perfil.</string>
     <string name="multidevice_install_dc_on_other_device">Instala Delta Chat en tu otro dispositivo (https://get.delta.chat)</string>
     <!-- "I Already Have a Profile / Add as Second Device” should be the same text as defined by the keys onboarding_alternative_logins and multidevice_receiver_title -->
     <string name="multidevice_tap_scan_on_other_device">Inicia Delta Chat, toca \"Añadir desde otro dispositivo\" y escanea el código mostrado aquí</string>
@@ -635,9 +666,9 @@
     <string name="multidevice_receiver_needs_update">El perfil que quieres importar es de una versión de Delta Chat más reciente.\n\nPara continuar configurando el segundo dispositivo, actualice este dispositivo a la última versión de Delta Chat.</string>
     <string name="multidevice_abort">¿Cancelar la configuración del nuevo dispositivo?</string>
     <string name="multidevice_abort_will_invalidate_copied_qr">Esto invalidará el código QR copiado al portapapeles </string>
-    <string name="multidevice_transfer_done_devicemsg">ℹ️ Cuenta transferida a tu otro dispositivo.</string>
+    <string name="multidevice_transfer_done_devicemsg">ℹ️ Perfil transferido a tu otro dispositivo.</string>
     <!-- Shown beside progress bar, stay short -->
-    <string name="preparing_account">Preparando cuenta…</string>
+    <string name="preparing_account">Preparando perfil…</string>
     <!-- Shown beside progress bar, stay short -->
     <string name="transferring">Transfiriendo…</string>
     <string name="troubleshooting">Solución de problemas</string>
@@ -742,19 +773,19 @@
     <string name="import_backup_no_backup_found">No se encontraron copias de seguridad.\n\nCopie el archivo de respaldo en \"%1$s\" e inténtelo de nuevo.</string>
     <!-- TLS certificate checks -->
     <string name="accept_invalid_certificates">Aceptar certificados no válidos</string>
-    <string name="switch_account">Cambiar cuenta</string>
-    <string name="add_account">Agregar cuenta</string>
+    <string name="switch_account">Cambiar perfil</string>
+    <string name="add_account">Agregar perfil</string>
     <!-- for translations, you can also think of "Profile Tag" or "Profile Description" as the source string -->
     <string name="profile_tag">Etiqueta de perfil</string>
     <string name="profile_tag_hint">ej. Trabajo, Familia</string>
     <string name="profile_tag_explain">Etiqueta que es visible sólo para ti; útil para diferenciar tus perfiles.</string>
     <!-- Menu entry to sort an item to the beginning of a list. Only "To Top" may do as well in some translations, if that helps to stay shorter. -->
     <string name="move_to_top">Mover arriba</string>
-    <string name="delete_account">Eliminar cuenta</string>
-    <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu cuenta?</string>
-    <string name="delete_account_explain_with_name">Todos los datos de la cuenta de \"%s\" este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no puede ser deshecha.</string>
-    <string name="unconfigured_account">Cuenta no configurada</string>
-    <string name="unconfigured_account_hint">Abrir cuenta para configurarla.</string>
+    <string name="delete_account">Eliminar perfil</string>
+    <string name="delete_account_ask">¿Estás seguro de que quieres eliminar los datos de tu perfil?</string>
+    <string name="delete_account_explain_with_name">Todos los datos del perfil \"%s\" de este dispositivo serán eliminados. Incluyendo la configuración de encriptado punto a punto, contactos, chats, mensajes y multimedia. Esta acción no se puede deshacer.</string>
+    <string name="unconfigured_account">Perfil no configurado</string>
+    <string name="unconfigured_account_hint">Abrir perfil para configurarlo.</string>
     <string name="try_connect_now">Intentar conectar ahora</string>
     <string name="sync_all">Sincronizar todo</string>
     <!-- Translations: %1$s will be replaced by a more detailed error message -->
@@ -766,6 +797,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">¿Enviar %1$d archivos a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">¿Enviar %1$d archivo(s) a %2$d chats?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Preparando media...</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Comprimiendo vídeo...</string>
+    <string name="video_recode_busy">Otro vídeo está siendo procesado, por favor, espera.</string>
     <string name="share_text_multiple_chats">¿Enviar este texto a %1$d chats?\n\n\"%2$s\"</string>
     <string name="share_abort">Intercambio abortado debido a la falta de permisos.</string>
 
@@ -833,7 +869,8 @@
     <string name="pref_backup_export_explain">Una copia de respaldo lo ayuda a configurar una nueva instalación en este u otro dispositivo.\n\nLa copia de respaldo contendrá todos los mensajes, contactos y chats, y su configuración Autocrypt de extremo a extremo. Guarde el archivo de respaldo en un lugar seguro o elimínelo lo antes posible.</string>
     <string name="pref_backup_export_this">Exportar este perfil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
-    <string name="pref_backup_export_all">Exportar todo (%1$d cuentas)</string>
+    <string name="pref_backup_export_all">Exportar todo (%1$d perfiles)</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Iniciar copia de respaldo</string>
     <string name="pref_backup_written_to_x">Copia de respaldo escrita correctamente en %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
@@ -1042,7 +1079,7 @@
     <string name="qrshow_join_contact_no_connection_toast">No hay conexión a Internet, no se puede configurar con código QR.</string>
     <string name="set_name_and_avatar_explain">Establece un nombre que tus contactos puedan reconocer. También puedes establecer una foto de perfil.</string>
     <string name="please_enter_name">Por favor, introduce un nombre.</string>
-    <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar una nueva cuenta.</string>
+    <string name="qraccount_qr_code_cannot_be_used">El código QR escaneado no puede ser usado para configurar un nuevo perfil.</string>
     <!-- the placeholder will be replaced by a domain that is preferred for relaying messages. smth as "Using foo.example.org" -->
     <string name="relay_login_hint">Utilizando %1$s</string>
     <!-- first placeholder will be replaced by name of the inviter, second placeholder will be replaced by the name of the inviter. -->

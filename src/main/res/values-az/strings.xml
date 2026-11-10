@@ -12,6 +12,7 @@
     <string name="custom">Xüsusi</string>
     <string name="none">Yoxdur</string>
     <string name="automatic">Avtomatik</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Mıtin</string>
     <string name="open">Açıq</string>
     <string name="delete">Sil</string>
@@ -20,6 +21,7 @@
     <string name="emoji">Emojilər</string>
     <string name="attachment">Fayllar</string>
     <string name="back">Geri</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Bağla</string>
     <string name="forward">Başqasına göndərmə</string>
     <!-- Verb "to archive", as in "put a chat in the archive", not a noun "The Archive". -->
@@ -66,14 +68,17 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d çat</item>
         <item quantity="other">%d çat</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakt</item>
         <item quantity="other">%d kontakt</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mesaj</item>
         <item quantity="other">%d mesaj</item>
@@ -93,6 +98,7 @@
     <string name="forwarded_message">Köçürülmüş mesaj</string>
     <string name="video">Video</string>
     <string name="documents">Sənədlər</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="camera">Kamera</string>
     <string name="location">Yer</string>
@@ -200,6 +206,7 @@
     <string name="chat_no_chats_yet_title">Qutu boşdur.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
     <string name="chat_all_archived">Bütün çatlar saxlanıldı.\nYeni çata başlamaq üçün \"+\" işarəsinə toxunun. </string>
     <string name="chat_share_with_title">Göndər </string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mesaj</string>
     <string name="chat_archived_label">Xəzinələndi</string>
     <string name="chat_no_messages">Mesaj yoxdur</string>
@@ -219,6 +226,7 @@
     <string name="group_self_not_in_group">Bunu etmək üçün qrupun üzvü olmalısan.</string>
     <string name="profile_encryption">Şifrələmə</string>
     <string name="profile_shared_chats">Çatlar göndərildi</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Qrup</string>
     <string name="tab_gallery">Şəkillər</string>
@@ -294,6 +302,7 @@
     <string name="pref_backup">Nüsxə</string>
     <string name="pref_backup_explain">Daxili yaddaşa mesaj nüsxəsi</string>
     <string name="pref_backup_export_explain">Ehtiyat nüsxəsi bu və ya digər bir cihazda yeni bir quraşdırma qurmağa kömək edir. \n\nNüsxədə bütün mesajlar, kontaktlar, çatlar və son ucdan uca avtoşifrələmə quraşdırmaınız olacaq. Nüsxə faylını təhlükəsiz yerdə saxlayın və ya mümkün qədər tez silin.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Nüsxəyə başla</string>
     <string name="pref_backup_written_to_x">Ehtiyat nüsxə %1$s- ə uğurla yazılmışdır</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

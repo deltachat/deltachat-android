@@ -33,25 +33,13 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menu_toggle_pin"
-        android:title="@string/pin_for_everyone"
-        app:showAsAction="never" />
-
-    <item
-        android:title="@string/add_to_home_screen"
-        android:id="@+id/menu_add_to_home_screen"
-        android:visible="false"
-        app:showAsAction="never" />
-
-    <item
-        android:title="@string/menu_export_attachments"
-        android:id="@+id/menu_context_save_attachment"
-        android:visible="false"
-        app:showAsAction="never" />
-
-    <item
         android:title="@string/info"
         android:id="@+id/menu_context_details"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_toggle_pin"
+        android:title="@string/pin_for_everyone"
         app:showAsAction="never" />
 
     <item
@@ -67,6 +55,18 @@
     <item
         android:title="@string/resend"
         android:id="@+id/menu_resend"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/menu_export_attachments"
+        android:id="@+id/menu_context_save_attachment"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:title="@string/add_to_home_screen"
+        android:id="@+id/menu_add_to_home_screen"
+        android:visible="false"
         app:showAsAction="never" />
 
     <item

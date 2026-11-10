@@ -491,8 +491,7 @@ public class ConversationFragment extends MessageSelectorFragment {
 
       MenuItem togglePin = menu.findItem(R.id.menu_toggle_pin);
       togglePin.setVisible(chat.isEncrypted() && chat.canSend() && !messageRecord.isInfo());
-      togglePin.setTitle(
-          messageRecord.isPinned() ? R.string.unpin_for_everyone : R.string.pin_for_everyone);
+      togglePin.setTitle(messageRecord.isPinned() ? R.string.unpin : R.string.pin);
     }
 
     // if one of the selected items cannot be saved, disable saving.
@@ -534,7 +533,8 @@ public class ConversationFragment extends MessageSelectorFragment {
         (int) chatId,
         getListAdapter().getMessageIds(),
         playbackViewModel::stopByIds,
-        playbackViewModel::stopByIds);
+        playbackViewModel::stopByIds,
+        getContext().getString(R.string.clear_chat));
   }
 
   private ConversationAdapter getListAdapter() {
@@ -730,6 +730,21 @@ public class ConversationFragment extends MessageSelectorFragment {
       }
     } catch (RpcException e) {
       Log.e(TAG, "RPC error", e);
+    }
+  }
+
+  private void askToTogglePin(final DcMsg msg) {
+    if (getListAdapter().getChat().isSelfTalk()) {
+      handleTogglePin(msg);
+    } else {
+      boolean pinned = msg.isPinned();
+      new AlertDialog.Builder(getContext())
+          .setMessage(pinned ? R.string.unpin_for_everyone_ask : R.string.pin_for_everyone_ask)
+          .setPositiveButton(
+              pinned ? R.string.unpin_for_everyone : R.string.pin_for_everyone,
+              (dialog, which) -> handleTogglePin(msg))
+          .setNegativeButton(R.string.cancel, null)
+          .show();
     }
   }
 
@@ -1010,7 +1025,8 @@ public class ConversationFragment extends MessageSelectorFragment {
           WebxdcActivity.openWebxdcActivity(
               getContext(), messageRecord.getParent(), messageRecord.getWebxdcHref());
         }
-      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_PINNED) {
+      } else if (messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_PINNED
+          || messageRecord.getInfoType() == DcMsg.DC_INFO_MESSAGE_UNPINNED) {
         if (messageRecord.getParent() != null) {
           scrollMaybeSmoothToMsgId(messageRecord.getParent().getId());
         }
@@ -1233,7 +1249,7 @@ public class ConversationFragment extends MessageSelectorFragment {
         actionMode.finish();
         return true;
       } else if (itemId == R.id.menu_toggle_pin) {
-        handleTogglePin(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
+        askToTogglePin(getSelectedMessageRecord(getListAdapter().getSelectedItems()));
         actionMode.finish();
         return true;
       }

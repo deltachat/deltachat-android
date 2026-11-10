@@ -14,6 +14,7 @@
     <string name="custom">Дефиниран от потребителя</string>
     <string name="none">Без</string>
     <string name="automatic">Автоматично</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Стриктно</string>
     <string name="open">Отваряне</string>
     <string name="download">Сваляне</string>
@@ -26,6 +27,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Прикачен файл</string>
     <string name="back">Назад</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Затваряне</string>
     <string name="close_window">Затваряне на прозореца</string>
     <string name="forward">Напред</string>
@@ -106,14 +108,17 @@
         <item quantity="one">%d час</item>
         <item quantity="other">%d часа</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d чат</item>
         <item quantity="other">%d чата</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d контакт</item>
         <item quantity="other">%d контакта</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d съобщение</item>
         <item quantity="other">%d съобщения</item>
@@ -150,6 +155,7 @@
     <string name="forwarded_by">Препратен от %1$s</string>
     <string name="video">Видео</string>
     <string name="documents">Документи</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Контакт</string>
     <string name="camera">Камера</string>
     <!-- As in "start a video recording" or "take a photo"; eg. the description of the "shutter button" in cameras -->
@@ -327,6 +333,7 @@
     <string name="chat_no_chats_yet_title">Празна входяща кутия.\nНатиснете \"+\", за да започнете нов чат</string>
     <string name="chat_all_archived">Всички чатове са архивирани.\nНатиснете \"+\", за да започнете нов чат</string>
     <string name="chat_share_with_title">Споделяне с</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Съобщение</string>
     <string name="chat_archived_label">Архивирано</string>
     <string name="chat_request_label">Заявка</string>
@@ -379,6 +386,7 @@
     <string name="group_self_not_in_group">Трябва да сте член на групата, за да изпълните това действие.</string>
     <string name="profile_encryption">Криптиране</string>
     <string name="profile_shared_chats">Споделени чатове</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Контакт</string>
     <string name="tab_group">Група</string>
     <string name="tab_gallery">Галерия</string>
@@ -553,6 +561,7 @@
     <string name="pref_backup_export_explain">Резервното копие помага да установите нова инсталация на това или друго устройство.\n\nТо ще съдържа всички съобщения, контакти и чатове и Вашата настройка \"от край до край\" на Autocrypt. Пазете файла на резервното копие на сигурно място или го изтрийте колкото е възможно по-скоро.</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Експортиране на всички %1$d профила</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Започване на създаването на резервно копие</string>
     <string name="pref_backup_written_to_x">Резервното копие е успешно записано в \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

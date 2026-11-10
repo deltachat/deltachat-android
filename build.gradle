@@ -31,8 +31,8 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        versionCode 759
-        versionName "2.64.0"
+        versionCode 761
+        versionName "2.69.0"
 
         applicationId "com.b44t.messenger"
         multiDexEnabled true
@@ -52,9 +52,8 @@ android {
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments useTestStorageService: 'true', clearPackageData: 'true'
 
-        buildConfigField("String", "TEST_ADDR", buildConfigProperty("TEST_ADDR"))
-        buildConfigField("String", "TEST_MAIL_PW", buildConfigProperty("TEST_MAIL_PW"))
         buildConfigField("String", "NDK_ARCH", getNdkArch())
         buildConfigField("String", "VAPID_KEY", "\"BHNce1sXk99bpkFFYwiSR3Lp4n54PiS-Y0S9iX6R7va7sxQ5hE7ll6DMKlKs2tFT9POq92gLygezT7o0fkQU8NE\"")
     }
@@ -83,7 +82,9 @@ android {
             ]
         }
     }
-
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
 
     signingConfigs {
         debug {
@@ -105,7 +106,7 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
+            minifyEnabled !project.hasProperty('noMinify')
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             testProguardFiles 'test-proguard-rules.pro'
             applicationIdSuffix ".beta"
@@ -266,43 +267,20 @@ dependencies {
     implementation('org.unifiedpush.android:connector:3.3.4-rc1')
 
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.assertj:assertj-core:3.27.3'
-    testImplementation 'org.mockito:mockito-core:5.18.0'
-    testImplementation 'org.powermock:powermock-api-mockito:1.7.4'
-    testImplementation 'org.powermock:powermock-module-junit4:2.0.9'
-    testImplementation 'org.powermock:powermock-module-junit4-rule:2.0.9'
-    testImplementation 'org.powermock:powermock-classloading-xstream:2.0.9'
 
+    androidTestImplementation 'androidx.test:core:1.7.0'
     androidTestImplementation 'androidx.test:runner:1.7.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.7.0'
-    androidTestImplementation 'androidx.test:rules:1.7.0'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
-    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.7.0'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.4.1'
 
-    androidTestImplementation('org.assertj:assertj-core:3.27.3') {
-        exclude group: 'org.hamcrest', module: 'hamcrest-core'
-    }
+    androidTestUtil 'androidx.test.services:test-services:1.6.0'
+    androidTestUtil 'androidx.test:orchestrator:1.6.1'
 
     constraints {
         implementation 'androidx.activity:activity:1.11.0' // 1.13.0 requires minSdk=23
     }
-}
-
-String buildConfigProperty(String name) {
-    return "\"${propertyOrEmpty(name)}\""
-}
-
-String propertyOrEmpty(String name) {
-    Object p = findProperty(name)
-    if (p == null) return environmentVariable(name)
-    return (String) p
-}
-
-static String environmentVariable(String name) {
-    String env = System.getenv(name)
-    if (env == null) return ""
-    return env
 }
 
 String getNdkArch() {

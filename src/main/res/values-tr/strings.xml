@@ -18,6 +18,7 @@
     <string name="custom">Özel</string>
     <string name="none">Yok</string>
     <string name="automatic">Otomatik</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Katı</string>
     <string name="open">Aç</string>
     <string name="download">İndir</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">İlişik</string>
     <string name="back">Geri</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
     <string name="forward">İlet</string>
@@ -134,18 +136,22 @@
         <item quantity="one">%d saat</item>
         <item quantity="other">%d saat</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d sohbet</item>
         <item quantity="other">%d sohbet</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kişi</item>
         <item quantity="other">%d kişi</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d ileti</item>
         <item quantity="other">%d ileti</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d tepki</item>
         <item quantity="other">%d tepki</item>
@@ -186,6 +192,7 @@
     <string name="forwarded_by">%1$s tarafından iletildi</string>
     <string name="video">Video</string>
     <string name="documents">Belgeler</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kişi</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -457,6 +464,7 @@
     <string name="chat_no_chats_yet_title">Sohbet yok.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
     <string name="chat_all_archived">Tüm sohbetler arşivlendi.\nYeni bir sohbet başlatmak için “+” simgesine basın.</string>
     <string name="chat_share_with_title">Paylaş…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">İleti</string>
     <string name="chat_archived_label">Arşivlenen</string>
     <string name="chat_request_label">İstek</string>
@@ -517,6 +525,7 @@
     <string name="profile_shared_chats">Ortak\'taki Sohbetler</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Geçmişteki Üyeler</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kişi</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeri</string>
@@ -736,6 +745,7 @@
     <string name="pref_backup_export_this">Bu profili dışa aktar</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Tüm %1$d profili dışa aktar</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Yedeklemeyi Başlat</string>
     <string name="pref_backup_written_to_x">Yedek “%1$s” üzerine başarıyla yazıldı.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

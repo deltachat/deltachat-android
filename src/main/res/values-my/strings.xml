@@ -18,6 +18,7 @@
     <string name="custom">စိတ်ကြိုက်</string>
     <string name="none">မရှိပါ</string>
     <string name="automatic">အလိုအလျောက်</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">တင်းကျပ်သော</string>
     <string name="open">ဖွင့်ပါ</string>
     <string name="download">ဒေါင်းလုဒ်လုပ်ပါ</string>
@@ -34,6 +35,7 @@
     <string name="emoji">အီမိုဂျီ</string>
     <string name="attachment">ပူးတွဲပါဖိုင်</string>
     <string name="back">နောက်သို့</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">ပိတ်ရန်</string>
     <string name="close_window">ဝင်းဒိုးပိတ်ရန်</string>
     <string name="forward">ရှေ့သို့</string>
@@ -131,15 +133,19 @@
     <plurals name="n_hours">
         <item quantity="other">%d နာရီ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="other">%d ချတ်များ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="other">%d အဆက်အသွယ်များ</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="other">%d မက်ဆေ့ချ်များ</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="other">%d တုံ့ပြန်မှုများ</item>
     </plurals>
@@ -176,6 +182,7 @@
     <string name="forwarded_by"> %1$s က ထပ်ဆင့်ပေးသည်</string>
     <string name="video">ဗီဒီယို</string>
     <string name="documents">စာရွက်စာတမ်းများ</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">အဆက်အသွယ်</string>
     <string name="bot">ဘော့တ်</string>
     <string name="camera">ကင်မရာ</string>
@@ -457,6 +464,7 @@
     <string name="chat_no_chats_yet_title">ချတ်များ မရှိသေးပါ</string>
     <string name="chat_all_archived">အားလုံးကို မော်ကွန်းတင်ပြီးပါပြီ</string>
     <string name="chat_share_with_title">မျှဝေရန်</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">မက်ဆေ့ချ်</string>
     <string name="chat_archived_label">မော်ကွန်းတင်ပြီး</string>
     <string name="chat_request_label">မက်ဆေ့ချ် တောင်းဆိုမှု</string>
@@ -514,6 +522,7 @@
     <string name="profile_shared_chats">မျှဝေထားသော ချတ်များ</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">ယခင် အဖွဲ့ဝင်များ</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">အဆက်အသွယ်</string>
     <string name="tab_group">အဖွဲ့</string>
     <string name="tab_gallery">ပြခန်း</string>
@@ -733,6 +742,7 @@
     <string name="pref_backup_export_this">ဤအကောင့်ကို တင်ပို့ပါ</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">အကောင့် %1$d ခုကို တင်ပို့ပါ</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">တင်ပို့ခြင်းကို စတင်ပါ</string>
     <string name="pref_backup_written_to_x">%1$s သို့ မိတ္တူကူးပြီးပါပြီ</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

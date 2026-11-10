@@ -9,21 +9,26 @@ on:
       - 'jni/Application.mk'
       - 'jni/dc_wrapper.c'
       - 'scripts/ndk-make.sh'
+      - '.github/workflows/cache-core.yml'   # make a change to this file rebuild the cache
+  workflow_dispatch:                          # manual rebuild
 
 permissions: {}
 
 jobs:
   build:
+    name: Build core (${{ matrix.abi }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        abi: [arm64-v8a, x86_64]
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           submodules: recursive
           persist-credentials: false
 
-      - uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 # v4.0.1
-        with:
-          packages: 'platform-tools'
+      - uses: android-actions/setup-android@be39fa834029ff78f1a44aa3bb0819b8fc2bd8fd # v4.0.4
       - uses: nttld/setup-ndk@ed92fe6cadad69be94a966a7ee3271275e62f779 # v1.6.0
         id: setup-ndk
         with:
@@ -32,6 +37,7 @@ jobs:
       - uses: Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1
         with:
           workspaces: jni/deltachat-core-rust
+          key: ${{ matrix.abi }}
 
       - name: Get deltachat-core-rust submodule hash
         id: core-hash
@@ -42,9 +48,9 @@ jobs:
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: |
-            jni/arm64-v8a
-            libs/arm64-v8a
-          key: core-arm64-v8a-${{ steps.core-hash.outputs.hash }}-${{ hashFiles('jni/Android.mk', 'jni/Application.mk', 'jni/dc_wrapper.c', 'scripts/ndk-make.sh') }}-ndk-r27
+            jni/${{ matrix.abi }}
+            libs/${{ matrix.abi }}
+          key: core-${{ matrix.abi }}-${{ steps.core-hash.outputs.hash }}-${{ hashFiles('jni/Android.mk', 'jni/Application.mk', 'jni/dc_wrapper.c', 'scripts/ndk-make.sh') }}-ndk-r29
 
       - name: Compile core
         if: steps.cache-core.outputs.cache-hit != 'true'
@@ -52,4 +58,4 @@ jobs:
           ANDROID_NDK_ROOT: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
           export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/"
-          scripts/install-toolchains.sh && scripts/ndk-make.sh arm64-v8a
+          scripts/install-toolchains.sh && scripts/ndk-make.sh ${{ matrix.abi }}

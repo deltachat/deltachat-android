@@ -18,6 +18,7 @@
     <string name="custom">Personalizado</string>
     <string name="none">Ningún</string>
     <string name="automatic">Automático</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Estrito</string>
     <string name="open">Abrir</string>
     <string name="download">Descargar</string>
@@ -28,12 +29,13 @@
     <string name="join_channel">Unirse á canle</string>
     <string name="delete">Eliminar</string>
     <string name="delete_for_me">Eliminar para min</string>
-    <string name="delete_for_everyone">Eliminar para todo o mundo</string>
+    <string name="delete_for_everyone">Eliminar para tódalas persoas</string>
     <string name="info">Info</string>
     <string name="update">Actualizar</string>
     <string name="emoji">Emoticona</string>
     <string name="attachment">Anexo</string>
     <string name="back">Atrás</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Pechar</string>
     <string name="close_window">Fechar xanela</string>
     <string name="forward">Reenviar</string>
@@ -54,6 +56,8 @@
     <string name="muted">Acalada</string>
     <string name="ephemeral_messages">Desaparición das Mensaxes</string>
     <string name="ephemeral_messages_hint">Aplícase a todas as persoas desta conversa; aínda poden copiar, gardar e reenviar mensaxes.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Configurar para tódalas persoas</string>
     <string name="save">Gardar</string>
     <string name="chat">Conversa</string>
     <string name="media">Medios</string>
@@ -160,18 +164,22 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d conversa</item>
         <item quantity="other">%d conversas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacto</item>
         <item quantity="other">%d contactos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mensaxe</item>
         <item quantity="other">%d mensaxes</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reacción</item>
         <item quantity="other">%d reaccións</item>
@@ -212,6 +220,7 @@
     <string name="forwarded_by">Reenviado por %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contacto</string>
     <string name="bot">Robot</string>
     <string name="camera">Cámara</string>
@@ -245,6 +254,18 @@
     <string name="webxdc_store_url">URL do Selector de Apps</string>
     <string name="webxdc_store_url_explain">Se está establecido o URL vaise usar como Selector de aplicacións no lugar do predeterminado</string>
     <string name="webxdc_draft_hint">Preme \"Enviar\" para compartir</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Da permiso a \"%1$s\" para empregar o seu micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Da permiso a \"%1$s\" para empregar a súa cámara?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Da permiso a \"%1$s\" para empregar a súa cámara e micrófono?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Da permiso a \"%1$s\" para acceder á súa localización?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Da permiso a \"%1$s\" para acceder ós sensores de movemento?</string>
+    <string name="webxdc_perm_denied_settings">Permisos non abilitados para Delta Chat. Outorgue a Delta Chat os permisos requeridos nas preferencias de Android.</string>
+    <string name="webxdc_perm_reset">Restituír permisos</string>
     <string name="home">Inicio</string>
     <string name="games">Xogos</string>
     <string name="tools">Ferramentas</string>
@@ -344,6 +365,8 @@
     <string name="show_in_chat">Amosar na conversa</string>
     <string name="show_app_in_chat">Amosar aplicación na conversa</string>
     <string name="menu_share">Compartir</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Permitir</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloquear</string>
     <string name="menu_block_contact">Bloquear contacto</string>
@@ -387,10 +410,16 @@
     <string name="pin">Ancorar</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Fixado</string>
+    <string name="pin_for_everyone_ask">Espeta-la mensaxe para tódalas persoas na conversa?</string>
+    <string name="pin_for_everyone">Espetar para tódalas persoas</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Desancorar</string>
+    <string name="unpin_for_everyone_ask">Desespeta-la mensaxe para tódalas persoas na conversa?</string>
+    <string name="unpin_for_everyone">Desespetar para tódalas persoas</string>
     <string name="message_pinned_by_you">Fixou unha mensaxe</string>
     <string name="message_pinned_by_other">Mensaxe fixada por %1$s</string>
+    <string name="message_unpinned_by_you">Desespetou a mensaxe</string>
+    <string name="message_unpinned_by_other">Mensaxe desespetada por %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Non se atopa a mensaxe orixinal</string>
     <string name="reply_privately">Responder de xeito privado</string>
     <string name="source_code">Código Fonte</string>
@@ -522,6 +551,7 @@
     <string name="chat_no_chats_yet_title">Sen conversas.\n Preme \"+\" para iniciar conversa.</string>
     <string name="chat_all_archived">Arquiváronse todas as conversas.\nPreme \"+\" para iniciar unha nova.</string>
     <string name="chat_share_with_title">Compartir con...</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensaxe</string>
     <string name="chat_archived_label">Arquivado</string>
     <string name="chat_request_label">Solicitar</string>
@@ -531,7 +561,7 @@
     <!-- Action to add a message to "Saved Messages". The longer form (instead of "Save" only) is needed esp. on desktop to make clear this is not about saving a file to disk -->
     <string name="save_message">Gardar mensaxe</string>
     <string name="saved_messages">Mensaxes gardadas</string>
-    <string name="saved_messages_explain">• Reenvía aquí as mensaxes para un acceso rápido\n\n• Toma notas de texto ou voz\n\n• Anexa medios para gardalos</string>
+    <string name="saved_messages_explain">• Reenvíar aquí as mensaxes para un acceso rápido\n\n• Tomar notas de texto ou voz\n\n• Anexar medios para gardalos</string>
     <!-- Should match "Saved" from "Saved messages" -->
     <string name="saved">Gardado</string>
     <string name="attachment_failed_to_load">Erro ao cargar o anexo</string>
@@ -582,6 +612,7 @@
     <string name="profile_shared_chats">Conversas en común</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Participantes anteriores</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contacto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galería</string>
@@ -745,6 +776,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Enviar %1$d ficheiros para \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Enviar %1$d ficheiro(s) a %2$d conversas?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Preparando os medios...</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Comprimindo o vídeo...</string>
+    <string name="video_recode_busy">Está sendo procesado outro vídeo, espere un anaco.</string>
     <string name="share_text_multiple_chats">Enviar este texto a %1$d conversas?\n\n\"%2$s\"</string>
     <string name="share_abort">Deixouse de compartir por falta de permisos</string>
 
@@ -813,6 +849,7 @@
     <string name="pref_backup_export_this">Exportar este perfil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exportar todos os %1$d perfís</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Inciar respaldo</string>
     <string name="pref_backup_written_to_x">Respaldo gardado con éxito en \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

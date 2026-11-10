@@ -18,6 +18,7 @@
     <string name="custom">Personalitzat</string>
     <string name="none">Cap</string>
     <string name="automatic">Automàtic</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Estricte</string>
     <string name="open">Obre</string>
     <string name="download">Baixa</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emojis</string>
     <string name="attachment">Adjunt</string>
     <string name="back">Enrere</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Tanca</string>
     <string name="close_window">Tanca la finestra</string>
     <string name="forward">Reenvia</string>
@@ -54,6 +56,8 @@
     <string name="muted">Silenciat</string>
     <string name="ephemeral_messages">Missatges efímers</string>
     <string name="ephemeral_messages_hint">Aquestes opcions s\'apliquen a tots els integrants del xat que utiltizen Delta Chat. Tot i així, poden copiar, desar o reenviar missatges o utilitzar altres clients de correu.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Establert per a totes</string>
     <string name="save">Desa</string>
     <string name="chat">Xat</string>
     <string name="media">Multimèdia</string>
@@ -160,18 +164,22 @@
         <item quantity="one">%d hora</item>
         <item quantity="other">%d hores</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d xat</item>
         <item quantity="other">%d xats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacte</item>
         <item quantity="other">%d contactes</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d missatge</item>
         <item quantity="other">%d missatges</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reacció</item>
         <item quantity="other">%d reaccions</item>
@@ -212,6 +220,7 @@
     <string name="forwarded_by">Reenviat per %1$s</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documents</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contacte</string>
     <string name="bot">Bot</string>
     <string name="camera">Càmera</string>
@@ -245,6 +254,18 @@
     <string name="webxdc_store_url">URL del selector d\'aplicacions</string>
     <string name="webxdc_store_url_explain">Si està definit, s\'usarà l\'URL com a selector d\'aplicacions en comptes del predeterminat</string>
     <string name="webxdc_draft_hint">Prem “Envia” per compartir </string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">Vols que \"%1$s\" utilitzi el micròfon?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">Vols que \"%1$s\" utilitzi la càmera?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">Vols que \"%1$s\" utilitzi la càmera i el micròfon?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">Vols que \"%1$s\" accedeixi a la teva ubicació?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">Vols que \"%1$s\" accedeixi als sensors de moviment?</string>
+    <string name="webxdc_perm_denied_settings">Manquen permisos per a Delta Chat. Si us plau, dóna a Delta Chat els permisos necessaris a la configuració d\'Android.</string>
+    <string name="webxdc_perm_reset">Restablir permisos</string>
     <string name="home">Inici</string>
     <string name="games">Jocs</string>
     <string name="tools">Eines</string>
@@ -344,6 +365,8 @@
     <string name="show_in_chat">Mostra al xat</string>
     <string name="show_app_in_chat">Mostra l\'aplicació al xat</string>
     <string name="menu_share">Comparteix</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Permetre</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Bloca</string>
     <string name="menu_block_contact">Bloca el contacte</string>
@@ -387,10 +410,16 @@
     <string name="pin">Fixa</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Fixa\'t</string>
+    <string name="pin_for_everyone_ask">Fixa el missatge per a tothom del xat?</string>
+    <string name="pin_for_everyone">Fixar per a tothom</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Desfixa</string>
+    <string name="unpin_for_everyone_ask">Desfixar el missatge per tothom del xat?</string>
+    <string name="unpin_for_everyone">Desfixar per tothom</string>
     <string name="message_pinned_by_you">Has fixat un missatge</string>
     <string name="message_pinned_by_other">Missatge fixat per %1$s</string>
+    <string name="message_unpinned_by_you">Has desfixat un missatge</string>
+    <string name="message_unpinned_by_other">Missatge desfixat per %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">No s\'ha trobat el missatge original</string>
     <string name="reply_privately">Respon en privat</string>
     <string name="source_code">Codi font</string>
@@ -522,6 +551,7 @@
     <string name="chat_no_chats_yet_title">No hi ha cap xat.\nPrem «+» per a començar un xat nou.</string>
     <string name="chat_all_archived">Tots els xats s\'han arxivat.\nPrem «+» per a començar-ne un de nou.</string>
     <string name="chat_share_with_title">Comparteix amb</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Missatge</string>
     <string name="chat_archived_label">Arxivat</string>
     <string name="chat_request_label">Sol·licitud</string>
@@ -582,6 +612,7 @@
     <string name="profile_shared_chats">Xats compartits</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Antics membres</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contacte</string>
     <string name="tab_group">Grup</string>
     <string name="tab_gallery">Galeria</string>
@@ -745,6 +776,11 @@
     <!-- first placeholder is replaced by the number of files (always 2 or more); second placeholder is replaced by a chat name -->
     <string name="ask_send_files_to_chat">Voleu enviar %1$d fitxers a \"%2$s\"?</string>
     <string name="ask_send_files_to_selected_chats">Voleu enviar %1$d fitxer(s) a %2$d xats?</string>
+    <!-- Used in notifications when videos are being prepared before they are recoded -->
+    <string name="video_preparing">Preparant media...</string>
+    <!-- Used in notifications when videos are being recoded for smaller sizes before sending -->
+    <string name="video_compressing">Comprimint vídeo...</string>
+    <string name="video_recode_busy">S\'està processant un altre vídeo, si us plau, espera.</string>
     <string name="share_text_multiple_chats">Voleu enviar aquest text a %1$d xats?\n\n«%2$s»</string>
     <string name="share_abort">S\'ha avortat la compartició per falta de permisos.</string>
 
@@ -813,6 +849,7 @@
     <string name="pref_backup_export_this">Exporta aquest perfil</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Exporta tots %1$d perfils</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Inicia la còpia de seguretat</string>
     <string name="pref_backup_written_to_x">La còpia de seguretat s\'ha escrit correctament a %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

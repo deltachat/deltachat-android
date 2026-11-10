@@ -33,6 +33,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anexo</string>
     <string name="back">Voltar</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Fechar</string>
     <string name="close_window">Fechar Janela</string>
     <string name="forward">Reencaminhar</string>
@@ -111,16 +112,19 @@
         <item quantity="many">%d horas</item>
         <item quantity="other">%d horas</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d conversas</item>
         <item quantity="many">%d chats</item>
         <item quantity="other">%d chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d contacto</item>
         <item quantity="many">%d contactos</item>
         <item quantity="other">%d contactos</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d mensagens</item>
         <item quantity="many">%d mensagens</item>
@@ -144,6 +148,7 @@
     <string name="forwarded_message">Reencaminhada</string>
     <string name="video">Vídeo</string>
     <string name="documents">Documentos</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Contacto</string>
     <string name="camera">Câmera</string>
     <!-- Toggle camera on/off eg. during an video call -->
@@ -323,6 +328,7 @@
     <string name="chat_record_slide_to_cancel">Deslize para cancelar</string>
     <string name="chat_record_explain">Toque e segure para gravar uma mensagem de voz, solte para enviar</string>
     <string name="chat_share_with_title">Partilhar com</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mensagem</string>
     <string name="chat_archived_label">Arquivada</string>
     <string name="chat_no_messages">Sem mensagens</string>
@@ -355,6 +361,7 @@
     <string name="group_add_members">Adicionar membros</string>
     <string name="group_self_not_in_group">Tem de ser membro do grupo para realizar a ação.</string>
     <string name="profile_encryption">Encriptação</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Contacto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galeria</string>
@@ -449,6 +456,7 @@
     <string name="pref_backup">Backup</string>
     <string name="pref_backup_explain">Backup das chats para o dispositivo externo</string>
     <string name="pref_backup_export_explain">Um backup ajuda-o a configurar uma nova instalação neste ou em outro dispositivo. \n\n O backup conterá todas as mensagens, contactos e converas e a configuração de encriptação Mantenha o arquivo de backup em um local seguro ou exclua-o o mais rápido possível.</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Inicia backup</string>
     <string name="pref_backup_written_to_x">Backup escrito com sucesso em %1$s</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

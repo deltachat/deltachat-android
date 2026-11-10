@@ -18,6 +18,7 @@
     <string name="custom">Benutzerdefiniert</string>
     <string name="none">Keine</string>
     <string name="automatic">Automatisch</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Strikt</string>
     <string name="open">Öffnen</string>
     <string name="download">Herunterladen</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Anhang</string>
     <string name="back">Zurück</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Schließen</string>
     <string name="close_window">Fenster schließen</string>
     <string name="forward">Weiterleiten</string>
@@ -54,6 +56,8 @@
     <string name="muted">Stumm</string>
     <string name="ephemeral_messages">Verschwindende Nachrichten</string>
     <string name="ephemeral_messages_hint">Gilt für alle Gruppenmitglieder, die Delta Chat verwenden. Nachrichten können kopiert, gespeichert oder weitergeleitet werden.</string>
+    <!-- Apply setting as "Disappearing Messages" for everyone -->
+    <string name="set_for_everyone">Für alle festlegen</string>
     <string name="save">Speichern</string>
     <string name="chat">Chat</string>
     <string name="media">Medien</string>
@@ -160,18 +164,22 @@
         <item quantity="one">%d Std</item>
         <item quantity="other">%d Std</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d Chat</item>
         <item quantity="other">%d Chats</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d Kontakt</item>
         <item quantity="other">%d Kontakte</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%d Nachricht</item>
         <item quantity="other">%d Nachrichten</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d Reaktion</item>
         <item quantity="other">%d Reaktionen</item>
@@ -212,6 +220,7 @@
     <string name="forwarded_by">Weitergeleitet von %1$s</string>
     <string name="video">Video</string>
     <string name="documents">Dokumente</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakt</string>
     <string name="bot">Bot</string>
     <string name="camera">Kamera</string>
@@ -245,6 +254,18 @@
     <string name="webxdc_store_url">App-Picker-URL</string>
     <string name="webxdc_store_url_explain">Wenn gesetzt, wird diese URL als App-Picker anstelle der Voreinstellung verwendet.</string>
     <string name="webxdc_draft_hint">Zum Teilen auf \"Senden\" tippen</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have microphone access. -->
+    <string name="webxdc_perm_ask_microphone">\"%1$s\" erlauben, auf das Mikrofon zuzugreifen?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera access. -->
+    <string name="webxdc_perm_ask_camera">\"%1$s\" erlauben, auf die Kamera zuzugreifen?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have camera and microphone access. -->
+    <string name="webxdc_perm_ask_camera_microphone">\"%1$s\" erlauben, auf Mikrofon und Kamera zuzugreifen?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to the current location. -->
+    <string name="webxdc_perm_ask_location">\"%1$s\" erlauben, auf deinen Standort zuzugreifen?</string>
+    <!-- The placeholder is replaced by the name of a Mini App that wants to have access to motion/orientation sensors. -->
+    <string name="webxdc_perm_ask_sensors">\"%1$s\" erlauben, auf die Bewegungsensoren zuzugreifen?</string>
+    <string name="webxdc_perm_denied_settings">Delta Chat fehlen Berechtigungen. Bitte erteile die erforderlichen Berechtigungen in den Android-Einstellungen.</string>
+    <string name="webxdc_perm_reset">Berechtigungen zurücksetzen</string>
     <string name="home">Start</string>
     <string name="games">Spiele</string>
     <string name="tools">Tools</string>
@@ -344,6 +365,8 @@
     <string name="show_in_chat">Im Chat zeigen</string>
     <string name="show_app_in_chat">App im Chat zeigen</string>
     <string name="menu_share">Teilen</string>
+    <!-- "to allow," for example a permission -->
+    <string name="allow">Erlauben</string>
     <!-- Verb "to block sth." usually a mailing list or a contact, not a noun -->
     <string name="block">Blockieren</string>
     <string name="menu_block_contact">Kontakt blockieren</string>
@@ -387,12 +410,16 @@
     <string name="pin">Anheften</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Angeheftet</string>
+    <string name="pin_for_everyone_ask">Nachricht für alle in diesem Chat anheften?</string>
     <string name="pin_for_everyone">Für alle anheften</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Loslösen</string>
+    <string name="unpin_for_everyone_ask">Nachricht für alle in diesem Chat loslösen?</string>
     <string name="unpin_for_everyone">Für alle loslösen</string>
     <string name="message_pinned_by_you">Du hast eine Nachricht angeheftet</string>
     <string name="message_pinned_by_other">Nachricht angeheftet von %1$s</string>
+    <string name="message_unpinned_by_you">Du hast eine Nachricht losgelöst</string>
+    <string name="message_unpinned_by_other">Nachricht losgelöst von %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">Originalnachricht nicht gefunden</string>
     <string name="reply_privately">Privat antworten</string>
     <string name="source_code">Quelltext</string>
@@ -524,6 +551,7 @@
     <string name="chat_no_chats_yet_title">Keine Chats.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
     <string name="chat_all_archived">Alle Chats archiviert.\n\"+\" drücken, um einen neuen Chat zu starten.</string>
     <string name="chat_share_with_title">Teilen mit…</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Nachricht</string>
     <string name="chat_archived_label">Archiviert</string>
     <string name="chat_request_label">Anfrage</string>
@@ -584,6 +612,7 @@
     <string name="profile_shared_chats">Gemeinsame Chats</string>
     <!-- Separator between the list of actual members and past members -->
     <string name="past_members">Ehemalige Mitglieder</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakt</string>
     <string name="tab_group">Gruppe</string>
     <string name="tab_gallery">Galerie</string>
@@ -820,6 +849,7 @@
     <string name="pref_backup_export_this">Dieses Profil exportieren</string>
     <!-- the placeholder will be replaced by the number of profiles to export; the number is always larger than 1 -->
     <string name="pref_backup_export_all">Alle %1$d Profile exportieren</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Backup starten</string>
     <string name="pref_backup_written_to_x">Backup nach \"%1$s\" erfolgreich.</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->

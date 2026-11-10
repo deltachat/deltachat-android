@@ -18,6 +18,7 @@
     <string name="custom">Propran</string>
     <string name="none">Neniu</string>
     <string name="automatic">Aŭtomata</string>
+    <!-- Adjective, used as an option e.g. for "Certificate Checks" -->
     <string name="strict">Strikta</string>
     <string name="open">Malferma</string>
     <string name="download">Elŝuti</string>
@@ -34,6 +35,7 @@
     <string name="emoji">Emoji</string>
     <string name="attachment">Aldonaĵo</string>
     <string name="back">Reen</string>
+    <!-- Verb, short for e.g. "Close a Window/View/Toolbar" similar to the "X" close button -->
     <string name="close">Fermi</string>
     <string name="close_window">Fermi fenestron</string>
     <string name="forward">Plusendi</string>
@@ -160,18 +162,22 @@
         <item quantity="one">%d horo</item>
         <item quantity="other">%d horoj</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of chats found. -->
     <plurals name="n_chats">
         <item quantity="one">%d Parolado</item>
         <item quantity="other">%d babiloj</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of contacts found. -->
     <plurals name="n_contacts">
         <item quantity="one">%d kontakto</item>
         <item quantity="other">%d kontaktoj</item>
     </plurals>
+    <!-- Title of a search result. The placeholder will be replaced by the number of messages found. -->
     <plurals name="n_messages">
         <item quantity="one">%dmesaĝo</item>
         <item quantity="other">%d mesaĝoj</item>
     </plurals>
+    <!-- Title of reaction summary view. The placeholder will be replaced by the number of reactions. -->
     <plurals name="n_reactions">
         <item quantity="one">%d reago</item>
         <item quantity="other">%d reagoj</item>
@@ -212,6 +218,7 @@
     <string name="forwarded_by">Plusendita de %1$s</string>
     <string name="video">Filmo</string>
     <string name="documents">Dokumentoj</string>
+    <!-- Noun, used e.g. for headlines in profiles  -->
     <string name="contact">Kontakto</string>
     <string name="bot">Roboto</string>
     <string name="camera">Fotilo</string>
@@ -383,10 +390,16 @@
     <string name="pin">Alpingli</string>
     <!-- Adj. of "pin", describing a state of being pinned. -->
     <string name="pinned">Alpinglita</string>
+    <string name="pin_for_everyone_ask">Ĉu alpingli la mesaĝon por ĉiuj en la babilo?</string>
+    <string name="pin_for_everyone">Alpingli por ĉiuj</string>
     <!-- Opposite of "Pin", removing the sticky-state from a chat or message. -->
     <string name="unpin">Depingli</string>
+    <string name="unpin_for_everyone_ask">Ĉu depingli por ĉiuj la mesaĝon en la babilo?</string>
+    <string name="unpin_for_everyone">Depingli por ĉiuj</string>
     <string name="message_pinned_by_you">Vi alpinglis mesaĝon</string>
     <string name="message_pinned_by_other">Mesaĝo alpinglita de %1$s</string>
+    <string name="message_unpinned_by_you">Vi depinglis mesaĝon</string>
+    <string name="message_unpinned_by_other">La mesaĝo estis depinglita de %1$s</string>
     <string name="ConversationFragment_quoted_message_not_found">La originala mesaĝo ne troveblas</string>
     <string name="reply_privately">Respondu private</string>
     <string name="source_code">Fontkodo</string>
@@ -472,9 +485,17 @@
     </plurals>
     <string name="ask_forward_multiple">Ĉu plusendi la mesaĝojn al %1$d babilejoj?</string>
     <string name="ask_export_attachment">Eksporti kunsendaĵojn permesos, ke aliaj apoj sur via aparato atingos ilin.\n\nĈu vi volas daŭrigi?</string>
+    <string name="ask_block_contact">Ĉu bloki ĉi tiun kontakton?\n\nLa rektaj mesaĝoj aŭ grupoj kreitaj de blokataj kontaktoj ne aperos.\n\nAliaj grupoj kun blokataj kontaktoj aperigos iliajn mesaĝojn.</string>
+    <string name="ask_unblock_contact">Ĉu malbloki ĉi tiun kontakton?</string>
+    <string name="ask_delete_contacts">Ĉu forviŝi la kontaktojn?\n\nKontaktoj kun okazanta babiloj ne povas esti forviŝitaj porĉiame.</string>
+    <string name="ask_delete_contact">Ĉu forviŝi la kontakton %1$s?\n\nKontaktoj kun okazantaj babiloj ne povas esti forviŝitaj porĉiame.</string>
     <string name="ask_start_chat_with">Babili kun %1$s?</string>
     <!-- %1$s is replaced by a comma-separated list of names -->
-    <string name="ask_remove_members">Forigi %1$sel la grupo?</string>
+    <string name="ask_remove_members">Ĉu forigi %1$s el la grupo?</string>
+    <!-- %1$s is replaced by a comma-separated list of names -->
+    <string name="ask_remove_from_channel">Ĉu forigi %1$s el la kanalo?</string>
+    <string name="open_url_confirmation">Ĉu vi volas sekvi ĉi tiun ligilon?</string>
+
     <!-- contact list -->
     <string name="contacts_title">Kontaktoj</string>
     <string name="contacts_type_email_above">Enigu retadreson supren</string>
@@ -496,10 +517,20 @@
         <item quantity="one">%d nova mesaĝo</item>
         <item quantity="other">%d novaj mesaĝoj</item>
     </plurals>
+    <plurals name="chat_n_unread_messages">
+        <item quantity="one">%1$d nelegita mesaĝo</item>
+        <item quantity="other">%1$d nelegitaj mesaĝoj</item>
+    </plurals>
+    <!-- The placeholder will be replaced by the name of the recipient in a one-to-one chat. -->
+    <string name="chat_new_one_to_one_hint">Sendi mesaĝon al  %1$s.</string>
+    <!-- consider keeping the term "channel" as in WhatsApp or Telegram -->
+    <string name="chat_new_channel_hint">Kanaloj estas unu-al-plura ilo por dissendi viajn mesaĝojn.</string>
+    <string name="chat_new_group_hint">Aliuloj vidos tiun ĉi grupon nur kiam vi estos sendita la unuan mesaĝon.</string>
     <string name="chat_record_slide_to_cancel">Gliti por nuligi</string>
     <string name="chat_record_explain">Tuŝadi por registri voĉan mesaĝon, maltuŝadi por sendi</string>
     <string name="chat_all_archived">Ĉiuj babiloj enarĥivigitaj.\nPremu \"+\" por komenci novan babilon.</string>
     <string name="chat_share_with_title">Kunhavigi kun</string>
+    <!-- Noun, shown as a placeholder for the message input bar (so if the user has not typed a message yet) -->
     <string name="chat_input_placeholder">Mesaĝo</string>
     <string name="chat_archived_label">Enarĥivigitaj</string>
     <string name="chat_no_messages">Neniu mesaĝo.</string>
@@ -519,6 +550,7 @@
     <string name="group_self_not_in_group">Vi devas esti grupano por fari tion.</string>
     <string name="profile_encryption">Ĉifrado</string>
     <string name="profile_shared_chats">Kunhavigitaj babiloj</string>
+    <!-- deprecated, use string "contact" -->
     <string name="tab_contact">Kontakto</string>
     <string name="tab_group">Grupo</string>
     <string name="tab_gallery">Galerio</string>
@@ -588,6 +620,7 @@
     <string name="pref_other">Alia</string>
     <string name="pref_backup">Savkopio</string>
     <string name="pref_backup_explain">Savkopii babilojn al ekstera memorilo</string>
+    <!-- deprecated, use pref_backup_export_this instead -->
     <string name="pref_backup_export_start_button">Komenci savkopiadon</string>
     <string name="pref_backup_written_to_x">Savkopio sukcese konservita al \"%1$s\".</string>
     <!-- No need to translate "Wallpaper" literally. Chose what is common in your language for a "Wallpaper" or a "Background". Avoid adding the term "image" here, as the "Wallpaper" may also be just a single color. -->
