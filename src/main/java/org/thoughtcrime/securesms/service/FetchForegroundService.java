@@ -36,8 +36,19 @@ public final class FetchForegroundService extends Service {
     try {
       synchronized (SERVICE_LOCK) {
         if (service == null) {
-          service = new Intent(context, FetchForegroundService.class);
-          ContextCompat.startForegroundService(context, service);
+          // Reserve service's own fetch before startForegroundService(),
+          // so that DC_EVENT_ACCOUNTS_BACKGROUND_FETCH_DONE cannot bring
+          // fetchCount to 0 and stop the service before startForeground().
+          // Balanced by the fetch started in onCreate().
+          fetchCount++;
+          try {
+            service = new Intent(context, FetchForegroundService.class);
+            ContextCompat.startForegroundService(context, service);
+          } catch (Exception e) {
+            fetchCount--;
+            service = null;
+            throw e;
+          }
         }
       }
     } catch (Exception e) {
@@ -164,9 +175,6 @@ public final class FetchForegroundService extends Service {
       Util.runOnAnyBackgroundThread(
           () -> {
             Log.i(TAG, "Starting fetch");
-            synchronized (SERVICE_LOCK) {
-              fetchCount++;
-            }
             if (!ApplicationContext.getDcAccounts()
                 .backgroundFetch(300)) { // as startForeground() was called, there is time
               FetchForegroundService.stop(this);
@@ -174,6 +182,15 @@ public final class FetchForegroundService extends Service {
           });
     } catch (Exception e) {
       Log.e(TAG, "Error calling startForeground()", e);
+      // The fetch reserved in start() must run, otherwise fetchCount never gets back to 0
+      // and later start() do nothing.
+      Util.runOnAnyBackgroundThread(
+          () -> {
+            // Without foreground, there is no time for a long fetch.
+            if (!ApplicationContext.getDcAccounts().backgroundFetch(10)) {
+              FetchForegroundService.stop(this);
+            }
+          });
     }
   }
 
