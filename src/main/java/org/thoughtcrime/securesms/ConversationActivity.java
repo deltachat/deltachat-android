@@ -739,6 +739,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     int preselected = dcContext.getChatEphemeralTimer(chatId);
     EphemeralMessagesDialog.show(
         this,
+        dcChat.isSelfTalk(),
         preselected,
         duration -> {
           dcContext.setChatEphemeralTimer(chatId, (int) duration);
