@@ -207,6 +207,7 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected void onCreate(Bundle state, boolean ready) {
     this.context = ApplicationContext.getInstance(getApplicationContext());
     this.rpc = DcHelper.getRpc(context);
+    playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
 
     supportRequestWindowFeature(WindowCompat.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(R.layout.conversation_activity);
@@ -224,7 +225,6 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     initializeResources();
 
     int accountId = DcHelper.getAccounts(this).getSelectedAccount().getAccountId();
-    playbackViewModel = new ViewModelProvider(this).get(AudioPlaybackViewModel.class);
     playbackViewModel.setQueueProvider(new ChatAudioQueueProvider(this, chatId, accountId));
     initializeMediaController();
 
