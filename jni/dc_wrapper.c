@@ -9,6 +9,50 @@
 
 static dc_msg_t* get_dc_msg(JNIEnv *env, jobject obj);
 
+// Cached by JNI_OnLoad() which runs once on loadLibrary(),
+// before other native method can be called.
+static jclass    s_strCls    = NULL;
+static jmethodID s_strCtor   = NULL;
+static jmethodID s_getBytes  = NULL;
+static jstring   s_strEncode = NULL;
+
+
+JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
+{
+    JNIEnv* env = NULL;
+    if ((*vm)->GetEnv(vm, (void**)&env, JNI_VERSION_1_6) != JNI_OK) {
+        return JNI_ERR;
+    }
+
+    jclass strCls = (*env)->FindClass(env, "java/lang/String");
+    if (strCls==NULL) {
+        return JNI_ERR;
+    }
+    s_strCls = (*env)->NewGlobalRef(env, strCls);
+    (*env)->DeleteLocalRef(env, strCls);
+    if (s_strCls==NULL) {
+        return JNI_ERR;
+    }
+
+    s_strCtor  = (*env)->GetMethodID(env, s_strCls, "<init>", "([BLjava/lang/String;)V");
+    s_getBytes = (*env)->GetMethodID(env, s_strCls, "getBytes", "(Ljava/lang/String;)[B");
+    if (s_strCtor==NULL || s_getBytes==NULL) {
+        return JNI_ERR;
+    }
+
+    jstring strEncode = (*env)->NewStringUTF(env, "UTF-8");
+    if (strEncode==NULL) {
+        return JNI_ERR;
+    }
+    s_strEncode = (*env)->NewGlobalRef(env, strEncode);
+    (*env)->DeleteLocalRef(env, strEncode);
+    if (s_strEncode==NULL) {
+        return JNI_ERR;
+    }
+
+    return JNI_VERSION_1_6;
+}
+
 
 // passing a NULL-jstring results in a NULL-ptr - this is needed by functions using eg. NULL for "delete"
 #define CHAR_REF(a) \
@@ -19,17 +63,8 @@ static char* char_ref__(JNIEnv* env, jstring a) {
     }
 
     /* we do not use the JNI functions GetStringUTFChars()/ReleaseStringUTFChars()
-    as they do not work on some older systems for code points >0xffff, eg. emojis.
-    as a workaround, we're calling back to java-land's String.getBytes() which works as expected */
-    static jclass    s_strCls    = NULL;
-    static jmethodID s_getBytes  = NULL;
-    static jclass    s_strEncode = NULL;
-    if (s_getBytes==NULL) {
-        s_strCls    = (*env)->NewGlobalRef(env, (*env)->FindClass(env, "java/lang/String"));
-        s_getBytes  = (*env)->GetMethodID(env, s_strCls, "getBytes", "(Ljava/lang/String;)[B");
-        s_strEncode = (*env)->NewGlobalRef(env, (*env)->NewStringUTF(env, "UTF-8"));
-    }
-
+    as they return Modified UTF-8 as in JNI spec which differs from standard UTF-8 for code points >0xffff,
+    e.g. emojis. Instead, we're calling back to java-land's String.getBytes("UTF-8") which returns standard UTF-8 */
     const jbyteArray stringJbytes = (jbyteArray)(*env)->CallObjectMethod(env, a, s_getBytes, s_strEncode);
     const jsize length = (*env)->GetArrayLength(env, stringJbytes);
     jbyte* pBytes = (*env)->GetByteArrayElements(env, stringJbytes, NULL);
@@ -55,19 +90,11 @@ static jstring jstring_new__(JNIEnv* env, const char* a)
         return (*env)->NewStringUTF(env, "");
     }
 
-    /* for non-empty strings, do not use NewStringUTF() as this is buggy on some Android versions.
-    Instead, create the string using `new String(ByteArray, "UTF-8);` which seems to be programmed more properly.
-    (eg. on KitKat a simple "SMILING FACE WITH SMILING EYES" (U+1F60A, UTF-8 F0 9F 98 8A) will let the app crash, reporting 0xF0 is a bad UTF-8 start,
-    see http://stackoverflow.com/questions/12127817/android-ics-4-0-ndk-newstringutf-is-crashing-down-the-app ) */
-    static jclass    s_strCls    = NULL;
-    static jmethodID s_strCtor   = NULL;
-    static jclass    s_strEncode = NULL;
-    if (s_strCtor==NULL) {
-        s_strCls    = (*env)->NewGlobalRef(env, (*env)->FindClass(env, "java/lang/String"));
-        s_strCtor   = (*env)->GetMethodID(env, s_strCls, "<init>", "([BLjava/lang/String;)V");
-        s_strEncode = (*env)->NewGlobalRef(env, (*env)->NewStringUTF(env, "UTF-8"));
-    }
-
+    /* for non-empty strings, do not use NewStringUTF() as it expects Modified UTF-8 from JNI spec,
+    not standard UTF-8. Instead, create the string using `new String(ByteArray, "UTF-8");` which
+    decodes standard UTF-8 properly. E.g. a simple "SMILING FACE WITH SMILING EYES" (U+1F60A, UTF-8 F0 9F 98 8A)
+    is invalid Modified UTF-8 and lets CheckJNI abort, reporting 0xF0 is an illegal start byte.
+    see https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/types.html#modified_utf_8_strings */
     int a_bytes = strlen(a);
     jbyteArray array = (*env)->NewByteArray(env, a_bytes);
         (*env)->SetByteArrayRegion(env, array, 0, a_bytes, (const jbyte*)a);
