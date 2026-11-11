@@ -448,9 +448,13 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     if (mediaController != null) {
       MediaController.releaseFuture(mediaControllerFuture);
       mediaController = null;
-      playbackViewModel.setMediaController(null);
+      if (playbackViewModel != null) {
+        playbackViewModel.setMediaController(null);
+      }
     }
-    playbackViewModel.setQueueProvider(null);
+    if (playbackViewModel != null) {
+      playbackViewModel.setQueueProvider(null);
+    }
     super.onDestroy();
   }
 
