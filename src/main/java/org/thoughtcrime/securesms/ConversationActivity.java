@@ -1836,8 +1836,9 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
       if (event.getAction() == KeyEvent.ACTION_DOWN) {
-        if (keyCode == KeyEvent.KEYCODE_ENTER) {
-          if (Prefs.isEnterSendsEnabled(ConversationActivity.this)) {
+        if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER) {
+          // Shift+Enter always inserts a line break, even if "Enter Key Sends" is enabled
+          if (Prefs.isEnterSendsEnabled(ConversationActivity.this) && !event.isShiftPressed()) {
             sendButton.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
             sendButton.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_ENTER));
             return true;

@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Enter key inserts a line break in the message input on all keyboards unless "Enter Key Sends" is enabled; Shift+Enter always inserts a line break
 * Fix: avoid crashes for some notifications if the contact is unnamed
 * Fix: don't say "set for everyone" when changing disappearing messages timer in "Saved Messages" chat
 

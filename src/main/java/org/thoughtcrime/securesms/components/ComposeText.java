@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -160,8 +161,21 @@ public class ComposeText extends AppCompatEditText {
     // do not add InputType.TYPE_TEXT_VARIATION_SHORT_MESSAGE
     // as this removes the ability to compose multi-line messages.
 
-    int imeOptions = (getImeOptions() & ~EditorInfo.IME_MASK_ACTION) | EditorInfo.IME_ACTION_SEND;
-    int inputType = getInputType();
+    // Unless "Enter Key Sends" is enabled, do not advertise a "Send" action to the keyboard:
+    // some keyboards ignore IME_FLAG_NO_ENTER_ACTION and replace the Enter key by a Send key,
+    // making it impossible to insert a line break.
+    // In landscape, the fullscreen keyboard hides our send button,
+    // so a separate Send button is still offered there.
+    boolean enterSends = Prefs.isEnterSendsEnabled(getContext());
+    boolean offerSendAction = enterSends || isLandscape();
+    int imeOptions = getImeOptions() & ~EditorInfo.IME_MASK_ACTION;
+    imeOptions |= offerSendAction ? EditorInfo.IME_ACTION_SEND : EditorInfo.IME_ACTION_NONE;
+    if (enterSends) {
+      imeOptions &= ~EditorInfo.IME_FLAG_NO_ENTER_ACTION;
+    } else {
+      imeOptions |= EditorInfo.IME_FLAG_NO_ENTER_ACTION;
+    }
+    int inputType = getInputType() | InputType.TYPE_TEXT_FLAG_MULTI_LINE;
 
     if (isLandscape())
       setImeActionLabel(getContext().getString(R.string.menu_send), EditorInfo.IME_ACTION_SEND);
