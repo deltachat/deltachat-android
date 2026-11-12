@@ -201,6 +201,11 @@ public class CallViewModel extends AndroidViewModel {
       return;
     }
 
+    if (startOutgoingCallObserver != null) {
+      Log.w(TAG, "Outgoing call start already pending, not starting duplicate");
+      return;
+    }
+
     callCoordinator.startMediaCapture();
 
     // Create one-time observer

@@ -14,6 +14,7 @@ final class CallSession {
   String offerSdp;
   boolean answerInProgress;
   boolean hasNotifiedBackend;
+  boolean outgoingStarted;
   volatile String cachedIceServersJson;
 
   CallControlScope callControlScope;
