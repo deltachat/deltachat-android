@@ -122,6 +122,7 @@ import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
 import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.scribbles.ScribbleActivity;
 import org.thoughtcrime.securesms.service.AudioPlaybackService;
+import org.thoughtcrime.securesms.util.BlankLineUtil;
 import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.Prefs;
@@ -1288,9 +1289,14 @@ public class ConversationActivity extends PassphraseRequiredActionBarActivity
   protected static final int ACTION_SAVE_DRAFT = 2;
 
   protected ListenableFuture<Integer> processComposeControls(int action) {
+    String body = composeText.getTextTrimmed();
+    if (action == ACTION_SEND_OUT) {
+      // keep runs of empty lines; drafts keep the raw text
+      body = BlankLineUtil.preserveBlankLines(body);
+    }
     return processComposeControls(
         action,
-        composeText.getTextTrimmed(),
+        body,
         attachmentManager.isAttachmentPresent() ? attachmentManager.buildSlideDeck() : null);
   }
 
