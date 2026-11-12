@@ -1,19 +1,59 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        // TGDELTA: this machine's network sinkholes dl.google.com (DNS returns
-        // 198.18.0.81), so the Google Maven repo is unreachable. The Aliyun
-        // mirror serves the same artifacts. Keep google() as a fallback for
-        // machines where the real host works.
-        maven {
-            name = 'AliyunGoogle'
-            url = 'https://maven.aliyun.com/repository/google'
+        // Use standard repos on CI (google(), mavenCentral()), mirrors only on local machine
+        // where dl.google.com is sinkholed. Pass -PuseStandardRepos=true on CI.
+        def useStandardRepos = rootProject.hasProperty('useStandardRepos') && rootProject.useStandardRepos == 'true'
+        if (useStandardRepos) {
+            google()
+            mavenCentral()
+        } else {
+            // TGDELTA: this machine's network sinkholes dl.google.com (DNS returns
+            // 198.18.0.81), so the Google Maven repo is unreachable. These mirrors
+            // serve the same artifacts. google() stays as a fallback for machines
+            // where the real host resolves.
+            maven {
+                name = 'AliyunGoogle'
+                url = 'https://maven.aliyun.com/repository/google'
+            }
+            maven {
+                name = 'HuaweiMirror'
+                url = 'https://mirrors.huaweicloud.com/repository/maven'
+            }
+            maven {
+                name = 'TencentMirror'
+                url = 'https://mirrors.cloud.tencent.com/nexus/repository/maven-public'
+            }
+            google()
+            mavenCentral()
         }
-        google()
-        mavenCentral()
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            // TGDELTA: the plugin *marker* artifact for google-services 4.5.0
+            // returns 502 on every reachable mirror (the real jar is fine).
+            // A marker is only a POM that redirects to the real module, so
+            // point the plugin id straight at that module instead.
+            if (requested.id.id == 'com.google.gms.google-services') {
+                useModule('com.google.gms:google-services:4.5.0')
+            }
+        }
     }
 }
 
 rootProject.name = 'DeltaCat'
+
+// TGDELTA: :tgui vendors a forked androidx.recyclerview (39 files) because
+// Telegram's UI calls fork-only overloads. Delta Chat's own UI uses the same
+// package names, so the real artifact must not also be on the classpath --
+// otherwise every class is "defined multiple times" and R8 fails. The
+// exclusion lives in build.gradle (root + :tgui), not here: settings scripts
+// have no `configurations`.
+//
+// Removing the fork is not an option: 1,916 errors (ChatListItemAnimator alone
+// accounts for 302). The fork is patched with the AndroidX 1.2 aliases Delta
+// Chat needs; see tgui/src/main/java/androidx/recyclerview/widget/
+// RecyclerView.java and DefaultItemAnimator.java.
 
 include ':tgui'
