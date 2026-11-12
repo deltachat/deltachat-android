@@ -2,7 +2,6 @@ package org.thoughtcrime.securesms;
 
 import static org.thoughtcrime.securesms.ConversationActivity.CHAT_ID_EXTRA;
 import static org.thoughtcrime.securesms.ConversationActivity.FROM_ARCHIVED_CHATS_EXTRA;
-import static org.thoughtcrime.securesms.util.ShareUtil.acquireRelayMessageContent;
 import static org.thoughtcrime.securesms.util.ShareUtil.isRelayingMessageContent;
 import static org.thoughtcrime.securesms.util.ShareUtil.isSharing;
 
@@ -94,17 +93,15 @@ public class ConversationListArchiveActivity extends PassphraseRequiredActionBar
 
   @Override
   public void onCreateConversation(int chatId) {
+    if (isRelayingMessageContent(this)) {
+      // when relaying, return the chat to be added to the selection of ConversationListActivity
+      setResult(RESULT_OK, new Intent().putExtra(CHAT_ID_EXTRA, chatId));
+      finish();
+      return;
+    }
     Intent intent = new Intent(this, ConversationActivity.class);
     intent.putExtra(CHAT_ID_EXTRA, chatId);
     intent.putExtra(FROM_ARCHIVED_CHATS_EXTRA, true);
-    if (isRelayingMessageContent(this)) {
-      acquireRelayMessageContent(this, intent);
-
-      // Just finish instead of updating the title and so on. This is not user-visible
-      // because the ConversationActivity will restart the ConversationListArchiveActivity
-      // after the user left.
-      finish();
-    }
     startActivity(intent);
 
     overridePendingTransition(R.anim.slide_from_right, R.anim.fade_scale_out);

@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* When sharing or forwarding, tap chats to select one or more recipients; "Select Contacts" adds contacts without an existing chat
 * Fix: avoid crashes for some notifications if the contact is unnamed
 * Fix: don't say "set for everyone" when changing disappearing messages timer in "Saved Messages" chat
 

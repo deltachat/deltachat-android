@@ -26,6 +26,10 @@ public abstract class BaseConversationListAdapter<T extends RecyclerView.ViewHol
     }
   }
 
+  public boolean isBatchMode() {
+    return batchMode;
+  }
+
   public Set<Long> getBatchSelections() {
     return batchSet;
   }

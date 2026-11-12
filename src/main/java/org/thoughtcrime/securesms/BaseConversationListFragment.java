@@ -13,11 +13,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +39,8 @@ import com.b44t.messenger.DcContext;
 import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import org.thoughtcrime.securesms.components.registration.PulsingFloatingActionButton;
 import org.thoughtcrime.securesms.connect.DcHelper;
@@ -50,14 +56,67 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   protected ActionMode actionMode;
   protected PulsingFloatingActionButton fab;
 
+  // When relaying (sharing/forwarding), the list is always in selection mode: tapping a chat
+  // selects it as recipient. Contacts without an existing chat can be selected as well; chats for
+  // them are only created when the user hits "Send".
+  private static final String STATE_RELAY_CHAT_IDS = "relay_chat_ids";
+  private static final String STATE_RELAY_CONTACT_IDS = "relay_contact_ids";
+  private final Set<Integer> pendingContactIds = new LinkedHashSet<>();
+  private @Nullable Bundle savedRelayState;
+  private ActivityResultLauncher<Intent> selectContactsLauncher;
+
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    savedRelayState = savedInstanceState;
+    selectContactsLauncher =
+        registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+              if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                Intent data = result.getData();
+                handleContactsSelected(
+                    data.getIntegerArrayListExtra(ContactMultiSelectionActivity.CONTACTS_EXTRA),
+                    data.getIntegerArrayListExtra(
+                        ContactMultiSelectionActivity.DESELECTED_CONTACTS_EXTRA));
+              }
+            });
+  }
+
+  @Override
+  public void onSaveInstanceState(@NonNull Bundle outState) {
+    super.onSaveInstanceState(outState);
+    BaseConversationListAdapter adapter = getListAdapter();
+    if (adapter != null && isRelaySelecting()) {
+      final Set<Long> selectedChats = adapter.getBatchSelections();
+      long[] chatIds = new long[selectedChats.size()];
+      int i = 0;
+      for (long chatId : selectedChats) chatIds[i++] = chatId;
+      outState.putLongArray(STATE_RELAY_CHAT_IDS, chatIds);
+      outState.putIntegerArrayList(STATE_RELAY_CONTACT_IDS, new ArrayList<>(pendingContactIds));
+    }
+  }
+
   protected abstract boolean offerToArchive();
 
   protected abstract void setFabVisibility(boolean isActionMode);
 
   protected abstract BaseConversationListAdapter getListAdapter();
 
+  /**
+   * Whether this list is used to select recipients when relaying. Lists that pick a single chat for
+   * another list, as the archive, return false.
+   */
+  protected boolean isRelaySelecting() {
+    return isRelayingMessageContent(getActivity());
+  }
+
   protected void onItemClick(long chatId) {
-    if (actionMode == null) {
+    if (isRelaySelecting()) {
+      getListAdapter().toggleThreadInBatchSet(chatId);
+      getListAdapter().notifyDataSetChanged();
+      onRelaySelectionChanged();
+    } else if (actionMode == null) {
       ((ConversationSelectedListener) requireActivity()).onCreateConversation((int) chatId);
     } else {
       BaseConversationListAdapter adapter = getListAdapter();
@@ -74,7 +133,206 @@ public abstract class BaseConversationListFragment extends Fragment implements A
     }
   }
 
+  /**
+   * Turns the selection mode used for relaying on or off, depending on whether the activity is
+   * relaying. Call this once the list adapter is set and whenever the activity's intent changes.
+   */
+  protected void syncRelaySelection() {
+    BaseConversationListAdapter adapter = getListAdapter();
+    if (adapter == null) return;
+    boolean relaying = isRelaySelecting();
+    if (relaying && actionMode != null) {
+      actionMode.finish();
+    }
+    if (actionMode == null && adapter.isBatchMode() != relaying) {
+      adapter.initializeBatchMode(relaying);
+      pendingContactIds.clear();
+      if (relaying && savedRelayState != null) {
+        long[] chatIds = savedRelayState.getLongArray(STATE_RELAY_CHAT_IDS);
+        if (chatIds != null) {
+          for (long chatId : chatIds) adapter.getBatchSelections().add(chatId);
+        }
+        List<Integer> contactIds = savedRelayState.getIntegerArrayList(STATE_RELAY_CONTACT_IDS);
+        if (contactIds != null) pendingContactIds.addAll(contactIds);
+      }
+      if (!relaying) updateFab(false);
+    }
+    savedRelayState = null;
+    if (relaying) onRelaySelectionChanged();
+    initializeFabClickListener(actionMode != null);
+  }
+
+  public int getRelaySelectionCount() {
+    BaseConversationListAdapter adapter = getListAdapter();
+    if (adapter == null) return 0;
+    return adapter.getBatchSelections().size() + pendingContactIds.size();
+  }
+
+  /** Forgets all selected recipients, eg. because the profile was switched. */
+  public void clearRelaySelection() {
+    if (getListAdapter() == null || !isRelaySelecting()) return;
+    getListAdapter().getBatchSelections().clear();
+    pendingContactIds.clear();
+    getListAdapter().notifyDataSetChanged();
+    onRelaySelectionChanged();
+  }
+
+  /**
+   * Selects or deselects a recipient picked outside of this list, eg. via search or the archive. If
+   * there is no chat with the contact yet, the chat is only created when the user hits "Send".
+   */
+  public void toggleRelayRecipient(int chatId, int contactId) {
+    if (getListAdapter() == null || !isRelaySelecting()) return;
+    if (chatId == 0) {
+      chatId = DcHelper.getContext(requireContext()).getChatIdByContactId(contactId);
+    }
+    if (chatId != 0) {
+      getListAdapter().toggleThreadInBatchSet(chatId);
+    } else if (!pendingContactIds.remove(contactId)) {
+      pendingContactIds.add(contactId);
+    }
+    getListAdapter().notifyDataSetChanged();
+    onRelaySelectionChanged();
+  }
+
+  private void addRelayContactToSelection(int contactId) {
+    int chatId = DcHelper.getContext(requireContext()).getChatIdByContactId(contactId);
+    if (chatId != 0) {
+      getListAdapter().getBatchSelections().add((long) chatId);
+    } else {
+      pendingContactIds.add(contactId);
+    }
+  }
+
+  private void onRelaySelectionChanged() {
+    updateFab(getRelaySelectionCount() > 0);
+    Activity activity = getActivity();
+    if (activity instanceof ConversationListActivity) {
+      ((ConversationListActivity) activity).refreshTitle();
+    }
+  }
+
+  private void updateFab(boolean showSend) {
+    Context context = getContext();
+    if (context != null) {
+      fab.setImageDrawable(
+          ContextCompat.getDrawable(
+              context,
+              showSend ? R.drawable.ic_send_sms_white_24dp : R.drawable.ic_add_white_24dp));
+    }
+    setFabVisibility(showSend);
+  }
+
+  public void handleSelectContacts() {
+    // preselect the contacts of selected 1:1 chats as well, so that they can be deselected here
+    DcContext dcContext = DcHelper.getContext(requireContext());
+    ArrayList<Integer> preselected = new ArrayList<>(pendingContactIds);
+    final Set<Long> selectedChats = getListAdapter().getBatchSelections();
+    for (long chatId : selectedChats) {
+      DcChat dcChat = dcContext.getChat((int) chatId);
+      if (!dcChat.isMultiUser() && !dcChat.isSelfTalk() && !dcChat.isDeviceTalk()) {
+        for (int contactId : dcContext.getChatContacts((int) chatId)) {
+          preselected.add(contactId);
+        }
+      }
+    }
+    Intent intent = new Intent(getActivity(), ContactMultiSelectionActivity.class);
+    intent.putExtra(ContactSelectionListFragment.ALLOW_CREATION, false);
+    intent.putIntegerArrayListExtra(ContactSelectionListFragment.PRESELECTED_CONTACTS, preselected);
+    selectContactsLauncher.launch(intent);
+  }
+
+  private void handleContactsSelected(
+      @Nullable List<Integer> contactIds, @Nullable List<Integer> deselectedContactIds) {
+    if (getListAdapter() == null || !isRelaySelecting() || contactIds == null) return;
+    DcContext dcContext = DcHelper.getContext(requireContext());
+    if (deselectedContactIds != null) {
+      for (int contactId : deselectedContactIds) {
+        pendingContactIds.remove(contactId);
+        int chatId = dcContext.getChatIdByContactId(contactId);
+        if (chatId != 0) getListAdapter().getBatchSelections().remove((long) chatId);
+      }
+    }
+    for (int contactId : contactIds) {
+      addRelayContactToSelection(contactId);
+    }
+    getListAdapter().notifyDataSetChanged();
+    onRelaySelectionChanged();
+  }
+
+  /** Creates chats for the selected contacts that do not have one yet and returns all chat ids. */
+  private Long[] collectRelayingChatIds() {
+    DcContext dcContext = DcHelper.getContext(requireContext());
+    Set<Long> chatIds = new LinkedHashSet<>(getListAdapter().getBatchSelections());
+    for (int contactId : pendingContactIds) {
+      int chatId = dcContext.createChatByContactId(contactId);
+      if (chatId != 0) {
+        chatIds.add((long) chatId);
+        getListAdapter().getBatchSelections().add((long) chatId);
+      }
+    }
+    pendingContactIds.clear();
+    return chatIds.toArray(new Long[0]);
+  }
+
+  private void relayToSelection() {
+    final int recipientCount = getRelaySelectionCount();
+    if (recipientCount == 1) {
+      // a single recipient: open the chat as when tapping a chat in the normal list,
+      // so the user can still add a caption or edit the text before sending
+      Long[] chatIds = collectRelayingChatIds();
+      if (chatIds.length == 1) {
+        ((ConversationSelectedListener) requireActivity())
+            .onCreateConversation(chatIds[0].intValue());
+      }
+      return;
+    }
+
+    ArrayList<Uri> uris = getSharedUris(getActivity());
+    String message;
+    if (isForwarding(getActivity())) {
+      message =
+          String.format(Util.getLocale(), getString(R.string.ask_forward_multiple), recipientCount);
+    } else if (!uris.isEmpty()) {
+      message =
+          String.format(
+              Util.getLocale(),
+              getString(R.string.ask_send_files_to_selected_chats),
+              uris.size(),
+              recipientCount);
+    } else {
+      message =
+          String.format(
+              Util.getLocale(),
+              getString(R.string.share_text_multiple_chats),
+              recipientCount,
+              getSharedText(getActivity()));
+    }
+
+    Context context = getContext();
+    if (context != null) {
+      new AlertDialog.Builder(context)
+          .setMessage(message)
+          .setCancelable(false)
+          .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
+          .setPositiveButton(
+              R.string.menu_send,
+              (dialog, which) -> {
+                if (SendRelayedMessageUtil.immediatelyRelay(
+                    getActivity(), collectRelayingChatIds())) {
+                  getActivity().finish();
+                }
+              })
+          .show();
+    }
+  }
+
   public void onItemLongClick(long chatId) {
+    if (isRelayingMessageContent(getActivity())) {
+      // no batch actions as delete or pin when relaying
+      onItemClick(chatId);
+      return;
+    }
     actionMode = ((AppCompatActivity) requireActivity()).startSupportActionMode(this);
 
     if (actionMode != null) {
@@ -91,58 +349,15 @@ public abstract class BaseConversationListFragment extends Fragment implements A
   protected void initializeFabClickListener(boolean isActionMode) {
     Intent intent = new Intent(getActivity(), NewConversationActivity.class);
     if (isRelayingMessageContent(getActivity())) {
-      if (isActionMode) {
-        fab.setOnClickListener(
-            v -> {
-              final Set<Long> selectedChats = getListAdapter().getBatchSelections();
-              ArrayList<Uri> uris = getSharedUris(getActivity());
-              String message;
-              if (isForwarding(getActivity())) {
-                message =
-                    String.format(
-                        Util.getLocale(),
-                        getString(R.string.ask_forward_multiple),
-                        selectedChats.size());
-              } else if (!uris.isEmpty()) {
-                message =
-                    String.format(
-                        Util.getLocale(),
-                        getString(R.string.ask_send_files_to_selected_chats),
-                        uris.size(),
-                        selectedChats.size());
-              } else {
-                message =
-                    String.format(
-                        Util.getLocale(),
-                        getString(R.string.share_text_multiple_chats),
-                        selectedChats.size(),
-                        getSharedText(getActivity()));
-              }
-
-              Context context = getContext();
-              if (context != null) {
-                new AlertDialog.Builder(context)
-                    .setMessage(message)
-                    .setCancelable(false)
-                    .setNegativeButton(android.R.string.cancel, ((dialog, which) -> {}))
-                    .setPositiveButton(
-                        R.string.menu_send,
-                        (dialog, which) -> {
-                          if (SendRelayedMessageUtil.immediatelyRelay(
-                              getActivity(),
-                              selectedChats.toArray(new Long[selectedChats.size()]))) {
-                            actionMode.finish();
-                            actionMode = null;
-                            getActivity().finish();
-                          }
-                        })
-                    .show();
-              }
-            });
-      } else {
-        acquireRelayMessageContent(getActivity(), intent);
-        fab.setOnClickListener(v -> requireActivity().startActivity(intent));
-      }
+      acquireRelayMessageContent(getActivity(), intent);
+      fab.setOnClickListener(
+          v -> {
+            if (getRelaySelectionCount() > 0) {
+              relayToSelection();
+            } else {
+              requireActivity().startActivity(intent);
+            }
+          });
     } else {
       fab.setOnClickListener(v -> startActivity(intent));
     }
@@ -485,18 +700,9 @@ public abstract class BaseConversationListFragment extends Fragment implements A
 
   @Override
   public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-    if (isRelayingMessageContent(getActivity())) {
-      Context context = getContext();
-      if (context != null) {
-        fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_send_sms_white_24dp));
-      }
-      setFabVisibility(true);
-      initializeFabClickListener(true);
-    } else {
-
-      MenuInflater inflater = requireActivity().getMenuInflater();
-      inflater.inflate(R.menu.conversation_list, menu);
-    }
+    // when relaying, the list is always in selection mode, see syncRelaySelection()
+    MenuInflater inflater = requireActivity().getMenuInflater();
+    inflater.inflate(R.menu.conversation_list, menu);
 
     mode.setTitle("1");
 

@@ -147,16 +147,36 @@ public class SearchFragment extends BaseConversationListFragment
 
   @Override
   public void onConversationClicked(@NonNull DcChatlist.Item chatlistItem) {
-    onItemClick(chatlistItem.chatId);
+    if (isRelayingMessageContent(getActivity())) {
+      selectRelayRecipient(chatlistItem.chatId, 0);
+    } else {
+      onItemClick(chatlistItem.chatId);
+    }
   }
 
   @Override
   public void onConversationLongClicked(@NonNull DcChatlist.Item chatlistItem) {
-    onItemLongClick(chatlistItem.chatId);
+    if (isRelayingMessageContent(getActivity())) {
+      selectRelayRecipient(chatlistItem.chatId, 0);
+    } else {
+      onItemLongClick(chatlistItem.chatId);
+    }
+  }
+
+  /** When relaying, search results are added to the selection of the chat list. */
+  private void selectRelayRecipient(int chatId, int contactId) {
+    ConversationListActivity conversationList = (ConversationListActivity) getActivity();
+    if (conversationList != null) {
+      conversationList.selectRelayRecipientFromSearch(chatId, contactId);
+    }
   }
 
   @Override
   public void onContactClicked(@NonNull DcContact contact) {
+    if (isRelayingMessageContent(getActivity())) {
+      selectRelayRecipient(0, contact.getId());
+      return;
+    }
     if (actionMode != null) {
       return;
     }

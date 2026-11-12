@@ -130,6 +130,7 @@ public class ConversationListFragment extends BaseConversationListFragment
     setHasOptionsMenu(true);
     initializeFabClickListener(false);
     list.setAdapter(new ConversationListAdapter(requireActivity(), GlideApp.with(this), this));
+    syncRelaySelection();
     loadChatlistAsync();
     chatlistJustLoaded = true;
   }
@@ -172,12 +173,20 @@ public class ConversationListFragment extends BaseConversationListFragment
   }
 
   public void onNewIntent() {
-    initializeFabClickListener(actionMode != null);
+    // a new share or forward starts with an empty selection
+    clearRelaySelection();
+    syncRelaySelection();
+  }
+
+  @Override
+  protected boolean isRelaySelecting() {
+    // when relaying, the archive just picks a chat for the selection of the main list
+    return !archive && super.isRelaySelecting();
   }
 
   @Override
   public BaseConversationListAdapter getListAdapter() {
-    return (BaseConversationListAdapter) list.getAdapter();
+    return list != null ? (BaseConversationListAdapter) list.getAdapter() : null;
   }
 
   @SuppressLint({"StaticFieldLeak", "NewApi"})
