@@ -4,18 +4,34 @@ plugins {
     id 'com.diffplug.spotless' version '8.10.0'
 }
 
+// Use standard repos on CI (google(), mavenCentral()), mirrors only on local machine
+// where dl.google.com is sinkholed. Pass -PuseStandardRepos=true on CI.
+def useStandardRepos = project.hasProperty('useStandardRepos') && project.useStandardRepos == 'true'
 repositories {
-    // TGDELTA: dl.google.com is sinkholed on this machine; use the mirror.
-    maven {
-        name = 'AliyunGoogle'
-        url = 'https://maven.aliyun.com/repository/google'
+    if (useStandardRepos) {
+        google()
+        mavenCentral()
+    } else {
+        maven {
+            name = 'AliyunGoogle'
+            url = 'https://maven.aliyun.com/repository/google'
+        }
+        google()
+        mavenCentral()
     }
-    google()
-    mavenCentral()
     maven {
         url "https://www.jitpack.io"
         name 'JitPack Github wrapper'
     }
+}
+
+// TGDELTA: :tgui vendors a forked androidx.recyclerview (Telegram's UI calls
+// fork-only overloads). Delta Chat's UI uses the same package names, so the
+// real artifact (pulled transitively by appcompat/material) must be excluded
+// everywhere, or R8 fails with "defined multiple times". The fork is patched
+// with the AndroidX 1.2 aliases Delta Chat needs.
+configurations.configureEach {
+    exclude group: 'androidx.recyclerview', module: 'recyclerview'
 }
 
 android {
@@ -195,6 +211,10 @@ spotless {
 }
 
 dependencies {
+    // TGDELTA: the vendored Telegram UI library. Not used by any screen yet --
+    // linking it now proves it can live in the app build.
+    implementation project(':tgui')
+
     def media3_version = "1.8.0" // up. requires minSdkVersion>=23
     def lifecycle_version = "2.9.4" // up. requires minSdkVersion>=23
     def glide_version = "5.0.5" // up. requires minSdkVersion>=23

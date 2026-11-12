@@ -2,6 +2,36 @@ plugins {
     id 'com.android.library'
 }
 
+// TGDELTA: Gradle 9 does not inherit the root project's `repositories` block
+// into subprojects, so declare them here.
+// Use standard repos on CI (google(), mavenCentral()), mirrors only on local machine
+// where dl.google.com is sinkholed. Pass -PuseStandardRepos=true on CI.
+def useStandardRepos = project.hasProperty('useStandardRepos') && project.useStandardRepos == 'true'
+repositories {
+    if (useStandardRepos) {
+        google()
+        mavenCentral()
+    } else {
+        maven {
+            name = 'AliyunGoogle'
+            url = 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            name = 'HuaweiMirror'
+            url = 'https://mirrors.huaweicloud.com/repository/maven'
+        }
+        google()
+        mavenCentral()
+    }
+}
+
+// TGDELTA: this module vendors a forked androidx.recyclerview, so the real
+// artifact must not be on any classpath here (appcompat pulls it in
+// transitively). See the note above the dependencies block.
+configurations.configureEach {
+    exclude group: 'androidx.recyclerview', module: 'recyclerview'
+}
+
 android {
     // Must match the donor's namespace so that the generated R class is
     // org.telegram.messenger.R, which is what all vendored code imports.
@@ -13,11 +43,11 @@ android {
     ndkVersion "27.0.12077973"
 
     defaultConfig {
-        // TGDELTA: 23 rather than 21. Telegram's tree uses
-        // android.hardware.fingerprint (API 23) and androidx.biometric, and the
-        // AndroidManifest merge needs the matching consumer minSdk. Delta Chat
-        // itself stays at 21; this module only needs 23 to compile.
-        minSdkVersion 23
+        // Must match the app module (21) so the manifest merge succeeds.
+        // android.hardware.fingerprint is API 23, but that is a *runtime* guard
+        // in the donor code (@TargetApi(23)) and compiles fine against
+        // compileSdk 36 regardless of minSdk.
+        minSdkVersion 21
         targetSdkVersion 37
     }
 
@@ -53,7 +83,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.1'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
-    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    // NOTE: androidx.recyclerview is NOT declared here. Telegram vendors a
+    // forked copy in src/main/java/androidx/recyclerview/widget (39 files).
+    // Declaring the real artifact too would put duplicate classes on the
+    // classpath, and the fork must win because Telegram's UI calls fork-only
+    // overloads (e.g. DefaultItemAnimator.animateRemove(holder, info)).
+    // The fork is patched with the two AndroidX 1.2 aliases Delta Chat needs
+    // (getBindingAdapterPosition / getAbsoluteAdapterPosition).
     implementation 'androidx.emoji2:emoji2-emojipicker:1.5.0'
     implementation 'androidx.media3:media3-exoplayer:1.8.0'
     implementation 'androidx.media3:media3-ui:1.8.0'
@@ -138,4 +174,12 @@ dependencies {
     compileOnly 'com.google.android.recaptcha:recaptcha:18.6.1'
     compileOnly 'com.neovisionaries:nv-websocket-client:2.14'
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+    // TGDELTA: the app module already ships im.conversations.webrtc:webrtc-android
+    // (libwebrtc.jar, 163 org.webrtc classes). The vendored fork in
+    // src/main/java/org/webrtc was reduced to its 10 fork-only classes
+    // (voiceengine/*, TextureViewRenderer, OrientationHelper, Dav1dDecoder,
+    // LegacyAudioDeviceModule); the 163 duplicates were deleted to stop R8
+    // failing with "defined multiple times". compileOnly because the runtime
+    // classes come from the app module's own implementation dependency.
+    compileOnly 'im.conversations.webrtc:webrtc-android:129.0.0'
 }
