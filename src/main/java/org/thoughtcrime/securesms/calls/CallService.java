@@ -267,22 +267,22 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
   // Call Control
 
-  public void startOutgoingCall() {
+  public boolean startOutgoingCall() {
     Log.d(TAG, "startOutgoingCall");
 
     if (webRTCClient == null) {
       Log.e(TAG, "Cannot start call, not initialized");
       callCoordinator.reportError("Service not ready");
-      return;
+      return false;
     }
 
     if (!webRTCClient.hasLocalMediaStream()) {
       Log.e(TAG, "Cannot start call, media not ready");
       callCoordinator.reportError("Media not ready");
-      return;
+      return false;
     }
 
-    webRTCClient.startOutgoingCall();
+    return webRTCClient.startOutgoingCall();
   }
 
   public void answerIncomingCall() {
@@ -296,13 +296,14 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
       return;
     }
 
-    if (webRTCClient == null) {
+    WebRTCClient client = webRTCClient;
+    if (client == null) {
       Log.e(TAG, "Cannot answer call, not initialized");
       callCoordinator.reportError("Service not ready");
       return;
     }
 
-    if (!webRTCClient.hasLocalMediaStream()) {
+    if (!client.hasLocalMediaStream()) {
       Log.e(TAG, "Cannot answer, media not ready");
       callCoordinator.reportError("Media not ready");
       return;
@@ -310,7 +311,7 @@ public class CallService extends Service implements WebRTCClient.Callbacks {
 
     callCoordinator.clearPendingOfferSdp();
 
-    webRTCClient.acceptIncomingCall(offerSdp);
+    client.acceptIncomingCall(offerSdp);
   }
 
   public void handleAnswerSdp(String answerSdp) {

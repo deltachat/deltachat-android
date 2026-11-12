@@ -297,6 +297,24 @@ public class WebRTCClient {
     Log.d(TAG, "PeerConnection created");
   }
 
+  /**
+   * A WebRTCClient owns at most one PeerConnection. Must be called while holding the lock, so a
+   * PeerConnection can never be created after call ended or factory is disposed.
+   *
+   * <p>Do not take the lock from WebRTC observer callbacks.
+   */
+  private boolean canCreatePeerConnection(String caller) {
+    if (isEnded.get() || peerConnectionFactory == null) {
+      Log.w(TAG, caller + ": call already ended, ignoring");
+      return false;
+    }
+    if (peerConnection != null) {
+      Log.w(TAG, caller + ": PeerConnection already exists, ignoring");
+      return false;
+    }
+    return true;
+  }
+
   private class PeerConnectionObserver implements PeerConnection.Observer {
     @Override
     public void onSignalingChange(PeerConnection.SignalingState state) {
@@ -666,10 +684,14 @@ public class WebRTCClient {
   // Outgoing Call
 
   /** Start outgoing call */
-  public void startOutgoingCall() {
+  public synchronized boolean startOutgoingCall() {
+    if (!canCreatePeerConnection("startOutgoingCall")) {
+      return false;
+    }
+
     if (localStream == null) {
       mainHandler.post(() -> callbacks.onError("Local media stream not set"));
-      return;
+      return false;
     }
 
     Log.d(TAG, "Starting outgoing call");
@@ -678,6 +700,9 @@ public class WebRTCClient {
         () -> callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
 
     createPeerConnection();
+    if (peerConnection == null) {
+      return false;
+    }
 
     for (AudioTrack track : localStream.audioTracks) {
       RtpSender sender =
@@ -713,6 +738,7 @@ public class WebRTCClient {
           public void onSetFailure(String error) {}
         },
         new MediaConstraints());
+    return true;
   }
 
   private void onOfferCreated(SessionDescription offerSdp) {
@@ -805,7 +831,11 @@ public class WebRTCClient {
   // Incoming Call
 
   /** Accept incoming call */
-  public void acceptIncomingCall(String offerSdp) {
+  public synchronized void acceptIncomingCall(String offerSdp) {
+    if (!canCreatePeerConnection("acceptIncomingCall")) {
+      return;
+    }
+
     if (localStream == null) {
       mainHandler.post(() -> callbacks.onError("Local media stream not set"));
       return;
@@ -817,6 +847,9 @@ public class WebRTCClient {
         () -> callbacks.onConnectionStateChanged(PeerConnection.PeerConnectionState.CONNECTING));
 
     createPeerConnection();
+    if (peerConnection == null) {
+      return;
+    }
 
     SessionDescription remoteSdp = new SessionDescription(SessionDescription.Type.OFFER, offerSdp);
 
@@ -1083,7 +1116,7 @@ public class WebRTCClient {
     remoteAudioTrack = null;
   }
 
-  public void dispose() {
+  public synchronized void dispose() {
     endCall();
 
     if (peerConnectionFactory != null) {

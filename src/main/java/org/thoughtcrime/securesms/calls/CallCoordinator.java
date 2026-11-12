@@ -728,8 +728,19 @@ public class CallCoordinator implements DcEventCenter.DcEventDelegate {
 
   public synchronized void startOutgoingCall() {
     Log.d(TAG, "startOutgoingCall");
+
+    if (activeSession == null || activeSession.isIncoming) {
+      Log.w(TAG, "No active outgoing call, ignoring");
+      return;
+    }
+
+    if (activeSession.outgoingStarted) {
+      Log.w(TAG, "Outgoing call already started, ignoring duplicate");
+      return;
+    }
+
     if (callService != null) {
-      callService.startOutgoingCall();
+      activeSession.outgoingStarted = callService.startOutgoingCall();
     }
   }
 
