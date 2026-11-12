@@ -56,7 +56,11 @@ public class EphemeralMessagesDialog {
     container.check(container.getChildAt(preselected).getId());
 
     TextView messageView = dialogView.findViewById(R.id.description);
-    messageView.setText(context.getString(R.string.ephemeral_messages_hint));
+    if (isSelfTalk) {
+      messageView.setVisibility(View.GONE);
+    } else {
+      messageView.setText(context.getString(R.string.ephemeral_messages_hint));
+    }
 
     AlertDialog.Builder builder =
         new AlertDialog.Builder(context)
