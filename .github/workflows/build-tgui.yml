@@ -125,16 +125,16 @@ jobs:
           export PATH="${PATH}:${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/linux-x86_64/bin/"
           scripts/install-toolchains.sh && scripts/ndk-make.sh arm64-v8a
 
-      - name: Build APK
-        run: ./gradlew --no-daemon -PABI_FILTER=arm64-v8a assembleGplayDebug -Dhttps.proxyHost= -Dhttps.proxyPort=
+      - name: Build APK (foss flavor, no google-services)
+        run: ./gradlew --no-daemon -PABI_FILTER=arm64-v8a assembleFossDebug -Dhttps.proxyHost= -Dhttps.proxyPort=
 
       - name: Upload APK
         id: upload
-        if: github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: app-preview.apk
-          path: 'build/outputs/apk/gplay/debug/*.apk'
+          path: 'build/outputs/apk/foss/debug/*.apk'
 
       - name: Add artifact links to PR
         if: github.event.pull_request.head.repo.full_name == github.repository
