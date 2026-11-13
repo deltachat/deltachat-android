@@ -29,9 +29,16 @@ repositories {
 // fork-only overloads). Delta Chat's UI uses the same package names, so the
 // real artifact (pulled transitively by appcompat/material) must be excluded
 // everywhere, or R8 fails with "defined multiple times". The fork is patched
-// with the AndroidX 1.2 aliases Delta Chat needs.
+// with the AndroidX 1.2 aliases Delta Chat needs (getBindingAdapterPosition).
+// Exclude at implementation level only; add compileOnly for API access.
 configurations.configureEach {
     exclude group: 'androidx.recyclerview', module: 'recyclerview'
+}
+
+// compileOnly for RecyclerView API (getBindingAdapterPosition added in 1.2.0)
+// The forked impl from :tgui wins at runtime.
+dependencies {
+    compileOnly 'androidx.recyclerview:recyclerview:1.2.0'
 }
 
 android {
