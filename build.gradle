@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application' version '9.3.2'
-    id 'com.google.gms.google-services' version '4.5.0'
     id 'com.diffplug.spotless' version '8.10.0'
 }
 
