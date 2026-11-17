@@ -13,8 +13,60 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  changes:
+    name: Detect instrumented test changes
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      run: ${{ steps.filter.outputs.run }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 2 # PR merge commit and both parents
+          persist-credentials: false
+
+      - name: Match changed files
+        id: filter
+        shell: bash
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PATTERNS: |
+            src/main/*
+            # Translations: the emulator runs in English.
+            !src/main/res/values-*/strings.xml
+            !src/main/assets/help/*
+            src/main/assets/help/en/*
+            src/foss/*
+            src/fossDebug/*
+            src/androidTest/*
+            jni/deltachat-core-rust
+            jni/Android.mk
+            jni/Application.mk
+            jni/dc_wrapper.c
+            scripts/ndk-make.sh
+            scripts/install-toolchains.sh
+            scripts/rust-toolchain
+            scripts/ci-emulator-settle.sh
+            scripts/ci-changed-files.sh
+            *.gradle
+            gradle.properties
+            gradle/*
+            .github/workflows/instrumented-tests.yml
+        run: |
+          if [ "$(git rev-parse HEAD^2)" != "$PR_HEAD_SHA" ]; then
+            echo "::error::HEAD is not the expected PR merge commit"
+            exit 1
+          fi
+          run=$(bash scripts/ci-changed-files.sh HEAD^1 HEAD <<< "$PATTERNS")
+          echo "run=$run" >> "$GITHUB_OUTPUT"
+
   instrumented-tests:
     name: Run instrumented tests
+    needs: changes
+    if: ${{ !cancelled() && (needs.changes.result != 'success' || needs.changes.outputs.run == 'true') }}
     runs-on: ubuntu-latest
     timeout-minutes: 90
     permissions:
