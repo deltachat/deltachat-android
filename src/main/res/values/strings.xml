@@ -198,7 +198,7 @@
         <item quantity="other">%d Selected</item>
     </plurals>
     <string name="selected">Selected</string>
-    <string name="self">Me</string>
+    <string name="self">You</string>
     <string name="draft">Draft</string>
     <string name="image">Image</string>
     <!-- Used in summaries as "Draft: Reply", similar as "Draft: Image". Use a noun here, not a verb (not: "to reply") -->
