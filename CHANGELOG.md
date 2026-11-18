@@ -4,6 +4,7 @@
 
 * Fix: avoid crashes for some notifications if the contact is unnamed
 * Fix: don't say "set for everyone" when changing disappearing messages timer in "Saved Messages" chat
+* Fix: use "You:" for outgoing message previews in the chat list
 
 ## v2.69.0
 2026-11
