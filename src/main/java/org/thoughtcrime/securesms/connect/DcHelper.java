@@ -198,8 +198,6 @@ public class DcHelper {
         170, context.getString(R.string.chat_protection_enabled_tap_to_learn_more));
     dcContext.setStockTranslation(172, context.getString(R.string.chat_new_group_hint));
     dcContext.setStockTranslation(173, context.getString(R.string.member_x_added));
-    dcContext.setStockTranslation(
-        174, context.getString(R.string.invalid_unencrypted_tap_to_learn_more));
     dcContext.setStockTranslation(176, context.getString(R.string.reaction_by_you));
     dcContext.setStockTranslation(177, context.getString(R.string.reaction_by_other));
     dcContext.setStockTranslation(178, context.getString(R.string.member_x_removed));
@@ -234,6 +232,7 @@ public class DcHelper {
     dcContext.setStockTranslation(244, context.getString(R.string.message_pinned_by_other));
     dcContext.setStockTranslation(246, context.getString(R.string.message_unpinned_by_you));
     dcContext.setStockTranslation(247, context.getString(R.string.message_unpinned_by_other));
+    dcContext.setStockTranslation(250, context.getString(R.string.devicemsg_no_more_unencrypted));
   }
 
   public static File getImexDir() {
