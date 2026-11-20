@@ -1,6 +1,5 @@
 package org.thoughtcrime.securesms.messagedetails;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
@@ -17,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
@@ -30,6 +28,9 @@ import chat.delta.rpc.types.Viewtype;
 import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.color.MaterialColors;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.MaterialShapeDrawable;
@@ -45,7 +46,7 @@ import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.util.DateUtils;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class MessageInfoDialogFragment extends DialogFragment
+public class MessageInfoDialogFragment extends BottomSheetDialogFragment
     implements DcEventCenter.DcEventDelegate {
 
   private static final String TAG = "MessageInfoDialogFrag";
@@ -85,12 +86,21 @@ public class MessageInfoDialogFragment extends DialogFragment
     return fragment;
   }
 
-  @NonNull
+  @Nullable
   @Override
-  public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+  public View onCreateView(
+      @NonNull LayoutInflater inflater,
+      @Nullable ViewGroup container,
+      @Nullable Bundle savedInstanceState) {
+    return inflater.inflate(R.layout.message_info_dialog, container, false);
+  }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+
     msgId = getArguments() != null ? getArguments().getInt(ARG_MSG_ID, 0) : 0;
 
-    View view = View.inflate(requireActivity(), R.layout.message_info_dialog, null);
     sentTimeView = view.findViewById(R.id.message_info_sent_time);
     receivedRow = view.findViewById(R.id.message_info_received_row);
     receivedLabelView = view.findViewById(R.id.message_info_received_label);
@@ -105,12 +115,9 @@ public class MessageInfoDialogFragment extends DialogFragment
 
     ImageButton overflowButton = view.findViewById(R.id.message_info_overflow);
     overflowButton.setOnClickListener(v -> showDeveloperMenu(overflowButton));
-    ImageButton closeButton = view.findViewById(R.id.message_info_close);
-    closeButton.setOnClickListener(v -> dismiss());
 
     int iconColor = MaterialColors.getColor(view, android.R.attr.textColorPrimary);
     overflowButton.setColorFilter(iconColor);
-    closeButton.setColorFilter(iconColor);
 
     setCompoundIcon(
         readByLabelView,
@@ -124,33 +131,44 @@ public class MessageInfoDialogFragment extends DialogFragment
     eventCenter.addObserver(DcContext.DC_EVENT_MSGS_CHANGED, this);
 
     refreshData();
-
-    return new AlertDialog.Builder(requireActivity()).setView(view).create();
   }
 
   @Override
   public void onStart() {
     super.onStart();
-    Dialog dialog = getDialog();
-    if (dialog == null || dialog.getWindow() == null) {
+
+    BottomSheetDialog dialog = (BottomSheetDialog) getDialog();
+    if (dialog == null) {
       return;
     }
-    MaterialShapeDrawable background = new MaterialShapeDrawable();
-    background.setShapeAppearanceModel(
-        background.getShapeAppearanceModel().toBuilder()
-            .setAllCorners(CornerFamily.ROUNDED, ViewUtil.dpToPx(18))
+
+    View bottomSheet = dialog.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+    if (bottomSheet == null) {
+      return;
+    }
+
+    BottomSheetBehavior<View> behavior = BottomSheetBehavior.from(bottomSheet);
+    behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+    MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable();
+    shapeDrawable.setShapeAppearanceModel(
+        shapeDrawable.getShapeAppearanceModel().toBuilder()
+            .setTopLeftCorner(CornerFamily.ROUNDED, ViewUtil.dpToPx(18))
+            .setTopRightCorner(CornerFamily.ROUNDED, ViewUtil.dpToPx(18))
             .build());
 
     TypedValue typedValue = new TypedValue();
-    if (!requireContext()
+    if (requireContext()
         .getTheme()
         .resolveAttribute(R.attr.dialog_background_color, typedValue, true)) {
-      requireContext()
-          .getTheme()
-          .resolveAttribute(android.R.attr.colorBackground, typedValue, true);
+      shapeDrawable.setFillColor(ColorStateList.valueOf(typedValue.data));
+    } else {
+      shapeDrawable.setFillColor(
+          ColorStateList.valueOf(getResources().getColor(R.color.background_material_light)));
     }
-    background.setFillColor(ColorStateList.valueOf(typedValue.data));
-    dialog.getWindow().setBackgroundDrawable(background);
+
+    bottomSheet.setBackground(shapeDrawable);
+    bottomSheet.setClipToOutline(true);
   }
 
   @Override

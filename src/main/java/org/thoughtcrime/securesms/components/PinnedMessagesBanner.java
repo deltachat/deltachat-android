@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.components;
 
 import android.content.Context;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ import org.thoughtcrime.securesms.mms.DecryptableStreamUriLoader;
 import org.thoughtcrime.securesms.mms.GlideRequests;
 import org.thoughtcrime.securesms.mms.Slide;
 import org.thoughtcrime.securesms.recipients.Recipient;
+import org.thoughtcrime.securesms.util.JsonUtils;
 import org.thoughtcrime.securesms.util.MediaUtil;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -34,6 +36,7 @@ public class PinnedMessagesBanner extends FrameLayout {
   private static final String TAG = "PinnedMessagesBanner";
 
   private LinearLayout positionIndicatorContainer;
+  private TextView titleText;
   private TextView textView;
   private ImageView thumbnailView;
   private ImageView fileIconView;
@@ -69,6 +72,7 @@ public class PinnedMessagesBanner extends FrameLayout {
     inflate(getContext(), R.layout.pinned_messages_banner, this);
 
     positionIndicatorContainer = findViewById(R.id.position_indicator_container);
+    titleText = findViewById(R.id.title_text);
     textView = findViewById(R.id.msg_text);
     thumbnailView = findViewById(R.id.thumbnail);
     fileIconView = findViewById(R.id.file_icon);
@@ -181,6 +185,9 @@ public class PinnedMessagesBanner extends FrameLayout {
       slide = MediaUtil.getSlideForMsg(getContext(), pinnedMsg);
     }
 
+    boolean setSummary = true;
+    titleText.setVisibility(GONE);
+    textView.setVisibility(VISIBLE);
     openAppBtn.setVisibility(GONE);
     pinIconView.setVisibility(VISIBLE);
 
@@ -189,6 +196,8 @@ public class PinnedMessagesBanner extends FrameLayout {
       fileIconView.setVisibility(GONE);
 
       if (slide.isWebxdcDocument()) {
+        setSummary = false;
+        titleText.setVisibility(VISIBLE);
         openAppBtn.setVisibility(VISIBLE);
         pinIconView.setVisibility(GONE);
         try {
@@ -200,8 +209,25 @@ public class PinnedMessagesBanner extends FrameLayout {
               .override(getContext().getResources().getDimensionPixelSize(R.dimen.quote_thumb_size))
               .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
               .into(thumbnailView);
+
+          String docName = JsonUtils.optString(info, "document");
+          String xdcName = JsonUtils.optString(info, "name");
+          titleText.setText(TextUtils.isEmpty(docName) ? xdcName : docName);
+
+          String subtitle = info.optString("summary");
+          if (TextUtils.isEmpty(subtitle)) {
+            subtitle = pinnedMsg.getText();
+          }
+          if (TextUtils.isEmpty(subtitle)) {
+            textView.setVisibility(GONE);
+          } else {
+            textView.setText(subtitle);
+          }
         } catch (Exception e) {
-          Log.e(TAG, "failed to get webxdc icon", e);
+          Log.e(TAG, "failed to get webxdc info", e);
+          setSummary = true;
+          titleText.setVisibility(GONE);
+          textView.setVisibility(VISIBLE);
           thumbnailView.setVisibility(GONE);
         }
       } else if (slide.isVcard()) {
@@ -247,9 +273,11 @@ public class PinnedMessagesBanner extends FrameLayout {
       fileIconView.setVisibility(GONE);
     }
 
-    boolean addEmoji =
-        thumbnailView.getVisibility() == GONE && fileIconView.getVisibility() == GONE;
-    textView.setText(pinnedMsg.getSummaryText(false, addEmoji, 500));
+    if (setSummary) {
+      boolean addEmoji =
+          thumbnailView.getVisibility() == GONE && fileIconView.getVisibility() == GONE;
+      textView.setText(pinnedMsg.getSummaryText(false, addEmoji, 500));
+    }
   }
 
   public void dismiss() {

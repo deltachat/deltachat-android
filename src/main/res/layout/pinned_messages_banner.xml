@@ -42,23 +42,44 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginEnd="8dp"
+        android:layout_gravity="center_vertical"
         android:scaleType="centerCrop"
         android:importantForAccessibility="no"
         android:visibility="gone" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/msg_text"
-        android:layout_height="wrap_content"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:ellipsize="end"
-        android:maxLines="1"
         android:minHeight="35dp"
-        android:alpha="0.8"
-        style="@style/Signal.Text.Preview"
-        tools:text="With great power comes great responsibility." />
+        android:alpha="0.8">
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Signal.Text.Body"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="?conversation_item_incoming_text_primary_color"
+            android:textStyle="bold"
+            tools:text="Great App" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/msg_text"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:ellipsize="end"
+            android:maxLines="1"
+            style="@style/Signal.Text.Preview"
+            tools:text="With great power comes great responsibility." />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/pin_icon"
