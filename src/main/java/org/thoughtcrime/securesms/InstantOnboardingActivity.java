@@ -66,7 +66,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private static final String TAG = "InstantOnboardingActv";
   private static final String DCACCOUNT = "dcaccount";
   private static final String DCLOGIN = "dclogin";
-  private static final String INSTANCES_URL = "https://chatmail.at/relays";
 
   private static final int REQUEST_CODE_AVATAR = 1;
 
@@ -158,6 +157,9 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     int itemId = item.getItemId();
     if (itemId == android.R.id.home) {
       getOnBackPressedDispatcher().onBackPressed();
+      return true;
+    } else if (itemId == R.id.menu_email_login) {
+      startActivity(new Intent(this, EditRelayActivity.class));
       return true;
     } else if (itemId == R.id.menu_proxy_settings) {
       startActivity(new Intent(this, ProxySettingsActivity.class));
@@ -374,46 +376,13 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
 
     signUpBtn.setOnClickListener(view -> createProfile());
 
-    Button otherOptionsBtn = findViewById(R.id.other_options_button);
-    otherOptionsBtn.setOnClickListener(view -> showOtherOptionsDialog());
-  }
-
-  private void showOtherOptionsDialog() {
-    View view = View.inflate(this, R.layout.signup_options_view, null);
-    Button otherServerButton = view.findViewById(R.id.use_other_server);
-    if (otherServerButton != null) {
-      otherServerButton.setText(
-          TextUtil.markAsExternal(getString(R.string.instant_onboarding_other_server)));
-    }
-    AlertDialog signUpDialog =
-        new AlertDialog.Builder(this)
-            .setView(view)
-            .setTitle(R.string.instant_onboarding_show_more_instances)
-            .setNegativeButton(R.string.cancel, null)
-            .create();
-
-    view.findViewById(R.id.use_other_server)
-        .setOnClickListener(
-            (v) -> {
-              IntentUtils.showInBrowser(this, INSTANCES_URL);
-              signUpDialog.dismiss();
-            });
-    view.findViewById(R.id.login_button)
-        .setOnClickListener(
-            (v) -> {
-              startActivity(new Intent(this, EditRelayActivity.class));
-              signUpDialog.dismiss();
-            });
-    view.findViewById(R.id.scan_qr_button)
+    findViewById(R.id.scan_qr_button)
         .setOnClickListener(
             (v) -> {
               new IntentIntegrator(this)
                   .setCaptureActivity(RegistrationQrActivity.class)
                   .initiateScan();
-              signUpDialog.dismiss();
             });
-
-    signUpDialog.show();
   }
 
   private void updateProvider() {
