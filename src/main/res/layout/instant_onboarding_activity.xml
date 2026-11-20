@@ -102,13 +102,13 @@
 
         <Button
             style="@style/ButtonSecondary"
-            android:id="@+id/other_options_button"
+            android:id="@+id/scan_qr_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:layout_margin="16dp"
-            android:text="@string/instant_onboarding_show_more_instances" />
+            android:text="@string/scan_invitation_code" />
 
     </LinearLayout>
 
