@@ -143,7 +143,7 @@ public class Prefs {
   }
 
   public static boolean isScreenSecurityEnabled(Context context) {
-    return getBooleanPreference(context, SCREEN_SECURITY_PREF, false);
+    return getBooleanPreference(context, SCREEN_SECURITY_PREF, true);
   }
 
   public static String getTheme(Context context) {
