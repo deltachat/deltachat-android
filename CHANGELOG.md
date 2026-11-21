@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Improve registration screen
 * Improve display of mini-apps in pinned messages banner
 * Replace "Me" with "You" for self-contact in chat summary, media viewer, contact list, etc
 * Fix: avoid crashes for some notifications if the contact is unnamed

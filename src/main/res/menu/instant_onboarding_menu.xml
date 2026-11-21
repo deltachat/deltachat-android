@@ -11,6 +11,11 @@
         app:showAsAction="never" />
 
     <item
+        android:title="@string/manual_account_setup_option"
+        android:id="@+id/menu_email_login"
+        app:showAsAction="never" />
+
+    <item
         android:title="@string/create_team_profile"
         android:id="@+id/menu_team_profile"
         app:showAsAction="never" />
