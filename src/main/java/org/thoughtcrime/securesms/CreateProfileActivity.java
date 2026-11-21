@@ -211,7 +211,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
     } else {
       imageLoaded = false;
       avatar.setImageDrawable(
-          new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
+          new ResourceContactPhoto(R.drawable.ic_camera_alt_24)
               .asDrawable(this, getResources().getColor(R.color.grey_400)));
     }
     avatar.setOnClickListener(
@@ -287,7 +287,7 @@ public class CreateProfileActivity extends BaseActionBarActivity {
           imageLoaded = false;
           avatarChanged = true;
           avatar.setImageDrawable(
-              new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
+              new ResourceContactPhoto(R.drawable.ic_camera_alt_24)
                   .asDrawable(
                       CreateProfileActivity.this, getResources().getColor(R.color.grey_400)));
           break;
