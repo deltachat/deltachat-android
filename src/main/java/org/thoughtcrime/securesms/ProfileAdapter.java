@@ -134,7 +134,6 @@ public class ProfileAdapter extends RecyclerView.Adapter {
       final ConversationListItem item =
           (ConversationListItem)
               layoutInflater.inflate(R.layout.conversation_list_item_view, parent, false);
-      item.hideItemDivider();
       return new ViewHolder(item);
     } else if (viewType == ITEM_SIGNATURE) {
       final ProfileStatusItem item =

@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Improve display of mini-apps in pinned messages banner
+* Improve chat list appearance: remove list divider
 * Replace "Me" with "You" for self-contact in chat summary, media viewer, contact list, etc
 * Fix: avoid crashes for some notifications if the contact is unnamed
 * Fix: don't say "set for everyone" when changing disappearing messages timer in "Saved Messages" chat
