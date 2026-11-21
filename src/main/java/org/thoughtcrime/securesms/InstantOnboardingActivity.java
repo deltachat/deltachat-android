@@ -407,6 +407,12 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     }
   }
 
+  private void setAvatarPlaceholder() {
+    avatar.setImageDrawable(
+        new ResourceContactPhoto(R.drawable.ic_camera_alt_48)
+            .asDrawable(this, getResources().getColor(R.color.grey_400)));
+  }
+
   private void initializeProfile() {
     File avatarFile = AvatarHelper.getSelfAvatarFile(this);
     if (avatarFile.exists() && avatarFile.length() > 0) {
@@ -414,9 +420,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
       GlideApp.with(this).load(avatarFile).circleCrop().into(avatar);
     } else {
       imageLoaded = false;
-      avatar.setImageDrawable(
-          new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
-              .asDrawable(this, getResources().getColor(R.color.grey_400)));
+      setAvatarPlaceholder();
     }
     avatar.setOnClickListener(
         view ->
@@ -572,10 +576,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
           avatarBmp = null;
           imageLoaded = false;
           avatarChanged = true;
-          avatar.setImageDrawable(
-              new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
-                  .asDrawable(
-                      InstantOnboardingActivity.this, getResources().getColor(R.color.grey_400)));
+          setAvatarPlaceholder();
           break;
         case AvatarSelector.TAKE_PHOTO:
           attachmentManager.capturePhoto(InstantOnboardingActivity.this, REQUEST_CODE_AVATAR);
