@@ -135,11 +135,4 @@
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/item_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="?attr/conversation_list_item_divider" />
-
 </org.thoughtcrime.securesms.ConversationListItem>
