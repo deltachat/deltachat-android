@@ -75,7 +75,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   private TextView invitationText;
   private TextView providerText;
   private TextView privacyPolicyBtn;
-  private Button signUpBtn;
 
   private boolean avatarChanged;
   private boolean imageLoaded;
@@ -365,7 +364,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     this.invitationText = findViewById(R.id.invitation_label);
     this.providerText = findViewById(R.id.provider_label);
     this.privacyPolicyBtn = findViewById(R.id.privacy_policy_button);
-    this.signUpBtn = findViewById(R.id.signup_button);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(findViewById(R.id.container));
@@ -374,7 +372,7 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
     final String URL = "https://delta.chat/privacy";
     privacyPolicyBtn.setOnClickListener(view -> IntentUtils.showInBrowser(this, URL));
 
-    signUpBtn.setOnClickListener(view -> createProfile());
+    findViewById(R.id.signup_button).setOnClickListener(view -> createProfile());
 
     findViewById(R.id.scan_qr_button)
         .setOnClickListener(
@@ -386,7 +384,6 @@ public class InstantOnboardingActivity extends BaseActionBarActivity
   }
 
   private void updateProvider() {
-    signUpBtn.setText(R.string.instant_onboarding_create);
     if (TextUtils.isEmpty(providerHost)) {
       providerText.setVisibility(View.GONE);
     } else {
