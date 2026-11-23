@@ -6,111 +6,120 @@
 
     <include layout="@layout/status_bar_background" />
 
-    <LinearLayout
-        android:id="@+id/container"
+    <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/avatar"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:contentDescription="@string/pref_profile_photo"
-                android:transitionName="avatar" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/name_text"
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:contentDescription="@string/pref_profile_photo"
+                    android:transitionName="avatar" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/pref_your_name"
-                    android:inputType="textCapWords" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/name_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/pref_your_name"
+                        android:inputType="textCapWords" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/provider_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="start"
+                android:visibility="gone"
+                android:textColor="@color/gray50" />
+
+            <TextView
+                android:id="@+id/invitation_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="start"
+                android:visibility="gone"
+                android:textColor="@color/gray50" />
+
+            <TextView
+                android:id="@+id/information_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="start"
+                android:text="@string/set_name_and_avatar_explain"
+                android:textColor="@color/gray50" />
+
+            <TextView
+                android:id="@+id/privacy_policy_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:text=""
+                android:textColor="@color/delta_accent"
+                android:textSize="16sp" />
+
+            <Button
+                style="@style/ButtonPrimary"
+                android:id="@+id/signup_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/instant_onboarding_create" />
+
+            <Button
+                style="@style/ButtonSecondary"
+                android:id="@+id/scan_qr_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_margin="16dp"
+                android:text="@string/scan_invitation_code" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/provider_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="start"
-            android:visibility="gone"
-            android:textColor="@color/gray50" />
-
-        <TextView
-            android:id="@+id/invitation_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="start"
-            android:visibility="gone"
-            android:textColor="@color/gray50" />
-
-        <TextView
-            android:id="@+id/information_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="start"
-            android:text="@string/set_name_and_avatar_explain"
-            android:textColor="@color/gray50" />
-
-        <TextView
-            android:id="@+id/privacy_policy_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text=""
-            android:textColor="@color/delta_accent"
-            android:textSize="16sp" />
-
-        <Button
-            style="@style/ButtonPrimary"
-            android:id="@+id/signup_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/instant_onboarding_create" />
-
-        <Button
-            style="@style/ButtonSecondary"
-            android:id="@+id/scan_qr_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:layout_margin="16dp"
-            android:text="@string/scan_invitation_code" />
-
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
