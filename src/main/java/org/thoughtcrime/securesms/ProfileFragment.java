@@ -31,7 +31,7 @@ import java.util.List;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.qr.QrShowActivity;
+import org.thoughtcrime.securesms.qr.QrShowBottomSheetFragment;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -256,9 +256,8 @@ public class ProfileFragment extends Fragment
   }
 
   public void onQrInvite() {
-    Intent qrIntent = new Intent(getContext(), QrShowActivity.class);
-    qrIntent.putExtra(QrShowActivity.CHAT_ID, chatId);
-    startActivity(qrIntent);
+    QrShowBottomSheetFragment.newInstance(chatId)
+        .show(getChildFragmentManager(), "qr_show_bottom_sheet");
   }
 
   @Override

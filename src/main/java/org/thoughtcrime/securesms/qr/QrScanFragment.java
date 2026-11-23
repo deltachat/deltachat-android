@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import com.journeyapps.barcodescanner.BarcodeView;
 import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.journeyapps.barcodescanner.ViewfinderView;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -38,6 +41,12 @@ public class QrScanFragment extends Fragment {
 
     barcodeScannerView = view.findViewById(R.id.zxing_barcode_scanner);
     barcodeScannerView.setStatusText(getString(R.string.qrscan_hint) + "\n ");
+
+    ViewfinderView viewfinderView = view.findViewById(R.id.zxing_viewfinder_view);
+    viewfinderView.setMaskColor(Color.BLACK);
+
+    BarcodeView barcodeView = view.findViewById(R.id.zxing_barcode_surface);
+    barcodeView.setMarginFraction(0.0);
 
     // add padding to avoid content hidden behind system bars
     ViewUtil.applyWindowInsets(barcodeScannerView.getStatusView());

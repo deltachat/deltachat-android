@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="ifContentScrolls">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                android:alpha="0.7"
+                android:background="@drawable/bottom_sheet_handle" />
+
+            <TextView
+                android:id="@+id/qr_show_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                tools:text="Scan to chat with Alice" />
+
+            <org.thoughtcrime.securesms.components.AvatarView
+                android:id="@+id/qr_show_avatar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:importantForAccessibility="no" />
+
+            <com.caverock.androidsvg.SVGImageView
+                android:id="@+id/qrImage"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/qrscan_title"
+                android:scaleType="fitCenter" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/qrshow_cant_scan_code"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/share_link_button"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/qrshow_invite_another_way"
+                android:textAllCaps="false"
+                android:textColor="?attr/colorAccent" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</merge>

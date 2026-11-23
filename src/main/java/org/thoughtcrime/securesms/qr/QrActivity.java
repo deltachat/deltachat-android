@@ -14,13 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.constraintlayout.widget.Guideline;
 import com.b44t.messenger.DcContext;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.MultiFormatReader;
 import com.google.zxing.NotFoundException;
@@ -40,18 +37,15 @@ import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
-public class QrActivity extends BaseActionBarActivity implements View.OnClickListener {
+public class QrActivity extends BaseActionBarActivity {
 
   private static final String TAG = "QrActivity";
   public static final String EXTRA_SCAN_RELAY = "scan_relay";
 
   private static final int REQUEST_CODE_IMAGE = 46243;
-  private static final int TAB_SHOW = 0;
-  private static final int TAB_SCAN = 1;
 
-  private TabLayout tabLayout;
-  private ViewPager2 viewPager;
-  private QrShowFragment qrShowFragment;
+  private QrShowView qrShowView;
+  private QrScanFragment qrScanFragment;
   private boolean scanRelay;
 
   @Override
@@ -64,59 +58,78 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_qr);
+    ViewUtil.applyWindowInsetsAsMargin(
+        findViewById(R.id.qrScannerFragment), false, true, false, false);
 
     scanRelay = getIntent().getBooleanExtra(EXTRA_SCAN_RELAY, false);
-
-    qrShowFragment = new QrShowFragment(this);
-    tabLayout = ViewUtil.findById(this, R.id.tab_layout);
-    viewPager = ViewUtil.findById(this, R.id.pager);
-    ProfilePagerAdapter adapter = new ProfilePagerAdapter(this);
-    viewPager.setAdapter(adapter);
 
     setSupportActionBar(ViewUtil.findById(this, R.id.toolbar));
     assert getSupportActionBar() != null;
     getSupportActionBar().setTitle(scanRelay ? R.string.add_transport : R.string.menu_new_contact);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    viewPager.setCurrentItem(scanRelay ? TAB_SCAN : TAB_SHOW, false);
-    if (scanRelay) tabLayout.setVisibility(View.GONE);
+    qrScanFragment =
+        (QrScanFragment) getSupportFragmentManager().findFragmentById(R.id.qrScannerFragment);
+    qrShowView = findViewById(R.id.qr_show_view);
 
-    viewPager.registerOnPageChangeCallback(
-        new ViewPager2.OnPageChangeCallback() {
-          @Override
-          public void onPageSelected(int position) {
-            QrActivity.this.invalidateOptionsMenu();
-            checkPermissions(position, adapter, viewPager);
-          }
-        });
+    Guideline scannerGuideline = findViewById(R.id.scanner_guideline);
+    scannerGuideline.setGuidelinePercent(scanRelay ? 1.0f : 0.5f);
 
-    new TabLayoutMediator(
-            tabLayout, viewPager, (tab, position) -> tab.setText(adapter.getPageTitle(position)))
-        .attach();
+    if (scanRelay) {
+      qrShowView.setVisibility(View.GONE);
+    } else {
+      BottomSheetBehavior<QrShowView> behavior = BottomSheetBehavior.from(qrShowView);
+      behavior.setFitToContents(false);
+      behavior.setHalfExpandedRatio(0.5f);
+      behavior.setDraggable(true);
+      behavior.setDraggableOnNestedScroll(true);
+      behavior.setHideable(false);
+
+      behavior.addBottomSheetCallback(
+          new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+              if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+              }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
+          });
+
+      AppBarLayout appBar = findViewById(R.id.app_bar);
+      appBar.addOnLayoutChangeListener(
+          (v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+              behavior.setExpandedOffset(v.getHeight()));
+
+      qrShowView.bind(0, this::finish);
+      qrShowView.activate();
+
+      qrShowView.post(() -> behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED));
+    }
+
+    checkPermissions();
   }
 
-  private void checkPermissions(int position, ProfilePagerAdapter adapter, ViewPager2 viewPager) {
-    if (position == TAB_SCAN) {
-      Permissions.with(QrActivity.this)
-          .request(Manifest.permission.CAMERA)
-          .ifNecessary()
-          .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
-          .onAllGranted(
-              () ->
-                  ((QrScanFragment) adapter.createFragment(TAB_SCAN))
-                      .handleQrScanWithPermissions(QrActivity.this))
-          .onAnyDenied(
-              () -> {
-                if (scanRelay) {
-                  Toast.makeText(
-                          this, getString(R.string.chat_camera_unavailable), Toast.LENGTH_LONG)
-                      .show();
-                } else {
-                  viewPager.setCurrentItem(TAB_SHOW);
-                }
-              })
-          .execute();
-    }
+  private void checkPermissions() {
+    Permissions.with(this)
+        .request(Manifest.permission.CAMERA)
+        .ifNecessary()
+        .withPermanentDenialDialog(getString(R.string.perm_explain_access_to_camera_denied))
+        .onAllGranted(
+            () -> {
+              if (qrScanFragment != null) {
+                qrScanFragment.handleQrScanWithPermissions(this);
+              }
+            })
+        .onAnyDenied(
+            () -> {
+              if (scanRelay) {
+                Toast.makeText(this, R.string.chat_camera_unavailable, Toast.LENGTH_LONG).show();
+              }
+            })
+        .execute();
   }
 
   @Override
@@ -127,12 +140,9 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     getMenuInflater().inflate(R.menu.qr_show, menu);
     menu.findItem(R.id.new_classic_contact)
         .setVisible(!scanRelay && dcContext.getConfigInt(DcHelper.CONFIG_FORCE_ENCRYPTION) == 0);
+    menu.findItem(R.id.withdraw).setVisible(!scanRelay);
 
     Util.redMenuItem(menu, R.id.withdraw);
-    if (tabLayout.getSelectedTabPosition() == TAB_SCAN) {
-      menu.findItem(R.id.withdraw).setVisible(false);
-    }
-
     return super.onPrepareOptionsMenu(menu);
   }
 
@@ -147,7 +157,7 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     } else if (itemId == R.id.new_classic_contact) {
       this.startActivity(new Intent(this, NewContactActivity.class));
     } else if (itemId == R.id.withdraw) {
-      qrShowFragment.withdrawQr();
+      qrShowView.withdrawQr();
     } else if (itemId == R.id.load_from_image) {
       AttachmentManager.selectImage(this, REQUEST_CODE_IMAGE);
     } else if (itemId == R.id.paste) {
@@ -160,17 +170,14 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
   @Override
   public void onRequestPermissionsResult(
       int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     Permissions.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    if (permissions.length > 0
+
+    if (scanRelay
+        && permissions.length > 0
         && Manifest.permission.CAMERA.equals(permissions[0])
         && grantResults[0] == PackageManager.PERMISSION_DENIED) {
-      if (scanRelay) {
-        Toast.makeText(this, getString(R.string.chat_camera_unavailable), Toast.LENGTH_LONG).show();
-      } else {
-        viewPager.setCurrentItem(TAB_SHOW);
-      }
-      // Workaround because sometimes something else requested the permissions before this class
-      // (probably the CameraView) and then this class didn't notice when it was denied
+      Toast.makeText(this, R.string.chat_camera_unavailable, Toast.LENGTH_LONG).show();
     }
   }
 
@@ -220,35 +227,5 @@ public class QrActivity extends BaseActionBarActivity implements View.OnClickLis
     intent.putExtra(Intents.Scan.RESULT, qrData);
     setResult(RESULT_OK, intent);
     finish();
-  }
-
-  @Override
-  public void onClick(View v) {
-    viewPager.setCurrentItem(TAB_SCAN);
-  }
-
-  private class ProfilePagerAdapter extends FragmentStateAdapter {
-    ProfilePagerAdapter(FragmentActivity activity) {
-      super(activity);
-    }
-
-    @NonNull
-    @Override
-    public Fragment createFragment(int position) {
-      if (position == TAB_SHOW) {
-        qrShowFragment = new QrShowFragment(QrActivity.this);
-        return qrShowFragment;
-      }
-      return new QrScanFragment();
-    }
-
-    @Override
-    public int getItemCount() {
-      return 2;
-    }
-
-    private CharSequence getPageTitle(int position) {
-      return getString(position == TAB_SHOW ? R.string.qrshow_title : R.string.qrscan_title);
-    }
   }
 }
