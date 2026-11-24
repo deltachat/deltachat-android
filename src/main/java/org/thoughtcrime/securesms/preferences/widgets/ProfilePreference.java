@@ -69,7 +69,7 @@ public class ProfilePreference extends Preference {
     GlideApp.with(getContext().getApplicationContext())
         .load(profileImage)
         .error(
-            new ResourceContactPhoto(R.drawable.ic_camera_alt_white_24dp)
+            new ResourceContactPhoto(R.drawable.ic_camera_alt_24)
                 .asDrawable(getContext(), getContext().getResources().getColor(R.color.grey_400)))
         .circleCrop()
         .diskCacheStrategy(DiskCacheStrategy.NONE)
