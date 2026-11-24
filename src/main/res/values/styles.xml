@@ -141,4 +141,11 @@
         parent="">
         <item name="cornerSize">7%</item>
     </style>
+
+    <style
+        name="QrShowBottomSheetDialog"
+        parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>
+        <item name="paddingBottomSystemWindowInsets">false</item>
+    </style>
 </resources>

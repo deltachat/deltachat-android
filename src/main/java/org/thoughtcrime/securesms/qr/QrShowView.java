@@ -75,7 +75,6 @@ public class QrShowView extends FrameLayout implements DcEventCenter.DcEventDele
     instructionView = findViewById(R.id.qr_show_instruction);
 
     findViewById(R.id.share_link_button).setOnClickListener(v -> showInviteLinkDialog());
-    ViewUtil.applyWindowInsets(this, false, false, false, true);
 
     MaterialShapeDrawable shapeDrawable = new MaterialShapeDrawable();
     shapeDrawable.setShapeAppearanceModel(
