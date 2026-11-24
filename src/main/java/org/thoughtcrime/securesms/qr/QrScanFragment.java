@@ -1,6 +1,7 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
@@ -89,7 +91,9 @@ public class QrScanFragment extends Fragment {
       CompoundBarcodeView barcodeScannerView, Activity activity, Bundle savedInstanceState) {
     try {
       capture = new MyCaptureManager(activity, barcodeScannerView);
-      capture.initializeFromIntent(activity.getIntent(), savedInstanceState);
+      Intent scanIntent = new Intent(activity.getIntent());
+      scanIntent.putExtra(Intents.Scan.BEEP_ENABLED, false);
+      capture.initializeFromIntent(scanIntent, savedInstanceState);
       capture.decode();
     } catch (Exception e) {
       Log.w(TAG, e);

@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcLot;
+import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import org.thoughtcrime.securesms.BaseActionBarActivity;
 import org.thoughtcrime.securesms.R;
@@ -171,7 +172,9 @@ public class RegistrationQrActivity extends BaseActionBarActivity {
               });
         });
 
-    capture.initializeFromIntent(intent, savedInstanceState);
+    Intent scanIntent = new Intent(intent);
+    scanIntent.putExtra(Intents.Scan.BEEP_ENABLED, false);
+    capture.initializeFromIntent(scanIntent, savedInstanceState);
     capture.decode();
   }
 
