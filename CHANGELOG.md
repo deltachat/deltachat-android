@@ -4,6 +4,7 @@
 
 * Improve display of mini-apps in pinned messages banner
 * Replace "Me" with "You" for self-contact in chat summary, media viewer, contact list, etc
+* Disable high-pitch "BEEP!!!" sound when scanning QR
 * Fix: avoid crashes for some notifications if the contact is unnamed
 * Fix: don't say "set for everyone" when changing disappearing messages timer in "Saved Messages" chat
 * Message details now open in a clean, scrollable bottom sheet
