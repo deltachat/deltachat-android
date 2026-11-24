@@ -76,6 +76,7 @@ jobs:
       EMU_TARGET: google_apis
       EMU_ARCH: x86_64
       EMU_PROFILE: pixel_10
+      EMU_CORES: '4'
     outputs:
       results-url: ${{ steps.upload-results.outputs.artifact-url }}
     steps:
@@ -164,7 +165,7 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-${{ env.EMU_API_LEVEL }}-${{ env.EMU_TARGET }}-${{ env.EMU_ARCH }}-${{ env.EMU_PROFILE }}-v1
+          key: avd-${{ env.EMU_API_LEVEL }}-${{ env.EMU_TARGET }}-${{ env.EMU_ARCH }}-${{ env.EMU_PROFILE }}-v2
 
       - name: Create AVD and generate snapshot
         if: steps.avd-cache.outputs.cache-hit != 'true'
@@ -174,10 +175,11 @@ jobs:
           target: ${{ env.EMU_TARGET }}
           arch: ${{ env.EMU_ARCH }}
           profile: ${{ env.EMU_PROFILE }}
+          cores: ${{ env.EMU_CORES }}
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
+          script: bash scripts/ci-emulator-settle.sh --dexopt
 
       - name: Save AVD snapshot
         if: steps.avd-cache.outputs.cache-hit != 'true' && github.ref == 'refs/heads/main'
@@ -195,6 +197,7 @@ jobs:
           target: ${{ env.EMU_TARGET }}
           arch: ${{ env.EMU_ARCH }}
           profile: ${{ env.EMU_PROFILE }}
+          cores: ${{ env.EMU_CORES }}
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
