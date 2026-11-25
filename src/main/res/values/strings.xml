@@ -1016,10 +1016,10 @@
     <string name="messages_are_e2ee">Messages are end-to-end encrypted.</string>
     <string name="chat_protection_enabled_tap_to_learn_more">Messages are end-to-end encrypted. Tap to learn more.</string>
     <string name="chat_protection_enabled_explanation">All messages in this chat are end-to-end encrypted.\n\nEnd-to-end encryption keeps messages private between you and your chat partners. Not even servers, providers or relays can read them.</string>
-    <string name="invalid_unencrypted_tap_to_learn_more">⚠️ %1$s requires end-to-end encryption which is not setup for this chat yet. Tap to learn more.</string>
     <string name="invalid_unencrypted_explanation">To establish end-to-end-encryption, you may meet contacts in person and scan their QR Code to introduce them.</string>
     <string name="learn_more">Learn More</string>
 
+    <string name="devicemsg_no_more_unencrypted">To keep Delta Chat simpler and more secure, it no longer sends or receives messages that aren\'t end-to-end encrypted.\n\nNothing is lost: your encrypted chats work as before, and old unencrypted chats remain readable.\n\nTo keep sending and receiving unencrypted email, use a regular email app. You can find your email password in Delta Chat under \"Settings → Advanced → Relays\": tap (or right-click) your address and choose \"Edit Relay\".\n\nTo keep chatting with someone, send them an invite link.</string>
     <string name="devicemsg_self_deleted">You deleted the \"Saved messages\" chat.\n\nℹ️ To use the \"Saved messages\" feature again, create a new chat with yourself.</string>
     <!-- %1%s will be replaced by date and time in some human-readable format -->
     <string name="devicemsg_bad_time">⚠️ Date or time on your device seems to be inaccurate (%1$s).\n\nAdjust your clock ⏰🔧 to ensure your messages are received correctly.</string>
