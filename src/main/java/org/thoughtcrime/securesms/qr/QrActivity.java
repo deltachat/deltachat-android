@@ -89,14 +89,26 @@ public class QrActivity extends BaseActionBarActivity {
           new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
+              updateSheetViewport(behavior, newState);
               if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                 behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+              }
+              if (qrScanFragment != null) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                  qrScanFragment.setScanningSuppressed(true);
+                } else if (newState == BottomSheetBehavior.STATE_HALF_EXPANDED
+                    || newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                  qrScanFragment.setScanningSuppressed(false);
+                }
               }
             }
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
           });
+      qrShowView.addOnLayoutChangeListener(
+          (v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+              updateSheetViewport(behavior, behavior.getState()));
 
       AppBarLayout appBar = findViewById(R.id.app_bar);
       appBar.addOnLayoutChangeListener(
@@ -106,7 +118,7 @@ public class QrActivity extends BaseActionBarActivity {
       qrShowView.bind(0, this::finish);
       qrShowView.activate();
 
-      qrShowView.post(() -> behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED));
+      behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
     }
 
     checkPermissions();
@@ -130,6 +142,22 @@ public class QrActivity extends BaseActionBarActivity {
               }
             })
         .execute();
+  }
+
+  private void updateSheetViewport(BottomSheetBehavior<QrShowView> behavior, int state) {
+    View parent = (View) qrShowView.getParent();
+    int parentHeight = parent.getHeight();
+
+    int top;
+    if (state == BottomSheetBehavior.STATE_HALF_EXPANDED) {
+      top = (int) (parentHeight * (1 - behavior.getHalfExpandedRatio()));
+    } else if (state == BottomSheetBehavior.STATE_EXPANDED) {
+      top = behavior.getExpandedOffset();
+    } else {
+      return;
+    }
+
+    qrShowView.setHiddenHeight(Math.max(0, top + qrShowView.getHeight() - parentHeight));
   }
 
   @Override

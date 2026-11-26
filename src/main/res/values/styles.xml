@@ -146,6 +146,6 @@
         name="QrShowBottomSheetDialog"
         parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/Widget.Design.BottomSheet.Modal</item>
-        <item name="paddingBottomSystemWindowInsets">false</item>
+        <item name="paddingBottomSystemWindowInsets">true</item>
     </style>
 </resources>

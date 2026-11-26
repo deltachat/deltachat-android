@@ -9,14 +9,17 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.widget.NestedScrollView;
 import com.b44t.messenger.DcChat;
-import com.b44t.messenger.DcContact;
 import com.b44t.messenger.DcContext;
 import com.b44t.messenger.DcEvent;
 import com.caverock.androidsvg.SVG;
@@ -24,11 +27,8 @@ import com.caverock.androidsvg.SVGImageView;
 import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.MaterialShapeDrawable;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.AvatarView;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
-import org.thoughtcrime.securesms.mms.GlideApp;
-import org.thoughtcrime.securesms.recipients.Recipient;
 import org.thoughtcrime.securesms.util.Util;
 import org.thoughtcrime.securesms.util.ViewUtil;
 
@@ -50,7 +50,6 @@ public class QrShowView extends FrameLayout implements DcEventCenter.DcEventDele
   private String inviteUrl;
 
   private SVGImageView qrImageView;
-  private AvatarView avatarView;
   private TextView instructionView;
 
   public QrShowView(@NonNull Context context) {
@@ -71,7 +70,6 @@ public class QrShowView extends FrameLayout implements DcEventCenter.DcEventDele
     LayoutInflater.from(getContext()).inflate(R.layout.qr_show_view, this, true);
 
     qrImageView = findViewById(R.id.qrImage);
-    avatarView = findViewById(R.id.qr_show_avatar);
     instructionView = findViewById(R.id.qr_show_instruction);
 
     findViewById(R.id.share_link_button).setOnClickListener(v -> showInviteLinkDialog());
@@ -176,10 +174,7 @@ public class QrShowView extends FrameLayout implements DcEventCenter.DcEventDele
       if (name.isEmpty()) {
         name = getResources().getString(R.string.unnamed);
       }
-
-      DcContact self = dcContext.getContact(DcContact.DC_CONTACT_ID_SELF);
       instructionRes = R.string.qrshow_join_contact_hint;
-      avatarView.setAvatar(GlideApp.with(this), new Recipient(getContext(), self, name), false);
     } else {
       DcChat chat = dcContext.getChat(chatId);
       name = chat.getName();
@@ -187,7 +182,6 @@ public class QrShowView extends FrameLayout implements DcEventCenter.DcEventDele
           chat.getType() == DcChat.DC_CHAT_TYPE_GROUP
               ? R.string.qrshow_join_group_hint
               : R.string.qrshow_join_channel_hint;
-      avatarView.setAvatar(GlideApp.with(this), new Recipient(getContext(), chat), false);
     }
 
     instructionView.setText(getResources().getString(instructionRes, name));
@@ -206,6 +200,36 @@ public class QrShowView extends FrameLayout implements DcEventCenter.DcEventDele
         .setPositiveButton(R.string.menu_share, (d, b) -> shareInviteURL())
         .create()
         .show();
+  }
+
+  public void setHiddenHeight(int hiddenHeight) {
+    NestedScrollView scrollView = findViewById(R.id.qr_show_scroll);
+    View content = findViewById(R.id.qr_show_content);
+
+    int navigationBottom = 0;
+    WindowInsetsCompat insets = ViewCompat.getRootWindowInsets(this);
+    if (ViewUtil.isEdgeToEdgeSupported() && insets != null) {
+      navigationBottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+    }
+
+    int bottom = hiddenHeight + navigationBottom;
+    if (scrollView.getPaddingBottom() != bottom) {
+      scrollView.setPadding(0, 0, 0, bottom);
+    }
+
+    if (content.getHeight() == 0) return;
+
+    int viewportHeight = scrollView.getHeight() - bottom;
+    int availableWidth = content.getWidth() - content.getPaddingLeft() - content.getPaddingRight();
+    int nonQrHeight = content.getHeight() - qrImageView.getHeight();
+    int size =
+        Math.max(ViewUtil.dpToPx(240), Math.min(availableWidth, viewportHeight - nonQrHeight));
+
+    ViewGroup.LayoutParams params = qrImageView.getLayoutParams();
+    if (params.height != size) {
+      params.height = size;
+      qrImageView.setLayoutParams(params);
+    }
   }
 
   private void shareInviteURL() {

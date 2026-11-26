@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/qr_show_scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:overScrollMode="ifContentScrolls">
 
         <LinearLayout
+            android:id="@+id/qr_show_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -34,14 +36,6 @@
                 android:textAlignment="center"
                 android:textSize="18sp"
                 tools:text="Scan to chat with Alice" />
-
-            <org.thoughtcrime.securesms.components.AvatarView
-                android:id="@+id/qr_show_avatar"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="12dp"
-                android:importantForAccessibility="no" />
 
             <com.caverock.androidsvg.SVGImageView
                 android:id="@+id/qrImage"

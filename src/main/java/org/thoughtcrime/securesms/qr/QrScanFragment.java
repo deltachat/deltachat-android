@@ -1,8 +1,8 @@
 package org.thoughtcrime.securesms.qr;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,8 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.journeyapps.barcodescanner.BarcodeView;
 import com.google.zxing.client.android.Intents;
+import com.journeyapps.barcodescanner.BarcodeView;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.CompoundBarcodeView;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
@@ -28,6 +28,7 @@ public class QrScanFragment extends Fragment {
 
   private CompoundBarcodeView barcodeScannerView;
   private MyCaptureManager capture;
+  private boolean scanningSuppressed;
 
   @Override
   public void onCreate(Bundle bundle) {
@@ -63,7 +64,7 @@ public class QrScanFragment extends Fragment {
   @Override
   public void onResume() {
     super.onResume();
-    if (capture != null) {
+    if (!scanningSuppressed && capture != null) {
       capture.onResume();
     }
   }
@@ -89,6 +90,19 @@ public class QrScanFragment extends Fragment {
     super.onSaveInstanceState(outState);
     if (capture != null) {
       capture.onSaveInstanceState(outState);
+    }
+  }
+
+  public void setScanningSuppressed(boolean suppressed) {
+    if (scanningSuppressed == suppressed) return;
+
+    scanningSuppressed = suppressed;
+    if (capture == null) return;
+
+    if (suppressed) {
+      capture.onPause();
+    } else if (isResumed()) {
+      capture.onResume();
     }
   }
 
