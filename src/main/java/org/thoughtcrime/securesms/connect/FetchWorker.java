@@ -23,6 +23,10 @@ import org.thoughtcrime.securesms.service.SendingWaiter;
 public class FetchWorker extends Worker {
   private static final String TAG = "FetchWorker";
   private static final long SENDING_MAX_RUNTIME_MS = 5 * 60 * 1000;
+
+  /** Tag used for the periodic worker if push isn't available */
+  public static final String periodicWorkTag = "FetchWorker";
+
   private final @NonNull Context context;
 
   public FetchWorker(@NonNull Context context, @NonNull WorkerParameters params) {
