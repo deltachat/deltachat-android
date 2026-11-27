@@ -81,8 +81,7 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
                     statusLine.setVisibility(View.GONE);
                     topText.setVisibility(View.VISIBLE);
                     try {
-                      SVG svg =
-                          SVG.getFromString(QrShowFragment.fixSVG(dcBackupProvider.getQrSvg()));
+                      SVG svg = SVG.getFromString(fixSVG(dcBackupProvider.getQrSvg()));
                       qrImageView.setSVG(svg);
                       qrImageView.setVisibility(View.VISIBLE);
                     } catch (SVGParseException e) {
@@ -205,6 +204,13 @@ public class BackupProviderFragment extends Fragment implements DcEventCenter.Dc
         progressBar.setVisibility(permille == 1000 ? View.GONE : View.VISIBLE);
       }
     }
+  }
+
+  public static String fixSVG(String svg) {
+    // HACK: move avatar-letter down, baseline alignment not working,
+    // see https://github.com/deltachat/deltachat-core-rust/pull/2815#issuecomment-978067378 ,
+    // suggestions welcome :)
+    return svg.replace("y=\"281.136\"", "y=\"296\"");
   }
 
   private BackupTransferActivity getTransferActivity() {

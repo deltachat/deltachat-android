@@ -29,6 +29,7 @@ import java.util.Collections;
 import org.thoughtcrime.securesms.connect.DcEventCenter;
 import org.thoughtcrime.securesms.connect.DcHelper;
 import org.thoughtcrime.securesms.providers.PersistentBlobProvider;
+import org.thoughtcrime.securesms.qr.QrShowView;
 import org.thoughtcrime.securesms.util.DynamicNoActionBarTheme;
 import org.thoughtcrime.securesms.util.Prefs;
 import org.thoughtcrime.securesms.util.ShareUtil;
@@ -130,6 +131,14 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       } else {
         menu.findItem(R.id.menu_clone).setVisible(false);
         canReceive = false;
+      }
+
+      if (chatId != 0 && chatIsMultiUser && !chatIsInBroadcast && !chatIsMailingList) {
+        DcChat dcChat = dcContext.getChat(chatId);
+        if (dcChat.canSend() && dcChat.isEncrypted()) {
+          menu.add(Menu.NONE, R.id.withdraw, Menu.NONE, R.string.withdraw_qr_code);
+          Util.redMenuItem(menu, R.id.withdraw);
+        }
       }
 
       if (!canReceive) {
@@ -249,6 +258,8 @@ public class ProfileActivity extends PassphraseRequiredActionBarActivity
       onBlockContact();
     } else if (itemId == R.id.menu_clone) {
       onClone();
+    } else if (itemId == R.id.withdraw) {
+      QrShowView.showWithdrawDialog(this, chatId, null);
     }
 
     return false;

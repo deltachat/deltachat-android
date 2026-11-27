@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+* Scan and show QR codes on one screen; QR codes now open directly in profiles
 * Improve registration screen
 * Improve display of mini-apps in pinned messages banner
 * Replace "Me" with "You" for self-contact in chat summary, media viewer, contact list, etc
