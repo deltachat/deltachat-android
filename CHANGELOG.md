@@ -4,6 +4,7 @@
 
 * Improve registration screen
 * Improve display of mini-apps in pinned messages banner
+* Improve chat list appearance: remove list divider
 * Replace "Me" with "You" for self-contact in chat summary, media viewer, contact list, etc
 * Disable high-pitch "BEEP!!!" sound when scanning QR
 * Fix: avoid crashes for some notifications if the contact is unnamed

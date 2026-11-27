@@ -424,9 +424,4 @@ public class ConversationListItem extends RelativeLayout
 
     return spanned;
   }
-
-  public void hideItemDivider() {
-    View itemDivider = findViewById(R.id.item_divider);
-    itemDivider.setVisibility(View.GONE);
-  }
 }
