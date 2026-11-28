@@ -804,8 +804,7 @@
     <string name="pref_outgoing_worse">Worse quality, save data</string>
     <string name="pref_vibrate">Vibrate</string>
     <string name="pref_screen_security">Screen Security</string>
-    <!-- Translators: Must indicate that there is no guarantee as the system may not honor our request. -->
-    <string name="pref_screen_security_explain">Request to block screenshots in the recents list and inside the app</string>
+    <string name="pref_screen_security_explain">Block screenshots and prevent typical AI assistants from scanning your messages</string>
     <string name="pref_screen_security_please_restart_hint">To apply the screen security setting please restart the app.</string>
     <string name="pref_notifications">Notifications</string>
     <string name="pref_mention_notifications">Mentions</string>
